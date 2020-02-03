@@ -17,16 +17,31 @@ And much more!
 
 
 ### Modelers / Sound Designers / Textures
+
 Emy
+
+Boom
+
 Rexzilla
+
 AGSucho
+
 TheJurassicAlien
+
 Tornado
+
+MidNight
+
 Bastion
+
 Creatar
+
 Fluffy Taco
+
 LordofLustria
+
 Pedro Resende
+
 The Jurassic Gamer
 
 ### Special Mentions To JurassiCraft
