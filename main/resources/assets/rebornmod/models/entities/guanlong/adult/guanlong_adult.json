@@ -1,0 +1,97 @@
+{
+  "version": 0,
+  "poses": {
+    "IDLE": [
+      {
+        "pose": "guanlong_adult_idle",
+        "time": 10
+      }
+    ],
+    "ATTACKING": [
+      {
+        "pose": "guanlong_adult_attacking_1",
+        "time": 7
+      },
+      {
+        "pose": "guanlong_adult_attacking_2",
+        "time": 6
+      },
+      {
+        "pose": "guanlong_adult_attacking_3",
+        "time": 7
+      }
+    ],
+    "CALLING": [
+      {
+        "pose": "guanlong_adult_calling_1",
+        "time": 10
+      },
+      {
+        "pose": "guanlong_adult_calling_2",
+        "time": 10
+      }
+    ],
+    "DRINKING": [
+      {
+        "pose": "guanlong_adult_drinking",
+        "time": 20
+      }
+    ],
+    "DYING": [
+      {
+        "pose": "guanlong_adult_dying_1",
+        "time": 7
+      },
+      {
+        "pose": "guanlong_adult_dying_2",
+        "time": 6
+      },
+      {
+        "pose": "guanlong_adult_dying_3",
+        "time": 7
+      }
+    ],
+    "EATING": [
+      {
+        "pose": "guanlong_adult_eating_1",
+        "time": 7
+      },
+      {
+        "pose": "guanlong_adult_eating_2",
+        "time": 6
+      },
+      {
+        "pose": "guanlong_adult_eating_3",
+        "time": 7
+      }
+    ],
+    "INJURED": [
+      {
+        "pose": "guanlong_adult_injured",
+        "time": 20
+      }
+    ],
+    "LAYING_EGG": [
+      {
+        "pose": "guanlong_adult_laying_egg",
+        "time": 20
+      }
+    ],
+    "SLEEPING": [
+      {
+        "pose": "guanlong_adult_sleeping",
+        "time": 20
+      }
+    ],
+    "WALKING": [
+      {
+        "pose": "guanlong_adult_walking_1",
+        "time": 10
+      },
+      {
+        "pose": "guanlong_adult_walking_2",
+        "time": 10
+      }
+    ]
+  }
+}

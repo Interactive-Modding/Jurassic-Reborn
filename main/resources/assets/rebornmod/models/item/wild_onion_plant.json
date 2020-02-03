@@ -1,0 +1,8 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "rebornmod:items/plants/wild_onion"
+  }
+}
+
+

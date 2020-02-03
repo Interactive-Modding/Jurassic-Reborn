@@ -1,0 +1,35 @@
+{
+  "type": "forge:ore_shaped",
+  "group": "rebornmod:embryonic_machine",
+  "pattern": [
+    "ABC",
+    "ADC",
+    "EEC"
+  ],
+  "key": {
+    "E": {
+      "item": "minecraft:iron_ingot",
+      "data": 0
+    },
+    "A": {
+      "type": "forge:ore_dict",
+      "ore": "nuggetIron"
+    },
+    "D": {
+      "item": "minecraft:glowstone_dust",
+      "data": 0
+    },
+    "B": {
+      "item": "minecraft:piston",
+      "data": 0
+    },
+    "C": {
+      "item": "minecraft:wooden_button",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "rebornmod:embryonic_machine",
+    "data": 0
+  }
+}

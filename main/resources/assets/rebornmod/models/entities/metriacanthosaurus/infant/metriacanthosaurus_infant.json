@@ -1,0 +1,7 @@
+{
+    "poses": {
+        "IDLE": [
+            {"pose": "metriacanthosaurus_infant_idle", "time": 20}
+        ]
+     }
+}

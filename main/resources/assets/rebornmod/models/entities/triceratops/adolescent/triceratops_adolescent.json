@@ -1,0 +1,8 @@
+{
+    "version": 0,
+    "poses": {
+        "IDLE": [
+            {"pose": "triceratops_adolescent_idle", "time": 20}
+        ]
+     }
+}

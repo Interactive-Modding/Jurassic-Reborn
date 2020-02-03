@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "stage=0": {
+      "model": "rebornmod:psaronius_sapling"
+    },
+    "stage=1": {
+      "model": "rebornmod:psaronius_sapling"
+    },
+    "stage=2": {
+      "model": "rebornmod:psaronius_sapling"
+    },
+    "stage=3": {
+      "model": "rebornmod:psaronius_sapling"
+    },
+    "stage=4": {
+      "model": "rebornmod:psaronius_sapling"
+    }
+  }
+}

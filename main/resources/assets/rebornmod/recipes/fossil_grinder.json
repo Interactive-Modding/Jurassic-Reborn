@@ -1,0 +1,39 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "rebornmod:fossil_grinder",
+  "pattern": [
+    "ABA",
+    "CDC",
+    "EFE"
+  ],
+  "key": {
+    "B": {
+      "item": "rebornmod:iron_blades",
+      "data": 0
+    },
+    "A": {
+      "item": "minecraft:dye",
+      "data": 4
+    },
+    "F": {
+      "item": "minecraft:piston",
+      "data": 0
+    },
+    "C": {
+      "item": "minecraft:redstone",
+      "data": 0
+    },
+    "D": {
+      "item": "rebornmod:iron_rod",
+      "data": 0
+    },
+    "E": {
+      "item": "minecraft:iron_ingot",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "rebornmod:fossil_grinder",
+    "data": 0
+  }
+}

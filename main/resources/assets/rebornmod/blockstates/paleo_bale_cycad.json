@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=y": {
+      "model": "rebornmod:paleo_bale/cycad"
+    },
+    "axis=z": {
+      "model": "rebornmod:paleo_bale/cycad",
+      "x": 90
+    },
+    "axis=x": {
+      "model": "rebornmod:paleo_bale/cycad",
+      "x": 90,
+      "y": 90
+    }
+  }
+}

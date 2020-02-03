@@ -1,0 +1,18 @@
+{
+  "variants": {
+    "axis=y": {
+      "model": "rebornmod:psaronius_log"
+    },
+    "axis=z": {
+      "model": "rebornmod:psaronius_log",
+	   "x": 90
+    },
+    "axis=x": {
+      "model": "rebornmod:psaronius_log",
+      "x": 90, "y": 90
+    },
+    "axis=none": {
+      "model": "rebornmod:psaronius_bark"
+    }
+  }
+}

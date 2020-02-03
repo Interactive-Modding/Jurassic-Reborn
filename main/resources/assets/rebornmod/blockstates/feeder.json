@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "facing=south": {
+      "model": "rebornmod:feeder"
+    },
+    "facing=north": {
+      "model": "rebornmod:feeder"
+    },
+    "facing=west": {
+      "model": "rebornmod:feeder"
+    },
+    "facing=east": {
+      "model": "rebornmod:feeder"
+    },
+    "facing=up": {
+      "model": "rebornmod:feeder"
+    },
+    "facing=down": {
+      "model": "rebornmod:feeder"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "rebornmod:encephalartos_bottom"
+    },
+    "half=upper": {
+      "model": "rebornmod:encephalartos_top"
+    }
+  }
+}

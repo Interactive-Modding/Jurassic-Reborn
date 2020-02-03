@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=bottom": {
+      "model": "rebornmod:phoenix_planks"
+    },
+    "half=top": {
+      "model": "rebornmod:phoenix_planks"
+    }
+  }
+}

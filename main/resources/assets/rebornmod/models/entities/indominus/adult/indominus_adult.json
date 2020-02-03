@@ -1,0 +1,173 @@
+{
+  "version": 0,
+  "poses": {
+    "IDLE": [
+      {
+        "pose": "indominus_adult_idle",
+        "time": 20
+      }
+    ],
+    "SLEEPING": [
+      {
+        "pose": "indominus_adult_sleeping",
+        "time": 20
+      }
+    ],
+    "ROARING": [
+      {
+        "pose": "indominus_adult_roaring_1",
+        "time": 10
+      },
+      {
+        "pose": "indominus_adult_roaring_1",
+        "time": 2
+      },
+      {
+        "pose": "indominus_adult_roaring_2",
+        "time": 15
+      },
+      {
+        "pose": "indominus_adult_roaring_3",
+        "time": 7
+      },
+      {
+        "pose": "indominus_adult_roaring_4",
+        "time": 7
+      },
+      {
+        "pose": "indominus_adult_roaring_5",
+        "time": 7
+      },
+      {
+        "pose": "indominus_adult_roaring_6",
+        "time": 7
+      },
+      {
+        "pose": "indominus_adult_roaring_3",
+        "time": 7
+      },
+      {
+        "pose": "indominus_adult_roaring_4",
+        "time": 7
+      },
+      {
+        "pose": "indominus_adult_roaring_2",
+        "time": 7
+      },
+      {
+        "pose": "indominus_adult_roaring_2",
+        "time": 7
+      },
+      {
+        "pose": "indominus_adult_idle",
+        "time": 15
+      }
+    ],
+    "EATING": [
+      {
+        "pose": "indominus_adult_eating_1",
+        "time": 5
+      },
+      {
+        "pose": "indominus_adult_eating_2",
+        "time": 5
+      },
+      {
+        "pose": "indominus_adult_eating_3",
+        "time": 5
+      },
+      {
+        "pose": "indominus_adult_eating_4",
+        "time": 5
+      }
+    ],
+    "RESTING": [
+      {
+        "pose": "indominus_adult_sitting",
+        "time": 20
+      }
+    ],
+    "DRINKING": [
+      {
+        "pose": "indominus_adult_drinking_1",
+        "time": 7
+      },
+      {
+        "pose": "indominus_adult_drinking_2",
+        "time": 6
+      },
+      {
+        "pose": "indominus_adult_drinking_3",
+        "time": 7
+      }
+    ],
+    "SPEAK": [
+      {
+        "pose": "indominus_adult_speak",
+        "time": 5
+      },
+      {
+        "pose": "indominus_adult_speak",
+        "time": 20
+      },
+      {
+        "pose": "indominus_adult_idle",
+        "time": 5
+      }
+    ],
+    "INJURED": [
+      {
+        "pose": "indominus_adult_injured",
+        "time": 10
+      },
+      {
+        "pose": "indominus_adult_idle",
+        "time": 5
+      }
+    ],
+    "DYING": [
+      {
+        "pose": "indominus_adult_dying_1",
+        "time": 10
+      },
+      {
+        "pose": "indominus_adult_dying_2",
+        "time": 10
+      }
+    ],
+    "LOOKING_LEFT": [
+      {
+        "pose": "indominus_adult_looking_left",
+        "time": 20
+      }
+    ],
+    "LOOKING_RIGHT": [
+      {
+        "pose": "indominus_adult_looking_right",
+        "time": 20
+      }
+    ],
+    "WALKING": [
+      {
+        "pose": "indominus_adult_walking_1",
+        "time": 4
+      },
+      {
+        "pose": "indominus_adult_walking_2",
+        "time": 4
+      },
+      {
+        "pose": "indominus_adult_walking_3",
+        "time": 4
+      },
+      {
+        "pose": "indominus_adult_walking_4",
+        "time": 4
+      },
+      {
+        "pose": "indominus_adult_walking_5",
+        "time": 4
+      }
+    ]
+  }
+}

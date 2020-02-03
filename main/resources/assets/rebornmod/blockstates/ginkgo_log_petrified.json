@@ -1,0 +1,18 @@
+{
+  "variants": {
+    "axis=y": {
+      "model": "rebornmod:ginkgo_log_petrified"
+    },
+    "axis=z": {
+      "model": "rebornmod:ginkgo_log_petrified",
+	  "x": 90
+    },
+    "axis=x": {
+      "model": "rebornmod:ginkgo_log_petrified",
+      "x": 90, "y": 90
+    },
+    "axis=none": {
+      "model": "rebornmod:ginkgo_petrified_bark"
+    }
+  }
+}

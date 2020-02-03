@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "rebornmod:liriodendrites_bottom"
+    },
+    "half=upper": {
+      "model": "rebornmod:liriodendrites_top"
+    }
+  }
+}

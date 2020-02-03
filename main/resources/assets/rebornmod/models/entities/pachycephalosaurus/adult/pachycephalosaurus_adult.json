@@ -1,0 +1,10 @@
+{
+  "poses": {
+    "IDLE": [
+      {
+        "pose": "pachycephalosaurus_adult_idle",
+        "time": 20
+      }
+    ]
+  }
+}

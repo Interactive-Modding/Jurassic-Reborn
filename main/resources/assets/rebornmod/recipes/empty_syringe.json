@@ -1,0 +1,23 @@
+{
+  "type": "forge:ore_shaped",
+  "group": "rebornmod:empty_syringe",
+  "pattern": [
+    " A ",
+    " B ",
+    "AAA"
+  ],
+  "key": {
+    "B": {
+      "item": "rebornmod:empty_test_tube",
+      "data": 0
+    },
+    "A": {
+      "type": "forge:ore_dict",
+      "ore": "nuggetIron"
+    }
+  },
+  "result": {
+    "item": "rebornmod:empty_syringe",
+    "data": 0
+  }
+}

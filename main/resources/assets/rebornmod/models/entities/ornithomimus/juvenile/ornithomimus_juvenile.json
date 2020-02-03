@@ -1,0 +1,7 @@
+{
+    "poses": {
+        "IDLE": [
+            {"pose": "ornithomimus_juvenile_idle", "time": 20}
+        ]
+     }
+}

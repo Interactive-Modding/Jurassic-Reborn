@@ -1,0 +1,9 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "layer0": "rebornmod:blocks/tour_rail_diagonal_turn_left",
+    "layer1": "rebornmod:blocks/tour_rail_diagonal_turn_left_stripe",
+    "particle": "blocks/iron_block"
+  },
+  "tabula": "rebornmod:models/block/tour_rail_diagonal_turn_left"
+}

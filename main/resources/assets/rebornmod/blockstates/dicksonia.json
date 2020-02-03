@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "rebornmod:dicksonia_bottom"
+    },
+    "half=upper": {
+      "model": "rebornmod:dicksonia_top"
+    }
+  }
+}

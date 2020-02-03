@@ -1,0 +1,30 @@
+{
+  "type": "forge:ore_shapeless",
+  "group": "rebornmod:advanced_circuit",
+  "ingredients": [
+    {
+      "item": "rebornmod:basic_circuit",
+      "data": 0
+    },
+    {
+      "item": "rebornmod:basic_circuit",
+      "data": 0
+    },
+    {
+      "type": "forge:ore_dict",
+      "ore": "nuggetIron"
+    },
+    {
+      "item": "minecraft:gold_nugget",
+      "data": 0
+    },
+    {
+      "item": "minecraft:redstone",
+      "data": 0
+    }
+  ],
+  "result": {
+    "item": "rebornmod:advanced_circuit",
+    "data": 0
+  }
+}

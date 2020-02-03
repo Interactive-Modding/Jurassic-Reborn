@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_top",
+  "textures": {
+    "top": "rebornmod:blocks/fossilized_trackway_raptor",
+    "side": "rebornmod:blocks/fossilized_trackway"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "variants": {
+    "axis=y": {
+      "model": "rebornmod:calamites_log_petrified"
+    },
+    "axis=z": {
+      "model": "rebornmod:calamites_log_petrified",
+	  "x": 90
+    },
+    "axis=x": {
+      "model": "rebornmod:calamites_log_petrified",
+      "x": 90, "y": 90
+    },
+    "axis=none": {
+      "model": "rebornmod:calamites_petrified_bark"
+    }
+  }
+}

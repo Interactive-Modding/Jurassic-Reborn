@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "rebornmod:rhacophyton_bottom"
+    },
+    "half=upper": {
+      "model": "rebornmod:rhacophyton_top"
+    }
+  }
+}

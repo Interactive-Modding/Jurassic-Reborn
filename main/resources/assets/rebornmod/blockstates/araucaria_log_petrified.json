@@ -1,0 +1,18 @@
+{
+  "variants": {
+    "axis=y": {
+      "model": "rebornmod:araucaria_log_petrified"
+    },
+    "axis=z": {
+      "model": "rebornmod:araucaria_log_petrified",
+	  "x": 90
+    },
+    "axis=x": {
+      "model": "rebornmod:araucaria_log_petrified",
+      "x": 90, "y": 90
+    },
+    "axis=none": {
+      "model": "rebornmod:araucaria_petrified_bark"
+    }
+  }
+}

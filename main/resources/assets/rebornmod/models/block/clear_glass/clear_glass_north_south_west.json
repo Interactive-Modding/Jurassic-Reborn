@@ -1,0 +1,84 @@
+{
+  "textures": {
+    "6": "rebornmod:blocks/clear_glass/clear_glass_bottom_top_left",
+    "11": "rebornmod:blocks/clear_glass/clear_glass_right",
+    "9": "rebornmod:blocks/clear_glass/clear_glass_left",
+    "10": "rebornmod:blocks/clear_glass/clear_glass_left_right",
+    "particle": "rebornmod:blocks/clear_glass/clear_glass"
+  },
+  "elements": [
+    {
+      "name": "Cube",
+      "from": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "to": [
+        16.0,
+        16.0,
+        16.0
+      ],
+      "shade": false,
+      "faces": {
+        "north": {
+          "texture": "#11",
+          "uv": [
+            0.0,
+            0.0,
+            16.0,
+            16.0
+          ],
+          "cullface": "north"
+        },
+        "east": {
+          "texture": "#10",
+          "uv": [
+            0.0,
+            0.0,
+            16.0,
+            16.0
+          ]
+        },
+        "south": {
+          "texture": "#9",
+          "uv": [
+            0.0,
+            0.0,
+            16.0,
+            16.0
+          ],
+          "cullface": "south"
+        },
+        "west": {
+          "texture": "#10",
+          "uv": [
+            0.0,
+            0.0,
+            16.0,
+            16.0
+          ],
+          "cullface": "west"
+        },
+        "up": {
+          "texture": "#6",
+          "uv": [
+            0.0,
+            0.0,
+            16.0,
+            16.0
+          ]
+        },
+        "down": {
+          "texture": "#6",
+          "uv": [
+            0.0,
+            0.0,
+            16.0,
+            16.0
+          ]
+        }
+      }
+    }
+  ]
+}

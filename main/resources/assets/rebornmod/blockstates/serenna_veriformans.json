@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "rebornmod:serenna_veriformans_bottom"
+    },
+    "half=upper": {
+      "model": "rebornmod:serenna_veriformans_top"
+    }
+  }
+}

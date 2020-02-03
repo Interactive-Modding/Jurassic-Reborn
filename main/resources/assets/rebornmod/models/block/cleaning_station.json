@@ -1,0 +1,40 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "layer0": "rebornmod:blocks/cleaning_station",
+    "particle": "blocks/iron_block"
+  },
+  "tabula": "rebornmod:models/block/cleaning_station",
+  "display": {
+    "gui": {
+      "rotation": [110, 135, -30],
+      "translation": [5, 1, 0],
+      "scale": [0.4, 0.4, 0.3]
+    },
+    "ground": {
+      "rotation": [180, 0, 0],
+      "translation": [0, 4, 0],
+      "scale": [0.5, 0.5, 0.5]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [0, 160, 0],
+      "translation": [0, -2, 2],
+      "scale": [0.33, 0.33, 0.33]
+    },
+    "firstperson_lefthand": {
+      "rotation": [20, 160, -10],
+      "translation": [-3, 2, -7],
+      "scale": [0.4, 0.4, 0.4]
+    },
+    "thirdperson_righthand": {
+      "rotation": [0, 160, 0],
+      "translation": [0, -2, 2],
+      "scale": [0.33, 0.33, 0.33]
+    },
+    "firstperson_righthand": {
+      "rotation": [20, 160, -10],
+      "translation": [-3, 2, -7],
+      "scale": [0.4, 0.4, 0.4]
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "type": "forge:ore_shaped",
+  "group": "rebornmod:disc_reader",
+  "pattern": [
+    "ABC",
+    "D  ",
+    "DDE"
+  ],
+  "key": {
+    "D": {
+      "type": "forge:ore_dict",
+      "ore": "nuggetIron"
+    },
+    "B": {
+      "item": "rebornmod:laser",
+      "data": 0
+    },
+    "C": {
+      "item": "minecraft:iron_ingot",
+      "data": 0
+    },
+    "E": {
+      "item": "minecraft:stone_button",
+      "data": 0
+    },
+    "A": {
+      "item": "rebornmod:advanced_circuit",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "rebornmod:disc_reader",
+    "data": 0
+  }
+}

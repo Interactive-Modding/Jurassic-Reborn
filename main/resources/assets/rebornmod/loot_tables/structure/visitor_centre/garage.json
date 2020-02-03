@@ -1,0 +1,132 @@
+{
+  "pools": [
+    {
+      "name": "junk",
+      "rolls": {"min": 0, "max": 5},
+      "conditions": [{"condition": "random_chance", "chance": 1}],
+      "entries": [
+        {
+          "type": "item",
+          "name": "rebornmod:car_tire",
+          "weight": 5,
+          "functions": [
+            {"function": "set_count", "count": {"min": 0, "max": 8}}
+          ]
+        },
+        {
+          "type": "item",
+          "name": "rebornmod:car_seats",
+          "weight": 4,
+          "functions": [
+            {"function": "set_count", "count": {"min": 0, "max": 2}}
+          ]
+        },
+        {
+          "type": "item",
+          "name": "rebornmod:ingen_journal",
+          "weight": 40,
+          "functions": [
+            {"function": "set_count", "count": {"min": 0, "max": 1}},
+            {"function": "minecraft:set_data", "data": 2}
+          ]
+        },
+        {
+          "type": "item",
+          "name": "rebornmod:engine_system",
+          "weight": 5,
+          "functions": [
+            {"function": "set_count", "count": {"min": 0, "max": 5}}
+          ]
+        },
+        {
+          "type": "item",
+          "name": "rebornmod:basic_circuit",
+          "weight": 5,
+          "functions": [
+            {"function": "set_count", "count": {"min": 0, "max": 16}}
+          ]
+        },
+        {
+          "type": "item",
+          "name": "rebornmod:car_chassis",
+          "weight": 5,
+          "functions": [
+            {"function": "set_count", "count": {"min": 0, "max": 2}}
+          ]
+        },
+        {
+          "type": "item",
+          "name": "rebornmod:unfinished_car",
+          "weight": 5,
+          "functions": [
+            {"function": "set_count", "count": {"min": 0, "max": 1}}
+          ]
+        },
+        {
+          "type": "item",
+          "name": "rebornmod:advanced_circuit",
+          "weight": 5,
+          "functions": [
+            {"function": "set_count", "count": {"min": 0, "max": 4}}
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:iron_nugget",
+          "weight": 5,
+          "functions": [
+            {"function": "set_count", "count": {"min": 0, "max": 4}}
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:iron_ingot",
+          "weight": 5,
+          "functions": [
+            {"function": "set_count", "count": {"min": 0, "max": 10}}
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:iron_bars",
+          "weight": 5,
+          "functions": [
+            {"function": "set_count", "count": {"min": 0, "max": 32}}
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:dye",
+          "weight": 5,
+          "functions": [
+            {"function": "set_count", "count": {"min": 0, "max": 10}}
+          ]
+        },
+        {
+          "type": "item",
+          "name": "rebornmod:iron_rod",
+          "weight": 5,
+          "functions": [
+            {"function": "set_count", "count": {"min": 0, "max": 16}}
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:saddle",
+          "weight": 5,
+          "functions": [
+            {"function": "set_count", "count": {"min": 0, "max": 1}}
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:leather",
+          "weight": 5,
+          "functions": [
+            {"function": "set_count", "count": {"min": 0, "max": 5}}
+          ]
+        }
+      ]
+    }
+  ]
+}

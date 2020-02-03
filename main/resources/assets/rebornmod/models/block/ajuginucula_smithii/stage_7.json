@@ -1,0 +1,6 @@
+{
+  "parent": "block/crop",
+  "textures": {
+    "crop": "rebornmod:blocks/plants/ajuginucula_smithii/stage_7"
+  }
+}

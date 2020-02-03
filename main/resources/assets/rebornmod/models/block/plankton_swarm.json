@@ -1,0 +1,6 @@
+{
+  "parent": "rebornmod:block/swarm",
+  "textures": {
+    "all": "rebornmod:blocks/plankton_swarm"
+  }
+}

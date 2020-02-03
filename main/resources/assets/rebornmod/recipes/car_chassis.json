@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "rebornmod:car_chassis",
+  "pattern": [
+    "AAA",
+    "A A",
+    "AAA"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:iron_ingot",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "rebornmod:car_chassis",
+    "data": 0
+  }
+}

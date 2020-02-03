@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "rebornmod:scaly_tree_fern_bottom"
+    },
+    "half=upper": {
+      "model": "rebornmod:scaly_tree_fern_top"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=bottom": {
+      "model": "rebornmod:calamites_planks"
+    },
+    "half=top": {
+      "model": "rebornmod:calamites_planks"
+    }
+  }
+}

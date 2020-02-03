@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "rebornmod:oiled_potato_strips",
+  "ingredients": [
+    {
+      "item": "minecraft:potato",
+      "data": 0
+    },
+    {
+      "item": "minecraft:potato",
+      "data": 0
+    },
+    {
+      "item": "rebornmod:ajuginucula_smithii_oil",
+      "data": 0
+    }
+  ],
+  "result": {
+    "item": "rebornmod:oiled_potato_strips",
+    "data": 0,
+    "count": 4
+  }
+}

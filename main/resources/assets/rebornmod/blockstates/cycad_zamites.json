@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "rebornmod:cycad_zamites_bottom"
+    },
+    "half=upper": {
+      "model": "rebornmod:cycad_zamites_top"
+    }
+  }
+}

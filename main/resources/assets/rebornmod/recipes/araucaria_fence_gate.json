@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "rebornmod:araucaria_fence_gate",
+  "pattern": [
+    "ABA",
+    "ABA"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:stick",
+      "data": 0
+    },
+    "B": {
+      "item": "rebornmod:araucaria_planks",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "rebornmod:araucaria_fence_gate",
+    "data": 0,
+    "count": 3
+  }
+}

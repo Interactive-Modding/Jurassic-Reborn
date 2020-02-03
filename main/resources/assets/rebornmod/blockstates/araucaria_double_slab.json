@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=bottom": {
+      "model": "rebornmod:araucaria_planks"
+    },
+    "half=top": {
+      "model": "rebornmod:araucaria_planks"
+    }
+  }
+}

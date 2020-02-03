@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "rebornmod:bug_crate",
+      "y": 180
+    },
+    "facing=south": {
+      "model": "rebornmod:bug_crate"
+    },
+    "facing=west": {
+      "model": "rebornmod:bug_crate",
+      "y": 90
+    },
+    "facing=east": {
+      "model": "rebornmod:bug_crate",
+      "y": 270
+    }
+  }
+}

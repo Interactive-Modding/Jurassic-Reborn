@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=bottom": {
+      "model": "rebornmod:half_slab_psaronius"
+    },
+    "half=top": {
+      "model": "rebornmod:upper_slab_psaronius"
+    }
+  }
+}

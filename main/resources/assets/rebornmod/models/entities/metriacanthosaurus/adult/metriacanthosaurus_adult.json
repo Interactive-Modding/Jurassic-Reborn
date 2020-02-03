@@ -1,0 +1,10 @@
+{
+  "poses": {
+    "IDLE": [
+      {
+        "pose": "metriacanthosaurus_adult_idle",
+        "time": 20
+      }
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "rebornmod:empty_test_tube",
+  "pattern": [
+    "A",
+    "A"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:glass",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "rebornmod:empty_test_tube",
+    "data": 0,
+    "count": 8
+  }
+}

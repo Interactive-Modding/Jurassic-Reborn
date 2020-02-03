@@ -1,0 +1,7 @@
+{
+"parent": "item/generated",
+"textures": {
+"layer0": "rebornmod:items/soft_tissue/soft_tissue_3",
+"layer1": "rebornmod:items/overlay/chilesaurus"
+}
+}

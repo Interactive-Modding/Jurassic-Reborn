@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "rebornmod:iron_blades",
+  "pattern": [
+    "A A",
+    " B ",
+    "A A"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:iron_ingot",
+      "data": 0
+    },
+    "B": {
+      "item": "minecraft:stick",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "rebornmod:iron_blades",
+    "data": 0
+  }
+}

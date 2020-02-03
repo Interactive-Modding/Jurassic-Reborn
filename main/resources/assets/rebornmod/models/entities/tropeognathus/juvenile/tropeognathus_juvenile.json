@@ -1,0 +1,8 @@
+{
+    "version": 0,
+    "poses": {
+        "IDLE": [
+            {"pose": "tropeognathus_juvenile_idle", "time": 20}
+        ]
+     }
+}

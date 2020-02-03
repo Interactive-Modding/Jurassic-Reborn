@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "rebornmod:cultivate_bottom",
+  "pattern": [
+    "ABA",
+    "A A",
+    "BCB"
+  ],
+  "key": {
+    "C": {
+      "item": "minecraft:comparator",
+      "data": 0
+    },
+    "A": {
+      "item": "minecraft:stained_glass_pane",
+      "data": 13
+    },
+    "B": {
+      "item": "minecraft:iron_ingot",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "rebornmod:cultivate_bottom",
+    "data": 13
+  }
+}

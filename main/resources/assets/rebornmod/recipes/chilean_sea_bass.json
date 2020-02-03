@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "rebornmod:chilean_sea_bass",
+  "ingredients": [
+    {
+      "item": "minecraft:cooked_fish",
+      "data": 0
+    },
+    {
+      "item": "rebornmod:wild_onion",
+      "data": 0
+    },
+    {
+      "item": "minecraft:carrot",
+      "data": 0
+    },
+    {
+      "item": "rebornmod:ajuginucula_smithii_leaves",
+      "data": 0
+    }
+  ],
+  "result": {
+    "item": "rebornmod:chilean_sea_bass",
+    "data": 0
+  }
+}

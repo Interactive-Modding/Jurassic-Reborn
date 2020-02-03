@@ -1,0 +1,10 @@
+{
+  "poses": {
+    "IDLE": [
+      {
+        "pose": "troodon_adult_idle",
+        "time": 20
+      }
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "poses": {
+    "IDLE": [
+      {
+        "pose": "corythosaurus_adult_idle",
+        "time": 20
+      }
+    ],
+	"WALKING": [
+      {
+        "pose": "corythosaurus_adult_walking_1",
+        "time": 8
+      },
+	  {
+        "pose": "corythosaurus_adult_walking_2",
+        "time": 8
+      },
+	  {
+        "pose": "corythosaurus_adult_walking_3",
+        "time": 8
+      }
+    ]
+  }
+}

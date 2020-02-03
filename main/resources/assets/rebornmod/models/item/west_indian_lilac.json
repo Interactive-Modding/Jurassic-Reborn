@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "rebornmod:blocks/plants/west_indian_lilac_top"
+  }
+}

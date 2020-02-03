@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "rebornmod:field_guide",
+  "pattern": [
+    "ABA",
+    "CCC",
+    "ABA"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:wool",
+      "data": 3
+    },
+    "C": {
+      "item": "minecraft:paper",
+      "data": 0
+    },
+    "B": {
+      "item": "minecraft:bone",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "rebornmod:field_guide",
+    "data": 0
+  }
+}
