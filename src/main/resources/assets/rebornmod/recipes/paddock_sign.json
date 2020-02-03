@@ -1,0 +1,23 @@
+{
+  "type": "forge:ore_shaped",
+  "group": "rebornmod:paddock_sign",
+  "pattern": [
+    "AAA",
+    "BBB",
+    "AAA"
+  ],
+  "key": {
+    "A": {
+      "type": "forge:ore_dict",
+      "ore": "nuggetIron"
+    },
+    "B": {
+      "item": "minecraft:sign",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "rebornmod:paddock_sign",
+    "data": 0
+  }
+}

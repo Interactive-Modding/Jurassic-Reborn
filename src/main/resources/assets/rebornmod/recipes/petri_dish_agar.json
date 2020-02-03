@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "rebornmod:petri_dish_agar",
+  "ingredients": [
+    {
+      "item": "rebornmod:petri_dish",
+      "data": 0
+    },
+    {
+      "item": "rebornmod:petri_dish",
+      "data": 0
+    },
+    {
+      "item": "rebornmod:petri_dish",
+      "data": 0
+    },
+    {
+      "item": "rebornmod:petri_dish",
+      "data": 0
+    },
+    {
+      "item": "rebornmod:liquid_agar",
+      "data": 0
+    }
+  ],
+  "result": {
+    "item": "rebornmod:petri_dish_agar",
+    "data": 0,
+    "count": 4
+  }
+}

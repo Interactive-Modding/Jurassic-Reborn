@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "rebornmod:dna_synthesizer",
+  "pattern": [
+    "AAB",
+    "ACD",
+    "AAC"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:iron_ingot",
+      "data": 0
+    },
+    "C": {
+      "item": "rebornmod:advanced_circuit",
+      "data": 0
+    },
+    "D": {
+      "item": "rebornmod:disc_reader",
+      "data": 0
+    },
+    "B": {
+      "item": "rebornmod:computer_screen",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "rebornmod:dna_synthesizer",
+    "data": 0
+  }
+}

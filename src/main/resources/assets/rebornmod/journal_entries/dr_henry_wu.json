@@ -1,0 +1,67 @@
+{
+  "identifier": "rebornmod:dr_henry_wu",
+  "entries": [
+    [
+      "*Entry 11:",
+      "",
+      "The shipment of amber for the first quarter arrived this morning. The majority of it is Campanian to Maastrichtian in age, and preserves various parasitic insects ranging from mosquitoes to aphids.",
+      "This batch is currently being processed by the DNA Extractor. Most of the genetic material recovered so far is fragmentary, but the implications of using this method appear promising. My team's findings suggest that my initial hypothesis was in fact correct!"
+    ],
+    [
+      "*Entry 97:",
+      "",
+      "One of my lab assistants accidentally placed the DNA storage discs of two different plant species in the Combinator-Hybridizer, and fused the genetic code. Idiot. This is a serious, cutting-edge genetics laboratory, not some junior college! There is no room for mistakes here. What's next? Mixing a Tyrannosaurus with a Velociraptor?",
+      "However, the results of this accidental genetic splicing were actually rather interesting. The discs in question contained the mostly complete genomes of the horsetail Neocalamites merianii and a newly discovered Cycas representative similar to the modern Sago cycad (Cycas revoluta). To my amazement, this unintentional hybrid's DNA is not completely unsalvagable!",
+      "I have confiscated the disc for further analysis. If I'm correct, then it might be possible to engineer a fully functional species capable of reproduction by stitching together the genome of several different species. And come to think of it, a Tyrannosaurus x Velociraptor hybrid would actually be very interesting to see..."
+    ],
+    [
+      "*Entry 14:",
+      "",
+      "Our first two fragmentary samples of compatible genetic code have been successfully combined. The observed gene sequence is consistent with what was predicted for derived tetanuran theropod dinosaurs. At present it's difficult to say exactly what kind of dinosaur this sequence came from, but the locale that the amber is known for well-preserved Dromaeosauridae and Tyrannosauridae remains, dating back to the Maastrichtian stage of the Upper Cretaceous.",
+      "Other partial genomes extracted thus far by the team include nucleotide rows unique to ferns within the genus Osmunda, dinosaurian sequences that may belong to an ornithischian, and a particularly high quality sample from an as of yet unidentified cycadophyte."
+    ],
+    [
+      "*Entry 21:",
+      "",
+      "The DNA sequence of the unidentified tetanuran theropod has been mostly completed. However, it still lacks crucial parts of its genome that regulate bone growth and digestion, respectively. Dr. Sorkin has voiced concerns to both Mr. Hammond and myself about how we should remedy this issue.",
+      "She insists that we should wait for another high quality sample of the appropriate species to supplement our current one, despite the chances of finding exactly the right part of the creature's genome that we need to complete it being impractically small.",
+      "Instead, I have an idea. Part of my dissertation back in university involved splicing gene rows from the African reed frog (Hyperolius viridiflavus) into the genome of the common moon jellyfish (Aurelia aurita) in order to give it the ability to thrive in freshwater environments. Perhaps something similar could be done with Jurassic Park's dinosaurs?"
+    ],
+    [
+      "*Entry 32:",
+      "",
+      "The frog DNA method proved successful, and Mr. Hammond seemed impressed with the results. Three experimental eggs of the unidentified theropod were incubated, and the two surviving hatchlings have been identified as a previously unknown species within the genus Velociraptor. Subjects are in good health, and they are eating well.",
+      "Admittedly they appear to lack the feather covering that our initial genetic analysis predicted (in addition to a few other minor physical oddities), although that may be the result of either using frog DNA to patch their genome, or genetic degradation over tens of millions of years. It may be possible to either correct or more accurately predict these features in future batches, given more research and advances in technology."
+    ],
+    [
+      "*Entry 35:",
+      "",
+      "The implications of the genetic splicing procedure's success are fascinating. In the future, as our knowledge of dinosaurian genetics grows, it should be possible to switch from using frog DNA in the splicing process, to using copied standard samples of DNA from other dinosaurs. This would help correct minor issues that result from incompatibilies with the amphibian sequences.",
+      "In summary, these dinosaur x dinosaur hybrids may be physically and mentally healthier than the dinosaur x frog hybrids. In fact, this may just be the tip of the proverbial iceberg in terms of what could be done with such hybrids. At present, however, this is mere speculation..."
+    ],
+    [
+      "*Entry 40:",
+      "",
+      "The first batch of Brachiosaurus altithorax hatchlings was unsuccessful. Due to the complications of an unexpected lung deformity, all specimens died within a few days of hatching. An incorrectly processed gene row appears to be at fault, and this will be rectified in the next version.",
+      "This is the reality of science, and of human error. Sometimes mistakes are made, and there may be consequences, but these mistakes and consequences are to be learned from and improved upon. Commencing production of BrachVer1.02..."
+    ],
+    [
+      "*Entry 49:",
+      "",
+      "Dr. Sorkin and I had another lengthy debate today about genetically pure vs genetically customized dinosaurs. No surprises there. I wouldn't really go so far as to call her a \"hippie\" as such, but that reputation is quite understandable. Having said that, she is serious about her job, and that at least is something I can respect.",
+      "Anyway, Mr. Hammond informed me that a dig team has now been dispatched to a region known for its rich marine strata, dating back to the upper Cretaceous. It'll be interesting to see what they bring in..."
+    ],
+    [
+      "*Entry 60:",
+      "",
+      "The dig team is back, and they've brought in a lot of new material! Most of it consists of coral deposits (including some exceptional specimens) and an abundance of Coelacanthiform fish remains. However, the crown jewel of this fossil collection is a perfectly preserved mosasaurid skeleton.",
+      "The exact genus has not been determined, but based on its sheer size (an impressive 53 feet, or 16 metres, long) and the history of excavations at the fossil site, the skeleton most likely belongs a very large tylosaurine."
+    ],
+    [
+      "*Entry 82:",
+      "",
+      "The genome of the as-of-yet unidentified mosasaurid is now complete enough for splicing. This time the DNA of choice is a mix of Komodo dragon (Varanus komodoensis) and saltwater crocodile (Crocodylus porosus). From there it can be synthesized, made into an embryo, and then cultivated.",
+      "The Cultivator is yet another type of state-of-the-art machine that was recently installed at the Site B facility. Using a saline water solution and a mix of essential nutrients (vitamins, lipids, proximates and minerals), this machine acts as an artificial womb of sorts, to gestate the embryos of species that don't hatch from eggs."
+    ]
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "rebornmod:items/egg/compsognathus",
+    "layer1": "rebornmod:items/overlay/compsognathus"
+  }
+}

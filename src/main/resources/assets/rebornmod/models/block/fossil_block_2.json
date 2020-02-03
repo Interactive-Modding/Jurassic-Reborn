@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "rebornmod:blocks/fossil_block_2"
+  }
+}

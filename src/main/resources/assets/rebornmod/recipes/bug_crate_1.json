@@ -1,0 +1,31 @@
+{
+  "type": "forge:ore_shaped",
+  "group": "rebornmod:bug_crate",
+  "pattern": [
+    "AAA",
+    "BCB",
+    "DDD"
+  ],
+  "key": {
+    "A": {
+      "type": "forge:ore_dict",
+      "ore": "nuggetIron"
+    },
+    "C": {
+      "item": "minecraft:chest",
+      "data": 0
+    },
+    "B": {
+      "item": "minecraft:planks",
+      "data": 0
+    },
+    "D": {
+      "item": "minecraft:stone_slab2",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "rebornmod:bug_crate",
+    "data": 0
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=y": {
+      "model": "rebornmod:paleo_bale/other"
+    },
+    "axis=z": {
+      "model": "rebornmod:paleo_bale/other",
+      "x": 90
+    },
+    "axis=x": {
+      "model": "rebornmod:paleo_bale/other",
+      "x": 90,
+      "y": 90
+    }
+  }
+}

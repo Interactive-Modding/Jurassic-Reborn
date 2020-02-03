@@ -1,0 +1,12 @@
+{
+    "variants": {
+        "type=0": { "model": "rebornmod:metablock/planks/planks_0" },
+        "type=1": { "model": "rebornmod:metablock/planks/planks_1" },
+        "type=2": { "model": "rebornmod:metablock/planks/planks_2" },
+        "type=3": { "model": "rebornmod:metablock/planks/planks_3" },
+        "type=4": { "model": "rebornmod:metablock/planks/planks_4" },
+        "type=5": { "model": "rebornmod:metablock/planks/planks_5" },
+        "type=6": { "model": "rebornmod:metablock/planks/planks_6" },
+        "type=7": { "model": "rebornmod:metablock/planks/planks_7" }
+    }
+}

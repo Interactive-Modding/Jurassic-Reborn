@@ -1,0 +1,35 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "rebornmod:cleaning_station",
+  "pattern": [
+    "AAA",
+    "BCB",
+    "DED"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:iron_ingot",
+      "data": 0
+    },
+    "E": {
+      "item": "minecraft:bucket",
+      "data": 0
+    },
+    "B": {
+      "item": "minecraft:redstone",
+      "data": 0
+    },
+    "D": {
+      "item": "minecraft:iron_block",
+      "data": 0
+    },
+    "C": {
+      "item": "minecraft:glass_pane",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "rebornmod:cleaning_station",
+    "data": 0
+  }
+}

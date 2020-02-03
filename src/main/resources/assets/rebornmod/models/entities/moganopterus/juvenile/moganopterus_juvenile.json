@@ -1,0 +1,7 @@
+{
+    "poses": {
+        "IDLE": [
+            {"pose": "moganopterus_juvenile_idle", "time": 20}
+        ]
+     }
+}

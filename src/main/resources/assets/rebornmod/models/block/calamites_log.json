@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_column",
+  "textures": {
+    "end": "rebornmod:blocks/log_calamites_top",
+    "side": "rebornmod:blocks/log_calamites"
+  }
+}

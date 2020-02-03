@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "rebornmod:heliconia_bottom"
+    },
+    "half=upper": {
+      "model": "rebornmod:heliconia_top"
+    }
+  }
+}

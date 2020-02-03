@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "rebornmod:paleo_bale_fern",
+  "pattern": [
+    "AAA",
+    "AAA",
+    "AAA"
+  ],
+  "key": {
+    "A": {
+      "item": "rebornmod:bristle_fern",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "rebornmod:paleo_bale_fern",
+    "data": 0
+  }
+}

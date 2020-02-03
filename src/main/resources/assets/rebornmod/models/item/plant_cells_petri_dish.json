@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "rebornmod:items/petri_dish_plant_cells"
+  }
+}

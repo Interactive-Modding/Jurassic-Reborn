@@ -1,0 +1,47 @@
+{
+  "version": 0,
+  "poses": {
+    "IDLE": [
+      {
+        "pose": "beelzebufo_adult_idle",
+        "time": 20
+      }
+    ],
+    "SWIMMING": [
+      {
+        "pose": "beelzebufo_adult_swimming_1",
+        "time": 7
+      },
+      {
+        "pose": "beelzebufo_adult_swimming_2",
+        "time": 6
+      },
+      {
+        "pose": "beelzebufo_adult_swimming_3",
+        "time": 7
+      }
+    ],
+    "LEAP": [
+      {
+        "pose": "beelzebufo_adult_idle",
+        "time": 4
+      },
+      {
+        "pose": "beelzebufo_adult_jumping_1",
+        "time": 4
+      },
+      {
+        "pose": "beelzebufo_adult_jumping_2",
+        "time": 4
+      },
+      {
+        "pose": "beelzebufo_adult_jumping_3",
+        "time": 4
+      },
+      {
+        "pose": "beelzebufo_adult_idle",
+        "time": 4
+      }
+    ]
+  }
+}

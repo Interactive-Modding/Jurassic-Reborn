@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "rebornmod:attraction_sign",
+  "pattern": [
+    "AAA",
+    "BBB",
+    "AAA"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:iron_ingot",
+      "data": 0
+    },
+    "B": {
+      "item": "minecraft:sign",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "rebornmod:attraction_sign",
+    "data": 0
+  }
+}

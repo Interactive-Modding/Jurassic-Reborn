@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "variant=variant_1": {
+      "model": "rebornmod:encased_fossil_0"
+    },
+    "variant=variant_2": {
+      "model": "rebornmod:encased_fossil_0"
+    },
+    "variant=variant_3": {
+      "model": "rebornmod:encased_fossil_0"
+    }
+  }
+}

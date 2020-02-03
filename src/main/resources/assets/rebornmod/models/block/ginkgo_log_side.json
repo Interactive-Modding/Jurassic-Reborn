@@ -1,0 +1,7 @@
+{
+  "parent": "block/column_side",
+  "textures": {
+    "end": "rebornmod:blocks/log_ginkgo_top",
+    "side": "rebornmod:blocks/log_ginkgo"
+  }
+}

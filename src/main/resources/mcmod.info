@@ -1,0 +1,12 @@
+[
+    {
+        "modid": "rebornmod",
+        "name": "RebornMod",
+        "version": "${version}",
+		"mcversion": "${mcversion}",
+        "authorList": ["Reborn Team"],
+        "url": "",
+        "dependencies": [],
+        "description": ""
+    }
+]

@@ -1,0 +1,105 @@
+{
+  "version": 0,
+  "poses": {
+    "IDLE": [
+      {
+        "pose": "coelacanth_adult_idle",
+        "time": 20
+      }
+    ],
+    "DYING": [
+      {
+        "pose": "coelacanth_adult_death",
+        "time": 10
+      }
+    ],
+    "INJURED": [
+      {
+        "pose": "coelacanth_adult_injured",
+        "time": 10
+      },
+      {
+        "pose": "coelacanth_adult_injured",
+        "time": 10
+      },
+      {
+        "pose": "coelacanth_adult_idle",
+        "time": 10
+      }
+    ],
+    "ATTACKING": [
+      {
+        "pose": "coelacanth_adult_eating_1",
+        "time": 5
+      },
+      {
+        "pose": "coelacanth_adult_eating_1",
+        "time": 2
+      },
+      {
+        "pose": "coelacanth_adult_idle",
+        "time": 5
+      }
+    ],
+    "EATING": [
+      {
+        "pose": "coelacanth_adult_eating_1",
+        "time": 10
+      },
+      {
+        "pose": "coelacanth_adult_eating_1",
+        "time": 5
+      },
+      {
+        "pose": "coelacanth_adult_idle",
+        "time": 10
+      }
+    ],
+    "ON_LAND": [
+      {
+        "pose": "coelacanth_adult_land_1",
+        "time": 40
+      },
+      {
+        "pose": "coelacanth_adult_land_2",
+        "time": 40
+      }
+    ],
+    "SWIMMING": [
+      {
+        "pose": "coelacanth_adult_swimming_1",
+        "time": 6
+      },
+      {
+        "pose": "coelacanth_adult_swimming_2",
+        "time": 6
+      },
+      {
+        "pose": "coelacanth_adult_swimming_3",
+        "time": 6
+      },
+      {
+        "pose": "coelacanth_adult_swimming_4",
+        "time": 6
+      }
+    ],
+    "GIVING_BIRTH": [
+      {
+        "pose": "coelacanth_adult_givingbirth_1",
+        "time": 10
+      },
+      {
+        "pose": "coelacanth_adult_givingbirth_2",
+        "time": 10
+      },
+      {
+        "pose": "coelacanth_adult_givingbirth_3",
+        "time": 10
+      },
+      {
+        "pose": "coelacanth_adult_idle",
+        "time": 10
+      }
+    ]
+  }
+}

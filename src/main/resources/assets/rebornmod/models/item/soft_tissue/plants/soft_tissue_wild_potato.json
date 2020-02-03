@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "rebornmod:items/soft_tissue/plant_tissue_5",
+    "layer1": "rebornmod:items/overlay/plants/wild_potato"
+  }
+}

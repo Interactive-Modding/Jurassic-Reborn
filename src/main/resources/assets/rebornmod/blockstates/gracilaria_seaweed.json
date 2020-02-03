@@ -1,0 +1,52 @@
+{
+  "variants": {
+    "level=0": {
+      "model": "rebornmod:gracilaria_seaweed"
+    },
+    "level=1": {
+      "model": "rebornmod:gracilaria_seaweed"
+    },
+    "level=2": {
+      "model": "rebornmod:gracilaria_seaweed"
+    },
+    "level=3": {
+      "model": "rebornmod:gracilaria_seaweed"
+    },
+    "level=4": {
+      "model": "rebornmod:gracilaria_seaweed"
+    },
+    "level=5": {
+      "model": "rebornmod:gracilaria_seaweed"
+    },
+    "level=6": {
+      "model": "rebornmod:gracilaria_seaweed"
+    },
+    "level=7": {
+      "model": "rebornmod:gracilaria_seaweed"
+    },
+    "level=8": {
+      "model": "rebornmod:gracilaria_seaweed"
+    },
+    "level=9": {
+      "model": "rebornmod:gracilaria_seaweed"
+    },
+    "level=10": {
+      "model": "rebornmod:gracilaria_seaweed"
+    },
+    "level=11": {
+      "model": "rebornmod:gracilaria_seaweed"
+    },
+    "level=12": {
+      "model": "rebornmod:gracilaria_seaweed"
+    },
+    "level=13": {
+      "model": "rebornmod:gracilaria_seaweed"
+    },
+    "level=14": {
+      "model": "rebornmod:gracilaria_seaweed"
+    },
+    "level=15": {
+      "model": "rebornmod:gracilaria_seaweed"
+    }
+  }
+}

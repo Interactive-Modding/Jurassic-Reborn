@@ -1,0 +1,6 @@
+{
+  "parent": "block/crop",
+  "textures": {
+    "crop": "rebornmod:blocks/plants/rhamnem/stage_6"
+  }
+}

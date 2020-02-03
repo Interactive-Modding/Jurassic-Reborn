@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "rebornmod:paleo_bale_leaves",
+  "pattern": [
+    "AAA",
+    "AAA",
+    "AAA"
+  ],
+  "key": {
+    "A": {
+      "item": "rebornmod:calamites_leaves",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "rebornmod:paleo_bale_leaves",
+    "data": 0
+  }
+}

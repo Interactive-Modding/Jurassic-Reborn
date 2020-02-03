@@ -1,0 +1,39 @@
+{
+  "type": "forge:ore_shaped",
+  "group": "rebornmod:skeleton_assembly",
+  "pattern": [
+    "ABB",
+    "CDC",
+    "EFE"
+  ],
+  "key": {
+    "A": {
+      "type": "forge:ore_dict",
+      "ore": "dyeBlue"
+    },
+    "B": {
+      "item": "minecraft:paper",
+      "data": 0
+    },
+    "D": {
+      "item": "minecraft:crafting_table",
+      "data": 0
+    },
+    "F": {
+      "item": "rebornmod:low_security_fence_wire",
+      "data": 0
+    },
+    "C": {
+      "type": "forge:ore_dict",
+      "ore": "slabWood"
+    },
+    "E": {
+      "item": "minecraft:fence",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "rebornmod:skeleton_assembly",
+    "data": 0
+  }
+}

@@ -1,0 +1,939 @@
+{
+  "troodons_and_raptors": {
+    "category": "record",
+    "sounds": [
+      {
+        "name": "rebornmod:music/troodons_and_raptors",
+        "stream": true
+      }
+    ]
+  },
+  "jurassicraft_theme": {
+    "category": "record",
+    "sounds": [
+      {
+        "name": "rebornmod:music/jurassicraft_theme",
+        "stream": true
+      }
+    ]
+  },
+  "dont_move_a_muscle": {
+    "category": "record",
+    "sounds": [
+      {
+        "name": "rebornmod:music/dont_move_a_muscle",
+        "stream": true
+      }
+    ]
+  },
+  "fence_shock": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:fence_shock_1",
+      "rebornmod:fence_shock_2",
+      "rebornmod:fence_shock_3",
+      "rebornmod:fence_shock_4"
+    ]
+  },
+  "triceratops_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/triceratops/triceratops_living_1",
+      "rebornmod:dinosaurs/triceratops/triceratops_living_2",
+      "rebornmod:dinosaurs/triceratops/triceratops_living_3"
+    ]
+  },
+  "triceratops_death": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/triceratops/triceratops_death_1"
+    ]
+  },
+  "triceratops_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/triceratops/triceratops_hurt_1"
+    ]
+  },
+  "stegosaurus_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/stegosaurus/stegosaurus_living_1",
+      "rebornmod:dinosaurs/stegosaurus/stegosaurus_living_2"
+    ]
+  },
+  "stegosaurus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/stegosaurus/stegosaurus_hurt_1",
+      "rebornmod:dinosaurs/stegosaurus/stegosaurus_hurt_2"
+    ]
+  },
+  "stegosaurus_death": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/stegosaurus/stegosaurus_death_1",
+      "rebornmod:dinosaurs/stegosaurus/stegosaurus_death_2"
+    ]
+  },
+  "dilophosaurus_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/dilophosaurus/dilophosaurus_living_1",
+      "rebornmod:dinosaurs/dilophosaurus/dilophosaurus_living_2",
+      "rebornmod:dinosaurs/dilophosaurus/dilophosaurus_living_3",
+      "rebornmod:dinosaurs/dilophosaurus/dilophosaurus_living_4",
+      "rebornmod:dinosaurs/dilophosaurus/dilophosaurus_living_5"
+    ]
+  },
+  "dilophosaurus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/dilophosaurus/dilophosaurus_hurt_1",
+      "rebornmod:dinosaurs/dilophosaurus/dilophosaurus_hurt_2"
+    ]
+  },
+  "dilophosaurus_spit": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/dilophosaurus/dilophosaurus_spit"
+    ]
+  },
+  "dilophosaurus_death": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/dilophosaurus/dilophosaurus_death_1"
+    ]
+  },
+  "carnotaurus_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/carnotaurus/carnotaurus_living_1"
+    ]
+  },
+  "carnotaurus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/carnotaurus/carnotaurus_hurt_1"
+    ]
+  },
+  "carnotaurus_death": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/carnotaurus/carnotaurus_death_1"
+    ]
+  },
+  "gallimimus_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/gallimimus/gallimimus_living_1",
+      "rebornmod:dinosaurs/gallimimus/gallimimus_living_2"
+    ]
+  },
+  "gallimimus_death": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/gallimimus/gallimimus_death_1",
+      "rebornmod:dinosaurs/gallimimus/gallimimus_death_2"
+    ]
+  },
+  "gallimimus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/gallimimus/gallimimus_hurt_1",
+      "rebornmod:dinosaurs/gallimimus/gallimimus_hurt_2"
+    ]
+  },
+  "spinosaurus_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/spinosaurus/spinosaurus_living_1",
+      "rebornmod:dinosaurs/spinosaurus/spinosaurus_living_2",
+      "rebornmod:dinosaurs/spinosaurus/spinosaurus_living_3",
+      "rebornmod:dinosaurs/spinosaurus/spinosaurus_living_4"
+    ]
+  },
+  "spinosaurus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/spinosaurus/spinosaurus_hurt_1"
+    ]
+  },
+  "spinosaurus_death": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/spinosaurus/spinosaurus_death_1",
+      "rebornmod:dinosaurs/spinosaurus/spinosaurus_death_2",
+      "rebornmod:dinosaurs/spinosaurus/spinosaurus_death_3"
+    ]
+  },
+  "stomp": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:stomp_1",
+      "rebornmod:stomp_2",
+      "rebornmod:stomp_3",
+      "rebornmod:stomp_4"
+    ]
+  },
+  "pteranodon_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/pteranodon/pteranodon_living_1"
+    ]
+  },
+  "pteranodon_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/pteranodon/pteranodon_hurt_1"
+    ]
+  },
+  "pteranodon_death": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/pteranodon/pteranodon_death_1"
+    ]
+  },
+  "pteranodon_call": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/pteranodon/pteranodon_call_1"
+    ]
+  },
+  "indominus_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/indominus/indominus_living_1"
+    ]
+  },
+  "indominus_death": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/indominus/indominus_death_1"
+    ]
+  },
+  "indominus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/indominus/indominus_hurt_1"
+    ]
+  },
+  "indominus_roar": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/indominus/indominus_roar"
+    ]
+  },
+  "indominus_breathing": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/indominus/indominus_breath"
+    ]
+  },
+  "ankylosaurus_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/ankylosaurus/ankylosaurus_living_1",
+      "rebornmod:dinosaurs/ankylosaurus/ankylosaurus_living_2",
+      "rebornmod:dinosaurs/ankylosaurus/ankylosaurus_living_3",
+      "rebornmod:dinosaurs/ankylosaurus/ankylosaurus_living_4"
+    ]
+  },
+  "ankylosaurus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/ankylosaurus/ankylosaurus_hurt_1",
+      "rebornmod:dinosaurs/ankylosaurus/ankylosaurus_hurt_2"
+    ]
+  },
+  "herrerasaurus_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/herrerasaurus/herrerasaurus_living_1"
+    ]
+  },
+  "herrerasaurus_death": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/herrerasaurus/herrerasaurus_death_1"
+    ]
+  },
+  "velociraptor_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/velociraptor/velociraptor_hurt_1",
+      "rebornmod:dinosaurs/velociraptor/velociraptor_hurt_2",
+      "rebornmod:dinosaurs/velociraptor/velociraptor_hurt_3"
+    ]
+  },
+  "velociraptor_breathing": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/velociraptor/velociraptor_breath_1"
+    ]
+  },
+  "velociraptor_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/velociraptor/velociraptor_living_1",
+      "rebornmod:dinosaurs/velociraptor/velociraptor_living_2",
+      "rebornmod:dinosaurs/velociraptor/velociraptor_living_3",
+      "rebornmod:dinosaurs/velociraptor/velociraptor_living_4",
+      "rebornmod:dinosaurs/velociraptor/velociraptor_living_5",
+      "rebornmod:dinosaurs/velociraptor/velociraptor_living_6"
+    ]
+  },
+  "velociraptor_call": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/velociraptor/velociraptor_bark_1",
+      "rebornmod:dinosaurs/velociraptor/velociraptor_bark_2",
+      "rebornmod:dinosaurs/velociraptor/velociraptor_bark_3"
+    ]
+  },
+  "velociraptor_attack": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/velociraptor/velociraptor_attack_1",
+      "rebornmod:dinosaurs/velociraptor/velociraptor_attack_2",
+      "rebornmod:dinosaurs/velociraptor/velociraptor_attack_3"
+    ]
+  },
+  "velociraptor_death": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/velociraptor/velociraptor_death_1"
+    ]
+  },
+  "tyrannosaurus_breathing": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/tyrannosaurus/tyrannosaurus_breath_1"
+    ]
+  },
+  "tyrannosaurus_death": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/tyrannosaurus/tyrannosaurus_death_1",
+      "rebornmod:dinosaurs/tyrannosaurus/tyrannosaurus_death_2"
+    ]
+  },
+  "tyrannosaurus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/tyrannosaurus/tyrannosaurus_hurt_1",
+      "rebornmod:dinosaurs/tyrannosaurus/tyrannosaurus_hurt_2"
+    ]
+  },
+  "tyrannosaurus_roar": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/tyrannosaurus/tyrannosaurus_roar_1",
+      "rebornmod:dinosaurs/tyrannosaurus/tyrannosaurus_roar_2",
+      "rebornmod:dinosaurs/tyrannosaurus/tyrannosaurus_roar_3"
+    ]
+  },
+  "tyrannosaurus_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/tyrannosaurus/tyrannosaurus_living_1",
+      "rebornmod:dinosaurs/tyrannosaurus/tyrannosaurus_living_2",
+      "rebornmod:dinosaurs/tyrannosaurus/tyrannosaurus_living_3",
+      "rebornmod:dinosaurs/tyrannosaurus/tyrannosaurus_living_4",
+      "rebornmod:dinosaurs/tyrannosaurus/tyrannosaurus_living_5",
+      "rebornmod:dinosaurs/tyrannosaurus/tyrannosaurus_living_6"
+    ]
+  },
+  "brachiosaurus_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/brachiosaurus/brachiosaurus_living_1",
+      "rebornmod:dinosaurs/brachiosaurus/brachiosaurus_living_2",
+      "rebornmod:dinosaurs/brachiosaurus/brachiosaurus_living_3",
+      "rebornmod:dinosaurs/brachiosaurus/brachiosaurus_living_4"
+    ]
+  },
+  "brachiosaurus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/brachiosaurus/brachiosaurus_hurt_1",
+      "rebornmod:dinosaurs/brachiosaurus/brachiosaurus_hurt_2"
+    ]
+  },
+  "brachiosaurus_death": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/brachiosaurus/brachiosaurus_death_1",
+      "rebornmod:dinosaurs/brachiosaurus/brachiosaurus_death_2"
+    ]
+  },
+  "dodo_death": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/dodo/dodo_death_1",
+      "rebornmod:dinosaurs/dodo/dodo_death_2"
+    ]
+  },
+  "dodo_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/dodo/dodo_hurt_1",
+      "rebornmod:dinosaurs/dodo/dodo_hurt_2"
+    ]
+  },
+  "dodo_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/dodo/dodo_living_1",
+      "rebornmod:dinosaurs/dodo/dodo_living_2",
+      "rebornmod:dinosaurs/dodo/dodo_living_3"
+    ]
+  },
+  "rugops_death": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/rugops/rugops_death_1",
+      "rebornmod:dinosaurs/rugops/rugops_death_2"
+    ]
+  },
+  "rugops_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/rugops/rugops_hurt_1",
+      "rebornmod:dinosaurs/rugops/rugops_hurt_2"
+    ]
+  },
+  "rugops_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/rugops/rugops_living_1",
+      "rebornmod:dinosaurs/rugops/rugops_living_2",
+      "rebornmod:dinosaurs/rugops/rugops_living_3",
+      "rebornmod:dinosaurs/rugops/rugops_living_4"
+    ]
+  },
+  "hypsilophodon_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/hypsilophodon/hypsilophodon_hurt_1",
+      "rebornmod:dinosaurs/hypsilophodon/hypsilophodon_hurt_2",
+      "rebornmod:dinosaurs/hypsilophodon/hypsilophodon_hurt_3"
+    ]
+  },
+  "hypsilophodon_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/hypsilophodon/hypsilophodon_living_1",
+      "rebornmod:dinosaurs/hypsilophodon/hypsilophodon_living_2",
+      "rebornmod:dinosaurs/hypsilophodon/hypsilophodon_living_3",
+      "rebornmod:dinosaurs/hypsilophodon/hypsilophodon_living_4"
+    ]
+  },
+  "parasaurolophus_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/parasaurolophus/parasaurolophus_living_1",
+      "rebornmod:dinosaurs/parasaurolophus/parasaurolophus_living_2"
+    ]
+  },
+  "parasaurolophus_call": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/parasaurolophus/parasaurolophus_call_1",
+      "rebornmod:dinosaurs/parasaurolophus/parasaurolophus_call_2"
+    ]
+  },
+  "parasaurolophus_death": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/parasaurolophus/parasaurolophus_death_1"
+    ]
+  },
+  "parasaurolophus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/parasaurolophus/parasaurolophus_hurt_1"
+    ]
+  },
+  "feeder": {
+    "category": "blocks",
+    "sounds": [
+      "rebornmod:feeder"
+    ]
+  },
+  "car_move": {
+    "category": "blocks",
+    "sounds": [
+      "rebornmod:car_move"
+    ]
+  },
+  "microraptor_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/microraptor/microraptor_hurt_1",
+      "rebornmod:dinosaurs/microraptor/microraptor_hurt_2",
+      "rebornmod:dinosaurs/microraptor/microraptor_hurt_3"
+    ]
+  },
+  "microraptor_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/microraptor/microraptor_living_1",
+      "rebornmod:dinosaurs/microraptor/microraptor_living_2",
+      "rebornmod:dinosaurs/microraptor/microraptor_living_3",
+      "rebornmod:dinosaurs/microraptor/microraptor_living_4",
+      "rebornmod:dinosaurs/microraptor/microraptor_living_5"
+    ]
+  },
+  "microraptor_attack": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/microraptor/microraptor_attack_1",
+      "rebornmod:dinosaurs/microraptor/microraptor_attack_2"
+    ]
+  },
+  "microraptor_death": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/microraptor/microraptor_death"
+    ]
+  },
+  "mussaurus_attack": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/mussaurus/mussaurus_attack_1",
+      "rebornmod:dinosaurs/mussaurus/mussaurus_attack_2"
+    ]
+  },
+  "mussaurus_death": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/mussaurus/mussaurus_death"
+    ]
+  },
+  "mussaurus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/mussaurus/mussaurus_hurt_1",
+      "rebornmod:dinosaurs/mussaurus/mussaurus_hurt_2"
+    ]
+  },
+  "mussaurus_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/mussaurus/mussaurus_living_1",
+      "rebornmod:dinosaurs/mussaurus/mussaurus_living_2",
+      "rebornmod:dinosaurs/mussaurus/mussaurus_living_3"
+    ]
+  },
+  "mussaurus_mate_call": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/mussaurus/mussaurus_mate_call"
+    ]
+  },
+  "mosasaurus_living":{
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/mosasaurus/mosasaurus_living_1",
+      "rebornmod:dinosaurs/mosasaurus/mosasaurus_living_2",
+      "rebornmod:dinosaurs/mosasaurus/mosasaurus_living_4",
+      "rebornmod:dinosaurs/mosasaurus/mosasaurus_living_5"
+    ]
+  },
+  "mosasaurus_hurt":{
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/mosasaurus/mosasaurus_hurt_1",
+      "rebornmod:dinosaurs/mosasaurus/mosasaurus_hurt_2",
+      "rebornmod:dinosaurs/mosasaurus/mosasaurus_hurt_3"
+    ]
+  },
+  "mosasaurus_death":{
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/mosasaurus/mosasaurus_death"
+    ]
+  },
+  "mosasaurus_mate_call":{
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/mosasaurus/mosasaurus_mate_call"
+    ]
+  },
+  "mosasaurus_attack":{
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/mosasaurus/mosasaurus_attack_1",
+      "rebornmod:dinosaurs/mosasaurus/mosasaurus_attack_2",
+      "rebornmod:dinosaurs/mosasaurus/mosasaurus_attack_3",
+      "rebornmod:dinosaurs/mosasaurus/mosasaurus_attack_4",
+      "rebornmod:dinosaurs/mosasaurus/mosasaurus_attack_5"
+    ]
+  },
+  "mosasaurus_roar":{
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/mosasaurus/mosasaurus_roar_1",
+      "rebornmod:dinosaurs/mosasaurus/mosasaurus_roar_2"
+    ]
+  },
+  "allosaurus_death":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/allosaurus/allosaurus_death"
+        ]
+    },
+    "allosaurus_fight_female":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/allosaurus/allosaurus_fight_female"
+        ]
+    },
+    "allosaurus_hurt":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/allosaurus/allosaurus_hurt_1",
+            "rebornmod:dinosaurs/allosaurus/allosaurus_hurt_2",
+            "rebornmod:dinosaurs/allosaurus/allosaurus_hurt_3"
+        ]
+    },
+    "allosaurus_living":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/allosaurus/allosaurus_living_1",
+            "rebornmod:dinosaurs/allosaurus/allosaurus_living_2",
+            "rebornmod:dinosaurs/allosaurus/allosaurus_living_3",
+            "rebornmod:dinosaurs/allosaurus/allosaurus_living_4",
+            "rebornmod:dinosaurs/allosaurus/allosaurus_living_5"
+        ]
+    },
+    "allosaurus_mate_call":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/allosaurus/allosaurus_mate_call"
+        ]
+    },
+    "allosaurus_roar":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/allosaurus/allosaurus_roar_1",
+            "rebornmod:dinosaurs/allosaurus/allosaurus_roar_2",
+            "rebornmod:dinosaurs/allosaurus/allosaurus_roar_3"
+        ]
+    },
+    "allosaurus_threat":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/allosaurus/allosaurus_threat"
+        ]
+    },
+    "beelzebufo_croak":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/beelzebufo/beelzebufo_croak_1",
+            "rebornmod:dinosaurs/beelzebufo/beelzebufo_croak_2",
+            "rebornmod:dinosaurs/beelzebufo/beelzebufo_croak_3",
+            "rebornmod:dinosaurs/beelzebufo/beelzebufo_croak_4"
+        ]
+    },
+    "beelzebufo_hurt":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/beelzebufo/beelzebufo_hurt",
+            "rebornmod:dinosaurs/beelzebufo/beelzebufo_hurt_threat_1",
+            "rebornmod:dinosaurs/beelzebufo/beelzebufo_hurt_threat_2"
+        ]
+    },
+    "beelzebufo_hurt_threat":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/beelzebufo/beelzebufo_hurt_threat_1",
+            "rebornmod:dinosaurs/beelzebufo/beelzebufo_hurt_threat_2"
+        ]
+    },
+    "beelzebufo_long_distance_croak":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/beelzebufo/beelzebufo_long_distance_croak_1",
+            "rebornmod:dinosaurs/beelzebufo/beelzebufo_long_distance_croak_2",
+            "rebornmod:dinosaurs/beelzebufo/beelzebufo_long_distance_croak_3",
+            "rebornmod:dinosaurs/beelzebufo/beelzebufo_long_distance_croak_4"
+        ]
+    },
+    "beelzebufo_threat":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/beelzebufo/beelzebufo_threat_1",
+            "rebornmod:dinosaurs/beelzebufo/beelzebufo_threat_2",
+            "rebornmod:dinosaurs/beelzebufo/beelzebufo_threat_3"
+        ]
+    },
+    "carcharodontosaurus_growl":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/carcharodontosaurus/carcharodontosaurus_growl"
+        ]
+    },
+    "carcharodontosaurus_hiss":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/carcharodontosaurus/carcharodontosaurus_hiss_1",
+            "rebornmod:dinosaurs/carcharodontosaurus/carcharodontosaurus_hiss_2",
+            "rebornmod:dinosaurs/carcharodontosaurus/carcharodontosaurus_hiss_3"
+        ]
+    },
+    "carcharodontosaurus_hurt":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/carcharodontosaurus/carcharodontosaurus_hurt"
+        ]
+    },
+    "carcharodontosaurus_living":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/carcharodontosaurus/carcharodontosaurus_living_1",
+            "rebornmod:dinosaurs/carcharodontosaurus/carcharodontosaurus_living_2"
+        ]
+    },
+    "carcharodontosaurus_roar":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/carcharodontosaurus/carcharodontosaurus_roar",
+            "rebornmod:dinosaurs/carcharodontosaurus/carcharodontosaurus_roar_1",
+            "rebornmod:dinosaurs/carcharodontosaurus/carcharodontosaurus_roar_2"
+        ]
+    },
+    "ceratosaurus_hurt":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/ceratosaurus/ceratosaurus_hurt"
+        ]
+    },
+    "ceratosaurus_living":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/ceratosaurus/ceratosaurus_living_1",
+            "rebornmod:dinosaurs/ceratosaurus/ceratosaurus_living_2",
+            "rebornmod:dinosaurs/ceratosaurus/ceratosaurus_living_3"
+        ]
+    },
+    "guanlong_death":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/guanlong/guanlong_death_1",
+            "rebornmod:dinosaurs/guanlong/guanlong_death_2"
+        ]
+    },
+    "guanlong_hurt":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/guanlong/guanlong_hurt_1",
+            "rebornmod:dinosaurs/guanlong/guanlong_hurt_2"
+        ]
+    },
+    "guanlong_living":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/guanlong/guanlong_living_1",
+            "rebornmod:dinosaurs/guanlong/guanlong_living_2",
+            "rebornmod:dinosaurs/guanlong/guanlong_living_3",
+            "rebornmod:dinosaurs/guanlong/guanlong_living_4"
+        ]
+    },
+    "proceratosaurus_attack":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/proceratosaurus/proceratosaurus_attack_1",
+            "rebornmod:dinosaurs/proceratosaurus/proceratosaurus_attack_2"
+        ]
+    },
+    "proceratosaurus_death":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/proceratosaurus/proceratosaurus_death"
+        ]
+    },
+    "proceratosaurus_hurt":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/proceratosaurus/proceratosaurus_hurt_1",
+            "rebornmod:dinosaurs/proceratosaurus/proceratosaurus_hurt_2",
+            "rebornmod:dinosaurs/proceratosaurus/proceratosaurus_hurt_3"
+        ]
+    },
+    "proceratosaurus_living":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/proceratosaurus/proceratosaurus_living_1",
+            "rebornmod:dinosaurs/proceratosaurus/proceratosaurus_living_2",
+            "rebornmod:dinosaurs/proceratosaurus/proceratosaurus_living_3",
+            "rebornmod:dinosaurs/proceratosaurus/proceratosaurus_living_4"
+        ]
+    },
+    "proceratosaurus_mate_call":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/proceratosaurus/proceratosaurus_mate_call_1",
+            "rebornmod:dinosaurs/proceratosaurus/proceratosaurus_mate_call_2"
+        ]
+    },
+    "proceratosaurus_threat":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/proceratosaurus/proceratosaurus_threat_1",
+            "rebornmod:dinosaurs/proceratosaurus/proceratosaurus_threat_2"
+        ]
+    },
+    "suchomimus_death":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/suchomimus/suchomimus_death"
+        ]
+    },
+    "suchomimus_hurt":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/suchomimus/suchomimus_hurt_1",
+            "rebornmod:dinosaurs/suchomimus/suchomimus_hurt_2"
+        ]
+    },
+    "suchomimus_living":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/suchomimus/suchomimus_living_1",
+            "rebornmod:dinosaurs/suchomimus/suchomimus_living_2",
+            "rebornmod:dinosaurs/suchomimus/suchomimus_living_3",
+            "rebornmod:dinosaurs/suchomimus/suchomimus_living_4"
+        ]
+    },
+    "suchomimus_mate_call":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/suchomimus/suchomimus_mate_call"
+        ]
+    },
+    "suchomimus_roar":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/suchomimus/suchomimus_roar"
+        ]
+    },
+  "mammoth_alarm_call":{
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/mammoth/mammoth_alarm_call"
+    ]
+  },
+  "mammoth_death":{
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/mammoth/mammoth_death"
+    ]
+  },
+  "mammoth_hurt":{
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/mammoth/mammoth_hurt_1",
+      "rebornmod:dinosaurs/mammoth/mammoth_hurt_2",
+      "rebornmod:dinosaurs/mammoth/mammoth_hurt_3"
+    ]
+  },
+  "mammoth_living":{
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/mammoth/mammoth_living_1",
+      "rebornmod:dinosaurs/mammoth/mammoth_living_2",
+      "rebornmod:dinosaurs/mammoth/mammoth_living_3",
+      "rebornmod:dinosaurs/mammoth/mammoth_living_4",
+      "rebornmod:dinosaurs/mammoth/mammoth_living_5",
+      "rebornmod:dinosaurs/mammoth/mammoth_living_6",
+      "rebornmod:dinosaurs/mammoth/mammoth_living_7",
+      "rebornmod:dinosaurs/mammoth/mammoth_living_8",
+      "rebornmod:dinosaurs/mammoth/mammoth_living_9",
+      "rebornmod:dinosaurs/mammoth/mammoth_living_10",
+      "rebornmod:dinosaurs/mammoth/mammoth_living_11",
+      "rebornmod:dinosaurs/mammoth/mammoth_living_12",
+      "rebornmod:dinosaurs/mammoth/mammoth_living_13",
+      "rebornmod:dinosaurs/mammoth/mammoth_living_14"
+    ]
+  },
+  "mammoth_mate_call":{
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/mammoth/mammoth_mate_call_1",
+      "rebornmod:dinosaurs/mammoth/mammoth_mate_call_2",
+      "rebornmod:dinosaurs/mammoth/mammoth_mate_call_3"
+    ]
+  },
+  "mammoth_threat":{
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/mammoth/mammoth_threat_1",
+      "rebornmod:dinosaurs/mammoth/mammoth_threat_2",
+      "rebornmod:dinosaurs/mammoth/mammoth_threat_3",
+      "rebornmod:dinosaurs/mammoth/mammoth_threat_4"
+    ]
+  },
+  "styracosaurus_call":{
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/styracosaurus/styracosaurus_call"
+    ]
+  },
+  "styracosaurus_death":{
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/styracosaurus/styracosaurus_death"
+    ]
+  },
+  "styracosaurus_roar":{
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/styracosaurus/styracosaurus_roar_1",
+      "rebornmod:dinosaurs/styracosaurus/styracosaurus_roar_2"
+    ]
+  },
+  "postosuchus_attack":{
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/styracosaurus/postosuchus_attack"
+    ]
+  },
+  "postosuchus_call":{
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/styracosaurus/postosuchus_call_1",
+      "rebornmod:dinosaurs/styracosaurus/postosuchus_call_2"
+    ]
+  },
+  "postosuchus_death":{
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/styracosaurus/postosuchus_death_1",
+      "rebornmod:dinosaurs/styracosaurus/postosuchus_death_2"
+    ]
+  },
+  "goat_death": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:entity/goat/goat_death"
+    ]
+  },
+  "goat_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:entity/goat/goat_hurt_1",
+      "rebornmod:entity/goat/goat_hurt_2"
+    ]
+  },
+  "goat_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:entity/goat/goat_living_1",
+      "rebornmod:entity/goat/goat_living_2",
+      "rebornmod:entity/goat/goat_living_3",
+      "rebornmod:entity/goat/goat_living_4"
+    ]
+  }
+}

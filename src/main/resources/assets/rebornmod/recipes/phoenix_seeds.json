@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "rebornmod:phoenix_seeds",
+  "ingredients": [
+    {
+      "item": "rebornmod:phoenix_fruit",
+      "data": 0
+    }
+  ],
+  "result": {
+    "item": "rebornmod:phoenix_seeds",
+    "data": 0
+  }
+}

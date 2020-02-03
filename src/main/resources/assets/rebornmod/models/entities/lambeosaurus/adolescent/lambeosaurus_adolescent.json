@@ -1,0 +1,7 @@
+{
+    "poses": {
+        "IDLE": [
+            {"pose": "lambeosaurus_adolescent_idle", "time": 20}
+        ]
+     }
+}

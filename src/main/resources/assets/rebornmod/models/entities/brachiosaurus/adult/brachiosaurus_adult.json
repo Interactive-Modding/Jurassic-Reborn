@@ -1,0 +1,247 @@
+{
+  "version": 0,
+  "poses": {
+    "IDLE": [
+      {
+        "pose": "brachiosaurus_adult_idle",
+        "time": 20
+      }
+    ],
+    "RESTING": [
+      {
+        "pose": "brachiosaurus_adult_resting",
+        "time": 20
+      }
+    ],
+    "SPEAK": [
+      {
+        "pose": "brachiosaurus_adult_talk_1",
+        "time": 20
+      },
+      {
+        "pose": "brachiosaurus_adult_talk_1",
+        "time": 20
+      },
+      {
+        "pose": "brachiosaurus_adult_idle",
+        "time": 10
+      }
+    ],
+    "LOOKING_LEFT": [
+      {
+        "pose": "brachiosaurus_adult_looking_left",
+        "time": 20
+      },
+      {
+        "pose": "brachiosaurus_adult_looking_left",
+        "time": 20
+      },
+      {
+        "pose": "brachiosaurus_adult_idle",
+        "time": 10
+      }
+    ],
+    "LOOKING_RIGHT": [
+      {
+        "pose": "brachiosaurus_adult_looking_right",
+        "time": 20
+      },
+      {
+        "pose": "brachiosaurus_adult_looking_right",
+        "time": 20
+      },
+      {
+        "pose": "brachiosaurus_adult_idle",
+        "time": 10
+      }
+    ],
+    "SLEEPING": [
+      {
+        "pose": "brachiosaurus_adult_sleeping_1",
+        "time": 20
+      },
+      {
+        "pose": "brachiosaurus_adult_sleeping_2",
+        "time": 20
+      }
+    ],
+    "WALKING": [
+      {
+        "pose": "brachiosaurus_adult_walking_1",
+        "time": 4
+      },
+      {
+        "pose": "brachiosaurus_adult_walking_2",
+        "time": 4
+      },
+      {
+        "pose": "brachiosaurus_adult_walking_3",
+        "time": 4
+      },
+      {
+        "pose": "brachiosaurus_adult_walking_4",
+        "time": 4
+      }
+    ],
+    "SWIMMING": [
+      {
+        "pose": "brachiosaurus_adult_swimming_1",
+        "time": 4
+      },
+      {
+        "pose": "brachiosaurus_adult_swimming_2",
+        "time": 4
+      },
+      {
+        "pose": "brachiosaurus_adult_swimming_3",
+        "time": 4
+      },
+      {
+        "pose": "brachiosaurus_adult_swimming_4",
+        "time": 4
+      }
+    ],
+    "CALLING": [
+      {
+        "pose": "brachiosaurus_adult_calling_1",
+        "time": 10
+      },
+      {
+        "pose": "brachiosaurus_adult_calling_2",
+        "time": 10
+      },
+      {
+        "pose": "brachiosaurus_adult_calling_2",
+        "time": 20
+      },
+      {
+        "pose": "brachiosaurus_adult_calling_3",
+        "time": 10
+      },
+      {
+        "pose": "brachiosaurus_adult_idle",
+        "time": 10
+      }
+    ],
+    "DYING": [
+      {
+        "pose": "brachiosaurus_adult_death_1",
+        "time": 8
+      },
+      {
+        "pose": "brachiosaurus_adult_death_2",
+        "time": 8
+      },
+      {
+        "pose": "brachiosaurus_adult_death_3",
+        "time": 8
+      }
+    ],
+    "DRINKING": [
+      {
+        "pose": "brachiosaurus_adult_drinking_1",
+        "time": 20
+      },
+      {
+        "pose": "brachiosaurus_adult_drinking_2",
+        "time": 8
+      },
+      {
+        "pose": "brachiosaurus_adult_drinking_3",
+        "time": 8
+      },
+      {
+        "pose": "brachiosaurus_adult_drinking_3",
+        "time": 8
+      },
+      {
+        "pose": "brachiosaurus_adult_drinking_1",
+        "time": 20
+      },
+      {
+        "pose": "brachiosaurus_adult_drinking_2",
+        "time": 8
+      },
+      {
+        "pose": "brachiosaurus_adult_drinking_3",
+        "time": 8
+      },
+      {
+        "pose": "brachiosaurus_adult_drinking_3",
+        "time": 8
+      },
+      {
+        "pose": "brachiosaurus_adult_idle",
+        "time": 20
+      }
+    ],
+    "ATTACKING": [
+      {
+        "pose": "brachiosaurus_adult_attacking_1",
+        "time": 6
+      },
+      {
+        "pose": "brachiosaurus_adult_attacking_1",
+        "time": 4
+      },
+      {
+        "pose": "brachiosaurus_adult_idle",
+        "time": 6
+      }
+    ],
+    "INJURED": [
+      {
+        "pose": "brachiosaurus_adult_injured",
+        "time": 10
+      },
+      {
+        "pose": "brachiosaurus_adult_injured",
+        "time": 10
+      },
+      {
+        "pose": "brachiosaurus_adult_idle",
+        "time": 10
+      }
+    ],
+    "EATING": [
+      {
+        "pose": "brachiosaurus_adult_eating_2",
+        "time": 20
+      },
+      {
+        "pose": "brachiosaurus_adult_eating_3",
+        "time": 10
+      },
+      {
+        "pose": "brachiosaurus_adult_eating_2",
+        "time": 10
+      },
+      {
+        "pose": "brachiosaurus_adult_eating_3",
+        "time": 10
+      },
+      {
+        "pose": "brachiosaurus_adult_idle",
+        "time": 20
+      }
+    ],
+    "LAYING_EGG": [
+      {
+        "pose": "brachiosaurus_adult_laying_1",
+        "time": 120
+      },
+      {
+        "pose": "brachiosaurus_adult_laying_2",
+        "time": 40
+      },
+      {
+        "pose": "brachiosaurus_adult_laying_3",
+        "time": 40
+      },
+      {
+        "pose": "brachiosaurus_adult_idle",
+        "time": 20
+      }
+    ]
+  }
+}

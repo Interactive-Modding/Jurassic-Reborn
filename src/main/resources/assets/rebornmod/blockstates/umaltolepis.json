@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "rebornmod:umaltolepis_bottom"
+    },
+    "half=upper": {
+      "model": "rebornmod:umaltolepis_top"
+    }
+  }
+}

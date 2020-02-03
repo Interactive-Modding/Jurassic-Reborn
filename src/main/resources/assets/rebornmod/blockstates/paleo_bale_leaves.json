@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=y": {
+      "model": "rebornmod:paleo_bale/leaves"
+    },
+    "axis=z": {
+      "model": "rebornmod:paleo_bale/leaves",
+      "x": 90
+    },
+    "axis=x": {
+      "model": "rebornmod:paleo_bale/leaves",
+      "x": 90,
+      "y": 90
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_top",
+  "textures": {
+    "top": "rebornmod:blocks/nest_fossil_top_2",
+    "side": "rebornmod:blocks/nest_fossil_side"
+  }
+}

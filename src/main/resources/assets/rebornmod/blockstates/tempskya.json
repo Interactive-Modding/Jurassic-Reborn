@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "rebornmod:tempskya_bottom"
+    },
+    "half=upper": {
+      "model": "rebornmod:tempskya_top"
+    }
+  }
+}

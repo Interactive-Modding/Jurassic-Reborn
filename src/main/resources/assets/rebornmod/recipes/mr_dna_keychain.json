@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "rebornmod:mr_dna_keychain",
+  "pattern": [
+    "A",
+    "B"
+  ],
+  "key": {
+    "B": {
+      "item": "minecraft:iron_ingot",
+      "data": 0
+    },
+    "A": {
+      "item": "rebornmod:dna_base_material",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "rebornmod:mr_dna_keychain",
+    "data": 0
+  }
+}

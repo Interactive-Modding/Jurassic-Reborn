@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "rebornmod:dicroidium_zuberi_bottom"
+    },
+    "half=upper": {
+      "model": "rebornmod:dicroidium_zuberi_top"
+    }
+  }
+}

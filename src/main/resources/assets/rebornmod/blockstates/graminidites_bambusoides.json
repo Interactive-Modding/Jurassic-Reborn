@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "rebornmod:graminidites_bambusoides_bottom"
+    },
+    "half=upper": {
+      "model": "rebornmod:graminidites_bambusoides_top"
+    }
+  }
+}

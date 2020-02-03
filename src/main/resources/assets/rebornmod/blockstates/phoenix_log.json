@@ -1,0 +1,18 @@
+{
+  "variants": {
+    "axis=y": {
+      "model": "rebornmod:phoenix_log"
+    },
+    "axis=z": {
+      "model": "rebornmod:phoenix_log",
+	  "x": 90
+    },
+    "axis=x": {
+      "model": "rebornmod:phoenix_log",
+      "x": 90, "y": 90
+    },
+    "axis=none": {
+      "model": "rebornmod:phoenix_bark"
+    }
+  }
+}

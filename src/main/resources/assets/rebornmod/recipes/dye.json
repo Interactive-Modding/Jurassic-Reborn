@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "minecraft:dye",
+  "ingredients": [
+    {
+      "item": "rebornmod:rhamnus_salicifolius_berries",
+      "data": 0
+    },
+    {
+      "item": "rebornmod:rhamnus_salicifolius_berries",
+      "data": 0
+    },
+    {
+      "item": "rebornmod:rhamnus_salicifolius_berries",
+      "data": 0
+    },
+    {
+      "item": "rebornmod:rhamnus_salicifolius_berries",
+      "data": 0
+    }
+  ],
+  "result": {
+    "item": "minecraft:dye",
+    "data": 11,
+    "count": 2
+  }
+}

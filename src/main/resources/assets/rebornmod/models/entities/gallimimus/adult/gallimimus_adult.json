@@ -1,0 +1,365 @@
+{
+  "version": 0,
+  "poses": {
+    "IDLE": [
+      {
+        "pose": "gallimimus_adult_idle",
+        "time": 20
+      }
+    ],
+    "DYING": [
+      {
+        "pose": "gallimimus_adult_death_1",
+        "time": 3
+      },
+      {
+        "pose": "gallimimus_adult_death_2",
+        "time": 6
+      },
+      {
+        "pose": "gallimimus_adult_death_3",
+        "time": 5
+      },
+      {
+        "pose": "gallimimus_adult_death_4",
+        "time": 4
+      },
+      {
+        "pose": "gallimimus_adult_death_5",
+        "time": 5
+      }
+    ],
+    "LOOKING_LEFT": [
+      {
+        "pose": "gallimimus_adult_look_left",
+        "time": 20
+      },
+      {
+        "pose": "gallimimus_adult_look_left",
+        "time": 20
+      },
+      {
+        "pose": "gallimimus_adult_idle",
+        "time": 10
+      }
+    ],
+    "LOOKING_RIGHT": [
+      {
+        "pose": "gallimimus_adult_look_right",
+        "time": 20
+      },
+      {
+        "pose": "gallimimus_adult_look_right",
+        "time": 20
+      },
+      {
+        "pose": "gallimimus_adult_idle",
+        "time": 10
+      }
+    ],
+    "INJURED": [
+      {
+        "pose": "gallimimus_adult_injured",
+        "time": 10
+      },
+      {
+        "pose": "gallimimus_adult_injured",
+        "time": 10
+      },
+      {
+        "pose": "gallimimus_adult_idle",
+        "time": 10
+      }
+    ],
+    "CALLING": [
+      {
+        "pose": "gallimimus_adult_calling_1",
+        "time": 8
+      },
+      {
+        "pose": "gallimimus_adult_calling_2",
+        "time": 8
+      },
+      {
+        "pose": "gallimimus_adult_calling_2",
+        "time": 20
+      },
+      {
+        "pose": "gallimimus_adult_idle",
+        "time": 10
+      }
+    ],
+    "PREPARE_LEAP": [
+      {
+        "pose": "gallimimus_adult_prepare_pounce_1",
+        "time": 10
+      },
+      {
+        "pose": "gallimimus_adult_prepare_pounce_1",
+        "time": 5
+      }
+    ],
+    "LEAP": [
+      {
+        "pose": "gallimimus_adult_leap_1",
+        "time": 5
+      },
+      {
+        "pose": "gallimimus_adult_leap_1",
+        "time": 2
+      },
+      {
+        "pose": "gallimimus_adult_leap_2",
+        "time": 5
+      }
+    ],
+    "LEAP_LAND": [
+      {
+        "pose": "gallimimus_adult_landing_1",
+        "time": 4
+      },
+      {
+        "pose": "gallimimus_adult_landing_2",
+        "time": 2
+      }
+    ],
+    "DRINKING": [
+      {
+        "pose": "gallimimus_adult_drinking_1",
+        "time": 15
+      },
+      {
+        "pose": "gallimimus_adult_drinking_2",
+        "time": 10
+      },
+      {
+        "pose": "gallimimus_adult_drinking_1",
+        "time": 10
+      },
+      {
+        "pose": "gallimimus_adult_drinking_2",
+        "time": 10
+      },
+      {
+        "pose": "gallimimus_adult_drinking_1",
+        "time": 10
+      },
+      {
+        "pose": "gallimimus_adult_drinking_3",
+        "time": 20
+      },
+      {
+        "pose": "gallimimus_adult_drinking_3",
+        "time": 8
+      },
+      {
+        "pose": "gallimimus_adult_idle",
+        "time": 15
+      }
+    ],
+    "EATING": [
+      {
+        "pose": "gallimimus_adult_eating_1",
+        "time": 15
+      },
+      {
+        "pose": "gallimimus_adult_eating_2",
+        "time": 8
+      },
+      {
+        "pose": "gallimimus_adult_eating_1",
+        "time": 8
+      },
+      {
+        "pose": "gallimimus_adult_eating_2",
+        "time": 8
+      },
+      {
+        "pose": "gallimimus_adult_eating_1",
+        "time": 8
+      },
+      {
+        "pose": "gallimimus_adult_idle",
+        "time": 15
+      }
+    ],
+    "HEAD_COCKING": [
+      {
+        "pose": "gallimimus_adult_head_cock_1",
+        "time": 15
+      },
+      {
+        "pose": "gallimimus_adult_head_cock_2",
+        "time": 8
+      },
+      {
+        "pose": "gallimimus_adult_head_cock_2",
+        "time": 20
+      },
+      {
+        "pose": "gallimimus_adult_head_cock_1",
+        "time": 8
+      },
+      {
+        "pose": "gallimimus_adult_idle",
+        "time": 15
+      }
+    ],
+    "SPEAK": [
+      {
+        "pose": "gallimimus_adult_talk",
+        "time": 5
+      },
+      {
+        "pose": "gallimimus_adult_talk",
+        "time": 20
+      },
+      {
+        "pose": "gallimimus_adult_idle",
+        "time": 5
+      }
+    ],
+    "PECKING": [
+      {
+        "pose": "gallimimus_adult_pecking_1",
+        "time": 20
+      },
+      {
+        "pose": "gallimimus_adult_pecking_2",
+        "time": 8
+      },
+      {
+        "pose": "gallimimus_adult_pecking_3",
+        "time": 4
+      },
+      {
+        "pose": "gallimimus_adult_pecking_2",
+        "time": 4
+      },
+      {
+        "pose": "gallimimus_adult_pecking_3",
+        "time": 4
+      },
+      {
+        "pose": "gallimimus_adult_pecking_2",
+        "time": 4
+      },
+      {
+        "pose": "gallimimus_adult_pecking_1",
+        "time": 8
+      },
+      {
+        "pose": "gallimimus_adult_pecking_2",
+        "time": 8
+      },
+      {
+        "pose": "gallimimus_adult_pecking_3",
+        "time": 4
+      },
+      {
+        "pose": "gallimimus_adult_pecking_2",
+        "time": 4
+      },
+      {
+        "pose": "gallimimus_adult_pecking_3",
+        "time": 4
+      },
+      {
+        "pose": "gallimimus_adult_pecking_2",
+        "time": 4
+      },
+      {
+        "pose": "gallimimus_adult_idle",
+        "time": 20
+      }
+    ],
+    "SLEEPING": [
+      {
+        "pose": "gallimimus_adult_sleeping_1",
+        "time": 20
+      },
+      {
+        "pose": "gallimimus_adult_sleeping_2",
+        "time": 20
+      }
+    ],
+    "RESTING": [
+      {
+        "pose": "gallimimus_adult_resting",
+        "time": 20
+      }
+    ],
+    "WALKING": [
+      {
+        "pose": "gallimimus_adult_walk_1",
+        "time": 5
+      },
+      {
+        "pose": "gallimimus_adult_walk_2",
+        "time": 5
+      },
+      {
+        "pose": "gallimimus_adult_walk_3",
+        "time": 5
+      },
+      {
+        "pose": "gallimimus_adult_walk_4",
+        "time": 5
+      }
+    ],
+    "SWIMMING": [
+      {
+        "pose": "gallimimus_adult_swim_1",
+        "time": 5
+      },
+      {
+        "pose": "gallimimus_adult_swim_2",
+        "time": 5
+      },
+      {
+        "pose": "gallimimus_adult_swim_3",
+        "time": 5
+      },
+      {
+        "pose": "gallimimus_adult_swim_4",
+        "time": 5
+      }
+    ],
+    "RUNNING": [
+      {
+        "pose": "gallimimus_adult_run_1",
+        "time": 4
+      },
+      {
+        "pose": "gallimimus_adult_run_2",
+        "time": 4
+      },
+      {
+        "pose": "gallimimus_adult_run_3",
+        "time": 4
+      },
+      {
+        "pose": "gallimimus_adult_run_4",
+        "time": 4
+      }
+    ],
+    "LAYING_EGG": [
+      {
+        "pose": "gallimimus_adult_laying_1",
+        "time": 10
+      },
+      {
+        "pose": "gallimimus_adult_laying_2",
+        "time": 20
+      },
+      {
+        "pose": "gallimimus_adult_laying_3",
+        "time": 20
+      },
+      {
+        "pose": "gallimimus_adult_idle",
+        "time": 10
+      }
+    ]
+  }
+}

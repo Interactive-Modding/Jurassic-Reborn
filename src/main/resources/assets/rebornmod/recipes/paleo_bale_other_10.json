@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "rebornmod:paleo_bale_other",
+  "pattern": [
+    "AAA",
+    "AAA",
+    "AAA"
+  ],
+  "key": {
+    "A": {
+      "item": "rebornmod:wild_onion_plant",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "rebornmod:paleo_bale_other",
+    "data": 0
+  }
+}
