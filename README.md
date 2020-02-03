@@ -14,7 +14,7 @@ And much more!
 # Contributors
 
 ### Developers
-Collinvht
+
 
 ### Modelers / Sound Designers / Textures
 Emy
