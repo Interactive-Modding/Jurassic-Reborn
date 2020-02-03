@@ -1,8 +1,0 @@
-{
-    "version": 0,
-    "poses": {
-        "IDLE": [
-            {"pose": "beelzebufo_juvenile_idle", "time": 20}
-        ]
-     }
-}

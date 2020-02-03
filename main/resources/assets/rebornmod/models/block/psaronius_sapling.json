@@ -1,6 +1,0 @@
-{
-  "parent": "block/cross",
-  "textures": {
-    "cross": "rebornmod:blocks/sapling_psaronius"
-  }
-}

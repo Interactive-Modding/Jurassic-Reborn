@@ -1,8 +1,0 @@
-{
-  "parent": "block/stairs",
-  "textures": {
-    "bottom": "rebornmod:blocks/planks_araucaria",
-    "top": "rebornmod:blocks/planks_araucaria",
-    "side": "rebornmod:blocks/planks_araucaria"
-  }
-}

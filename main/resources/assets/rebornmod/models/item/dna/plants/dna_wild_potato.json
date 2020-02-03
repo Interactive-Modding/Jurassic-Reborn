@@ -1,7 +1,0 @@
-{
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "rebornmod:items/dna/dna",
-    "layer1": "rebornmod:items/overlay/plants/wild_potato"
-  }
-}

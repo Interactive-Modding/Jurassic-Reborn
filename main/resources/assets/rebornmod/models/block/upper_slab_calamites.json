@@ -1,8 +1,0 @@
-{
-  "parent": "block/upper_slab",
-  "textures": {
-    "bottom": "rebornmod:blocks/planks_calamites",
-    "top": "rebornmod:blocks/planks_calamites",
-    "side": "rebornmod:blocks/planks_calamites"
-  }
-}

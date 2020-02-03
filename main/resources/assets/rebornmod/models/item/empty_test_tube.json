@@ -1,6 +1,0 @@
-{
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "rebornmod:items/dna/empty_test_tube"
-  }
-}

@@ -1,8 +1,0 @@
-{
-    "version": 0,
-    "poses": {
-        "IDLE": [
-            {"pose": "coelacanth_adolescent_idle", "time": 20}
-        ]
-     }
-}

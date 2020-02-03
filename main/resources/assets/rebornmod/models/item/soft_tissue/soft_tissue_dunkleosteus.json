@@ -1,7 +1,0 @@
-{
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "rebornmod:items/soft_tissue/soft_tissue_6",
-    "layer1": "rebornmod:items/overlay/dunkleosteus"
-  }
-}

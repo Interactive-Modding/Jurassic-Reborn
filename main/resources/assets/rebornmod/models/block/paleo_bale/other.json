@@ -1,7 +1,0 @@
-{
-  "parent": "block/cube_column",
-  "textures": {
-    "end": "rebornmod:blocks/paleo_bale/other_top",
-    "side": "rebornmod:blocks/paleo_bale/other_side"
-  }
-}
