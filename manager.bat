@@ -50,8 +50,8 @@ IF ERRORLEVEL 2 GOTO exit
 IF ERRORLEVEL 1 GOTO start
 
 :setup
-ECHO
-ECHO
+ECHO.
+ECHO.
 ECHO Pick your coding software for it to setup. 
 CHOICE /C 12 /M "1 for idea 2 for eclipse"
 
