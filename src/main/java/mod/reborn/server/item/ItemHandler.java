@@ -6,10 +6,11 @@ import java.util.Map;
 
 import mod.reborn.client.sound.SoundHandler;
 import mod.reborn.server.api.Hybrid;
-import mod.reborn.server.conf.RebornConfig;
-import mod.reborn.server.entity.GrowthStage;
+import mod.reborn.server.item.guns.Glock;
+import mod.reborn.server.item.guns.Remington;
+import mod.reborn.server.item.guns.SPAS12;
+import mod.reborn.server.item.guns.UTS15;
 import mod.reborn.server.tab.TabHandler;
-import net.minecraft.client.Minecraft;
 import net.minecraft.util.text.TextComponentTranslation;
 import mod.reborn.server.block.BlockHandler;
 import mod.reborn.server.block.tree.TreeType;

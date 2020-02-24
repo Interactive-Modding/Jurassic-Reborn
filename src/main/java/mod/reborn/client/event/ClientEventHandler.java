@@ -5,6 +5,7 @@ import mod.reborn.client.proxy.ClientProxy;
 import mod.reborn.server.entity.vehicle.MultiSeatedEntity;
 import mod.reborn.server.item.DartGun;
 import mod.reborn.server.item.ItemHandler;
+import mod.reborn.server.item.guns.Gun;
 import mod.reborn.server.message.AttemptMoveToSeatMessage;
 import net.ilexiconn.llibrary.LLibrary;
 import net.ilexiconn.llibrary.client.util.ClientUtils;
@@ -71,6 +72,24 @@ public class ClientEventHandler {
 
                     renderItem.renderItemAndEffectIntoGUI(dartItem, xPosition, yPosition);
                     String s = String.valueOf(dartItem.getCount());
+                    GlStateManager.disableDepth();
+                    fontRenderer.drawStringWithShadow(s, xPosition + 17 - fontRenderer.getStringWidth(s), yPosition + 9, 0xFFFFFFFF);
+                    GlStateManager.enableDepth();
+                }
+                break;
+            }
+            if(stack.getItem() == ItemHandler.GLOCK || stack.getItem() == ItemHandler.SPAS_12 || stack.getItem() == ItemHandler.UTS15 || stack.getItem() == ItemHandler.REMINGTON) {
+                ItemStack bullet = Gun.getBullet(stack);
+                if(!bullet.isEmpty()) {
+                    RenderItem renderItem = mc.getRenderItem();
+                    FontRenderer fontRenderer = mc.fontRenderer;
+                    ScaledResolution scaledResolution = new ScaledResolution(mc);
+
+                    int xPosition = scaledResolution.getScaledWidth() - 18;
+                    int yPosition = scaledResolution.getScaledHeight() - 18;
+
+                    renderItem.renderItemAndEffectIntoGUI(bullet, xPosition, yPosition);
+                    String s = String.valueOf(bullet.getCount());
                     GlStateManager.disableDepth();
                     fontRenderer.drawStringWithShadow(s, xPosition + 17 - fontRenderer.getStringWidth(s), yPosition + 9, 0xFFFFFFFF);
                     GlStateManager.enableDepth();

@@ -171,6 +171,10 @@ public class SoundHandler {
 
     public static final SoundEvent FENCE_SHOCK = create("fence_shock");
 
+    public static final SoundEvent FIRE = create("fire");
+    public static final SoundEvent EMPTY = create("empty");
+    public static final SoundEvent RELOAD = create("reload");
+
     private static List<SoundEvent> sounds = Lists.newArrayList();
 
 

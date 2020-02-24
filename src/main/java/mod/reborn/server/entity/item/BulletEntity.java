@@ -31,7 +31,7 @@ public class BulletEntity extends EntityThrowable implements IEntityAdditionalSp
 
     public BulletEntity(World worldIn) {
 		super(worldIn);
-		this.setSize(0.3F, 0.3F);
+		this.setSize(0.4F, 0.4F);
 	}
 
 	public void setDamage(int damage) {
@@ -42,7 +42,7 @@ public class BulletEntity extends EntityThrowable implements IEntityAdditionalSp
 		super(worldIn, throwerIn);
 		this.stack = stack.copy();
 	}
-    
+
     @Override
     public void onUpdate() {
 	if(world.isRemote) {
@@ -57,16 +57,17 @@ public class BulletEntity extends EntityThrowable implements IEntityAdditionalSp
 	}
 
 	@SideOnly(Side.CLIENT)
-    private void spawnParticles() {
-	Minecraft.getMinecraft().effectRenderer.spawnEffectParticle(
-    	    EnumParticleTypes.CRIT.getParticleID(),
-    	    this.posX + this.motionX / 4.0D, 
-    	    this.posY + this.motionY / 4.0D, 
-    	    this.posZ + this.motionZ / 4.0D, 
-    	    -this.motionX / 20.0D, 
-    	    -this.motionY /20.0D +0.2,
-    	    -this.motionZ / 20.0D);
-    }
+	private void spawnParticles() {
+		Minecraft.getMinecraft().effectRenderer.spawnEffectParticle(
+				EnumParticleTypes.CRIT.getParticleID(),
+				this.posX + this.motionX / 4.0D,
+				this.posY + this.motionY / 4.0D,
+				this.posZ + this.motionZ / 4.0D,
+				-this.motionX / 20.0D,
+				-this.motionY / 20.0D + 0.2D,
+				-this.motionZ / 20.0D);
+	}
+
 
 	@Override
 	public boolean isPushedByWater() {
@@ -78,7 +79,7 @@ public class BulletEntity extends EntityThrowable implements IEntityAdditionalSp
 		if (!this.world.isRemote) {
 			if (stack != null) {
 				Item item = stack.getItem();
-				if (result.entityHit instanceof EntityLiving || result.entityHit instanceof EntityPlayer) {
+				if (result.entityHit instanceof EntityLiving || result.entityHit instanceof EntityPlayer && result.entityHit != thrower) {
 					if (item instanceof Bullet) {
 						result.entityHit.attackEntityFrom(DamageSources.BULLET, damage);
 					} else {
@@ -99,14 +100,14 @@ public class BulletEntity extends EntityThrowable implements IEntityAdditionalSp
 		this.shoot((double)f, (double)f1, (double)f2, velocity, inaccuracy);
 		this.motionX += entityThrower.motionX;
 		this.motionZ += entityThrower.motionZ;
-		this.posX = posX + 0.1;
-		this.posZ = posZ + 0.1;
+
 
 		if (!entityThrower.onGround)
 		{
 			this.motionY += entityThrower.motionY;
 		}
 	}
+
 
 	@Override
     public void writeSpawnData(ByteBuf buffer) {
