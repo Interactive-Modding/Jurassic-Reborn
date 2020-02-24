@@ -50,6 +50,8 @@ IF ERRORLEVEL 2 GOTO exit
 IF ERRORLEVEL 1 GOTO start
 
 :setup
+ECHO
+ECHO
 ECHO Pick your coding software for it to setup. 
 CHOICE /C 12 /M "1 for idea 2 for eclipse"
 
@@ -57,6 +59,7 @@ IF ERRORLEVEL 2 GOTO idea
 IF ERRORLEVEL 1 GOTO eclipse
 
 :idea
+cls
 gradlew setupdecompworkspace idea genintellijruns
 echo if you see no errors here continue, else search up the error and rerun the program.
 pause
@@ -69,6 +72,7 @@ IF ERRORLEVEL 1 GOTO start
 
 
 :eclipse
+cls
 gradlew setupdecompworkspace eclipse
 
 ECHO Would you like to return to start? 
@@ -80,5 +84,6 @@ IF ERRORLEVEL 1 GOTO start
 
 
 :exit
+cls
 ECHO SHUTTING DOWN...
 exit
