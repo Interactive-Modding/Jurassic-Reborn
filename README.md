@@ -15,6 +15,7 @@ And much more!
 
 ### Developers
 
+Collinvht
 
 ### Modelers / Sound Designers / Textures
 
