@@ -33,7 +33,6 @@ IF ERRORLEVEL 1 GOTO start
 
 :client
 cls
-gradlew clean
 gradlew runClient
 ECHO Would you like to return to start? 
 CHOICE /C 12 /M "1 for yes 2 for no"
