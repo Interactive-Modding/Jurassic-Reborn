@@ -74,23 +74,8 @@ public class MajungasaurusAnimator extends EntityAnimator<MajungasaurusEntity>
         model.chainWave(body, globalSpeed * 1F, globalHeight * -0.02F, -3, f, f1);
         model.chainWave(tail, globalSpeed * 1F, globalHeight * 0.05F, -2, f, f1);
 
-        model.walk(rightThigh, globalSpeed * 0.5F, globalDegree * 0.8F, true, 0F, 0.2F, f, f1);
-        model.walk(leftThigh, globalSpeed * 0.5F, globalDegree * 0.8F, false, 0F, 0.2F, f, f1);
-
-        model.walk(leftCalf1, globalSpeed * 0.5F, globalDegree * 1F, false, -1.3F, 0.4F, f, f1);
-        model.walk(rightCalf1, globalSpeed * 0.5F, globalDegree * 1F, true, -1.3F, 0.4F, f, f1);
-
-        model.walk(leftCalf2, globalSpeed * 0.5F, globalDegree * 1F, true, -2F, 0F, f, f1);
-        model.walk(rightCalf2, globalSpeed * 0.5F, globalDegree * 1F, false, -2F, 0F, f, f1);
-
         model.chainWave(armRight, globalSpeed * 1F, globalHeight * -0.25F, -3, f, f1);
         model.chainWave(armLeft, globalSpeed * 1F, globalHeight * -0.25F, -3, f, f1);
-
-        model.walk(head, 1F * globalSpeed, 0.15F, true, 0F, -0.2F, f, f1);
-        model.walk(neck1, 1F * globalSpeed, 0.03F, false, 0F, 0.04F, f, f1);
-        model.walk(neck2, 1F * globalSpeed, 0.03F, false, 0F, 0.04F, f, f1);
-        model.walk(neck3, 1F * globalSpeed, 0.03F, false, 0F, 0.04F, f, f1);
-        model.walk(neck4, 1F * globalSpeed, 0.03F, false, 0F, 0.04F, f, f1);
 
         model.chainWave(tail, 0.1F, 0.05F, -2, ticks, 0.25F);
         model.chainWave(body, 0.1F, 0.03F, -5, ticks, 0.25F);

@@ -9,29 +9,21 @@
     ],
     "WALKING": [
       {
-        "pose": "majungasaurus_adult_walking_1",
-        "time": 5
+        "pose": "tyrannosaurus_adult_laying_1",
+        "time": 10
       },
       {
-        "pose": "majungasaurus_adult_walking_2",
-        "time": 5
+        "pose": "tyrannosaurus_adult_laying_2",
+        "time": 20
       },
       {
-        "pose": "majungasaurus_adult_walking_3",
-        "time": 5
+        "pose": "tyrannosaurus_adult_laying_3",
+        "time": 20
       },
       {
-        "pose": "majungasaurus_adult_walking_4",
-        "time": 5
-      },
-      {
-        "pose": "majungasaurus_adult_walking_5",
-        "time": 5
-      },
-      {
-        "pose": "majungasaurus_adult_walking_6",
-        "time": 5
+        "pose": "tyrannosaurus_adult_idle",
+        "time": 10
       }
     ]
-}
+  }
 }
