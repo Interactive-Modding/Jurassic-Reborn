@@ -366,8 +366,11 @@ public class GoatEntity extends EntityAnimal implements Animatable, IEntityAddit
         }
         else
         {
-            return this.isInLove() && other.isInLove();
+            if(this.billy != ((GoatEntity) other).billy) {
+                return this.isInLove() && other.isInLove();
+            }
         }
+        return false;
     }
 
     public enum Type {
