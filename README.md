@@ -3,7 +3,7 @@
 ### RebornMod Leader
 Destruction
 
-### Reborn is the JurassiCraft code edited by (Collinvht && MSRandom)
+### Reborn is the JurassiCraft code edited by (Collinvht, Destruction and MSRandom)
 ### Changes in this code
 50+ Creatures added
 Bug's fixed
