@@ -267,9 +267,9 @@ item.plant_callus.name={plant} Plant Callus
 item.tracker.name=Dinosaur Tracking Implant
 item.disc_reader.name=Disc Drive
 item.laser.name=Laser
-item.disc_jurassicraft_theme.name=JurassiCraft Record
-item.disc_troodons_and_raptors.name=JurassiCraft Record
-item.disc_dont_move_a_muscle.name=JurassiCraft Record
+item.disc_jurassicraft_theme.name=Reborn Record
+item.disc_troodons_and_raptors.name=Reborn Record
+item.disc_dont_move_a_muscle.name=Reborn Record
 item.action_figure.name={dino} Action Figure
 item.skeleton.fresh.name={dino} Fresh Skeleton
 item.skeleton.fossil.name={dino} Fossilized Skeleton
@@ -581,7 +581,7 @@ lore.genetic_code.name=Genetics Code: {code}
 lore.dinosaur.name=Dinosaur: {dino}
 lore.plant.name=Plant: {plant}
 lore.change_gender.name=Right Click in air to change gender
-item.record.jurassicraft_theme.desc=PigeonAce - JurassiCraft Theme
+item.record.jurassicraft_theme.desc=PigeonAce - Reborn Theme
 item.record.troodons_and_raptors.desc=PigeonAce - Troodons And Raptors
 item.record.dont_move_a_muscle.desc=PigeonAce - Don't Move A Muscle
 
@@ -733,9 +733,9 @@ journal.robert_muldoon.name=Robert Muldoon
 death.attack.shock.1=%s is now extra crispy!
 death.attack.shock.2=%s was electrocuted!
 
-death.attack.jurassic.car0=%s was hit by a car!
-death.attack.jurassic.car1=%s didn't watch the road!
-death.attack.jurassic.car2=%s didn't look both ways
+death.attack.reborn.car0=%s was hit by a car!
+death.attack.reborn.car1=%s didn't watch the road!
+death.attack.reborn.car2=%s didn't look both ways
 
 death.attack.reborn.bullet1=%s got blasted!
 death.attack.reborn.bullet2=%s died to the bullet!
