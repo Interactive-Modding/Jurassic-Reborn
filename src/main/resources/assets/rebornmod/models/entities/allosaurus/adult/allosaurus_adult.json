@@ -1,13 +1,13 @@
 {
   "version": 0,
   "poses": {
-    "IDLE": [
+    "IDLE": [{
       {
         "pose": "allosaurus_adult_idle",
         "time": 20
       }
     ],
-	"ATTACKING": [
+	"ATTACKING": [{
 	  {
 	    "pose": "allosaurus_adult_attack_1",
 		"time:" : 10
@@ -17,7 +17,7 @@
 		"time:" : 20
 	  }
 	],
-	"CALLING": [
+	"CALLING": [{
 	  {
 	    "pose": "allosaurus_adult_calling",
 		"time:" : 10
@@ -27,7 +27,7 @@
 		"time:" : 20
 	  }
 	],
-	"DYING": [
+	"DYING": [{
 	  {
 	    "pose": "allosaurus_adult_dying_1",
 		"time:" : 10
@@ -41,7 +41,7 @@
 		"time:" : 20
 	  }
 	],
-	"DRINKING": [
+	"DRINKING": [{
 	  {
 	    "pose": "allosaurus_adult_drinking_1",
 		"time:" : 10
@@ -59,7 +59,7 @@
 		"time:" : 20
 	  }
 	],
-	"EATING": [
+	"EATING": [{
 	  {
 	    "pose": "allosaurus_adult_eating_1",
 		"time:" : 10
@@ -85,7 +85,7 @@
 		"time:" : 20
 	  }
 	],
-	"INJURED": [
+	"INJURED": [{
 	  {
 	    "pose": "allosaurus_adult_injured",
 		"time:" : 10
@@ -95,7 +95,7 @@
 		"time:" : 20
 	  }
 	],
-	"LOOKING_LEFT": [
+	"LOOKING_LEFT": [{
 	  {
 	    "pose": "allosaurus_adult_looking_left",
 		"time:" : 10
@@ -105,7 +105,7 @@
 		"time:" : 20
 	  }
 	],
-	"LOOKING_RIGHT": [
+	"LOOKING_RIGHT": [{
 	  {
 	    "pose": "allosaurus_adult_looking_right",
 		"time:" : 10
@@ -115,19 +115,19 @@
 		"time:" : 20
 	  }
 	],
-	"RESTING": [
+	"RESTING": [{
 	  {
 	    "pose": "allosaurus_adult_resting",
 		"time:" : 10
 	  }
 	],
-	"SLEEPING": [
+	"SLEEPING": [{
 	  {
 	    "pose": "allosaurus_adult_sleeping",
 		"time:" : 15
 	  }
 	],
-	"WALKING": [
+	"WALKING": [{
 	  {
 	    "pose": "allosaurus_adult_walking_1",
 		"time:" : 5
