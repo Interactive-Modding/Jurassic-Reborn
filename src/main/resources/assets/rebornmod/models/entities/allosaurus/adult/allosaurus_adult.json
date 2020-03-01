@@ -59,6 +59,24 @@
 		"time:" : 20
 	  }
 	],
+	"RUNNING": [
+	  {
+	    "pose": "allosaurus_adult_running_1",
+		"time:" : 4
+	  },
+	  {
+	    "pose": "allosaurus_adult_running_2",
+		"time:" : 4
+	  },
+	  {
+	    "pose": "allosaurus_adult_running_3",
+		"time:" : 4
+	  },
+	  {
+	    "pose": "allosaurus_adult_running_4",
+		"time:" : 4
+	  }
+	],
 	"EATING": [
 	  {
 	    "pose": "allosaurus_adult_eating_1",
