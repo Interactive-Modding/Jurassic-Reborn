@@ -13,9 +13,9 @@ Gui things
 And much more!
 # Contributors
 
-### Developers
-
 Collinvht
+
+### Developers
 
 ### Modelers / Sound Designers / Textures
 
@@ -41,8 +41,6 @@ Creatar
 
 Fluffy Taco
 
-LordofLustria
-
 Pedro Resende
 
 The Jurassic Gamer
@@ -60,6 +58,8 @@ Paul Fulham
 Cuchololthespanishman
 
 Raptorek20
+
+LordofLustria
 
 jglrxavpok 
 
