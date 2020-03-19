@@ -28,7 +28,7 @@ public class GuanlongDinosaur extends Dinosaur {
         this.setHeadCubeName("Head");
         this.setScale(0.7F, 0.25F);
         this.shouldDefendOffspring();
-        this.setAttackBias(100);
+        this.setAttackBias(1200);
         this.setBreeding(false, 0, 2, 20, false, false);
 
     }
