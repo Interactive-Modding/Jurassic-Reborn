@@ -52,9 +52,9 @@ public class AchillobatorAnimator extends EntityAnimator<AchillobatorEntity>
         AdvancedModelRenderer[] tailParts = new AdvancedModelRenderer[] { tail6, tail5, tail4, tail3, tail2, tail1 };
         AdvancedModelRenderer[] bodyParts = new AdvancedModelRenderer[] { waist, chest, shoulders, neck4, neck3, neck2, neck1, head };
 
-        model.bob(waist, 1F * speed, height, false, f, f1);
-        model.bob(leftThigh, 1F * speed, height, false, f, f1);
-        model.bob(rightThigh, 1F * speed, height, false, f, f1);
+        model.bob(waist, 1.3F * speed, height, false, f, f1);
+        model.bob(leftThigh, 1.3F * speed, height, false, f, f1);
+        model.bob(rightThigh, 1.3F * speed, height, false, f, f1);
 
         model.chainSwing(tailParts, 0.5F * speed, -0.1F, 2, f, f1);
         model.chainWave(tailParts, 1F * speed, -0.1F, 2.5F, f, f1);
