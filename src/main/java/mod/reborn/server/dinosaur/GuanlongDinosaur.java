@@ -29,7 +29,8 @@ public class GuanlongDinosaur extends Dinosaur {
         this.setScale(0.7F, 0.25F);
         this.shouldDefendOffspring();
         this.setAttackBias(1200);
-        this.setBreeding(false, 0, 2, 20, false, false);
+        this.setAttackSpeed(1.2F);
+        this.setBreeding(false, 0, 2, 20, false, true);
 
     }
 }
