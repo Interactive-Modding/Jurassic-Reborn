@@ -8,7 +8,6 @@ import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 
 public class GuanlongEntity extends DinosaurEntity {
-    private static final Class[] targets = {AlvarezsaurusEntity.class, EntityPlayer.class, ChilesaurusEntity.class, CoelurusEntity.class, CompsognathusEntity.class, DodoEntity.class, GallimimusEntity.class, HyaenodonEntity.class, HypsilophodonEntity.class, LeaellynasauraEntity.class, LeptictidiumEntity.class, MicroceratusEntity.class, MicroraptorEntity.class, MussaurusEntity.class, OrnithomimusEntity.class, OthnieliaEntity.class, OviraptorEntity.class, SegisaurusEntity.class, TroodonEntity.class);
 
     public GuanlongEntity(World world) {
         super(world);
