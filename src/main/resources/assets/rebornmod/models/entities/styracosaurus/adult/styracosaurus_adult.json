@@ -6,6 +6,20 @@
         "pose": "styracosaurus_adult_idle",
         "time": 20
       }
-    ]
+    ],
+    "DYING": [
+      {
+        "pose": "styracosaurus_adult_death_1",
+        "time": 10
+      },
+      {
+        "pose": "styracosaurus_adult_death_2",
+        "time": 10
+      },
+      {
+        "pose": "styracosaurus_adult_death_3",
+        "time": 5
+      }
+    ],
   }
 }
