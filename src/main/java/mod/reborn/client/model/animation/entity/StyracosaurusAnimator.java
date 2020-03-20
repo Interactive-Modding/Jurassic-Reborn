@@ -51,13 +51,6 @@ public class StyracosaurusAnimator extends EntityAnimator<StyracosaurusEntity> {
             upperJaw.rotateAngleX = defaultUpperJawRotationX;
             lowerJaw.rotateAngleX = defaultLowerJawRotationX;
             head.rotateAngleX = defaultHeadRotationX;
-        }
-
-        if(entity.getAnimation() == EntityAnimation.DYING.get()) {
-            upperJaw.rotateAngleX += 0.25f;
-            lowerJaw.rotateAngleX -= 0.25f;
-            GlStateManager.rotate(45, 0, 0, 1f);
-            GlStateManager.translate(0, 0.38f, 0);
         } else {
             if(!isIdle) {
                 parModel.walk(rearLegLeft1, 0.32F, 0.5F, false, 0.05F, 0.2F, f, f1);
