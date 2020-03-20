@@ -35,5 +35,10 @@ public class MamenchisaurusDinosaur extends Dinosaur
         this.shouldDefendOffspring();
         this.setAttackBias(1500);
         this.setBreeding(false, 2, 6, 20, false, true);
+        String[][] recipe =     {{"", "", "", "", "skull"},
+                {"", "", "", "neck_vertebrae","tooth"},
+                {"tail_vertebrae","pelvis","ribcage","shoulder",""},
+                {"","hind_leg_bones","hind_leg_bones","front_leg_bones","front_leg_bones"}};
+        this.setRecipe(recipe);
     }
 }
