@@ -94,9 +94,7 @@ public class CarnotaurusAnimator extends EntityAnimator<CarnotaurusEntity>
         model.walk(neck2, 1F * globalSpeed, 0.03F, false, 0F, 0.04F, f, f1);
         model.walk(neck3, 1F * globalSpeed, 0.03F, false, 0F, 0.04F, f, f1);
         model.walk(neck4, 1F * globalSpeed, 0.03F, false, 0F, 0.04F, f, f1);
-
-        leftThigh.rotationPointY -= 2 * f1 * Math.cos(f * 0.5F * globalSpeed);
-        rightThigh.rotationPointY -= 2 * f1 * Math.cos(f * 0.5F * globalSpeed);
+        
 
         model.chainWave(tail, 0.1F, -0.05F, 2, ticks, 0.25F);
         model.chainWave(body, 0.1F, 0.03F, 5, ticks, 0.25F);
