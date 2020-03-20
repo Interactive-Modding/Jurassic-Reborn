@@ -20,7 +20,7 @@
     "CALLING": [
       {
         "pose": "achillobator_adult_calling",
-        "time": 8
+        "time": 12
       },
       {
         "pose": "achillobator_adult_idle",
@@ -28,7 +28,7 @@
       },
 	  {
         "pose": "achillobator_adult_calling",
-        "time": 4
+        "time": 12
       },
       {
         "pose": "achillobator_adult_idle",
