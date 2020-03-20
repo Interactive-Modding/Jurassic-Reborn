@@ -223,6 +223,24 @@
         "time": 5
       }
     ],
+    "RUNNING": [
+      {
+        "pose": "achillobator_adult_running_1",
+        "time": 3
+      },
+      {
+        "pose": "achillobator_adult_running_2",
+        "time": 3
+      },
+      {
+        "pose": "achillobator_adult_running_3",
+        "time": 3
+      },
+      {
+        "pose": "achillobator_adult_running_4",
+        "time": 3
+      }
+    ],
 	"WALKING": [
       {
         "pose": "achillobator_adult_walking_1",
