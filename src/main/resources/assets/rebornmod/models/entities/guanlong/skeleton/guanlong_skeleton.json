@@ -4,7 +4,7 @@
 		"IDLE": [
 		  {
 			"pose": "guanlong_skeleton_idle",
-			"time": 20
+			"time": 1
 		  }
 		]
 	}
