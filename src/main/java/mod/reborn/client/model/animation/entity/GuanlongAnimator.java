@@ -42,8 +42,6 @@ public class GuanlongAnimator extends EntityAnimator<GuanlongEntity> {
         AdvancedModelRenderer rightThigh = model.getCube("Leg TOP RIGHT");
 
         model.bob(body1, 0.4F * scaleFactor, height, false, f, f1);
-        model.bob(leftThigh, 0.4F * scaleFactor, height, false, f, f1);
-        model.bob(rightThigh, 0.4F * scaleFactor, height, false, f, f1);
         model.bob(neck1, 0.4F * scaleFactor, height / 2, false, f, f1);
 
         model.chainSwing(tailParts, 0.5F * scaleFactor, -0.1F, 2, f, f1);
