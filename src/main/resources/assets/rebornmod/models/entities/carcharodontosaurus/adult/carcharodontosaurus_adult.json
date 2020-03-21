@@ -66,23 +66,23 @@
     "EATING": [
       {
         "pose": "carcharodontosaurus_adult_eating_1",
-        "time": 7
+        "time": 15
       },
       {
         "pose": "carcharodontosaurus_adult_eating_2",
-        "time": 6
+        "time": 10
       },
       {
         "pose": "carcharodontosaurus_adult_eating_3",
-        "time": 7
+        "time": 15
       },
       {
         "pose": "carcharodontosaurus_adult_eating_4",
-        "time": 7
+        "time": 20
       },
       {
         "pose": "carcharodontosaurus_adult_eating_5",
-        "time": 7
+        "time": 10
       }
     ],
  "LOOKING_LEFT": [
