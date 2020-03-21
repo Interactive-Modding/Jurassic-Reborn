@@ -49,6 +49,20 @@
         "time": 5
       }
     ],
+    "SPEAK": [
+      {
+        "pose": "carcharodontosaurus_adult_speak",
+        "time": 5
+      },
+      {
+        "pose": "carcharodontosaurus_adult_speak",
+        "time": 20
+      },
+      {
+        "pose": "carcharodontosaurus_adult_idle",
+        "time": 5
+      }
+    ],
     "EATING": [
       {
         "pose": "carcharodontosaurus_adult_eating_1",
@@ -61,6 +75,70 @@
       {
         "pose": "carcharodontosaurus_adult_eating_3",
         "time": 7
+      },
+      {
+        "pose": "carcharodontosaurus_adult_eating_4",
+        "time": 7
+      },
+      {
+        "pose": "carcharodontosaurus_adult_eating_5",
+        "time": 7
+      }
+    ],
+ "LOOKING_LEFT": [
+      {
+        "pose": "carcharodontosaurus_adult_look_start",
+        "time": 10
+      },
+      {
+        "pose": "carcharodontosaurus_adult_look_left",
+        "time": 10
+      },
+      {
+        "pose": "carcharodontosaurus_adult_look_left",
+        "time": 20
+      },
+      {
+        "pose": "carcharodontosaurus_adult_idle",
+        "time": 10
+      }
+    ],
+    "LOOKING_RIGHT": [
+      {
+        "pose": "carcharodontosaurus_adult_look_start",
+        "time": 10
+      },
+      {
+        "pose": "carcharodontosaurus_adult_look_right",
+        "time": 10
+      },
+      {
+        "pose": "carcharodontosaurus_adult_look_right",
+        "time": 20
+      },
+      {
+        "pose": "carcharodontosaurus_adult_idle",
+        "time": 10
+      }
+    ],
+    "RESTING": [
+      {
+        "pose": "carcharodontosaurus_adult_resting",
+        "time": 15
+      }
+    ],
+    "SWIMMING": [
+      {
+        "pose": "carcharodontosaurus_adult_swimming_1",
+        "time": 5
+      },
+      {
+        "pose": "carcharodontosaurus_adult_swimming_2",
+        "time": 6
+      },
+      {
+        "pose": "carcharodontosaurus_adult_swimming_3",
+        "time": 6
       }
     ],
     "LAYING_EGG": [
@@ -104,6 +182,28 @@
       },
       {
         "pose": "carcharodontosaurus_adult_walking_5",
+        "time": 4
+      }
+  ],
+    "RUNNING": [
+      {
+        "pose": "carcharodontosaurus_adult_running_1",
+        "time": 4
+      },
+      {
+        "pose": "carcharodontosaurus_adult_running_2",
+        "time": 4
+      },
+      {
+        "pose": "carcharodontosaurus_adult_running_3",
+        "time": 4
+      },
+      {
+        "pose": "carcharodontosaurus_adult_running_4",
+        "time": 4
+      },
+      {
+        "pose": "carcharodontosaurus_adult_running_5",
         "time": 4
       }
     ]
