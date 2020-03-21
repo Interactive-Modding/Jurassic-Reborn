@@ -81,13 +81,21 @@
 		"time:" : 10
 	  },
 	  {
+	    "pose": "alvarezsaurus_adult_eating_4",
+		"time:" : 15
+	  },
+	  {
 	    "pose": "alvarezsaurus_adult_idle",
 		"time:" : 20
 	  }
 	],
 	"INJURED": [
 	  {
-	    "pose": "alvarezsaurus_adult_injured",
+	    "pose": "alvarezsaurus_adult_injured_1",
+		"time:" : 10
+	  },
+	  {
+	    "pose": "alvarezsaurus_adult_injured_2",
 		"time:" : 10
 	  },
 	  {
@@ -120,6 +128,16 @@
 	    "pose": "alvarezsaurus_adult_resting",
 		"time:" : 10
 	  }
+	],
+    "LAYING_EGG": [
+      {
+        "pose": "velociraptor_adult_laying_1",
+        "time": 10
+      },
+      {
+        "pose": "velociraptor_adult_idle",
+        "time": 10
+      }
 	],
 	"SLEEPING": [
 	  {
