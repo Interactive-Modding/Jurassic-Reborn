@@ -37,5 +37,11 @@ public class OrnithomimusDinosaur extends Dinosaur
         this.setBreeding(false, 2, 6, 20, false, true);
         this.setImprintable(true);
         this.setJumpHeight(3);
+        String[][] recipe =
+                {{"", "", "", "neck_vertebrae", "skull"},
+                        {"tail_vertebrae", "pelvis", "ribcage","shoulder",""},
+                        {"", "leg_bones", "leg_bones", "arm_bones", ""},
+                        {"", "foot_bones", "foot_bones", "", ""}};
+        this.setRecipe(recipe);
     }
 }
