@@ -51,15 +51,15 @@
 	],
 	"DRINKING": [
 	  {
-	    "pose": "alvarezsaurus_adult_drinking_1",
+	    "pose": "alvarezsaurus_adult_drink_1",
 		"time:" : 10
 	  },
 	  {
-	    "pose": "alvarezsaurus_adult_drinking_2",
+	    "pose": "alvarezsaurus_adult_drink_2",
 		"time:" : 20
 	  },
 	  {
-	    "pose": "alvarezsaurus_adult_drinking_3",
+	    "pose": "alvarezsaurus_adult_drink_3",
 		"time:" : 10
 	  },
 	  {
@@ -123,15 +123,15 @@
 	],
 	"WALKING": [
 	  {
-	    "pose": "alvarezsaurus_adult_walking_1",
+	    "pose": "alvarezsaurus_adult_walk_1",
 		"time:" : 5
 	  },
 	  {
-	    "pose": "alvarezsaurus_adult_walking_2",
+	    "pose": "alvarezsaurus_adult_walk_2",
 		"time:" : 5
 	  },
 	  {
-	    "pose": "alvarezsaurus_adult_walking_3",
+	    "pose": "alvarezsaurus_adult_walk_3",
 		"time:" : 5
 	  }
 	],
