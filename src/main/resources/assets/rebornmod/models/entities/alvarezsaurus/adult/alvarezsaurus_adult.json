@@ -9,15 +9,15 @@
     ],
 	"ATTACKING": [
 	  {
-	    "pose": "alvarezsaurus_adult_attacking_1",
+	    "pose": "alvarezsaurus_adult_attack_1",
 		"time:" : 10
 	  },
 	  {
-	    "pose": "alvarezsaurus_adult_attacking_2",
+	    "pose": "alvarezsaurus_adult_attack_2",
 		"time:" : 10
 	  },
 	  {
-	    "pose": "alvarezsaurus_adult_attacking_3",
+	    "pose": "alvarezsaurus_adult_attack_3",
 		"time:" : 10
 	  },
 	  {
