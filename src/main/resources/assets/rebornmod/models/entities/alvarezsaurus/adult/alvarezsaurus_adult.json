@@ -123,15 +123,15 @@
 	],
 	"WALKING": [
 	  {
-	    "pose": "alvarezsaurus_adult_walk_1",
+	    "pose": "alvarezsaurus_adult_walking_1",
 		"time:" : 5
 	  },
 	  {
-	    "pose": "alvarezsaurus_adult_walk_2",
+	    "pose": "alvarezsaurus_adult_walking_2",
 		"time:" : 5
 	  },
 	  {
-	    "pose": "alvarezsaurus_adult_walk_3",
+	    "pose": "alvarezsaurus_adult_walking_3",
 		"time:" : 5
 	  }
 	],
