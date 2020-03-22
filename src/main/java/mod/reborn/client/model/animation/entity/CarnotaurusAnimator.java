@@ -9,6 +9,10 @@ import mod.reborn.server.entity.dinosaur.CarnotaurusEntity;
 
 @SideOnly(Side.CLIENT)
 public class CarnotaurusAnimator extends EntityAnimator<CarnotaurusEntity>
+
+        protected void performAnimations(AnimatableModel parModel, CarnotaurusEntity entity, float limbSwing, float limbSwingAmount, float ticks, float rotationYaw, float rotationPitch, float scale) {
+        }
+}
 {
     @Override
     protected void performAnimations(AnimatableModel model, CarnotaurusEntity entity, float f, float f1, float ticks, float rotationYaw, float rotationPitch, float scale)
