@@ -149,19 +149,19 @@
 	],
 	"WALKING": [
 	  {
-	    "pose": "alvarezsaurus_adult_walking_1",
+	    "pose": "alvarezsaurus_adult_walk_1",
 		"time:" : 4
 	  },
 	  {
-	    "pose": "alvarezsaurus_adult_walking_2",
+	    "pose": "alvarezsaurus_adult_walk_2",
 		"time:" : 4
 	  },
 	  {
-	    "pose": "alvarezsaurus_adult_walking_3",
+	    "pose": "alvarezsaurus_adult_walk_3",
 		"time:" : 4
 	  },
 	  {
-	    "pose": "alvarezsaurus_adult_walking_4",
+	    "pose": "alvarezsaurus_adult_walk_4",
 		"time:" : 4
 	  }
 	],
