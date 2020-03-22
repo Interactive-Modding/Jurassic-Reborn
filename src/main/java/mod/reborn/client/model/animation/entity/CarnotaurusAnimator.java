@@ -7,14 +7,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import mod.reborn.server.entity.dinosaur.CarnotaurusEntity;
 
-
-@SideOnly(Side.CLIENT)
-<<<<<<< HEAD
-public class CarnotaurusAnimator extends EntityAnimator<CarnotaurusEntity> {
-
-        protected void performAnimations(AnimatableModel parModel, CarnotaurusEntity entity, float limbSwing, float limbSwingAmount, float ticks, float rotationYaw, float rotationPitch, float scale) {
-        }
-=======
 @SideOnly(Side.CLIENT)
 public class CarnotaurusAnimator extends EntityAnimator<CarnotaurusEntity>
 {
@@ -81,5 +73,4 @@ public class CarnotaurusAnimator extends EntityAnimator<CarnotaurusEntity>
 
         entity.tailBuffer.applyChainSwingBuffer(tail);
     }
->>>>>>> parent of fcc5da5... Update CarnotaurusAnimator.java
 }
