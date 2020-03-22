@@ -18,7 +18,6 @@ public class CarnotaurusEntity extends DinosaurEntity
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true, EntityPlayer.class, TyrannosaurusEntity.class, GiganotosaurusEntity.class, SpinosaurusEntity.class));
     }
 
-    @Override
     public SoundEvent getSoundForAnimation(Animation animation)
     {
         switch (EntityAnimation.getAnimation(animation))
