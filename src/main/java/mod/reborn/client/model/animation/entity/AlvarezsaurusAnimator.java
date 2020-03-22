@@ -42,16 +42,12 @@ public class AlvarezsaurusAnimator extends EntityAnimator<AlvarezsaurusEntity> {
         AdvancedModelRenderer[] body = {body1, neck1, head};
         AdvancedModelRenderer[] neck = {neck1, neck2, neck3, neck4};
 
-        model.bob(body1, globalSpeed * 1F, globalHeight * 0.8F, false, f, f1);
-
-        model.bob(leftLeg1, globalSpeed * 1F, globalHeight * 0.8F, false, f, f1);
-        model.bob(rightLeg1, globalSpeed * 1F, globalHeight * 0.8F, false, f, f1);
 
         entity.tailBuffer.applyChainSwingBuffer(tail);
 
 
+
         float globalSpeed = 0.6F;
-        float globalHeight = 1F * fl;
         float globalDegree = 1.0F;
 
         float defaultUpperJawRotationX = upperJaw.rotateAngleX;
