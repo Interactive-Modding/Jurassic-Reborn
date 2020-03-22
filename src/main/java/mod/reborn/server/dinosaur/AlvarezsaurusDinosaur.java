@@ -32,7 +32,7 @@ public class AlvarezsaurusDinosaur extends Dinosaur {
         String[][] recipe = {
                 {"", "pelvis", "","",""},
                 {"tail_vertebrae", "ribcage", "shoulder", "neck_vertebrae", "skull"},
-                {"leg_bones", "leg_bones", "arm_bones", "arm_bones", "teeth"}};
+                {"leg_bones", "leg_bones", "arm_bones", "arm_bones", ""}};
         this.setRecipe(recipe);
 
     }
