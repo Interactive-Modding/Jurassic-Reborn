@@ -23,27 +23,27 @@
     "WALKING": [
       {
         "pose": "carnotaurus_adult_walking_1",
-        "time": 10
+        "time": 5
       },
       {
         "pose": "carnotaurus_adult_walking_2",
-        "time": 10
+        "time": 5
       },
       {
         "pose": "carnotaurus_adult_walking_3",
-        "time": 10
+        "time": 5
       },
       {
         "pose": "carnotaurus_adult_walking_4",
-        "time": 10
+        "time": 5
       },
       {
         "pose": "carnotaurus_adult_walking_5",
-        "time": 10
+        "time": 5
       },
       {
         "pose": "carnotaurus_adult_walking_6",
-        "time": 10
+        "time": 5
       }
     ],
     "RUNNING": [
