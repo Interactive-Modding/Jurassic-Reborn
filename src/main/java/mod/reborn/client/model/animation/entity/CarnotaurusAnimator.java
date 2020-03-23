@@ -77,7 +77,7 @@ public class CarnotaurusAnimator extends EntityAnimator<CarnotaurusEntity>
 
         model.chainWave(armRight, globalSpeed * 1F, globalHeight * 0.25F, 3, f, f1);
         model.chainWave(armLeft, globalSpeed * 1F, globalHeight * 0.25F, 3, f, f1);
-        
+
 
         model.chainWave(tail, 0.1F, -0.05F, 2, ticks, 0.25F);
         model.chainWave(body, 0.1F, 0.03F, 5, ticks, 0.25F);
