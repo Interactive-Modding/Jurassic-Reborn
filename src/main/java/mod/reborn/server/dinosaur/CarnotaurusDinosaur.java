@@ -34,6 +34,8 @@ public class CarnotaurusDinosaur extends Dinosaur
         this.setScale(1.3F, 0.15F);
         this.setBreeding(false, 2, 6, 20, false, true);
         this.shouldDefendOffspring();
+
+
         String[][] recipe = {
                 {"", "", "","neck_vertebrae","skull"},
                 {"tail_vertebrae", "pelvis", "ribcage","shoulder_bone","tooth"},
