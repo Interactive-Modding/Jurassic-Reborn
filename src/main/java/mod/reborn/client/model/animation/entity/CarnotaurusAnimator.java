@@ -67,12 +67,12 @@ public class CarnotaurusAnimator extends EntityAnimator<CarnotaurusEntity>
 
         model.bob(hips, globalSpeed * 1.0F, globalHeight * 0.0F, false, f, f1);
 
-        model.bob(leftThigh, globalSpeed * 1.0F, globalHeight * 1.0F, false, f, f1);
-        model.bob(rightThigh, globalSpeed * 1.0F, globalHeight * 1.0F, false, f, f1);
+        model.bob(leftThigh, globalSpeed * 1.0F, globalHeight * 0.0F, false, f, f1);
+        model.bob(rightThigh, globalSpeed * 1.0F, globalHeight * 0.0F, false, f, f1);
 
         model.chainWave(body, globalSpeed * 1.0F, globalHeight * 0.00F, 3, f, f1);
-        model.chainWave(tail, globalSpeed * 1.0F, globalHeight * -0.05F, 2, f, f1);
-        model.chainSwing(tail, globalSpeed * 0.5F, globalHeight * 0.05F, 2, f, f1);
+        model.chainWave(tail, globalSpeed * 1.0F, globalHeight * -0.00F, 2, f, f1);
+        model.chainSwing(tail, globalSpeed * 0.5F, globalHeight * 0.00F, 2, f, f1);
 
 
         model.chainWave(armRight, globalSpeed * 1F, globalHeight * 0.25F, 3, f, f1);
