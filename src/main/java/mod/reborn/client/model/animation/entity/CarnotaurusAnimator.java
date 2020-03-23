@@ -65,7 +65,7 @@ public class CarnotaurusAnimator extends EntityAnimator<CarnotaurusEntity>
         AdvancedModelRenderer[] armRight = new AdvancedModelRenderer[] { handRight, lowerArmRight, upperArmRight };
         AdvancedModelRenderer[] armLeft = new AdvancedModelRenderer[] { handLeft, lowerArmLeft, upperArmLeft };
 
-        model.bob(hips, globalSpeed * 1.0F, globalHeight * 1.0F, false, f, f1);
+        model.bob(hips, globalSpeed * 1.0F, globalHeight * 0.0F, false, f, f1);
 
         model.bob(leftThigh, globalSpeed * 1.0F, globalHeight * 1.0F, false, f, f1);
         model.bob(rightThigh, globalSpeed * 1.0F, globalHeight * 1.0F, false, f, f1);
