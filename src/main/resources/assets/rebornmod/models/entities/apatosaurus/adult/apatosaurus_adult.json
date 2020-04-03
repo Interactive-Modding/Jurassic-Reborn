@@ -73,11 +73,7 @@
     ],
     "DYING": [
       {
-        "pose": "apatosaurus_adult_death_1",
-        "time": 10
-      },
-      {
-        "pose": "apatosaurus_adult_death_2",
+        "pose": "apatosaurus_adult_death",
         "time": 10
       }
     ],
