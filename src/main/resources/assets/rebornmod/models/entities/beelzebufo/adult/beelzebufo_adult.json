@@ -21,26 +21,122 @@
         "time": 7
       }
     ],
+    "WALKING": [
+      {
+        "pose": "beelzebufo_adult_walking_1",
+        "time": 7
+      },
+      {
+        "pose": "beelzebufo_adult_walking_2",
+        "time": 6
+      },
+      {
+        "pose": "beelzebufo_adult_walking_3",
+        "time": 7
+      }
+    ],
+    "CALLING": [
+      {
+        "pose": "beelzebufo_adult_calling_1",
+        "time": 10
+      },
+      {
+        "pose": "beelzebufo_adult_calling_2",
+        "time": 10
+      },
+      {
+        "pose": "beelzebufo_adult_calling_3",
+        "time": 10
+      },
+      {
+        "pose": "beelzebufo_adult_idle",
+        "time": 20
+      }
+    ],
+    "ATTACKING": [
+      {
+        "pose": "beelzebufo_adult_attack_1",
+        "time": 10
+      },
+      {
+        "pose": "beelzebufo_adult_attack_2",
+        "time": 10
+      },
+      {
+        "pose": "beelzebufo_adult_idle",
+        "time": 20
+      }
+    ],
+    "SPEAK": [
+      {
+        "pose": "beelzebufo_adult_talk",
+        "time": 20
+      },
+      {
+        "pose": "beelzebufo_adult_idle",
+        "time": 10
+      }
+    ],
     "LEAP": [
       {
         "pose": "beelzebufo_adult_idle",
         "time": 4
       },
       {
-        "pose": "beelzebufo_adult_jumping_1",
+        "pose": "beelzebufo_adult_leap_1",
         "time": 4
       },
       {
-        "pose": "beelzebufo_adult_jumping_2",
+        "pose": "beelzebufo_adult_leap_2",
         "time": 4
       },
       {
-        "pose": "beelzebufo_adult_jumping_3",
+        "pose": "beelzebufo_adult_leap_3",
         "time": 4
       },
       {
         "pose": "beelzebufo_adult_idle",
         "time": 4
+      }
+    ],
+    "DRINKING": [
+      {
+        "pose": "beelzebufo_adult_drinking_1",
+        "time": 10
+      },
+      {
+        "pose": "beelzebufo_adult_drinking_2",
+        "time": 10
+      },
+      {
+        "pose": "beelzebufo_adult_idle",
+        "time": 20
+      }
+    ],
+    "EATING": [
+      {
+        "pose": "beelzebufo_adult_eating_1",
+        "time": 10
+      },
+      {
+        "pose": "beelzebufo_adult_eating_2",
+        "time": 10
+      },
+      {
+        "pose": "beelzebufo_adult_eating_3",
+        "time": 10
+      },
+      {
+        "pose": "beelzebufo_adult_eating_4",
+        "time": 10
+      },
+      {
+        "pose": "beelzebufo_adult_eating_5",
+        "time": 10
+      },
+      {
+        "pose": "beelzebufo_adult_idle",
+        "time": 20
       }
     ]
   }
