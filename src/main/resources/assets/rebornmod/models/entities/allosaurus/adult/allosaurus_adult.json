@@ -9,7 +9,7 @@
     ],
 	"ATTACKING": [
 	  {
-	    "pose": "allosaurus_adult_attack_1",
+	    "pose": "allosaurus_adult_attack",
 		"time:" : 10
 	  },
 	  {
@@ -97,7 +97,7 @@
 	],
 	"LOOKING_LEFT": [
 	  {
-	    "pose": "allosaurus_adult_looking_left",
+	    "pose": "allosaurus_adult_look_left",
 		"time:" : 10
 	  },
 	  {
@@ -107,7 +107,7 @@
 	],
 	"LOOKING_RIGHT": [
 	  {
-	    "pose": "allosaurus_adult_looking_right",
+	    "pose": "allosaurus_adult_look_right",
 		"time:" : 10
 	  },
 	  {

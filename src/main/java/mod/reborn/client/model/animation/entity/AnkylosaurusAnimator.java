@@ -51,11 +51,11 @@ public class AnkylosaurusAnimator extends EntityAnimator<AnkylosaurusEntity>
         float frontOffset = 0.84F;
 
         model.bob(waist, 2 * globalSpeed, height, false, f, f1);
-        // bob(legleftthigh, 2 * globalSpeed, height, false, f, f1);
-        // bob(legrightthigh, 2 * globalSpeed, height, false, f, f1);
+       // model.bob(legleftthigh, 2 * globalSpeed, height, false, f, f1);
+        //model.bob(legrightthigh, 2 * globalSpeed, height, false, f, f1);
         model.walk(waist, 2 * globalSpeed, 0.1F * height, true, -1.5F, 0.05F, f, f1);
         model.walk(chest, 2 * globalSpeed, 0.07F * height, true, -2F, 0.05F, f, f1);
-        // model.walk(tail1, 2 * globalSpeed, 0.1F * height, false, -1.5F, 0.05F, f, f1);
+   //     model.walk(tail1, 2 * globalSpeed, 0.1F * height, false, -1.5F, 0.05F, f, f1);
 
         model.chainWave(tail, 2 * globalSpeed, -0.12F, 2, f, f1);
         model.chainSwing(tail, 1 * globalSpeed, 0.3F, 3, f, f1);

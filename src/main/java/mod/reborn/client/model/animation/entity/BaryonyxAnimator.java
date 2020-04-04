@@ -65,19 +65,6 @@ public class BaryonyxAnimator extends EntityAnimator<BaryonyxEntity>
         model.bob(thighRight, 1F * scaleFactor, height, false, f, f1);
         model.bob(neck1, 1F * scaleFactor, height / 2, false, f, f1);
 
-        model.walk(neck1, 1F * scaleFactor, 0.25F, false, 1F, 0.1F, f, f1);
-        model.walk(head, 1F * scaleFactor, 0.25F, true, 1F, -0.1F, f, f1);
-        model.walk(waist, 1F * scaleFactor, 0.1F, true, 0F, 0.05F, f, f1);
-
-        model.walk(thighLeft, 0.5F * scaleFactor, 0.6F, false, 0F, 0.4F, f, f1);
-        model.walk(leftCalf1, 0.5F * scaleFactor, 0.5F, true, 1F, 0F, f, f1);
-        model.walk(leftCalf2, 0.5F * scaleFactor, 0.5F, false, 0F, 0F, f, f1);
-        model.walk(leftFoot, 0.5F * scaleFactor, 1.5F, true, 0.5F, 1F, f, f1);
-
-        model.walk(thighRight, 0.5F * scaleFactor, 0.6F, true, 0F, 0.4F, f, f1);
-        model.walk(rightCalf1, 0.5F * scaleFactor, 0.5F, false, 1F, 0F, f, f1);
-        model.walk(rightCalf2, 0.5F * scaleFactor, 0.5F, true, 0F, 0F, f, f1);
-        model.walk(rightFoot, 0.5F * scaleFactor, 1.5F, false, 0.5F, 1F, f, f1);
 
         model.chainSwing(tailParts, 0.5F * scaleFactor, -0.1F, 2, f, f1);
         model.chainWave(tailParts, 1F * scaleFactor, -0.03F, 2, f, f1);
@@ -85,12 +72,9 @@ public class BaryonyxAnimator extends EntityAnimator<BaryonyxEntity>
         model.chainWave(leftArmParts, 1F * scaleFactor, -0.3F, 4, f, f1);
 
         model.chainWave(tailParts, 0.1F, -0.05F, 2, ticks, 0.25F);
-        model.walk(neck1, 0.1F, 0.07F, false, -1F, 0F, ticks, 0.25F);
-        model.walk(head, 0.1F, 0.07F, true, 0F, 0F, ticks, 0.25F);
-        model.walk(waist, 0.1F, 0.05F, false, 0F, 0F, ticks, 0.25F);
         model.chainWave(rightArmParts, 0.1F, -0.1F, 4, ticks, 0.25F);
         model.chainWave(leftArmParts, 0.1F, -0.1F, 4, ticks, 0.25F);
-        model.chainSwing(tailParts, 0.1F, -0.1F, 3, ticks, 0.25F);
+        model.chainSwing(tailParts, 0.1F, -0.1F, 3, ticks, 0.25F); //
 
         entity.tailBuffer.applyChainSwingBuffer(tailParts);
     }
