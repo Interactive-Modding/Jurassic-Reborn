@@ -60,19 +60,19 @@
     "RUNNING": [
       {
         "pose": "baryonyx_adult_running_1",
-        "time": 4
+        "time": 3
       },
       {
         "pose": "baryonyx_adult_running_2",
-        "time": 4
+        "time": 3
       },
       {
         "pose": "baryonyx_adult_running_3",
-        "time": 4
+        "time": 3
       },
       {
         "pose": "baryonyx_adult_running_4",
-        "time": 4
+        "time": 3
       },
       {
         "pose": "baryonyx_adult_running_5",
@@ -80,11 +80,11 @@
       },
       {
         "pose": "baryonyx_adult_running_6",
-        "time": 4
+        "time": 3
       },
       {
         "pose": "baryonyx_adult_running_7",
-        "time": 4
+        "time": 3
       }
     ],
     "SWIMMING": [
@@ -196,11 +196,11 @@
       },
       {
         "pose": "baryonyx_adult_drinking_2",
-        "time": 10
+        "time": 15
       },
       {
         "pose": "baryonyx_adult_drinking_3",
-        "time": 6
+        "time": 15
       },
       {
         "pose": "baryonyx_adult_drinking_4",
@@ -214,19 +214,19 @@
     "ATTACKING": [
       {
         "pose": "baryonyx_adult_attacking_1",
-        "time": 4
+        "time": 6
       },
       {
         "pose": "baryonyx_adult_attacking_2",
-        "time": 4
+        "time": 6
       },
       {
         "pose": "baryonyx_adult_attacking_3",
-        "time": 4
+        "time": 6
       },
       {
         "pose": "baryonyx_adult_attacking_4",
-        "time": 4
+        "time": 6
       },
       {
         "pose": "baryonyx_adult_idle",

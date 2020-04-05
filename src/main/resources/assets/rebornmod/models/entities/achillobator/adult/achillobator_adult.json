@@ -71,6 +71,32 @@
         "time": 20
       }
     ],
+    "DRINKING": [
+      {
+        "pose": "achillobator_adult_drinking_1",
+        "time": 10
+      },
+      {
+        "pose": "achillobator_adult_drinking_2",
+        "time": 15
+      },
+      {
+        "pose": "achillobator_adult_drinking_3",
+        "time": 13
+      },
+      {
+        "pose": "achillobator_adult_drinking_4",
+        "time": 12
+      },
+      {
+        "pose": "achillobator_adult_drinking_5",
+        "time": 15
+      },
+      {
+        "pose": "achillobator_adult_idle",
+        "time": 20
+      }
+    ],
     "INJURED": [
       {
         "pose": "achillobator_adult_injured",
