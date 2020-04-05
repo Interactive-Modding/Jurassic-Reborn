@@ -19,7 +19,7 @@ public class HypsilophodonDinosaur extends Dinosaur
         this.setEggColorMale(0x7DAC78, 0x3E6226);
         this.setEggColorFemale(0x799073, 0x33432F);
         this.setHealth(3, 10);
-        this.setSpeed((SPEED -0.05), SPEED);
+        this.setSpeed((SPEED -0.10), SPEED);
         this.setStrength(1, 5);
         this.setMaximumAge(fromDays(35));
         this.setEyeHeight(0.2F, 0.7F);
@@ -32,7 +32,6 @@ public class HypsilophodonDinosaur extends Dinosaur
         this.setBreeding(false, 2, 6, 20, false, true);
         this.setAttackBias(-50);
         this.setImprintable(true);
-        this.setStorage(6);
         this.setScale(0.65F, 0.2F);
     }
 }
