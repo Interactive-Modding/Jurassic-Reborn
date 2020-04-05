@@ -31,5 +31,12 @@ public class BaryonyxDinosaur extends Dinosaur
         this.setBreeding(false, 0, 2, 61, false, true);
         this.setScale(1.3F, 0.25F);
         this.shouldDefendOffspring();
+        String[][] recipe = {
+                {"", "", "","neck_vertebrae","skull"},
+                {"tail_vertebrae", "pelvis", "ribcage","shoulder_bone","tooth"},
+                {"", "leg_bones", "leg_bones", "arm_bones", ""},
+                {"", "foot_bones", "foot_bones", "", ""}};
+        this.setRecipe(recipe);
+        this.enableSkeleton();
     }
 }

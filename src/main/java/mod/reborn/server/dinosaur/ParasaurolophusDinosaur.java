@@ -47,5 +47,6 @@ public class ParasaurolophusDinosaur extends Dinosaur {
         biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.PLAINS));
         biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.FOREST));
         this.setSpawn(15, biomeList.toArray(new Biome[biomeList.size()]));
+        this.enableSkeleton();
     }
 }

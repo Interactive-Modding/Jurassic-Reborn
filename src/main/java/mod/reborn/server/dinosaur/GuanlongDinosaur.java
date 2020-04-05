@@ -31,6 +31,13 @@ public class GuanlongDinosaur extends Dinosaur {
         this.setAttackBias(1200);
         this.setAttackSpeed(1.2F);
         this.setBreeding(false, 0, 2, 20, false, true);
+        String[][] recipe = {
+                {"", "","neck_vertebrae","skull"},
+                {"tail_vertebrae", "ribcage","shoulder_bone","tooth"},
+                {"leg_bones", "leg_bones", "arm_bones", "claw"},
+                {"foot_bones", "foot_bones", "", ""}};
+        this.setRecipe(recipe);
+        this.enableSkeleton();
 
     }
 }
