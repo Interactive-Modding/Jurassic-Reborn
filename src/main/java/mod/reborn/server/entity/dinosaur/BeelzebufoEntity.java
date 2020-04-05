@@ -16,7 +16,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 
-public class BeelzebufoEntity extends SwimmingDinosaurEntity {
+public class BeelzebufoEntity extends SwimmingDinosaurEntity{
 
     public BeelzebufoEntity(World world) {
         super(world);
@@ -64,7 +64,6 @@ public class BeelzebufoEntity extends SwimmingDinosaurEntity {
     public EntityAIBase getAttackAI() {
         return new RaptorLeapEntityAI(this);
     }
-    }
 
     @Override
     public void fall(float distance, float damageMultiplier) {
@@ -79,3 +78,4 @@ public class BeelzebufoEntity extends SwimmingDinosaurEntity {
     }
 
 }
+
