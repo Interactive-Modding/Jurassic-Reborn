@@ -47,7 +47,7 @@ public class RebornConfig { //TODO: move all structures to same parent package
 
         @Config.Name("Dinosaur Walking Radius")
         @Config.Comment("This impacts performance a lot")
-        public int dinosaurWalkingRadius = 10;
+        public int dinosaurWalkingRadius = 5;
     }
 
     public static class MineralGeneration {
