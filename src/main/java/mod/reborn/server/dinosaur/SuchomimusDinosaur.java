@@ -23,7 +23,7 @@ public class SuchomimusDinosaur extends Dinosaur {
         this.setEyeHeight(0.45F, 1.6F);
         this.setSizeX(0.5F, 1.8F);
         this.setSizeY(0.75F, 3F);
-        this.setDiet(Diet.CARNIVORE.get());
+        this.setDiet(Diet.PCARNIVORE.get());
         this.setBones("arm_bones", "claw", "leg_bones", "neck_vertebrae", "pelvis", "ribcage", "shoulder", "skull", "tail_vertebrae", "tooth", "foot_bones");
         this.setHeadCubeName("Head");
         this.setScale(1.27F, 0.3F);

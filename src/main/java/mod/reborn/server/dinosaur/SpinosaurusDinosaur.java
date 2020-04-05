@@ -26,7 +26,7 @@ public class SpinosaurusDinosaur extends Dinosaur
         this.setSizeX(0.6F, 3.0F);
         this.setSizeY(0.8F, 4.8F);
         this.setStorage(54);
-        this.setDiet((Diet.CARNIVORE.get()));
+        this.setDiet((Diet.PCARNIVORE.get()));
         this.setBones("skull", "tooth", "arm_bones", "claw", "foot_bones", "leg_bones", "neck_vertebrae", "ribcage", "shoulder", "tail_vertebrae");
         this.setHeadCubeName("Head");
         this.setScale(2.37F, 0.3F);

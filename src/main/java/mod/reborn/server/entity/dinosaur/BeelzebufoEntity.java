@@ -8,6 +8,7 @@ import mod.reborn.server.entity.SwimmingDinosaurEntity;
 import mod.reborn.server.entity.ai.DinosaurWanderEntityAI;
 import mod.reborn.server.entity.ai.LeapingMeleeEntityAI;
 import mod.reborn.server.entity.ai.RaptorLeapEntityAI;
+import mod.reborn.server.entity.animal.ai.EntityAIWanderNearWater;
 import net.ilexiconn.llibrary.server.animation.Animation;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIBase;
@@ -22,15 +23,12 @@ public class BeelzebufoEntity extends SwimmingDinosaurEntity {
         this.tasks.addTask(0, new LeapingMeleeEntityAI(this, getAIMoveSpeed()));
         this.tasks.addTask(0, new DinosaurWanderEntityAI(this, getAIMoveSpeed(), 10, RebornConfig.ENTITIES.dinosaurWalkingRadius));
     }
-
     @Override
     public void onEntityUpdate() {
         int air = this.getAir();
         super.onEntityUpdate();
 
         if (this.isEntityAlive() && this.isInWater()) {
-            --air;
-            this.setAir(air);
             if (this.getAir() == -20) {
                 this.setAir(0);
             }
@@ -65,6 +63,7 @@ public class BeelzebufoEntity extends SwimmingDinosaurEntity {
     @Override
     public EntityAIBase getAttackAI() {
         return new RaptorLeapEntityAI(this);
+    }
     }
 
     @Override

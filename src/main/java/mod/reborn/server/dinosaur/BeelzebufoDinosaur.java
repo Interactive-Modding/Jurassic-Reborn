@@ -1,6 +1,8 @@
 package mod.reborn.server.dinosaur;
 
 import mod.reborn.server.entity.Diet;
+import mod.reborn.server.entity.ai.MoveUnderwaterEntityAI;
+import mod.reborn.server.entity.ai.util.MovementType;
 import mod.reborn.server.entity.dinosaur.BeelzebufoEntity;
 import mod.reborn.server.period.TimePeriod;
 
@@ -22,9 +24,10 @@ public class BeelzebufoDinosaur extends Dinosaur {
         this.setSizeX(0.2F, 0.5F);
         this.setSizeY(0.2F, 0.6F);
         this.setMarineAnimal(true);
+        this.setMovementType(MovementType.NEAR_SURFACE);
         this.setStorage(27);
         this.setDiet((Diet.CARNIVORE.get()));
-        this.setBones("leg_bones");
+        this.setBones("leg_bones", "skull", "ribcage", "teeth");
         this.setHeadCubeName("Head");
         this.setMarineAnimal(true);
         this.setBreeding(false, 1, 6, 20, false, true);
