@@ -101,12 +101,8 @@
     ],
     "DYING": [
       {
-        "pose": "allosaurus_adult_death_1",
+        "pose": "allosaurus_adult_death",
         "time": 15
-      },
-      {
-        "pose": "allosaurus_adult_death_2",
-        "time": 10
       }
     ],
     "EATING": [
