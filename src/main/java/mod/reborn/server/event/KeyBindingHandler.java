@@ -41,11 +41,11 @@ public class KeyBindingHandler {
         }
     };
 
-    public static KeyBinding HELICOPTER_AUTOPILOT = new KeyBinding("key.vehicle_helicopter.autopilot", context, KeyModifier.CONTROL, Keyboard.KEY_A, "JurassiCraft");
-    public static KeyBinding HELICOPTER_LOCK = new KeyBinding("key.vehicle_helicopter.lock", context, KeyModifier.CONTROL, Keyboard.KEY_D, "JurassiCraft");
+    public static KeyBinding HELICOPTER_AUTOPILOT = new KeyBinding("key.vehicle_helicopter.autopilot", context, KeyModifier.CONTROL, Keyboard.KEY_A, "RebornMod");
+    public static KeyBinding HELICOPTER_LOCK = new KeyBinding("key.vehicle_helicopter.lock", context, KeyModifier.CONTROL, Keyboard.KEY_D, "RebornMod");
 
     public static List<KeyBinding> VEHICLE_KEY_BINDINGS = IntStream.range(0, 9)
-            .mapToObj(i -> new KeyBinding("key.vehicle_" + i + ".switch", context, KeyModifier.CONTROL, Keyboard.KEY_1 + i, "JurassiCraft"))
+            .mapToObj(i -> new KeyBinding("key.vehicle_" + i + ".switch", context, KeyModifier.CONTROL, Keyboard.KEY_1 + i, "RebornMod"))
             .collect(Collectors.toList());
 
     public static void init() {

@@ -2,31 +2,7 @@
   "languages": [
     {
       "locale": "en_US",
-      "downloadURL": "https://raw.githubusercontent.com/JurassiCraftTeam/JurassiCraftLocalizations/master/en_US.lang"
-    },
-    {
-      "locale": "es_ES",
-      "downloadURL": "https://raw.githubusercontent.com/JurassiCraftTeam/JurassiCraftLocalizations/master/es_ES.lang"
-    },
-    {
-      "locale": "nl_NL",
-      "downloadURL": "https://raw.githubusercontent.com/JurassiCraftTeam/JurassiCraftLocalizations/master/nl_NL.lang"
-    },
-    {
-      "locale": "de_DE",
-      "downloadURL": "https://raw.githubusercontent.com/JurassiCraftTeam/JurassiCraftLocalizations/master/de_DE.lang"
-    },
-    {
-      "locale": "is_IS",
-      "downloadURL": "https://raw.githubusercontent.com/JurassiCraftTeam/JurassiCraftLocalizations/master/is_IS.lang"
-    },
-    {
-      "locale": "pt_BR",
-      "downloadURL": "https://raw.githubusercontent.com/JurassiCraftTeam/JurassiCraftLocalizations/master/pt_BR.lang"
-    },
-    {
-      "locale": "zh_CN",
-      "downloadURL": "https://raw.githubusercontent.com/JurassiCraftTeam/JurassiCraftLocalizations/master/zh_CN.lang"
+      "downloadURL": "https://raw.githubusercontent.com/Destruction-1/Reborn-Mod/master/src/main/resources/assets/rebornmod/lang/en_US.lang"
     }
   ]
 }
