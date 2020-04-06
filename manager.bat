@@ -23,7 +23,6 @@ IF ERRORLEVEL 1 GOTO build
 
 :build
 cls
-gradlew clean
 gradlew build
 ECHO Would you like to return to start? 
 CHOICE /C 12 /M "1 for yes 2 for no"
