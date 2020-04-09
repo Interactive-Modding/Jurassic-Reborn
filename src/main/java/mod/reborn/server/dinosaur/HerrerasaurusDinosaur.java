@@ -20,7 +20,7 @@ public class HerrerasaurusDinosaur extends Dinosaur
         this.setEggColorFemale(0x7C6F44, 0x2B2721);
         this.setHealth(10, 40);
         this.setSpeed((SPEED -0.05), SPEED);
-        this.setStrength(5, 15);
+        this.setStrength(5, 20);
         this.setMaximumAge(fromDays(45));
         this.setEyeHeight(0.45F, 2.25F);
         this.setSizeX(0.4F, 1.8F);
@@ -29,7 +29,7 @@ public class HerrerasaurusDinosaur extends Dinosaur
         this.setDiet((Diet.CARNIVORE.get()));
         this.setBones("arm_bones", "foot_bones", "leg_bones", "neck_vertebrae", "pelvis", "ribcage", "shoulder", "skull", "tail_vertebrae", "tooth", "claw");
         this.setHeadCubeName("Head");
-        this.setScale(1.3F, 0.25F);
+        this.setScale(1.0F, 0.25F);
         this.setBreeding(false, 1, 4, 66, false, true);
         this.setAttackBias(300);
         this.setImprintable(true);

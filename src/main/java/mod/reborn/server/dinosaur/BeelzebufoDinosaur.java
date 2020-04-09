@@ -18,7 +18,7 @@ public class BeelzebufoDinosaur extends Dinosaur {
         this.setEggColorFemale(0xE4CC92, 0xCEC704);
         this.setHealth(3, 10);
         this.setSpeed((SPEED -0.05), SPEED);
-        this.setStrength(25, 200);
+        this.setStrength(25, 10);
         this.setMaximumAge(fromDays(40));
         this.setEyeHeight(0.225F, 0.4F);
         this.setSizeX(0.2F, 0.5F);
@@ -26,7 +26,7 @@ public class BeelzebufoDinosaur extends Dinosaur {
         this.setMarineAnimal(true);
         this.setMovementType(MovementType.NEAR_SURFACE);
         this.setStorage(27);
-        this.setDiet((Diet.CARNIVORE.get()));
+        this.setDiet((Diet.PCARNIVORE.get()));
         this.setBones("leg_bones", "skull", "ribcage", "teeth");
         this.setHeadCubeName("Head");
         this.setMarineAnimal(true);
