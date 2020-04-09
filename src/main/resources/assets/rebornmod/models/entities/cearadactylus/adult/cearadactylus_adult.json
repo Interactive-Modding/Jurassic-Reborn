@@ -6,6 +6,164 @@
         "pose": "cearadactylus_adult_idle",
         "time": 20
       }
+    ],
+    "RESTING": [
+      {
+        "pose": "cearadactylus_adult_resting",
+        "time": 20
+      }
+    ],
+    "SLEEPING": [
+      {
+        "pose": "cearadactylus_adult_sleeping",
+        "time": 15
+      }
+    ],
+    "SPEAK": [
+      {
+        "pose": "cearadactylus_adult_speak",
+        "time": 8
+      },
+      {
+        "pose": "cearadactylus_adult_speak",
+        "time": 15
+      },
+      {
+        "pose": "cearadactylus_adult_idle",
+        "time": 8
+      }
+    ],
+    "INJURED": [
+      {
+        "pose": "cearadactylus_adult_injured",
+        "time": 6
+      },
+      {
+        "pose": "cearadactylus_adult_injured",
+        "time": 8
+      },
+      {
+        "pose": "cearadactylus_adult_idle",
+        "time": 6
+      }
+    ],
+    "LOOKING_LEFT": [
+      {
+        "pose": "cearadactylus_adult_look_left",
+        "time": 8
+      },
+      {
+        "pose": "cearadactylus_adult_look_left",
+        "time": 15
+      },
+      {
+        "pose": "cearadactylus_adult_idle",
+        "time": 8
+      }
+    ],
+    "LOOKING_RIGHT": [
+      {
+        "pose": "cearadactylus_adult_look_right",
+        "time": 8
+      },
+      {
+        "pose": "cearadactylus_adult_look_right",
+        "time": 15
+      },
+      {
+        "pose": "cearadactylus_adult_idle",
+        "time": 8
+      }
+    ],
+    "CALLING": [
+      {
+        "pose": "cearadactylus_adult_calling",
+        "time": 8
+      },
+      {
+        "pose": "cearadactylus_adult_calling",
+        "time": 8
+      },
+      {
+        "pose": "cearadactylus_adult_idle",
+        "time": 8
+      }
+    ],
+    "DYING": [
+      {
+        "pose": "cearadactylus_adult_death",
+        "time": 15
+      }
+    ],
+    "EATING": [
+      {
+        "pose": "cearadactylus_adult_eating_1",
+        "time": 10
+      },
+      {
+        "pose": "cearadactylus_adult_eating_2",
+        "time": 10
+      },
+      {
+        "pose": "cearadactylus_adult_idle",
+        "time": 10
+      }
+    ],
+    "DRINKING": [
+      {
+        "pose": "cearadactylus_adult_drinking",
+        "time": 15
+      },
+      {
+        "pose": "cearadactylus_adult_idle",
+        "time": 15
+      }
+    ],
+    "ATTACKING": [
+      {
+        "pose": "cearadactylus_adult_attack_1",
+        "time": 6
+      },
+      {
+        "pose": "cearadactylus_adult_attack_2",
+        "time": 6
+      },
+      {
+        "pose": "cearadactylus_adult_attack_3",
+        "time": 4
+      },
+      {
+        "pose": "cearadactylus_adult_attack_4",
+        "time": 4
+      },
+      {
+        "pose": "cearadactylus_adult_idle",
+        "time": 6
+      }
+    ],
+    "SWIMMING": [
+      {
+        "pose": "cearadactylus_adult_swimming_1",
+        "time": 6
+      },
+      {
+        "pose": "cearadactylus_adult_swimming_2",
+        "time": 6
+      },
+      {
+        "pose": "cearadactylus_adult_swimming_3",
+        "time": 6
+      }
+    ],
+    "LAYING_EGG": [
+      {
+        "pose": "cearadactylus_adult_laying",
+        "time": 10
+      },
+      {
+        "pose": "cearadactylus_adult_idle",
+        "time": 10
+      }
     ]
   }
 }
