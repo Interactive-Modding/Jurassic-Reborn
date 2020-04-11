@@ -36,11 +36,10 @@ public class QuetzalDinosaur extends Dinosaur
         this.setStorage(12);
         this.setBreeding(false, 1, 6, 20, false, true);
         this.enableSkeleton();
-        String[][] recipe ={
+        String[][] recipe = {
                 {"", "", "", "neck_vertebrae", "skull"},
                 {"tail_vertebrae", "pelvis", "ribcage","",""},
-                {"", "leg_bones", "", "wing_bones", ""},
-                {"", "", "", "", ""}};
+                {"", "leg_bones", "", "wing_bones", ""}};
         this.setRecipe(recipe);
 
     }

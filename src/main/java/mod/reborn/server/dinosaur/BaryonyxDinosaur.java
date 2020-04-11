@@ -34,8 +34,8 @@ public class BaryonyxDinosaur extends Dinosaur
         String[][] recipe = {
                 {"", "", "","neck_vertebrae","skull"},
                 {"tail_vertebrae", "pelvis", "ribcage","shoulder_bone","tooth"},
-                {"", "leg_bones", "leg_bones", "arm_bones", ""},
-                {"", "foot_bones", "foot_bones", "", ""}};
+                {"", "leg_bones", "", "arm_bones", ""},
+                {"", "foot_bones", "", "", ""}};
         this.setRecipe(recipe);
         this.enableSkeleton();
     }
