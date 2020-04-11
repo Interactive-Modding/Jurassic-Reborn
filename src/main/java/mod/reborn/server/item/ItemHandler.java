@@ -294,7 +294,7 @@ public class ItemHandler {
     public static final SPAS12 SPAS_12 = new SPAS12();
     public static final UTS15 UTS15 = new UTS15();
     public static final Bullet BULLET = new Bullet();
-    public static final Bullet BULLET_PACK_12 = new Bullet();
+   // public static final Bullet BULLET_PACK_12 = new Bullet();
 
     public static void init() {
         registerItem(FOSSILIZED_EGG, "Fossilized Egg");
@@ -446,7 +446,7 @@ public class ItemHandler {
         registerItem(SPAS_12, "spas_12");
         registerItem(UTS15, "uts15");
         registerItem(BULLET, "Bullet");
-        registerItem(BULLET_PACK_12, "Bullet_24");
+      // registerItem(BULLET_PACK_12, "Bullet_Pack");
         for (TreeType type : TreeType.values()) {
             registerTreeType(type);
         }

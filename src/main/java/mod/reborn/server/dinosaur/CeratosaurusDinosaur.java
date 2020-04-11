@@ -22,15 +22,15 @@ public class CeratosaurusDinosaur extends Dinosaur {
         this.setStrength(1, 20);
         this.setMaximumAge(fromDays(45));
         this.setEyeHeight(0.45F, 1.6F);
-        this.setSizeX(0.3F, 0.9F);
-        this.setSizeY(0.35F, 1F);
+        this.setSizeX(0.4F, 2.8F);
+        this.setSizeY(0.3F, 4F);
         this.setDiet(Diet.CARNIVORE.get());
         this.setBones("skull", "tooth", "arm_bones", "claw", "foot_bones", "leg_bones", "neck_vertebrae", "pelvis", "ribcage", "shoulder", "tail_vertebrae");
         this.setHeadCubeName("Head");
-        this.setScale(1.2F, 0.15F);
+        this.setScale(2.0F, 0.25F);
         this.setBreeding(false, 2, 6, 20, false, true);
         this.setImprintable(true);
-        this.setStorage(6);
+        this.setStorage(26);
         this.shouldDefendOffspring();
     }
 }
