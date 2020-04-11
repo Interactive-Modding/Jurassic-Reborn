@@ -20,7 +20,7 @@
       }
     ],
     "WALKING": [
-      {
+       {
         "pose": "ceratosaurus_adult_walking_1",
         "time": 5
       },
@@ -35,10 +35,18 @@
       {
         "pose": "ceratosaurus_adult_walking_4",
         "time": 5
+      },
+      {
+        "pose": "ceratosaurus_adult_walking_5",
+        "time": 5
+      },
+      {
+        "pose": "ceratosaurus_adult_walking_6",
+        "time": 5
       }
     ],
     "RUNNING": [
-      {
+         {
         "pose": "ceratosaurus_adult_running_1",
         "time": 4
       },
@@ -52,6 +60,14 @@
       },
       {
         "pose": "ceratosaurus_adult_running_4",
+        "time": 4
+      },
+      {
+        "pose": "ceratosaurus_adult_running_5",
+        "time": 4
+      },
+      {
+        "pose": "ceratosaurus_adult_running_6",
         "time": 4
       }
     ],
