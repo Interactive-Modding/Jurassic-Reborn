@@ -1,6 +1,8 @@
 package mod.reborn.server.entity.dinosaur;
 
+import mod.reborn.client.model.animation.EntityAnimation;
 import mod.reborn.server.entity.DinosaurEntity;
+import mod.reborn.server.entity.ai.LeapingMeleeEntityAI;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.world.World;
@@ -11,7 +13,14 @@ public class CompsognathusEntity extends DinosaurEntity
     {
         super(world);
         this.doesEatEggs(true);
+        this.tasks.addTask(1, new LeapingMeleeEntityAI(this, this.dinosaur.getAttackSpeed()));
         this.tasks.addTask(0, new CompyHurtByTarget());
+    }
+    @Override
+    public void fall(float distance, float damageMultiplier) {
+        if (this.getAnimation() != EntityAnimation.LEAP_LAND.get()) {
+            super.fall(distance, damageMultiplier);
+        }
     }
 
     class CompyHurtByTarget extends EntityAIHurtByTarget {
