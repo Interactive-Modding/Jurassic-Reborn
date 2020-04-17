@@ -3,7 +3,7 @@
 ### RebornMod Leader
 Destruction
 
-### Reborn is the JurassiCraft code edited by (Collinvht, Destruction and MSRandom)
+### Reborn is the JurassiCraft code edited by (Destruction, Collinvht, and MSRandom)
 ### Changes in this code
 50+ Creatures added
 Bug's fixed
@@ -11,23 +11,16 @@ Item's added
 Entity Changes
 Gui things
 And much more!
-# Contributors
-
-Collinvht
 
 ### Developers
 
 ### Modelers / Sound Designers / Textures
-
-HobbitNerd
 
 Boom
 
 DTRaptor
 
 Rexzilla
-
-AGSucho
 
 TheJurassicAlien
 
@@ -44,6 +37,19 @@ Fluffy Taco
 Pedro Resende
 
 The Jurassic Gamer
+
+# Contributors
+
+Collinvht
+
+AGSucho
+
+Totemaster
+
+Bizarre Altispinax
+
+LordofLustria
+
 
 ### Special Mentions To JurassiCraft
 
