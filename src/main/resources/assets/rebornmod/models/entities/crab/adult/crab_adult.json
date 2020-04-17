@@ -6,6 +6,12 @@
         "pose": "crab",
         "time": 10
       }
+    ],
+    "ATTACKING": [
+      {
+        "pose": "crab_attacking",
+        "time": 15
+      }
     ]
   }
 }
