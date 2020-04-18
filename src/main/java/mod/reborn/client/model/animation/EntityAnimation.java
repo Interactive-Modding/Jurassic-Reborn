@@ -21,6 +21,7 @@ public enum EntityAnimation {
     LOOKING_LEFT,
     LOOKING_RIGHT,
     BEGGING,
+    LOOKING_FOR_FISH,
     SNAP,
     DYING(true, false, false),
     SCRATCHING,
