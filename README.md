@@ -14,6 +14,8 @@ And much more!
 
 ### Developers
 
+Last_Dovahkiin
+
 ### Modelers / Sound Designers / Textures
 
 Boom
@@ -36,7 +38,7 @@ Fluffy Taco
 
 Pedro Resende
 
-The Jurassic Gamer
+Just Monika
 
 # Contributors
 
