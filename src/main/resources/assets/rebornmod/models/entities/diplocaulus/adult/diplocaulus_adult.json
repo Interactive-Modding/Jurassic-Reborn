@@ -4,7 +4,157 @@
     "IDLE": [
       {
         "pose": "diplocaulus_adult_idle",
+        "time":20
+        }
+    ],
+    "ATTACKING": [
+      {
+        "pose": "diplocaulus_adult_attacking",
+        "time": 8
+      },
+      {
+        "pose": "diplocaulus_adult_idle",
+        "time": 6
+      }
+    ],
+    "CALLING": [
+      {
+        "pose": "diplocaulus_adult_calling",
+        "time": 12
+      },
+      {
+        "pose": "diplocaulus_adult_idle",
+        "time": 5
+      },
+	  {
+        "pose": "diplocaulus_adult_calling",
+        "time": 12
+      },
+      {
+        "pose": "diplocaulus_adult_idle",
         "time": 20
+      }
+    ],
+    "DYING": [
+      {
+        "pose": "diplocaulus_adult_death",
+        "time": 15
+      }
+    ],
+    "EATING": [
+      {
+        "pose": "diplocaulus_adult_eating",
+        "time": 20
+      },
+      {
+        "pose": "diplocaulus_adult_idle",
+        "time": 10
+      },
+      {
+        "pose": "diplocaulus_adult_eating",
+        "time": 20
+      },
+      {
+        "pose": "diplocaulus_adult_idle",
+        "time": 10
+      }
+    ],
+    "DRINKING": [
+    {
+        "pose": "diplocaulus_adult_drinking",
+        "time": 20
+      },
+      {
+        "pose": "diplocaulus_adult_idle",
+        "time": 10
+      },
+      {
+        "pose": "diplocaulus_adult_drinking",
+        "time": 20
+      },
+      {
+        "pose": "diplocaulus_adult_idle",
+        "time": 10
+      }
+    ],
+    "INJURED": [
+      {
+        "pose": "diplocaulus_adult_injured",
+        "time": 10
+      },
+      {
+        "pose": "diplocaulus_adult_idle",
+        "time": 20
+      }
+    ],
+    "LOOKING_LEFT": [
+      {
+        "pose": "diplocaulus_adult_look_start",
+        "time": 10
+      },
+      {
+        "pose": "diplocaulus_adult_look_left",
+        "time": 10
+      },
+      {
+        "pose": "diplocaulus_adult_look_left",
+        "time": 20
+      },
+      {
+        "pose": "diplocaulus_adult_idle",
+        "time": 10
+      }
+    ],
+    "LOOKING_RIGHT": [
+      {
+        "pose": "diplocaulus_adult_look_start",
+        "time": 10
+      },
+      {
+        "pose": "diplocaulus_adult_look_right",
+        "time": 10
+      },
+      {
+        "pose": "diplocaulus_adult_look_right",
+        "time": 20
+      },
+      {
+        "pose": "diplocaulus_adult_idle",
+        "time": 10
+      }
+    ],
+    "SLEEPING": [
+      {
+        "pose": "diplocaulus_adult_sleeping",
+        "time": 15
+      }
+    ],
+    "SWIMMING": [
+      {
+        "pose": "diplocaulus_adult_swimming_1",
+        "time": 6
+      },
+      {
+        "pose": "diplocaulus_adult_swimming_2",
+        "time": 6
+      },
+      {
+        "pose": "diplocaulus_adult_swimming_3",
+        "time": 6
+      },
+      {
+        "pose": "diplocaulus_adult_swimming_4",
+        "time": 6
+      }
+    ],
+	"WALKING": [
+      {
+        "pose": "diplocaulus_adult_walking_1",
+        "time": 4
+      },
+      {
+        "pose": "diplocaulus_adult_walking_2",
+        "time": 4
       }
     ]
   }
