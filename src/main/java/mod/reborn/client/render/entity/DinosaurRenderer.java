@@ -15,7 +15,7 @@ import mod.reborn.server.dinosaur.Dinosaur;
 import mod.reborn.server.entity.DinosaurEntity;
 import mod.reborn.server.entity.GrowthStage;
 import mod.reborn.server.entity.dinosaur.MammothEntity;
-import sun.util.calendar.BaseCalendar;
+
 
 import java.awt.*;
 import java.sql.Time;
@@ -25,7 +25,7 @@ import java.util.Random;
 public class DinosaurRenderer extends RenderLiving<DinosaurEntity> {
     public Dinosaur dinosaur;
     public DinosaurRenderInfo renderInfo;
-    public BaseCalendar.Date date;
+
 
     public Random random;
 
