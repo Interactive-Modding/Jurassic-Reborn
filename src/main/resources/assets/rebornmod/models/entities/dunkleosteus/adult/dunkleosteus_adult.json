@@ -6,6 +6,88 @@
         "pose": "dunkleosteus_adult_idle",
         "time": 20
       }
+],
+    "ATTACKING": [
+      {
+        "pose": "dunkleosteus_adult_attacking",
+        "time": 8
+      },
+      {
+        "pose": "dunkleosteus_adult_idle",
+        "time": 6
+      }
+    ],
+    "CALLING": [
+      {
+        "pose": "dunkleosteus_adult_calling",
+        "time": 12
+      },
+      {
+        "pose": "dunkleosteus_adult_idle",
+        "time": 5
+      },
+	  {
+        "pose": "dunkleosteus_adult_calling",
+        "time": 12
+      },
+      {
+        "pose": "dunkleosteus_adult_idle",
+        "time": 20
+      }
+    ],
+    "DYING": [
+      {
+        "pose": "dunkleosteus_adult_death",
+        "time": 15
+      }
+    ],
+    "EATING": [
+      {
+        "pose": "dunkleosteus_adult_eating",
+        "time": 20
+      },
+      {
+        "pose": "dunkleosteus_adult_idle",
+        "time": 10
+      },
+      {
+        "pose": "dunkleosteus_adult_eating",
+        "time": 20
+      },
+      {
+        "pose": "dunkleosteus_adult_idle",
+        "time": 10
+      }
+    ],
+    "INJURED": [
+      {
+        "pose": "dunkleosteus_adult_injured",
+        "time": 10
+      },
+      {
+        "pose": "dunkleosteus_adult_idle",
+        "time": 20
+      }
+    ],
+    "SPEAK": [
+      {
+        "pose": "dunkleosteus_adult_idle",
+        "time": 5
+      },
+      {
+        "pose": "dunkleosteus_adult_speak",
+        "time": 20
+      },
+      {
+        "pose": "dunkleosteus_adult_idle",
+        "time": 5
+      }
+    ],
+    "SLEEPING": [
+      {
+        "pose": "dunkleosteus_adult_sleeping",
+        "time": 15
+      }
     ]
   }
 }
