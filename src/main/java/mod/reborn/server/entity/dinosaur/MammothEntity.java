@@ -13,7 +13,7 @@ import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
-;import java.util.Locale;
+import java.util.Locale;
 
 public class MammothEntity extends DinosaurEntity {
 
