@@ -265,7 +265,7 @@ public class EntityHandler {
     private static void registerEntity(Class<? extends Entity> entity, String name) {
         String formattedName = name.toLowerCase(Locale.ENGLISH).replaceAll(" ", "_");
         ResourceLocation registryName = new ResourceLocation("rebornmod:entities." + formattedName);
-        EntityRegistry.registerModEntity(registryName, entity, "rebornmod." + formattedName, entityId++, RebornMod.INSTANCE, 1024, 1, true);
+        EntityRegistry.registerModEntity(registryName, entity, "rebornmod." + formattedName, entityId++, RebornMod.INSTANCE, 128, 3, true);
     }
     
     
@@ -273,7 +273,7 @@ public class EntityHandler {
     private static void registerEntity(Class<? extends Entity> entity, String name, int primary, int secondary) {
         String formattedName = name.toLowerCase(Locale.ENGLISH).replaceAll(" ", "_");
         ResourceLocation registryName = new ResourceLocation("rebornmod:entities." + formattedName);
-        EntityRegistry.registerModEntity(registryName, entity, "rebornmod." + formattedName, entityId++, RebornMod.INSTANCE, 1024, 1, true, primary, secondary);
+        EntityRegistry.registerModEntity(registryName, entity, "rebornmod." + formattedName, entityId++, RebornMod.INSTANCE, 128, 3, true, primary, secondary);
     }
 
     public static void registerDinosaur(Dinosaur dinosaur) {
