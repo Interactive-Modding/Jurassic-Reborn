@@ -68,6 +68,6 @@ public class FeederEntityAI extends EntityAIBase {
 
     @Override
     public boolean shouldContinueExecuting() {
-        return this.dinosaur != null && this.path != null || !this.dinosaur.getMetabolism().isHungry();
+        return this.dinosaur != null && this.path != null && this.dinosaur.getMetabolism().isHungry();
     }
 }
