@@ -1,13 +1,13 @@
 package mod.reborn.client.sound;
 
+import mod.reborn.server.entity.vehicle.VehicleEntity;
 import net.minecraft.util.SoundCategory;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import mod.reborn.server.entity.vehicle.CarEntity;
 
 @SideOnly(Side.CLIENT)
-public class CarSound extends EntitySound<CarEntity> {
-    public CarSound(CarEntity entity) {
+public class CarSound extends EntitySound<VehicleEntity> {
+    public CarSound(VehicleEntity entity) {
         super(entity, SoundHandler.CAR_MOVE, SoundCategory.BLOCKS);
     }
 

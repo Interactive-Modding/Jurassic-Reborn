@@ -2,7 +2,7 @@ package mod.reborn.server.message;
 
 import io.netty.buffer.ByteBuf;
 import mod.reborn.RebornMod;
-import mod.reborn.server.entity.vehicle.CarEntity;
+import mod.reborn.server.entity.vehicle.VehicleEntity;
 import mod.reborn.server.entity.vehicle.MultiSeatedEntity;
 import net.ilexiconn.llibrary.server.network.AbstractMessage;
 import net.minecraft.client.Minecraft;
@@ -63,7 +63,7 @@ public class AttemptMoveToSeatMessage extends AbstractMessage<AttemptMoveToSeatM
         Entity entity = world.getEntityByID(message.entityID);
         if(entity instanceof MultiSeatedEntity) {
             MultiSeatedEntity multiSeatedEntity = ((MultiSeatedEntity)entity);
-            CarEntity e = (CarEntity) entity;
+            VehicleEntity e = (VehicleEntity) entity;
             multiSeatedEntity.tryPutInSeat(world.getEntityByID(player.getEntityId()), message.toSeat, true);
             return true;
         }

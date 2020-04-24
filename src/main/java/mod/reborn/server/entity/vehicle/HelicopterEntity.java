@@ -34,7 +34,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import javax.annotation.Nonnull;
 import java.util.List;
 
-public abstract class HelicopterEntity extends CarEntity {
+public abstract class HelicopterEntity  extends VehicleEntity {
+
     private static final byte UPWARD = 0b010000;
     private static final byte DOWNWARD = 0b100000;
     private int rotationControl = 0;
@@ -53,6 +54,7 @@ public abstract class HelicopterEntity extends CarEntity {
     private BlockPos.MutableBlockPos mb = new BlockPos.MutableBlockPos();
     protected boolean lockOn;
     protected int blastHeight = 6;
+
     private float currentEngineSpeed = 0;
     protected float torque;
     protected float yawRoationAcceleration = 0;
@@ -122,7 +124,7 @@ public abstract class HelicopterEntity extends CarEntity {
 
     @Override
     public void startSound() {
-        ClientProxy.playCarSound(this);
+        ClientProxy.playHelicopterSound(this);
     }
 
     public void upward(boolean upward) {
@@ -657,6 +659,8 @@ public abstract class HelicopterEntity extends CarEntity {
         return 30 - (int) ((this.getCurrentEngineSpeed() / this.engineSpeed) * 20);
     }
 
+
+
     protected void blastItems() {
         float dist = this.getDistanceToGround();
         if (dist >= 0) {
@@ -815,6 +819,7 @@ public abstract class HelicopterEntity extends CarEntity {
         }
     }
 
+
     private boolean shouldAdjustEngineSpeedByHorizontalControls(float requiredSpeedForHovering) {
         return (this.forward() || this.backward() || this.left() || this.right()) && !(this.getCurrentEngineSpeed() > requiredSpeedForHovering && this.upward())
                 && !(this.getCurrentEngineSpeed() < requiredSpeedForHovering && this.downward());
@@ -883,7 +888,7 @@ public abstract class HelicopterEntity extends CarEntity {
 
     @Override
     public void dropItems() {
-        this.entityDropItem(new ItemStack(ItemHandler.HELICOPTER, 1, 0), 0.1f);
+        this.entityDropItem(new ItemStack(ItemHandler.VEHICLE_ITEM, 1, 2), 0.1f);
     }
 
     // Physics

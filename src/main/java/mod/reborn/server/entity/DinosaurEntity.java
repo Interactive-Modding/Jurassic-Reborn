@@ -116,6 +116,7 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
 
     private final InventoryDinosaur inventory;
     public final MetabolismContainer metabolism;
+    public boolean isRendered;
     protected Dinosaur dinosaur;
     protected int dinosaurAge;
     protected int prevAge;

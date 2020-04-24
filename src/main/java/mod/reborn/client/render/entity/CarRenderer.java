@@ -7,13 +7,13 @@ import javax.vecmath.Vector2d;
 import javax.vecmath.Vector4d;
 
 import mod.reborn.client.model.animation.entity.vehicle.CarAnimator;
+import mod.reborn.server.entity.vehicle.VehicleEntity;
 import net.ilexiconn.llibrary.client.model.tabula.TabulaModel;
 import net.ilexiconn.llibrary.client.model.tabula.container.TabulaModelContainer;
 import net.minecraft.client.renderer.RenderHelper;
 import mod.reborn.RebornMod;
 import mod.reborn.client.model.TabulaModelUV;
 import mod.reborn.server.entity.ai.util.MathUtils;
-import mod.reborn.server.entity.vehicle.CarEntity;
 
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.Render;
@@ -26,7 +26,7 @@ import mod.reborn.server.entity.vehicle.HelicopterEntity;
 import mod.reborn.server.tabula.TabulaModelHelper;
 
 @SideOnly(Side.CLIENT)
-public abstract class CarRenderer<E extends CarEntity> extends Render<E> {
+public abstract class CarRenderer<E extends VehicleEntity> extends Render<E> {
     private static final ResourceLocation[] DESTROY_STAGES = IntStream.range(0, 10).mapToObj(n -> new ResourceLocation(String.format("textures/blocks/destroy_stage_%d.png", n))).toArray(ResourceLocation[]::new);
 
 
@@ -59,7 +59,7 @@ public abstract class CarRenderer<E extends CarEntity> extends Render<E> {
         GlStateManager.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA);
         this.bindEntityTexture(entity);
         this.renderModel(entity, x, y, z, yaw, partialTicks, false);
-        int destroyStage = Math.min(10, (int) (10 - (entity.getHealth() / CarEntity.MAX_HEALTH) * 10)) - 1;
+        int destroyStage = Math.min(10, (int) (10 - (entity.getHealth() / VehicleEntity.MAX_HEALTH) * 10)) - 1;
         if (destroyStage >= 0) {
             GlStateManager.color(1, 1, 1, 0.5F);
             GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.DST_COLOR, GlStateManager.DestFactor.SRC_COLOR, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
@@ -86,7 +86,7 @@ public abstract class CarRenderer<E extends CarEntity> extends Render<E> {
         GlStateManager.popMatrix();
     }
 
-    protected void doCarRotations(CarEntity entity, float partialTicks) {
+    protected void doCarRotations(VehicleEntity entity, float partialTicks) {
         if(!(entity instanceof HelicopterEntity)) {
             double backValue = entity.backValue.getValueForRendering(partialTicks);
             double frontValue = entity.frontValue.getValueForRendering(partialTicks);

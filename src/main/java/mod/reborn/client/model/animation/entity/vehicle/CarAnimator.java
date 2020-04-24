@@ -2,19 +2,18 @@ package mod.reborn.client.model.animation.entity.vehicle;
 
 import com.google.common.collect.Lists;
 import mod.reborn.client.proxy.ClientProxy;
+import mod.reborn.server.entity.vehicle.VehicleEntity;
 import net.ilexiconn.llibrary.client.model.tabula.ITabulaModelAnimator;
 import net.ilexiconn.llibrary.client.model.tabula.TabulaModel;
 import net.ilexiconn.llibrary.client.model.tools.AdvancedModelRenderer;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.Vec3d;
 import mod.reborn.server.entity.ai.util.InterpValue;
-import mod.reborn.server.entity.vehicle.CarEntity;
 import mod.reborn.server.entity.vehicle.HelicopterEntity;
 
 import java.util.List;
 
-public class CarAnimator implements ITabulaModelAnimator<CarEntity> {
+public class CarAnimator implements ITabulaModelAnimator<VehicleEntity> {
     private final List<CarAnimator.Door> doorList = Lists.newArrayList();
     public float partialTicks;
 
@@ -24,12 +23,12 @@ public class CarAnimator implements ITabulaModelAnimator<CarEntity> {
     }
 
     @Override
-    public void setRotationAngles(TabulaModel model, CarEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float rotationYaw, float rotationPitch, float scale) {
+    public void setRotationAngles(TabulaModel model, VehicleEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float rotationYaw, float rotationPitch, float scale) {
         if(!(entity instanceof HelicopterEntity)) {
             doorList.forEach(door -> {
                 InterpValue value = door.getInterpValue(entity);
-                CarEntity.Seat seat = door.getSeat(entity);
-                CarEntity.Seat closestSeat = seat;
+                VehicleEntity.Seat seat = door.getSeat(entity);
+                VehicleEntity.Seat closestSeat = seat;
                 EntityPlayer player = ClientProxy.MC.player;
                 Vec3d playerPos = player.getPositionVector();
                 for (Door door1 : this.doorList) {
@@ -79,7 +78,7 @@ public class CarAnimator implements ITabulaModelAnimator<CarEntity> {
             this.isLeft = isLeft;
         }
 
-        public InterpValue getInterpValue(CarEntity entity) {
+        public InterpValue getInterpValue(VehicleEntity entity) {
             return getSeat(entity).getInterpValue();
         }
 
@@ -91,7 +90,7 @@ public class CarAnimator implements ITabulaModelAnimator<CarEntity> {
             return this.seatIndex;
         }
 
-        public CarEntity.Seat getSeat(CarEntity entity) {
+        public VehicleEntity.Seat getSeat(VehicleEntity entity) {
             return entity.getSeat(seatIndex);
         }
 
