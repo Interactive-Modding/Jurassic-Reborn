@@ -1,7 +1,6 @@
 package mod.reborn.client.render;
 
 import com.google.common.collect.Maps;
-import com.sun.org.apache.regexp.internal.RE;
 import mod.reborn.client.gui.app.GuiAppRegistry;
 import mod.reborn.client.model.MultipartStateMap;
 import mod.reborn.client.model.animation.EntityAnimator;
