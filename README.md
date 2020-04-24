@@ -44,8 +44,6 @@ Just Monika
 
 # Contributors
 
-Collinvht
-
 AGSucho
 
 Ms.Random
