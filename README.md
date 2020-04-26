@@ -18,31 +18,33 @@ Last_Dovahkiin
 
 Collinvht
 
-### Modelers / Sound Designers / Textures
+### Modelers / Sound Designers / Textures /  Concept Artists
 
 Boom
 
-DTRaptor
+Zane
 
-Rexzilla
+DTRaptor, The Political Advisor
+
+RextheZilla98
 
 TheJurassicAlien
 
 Tornado
 
-MidNight
+MidNight // Derpy Steven
 
 Neicke
 
-Bastion
+Bastion16
 
-Creatar
+CreatarCreator
 
-Fluffy Taco
+Fluffy Taco // JR_2202
 
 Pedro Resende
 
-Just Monika
+Just Monika 
 
 # Contributors
 
@@ -56,6 +58,17 @@ Bizarre Altispinax
 
 LordofLustria
 
+### Bug-Testers
+
+Firewolf786YT
+
+SJ_Code Gaming
+
+MLGMagicHoodini
+
+Spino mastermind
+
+Ryan is still the same
 
 ### Special Mentions To JurassiCraft
 
