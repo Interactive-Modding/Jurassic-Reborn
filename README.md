@@ -46,18 +46,6 @@ Pedro Resende
 
 Just Monika 
 
-# Contributors
-
-AGSucho
-
-Ms.Random
-
-Totemaster
-
-Bizarre Altispinax
-
-LordofLustria
-
 ### Bug-Testers
 
 Firewolf786YT
@@ -69,6 +57,18 @@ MLGMagicHoodini
 Spino mastermind
 
 Ryan is still the same
+
+# Contributors
+
+AGSucho
+
+Ms.Random
+
+Totemaster
+
+Bizarre Altispinax
+
+LordofLustria
 
 ### Special Mentions To JurassiCraft
 
