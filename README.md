@@ -130,7 +130,6 @@ CarrotJet
 
 Cody
 
-
 # Contributing
 Feel free to speed up development and create pull requests. Here's a guide on how to setup your workspace.
 
