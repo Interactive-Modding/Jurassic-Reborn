@@ -48,6 +48,8 @@ Pedro Resende
 
 Just Monika 
 
+ᗰι𝓬ʰ𝐈𝐠Ữ𝓝 (Michigun)
+
 ### Bug-Testers
 
 Firewolf786YT
