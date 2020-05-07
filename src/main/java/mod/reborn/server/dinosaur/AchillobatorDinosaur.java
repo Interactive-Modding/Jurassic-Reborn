@@ -9,7 +9,6 @@ public class AchillobatorDinosaur extends Dinosaur
     public static final double SPEED = 0.3F;
     public AchillobatorDinosaur() {
         super();
-
         this.setName("Achillobator");
         this.setDinosaurType(DinosaurType.AGGRESSIVE);
         this.setDinosaurClass(AchillobatorEntity.class);
