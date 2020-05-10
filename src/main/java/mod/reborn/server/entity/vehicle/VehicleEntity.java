@@ -53,12 +53,12 @@ import java.lang.reflect.Field;
 import java.util.List;
 import java.util.function.Predicate;
 
-public abstract class CarEntity extends Entity implements MultiSeatedEntity {
-    public static final DataParameter<Byte> WATCHER_STATE = EntityDataManager.createKey(CarEntity.class, DataSerializers.BYTE);
-    public static final DataParameter<Float> WATCHER_HEALTH = EntityDataManager.createKey(CarEntity.class, DataSerializers.FLOAT);
-    public static final DataParameter<Integer> WATCHER_SPEED = EntityDataManager.createKey(CarEntity.class, DataSerializers.VARINT);
-    public static final DataParameter<ItemStack> RECORD_ITEM = EntityDataManager.createKey(CarEntity.class, DataSerializers.ITEM_STACK);
-    public static final DataParameter<NBTTagCompound> WATCHER_SEATS = EntityDataManager.createKey(CarEntity.class, DataSerializers.COMPOUND_TAG);
+public abstract class VehicleEntity extends Entity implements MultiSeatedEntity {
+    public static final DataParameter<Byte> WATCHER_STATE = EntityDataManager.createKey(VehicleEntity.class, DataSerializers.BYTE);
+    public static final DataParameter<Float> WATCHER_HEALTH = EntityDataManager.createKey(VehicleEntity.class, DataSerializers.FLOAT);
+    public static final DataParameter<Integer> WATCHER_SPEED = EntityDataManager.createKey(VehicleEntity.class, DataSerializers.VARINT);
+    public static final DataParameter<ItemStack> RECORD_ITEM = EntityDataManager.createKey(VehicleEntity.class, DataSerializers.ITEM_STACK);
+    public static final DataParameter<NBTTagCompound> WATCHER_SEATS = EntityDataManager.createKey(VehicleEntity.class, DataSerializers.COMPOUND_TAG);
 
     public static final float MAX_HEALTH = 40;
     private static final byte LEFT = 0b000001;
@@ -103,7 +103,7 @@ public abstract class CarEntity extends Entity implements MultiSeatedEntity {
             frontRightWheel);
 
     @SideOnly(Side.CLIENT)
-    public EntitySound<CarEntity> sound;
+    public EntitySound<VehicleEntity> sound;
     @SideOnly(Side.CLIENT)
     public InterpValue steerAmount;
 
@@ -121,7 +121,7 @@ public abstract class CarEntity extends Entity implements MultiSeatedEntity {
 //	public float tmpY=0;
 //	public float tmpZ=0;
 
-    public CarEntity(World world) {
+    public VehicleEntity(World world) {
         super(world);
         this.setSize(3.0F, 2.5F);
         this.stepHeight = 1.5F;
@@ -871,7 +871,7 @@ public abstract class CarEntity extends Entity implements MultiSeatedEntity {
 
     public final class Seat {
 
-        private final InterpValue interpValue = new InterpValue(CarEntity.this, 0.1D);
+        private final InterpValue interpValue = new InterpValue(VehicleEntity.this, 0.1D);
 
         private float offsetX;
         private float offsetY;
@@ -895,15 +895,15 @@ public abstract class CarEntity extends Entity implements MultiSeatedEntity {
         }
 
         public Vec3d getPos() {
-            double theta = Math.toRadians(CarEntity.this.rotationYaw);
+            double theta = Math.toRadians(VehicleEntity.this.rotationYaw);
             double sideX = Math.cos(theta);
             double sideZ = Math.sin(theta);
             double forwardTheta = theta + Math.PI / 2;
             double forwardX = Math.cos(forwardTheta);
             double forwardZ = Math.sin(forwardTheta);
-            double x = CarEntity.this.posX + sideX * this.offsetX + forwardX * this.offsetZ;
-            double y = CarEntity.this.posY + this.offsetY;
-            double z = CarEntity.this.posZ + sideZ * this.offsetX + forwardZ * this.offsetZ;
+            double x = VehicleEntity.this.posX + sideX * this.offsetX + forwardX * this.offsetZ;
+            double y = VehicleEntity.this.posY + this.offsetY;
+            double z = VehicleEntity.this.posZ + sideZ * this.offsetX + forwardZ * this.offsetZ;
             return new Vec3d(x, y, z);
         }
 

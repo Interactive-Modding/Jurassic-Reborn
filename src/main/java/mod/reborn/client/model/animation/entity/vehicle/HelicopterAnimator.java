@@ -15,8 +15,8 @@ public class HelicopterAnimator implements ITabulaModelAnimator<HelicopterEntity
         AdvancedModelRenderer rotor = model.getCube("rotorbase_rotatehere");
         AdvancedModelRenderer tailrotor = model.getCube("tailrotor_rotatehere");
 
-        rotor.rotateAngleY = (float)entity.rotAmount;
-        tailrotor.rotateAngleX = (float)entity.rotAmount;
+        rotor.rotateAngleY = (float) entity.rotAmount;
+        tailrotor.rotateAngleX = (float) entity.rotAmount;
         AdvancedModelRenderer ctrl1 = model.getCube("controlstick1");
         AdvancedModelRenderer ctrl2 = model.getCube("controlstick2");
         AdvancedModelRenderer gearL1 = model.getCube("gearL1");
@@ -27,16 +27,31 @@ public class HelicopterAnimator implements ITabulaModelAnimator<HelicopterEntity
         AdvancedModelRenderer exhaustL = model.getCube("body79");
         AdvancedModelRenderer exhaustR = model.getCube("body80");
 
-        //if (entity.isEngineRunning()) {
-         //   ctrl1.offsetY = 0.01F;
-         //   ctrl2.offsetY = -0.01F;
-       //}
-        if(entity.isFlying) {
+        // if (entity.isEngineRunning()) {
+        // ctrl1.offsetY = 0.01F;
+        // ctrl2.offsetY = -0.01F;
+        // }
+        if (entity.isFlying) {
             gearL1.offsetY = entity.gearLift;
             gearR1.offsetY = entity.gearLift;
             gearFront.offsetY = entity.gearLift;
         }
         ctrl1.rotateAngleX = (float) Math.toRadians(entity.interpRotationPitch.getValueForRendering(partialTicks) * -1F);
         ctrl1.rotateAngleZ = (float) Math.toRadians(entity.interpRotationRoll.getValueForRendering(partialTicks) * 1F);
+
+        float angleX = -15 + (entity.pitch / 25) * 15;
+        if (entity.pitch > 25) {
+            angleX = 0;
+        } else if (entity.pitch < -25) {
+            angleX = -30;
+        }
+        float angleZ = (entity.roll / 20) * 15;
+        if (entity.roll > 20) {
+            angleZ = 15;
+        } else if (entity.roll < -20) {
+            angleZ = -15;
+        }
+        ctrl1.rotateAngleX = (float) Math.toRadians(angleX);
+        ctrl1.rotateAngleZ = (float) Math.toRadians(angleZ);
     }
 }

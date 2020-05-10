@@ -248,7 +248,6 @@ public enum RenderingHandler {
 
         registerItemRenderer(TRACKER);
         registerItemRenderer(PLANT_CELLS_PETRI_DISH);
-        registerItemRenderer(HELICOPTER);
         registerItemRenderer(PLANT_CELLS);
         registerItemRenderer(GROWTH_SERUM);
         registerItemRenderer(BREEDING_WAND);
@@ -329,9 +328,6 @@ public enum RenderingHandler {
         registerItemRenderer(CAR_TIRE, "car_tire");
         registerItemRenderer(CAR_WINDSCREEN, "car_windscreen");
         registerItemRenderer(UNFINISHED_CAR, "unfinished_car");
-        registerItemRenderer(JEEP_WRANGLER, "jeep_wrangler");
-        registerItemRenderer(FORD_EXPLORER, "ford_explorer");
-
         registerItemRenderer(MURAL, "mural");
 
         for (Dinosaur dinosaur : EntityHandler.getDinosaurs().values()) {
@@ -442,6 +438,12 @@ public enum RenderingHandler {
         registerItemRenderer(BULLET, "bullet");
 
         registerItemRenderer(WEST_INDIAN_LILAC_BERRIES);
+
+        for (int x = 0; x < VehicleItem.variants.length; x++) {
+            registerItemRenderer(VEHICLE_ITEM, x, VehicleItem.variants[x]);
+            registerItemRenderer(VEHICLE_ITEM, x, VehicleItem.variants[x]);
+            registerItemRenderer(VEHICLE_ITEM, x, VehicleItem.variants[x]);
+        }
     }
 
     public void preInit() {

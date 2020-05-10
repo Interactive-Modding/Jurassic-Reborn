@@ -2,9 +2,10 @@ package mod.reborn.server.entity.vehicle;
 
 import mod.reborn.server.item.ItemHandler;
 
+import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-public class JeepWranglerEntity extends CarEntity {
+public class JeepWranglerEntity extends VehicleEntity {
     public JeepWranglerEntity(World world) {
         super(world);
         this.speedModifier = 0f;
@@ -12,9 +13,8 @@ public class JeepWranglerEntity extends CarEntity {
 
     @Override
     public void dropItems() {
-        this.dropItem(ItemHandler.JEEP_WRANGLER, 1);
+        this.entityDropItem(new ItemStack(ItemHandler.VEHICLE_ITEM, 1, 1), 0);
     }
-
     @Override
     protected Seat[] createSeats() {
         Seat frontLeft = new Seat( 0.563F, 0.45F, 0.0F, 0.5F, 0.25F);
