@@ -1,7 +1,6 @@
 package mod.reborn.server.block;
 
 import com.google.common.collect.Lists;
-import mod.reborn.server.entity.vehicle.VehicleEntity;
 import mod.reborn.server.tab.TabHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.EnumPushReaction;
@@ -24,6 +23,7 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import mod.reborn.server.block.entity.TourRailBlockEntity;
+import mod.reborn.server.entity.vehicle.CarEntity;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -879,21 +879,21 @@ public final class TourRailBlock extends Block {
     }
 
     public enum SpeedType {
-        NONE(VehicleEntity.Speed.MEDIUM, 0xa80000);
+        NONE(CarEntity.Speed.MEDIUM, 0xa80000);
         /*SLOW(CarEntity.Speed.SLOW, 0xa80000), //RED
         MEDIUM(CarEntity.Speed.MEDIUM, 0xff7600), //ORANGE
         FAST(CarEntity.Speed.FAST, 0x00a800); //GREEN*/
 
-        private final VehicleEntity.Speed speed;
+        private final CarEntity.Speed speed;
         private final int color;
 
-        SpeedType(VehicleEntity.Speed speed, int color) {
+        SpeedType(CarEntity.Speed speed, int color) {
             this.speed = speed;
             this.color = color;
         }
 
         @Nonnull
-        public VehicleEntity.Speed getSpeed(VehicleEntity.Speed defaultSpeed) {
+        public CarEntity.Speed getSpeed(CarEntity.Speed defaultSpeed) {
             return speed == null ? defaultSpeed : speed;
         }
 

@@ -135,6 +135,8 @@ public class ItemHandler {
     public static final BasicItem PLANT_CELLS = new BasicItem(TabHandler.ITEMS);
     public static final PlantCallusItem PLANT_CALLUS = new PlantCallusItem();
     public static final BasicItem PLANT_CELLS_PETRI_DISH = new BasicItem(TabHandler.ITEMS);
+    public static final HelicopterItem HELICOPTER = new HelicopterItem();
+    //public static final HelicopterModuleItem MINIGUN_MODULE = new HelicopterModuleItem("minigun");
 
     public static final BasicItem TRACKER = new BasicItem(TabHandler.ITEMS);
 
@@ -201,7 +203,8 @@ public class ItemHandler {
 
     public static final JournalItem INGEN_JOURNAL = new JournalItem();
 
-    public static final VehicleItem VEHICLE_ITEM = new VehicleItem();
+    public static final JeepWranglerItem JEEP_WRANGLER = new JeepWranglerItem();
+    public static final FordExplorerItem FORD_EXPLORER = new FordExplorerItem();
 
     public static final MuralItem MURAL = new MuralItem();
 
@@ -364,7 +367,7 @@ public class ItemHandler {
         registerItem(PLANT_FOSSIL, "Plant Fossil");
         registerItem(TWIG_FOSSIL, "Twig Fossil");
 
-
+        registerItem(HELICOPTER, "Helicopter");
 //        registerItem(MINIGUN_MODULE, "Helicopter Minigun");
 
         registerItem(PALEO_PAD, "Paleo Pad");
@@ -412,7 +415,8 @@ public class ItemHandler {
         registerItem(CAR_TIRE, "Car Tire");
         registerItem(CAR_WINDSCREEN, "Car Windscreen");
         registerItem(UNFINISHED_CAR, "Unfinished Car");
-        registerItem(VEHICLE_ITEM, "Vehicle Item");
+        registerItem(JEEP_WRANGLER, "Jeep Wrangler");
+        registerItem(FORD_EXPLORER, "Ford Explorer");
 
         registerItem(JURASSICRAFT_THEME_DISC, "Disc JurassiCraft Theme");
         registerItem(TROODONS_AND_RAPTORS_DISC, "Disc Troodons And Raptors");

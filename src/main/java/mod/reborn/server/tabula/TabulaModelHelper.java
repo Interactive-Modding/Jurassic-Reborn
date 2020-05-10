@@ -5,7 +5,6 @@ import mod.reborn.RebornMod;
 import net.ilexiconn.llibrary.client.model.tabula.container.TabulaCubeContainer;
 import net.ilexiconn.llibrary.client.model.tabula.container.TabulaCubeGroupContainer;
 import net.ilexiconn.llibrary.client.model.tabula.container.TabulaModelContainer;
-import net.minecraft.util.ResourceLocation;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -112,16 +111,5 @@ public class TabulaModelHelper {
         }
 
         throw new RuntimeException("No model.json present in " + name);
-    }
-
-    public static TabulaModelContainer loadTabulaModel(ResourceLocation location) throws IOException {
-
-        String path = "/assets/" + location.getResourceDomain() + "/" + location.getResourcePath() + ".tbl";
-        try (InputStream stream = TabulaModelHelper.class.getResourceAsStream(path)) {
-            if (stream == null) {
-                throw new IllegalArgumentException("Could not find tabula model at " + location);
-            }
-            return TabulaModelHelper.loadTabulaModel(getModelJsonStream(path, stream));
-        }
     }
 }

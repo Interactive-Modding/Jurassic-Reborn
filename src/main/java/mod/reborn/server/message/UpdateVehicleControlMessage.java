@@ -1,6 +1,6 @@
 package mod.reborn.server.message;
 
-import mod.reborn.server.entity.vehicle.VehicleEntity;
+import mod.reborn.server.entity.vehicle.CarEntity;
 
 import io.netty.buffer.ByteBuf;
 import net.ilexiconn.llibrary.server.network.AbstractMessage;
@@ -19,7 +19,7 @@ public class UpdateVehicleControlMessage extends AbstractMessage<UpdateVehicleCo
     public UpdateVehicleControlMessage()
     {}
 
-    public UpdateVehicleControlMessage(VehicleEntity entity)
+    public UpdateVehicleControlMessage(CarEntity entity)
     {
         this.entityId = entity.getEntityId();
         this.state = entity.getControlState();
@@ -35,9 +35,9 @@ public class UpdateVehicleControlMessage extends AbstractMessage<UpdateVehicleCo
     public void onServerReceived(MinecraftServer server, UpdateVehicleControlMessage message, EntityPlayer player, MessageContext context)
     {
         Entity entity = player.world.getEntityByID(message.entityId);
-        if (entity instanceof VehicleEntity)
+        if (entity instanceof CarEntity)
         {
-            VehicleEntity car = (VehicleEntity) entity;
+            CarEntity car = (CarEntity) entity;
             if (car.getControllingPassenger() == player)
             {
                 car.setControlState(message.state);

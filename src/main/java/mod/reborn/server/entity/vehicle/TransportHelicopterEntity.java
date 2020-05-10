@@ -43,7 +43,7 @@ public class TransportHelicopterEntity extends HelicopterEntity {
 
     @Override
     public void dropItems() {
-        this.entityDropItem(new ItemStack(ItemHandler.VEHICLE_ITEM, 1, 2), 0.1f);
+        this.entityDropItem(new ItemStack(ItemHandler.HELICOPTER, 1, 0), 0.1f);
     }
 
 }

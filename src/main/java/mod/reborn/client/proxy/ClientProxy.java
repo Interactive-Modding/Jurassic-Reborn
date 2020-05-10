@@ -29,10 +29,11 @@ import mod.reborn.client.sound.CarSound;
 import mod.reborn.server.entity.DinosaurEntity;
 import mod.reborn.server.entity.VenomEntity;
 import mod.reborn.server.entity.particle.VenomParticle;
-import mod.reborn.server.entity.vehicle.VehicleEntity;
+import mod.reborn.server.entity.vehicle.CarEntity;
 import mod.reborn.server.event.KeyBindingHandler;
 import mod.reborn.server.item.JournalItem;
 import mod.reborn.server.proxy.ServerProxy;
+import org.omg.CORBA.PUBLIC_MEMBER;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -64,10 +65,6 @@ public class ClientProxy extends ServerProxy {
         RenderingHandler.INSTANCE.preInit();
         ModelLoaderRegistry.registerLoader(RebornTabulaModelHandler.INSTANCE);
         RebornTabulaModelHandler.INSTANCE.addDomain(RebornMod.MODID);
-    }
-
-    public static void playHelicopterSound(VehicleEntity entity) {
-        MC.getSoundHandler().playSound(new CarSound(entity));
     }
 
     @Override
@@ -183,7 +180,7 @@ public class ClientProxy extends ServerProxy {
         MC.displayGuiScreen(new JournalGui(type));
     }
 
-    public static void playCarSound(VehicleEntity entity) {
+    public static void playCarSound(CarEntity entity) {
         MC.getSoundHandler().playSound(new CarSound(entity));
     }
 

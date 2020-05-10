@@ -2,9 +2,6 @@ package mod.reborn.client.event;
 
 import mod.reborn.RebornMod;
 import mod.reborn.client.proxy.ClientProxy;
-import mod.reborn.server.entity.DinosaurEntity;
-import mod.reborn.server.entity.vehicle.HelicopterEntity;
-import mod.reborn.server.entity.vehicle.VehicleEntity;
 import mod.reborn.server.entity.vehicle.MultiSeatedEntity;
 import mod.reborn.server.item.DartGun;
 import mod.reborn.server.item.ItemHandler;
@@ -13,38 +10,24 @@ import mod.reborn.server.message.AttemptMoveToSeatMessage;
 import net.ilexiconn.llibrary.LLibrary;
 import net.ilexiconn.llibrary.client.util.ClientUtils;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.ScaledResolution;
-import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.*;
-import net.minecraft.client.renderer.culling.Frustum;
-import net.minecraft.client.renderer.entity.Render;
-import net.minecraft.client.renderer.entity.RenderLivingBase;
 import net.minecraft.client.renderer.entity.RenderPlayer;
-import net.minecraft.client.renderer.entity.layers.LayerCustomHead;
-import net.minecraft.client.renderer.entity.layers.LayerRenderer;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.launchwrapper.Launch;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.GuiScreenEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderPlayerEvent;
-import net.minecraftforge.client.event.RenderWorldLastEvent;
-import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import org.lwjgl.opengl.GL11;
-
-import java.util.List;
-import java.util.Map;
 
 public class ClientEventHandler {
     private static final Minecraft MC = Minecraft.getMinecraft();
@@ -52,7 +35,7 @@ public class ClientEventHandler {
     private static final ResourceLocation TESTERS_BADGE = new ResourceLocation(RebornMod.MODID, "textures/items/testers.png");
 
     private boolean isGUI;
-    public static boolean replacedPlayerModel;
+
     @SubscribeEvent
     public void tick(TickEvent.ClientTickEvent event) {
         RebornMod.timerTicks++;
@@ -63,50 +46,6 @@ public class ClientEventHandler {
         this.isGUI = true;
     }
 
-    @SuppressWarnings("rawtypes")
-    @SubscribeEvent
-    public static void onRenderPlayer(RenderPlayerEvent.Pre event)
-    {
-        if(!replacedPlayerModel)
-        {
-            Render render = Minecraft.getMinecraft().getRenderManager().getEntityClassRenderObject(AbstractClientPlayer.class);
-            Map<String, RenderPlayer> skinMap = render.getRenderManager().getSkinMap();
-            fixPlayerRenderers(skinMap.get("default"), false);
-            fixPlayerRenderers(skinMap.get("slim"), true);
-            //skinMap.forEach((key, value) -> patchPlayerRender(key, value.));
-            replacedPlayerModel = true;
-        }
-    }
-
-    @SubscribeEvent
-    public static void onPlayerModelRender(ModelPlayerRenderEvent.Render.Pre event)
-    {
-        EntityPlayer player = event.getEntityPlayer();
-        Entity entity = player.getRidingEntity();
-        if(entity instanceof HelicopterEntity)
-        {
-            HelicopterEntity vehicle = (HelicopterEntity) entity;
-            vehicle.doPlayerRotations(player, event.getPartialTicks());
-        }
-    }
-
-    private static void fixPlayerRenderers(RenderPlayer player, boolean slimArms)
-    {
-        ModelBiped model = new CustomModelPlayer(0.0F, slimArms);
-        List<LayerRenderer<EntityLivingBase>> layers = ObfuscationReflectionHelper.getPrivateValue(RenderLivingBase.class, player, (Boolean) Launch.blackboard.get("fml.deobfuscatedEnvironment") ? "layerRenderers" : "field_177097_h");
-        if(layers != null)
-        {
-            for(int i = 0; i < layers.size(); i++) {
-                LayerRenderer<EntityLivingBase> layer = layers.get(i);
-                if(layer instanceof LayerCustomHead)
-                    layers.remove(layer);
-            }
-            layers.add(new LayerCustomHead(model.bipedHead));
-        }
-
-        ObfuscationReflectionHelper.setPrivateValue(RenderLivingBase.class, player, model, (Boolean) Launch.blackboard.get("fml.deobfuscatedEnvironment") ? "mainModel" : "field_77045_g");
-    }
-
     @SubscribeEvent
     public void onRenderTick(TickEvent.RenderTickEvent event) {
         if (event.phase == TickEvent.Phase.START) {
@@ -114,11 +53,11 @@ public class ClientEventHandler {
         }
     }
 
-
     @SubscribeEvent
     public void onGameOverlay(RenderGameOverlayEvent.Post event) {
         Minecraft mc = Minecraft.getMinecraft();
         EntityPlayer player = mc.player;
+
         for(EnumHand hand : EnumHand.values()) {
             ItemStack stack = player.getHeldItem(hand);
             if(stack.getItem() == ItemHandler.DART_GUN) {
@@ -285,30 +224,6 @@ public class ClientEventHandler {
 
             if (this.isGUI) {
                 OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, OpenGlHelper.lastBrightnessX, OpenGlHelper.lastBrightnessY);
-            }
-        }
-    }
-    @SubscribeEvent
-    public static void onRenderWorldLast(final RenderWorldLastEvent event) {
-
-        if (!Minecraft.isGuiEnabled())
-            return;
-
-        final Entity cameraEntity = ClientProxy.MC.getRenderViewEntity();
-        Frustum frustrum = new Frustum();
-        final double viewX = cameraEntity.lastTickPosX + (cameraEntity.posX - cameraEntity.lastTickPosX) * event.getPartialTicks();
-        final double viewY = cameraEntity.lastTickPosY + (cameraEntity.posY - cameraEntity.lastTickPosY) * event.getPartialTicks();
-        final double viewZ = cameraEntity.lastTickPosZ + (cameraEntity.posZ - cameraEntity.lastTickPosZ) * event.getPartialTicks();
-        frustrum.setPosition(viewX, viewY, viewZ);
-
-        final List<Entity> loadedEntities = ClientProxy.MC.world.getLoadedEntityList();
-        for (final Entity entity : loadedEntities) {
-            if (entity != null && entity instanceof DinosaurEntity) {
-                if (entity.isInRangeToRender3d(cameraEntity.getPosition().getX(), cameraEntity.getPosition().getY(), cameraEntity.getPosition().getZ()) && (frustrum.isBoundingBoxInFrustum(entity.getRenderBoundingBox().grow(0.5D))) && entity.isEntityAlive()) {
-                    ((DinosaurEntity) entity).isRendered = true;
-                } else {
-                    ((DinosaurEntity) entity).isRendered = false;
-                }
             }
         }
     }

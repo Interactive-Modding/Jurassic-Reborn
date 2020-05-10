@@ -30,7 +30,7 @@ import javax.vecmath.Vector4d;
 import java.util.Arrays;
 import java.util.List;
 
-public class FordExplorerEntity extends VehicleEntity {
+public class FordExplorerEntity extends CarEntity {
 
     public static final BlockPos INACTIVE = new BlockPos(-1, -1, -1);
 
@@ -55,7 +55,7 @@ public class FordExplorerEntity extends VehicleEntity {
 
     @Override
     public void dropItems() {
-        this.entityDropItem(new ItemStack(ItemHandler.VEHICLE_ITEM, 1, 0), 0);
+        this.entityDropItem(new ItemStack(ItemHandler.FORD_EXPLORER, 1, 0), 0);
     }
 
     @Override

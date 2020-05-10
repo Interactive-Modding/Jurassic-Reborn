@@ -6,7 +6,7 @@ import java.util.List;
 import net.minecraftforge.fml.common.Mod;
 import org.apache.commons.lang3.tuple.Pair;
 import mod.reborn.RebornMod;
-import mod.reborn.server.entity.vehicle.VehicleEntity;
+import mod.reborn.server.entity.vehicle.CarEntity;
 import mod.reborn.server.entity.vehicle.util.WheelParticleData;
 import org.lwjgl.opengl.GL11;
 
@@ -66,8 +66,8 @@ public class TyretrackRenderer {
         List<Pair<Long, Runnable>> runList = Lists.newArrayList();
         buffer.begin(7, DefaultVertexFormats.POSITION_TEX_COLOR);
         for(Entity entity : Lists.reverse(Lists.newArrayList(world.loadedEntityList))) {
-            if(entity instanceof VehicleEntity) {
-            VehicleEntity car = (VehicleEntity)entity;
+            if(entity instanceof CarEntity) {
+            CarEntity car = (CarEntity)entity;
                 for(List<WheelParticleData> list : car.wheelDataList) {
                     renderList(list, buffer, event.getPartialTicks(), runList);
                 }
@@ -166,7 +166,7 @@ public class TyretrackRenderer {
 	emptyLists.forEach(DEAD_CARS_LISTS::remove);
     }
     
-    public static void uploadList(VehicleEntity entity) {
+    public static void uploadList(CarEntity entity) {
 	if(entity.world.isRemote) {
 	    for(List<WheelParticleData> list : entity.wheelDataList) {
 		DEAD_CARS_LISTS.add(0, list);
