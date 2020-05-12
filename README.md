@@ -16,8 +16,6 @@ And much more!
 
 Last_Dovahkiin
 
-Collinvht
-
 ### Modelers / Sound Designers / Textures /  Concept Artists
 
 Boom
@@ -54,15 +52,13 @@ Just Monika
 
 Firewolf786YT
 
-SJ_Code Gaming
-
-MLGMagicHoodini
-
 Spino mastermind
 
 Ryan is still the same
 
 # Contributors
+
+Collinvht
 
 AGSucho
 
