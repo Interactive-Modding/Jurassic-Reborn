@@ -1,0 +1,109 @@
+{
+  "version": 0,
+  "poses": {
+    "IDLE": [
+      {
+        "pose": mawsonia_adult_idle_1",
+        "time": 20
+      },
+	  {
+	  "pose": mawsonia_adult_idle_2",
+        "time": 20
+	  }
+    ],
+    "DYING": [
+      {
+        "pose": "mawsonia_adult_death",
+        "time": 10
+      }
+    ],
+    "INJURED": [
+      {
+        "pose": "mawsonia_adult_injured",
+        "time": 10
+      },
+      {
+        "pose": "mawsonia_adult_injured",
+        "time": 10
+      },
+      {
+        "pose": "mawsonia_adult_idle_1",
+        "time": 10
+      }
+    ],
+    "ATTACKING": [
+      {
+        "pose": "mawsonia_adult_eating_1",
+        "time": 5
+      },
+      {
+        "pose": "mawsonia_adult_eating_2",
+        "time": 2
+      },
+      {
+        "pose": "mawsonia_adult_idle_1",
+        "time": 5
+      }
+    ],
+    "EATING": [
+      {
+        "pose": "mawsonia_adult_eating_1",
+        "time": 10
+      },
+      {
+        "pose": "pose": "mawsonia_adult_eating_2",
+        "time": 10
+      },
+      {
+        "pose": "mawsonia_adult_idle_1",
+        "time": 10
+      }
+    ],
+    "ON_LAND": [
+      {
+        "pose": "mawsonia_adult_onland_1",
+        "time": 40
+      },
+      {
+        "pose": "mawsonia_adult_onland_2",
+        "time": 40
+      }
+    ],
+    "SWIMMING": [
+      {
+        "pose": "mawsonia_adult_swimming_1",
+        "time": 6
+      },
+      {
+        "pose": "mawsonia_adult_swimming_2",
+        "time": 6
+      },
+      {
+        "pose": "mawsonia_adult_swimming_3",
+        "time": 6
+      },
+      {
+        "pose": "mawsonia_adult_swimming_4",
+        "time": 6
+      }
+    ],
+    "GIVING_BIRTH": [
+      {
+        "pose": "mawsonia_adult__giving_birth_1",
+        "time": 10
+      },
+      {
+        "pose": "mawsonia_adult_giving_birth_2",
+        "time": 10
+      },
+      {
+        "pose": "mawsonia_adult_giving_birth_3",
+        "time": 10
+      },
+      {
+        "pose": "mawsonia_adult_idle_1",
+        "time": 10
+      }
+    ]
+  }
+}
