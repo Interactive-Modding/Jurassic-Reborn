@@ -87,6 +87,56 @@
         "time": 3
       }
     ],
+    "FISH_LOOKING": [
+      {
+        "pose": "baryonyx_adult_fishing_1",
+        "time": 15
+      },
+      {
+        "pose": "baryonyx_adult_fishing_2",
+        "time": 10
+      },
+      {
+        "pose": "baryonyx_adult_fishing_3",
+        "time": 10
+      },
+      {
+        "pose": "baryonyx_adult_fishing_4",
+        "time": 15
+      },
+      {
+        "pose": "baryonyx_adult_fishing_5",
+        "time": 10
+      },
+      {
+        "pose": "baryonyx_adult_fishing_6",
+        "time": 15
+      },
+      {
+        "pose": "baryonyx_adult_fishing_7",
+        "time": 20
+      },
+      {
+        "pose": "baryonyx_adult_fishing_8",
+        "time": 20
+      },
+      {
+        "pose": "baryonyx_adult_fishing_9",
+        "time": 10
+      },
+      {
+        "pose": "baryonyx_adult_fishing_10",
+        "time": 10
+      },
+      {
+        "pose": "baryonyx_adult_fishing_11",
+        "time": 10
+      },
+      {
+        "pose": "baryonyx_adult_fishing_12",
+        "time": 25
+      }
+    ],
     "SWIMMING": [
       {
         "pose": "baryonyx_adult_swimming_1",
