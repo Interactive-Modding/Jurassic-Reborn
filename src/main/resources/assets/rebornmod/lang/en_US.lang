@@ -88,6 +88,7 @@ entity.rebornmod.styracosaurus.name=Styracosaurus
 entity.rebornmod.suchomimus.name=Suchomimus
 entity.rebornmod.quetzalcoatlus.name=Quetzalcoatlus
 entity.rebornmod.coelurus.name=Coelurus
+entity.rebornmod.mawsonia.name=Mawsonia
 entity.rebornmod.crab.name=Crab
 entity.rebornmod.shark.name=Shark
 
@@ -741,7 +742,7 @@ info.edmontosaurus.name=This hadrosaurid inhabited North America(more specifical
 info.giganotosaurus.name= Giganotosauruswas a highly dangerous animal, this hefty predator most likely to have specialized in hunting large sauropods. Giganotosaurus does best in flat, fairly open plains, with large watering holes and patches of trees for ambush spots. Giganotosaurus females are heftier and more aggressive than the males, and are actually the ones to display to and compete for their affections. 
 info.guanlong.name=Guanlong was a 3 meter long and weighed up to 54-90 kg Theropod that lived in China during the late Jurassic period around 160 million years ago. It had an air filled crest on it’s head which gave it its nickname (crown dragon). The Guanlong is the earliest known tyrannosaurid dinosaur. It also had 3 long fingers on each of his hands. The Guanlong may have been discovered with a coat of primitive feathers, although there is no evidence for this.
 info.hypsilophodon.name=Hypsilophodon was a small ornithischia that lived in the early cretaceous 125 million years ago. It lived in what’s now Egland, Spain and all parts of the United Kingdom. The average length was 2.3 meters, and could weight up to 50kg. This animal would have been a more passive as it was a herbivore. But with it’s small size it would be easy prey to the predators of their time. Hypsilophodon most likely lived in large groups to help keep an eye out for danger.
-info.indominus.name=Violently aggressive, fearsomely strong and frighteningly cunning, this genetically modified hybrid is a mighty force to be reckoned with. At full size it can reach 15 metres in length, and only the largest theropods may pose a challenge to it.Indominus rex's genome is composed of many different dinosaurs and other animals, including (but probably not limited to):Tyrannosaurus rex, Velociraptor, Carnotaurus, Majungasaurus, Rugops, Giganotosaurus, Therizinosaurus.
+info.indominus.name=Violently aggressive, fearsomely strong and frighteningly cunning, this genetically modified hybrid is a mighty force to be reckoned with. At full size it can reach 15 metres in length, and only the largest theropods may pose a challenge to it. Indominus rex's genome is composed of many different dinosaurs and other animals, including:Tyrannosaurus rex, Velociraptor, Carnotaurus, Majungasaurus, Rugops, Giganotosaurus, Therizinosaurus.
 
 info.herrerasaurus.name= One of the most primitive theropod dinosaurs known, Herrerasaurus ischigualastensis lived in northwestern Argentina during the Late Triassic, around 231.4 million years ago. This early dinosaur measured between 3 and 6 metres long, and was most likely a predator. It stalked the lush floodplains and conifer forests of its time, hunting small to medium-sized prey such as rhynchosaurs, mammal-like reptiles and smaller early dinosaurs. 
 
