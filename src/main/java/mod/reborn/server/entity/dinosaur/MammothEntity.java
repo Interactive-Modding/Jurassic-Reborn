@@ -25,6 +25,7 @@ public class MammothEntity extends DinosaurEntity {
     public MammothEntity(World world) {
         super(world);
         this.setVariant(this.getRNG().nextInt(5));
+        this.target(AchillobatorEntity.class, AlvarezsaurusEntity.class);
     }
 
     public void entityInit() {

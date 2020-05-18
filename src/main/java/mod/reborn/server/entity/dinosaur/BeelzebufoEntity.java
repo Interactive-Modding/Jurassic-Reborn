@@ -20,6 +20,7 @@ public class BeelzebufoEntity extends SwimmingDinosaurEntity{
 
     public BeelzebufoEntity(World world) {
         super(world);
+        this.target(AlvarezsaurusEntity.class, CompsognathusEntity.class, LeptictidiumEntity.class, OthnieliaEntity.class, MicroraptorEntity.class, MussaurusEntity.class, GuanlongEntity.class, GallimimusEntity.class);
         this.tasks.addTask(0, new LeapingMeleeEntityAI(this, getAIMoveSpeed()));
         this.tasks.addTask(0, new DinosaurWanderEntityAI(this, getAIMoveSpeed(), 10, RebornConfig.ENTITIES.dinosaurWalkingRadius));
     }

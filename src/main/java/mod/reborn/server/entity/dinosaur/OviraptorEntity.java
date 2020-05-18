@@ -8,7 +8,7 @@ public class OviraptorEntity extends DinosaurEntity
     public OviraptorEntity(World world)
     {
         super(world);
-        this.target(LeptictidiumEntity.class, HypsilophodonEntity.class, MicroraptorEntity.class, MicroceratusEntity.class, CompsognathusEntity.class);
+        this.target(CompsognathusEntity.class, LeptictidiumEntity.class, OthnieliaEntity.class);
         doesEatEggs(true);
     }
 }

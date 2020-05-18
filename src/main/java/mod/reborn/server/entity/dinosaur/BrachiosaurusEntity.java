@@ -10,7 +10,8 @@ import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 
 public class BrachiosaurusEntity extends DinosaurEntity {
-    private int stepCount = 0;
+    
+	private int stepCount = 0;
 
     public LegSolverQuadruped legSolver;
 

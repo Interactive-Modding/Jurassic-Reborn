@@ -13,6 +13,7 @@ public class CompsognathusEntity extends DinosaurEntity
     {
         super(world);
         this.doesEatEggs(true);
+        this.target(DodoEntity.class, OthnieliaEntity.class, MicroceratusEntity.class, MicroraptorEntity.class, CrassigyrinusEntity.class, LeptictidiumEntity.class);
         this.tasks.addTask(1, new LeapingMeleeEntityAI(this, this.dinosaur.getAttackSpeed()));
         this.tasks.addTask(0, new CompyHurtByTarget());
     }
