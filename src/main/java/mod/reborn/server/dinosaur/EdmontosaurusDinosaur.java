@@ -18,7 +18,7 @@ public class EdmontosaurusDinosaur extends Dinosaur
         this.setTimePeriod(TimePeriod.CRETACEOUS);
         this.setEggColorMale(0xB97840, 0x644329);
         this.setEggColorFemale(0x8F8039, 0x615A30);
-        this.setHealth(10, 40);
+        this.setHealth(10, 60);
         this.setStrength(5, 20);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setMaximumAge(fromDays(50));

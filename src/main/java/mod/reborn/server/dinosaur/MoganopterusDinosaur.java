@@ -18,7 +18,7 @@ public class MoganopterusDinosaur extends Dinosaur
         this.setTimePeriod(TimePeriod.CRETACEOUS);
         this.setEggColorMale(0xE6E2D8, 0xD67F5C);
         this.setEggColorFemale(0xE0DED3, 0xD37B58);
-        this.setHealth(1, 10);
+        this.setHealth(4, 20);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(1, 5);
         this.setMaximumAge(fromDays(40));

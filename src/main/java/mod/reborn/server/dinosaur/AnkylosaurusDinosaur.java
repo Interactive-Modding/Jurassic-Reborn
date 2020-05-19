@@ -18,7 +18,7 @@ public class AnkylosaurusDinosaur extends Dinosaur
         this.setEggColorFemale(0x554E45, 0x3F3935);
         this.setHealth(20, 120);
         this.setSpeed((SPEED -0.05), SPEED);
-        this.setStrength(5, 10);
+        this.setStrength(15, 40);
         this.setMaximumAge(fromDays(50));
         this.setEyeHeight(0.4F, 2.0F);
         this.setSizeX(0.8F, 3.0F);

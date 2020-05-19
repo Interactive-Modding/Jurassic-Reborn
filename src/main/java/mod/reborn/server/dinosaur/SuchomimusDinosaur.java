@@ -15,10 +15,10 @@ public class SuchomimusDinosaur extends Dinosaur {
         this.setTimePeriod(TimePeriod.CRETACEOUS);
         this.setEggColorMale(0xCCB674, 0x4A5966);
         this.setEggColorFemale(0xB3BB6D, 0x45676B);
-        this.setHealth(10, 40);
+        this.setHealth(10, 80);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStorage(27);
-        this.setStrength(1, 20);
+        this.setStrength(5, 30);
         this.setMaximumAge(fromDays(45));
         this.setEyeHeight(0.45F, 1.6F);
         this.setSizeX(0.5F, 1.8F);

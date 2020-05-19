@@ -14,7 +14,7 @@ public class CarcharodontosaurusDinosaur extends Dinosaur {
         this.setTimePeriod(TimePeriod.CRETACEOUS);
         this.setEggColorMale(0x96431A, 0x28211C);
         this.setEggColorFemale(0x6D5A48, 0x27201B);
-        this.setHealth(10, 40);
+        this.setHealth(10, 70);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStorage(27);
         this.setStrength(1, 20);

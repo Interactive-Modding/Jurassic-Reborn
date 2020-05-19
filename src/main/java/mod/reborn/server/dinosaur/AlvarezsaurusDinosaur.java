@@ -14,7 +14,7 @@ public class AlvarezsaurusDinosaur extends Dinosaur {
         this.setTimePeriod(TimePeriod.CRETACEOUS);
         this.setEggColorMale(0xC1946C, 0xE39B48);
         this.setEggColorFemale(0xBD8D62, 0xACACAC);
-        this.setHealth(3, 10);
+        this.setHealth(4, 10);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(25, 200);
         this.setMaximumAge(fromDays(40));

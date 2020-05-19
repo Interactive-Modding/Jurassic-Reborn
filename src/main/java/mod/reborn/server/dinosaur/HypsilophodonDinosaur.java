@@ -18,7 +18,7 @@ public class HypsilophodonDinosaur extends Dinosaur
         this.setTimePeriod(TimePeriod.CRETACEOUS);
         this.setEggColorMale(0x7DAC78, 0x3E6226);
         this.setEggColorFemale(0x799073, 0x33432F);
-        this.setHealth(3, 10);
+        this.setHealth(5, 15);
         this.setSpeed((SPEED -0.10), SPEED);
         this.setStrength(1, 5);
         this.setMaximumAge(fromDays(35));

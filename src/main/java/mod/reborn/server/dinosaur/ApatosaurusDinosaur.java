@@ -17,7 +17,7 @@ public class ApatosaurusDinosaur extends Dinosaur
         this.setTimePeriod(TimePeriod.JURASSIC);
         this.setEggColorMale(0xA79F93, 0x987664);
         this.setEggColorFemale(0x7E7D70, 0x30343E);
-        this.setHealth(10, 60);
+        this.setHealth(10, 80);
         this.setStrength(5, 20);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setMaximumAge(fromDays(80));

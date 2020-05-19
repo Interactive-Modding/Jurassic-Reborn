@@ -16,7 +16,7 @@ public class CeratosaurusDinosaur extends Dinosaur {
         this.setTimePeriod(TimePeriod.JURASSIC);
         this.setEggColorMale(0xAB9573, 0xB05453);
         this.setEggColorFemale(0xB4B793, 0x764A30);
-        this.setHealth(10, 40);
+        this.setHealth(10, 30);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStorage(27);
         this.setStrength(1, 20);

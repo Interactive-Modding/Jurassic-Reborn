@@ -18,7 +18,7 @@ public class ChasmosaurusDinosaur extends Dinosaur
         this.setTimePeriod(TimePeriod.CRETACEOUS);
         this.setEggColorMale(0xB6B293, 0x85563E);
         this.setEggColorFemale(0xB9B597, 0x323232);
-        this.setHealth(20, 40);
+        this.setHealth(10, 40);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(5, 15);
         this.setMaximumAge(fromDays(40));

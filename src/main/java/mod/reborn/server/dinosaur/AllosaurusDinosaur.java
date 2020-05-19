@@ -15,7 +15,7 @@ public class AllosaurusDinosaur extends Dinosaur {
         this.setTimePeriod(TimePeriod.JURASSIC);
         this.setEggColorMale(0x31472B, 0xC9C6B9);
         this.setEggColorFemale(0x532D2D, 0xC4A58C);
-        this.setHealth(10, 40);
+        this.setHealth(10, 50);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setAttackSpeed(1.1);
         this.setStorage(27);

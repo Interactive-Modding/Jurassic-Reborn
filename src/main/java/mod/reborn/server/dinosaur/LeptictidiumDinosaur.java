@@ -18,7 +18,7 @@ public class LeptictidiumDinosaur extends Dinosaur
         this.setTimePeriod(TimePeriod.PALEOGENE); // TODO EOCENE
         this.setEggColorMale(0x362410, 0x978A78);
         this.setEggColorFemale(0xAFA27E, 0x3E2D17);
-        this.setHealth(8, 18);
+        this.setHealth(5, 15);
         this.setStrength(6, 36);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setMaximumAge(fromDays(25));

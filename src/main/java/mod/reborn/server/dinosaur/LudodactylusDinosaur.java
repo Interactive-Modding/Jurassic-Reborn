@@ -18,7 +18,7 @@ public class LudodactylusDinosaur extends Dinosaur
         this.setTimePeriod(TimePeriod.CRETACEOUS);
         this.setEggColorMale(0x565656, 0x1D1E20);
         this.setEggColorFemale(0x884D3E, 0x35302B);
-        this.setHealth(5, 15);
+        this.setHealth(5, 25);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(3, 10);
         this.setMaximumAge(fromDays(40));

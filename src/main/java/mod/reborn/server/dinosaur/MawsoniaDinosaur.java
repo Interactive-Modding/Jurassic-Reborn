@@ -20,13 +20,12 @@ public class MawsoniaDinosaur extends Dinosaur {
         super();
 
         this.setName("Mawsonia");
-        this.setDinosaurType(DinosaurType.SCARED);
         this.setDinosaurClass(MawsoniaEntity.class);
-        this.setDinosaurType(DinosaurType.PASSIVE);
+        this.setDinosaurType(DinosaurType.AGGRESSIVE);
         this.setTimePeriod(TimePeriod.CRETACEOUS);
         this.setEggColorMale(0x707B94, 0x3B4963);
         this.setEggColorFemale(0x7C775E, 0x4D4A3B);
-        this.setHealth(3, 10);
+        this.setHealth(6, 40);
         this.setFlee(true);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setAttackSpeed(1.5);
@@ -36,11 +35,11 @@ public class MawsoniaDinosaur extends Dinosaur {
         this.setSizeX(0.1F, 1.0F);
         this.setSizeY(0.1F, 1.0F);
         this.setStorage(9);
-        this.setDiet((Diet.CARNIVORE.get()));
+        this.setDiet((Diet.PCARNIVORE.get()));
         this.setSleepTime(SleepTime.NO_SLEEP);
         this.setBirthType(BirthType.LIVE_BIRTH);
         this.setBones("anal_fin", "caudal_fin", "first_dorsal_fin", "pectoral_fin_bones", "pelvic_fin_bones", "second_dorsal_fin", "skull", "spine", "teeth");
-        this.setHeadCubeName("Head");
+        this.setHeadCubeName("Main head");
         this.setScale(1.8F, 0.22F);
         this.setMaxHerdSize(1);
         this.setOffset(0.0F, 1.1F, -0.2F);

@@ -23,7 +23,7 @@ public class TriceratopsDinosaur extends Dinosaur {
         this.setSpeed((SPEED -0.05), SPEED);
         this.setAttackSpeed(1.3);
         this.setHealth(10, 70);
-        this.setStrength(2, 10);
+        this.setStrength(5, 20);
         this.setMaximumAge(this.fromDays(45));
         this.setEyeHeight(0.45F, 1.8F);
         this.setSizeX(0.35F, 2.5F);

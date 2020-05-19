@@ -18,9 +18,9 @@ public class TherizinosaurusDinosaur extends Dinosaur
         this.setTimePeriod(TimePeriod.CRETACEOUS);
         this.setEggColorMale(0x787878, 0x2B2B2B);
         this.setEggColorFemale(0x7F7F7F, 0x272727);
-        this.setHealth(10, 40);
+        this.setHealth(10, 50);
         this.setSpeed((SPEED -0.05), SPEED);
-        this.setStrength(20, 35);
+        this.setStrength(10, 35);
         this.setMaximumAge(fromDays(65));
         this.setEyeHeight(0.95F, 5.85F);
         this.setSizeX(0.65F, 2.25F);

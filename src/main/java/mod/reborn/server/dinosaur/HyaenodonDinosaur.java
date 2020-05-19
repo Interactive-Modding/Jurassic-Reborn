@@ -10,7 +10,7 @@ public class HyaenodonDinosaur extends Dinosaur {
         super();
 
         this.setName("Hyaenodon");
-        this.setDinosaurType(DinosaurType.NEUTRAL);
+        this.setDinosaurType(DinosaurType.AGGRESSIVE);
         this.setDinosaurClass(HyaenodonEntity.class);
         this.setTimePeriod(TimePeriod.PALEOGENE);
         this.setEggColorMale(0xA3A3A3, 0x191919);
