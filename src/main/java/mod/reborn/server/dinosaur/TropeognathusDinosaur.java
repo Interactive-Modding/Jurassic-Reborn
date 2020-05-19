@@ -18,7 +18,7 @@ public class TropeognathusDinosaur extends Dinosaur
         this.setTimePeriod(TimePeriod.CRETACEOUS);
         this.setEggColorMale(0x4E646B, 0x483141);
         this.setEggColorFemale(0x5C6C71, 0x4D3E4D);
-        this.setHealth(10, 20);
+        this.setHealth(10, 25);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(5, 20);
         this.setMaximumAge(fromDays(50));
