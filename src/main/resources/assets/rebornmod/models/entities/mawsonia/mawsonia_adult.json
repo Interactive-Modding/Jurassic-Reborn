@@ -16,11 +16,7 @@
     "INJURED": [
       {
         "pose": "mawsonia_adult_injured",
-        "time": 10
-      },
-      {
-        "pose": "mawsonia_adult_injured",
-        "time": 10
+        "time": 20
       },
       {
         "pose": "mawsonia_adult_idle",
@@ -43,7 +39,7 @@
     ],
     "EATING": [
       {
-        "pose": "mawsonia_adult_eating_1",
+        "pose":"mawsonia_adult_eating_1",
         "time": 10
       },
       {

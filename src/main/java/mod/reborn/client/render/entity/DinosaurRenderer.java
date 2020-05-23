@@ -54,6 +54,9 @@ public class DinosaurRenderer extends RenderLiving<DinosaurEntity> {
             case "Gegy":
                 GlStateManager.scale(scale, 0.01F, scale);
                 break;
+            case "Destruction":
+                GlStateManager.scale(scale * 1.5, scale * 1.5, scale * 1.5);
+                break;
             case "Notch":
                 GlStateManager.scale(scale * 2, scale * 2, scale * 2);
                 break;
