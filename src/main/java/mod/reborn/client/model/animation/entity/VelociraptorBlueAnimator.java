@@ -54,18 +54,18 @@ public class VelociraptorBlueAnimator extends EntityAnimator<VelociraptorBlueEnt
         parModel.bob(waist, globalSpeed * 0.5F, globalDegree * 1.0F, false, f, f1);
         parModel.bob(rightThigh, globalSpeed * 0.5F, globalDegree * 1.0F, false, f, f1);
         parModel.bob(leftThigh, globalSpeed * 0.5F, globalDegree * 1.0F, false, f, f1);
-        parModel.walk(shoulders, 1F * globalSpeed, 0.2F, true, 1, 0, f, f1);
-        parModel.walk(chest, 1F * globalSpeed,  0.2F, false, 0.5F, 0, f, f1);
+        //parModel.walk(shoulders, 1F * globalSpeed, 0.2F, true, 1, 0, f, f1);
+      //  parModel.walk(chest, 1F * globalSpeed,  0.2F, false, 0.5F, 0, f, f1);
 
-        parModel.walk(leftThigh, 0.5F * globalSpeed, 0.7F, false, 3.14F, 0.2F, f, f1);
-        parModel.walk(leftShin, 0.5F * globalSpeed, 0.6F, false, 1.5F, 0.3F, f, f1);
-        parModel.walk(leftUpperFoot, 0.5F * globalSpeed, 0.8F, false, -1F, -0.1F, f, f1);
-        parModel.walk(leftFoot, 0.5F * globalSpeed, 1.5F, true, -1F, 1F, f, f1);
+      //  parModel.walk(leftThigh, 0.5F * globalSpeed, 0.7F, false, 3.14F, 0.2F, f, f1);
+      //  parModel.walk(leftShin, 0.5F * globalSpeed, 0.6F, false, 1.5F, 0.3F, f, f1);
+     //   parModel.walk(leftUpperFoot, 0.5F * globalSpeed, 0.8F, false, -1F, -0.1F, f, f1);
+      //  parModel.walk(leftFoot, 0.5F * globalSpeed, 1.5F, true, -1F, 1F, f, f1);
 
-        parModel.walk(rightThigh, 0.5F * globalSpeed, 0.7F, true, 3.14F, 0.2F, f, f1);
-        parModel.walk(rightShin, 0.5F * globalSpeed, 0.6F, true, 1.5F, 0.3F, f, f1);
-        parModel.walk(rightUpperFoot, 0.5F * globalSpeed, 0.8F, true, -1F, -0.1F, f, f1);
-        parModel.walk(rightFoot, 0.5F * globalSpeed, 1.5F, false, -1F, 1F, f, f1);
+      //  parModel.walk(rightThigh, 0.5F * globalSpeed, 0.7F, true, 3.14F, 0.2F, f, f1);
+      //  parModel.walk(rightShin, 0.5F * globalSpeed, 0.6F, true, 1.5F, 0.3F, f, f1);
+      //  parModel.walk(rightUpperFoot, 0.5F * globalSpeed, 0.8F, true, -1F, -0.1F, f, f1);
+      //  parModel.walk(rightFoot, 0.5F * globalSpeed, 1.5F, false, -1F, 1F, f, f1);
 
         parModel.chainWave(tailParts, globalSpeed * 0.5F, globalDegree * 0.05F, 1, f, f1);
         parModel.chainSwing(tailParts, globalSpeed * 0.5F, globalDegree * 0.1F, 2, f, f1);

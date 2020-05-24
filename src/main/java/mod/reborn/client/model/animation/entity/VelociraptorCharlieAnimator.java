@@ -57,18 +57,18 @@ public class VelociraptorCharlieAnimator extends EntityAnimator<VelociraptorChar
         model.bob(waist, globalSpeed * 0.5F, globalDegree * 1.0F, false, limbSwing, limbSwingAmount);
         model.bob(rightThigh, globalSpeed * 0.5F, globalDegree * 1.0F, false, limbSwing, limbSwingAmount);
         model.bob(leftThigh, globalSpeed * 0.5F, globalDegree * 1.0F, false, limbSwing, limbSwingAmount);
-        model.walk(shoulders, 1F * globalSpeed, 0.2F, true, 1, 0, limbSwing, limbSwingAmount);
-        model.walk(chest, 1F * globalSpeed, 0.2F, false, 0.5F, 0, limbSwing, limbSwingAmount);
+   //     model.walk(shoulders, 1F * globalSpeed, 0.2F, true, 1, 0, limbSwing, limbSwingAmount);
+    //    model.walk(chest, 1F * globalSpeed, 0.2F, false, 0.5F, 0, limbSwing, limbSwingAmount);
 
-        model.walk(leftThigh, 0.5F * globalSpeed, 0.7F, false, 3.14F, 0.2F, limbSwing, limbSwingAmount);
-        model.walk(leftShin, 0.5F * globalSpeed, 0.6F, false, 1.5F, 0.3F, limbSwing, limbSwingAmount);
-        model.walk(leftUpperFoot, 0.5F * globalSpeed, 0.8F, false, -1F, -0.1F, limbSwing, limbSwingAmount);
-        model.walk(leftFoot, 0.5F * globalSpeed, 1.5F, true, -1F, 1F, limbSwing, limbSwingAmount);
+    //    model.walk(leftThigh, 0.5F * globalSpeed, 0.7F, false, 3.14F, 0.2F, limbSwing, limbSwingAmount);
+    //    model.walk(leftShin, 0.5F * globalSpeed, 0.6F, false, 1.5F, 0.3F, limbSwing, limbSwingAmount);
+    //    model.walk(leftUpperFoot, 0.5F * globalSpeed, 0.8F, false, -1F, -0.1F, limbSwing, limbSwingAmount);
+   //     model.walk(leftFoot, 0.5F * globalSpeed, 1.5F, true, -1F, 1F, limbSwing, limbSwingAmount);
 
-        model.walk(rightThigh, 0.5F * globalSpeed, 0.7F, true, 3.14F, 0.2F, limbSwing, limbSwingAmount);
-        model.walk(rightShin, 0.5F * globalSpeed, 0.6F, true, 1.5F, 0.3F, limbSwing, limbSwingAmount);
-        model.walk(rightUpperFoot, 0.5F * globalSpeed, 0.8F, true, -1F, -0.1F, limbSwing, limbSwingAmount);
-        model.walk(rightFoot, 0.5F * globalSpeed, 1.5F, false, -1F, 1F, limbSwing, limbSwingAmount);
+    //    model.walk(rightThigh, 0.5F * globalSpeed, 0.7F, true, 3.14F, 0.2F, limbSwing, limbSwingAmount);
+    //    model.walk(rightShin, 0.5F * globalSpeed, 0.6F, true, 1.5F, 0.3F, limbSwing, limbSwingAmount);
+    //    model.walk(rightUpperFoot, 0.5F * globalSpeed, 0.8F, true, -1F, -0.1F, limbSwing, limbSwingAmount);
+   //     model.walk(rightFoot, 0.5F * globalSpeed, 1.5F, false, -1F, 1F, limbSwing, limbSwingAmount);
 
         model.chainWave(tailParts, globalSpeed * 0.5F, globalDegree * 0.05F, 1, limbSwing, limbSwingAmount);
         model.chainSwing(tailParts, globalSpeed * 0.5F, globalDegree * 0.1F, 2, limbSwing, limbSwingAmount);

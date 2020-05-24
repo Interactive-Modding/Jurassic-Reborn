@@ -28,7 +28,7 @@ public class ChilesaurusDinosaur extends Dinosaur {
         this.setHeadCubeName("Head");
         this.setScale(1.0F, 0.2F);
         this.setBreeding(false, 2, 6, 20, false, true);
-        this.setJumpHeight(3);
+        this.setJumpHeight(2);
         this.setImprintable(true);
         this.setStorage(8);
         this.shouldDefendOffspring();
