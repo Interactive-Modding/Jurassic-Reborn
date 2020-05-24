@@ -33,6 +33,7 @@ public class CompsognathusDinosaur extends Dinosaur
         this.setScale(0.1F, 0.04F);
         this.setOffset(0.0F, -12.0F, -0.8F);
         this.setBreeding(false, 0, 8, 20, false, true);
+        this.setJumpHeight(2);
         this.setCanClimb(true);
         this.setImprintable(true);
     }
