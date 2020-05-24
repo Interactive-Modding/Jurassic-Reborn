@@ -101,8 +101,11 @@ public class RebornConfig { //TODO: move all structures to same parent package
     public static class Vehicles {
         @Config.Name("Enable Tour Rail Blocks")
         public boolean tourRailBlockEnabled = true;
+        @Config.Name("Helocopter Can Destroy Blocks")
         public boolean destroyBlocks = false;
-        public boolean helicopterZoomout = true;
+        @Config.Name("Helcopter Zoomout")
+        @Config.Comment("NOT WORKING AT THE MOMENT, BREAKS OPTIFINE")
+        public boolean helicopterZoomout = false;
     }
     @SubscribeEvent
     public static void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent event) {
