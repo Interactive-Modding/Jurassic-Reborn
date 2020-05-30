@@ -26,7 +26,7 @@ public class ChilesaurusDinosaur extends Dinosaur {
         this.setDiet(Diet.HERBIVORE.get());
         this.setBones("skull", "arm_bones", "leg_bones", "neck_vertebrae", "pelvis", "ribcage", "shoulder", "tail_vertebrae", "tooth");
         this.setHeadCubeName("Head");
-        this.setScale(1.0F, 0.2F);
+        this.setScale(0.60F, 0.2F);
         this.setBreeding(false, 2, 6, 20, false, true);
         this.setJumpHeight(2);
         this.setImprintable(true);
