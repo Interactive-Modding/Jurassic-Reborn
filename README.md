@@ -44,8 +44,6 @@ Fluffy Taco // JR_2202
 
 Pedro Resende
 
-Michigun
-
 Just Monika 
 
 ᗰι𝓬ʰ𝐈𝐠Ữ𝓝 (Michigun)
