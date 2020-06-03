@@ -71,24 +71,8 @@
     ],
     "CALLING": [
       {
-        "pose": "giganotosaurus_adult_calling_1",
-        "time": 10
-      },
-      {
-        "pose": "giganotosaurus_adult_calling_2",
-        "time": 10
-      },
-      {
-        "pose": "giganotosaurus_adult_calling_3",
-        "time": 10
-      },
-      {
-        "pose": "giganotosaurus_adult_calling_4",
-        "time": 10
-      },
-      {
-        "pose": "giganotosaurus_adult_callin_5",
-        "time": 10
+        "pose": "giganotosaurus_adult_calling",
+        "time": 20
       },
       {
         "pose": "giganotosaurus_adult_idle",
