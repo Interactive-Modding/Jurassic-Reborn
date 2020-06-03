@@ -86,11 +86,37 @@
     "WALKING": [
       {
         "pose": "guanlong_adult_walking_1",
-        "time": 10
+        "time": 4
       },
       {
         "pose": "guanlong_adult_walking_2",
-        "time": 10
+        "time": 4
+      },
+      {
+        "pose": "guanlong_adult_walking_3",
+        "time": 4
+      },
+      {
+        "pose": "guanlong_adult_walking_4",
+        "time": 4
+      }
+   ],
+    "RUNNING": [
+      {
+        "pose": "guanlong_adult_running_1",
+        "time": 4
+      },
+      {
+        "pose": "guanlong_adult_running_2",
+        "time": 4
+      },
+      {
+        "pose": "guanlong_adult_running_3",
+        "time": 4
+      },
+      {
+        "pose": "guanlong_adult_running_4",
+        "time": 4
       }
     ]
   }
