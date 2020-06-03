@@ -24,11 +24,11 @@
     "CALLING": [
       {
         "pose": "guanlong_adult_calling_1",
-        "time": 10
+        "time": 15
       },
       {
         "pose": "guanlong_adult_calling_2",
-        "time": 10
+        "time": 20
       }
     ],
     "DRINKING": [
