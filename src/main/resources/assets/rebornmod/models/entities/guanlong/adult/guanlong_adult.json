@@ -24,11 +24,11 @@
     "CALLING": [
       {
         "pose": "guanlong_adult_calling_1",
-        "time": 10
+        "time": 15
       },
       {
         "pose": "guanlong_adult_calling_2",
-        "time": 10
+        "time": 20
       }
     ],
     "DRINKING": [
@@ -83,14 +83,82 @@
         "time": 20
       }
     ],
-    "WALKING": [
+    "RESTING": [
       {
-        "pose": "guanlong_adult_walking_1",
+        "pose": "guanlong_adult_resting",
+        "time": 10
+      }
+    ],
+    "LOOKING_LEFT": [
+      {
+        "pose": "guanlong _adult_look_start",
         "time": 10
       },
       {
-        "pose": "guanlong_adult_walking_2",
+        "pose": "guanlong _adult_look_left",
         "time": 10
+      },
+      {
+        "pose": "guanlong _adult_look_left",
+        "time": 20
+      },
+      {
+        "pose": "guanlong _adult_idle",
+        "time": 10
+      }
+    ],
+    "LOOKING_RIGHT": [
+      {
+        "pose": "guanlong _adult_look_start",
+        "time": 10
+      },
+      {
+        "pose": "guanlong _adult_look_right",
+        "time": 10
+      },
+      {
+        "pose": "guanlong _adult_look_right",
+        "time": 20
+      },
+      {
+        "pose": "guanlong _adult_idle",
+        "time": 10
+      }
+    ],
+    "WALKING": [
+      {
+        "pose": "guanlong_adult_walking_1",
+        "time": 4
+      },
+      {
+        "pose": "guanlong_adult_walking_2",
+        "time": 4
+      },
+      {
+        "pose": "guanlong_adult_walking_3",
+        "time": 4
+      },
+      {
+        "pose": "guanlong_adult_walking_4",
+        "time": 4
+      }
+   ],
+    "RUNNING": [
+      {
+        "pose": "guanlong_adult_running_1",
+        "time": 4
+      },
+      {
+        "pose": "guanlong_adult_running_2",
+        "time": 4
+      },
+      {
+        "pose": "guanlong_adult_running_3",
+        "time": 4
+      },
+      {
+        "pose": "guanlong_adult_running_4",
+        "time": 4
       }
     ]
   }
