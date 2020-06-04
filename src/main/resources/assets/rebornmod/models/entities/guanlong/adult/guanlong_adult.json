@@ -20,6 +20,20 @@
         "pose": "guanlong_adult_attacking_3",
         "time": 7
       }
+   ],
+    "SPEAK": [
+      {
+        "pose": "guanlong_adult_speak",
+        "time": 5
+      },
+      {
+        "pose": "guanlong_adult_speak",
+        "time": 20
+      },
+      {
+        "pose": "guanlong_adult_idle",
+        "time": 5
+      }
     ],
     "CALLING": [
       {
@@ -91,37 +105,37 @@
     ],
     "LOOKING_LEFT": [
       {
-        "pose": "guanlong _adult_look_start",
+        "pose": "guanlong_adult_look_start",
         "time": 10
       },
       {
-        "pose": "guanlong _adult_look_left",
+        "pose": "guanlong_adult_look_left",
         "time": 10
       },
       {
-        "pose": "guanlong _adult_look_left",
+        "pose": "guanlong_adult_look_left",
         "time": 20
       },
       {
-        "pose": "guanlong _adult_idle",
+        "pose": "guanlong_adult_idle",
         "time": 10
       }
     ],
     "LOOKING_RIGHT": [
       {
-        "pose": "guanlong _adult_look_start",
+        "pose": "guanlong_adult_look_start",
         "time": 10
       },
       {
-        "pose": "guanlong _adult_look_right",
+        "pose": "guanlong_adult_look_right",
         "time": 10
       },
       {
-        "pose": "guanlong _adult_look_right",
+        "pose": "guanlong_adult_look_right",
         "time": 20
       },
       {
-        "pose": "guanlong _adult_idle",
+        "pose": "guanlong_adult_idle",
         "time": 10
       }
     ],

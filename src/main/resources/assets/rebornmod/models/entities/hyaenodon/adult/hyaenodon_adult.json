@@ -48,11 +48,73 @@
         "pose": "hyaenodon_adult_eating_3",
         "time": 7
       }
+   ],
+    "LOOKING_LEFT": [
+      {
+        "pose": "hyaenodon_adult_look_start",
+        "time": 10
+      },
+      {
+        "pose": "hyaenodon_adult_look_left",
+        "time": 10
+      },
+      {
+        "pose": "hyaenodon_adult_look_left",
+        "time": 20
+      },
+      {
+        "pose": "hyaenodon_adult_idle",
+        "time": 10
+      }
+    ],
+    "LOOKING_RIGHT": [
+      {
+        "pose": "hyaenodon_adult_look_start",
+        "time": 10
+      },
+      {
+        "pose": "hyaenodon_adult_look_right",
+        "time": 10
+      },
+      {
+        "pose": "hyaenodon_adult_look_right",
+        "time": 20
+      },
+      {
+        "pose": "hyaenodon_adult_idle",
+        "time": 10
+      }
+    ],
+    "SPEAK": [
+      {
+        "pose": "hyaenodon_adult_speak",
+        "time": 5
+      },
+      {
+        "pose": "hyaenodon_adult_speak",
+        "time": 20
+      },
+      {
+        "pose": "hyaenodon_adult_idle",
+        "time": 5
+      }
+    ],
+    "INJURED": [
+      {
+        "pose": "hyaenodon_adult_injured",
+        "time": 20
+      }
     ],
     "GIVING_BIRTH": [
       {
         "pose": "hyaenodon_adult_giving_birth",
         "time": 20
+      }
+   ],
+    "RESTING": [
+      {
+        "pose": "hyaenodon_adult_resting",
+        "time": 10
       }
     ],
     "ROARING": [
@@ -67,6 +129,24 @@
       {
         "pose": "hyaenodon_adult_roaring_3",
         "time": 7
+      }
+   ],
+    "ATTACKING": [
+      {
+        "pose": "hyaenodon_adult_attack_1",
+        "time": 4
+      },
+      {
+        "pose": "hyaenodon_adult_attack_2",
+        "time": 4
+      },
+      {
+        "pose": "hyaenodon_adult_attack_3",
+        "time": 4
+      },
+      {
+        "pose": "hyaenodon_adult_idle",
+        "time": 10
       }
     ],
     "SLEEPING": [
