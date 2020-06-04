@@ -20,6 +20,20 @@
         "pose": "guanlong_adult_attacking_3",
         "time": 7
       }
+   ],
+    "SPEAK": [
+      {
+        "pose": "guanlong_adult_speak",
+        "time": 5
+      },
+      {
+        "pose": "guanlong_adult_speak",
+        "time": 20
+      },
+      {
+        "pose": "guanlong_adult_idle",
+        "time": 5
+      }
     ],
     "CALLING": [
       {
