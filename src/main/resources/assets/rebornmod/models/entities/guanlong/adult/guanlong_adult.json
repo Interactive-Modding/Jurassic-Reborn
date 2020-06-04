@@ -83,6 +83,48 @@
         "time": 20
       }
     ],
+    "RESTING": [
+      {
+        "pose": "guanlong_adult_resting",
+        "time": 10
+      }
+    ],
+    "LOOKING_LEFT": [
+      {
+        "pose": "guanlong _adult_look_start",
+        "time": 10
+      },
+      {
+        "pose": "guanlong _adult_look_left",
+        "time": 10
+      },
+      {
+        "pose": "guanlong _adult_look_left",
+        "time": 20
+      },
+      {
+        "pose": "guanlong _adult_idle",
+        "time": 10
+      }
+    ],
+    "LOOKING_RIGHT": [
+      {
+        "pose": "guanlong _adult_look_start",
+        "time": 10
+      },
+      {
+        "pose": "guanlong _adult_look_right",
+        "time": 10
+      },
+      {
+        "pose": "guanlong _adult_look_right",
+        "time": 20
+      },
+      {
+        "pose": "guanlong _adult_idle",
+        "time": 10
+      }
+    ],
     "WALKING": [
       {
         "pose": "guanlong_adult_walking_1",
