@@ -74,30 +74,30 @@ public class IndominusAnimator extends EntityAnimator<IndominusEntity>
         model.bob(leftThigh, globalSpeed * 1F, globalHeight * 1.0F, false, f, f1);
         model.bob(rightThigh, globalSpeed * 1F, globalHeight * 1.0F, false, f, f1);
 
-        model.chainWave(body, globalSpeed * 1F, globalHeight * 0.05F, 3, f, f1);
-        model.chainWave(tail, globalSpeed * 1F, -globalHeight * 0.05F, 2, f, f1);
-        model.chainSwing(tail, globalSpeed * 0.5F, globalHeight * 0.025F, 2, f, f1);
+  //      model.chainWave(body, globalSpeed * 1F, globalHeight * 0.05F, 3, f, f1);
+  //      model.chainWave(tail, globalSpeed * 1F, -globalHeight * 0.05F, 2, f, f1);
+  //      model.chainSwing(tail, globalSpeed * 0.5F, globalHeight * 0.025F, 2, f, f1);
 
-        model.walk(leftThigh, 0.5F * globalSpeed, 0.8F * globalDegree, false, 0F, 0.4F, f, f1);
-        model.walk(leftCalf1, 0.5F * globalSpeed, 1F * globalDegree, true, 1F, 0.1F, f, f1);
-        model.walk(leftCalf2, 0.5F * globalSpeed, 1F * globalDegree, false, 0F, 0F, f, f1);
-        model.walk(leftFoot, 0.5F * globalSpeed, 1.5F * globalDegree, true, 0.5F, 0.1F, f, f1);
+   //     model.walk(leftThigh, 0.5F * globalSpeed, 0.8F * globalDegree, false, 0F, 0.4F, f, f1);
+    //    model.walk(leftCalf1, 0.5F * globalSpeed, 1F * globalDegree, true, 1F, 0.1F, f, f1);
+    //    model.walk(leftCalf2, 0.5F * globalSpeed, 1F * globalDegree, false, 0F, 0F, f, f1);
+    //    model.walk(leftFoot, 0.5F * globalSpeed, 1.5F * globalDegree, true, 0.5F, 0.1F, f, f1);
 
-        model.walk(rightThigh, 0.5F * globalSpeed, 0.8F * globalDegree, true, 0F, 0.4F, f, f1);
-        model.walk(rightCalf1, 0.5F * globalSpeed, 1F * globalDegree, false, 1F, 0.1F, f, f1);
-        model.walk(rightCalf2, 0.5F * globalSpeed, 1F * globalDegree, true, 0F, 0F, f, f1);
-        model.walk(rightFoot, 0.5F * globalSpeed, 1.5F * globalDegree, false, 0.5F, 0.1F, f, f1);
+    //    model.walk(rightThigh, 0.5F * globalSpeed, 0.8F * globalDegree, true, 0F, 0.4F, f, f1);
+    //    model.walk(rightCalf1, 0.5F * globalSpeed, 1F * globalDegree, false, 1F, 0.1F, f, f1);
+    //    model.walk(rightCalf2, 0.5F * globalSpeed, 1F * globalDegree, true, 0F, 0F, f, f1);
+    //    model.walk(rightFoot, 0.5F * globalSpeed, 1.5F * globalDegree, false, 0.5F, 0.1F, f, f1);
 
-        leftThigh.rotationPointY += 2 * f1 * Math.cos(f * 0.5F * globalSpeed);
-        rightThigh.rotationPointY -= 2 * f1 * Math.cos(f * 0.5F * globalSpeed);
+    //    leftThigh.rotationPointY += 2 * f1 * Math.cos(f * 0.5F * globalSpeed);
+    //    rightThigh.rotationPointY -= 2 * f1 * Math.cos(f * 0.5F * globalSpeed);
 
-        model.chainWave(armRight, globalSpeed * 1F, globalHeight * 0.2F, 3, f, f1);
-        model.chainWave(armLeft, globalSpeed * 1F, globalHeight * 0.2F, 3, f, f1);
+    //    model.chainWave(armRight, globalSpeed * 1F, globalHeight * 0.2F, 3, f, f1);
+    //    model.chainWave(armLeft, globalSpeed * 1F, globalHeight * 0.2F, 3, f, f1);
 
-        model.chainWave(tail, 0.1F, -0.025F, 2, ticks, 0.25F);
-        model.chainWave(body, 0.1F, 0.03F, 5, ticks, 0.25F);
-        model.chainWave(armRight, -0.1F, 0.1F, 4, ticks, 0.25F);
-        model.chainWave(armLeft, -0.1F, 0.1F, 4, ticks, 0.25F);
+     //   model.chainWave(tail, 0.1F, -0.025F, 2, ticks, 0.25F);
+    //    model.chainWave(body, 0.1F, 0.03F, 5, ticks, 0.25F);
+    //    model.chainWave(armRight, -0.1F, 0.1F, 4, ticks, 0.25F);
+    //    model.chainWave(armLeft, -0.1F, 0.1F, 4, ticks, 0.25F);
 
         entity.tailBuffer.applyChainSwingBuffer(tail);
     }

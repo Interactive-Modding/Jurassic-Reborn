@@ -176,6 +176,28 @@
         "pose": "hyaenodon_adult_walking_5",
         "time": 4
       }
+    ],
+    "RUNNING": [
+      {
+        "pose": "hyaenodon_adult_running_1",
+        "time": 3
+      },
+      {
+        "pose": "hyaenodon_adult_running_2",
+        "time": 3
+      },
+      {
+        "pose": "hyaenodon_adult_running_3",
+        "time": 3
+      },
+      {
+        "pose": "hyaenodon_adult_running_4",
+        "time": 3
+      },
+      {
+        "pose": "hyaenodon_adult_running_5",
+        "time": 3
+      }
     ]
   }
 }
