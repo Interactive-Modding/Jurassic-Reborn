@@ -36,6 +36,24 @@
         "pose": "herrerasaurus_adult_walking_4",
         "time": 5
       }
+   ],
+    "RUNNING": [
+      {
+        "pose": "herrerasaurus_adult_running_1",
+        "time": 5
+      },
+      {
+        "pose": "herrerasaurus_adult_running_2",
+        "time": 5
+      },
+      {
+        "pose": "herrerasaurus_adult_running_3",
+        "time": 5
+      },
+      {
+        "pose": "herrerasaurus_adult_running_4",
+        "time": 5
+      }
     ],
     "SWIMMING": [
       {

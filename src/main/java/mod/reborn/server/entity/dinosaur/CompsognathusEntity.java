@@ -40,11 +40,11 @@ public class CompsognathusEntity extends DinosaurEntity
             }
         }}
 
-    protected void setEntityAttackTarget(DinosaurEntity creatureIn, EntityLivingBase entityLivingBaseIn) {
-        if (creatureIn instanceof CompsognathusEntity && !creatureIn.isChild()) {
-            super.setEntityAttackTarget(creatureIn, entityLivingBaseIn);
-        }
+        protected void setEntityAttackTarget(DinosaurEntity creatureIn, EntityLivingBase entityLivingBaseIn) {
+            if (creatureIn instanceof CompsognathusEntity && !creatureIn.isChild() && creatureIn != null) {
+                super.setEntityAttackTarget(creatureIn, entityLivingBaseIn);
+            }
 
-    }
+        }
 }}
 
