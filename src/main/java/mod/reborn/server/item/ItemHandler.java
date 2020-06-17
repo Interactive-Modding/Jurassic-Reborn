@@ -186,6 +186,10 @@ public class ItemHandler {
     public static final BasicFoodItem CHILEAN_SEA_BASS = new BasicFoodItem(10, 1.0F, false, TabHandler.FOODS);
     public static final BasicFoodItem FUN_FRIES = new BasicFoodItem(4, 2.0F, false, TabHandler.FOODS);
     public static final BasicFoodItem OILED_POTATO_STRIPS = new BasicFoodItem(1, 0.0F, false, TabHandler.FOODS);
+    public static final BasicFoodItem SHARK_MEAT_RAW = new BasicFoodItem(5, 0.6F, false, TabHandler.FOODS);
+    public static final BasicFoodItem SHARK_MEAT_COOKED = new BasicFoodItem(10, 1.2F, false, TabHandler.FOODS);
+    public static final BasicFoodItem CRAB_MEAT_RAW = new BasicFoodItem(1, 0.3F, false, TabHandler.FOODS);
+    public static final BasicFoodItem CRAB_MEAT_COOKED = new BasicFoodItem(5, 0.6F, false, TabHandler.FOODS);
 
     public static final FieldGuideItem FIELD_GUIDE = new FieldGuideItem();
 
@@ -395,6 +399,10 @@ public class ItemHandler {
         registerItem(LIQUID_AGAR, "Liquid Agar");
 
         registerItem(CHILEAN_SEA_BASS, "Chilean Sea Bass");
+	registerItem(CRAB_MEAT_RAW, "Raw Crab Meat");
+        registerItem(CRAB_MEAT_COOKED, "Cooked Crab Meat");
+        registerItem(SHARK_MEAT_RAW, "Raw Shark Meat");
+        registerItem(SHARK_MEAT_COOKED, "Cooked Shark Meat");
         registerItem(PHOENIX_FRUIT, "Phoenix Fruit");
         registerItem(PHOENIX_SEEDS, "Phoenix Seeds");
 
