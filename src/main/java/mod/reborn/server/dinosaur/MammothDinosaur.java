@@ -26,7 +26,7 @@ public class MammothDinosaur extends Dinosaur {
         this.setDiet(Diet.HERBIVORE.get());
         this.setBones("skull", "tooth");
         this.setHeadCubeName("Head");
-        this.setScale(1.0F, 0.15F);
+        this.setScale(1.5F, 0.30F);
         this.setMammal(true);
         this.setBirthType(BirthType.LIVE_BIRTH);
         this.shouldDefendOffspring();
