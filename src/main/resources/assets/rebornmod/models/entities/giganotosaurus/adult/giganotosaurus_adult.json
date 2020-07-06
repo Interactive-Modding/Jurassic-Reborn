@@ -18,6 +18,24 @@
         "pose": "giganotosaurus_adult_resting",
         "time": 20
       }
+   ],
+    "SNIFFING": [
+      {
+        "pose": "giganotosaurus_adult_sniffing_1",
+        "time": 15
+      },
+      {
+        "pose": "giganotosaurus_adult_sniffing_2",
+        "time": 15
+      },
+      {
+        "pose": "giganotosaurus_adult_sniffing_3",
+        "time": 15
+      },
+      {
+        "pose": "giganotosaurus_adult_sniffing_4",
+        "time": 15
+      }
     ],
     "WALKING": [
       {
