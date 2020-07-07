@@ -8,6 +8,7 @@ import mod.reborn.server.api.Animatable;
 import mod.reborn.server.entity.GrowthStage;
 import mod.reborn.server.entity.ai.SmartBodyHelper;
 import mod.reborn.server.entity.animal.ai.MoveUnderwaterEntityAI;
+import mod.reborn.server.item.ItemHandler;
 import net.ilexiconn.llibrary.client.model.tools.ChainBuffer;
 import net.ilexiconn.llibrary.server.animation.Animation;
 import net.ilexiconn.llibrary.server.animation.AnimationHandler;
@@ -63,6 +64,11 @@ public class EntityShark extends EntityMob implements Animatable, IEntityAdditio
         this.tasks.addTask(1, new MoveUnderwaterEntityAI(this));
         this.tasks.addTask(1, new SharkAIHunt());
         this.applyEntityAI();
+    }
+
+    @Override
+    protected void dropFewItems(boolean wasRecentlyHit, int lootingModifier) {
+        this.dropItem(this.isBurning() ? ItemHandler.SHARK_COOKED : ItemHandler.SHARK_RAW, this.rand.nextInt(2) + 1);
     }
 
     @Override

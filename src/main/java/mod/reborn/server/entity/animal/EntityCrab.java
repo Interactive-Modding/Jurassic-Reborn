@@ -9,6 +9,7 @@ import mod.reborn.server.entity.GrowthStage;
 import mod.reborn.server.entity.ai.*;
 import mod.reborn.server.entity.animal.ai.EntityAIFindWater;
 import mod.reborn.server.entity.animal.ai.EntityAIWanderNearWater;
+import mod.reborn.server.item.ItemHandler;
 import net.ilexiconn.llibrary.server.animation.Animation;
 import net.ilexiconn.llibrary.server.animation.AnimationHandler;
 import net.minecraft.entity.*;
@@ -69,6 +70,10 @@ public class EntityCrab extends EntityAnimal implements Animatable, IEntityAddit
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.25);
     }
 
+    @Override
+    protected void dropFewItems(boolean wasRecentlyHit, int lootingModifier) {
+        this.dropItem(this.isBurning() ? ItemHandler.CRAB_COOKED : ItemHandler.CRAB_RAW, this.rand.nextInt(2) + 1);
+    }
     @Override
     protected void entityInit() {
         super.entityInit();

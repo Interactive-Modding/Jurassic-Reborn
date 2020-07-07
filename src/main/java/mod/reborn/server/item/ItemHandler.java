@@ -283,6 +283,10 @@ public class ItemHandler {
 
     public static final BasicFoodItem GOAT_RAW = new BasicFoodItem(3, 0.3F, true, TabHandler.FOODS);
     public static final BasicFoodItem GOAT_COOKED = new BasicFoodItem(6, 1.0F, true, TabHandler.FOODS);
+    public static final BasicFoodItem SHARK_RAW= new BasicFoodItem(4, 0.5F, true, TabHandler.FOODS);
+    public static final BasicFoodItem SHARK_COOKED = new BasicFoodItem(8, 1.1F, true, TabHandler.FOODS);
+    public static final BasicFoodItem CRAB_RAW = new BasicFoodItem(2, 0.2F, true, TabHandler.FOODS);
+    public static final BasicFoodItem CRAB_COOKED = new BasicFoodItem(4, 0.8F, true, TabHandler.FOODS);
     
     public static final DartGun DART_GUN = new DartGun();
     public static final Dart DART_TRANQUILIZER = new Dart((entity, stack) -> entity.tranquilize(2000), 0xFFFFFF);
@@ -399,7 +403,7 @@ public class ItemHandler {
         registerItem(LIQUID_AGAR, "Liquid Agar");
 
         registerItem(CHILEAN_SEA_BASS, "Chilean Sea Bass");
-	registerItem(CRAB_MEAT_RAW, "Raw Crab Meat");
+	    registerItem(CRAB_MEAT_RAW, "Raw Crab Meat");
         registerItem(CRAB_MEAT_COOKED, "Cooked Crab Meat");
         registerItem(SHARK_MEAT_RAW, "Raw Shark Meat");
         registerItem(SHARK_MEAT_COOKED, "Cooked Shark Meat");

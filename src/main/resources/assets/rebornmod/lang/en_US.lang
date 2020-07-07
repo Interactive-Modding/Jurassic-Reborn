@@ -2,7 +2,7 @@
 itemGroup.rebornmod.items=Reborn Items
 itemGroup.rebornmod.blocks=Reborn Blocks
 itemGroup.rebornmod.dna=Reborn DNA
-itemGroup.rebornmod.foods=Reborn Foodstuffs
+itemGroup.rebornmod.foods=Reborn Food
 itemGroup.rebornmod.plants=Reborn Plants
 itemGroup.rebornmod.fossils=Reborn Fossils
 itemGroup.rebornmod.decorations=Reborn Park Decorations
@@ -177,6 +177,10 @@ item.perisphinctes_beak_fresh.name=Fresh {dino} Beak
 item.shell_cover_fresh.name=Fresh {dino} Shell Cover
 item.scales_fresh.name=Fresh {dino} Scales
 item.tail_fin_fresh.name=Fresh {dino} Tail Fin
+item.cooked_crab_meat.name= Cooked Crab Meat
+item.cooked_shark_meat.name= Cooked Shark Meat
+item.raw_crab_meat.name= Raw Crab Meat
+item.raw_shark_meat.name= Raw Shark Meat
 
 // Bones
 item.bones.name={dino} Bones
