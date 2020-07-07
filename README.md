@@ -36,8 +36,6 @@ TheJurassicAlien
 
 Tornado
 
-MidNight // Derpy Steven
-
 Neicke
 
 Bastion16
