@@ -6,6 +6,12 @@
         "pose": "mammoth_adult_idle",
         "time": 20
       }
+    ],
+    "SLEEPING": [
+      {
+        "pose": "mammoth_adult_sleeping",
+        "time": 20
+      }
     ]
   }
 }

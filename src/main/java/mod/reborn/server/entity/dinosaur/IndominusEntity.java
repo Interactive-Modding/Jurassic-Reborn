@@ -33,7 +33,7 @@ public class IndominusEntity extends DinosaurEntity
     public IndominusEntity(World world)
     {
         super(world);
-        this.target(EntityLivingBase.class);
+        this.target(EntityLivingBase.class, EntityPlayer.class);
     }
 
     @Override
