@@ -48,6 +48,7 @@ public abstract class HelicopterEntity  extends VehicleEntity {
     protected MutableVec3 direction;
     private final int MAX_MOVEMENT_ROTATION = 15;
     private boolean shouldFallDamage;
+    public double previousRotAmount = 0D;
     public double rotAmount = 0D;
     private Vec3d prevInAirPos;
     private float damageAmount;
@@ -405,6 +406,7 @@ public abstract class HelicopterEntity  extends VehicleEntity {
                     this.gearLift = 0f;
                 }
             }
+            this.previousRotAmount = this.rotAmount;
             this.rotAmount += this.getCurrentEngineSpeed() * 0.00666666666 / 2d;
 
             if (this.getCurrentEngineSpeed() >= 1 && !this.isRotorAreaFree()) {

@@ -1,5 +1,6 @@
 package mod.reborn.client.model.animation.entity.vehicle;
 
+import mod.reborn.server.entity.ai.util.MathUtils;
 import net.ilexiconn.llibrary.client.model.tabula.ITabulaModelAnimator;
 import net.ilexiconn.llibrary.client.model.tabula.TabulaModel;
 import net.ilexiconn.llibrary.client.model.tools.AdvancedModelRenderer;
@@ -15,8 +16,7 @@ public class HelicopterAnimator implements ITabulaModelAnimator<HelicopterEntity
         AdvancedModelRenderer rotor = model.getCube("rotorbase_rotatehere");
         AdvancedModelRenderer tailrotor = model.getCube("tailrotor_rotatehere");
 
-        rotor.rotateAngleY = (float) entity.rotAmount;
-        tailrotor.rotateAngleX = (float) entity.rotAmount;
+        tailrotor.rotateAngleX  = rotor.rotateAngleY = (float) (entity.previousRotAmount + (entity.rotAmount - entity.previousRotAmount) * partialTicks);
         AdvancedModelRenderer ctrl1 = model.getCube("controlstick1");
         AdvancedModelRenderer ctrl2 = model.getCube("controlstick2");
         AdvancedModelRenderer gearL1 = model.getCube("gearL1");
