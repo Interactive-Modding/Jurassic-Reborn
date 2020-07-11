@@ -33,14 +33,13 @@ public class HelicopterEntityNew extends EntityLivingBase {
     public static final float REQUIRED_POWER = MAX_POWER / 2.0F;
     private static final DataParameter<Boolean> DATA_WATCHER_ENGINE_RUNNING = EntityDataManager.createKey(HelicopterEntityNew.class, DataSerializers.BOOLEAN);
     private final Seat[] seats;
-    private boolean syncModules;
+    public float rotAmount;
     //    private UUID heliID;
     private boolean engineRunning;
     private float enginePower;
     private float engineMovement;
     private double hoverMovement;
     private MutableVec3 direction;
-    private boolean modulesSynced;
     private float rotationDelta;
 
     public final InterpValue rotorRotationAmount = new InterpValue(this, 0.1D);
@@ -62,7 +61,6 @@ public class HelicopterEntityNew extends EntityLivingBase {
         }
 
         this.direction = new MutableVec3(0, 0, 0);
-        this.syncModules = true;
     }
 
     /**
@@ -177,7 +175,7 @@ public class HelicopterEntityNew extends EntityLivingBase {
         if (this.engineRunning) {
             this.enginePower+= 1f;
         } else {
-            if(this.engineMovement != 1 && this.onGround) {
+            if((controller == null || this.engineMovement == -1) && this.motionY == 0) {
                 this.enginePower-= 0.3f;
             }
             if (this.enginePower < 0f) {
@@ -197,11 +195,11 @@ public class HelicopterEntityNew extends EntityLivingBase {
             }
 
             if(this.engineMovement == -1) {
-                this.motionY += this.hoverMovement = my * (this.enginePower / MAX_POWER) * 0.1;
+                this.hoverMovement = this.motionY += my * (this.enginePower / MAX_POWER) * 0.75;
             } else if(this.engineMovement == 0) {
-                this.motionY += (this.hoverMovement *= 0.95);
+                this.motionY = (this.hoverMovement *= 0.95);
             } else {
-                this.motionY += this.hoverMovement = my * (this.enginePower / MAX_POWER);
+                this.hoverMovement = this.motionY += my * (this.enginePower / MAX_POWER);
             }
             this.motionX += localDir.xCoord * this.interpSpeed.getCurrent() * 0.005;
             this.motionZ += localDir.zCoord * this.interpSpeed.getCurrent() * 0.005;
@@ -435,9 +433,6 @@ public class HelicopterEntityNew extends EntityLivingBase {
         this.direction.set(direction);
     }
 
-    public boolean shouldSyncModules() {
-        return this.syncModules;
-    }
 
 //    public HelicopterSeatEntity getSeat(int index) {
 //        if (index < 0 || index >= this.seats.length) {

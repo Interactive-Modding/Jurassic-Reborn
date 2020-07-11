@@ -7,15 +7,14 @@ import net.ilexiconn.llibrary.client.model.tools.AdvancedModelRenderer;
 
 public class HelicopterNewAnimator implements ITabulaModelAnimator<HelicopterEntityNew> {
 
-    double rotAmount = 0D;
 
     @Override
     public void setRotationAngles(TabulaModel model, HelicopterEntityNew entity, float f, float f1, float rotation, float rotationYaw, float rotationPitch, float partialTicks) {
         AdvancedModelRenderer rotor = model.getCube("rotorbase_rotatehere");
         AdvancedModelRenderer tailrotor = model.getCube("tailrotor_rotatehere");
-        rotAmount += (entity.rotorRotationAmount.getCurrent()) / 2D;
-        rotor.rotateAngleY = (float) rotAmount;
-        tailrotor.rotateAngleX = (float) rotAmount;
+        entity.rotAmount += (entity.rotorRotationAmount.getCurrent()) / 2D;
+        rotor.rotateAngleY = entity.rotAmount;
+        tailrotor.rotateAngleX = entity.rotAmount;
 
         AdvancedModelRenderer ctrl1 = model.getCube("controlstick1");
         AdvancedModelRenderer ctrl2 = model.getCube("controlstick2");
