@@ -7,7 +7,7 @@ import mod.reborn.server.entity.animal.EntityCrab;
 import mod.reborn.server.entity.animal.EntityShark;
 import mod.reborn.server.entity.animal.GoatEntity;
 import mod.reborn.server.entity.item.*;
-import mod.reborn.server.entity.vehicle.TransportHelicopterEntity;
+import mod.reborn.server.entity.vehicle.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.util.ResourceLocation;
@@ -16,9 +16,6 @@ import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.fml.common.ProgressManager;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import mod.reborn.RebornMod;
-import mod.reborn.server.entity.vehicle.FordExplorerEntity;
-import mod.reborn.server.entity.vehicle.HelicopterEntity;
-import mod.reborn.server.entity.vehicle.JeepWranglerEntity;
 import mod.reborn.server.period.TimePeriod;
 
 import java.util.*;
@@ -231,7 +228,7 @@ public class EntityHandler {
         EntityRegistry.addSpawn(EntityShark.class, 8, 1, 5, EnumCreatureType.WATER_CREATURE, biomeOcean.toArray(new Biome[biomeOcean.size()]));
 
         registerEntity(DinosaurEggEntity.class, "Dinosaur Egg");
-        registerEntity(TransportHelicopterEntity.class, "Helicopter base");
+        registerEntity(HelicopterEntityNew.class, "Helicopter base");
     }
 
     private static void initDinosaurs() {

@@ -13,7 +13,7 @@ import mod.reborn.server.conf.RebornConfig;
 import mod.reborn.server.entity.animal.EntityCrab;
 import mod.reborn.server.entity.animal.EntityShark;
 import mod.reborn.server.entity.item.*;
-import mod.reborn.server.entity.vehicle.TransportHelicopterEntity;
+import mod.reborn.server.entity.vehicle.*;
 import mod.reborn.server.item.*;
 import net.ilexiconn.llibrary.client.model.tabula.TabulaModelHandler;
 import net.minecraft.block.Block;
@@ -48,9 +48,6 @@ import mod.reborn.server.dinosaur.VelociraptorDinosaur;
 import mod.reborn.server.entity.EntityHandler;
 import mod.reborn.server.entity.animal.GoatEntity;
 import mod.reborn.server.entity.VenomEntity;
-import mod.reborn.server.entity.vehicle.FordExplorerEntity;
-import mod.reborn.server.entity.vehicle.HelicopterEntity;
-import mod.reborn.server.entity.vehicle.JeepWranglerEntity;
 import mod.reborn.server.plant.Plant;
 import mod.reborn.server.plant.PlantHandler;
 
@@ -534,7 +531,8 @@ public enum RenderingHandler {
         RenderingRegistry.registerEntityRenderingHandler(VenomEntity.class, new VenomRenderer());
         RenderingRegistry.registerEntityRenderingHandler(JeepWranglerEntity.class, JeepWranglerRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(FordExplorerEntity.class, FordExplorerRenderer::new);
-        RenderingRegistry.registerEntityRenderingHandler(TransportHelicopterEntity.class, HeliRenderer::new);
+//        RenderingRegistry.registerEntityRenderingHandler(TransportHelicopterEntity.class, HeliRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(HelicopterEntityNew.class, HelicopterNewRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(MuralEntity.class, MuralRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(GoatEntity.class, GoatRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityCrab.class, CrabRenderer::new);

@@ -1,13 +1,11 @@
 package mod.reborn.server.item;
 
-import mod.reborn.server.entity.vehicle.FordExplorerEntity;
-import mod.reborn.server.entity.vehicle.JeepWranglerEntity;
-import mod.reborn.server.entity.vehicle.TransportHelicopterEntity;
-import mod.reborn.server.entity.vehicle.VehicleEntity;
+import mod.reborn.server.entity.vehicle.*;
 import mod.reborn.server.tab.TabHandler;
 import mod.reborn.server.util.LangUtils;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -62,13 +60,13 @@ public class VehicleItem extends Item {
 
         if (!world.isRemote) {
             pos = pos.offset(side);
-            VehicleEntity entity = null;
+            Entity entity = null;
             if (stack.getMetadata() == 0) {
                 entity = new FordExplorerEntity(world);
             } else if (stack.getMetadata() == 1) {
                 entity = new JeepWranglerEntity(world);
             } else if (stack.getMetadata() == 2) {
-                entity = new TransportHelicopterEntity(world);
+                entity = new HelicopterEntityNew(world);
             }
             if (stack.getMetadata() == 2) {
                 entity.setPositionAndRotation(pos.getX() + hitX, pos.getY() + hitY, pos.getZ() + hitZ, player.rotationYaw, 0.0F);
