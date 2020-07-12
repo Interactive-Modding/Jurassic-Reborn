@@ -3,6 +3,8 @@ package mod.reborn.server.dinosaur;
 import mod.reborn.server.entity.Diet;
 import mod.reborn.server.entity.dinosaur.AchillobatorEntity;
 import mod.reborn.server.period.TimePeriod;
+import net.minecraft.world.biome.Biome;
+import net.minecraftforge.common.BiomeDictionary;
 
 public class AchillobatorDinosaur extends Dinosaur
 {
@@ -36,5 +38,23 @@ public class AchillobatorDinosaur extends Dinosaur
         this.setStorage(27);
         this.setJumpHeight(3);
         this.shouldDefendOffspring();
+        String[][] recipe = {
+                {"", "","neck_vertebrae","skull"},
+                {"tail_vertebrae", "ribcage","shoulder_bone","tooth"},
+                {"leg_bones", "leg_bones", "arm_bones", "claw"},
+                {"foot_bones", "foot_bones", "", ""}};
+        this.setRecipe(recipe);
+
+        ArrayList<Biome> biomeList = new ArrayList<Biome>();
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.JUNGLE));
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.FOREST));
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.DENSE));
+        this.setSpawn(10, biomeList.toArray(new Biome[biomeList.size()]));
+        doSkeletonCheck();
+    }
+
+    protected void doSkeletonCheck(){
+        this.enableSkeleton();
     }
 }
+ 
