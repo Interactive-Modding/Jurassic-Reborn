@@ -190,19 +190,19 @@
     "DYING": [
       {
         "pose": "baryonyx_adult_death_1",
-        "time": 4
+        "time": 6
       },
       {
         "pose": "baryonyx_adult_death_2",
-        "time": 4
+        "time": 6
       },
       {
         "pose": "baryonyx_adult_death_3",
-        "time": 4
+        "time": 6
       },
       {
         "pose": "baryonyx_adult_death_4",
-        "time": 4
+        "time": 6
       }
     ],
     "EATING": [

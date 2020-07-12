@@ -69,20 +69,20 @@ public class LeaellynasauraAnimator extends EntityAnimator<LeaellynasauraEntity>
         model.chainWave(tail, globalSpeed * 1.0F, globalHeight * 0.2F, 3, f, f1);
         model.chainSwing(tail, globalSpeed * 0.5F, globalHeight * 0.4F, 3, f, f1);
 
-        model.chainWave(neck, globalSpeed * 1.0F, globalHeight * 0.1F, -3, f, f1);
+      //  model.chainWave(neck, globalSpeed * 1.0F, globalHeight * 0.1F, -3, f, f1);
 
         model.chainWave(armLeft, globalSpeed * 1.0F, globalHeight * 0.4F, -2, f, f1);
         model.chainWave(armRight, globalSpeed * 1.0F, globalHeight * 0.4F, -2, f, f1);
 
-        model.walk(thighLeft, 1.0F * globalSpeed, globalDegree * 0.8F, false, 0F, 0.4F, f, f1);
-        model.walk(calf1Left, 1.0F * globalSpeed, globalDegree * 0.5F, true, 1F, 0F, f, f1);
-        model.walk(calf2Left, 1.0F * globalSpeed, globalDegree * 0.5F, false, 0F, 0F, f, f1);
-        model.walk(footLeft, 1.0F * globalSpeed, globalDegree * 1.5F, true, 0.5F, 1F, f, f1);
+       // model.walk(thighLeft, 1.0F * globalSpeed, globalDegree * 0.8F, false, 0F, 0.4F, f, f1);
+       // model.walk(calf1Left, 1.0F * globalSpeed, globalDegree * 0.5F, true, 1F, 0F, f, f1);
+       // model.walk(calf2Left, 1.0F * globalSpeed, globalDegree * 0.5F, false, 0F, 0F, f, f1);
+       // model.walk(footLeft, 1.0F * globalSpeed, globalDegree * 1.5F, true, 0.5F, 1F, f, f1);
 
-        model.walk(thighRight, 1.0F * globalSpeed, globalDegree * 0.8F, true, 0F, 0.4F, f, f1);
-        model.walk(calf1Right, 1.0F * globalSpeed, globalDegree * 0.5F, false, 1F, 0F, f, f1);
-        model.walk(calf2Right, 1.0F * globalSpeed, globalDegree * 0.5F, true, 0F, 0F, f, f1);
-        model.walk(footRight, 1.0F * globalSpeed, globalDegree * 1.5F, false, 0.5F, 1F, f, f1);
+       // model.walk(thighRight, 1.0F * globalSpeed, globalDegree * 0.8F, true, 0F, 0.4F, f, f1);
+       // model.walk(calf1Right, 1.0F * globalSpeed, globalDegree * 0.5F, false, 1F, 0F, f, f1);
+       // model.walk(calf2Right, 1.0F * globalSpeed, globalDegree * 0.5F, true, 0F, 0F, f, f1);
+       // model.walk(footRight, 1.0F * globalSpeed, globalDegree * 1.5F, false, 0.5F, 1F, f, f1);
 
         model.chainWave(tail, globalSpeed * 0.5F, globalHeight * 0.8F, 3, ticks, 0.025F);
         model.chainWave(neck, globalSpeed * 0.5F, globalHeight * 0.4F, -3, ticks, 0.025F);
