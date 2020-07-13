@@ -40,20 +40,15 @@ public class AchillobatorDinosaur extends Dinosaur
         this.shouldDefendOffspring();
         String[][] recipe = {
                 {"", "","neck_vertebrae","skull"},
-                {"tail_vertebrae", "ribcage","shoulder_bone","tooth"},
+                {"tail_vertebrae", "ribcage","shoulder","tooth"},
                 {"leg_bones", "leg_bones", "arm_bones", "claw"},
                 {"foot_bones", "foot_bones", "", ""}};
         this.setRecipe(recipe);
-
-        ArrayList<Biome> biomeList = new ArrayList<Biome>();
-        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.JUNGLE));
-        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.FOREST));
-        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.DENSE));
-        this.setSpawn(10, biomeList.toArray(new Biome[biomeList.size()]));
         doSkeletonCheck();
     }
 
     protected void doSkeletonCheck(){
         this.enableSkeleton();
+
     }
 }
