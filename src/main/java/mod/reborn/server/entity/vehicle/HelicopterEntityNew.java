@@ -182,7 +182,7 @@ public class HelicopterEntityNew extends EntityLivingBase {
                 this.enginePower = 0f;
             }
         }
-        if (this.enginePower >= REQUIRED_POWER) {
+        if (controller != null && this.enginePower >= REQUIRED_POWER) {
             // We can fly \o/
             // ♪ Fly on the wings of code! ♪
             MutableVec3 localDir = new MutableVec3(this.direction.xCoord, this.direction.yCoord, this.direction.zCoord * 8f);
