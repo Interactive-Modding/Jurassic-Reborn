@@ -223,11 +223,19 @@ public class EntityHandler {
         	biomeBeach.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.BEACH));
         ArrayList<Biome> biomeOcean = new ArrayList<>();
             biomeOcean.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.OCEAN));
-
-        EntityRegistry.addSpawn(EntityCrab.class, 5, 4, 8, EnumCreatureType.CREATURE, biomeBeach.toArray(new Biome[biomeBeach.size()]));
-        EntityRegistry.addSpawn(EntityShark.class, 8, 1, 5, EnumCreatureType.WATER_CREATURE, biomeOcean.toArray(new Biome[biomeOcean.size()]));
-        EntityRegistry.addSpawn(EntityCrab.class, 5, 4, 8, EnumCreatureType.CREATURE, biomePlains.toArray(new Biome[biomePlains.size()]));
         
+        if(RebornConfig.ENTITIES.crabSpawning == true) 
+        {
+            EntityRegistry.addSpawn(EntityCrab.class, 5, 4, 8, EnumCreatureType.CREATURE, biomeBeach.toArray(new Biome[biomeBeach.size()]));
+        }
+        if(RebornConfig.ENTITIES.sharkSpawning == true) 
+        {
+            EntityRegistry.addSpawn(EntityShark.class, 8, 1, 5, EnumCreatureType.WATER_CREATURE, biomeOcean.toArray(new Biome[biomeOcean.size()]));
+        }
+        if(RebornConfig.ENTITIES.goatSpawning == true) 
+        {
+            EntityRegistry.addSpawn(EntityGoat.class, 5, 4, 8, EnumCreatureType.CREATURE, biomePlains.toArray(new Biome[biomePlains.size()]));
+        }
         registerEntity(DinosaurEggEntity.class, "Dinosaur Egg");
         registerEntity(HelicopterEntityNew.class, "Helicopter base");
     }
