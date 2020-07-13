@@ -226,7 +226,8 @@ public class EntityHandler {
 
         EntityRegistry.addSpawn(EntityCrab.class, 5, 4, 8, EnumCreatureType.CREATURE, biomeBeach.toArray(new Biome[biomeBeach.size()]));
         EntityRegistry.addSpawn(EntityShark.class, 8, 1, 5, EnumCreatureType.WATER_CREATURE, biomeOcean.toArray(new Biome[biomeOcean.size()]));
-
+        EntityRegistry.addSpawn(EntityCrab.class, 5, 4, 8, EnumCreatureType.CREATURE, biomePlains.toArray(new Biome[biomePlains.size()]));
+        
         registerEntity(DinosaurEggEntity.class, "Dinosaur Egg");
         registerEntity(HelicopterEntityNew.class, "Helicopter base");
     }
