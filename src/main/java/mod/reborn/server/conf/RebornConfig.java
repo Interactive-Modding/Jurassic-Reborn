@@ -32,6 +32,18 @@ public class RebornConfig { //TODO: move all structures to same parent package
         @Config.Name("Dinosaur Spawning")
         @Config.Comment("NOT WORKING AT THE MOMENT")
         public boolean naturalSpawning = false;
+        
+        @Config.Name("Goat Spawning")
+        @Config.Comment("Allow Goat Spawning")
+        public boolean goatSpawning = true;
+        
+        @Config.Name("Shark Spawning")
+        @Config.Comment("Allow Shark Spawning")
+        public boolean sharkSpawning = true;
+        
+        @Config.Name("Crab Spawning")
+        @Config.Comment("Allow Crab Spawning")
+        public boolean crabSpawning = true;
 
         @Config.Name("Only Hunt when Hungry")
         public boolean huntWhenHungry = false;
