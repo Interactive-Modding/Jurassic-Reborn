@@ -12,6 +12,6 @@ public class DunkleosteusEntity extends SwimmingDinosaurEntity
     public DunkleosteusEntity(World world)
     {
         super(world);
-        this.target(AlligatorGarEntity.class, BeelzebufoEntity.class, CrassigyrinusEntity.class, DiplocaulusEntity.class, EntityPlayer.class, MegapiranhaEntity.class, EntityVillager.class, EntityAnimal.class, EntityMob.class);
+        this.target(AlligatorGarEntity.class, MawsoniaEntity.class, BeelzebufoEntity.class, CrassigyrinusEntity.class, DiplocaulusEntity.class, EntityPlayer.class, MegapiranhaEntity.class, EntityVillager.class, EntityAnimal.class, EntityMob.class);
     }
 }
