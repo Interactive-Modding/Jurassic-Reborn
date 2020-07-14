@@ -32,5 +32,12 @@ public class AnkylosaurusDinosaur extends Dinosaur
         this.setImprintable(true);
         this.setStorage(24);
         this.shouldDefendOffspring();
+        String[][] recipe = {
+                {"tail_club", "armor_plating", "","",""},
+                {"tail_vertebrae", "pelvis", "ribcage","neck_vertebrae","skull"},
+                {"hind_leg_bones", "hind_leg_bones", "", "shoulder", "tooth"},
+                {"", "", "", "front_leg_bones", "front_leg_bones"}};
+        this.setRecipe(recipe);
+        this.enableSkeleton();
     }
 }
