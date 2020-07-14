@@ -17,7 +17,7 @@ public class DinosaurAttributes {
     private static final float MAXIMUM_HEALTH = 1.2F;
 
     private static final float MINIMUM_SPEED = 0.8F;
-    private static final float MAXIMUM_SPEED = 1.2F;
+    private static final float MAXIMUM_SPEED = 1.0F;
 
     private float scaleModifier;
     private float damageModifier;
