@@ -34,8 +34,6 @@ RextheZilla98
 
 TheJurassicAlien
 
-Tornado
-
 Neicke
 
 Bastion16
@@ -67,6 +65,8 @@ AGSucho
 Ms.Random
 
 Totemaster
+
+Tornado
 
 Bizarre Altispinax
 
@@ -135,10 +135,10 @@ Feel free to speed up development and create pull requests. Here's a guide on ho
 
 First, make a fork of this repository. When you've done that, you can clone that reposity. Depending on your installation settings, you either have to run the command in the git Bash, or the CMD/Terminal.
 ```
-git clone https://github.com/<Your Username>/JurassiCraft2
+git clone https://github.com/<Your Username>/RebornMod
 ```
 
-When that's done, go into the newly created directory `JurassiCraft2` and run in the console if you're on Windows:
+When that's done, go into the newly created directory `RebornMod` and run in the console if you're on Windows:
 
 ```
 gradlew.bat setupDecompWorkspace
