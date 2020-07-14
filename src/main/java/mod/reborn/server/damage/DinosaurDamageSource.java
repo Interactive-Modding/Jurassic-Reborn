@@ -9,6 +9,8 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
 
+import javax.annotation.Nullable;
+
 public class DinosaurDamageSource extends DamageSource {
     protected Entity entity;
     private boolean isThornsDamage = false;
@@ -43,5 +45,11 @@ public class DinosaurDamageSource extends DamageSource {
     @Override
     public boolean isDifficultyScaled() {
         return false;
+    }
+
+    @Nullable
+    @Override
+    public Entity getTrueSource() {
+        return this.entity;
     }
 }
