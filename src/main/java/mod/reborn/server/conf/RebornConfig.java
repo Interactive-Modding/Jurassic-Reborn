@@ -32,6 +32,18 @@ public class RebornConfig { //TODO: move all structures to same parent package
         @Config.Name("Dinosaur Spawning")
         @Config.Comment("NOT WORKING AT THE MOMENT")
         public boolean naturalSpawning = false;
+        
+        @Config.Name("Goat Spawning")
+        @Config.Comment("Allow Goat Spawning")
+        public boolean goatSpawning = true;
+        
+        @Config.Name("Shark Spawning")
+        @Config.Comment("Allow Shark Spawning")
+        public boolean sharkSpawning = true;
+        
+        @Config.Name("Crab Spawning")
+        @Config.Comment("Allow Crab Spawning")
+        public boolean crabSpawning = true;
 
         @Config.Name("Only Hunt when Hungry")
         public boolean huntWhenHungry = false;
@@ -91,19 +103,19 @@ public class RebornConfig { //TODO: move all structures to same parent package
     }
 
     public static class StructureGeneration {
-        @Config.Name("Visitor Generation")
+        @Config.Name("Visitor Center Generation")
         public boolean visitorcentergeneration = true;
 
-        @Config.Name("Raptor Generation")
+        @Config.Name("Raptor Paddock Generation")
         public boolean raptorgeneration = true;
     }
 
     public static class Vehicles {
         @Config.Name("Enable Tour Rail Blocks")
         public boolean tourRailBlockEnabled = true;
-        @Config.Name("Helocopter Can Destroy Blocks")
+        @Config.Name("Helicopter Can Destroy Blocks")
         public boolean destroyBlocks = false;
-        @Config.Name("Helcopter Zoomout")
+        @Config.Name("Helicopter Zoomout")
         @Config.Comment("NOT WORKING AT THE MOMENT, BREAKS OPTIFINE")
         public boolean helicopterZoomout = false;
     }
