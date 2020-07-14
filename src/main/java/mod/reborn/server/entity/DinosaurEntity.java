@@ -2019,6 +2019,7 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
     public static class FieldGuideInfo {
         public int hunger;
         public int thirst;
+        public int daysExisted;
         public boolean flocking;
         public boolean scared;
         public boolean hungry;
@@ -2034,6 +2035,7 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
             info.hungry = buf.readBoolean();
             info.thirsty = buf.readBoolean();
             info.poisoned = buf.readBoolean();
+            info.daysExisted = buf.readInt();
             return info;
         }
 
@@ -2048,6 +2050,7 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
             info.hungry = metabolism.isHungry();
             info.thirsty = metabolism.isThirsty();
             info.poisoned = entity.isPotionActive(MobEffects.POISON);
+            info.daysExisted = entity.getDaysExisted();
             buf.writeBoolean(info.flocking);
             buf.writeBoolean(info.scared);
             buf.writeInt(info.hunger);
@@ -2055,6 +2058,7 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
             buf.writeBoolean(info.hungry);
             buf.writeBoolean(info.thirsty);
             buf.writeBoolean(info.poisoned);
+            buf.writeInt(info.daysExisted);
             return info;
         }
     }

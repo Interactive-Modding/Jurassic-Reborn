@@ -33,9 +33,11 @@ public class PaleoPadViewDinosaurGui extends GuiScreen {
     private static final ResourceLocation texture = new ResourceLocation(RebornMod.MODID, "textures/gui/paleo_pad/paleo_pad.png");
 
     private DinosaurEntity entity;
+    private DinosaurEntity.FieldGuideInfo guideInfo;
 
-    public PaleoPadViewDinosaurGui(DinosaurEntity entity) {
+    public PaleoPadViewDinosaurGui(DinosaurEntity entity, DinosaurEntity.FieldGuideInfo guideInfo) {
         this.entity = entity;
+        this.guideInfo = guideInfo;
     }
 
     @Override
@@ -65,8 +67,6 @@ public class PaleoPadViewDinosaurGui extends GuiScreen {
             hoursStr = "0" + hoursStr;
         }
 
-        Dinosaur dinosaur = this.entity.getDinosaur();
-
         String minutesStr = "" + (int) minutes % 60;
 
         while (minutesStr.length() < 2) {
@@ -84,9 +84,21 @@ public class PaleoPadViewDinosaurGui extends GuiScreen {
         this.drawEntityOnScreen(115, 140, (int) (70 / (dinoDef.getAdultSizeY() + (2 * dinoDef.getScaleAdult() + dinoDef.getPaleoPadScale()))), this.entity);
         GL11.glDisable(GL11.GL_SCISSOR_TEST);
         drawScaledText("Viewing: " + this.entity.getName(), 5, 5, 1.0F, this.entity.isMale() ? dinoDef.getEggPrimaryColorMale() : dinoDef.getEggPrimaryColorFemale());
-        drawScaledText("Age: " + this.entity.getDaysExisted() + " days", 5, 20, 1.0F, 0x808080);
-        drawScaledText("Hunger: " + this.entity.getMetabolism().getEnergy() + "/" + this.entity.getMetabolism().getMaxEnergy(), 5, 35, 1.0F, 0x808080);
-        drawScaledText("Thirst: " + this.entity.getMetabolism().getWater() + "/" + this.entity.getMetabolism().getMaxWater(), 5, 50, 1.0F, 0x808080);
+        drawScaledText("Age: " + this.guideInfo.daysExisted + " days", 5, 20, 1.0F, 0x808080);
+
+        int l = dimensions.getScaledWidth() / 2 - 115;
+
+        drawScaledText("Hunger: ", 5, 35, 1.0F, 0x808080);// this.entity.getMetabolism().getEnergy() + "/" + this.entity.getMetabolism().getMaxEnergy()
+        int hungerLeft = l + 7 + mc.fontRenderer.getStringWidth("Hunger: ");
+        drawRect(hungerLeft, 100, hungerLeft + 102, 109, 0xFF101010);
+        drawRect(hungerLeft + 1, 101, (int) (hungerLeft + 1 + 100*((float) this.guideInfo.hunger / this.entity.getMetabolism().getMaxEnergy())), 108, 0xFFAC2010);
+
+        drawScaledText("Thirst: ", 5, 50, 1.0F, 0x808080);// this.entity.getMetabolism().getWater() + "/" + this.entity.getMetabolism().getMaxWater()
+        int thirstLeft = l + 7 + mc.fontRenderer.getStringWidth("Thirst: ");
+        drawRect(thirstLeft, 115, thirstLeft + 102, 124, 0xFF101010);
+        drawRect(thirstLeft + 1, 116, (int) (thirstLeft + 1 + 100*((float) this.guideInfo.thirst / this.entity.getMetabolism().getMaxWater())), 123, 0xFF20AC10);
+
+
 
         Diet diet = dinoDef.getDiet();
         drawScaledEndText((this.entity.isMale() ? "MALE" : "FEMALE"), 225, 5, 1.0F, 0xFFFF00);

@@ -13,8 +13,7 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 public class OpenPaleoPadEntityMessage extends AbstractMessage<OpenPaleoPadEntityMessage> {
     private DinosaurEntity entity;
     private int entityId;
-    private boolean flocking;
-    private boolean fleeing;
+    private DinosaurEntity.FieldGuideInfo guideInfo;
 
     public OpenPaleoPadEntityMessage() {
     }
@@ -30,8 +29,7 @@ public class OpenPaleoPadEntityMessage extends AbstractMessage<OpenPaleoPadEntit
 
         if (entity instanceof DinosaurEntity) {
             DinosaurEntity dinosaur = (DinosaurEntity) entity;
-
-            RebornMod.PROXY.openPaleoDinosaurPad(dinosaur);
+            RebornMod.PROXY.openPaleoDinosaurPad(dinosaur, this.guideInfo);
         }
     }
 
@@ -42,6 +40,7 @@ public class OpenPaleoPadEntityMessage extends AbstractMessage<OpenPaleoPadEntit
     @Override
     public void fromBytes(ByteBuf buf) {
         this.entityId = buf.readInt();
+        this.guideInfo = DinosaurEntity.FieldGuideInfo.deserialize(buf);
     }
 
     @Override

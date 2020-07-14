@@ -224,6 +224,6 @@ public class ServerProxy implements IGuiHandler {
     public void openPaleoPad() {
     }
 
-    public void openPaleoDinosaurPad(DinosaurEntity entity) {
+    public void openPaleoDinosaurPad(DinosaurEntity entity, DinosaurEntity.FieldGuideInfo guideInfo) {
     }
 }

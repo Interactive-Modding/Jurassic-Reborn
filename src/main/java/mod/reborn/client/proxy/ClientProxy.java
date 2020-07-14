@@ -169,8 +169,8 @@ public class ClientProxy extends ServerProxy {
     }
 
     @Override
-    public void openPaleoDinosaurPad(DinosaurEntity entity) {
-        MC.displayGuiScreen(new PaleoPadViewDinosaurGui(entity));
+    public void openPaleoDinosaurPad(DinosaurEntity entity, DinosaurEntity.FieldGuideInfo guideInfo) {
+        MC.displayGuiScreen(new PaleoPadViewDinosaurGui(entity, guideInfo));
     }
 
     @Override
