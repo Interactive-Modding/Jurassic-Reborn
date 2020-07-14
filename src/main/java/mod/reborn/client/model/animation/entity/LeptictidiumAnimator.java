@@ -38,13 +38,13 @@ public class LeptictidiumAnimator extends EntityAnimator<LeptictidiumEntity>
         float globalDegree = 1.0F;
 
         model.bob(body1,  globalSpeed * 0.1F,  globalDegree * 0.3F, false, f,f1);
-        model.walk(rightLeg1, globalSpeed * 0.9F, globalDegree * 0.3F, false, (float)Math.PI, 1, f, f1);
-        model.walk(leftLeg1, globalSpeed * 0.9F, globalDegree * 0.3F, true, (float)Math.PI,1, f, f1);
+       // model.walk(rightLeg1, globalSpeed * 0.9F, globalDegree * 0.3F, false, (float)Math.PI, 1, f, f1);
+      //  model.walk(leftLeg1, globalSpeed * 0.9F, globalDegree * 0.3F, true, (float)Math.PI,1, f, f1);
 
-        model.chainWave(tail, 0.1F,0.25F,Math.PI -1, f + ticks, f1 + 0.05F);
-        model.chainWave(body, 0.1F, -0.1F, Math.PI + 2, ticks, 0.25F);
-        model.chainWave(rightArm, 0.1F, -0.1F, Math.PI + 1, ticks, 0.25F);
-        model.chainWave(leftArm, 0.1F, -0.1F, Math.PI + 1, ticks, 0.25F);
+       // model.chainWave(tail, 0.1F,0.25F,Math.PI -1, f + ticks, f1 + 0.05F);
+       // model.chainWave(body, 0.1F, -0.1F, Math.PI + 2, ticks, 0.25F);
+       // model.chainWave(rightArm, 0.1F, -0.1F, Math.PI + 1, ticks, 0.25F);
+       // model.chainWave(leftArm, 0.1F, -0.1F, Math.PI + 1, ticks, 0.25F);
 
         model.faceTarget(rotationYaw, rotationPitch, 2.0F, neck1, head);
         entity.tailBuffer.applyChainSwingBuffer(tail);

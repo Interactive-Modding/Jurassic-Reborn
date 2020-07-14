@@ -26,6 +26,9 @@ public class Diet {
     public static final Supplier<Diet> PCARNIVORE =() -> new Diet()
             .withModule(new DietModule(FoodType.FISH))
             .withModule(new DietModule(FoodType.MEAT));
+    public static final Supplier<Diet> INHERBIVORE =() -> new Diet()
+            .withModule(new DietModule(FoodType.PLANT))
+            .withModule(new DietModule(FoodType.INSECT));
 
     private List<DietModule> modules = new ArrayList<>();
 
