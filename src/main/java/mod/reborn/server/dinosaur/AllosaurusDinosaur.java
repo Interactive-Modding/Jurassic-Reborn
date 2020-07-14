@@ -31,7 +31,7 @@ public class AllosaurusDinosaur extends Dinosaur {
         this.setScale(2.4F, 0.35F);
         this.shouldDefendOffspring();
         String[][] recipe = {{"", "", "","neck_vertebrae","skull"},
-                {"tail_vertebrae", "pelvis", "ribcage","shoulder_bone","tooth"},
+                {"tail_vertebrae", "pelvis", "ribcage","shoulder","tooth"},
                 {"", "leg_bones", "", "arm_bones", "claw"},
                 {"", "foot_bones", "", "", ""}};
         this.setRecipe(recipe);
