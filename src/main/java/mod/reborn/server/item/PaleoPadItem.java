@@ -41,7 +41,6 @@ public class PaleoPadItem extends Item {
     }
 
     @Override
-    @SideOnly(Side.CLIENT)
     public boolean itemInteractionForEntity(ItemStack stack, EntityPlayer player, EntityLivingBase target, EnumHand hand) {
         if (target instanceof DinosaurEntity) {
             if (!player.world.isRemote) {
