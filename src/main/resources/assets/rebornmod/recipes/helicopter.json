@@ -33,7 +33,7 @@
     }
   },
   "result":{
-    "item":"rebornmod:helicopter",
-    "data":0
+    "item": "rebornmod:vehicle_item",
+    "data": 2
   }
 }
