@@ -14,6 +14,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -44,14 +45,14 @@ public class VehicleItem extends Item {
     public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag tooltipFlag) {
         super.addInformation(stack, world, tooltip, tooltipFlag);
         int meta = stack.getMetadata();
-        tooltip.add(LangUtils.translate("item.vehicle_item.place.name").replace("{variant}", LangUtils.translate("item." + variants[meta] + ".name") /* localized[meta] */));
+        tooltip.add(LangUtils.translate("item.vehicle_item.place.name").replace("{variant}", LangUtils.translate("item." + variants[MathHelper.clamp(meta, 0, variants.length - 1)] + ".name") /* localized[meta] */));
     }
 
     @Override
     @SideOnly(Side.CLIENT)
     public String getUnlocalizedName(ItemStack stack) {
         int meta = stack.getMetadata();
-        return LangUtils.translate("item." + variants[meta]);
+        return LangUtils.translate("item." + variants[MathHelper.clamp(meta, 0, variants.length - 1)]);
     }
 
     @Override
