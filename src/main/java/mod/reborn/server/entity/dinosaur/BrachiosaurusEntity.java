@@ -6,6 +6,7 @@ import mod.reborn.server.entity.DinosaurEntity;
 import mod.reborn.server.entity.LegSolver;
 import mod.reborn.server.entity.LegSolverQuadruped;
 import net.ilexiconn.llibrary.server.animation.Animation;
+import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 
@@ -17,6 +18,7 @@ public class BrachiosaurusEntity extends DinosaurEntity {
 
     public BrachiosaurusEntity(World world) {
         super(world);
+        this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
     }
 
     @Override

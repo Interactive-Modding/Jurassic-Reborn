@@ -2,6 +2,7 @@ package mod.reborn.server.entity.dinosaur;
 
 import mod.reborn.server.entity.DinosaurEntity;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.world.World;
 
 public class MamenchisaurusEntity extends DinosaurEntity {
@@ -10,7 +11,10 @@ public class MamenchisaurusEntity extends DinosaurEntity {
     private boolean isKing = false;
     private MamenchisaurusEntity king = null;
 
-    public MamenchisaurusEntity(World world) { super(world); }
+    public MamenchisaurusEntity(World world) {
+        super(world);
+        this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
+    }
 
     @Override
     public void onLivingUpdate() {
