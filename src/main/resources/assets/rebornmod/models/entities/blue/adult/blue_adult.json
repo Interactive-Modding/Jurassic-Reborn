@@ -4,7 +4,321 @@
     "IDLE": [
       {
         "pose": "blue_adult_idle",
+        "time": 10
+      }
+    ],
+    "DYING": [
+      {
+        "pose": "blue_adult_death",
+        "time": 10
+      }
+    ],
+    "RESTING": [
+      {
+        "pose": "blue_adult_resting",
+        "time": 10
+      }
+    ],
+    "SLEEPING": [
+      {
+        "pose": "blue_adult_sleeping",
+        "time": 10
+      }
+    ],
+    "HEAD_COCKING": [
+      {
+        "pose": "blue_adult_head_cock_1",
+        "time": 15
+      },
+      {
+        "pose": "blue_adult_head_cock_1",
+        "time": 5
+      },
+      {
+        "pose": "blue_adult_head_cock_2",
+        "time": 10
+      },
+      {
+        "pose": "blue_adult_head_cock_2",
         "time": 20
+      },
+      {
+        "pose": "blue_adult_idle",
+        "time": 20
+      }
+    ],
+    "SPEAK": [
+      {
+        "pose": "blue_adult_speak",
+        "time": 5
+      },
+      {
+        "pose": "blue_adult_speak",
+        "time": 20
+      },
+      {
+        "pose": "blue_adult_idle",
+        "time": 5
+      }
+    ],
+    "CALLING": [
+      {
+        "pose": "blue_adult_calling_1",
+        "time": 20
+      },
+      {
+        "pose": "blue_adult_calling_2",
+        "time": 8
+      },
+      {
+        "pose": "blue_adult_calling_2",
+        "time": 8
+      },
+      {
+        "pose": "blue_adult_calling_1",
+        "time": 8
+      },
+      {
+        "pose": "blue_adult_calling_1",
+        "time": 8
+      },
+      {
+        "pose": "blue_adult_idle",
+        "time": 20
+      }
+    ],
+    "PREPARE_LEAP": [
+      {
+        "pose": "blue_adult_prepare_pounce_1",
+        "time": 10
+      },
+      {
+        "pose": "blue_adult_prepare_pounce_1",
+        "time": 5
+      }
+    ],
+    "LEAP": [
+      {
+        "pose": "blue_adult_leap_1",
+        "time": 5
+      },
+      {
+        "pose": "blue_adult_leap_1",
+        "time": 2
+      },
+      {
+        "pose": "blue_adult_leap_2",
+        "time": 5
+      }
+    ],
+    "LEAP_LAND": [
+      {
+        "pose": "blue_adult_landing_1",
+        "time": 4
+      },
+      {
+        "pose": "blue_adult_landing_2",
+        "time": 2
+      }
+    ],
+    "DRINKING": [
+      {
+        "pose": "blue_adult_drink_1",
+        "time": 10
+      },
+      {
+        "pose": "blue_adult_drink_2",
+        "time": 10
+      },
+      {
+        "pose": "blue_adult_drink_3",
+        "time": 25
+      },
+      {
+        "pose": "blue_adult_idle",
+        "time": 20
+      }
+    ],
+    "WALKING": [
+      {
+        "pose": "blue_adult_walk_1",
+        "time": 2
+      },
+      {
+        "pose": "blue_adult_walk_2",
+        "time": 4
+      },
+      {
+        "pose": "blue_adult_walk_3",
+        "time": 4
+      },
+      {
+        "pose": "blue_adult_walk_4",
+        "time": 4
+      },
+      {
+        "pose": "blue_adult_walk_5",
+        "time": 4
+      },
+      {
+        "pose": "blue_adult_walk_6",
+        "time": 4
+      },
+      {
+        "pose": "blue_adult_walk_7",
+        "time": 2
+      }
+    ],
+    "RUNNING": [
+      {
+        "pose": "blue_adult_running_1",
+        "time": 3
+      },
+      {
+        "pose": "blue_adult_running_2",
+        "time": 3
+      },
+      {
+        "pose": "blue_adult_running_3",
+        "time": 3
+      },
+      {
+        "pose": "blue_adult_running_4",
+        "time": 3
+      },
+      {
+        "pose": "blue_adult_running_5",
+        "time": 3
+      },
+      {
+        "pose": "blue_adult_running_6",
+        "time": 3
+      }
+    ],
+    "SWIMMING": [
+      {
+        "pose": "blue_adult_swimming_1",
+        "time": 6
+      },
+      {
+        "pose": "blue_adult_swimming_2",
+        "time": 6
+      },
+      {
+        "pose": "blue_adult_swimming_3",
+        "time": 6
+      }
+    ],
+    "ATTACKING": [
+      {
+        "pose": "blue_adult_attack_1",
+        "time": 8
+      },
+      {
+        "pose": "blue_adult_idle",
+        "time": 6
+      }
+    ],
+    "LOOKING_LEFT": [
+      {
+        "pose": "blue_adult_look_start",
+        "time": 10
+      },
+      {
+        "pose": "blue_adult_look_left",
+        "time": 10
+      },
+      {
+        "pose": "blue_adult_look_left",
+        "time": 20
+      },
+      {
+        "pose": "blue_adult_idle",
+        "time": 10
+      }
+    ],
+    "LOOKING_RIGHT": [
+      {
+        "pose": "blue_adult_look_start",
+        "time": 10
+      },
+      {
+        "pose": "blue_adult_look_right",
+        "time": 10
+      },
+      {
+        "pose": "blue_adult_look_right",
+        "time": 20
+      },
+      {
+        "pose": "blue_adult_idle",
+        "time": 10
+      }
+    ],
+    "INJURED": [
+      {
+        "pose": "blue_adult_injured",
+        "time": 8
+      },
+      {
+        "pose": "blue_adult_injured",
+        "time": 8
+      },
+      {
+        "pose": "blue_adult_idle",
+        "time": 8
+      }
+    ],
+    "EATING": [
+      {
+        "pose": "blue_adult_eating_1",
+        "time": 10
+      },
+      {
+        "pose": "blue_adult_eating_3",
+        "time": 8
+      },
+      {
+        "pose": "blue_adult_eating_3",
+        "time": 4
+      },
+      {
+        "pose": "blue_adult_eating_1",
+        "time": 10
+      },
+      {
+        "pose": "blue_adult_eating_5",
+        "time": 20
+      },
+      {
+        "pose": "blue_adult_eating_6",
+        "time": 10
+      },
+      {
+        "pose": "blue_adult_eating_6",
+        "time": 10
+      },
+      {
+        "pose": "blue_adult_idle",
+        "time": 20
+      }
+    ],
+    "LAYING_EGG": [
+      {
+        "pose": "blue_adult_laying_1",
+        "time": 10
+      },
+      {
+        "pose": "blue_adult_laying_2",
+        "time": 20
+      },
+      {
+        "pose": "blue_adult_laying_3",
+        "time": 20
+      },
+      {
+        "pose": "blue_adult_idle",
+        "time": 10
       }
     ]
   }

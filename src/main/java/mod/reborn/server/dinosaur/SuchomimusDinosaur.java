@@ -15,7 +15,7 @@ public class SuchomimusDinosaur extends Dinosaur {
         this.setTimePeriod(TimePeriod.CRETACEOUS);
         this.setEggColorMale(0xCCB674, 0x4A5966);
         this.setEggColorFemale(0xB3BB6D, 0x45676B);
-        this.setHealth(10, 80);
+        this.setHealth(10, 45);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStorage(27);
         this.setStrength(5, 30);
@@ -26,7 +26,7 @@ public class SuchomimusDinosaur extends Dinosaur {
         this.setDiet(Diet.PCARNIVORE.get());
         this.setBones("arm_bones", "claw", "leg_bones", "neck_vertebrae", "pelvis", "ribcage", "shoulder", "skull", "tail_vertebrae", "tooth", "foot_bones");
         this.setHeadCubeName("Head");
-        this.setScale(1.27F, 0.3F);
+        this.setScale(1.35F, 0.3F);
         this.shouldDefendOffspring();
         this.setBreeding(false, 2, 6, 20, false, true);
         this.setImprintable(true);

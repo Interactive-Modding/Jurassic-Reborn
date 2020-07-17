@@ -20,7 +20,7 @@ public class AchillobatorDinosaur extends Dinosaur
         this.setHealth(10, 40);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStorage(27);
-        this.setStrength(1, 20);
+        this.setStrength(1, 10);
         this.setAttackBias(1200.0);
         this.setAttackSpeed(1.2F);
         this.setMaximumAge(fromDays(45));

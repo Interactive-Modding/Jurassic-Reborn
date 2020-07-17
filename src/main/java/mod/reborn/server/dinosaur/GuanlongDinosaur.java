@@ -15,10 +15,10 @@ public class GuanlongDinosaur extends Dinosaur {
         this.setTimePeriod(TimePeriod.JURASSIC);
         this.setEggColorMale(0xEFE3B9, 0xEFE3B9);
         this.setEggColorFemale(0xEFE2B4, 0x4E4D4B);
-        this.setHealth(10, 35);
+        this.setHealth(4, 15);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStorage(27);
-        this.setStrength(1, 20);
+        this.setStrength(2, 15);
         this.setMaximumAge(fromDays(45));
         this.setEyeHeight(0.45F, 1.6F);
         this.setSizeX(0.3F, 1.2F);
