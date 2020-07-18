@@ -35,6 +35,11 @@ public class EdmontosaurusDinosaur extends Dinosaur
         this.setImprintable(true);
         this.setStorage(24);
         this.setBreeding(false, 2, 6, 20, false, true);
-
+        String[][] recipe = {
+                {"tail_vertebrae", "pelvis", "ribcage","neck_vertebrae","skull"},
+                {"hind_leg_bones", "", "", "shoulder", "cheek_teeth"},
+                {"", "", "", "", "front_leg_bones"}};
+        this.setRecipe(recipe);
+        this.enableSkeleton();
     }
 }

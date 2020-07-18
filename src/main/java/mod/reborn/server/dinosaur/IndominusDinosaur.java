@@ -34,12 +34,19 @@ public class IndominusDinosaur extends Dinosaur implements Hybrid
         this.setSizeY(0.7F, 6.0F);
         this.setStorage(54);
         this.setDiet((Diet.CARNIVORE.get()));
-        this.setBones("arm_bones", "foot_bones", "leg_bones", "neck_vertebrae", "pelvis", "ribcage", "shoulder", "skull", "tail_vertebrae", "tooth");
+        this.setBones("arm_bones", "foot_bones", "leg_bones", "neck_vertebrae", "claw", "pelvis", "ribcage", "shoulder", "skull", "tail_vertebrae", "tooth");
         this.setHeadCubeName("Head");
         this.setScale(2.8F, 0.4F);
         this.setAttackBias(4000);
         this.setBreeding(false, 0, 0, 999, false, false);
         this.setHybrid();
+        String[][] recipe = {
+                {"", "", "","neck_vertebrae","skull"},
+                {"tail_vertebrae", "pelvis", "ribcage","shoulder","tooth"},
+                {"", "leg_bones", "", "arm_bones", "claw"},
+                {"", "foot_bones", "", "", ""}};
+        this.setRecipe(recipe);
+        this.enableSkeleton();
 
         this.texture = new ResourceLocation(getDinosaurTexture("camouflage"));
         this.overlayTexture = new ResourceLocation(getDinosaurTexture(""));

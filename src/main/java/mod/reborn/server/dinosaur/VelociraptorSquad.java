@@ -18,6 +18,7 @@ public class VelociraptorSquad {
             this.setEggColorMale(0x5A5752, 0x32D3E55);
             this.setEggColorFemale(0x5A5752, 0x32D3E55);
             this.setOverlayCount(0);
+            this.enableSkeleton();
             this.isHybrid();
         }
 
@@ -41,6 +42,7 @@ public class VelociraptorSquad {
             this.setEggColorMale(0x525637, 0x2C2F24);
             this.setEggColorFemale(0x525637, 0x2C2F24);
             this.setOverlayCount(0);
+            this.enableSkeleton();
             this.isHybrid();
         }
 
@@ -64,6 +66,7 @@ public class VelociraptorSquad {
             this.setEggColorMale(0x526353, 0x3D4F40);
             this.setEggColorFemale(0x526353, 0x3D4F40);
             this.setOverlayCount(0);
+            this.enableSkeleton();
             this.isHybrid();
         }
 
@@ -87,6 +90,7 @@ public class VelociraptorSquad {
             this.setEggColorMale(0x665941, 0x363E43);
             this.setEggColorFemale(0x665941, 0x363E43);
             this.setOverlayCount(0);
+            this.enableSkeleton();
             this.isHybrid();
         }
 

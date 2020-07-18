@@ -28,12 +28,11 @@ public class AlvarezsaurusDinosaur extends Dinosaur {
         this.setScale(0.5F, 0.125F);
         this.setBreeding(false, 0, 6, 20, false, false);
         this.setImprintable(true);
-        this.enableSkeleton();
         String[][] recipe = {
                 {"", "pelvis", "","",""},
                 {"tail_vertebrae", "ribcage", "shoulder", "neck_vertebrae", "skull"},
                 {"leg_bones", "leg_bones", "arm_bones", "arm_bones", ""}};
         this.setRecipe(recipe);
-
+        this.enableSkeleton();
     }
 }

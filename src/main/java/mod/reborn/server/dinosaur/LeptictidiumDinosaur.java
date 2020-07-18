@@ -35,5 +35,11 @@ public class LeptictidiumDinosaur extends Dinosaur
         this.setBirthType(BirthType.LIVE_BIRTH);
         this.setStorage(12);
         this.setBreeding(true, 1, 3, 20, false, true);
+        String[][] recipe = {
+                {"", "pelvis", "","",""},
+                {"tail_vertebrae", "ribcage", "shoulder", "neck_vertebrae", "skull"},
+                {"leg_bones", "", "", "arm_bones", "teeth"}};
+        this.setRecipe(recipe);
+        this.enableSkeleton();
     }
 }

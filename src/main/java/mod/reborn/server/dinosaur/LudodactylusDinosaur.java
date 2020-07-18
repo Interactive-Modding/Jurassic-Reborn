@@ -27,7 +27,7 @@ public class LudodactylusDinosaur extends Dinosaur
         this.setSizeY(0.55F, 1.35F);
         this.setStorage(18);
         this.setDiet((Diet.CARNIVORE.get()));
-        this.setBones("leg_bones", "pelvis", "skull", "tail_vertebrae", "teeth", "wing_bones");
+        this.setBones("leg_bones", "pelvis", "skull", "ribcage", "tail_vertebrae", "teeth", "wing_bones");
         this.setHeadCubeName("Head");
         this.setScale(0.8F, 0.35F);
         this.shouldDefendOffspring();
@@ -35,5 +35,10 @@ public class LudodactylusDinosaur extends Dinosaur
         this.setImprintable(true);
         this.setStorage(12);
         this.setBreeding(false, 0, 2, 20, false, true);
+        String[][] recipe = {
+                {"tail_vertebrae", "pelvis", "ribcage", "skull","teeth"},
+                {"", "leg_bones", "wing_bones", "", ""}};
+        this.setRecipe(recipe);
+        this.enableSkeleton();
     }
 }

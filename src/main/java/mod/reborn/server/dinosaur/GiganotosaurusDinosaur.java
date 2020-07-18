@@ -26,11 +26,18 @@ public class GiganotosaurusDinosaur extends Dinosaur
         this.setMaximumAge(fromDays(60));
         this.setStorage(54);
         this.setDiet((Diet.CARNIVORE.get()));
-        this.setBones("skull", "tooth", "neck_vertebrae", "pelvis", "ribcage", "shoulder", "tail_vertebrae");
+        this.setBones("skull", "tooth", "neck_vertebrae", "pelvis", "ribcage", "shoulder", "leg_bones", "arm_bones", "tail_vertebrae", "foot_bones", "claw");
         this.setHeadCubeName("Head");
         this.setScale(2.37F, 0.3F);
         this.shouldDefendOffspring();
         this.setAttackBias(280);
         this.setBreeding(false, 2, 3, 40, false, true);
+        String[][] recipe = {
+                {"", "", "","neck_vertebrae","skull"},
+                {"tail_vertebrae", "pelvis", "ribcage","shoulder","tooth"},
+                {"", "leg_bones", "", "arm_bones", "claw"},
+                {"", "foot_bones", "", "", ""}};
+        this.setRecipe(recipe);
+        this.enableSkeleton();
     }
 }
