@@ -34,5 +34,10 @@ public class DodoDinosaur extends Dinosaur
         this.setImprintable(true);
         this.setStorage(6);
         this.setBreeding(false, 2, 6, 20, false, true);
+        String[][] recipe =     {{"", "", "neck_vertebrae", "skull"},
+                                {"pelvis", "ribcage", "shoulder"},
+                                {"", "leg_bones"}};
+        this.setRecipe(recipe);
+        this.enableSkeleton();
     }
 }

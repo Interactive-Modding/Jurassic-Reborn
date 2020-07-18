@@ -27,10 +27,17 @@ public class CearadactylusDinosaur extends Dinosaur
         this.setSizeY(0.45F, 1.55F);
         this.setStorage(27);
         this.setDiet((Diet.CARNIVORE.get()));
-        this.setBones("leg_bones", "pelvis", "skull", "tail_vertebrae", "teeth", "wing_bones");
+        this.setBones("leg_bones", "pelvis", "skull", "neck_vertebrae", "tail_vertebrae", "teeth", "wing_bones", "ribcage");
         this.setHeadCubeName("Head");
         this.setScale(1.0F, 0.45F);
         this.setBreeding(false, 2, 6, 20, false, true);
         this.shouldDefendOffspring();
+        String[][] recipe = {
+                {"", "", "","neck_vertebrae","skull"},
+                {"tail_vertebrae", "pelvis", "ribcage","","teeth"},
+                {"", "leg_bones", "", "wing_bones", ""},
+                {"", "", "", "", ""}};
+        this.setRecipe(recipe);
+        this.enableSkeleton();
     }
 }

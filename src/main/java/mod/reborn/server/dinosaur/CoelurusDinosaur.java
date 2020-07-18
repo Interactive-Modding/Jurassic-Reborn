@@ -34,6 +34,10 @@ public class CoelurusDinosaur extends Dinosaur
         this.setImprintable(true);
         this.setStorage(8);
         this.setBreeding(false, 0, 4, 20, false, true);
-
+        String[][] recipe =     {{"", "", "", "neck_vertebrae", "skull"},
+                {"tail_vertebrae", "pelvis", "ribcage","shoulder","tooth"},
+                {"leg_bones", "leg_bones", "", "", "arm_bones"}};
+        this.setRecipe(recipe);
+        this.enableSkeleton();
     }
 }

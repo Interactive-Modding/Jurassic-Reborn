@@ -33,6 +33,12 @@ public class CrassigyrinusDinosaur extends Dinosaur {
         this.setOffset(0,-2,0);
         this.setMarineAnimal(true);
         this.setBreeding(true, 0, 4, 20, false, true);
-
+        String[][] recipe =     {
+                { "", "", "", "skull"},
+                { "tail_vertebrae", "ribcage","","teeth"},
+                { "hind_leg_bones", "", "front_leg_bones"},
+                { "foot_bone", "", "foot_bone"}};
+        this.setRecipe(recipe);
+        this.enableSkeleton();
     }
 }

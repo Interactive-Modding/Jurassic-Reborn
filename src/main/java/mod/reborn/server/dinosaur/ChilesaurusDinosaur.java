@@ -32,5 +32,10 @@ public class ChilesaurusDinosaur extends Dinosaur {
         this.setImprintable(true);
         this.setStorage(8);
         this.shouldDefendOffspring();
+        String[][] recipe =     {{"", "", "", "neck_vertebrae", "skull"},
+                {"tail_vertebrae", "pelvis", "ribcage","shoulder","tooth"},
+                {"", "leg_bones", "", "", "arm_bones"}};
+        this.setRecipe(recipe);
+        this.enableSkeleton();
     }
 }

@@ -33,7 +33,7 @@ public class BaryonyxDinosaur extends Dinosaur
         this.shouldDefendOffspring();
         String[][] recipe = {
                 {"", "", "","neck_vertebrae","skull"},
-                {"tail_vertebrae", "pelvis", "ribcage","shoulder_bone","tooth"},
+                {"tail_vertebrae", "pelvis", "ribcage","shoulder","tooth"},
                 {"", "leg_bones", "", "arm_bones", ""},
                 {"", "foot_bones", "", "", ""}};
         this.setRecipe(recipe);

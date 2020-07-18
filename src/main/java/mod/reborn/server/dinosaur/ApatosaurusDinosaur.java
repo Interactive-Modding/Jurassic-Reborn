@@ -33,5 +33,11 @@ public class ApatosaurusDinosaur extends Dinosaur
         this.setImprintable(true);
         this.setStorage(48);
         this.setOffset(0.0F, 0.0F, 0.1F);
+        String[][] recipe =     {{"", "", "", "", "skull"},
+                {"", "", "", "neck_vertebrae","tooth"},
+                {"tail_vertebrae","pelvis","ribcage","shoulder",""},
+                {"","hind_leg_bones","hind_leg_bones","front_leg_bones","front_leg_bones"}};
+        this.setRecipe(recipe);
+        this.enableSkeleton();
     }
 }

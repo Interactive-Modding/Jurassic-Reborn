@@ -127,6 +127,10 @@ attraction_sign.tyrannosaurus_kingdom_plants.name=Tyrannosaurus Kingdom With Pla
 
 item.goat_raw.name=Raw Goat
 item.goat_cooked.name=Cooked Goat
+item.cooked_crab_meat.name= Cooked Crab Meat
+item.cooked_shark_meat.name= Cooked Shark Meat
+item.raw_crab_meat.name= Raw Crab Meat
+item.raw_shark_meat.name= Raw Shark Meat
 
 gender.name=Gender
 
@@ -177,10 +181,8 @@ item.perisphinctes_beak_fresh.name=Fresh {dino} Beak
 item.shell_cover_fresh.name=Fresh {dino} Shell Cover
 item.scales_fresh.name=Fresh {dino} Scales
 item.tail_fin_fresh.name=Fresh {dino} Tail Fin
-item.cooked_crab_meat.name= Cooked Crab Meat
-item.cooked_shark_meat.name= Cooked Shark Meat
-item.raw_crab_meat.name= Raw Crab Meat
-item.raw_shark_meat.name= Raw Shark Meat
+item.foot_bone_fresh.name=Fresh {dino} Foot Bone
+item.tusks_fresh.name=Fresh {dino} Tusks
 
 // Bones
 item.bones.name={dino} Bones
@@ -225,10 +227,12 @@ item.thagomizer.name={dino} Thagomizer
 item.caudal_fin.name={dino} Caudal Fin
 item.wing_bones.name={dino} Wing Bones
 item.arm_bones.name={dino} Arm Bones
+item.foot_bone.name={dino} Foot Bone
 item.perisphinctes_beak.name={dino} Beak
 item.shell_cover.name={dino} Shell Cover
 item.scales.name={dino} Scales
 item.tail_fin.name={dino} Tail Fin
+item.tusks.name={dino} Tusks
 
 item.fossilized_egg.name=Fossilized Egg
 

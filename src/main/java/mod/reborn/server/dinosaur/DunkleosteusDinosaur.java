@@ -31,7 +31,7 @@ public class DunkleosteusDinosaur extends Dinosaur
         this.setDiet((Diet.CARNIVORE.get()));
         this.setSleepTime(SleepTime.DIURNAL);
         this.setBirthType(BirthType.LIVE_BIRTH);
-        this.setBones("mouth_plates", "skull");
+        this.setBones("mouth_plates", "skull", "dorsal_fin", "spine");
         this.setHeadCubeName("Main head");
         this.setScale(2.1F, 0.55F);
         this.setOffset(0.0F, 1.0F, -0.25F);
@@ -39,5 +39,10 @@ public class DunkleosteusDinosaur extends Dinosaur
         this.setAttackBias(420);
         this.setImprintable(false);
         this.setBreeding(true, 2, 6, 20, false, true);
+        String[][] recipe =     {
+                {"", "", "dorsal_fin","",""},
+                {"spine", "spine", "spine", "skull", "mouth_plates"}};
+        this.setRecipe(recipe);
+        this.enableSkeleton();
     }
 }

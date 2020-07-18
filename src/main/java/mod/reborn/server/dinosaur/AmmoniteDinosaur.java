@@ -35,8 +35,8 @@ public class AmmoniteDinosaur extends Dinosaur {
         this.setOffset(0, 0.2f, 0);
         this.enableSkeleton();
         String[][] recipe = {
-                {"", "shell_cover", "","",""},
-                {"", "", "perisphinctes_beak", "", ""}};
+                { "shell_cover"},
+                { "perisphinctes_beak"}};
         this.setRecipe(recipe);
 
     }

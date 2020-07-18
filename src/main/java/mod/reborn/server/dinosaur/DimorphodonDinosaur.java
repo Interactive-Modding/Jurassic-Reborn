@@ -28,12 +28,18 @@ public class DimorphodonDinosaur extends Dinosaur
         this.setSizeY(0.25F, 0.75F);
         this.setStorage(9);
         this.setDiet((Diet.PCARNIVORE.get()));
-        this.setBones("leg_bones", "neck", "ribs_and_spine", "shoulder_blade", "skull", "tail", "teeth", "wing_bones");
+        this.setBones("leg_bones", "neck", "ribs_and_spine", "shoulder_blade", "skull", "tail_vertebrae", "teeth", "wing_bones");
         this.setHeadCubeName("Head");
         this.setImprintable(true);
         this.setStorage(12);
         this.setScale(0.5F, 0.15F);
         this.setBreeding(false, 2, 6, 20, false, true);
-
+        String[][] recipe = {
+                {"", "", "","neck","skull"},
+                {"tail_vertebrae", "ribs_and_spine", "shoulder_blade","","teeth"},
+                {"", "leg_bones", "wing_bones", "", ""},
+                {"", "", "", "", ""}};
+        this.setRecipe(recipe);
+        this.enableSkeleton();
     }
 }

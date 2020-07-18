@@ -35,5 +35,11 @@ public class DiplocaulusDinosaur extends Dinosaur {
         this.setStorage(12);
         this.setBreeding(true, 2, 6, 20, false, true);
         this.setMarineAnimal(true);
+        String[][] recipe =     {{ "", "", "skull"},
+                                 {"tail_vertebrae", "ribcage","teeth"},
+                                 { "leg_bones", "", "leg_bones"},
+                                 { "", "", "foot_bone"}};
+        this.setRecipe(recipe);
+        this.enableSkeleton();
     }
 }
