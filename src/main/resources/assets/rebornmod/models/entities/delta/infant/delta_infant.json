@@ -1,8 +1,0 @@
-{
-    "version": 0,
-    "poses": {
-        "IDLE": [
-            {"pose": "delta_infant_idle", "time": 20}
-        ]
-     }
-}
