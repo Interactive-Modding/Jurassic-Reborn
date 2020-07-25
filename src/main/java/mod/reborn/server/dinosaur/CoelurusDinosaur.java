@@ -20,7 +20,7 @@ public class CoelurusDinosaur extends Dinosaur
         this.setEggColorFemale(0x7D734A, 0x484A3D);
         this.setHealth(2, 12);
         this.setSpeed((SPEED -0.05), SPEED);
-        this.setStrength(1, 3);
+        this.setStrength(3, 6);
         this.setMaximumAge(fromDays(20));
         this.setEyeHeight(0.2F, 0.5F);
         this.setSizeX(0.1F, 0.6F);

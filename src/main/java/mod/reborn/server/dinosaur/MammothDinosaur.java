@@ -34,5 +34,11 @@ public class MammothDinosaur extends Dinosaur {
         this.setImprintable(true);
         this.setStorage(12);
         this.setBreeding(true, 0, 3, 45, false, true);
+        String[][] recipe = {
+                {"", "", "","neck_vertebrae","skull"},
+                {"tail_vertebrae", "pelvis", "ribcage","tooth","tusks"},
+                {"", "hind_leg_bones", "", "front_leg_bones", "shoulder"}};
+        this.setRecipe(recipe);
+        this.enableSkeleton();
     }
 }

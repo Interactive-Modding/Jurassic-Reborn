@@ -7,11 +7,175 @@
         "time": 20
       }
     ],
-    "SLEEPING": [
-      {
-        "pose": "mammoth_adult_sleeping",
+	"ATTACKING": [
+	  {
+        "pose": "mammoth_adult_attack_1",
+        "time": 8
+      },
+	  {
+        "pose": "mammoth_adult_attack_2",
+        "time": 8
+      },
+	  {
+        "pose": "mammoth_adult_attack_3",
+        "time": 8
+ },
+	  {
+        "pose": "mammoth_adult_idle",
+        "time": 15
+      }
+	],
+	"CALLING": [
+	  {
+	    "pose": "mammoth_adult_calling_1",
+        "time": 20
+      },
+	  {
+        "pose": "mammoth_adult_calling_2",
+        "time": 20
+ },
+	  {
+        "pose": "mammoth_adult_idle",
         "time": 20
       }
-    ]
+	],
+	"DYING": [
+	  {
+        "pose": "mammoth_adult_death",
+        "time": 25
+       }
+	],
+	"DRINKING": [
+	  {
+        "pose": "mammoth_adult_drinking_1",
+        "time": 15
+      },
+	  {
+        "pose": "mammoth_adult_drinking_2",
+        "time": 10
+      },
+	  {
+        "pose": "mammoth_adult_drinking_3",
+        "time": 10
+      },
+	  {
+        "pose": "mammoth_adult_drinking_4",
+        "time": 10
+      },
+	  {
+        "pose": "mammoth_adult_drinking_5",
+        "time": 10
+      },
+	  {
+        "pose": "mammoth_adult_drinking_6",
+        "time": 10
+ },
+	  {
+        "pose": "mammoth_adult_idle",
+        "time": 20
+      }
+    ],
+	"EATING": [
+	  {
+        "pose": "mammoth_adult_eating_1",
+        "time": 15
+      },
+	  {
+        "pose": "mammoth_adult_eating_2",
+        "time": 15
+      },
+	  {
+        "pose": "mammoth_adult_eating_3",
+        "time": 15
+      },
+	  {
+        "pose": "mammoth_adult_eating_4",
+        "time": 15
+      },
+	  {
+        "pose": "mammoth_adult_eating_5",
+        "time": 20
+ },
+	  {
+        "pose": "mammoth_adult_idle",
+        "time": 20
+      }
+	],
+	"GIVING_BIRTH": [
+	  {
+        "pose": "mammoth_adult_giving_birth",
+        "time": 35
+	  },
+	  {
+        "pose": "mammoth_adult_idle",
+        "time": 10
+	  }
+	],
+	"INJURED": [
+	  {
+        "pose": "mammoth_adult_injured",
+        "time": 20
+	  }
+	],
+	"LOOKING_LEFT": [
+	  {
+        "pose": "mammoth_adult_looking_left",
+        "time": 20
+	  }
+	],
+	"LOOKING_RIGHT": [
+	  {
+        "pose": "mammoth_adult_looking_right",
+        "time": 20
+	  }
+	],
+	"RESTING": [
+	  {
+        "pose": "mammoth_adult_resting",
+        "time": 20
+	  }
+	],
+	"RUNNING": [
+	  {
+        "pose": "mammoth_adult_running_1",
+        "time": 5
+	  },
+	  {
+        "pose": "mammoth_adult_running_2",
+        "time": 5
+	  },
+	  {
+        "pose": "mammoth_adult_running_3",
+        "time": 5
+	  },
+	  {
+        "pose": "mammoth_adult_running_4",
+        "time": 5
+	  }
+	],
+	"SLEEPING": [
+	  {
+        "pose": "mammoth_adult_sleeping",
+        "time": 20
+	  }
+	],
+	"WALKING": [
+	  {
+        "pose": "mammoth_adult_walking_1",
+        "time": 6
+	  },
+	  {
+        "pose": "mammoth_adult_walking_2",
+        "time": 6
+	  },
+	  {
+        "pose": "mammoth_adult_walking_3",
+        "time": 6
+	  },
+	  {
+        "pose": "mammoth_adult_walking_4",
+        "time": 6
+	  }
+	]
   }
 }

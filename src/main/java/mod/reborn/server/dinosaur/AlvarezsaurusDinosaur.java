@@ -16,7 +16,7 @@ public class AlvarezsaurusDinosaur extends Dinosaur {
         this.setEggColorFemale(0xBD8D62, 0xACACAC);
         this.setHealth(4, 10);
         this.setSpeed((SPEED -0.05), SPEED);
-        this.setStrength(25, 200);
+        this.setStrength(2, 4);
         this.setMaximumAge(fromDays(40));
         this.setEyeHeight(0.225F, 1.3F);
         this.setSizeX(0.3F, 0.5F);

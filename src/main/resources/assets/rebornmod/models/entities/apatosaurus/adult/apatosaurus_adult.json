@@ -74,7 +74,7 @@
     "DYING": [
       {
         "pose": "apatosaurus_adult_death",
-        "time": 10
+        "time": 30
       }
     ],
     "DRINKING": [
