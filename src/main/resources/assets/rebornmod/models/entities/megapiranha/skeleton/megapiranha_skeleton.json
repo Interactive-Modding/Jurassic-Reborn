@@ -1,0 +1,11 @@
+{
+	"version": 0,
+	"poses": {
+		"IDLE": [
+		  {
+			"pose": "megapiranha_skeleton_idle",
+			"time": 1
+		  }
+		]
+	}
+}

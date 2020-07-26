@@ -16,12 +16,12 @@ public class MegapiranhaDinosaur extends Dinosaur
         this.setName("Megapiranha");
         this.setDinosaurType(DinosaurType.AGGRESSIVE);
         this.setDinosaurClass(MegapiranhaEntity.class);
-        this.setTimePeriod(TimePeriod.CRETACEOUS); // TODO LATE MIOCENE
+        this.setTimePeriod(TimePeriod.NEOGENE);
         this.setEggColorMale(0x17100B, 0x645C54);
         this.setEggColorFemale(0x7D735D, 0x322922);
-        this.setHealth(3, 15);
+        this.setHealth(3, 12);
         this.setSpeed((SPEED -0.05), SPEED);
-        this.setStrength(5, 10);
+        this.setStrength(4, 8);
         this.setMaximumAge(fromDays(30));
         this.setEyeHeight(0.35F, 0.35F);//TODO uh?
         this.setSizeX(0.15F, 0.5F);
@@ -38,5 +38,10 @@ public class MegapiranhaDinosaur extends Dinosaur
         this.setAttackBias(400);
         this.setImprintable(false);
         this.setBreeding(true, 0, 6, 20, false, true);
+        String[][] recipe =     {{ "", "dorsal_fin", "", ""},
+                                { "caudal_fin", "spine", "body_fins", "skull"},
+                                { "anal_fin","","", "teeth"}};
+        this.setRecipe(recipe);
+        this.enableSkeleton();
     }
 }
