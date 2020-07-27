@@ -154,11 +154,11 @@
     "DYING": [
       {
         "pose": "indominus_adult_dying_1",
-        "time": 10
+        "time": 20
       },
       {
         "pose": "indominus_adult_dying_2",
-        "time": 10
+        "time": 20
       }
     ],
     "LOOKING_LEFT": [
