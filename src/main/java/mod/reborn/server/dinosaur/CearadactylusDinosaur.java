@@ -35,8 +35,7 @@ public class CearadactylusDinosaur extends Dinosaur
         String[][] recipe = {
                 {"", "", "","neck_vertebrae","skull"},
                 {"tail_vertebrae", "pelvis", "ribcage","","teeth"},
-                {"", "leg_bones", "", "wing_bones", ""},
-                {"", "", "", "", ""}};
+                {"", "leg_bones", "", "wing_bones", ""}};
         this.setRecipe(recipe);
         this.enableSkeleton();
     }
