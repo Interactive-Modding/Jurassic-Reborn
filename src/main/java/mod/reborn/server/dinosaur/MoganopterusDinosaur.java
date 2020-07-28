@@ -32,5 +32,10 @@ public class MoganopterusDinosaur extends Dinosaur
         this.setScale(0.725F, 0.2F);
         this.setAttackBias(200);
         this.setBreeding(false, 0, 6, 20, false, true);
+        String[][] recipe = {
+                {"tail_vertebrae", "pelvis", "ribcage", "skull","teeth"},
+                {"", "leg_bones", "wing_bones", "", ""}};
+        this.setRecipe(recipe);
+        this.enableSkeleton();
     }
 }
