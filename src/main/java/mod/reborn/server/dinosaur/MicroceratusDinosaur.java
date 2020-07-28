@@ -34,5 +34,10 @@ public class MicroceratusDinosaur extends Dinosaur
         this.setImprintable(true);
         this.setStorage(6);
         this.setBreeding(false, 0, 3, 20, false, true);
+        String[][] recipe = {
+                {"tail_vertebrae", "pelvis", "ribcage","neck_vertebrae","skull"},
+                {"leg_bones", "arm_bones", "", "shoulder", "teeth"}};
+        this.setRecipe(recipe);
+        this.enableSkeleton();
     }
 }
