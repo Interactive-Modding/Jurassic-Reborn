@@ -21,7 +21,7 @@ public class GallimimusDinosaur extends Dinosaur {
         this.setTimePeriod(TimePeriod.CRETACEOUS);
         this.setEggColorMale(0xD5BA86, 0xD16918);
         this.setEggColorFemale(0xCCBA94, 0xAB733D);
-        this.setHealth(5, 30);
+        this.setHealth(6, 30);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(1, 5);
         this.setMaximumAge(this.fromDays(35));

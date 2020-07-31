@@ -18,7 +18,7 @@ public class OthnieliaDinosaur extends Dinosaur
         this.setTimePeriod(TimePeriod.JURASSIC);
         this.setEggColorMale(0x3EA999, 0x584F41);
         this.setEggColorFemale(0xC9AC95, 0x46342E);
-        this.setHealth(3, 10);
+        this.setHealth(4, 12);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(1, 5);
         this.setMaximumAge(fromDays(25));

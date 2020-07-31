@@ -20,7 +20,7 @@ public class OviraptorDinosaur extends Dinosaur
         this.setTimePeriod(TimePeriod.CRETACEOUS);
         this.setEggColorMale(0xA2A7AE, 0x666E81);
         this.setEggColorFemale(0xDEDAC4, 0x663341);
-        this.setHealth(5, 15);
+        this.setHealth(4, 16);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStorage(9);
         this.setAttackSpeed(0.11);

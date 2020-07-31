@@ -19,7 +19,7 @@ public class MegapiranhaDinosaur extends Dinosaur
         this.setTimePeriod(TimePeriod.NEOGENE);
         this.setEggColorMale(0x17100B, 0x645C54);
         this.setEggColorFemale(0x7D735D, 0x322922);
-        this.setHealth(3, 12);
+        this.setHealth(2, 12);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(4, 8);
         this.setMaximumAge(fromDays(30));

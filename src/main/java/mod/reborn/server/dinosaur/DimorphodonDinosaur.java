@@ -18,7 +18,7 @@ public class DimorphodonDinosaur extends Dinosaur
         this.setTimePeriod(TimePeriod.JURASSIC);
         this.setEggColorMale(0xB2AC94, 0x636644);
         this.setEggColorFemale(0xBDB4A9, 0x726B57);
-        this.setHealth(5, 10);
+        this.setHealth(6, 12);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(1, 5);
         this.setMaximumAge(fromDays(35));

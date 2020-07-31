@@ -18,7 +18,7 @@ public class CorythosaurusDinosaur extends Dinosaur
         this.setTimePeriod(TimePeriod.CRETACEOUS);
         this.setEggColorMale(0xBAA87E, 0x5E7201);
         this.setEggColorFemale(0xB3A27D, 0xE9BF47);
-        this.setHealth(10, 55);
+        this.setHealth(10, 56);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(5, 15);
         this.setMaximumAge(fromDays(40));

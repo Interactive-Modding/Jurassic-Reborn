@@ -18,7 +18,7 @@ public class LeaellynasauraDinosaur extends Dinosaur
         this.setTimePeriod(TimePeriod.CRETACEOUS);
         this.setEggColorMale(0xE1D0A6, 0x262B27);
         this.setEggColorFemale(0xC8B50C, 0x926045);
-        this.setHealth(3, 20);
+        this.setHealth(4, 20);
         this.setStrength(1, 5);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setMaximumAge(fromDays(35));

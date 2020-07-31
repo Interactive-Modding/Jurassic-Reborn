@@ -16,7 +16,7 @@ public class BeelzebufoDinosaur extends Dinosaur {
         this.setTimePeriod(TimePeriod.CRETACEOUS);
         this.setEggColorMale(0xECC35C, 0xCDC605);
         this.setEggColorFemale(0xE4CC92, 0xCEC704);
-        this.setHealth(3, 10);
+        this.setHealth(4, 10);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(2, 10);
         this.setMaximumAge(fromDays(40));

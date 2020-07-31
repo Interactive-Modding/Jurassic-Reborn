@@ -19,7 +19,7 @@ public class MussaurusDinosaur extends Dinosaur {
         this.setTimePeriod(TimePeriod.TRIASSIC);
         this.setEggColorMale(0x6F9845, 0x211F16);
         this.setEggColorFemale(0x526024, 0x222611);
-        this.setHealth(2, 15);
+        this.setHealth(2, 16);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(1, 2);
         this.setMaximumAge(this.fromDays(30));

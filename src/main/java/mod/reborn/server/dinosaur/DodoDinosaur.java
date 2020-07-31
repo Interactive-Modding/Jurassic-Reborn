@@ -18,7 +18,7 @@ public class DodoDinosaur extends Dinosaur
         this.setTimePeriod(TimePeriod.QUATERNARY);
         this.setEggColorMale(0xA2996E, 0x545338);
         this.setEggColorFemale(0x908B80, 0x665C51);
-        this.setHealth(5, 15);
+        this.setHealth(4, 16);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(1, 5);
         this.setMaximumAge(fromDays(20));

@@ -18,7 +18,7 @@ public class ZhenyuanopterusDinosaur extends Dinosaur
         this.setEggColorMale(0x434F4E, 0x0F1010);
         this.setEggColorFemale(0x4A5957, 0xB9B7A3);
         this.setSpeed((SPEED -0.05), SPEED);
-        this.setHealth(10, 25);
+        this.setHealth(6, 25);
         this.setStrength(5, 20);
         this.setMaximumAge(fromDays(40));
         this.setEyeHeight(0.225F, 1.3F);
