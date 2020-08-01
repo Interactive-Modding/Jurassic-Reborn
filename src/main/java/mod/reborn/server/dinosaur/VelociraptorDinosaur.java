@@ -10,7 +10,7 @@ import net.minecraftforge.common.BiomeDictionary;
 import java.util.ArrayList;
 
 public class VelociraptorDinosaur extends Dinosaur {
-    public static final double SPEED = 0.3F;
+    public static final double SPEED = 0.4F;
     public VelociraptorDinosaur() {
         super();
 

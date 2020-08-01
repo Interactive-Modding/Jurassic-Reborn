@@ -41,8 +41,7 @@ public class IndoraptorDinosaur extends Dinosaur implements Hybrid
         String[][] recipe = {
                 {"", "", "","neck_vertebrae","skull"},
                 {"tail_vertebrae", "pelvis", "ribcage","shoulder","tooth"},
-                {"", "hind_leg_bones", "", "front_leg_bones", "claw"},
-                {"", "", "", "", ""}};
+                {"", "hind_leg_bones", "", "front_leg_bones", "claw"}};
         this.setRecipe(recipe);
 
         this.texture = new ResourceLocation(getDinosaurTexture("camouflage"));
