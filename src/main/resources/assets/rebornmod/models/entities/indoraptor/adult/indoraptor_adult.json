@@ -1,0 +1,11 @@
+{
+  "version": 0,
+  "poses": {
+    "IDLE": [
+      {
+        "pose": "indoraptor_adult_idle",
+        "time": 20
+      }
+    ]
+  }
+}

@@ -524,7 +524,8 @@ public enum RenderingHandler {
 		registerRenderInfo(EntityHandler.QUETZAL, new QuetzalAnimator(), 0.5F);
 		registerRenderInfo(EntityHandler.COELURUS, new CoelurusAnimator(), 0.3F);
 		registerRenderInfo(EntityHandler.MAWSONIA, new MawsoniaAnimator(), 0.64F);
-			
+		registerRenderInfo(EntityHandler.INDORAPTOR, new IndoraptorAnimator(), 0.64F);
+
         RenderingRegistry.registerEntityRenderingHandler(PaddockSignEntity.class, new PaddockSignRenderer());
         RenderingRegistry.registerEntityRenderingHandler(AttractionSignEntity.class, new AttractionSignRenderer());
         RenderingRegistry.registerEntityRenderingHandler(DinosaurEggEntity.class, new DinosaurEggRenderer());
