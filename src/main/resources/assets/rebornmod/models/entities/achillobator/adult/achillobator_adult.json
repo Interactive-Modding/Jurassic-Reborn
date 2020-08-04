@@ -4,7 +4,11 @@
     "IDLE": [
       {
         "pose": "achillobator_adult_idle",
-        "time": 20
+        "time": 55
+      },
+      {
+        "pose": "achillobator_adult_idle_1",
+        "time": 55
       }
     ],
     "ATTACKING": [
@@ -118,7 +122,7 @@
       },
       {
         "pose": "achillobator_adult_idle",
-        "time": 10
+        "time": 20
       }
     ],
     "PREPARE_LEAP": [

@@ -5,7 +5,7 @@ import mod.reborn.server.entity.dinosaur.MosasaurusEntity;
 import mod.reborn.server.period.TimePeriod;
 
 public class MosasaurusDinosaur extends Dinosaur {
-    public static final double SPEED = 0.4F;
+    public static final double SPEED = 0.45F;
     public MosasaurusDinosaur(){
         super();
 
