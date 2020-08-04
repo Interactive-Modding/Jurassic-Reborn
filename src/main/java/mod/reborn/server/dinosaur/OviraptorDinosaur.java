@@ -24,7 +24,7 @@ public class OviraptorDinosaur extends Dinosaur
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStorage(9);
         this.setAttackSpeed(0.11);
-        this.setStrength(2, 8);
+        this.setStrength(2, 6);
         this.setMaximumAge(fromDays(25));
         this.setEyeHeight(0.32F, 0.95F);
         this.setSizeX(0.25F, 0.6F);
