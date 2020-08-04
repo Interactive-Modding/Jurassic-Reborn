@@ -33,7 +33,7 @@ public class OthnieliaDinosaur extends Dinosaur
         this.setScale(0.35F, 0.15F);
         this.setImprintable(true);
         this.setStorage(12);
-        this.setBreeding(false, 0, 4, 20, false, true);
+        this.setBreeding(false, 2, 6, 20, false, true);
         String[][] recipe = {
                 {"", "pelvis", "","",""},
                 {"tail_vertebrae", "ribcage", "shoulder", "neck_vertebrae", "skull"},

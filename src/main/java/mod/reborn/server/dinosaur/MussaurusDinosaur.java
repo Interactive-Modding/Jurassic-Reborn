@@ -38,7 +38,7 @@ public class MussaurusDinosaur extends Dinosaur {
         this.setImprintable(true);
         this.setStorage(12);
         this.setOffset(0.0F, 0.0F, 0.5F);
-        this.setBreeding(false, 2, 8, 15, false, true);
+        this.setBreeding(false, 2, 6, 20, false, true);
         String[][] recipe = {
                         {"", "pelvis", "","",""},
                         {"tail_vertebrae", "ribcage", "shoulder", "neck_vertebrae", "skull"},
