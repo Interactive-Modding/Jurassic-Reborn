@@ -18,7 +18,7 @@ public class PostosuchusDinosaur extends Dinosaur {
         this.setHealth(10, 40);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStorage(27);
-        this.setStrength(1, 20);
+        this.setStrength(2, 16);
         this.setMaximumAge(fromDays(45));
         this.setEyeHeight(0.45F, 1.6F);
         this.setSizeX(0.3F, 1.4F);
@@ -29,5 +29,11 @@ public class PostosuchusDinosaur extends Dinosaur {
         this.setScale(1.3F, 0.5F);
         this.setAttackBias(120);
         this.setBreeding(false, 2, 6, 20, false, true);
+        String[][] recipe = {
+        {"", "","neck_vertebrae","skull"},
+        {"tail_vertebrae", "femur", "ribcage","shoulder"},
+        {"leg_bones", "leg_bones", "", "tooth"}};
+        this.setRecipe(recipe);
+        this.enableSkeleton();
     }
 }
