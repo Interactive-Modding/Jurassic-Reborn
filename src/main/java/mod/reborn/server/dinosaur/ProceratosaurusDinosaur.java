@@ -24,7 +24,7 @@ public class ProceratosaurusDinosaur extends Dinosaur {
         this.setSizeX(0.3F, 1.4F);
         this.setSizeY(0.5F, 1.8F);
         this.setDiet(Diet.CARNIVORE.get());
-        this.setBones("ribcage", "shoulder", "skull", "neck_vertebrae", "leg_bones", "pelvis", "ribcage", "shoulder", "tail_vertebrae");
+        this.setBones("ribcage", "tooth", "shoulder", "skull", "neck_vertebrae", "leg_bones", "pelvis", "ribcage", "arm_bones", "shoulder", "tail_vertebrae");
         this.setHeadCubeName("Head");
         this.setScale(0.9F, 0.4F);
         this.shouldDefendOffspring();
@@ -32,5 +32,11 @@ public class ProceratosaurusDinosaur extends Dinosaur {
         this.setImprintable(true);
         this.setStorage(12);
         this.setBreeding(false, 2, 6, 20, false, true);
+        String[][] recipe = {
+                {"", "", "","neck_vertebrae","skull"},
+                {"tail_vertebrae", "pelvis", "ribcage","shoulder","tooth"},
+                {"", "", "leg_bones", "arm_bones", ""}};
+        this.setRecipe(recipe);
+        this.enableSkeleton();
     }
 }

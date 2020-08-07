@@ -19,6 +19,10 @@
       {
         "pose": "postosuchus_adult_attacking_2",
         "time": 10
+      },
+      {
+        "pose": "postosuchus_adult_idle",
+        "time": 10
       }
   ],
     "RESTING": [
@@ -26,19 +30,51 @@
         "pose": "postosuchus_adult_resting",
         "time": 15
       }
+ ],
+    "LOOKING_LEFT": [
+      {
+        "pose": "postosuchus_adult_look_left",
+        "time": 20
+      },
+      {
+        "pose": "postosuchus_adult_look_left",
+        "time": 20
+      },
+      {
+        "pose": "postosuchus_adult_idle",
+        "time": 10
+      }
+    ],
+    "LOOKING_RIGHT": [
+      {
+        "pose": "postosuchus_adult_look_right",
+        "time": 20
+      },
+      {
+        "pose": "postosuchus_adult_look_right",
+        "time": 20
+      },
+      {
+        "pose": "postosuchus_adult_idle",
+        "time": 10
+      }
     ],
     "DRINKING": [
       {
         "pose": "postosuchus_adult_drinking_1",
-        "time": 7
+        "time": 10
       },
       {
         "pose": "postosuchus_adult_drinking_2",
-        "time": 6
+        "time": 15
       },
       {
         "pose": "postosuchus_adult_drinking_3",
-        "time": 7
+        "time": 10
+ },
+      {
+        "pose": "postosuchus_adult_idle",
+        "time": 15
       }
     ],
     "DYING": [
@@ -58,15 +94,19 @@
     "EATING": [
       {
         "pose": "postosuchus_adult_eating_1",
-        "time": 7
+        "time": 10
       },
       {
         "pose": "postosuchus_adult_eating_2",
-        "time": 6
+        "time": 15
       },
       {
         "pose": "postosuchus_adult_eating_3",
-        "time": 7
+        "time": 10
+     },
+      {
+        "pose": "postosuchus_adult_idle",
+        "time": 15
       }
     ],
     "SLEEPING": [
@@ -83,6 +123,10 @@
       {
         "pose": "postosuchus_adult_sniffing_2",
         "time": 10
+ },
+      {
+        "pose": "postosuchus_adult_idle",
+        "time": 15
       }
  ],
     "CALLING": [
