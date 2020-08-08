@@ -46,7 +46,6 @@ Pedro Resende
 
 Just Monika 
 
-ᗰι𝓬ʰ𝐈𝐠Ữ𝓝 (Michigun)
 
 ### Bug-Testers
 
@@ -59,6 +58,8 @@ Ryan is still the same
 # Contributors
 
 Collinvht
+
+ᗰι𝓬ʰ𝐈𝐠Ữ𝓝 (Michigun)
 
 AGSucho
 

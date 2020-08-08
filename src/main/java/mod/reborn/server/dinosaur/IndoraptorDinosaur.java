@@ -10,7 +10,6 @@ import net.minecraft.util.ResourceLocation;
 public class IndoraptorDinosaur extends Dinosaur implements Hybrid
 {
     private ResourceLocation texture;
-
     public static final double SPEED = 0.45F;
 
     public IndoraptorDinosaur()
@@ -45,8 +44,6 @@ public class IndoraptorDinosaur extends Dinosaur implements Hybrid
                 {"", "foot_bones"}};
         this.setRecipe(recipe);
 
-        this.texture = new ResourceLocation(getDinosaurTexture("camouflage"));
-
     }
 
     @Override
@@ -54,17 +51,17 @@ public class IndoraptorDinosaur extends Dinosaur implements Hybrid
     {
         return new Class[] { IndominusDinosaur.class, VelociraptorDinosaur.class };
     }
-
     @Override
     public ResourceLocation getMaleTexture(GrowthStage stage)
     {
+        this.texture = new ResourceLocation(getDinosaurTexture("adult_male"));
         return texture;
     }
 
     @Override
     public ResourceLocation getFemaleTexture(GrowthStage stage)
     {
+        this.texture = new ResourceLocation(getDinosaurTexture("adult_female"));
         return texture;
     }
-
 }
