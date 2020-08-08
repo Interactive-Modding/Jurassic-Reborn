@@ -19,7 +19,7 @@ public class MussaurusDinosaur extends Dinosaur {
         this.setTimePeriod(TimePeriod.TRIASSIC);
         this.setEggColorMale(0x6F9845, 0x211F16);
         this.setEggColorFemale(0x526024, 0x222611);
-        this.setHealth(2, 15);
+        this.setHealth(2, 16);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(1, 2);
         this.setMaximumAge(this.fromDays(30));
@@ -38,7 +38,7 @@ public class MussaurusDinosaur extends Dinosaur {
         this.setImprintable(true);
         this.setStorage(12);
         this.setOffset(0.0F, 0.0F, 0.5F);
-        this.setBreeding(false, 2, 8, 15, false, true);
+        this.setBreeding(false, 2, 6, 20, false, true);
         String[][] recipe = {
                         {"", "pelvis", "","",""},
                         {"tail_vertebrae", "ribcage", "shoulder", "neck_vertebrae", "skull"},

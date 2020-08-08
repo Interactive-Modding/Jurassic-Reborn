@@ -18,7 +18,7 @@ public class HerrerasaurusDinosaur extends Dinosaur
         this.setTimePeriod(TimePeriod.TRIASSIC);
         this.setEggColorMale(0x2B1919, 0x932C23);
         this.setEggColorFemale(0x7C6F44, 0x2B2721);
-        this.setHealth(10, 35);
+        this.setHealth(10, 36);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(5, 20);
         this.setMaximumAge(fromDays(45));
@@ -35,5 +35,12 @@ public class HerrerasaurusDinosaur extends Dinosaur
         this.setImprintable(true);
         this.setStorage(12);
         this.shouldDefendOffspring();
+        String[][] recipe = {
+                {"", "", "","neck_vertebrae","skull"},
+                {"tail_vertebrae", "pelvis", "ribcage","shoulder","tooth"},
+                {"", "leg_bones", "", "arm_bones", "claw"},
+                {"", "foot_bones", "", "", ""}};
+        this.setRecipe(recipe);
+        this.enableSkeleton();
     }
 }

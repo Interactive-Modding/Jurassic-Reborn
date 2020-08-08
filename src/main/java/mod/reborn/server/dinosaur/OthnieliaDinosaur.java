@@ -18,7 +18,7 @@ public class OthnieliaDinosaur extends Dinosaur
         this.setTimePeriod(TimePeriod.JURASSIC);
         this.setEggColorMale(0x3EA999, 0x584F41);
         this.setEggColorFemale(0xC9AC95, 0x46342E);
-        this.setHealth(3, 10);
+        this.setHealth(4, 12);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(1, 5);
         this.setMaximumAge(fromDays(25));
@@ -33,6 +33,12 @@ public class OthnieliaDinosaur extends Dinosaur
         this.setScale(0.35F, 0.15F);
         this.setImprintable(true);
         this.setStorage(12);
-        this.setBreeding(false, 0, 4, 20, false, true);
+        this.setBreeding(false, 2, 6, 20, false, true);
+        String[][] recipe = {
+                {"", "pelvis", "","",""},
+                {"tail_vertebrae", "ribcage", "shoulder", "neck_vertebrae", "skull"},
+                {"leg_bones", "", "", "", "teeth"}};
+        this.setRecipe(recipe);
+        this.enableSkeleton();
     }
 }

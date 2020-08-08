@@ -34,5 +34,11 @@ public class PachycephalosaurusDinosaur extends Dinosaur
         this.setImprintable(true);
         this.setStorage(12);
         this.setBreeding(false, 0, 6, 20, false, true);
+        String[][] recipe = {
+                {"", "","neck_vertebrae","skull"},
+                {"tail_vertebrae", "pelvis", "ribcage","shoulder"},
+                {"leg_bones", "leg_bones", "", "teeth"}};
+        this.setRecipe(recipe);
+        this.enableSkeleton();
     }
 }

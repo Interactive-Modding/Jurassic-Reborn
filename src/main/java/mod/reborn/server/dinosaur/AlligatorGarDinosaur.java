@@ -28,7 +28,7 @@ public class AlligatorGarDinosaur extends Dinosaur
         this.setTimePeriod(TimePeriod.CRETACEOUS);
         this.setEggColorMale(0x707B94, 0x3B4963);
         this.setEggColorFemale(0x7C775E, 0x4D4A3B);
-        this.setHealth(3, 10);
+        this.setHealth(2, 10);
         this.setFlee(true);
         this.setSpeed((SPEED -0.15), SPEED);
         this.setAttackSpeed(1.5);

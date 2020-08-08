@@ -18,8 +18,8 @@ public class LeptictidiumDinosaur extends Dinosaur
         this.setTimePeriod(TimePeriod.PALEOGENE); // TODO EOCENE
         this.setEggColorMale(0x362410, 0x978A78);
         this.setEggColorFemale(0xAFA27E, 0x3E2D17);
-        this.setHealth(5, 15);
-        this.setStrength(6, 36);
+        this.setHealth(4, 14);
+        this.setStrength(2, 4);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setMaximumAge(fromDays(25));
         this.setEyeHeight(0.21F, 0.63F);
@@ -35,5 +35,11 @@ public class LeptictidiumDinosaur extends Dinosaur
         this.setBirthType(BirthType.LIVE_BIRTH);
         this.setStorage(12);
         this.setBreeding(true, 1, 3, 20, false, true);
+        String[][] recipe = {
+                {"", "pelvis", "","",""},
+                {"tail_vertebrae", "ribcage", "shoulder", "neck_vertebrae", "skull"},
+                {"leg_bones", "", "", "arm_bones", "teeth"}};
+        this.setRecipe(recipe);
+        this.enableSkeleton();
     }
 }

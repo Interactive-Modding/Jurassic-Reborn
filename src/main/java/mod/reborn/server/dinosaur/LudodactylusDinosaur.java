@@ -18,7 +18,7 @@ public class LudodactylusDinosaur extends Dinosaur
         this.setTimePeriod(TimePeriod.CRETACEOUS);
         this.setEggColorMale(0x565656, 0x1D1E20);
         this.setEggColorFemale(0x884D3E, 0x35302B);
-        this.setHealth(5, 25);
+        this.setHealth(4, 26);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(3, 10);
         this.setMaximumAge(fromDays(40));
@@ -27,7 +27,7 @@ public class LudodactylusDinosaur extends Dinosaur
         this.setSizeY(0.55F, 1.35F);
         this.setStorage(18);
         this.setDiet((Diet.CARNIVORE.get()));
-        this.setBones("leg_bones", "pelvis", "skull", "tail_vertebrae", "teeth", "wing_bones");
+        this.setBones("leg_bones", "pelvis", "skull", "ribcage", "tail_vertebrae", "teeth", "wing_bones");
         this.setHeadCubeName("Head");
         this.setScale(0.8F, 0.35F);
         this.shouldDefendOffspring();
@@ -35,5 +35,10 @@ public class LudodactylusDinosaur extends Dinosaur
         this.setImprintable(true);
         this.setStorage(12);
         this.setBreeding(false, 0, 2, 20, false, true);
+        String[][] recipe = {
+                {"tail_vertebrae", "pelvis", "ribcage", "skull","teeth"},
+                {"", "leg_bones", "wing_bones", "", ""}};
+        this.setRecipe(recipe);
+        this.enableSkeleton();
     }
 }

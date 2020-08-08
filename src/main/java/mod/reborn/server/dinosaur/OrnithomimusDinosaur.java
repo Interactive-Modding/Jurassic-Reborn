@@ -18,7 +18,7 @@ public class OrnithomimusDinosaur extends Dinosaur
         this.setTimePeriod(TimePeriod.CRETACEOUS);
         this.setEggColorMale(0x92A8D5, 0x475F93);
         this.setEggColorFemale(0xBDC4A9, 0x7F91C1);
-        this.setHealth(5, 25);
+        this.setHealth(6, 26);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(1, 5);
         this.setMaximumAge(fromDays(35));
@@ -40,8 +40,9 @@ public class OrnithomimusDinosaur extends Dinosaur
         String[][] recipe =
                 {{"", "", "", "neck_vertebrae", "skull"},
                         {"tail_vertebrae", "pelvis", "ribcage","shoulder",""},
-                        {"", "leg_bones", "leg_bones", "arm_bones", ""},
-                        {"", "foot_bones", "foot_bones", "", ""}};
+                        {"", "leg_bones", "", "arm_bones", ""},
+                        {"", "foot_bones", "", "", ""}};
         this.setRecipe(recipe);
+        this.enableSkeleton();
     }
 }

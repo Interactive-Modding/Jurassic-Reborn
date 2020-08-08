@@ -7,7 +7,7 @@ import mod.reborn.server.period.TimePeriod;
 
 public class CompsognathusDinosaur extends Dinosaur
 {
-    public static final double SPEED = 0.2F;
+    public static final double SPEED = 0.4F;
     public CompsognathusDinosaur()
     {
         super();
@@ -18,7 +18,7 @@ public class CompsognathusDinosaur extends Dinosaur
         this.setTimePeriod(TimePeriod.JURASSIC);
         this.setEggColorMale(0x7B8042, 0x454B3B);
         this.setEggColorFemale(0x7D734A, 0x484A3D);
-        this.setHealth(2, 5);
+        this.setHealth(2, 4);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(1, 3);
         this.setMaximumAge(fromDays(20));
@@ -32,9 +32,14 @@ public class CompsognathusDinosaur extends Dinosaur
         this.setHeadCubeName("Head");
         this.setScale(0.1F, 0.04F);
         this.setOffset(0.0F, -12.0F, -0.8F);
-        this.setBreeding(false, 0, 8, 20, false, true);
+        this.setBreeding(false, 0, 5, 40, false, true);
         this.setJumpHeight(2);
         this.setCanClimb(true);
         this.setImprintable(true);
+        String[][] recipe =     {{"", "", "", "neck_vertebrae", "skull"},
+                {"tail_vertebrae", "pelvis", "ribcage","shoulder","teeth"},
+                {"leg_bones", "leg_bones", "", "", "arm_bones"}};
+        this.setRecipe(recipe);
+        this.enableSkeleton();
     }
 }

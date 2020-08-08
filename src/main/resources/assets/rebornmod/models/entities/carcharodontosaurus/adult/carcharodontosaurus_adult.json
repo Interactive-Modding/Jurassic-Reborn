@@ -188,23 +188,23 @@
     "RUNNING": [
       {
         "pose": "carcharodontosaurus_adult_running_1",
-        "time": 4
+        "time": 5
       },
       {
         "pose": "carcharodontosaurus_adult_running_2",
-        "time": 4
+        "time": 5
       },
       {
         "pose": "carcharodontosaurus_adult_running_3",
-        "time": 4
+        "time": 5
       },
       {
         "pose": "carcharodontosaurus_adult_running_4",
-        "time": 4
+        "time": 5
       },
       {
         "pose": "carcharodontosaurus_adult_running_5",
-        "time": 4
+        "time": 5
       }
     ]
   }

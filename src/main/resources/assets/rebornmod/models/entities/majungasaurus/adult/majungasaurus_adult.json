@@ -32,6 +32,200 @@
         "pose": "majungasaurus_adult_walking_6",
         "time": 5
      }
+],
+    "RUNNING": [
+      {
+        "pose": "majungasaurus_adult_running_1",
+        "time": 4
+      },
+      {
+        "pose": "majungasaurus_adult_running_2",
+        "time": 4
+      },
+      {
+        "pose": "majungasaurus_adult_running_3",
+        "time": 4
+      },
+      {
+        "pose": "majungasaurus_adult_running_4",
+        "time": 4
+      },
+      {
+        "pose": "majungasaurus_adult_running_5",
+        "time": 4
+      },
+      {
+        "pose": "majungasaurus_adult_running_6",
+        "time": 4
+      }
+  ],
+    "SLEEPING": [
+      {
+        "pose": "majungasaurus_adult_sleeping",
+        "time": 20
+      }
+  ],
+    "ROARING": [
+      {
+        "pose": "majungasaurus_adult_roaring",
+        "time": 25
+      },
+      {
+        "pose": "majungasaurus_adult_idle",
+        "time": 10
+      }
+],
+    "CALLING": [
+      {
+        "pose": "majungasaurus_adult_calling",
+        "time": 10
+      },
+      {
+        "pose": "majungasaurus_adult_calling",
+        "time": 40
+      },
+      {
+        "pose": "majungasaurus_adult_idle",
+        "time": 10
+      }
+  ],
+    "ATTACKING": [
+      {
+        "pose": "majungasaurus_adult_attacking",
+        "time": 20
+      },
+      {
+        "pose": "majungasaurus_adult_idle",
+        "time": 10
+      }
+    ],
+    "RESTING": [
+      {
+        "pose": "majungasaurus_adult_sitting",
+        "time": 20
+      }
+   ],
+    "DYING": [
+      {
+        "pose": "majungasaurus_adult_death",
+        "time": 25
+      }
+  ],
+    "EATING": [
+      {
+        "pose": "majungasaurus_adult_eating_1",
+        "time": 15
+      },
+      {
+        "pose": "majungasaurus_adult_eating_2",
+        "time": 10
+      },
+      {
+        "pose": "majungasaurus_adult_eating_1",
+        "time": 10
+      },
+      {
+        "pose": "majungasaurus_adult_eating_2",
+        "time": 10
+      },
+      {
+        "pose": "majungasaurus_adult_eating_3",
+        "time": 25
+      },
+      {
+        "pose": "majungasaurus_adult_eating_4",
+        "time": 10
+      },
+      {
+        "pose": "majungasaurus_adult_eating_3",
+        "time": 10
+      },
+      {
+        "pose": "majungasaurus_adult_idle",
+        "time": 15
+      }
+    ],
+    "DRINKING": [
+      {
+        "pose": "majungasaurus_adult_drinking_1",
+        "time": 20
+      },
+      {
+        "pose": "majungasaurus_adult_drinking_2",
+        "time": 10
+      },
+      {
+        "pose": "majungasaurus_adult_drinking_2",
+        "time": 6
+      },
+      {
+        "pose": "majungasaurus_adult_drinking_3",
+        "time": 25
+      },
+      {
+        "pose": "majungasaurus_adult_drinking_4",
+        "time": 10
+      },
+      {
+        "pose": "majungasaurus_adult_idle",
+        "time": 10
+      }
+  ],
+    "LOOKING_LEFT": [
+      {
+        "pose": "majungasaurus_adult_look_left",
+        "time": 20
+      },
+      {
+        "pose": "majungasaurus_adult_look_left",
+        "time": 20
+      },
+      {
+        "pose": "majungasaurus_adult_idle",
+        "time": 10
+      }
+    ],
+    "LOOKING_RIGHT": [
+      {
+        "pose": "majungasaurus_adult_look_right",
+        "time": 20
+      },
+      {
+        "pose": "majungasaurus_adult_look_right",
+        "time": 20
+      },
+      {
+        "pose": "majungasaurus_adult_idle",
+        "time": 10
+      }
+    ],
+    "INJURED": [
+      {
+        "pose": "majungasaurus_adult_injured",
+        "time": 10
+      },
+      {
+        "pose": "majungasaurus_adult_injured",
+        "time": 10
+      },
+      {
+        "pose": "majungasaurus_adult_idle",
+        "time": 10
+      }
+],
+    "SPEAK": [
+      {
+        "pose": "majungasaurus_adult_speak",
+        "time": 6
+      },
+      {
+        "pose": "majungasaurus_adult_speak",
+        "time": 15
+      },
+      {
+        "pose": "majungasaurus_adult_idle",
+        "time": 6
+      }
     ]
   }
 }

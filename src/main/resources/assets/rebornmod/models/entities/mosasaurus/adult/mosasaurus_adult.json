@@ -6,6 +6,104 @@
         "pose": "mosasaurus_adult_idle",
         "time": 20
       }
+    ],
+    "SWIMMING": [
+      {
+        "pose": "mosasaurus_adult_swimming_1",
+        "time": 8
+      },
+      {
+        "pose": "mosasaurus_adult_swimming_2",
+        "time": 8
+      },
+      {
+        "pose": "mosasaurus_adult_swimming_3",
+        "time": 8
+      },
+      {
+        "pose": "mosasaurus_adult_swimming_4",
+        "time": 8
+      },
+      {
+        "pose": "mosasaurus_adult_swimming_5",
+        "time": 8
+      }
+ ],
+    "INJURED": [
+      {
+        "pose": "mosasaurus_adult_injured",
+        "time": 15
+      },
+      {
+        "pose": "mosasaurus_adult_injured",
+        "time": 15
+      },
+      {
+        "pose": "mosasaurus_adult_idle",
+        "time": 10
+      }
+    ],
+    "ATTACKING": [
+      {
+        "pose": "mosasaurus_adult_eating_1",
+        "time": 10
+      },
+      {
+        "pose": "mosasaurus_adult_eating_2",
+        "time": 10
+      },
+      {
+        "pose": "mosasaurus_adult_idle",
+        "time": 15
+      }
+  ],
+    "DYING": [
+      {
+        "pose": "mosasaurus_adult_death",
+        "time": 20
+      }
+    ],
+    "EATING": [
+      {
+        "pose": "mosasaurus_adult_eating_1",
+        "time": 10
+      },
+      {
+        "pose": "mosasaurus_adult_eating_2",
+        "time": 10
+      },
+      {
+        "pose": "mosasaurus_adult_eating_1",
+        "time": 10
+      },
+      {
+        "pose": "mosasaurus_adult_eating_2",
+        "time": 10
+      },
+      {
+        "pose": "mosasaurus_adult_idle",
+        "time": 15
+      }
+  ],
+    "GIVING_BIRTH": [
+      {
+        "pose": "mosasaurus_adult_givingbirth",
+        "time": 40
+      },
+      {
+        "pose": "mosasaurus_adult_idle",
+        "time": 10
+      }
+    ],
+    "ON_LAND": [
+      {
+        "pose": "mosasaurus_adult_onland_1",
+        "time": 30
+      },
+      {
+        "pose": "mosasaurus_adult_onland_2",
+        "time": 30
+      }
     ]
   }
 }

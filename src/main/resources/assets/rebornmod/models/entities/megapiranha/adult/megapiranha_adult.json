@@ -6,6 +6,90 @@
         "pose": "megapiranha_adult_idle",
         "time": 20
       }
+    ],
+    "DYING": [
+      {
+        "pose": "megapiranha_adult_death",
+        "time": 25
+      }
+  ],
+    "SLEEPING": [
+      {
+        "pose": "megapiranha_adult_sleeping",
+        "time": 25
+      }
+  ],
+    "CALLING": [
+      {
+        "pose": "megapiranha_adult_calling",
+        "time": 25
+      },
+      {
+        "pose": "megapiranha_adult_idle",
+        "time": 10
+      }
+    ],
+    "INJURED": [
+      {
+        "pose": "megapiranha_adult_injured",
+        "time": 20
+      },
+      {
+        "pose": "megapiranha_adult_idle",
+        "time": 10
+      }
+ ],
+    "SPEAK": [
+      {
+        "pose": "megapiranha_adult_speak",
+        "time": 5
+      },
+      {
+        "pose": "megapiranha_adult_speak",
+        "time": 20
+      },
+      {
+        "pose": "megapiranha_adult_idle",
+        "time": 5
+      }
+    ],
+    "ATTACKING": [
+      {
+        "pose": "megapiranha_adult_attacking",
+        "time": 25
+      },
+      {
+        "pose": "megapiranha_adult_idle",
+        "time": 15
+      }
+    ],
+    "EATING": [
+      {
+        "pose":"megapiranha_adult_eating",
+        "time": 20
+      },
+      {
+        "pose": "megapiranha_adult_idle",
+        "time": 15
+      },
+      {
+        "pose":"megapiranha_adult_eating",
+        "time": 20
+      },
+      {
+        "pose": "megapiranha_adult_idle",
+        "time": 15
+      }
+    ],
+    "ON_LAND": [
+      {
+        "pose": "megapiranha_adult_onland_1",
+        "time": 40
+      },
+      {
+        "pose": "megapiranha_adult_onland_2",
+        "time": 40
+      }
     ]
   }
 }

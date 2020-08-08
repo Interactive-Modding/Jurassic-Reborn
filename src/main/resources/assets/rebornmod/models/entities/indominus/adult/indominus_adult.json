@@ -154,11 +154,11 @@
     "DYING": [
       {
         "pose": "indominus_adult_dying_1",
-        "time": 10
+        "time": 20
       },
       {
         "pose": "indominus_adult_dying_2",
-        "time": 10
+        "time": 20
       }
     ],
     "LOOKING_LEFT": [
@@ -192,6 +192,32 @@
       },
       {
         "pose": "indominus_adult_walking_5",
+        "time": 4
+      }
+],
+    "RUNNING": [
+      {
+        "pose": "indominus_adult_running_1",
+        "time": 4
+      },
+      {
+        "pose": "indominus_adult_running_2",
+        "time": 4
+      },
+      {
+        "pose": "indominus_adult_running_3",
+        "time": 4
+      },
+      {
+        "pose": "indominus_adult_running_4",
+        "time": 4
+      },
+      {
+        "pose": "indominus_adult_running_5",
+        "time": 4
+      },
+      {
+        "pose": "indominus_adult_running_6",
         "time": 4
       }
     ]

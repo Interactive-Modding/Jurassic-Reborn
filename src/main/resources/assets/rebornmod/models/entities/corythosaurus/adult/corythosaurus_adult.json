@@ -41,7 +41,7 @@
       },
       {
         "pose": "corythosaurus_adult_idle",
-        "time": 5
+        "time": 15
       },
       {
         "pose": "corythosaurus_adult_drinking",
@@ -49,7 +49,7 @@
       },
       {
         "pose": "corythosaurus_adult_idle",
-        "time": 5
+        "time": 15
       }
    ],
     "SPEAK": [

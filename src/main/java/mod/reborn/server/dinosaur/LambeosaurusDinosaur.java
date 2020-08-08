@@ -27,7 +27,7 @@ public class LambeosaurusDinosaur extends Dinosaur
         this.setSizeY(0.8F, 4.25F);
         this.setStorage(45);
         this.setDiet((Diet.HERBIVORE.get()));
-        this.setBones("cheek_teeth", "front_leg_bones", "hind_leg_bones", "neck_vertebrae", "pelvis", "ribcage", "skull", "tail_vertebrae");
+        this.setBones("cheek_teeth", "front_leg_bones", "hind_leg_bones", "neck_vertebrae", "shoulder", "pelvis", "ribcage", "skull", "tail_vertebrae");
         this.setHeadCubeName("Head");
         this.setScale(2.5F, 0.45F);
         this.setOffset(0.0F, 0.775F, 0.0F);
@@ -35,5 +35,11 @@ public class LambeosaurusDinosaur extends Dinosaur
         this.setImprintable(true);
         this.setStorage(6);
         this.setBreeding(false, 2, 6, 20, false, true);
+        String[][] recipe = {
+                {"tail_vertebrae", "pelvis", "ribcage","neck_vertebrae","skull"},
+                {"hind_leg_bones", "", "", "shoulder", "cheek_teeth"},
+                {"", "", "", "", "front_leg_bones"}};
+        this.setRecipe(recipe);
+        this.enableSkeleton();
     }
 }

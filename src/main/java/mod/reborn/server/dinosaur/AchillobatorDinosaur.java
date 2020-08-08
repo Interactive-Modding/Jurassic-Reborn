@@ -8,7 +8,7 @@ import net.minecraftforge.common.BiomeDictionary;
 
 public class AchillobatorDinosaur extends Dinosaur
 {
-    public static final double SPEED = 0.3F;
+    public static final double SPEED = 0.4F;
     public AchillobatorDinosaur() {
         super();
         this.setName("Achillobator");

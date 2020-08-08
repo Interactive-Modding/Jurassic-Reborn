@@ -5,6 +5,148 @@
       {
         "pose": "othnielia_adult_idle",
         "time": 20
+     }
+    ],
+    "CALLING": [
+      {
+        "pose": "othnielia_adult_calling",
+        "time": 20
+      },
+      {
+        "pose": "othnielia_adult_idle",
+        "time": 10
+      },
+	  {
+        "pose": "othnielia_adult_calling",
+        "time": 15
+      },
+      {
+        "pose": "othnielia_adult_idle",
+        "time": 20
+      }
+    ],
+    "DYING": [
+      {
+        "pose": "othnielia_adult_death",
+        "time": 25 
+      }
+    ],
+    "EATING": [
+      {
+        "pose": "othnielia_adult_eating",
+        "time": 20
+      },
+      {
+        "pose": "othnielia_adult_idle",
+        "time": 15
+      },
+      {
+        "pose": "othnielia_adult_eating",
+        "time": 20
+      },
+      {
+        "pose": "othnielia_adult_idle",
+        "time": 15
+      }
+   ],
+    "DRINKING": [
+      {
+        "pose": "othnielia_adult_drinking",
+        "time": 20
+      },
+      {
+        "pose": "othnielia_adult_idle",
+        "time": 15
+      },
+      {
+        "pose": "othnielia_adult_drinking",
+        "time": 20
+      },
+      {
+        "pose": "othnielia_adult_idle",
+        "time": 15
+      }
+    ],
+    "INJURED": [
+      {
+        "pose": "othnielia_adult_injured",
+        "time": 25
+      },
+      {
+        "pose": "othnielia_adult_idle",
+        "time": 15
+      }
+    ],
+    "LAYING_EGG": [
+      {
+        "pose": "othnielia_adult_laying",
+        "time": 25
+      },
+      {
+        "pose": "othnielia_adult_idle",
+        "time": 10
+      }
+    ],
+    "LOOKING_LEFT": [
+      {
+        "pose": "othnielia_adult_look_start",
+        "time": 10
+      },
+      {
+        "pose": "othnielia_adult_look_left",
+        "time": 10
+      },
+      {
+        "pose": "othnielia_adult_look_left",
+        "time": 20
+      },
+      {
+        "pose": "othnielia_adult_idle",
+        "time": 10
+      }
+    ],
+    "LOOKING_RIGHT": [
+      {
+        "pose": "othnielia_adult_look_start",
+        "time": 10
+      },
+      {
+        "pose": "othnielia_adult_look_right",
+        "time": 10
+      },
+      {
+        "pose": "othnielia_adult_look_right",
+        "time": 20
+      },
+      {
+        "pose": "othnielia_adult_idle",
+        "time": 10
+      }
+    ],
+    "SPEAK": [
+      {
+        "pose": "othnielia_adult_speak",
+        "time": 5
+      },
+      {
+        "pose": "othnielia_adult_speak",
+        "time": 20
+      },
+      {
+        "pose": "othnielia_adult_idle",
+        "time": 15
+      }
+    ],
+    "RESTING": [
+      {
+        "pose": "othnielia_adult_resting",
+        "time": 15
+      }
+    ],
+    "SLEEPING": [
+      {
+        "pose": "othnielia_adult_sleeping",
+        "time": 25
       }
     ]
   }

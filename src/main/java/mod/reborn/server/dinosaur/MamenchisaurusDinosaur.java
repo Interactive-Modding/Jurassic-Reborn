@@ -40,5 +40,6 @@ public class MamenchisaurusDinosaur extends Dinosaur
                 {"tail_vertebrae","pelvis","ribcage","shoulder",""},
                 {"","hind_leg_bones","hind_leg_bones","front_leg_bones","front_leg_bones"}};
         this.setRecipe(recipe);
+        this.enableSkeleton();
     }
 }

@@ -24,7 +24,7 @@ public class HyaenodonDinosaur extends Dinosaur {
         this.setSizeX(0.3F, 1.4F);
         this.setSizeY(0.5F, 1.8F);
         this.setDiet(Diet.CARNIVORE.get());
-        this.setBones("skull", "tail_vertebrae", "front_leg_bones", "hind_leg_bones", "neck_vertebrae", "pelvis", "shoulder", "tooth");
+        this.setBones("skull", "tail_vertebrae", "front_leg_bones", "ribcage", "hind_leg_bones", "neck_vertebrae", "pelvis", "shoulder", "tooth");
         this.setHeadCubeName("Head");
         this.setScale(1.3F, 0.5F);
         this.setBirthType(BirthType.LIVE_BIRTH);
@@ -34,5 +34,10 @@ public class HyaenodonDinosaur extends Dinosaur {
         this.setImprintable(true);
         this.setStorage(12);
         this.setMammal(true);
+        String[][] recipe =     {
+                { "tail_vertebrae", "pelvis", "ribcage","neck_vertebrae", "skull"},
+                { "hind_leg_bones", "", "front_leg_bones", "shoulder", "tooth"}};
+        this.setRecipe(recipe);
+        this.enableSkeleton();
     }
 }

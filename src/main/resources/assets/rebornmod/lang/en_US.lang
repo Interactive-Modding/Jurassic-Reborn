@@ -91,6 +91,7 @@ entity.rebornmod.coelurus.name=Coelurus
 entity.rebornmod.mawsonia.name=Mawsonia
 entity.rebornmod.crab.name=Crab
 entity.rebornmod.shark.name=Shark
+entity.rebornmod.indoraptor.name=Indoraptor
 
 entity.rebornmod.goat.name=Goat
 entity.rebornmod.jeep_wrangler.name=Jeep Wrangler
@@ -127,6 +128,10 @@ attraction_sign.tyrannosaurus_kingdom_plants.name=Tyrannosaurus Kingdom With Pla
 
 item.goat_raw.name=Raw Goat
 item.goat_cooked.name=Cooked Goat
+item.cooked_crab_meat.name= Cooked Crab Meat
+item.cooked_shark_meat.name= Cooked Shark Meat
+item.raw_crab_meat.name= Raw Crab Meat
+item.raw_shark_meat.name= Raw Shark Meat
 
 gender.name=Gender
 
@@ -177,11 +182,12 @@ item.perisphinctes_beak_fresh.name=Fresh {dino} Beak
 item.shell_cover_fresh.name=Fresh {dino} Shell Cover
 item.scales_fresh.name=Fresh {dino} Scales
 item.tail_fin_fresh.name=Fresh {dino} Tail Fin
-item.tusks_fresh.name=Fresh {dino} Tusks
 item.cooked_crab_meat.name= Cooked Crab Meat
 item.cooked_shark_meat.name= Cooked Shark Meat
 item.raw_crab_meat.name= Raw Crab Meat
 item.raw_shark_meat.name= Raw Shark Meat
+item.foot_bone_fresh.name=Fresh {dino} Foot Bone
+item.tusks_fresh.name=Fresh {dino} Tusks
 
 // Bones
 item.bones.name={dino} Bones
@@ -226,6 +232,7 @@ item.thagomizer.name={dino} Thagomizer
 item.caudal_fin.name={dino} Caudal Fin
 item.wing_bones.name={dino} Wing Bones
 item.arm_bones.name={dino} Arm Bones
+item.foot_bone.name={dino} Foot Bone
 item.perisphinctes_beak.name={dino} Beak
 item.shell_cover.name={dino} Shell Cover
 item.scales.name={dino} Scales
@@ -757,7 +764,26 @@ info.lambeosaurus.name=Lambeosaurus was a herbivorous Hadrosaurid that lived in 
 info.mawsonia.name=Mawsonia was a carnivorous fish that was known to live across South America and North Africa around about 99 to 112 million years ago. Mawsonia was a type of Coelacanth and may have had a few predators such as larger sharks,‭ pliosaurs and perhaps even spinosaurid dinosaurs. Similar to other coelacanths they would cruise over the sea floor snatching up fish and larger invertebrates that were sheltering in crevices amongst rocks and coral.
 info.leptictidium.name= Leptictidium was an unusual placental mammal that lived during the Eocene, around 50 - 35 million years ago in modern day France and Germany. It was an unspecialized omnivore, which ate insects, lizards, smaller mammals, and leaves based on the remains found in The Messel Pit in Germany.
 info.leaellynasaura.name=Leaellynasaura is a small herbivorous ornithischian that lived in Australia during the early Cretaceous period. It lived 118 to 110 million years ago. Leaellynasaura was about 3 feet in length and weighed around 30Kg. Leaellynasaura had a really large brain and really good eyesight as well. There has only been an incomplete fossil found of the Leaellynasaura, Fossils consist of teeth, and a juvenile skull.
-info.ludodactylus.name= Ludodactylus was a genus of pterodactyloid pterosaurs from the Early Cretaceous which was found in the Crato Formation of the Araripe Basin in Ceara, Brazil. The name is derived from Latin ludus, “play” and Greek daktylos “finger”. Ludodactylus might’ve fed on fish, carcasses, baby dinosaurs, and various animals. There is only one specimen that has been found by paleontologists indicating most information regarding this creature is a mystery. 
+info.ludodactylus.name= Ludodactylus was a genus of pterodactyloid pterosaurs from the Early Cretaceous that was found in the Crato Formation of the Araripe Basin in Ceara, Brazil. The name is derived from Latin ludus, “play” and Greek daktylos “finger”. Ludodactylus might’ve fed on fish, carcasses, baby dinosaurs, and various animals. Only one specimen has been found by paleontologists indicating most information regarding this creature is a mystery. 
+info.mammoth.name= The Woolly Mammoth (Mammuthus primigenius) was an extinct relative of elephants that lived during the Pleistocene to Early Holocene (around 150 thousand to 4000 years ago). A healthy adult mammoth had few or no natural predators, although the calves and sick or elderly adults were vulnerable to wolves, cave hyenas and big cats. In order to keep Woolly Mammoth, a very large, open, snowy tundra or open grassland area in a cold climate was essential.
+info.majungasaurus.name= Majungasaurus was a carnivorous abelisaurid theropod dinosaur that lived during the Late Cretaceous (around 70-66 million years ago).This opportunistic predator was capable of taking on quite large prey, including small sauropods. It used its knobbly head and strong body to bludgeon the victim into submission so that it could finish it off. Majungasaurus does best in flat, dry, mostly open savanna-like country.
+info.megapiranha.name= Native to what is now Argentina, Megapiranha paranensis was a serrasalmid characin fish that lived during the Late Miocene (around 10 - 8 million years ago). Megapiranha is very similar in appearance and behaviour to its modern piranha relatives, except for its massive size. They are quite happy to be solitary, or live in schools. In order to keep Megapiranha, you will need either a very large tank, or a large, fairly deep freshwater pool. 
+info.metriacanthosaurus.name= Native to what is now England,the Metriacanthosaurus was a theropod dinosaur that lived during the Middle Jurassic (around 160 million years ago). Despite not being the largest of theropods, Metriacanthosaurus packs quite a punch! This surprisingly muscular dinosaur stuns its prey by charging and ramming into it, and then finishes it off by tearing its throat. To avoid infighting, the number of adult individuals in the enclosure should not exceed 5!
+info.microceratus.name=  Native to what is now China, the Microceratus was a tiny herbivorous ceratopsian dinosaur that lived during throughout the Cretaceous period (around 129.4 - 66 million years ago). For its diet, the Microceratus favored several flowering plants that were predominant plants of the Cretaceous period including ferns, cycads, and conifers. With its parrot-like beats this creature would use its sharp ceratopsian beak to bite off the leaves or needles.
+info.moganopterus.name= Native to what is now China, the Moganopterus lived during the Early Cretaceous (around 125 million years ago). This creature has the longest skull of any known toothed pterosaur, and also a proportionately long neck. Moganopterus specializes in hunting small prey, and is most active during the day. Its habits are somewhat stork-like or heron-like, and it uses its long narrow bill and neck to grab prey in a spear-like striking motion.
+info.mosasaurus.name= Native to Europe, North America, Asia and New Zealand, Mosasaurus was a huge marine lizard that lived during the Late Cretaceous (around 70 - 66 million years ago). One of the very largest mosasaurs, Mosasaurus is a challenge to keep in captivity. These giant reptiles are territorial, and they will typically fight unless mating, or defending their young. This creature will need an enormous body of water to live in, with huge, deep, open areas. 
+info.ornithomimus.name= Native to North America, this swift bipedal theropod lived during the Late Cretaceous (74-65 million years ago). It is known as the "bird mimic", because  of its uncanny resemblance to an ostrich. Ornithomimus not only resembled an ostrich, but it likely behaved like an ostrich as well, possibly being able to sustain running speeds of about 30 miles per hour.
+info.oviraptor.name=Native to Mongolia, Oviraptor philoceratops was a species of oviraptorid Oviraptorosaurian theropod dinosaur that lived during the Late Cretaceous, around 75 million years ago.The name "Oviraptor" means "egg thief", and "philoceratops" means "lover of ceratopsians". The reason for this is that the skeleton was discovered lying on top of what was presumed to be a clutch of Protoceratops eggs. 
+info.othnielia.name=Native to what is now North America, this herbivorous ornithopod dinosaur lived during the Late Jurassic Period (237 - 66 million years ago). The Othnielia was 5 - 6.6 ft in length and weighed around 22 lbs. The limbs of this ornithopod show us that it may have also been a good runner. Unfortunately, the Othnielia isn't a well-known dinosaur and there have only been very few fossils found of this dinosaur.
+info.pachycephalosaurus.name= The Pachycephalosaurus (Thick-Headed Lizard) lived in what is now North America during the late Cretaceous Period (about 72 - 66 million years ago). The Pachycephalosaurus liked to live in small-medium packs and most likely ate plants. The Pachycephalosaurus had a domed like skull structure up to 24 cm thick with small bumps and spikes. The Pachycephalosaurus is known as the largest dome-skulled dinosaur today.
+info.postosuchus.name= Native to North America, this rauisuchid reptile lived during the Middle to the Late Triassic Period about 230 - 220 million years ago. There were numerous debates regarding the classification of the postosuchus. Some considered it an archosaur(Post crocodile-Eventually evolves into crocodile or pterosaur) eventually it was classified as a rauisuchid reptile. The postosuchus has the titles of the one of  the largest rauisuchian and last of its kind. 
+info.proceratosaurus.name=Native to what is now England, Proceratosaurus bradleyi was a theropod dinosaur that lived during the Middle Jurassic (around 165 million years ago). Originally thought to be a relative of Ceratosaurus, it has since been re-classified as a coelurosaur, specifically an early Tyrannosauroid like its close relative Guanlong. A Proceratosaurus will need a fenced-off wooded area, with plenty of undergrowth to hide in.
+info.protoceratops.name= Native to what is now Mongolia, this herbivorous ceratopsian dinosaur was from the Upper Cretaceous Period(around 83 - 70 million years ago). It was a much smaller creature that lacked well-developed horns, a fragile frill, and retained some primitive traits not seen in later genera. Despite their small appearance these creatures had very strong jaw muscles that allowed them to be able to creaute a very powerful bite.
+info.pteranodon.name= The Pteranodon lived in North America during the Late Cretaceous. It was a fish-eater that soared over the ocean surface, and it was especially common around the Western Interior Seaway. They tolerate other pterosaurs, but will often aggressively freak out if confronted by a large bipedal creature (mainly theropods, though unfortunately the sight of humans can also set them off). 
+info.quetzalcoatlus.name= Quetzalcoatlus northropi lived in North America at the very end of the Late Cretaceous. With an estimated wingspan of 10 metres or more, it was one of the largest pterosaurs, and in fact one of the largest flying animals of all time. When standing, it would've been tall enough to look a giraffe in the eye. Quetzalcoatlus are opportunistic predators and scavengers, equally happy to both terrorize smaller creatures or scavenge off of them.
+info.rugops.name= Native to Africa. this medium sized abeliosaurid theropod dinosaur lived during the Late Cretaceous approximately 95 million years ago. Rugops is one of the less challenging Abelisaurs to take care of. Rugops isn't particularly fussy about where it lives, although it does best in flat, fairly open land with quite shallow water. Although Rugops is primarily a scavenger, it may occasionally go after small prey such as lizards, birds and very small dinosaurs.
+
+
 
 
 journal.chef_alejandro.name=Chef Alejandro

@@ -25,7 +25,7 @@ public class IndominusDinosaur extends Dinosaur implements Hybrid
         this.setTimePeriod(TimePeriod.NONE); //TODO, it's a hybrid, what do you do here?
         this.setEggColorMale(0xBEBABB, 0x95949A);
         this.setEggColorFemale(0xBEBABB, 0x95949A);
-        this.setHealth(15, 110);
+        this.setHealth(16, 110);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(5, 40);
         this.setMaximumAge(fromDays(30));
@@ -34,12 +34,19 @@ public class IndominusDinosaur extends Dinosaur implements Hybrid
         this.setSizeY(0.7F, 6.0F);
         this.setStorage(54);
         this.setDiet((Diet.CARNIVORE.get()));
-        this.setBones("arm_bones", "foot_bones", "leg_bones", "neck_vertebrae", "pelvis", "ribcage", "shoulder", "skull", "tail_vertebrae", "tooth");
+        this.setBones("arm_bones", "foot_bones", "leg_bones", "neck_vertebrae", "claw", "pelvis", "ribcage", "shoulder", "skull", "tail_vertebrae", "tooth");
         this.setHeadCubeName("Head");
-        this.setScale(2.8F, 0.4F);
+        this.setScale(3.0F, 0.4F);
         this.setAttackBias(4000);
         this.setBreeding(false, 0, 0, 999, false, false);
         this.setHybrid();
+        String[][] recipe = {
+                {"", "", "","neck_vertebrae","skull"},
+                {"tail_vertebrae", "pelvis", "ribcage","shoulder","tooth"},
+                {"", "leg_bones", "", "arm_bones", "claw"},
+                {"", "foot_bones", "", "", ""}};
+        this.setRecipe(recipe);
+        this.enableSkeleton();
 
         this.texture = new ResourceLocation(getDinosaurTexture("camouflage"));
         this.overlayTexture = new ResourceLocation(getDinosaurTexture(""));

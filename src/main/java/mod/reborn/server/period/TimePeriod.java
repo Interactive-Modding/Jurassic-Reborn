@@ -3,8 +3,8 @@ package mod.reborn.server.period;
 import net.minecraft.util.IStringSerializable;
 
 public enum TimePeriod implements IStringSerializable {
-    QUATERNARY("quaternary", 2.588F, 0.0F),
-    NEOGENE("neogene", 23.03F, 2.589F),
+    QUATERNARY("quaternary", 5.588F, 0.0F),
+    NEOGENE("neogene", 23.03F, 5.589F),
     PALEOGENE("paleogene", 66.0F, 23.04F),
     CRETACEOUS("cretaceous", 145.5F, 66.1F),
     JURASSIC("jurassic", 201.3F, 145.6F),

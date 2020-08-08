@@ -38,8 +38,8 @@ public class OviraptorAnimator extends EntityAnimator<OviraptorEntity>
         float globalDegree = 1.0F;
 
         model.bob(body,  globalSpeed * 0.1F,  globalDegree * 0.3F, false, f,f1);
-        model.walk(rightLeg1, globalSpeed * 0.5F, globalDegree * 1.0F, false, (float)Math.PI, 1, f, f1);
-        model.walk(leftLeg1, globalSpeed * 0.5F, globalDegree * 1.0F, true, (float)Math.PI,1, f, f1);
+     //   model.walk(rightLeg1, globalSpeed * 0.5F, globalDegree * 1.0F, false, (float)Math.PI, 1, f, f1);
+     //   model.walk(leftLeg1, globalSpeed * 0.5F, globalDegree * 1.0F, true, (float)Math.PI,1, f, f1);
 
         model.chainWave(tail, 0.13F,0.45F,Math.PI - 1, f + ticks, f1 + 0.25F);
         model.chainWave(mainBody, 0.1F, -0.1F, Math.PI + 2, ticks, 0.25F);

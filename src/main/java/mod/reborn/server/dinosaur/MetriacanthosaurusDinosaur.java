@@ -29,9 +29,16 @@ public class MetriacanthosaurusDinosaur extends Dinosaur
         this.setDiet((Diet.CARNIVORE.get()));
         this.setBones("arm_bones", "foot_bones", "leg_bones", "neck_vertebrae", "pelvis", "ribcage", "shoulder", "skull", "tail_vertebrae", "tooth");
         this.setHeadCubeName("Head");
-        this.setScale(1.0F, 0.25F);
+        this.setScale(1.2F, 0.25F);
         this.shouldDefendOffspring();
         this.setAttackBias(120);
         this.setBreeding(false, 0, 2, 45, false, true);
+        String[][] recipe = {
+                {"", "", "","neck_vertebrae","skull"},
+                {"tail_vertebrae", "pelvis", "ribcage","shoulder","tooth"},
+                {"", "", "leg_bones", "arm_bones", ""},
+                {"", "", "foot_bones", "", ""}};
+        this.setRecipe(recipe);
+        this.enableSkeleton();
     }
 }

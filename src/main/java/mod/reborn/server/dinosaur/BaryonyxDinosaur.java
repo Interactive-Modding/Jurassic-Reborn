@@ -17,7 +17,7 @@ public class BaryonyxDinosaur extends Dinosaur
         this.setTimePeriod(TimePeriod.CRETACEOUS);
         this.setEggColorMale(0x567F4F, 0x13270F);
         this.setEggColorFemale(0x9D9442, 0x2A2405);
-        this.setHealth(5, 35);
+        this.setHealth(6, 35);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(1, 10);
         this.setMaximumAge(fromDays(55));
@@ -33,7 +33,7 @@ public class BaryonyxDinosaur extends Dinosaur
         this.shouldDefendOffspring();
         String[][] recipe = {
                 {"", "", "","neck_vertebrae","skull"},
-                {"tail_vertebrae", "pelvis", "ribcage","shoulder_bone","tooth"},
+                {"tail_vertebrae", "pelvis", "ribcage","shoulder","tooth"},
                 {"", "leg_bones", "", "arm_bones", ""},
                 {"", "foot_bones", "", "", ""}};
         this.setRecipe(recipe);

@@ -112,7 +112,7 @@
     "RESTING": [
       {
         "pose": "ankylosaurus_adult_resting",
-        "time": 10
+        "time": 20
       }
     ],
     "SPEAK": [
@@ -123,6 +123,42 @@
 	  {
         "pose": "ankylosaurus_adult_idle",
         "time": 20
+      }
+ ],
+    "WALKING": [
+      {
+        "pose": "ankylosaurus_adult_walking_1",
+        "time": 5
+      },
+      {
+        "pose": "ankylosaurus_adult_walking_2",
+        "time": 5
+      },
+      {
+        "pose": "ankylosaurus_adult_walking_3",
+        "time": 5
+      },
+      {
+        "pose": "ankylosaurus_adult_walking_4",
+        "time": 3
+      }
+    ],
+    "RUNNING": [
+      {
+        "pose": "ankylosaurus_adult_running_1",
+        "time": 4
+      },
+      {
+        "pose": "ankylosaurus_adult_running_2",
+        "time": 4
+      },
+      {
+        "pose": "ankylosaurus_adult_running_3",
+        "time": 4
+      },
+      {
+        "pose": "ankylosaurus_adult_running_4",
+        "time": 4
       }
     ]
   }

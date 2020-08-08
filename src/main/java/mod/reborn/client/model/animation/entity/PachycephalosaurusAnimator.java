@@ -60,22 +60,22 @@ public class PachycephalosaurusAnimator extends EntityAnimator<Pachycephalosauru
         float globalDegree = 0.5F;
         float globalHeight = 1.0F;
 
-        model.bob(waist, globalSpeed * 1.0F, globalHeight * 1.0F, false, f, f1);
-        model.bob(upperLegLeft, globalSpeed * 1.0F, globalHeight * 1.0F, false, f, f1);
-        model.bob(upperLegRight, globalSpeed * 1.0F, globalHeight * 1.0F, false, f, f1);
+        model.bob(waist, globalSpeed * 0.8F, globalHeight * 1.0F, false, f, f1);
+        model.bob(upperLegLeft, globalSpeed * 0.8F, globalHeight * 1.0F, false, f, f1);
+        model.bob(upperLegRight, globalSpeed * 0.8F, globalHeight * 1.0F, false, f, f1);
 
-        model.walk(upperLegLeft, 0.5F * globalSpeed, 0.8F * globalDegree, false, 0F, 0.2F, f, f1);
-        model.walk(lowerLegLeft, 0.5F * globalSpeed, 1F * globalDegree, true, 1F, 0.4F, f, f1);
-        model.walk(upperFootLeft, 0.5F * globalSpeed, 1F * globalDegree, false, 0F, 0F, f, f1);
-        model.walk(footLeft, 0.5F * globalSpeed, 1.5F * globalDegree, true, 0.5F, 0.1F, f, f1);
+        model.walk(upperLegLeft, 0.4F * globalSpeed, 0.8F * globalDegree, false, 0F, 0.2F, f, f1);
+        model.walk(lowerLegLeft, 0.4F * globalSpeed, 1F * globalDegree, true, 1F, 0.4F, f, f1);
+        model.walk(upperFootLeft, 0.4F * globalSpeed, 1F * globalDegree, false, 0F, 0F, f, f1);
+        model.walk(footLeft, 0.4F * globalSpeed, 1.5F * globalDegree, true, 0.5F, 0.1F, f, f1);
 
-        model.walk(upperLegRight, 0.5F * globalSpeed, 0.8F * globalDegree, true, 0F, 0.2F, f, f1);
-        model.walk(lowerLegRight, 0.5F * globalSpeed, 1F * globalDegree, false, 1F, 0.4F, f, f1);
-        model.walk(upperFootRight, 0.5F * globalSpeed, 1F * globalDegree, true, 0F, 0F, f, f1);
-        model.walk(footRight, 0.5F * globalSpeed, 1.5F * globalDegree, false, 0.5F, 0.1F, f, f1);
+        model.walk(upperLegRight, 0.4F * globalSpeed, 0.8F * globalDegree, true, 0F, 0.2F, f, f1);
+        model.walk(lowerLegRight, 0.4F * globalSpeed, 1F * globalDegree, false, 1F, 0.4F, f, f1);
+        model.walk(upperFootRight, 0.4F * globalSpeed, 1F * globalDegree, true, 0F, 0F, f, f1);
+        model.walk(footRight, 0.4F * globalSpeed, 1.5F * globalDegree, false, 0.5F, 0.1F, f, f1);
 
         model.chainWave(tailParts, globalSpeed * 1.0F, globalHeight * 0.05F, 2, f, f1);
-        model.chainWave(bodyParts, globalSpeed * 1.0F, globalHeight * 0.025F, 1, f, f1);
+   //     model.chainWave(bodyParts, globalSpeed * 1.0F, globalHeight * 0.025F, 1, f, f1);
 
         model.chainWave(rightArmParts, 1F * globalSpeed, -0.3F, 4, f, f1);
         model.chainWave(leftArmParts, 1F * globalSpeed, -0.3F, 4, f, f1);
@@ -87,7 +87,7 @@ public class PachycephalosaurusAnimator extends EntityAnimator<Pachycephalosauru
         head.rotateAngleX += f1 * 0.075F;
 
         model.chainWave(tailParts, 0.1F, 0.025F, 2, ticks, 0.25F);
-        model.chainWave(bodyParts, 0.1F, -0.03F, 4, ticks, 0.25F);
+    //    model.chainWave(bodyParts, 0.1F, -0.03F, 4, ticks, 0.25F);
         model.chainWave(rightArmParts, 0.1F, -0.1F, 4, ticks, 0.25F);
         model.chainWave(leftArmParts, 0.1F, -0.1F, 4, ticks, 0.25F);
 

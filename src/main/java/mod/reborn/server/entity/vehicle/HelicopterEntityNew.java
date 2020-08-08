@@ -110,7 +110,7 @@ public class HelicopterEntityNew extends EntityLivingBase {
 
     @Override
     public void onLivingUpdate() {
-        this.interpSpeed.setTarget(2F);
+        this.interpSpeed.setTarget(3F);
         super.onLivingUpdate();
         if (this.motionX * this.motionX + this.motionZ * this.motionZ > 1.1 * 1.1 && this.collidedHorizontally) {
             world.createExplosion(this.getRidingEntity(), posX, posY, posZ, 12, true);

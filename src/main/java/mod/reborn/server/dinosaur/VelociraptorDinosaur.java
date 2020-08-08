@@ -10,7 +10,7 @@ import net.minecraftforge.common.BiomeDictionary;
 import java.util.ArrayList;
 
 public class VelociraptorDinosaur extends Dinosaur {
-    public static final double SPEED = 0.3F;
+    public static final double SPEED = 0.4F;
     public VelociraptorDinosaur() {
         super();
 
@@ -22,7 +22,7 @@ public class VelociraptorDinosaur extends Dinosaur {
         this.setEggColorFemale(0x91765D, 0x5A4739);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setAttackSpeed(1.25);
-        this.setHealth(10, 35);
+        this.setHealth(6, 35);
         this.setStrength(4, 10);
         this.setMaximumAge(this.fromDays(45));
         this.setEyeHeight(0.45F, 1.7F);

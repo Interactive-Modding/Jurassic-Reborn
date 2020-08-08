@@ -18,7 +18,7 @@ public class HypsilophodonDinosaur extends Dinosaur
         this.setTimePeriod(TimePeriod.CRETACEOUS);
         this.setEggColorMale(0x7DAC78, 0x3E6226);
         this.setEggColorFemale(0x799073, 0x33432F);
-        this.setHealth(5, 15);
+        this.setHealth(4, 16);
         this.setSpeed((SPEED -0.10), SPEED);
         this.setStrength(1, 5);
         this.setMaximumAge(fromDays(35));
@@ -27,11 +27,17 @@ public class HypsilophodonDinosaur extends Dinosaur
         this.setSizeY(0.25F, 0.85F);
         this.setStorage(9);
         this.setDiet((Diet.HERBIVORE.get()));
-        this.setBones("arm_bones", "leg_bones", "neck_vertebrae", "pelvis", "ribcage", "shoulder", "skull", "tooth", "arm_bones");
+        this.setBones("arm_bones", "leg_bones", "neck_vertebrae", "tail_vertebrae", "pelvis", "ribcage", "shoulder", "skull", "tooth", "arm_bones");
         this.setHeadCubeName("Head ");
         this.setBreeding(false, 2, 6, 20, false, true);
         this.setAttackBias(-50);
         this.setImprintable(true);
         this.setScale(0.65F, 0.2F);
+        String[][] recipe = {
+                {"", "pelvis", "","",""},
+                {"tail_vertebrae", "ribcage", "shoulder", "neck_vertebrae", "skull"},
+                {"leg_bones", "", "", "arm_bones", "tooth"}};
+        this.setRecipe(recipe);
+        this.enableSkeleton();
     }
 }

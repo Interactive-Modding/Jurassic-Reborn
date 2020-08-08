@@ -4,7 +4,11 @@
     "IDLE": [
       {
         "pose": "achillobator_adult_idle",
-        "time": 20
+        "time": 55
+      },
+      {
+        "pose": "achillobator_adult_idle_1",
+        "time": 55
       }
     ],
     "ATTACKING": [
@@ -118,7 +122,7 @@
       },
       {
         "pose": "achillobator_adult_idle",
-        "time": 10
+        "time": 20
       }
     ],
     "PREPARE_LEAP": [
@@ -196,19 +200,19 @@
     "RUNNING": [
       {
         "pose": "achillobator_adult_running_1",
-        "time": 4
+        "time": 5
       },
       {
         "pose": "achillobator_adult_running_2",
-        "time": 4
+        "time": 5
       },
       {
         "pose": "achillobator_adult_running_3",
-        "time": 4
+        "time": 5
       },
       {
         "pose": "achillobator_adult_running_4",
-        "time": 4
+        "time": 5
       }
     ],
     "SLEEPING": [
@@ -252,19 +256,19 @@
 	"WALKING": [
       {
         "pose": "achillobator_adult_walking_1",
-        "time": 4
+        "time": 6
       },
 	  {
         "pose": "achillobator_adult_walking_2",
-        "time": 4
+        "time": 6
       },
 	  {
         "pose": "achillobator_adult_walking_3",
-        "time": 4
+        "time": 6
       },
 	  {
         "pose": "achillobator_adult_walking_4",
-        "time": 4
+        "time": 6
       }
     ]
   }

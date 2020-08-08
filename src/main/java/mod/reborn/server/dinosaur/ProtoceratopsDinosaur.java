@@ -18,7 +18,7 @@ public class ProtoceratopsDinosaur extends Dinosaur
         this.setTimePeriod(TimePeriod.CRETACEOUS);
         this.setEggColorMale(0xFDCEB5, 0xFBC073);
         this.setEggColorFemale(0xEBCC98, 0xAA804E);
-        this.setHealth(5, 20);
+        this.setHealth(4, 20);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(5, 10);
         this.setMaximumAge(fromDays(40));
