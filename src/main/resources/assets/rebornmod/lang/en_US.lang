@@ -177,6 +177,7 @@ item.perisphinctes_beak_fresh.name=Fresh {dino} Beak
 item.shell_cover_fresh.name=Fresh {dino} Shell Cover
 item.scales_fresh.name=Fresh {dino} Scales
 item.tail_fin_fresh.name=Fresh {dino} Tail Fin
+item.tusks_fresh.name=Fresh {dino} Tusks
 item.cooked_crab_meat.name= Cooked Crab Meat
 item.cooked_shark_meat.name= Cooked Shark Meat
 item.raw_crab_meat.name= Raw Crab Meat
@@ -229,6 +230,7 @@ item.perisphinctes_beak.name={dino} Beak
 item.shell_cover.name={dino} Shell Cover
 item.scales.name={dino} Scales
 item.tail_fin.name={dino} Tail Fin
+item.tusks.name={dino} Tusks
 
 item.fossilized_egg.name=Fossilized Egg
 
