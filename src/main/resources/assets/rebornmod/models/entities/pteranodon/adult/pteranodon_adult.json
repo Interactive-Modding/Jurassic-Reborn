@@ -20,6 +20,192 @@
         "pose": "pteranodon_adult_walking_3",
         "time": 4
       }
+   ],
+    "DYING": [
+      {
+        "pose": "pteranodon_adult_death",
+        "time": 15
+      }
+ ],
+    "DRINKING": [
+      {
+        "pose": "pteranodon_adult_drinking_1",
+        "time": 15
+      },
+      {
+        "pose": "pteranodon_adult_drinking_2",
+        "time": 10
+      },
+      {
+        "pose": "pteranodon_adult_drinking_1",
+        "time": 15
+     },
+      {
+        "pose": "pteranodon_adult_drinking_2",
+        "time": 10
+      },
+      {
+        "pose": "pteranodon_adult_idle",
+        "time": 15
+      }
+ ],
+    "ATTACK_LANDING": [
+      {
+        "pose": "pteranodon_adult_landing_attack_1",
+        "time": 10
+      },
+      {
+        "pose": "pteranodon_adult_landing_attack_2",
+        "time": 10
+     },
+      {
+        "pose": "pteranodon_adult_landing_attack_3",
+        "time": 10
+      },
+      {
+        "pose": "pteranodon_adult_landing_attack_4",
+        "time": 10
+      },
+      {
+        "pose": "pteranodon_adult_idle",
+        "time": 10
+      }
+    ],
+    "EATING": [
+      {
+        "pose": "pteranodon_adult_eating_1",
+        "time": 15
+      },
+      {
+        "pose": "pteranodon_adult_eating_2",
+        "time": 10
+      },
+      {
+        "pose": "pteranodon_adult_eating_3",
+        "time": 15
+      },
+      {
+        "pose": "pteranodon_adult_eating_1",
+        "time": 15
+     },
+      {
+        "pose": "pteranodon_adult_eating_2",
+        "time": 10
+      },
+      {
+        "pose": "pteranodon_adult_eating_3",
+        "time": 15
+      },
+      {
+        "pose": "pteranodon_adult_idle",
+        "time": 15
+      }
+    ],
+    "SPEAK": [
+      {
+        "pose": "pteranodon_adult_speak",
+        "time": 5
+      },
+      {
+        "pose": "pteranodon_adult_speak",
+        "time": 20
+      },
+      {
+        "pose": "pteranodon_adult_idle",
+        "time": 5
+      }
+  ],
+    "CALLING": [
+      {
+        "pose": "pteranodon_adult_calling",
+        "time": 12
+      },
+      {
+        "pose": "pteranodon_adult_idle",
+        "time": 5
+      },
+	  {
+        "pose": "pteranodon_adult_calling",
+        "time": 12
+      },
+      {
+        "pose": "pteranodon_adult_idle",
+        "time": 20
+      }
+  ],
+    "INJURED": [
+      {
+        "pose": "pteranodon_adult_injured",
+        "time": 10
+      },
+      {
+        "pose": "pteranodon_adult_idle",
+        "time": 20
+      }
+ ],
+ "LOOKING_LEFT": [
+      {
+        "pose": "pteranodon_adult_look_start",
+        "time": 10
+      },
+      {
+        "pose": "pteranodon_adult_look_left",
+        "time": 10
+      },
+      {
+        "pose": "pteranodon_adult_look_left",
+        "time": 20
+      },
+      {
+        "pose": "pteranodon_adult_idle",
+        "time": 10
+      }
+    ],
+    "RESTING": [
+      {
+        "pose": "pteranodon_adult_resting",
+        "time": 20
+      }
+    ],
+    "SLEEPING": [
+      {
+        "pose": "pteranodon_adult_sleeping",
+        "time": 20
+      }
+    ],
+    "LAYING_EGG": [
+      {
+        "pose": "pteranodon_adult_laying",
+        "time": 20
+      }
+    ],
+    "LOOKING_RIGHT": [
+      {
+        "pose": "pteranodon_adult_look_start",
+        "time": 10
+      },
+      {
+        "pose": "pteranodon_adult_look_right",
+        "time": 10
+      },
+      {
+        "pose": "pteranodon_adult_look_right",
+        "time": 20
+      },
+      {
+        "pose": "pteranodon_adult_idle",
+        "time": 10
+      }
+    ],
+    "ATTACKING": [
+      {
+        "pose": "pteranodon_adult_attacking",
+        "time": 15
+      },
+      {
+        "pose": "pteranodon_adult_idle",
+        "time": 10
+      }
     ]
   }
 }
