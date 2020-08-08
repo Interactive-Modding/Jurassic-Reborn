@@ -84,7 +84,7 @@ public class DinosaurRenderer extends RenderLiving<DinosaurEntity> {
         if (!this.dinosaur.doesSupportGrowthStage(growthStage)) {
             growthStage = GrowthStage.ADULT;
         }
-        if(entity instanceof MammothEntity) {
+        if(entity instanceof MammothEntity && !entity.isSkeleton()) {
             return ((MammothEntity)entity).getTexture();
         }
         return entity.isMale() ? this.dinosaur.getMaleTexture(growthStage) : this.dinosaur.getFemaleTexture(growthStage);
