@@ -20,6 +20,20 @@
         "pose": "pteranodon_adult_walking_3",
         "time": 4
       }
+ ],
+	"RUNNING": [
+      {
+        "pose": "pteranodon_adult_running_1",
+        "time": 4
+      },
+	  {
+        "pose": "pteranodon_adult_running_2",
+        "time": 3
+      },
+	  {
+        "pose": "pteranodon_adult_running_3",
+        "time": 4
+      }
    ],
     "DYING": [
       {
