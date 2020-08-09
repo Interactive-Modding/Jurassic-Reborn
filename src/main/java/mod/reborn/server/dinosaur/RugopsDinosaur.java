@@ -19,7 +19,7 @@ public class RugopsDinosaur extends Dinosaur
         this.setEggColorMale(0xB5F75D, 0x202022);
         this.setEggColorFemale(0xE1A857, 0x5A2108);
         this.setHealth(10, 40);
-        this.setStrength(5, 20);
+        this.setStrength(5, 15);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setMaximumAge(fromDays(45));
         this.setEyeHeight(0.6F, 2.05F);
@@ -35,5 +35,12 @@ public class RugopsDinosaur extends Dinosaur
         this.setImprintable(true);
         this.setStorage(12);
         this.setBreeding(false, 2, 6, 20, false, true);
+        String[][] recipe = {
+                {"", "", "","neck_vertebrae","skull"},
+                {"tail_vertebrae", "pelvis", "ribcage","shoulder","tooth"},
+                {"", "", "leg_bones", "arm_bones", "claw"},
+                {"", "", "foot_bones", "", ""}};
+        this.setRecipe(recipe);
+        this.enableSkeleton();
     }
 }

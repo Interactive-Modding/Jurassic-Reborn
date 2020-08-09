@@ -29,12 +29,19 @@ public class SegisaurusDinosaur extends Dinosaur
         this.setStorage(9);
         this.setDiet((Diet.CARNIVORE.get()));
         this.setSleepTime(SleepTime.NOCTURNAL);
-        this.setBones("skull", "tail_vertebrae", "foot_bones", "neck_vertebrae", "shoulder");
+        this.setBones("skull", "tail_vertebrae", "teeth", "leg_bones", "foot_bones", "neck_vertebrae", "shoulder", "ribcage", "pelvis", "arm_bones", "claw");
         this.setHeadCubeName("head");
         this.setAttackBias(90);
         this.setScale(0.45F, 0.13F);
         this.setImprintable(true);
         this.setStorage(12);
         this.setBreeding(false, 0, 6, 20, false, true);
+        String[][] recipe = {
+                {"", "", "","neck_vertebrae","skull"},
+                {"tail_vertebrae", "pelvis", "ribcage","shoulder","teeth"},
+                {"", "", "leg_bones", "arm_bones", "claw"},
+                {"", "", "foot_bones", "", ""}};
+        this.setRecipe(recipe);
+        this.enableSkeleton();
     }
 }
