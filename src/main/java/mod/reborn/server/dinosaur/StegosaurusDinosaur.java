@@ -5,7 +5,7 @@ import mod.reborn.server.entity.dinosaur.StegosaurusEntity;
 import mod.reborn.server.period.TimePeriod;
 
 public class StegosaurusDinosaur extends Dinosaur{
-    public static final double SPEED = 0.32F;
+    public static final double SPEED = 0.35F;
     public StegosaurusDinosaur() {
         super();
 
@@ -33,6 +33,12 @@ public class StegosaurusDinosaur extends Dinosaur{
         this.setImprintable(true);
         this.setStorage(24);
         this.setBreeding(false, 2, 6, 20, false, true);
+        String[][] recipe = {
+                {"tail", "pelvis", "ribcage","neck","skull"},
+                {"thagomizer", "hind_leg_bones", "hind_leg_bones", "shoulder", "tooth"},
+                {"", "", "", "front_leg_bones", "front_leg_bones"}};
+        this.setRecipe(recipe);
+        this.enableSkeleton();
     }
 }
 

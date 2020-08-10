@@ -21,7 +21,7 @@ public class IndoraptorDinosaur extends Dinosaur implements Hybrid
         this.setDinosaurClass(IndoraptorEntity.class);
         this.setTimePeriod(TimePeriod.NONE); //TODO, it's a hybrid, what do you do here?
         this.setEggColorMale(0x787878, 0x2B2B2B);
-        this.setEggColorFemale(0x787878, 0x2B2B2B);
+        this.setEggColorFemale(0xE1DFDC, 0x675C58);
         this.setHealth(16, 70);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(10, 40);

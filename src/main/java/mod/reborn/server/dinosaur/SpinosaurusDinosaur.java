@@ -7,7 +7,7 @@ import mod.reborn.server.period.TimePeriod;
 
 public class SpinosaurusDinosaur extends Dinosaur
 {
-    public static final double SPEED = 0.6F;
+    public static final double SPEED = 0.4F;
     public SpinosaurusDinosaur()
     {
         super();
@@ -27,12 +27,19 @@ public class SpinosaurusDinosaur extends Dinosaur
         this.setSizeY(0.8F, 4.8F);
         this.setStorage(54);
         this.setDiet((Diet.PCARNIVORE.get()));
-        this.setBones("skull", "tooth", "arm_bones", "claw", "foot_bones", "leg_bones", "neck_vertebrae", "ribcage", "shoulder", "tail_vertebrae");
+        this.setBones("skull", "tooth", "arm_bones", "claw", "foot_bones", "leg_bones", "neck_vertebrae", "ribcage", "shoulder", "tail_vertebrae", "pelvis");
         this.setHeadCubeName("Head");
         this.setScale(2.37F, 0.3F);
         this.setAttackBias(900);
         this.shouldDefendOffspring();
         this.setStorage(12);
-        this.setBreeding(false, 0, 4, 20, false, true);
+        this.setBreeding(false, 2, 6, 40, false, true);
+        String[][] recipe = {
+                {"", "", "","neck_vertebrae","skull"},
+                {"tail_vertebrae", "pelvis", "ribcage","shoulder","tooth"},
+                {"", "", "leg_bones", "arm_bones", "claw"},
+                {"", "", "foot_bones", "", ""}};
+        this.setRecipe(recipe);
+        this.enableSkeleton();
     }
 }
