@@ -33,5 +33,11 @@ public class StyracosaurusDinosaur extends Dinosaur {
         this.setImprintable(true);
         this.setStorage(24);
         this.setBreeding(false, 2, 6, 20, false, true);
+        String[][] recipe = {
+                {"tail_vertebrae", "pelvis", "ribcage","neck_vertebrae","skull"},
+                {"hind_leg_bones", "hind_leg_bones", "", "shoulder", "tooth"},
+                {"", "", "", "front_leg_bones", "front_leg_bones"}};
+        this.setRecipe(recipe);
+        this.enableSkeleton();
     }
 }
