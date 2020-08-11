@@ -4,33 +4,49 @@
     "IDLE": [
       {
         "pose": "suchomimus_adult_idle",
-        "time": 3
+        "time": 55
+     },
+      {
+        "pose": "suchomimus_adult_idle_2",
+        "time": 55
       }
     ],
     "ROARING": [
       {
         "pose": "suchomimus_adult_roaring_1",
-        "time": 20
+        "time": 25
+      },
+      {
+        "pose": "suchomimus_adult_roaring_2",
+        "time": 30
+      },
+      {
+        "pose": "suchomimus_adult_roaring_3",
+        "time": 30
+      },
+      {
+        "pose": "suchomimus_adult_idle",
+        "time": 15
       }
     ],
     "SLEEPING": [
       {
         "pose": "suchomimus_adult_sleeping",
-        "time": 3
+        "time": 20
       }
     ],
     "DYING": [
       {
         "pose": "suchomimus_adult_dying_1",
-        "time": 7
+        "time": 10
       },
       {
         "pose": "suchomimus_adult_dying_2",
-        "time": 6
+        "time": 10
       },
       {
         "pose": "suchomimus_adult_dying_3",
-        "time": 7
+        "time": 10
       }
     ],
     "WALKING": [
@@ -88,23 +104,23 @@
     "SWIMMING": [
       {
         "pose": "suchomimus_adult_swimming_1",
-        "time": 6
+        "time": 8
       },
       {
         "pose": "suchomimus_adult_swimming_2",
-        "time": 6
+        "time": 8
       },
       {
         "pose": "suchomimus_adult_swimming_3",
-        "time": 6
+        "time": 8
       },
       {
         "pose": "suchomimus_adult_swimming_4",
-        "time": 6
+        "time": 8
       },
       {
         "pose": "suchomimus_adult_swimming_5",
-        "time": 6
+        "time": 8
       }
     ],
     "LAYING_EGG": [
@@ -116,47 +132,117 @@
     "DRINKING": [
       {
         "pose": "suchomimus_adult_drinking_1",
-        "time": 7
+        "time": 15
       },
       {
         "pose": "suchomimus_adult_drinking_2",
-        "time": 6
+        "time": 15
       },
       {
         "pose": "suchomimus_adult_drinking_3",
-        "time": 7
+        "time": 15
+      },
+      {
+        "pose": "suchomimus_adult_idle",
+        "time": 10
+      }
+   ],
+    "LOOKING_LEFT": [
+      {
+        "pose": "suchomimus_adult_look_left",
+        "time": 20
+      },
+      {
+        "pose": "suchomimus_adult_look_left",
+        "time": 20
+      },
+      {
+        "pose": "suchomimus_adult_idle",
+        "time": 10
+      }
+    ],
+    "LOOKING_RIGHT": [
+      {
+        "pose": "suchomimus_adult_look_right",
+        "time": 20
+      },
+      {
+        "pose": "suchomimus_adult_look_right",
+        "time": 20
+      },
+      {
+        "pose": "suchomimus_adult_idle",
+        "time": 10
+      }
+    ],
+    "INJURED": [
+      {
+        "pose": "suchomimus_adult_injured",
+        "time": 10
+      },
+      {
+        "pose": "suchomimus_adult_injured",
+        "time": 10
+      },
+      {
+        "pose": "suchomimus_adult_idle",
+        "time": 10
+      }
+ ],
+    "RESTING": [
+      {
+        "pose": "suchomimus_adult_resting",
+        "time": 20
       }
     ],
     "EATING": [
       {
         "pose": "suchomimus_adult_eating_1",
-        "time": 5
+        "time": 10
       },
       {
         "pose": "suchomimus_adult_eating_2",
-        "time": 5
+        "time": 15
       },
       {
         "pose": "suchomimus_adult_eating_3",
-        "time": 5
+        "time": 15
       },
       {
         "pose": "suchomimus_adult_eating_4",
-        "time": 5
+        "time": 10
+      },
+      {
+        "pose": "suchomimus_adult_idle",
+        "time": 10
+      }
+  ],
+    "SPEAK": [
+      {
+        "pose": "suchomimus_adult_speaking",
+        "time": 10
+      },
+      {
+        "pose": "suchomimus_adult_speaking",
+        "time": 20
+      },
+      {
+        "pose": "suchomimus_adult_idle",
+        "time": 10
       }
     ],
     "ATTACKING": [
       {
         "pose": "suchomimus_adult_attacking_1",
-        "time": 7
+        "time": 9
       },
       {
         "pose": "suchomimus_adult_attacking_2",
-        "time": 6
+        "time": 8
       },
       {
         "pose": "suchomimus_adult_attacking_3",
-        "time": 7
+        "time": 9
       }
     ]
   }
