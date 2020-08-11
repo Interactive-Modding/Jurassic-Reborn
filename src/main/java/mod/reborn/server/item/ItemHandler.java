@@ -93,19 +93,18 @@ public class ItemHandler {
         ItemStack stack = interaction.getPlayer().getHeldItem(interaction.getHand());
         NBTTagCompound nbt = stack.getOrCreateSubCompound("wand_info");
         Entity entity = interaction.getPlayer().world.getEntityByID(nbt.getInteger("dino_id"));
-        if (entity instanceof DinosaurEntity) {
+        if (interaction.getTarget() instanceof DinosaurEntity) {
             if (nbt.hasKey("dino_id", 99)) {
-                if (((DinosaurEntity) entity).isMale() != ((DinosaurEntity) interaction.getTarget()).isMale()) {
+                if (entity instanceof DinosaurEntity && ((DinosaurEntity) entity).isMale() != ((DinosaurEntity) interaction.getTarget()).isMale()) {
                     ((DinosaurEntity) entity).breed((DinosaurEntity) interaction.getTarget());
                     ((DinosaurEntity) interaction.getTarget()).breed((DinosaurEntity) entity);
                 } else if (entity != interaction.getTarget()) {
                     nbt.removeTag("dino_id");
                 }
-                return true;
-            } else if (interaction.getTarget() instanceof DinosaurEntity) {
+            } else {
                 nbt.setInteger("dino_id", interaction.getTarget().getEntityId());
-                return true;
             }
+            return true;
         }
         return false;
     }).setCreativeTab(TabHandler.CREATIVE);
