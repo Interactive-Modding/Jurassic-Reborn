@@ -3,7 +3,7 @@
 ### RebornMod Leader
 Destruction
 
-### Reborn is the JurassiCraft code edited by (Destruction, Last_Dovahkiin(darthvader45), Collinvht, and MSRandom)
+### Reborn is the JurassiCraft code edited by (Destruction, Wyn Price, Last_Dovahkiin(darthvader45), Collinvht, and MSRandom)
 ### Changes in this code
 50+ Creatures added
 Bug's fixed
@@ -14,23 +14,19 @@ And much more!
 
 ### Developers
 
+Wyn Price
+
 Last_Dovahkiin
 
 ### Modelers / Sound Designers / Textures /  Concept Artists
-
-Boom
-
-Zane
 
 WinterKILLER435
 
 AveLardo12
 
-Skull
+JurassicXenomorph
 
 DTRaptor, The Political Advisor
-
-RextheZilla98
 
 TheJurassicAlien
 
@@ -44,8 +40,6 @@ Fluffy Taco // JR_2202
 
 Pedro Resende
 
-Just Monika 
-
 
 ### Bug-Testers
 
@@ -53,11 +47,27 @@ Firewolf786YT
 
 Spino mastermind
 
+Sniffity
+
+Loxures
+
+Josef_Germany (MCingram) 
+
+JD
+
+GuardianInASuit
+
 Ryan is still the same
 
 # Contributors
 
+Just Monika 
+
 Collinvht
+
+Boom
+
+RextheZilla98
 
 ᗰι𝓬ʰ𝐈𝐠Ữ𝓝 (Michigun)
 
