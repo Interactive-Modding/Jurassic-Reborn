@@ -146,7 +146,11 @@ public class DisplayBlock extends BlockContainer {
     }
 
     private static ItemStack getItemFromTile(DisplayBlockEntity tile) {
-        int metadata = DisplayBlockItem.getMetadata(EntityHandler.getDinosaurId(tile.getEntity().getDinosaur()), tile.getVariant(), tile.isSkeleton());
+        int variant = tile.getVariant();
+        if(tile.isSkeleton()) {
+            variant = tile.isMale() ? 1 : 2;
+        }
+        int metadata = DisplayBlockItem.getMetadata(EntityHandler.getDinosaurId(tile.getEntity().getDinosaur()), variant, tile.isSkeleton());
         ItemStack stack = new ItemStack(ItemHandler.DISPLAY_BLOCK, 1, metadata);
         NBTTagCompound nbt = new NBTTagCompound();
         stack.setTagCompound(nbt);
