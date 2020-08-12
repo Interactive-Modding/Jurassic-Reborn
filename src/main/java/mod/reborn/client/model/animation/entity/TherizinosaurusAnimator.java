@@ -106,12 +106,12 @@ public class TherizinosaurusAnimator extends EntityAnimator<TherizinosaurusEntit
         float height = 3F;
 
         model.bob(bodyHips, 1F * speed, height, false, f, f1);
-        model.flap(bodyHips, 0.5F * speed, 0.5F, false, 0, 0, f, f1);
-        model.flap(bodyMain, 0.5F * speed, 0.1F, true, 0, 0, f, f1);
-        model.flap(bodyShoulders, 0.5F * speed, 0.4F, true, 0, 0, f, f1);
-        model.flap(tail1, 0.5F * speed, 0.2F, true, 0, 0, f, f1);
-        model.flap(tail3, 0.5F * speed, 0.2F, true, 0, 0, f, f1);
-        model.flap(tail5, 0.5F * speed, 0.1F, true, 0, 0, f, f1);
+      //  model.flap(bodyHips, 0.5F * speed, 0.5F, false, 0, 0, f, f1);
+      //  model.flap(bodyMain, 0.5F * speed, 0.1F, true, 0, 0, f, f1);
+      //  model.flap(bodyShoulders, 0.5F * speed, 0.4F, true, 0, 0, f, f1);
+      //  model.flap(tail1, 0.5F * speed, 0.2F, true, 0, 0, f, f1);
+      //  model.flap(tail3, 0.5F * speed, 0.2F, true, 0, 0, f, f1);
+      //  model.flap(tail5, 0.5F * speed, 0.1F, true, 0, 0, f, f1);
         model.bob(leftThigh, 1F * speed, height, false, f, f1);
         model.bob(rightThigh, 1F * speed, height, false, f, f1);
         model.walk(bodyShoulders, 1F * speed, 0.2F, true, 1, 0, f, f1);

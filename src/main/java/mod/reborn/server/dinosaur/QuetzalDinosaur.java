@@ -34,7 +34,7 @@ public class QuetzalDinosaur extends Dinosaur
         this.setAttackBias(1200);
         this.shouldDefendOffspring();
         this.setStorage(12);
-        this.setBreeding(false, 1, 6, 20, false, true);
+        this.setBreeding(false, 1, 4, 80, false, true);
         this.enableSkeleton();
         String[][] recipe = {
                 {"", "", "", "neck_vertebrae", "skull"},

@@ -26,7 +26,7 @@ public class CarcharodontosaurusDinosaur extends Dinosaur {
         this.setBones("skull", "tooth", "arm_bones", "claw", "foot_bones", "leg_bones", "neck_vertebrae", "pelvis", "shoulder", "tail_vertebrae", "ribcage");
         this.setHeadCubeName("Head");
         this.setScale(1.8F, 0.25F);
-        this.setBreeding(false, 1, 6, 20, false, true);
+        this.setBreeding(false, 2, 6, 60, false, true);
         this.shouldDefendOffspring();
         String[][] recipe = {
                 {"", "", "","neck_vertebrae","skull"},

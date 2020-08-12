@@ -48,7 +48,7 @@ public class CoelacanthDinosaur extends Dinosaur {
         this.setAttackBias(100.0);
         this.setMarineAnimal(true);
         this.setMovementType(MovementType.DEEP_WATER);
-        this.setBreeding(true, 1, 3, 15, true, false);
+        this.setBreeding(true, 1, 3, 20, true, false);
         this.setRandomFlock(false);
         String[][] recipe =     {{"", "second_dorsal_fin", "first_dorsal_fin", ""},
                 {"caudal_fin", "spine", "pectoral_fin_bones","skull"},

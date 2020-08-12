@@ -30,7 +30,7 @@ public class GuanlongDinosaur extends Dinosaur {
         this.shouldDefendOffspring();
         this.setAttackBias(1200);
         this.setAttackSpeed(1.2F);
-        this.setBreeding(false, 0, 2, 20, false, true);
+        this.setBreeding(false, 2, 4, 24, false, true);
         String[][] recipe = {
                 {"", "","neck_vertebrae","skull"},
                 {"tail_vertebrae","pelvis", "ribcage","shoulder_bone","tooth"},

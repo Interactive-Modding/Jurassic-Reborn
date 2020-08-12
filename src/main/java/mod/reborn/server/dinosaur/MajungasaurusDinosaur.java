@@ -34,7 +34,7 @@ public class MajungasaurusDinosaur extends Dinosaur
         this.setAttackBias(180);
         this.setImprintable(true);
         this.setStorage(12);
-        this.setBreeding(false, 2, 6, 20, false, true);
+        this.setBreeding(false, 2, 4, 70, false, true);
         String[][] recipe = {
                 {"", "", "","neck_vertebrae","skull"},
                 {"tail_vertebrae", "pelvis", "ribcage","shoulder","tooth"},

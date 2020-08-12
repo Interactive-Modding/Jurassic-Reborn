@@ -31,5 +31,12 @@ public class SuchomimusDinosaur extends Dinosaur {
         this.setBreeding(false, 2, 6, 20, false, true);
         this.setImprintable(true);
         this.setStorage(12);
+        String[][] recipe = {
+                {"", "", "","neck_vertebrae","skull"},
+                {"tail_vertebrae", "pelvis", "ribcage","shoulder","tooth"},
+                {"", "", "leg_bones", "arm_bones", "claw"},
+                {"", "", "foot_bones", "", ""}};
+        this.setRecipe(recipe);
+        this.enableSkeleton();
     }
 }

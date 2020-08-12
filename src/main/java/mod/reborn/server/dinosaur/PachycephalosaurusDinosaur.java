@@ -20,7 +20,7 @@ public class PachycephalosaurusDinosaur extends Dinosaur
         this.setEggColorFemale(0x8E805E, 0x4A5154);
         this.setHealth(10, 50);
         this.setSpeed((SPEED -0.05), SPEED);
-        this.setStrength(10, 40);
+        this.setStrength(4, 10);
         this.setMaximumAge(fromDays(40));
         this.setSizeX(0.25F, 1.25F);
         this.setSizeY(0.5F, 2.3F);
@@ -33,7 +33,7 @@ public class PachycephalosaurusDinosaur extends Dinosaur
         this.setAttackBias(400);
         this.setImprintable(true);
         this.setStorage(12);
-        this.setBreeding(false, 0, 6, 20, false, true);
+        this.setBreeding(false, 2, 6, 40, false, true);
         String[][] recipe = {
                 {"", "","neck_vertebrae","skull"},
                 {"tail_vertebrae", "pelvis", "ribcage","shoulder"},

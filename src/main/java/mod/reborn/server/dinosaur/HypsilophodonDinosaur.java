@@ -29,7 +29,7 @@ public class HypsilophodonDinosaur extends Dinosaur
         this.setDiet((Diet.HERBIVORE.get()));
         this.setBones("arm_bones", "leg_bones", "neck_vertebrae", "tail_vertebrae", "pelvis", "ribcage", "shoulder", "skull", "tooth", "arm_bones");
         this.setHeadCubeName("Head ");
-        this.setBreeding(false, 2, 6, 20, false, true);
+        this.setBreeding(false, 2, 6, 22, false, true);
         this.setAttackBias(-50);
         this.setImprintable(true);
         this.setScale(0.65F, 0.2F);

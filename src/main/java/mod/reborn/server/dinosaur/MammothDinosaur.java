@@ -33,7 +33,7 @@ public class MammothDinosaur extends Dinosaur {
         this.setAttackBias(400);
         this.setImprintable(true);
         this.setStorage(12);
-        this.setBreeding(true, 0, 3, 45, false, true);
+        this.setBreeding(true, 2, 4, 40, false, true);
         String[][] recipe = {
                 {"", "", "","neck_vertebrae","skull"},
                 {"tail_vertebrae", "pelvis", "ribcage","tooth","tusks"},

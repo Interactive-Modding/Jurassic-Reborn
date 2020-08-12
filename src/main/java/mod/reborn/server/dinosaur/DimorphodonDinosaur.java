@@ -33,7 +33,7 @@ public class DimorphodonDinosaur extends Dinosaur
         this.setImprintable(true);
         this.setStorage(12);
         this.setScale(0.5F, 0.15F);
-        this.setBreeding(false, 2, 6, 20, false, true);
+        this.setBreeding(false, 2, 6, 80, false, true);
         String[][] recipe = {
                 {"", "", "","neck","skull"},
                 {"tail_vertebrae", "ribs_and_spine", "shoulder_blade","","teeth"},

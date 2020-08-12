@@ -28,7 +28,7 @@ public class CeratosaurusDinosaur extends Dinosaur {
         this.setBones("skull", "tooth", "arm_bones", "claw", "foot_bones", "leg_bones", "neck_vertebrae", "pelvis", "ribcage", "shoulder", "tail_vertebrae");
         this.setHeadCubeName("Head");
         this.setScale(2.2F, 0.25F);
-        this.setBreeding(false, 2, 6, 20, false, true);
+        this.setBreeding(false, 2, 6, 40, false, true);
         this.setImprintable(true);
         this.setStorage(26);
         this.shouldDefendOffspring();

@@ -46,7 +46,7 @@ public class AlligatorGarDinosaur extends Dinosaur
         this.setMaxHerdSize(30);
         this.setOffset(0.0F, .7F, 0F);
         this.setAttackBias(100.0);
-        this.setBreeding(true, 0, 2, 20, false, true);
+        this.setBreeding(true, 2, 12, 40, false, true);
         this.setMarineAnimal(true);
         this.setMovementType(MovementType.NEAR_SURFACE);
         this.setRandomFlock(false);

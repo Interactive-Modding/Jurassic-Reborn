@@ -30,7 +30,7 @@ public class ZhenyuanopterusDinosaur extends Dinosaur
         this.setHeadCubeName("Head");
         this.setScale(0.7F, 0.25F);
         this.shouldDefendOffspring();
-        this.setBreeding(false, 0, 6, 20, false, true);
+        this.setBreeding(false, 2, 6, 80, false, true);
         this.setImprintable(false);
         this.setStorage(12);
         this.setAvianAnimal(true);

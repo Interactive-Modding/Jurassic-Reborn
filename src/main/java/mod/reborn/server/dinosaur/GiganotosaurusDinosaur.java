@@ -31,7 +31,7 @@ public class GiganotosaurusDinosaur extends Dinosaur
         this.setScale(2.37F, 0.3F);
         this.shouldDefendOffspring();
         this.setAttackBias(280);
-        this.setBreeding(false, 2, 3, 40, false, true);
+        this.setBreeding(false, 2, 6, 70, false, true);
         String[][] recipe = {
                 {"", "", "","neck_vertebrae","skull"},
                 {"tail_vertebrae", "pelvis", "ribcage","shoulder","tooth"},

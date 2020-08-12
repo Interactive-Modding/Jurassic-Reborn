@@ -36,7 +36,7 @@ public class TylosaurusDinosaur extends Dinosaur
         this.setAttackBias(500);
         this.setMarineAnimal(true);
         this.givesDirectBirth();
-        this.setBreeding(true, 2, 6, 20, false, true);
+        this.setBreeding(true, 1, 4, 60, false, true);
         this.setImprintable(false);
         this.setStorage(54);
     }

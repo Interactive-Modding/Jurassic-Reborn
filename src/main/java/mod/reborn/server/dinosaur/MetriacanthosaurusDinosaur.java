@@ -32,7 +32,7 @@ public class MetriacanthosaurusDinosaur extends Dinosaur
         this.setScale(1.2F, 0.25F);
         this.shouldDefendOffspring();
         this.setAttackBias(120);
-        this.setBreeding(false, 0, 2, 45, false, true);
+        this.setBreeding(false, 2, 4, 70, false, true);
         String[][] recipe = {
                 {"", "", "","neck_vertebrae","skull"},
                 {"tail_vertebrae", "pelvis", "ribcage","shoulder","tooth"},

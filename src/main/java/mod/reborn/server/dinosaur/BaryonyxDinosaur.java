@@ -28,7 +28,7 @@ public class BaryonyxDinosaur extends Dinosaur
         this.setDiet(Diet.PCARNIVORE.get());
         this.setBones("arm_bones", "claw", "leg_bones", "neck_vertebrae", "pelvis", "ribcage", "shoulder", "skull", "tail_vertebrae", "tooth", "foot_bones");
         this.setHeadCubeName("Head");
-        this.setBreeding(false, 0, 2, 61, false, true);
+        this.setBreeding(false, 2, 6, 60, false, true);
         this.setScale(1.3F, 0.25F);
         this.shouldDefendOffspring();
         String[][] recipe = {

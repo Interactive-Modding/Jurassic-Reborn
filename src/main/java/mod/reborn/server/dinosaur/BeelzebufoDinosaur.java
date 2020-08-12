@@ -29,7 +29,7 @@ public class BeelzebufoDinosaur extends Dinosaur {
         this.setBones("leg_bones", "skull", "ribcage", "teeth");
         this.setHeadCubeName("Head");
         this.setMarineAnimal(true);
-        this.setBreeding(false, 1, 6, 20, false, true);
+        this.setBreeding(false, 2, 6, 20, false, true);
         this.setScale(1.05F, 0.065F);
         this.shouldDefendOffspring();
         String[][] recipe =     {

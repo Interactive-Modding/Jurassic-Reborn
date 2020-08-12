@@ -29,7 +29,7 @@ public class HyaenodonDinosaur extends Dinosaur {
         this.setScale(1.3F, 0.5F);
         this.setBirthType(BirthType.LIVE_BIRTH);
         this.shouldDefendOffspring();
-        this.setBreeding(true, 0, 2, 20, false, true);
+        this.setBreeding(true, 2, 4, 40, false, true);
         this.setAttackBias(50);
         this.setImprintable(true);
         this.setStorage(12);

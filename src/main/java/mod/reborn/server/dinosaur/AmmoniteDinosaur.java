@@ -15,10 +15,10 @@ public class AmmoniteDinosaur extends Dinosaur {
         this.setTimePeriod(TimePeriod.TRIASSIC);
         this.setEggColorMale(0xE4936B, 0xBC5312);
         this.setEggColorFemale(0xE4936B, 0xB86D1B);
-        this.setHealth(10, 40);
+        this.setHealth(4, 26);
         this.setSpeed((SPEED -0.15), SPEED);
         this.setStorage(27);
-        this.setStrength(1, 20);
+        this.setStrength(2, 4);
         this.setMaximumAge(fromDays(45));
         this.setMarineAnimal(true);
         this.setEyeHeight(0.45F, 1.6F);
@@ -29,8 +29,8 @@ public class AmmoniteDinosaur extends Dinosaur {
         this.setDiet(Diet.PISCIVORE.get().withModule(new Diet.DietModule(FoodType.FILTER)));
         this.setBones("perisphinctes_beak", "shell_cover");
         this.setHeadCubeName("Head");
-        this.setScale(1.0F, 0.5F);
-        this.setBreeding(true, 0, 3, 20, false, false);
+        this.setScale(1.0F, 0.3F);
+        this.setBreeding(true, 2, 10, 20, false, false);
         this.setImprintable(false);
         this.setOffset(0, 0.2f, 0);
         String[][] recipe = {

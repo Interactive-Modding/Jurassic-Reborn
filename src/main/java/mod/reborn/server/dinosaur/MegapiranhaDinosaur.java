@@ -37,7 +37,7 @@ public class MegapiranhaDinosaur extends Dinosaur
         this.setMarineAnimal(true);
         this.setAttackBias(400);
         this.setImprintable(false);
-        this.setBreeding(true, 0, 6, 20, false, true);
+        this.setBreeding(true, 2, 6, 20, false, true);
         String[][] recipe =     {{ "", "dorsal_fin", "", ""},
                                 { "caudal_fin", "spine", "body_fins", "skull"},
                                 { "anal_fin","","", "teeth"}};

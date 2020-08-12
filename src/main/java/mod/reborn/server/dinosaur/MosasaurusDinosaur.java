@@ -33,7 +33,7 @@ public class MosasaurusDinosaur extends Dinosaur {
         this.setAttackBias(1200);
         this.setStorage(12);
         this.setImprintable(false);
-        this.setBreeding(true, 0, 6, 20, false, true);
+        this.setBreeding(true, 1, 3, 80, false, true);
         String[][] recipe =     {{ "tail_fluke", "tail_vertebrae", "spine", "ribcage", "skull"},
                                 { "hind_flipper", "", "front_flipper", "inner_teeth", "tooth"}};
         this.setRecipe(recipe);
