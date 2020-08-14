@@ -29,8 +29,6 @@ entity.rebornmod.carnotaurus.name=Carnotaurus
 entity.rebornmod.giganotosaurus.name=Giganotosaurus
 entity.rebornmod.majungasaurus.name=Majungasaurus
 entity.rebornmod.compsognathus.name=Compsognathus
-entity.rebornmod.gallimimus.name=Gallimimus
-entity.rebornmod.parasaurolophus.name=Parasaurolophus
 entity.rebornmod.ankylosaurus.name=Ankylosaurus
 entity.rebornmod.segisaurus.name=Segisaurus
 entity.rebornmod.pteranodon.name=Pteranodon
@@ -793,7 +791,7 @@ info.troodon.name= Native to North America, the Troodon lived during the Late Cr
 info.tylosaurus.name=Tylosaurus lived in the Western Interior Seaway of North America during the Late Cretaceous, around 88 - 80,5 million years ago. Tylosaurus led violent, territorial lives, and their bones are often found with bite marks and other injuries, inflicted by other individuals of their own species. The stomach contents show that they were apex predators: Fish, sharks, plesiosaurs, Hesperornis, smaller mosasaurs.
 info.tropeognathus.name= The Tropeognathus, or “keep jaw”, is a pterosaur   that lived in Brazil during Albian of the Cretaceous period(or 110 million years ago). It is one of the largest pterosaurs, and has adapted to flying over large bodies of water. The Tropeognathus had a toothed beak, and large round growths named “keels”. There are not very many remains of this creature, so it doesn’t have very much genetic information.
 info.zhenyuanopterus.name=Zhenyuanopterus lived in China(Yixian Formation in Liaoning Province) during the Early Cretaceous (around 125 million years ago).Zhenyuanopterus is a mild-mannered but somewhat skittish creature that is most active in daylight. If threatened or disturbed, it will much rather flee than attack, not wanting to risk breaking its teeth. They travel together in small, disorganized gangs (of about 3 - 12 individuals) with no clear "leader" as such.
-
+info.hyaenodon.name=Hyaenodon was a highly successful genus of Creodont that lived from the Late Eocene to the early Miocene in Asia, Africa and North America. Despite their appearance, Creodonts were a separate order to the more familiar Carnivora. The two orders separated from a common ancestor at around the K-T boundary. Hyaenodons were extremely efficient predators that were able to spread across most of the world, with examples in Asia, North America, Europe and Africa.
 
 
 journal.chef_alejandro.name=Chef Alejandro

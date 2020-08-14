@@ -37,5 +37,12 @@ public class TherizinosaurusDinosaur extends Dinosaur
         this.shouldDefendOffspring();
         this.setBreeding(false, 2, 6, 20, false, true);
         this.setImprintable(false);
+        String[][] recipe =
+                {{"", "", "", "neck_vertebrae", "skull"},
+                        {"tail_vertebrae", "pelvis", "ribcage","shoulder",""},
+                        {"", "leg_bones", "", "arm_bones", ""},
+                        {"", "foot_bones", "", "claw", ""}};
+        this.setRecipe(recipe);
+        this.enableSkeleton();
     }
 }

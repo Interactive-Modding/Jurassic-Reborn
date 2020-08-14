@@ -4,35 +4,89 @@
     "IDLE": [
       {
         "pose": "therizinosaurus_adult_idle",
-        "time": 20
-      }
-    ],
-    "LOOKING_LEFT": [
-      {
-        "pose": "therizinosaurus_adult_head_cock_left",
-        "time": 16
+        "time": 60
       },
       {
-        "pose": "therizinosaurus_adult_head_cock_left",
-        "time": 13
+        "pose": "therizinosaurus_adult_idle_1",
+        "time": 60
+      }
+  ],
+    "LOOKING_LEFT": [
+      {
+        "pose": "therizinosaurus_adult_look_left",
+        "time": 20
+      },
+      {
+        "pose": "therizinosaurus_adult_look_left",
+        "time": 20
       },
       {
         "pose": "therizinosaurus_adult_idle",
-        "time": 16
+        "time": 10
       }
     ],
     "LOOKING_RIGHT": [
       {
-        "pose": "therizinosaurus_adult_head_cock_right",
-        "time": 16
+        "pose": "therizinosaurus_adult_look_right",
+        "time": 20
       },
       {
-        "pose": "therizinosaurus_adult_head_cock_right",
-        "time": 13
+        "pose": "therizinosaurus_adult_look_right",
+        "time": 20
       },
       {
         "pose": "therizinosaurus_adult_idle",
-        "time": 16
+        "time": 10
+      }
+  ],
+    "SPEAK": [
+      {
+        "pose": "therizinosaurus_adult_speaking",
+        "time": 10
+      },
+      {
+        "pose": "therizinosaurus_adult_speaking",
+        "time": 20
+      },
+      {
+        "pose": "therizinosaurus_adult_idle",
+        "time": 10
+      }
+ ],
+    "WALKING": [
+      {
+        "pose": "therizinosaurus_adult_walk_1",
+        "time": 6
+      },
+      {
+        "pose": "therizinosaurus_adult_walk_2",
+        "time": 6
+      },
+      {
+        "pose": "therizinosaurus_adult_walk_3",
+        "time": 6
+      },
+      {
+        "pose": "therizinosaurus_adult_walk_4",
+        "time": 6
+      }
+    ],
+    "RUNNING": [
+      {
+        "pose": "therizinosaurus_adult_run_1",
+        "time": 5
+      },
+      {
+        "pose": "therizinosaurus_adult_run_2",
+        "time": 5
+      },
+      {
+        "pose": "therizinosaurus_adult_run_3",
+        "time": 5
+      },
+      {
+        "pose": "therizinosaurus_adult_run_4",
+        "time": 5
       }
     ],
     "MATING": [

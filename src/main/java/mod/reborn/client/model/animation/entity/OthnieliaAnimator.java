@@ -14,7 +14,7 @@ public class OthnieliaAnimator extends EntityAnimator<OthnieliaEntity>
     protected void performAnimations(AnimatableModel model, OthnieliaEntity entity, float f, float f1, float ticks, float rotationYaw, float rotationPitch, float scale)
     {
         float speed = 0.8F;
-        float height = 12F * f1;
+        float height = 14F * f1;
 
         AdvancedModelRenderer bodyRear = model.getCube("Body REAR");
         AdvancedModelRenderer bodyFront = model.getCube("Body FRONT");
