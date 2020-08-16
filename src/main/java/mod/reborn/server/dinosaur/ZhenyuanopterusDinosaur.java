@@ -26,7 +26,7 @@ public class ZhenyuanopterusDinosaur extends Dinosaur
         this.setSizeY(0.3F, 1.3F);
         this.setStorage(27);
         this.setDiet((Diet.PISCIVORE.get()));
-        this.setBones("leg_bones", "pelvis", "skull", "tail_vertebrae", "teeth");
+        this.setBones("leg_bones", "pelvis", "skull", "tail_vertebrae", "wing_bones", "teeth", "ribcage");
         this.setHeadCubeName("Head");
         this.setScale(0.7F, 0.25F);
         this.shouldDefendOffspring();
@@ -34,5 +34,10 @@ public class ZhenyuanopterusDinosaur extends Dinosaur
         this.setImprintable(false);
         this.setStorage(12);
         this.setAvianAnimal(true);
+        String[][] recipe = {
+                {"tail_vertebrae", "pelvis", "ribcage", "skull"},
+                {"", "leg_bones", "wing_bones", "teeth", ""}};
+        this.setRecipe(recipe);
+        this.enableSkeleton();
     }
 }
