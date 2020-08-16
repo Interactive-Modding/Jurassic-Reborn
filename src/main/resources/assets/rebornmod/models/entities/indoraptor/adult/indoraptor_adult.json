@@ -10,7 +10,211 @@
         "pose": "indoraptor_adult_idle_1",
         "time": 60
       }
-  ],
+    ],
+    "SLEEPING": [
+      {
+        "pose": "indoraptor_adult_sleeping",
+        "time": 20
+      }
+    ],
+    "ROARING": [
+      {
+        "pose": "indoraptor_adult_roaring_1",
+        "time": 15
+      },
+      {
+        "pose": "indoraptor_adult_roaring_2",
+        "time": 15
+      },
+      {
+        "pose": "indoraptor_adult_roaring_1",
+        "time": 15
+      },
+      {
+        "pose": "indoraptor_adult_roaring_2",
+        "time": 15
+      },
+      {
+        "pose": "indoraptor_adult_roaring_1",
+        "time": 15
+      },
+      {
+        "pose": "indoraptor_adult_roaring_2",
+        "time": 15
+      },
+      {
+        "pose": "indoraptor_adult_idle",
+        "time": 15
+      }
+    ],
+    "EATING": [
+      {
+        "pose": "indoraptor_adult_eating_1",
+        "time": 15
+      },
+      {
+        "pose": "indoraptor_adult_eating_2",
+        "time": 15
+      },
+      {
+        "pose": "indoraptor_adult_eating_3",
+        "time": 15
+      },
+      {
+        "pose": "indoraptor_adult_eating_4",
+        "time": 15
+     },
+      {
+        "pose": "indoraptor_adult_eating_5",
+        "time": 15
+      },
+      {
+        "pose": "indoraptor_adult_idle",
+        "time": 15
+      },
+      {
+        "pose": "indoraptor_adult_eating_1",
+        "time": 15
+      },
+      {
+        "pose": "indoraptor_adult_eating_2",
+        "time": 15
+      },
+      {
+        "pose": "indoraptor_adult_eating_3",
+        "time": 15
+      },
+      {
+        "pose": "indoraptor_adult_eating_4",
+        "time": 15
+     },
+      {
+        "pose": "indoraptor_adult_eating_5",
+        "time": 15
+      },
+      {
+        "pose": "indoraptor_adult_idle",
+        "time": 15
+      }
+    ],
+    "RESTING": [
+      {
+        "pose": "indoraptor_adult_resting",
+        "time": 20
+      }
+    ],
+    "DRINKING": [
+      {
+        "pose": "indoraptor_adult_drinking_1",
+        "time": 7
+      },
+      {
+        "pose": "indoraptor_adult_drinking_2",
+        "time": 6
+      },
+      {
+        "pose": "indoraptor_adult_drinking_1",
+        "time": 7
+      },
+      {
+        "pose": "indoraptor_adult_drinking_2",
+        "time": 6
+      },
+      {
+        "pose": "indoraptor_adult_drinking_1",
+        "time": 7
+      },
+      {
+        "pose": "indoraptor_adult_drinking_2",
+        "time": 6
+        },
+        {
+        "pose": "indoraptor_adult_idle",
+        "time": 15
+      }
+    ],
+    "SPEAK": [
+      {
+        "pose": "indoraptor_adult_speak",
+        "time": 5
+      },
+      {
+        "pose": "indoraptor_adult_speak",
+        "time": 20
+      },
+      {
+        "pose": "indoraptor_adult_idle",
+        "time": 5
+      }
+    ],
+    "ATTACKING": [
+      {
+        "pose": "indoraptor_adult_attacking",
+        "time": 15
+      },
+      {
+        "pose": "indoraptor_adult_idle",
+        "time": 10
+      }
+    ],
+    "INJURED": [
+      {
+        "pose": "indoraptor_adult_injured",
+        "time": 10
+      },
+      {
+        "pose": "indoraptor_adult_idle",
+        "time": 5
+      }
+    ],
+    "DYING": [
+      {
+        "pose": "indoraptor_adult_death",
+        "time": 25
+      }
+    ],
+    "CALLING": [
+      {
+        "pose": "indoraptor_adult_calling",
+        "time": 15
+      },
+      {
+        "pose": "indoraptor_adult_calling",
+        "time": 20
+      },
+      {
+        "pose": "indoraptor_adult_idle",
+        "time": 10
+      }
+    ],
+    "LOOKING_LEFT": [
+       {
+        "pose": "indoraptor_adult_look_left",
+        "time": 20
+      },
+      {
+        "pose": "indoraptor_adult_look_left",
+        "time": 20
+      },
+      {
+        "pose": "indoraptor_adult_idle",
+        "time": 10
+      }
+    ],
+    "LOOKING_RIGHT": [
+    {
+        "pose": "indoraptor_adult_look_right",
+        "time": 20
+      },
+      {
+        "pose": "indoraptor_adult_look_right",
+        "time": 20
+      },
+      {
+        "pose": "indoraptor_adult_idle",
+        "time": 10
+      }
+    ],
     "WALKING": [
       {
         "pose": "indoraptor_adult_walking_1",
@@ -32,19 +236,27 @@
         "pose": "indoraptor_adult_walking_5",
         "time": 5
       }
-  ],
-    "SPEAK": [
+],
+    "RUNNING": [
       {
-        "pose": "indoraptor_adult_speak",
-        "time": 5
+        "pose": "indoraptor_adult_running_1",
+        "time": 4
       },
       {
-        "pose": "indoraptor_adult_speak",
-        "time": 20
+        "pose": "indoraptor_adult_running_2",
+        "time": 4
       },
       {
-        "pose": "indoraptor_adult_idle",
-        "time": 10
+        "pose": "indoraptor_adult_running_3",
+        "time": 4
+      },
+      {
+        "pose": "indoraptor_adult_running_4",
+        "time": 4
+      },
+      {
+        "pose": "indoraptor_adult_running_5",
+        "time": 4
       }
     ]
   }
