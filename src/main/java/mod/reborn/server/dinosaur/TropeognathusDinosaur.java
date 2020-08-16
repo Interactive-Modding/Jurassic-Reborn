@@ -27,7 +27,7 @@ public class TropeognathusDinosaur extends Dinosaur
         this.setSizeY(0.45F, 1.55F);
         this.setStorage(27);
         this.setDiet((Diet.PCARNIVORE.get()));
-        this.setBones("leg_bones", "pelvis", "skull", "tail_vertebrae", "teeth", "wing_bones");
+        this.setBones("leg_bones", "pelvis", "skull", "ribcage", "tail_vertebrae", "teeth", "wing_bones");
         this.setHeadCubeName("Head");
         this.setScale(1.15F, 0.3F);
         this.setAttackBias(650);
@@ -35,5 +35,10 @@ public class TropeognathusDinosaur extends Dinosaur
         this.setBreeding(false, 0, 6, 20, false, true);
         this.setImprintable(false);
         this.setStorage(12);
+        String[][] recipe = {
+                {"tail_vertebrae", "pelvis", "ribcage", "skull"},
+                {"", "leg_bones", "wing_bones", "", ""}};
+        this.setRecipe(recipe);
+        this.enableSkeleton();
     }
 }
