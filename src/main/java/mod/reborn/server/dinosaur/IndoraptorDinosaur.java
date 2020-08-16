@@ -37,6 +37,8 @@ public class IndoraptorDinosaur extends Dinosaur implements Hybrid
         this.setAttackBias(4000);
         this.setBreeding(false, 0, 0, 999, false, false);
         this.setHybrid();
+        this.setDefendOwner(true);
+        this.setImprintable(true);
         String[][] recipe = {
                 {"", "", "","neck_vertebrae","skull"},
                 {"tail_vertebrae", "pelvis", "ribcage","shoulder","tooth"},

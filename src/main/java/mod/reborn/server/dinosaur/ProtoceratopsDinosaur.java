@@ -32,6 +32,7 @@ public class ProtoceratopsDinosaur extends Dinosaur
         this.setAttackBias(1);
         this.setScale(1.2F, 0.35F);
         this.setImprintable(true);
+        this.setDefendOwner(true);
         this.setStorage(12);
         this.setBreeding(false, 2, 5, 30, false, true);
         String[][] recipe = {

@@ -35,6 +35,7 @@ public class AchillobatorDinosaur extends Dinosaur
         this.setMaxHerdSize(10);
         this.setCanClimb(true);
         this.setImprintable(true);
+        this.setDefendOwner(true);
         this.setStorage(27);
         this.setJumpHeight(3);
         this.shouldDefendOffspring();

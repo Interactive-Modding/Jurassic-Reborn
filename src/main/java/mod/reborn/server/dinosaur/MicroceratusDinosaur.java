@@ -32,6 +32,7 @@ public class MicroceratusDinosaur extends Dinosaur
         this.setScale(0.5F, 0.18F);
         this.setAttackBias(5);
         this.setImprintable(true);
+        this.setFlee(true);
         this.setStorage(6);
         this.setBreeding(false, 2, 6, 20, false, true);
         String[][] recipe = {

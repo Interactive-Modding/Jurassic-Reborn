@@ -34,6 +34,7 @@ public class SegisaurusDinosaur extends Dinosaur
         this.setAttackBias(90);
         this.setScale(0.45F, 0.13F);
         this.setImprintable(true);
+        this.setDefendOwner(true);
         this.setStorage(12);
         this.setBreeding(false, 0, 6, 20, false, true);
         String[][] recipe = {

@@ -31,7 +31,6 @@ public class MussaurusDinosaur extends Dinosaur {
         this.setBones("arm_bones", "leg_bones", "neck_vertebrae", "pelvis", "ribcage", "shoulder", "skull", "tail_vertebrae", "teeth");
         this.setHeadCubeName("Head1");
         this.setScale(0.6F, 0.1F);
-        this.setImprintable(true);
         this.setFlockSpeed(1.10F);
         this.setMaxHerdSize(20);
         this.setAttackBias(-500.0);

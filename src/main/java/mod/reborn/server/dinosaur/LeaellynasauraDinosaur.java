@@ -32,6 +32,7 @@ public class LeaellynasauraDinosaur extends Dinosaur
         this.setScale(0.7F, 0.25F);
         this.setAttackBias(-50);
         this.setImprintable(true);
+        this.setDefendOwner(true);
         this.setStorage(6);
         this.setBreeding(false, 2, 6, 20, false, true);
         String[][] recipe = {

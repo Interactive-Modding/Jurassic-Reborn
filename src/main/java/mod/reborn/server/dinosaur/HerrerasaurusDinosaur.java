@@ -33,6 +33,7 @@ public class HerrerasaurusDinosaur extends Dinosaur
         this.setBreeding(false, 2, 4, 60, false, true);
         this.setAttackBias(300);
         this.setImprintable(true);
+        this.setDefendOwner(true);
         this.setStorage(12);
         this.shouldDefendOffspring();
         String[][] recipe = {

@@ -32,6 +32,7 @@ public class HypsilophodonDinosaur extends Dinosaur
         this.setBreeding(false, 2, 6, 22, false, true);
         this.setAttackBias(-50);
         this.setImprintable(true);
+        this.setDefendOwner(true);
         this.setScale(0.65F, 0.2F);
         String[][] recipe = {
                 {"", "pelvis", "","",""},

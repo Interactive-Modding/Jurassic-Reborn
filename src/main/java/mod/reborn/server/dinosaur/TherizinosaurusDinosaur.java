@@ -36,7 +36,8 @@ public class TherizinosaurusDinosaur extends Dinosaur
         this.setAttackBias(800);
         this.shouldDefendOffspring();
         this.setBreeding(false, 2, 6, 20, false, true);
-        this.setImprintable(false);
+        this.setImprintable(true);
+        this.setDefendOwner(true);
         String[][] recipe =
                 {{"", "", "", "neck_vertebrae", "skull"},
                         {"tail_vertebrae", "pelvis", "ribcage","shoulder",""},

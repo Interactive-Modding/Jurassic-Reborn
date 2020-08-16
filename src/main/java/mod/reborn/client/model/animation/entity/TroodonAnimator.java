@@ -62,29 +62,29 @@ public class TroodonAnimator extends EntityAnimator<TroodonEntity>
 
         model.bob(thighL, 1F * globalSpeed, 0.3f * globalHeight, false, f, f1);
         model.bob(thighR, 1F * globalSpeed, 0.3f * globalHeight, false, f, f1);
-        model.walk(shoulders, 1F * globalSpeed, 0.2F, true, 1, 0, f, f1);
-        model.walk(chest, 1F * globalSpeed, 0.2F, false, 0.5F, 0, f, f1);
+     //   model.walk(shoulders, 1F * globalSpeed, 0.2F, true, 1, 0, f, f1);
+     //   model.walk(chest, 1F * globalSpeed, 0.2F, false, 0.5F, 0, f, f1);
 
-        model.walk(thighL, 0.5F * globalSpeed, 0.7F, false, 3.14F, 0.2F, f, f1);
-        model.walk(lowerThighL, 0.5F * globalSpeed, 0.1F, false, 1.5F, 0.3F, f, f1);
-        model.walk(upperFootL, 0.5F * globalSpeed, 0.8F, false, -1F, -0.1F, f, f1);
-        model.walk(footL, 0.5F * globalSpeed, 1.5F, true, -1F, 1F, f, f1);
+     //   model.walk(thighL, 0.5F * globalSpeed, 0.7F, false, 3.14F, 0.2F, f, f1);
+    //    model.walk(lowerThighL, 0.5F * globalSpeed, 0.1F, false, 1.5F, 0.3F, f, f1);
+   //     model.walk(upperFootL, 0.5F * globalSpeed, 0.8F, false, -1F, -0.1F, f, f1);
+   //     model.walk(footL, 0.5F * globalSpeed, 1.5F, true, -1F, 1F, f, f1);
 
-        model.walk(thighR, 0.5F * globalSpeed, 0.7F, true, 3.14F, 0.2F, f, f1);
-        model.walk(lowerThighR, 0.5F * globalSpeed, 0.1F, true, 1.5F, 0.3F, f, f1);
-        model.walk(upperFootR, 0.5F * globalSpeed, 0.8F, true, -1F, -0.1F, f, f1);
-        model.walk(footR, 0.5F * globalSpeed, 1.5F, false, -1F, 1F, f, f1);
+   //     model.walk(thighR, 0.5F * globalSpeed, 0.7F, true, 3.14F, 0.2F, f, f1);
+     //   model.walk(lowerThighR, 0.5F * globalSpeed, 0.1F, true, 1.5F, 0.3F, f, f1);
+    //    model.walk(upperFootR, 0.5F * globalSpeed, 0.8F, true, -1F, -0.1F, f, f1);
+    //    model.walk(footR, 0.5F * globalSpeed, 1.5F, false, -1F, 1F, f, f1);
 
 
         model.chainSwing(tailParts, 0.5F * globalSpeed, -0.1F, 2, f, f1);
-        model.chainWave(tailParts, 1F * globalSpeed, -0.1F, 2.5F, f, f1);
-        model.chainWave(bodyParts, 1F * globalSpeed, -0.1F, 4, f, f1);
+  //      model.chainWave(tailParts, 1F * globalSpeed, -0.1F, 2.5F, f, f1);
+ //       model.chainWave(bodyParts, 1F * globalSpeed, -0.1F, 4, f, f1);
 
-        model.chainWave(rightArmParts, 1F * globalSpeed, -0.3F, 4, f, f1);
-        model.chainWave(leftArmParts, 1F * globalSpeed, -0.3F, 4, f, f1);
+    //    model.chainWave(rightArmParts, 1F * globalSpeed, -0.3F, 4, f, f1);
+   //     model.chainWave(leftArmParts, 1F * globalSpeed, -0.3F, 4, f, f1);
 
         model.chainWave(tailParts, 0.2F, 0.05F, 2, ticks, 0.25F);
-        model.chainWave(bodyParts, 0.2F, -0.03F, 5, ticks, 0.25F);
+   //     model.chainWave(bodyParts, 0.2F, -0.03F, 5, ticks, 0.25F);
         model.chainWave(rightArmParts, 0.2F, -0.1F, 4, ticks, 0.25F);
         model.chainWave(leftArmParts, 0.2F, -0.1F, 4, ticks, 0.25F);
 

@@ -33,6 +33,7 @@ public class EdmontosaurusDinosaur extends Dinosaur
         this.setOffset(0.0F, 0.775F, 0.0F);
         this.setAttackBias(80);
         this.setImprintable(true);
+        this.setDefendOwner(true);
         this.setStorage(24);
         this.setBreeding(false, 2, 6, 40, false, true);
         String[][] recipe = {

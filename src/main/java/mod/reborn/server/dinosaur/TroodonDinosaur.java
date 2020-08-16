@@ -35,8 +35,18 @@ public class TroodonDinosaur extends Dinosaur
         this.setScale(0.75F, 0.25F);
         this.setOffset(0.0F, 0.0F, 0.5F);
         this.shouldDefendOffspring();
-        this.setBreeding(false, 2, 6, 20, false, true);
-        this.setImprintable(false);
+        this.setCanClimb(true);
+        this.setDefendOwner(true);
+        this.setBreeding(false,1, 7, 28, false, true);
+        this.setJumpHeight(2);
+        this.setImprintable(true);
         this.setStorage(6);
+        String[][] recipe = {
+                {"", "","neck_vertebrae","skull"},
+                {"tail_vertebrae","pelvis", "ribcage","shoulder"},
+                {"", "leg_bones", "arm_bones", "tooth"},
+                {"", "foot_bones", "", ""}};
+        this.setRecipe(recipe);
+        this.enableSkeleton();
     }
 }

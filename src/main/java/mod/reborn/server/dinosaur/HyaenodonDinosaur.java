@@ -32,6 +32,7 @@ public class HyaenodonDinosaur extends Dinosaur {
         this.setBreeding(true, 2, 4, 40, false, true);
         this.setAttackBias(50);
         this.setImprintable(true);
+        this.setDefendOwner(true);
         this.setStorage(12);
         this.setMammal(true);
         String[][] recipe =     {

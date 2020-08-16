@@ -33,6 +33,7 @@ public class LambeosaurusDinosaur extends Dinosaur
         this.setOffset(0.0F, 0.775F, 0.0F);
         this.setAttackBias(-50);
         this.setImprintable(true);
+        this.setDefendOwner(true);
         this.setStorage(6);
         this.setBreeding(false, 2, 6, 40, false, true);
         String[][] recipe = {

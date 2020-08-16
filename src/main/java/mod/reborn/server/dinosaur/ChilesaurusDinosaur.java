@@ -30,6 +30,7 @@ public class ChilesaurusDinosaur extends Dinosaur {
         this.setBreeding(false, 2, 6, 30, false, true);
         this.setJumpHeight(2);
         this.setImprintable(true);
+        this.setDefendOwner(true);
         this.setStorage(8);
         this.shouldDefendOffspring();
         String[][] recipe =     {{"", "", "", "neck_vertebrae", "skull"},

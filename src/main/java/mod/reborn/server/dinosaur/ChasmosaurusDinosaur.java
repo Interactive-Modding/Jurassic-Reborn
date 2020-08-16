@@ -31,9 +31,9 @@ public class ChasmosaurusDinosaur extends Dinosaur
         this.setHeadCubeName("Head");
         this.setScale(1.55F, 0.3F);
         this.setOffset(0.0F, 0.775F, 0.0F);
-
         this.setBreeding(false, 2, 6, 40, false, true);
         this.setImprintable(true);
+        this.setDefendOwner(true);
         this.setStorage(6);
         this.shouldDefendOffspring();
         String[][] recipe = {

@@ -32,6 +32,7 @@ public class PachycephalosaurusDinosaur extends Dinosaur
         this.setEyeHeight(0.4F, 1.8F);
         this.setAttackBias(400);
         this.setImprintable(true);
+        this.setDefendOwner(true);
         this.setStorage(12);
         this.setBreeding(false, 2, 6, 40, false, true);
         String[][] recipe = {

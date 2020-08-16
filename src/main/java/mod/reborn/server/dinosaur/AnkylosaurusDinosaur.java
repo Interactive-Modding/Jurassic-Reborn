@@ -30,6 +30,7 @@ public class AnkylosaurusDinosaur extends Dinosaur
         this.setScale(2.3F, 0.45F);
         this.setBreeding(false, 0, 6, 44, false, true);
         this.setImprintable(true);
+        this.setDefendOwner(true);
         this.setStorage(24);
         this.shouldDefendOffspring();
         String[][] recipe = {

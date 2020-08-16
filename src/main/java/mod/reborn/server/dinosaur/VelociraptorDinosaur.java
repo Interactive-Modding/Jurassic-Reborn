@@ -42,11 +42,12 @@ public class VelociraptorDinosaur extends Dinosaur {
         this.setBreeding(false,1, 7, 28, false, true);
         this.setJumpHeight(3);
         String[][] recipe = {
-                {"", "", "","neck_vertebrae","skull"},
-                {"tail_vertebrae", "pelvis", "ribcage","shoulder","tooth"},
-                {"", "leg_bones", "leg_bones", "arm_bones", "claw"},
-                {"", "foot_bones", "foot_bones", "", ""}};
+                {"", "","neck_vertebrae","skull"},
+                {"tail_vertebrae","pelvis", "ribcage","shoulder"},
+                {"", "leg_bones", "arm_bones", "tooth"},
+                {"", "foot_bones", "", ""}};
         this.setRecipe(recipe);
+
         
         ArrayList<Biome> biomeList = new ArrayList<Biome>();
         biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.JUNGLE));

@@ -5,7 +5,7 @@ import mod.reborn.server.entity.dinosaur.GuanlongEntity;
 import mod.reborn.server.period.TimePeriod;
 
 public class GuanlongDinosaur extends Dinosaur {
-    public static final double SPEED = 0.3F;
+    public static final double SPEED = 0.4F;
     public GuanlongDinosaur() {
         super();
 
@@ -30,10 +30,12 @@ public class GuanlongDinosaur extends Dinosaur {
         this.shouldDefendOffspring();
         this.setAttackBias(1200);
         this.setAttackSpeed(1.2F);
+        this.setDefendOwner(true);
+        this.setImprintable(true);
         this.setBreeding(false, 2, 4, 24, false, true);
         String[][] recipe = {
                 {"", "","neck_vertebrae","skull"},
-                {"tail_vertebrae","pelvis", "ribcage","shoulder_bone","tooth"},
+                {"tail_vertebrae","pelvis", "ribcage","shoulder","tooth"},
                 {"", "leg_bones", "arm_bones", "claw"},
                 {"", "foot_bones", "", ""}};
         this.setRecipe(recipe);

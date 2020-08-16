@@ -36,6 +36,7 @@ public class OviraptorDinosaur extends Dinosaur
         this.setHeadCubeName("Upper Head");
         this.setAttackBias(5);
         this.setImprintable(true);
+        this.setDefendOwner(true);
         this.setStorage(12);
         this.setScale(0.65F, 0.18F);
         this.setBreeding(false, 2, 4, 30, false, true);
