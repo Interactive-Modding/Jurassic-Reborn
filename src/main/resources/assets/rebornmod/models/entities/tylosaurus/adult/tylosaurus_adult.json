@@ -6,6 +6,184 @@
         "pose": "tylosaurus_adult_idle",
         "time": 20
       }
+    ],
+    "DYING": [
+      {
+        "pose": "tylosaurus_adult_death",
+        "time": 20
+      }
+    ],
+    "INJURED": [
+      {
+        "pose": "tylosaurus_adult_injured",
+        "time": 10
+      },
+      {
+        "pose": "tylosaurus_adult_idle",
+        "time": 10
+      }
+    ],
+    "ATTACKING": [
+      {
+        "pose": "tylosaurus_adult_attacking_1",
+        "time": 5
+      },
+      {
+        "pose": "tylosaurus_adult_attacking_2",
+        "time": 5
+      },
+      {
+        "pose": "tylosaurus_adult_idle",
+        "time": 5
+      }
+    ],
+    "EATING": [
+      {
+        "pose":"tylosaurus_adult_eating_1",
+        "time": 10
+      },
+      {
+        "pose":"tylosaurus_adult_eating_2",
+        "time": 10
+      },
+      {
+        "pose":"tylosaurus_adult_eating_3",
+        "time": 10
+      },
+      {
+        "pose":"tylosaurus_adult_eating_4",
+        "time": 10
+      },
+      {
+        "pose":"tylosaurus_adult_eating_1",
+        "time": 10
+      },
+      {
+        "pose":"tylosaurus_adult_eating_2",
+        "time": 10
+      },
+      {
+        "pose":"tylosaurus_adult_eating_3",
+        "time": 10
+      },
+      {
+        "pose":"tylosaurus_adult_eating_4",
+        "time": 10
+      },
+      {
+        "pose": "tylosaurus_adult_idle",
+        "time": 10
+      }
+    ],
+    "ON_LAND": [
+      {
+        "pose": "tylosaurus_adult_onland_1",
+        "time": 15
+      },
+      {
+        "pose": "tylosaurus_adult_onland_2",
+        "time": 15
+      },
+      {
+        "pose": "tylosaurus_adult_onland_3",
+        "time": 15
+      },
+      {
+        "pose": "tylosaurus_adult_onland_4",
+        "time": 15
+       },
+       {
+        "pose": "tylosaurus_adult_onland_5",
+        "time": 15
+      }
+    ],
+    "SWIMMING": [
+      {
+        "pose": "tylosaurus_adult_swimming_1",
+        "time": 6
+      },
+      {
+        "pose": "tylosaurus_adult_swimming_2",
+        "time": 6
+      },
+      {
+        "pose": "tylosaurus_adult_swimming_3",
+        "time": 6
+      },
+      {
+        "pose": "tylosaurus_adult_swimming_4",
+        "time": 6
+      }
+],
+    "SPEAK": [
+      {
+        "pose": "tylosaurus_adult_speaking",
+        "time": 10
+      },
+      {
+        "pose": "tylosaurus_adult_speaking",
+        "time": 20
+      },
+      {
+        "pose": "tylosaurus_adult_idle",
+        "time": 10
+      }
+ ],
+    "CALLING": [
+      {
+        "pose": "tylosaurus_adult_calling",
+        "time": 10
+      },
+      {
+        "pose": "tylosaurus_adult_calling",
+        "time": 30
+      },
+      {
+        "pose": "tylosaurus_adult_idle",
+        "time": 10
+      }
+ ],
+    "LOOKING_LEFT": [
+      {
+        "pose": "tylosaurus_adult_look_left",
+        "time": 20
+      },
+      {
+        "pose": "tylosaurus_adult_look_left",
+        "time": 20
+      },
+      {
+        "pose": "tylosaurus_adult_idle",
+        "time": 10
+      }
+    ],
+    "LOOKING_RIGHT": [
+      {
+        "pose": "tylosaurus_adult_look_right",
+        "time": 20
+      },
+      {
+        "pose": "tylosaurus_adult_look_right",
+        "time": 20
+      },
+      {
+        "pose": "tylosaurus_adult_idle",
+        "time": 10
+      }
+],
+    "SLEEPING": [
+      {
+        "pose": "tylosaurus_adult_sleeping_1",
+        "time": 20
+      },
+      {
+        "pose": "tylosaurus_adult_sleeping_2",
+        "time": 20
+      },
+      {
+        "pose": "tylosaurus_adult_sleeping_3",
+        "time": 20
+      }
     ]
   }
 }

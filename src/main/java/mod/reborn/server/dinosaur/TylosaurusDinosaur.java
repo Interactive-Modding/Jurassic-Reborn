@@ -27,7 +27,7 @@ public class TylosaurusDinosaur extends Dinosaur
         this.setSizeY(0.55F, 2.95F);
         this.setStorage(54);
         this.setDiet((Diet.CARNIVORE.get()));
-        this.setBones("front_flipper", "hind_flipper", "inner_teeth", "teeth", "ribcage", "skull", "spine", "tail_fluke", "tail_vertebrae", "tooth");
+        this.setBones("front_flipper", "hind_flipper", "inner_teeth", "ribcage", "skull", "spine", "tail_fluke", "tail_vertebrae", "tooth");
         this.setHeadCubeName("Main head");
         this.setScale(2.2F, 0.45F);
         this.setOffset(0.0F, 0.0F, 1.0F);
@@ -39,5 +39,11 @@ public class TylosaurusDinosaur extends Dinosaur
         this.setBreeding(true, 1, 4, 60, false, true);
         this.setImprintable(false);
         this.setStorage(54);
+        String[][] recipe =     {
+                {"tail_fluke", "tail_vertebrae", "spine", "ribcage", "skull"},
+                {"", "", "", "inner_teeth", "tooth"},
+                {"hind_flipper", "hind_flipper", "", "front_flipper", "front_flipper"}};
+        this.setRecipe(recipe);
+        this.enableSkeleton();
     }
 }
