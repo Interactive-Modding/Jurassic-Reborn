@@ -3,7 +3,11 @@
     "IDLE": [
       {
         "pose": "lambeosaurus_adult_idle",
-        "time": 20
+        "time": 60
+      },
+      {
+        "pose": "lambeosaurus_adult_idle_1",
+        "time": 60
       }
    ],
     "DRINKING": [

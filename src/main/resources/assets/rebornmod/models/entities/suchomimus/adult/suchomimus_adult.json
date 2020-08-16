@@ -4,11 +4,11 @@
     "IDLE": [
       {
         "pose": "suchomimus_adult_idle",
-        "time": 55
+        "time": 60
      },
       {
         "pose": "suchomimus_adult_idle_2",
-        "time": 55
+        "time": 60
       }
     ],
     "ROARING": [
