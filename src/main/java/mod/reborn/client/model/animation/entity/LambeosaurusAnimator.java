@@ -60,7 +60,7 @@ public class LambeosaurusAnimator extends EntityAnimator<LambeosaurusEntity>
         float scaleFactor = 0.6F;
         float height = 2F;
 
-        model.bob(waist, 1F * scaleFactor, 0.2F * height, false, f, f1);
+      //  model.bob(waist, 1F * scaleFactor, 0.2F * height, false, f, f1);
      //   model.bob(leftThigh, 1F * scaleFactor, 1F * height, false, f, f1);
      //   model.bob(rightThigh, 1F * scaleFactor, 1F * height, false, f, f1);
 
