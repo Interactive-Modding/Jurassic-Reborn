@@ -88,6 +88,15 @@ public class FoodHelper {
 
         registerFoodAuto(ItemHandler.GOAT_RAW, FoodType.MEAT);
         registerFoodAuto(ItemHandler.GOAT_COOKED, FoodType.MEAT);
+        registerFoodAuto(ItemHandler.SHARK_MEAT_RAW, FoodType.FISH);
+        registerFoodAuto(ItemHandler.SHARK_MEAT_COOKED, FoodType.FISH);
+        registerFoodAuto(ItemHandler.SHARK_RAW, FoodType.FISH);
+        registerFoodAuto(ItemHandler.SHARK_COOKED, FoodType.FISH);
+        registerFoodAuto(ItemHandler.CRAB_COOKED, FoodType.FISH);
+        registerFoodAuto(ItemHandler.CRAB_RAW, FoodType.FISH);
+        registerFoodAuto(ItemHandler.CRAB_MEAT_COOKED, FoodType.FISH);
+        registerFoodAuto(ItemHandler.CRAB_MEAT_RAW, FoodType.FISH);
+
 
         for (Item item : Item.REGISTRY) {
             if (item instanceof ItemFood) {
