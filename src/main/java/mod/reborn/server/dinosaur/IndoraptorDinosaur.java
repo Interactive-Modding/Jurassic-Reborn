@@ -45,6 +45,7 @@ public class IndoraptorDinosaur extends Dinosaur implements Hybrid
                 {"", "hind_leg_bones", "", "front_leg_bones", "claw"},
                 {"", "foot_bones"}};
         this.setRecipe(recipe);
+        this.enableSkeleton();
 
     }
 
