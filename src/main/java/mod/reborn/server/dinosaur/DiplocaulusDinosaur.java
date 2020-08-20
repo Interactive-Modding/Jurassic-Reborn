@@ -15,7 +15,7 @@ public class DiplocaulusDinosaur extends Dinosaur {
         this.setTimePeriod(TimePeriod.PERMIAN);
         this.setEggColorMale(0xBDD9DE, 0x286A7F);
         this.setEggColorFemale(0xCDDEE7, 0x285880);
-        this.setHealth(10, 40);
+        this.setHealth(10, 20);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStorage(27);
         this.setStrength(1, 20);
