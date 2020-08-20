@@ -150,19 +150,19 @@
     "SWIMMING": [
       {
         "pose": "crassigyrinus_adult_swimming_1",
-        "time": 6
+        "time": 7
       },
       {
         "pose": "crassigyrinus_adult_swimming_2",
-        "time": 6
+        "time": 7
       },
       {
         "pose": "crassigyrinus_adult_swimming_3",
-        "time": 6
+        "time": 7
       },
       {
         "pose": "crassigyrinus_adult_swimming_4",
-        "time": 6
+        "time": 7
       }
     ],
 	"WALKING": [
