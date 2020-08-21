@@ -5,7 +5,7 @@ import mod.reborn.server.entity.dinosaur.HyaenodonEntity;
 import mod.reborn.server.period.TimePeriod;
 
 public class HyaenodonDinosaur extends Dinosaur {
-    public static final double SPEED = 0.3F;
+    public static final double SPEED = 0.4F;
     public HyaenodonDinosaur() {
         super();
 
