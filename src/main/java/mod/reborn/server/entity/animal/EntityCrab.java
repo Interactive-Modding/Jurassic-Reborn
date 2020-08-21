@@ -72,7 +72,7 @@ public class EntityCrab extends EntityAnimal implements Animatable, IEntityAddit
 
     @Override
     protected void dropFewItems(boolean wasRecentlyHit, int lootingModifier) {
-        this.dropItem(this.isBurning() ? ItemHandler.CRAB_COOKED : ItemHandler.CRAB_RAW, this.rand.nextInt(2) + 1);
+        this.dropItem(this.isBurning() ? ItemHandler.CRAB_MEAT_COOKED : ItemHandler.CRAB_MEAT_RAW, this.rand.nextInt(2) + 1);
     }
     @Override
     protected void entityInit() {

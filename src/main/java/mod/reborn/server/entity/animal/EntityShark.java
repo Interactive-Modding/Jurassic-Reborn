@@ -68,7 +68,7 @@ public class EntityShark extends EntityMob implements Animatable, IEntityAdditio
 
     @Override
     protected void dropFewItems(boolean wasRecentlyHit, int lootingModifier) {
-        this.dropItem(this.isBurning() ? ItemHandler.SHARK_COOKED : ItemHandler.SHARK_RAW, this.rand.nextInt(2) + 1);
+        this.dropItem(this.isBurning() ? ItemHandler.SHARK_MEAT_COOKED : ItemHandler.SHARK_MEAT_RAW, this.rand.nextInt(2) + 1);
     }
 
     @Override
