@@ -340,7 +340,7 @@ public enum RenderingHandler {
                 }
 
                 for (Map.Entry<String, FossilItem> entry : FRESH_FOSSILS.entrySet()) {
-                    List<Dinosaur> dinosaursForType = FossilItem.fossilDinosaurs.get(entry.getKey());
+                    List<Dinosaur> dinosaursForType = FossilItem.freshFossilDinosaurs.get(entry.getKey());
                     if (dinosaursForType.contains(dinosaur)) {
                         registerItemRenderer(entry.getValue(), meta, "fresh_bones/" + formattedName + "_" + entry.getKey());
                     }
@@ -354,7 +354,7 @@ public enum RenderingHandler {
                 }
 
                 for (Map.Entry<String, FossilItem> entry : FRESH_FOSSILS.entrySet()) {
-                    List<Dinosaur> dinosaursForType = FossilItem.fossilDinosaurs.get(entry.getKey());
+                    List<Dinosaur> dinosaursForType = FossilItem.freshFossilDinosaurs.get(entry.getKey());
                     if (dinosaursForType.contains(dinosaur)) {
                         registerItemRenderer(entry.getValue(), meta, "fresh_bones/velociraptor_" + entry.getKey());
                     }

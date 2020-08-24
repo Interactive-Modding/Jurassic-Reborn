@@ -31,6 +31,7 @@ import mod.reborn.server.util.LangUtils;
 
 public class FossilItem extends Item implements GrindableItem {
     public static Map<String, List<Dinosaur>> fossilDinosaurs = new HashMap<>();
+    public static Map<String, List<Dinosaur>> freshFossilDinosaurs = new HashMap<>();
     private String type;
     private boolean fresh;
 
@@ -44,19 +45,24 @@ public class FossilItem extends Item implements GrindableItem {
     }
 
     public static void init() {
-        for (Dinosaur dinosaur : EntityHandler.getDinosaurs().values()) {
-            String[] boneTypes = dinosaur.getBones();
-
-            for (String boneType : boneTypes) {
-                List<Dinosaur> dinosaursWithType = fossilDinosaurs.get(boneType);
-
-                if (dinosaursWithType == null) {
-                    dinosaursWithType = new ArrayList<>();
+        for (boolean fresh : new boolean[] { true, false }) {
+            for (Dinosaur dinosaur : EntityHandler.getDinosaurs().values()) {
+                if(!fresh && dinosaur instanceof Hybrid) {
+                    continue;
                 }
-                if(!dinosaur.getName().equals("")) {
-                    dinosaursWithType.add(dinosaur);
+                Map<String, List<Dinosaur>> map = fresh ? freshFossilDinosaurs : fossilDinosaurs;
+                String[] boneTypes = dinosaur.getBones();
+                for (String boneType : boneTypes) {
+                    List<Dinosaur> dinosaursWithType = map.get(boneType);
+
+                    if (dinosaursWithType == null) {
+                        dinosaursWithType = new ArrayList<>();
+                    }
+                    if(!dinosaur.getName().equals("")) {
+                        dinosaursWithType.add(dinosaur);
+                    }
+                    map.put(boneType, dinosaursWithType);
                 }
-                fossilDinosaurs.put(boneType, dinosaursWithType);
             }
         }
     }
@@ -83,7 +89,7 @@ public class FossilItem extends Item implements GrindableItem {
 
         Collections.sort(dinosaurs);
 
-        List<Dinosaur> dinosaursForType = fossilDinosaurs.get(this.type);
+        List<Dinosaur> dinosaursForType = this.getMap().get(this.type);
         if(this.isInCreativeTab(tab))
         for (Dinosaur dinosaur : dinosaurs) {
             if (dinosaursForType.contains(dinosaur) && !(!this.fresh && dinosaur instanceof Hybrid)) {
@@ -150,7 +156,7 @@ public class FossilItem extends Item implements GrindableItem {
     @Override
     public List<ItemStack> getJEIRecipeTypes() {
         List<ItemStack> list = Lists.newArrayList();
-        fossilDinosaurs.get(this.type).forEach(dino -> list.add(new ItemStack(this, 1, EntityHandler.getDinosaurId(dino))));
+        this.getMap().get(this.type).forEach(dino -> list.add(new ItemStack(this, 1, EntityHandler.getDinosaurId(dino))));
         return list;
     }
 
@@ -164,5 +170,9 @@ public class FossilItem extends Item implements GrindableItem {
             return Lists.newArrayList(Pair.of(100F, output));
         }
         return Lists.newArrayList(Pair.of(single, output), Pair.of(50f, new ItemStack(Items.DYE, 1, 15)), Pair.of(single*2f, new ItemStack(Items.FLINT)));
+    }
+
+    public Map<String, List<Dinosaur>> getMap() {
+        return this.fresh ? freshFossilDinosaurs : fossilDinosaurs;
     }
 }
