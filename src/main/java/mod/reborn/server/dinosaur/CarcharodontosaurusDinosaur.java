@@ -5,7 +5,7 @@ import mod.reborn.server.entity.dinosaur.CarcharodontosaurusEntity;
 import mod.reborn.server.period.TimePeriod;
 
 public class CarcharodontosaurusDinosaur extends Dinosaur {
-    public static final double SPEED = 0.3F;
+    public static final double SPEED = 0.44F;
     public CarcharodontosaurusDinosaur() {
         super();
         this.setName("Carcharodontosaurus");
