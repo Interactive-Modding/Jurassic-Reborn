@@ -30,6 +30,7 @@ import static net.minecraft.util.text.translation.I18n.translateToLocal;
 public class PaleoPadViewDinosaurGui extends GuiScreen {
     private static final int SIZE_X = 256;
     private static final int SIZE_Y = 192;
+
     private static final ResourceLocation texture = new ResourceLocation(RebornMod.MODID, "textures/gui/paleo_pad/paleo_pad.png");
 
     private DinosaurEntity entity;
@@ -88,6 +89,7 @@ public class PaleoPadViewDinosaurGui extends GuiScreen {
 
         int l = dimensions.getScaledWidth() / 2 - 115;
 
+
         drawScaledText("Hunger: ", 5, 35, 1.0F, 0x808080);// this.entity.getMetabolism().getEnergy() + "/" + this.entity.getMetabolism().getMaxEnergy()
         int hungerLeft = l + 7 + mc.fontRenderer.getStringWidth("Hunger: ");
         drawRect(hungerLeft, 100, hungerLeft + 102, 109, 0xFF101010);
@@ -106,17 +108,17 @@ public class PaleoPadViewDinosaurGui extends GuiScreen {
         drawScaledEndText(dinoDef.getDietName, 225, 35, 1.0F, diet.hashCode());
         drawScaledEndText(dinoDef.getSleepTime().toString(), 225, 20, 1.0F, 0xAAAAAA);
         drawScaledEndText(entity.getGrowthStage().toString(), 225, 50, 1.0F, 0xB200FF);
-        drawScaledEndText("MARINE", 35, 60, 1.0F, 0xFF1900);
-        drawScaledEndText("HYBRID", 72, 60, 1.0F, 0xFF1900);
-        drawScaledEndText("MAMMAL", 111, 60, 1.0F, 0xFF1900);
+        drawScaledEndText("MARINE", 95, 60, 1.0F, 0x313131);
+        drawScaledEndText("HYBRID", 132, 60, 1.0F, 0x313131);
+        drawScaledEndText("MAMMAL", 171, 60, 1.0F, 0x313131);
         if (dinoDef.isMarineCreature()) {
-            drawScaledEndText("MARINE", 35, 60, 1.0F, 0x0080FF);
+            drawScaledEndText("MARINE", 95, 60, 1.0F, 0x387cc0);
         }
         if (dinoDef.isHybrid()) {
-            drawScaledEndText("HYBRID", 72, 60, 1.0F, 0xFF56FF);
+            drawScaledEndText("HYBRID", 132, 60, 1.0F, 0xFF56FF);
         }
         if (dinoDef.isMammal()) {
-            drawScaledEndText("MAMMAL", 111, 60, 1.0F, 0x894900);
+            drawScaledEndText("MAMMAL", 171, 60, 1.0F, 0x6d5f3f);
         }
 
         super.drawScreen(mouseX, mouseY, partialTicks);
@@ -130,7 +132,7 @@ public class PaleoPadViewDinosaurGui extends GuiScreen {
 
         ScaledResolution dimensions = new ScaledResolution(mc);
         x += dimensions.getScaledWidth() / 2 - 115;
-        y += 65;
+        y += 35;
 
         x /= scale;
         y /= scale;
