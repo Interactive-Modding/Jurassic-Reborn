@@ -56,6 +56,7 @@ import mod.reborn.server.plugin.jei.category.skeletonassembly.SkeletonInput;
 import mod.reborn.server.plugin.jei.vanilla.TippedDartRecipeWrapper;
 
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
@@ -162,7 +163,12 @@ public class RebornJEIPlugin implements IModPlugin {
         registry.addRecipes(getPlants(EmbryoInput.PlantInput::new), EMBRYOMIC_MACHINE);
 
         for (Dinosaur dinosaur : EntityHandler.getRegisteredDinosaurs()) {
-            registry.addRecipes(Lists.newArrayList(new SkeletonInput(dinosaur, false), new SkeletonInput(dinosaur, true)), SKELETON_ASSEMBLY);
+            List<SkeletonInput> skeletonInputs = new ArrayList<>();
+            skeletonInputs.add(new SkeletonInput(dinosaur, true));
+            if(!(dinosaur instanceof Hybrid)) {
+                skeletonInputs.add(new SkeletonInput(dinosaur, false));
+            }
+            registry.addRecipes(skeletonInputs, SKELETON_ASSEMBLY);
         }
 
         registry.addRecipes(ForgeRegistries.POTION_TYPES.getValuesCollection().stream().map(TippedDartRecipeWrapper::new).collect(Collectors.toList()), VanillaRecipeCategoryUid.CRAFTING);

@@ -258,6 +258,10 @@ public enum RenderingHandler {
 
         registerItemRenderer(FUN_FRIES);
         registerItemRenderer(OILED_POTATO_STRIPS);
+        registerItemRenderer(SHARK_MEAT_RAW);
+        registerItemRenderer(SHARK_MEAT_COOKED);
+        registerItemRenderer(CRAB_MEAT_RAW);
+        registerItemRenderer(CRAB_MEAT_COOKED);
         registerItemRenderer(LUNCH_BOX);
         registerItemRenderer(STAMP_SET);
 
