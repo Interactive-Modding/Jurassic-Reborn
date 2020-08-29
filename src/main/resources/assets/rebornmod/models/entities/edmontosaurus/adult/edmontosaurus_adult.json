@@ -182,37 +182,53 @@
     ],
     "WALKING": [
       {
-        "pose": "edmontosaurus_adult_walk_1",
+        "pose": "edmontosaurus_adult_walking_1",
         "time": 6
       },
       {
-        "pose": "edmontosaurus_adult_walk_2",
+        "pose": "edmontosaurus_adult_walking_2",
         "time": 6
       },
       {
-        "pose": "edmontosaurus_adult_walk_3",
+        "pose": "edmontosaurus_adult_walking_3",
         "time": 6
       },
       {
-        "pose": "edmontosaurus_adult_walk_4",
+        "pose": "edmontosaurus_adult_walking_4",
+        "time": 6
+     },
+      {
+        "pose": "edmontosaurus_adult_walking_5",
+        "time": 6
+      },
+      {
+        "pose": "edmontosaurus_adult_walking_6",
         "time": 5
       }
     ],
     "RUNNING": [
       {
-        "pose": "edmontosaurus_adult_run_1",
-        "time": 6
-      },
-      {
-        "pose": "edmontosaurus_adult_run_2",
+        "pose": "edmontosaurus_adult_running_1",
         "time": 4
       },
       {
-        "pose": "edmontosaurus_adult_run_3",
+        "pose": "edmontosaurus_adult_running_2",
         "time": 4
       },
       {
-        "pose": "edmontosaurus_adult_run_4",
+        "pose": "edmontosaurus_adult_running_3",
+        "time": 4
+      },
+      {
+        "pose": "edmontosaurus_adult_running_4",
+        "time": 4
+      },
+      {
+        "pose": "edmontosaurus_adult_running_5",
+        "time": 4
+      },
+      {
+        "pose": "edmontosaurus_adult_running_6",
         "time": 4
       }
     ],

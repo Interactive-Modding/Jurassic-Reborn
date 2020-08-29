@@ -30,7 +30,6 @@ public class EdmontosaurusDinosaur extends Dinosaur
         this.setBones("cheek_teeth", "pelvis", "skull", "front_leg_bones", "hind_leg_bones", "ribcage", "shoulder", "tail_vertebrae", "neck_vertebrae");
         this.setHeadCubeName("Head");
         this.setScale(2.65F, 0.45F);
-        this.setOffset(0.0F, 0.775F, 0.0F);
         this.setAttackBias(80);
         this.setImprintable(true);
         this.setDefendOwner(true);
