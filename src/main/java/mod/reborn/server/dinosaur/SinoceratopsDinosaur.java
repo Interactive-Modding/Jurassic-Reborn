@@ -18,8 +18,8 @@ public class SinoceratopsDinosaur extends Dinosaur {
         this.setDinosaurClass(SinoceratopsEntity.class);
         this.setDinosaurType(DinosaurType.NEUTRAL);
         this.setTimePeriod(TimePeriod.CRETACEOUS);
-        this.setEggColorMale(0x404138, 0x1C1C1C);
-        this.setEggColorFemale(0x8F7B76, 0x73676A);
+        this.setEggColorMale(0x76838c, 0xb5ae8b);
+        this.setEggColorFemale(0x6e794c, 0x524f2d);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setAttackSpeed(1.3);
         this.setHealth(10, 70);
