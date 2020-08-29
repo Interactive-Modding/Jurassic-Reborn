@@ -784,7 +784,7 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
                                 DinosaurEntity child = this.getClass().getConstructor(World.class).newInstance(this.world);
                                 child.setAge(0);
                                 child.setMale(this.rand.nextDouble() > 0.5);
-                                child.setDNAQuality(rand.nextInt(50) + 50);
+                                child.setDNAQuality(100);
                                 DinosaurAttributes attributes = DinosaurAttributes.combine(this, this.getAttributes(), this.breeding.getAttributes());
                                 String genetics = "";
                                 for (int c = 0; c < this.genetics.length(); c++) {
