@@ -25,12 +25,12 @@ public class DreadnoughtusDinosaur extends Dinosaur {
         this.setMaximumAge(this.fromDays(85));
         this.setEyeHeight(2.2F, 18.4F);
         this.setSizeX(0.7F, 6.5F);
-        this.setSizeY(1.3F, 7.0F);
+        this.setSizeY(0.8F, 7.0F);
         this.setStorage(54);
         this.setDiet(Diet.HERBIVORE.get());
         this.setBones("front_leg_bones", "hind_leg_bones", "neck_vertebrae", "pelvis", "ribcage", "shoulder", "skull", "tail_vertebrae", "tooth");
         this.setHeadCubeName("Head");
-        this.setScale(2.2F, 0.2F);
+        this.setScale(1.9F, 0.2F);
         this.setOffset(0.0F, 0.0F, 1.0F);
         this.setAttackBias(1200.0);
         this.setMaxHerdSize(4);
@@ -43,6 +43,6 @@ public class DreadnoughtusDinosaur extends Dinosaur {
         ArrayList<Biome> biomeList = new ArrayList<Biome>();
         biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.FOREST));
         this.setSpawn(5, biomeList.toArray(new Biome[biomeList.size()]));
-
+        this.enableSkeleton();
     }
 }
