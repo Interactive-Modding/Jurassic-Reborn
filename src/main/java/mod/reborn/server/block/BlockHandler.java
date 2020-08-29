@@ -159,7 +159,7 @@ public class BlockHandler
         registerBlock(NEST_FOSSIL, "Nest Fossil");
         registerBlock(ENCASED_NEST_FOSSIL, "Encased Nest Fossil");
 
-        for (int i = 0; i < (int) Math.ceil(EntityHandler.getHighestID() / 16.0F); i++)
+        for (int i = 0; i < (int) Math.ceil((EntityHandler.getHighestID() + 1) / 16.0F); i++)
         {
             FossilBlock fossil = new FossilBlock(i * 16);
             EncasedFossilBlock encasedFossil = new EncasedFossilBlock(i * 16);
