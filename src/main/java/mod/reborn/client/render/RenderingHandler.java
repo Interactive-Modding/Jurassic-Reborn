@@ -525,6 +525,8 @@ public enum RenderingHandler {
 		registerRenderInfo(EntityHandler.COELURUS, new CoelurusAnimator(), 0.3F);
 		registerRenderInfo(EntityHandler.MAWSONIA, new MawsoniaAnimator(), 0.64F);
 		registerRenderInfo(EntityHandler.INDORAPTOR, new IndoraptorAnimator(), 0.64F);
+        registerRenderInfo(EntityHandler.DREADNOUGHTUS, new DreadnoughtusAnimator(), 1.5F);
+
 
         RenderingRegistry.registerEntityRenderingHandler(PaddockSignEntity.class, new PaddockSignRenderer());
         RenderingRegistry.registerEntityRenderingHandler(AttractionSignEntity.class, new AttractionSignRenderer());

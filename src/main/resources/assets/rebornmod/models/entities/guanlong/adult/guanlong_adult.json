@@ -68,15 +68,15 @@
     "EATING": [
       {
         "pose": "guanlong_adult_eating_1",
-        "time": 7
+        "time": 15
       },
       {
         "pose": "guanlong_adult_eating_2",
-        "time": 6
+        "time": 15
       },
       {
         "pose": "guanlong_adult_eating_3",
-        "time": 7
+        "time": 15
       }
     ],
     "INJURED": [
