@@ -935,5 +935,88 @@
       "rebornmod:entity/goat/goat_living_3",
       "rebornmod:entity/goat/goat_living_4"
     ]
+  },
+  "mamenchisaurus_death":{
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/mamenchisaurus/mamenchisaurus_death_1",
+      "rebornmod:dinosaurs/mamenchisaurus/mamenchisaurus_death_2"
+    ]
+  },
+  "mamenchisaurus_hurt":{
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/mamenchisaurus/mamenchisaurus_hurt_1",
+      "rebornmod:dinosaurs/mamenchisaurus/mamenchisaurus_hurt_2"
+    ]
+  },
+  "mamenchisaurus_call":{
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/mamenchisaurus/mamenchisaurus_calling"
+    ]
+  },
+  "mamenchisaurus_mate_call": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/mamenchisaurus/mamenchisaurus_mate_call"
+    ]
+  },
+  "mamenchisaurus_living":{
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/mamenchisaurus/mamenchisaurus_living_1",
+      "rebornmod:dinosaurs/mamenchisaurus/mamenchisaurus_living_2",
+      "rebornmod:dinosaurs/mamenchisaurus/mamenchisaurus_living_3",
+      "rebornmod:dinosaurs/mamenchisaurus/mamenchisaurus_living_4",
+      "rebornmod:dinosaurs/mamenchisaurus/mamenchisaurus_living_5",
+      "rebornmod:dinosaurs/mamenchisaurus/mamenchisaurus_living_6"
+    ]
+  },
+  "mamenchisaurus_threat":{
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/mamenchisaurus/mamenchisaurus_threat"
+    ]
+  },
+  "sinoceratops_death":{
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/sinoceratops/sinoceratops_death"
+    ]
+  },
+  "sinoceratops_hurt":{
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/sinoceratops/sinoceratops_hurt_1",
+      "rebornmod:dinosaurs/sinoceratops/sinoceratops_hurt_2"
+    ]
+  },
+  "sinoceratops_call":{
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/sinoceratops/sinoceratops_calling"
+    ]
+ },
+  "sinoceratops_mate_call": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/sinoceratops/sinoceratops_mate_call"
+    ]
+  },
+  "sinoceratops_living":{
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/sinoceratops/sinoceratops_living_1",
+      "rebornmod:dinosaurs/sinoceratops/sinoceratops_living_2",
+      "rebornmod:dinosaurs/sinoceratops/sinoceratops_living_3",
+      "rebornmod:dinosaurs/sinoceratops/sinoceratops_living_4"
+    ]
+  },
+  "sinoceratops_threat":{
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/sinoceratops/sinoceratops_threat"
+    ]
   }
 }

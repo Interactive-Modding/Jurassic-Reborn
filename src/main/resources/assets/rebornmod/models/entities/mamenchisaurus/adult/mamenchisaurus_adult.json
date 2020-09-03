@@ -15,11 +15,11 @@
     "SPEAK": [
       {
         "pose": "mamenchisaurus_adult_speak",
-        "time": 5
+        "time": 10
       },
       {
         "pose": "mamenchisaurus_adult_speak",
-        "time": 20
+        "time": 25
       },
       {
         "pose": "mamenchisaurus_adult_idle",

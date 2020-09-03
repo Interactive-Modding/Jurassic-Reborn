@@ -1,8 +1,12 @@
 package mod.reborn.server.entity.dinosaur;
 
+import mod.reborn.client.model.animation.EntityAnimation;
+import mod.reborn.client.sound.SoundHandler;
 import mod.reborn.server.entity.DinosaurEntity;
+import net.ilexiconn.llibrary.server.animation.Animation;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 
 public class MamenchisaurusEntity extends DinosaurEntity {
@@ -44,5 +48,26 @@ public class MamenchisaurusEntity extends DinosaurEntity {
             moveHelper.setMoveTo(king.posX, king.posY, king.posZ, 1.0D);
         }
         super.onLivingUpdate();
+    }
+    @Override
+    public SoundEvent getSoundForAnimation(Animation animation) {
+        switch (EntityAnimation.getAnimation(animation)) {
+            case SPEAK:
+                return SoundHandler.MAMENCHISAURUS_LIVING;
+            case CALLING:
+                return SoundHandler.MAMENCHISAURUS_CALLING;
+            case DYING:
+                return SoundHandler.MAMENCHISAURUS_DEATH;
+            case BEGGING:
+                return SoundHandler.MAMENCHISAURUS_THREAT;
+            case INJURED:
+                return SoundHandler.MAMENCHISAURUS_HURT;
+            case MATING:
+                return SoundHandler.MAMENCHISAURUS_MATING;
+            case WALKING:
+                return SoundHandler.STOMP;
+            default:
+                return null;
+        }
     }
 }

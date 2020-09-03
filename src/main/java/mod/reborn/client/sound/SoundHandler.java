@@ -21,6 +21,20 @@ public class SoundHandler {
     public static final SoundEvent BRACHIOSAURUS_HURT = create("brachiosaurus_hurt");
     public static final SoundEvent BRACHIOSAURUS_DEATH = create("brachiosaurus_death");
 
+    public static final SoundEvent MAMENCHISAURUS_LIVING = create("mamenchisaurus_living");
+    public static final SoundEvent MAMENCHISAURUS_CALLING = create("mamenchisaurus_call");
+    public static final SoundEvent MAMENCHISAURUS_DEATH = create("mamenchisaurus_death");
+    public static final SoundEvent MAMENCHISAURUS_HURT = create("mamenchisaurus_hurt");
+    public static final SoundEvent MAMENCHISAURUS_THREAT = create("mamenchisaurus_threat");
+    public static final SoundEvent MAMENCHISAURUS_MATING = create("mamenchisaurus_mate_call");
+
+    public static final SoundEvent SINOCERATOPS_LIVING = create("sinoceratops_living");
+    public static final SoundEvent SINOCERATOPS_CALLING = create("sinoceratops_call");
+    public static final SoundEvent SINOCERATOPS_DEATH = create("sinoceratops_death");
+    public static final SoundEvent SINOCERATOPS_HURT = create("sinoceratops_hurt");
+    public static final SoundEvent SINOCERATOPS_THREAT = create("sinoceratops_threat");
+    public static final SoundEvent SINOCERATOPS_MATING = create("sinoceratops_mate_call");
+
     public static final SoundEvent DODO_DEATH = create("dodo_death");
     public static final SoundEvent DODO_HURT = create("dodo_hurt");
     public static final SoundEvent DODO_LIVING = create("dodo_living");
