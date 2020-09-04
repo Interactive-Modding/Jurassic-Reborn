@@ -1,6 +1,7 @@
 package mod.reborn.client.sound;
 
 import com.google.common.collect.Lists;
+import net.minecraft.client.audio.Sound;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import mod.reborn.RebornMod;
@@ -27,6 +28,16 @@ public class SoundHandler {
     public static final SoundEvent MAMENCHISAURUS_HURT = create("mamenchisaurus_hurt");
     public static final SoundEvent MAMENCHISAURUS_THREAT = create("mamenchisaurus_threat");
     public static final SoundEvent MAMENCHISAURUS_MATING = create("mamenchisaurus_mate_call");
+
+    public static final SoundEvent INDORAPTOR_LIVING = create("indoraptor_living");
+    public static final SoundEvent INDORAPTOR_CALLING = create("indoraptor_call");
+    public static final SoundEvent INDORAPTOR_DEATH = create("indoraptor_death");
+    public static final SoundEvent INDORAPTOR_HURT = create("indoraptor_hurt");
+    public static final SoundEvent INDORAPTOR_THREAT = create("indoraptor_threat");
+    public static final SoundEvent INDORAPTOR_MATING = create("indoraptor_mate_call");
+    public static final SoundEvent INDORAPTOR_ROAR = create("indoraptor_roar");
+    public static final SoundEvent INDORAPTOR_BREATHING = create("indoraptor_breathing");
+
 
     public static final SoundEvent SINOCERATOPS_LIVING = create("sinoceratops_living");
     public static final SoundEvent SINOCERATOPS_CALLING = create("sinoceratops_call");
@@ -75,6 +86,10 @@ public class SoundHandler {
     public static final SoundEvent SPINOSAURUS_LIVING = create("spinosaurus_living");
     public static final SoundEvent SPINOSAURUS_HURT = create("spinosaurus_hurt");
     public static final SoundEvent SPINOSAURUS_DEATH = create("spinosaurus_death");
+    public static final SoundEvent SPINOSAURUS_CALL = create("spinosaurus_call");
+    public static final SoundEvent SPINOSAURUS_ROAR = create("spinosaurus_roar");
+    public static final SoundEvent SPINOSAURUS_BREATHING = create("spinosaurus_breathing");
+    public static final SoundEvent SPINOSAURUS_THREAT = create("spinosaurus_threat");
 
     public static final SoundEvent PTERANODON_LIVING = create("pteranodon_living");
     public static final SoundEvent PTERANODON_HURT = create("pteranodon_hurt");

@@ -152,19 +152,51 @@
       "rebornmod:dinosaurs/spinosaurus/spinosaurus_living_3",
       "rebornmod:dinosaurs/spinosaurus/spinosaurus_living_4"
     ]
-  },
-  "spinosaurus_hurt": {
-    "category": "hostile",
-    "sounds": [
-      "rebornmod:dinosaurs/spinosaurus/spinosaurus_hurt_1"
-    ]
-  },
+ },
   "spinosaurus_death": {
     "category": "hostile",
     "sounds": [
-      "rebornmod:dinosaurs/spinosaurus/spinosaurus_death_1",
-      "rebornmod:dinosaurs/spinosaurus/spinosaurus_death_2",
-      "rebornmod:dinosaurs/spinosaurus/spinosaurus_death_3"
+      "rebornmod:dinosaurs/spinosaurus/spinosaurus_death"
+    ]
+ },
+  "spinosaurus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/spinosaurus/spinosaurus_hurt_1",
+      "rebornmod:dinosaurs/spinosaurus/spinosaurus_hurt_2",
+      "rebornmod:dinosaurs/spinosaurus/spinosaurus_hurt_3"
+    ]
+},
+  "spinosaurus_call": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/spinosaurus/spinosaurus_calling"
+    ]
+ },
+  "spinosaurus_roar": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/spinosaurus/spinosaurus_roar_1",
+      "rebornmod:dinosaurs/spinosaurus/spinosaurus_roar_2"
+    ]
+  },
+    "spinosaurus_threat":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/spinosaurus/spinosaurus_threat"
+        ]
+  },
+  "spinosaurus_breathing": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/spinosaurus/spinosaurus_breathing"
+    ]
+},
+  "spinosaurus_attack": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/spinosaurus/spinosaurus_attack_1",
+      "rebornmod:dinosaurs/spinosaurus/spinosaurus_attack_2"
     ]
   },
   "stomp": {
@@ -539,6 +571,71 @@
       "rebornmod:dinosaurs/mosasaurus/mosasaurus_living_2",
       "rebornmod:dinosaurs/mosasaurus/mosasaurus_living_4",
       "rebornmod:dinosaurs/mosasaurus/mosasaurus_living_5"
+    ]
+  },
+  "indoraptor_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/indoraptor/indoraptor_living_1",
+      "rebornmod:dinosaurs/indoraptor/indoraptor_living_2",
+      "rebornmod:dinosaurs/indoraptor/indoraptor_living_3",
+      "rebornmod:dinosaurs/indoraptor/indoraptor_living_4",
+      "rebornmod:dinosaurs/indoraptor/indoraptor_living_5"
+    ]
+ },
+  "indoraptor_death": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/indoraptor/indoraptor_death_1",
+      "rebornmod:dinosaurs/indoraptor/indoraptor_death_2",
+      "rebornmod:dinosaurs/indoraptor/indoraptor_death_3"
+    ]
+ },
+  "indoraptor_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/indoraptor/indoraptor_hurt_1",
+      "rebornmod:dinosaurs/indoraptor/indoraptor_hurt_2",
+      "rebornmod:dinosaurs/indoraptor/indoraptor_hurt_3"
+    ]
+},
+  "indoraptor_call": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/indoraptor/indoraptor_calling"
+    ]
+ },
+  "indoraptor_roar": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/indoraptor/indoraptor_roar"
+    ]
+  },
+    "indoraptor_threat":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/indoraptor/indoraptor_threat"
+        ]
+  },
+  "indoraptor_breathing": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/indoraptor/indoraptor_breath_1",
+      "rebornmod:dinosaurs/indoraptor/indoraptor_breath_2",
+      "rebornmod:dinosaurs/indoraptor/indoraptor_breath_3",
+      "rebornmod:dinosaurs/indoraptor/indoraptor_breath_4"
+    ]
+  },
+  "indoraptor_mate_call": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/indoraptor/indoraptor_mate_call"
+    ]
+},
+  "indoraptor_attack": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/indoraptor/indoraptor_attack"
     ]
   },
   "mosasaurus_hurt":{

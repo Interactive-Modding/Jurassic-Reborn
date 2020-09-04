@@ -30,4 +30,30 @@ public class IndoraptorEntity extends DinosaurEntity
         this.target(EntityLivingBase.class, EntityPlayer.class);
         doesEatEggs(true);
     }
+    @Override
+    public SoundEvent getSoundForAnimation(Animation animation) {
+        switch (EntityAnimation.getAnimation(animation)) {
+            case SPEAK:
+                return SoundHandler.INDORAPTOR_LIVING;
+            case CALLING:
+                return SoundHandler.INDORAPTOR_CALLING;
+            case DYING:
+                return SoundHandler.INDORAPTOR_DEATH;
+            case BEGGING:
+                return SoundHandler.INDORAPTOR_THREAT;
+            case INJURED:
+                return SoundHandler.INDORAPTOR_HURT;
+            case ROARING:
+                return SoundHandler.INDORAPTOR_ROAR;
+            case MATING:
+                return SoundHandler.INDORAPTOR_MATING;
+            default:
+                return null;
+        }
+    }
+    @Override
+    public SoundEvent getBreathingSound()
+    {
+        return SoundHandler.INDORAPTOR_BREATHING;
+    }
 }

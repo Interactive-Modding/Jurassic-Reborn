@@ -48,8 +48,19 @@ public class SpinosaurusEntity extends DinosaurEntity
                 return SoundHandler.SPINOSAURUS_DEATH;
             case INJURED:
                 return SoundHandler.SPINOSAURUS_HURT;
+            case CALLING:
+                return SoundHandler.SPINOSAURUS_CALL;
+            case ROARING:
+                return SoundHandler.SPINOSAURUS_ROAR;
+            case BEGGING:
+                return SoundHandler.SPINOSAURUS_THREAT;
         }
 
         return null;
+    }
+    @Override
+    public SoundEvent getBreathingSound()
+    {
+        return SoundHandler.SPINOSAURUS_BREATHING;
     }
 }
