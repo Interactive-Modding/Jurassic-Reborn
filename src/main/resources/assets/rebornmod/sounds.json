@@ -800,11 +800,53 @@
             "rebornmod:dinosaurs/carcharodontosaurus/carcharodontosaurus_roar_1",
             "rebornmod:dinosaurs/carcharodontosaurus/carcharodontosaurus_roar_2"
         ]
+ },
+  "ceratosaurus_breathing": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/ceratosaurus/ceratosaurus_breathing"
+    ]
+},
+  "ceratosaurus_call":{
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/ceratosaurus/ceratosaurus_calling"
+    ]
+ },
+    "ceratosaurus_mate_call":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/ceratosaurus/ceratosaurus_mate_call"
+        ]
     },
+    "ceratosaurus_threat":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/ceratosaurus/ceratosaurus_threat_1",
+            "rebornmod:dinosaurs/ceratosaurus/ceratosaurus_threat_2"
+       ]
+ },
     "ceratosaurus_hurt":{
         "category": "hostile",
         "sounds": [
-            "rebornmod:dinosaurs/ceratosaurus/ceratosaurus_hurt"
+            "rebornmod:dinosaurs/ceratosaurus/ceratosaurus_hurt_1",
+            "rebornmod:dinosaurs/ceratosaurus/ceratosaurus_hurt_2"
+        ]
+  },
+    "ceratosaurus_roar":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/ceratosaurus/ceratosaurus_roar_1",
+            "rebornmod:dinosaurs/ceratosaurus/ceratosaurus_roar_2",
+            "rebornmod:dinosaurs/ceratosaurus/ceratosaurus_roar_3",
+            "rebornmod:dinosaurs/ceratosaurus/ceratosaurus_roar_4"
+        ]
+ },
+    "ceratosaurus_death":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/ceratosaurus/ceratosaurus_death_1",
+            "rebornmod:dinosaurs/ceratosaurus/ceratosaurus_death_2"
         ]
     },
     "ceratosaurus_living":{
@@ -1114,6 +1156,49 @@
     "category": "hostile",
     "sounds": [
       "rebornmod:dinosaurs/sinoceratops/sinoceratops_threat"
+    ]
+  },
+  "dreadnoughtus_death":{
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/dreadnoughtus/dreadnoughtus_death"
+    ]
+  },
+  "dreadnoughtus_hurt":{
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/dreadnoughtus/dreadnoughtus_hurt_1",
+      "rebornmod:dinosaurs/dreadnoughtus/dreadnoughtus_hurt_2",
+      "rebornmod:dinosaurs/dreadnoughtus/dreadnoughtus_hurt_3"
+    ]
+  },
+  "dreadnoughtus_call":{
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/dreadnoughtus/dreadnoughtus_calling"
+    ]
+  },
+  "dreadnoughtus_mate_call": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/dreadnoughtus/dreadnoughtus_mate_call"
+    ]
+  },
+  "dreadnoughtus_living":{
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/dreadnoughtus/dreadnoughtus_living_1",
+      "rebornmod:dinosaurs/dreadnoughtus/dreadnoughtus_living_2",
+      "rebornmod:dinosaurs/dreadnoughtus/dreadnoughtus_living_3",
+      "rebornmod:dinosaurs/dreadnoughtus/dreadnoughtus_living_4",
+      "rebornmod:dinosaurs/dreadnoughtus/dreadnoughtus_living_5",
+      "rebornmod:dinosaurs/dreadnoughtus/dreadnoughtus_living_6"
+    ]
+  },
+  "dreadnoughtus_threat":{
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/dreadnoughtus/dreadnoughtus_threat"
     ]
   }
 }

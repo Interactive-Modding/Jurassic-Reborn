@@ -32,4 +32,25 @@ public class DreadnoughtusEntity extends DinosaurEntity {
             this.stepCount -= this.moveForward * 9.5;
         }
     }
+    @Override
+    public SoundEvent getSoundForAnimation(Animation animation) {
+        switch (EntityAnimation.getAnimation(animation)) {
+            case SPEAK:
+                return SoundHandler.DREADNOUGHTUS_LIVING;
+            case CALLING:
+                return SoundHandler.DREADNOUGHTUS_CALLING;
+            case DYING:
+                return SoundHandler.DREADNOUGHTUS_DEATH;
+            case BEGGING:
+                return SoundHandler.DREADNOUGHTUS_THREAT;
+            case INJURED:
+                return SoundHandler.DREADNOUGHTUS_HURT;
+            case MATING:
+                return SoundHandler.DREADNOUGHTUS_MATING;
+            case WALKING:
+                return SoundHandler.STOMP;
+            default:
+                return null;
+        }
+    }
 }
