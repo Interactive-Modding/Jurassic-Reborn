@@ -36,7 +36,7 @@ public class VelociraptorDinosaur extends Dinosaur {
         this.setScale(1.3F, 0.3F);
         this.setImprintable(true);
         this.setDefendOwner(true);
-        this.setMaxHerdSize(18);
+        this.setMaxHerdSize(7);
         this.setAttackBias(600.0);
         this.setCanClimb(true);
         this.setBreeding(false,1, 7, 28, false, true);

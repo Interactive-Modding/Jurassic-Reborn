@@ -27,7 +27,6 @@ public class BrachiosaurusDinosaur extends Dinosaur {
         this.setEyeHeight(2.2F, 18.4F);
         this.setSizeX(0.9F, 6.5F);
         this.setSizeY(1.5F, 7.0F);
-        this.setStorage(54);
         this.setDiet(Diet.HERBIVORE.get());
         this.setBones("front_leg_bones", "hind_leg_bones", "neck_vertebrae", "pelvis", "ribcage", "shoulder", "skull", "tail_vertebrae", "tooth");
         this.setHeadCubeName("head");

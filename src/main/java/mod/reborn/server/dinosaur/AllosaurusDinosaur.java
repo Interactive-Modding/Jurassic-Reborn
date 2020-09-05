@@ -18,7 +18,6 @@ public class AllosaurusDinosaur extends Dinosaur {
         this.setHealth(10, 50);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setAttackSpeed(1.1);
-        this.setStorage(27);
         this.setStrength(1, 20);
         this.setMaximumAge(fromDays(45));
         this.setEyeHeight(0.45F, 1.6F);

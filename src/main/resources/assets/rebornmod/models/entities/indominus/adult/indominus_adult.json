@@ -117,24 +117,8 @@
     ],
     "ATTACKING": [
       {
-        "pose": "indominus_adult_attacking_1",
-        "time": 10
-      },
-      {
-        "pose": "indominus_adult_attacking_2",
+        "pose": "indominus_adult_attacking",
         "time": 15
-      },
-      {
-        "pose": "indominus_adult_attacking_3",
-        "time": 10
-      },
-      {
-        "pose": "indominus_adult_attacking_4",
-        "time": 15
-      },
-      {
-        "pose": "indominus_adult_attacking_5",
-        "time": 10
       },
       {
         "pose": "indominus_adult_idle",

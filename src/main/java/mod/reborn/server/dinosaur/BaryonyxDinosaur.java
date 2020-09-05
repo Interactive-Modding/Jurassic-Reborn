@@ -24,7 +24,6 @@ public class BaryonyxDinosaur extends Dinosaur
         this.setEyeHeight(0.55F, 2.95F);
         this.setSizeX(0.35F, 1.5F);
         this.setSizeY(0.55F, 2.95F);
-        this.setStorage(36);
         this.setDiet(Diet.PCARNIVORE.get());
         this.setBones("arm_bones", "claw", "leg_bones", "neck_vertebrae", "pelvis", "ribcage", "shoulder", "skull", "tail_vertebrae", "tooth", "foot_bones");
         this.setHeadCubeName("Head");

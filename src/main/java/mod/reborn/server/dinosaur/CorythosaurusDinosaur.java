@@ -34,7 +34,7 @@ public class CorythosaurusDinosaur extends Dinosaur
         this.setScale(2.2F, 0.4F);
         this.setOffset(0.0F, 0.775F, 0.0F);
         this.setImprintable(true);
-        this.setStorage(12);
+        this.setFlockSpeed(1.5F);
         this.setBreeding(false, 2, 6, 40, false, true);
         String[][] recipe = {
                 {"tail_vertebrae", "pelvis", "ribcage","neck_vertebrae","skull"},

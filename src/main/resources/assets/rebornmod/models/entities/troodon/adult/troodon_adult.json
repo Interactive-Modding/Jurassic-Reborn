@@ -10,7 +10,7 @@
     "DYING": [
       {
         "pose": "troodon_adult_death",
-        "time": 10
+        "time": 30
       }
     ],
     "RESTING": [

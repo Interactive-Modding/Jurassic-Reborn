@@ -46,7 +46,7 @@ public class MawsoniaDinosaur extends Dinosaur {
         this.setAttackBias(100.0);
         this.setMarineAnimal(true);
         this.setMovementType(MovementType.DEEP_WATER);
-        this.setBreeding(true, 2, 6, 15, true, false);
+        this.setBreeding(true, 2, 4, 15, true, false);
         this.setRandomFlock(true);
         String[][] recipe =     {{"", "second_dorsal_fin", "first_dorsal_fin", ""},
                 {"caudal_fin", "spine", "pectoral_fin_bones","skull"},

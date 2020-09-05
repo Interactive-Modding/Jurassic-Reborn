@@ -36,7 +36,6 @@ public class CoelacanthDinosaur extends Dinosaur {
         this.setEyeHeight(0.35F, 1.8F);
         this.setSizeX(0.1F, 1.0F);
         this.setSizeY(0.1F, 1.0F);
-        this.setStorage(9);
         this.setDiet(Diet.PISCIVORE.get().withModule(new Diet.DietModule(FoodType.FILTER)));
         this.setSleepTime(SleepTime.NO_SLEEP);
         this.setBirthType(BirthType.LIVE_BIRTH);

@@ -34,7 +34,6 @@ public class ChasmosaurusDinosaur extends Dinosaur
         this.setBreeding(false, 2, 6, 40, false, true);
         this.setImprintable(true);
         this.setDefendOwner(true);
-        this.setStorage(6);
         this.shouldDefendOffspring();
         String[][] recipe = {
                 {"", "", "","",""},

@@ -856,6 +856,88 @@
             "rebornmod:dinosaurs/ceratosaurus/ceratosaurus_living_2",
             "rebornmod:dinosaurs/ceratosaurus/ceratosaurus_living_3"
         ]
+ },
+  "alvarezsaurus_call":{
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/alvarezsaurus/alvarezsaurus_calling"
+    ]
+ },
+    "alvarezsaurus_mate_call":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/alvarezsaurus/alvarezsaurus_mate_call"
+        ]
+    },
+    "alvarezsaurus_threat":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/alvarezsaurus/alvarezsaurus_threat"
+       ]
+ },
+    "alvarezsaurus_hurt":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/alvarezsaurus/alvarezsaurus_hurt_1",
+            "rebornmod:dinosaurs/alvarezsaurus/alvarezsaurus_hurt_2",
+            "rebornmod:dinosaurs/alvarezsaurus/alvarezsaurus_hurt_3"
+        ]
+ },
+    "alvarezsaurus_death":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/alvarezsaurus/alvarezsaurus_death"
+        ]
+    },
+    "alvarezsaurus_living":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/alvarezsaurus/alvarezsaurus_living_1",
+            "rebornmod:dinosaurs/alvarezsaurus/alvarezsaurus_living_2",
+            "rebornmod:dinosaurs/alvarezsaurus/alvarezsaurus_living_3",
+            "rebornmod:dinosaurs/alvarezsaurus/alvarezsaurus_living_4",
+            "rebornmod:dinosaurs/alvarezsaurus/alvarezsaurus_living_5"
+        ]
+},
+  "troodon_call":{
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/troodon/troodon_calling"
+    ]
+ },
+    "troodon_mate_call":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/troodon/troodon_mate_call"
+        ]
+    },
+    "troodon_threat":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/troodon/troodon_threat"
+       ]
+ },
+    "troodon_hurt":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/troodon/troodon_hurt_1",
+            "rebornmod:dinosaurs/troodon/troodon_hurt_2",
+            "rebornmod:dinosaurs/troodon/troodon_hurt_3"
+        ]
+ },
+    "troodon_death":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/troodon/troodon_death"
+        ]
+    },
+    "troodon_living":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/troodon/troodon_living_1",
+            "rebornmod:dinosaurs/troodon/troodon_living_2",
+            "rebornmod:dinosaurs/troodon/troodon_living_3"
+        ]
     },
     "guanlong_death":{
         "category": "hostile",

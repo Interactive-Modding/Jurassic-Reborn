@@ -21,7 +21,7 @@ public class DinosaurAttackMeleeEntityAI extends EntityAIAttackMelee {
             if (target instanceof DinosaurEntity && ((DinosaurEntity) target).isCarcass()) {
                 return false;
             }
-            return !target.isDead;
+            return true;
         }
         return false;
     }
