@@ -11,8 +11,7 @@ import mod.reborn.server.entity.dinosaur.LudodactylusEntity;
 public class LudodactylusAnimator extends EntityAnimator<LudodactylusEntity>
 {
     @Override
-    protected void performAnimations(AnimatableModel model, LudodactylusEntity entity, float f, float f1, float ticks, float rotationYaw, float rotationPitch, float scale)
-    {
+    protected void performAnimations(AnimatableModel model, LudodactylusEntity entity, float f, float f1, float ticks, float rotationYaw, float rotationPitch, float scale) {
         AdvancedModelRenderer leftThigh = model.getCube("Left thigh");
         AdvancedModelRenderer leftCalf = model.getCube("Left calf");
         AdvancedModelRenderer leftUpperFoot = model.getCube("Left upper foot");
@@ -41,19 +40,19 @@ public class LudodactylusAnimator extends EntityAnimator<LudodactylusEntity>
         AdvancedModelRenderer rightArm3 = model.getCube("Right Arm 3");
         AdvancedModelRenderer rightArm4 = model.getCube("Right Arm 4");
 
-        AdvancedModelRenderer[] neck = new AdvancedModelRenderer[] { head, neck3, neck2, neck1 };
-        AdvancedModelRenderer[] tail = new AdvancedModelRenderer[] { tail1, tail2, tail3 };
-        AdvancedModelRenderer[] wingLeft = new AdvancedModelRenderer[] { leftArm4, leftArm3, leftArm2, leftArm1 };
-        AdvancedModelRenderer[] wingRight = new AdvancedModelRenderer[] { rightArm4, rightArm3, rightArm2, rightArm1 };
-        AdvancedModelRenderer[] legLeft = new AdvancedModelRenderer[] { leftThigh, leftCalf, leftUpperFoot, leftFoot };
-        AdvancedModelRenderer[] legRight = new AdvancedModelRenderer[] { rightThigh, rightCalf, rightUpperFoot, rightFoot };
+        AdvancedModelRenderer[] neck = new AdvancedModelRenderer[]{head, neck3, neck2, neck1};
+        AdvancedModelRenderer[] tail = new AdvancedModelRenderer[]{tail1, tail2, tail3};
+        AdvancedModelRenderer[] wingLeft = new AdvancedModelRenderer[]{leftArm4, leftArm3, leftArm2, leftArm1};
+        AdvancedModelRenderer[] wingRight = new AdvancedModelRenderer[]{rightArm4, rightArm3, rightArm2, rightArm1};
+        AdvancedModelRenderer[] legLeft = new AdvancedModelRenderer[]{leftThigh, leftCalf, leftUpperFoot, leftFoot};
+        AdvancedModelRenderer[] legRight = new AdvancedModelRenderer[]{rightThigh, rightCalf, rightUpperFoot, rightFoot};
 
         float globalSpeed = 0.45F;
-        float globalDegree = 2F;
-        float globalHeight = 2F;
+        float globalDegree = 1F;
+        float globalHeight = 1F;
         float frontOffset = -1.35f;
 
-        if (entity.isOnGround()) {
+        if (entity.isOnGround() && !entity.isCarcass()) {
             model.bob(body1, 1 * globalSpeed, 1 * globalHeight, false, f, f1);
             model.bob(leftThigh, 1 * globalSpeed, 1 * globalHeight, false, f, f1);
             model.bob(rightThigh, 1 * globalSpeed, 1 * globalHeight, false, f, f1);
@@ -78,8 +77,8 @@ public class LudodactylusAnimator extends EntityAnimator<LudodactylusEntity>
             model.walk(rightArm1, 0.5F * globalSpeed, 0.5F * globalDegree, false, -3.14F + frontOffset, 0.5F, f, f1);
             model.walk(rightArm2, 0.5F * globalSpeed, 0.4F * globalDegree, false, -1.5F + frontOffset, -0.3F, f, f1);
             model.walk(rightArm3, 0.5F * globalSpeed, 0.7F * globalDegree, false, 2F + frontOffset, 0.4F, f, f1);
-        } else
-            {
+        } else {
+            if(!entity.isCarcass()) {
                 body1.rotateAngleX += 0.3;
                 neck1.rotateAngleX -= 0.1;
                 leftThigh.rotateAngleX += 0.8;
@@ -125,19 +124,20 @@ public class LudodactylusAnimator extends EntityAnimator<LudodactylusEntity>
                 model.chainWave(tail, 0.3f, 0.2f, 1, f, f1);
                 model.chainWave(neck, 0.3f, 0.4f, 4, f, f1);
             }
-
-
-        model.walk(body1, 0.08f, -0.05f, false, 0, 0, ticks, 0.25F);
-        model.chainWave(neck, 0.08f, 0.03f, 2, ticks, 0.25F);
-        model.walk(leftArm1, 0.08f, 0.1f, false, 0, 0, ticks, 0.25F);
-        model.walk(rightArm1, 0.08f, 0.1f, false, 0, 0, ticks, 0.25F);
-        model.walk(leftArm2, 0.08f, 0.1f, false, 0, 0, ticks, 0.25F);
-        model.walk(rightArm2, 0.08f, 0.1f, false, 0, 0, ticks, 0.25F);
-        model.walk(leftArm3, 0.08f, 0.2f, true, 0, 0, ticks, 0.25F);
-        model.walk(rightArm3, 0.08f, 0.2f, true, 0, 0, ticks, 0.25F);
-        model.flap(leftArm1, 0.08f, 0.03f, false, 0, 0, ticks, 0.25F);
-        model.flap(rightArm1, 0.08f, 0.03f, true, 0, 0, ticks, 0.25F);
-        leftArm1.rotationPointZ -= 1 * Math.cos(ticks * 0.08);
-        rightArm1.rotationPointZ -= 1 * Math.cos(ticks * 0.08);
+        }
+        if (!entity.isCarcass()) {
+            model.walk(body1, 0.08f, -0.05f, false, 0, 0, ticks, 0.25F);
+            model.chainWave(neck, 0.08f, 0.03f, 2, ticks, 0.25F);
+            model.walk(leftArm1, 0.08f, 0.1f, false, 0, 0, ticks, 0.25F);
+            model.walk(rightArm1, 0.08f, 0.1f, false, 0, 0, ticks, 0.25F);
+            model.walk(leftArm2, 0.08f, 0.1f, false, 0, 0, ticks, 0.25F);
+            model.walk(rightArm2, 0.08f, 0.1f, false, 0, 0, ticks, 0.25F);
+            model.walk(leftArm3, 0.08f, 0.2f, true, 0, 0, ticks, 0.25F);
+            model.walk(rightArm3, 0.08f, 0.2f, true, 0, 0, ticks, 0.25F);
+            model.flap(leftArm1, 0.08f, 0.03f, false, 0, 0, ticks, 0.25F);
+            model.flap(rightArm1, 0.08f, 0.03f, true, 0, 0, ticks, 0.25F);
+            leftArm1.rotationPointZ -= 1 * Math.cos(ticks * 0.08);
+            rightArm1.rotationPointZ -= 1 * Math.cos(ticks * 0.08);
+        }
     }
 }

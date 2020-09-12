@@ -129,9 +129,6 @@ public class SoundHandler {
     public static final SoundEvent INDOMINUS_ROAR = create("indominus_roar");
     public static final SoundEvent INDOMINUS_BREATHING = create("indominus_breathing");
 
-    public static final SoundEvent ANKYLOSAURUS_LIVING = create("ankylosaurus_living");
-    public static final SoundEvent ANKYLOSAURUS_HURT = create("ankylosaurus_hurt");
-
     public static final SoundEvent HERRERASAURUS_LIVING = create("herrerasaurus_living");
     public static final SoundEvent HERRERASAURUS_DEATH = create("herrerasaurus_death");
 
@@ -154,6 +151,13 @@ public class SoundHandler {
     public static final SoundEvent ACHILLOBATOR_CALL = create("achillobator_call");
     public static final SoundEvent ACHILLOBATOR_DEATH = create("achillobator_death");
     public static final SoundEvent ACHILLOBATOR_ATTACK = create("achillobator_attack");
+
+    public static final SoundEvent ANKYLOSAURUS_LIVING = create("ankylosaurus_living");
+    public static final SoundEvent ANKYLOSAURUS_HURT = create("ankylosaurus_hurt");
+    public static final SoundEvent ANKYLOSAURUS_MATE_CALL = create("ankylosaurus_mate_call");
+    public static final SoundEvent ANKYLOSAURUS_CALL = create("ankylosaurus_call");
+    public static final SoundEvent ANKYLOSAURUS_DEATH = create("ankylosaurus_death");
+    public static final SoundEvent ANKYLOSAURUS_ATTACK = create("ankylosaurus_attack");
 
     public static final SoundEvent MICRORAPTOR_LIVING = create("microraptor_living");
     public static final SoundEvent MICRORAPTOR_HURT = create("microraptor_hurt");

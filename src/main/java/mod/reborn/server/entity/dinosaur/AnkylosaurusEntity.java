@@ -17,16 +17,22 @@ public class AnkylosaurusEntity extends DinosaurEntity
     }
 
     @Override
-    public SoundEvent getSoundForAnimation(Animation animation)
-    {
-        switch (EntityAnimation.getAnimation(animation))
-        {
+    public SoundEvent getSoundForAnimation(Animation animation) {
+        switch (EntityAnimation.getAnimation(animation)) {
             case SPEAK:
                 return SoundHandler.ANKYLOSAURUS_LIVING;
             case DYING:
-                return SoundHandler.ANKYLOSAURUS_HURT;
+                return SoundHandler.ANKYLOSAURUS_DEATH;
             case INJURED:
                 return SoundHandler.ANKYLOSAURUS_HURT;
+            case CALLING:
+                return SoundHandler.ANKYLOSAURUS_CALL;
+            case ATTACKING:
+                return SoundHandler.ANKYLOSAURUS_ATTACK;
+            case MATING:
+                return SoundHandler.ANKYLOSAURUS_MATE_CALL;
+            default:
+                break;
         }
 
         return null;

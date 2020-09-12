@@ -262,6 +262,18 @@
       "rebornmod:dinosaurs/indominus/indominus_breath"
     ]
   },
+  "ankylosaurus_call": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/ankylosaurus/ankylosaurus_calling"
+    ]
+  },
+ "ankylosaurus_attack": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/ankylosaurus/ankylosaurus_attack"
+    ]
+  },
   "ankylosaurus_living": {
     "category": "hostile",
     "sounds": [
@@ -271,11 +283,25 @@
       "rebornmod:dinosaurs/ankylosaurus/ankylosaurus_living_4"
     ]
   },
+   "ankylosaurus_threat":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/ankylosaurus/ankylosaurus_threat_1",
+            "rebornmod:dinosaurs/ankylosaurus/ankylosaurus_threat_2"
+        ]
+  },
+  "ankylosaurus_mate_call":{
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/ankylosaurus/ankylosaurus_mate_call"
+    ]
+  },
   "ankylosaurus_hurt": {
     "category": "hostile",
     "sounds": [
       "rebornmod:dinosaurs/ankylosaurus/ankylosaurus_hurt_1",
-      "rebornmod:dinosaurs/ankylosaurus/ankylosaurus_hurt_2"
+      "rebornmod:dinosaurs/ankylosaurus/ankylosaurus_hurt_2",
+      "rebornmod:dinosaurs/ankylosaurus/ankylosaurus_hurt_3"
     ]
   },
   "herrerasaurus_living": {
