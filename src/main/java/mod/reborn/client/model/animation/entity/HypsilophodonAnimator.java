@@ -51,40 +51,40 @@ public class HypsilophodonAnimator extends EntityAnimator<HypsilophodonEntity>
 
         AdvancedModelRenderer[] tailParts = new AdvancedModelRenderer[] { tail6, tail5, tail4, tail3, tail2, tail1 };
 
-        model.bob(body2, 0.5F * scaleFactor, height, true, f, f1);
-        model.bob(upperlegright, 0.5F * scaleFactor, height, true, f, f1);
-        model.bob(upperlegleft, 0.5F * scaleFactor, height, true, f, f1);
+      //  model.bob(body2, 0.5F * scaleFactor, height, true, f, f1);
+     //   model.bob(upperlegright, 0.5F * scaleFactor, height, true, f, f1);
+      //  model.bob(upperlegleft, 0.5F * scaleFactor, height, true, f, f1);
 
-        model.walk(upperlegleft, 1F * scaleFactor, 0.75F, true, 1F, 0.25F, f, f1);
-        model.walk(upperlegright, 1F * scaleFactor, 0.75F, true, 0.5F, 0.25F, f, f1);
-        model.walk(midlegleft, 1F * scaleFactor, 0.75F, false, 1.5F, 0F, f, f1);
-        model.walk(midlegright, 1F * scaleFactor, 0.75F, false, 1F, 0F, f, f1);
-        model.walk(lowerlegright, 1F * scaleFactor, 0.75F, true, 0.5F, 0F, f, f1);
-        model.walk(lowerlegleft, 1F * scaleFactor, 0.75F, true, 1F, 0F, f, f1);
-        model.walk(feetleft, 1F * scaleFactor, 0.5F, true, 1F, 0.75F, f, f1);
-        model.walk(feetright, 1F * scaleFactor, 0.5F, true, 0.5F, 0.75F, f, f1);
+     //   model.walk(upperlegleft, 1F * scaleFactor, 0.75F, true, 1F, 0.25F, f, f1);
+     //   model.walk(upperlegright, 1F * scaleFactor, 0.75F, true, 0.5F, 0.25F, f, f1);
+      //  model.walk(midlegleft, 1F * scaleFactor, 0.75F, false, 1.5F, 0F, f, f1);
+      //  model.walk(midlegright, 1F * scaleFactor, 0.75F, false, 1F, 0F, f, f1);
+      //  model.walk(lowerlegright, 1F * scaleFactor, 0.75F, true, 0.5F, 0F, f, f1);
+     //   model.walk(lowerlegleft, 1F * scaleFactor, 0.75F, true, 1F, 0F, f, f1);
+     //   model.walk(feetleft, 1F * scaleFactor, 0.5F, true, 1F, 0.75F, f, f1);
+      //  model.walk(feetright, 1F * scaleFactor, 0.5F, true, 0.5F, 0.75F, f, f1);
 
-        model.walk(body2, 1F * scaleFactor, 0.3F, false, 0.5F, 0F, f, f1);
-        model.walk(body1, 1F * scaleFactor, 0.5F, true, 1.0F, 0F, f, f1);
-        model.walk(neck, 1F * scaleFactor, 0.3F, true, 0.25F, 0.3F, f, f1);
-        model.walk(head, 1F * scaleFactor, 0.3F, false, 0.25F, -0.3F, f, f1);
+     //   model.walk(body2, 1F * scaleFactor, 0.3F, false, 0.5F, 0F, f, f1);
+     //   model.walk(body1, 1F * scaleFactor, 0.5F, true, 1.0F, 0F, f, f1);
+     //   model.walk(neck, 1F * scaleFactor, 0.3F, true, 0.25F, 0.3F, f, f1);
+      //  model.walk(head, 1F * scaleFactor, 0.3F, false, 0.25F, -0.3F, f, f1);
 
-        model.walk(shoulderright, 1 * scaleFactor, 0.3F, true, 1, 0.2F, f, f1);
-        model.walk(shoulderleft, 1 * scaleFactor, 0.3F, true, 1, 0.2F, f, f1);
-        model.walk(armright, 1 * scaleFactor, 0.3F, false, 1, -0.2F, f, f1);
-        model.walk(armleft, 1 * scaleFactor, 0.3F, false, 1, -0.2F, f, f1);
+      //  model.walk(shoulderright, 1 * scaleFactor, 0.3F, true, 1, 0.2F, f, f1);
+   //     model.walk(shoulderleft, 1 * scaleFactor, 0.3F, true, 1, 0.2F, f, f1);
+     //   model.walk(armright, 1 * scaleFactor, 0.3F, false, 1, -0.2F, f, f1);
+     //   model.walk(armleft, 1 * scaleFactor, 0.3F, false, 1, -0.2F, f, f1);
 
-        model.chainWave(tailParts, 0.2F, -0.05F, 2, ticks, 0.25F);
-        model.walk(neck, 0.2F, 0.1F, false, -1F, 0F, ticks, 0.25F);
-        model.walk(head, 0.2F, 0.1F, true, 0F, 0F, ticks, 0.25F);
-        model.walk(body1, 0.2F, 0.1F, true, 0F, 0F, ticks, 0.25F);
-        model.walk(body2, 0.2F, 0.1F, false, 0F, 0F, ticks, 0.25F);
-        model.walk(shoulderright, 0.2F, 0.1F, true, 0F, 0F, ticks, 0.25F);
-        model.walk(shoulderleft, 0.2F, 0.1F, true, 0F, 0F, ticks, 0.25F);
-        model.walk(armright, 0.2F, 0.1F, false, 0F, 0F, ticks, 0.25F);
-        model.walk(armleft, 0.2F, 0.1F, false, 0F, 0F, ticks, 0.25F);
+    //    model.chainWave(tailParts, 0.2F, -0.05F, 2, ticks, 0.25F);
+    //    model.walk(neck, 0.2F, 0.1F, false, -1F, 0F, ticks, 0.25F);
+    //    model.walk(head, 0.2F, 0.1F, true, 0F, 0F, ticks, 0.25F);
+    //    model.walk(body1, 0.2F, 0.1F, true, 0F, 0F, ticks, 0.25F);
+     //   model.walk(body2, 0.2F, 0.1F, false, 0F, 0F, ticks, 0.25F);
+    //    model.walk(shoulderright, 0.2F, 0.1F, true, 0F, 0F, ticks, 0.25F);
+    //    model.walk(shoulderleft, 0.2F, 0.1F, true, 0F, 0F, ticks, 0.25F);
+    //    model.walk(armright, 0.2F, 0.1F, false, 0F, 0F, ticks, 0.25F);
+   //     model.walk(armleft, 0.2F, 0.1F, false, 0F, 0F, ticks, 0.25F);
 
-        model.chainWave(tailParts, 1F * scaleFactor, 0.15F, 2, f, f1);
+    //    model.chainWave(tailParts, 1F * scaleFactor, 0.15F, 2, f, f1);
 
         entity.tailBuffer.applyChainSwingBuffer(tailParts);
     }

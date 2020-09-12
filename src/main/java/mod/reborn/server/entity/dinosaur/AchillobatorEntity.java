@@ -1,14 +1,17 @@
 package mod.reborn.server.entity.dinosaur;
 
 import mod.reborn.client.model.animation.EntityAnimation;
+import mod.reborn.client.sound.SoundHandler;
 import mod.reborn.server.entity.DinosaurEntity;
 import mod.reborn.server.entity.ai.LeapingMeleeEntityAI;
+import net.ilexiconn.llibrary.server.animation.Animation;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 
 public class AchillobatorEntity extends DinosaurEntity
@@ -28,6 +31,28 @@ public class AchillobatorEntity extends DinosaurEntity
             super.fall(distance, damageMultiplier);
         }
     }
+    @Override
+    public SoundEvent getSoundForAnimation(Animation animation) {
+        switch (EntityAnimation.getAnimation(animation)) {
+            case SPEAK:
+                return SoundHandler.ACHILLOBATOR_LIVING;
+            case DYING:
+                return SoundHandler.ACHILLOBATOR_DEATH;
+            case INJURED:
+                return SoundHandler.ACHILLOBATOR_HURT;
+            case CALLING:
+                return SoundHandler.ACHILLOBATOR_CALL;
+            case ATTACKING:
+                return SoundHandler.ACHILLOBATOR_ATTACK;
+            case MATING:
+                return SoundHandler.ACHILLOBATOR_MATE_CALL;
+            default:
+                break;
+        }
+
+        return null;
+    }
+
 
     protected void applyEntityAttributes()
     {

@@ -638,6 +638,51 @@
       "rebornmod:dinosaurs/indoraptor/indoraptor_attack"
     ]
   },
+  "achillobator_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/achillobator/achillobator_hurt_1",
+      "rebornmod:dinosaurs/achillobator/achillobator_hurt_2",
+      "rebornmod:dinosaurs/achillobator/achillobator_hurt_3"
+    ]
+  },
+  "achillobator_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/achillobator/achillobator_living_1",
+      "rebornmod:dinosaurs/achillobator/achillobator_living_2",
+      "rebornmod:dinosaurs/achillobator/achillobator_living_3",
+      "rebornmod:dinosaurs/achillobator/achillobator_living_4",
+      "rebornmod:dinosaurs/achillobator/achillobator_living_5"
+    ]
+  },
+  "achillobator_call": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/achillobator/achillobator_bark_1",
+      "rebornmod:dinosaurs/achillobator/achillobator_bark_2",
+      "rebornmod:dinosaurs/achillobator/achillobator_bark_3"
+    ]
+  },
+  "achillobator_attack": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/achillobator/achillobator_attack_1",
+      "rebornmod:dinosaurs/achillobator/achillobator_attack_2"
+    ]
+  },
+ "achillobator_mate_call": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/achillobator/achillobator_mate_call"
+    ]
+  },
+  "achillobator_death": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/achillobator/achillobator_death"
+    ]
+  },
   "mosasaurus_hurt":{
     "category": "hostile",
     "sounds": [

@@ -148,6 +148,13 @@ public class SoundHandler {
     public static final SoundEvent VELOCIRAPTOR_DEATH = create("velociraptor_death");
     public static final SoundEvent VELOCIRAPTOR_ATTACK = create("velociraptor_attack");
 
+    public static final SoundEvent ACHILLOBATOR_LIVING = create("achillobator_living");
+    public static final SoundEvent ACHILLOBATOR_HURT = create("achillobator_hurt");
+    public static final SoundEvent ACHILLOBATOR_MATE_CALL = create("achillobator_mate_call");
+    public static final SoundEvent ACHILLOBATOR_CALL = create("achillobator_call");
+    public static final SoundEvent ACHILLOBATOR_DEATH = create("achillobator_death");
+    public static final SoundEvent ACHILLOBATOR_ATTACK = create("achillobator_attack");
+
     public static final SoundEvent MICRORAPTOR_LIVING = create("microraptor_living");
     public static final SoundEvent MICRORAPTOR_HURT = create("microraptor_hurt");
     public static final SoundEvent MICRORAPTOR_DEATH = create("microraptor_death");
