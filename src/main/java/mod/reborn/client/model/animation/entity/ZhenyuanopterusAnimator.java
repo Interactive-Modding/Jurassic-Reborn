@@ -48,9 +48,9 @@ public class ZhenyuanopterusAnimator extends EntityAnimator<ZhenyuanopterusEntit
         AdvancedModelRenderer[] legRight = new AdvancedModelRenderer[]{rightThigh, rightCalf, rightUpperFoot, rightFoot};
 
         float globalSpeed = 0.5F;
-        float globalDegree = 2F;
+        float globalDegree = 1F;
         float globalHeight = 2F;
-        float frontOffset = -1.35f;
+        float frontOffset = -0.35f;
 
         if (entity.isOnGround() && !entity.isCarcass()) {
             model.bob(body1, 1 * globalSpeed, 1 * globalHeight, false, f, f1);
@@ -59,7 +59,7 @@ public class ZhenyuanopterusAnimator extends EntityAnimator<ZhenyuanopterusEntit
             model.walk(body1, 1 * globalSpeed, -0.08f * globalHeight, false, 0, 0.1f, f, f1);
             model.walk(leftArm1, 1 * globalSpeed, -0.08f * globalHeight, true, 0, 0, f, f1);
             model.walk(rightArm1, 1 * globalSpeed, -0.08f * globalHeight, true, 0, 0, f, f1);
-            model.chainWave(neck, 1 * globalSpeed, -0.15f * globalHeight, 4, f, f1);
+            model.chainWave(neck, 1 * globalSpeed, -0.05f * globalHeight, 4, f, f1);
             model.chainWave(tail, 1 * globalSpeed, 0.1f * globalHeight, 1, f, f1);
 
             model.walk(leftThigh, 0.5F * globalSpeed, 0.7F * globalDegree, false, 3.14F, 0.2F, f, f1);
