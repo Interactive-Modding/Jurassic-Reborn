@@ -155,7 +155,6 @@ public class IndominusEntity extends DinosaurEntity
             case INJURED:
                 return SoundHandler.INDOMINUS_HURT;
             case ROARING:
-                return SoundHandler.INDOMINUS_ROAR;
             case CALLING:
                 return SoundHandler.INDOMINUS_ROAR;
         }

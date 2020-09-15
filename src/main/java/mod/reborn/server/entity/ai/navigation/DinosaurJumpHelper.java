@@ -6,7 +6,7 @@ import net.ilexiconn.llibrary.server.animation.Animation;
 import net.minecraft.entity.ai.EntityJumpHelper;
 
 public class DinosaurJumpHelper extends EntityJumpHelper {
-    private DinosaurEntity entity;
+    private final DinosaurEntity entity;
     private boolean sounded;
     private boolean jumped;
     private float yaw;

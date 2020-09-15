@@ -55,7 +55,7 @@ public abstract class Dinosaur implements Comparable<Dinosaur> {
     private boolean isMammal;
     private int storage;
     private int overlayCount;
-    private int rotationAngle = 180;
+    private int rotationAngle = 25;
     private Diet diet;
     private SleepTime sleepTime = SleepTime.DIURNAL;
     private String[] bones;
@@ -330,7 +330,7 @@ public abstract class Dinosaur implements Comparable<Dinosaur> {
         return this.entityClass;
     }
 
-    public final int getRotationAngle() {
+    public int getRotationAngle() {
         return this.rotationAngle;
     }
 
@@ -506,8 +506,8 @@ public abstract class Dinosaur implements Comparable<Dinosaur> {
         this.isHybrid = true;
     }
 
-    public int setRotationAngle(int rotationAngle) {
-        return this.rotationAngle;
+    public void setRotationAngle(int rotationAngle) {
+        this.rotationAngle = rotationAngle;
     }
 
     public int getLipids() {

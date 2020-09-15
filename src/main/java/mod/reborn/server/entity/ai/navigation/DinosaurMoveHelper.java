@@ -28,10 +28,6 @@ public class DinosaurMoveHelper extends EntityMoveHelper {
             float strafe = this.moveStrafe;
             float moveDistance = MathHelper.sqrt(forward * forward + strafe * strafe);
 
-            if (moveDistance < 1.5F) {
-                moveDistance = 0.8F;
-            }
-
             moveDistance = moveSpeed / moveDistance;
             forward = forward * moveDistance;
             strafe = strafe * moveDistance;
@@ -41,14 +37,12 @@ public class DinosaurMoveHelper extends EntityMoveHelper {
             float moveZ = strafe * rotationZ + forward * rotationX;
             PathNavigate navigator = this.entity.getNavigator();
 
-            if (navigator != null) {
-                NodeProcessor nodeProcessor = navigator.getNodeProcessor();
+            NodeProcessor nodeProcessor = navigator.getNodeProcessor();
 
-                if (nodeProcessor != null && nodeProcessor.getPathNodeType(this.entity.world, MathHelper.floor(this.entity.posX + moveX), MathHelper.floor(this.entity.posY), MathHelper.floor(this.entity.posZ + moveZ)) != PathNodeType.WALKABLE) {
-                    this.moveForward = 0.9F;
-                    this.moveStrafe = 0.0F;
-                    moveSpeed = speedAttribute;
-                }
+            if (nodeProcessor.getPathNodeType(this.entity.world, MathHelper.floor(this.entity.posX + moveX), MathHelper.floor(this.entity.posY), MathHelper.floor(this.entity.posZ + moveZ)) != PathNodeType.WALKABLE) {
+                this.moveForward = 0.9F;
+                this.moveStrafe = 0.0F;
+                moveSpeed = speedAttribute;
             }
 
             this.entity.setAIMoveSpeed(moveSpeed);
@@ -68,7 +62,7 @@ public class DinosaurMoveHelper extends EntityMoveHelper {
             }
 
             float movementDirection = (float) ((MathHelper.atan2(deltaZ, deltaX) * (180D / Math.PI)) - 90.0F);
-            this.entity.rotationYaw = this.limitAngle(this.entity.rotationYaw, movementDirection, 60);
+            this.entity.rotationYaw = this.limitAngle(this.entity.rotationYaw, movementDirection, dinosaur.getDinosaur().getRotationAngle());
             this.entity.setAIMoveSpeed((float) (this.speed * speedAttribute));
 
             if (deltaY > this.entity.stepHeight && deltaX * deltaX + deltaZ * deltaZ < Math.max(1.0F, this.entity.width + (deltaY * deltaY))) {

@@ -40,14 +40,12 @@ public class MinimapGuiApp extends GuiApp
         super(app);
     }
 
-    private Map<BlockPos, Integer> heights = new HashMap<BlockPos, Integer>();
+    private final Map<BlockPos, Integer> heights = new HashMap<BlockPos, Integer>();
 
     @Override
     public void render(int mouseX, int mouseY, PaleoPadGui gui)
     {
         super.renderButtons(mouseX, mouseY, gui);
-
-        MinimapApp app = (MinimapApp) getApp();
 
         EntityPlayer player = mc.player;
         World world = mc.world;
@@ -109,7 +107,7 @@ public class MinimapGuiApp extends GuiApp
 
                             rgb = r << 16 | g << 8 | b;
 
-                            gui.drawScaledRect(mapX + (renderChunkX * 16) + 90, renderY + (renderChunkY * 16) + 15, 1, 1, 1.0F, rgb/** (color.colorValue & rgb) >> 1) **/);
+                            gui.drawScaledRect(mapX + (renderChunkX * 16) + 90, renderY + (renderChunkY * 16) + 15, 1, 1, 1.0F, rgb);
 
                             renderY++;
                         }

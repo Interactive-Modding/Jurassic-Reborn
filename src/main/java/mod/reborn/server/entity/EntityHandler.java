@@ -225,10 +225,8 @@ public class EntityHandler {
         registerEntity(TranquilizerDartEntity.class, "Tranquilizer Dart");
         registerEntity(BulletEntity.class, "bullet");
 
-        ArrayList<Biome> biomeBeach = new ArrayList<>();
-        	biomeBeach.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.BEACH));
-        ArrayList<Biome> biomeOcean = new ArrayList<>();
-            biomeOcean.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.OCEAN));
+        ArrayList<Biome> biomeBeach = new ArrayList<>(BiomeDictionary.getBiomes(BiomeDictionary.Type.BEACH));
+        ArrayList<Biome> biomeOcean = new ArrayList<>(BiomeDictionary.getBiomes(BiomeDictionary.Type.OCEAN));
 
         EntityRegistry.addSpawn(EntityCrab.class, 5, 4, 8, EnumCreatureType.CREATURE, biomeBeach.toArray(new Biome[biomeBeach.size()]));
         EntityRegistry.addSpawn(EntityShark.class, 8, 1, 5, EnumCreatureType.WATER_CREATURE, biomeOcean.toArray(new Biome[biomeOcean.size()]));
@@ -270,7 +268,7 @@ public class EntityHandler {
     private static void registerEntity(Class<? extends Entity> entity, String name) {
         String formattedName = name.toLowerCase(Locale.ENGLISH).replaceAll(" ", "_");
         ResourceLocation registryName = new ResourceLocation("rebornmod:entities." + formattedName);
-        EntityRegistry.registerModEntity(registryName, entity, "rebornmod." + formattedName, entityId++, RebornMod.INSTANCE, 128, 3, true);
+        EntityRegistry.registerModEntity(registryName, entity, "rebornmod." + formattedName, entityId++, RebornMod.INSTANCE, 85, 1, true);
     }
     
     
@@ -278,7 +276,7 @@ public class EntityHandler {
     private static void registerEntity(Class<? extends Entity> entity, String name, int primary, int secondary) {
         String formattedName = name.toLowerCase(Locale.ENGLISH).replaceAll(" ", "_");
         ResourceLocation registryName = new ResourceLocation("rebornmod:entities." + formattedName);
-        EntityRegistry.registerModEntity(registryName, entity, "rebornmod." + formattedName, entityId++, RebornMod.INSTANCE, 128, 3, true, primary, secondary);
+        EntityRegistry.registerModEntity(registryName, entity, "rebornmod." + formattedName, entityId++, RebornMod.INSTANCE, 85, 1, true, primary, secondary);
     }
 
     public static void registerDinosaur(Dinosaur dinosaur) {

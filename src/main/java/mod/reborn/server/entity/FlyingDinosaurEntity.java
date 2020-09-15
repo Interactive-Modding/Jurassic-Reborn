@@ -42,7 +42,7 @@ public abstract class FlyingDinosaurEntity extends DinosaurEntity implements Ent
         this.moveHelper = new FlyingDinosaurEntity.FlyingMoveHelper();
         this.tasks.addTask(1, new FlyingDinosaurEntity.AIFlyLand());
         this.tasks.addTask(2, new FlyingDinosaurEntity.AIStartFlying());
-        this.tasks.addTask(2, new FlyingDinosaurEntity.AIRandomFly());
+        this.tasks.addTask(0, new FlyingDinosaurEntity.AIRandomFly());
         this.tasks.addTask(0, new FlyingDinosaurEntity.AIWander());
         this.tasks.addTask(2, new AILookAround());
         this.doesEatEggs(true);
@@ -192,13 +192,14 @@ public abstract class FlyingDinosaurEntity extends DinosaurEntity implements Ent
         public void startExecuting() {
             this.dino.startTakeOff();
             this.dino.setAnimation(EntityAnimation.FLYING.get());
+            this.dino.getMoveHelper().setMoveTo(this.dino.posX + rand.nextFloat(), this.dino.posY + (rand.nextFloat()*5), this.dino.posZ + rand.nextFloat(), 2D);
         }
 
 
     }
 
     class AIRandomFly extends EntityAIBase {
-        private FlyingDinosaurEntity dino = FlyingDinosaurEntity.this;
+        private final FlyingDinosaurEntity dino = FlyingDinosaurEntity.this;
 
         public AIRandomFly() {
             this.setMutexBits(1);
@@ -232,7 +233,7 @@ public abstract class FlyingDinosaurEntity extends DinosaurEntity implements Ent
             Random random = this.dino.getRNG();
             for(int i = 0; i < 100; i++) {
                 double destinationX = this.dino.posX + (double) ((random.nextFloat() * 2.0F - 1.0F) * 16.0F);
-                double destinationY = this.dino.posY + (double) ((random.nextFloat() * 2.0F - 1.0F) * 4.0F);
+                double destinationY = this.dino.posY + (double) ((random.nextFloat() * 2.0F - 1.0F) * 8.0F);
                 double destinationZ = this.dino.posZ + (double) ((random.nextFloat() * 2.0F - 1.0F) * 16.0F);
                 Vec3d vecPos = new Vec3d(destinationX, destinationY, destinationZ);
                 if(dino.isCourseTraversable(vecPos) && Math.abs(MathUtils.cosineFromPoints(vecPos, lookVec, new Vec3d(getPosition()))) < 45D)
@@ -255,7 +256,7 @@ public abstract class FlyingDinosaurEntity extends DinosaurEntity implements Ent
 
         @Override
         public boolean shouldExecute() {
-            if(dino.ticksOnFloor <= 150 && dino.isOnGround() && this.dino.isInWater() && this.dino.isOverWater()) {
+            if(dino.ticksInAir <= 150 && dino.isOnGround() && this.dino.isInWater() && this.dino.isOverWater()) {
                 return false;
             }
             EntityMoveHelper moveHelper = this.dino.getMoveHelper();
@@ -292,7 +293,7 @@ public abstract class FlyingDinosaurEntity extends DinosaurEntity implements Ent
     }
 
     class FlyingMoveHelper extends DinosaurMoveHelper {
-        private FlyingDinosaurEntity parentEntity = FlyingDinosaurEntity.this;
+        private final FlyingDinosaurEntity parentEntity = FlyingDinosaurEntity.this;
         private int timer;
 
         public FlyingMoveHelper() {

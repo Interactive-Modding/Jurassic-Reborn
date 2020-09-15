@@ -14,15 +14,17 @@ public class DinosaurWanderEntityAI extends EntityAIBase
     private double xPosition;
     private double yPosition;
     private double zPosition;
-    private double speed;
+    private final double speed;
     protected int executionChance;
     private boolean mustUpdate;
-    private int walkradius;
+    private final int walkradius;
+    private final Herd herd;
 
 
     public DinosaurWanderEntityAI(DinosaurEntity creatureIn, double speedIn, int chance, int walkradius)
     {
         this.entity = creatureIn;
+        this.herd = entity.herd;
         this.speed = speedIn;
         this.executionChance = chance;
         this.walkradius = walkradius;
@@ -84,7 +86,13 @@ public class DinosaurWanderEntityAI extends EntityAIBase
     @Override
     public void startExecuting()
     {
-        this.entity.getNavigator().tryMoveToXYZ(this.xPosition, this.yPosition, this.zPosition, this.speed);
+        if(herd != null) {
+            for(DinosaurEntity entity : herd.members) {
+                entity.getNavigator().tryMoveToXYZ(this.xPosition + (entity.getRNG().nextDouble()*2), this.yPosition, this.zPosition + (entity.getRNG().nextDouble()*2), this.speed);
+            }
+        } else {
+            this.entity.getNavigator().tryMoveToXYZ(this.xPosition, this.yPosition, this.zPosition, this.speed);
+        }
     }
 
     public void makeUpdate()

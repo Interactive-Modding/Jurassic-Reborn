@@ -6,11 +6,14 @@ import net.minecraft.entity.ai.RandomPositionGenerator;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.util.math.Vec3d;
 
+import java.util.Random;
+
 public class MoveUnderwaterEntityAI extends EntityAIBase {
     private DinosaurEntity swimmingEntity;
     private double xPosition;
     private double yPosition;
     private double zPosition;
+    private Random rnd = new Random();
 
     public MoveUnderwaterEntityAI(DinosaurEntity entity) {
         this.swimmingEntity = entity;
@@ -22,12 +25,15 @@ public class MoveUnderwaterEntityAI extends EntityAIBase {
         if (this.swimmingEntity.getRNG().nextFloat() < 0.50) {
             return false;
         }
-        Vec3d target = RandomPositionGenerator.findRandomTarget(this.swimmingEntity, 6, 2);
+        Vec3d target = RandomPositionGenerator.findRandomTarget(this.swimmingEntity, 6, 12);
+        double x;
+        double y;
+        double z;
         if (target == null) {
             return false;
         } else {
             this.xPosition = target.x;
-            this.yPosition = target.y;
+            this.yPosition = target.y - (rnd.nextDouble() * 2);
             this.zPosition = target.z;
             return true;
         }

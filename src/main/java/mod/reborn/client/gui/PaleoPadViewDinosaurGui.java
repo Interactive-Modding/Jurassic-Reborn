@@ -85,7 +85,7 @@ public class PaleoPadViewDinosaurGui extends GuiScreen {
         this.drawEntityOnScreen(115, 140, (int) (70 / (dinoDef.getAdultSizeY() + (2 * dinoDef.getScaleAdult() + dinoDef.getPaleoPadScale()))), this.entity);
         GL11.glDisable(GL11.GL_SCISSOR_TEST);
         drawScaledText("Viewing: " + this.entity.getName(), 5, 5, 1.0F, this.entity.isMale() ? dinoDef.getEggPrimaryColorMale() : dinoDef.getEggPrimaryColorFemale());
-        drawScaledText("Age: " + this.guideInfo.daysExisted + " days", 5, 20, 1.0F, 0x808080);
+        drawScaledText("Age: " + this.entity.getDaysExisted() + " days", 5, 20, 1.0F, 0x808080);
 
         int l = dimensions.getScaledWidth() / 2 - 115;
 

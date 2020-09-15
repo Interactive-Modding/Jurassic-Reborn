@@ -8,7 +8,7 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
 public class DinosaurPathNavigate extends PathNavigateGround {
-    private DinosaurEntity dinosaur;
+    private final DinosaurEntity dinosaur;
 
     public DinosaurPathNavigate(DinosaurEntity entity, World world) {
         super(entity, world);
@@ -25,6 +25,7 @@ public class DinosaurPathNavigate extends PathNavigateGround {
     @Override
     protected void pathFollow() {
         Vec3d position = this.getEntityPosition();
+        assert this.currentPath != null;
         int length = this.currentPath.getCurrentPathLength();
 
         for (int i = this.currentPath.getCurrentPathIndex(); i < this.currentPath.getCurrentPathLength(); ++i) {
@@ -45,7 +46,7 @@ public class DinosaurPathNavigate extends PathNavigateGround {
 
         float maxDistance = this.entity.width > 0.75F ? width : 0.75F - this.entity.width / 2.0F;
 
-        if (deltaX < maxDistance && deltaZ < maxDistance && deltaY < 1.0) {
+        if (deltaX < maxDistance && deltaZ < maxDistance && deltaY < 2.0) {
             this.currentPath.incrementPathIndex();
         }
 
