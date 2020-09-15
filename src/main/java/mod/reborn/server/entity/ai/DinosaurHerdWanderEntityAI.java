@@ -65,7 +65,7 @@ public class DinosaurHerdWanderEntityAI extends EntityAIBase
     }
     
     protected boolean innerShouldStopExcecuting() { //TODO: merge into one
-        if(herd != null)
+        if(herd != null && herd.leader != null)
     	return this.random.nextInt(this.executionChance) != 0;
         return false;
     }
@@ -83,7 +83,8 @@ public class DinosaurHerdWanderEntityAI extends EntityAIBase
     @Override
     public boolean shouldContinueExecuting()
     {
-        return !this.herd.leader.getNavigator().noPath() && !this.herd.leader.isInWater();
+        if(herd != null && herd.leader != null) return !this.herd.leader.getNavigator().noPath() && !this.herd.leader.isInWater();
+        else return false;
     }
 
     @Override
