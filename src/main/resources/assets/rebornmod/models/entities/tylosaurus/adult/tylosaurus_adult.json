@@ -97,6 +97,44 @@
         "time": 15
       }
     ],
+    "PREPARE_LEAP": [
+      {
+        "pose": "tylosaurus_adult_prepare_leap",
+        "time": 15
+      }
+    ],
+    "LEAP": [
+      {
+        "pose": "tylosaurus_adult_leaping_1",
+        "time": 10
+      },
+      {
+        "pose": "tylosaurus_adult_leaping_2",
+        "time": 10
+      },
+      {
+        "pose": "tylosaurus_adult_leaping_3",
+        "time": 15
+      },
+      {
+        "pose": "tylosaurus_adult_leaping_4",
+        "time": 10
+      },
+      {
+        "pose": "tylosaurus_adult_leaping_5",
+        "time": 10
+      }
+    ],
+    "LEAP_LAND": [
+      {
+        "pose": "tylosaurus_adult_landing_1",
+        "time": 20
+      },
+      {
+        "pose": "tylosaurus_adult_landing_2",
+        "time": 25
+      }
+    ],
     "SWIMMING": [
       {
         "pose": "tylosaurus_adult_swimming_1",

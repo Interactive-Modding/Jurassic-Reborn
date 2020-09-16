@@ -92,7 +92,7 @@ public class DinosaurHerdWanderEntityAI extends EntityAIBase
     {
         if(herd != null && herd.leader != null) {
             for(DinosaurEntity entity : herd.members) {
-                entity.getNavigator().tryMoveToXYZ(this.xPosition + (entity.getRNG().nextDouble()*2), this.yPosition, this.zPosition + (entity.getRNG().nextDouble()*2), this.speed);
+                entity.getNavigator().tryMoveToXYZ(this.xPosition + (entity.getRNG().nextFloat()), this.yPosition, this.zPosition + (entity.getRNG().nextFloat()), this.speed);
             }
         }
     }

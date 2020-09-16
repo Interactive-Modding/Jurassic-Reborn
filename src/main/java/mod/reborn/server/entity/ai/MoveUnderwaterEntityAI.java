@@ -13,7 +13,6 @@ public class MoveUnderwaterEntityAI extends EntityAIBase {
     private double xPosition;
     private double yPosition;
     private double zPosition;
-    private Random rnd = new Random();
 
     public MoveUnderwaterEntityAI(DinosaurEntity entity) {
         this.swimmingEntity = entity;
@@ -22,10 +21,10 @@ public class MoveUnderwaterEntityAI extends EntityAIBase {
 
     @Override
     public boolean shouldExecute() {
-        if (this.swimmingEntity.getRNG().nextFloat() < 0.50) {
+        if (this.swimmingEntity.getRNG().nextFloat() < 0.50 && this.swimmingEntity.isBusy()) {
             return false;
         }
-        Vec3d target = RandomPositionGenerator.findRandomTarget(this.swimmingEntity, 6, 12);
+        Vec3d target = RandomPositionGenerator.findRandomTarget(this.swimmingEntity, 6, 6);
         double x;
         double y;
         double z;
@@ -33,7 +32,7 @@ public class MoveUnderwaterEntityAI extends EntityAIBase {
             return false;
         } else {
             this.xPosition = target.x;
-            this.yPosition = target.y - (rnd.nextDouble() * 2);
+            this.yPosition = target.y;
             this.zPosition = target.z;
             return true;
         }
@@ -47,5 +46,10 @@ public class MoveUnderwaterEntityAI extends EntityAIBase {
     @Override
     public void startExecuting() {
         this.swimmingEntity.getNavigator().tryMoveToXYZ(this.xPosition, this.yPosition, this.zPosition, 1.0D);
+    }
+
+    @Override
+    public boolean isInterruptible() {
+        return false;
     }
 }

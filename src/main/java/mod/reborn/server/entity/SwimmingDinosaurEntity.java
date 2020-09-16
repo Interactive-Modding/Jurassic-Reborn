@@ -1,10 +1,12 @@
 package mod.reborn.server.entity;
 
+import net.minecraft.block.material.Material;
 import net.minecraft.entity.MoverType;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityMoveHelper;
 import net.minecraft.pathfinding.PathNavigateSwimmer;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import mod.reborn.server.entity.ai.MoveUnderwaterEntityAI;
@@ -15,7 +17,11 @@ public abstract class SwimmingDinosaurEntity extends DinosaurEntity {
         this.moveHelper = new SwimmingDinosaurEntity.SwimmingMoveHelper();
         this.tasks.addTask(1, new MoveUnderwaterEntityAI(this));
         this.navigator = new PathNavigateSwimmer(this, world);
+    }
 
+    @Override
+    public boolean isMovementBlocked() {
+        return super.isMovementBlocked();
     }
 
     @Override
@@ -36,8 +42,9 @@ public abstract class SwimmingDinosaurEntity extends DinosaurEntity {
         }
     }
 
-    @Override
-    protected void handleJumpWater() {
+    public boolean isNotColliding()
+    {
+        return this.world.checkNoEntityCollision(this.getEntityBoundingBox(), this);
     }
 
     @Override
@@ -65,7 +72,7 @@ public abstract class SwimmingDinosaurEntity extends DinosaurEntity {
     }
 
     class SwimmingMoveHelper extends EntityMoveHelper {
-        private SwimmingDinosaurEntity swimmingEntity = SwimmingDinosaurEntity.this;
+        private final SwimmingDinosaurEntity swimmingEntity = SwimmingDinosaurEntity.this;
 
         public SwimmingMoveHelper() {
             super(SwimmingDinosaurEntity.this);
@@ -78,7 +85,7 @@ public abstract class SwimmingDinosaurEntity extends DinosaurEntity {
                 double distanceY = this.posY - this.swimmingEntity.posY;
                 double distanceZ = this.posZ - this.swimmingEntity.posZ;
                 double distance = Math.abs(distanceX * distanceX + distanceY * distanceY + distanceZ * distanceZ);
-                distance = (double) MathHelper.sqrt(distance);
+                distance = MathHelper.sqrt(distance);
                 distanceY /= distance;
                 float f = (float) (Math.atan2(distanceZ, distanceX) * 180.0D / Math.PI) - 90.0F;
                 this.swimmingEntity.rotationYaw = this.limitAngle(this.swimmingEntity.rotationYaw, f, 30.0F);

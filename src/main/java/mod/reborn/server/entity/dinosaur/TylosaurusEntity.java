@@ -1,6 +1,7 @@
 package mod.reborn.server.entity.dinosaur;
 
 import mod.reborn.server.entity.SwimmingDinosaurEntity;
+import mod.reborn.server.entity.ai.WaterLeapAI;
 import mod.reborn.server.entity.animal.GoatEntity;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.passive.EntityAnimal;
@@ -15,5 +16,6 @@ public class TylosaurusEntity extends SwimmingDinosaurEntity
     {
         super(world);
         this.target(CoelacanthEntity.class, MegapiranhaEntity.class, EntitySquid.class, EntityPlayer.class, EntityAnimal.class, EntityVillager.class, EntityMob.class, GoatEntity.class);
+        this.tasks.addTask(0, new WaterLeapAI(this, 12, 1.2F));
     }
 }
