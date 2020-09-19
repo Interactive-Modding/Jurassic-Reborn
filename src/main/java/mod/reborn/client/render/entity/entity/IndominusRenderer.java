@@ -1,5 +1,6 @@
-package mod.reborn.client.render.entity;
+package mod.reborn.client.render.entity.entity;
 
+import mod.reborn.client.render.entity.DinosaurRenderer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.entity.layers.LayerRenderer;

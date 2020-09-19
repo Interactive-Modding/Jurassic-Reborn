@@ -7,6 +7,7 @@ import mod.reborn.client.model.animation.EntityAnimator;
 import mod.reborn.client.model.animation.entity.*;
 import mod.reborn.client.render.block.*;
 import mod.reborn.client.render.entity.*;
+import mod.reborn.client.render.entity.dinosaur.TroodonRenderInfo;
 import mod.reborn.server.block.*;
 import mod.reborn.server.block.entity.*;
 import mod.reborn.server.conf.RebornConfig;
@@ -504,7 +505,7 @@ public enum RenderingHandler {
 		registerRenderInfo(EntityHandler.MOGANOPTERUS, new MoganopterusAnimator(), 0.65F);
 		registerRenderInfo(EntityHandler.ORNITHOMIMUS, new OrnithomimusAnimator(), 0.65F);
 		registerRenderInfo(EntityHandler.ZHENYUANOPTERUS, new ZhenyuanopterusAnimator(), 0.65F);
-		registerRenderInfo(EntityHandler.TROODON, new TroodonAnimator(), 0.65F);
+		registerTroodonInfo(0.65F);
 		registerRenderInfo(EntityHandler.PACHYCEPHALOSAURUS, new PachycephalosaurusAnimator(), 0.65F);
 		registerRenderInfo(EntityHandler.ALLIGATORGAR, new AlligatorGarAnimator(), 0.0F);
 		registerRenderInfo(EntityHandler.OVIRAPTOR, new OviraptorAnimator(), 0.55F);
@@ -647,6 +648,20 @@ public enum RenderingHandler {
         renderInfos.put(renderDef.getDinosaur(), renderDef);
         RenderingRegistry.registerEntityRenderingHandler(renderDef.getDinosaur().getDinosaurClass(), renderDef);
     }
+
+    private static void registerTroodonInfo(float shadowSize) {
+        try{
+            registerTroodonInfo(new TroodonRenderInfo(shadowSize));
+        } catch(NullPointerException e){
+            e.printStackTrace();
+        }
+    }
+
+    private static void registerTroodonInfo(DinosaurRenderInfo renderDef) {
+        renderInfos.put(renderDef.getDinosaur(), renderDef);
+        RenderingRegistry.registerEntityRenderingHandler(renderDef.getDinosaur().getDinosaurClass(), renderDef);
+    }
+
 
     public DinosaurRenderInfo getRenderInfo(Dinosaur dino) {
         return this.renderInfos.get(dino);
