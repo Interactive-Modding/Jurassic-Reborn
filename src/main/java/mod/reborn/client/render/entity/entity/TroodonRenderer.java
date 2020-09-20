@@ -32,7 +32,7 @@ public class TroodonRenderer extends DinosaurRenderer {
 
         @Override
         public void doRenderLayer(DinosaurEntity entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
-            if (!entitylivingbaseIn.isInvisible() && !entitylivingbaseIn.areEyelidsClosed() && !entitylivingbaseIn.getEntityWorld().isDaytime()) {
+            if (!entitylivingbaseIn.isInvisible() && !entitylivingbaseIn.areEyelidsClosed() && !(entitylivingbaseIn.world.calculateSkylightSubtracted(partialTicks) <= 2)) {
                 ResourceLocation texture = new ResourceLocation(RebornMod.MODID, "textures/entities/troodon/troodon_eyes.png");
                 ITextureObject textureObject = Minecraft.getMinecraft().getTextureManager().getTexture(texture);
                 if (textureObject != TextureUtil.MISSING_TEXTURE) {
