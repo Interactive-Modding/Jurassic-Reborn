@@ -29,7 +29,7 @@ public class AchillobatorDinosaur extends Dinosaur
         this.setSizeY(0.5F, 1.8F);
         this.setDiet(Diet.CARNIVORE.get());
         this.setBones("arm_bones", "foot_bones", "leg_bones", "neck_vertebrae", "ribcage", "shoulder", "skull", "claw", "pelvis", "tail_vertebrae", "tooth");
-        this.setHeadCubeName("head");
+        this.setHeadCubeName("Head");
         this.setScale(1.1F, 0.325F);
         this.setBreeding(false,2, 4, 30, false, true);
         this.setMaxHerdSize(10);
