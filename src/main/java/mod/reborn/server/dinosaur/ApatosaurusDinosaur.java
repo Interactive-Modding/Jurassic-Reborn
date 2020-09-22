@@ -15,8 +15,8 @@ public class ApatosaurusDinosaur extends Dinosaur
         this.setDinosaurType(DinosaurType.PASSIVE);
         this.setDinosaurClass(ApatosaurusEntity.class);
         this.setTimePeriod(TimePeriod.JURASSIC);
-        this.setEggColorMale(0xA79F93, 0x987664);
-        this.setEggColorFemale(0x7E7D70, 0x30343E);
+        this.setEggColorMale(0x565b4b, 0x7a925c);
+        this.setEggColorFemale(0x31313f, 0x222238);
         this.setHealth(10, 80);
         this.setStrength(5, 20);
         this.setSpeed((SPEED -0.05), SPEED);
