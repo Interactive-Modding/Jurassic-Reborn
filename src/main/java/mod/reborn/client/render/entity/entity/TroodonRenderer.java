@@ -12,6 +12,7 @@ import net.minecraft.client.renderer.entity.layers.LayerRenderer;
 import net.minecraft.client.renderer.texture.ITextureObject;
 import net.minecraft.client.renderer.texture.TextureUtil;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -32,7 +33,7 @@ public class TroodonRenderer extends DinosaurRenderer {
 
         @Override
         public void doRenderLayer(DinosaurEntity entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
-            if (!entitylivingbaseIn.isInvisible() && !entitylivingbaseIn.areEyelidsClosed() && !(entitylivingbaseIn.world.calculateSkylightSubtracted(partialTicks) <= 2)) {
+            if (!entitylivingbaseIn.isInvisible() && !entitylivingbaseIn.areEyelidsClosed() && !(entitylivingbaseIn.world.calculateSkylightSubtracted(partialTicks) <= 2) || entitylivingbaseIn.world.getLight(new BlockPos(entitylivingbaseIn.getHeadPos())) <=12) {
                 ResourceLocation texture = new ResourceLocation(RebornMod.MODID, "textures/entities/troodon/troodon_eyes.png");
                 ITextureObject textureObject = Minecraft.getMinecraft().getTextureManager().getTexture(texture);
                 if (textureObject != TextureUtil.MISSING_TEXTURE) {
