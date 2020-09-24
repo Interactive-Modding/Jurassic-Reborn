@@ -32,7 +32,7 @@ public class VillagerTradeHandler {
                         ItemStack itemstack = ItemMap.setupNewMap(world, blockpos.getX(), blockpos.getZ(), (byte)2, true, true);
                         ItemMap.renderBiomePreviewMap(world, itemstack);
                         MapData.addTargetDecoration(itemstack, blockpos, "+", MapDecoration.Type.MANSION);
-                        itemstack.setTranslatableName("filled_map.jurassicraft.visitorcenter");
+                        itemstack.setTranslatableName("filled_map.rebornmod.visitorcenter");
                         recipeList.add(new MerchantRecipe(new ItemStack(Items.EMERALD, random.nextInt(12) + 16), new ItemStack(Items.COMPASS), itemstack));
 
                     }
