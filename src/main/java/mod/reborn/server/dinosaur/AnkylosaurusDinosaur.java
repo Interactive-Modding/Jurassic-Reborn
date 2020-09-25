@@ -20,7 +20,6 @@ public class AnkylosaurusDinosaur extends Dinosaur
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(15, 40);
         this.setMaximumAge(fromDays(50));
-        this.setRotationAngle(15, 35);
         this.setEyeHeight(0.4F, 2.0F);
         this.setSizeX(0.8F, 3.0F);
         this.setSizeY(0.6F, 3.0F);

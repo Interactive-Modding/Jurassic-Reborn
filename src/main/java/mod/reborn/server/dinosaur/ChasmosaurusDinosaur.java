@@ -19,7 +19,6 @@ public class ChasmosaurusDinosaur extends Dinosaur
         this.setEggColorMale(0xB6B293, 0x85563E);
         this.setEggColorFemale(0xB9B597, 0x323232);
         this.setHealth(10, 40);
-        this.setRotationAngle(70, 25);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(5, 15);
         this.setMaximumAge(fromDays(40));

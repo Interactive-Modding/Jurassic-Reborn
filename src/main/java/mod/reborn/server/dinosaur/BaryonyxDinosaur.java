@@ -20,7 +20,6 @@ public class BaryonyxDinosaur extends Dinosaur
         this.setHealth(6, 35);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(1, 10);
-        this.setRotationAngle(100, 40);
         this.setMaximumAge(fromDays(55));
         this.setEyeHeight(0.55F, 2.95F);
         this.setSizeX(0.35F, 1.5F);
