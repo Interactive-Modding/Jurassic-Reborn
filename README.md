@@ -24,8 +24,6 @@ WinterKILLER435
 
 AveLardo12
 
-JurassicXenomorph
-
 DTRaptor, The Political Advisor
 
 TheJurassicAlien
@@ -74,6 +72,8 @@ RextheZilla98
 ᗰι𝓬ʰ𝐈𝐠Ữ𝓝 (Michigun)
 
 AGSucho
+
+JurassicXenomorph
 
 Ms.Random
 
