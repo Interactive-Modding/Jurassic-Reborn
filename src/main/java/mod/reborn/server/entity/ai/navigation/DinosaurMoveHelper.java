@@ -62,7 +62,7 @@ public class DinosaurMoveHelper extends EntityMoveHelper {
             }
 
             float movementDirection = (float) ((MathHelper.atan2(deltaZ, deltaX) * (180D / Math.PI)) - 90.0F);
-            this.entity.rotationYaw = this.limitAngle(this.entity.rotationYaw, movementDirection, dinosaur.getDinosaur().getRotationAngle());
+            this.entity.rotationYaw = this.limitAngle(this.entity.rotationYaw, movementDirection, (float) dinosaur.getRotationAngle());
             this.entity.setAIMoveSpeed((float) (this.speed * speedAttribute));
 
             if (deltaY > this.entity.stepHeight && deltaX * deltaX + deltaZ * deltaZ < Math.max(1.0F, this.entity.width + (deltaY * deltaY))) {

@@ -22,6 +22,7 @@ public class CearadactylusDinosaur extends Dinosaur
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(1, 10);
         this.setMaximumAge(fromDays(50));
+        this.setRotationAngle(90, 20);
         this.setEyeHeight(0.45F, 1.45F);
         this.setSizeX(0.35F, 1.5F);
         this.setSizeY(0.45F, 1.55F);

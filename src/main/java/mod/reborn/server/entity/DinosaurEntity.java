@@ -643,6 +643,10 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
         }
     }
 
+    public double getRotationAngle() {
+        return interpolate(dinosaur.getBabyrotation(), dinosaur.getRotationAngle());
+    }
+
     public double interpolate(double baby, double adult) {
         int dinosaurAge = this.dinosaurAge;
         int maxAge = this.dinosaur.getMaximumAge();

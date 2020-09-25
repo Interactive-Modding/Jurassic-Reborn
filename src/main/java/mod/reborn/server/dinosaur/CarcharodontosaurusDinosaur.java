@@ -17,6 +17,7 @@ public class CarcharodontosaurusDinosaur extends Dinosaur {
         this.setHealth(10, 70);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(1, 20);
+        this.setRotationAngle(80, 25);
         this.setMaximumAge(fromDays(45));
         this.setEyeHeight(0.45F, 1.6F);
         this.setSizeX(0.4F, 2.8F);

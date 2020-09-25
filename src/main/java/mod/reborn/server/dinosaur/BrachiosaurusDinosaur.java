@@ -23,6 +23,7 @@ public class BrachiosaurusDinosaur extends Dinosaur {
         this.setHealth(20, 150);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(5, 15);
+        this.setRotationAngle(50, 10);
         this.setMaximumAge(this.fromDays(85));
         this.setEyeHeight(2.2F, 18.4F);
         this.setSizeX(0.9F, 6.5F);

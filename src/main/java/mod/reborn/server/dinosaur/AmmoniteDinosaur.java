@@ -15,9 +15,10 @@ public class AmmoniteDinosaur extends Dinosaur {
         this.setTimePeriod(TimePeriod.TRIASSIC);
         this.setEggColorMale(0xE4936B, 0xBC5312);
         this.setEggColorFemale(0xE4936B, 0xB86D1B);
-        this.setHealth(4, 26);
-        this.setSpeed((SPEED -0.15), SPEED);
+        this.setHealth(60, 30);
+        this.setSpeed((SPEED -0.25), SPEED);
         this.setStorage(27);
+        this.setRotationAngle(4, 30);
         this.setStrength(2, 4);
         this.setMaximumAge(fromDays(45));
         this.setMarineAnimal(true);

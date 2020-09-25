@@ -20,6 +20,7 @@ public class CeratosaurusDinosaur extends Dinosaur {
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStorage(27);
         this.setStrength(1, 20);
+        this.setRotationAngle(90, 15);
         this.setMaximumAge(fromDays(45));
         this.setEyeHeight(0.45F, 1.6F);
         this.setSizeX(0.4F, 2.8F);
