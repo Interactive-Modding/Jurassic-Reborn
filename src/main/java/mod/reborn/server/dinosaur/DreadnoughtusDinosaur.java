@@ -24,7 +24,7 @@ public class DreadnoughtusDinosaur extends Dinosaur {
         this.setStrength(5, 15);
         this.setMaximumAge(this.fromDays(85));
         this.setEyeHeight(2.2F, 18.4F);
-        this.setRotationAngle(5);
+        this.setRotationAngle(50, 20);
         this.setSizeX(0.7F, 6.5F);
         this.setSizeY(0.8F, 7.0F);
         this.setStorage(54);
