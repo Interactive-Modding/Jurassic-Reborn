@@ -742,7 +742,7 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
             world.getEntitiesWithinAABB(EntityLivingBase.class, this.getEntityBoundingBox().grow(10, 10, 10), this::canEatEntity).stream().findAny().ifPresent(this::setAttackTarget);
         }
 
-        if (!this.isMale() && !this.world.isRemote) {
+        if (!this.isMale() && !this.world.isRemote && !this.dinosaur.isHybrid) {
             if (this.isPregnant()) {
                 if (--this.pregnantTime <= 0) {
                     this.navigator.clearPath();

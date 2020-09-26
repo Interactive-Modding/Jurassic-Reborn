@@ -95,7 +95,7 @@ public class ItemHandler {
         Entity entity = interaction.getPlayer().world.getEntityByID(nbt.getInteger("dino_id"));
         if (interaction.getTarget() instanceof DinosaurEntity) {
             if (nbt.hasKey("dino_id", 99)) {
-                if (entity instanceof DinosaurEntity && ((DinosaurEntity) entity).isMale() != ((DinosaurEntity) interaction.getTarget()).isMale()) {
+                if (entity instanceof DinosaurEntity && ((DinosaurEntity) entity).isMale() != ((DinosaurEntity) interaction.getTarget()).isMale() && !((DinosaurEntity) interaction.getTarget()).getDinosaur().isHybrid) {
                     ((DinosaurEntity) entity).breed((DinosaurEntity) interaction.getTarget());
                     ((DinosaurEntity) interaction.getTarget()).breed((DinosaurEntity) entity);
                 } else if (entity != interaction.getTarget()) {
@@ -112,7 +112,7 @@ public class ItemHandler {
     public static final Item BIRTHING_WAND = new EntityRightClickItem(interaction -> {
         if(interaction.getTarget() instanceof DinosaurEntity) {
             DinosaurEntity dino = ((DinosaurEntity)interaction.getTarget());
-            if (dino.isPregnant()) {
+            if (dino.isPregnant() && !dino.getDinosaur().isHybrid) {
                 ((DinosaurEntity) interaction.getTarget()).giveBirth();
             return true;
         } else {
