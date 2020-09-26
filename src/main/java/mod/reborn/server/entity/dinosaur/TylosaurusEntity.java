@@ -16,6 +16,6 @@ public class TylosaurusEntity extends SwimmingDinosaurEntity
     {
         super(world);
         this.target(CoelacanthEntity.class, MegapiranhaEntity.class, EntitySquid.class, EntityPlayer.class, EntityAnimal.class, EntityVillager.class, EntityMob.class, GoatEntity.class);
-        this.tasks.addTask(0, new WaterLeapAI(this, 12, 1.2F));
+        //this.tasks.addTask(0, new WaterLeapAI(this, 12, 1.2F));
     }
 }

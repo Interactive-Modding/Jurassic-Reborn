@@ -379,7 +379,7 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
 
     @Override
     public boolean attackEntityAsMob(Entity entity) {
-        if (entity instanceof DinosaurEntity && ((DinosaurEntity) entity).isCarcass()) {
+        if (entity instanceof DinosaurEntity && ((DinosaurEntity) entity).isCarcass() && this.canEatEntity(entity)) {
             this.setAnimation(EntityAnimation.EATING.get());
         } else {
             this.setAnimation(EntityAnimation.ATTACKING.get());
@@ -407,6 +407,12 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
             return true;
         }
         return false;
+    }
+
+    private boolean canEatEntity(DinosaurEntity entity) {
+        boolean isMarine = entity.getDinosaur().isMarineCreature();
+        if(!isMarine) return entity.dinosaur.getDiet().canEat(entity, FoodType.MEAT);
+        else return entity.dinosaur.getDiet().canEat(entity, FoodType.FISH);
     }
 
     @Override
