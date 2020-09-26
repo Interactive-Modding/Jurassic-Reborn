@@ -712,6 +712,10 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
     public void onLivingUpdate() {
         super.onLivingUpdate();
 
+        if(this.getAttackTarget() != null) {
+            if(this.getAttackTarget().isDead) this.setAttackTarget(null);
+        }
+
         if(this.animation != null && EntityAnimation.getAnimation(this.animation).doesBlockMovement()) {
             this.blocked = true;
         } else {
