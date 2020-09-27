@@ -3,6 +3,7 @@ package mod.reborn.server.entity.dinosaur;
 import mod.reborn.client.model.animation.EntityAnimation;
 import mod.reborn.client.sound.SoundHandler;
 import mod.reborn.server.conf.RebornConfig;
+import mod.reborn.server.entity.AmfibianDinosaurEntity;
 import mod.reborn.server.entity.DinosaurEntity;
 import mod.reborn.server.entity.SwimmingDinosaurEntity;
 import mod.reborn.server.entity.ai.DinosaurWanderEntityAI;
@@ -16,31 +17,13 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 
-public class BeelzebufoEntity extends SwimmingDinosaurEntity{
+public class BeelzebufoEntity extends AmfibianDinosaurEntity {
 
     public BeelzebufoEntity(World world) {
         super(world);
         this.target(AlvarezsaurusEntity.class, CompsognathusEntity.class, LeptictidiumEntity.class, OthnieliaEntity.class, MicroraptorEntity.class, MussaurusEntity.class, GuanlongEntity.class, GallimimusEntity.class);
         this.tasks.addTask(0, new LeapingMeleeEntityAI(this, getAIMoveSpeed()));
         this.tasks.addTask(0, new DinosaurWanderEntityAI(this, getAIMoveSpeed(), 10, RebornConfig.ENTITIES.dinosaurWalkingRadius));
-    }
-    @Override
-    public void onEntityUpdate() {
-        int air = this.getAir();
-        super.onEntityUpdate();
-
-        if (this.isEntityAlive() && this.isInWater()) {
-            if (this.getAir() == -20) {
-                this.setAir(0);
-            }
-        } else {
-            this.setAir(300);
-        }
-    }
-
-    @Override
-    protected boolean canTriggerWalking() {
-        return true;
     }
 
     @Override
