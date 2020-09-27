@@ -19,7 +19,7 @@ public class TylosaurusDinosaur extends Dinosaur
         this.setEggColorMale(0x187D75, 0x15544F);
         this.setEggColorFemale(0x798A8F, 0x101517);
         this.setHealth(10, 40);
-        this.setSpeed((SPEED -0.05), SPEED);
+        this.setSpeed((SPEED -0.65), SPEED);
         this.setStrength(5, 30);
         this.setMaximumAge(fromDays(60));
         this.setEyeHeight(0.35F, 2.35F);

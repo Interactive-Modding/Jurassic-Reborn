@@ -16,7 +16,7 @@ public class CrassigyrinusDinosaur extends Dinosaur {
         this.setEggColorMale(0xE5C2AD, 0x6E320E);
         this.setEggColorFemale(0xE8D0B2, 0x74480F);
         this.setHealth(10, 20);
-        this.setSpeed((SPEED -0.05), SPEED);
+        this.setSpeed((SPEED -0.25), SPEED);
         this.setStorage(27);
         this.setStrength(1, 20);
         this.setMaximumAge(fromDays(45));

@@ -28,7 +28,7 @@ public class MawsoniaDinosaur extends Dinosaur {
         this.setEggColorFemale(0x7C775E, 0x4D4A3B);
         this.setHealth(6, 40);
         this.setFlee(true);
-        this.setSpeed((SPEED -0.05), SPEED);
+        this.setSpeed((SPEED -0.35), SPEED);
         this.setAttackSpeed(1.5);
         this.setStrength(0.5, 3);
         this.setMaximumAge(this.fromDays(30));

@@ -20,7 +20,7 @@ public class DunkleosteusDinosaur extends Dinosaur
         this.setEggColorMale(0xA89B8C, 0x753A28);
         this.setEggColorFemale(0xA6A588, 0x785F2A);
         this.setHealth(16, 60);
-        this.setSpeed((SPEED -0.05), SPEED);
+        this.setSpeed((SPEED -0.4), SPEED);
         this.setStrength(10, 40);
         this.setMaximumAge(fromDays(30));
         this.setEyeHeight(0.3F, 1.2F);

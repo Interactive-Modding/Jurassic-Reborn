@@ -16,11 +16,10 @@ public class DiplocaulusDinosaur extends Dinosaur {
         this.setEggColorMale(0xBDD9DE, 0x286A7F);
         this.setEggColorFemale(0xCDDEE7, 0x285880);
         this.setHealth(10, 20);
-        this.setSpeed((SPEED -0.05), SPEED);
+        this.setSpeed((SPEED -0.25), SPEED);
         this.setStorage(27);
         this.setStrength(1, 20);
         this.setMaximumAge(fromDays(45));
-        this.setMarineAnimal(true);
         this.setEyeHeight(0.45F, 1.6F);
         this.setSizeX(0.3F, 1.4F);
         this.setSizeY(0.5F, 1.8F);
