@@ -15,7 +15,7 @@ public class ChilesaurusDinosaur extends Dinosaur {
         this.setTimePeriod(TimePeriod.JURASSIC);
         this.setEggColorMale(0xE7D048, 0x7CB2A4);
         this.setEggColorFemale(0xE1CD50, 0x768840);
-        this.setHealth(10, 40);
+        this.setHealth(10, 20);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStorage(27);
         this.setStrength(1, 20);

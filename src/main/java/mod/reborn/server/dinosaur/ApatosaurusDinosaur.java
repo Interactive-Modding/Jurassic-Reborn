@@ -21,14 +21,14 @@ public class ApatosaurusDinosaur extends Dinosaur
         this.setStrength(5, 20);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setMaximumAge(fromDays(80));
-        this.setEyeHeight(0.9F, 6.8F);
-        this.setSizeX(0.9F, 6.5F);
-        this.setSizeY(1.0F, 6.8F);
+        this.setEyeHeight(0.7F, 6.6F);
+        this.setSizeX(0.7F, 6.3F);
+        this.setSizeY(0.8F, 6.6F);
         this.setStorage(54);
         this.setDiet((Diet.HERBIVORE.get()));
         this.setBones("front_leg_bones", "hind_leg_bones", "neck_vertebrae", "pelvis", "ribcage", "shoulder", "skull", "tail_vertebrae", "tooth");
         this.setHeadCubeName("Head");
-        this.setScale(2.0F, 0.25F);
+        this.setScale(1.8F, 0.23F);
         this.setBreeding(false, 4, 8, 70, false, true);
         this.setImprintable(true);
         this.setMaxHerdSize(6);
