@@ -18,7 +18,6 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.inventory.ItemStackHelper;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -41,7 +40,6 @@ import org.apache.commons.lang3.ArrayUtils;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -51,7 +49,7 @@ public class FeederBlockEntity extends TileEntityLockable implements ITickable, 
     public int prevOpenAnimation;
     public int openAnimation;
     protected String customName;
-    private NonNullList<ItemStack> slots = NonNullList.withSize(18, ItemStack.EMPTY);
+    private NonNullList<ItemStack> slots = NonNullList.<ItemStack>withSize(18, ItemStack.EMPTY);
     private int stayOpen;
     private boolean open;
     private DinosaurEntity feeding;
@@ -74,7 +72,7 @@ public class FeederBlockEntity extends TileEntityLockable implements ITickable, 
 
     @Override
     public ItemStack getStackInSlot(int index) {
-        return this.slots.get(index);
+        return (ItemStack)this.slots.get(index);
     }
 
     @Override
@@ -229,19 +227,6 @@ public class FeederBlockEntity extends TileEntityLockable implements ITickable, 
         return compound;
     }
 
-    public boolean canFeed(DinosaurEntity dinosaur) {
-        List<EntityItem> items = world.getEntitiesWithinAABB(EntityItem.class, dinosaur.getEntityBoundingBox().expand(16, 16, 16));
-        List<EntityItem> edible = new ArrayList<>();
-        for (EntityItem entity : items) {
-            ItemStack stack = entity.getItem();
-            Item item = stack.getItem();
-            if (FoodHelper.isEdible(dinosaur, dinosaur.getDinosaur().getDiet(), item)) {
-                edible.add(entity);
-            }
-        }
-        return edible.size() < 5;
-    }
-
 
     @Override
     public void update() {
@@ -338,14 +323,12 @@ public class FeederBlockEntity extends TileEntityLockable implements ITickable, 
     }
 
     public void setOpen(boolean open) {
-        if(this.canFeed(feeding)) {
-            if (!this.world.isRemote && this.open != open) {
-                this.world.addBlockEvent(this.pos, this.getBlockType(), 0, open ? 1 : 0);
-            }
-
-            this.open = open;
-
+        if (!this.world.isRemote && this.open != open) {
+            this.world.addBlockEvent(this.pos, this.getBlockType(), 0, open ? 1 : 0);
         }
+
+        this.open = open;
+
         if (!open) {
             this.feeding = null;
         }
