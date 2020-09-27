@@ -2032,7 +2032,7 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
     }
 
     public boolean canDinoSwim() {
-        return this.getGrowthStage() != GrowthStage.INFANT && this.getGrowthStage() != GrowthStage.JUVENILE;
+        return true;
     }
 
     public Vector3f getDinosaurCultivatorRotation() {
