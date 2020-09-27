@@ -10,6 +10,7 @@ import mod.reborn.server.entity.item.*;
 import mod.reborn.server.entity.vehicle.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EnumCreatureType;
+import net.minecraft.init.Biomes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
@@ -226,10 +227,9 @@ public class EntityHandler {
         registerEntity(BulletEntity.class, "bullet");
 
         ArrayList<Biome> biomeBeach = new ArrayList<>(BiomeDictionary.getBiomes(BiomeDictionary.Type.BEACH));
-        ArrayList<Biome> biomeOcean = new ArrayList<>(BiomeDictionary.getBiomes(BiomeDictionary.Type.OCEAN));
 
         EntityRegistry.addSpawn(EntityCrab.class, 5, 4, 8, EnumCreatureType.CREATURE, biomeBeach.toArray(new Biome[biomeBeach.size()]));
-        EntityRegistry.addSpawn(EntityShark.class, 8, 1, 5, EnumCreatureType.WATER_CREATURE, biomeOcean.toArray(new Biome[biomeOcean.size()]));
+        EntityRegistry.addSpawn(EntityShark.class, 5, 1, 4, EnumCreatureType.WATER_CREATURE, Biomes.OCEAN);
 
         registerEntity(DinosaurEggEntity.class, "Dinosaur Egg");
         registerEntity(HelicopterEntityNew.class, "Helicopter base");

@@ -16,6 +16,7 @@ import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.passive.EntitySquid;
+import net.minecraft.entity.passive.EntityWaterMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -159,8 +160,8 @@ public class EntityShark extends EntityMob implements Animatable, IEntityAdditio
     @Override
     public void onUpdate() {
         super.onUpdate();
-        if (!this.world.isRemote && this.world.getDifficulty() == EnumDifficulty.PEACEFUL)
-        {
+        if (!this.world.isRemote) {
+            this.world.getDifficulty();
         }
         if (this.ticksExisted % 10 == 0) {
             this.inLava = this.isInLava();
@@ -207,7 +208,12 @@ public class EntityShark extends EntityMob implements Animatable, IEntityAdditio
     @Override
     public boolean getCanSpawnHere()
     {
-        return (this.rand.nextInt(5) == 0 || !this.world.canBlockSeeSky(new BlockPos(this))) && super.getCanSpawnHere();
+        return this.posY > 45.0D && this.posY < (double)this.world.getSeaLevel();
+    }
+
+    public boolean isNotColliding()
+    {
+        return this.world.checkNoEntityCollision(this.getEntityBoundingBox(), this);
     }
 
     @Override
@@ -316,7 +322,7 @@ public class EntityShark extends EntityMob implements Animatable, IEntityAdditio
                 double distanceY = this.posY - this.swimmingEntity.posY;
                 double distanceZ = this.posZ - this.swimmingEntity.posZ;
                 double distance = Math.abs(distanceX * distanceX + distanceY * distanceY + distanceZ * distanceZ);
-                distance = (double) MathHelper.sqrt(distance);
+                distance = MathHelper.sqrt(distance);
                 distanceY /= distance;
                 float f = (float) (Math.atan2(distanceZ, distanceX) * 180.0D / Math.PI) - 90.0F;
                 this.swimmingEntity.rotationYaw = this.limitAngle(this.swimmingEntity.rotationYaw, f, 30.0F);

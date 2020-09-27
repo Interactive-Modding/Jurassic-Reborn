@@ -25,14 +25,14 @@ public class EntityAIWanderNearWater extends EntityAIBase
     private int walkradius;
 
 
-    public EntityAIWanderNearWater(EntityCreature creatureIn, double speedIn, int chance, int walkradius)
-    {
+    public EntityAIWanderNearWater(EntityCreature creatureIn, double speedIn, int chance, int walkradius) {
         this.entity = creatureIn;
         this.speed = speedIn;
         this.executionChance = chance;
         this.walkradius = walkradius;
         this.setMutexBits(Mutex.MOVEMENT);
     }
+
 
     @Override
     public boolean shouldExecute()
@@ -77,7 +77,7 @@ public class EntityAIWanderNearWater extends EntityAIBase
     }
 
     protected Vec3d getWanderPosition() {
-        return RandomPositionGenerator.getLandPos(this.entity, walkradius, walkradius);
+        return RandomPositionGenerator.findRandomTarget(this.entity, walkradius, walkradius);
     }
 
     @Override

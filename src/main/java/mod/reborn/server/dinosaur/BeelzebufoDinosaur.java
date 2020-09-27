@@ -24,6 +24,7 @@ public class BeelzebufoDinosaur extends Dinosaur {
         this.setSizeX(0.2F, 0.5F);
         this.setSizeY(0.2F, 0.6F);
         this.setMovementType(MovementType.NEAR_SURFACE);
+        this.setRotationAngle(360, 90);
         this.setStorage(5);
         this.setDiet((Diet.PCARNIVORE.get()));
         this.setBones("leg_bones", "skull", "ribcage", "teeth");

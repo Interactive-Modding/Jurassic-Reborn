@@ -90,6 +90,11 @@ public class EntityAIFindWater extends EntityAIBase
         this.entity.getNavigator().tryMoveToXYZ(this.xPosition, this.yPosition, this.zPosition, this.speed);
     }
 
+    @Override
+    public boolean isInterruptible() {
+        return false;
+    }
+
     public void makeUpdate()
     {
         this.mustUpdate = true;
