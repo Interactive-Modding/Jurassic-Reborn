@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "rebornmod:remington",
+  "pattern": [
+    "EAC",
+    "CDC",
+    "  C"
+  ],
+  "key": {
+    "E": {
+      "item": "minecraft:redstone",
+      "data": 0
+    },
+    "D": {
+      "item": "minecraft:gold_ingot",
+      "data": 0
+    },
+    "C": {
+      "item": "minecraft:iron_ingot",
+      "data": 0
+    },
+    "A": {
+      "item": "minecraft:string",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "rebornmod:remington",
+    "data": 0
+  }
+}

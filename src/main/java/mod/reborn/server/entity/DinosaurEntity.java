@@ -284,6 +284,10 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
             }
     }
 
+    public InventoryDinosaur getInventory() {
+        return inventory;
+    }
+
     protected boolean getDoesEatEggs() {
         return this.eatsEggs;
     }
@@ -711,6 +715,12 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
     @Override
     public void onLivingUpdate() {
         super.onLivingUpdate();
+
+        if(this.inventory.getSizeInventory() > 0 && !hasTracker) {
+            if (this.inventory.contains(ItemHandler.TRACKER)) {
+                this.setHasTracker(true);
+            }
+        }
 
         if(this.getAttackTarget() != null) {
             if(this.getAttackTarget().isDead) this.setAttackTarget(null);
@@ -1716,10 +1726,10 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
 //                ", currentAnim=" + currentAnim +
 //                ", animation=" + animation +
 //                ", animTick=" + animTick +
-//                ", hasTracker=" + hasTracker +
+                ", hasTracker=" + hasTracker +
 //                ", tailBuffer=" + tailBuffer +
-//                ", owner=" + owner +
-//                ", inventory=" + inventory +
+                ", owner=" + owner +
+                ", inventory=" + inventory +
 //                ", metabolism=" + metabolism +
                 " }";
     }

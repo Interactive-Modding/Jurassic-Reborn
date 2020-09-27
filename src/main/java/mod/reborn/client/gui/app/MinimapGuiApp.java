@@ -5,6 +5,7 @@ import mod.reborn.RebornMod;
 import mod.reborn.client.gui.PaleoPadGui;
 import mod.reborn.server.dinosaur.Dinosaur;
 import mod.reborn.server.entity.DinosaurEntity;
+import mod.reborn.server.item.ItemHandler;
 import mod.reborn.server.paleopad.MinimapApp;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLiquid;
@@ -14,6 +15,8 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ClassInheritanceMultiMap;
 import net.minecraft.util.EntitySelectors;
 import net.minecraft.util.ResourceLocation;
@@ -43,8 +46,7 @@ public class MinimapGuiApp extends GuiApp
     private final Map<BlockPos, Integer> heights = new HashMap<BlockPos, Integer>();
 
     @Override
-    public void render(int mouseX, int mouseY, PaleoPadGui gui)
-    {
+    public void render(int mouseX, int mouseY, PaleoPadGui gui) {
         super.renderButtons(mouseX, mouseY, gui);
 
         EntityPlayer player = mc.player;
@@ -66,18 +68,13 @@ public class MinimapGuiApp extends GuiApp
         gui.drawBoxOutline(89, 14, 16 * 8 + 1, 16 * 8 + 1, 1, 1.0F, (renderChunkX + renderChunkY) % 2 == 0 ? 0x606060 : 0x505050);
 
 
-        for (int chunkX = playerChunkX - 4; chunkX < playerChunkX + 4; chunkX++)
-        {
-            for (int chunkZ = playerChunkZ - 4; chunkZ < playerChunkZ + 4; chunkZ++)
-            {
+        for (int chunkX = playerChunkX - 4; chunkX < playerChunkX + 4; chunkX++) {
+            for (int chunkZ = playerChunkZ - 4; chunkZ < playerChunkZ + 4; chunkZ++) {
                 Chunk chunk = world.getChunkFromChunkCoords(chunkX, chunkZ);
 
-                if (!chunk.isEmpty())
-                {
-                    for (int x = 0; x < 16; x++)
-                    {
-                        for (int z = 0; z < 16; z++)
-                        {
+                if (!chunk.isEmpty()) {
+                    for (int x = 0; x < 16; x++) {
+                        for (int z = 0; z < 16; z++) {
                             int blockX = x + (chunkX * 16);
                             int blockZ = z + (chunkZ * 16);
 
@@ -132,26 +129,25 @@ public class MinimapGuiApp extends GuiApp
 
         int trackedEntities = 0;
 
-        for (int chunkX = playerChunkX - 4; chunkX < playerChunkX + 4; chunkX++)
-        {
-            for (int chunkZ = playerChunkZ - 4; chunkZ < playerChunkZ + 4; chunkZ++)
-            {
+        for (int chunkX = playerChunkX - 4; chunkX < playerChunkX + 4; chunkX++) {
+            for (int chunkZ = playerChunkZ - 4; chunkZ < playerChunkZ + 4; chunkZ++) {
                 Chunk chunk = world.getChunkFromChunkCoords(chunkX, chunkZ);
 
-                if (!chunk.isEmpty())
-                {
-                    for (Object e : getEntitiesInChunk(chunk, null, EntitySelectors.NOT_SPECTATING))
-                    {
+                if (!chunk.isEmpty()) {
+                    for (Object e : getEntitiesInChunk(chunk, null, EntitySelectors.NOT_SPECTATING)) {
                         Entity entity = (Entity) e;
 
-                        if (entity instanceof DinosaurEntity)
-                        {
+                        if (entity instanceof DinosaurEntity) {
                             DinosaurEntity dino = (DinosaurEntity) entity;
 
-                            if (dino.hasTracker())
-                            {
+                            if (dino.hasTracker() && dino.getOwner().toString().equals(player.getUniqueID().toString())) {
                                 Dinosaur dinosaur = dino.getDinosaur();
-                                int colour = dino.isMale() ? dinosaur.getEggPrimaryColorMale() : dinosaur.getEggPrimaryColorFemale();
+                                int colour;
+                                if (dino.getHealth() < dino.getMaxHealth() % 10) {
+                                    colour = 0xFF0000;
+                                } else {
+                                    colour = dino.isMale() ? dinosaur.getEggPrimaryColorMale() : dinosaur.getEggPrimaryColorFemale();
+                                }
 
                                 float red = (colour >> 16 & 255) / 255.0F;
                                 float green = (colour >> 8 & 255) / 255.0F;
@@ -172,9 +168,7 @@ public class MinimapGuiApp extends GuiApp
 
                                 gui.drawCenteredScaledText(dinoX + " " + (int) dino.posY + " " + dinoZ, entityRenderX + 5, entityRenderY + 8, 0.3F, 0xFFFFFF);
                             }
-                        }
-                        else if (player == entity)
-                        {
+                        } else if (player == entity) {
                             mc.getTextureManager().bindTexture(MinimapGuiApp.entity);
 
                             gui.drawScaledTexturedModalRect((playerX & 15) + (renderChunkX * 16) + 90 - 4, (playerZ & 15) + (renderChunkY * 16) + 15 - 4, 0, 0, 16, 16, 16, 16, 0.6F);

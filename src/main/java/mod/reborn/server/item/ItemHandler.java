@@ -288,7 +288,7 @@ public class ItemHandler {
     public static final Dart DART_POISON_CYCASIN = new Dart((entity, stack) -> entity.addPotionEffect(new PotionEffect(MobEffects.POISON, 2000)), 0xE2E1B8);
     public static final Dart DART_POISON_EXECUTIONER_CONCOCTION = new Dart((entity, stack) -> entity.setDeathIn(200), 0x000000);
     public static final Dart DART_TIPPED_POTION = new PotionDart();
-    public static final Dart TRACKER_DART = new Dart((entity, stack) -> entity.setHasTracker(true), 0x111111);
+    //public static final Dart TRACKER_DART = new Dart((entity, stack) -> entity.setHasTracker(true), 0x111111);
 
     public static final Glock GLOCK = new Glock();
     public static final Remington REMINGTON = new Remington();
@@ -444,7 +444,7 @@ public class ItemHandler {
         registerItem(DART_POISON_CYCASIN, "Dart Poison Cycasin");
         registerItem(DART_POISON_EXECUTIONER_CONCOCTION, "Dart Poison Executioner Concoction");
         registerItem(DART_TIPPED_POTION, "Dart Tipped Potion");
-        registerItem(TRACKER_DART, "Tracking Dart");
+        //registerItem(TRACKER_DART, "Tracking Dart");
 
         registerItem(GLOCK, "Glock");
         registerItem(REMINGTON, "remington");

@@ -1,8 +1,10 @@
 package mod.reborn.server.entity;
 
+import com.google.common.collect.Lists;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -10,12 +12,14 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.World;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class InventoryDinosaur implements IInventory {
     private DinosaurEntity entity;
 
     private NonNullList<ItemStack> inventory;
+    private ArrayList<Item> ITEMS = new ArrayList<>();
 
     public InventoryDinosaur(DinosaurEntity entity) {
         this.entity = entity;
@@ -91,10 +95,18 @@ public class InventoryDinosaur implements IInventory {
     @Override
     public void setInventorySlotContents(int index, ItemStack stack) {
         this.inventory.set(index, stack);
+        this.ITEMS.add(stack.getItem());
 
         if (!stack.isEmpty() && stack.getCount() > this.getInventoryStackLimit()) {
             stack.setCount(this.getInventoryStackLimit());
         }
+    }
+
+    public boolean contains(Item item) {
+        if(ITEMS.isEmpty()) {
+            return false;
+        }
+        return ITEMS.contains(item);
     }
 
     @Override
@@ -163,30 +175,27 @@ public class InventoryDinosaur implements IInventory {
 
     public void dropItems(World world, Random rand) {
         for (int i = 0; i < this.getSizeInventory(); ++i) {
+
             ItemStack itemstack = this.getStackInSlot(i);
 
             if (!itemstack.isEmpty()) {
                 float offsetX = rand.nextFloat() * 0.8F + 0.1F;
                 float offsetY = rand.nextFloat() * 0.8F + 0.1F;
                 float offsetZ = rand.nextFloat() * 0.8F + 0.1F;
+                EntityItem itemEntity = new EntityItem(world, this.entity.posX + offsetX, this.entity.posY + offsetY, this.entity.posZ + offsetZ, new ItemStack(itemstack.getItem(), itemstack.getCount(), itemstack.getItemDamage()));
+                float multiplier = 0.05F;
+                itemEntity.motionX = (float) rand.nextGaussian() * multiplier;
+                itemEntity.motionY = (float) rand.nextGaussian() * multiplier + 0.2F;
+                itemEntity.motionZ = (float) rand.nextGaussian() * multiplier;
+                world.spawnEntity(itemEntity);
+                itemstack.shrink(itemstack.getCount());
 
-                while (itemstack.getCount() > 0) {
-                    int j = rand.nextInt(21) + 10;
-
-                    if (j > itemstack.getCount()) {
-                        j = itemstack.getCount();
-                    }
-
-                    j -= itemstack.getCount();
-                    EntityItem itemEntity = new EntityItem(world, this.entity.posX + offsetX, this.entity.posY + offsetY, this.entity.posZ + offsetZ, new ItemStack(itemstack.getItem(), j, itemstack.getItemDamage()));
-                    float multiplier = 0.05F;
-                    itemEntity.motionX = (float) rand.nextGaussian() * multiplier;
-                    itemEntity.motionY = (float) rand.nextGaussian() * multiplier + 0.2F;
-                    itemEntity.motionZ = (float) rand.nextGaussian() * multiplier;
-                    world.spawnEntity(itemEntity);
-                }
             }
         }
+    }
+
+    public NonNullList<ItemStack> getInventory() {
+        return inventory;
     }
 
     @Override

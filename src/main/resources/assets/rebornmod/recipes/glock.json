@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "rebornmod:glock",
+  "pattern": [
+    "CCC",
+    " EA"
+  ],
+  "key": {
+    "E": {
+      "item": "minecraft:redstone",
+      "data": 0
+    },
+    "C": {
+      "item": "minecraft:iron_ingot",
+      "data": 0
+    },
+    "A": {
+      "item": "minecraft:string",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "rebornmod:glock",
+    "data": 0
+  }
+}

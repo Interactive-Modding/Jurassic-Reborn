@@ -1,13 +1,16 @@
 package mod.reborn.server.entity;
 
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.MoverType;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityMoveHelper;
+import net.minecraft.entity.item.EntityBoat;
 import net.minecraft.pathfinding.PathNavigateSwimmer;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 import mod.reborn.server.entity.ai.MoveUnderwaterEntityAI;
 
@@ -17,11 +20,6 @@ public abstract class SwimmingDinosaurEntity extends DinosaurEntity {
         this.moveHelper = new SwimmingDinosaurEntity.SwimmingMoveHelper();
         this.tasks.addTask(1, new MoveUnderwaterEntityAI(this));
         this.navigator = new PathNavigateSwimmer(this, world);
-    }
-
-    @Override
-    public boolean isMovementBlocked() {
-        return super.isMovementBlocked();
     }
 
     @Override
@@ -80,7 +78,7 @@ public abstract class SwimmingDinosaurEntity extends DinosaurEntity {
 
         @Override
         public void onUpdateMoveHelper() {
-            if (this.action == EntityMoveHelper.Action.MOVE_TO && !this.swimmingEntity.getNavigator().noPath() && this.swimmingEntity.isInWater()) {
+            if (this.action == EntityMoveHelper.Action.MOVE_TO && !this.swimmingEntity.getNavigator().noPath()) {
                 double distanceX = this.posX - this.swimmingEntity.posX;
                 double distanceY = this.posY - this.swimmingEntity.posY;
                 double distanceZ = this.posZ - this.swimmingEntity.posZ;
