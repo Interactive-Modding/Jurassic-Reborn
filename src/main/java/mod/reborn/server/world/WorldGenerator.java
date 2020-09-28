@@ -144,7 +144,7 @@ public enum WorldGenerator implements IWorldGenerator {
 
         if (RebornConfig.MINERAL_GENERATION.iceShardGeneration) {
             if (BiomeDictionary.hasType(biome, BiomeDictionary.Type.MOUNTAIN) || BiomeDictionary.hasType(biome, BiomeDictionary.Type.COLD) || BiomeDictionary.hasType(biome, BiomeDictionary.Type.SNOWY) || BiomeDictionary.hasType(biome, BiomeDictionary.Type.HILLS) || !BiomeDictionary.hasType(biome, BiomeDictionary.Type.MESA) || !BiomeDictionary.hasType(biome, BiomeDictionary.Type.SANDY)) {
-                this.generateOre(world, chunkX, chunkZ, 60, 6, 6, BlockHandler.ICE_SHARD.getDefaultState(), random, defaultPredicate);
+                this.generateOre(world, chunkX, chunkZ, 20, 8, 3, BlockHandler.ICE_SHARD.getDefaultState(), random, defaultPredicate);
             }
         }
 

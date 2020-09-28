@@ -16,7 +16,7 @@ public class CoelurusDinosaur extends Dinosaur
         this.setDinosaurType(DinosaurType.AGGRESSIVE);
         this.setDinosaurClass(CoelurusEntity.class);
         this.setTimePeriod(TimePeriod.JURASSIC);
-        this.setEggColorMale(0x7B8042, 0x454B3B);
+        this.setEggColorMale(0x9c7219, 0x382508);
         this.setEggColorFemale(0x7D734A, 0x484A3D);
         this.setHealth(4, 16);
         this.setSpeed((SPEED -0.05), SPEED);
