@@ -34,7 +34,7 @@ public class LambeosaurusDinosaur extends Dinosaur
         this.setAttackBias(-50);
         this.setImprintable(true);
         this.setDefendOwner(true);
-        this.setFlockSpeed(1.5F);
+        this.setFlockSpeed(2.5F);
         this.setBreeding(false, 2, 6, 40, false, true);
         String[][] recipe = {
                 {"tail_vertebrae", "pelvis", "ribcage","neck_vertebrae","skull"},

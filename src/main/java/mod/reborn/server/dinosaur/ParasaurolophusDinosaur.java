@@ -33,7 +33,7 @@ public class ParasaurolophusDinosaur extends Dinosaur {
         this.setHeadCubeName("Head");
         this.setScale(1.6F, 0.4F);
         this.setImprintable(true);
-        this.setFlockSpeed(1.5F);
+        this.setFlockSpeed(2.5F);
         this.setAttackBias(-100.0);
         this.setBreeding(false, 4, 6, 40, false, true);
 

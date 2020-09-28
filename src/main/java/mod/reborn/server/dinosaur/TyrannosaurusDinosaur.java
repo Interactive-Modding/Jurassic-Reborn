@@ -33,7 +33,7 @@ public class TyrannosaurusDinosaur extends Dinosaur {
         this.setBones("arm_bones", "foot_bones", "leg_bones", "neck_vertebrae", "pelvis", "ribcage", "shoulder", "skull", "tail_vertebrae", "tooth");
         this.setHeadCubeName("Head");
         this.setScale(2.4F, 0.35F);
-        this.setMaxHerdSize(3);
+        this.setMaxHerdSize(4);
         this.setAttackBias(1000.0);
         this.setBreeding(false, 2, 4, 60, false, true);
 

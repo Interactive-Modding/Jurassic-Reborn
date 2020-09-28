@@ -32,7 +32,7 @@ public class TherizinosaurusDinosaur extends Dinosaur
         this.setHeadCubeName("Head");
         this.setScale(3.5F, 0.55F);
         this.setOffset(0.0F, 1.0F, 0.0F);
-        this.setAttackSpeed(2);
+        this.setAttackSpeed(1);
         this.setAttackBias(800);
         this.shouldDefendOffspring();
         this.setBreeding(false, 2, 6, 20, false, true);
