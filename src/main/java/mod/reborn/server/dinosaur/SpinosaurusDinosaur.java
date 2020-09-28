@@ -32,7 +32,6 @@ public class SpinosaurusDinosaur extends Dinosaur
         this.setScale(2.37F, 0.3F);
         this.setAttackBias(900);
         this.shouldDefendOffspring();
-        this.setStorage(12);
         this.setBreeding(false, 2, 6, 40, false, true);
         String[][] recipe = {
                 {"", "", "","neck_vertebrae","skull"},

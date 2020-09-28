@@ -33,7 +33,6 @@ public class LeaellynasauraDinosaur extends Dinosaur
         this.setAttackBias(-50);
         this.setImprintable(true);
         this.setDefendOwner(true);
-        this.setStorage(6);
         this.setBreeding(false, 2, 6, 20, false, true);
         String[][] recipe = {
                 {"", "pelvis", "","",""},

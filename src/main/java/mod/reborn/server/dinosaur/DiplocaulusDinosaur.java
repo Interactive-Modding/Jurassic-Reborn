@@ -17,7 +17,7 @@ public class DiplocaulusDinosaur extends Dinosaur {
         this.setEggColorFemale(0xCDDEE7, 0x285880);
         this.setHealth(10, 20);
         this.setSpeed((SPEED -0.25), SPEED);
-        this.setStorage(27);
+        this.setStorage(18);
         this.setStrength(1, 20);
         this.setMaximumAge(fromDays(45));
         this.setEyeHeight(0.45F, 1.6F);
@@ -31,7 +31,6 @@ public class DiplocaulusDinosaur extends Dinosaur {
         this.setOffset(0,-4.5F,0);
         this.setAttackBias(10);
         this.setImprintable(true);
-        this.setStorage(12);
         this.setBreeding(true, 2, 6, 20, false, true);
         this.setMarineAnimal(true);
         String[][] recipe =     {{ "", "", "skull"},

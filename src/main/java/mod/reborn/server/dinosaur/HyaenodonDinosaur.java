@@ -33,7 +33,6 @@ public class HyaenodonDinosaur extends Dinosaur {
         this.setAttackBias(50);
         this.setImprintable(true);
         this.setDefendOwner(true);
-        this.setStorage(12);
         this.setMammal(true);
         String[][] recipe =     {
                 { "tail_vertebrae", "pelvis", "ribcage","neck_vertebrae", "skull"},

@@ -33,7 +33,6 @@ public class LudodactylusDinosaur extends Dinosaur
         this.shouldDefendOffspring();
         this.setAttackBias(120);
         this.setImprintable(true);
-        this.setStorage(12);
         this.setBreeding(false, 2, 6, 80, false, true);
         String[][] recipe = {
                 {"tail_vertebrae", "pelvis", "ribcage", "skull","teeth"},

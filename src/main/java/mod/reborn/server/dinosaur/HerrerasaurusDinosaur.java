@@ -34,7 +34,6 @@ public class HerrerasaurusDinosaur extends Dinosaur
         this.setAttackBias(300);
         this.setImprintable(true);
         this.setDefendOwner(true);
-        this.setStorage(12);
         this.shouldDefendOffspring();
         String[][] recipe = {
                 {"", "", "","neck_vertebrae","skull"},

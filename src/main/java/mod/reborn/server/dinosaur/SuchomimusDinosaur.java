@@ -30,7 +30,6 @@ public class SuchomimusDinosaur extends Dinosaur {
         this.shouldDefendOffspring();
         this.setBreeding(false, 2, 6, 20, false, true);
         this.setImprintable(true);
-        this.setStorage(12);
         String[][] recipe = {
                 {"", "", "","neck_vertebrae","skull"},
                 {"tail_vertebrae", "pelvis", "ribcage","shoulder","tooth"},

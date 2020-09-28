@@ -33,7 +33,6 @@ public class RugopsDinosaur extends Dinosaur
         this.setAttackBias(120);
         this.shouldDefendOffspring();
         this.setImprintable(true);
-        this.setStorage(12);
         this.setBreeding(false, 2, 6, 20, false, true);
         String[][] recipe = {
                 {"", "", "","neck_vertebrae","skull"},

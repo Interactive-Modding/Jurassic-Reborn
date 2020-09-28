@@ -26,7 +26,7 @@ public class TroodonDinosaur extends Dinosaur
         this.setEyeHeight(0.3F, 0.95F);
         this.setSizeX(0.3F, 0.7F);
         this.setSizeY(0.4F, 0.95F);
-        this.setStorage(25);
+        this.setStorage(12);
         this.setDiet((Diet.CARNIVORE.get()));
         this.setSleepTime(SleepTime.NOCTURNAL);
         this.setBones("arm_bones", "foot_bones", "leg_bones", "neck_vertebrae", "pelvis", "ribcage", "shoulder", "skull", "tail_vertebrae", "tooth");
@@ -40,7 +40,6 @@ public class TroodonDinosaur extends Dinosaur
         this.setBreeding(false,1, 7, 28, false, true);
         this.setJumpHeight(2);
         this.setImprintable(true);
-        this.setStorage(6);
         String[][] recipe = {
                 {"", "","neck_vertebrae","skull"},
                 {"tail_vertebrae","pelvis", "ribcage","shoulder"},

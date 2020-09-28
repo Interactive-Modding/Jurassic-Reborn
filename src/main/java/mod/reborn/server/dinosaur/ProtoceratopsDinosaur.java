@@ -25,7 +25,7 @@ public class ProtoceratopsDinosaur extends Dinosaur
         this.setEyeHeight(0.35F, 0.85F);
         this.setSizeX(0.3F, 1.0F);
         this.setSizeY(0.4F, 1.25F);
-        this.setStorage(27);
+        this.setStorage(9);
         this.setDiet((Diet.HERBIVORE.get()));
         this.setBones("skull", "teeth", "tail_vertebrae", "shoulder", "pelvis", "ribcage", "front_leg_bones", "hind_leg_bones", "shoulder");
         this.setHeadCubeName("Head");
@@ -33,7 +33,6 @@ public class ProtoceratopsDinosaur extends Dinosaur
         this.setScale(1.2F, 0.35F);
         this.setImprintable(true);
         this.setDefendOwner(true);
-        this.setStorage(12);
         this.setBreeding(false, 2, 5, 30, false, true);
         String[][] recipe = {
                 {"tail_vertebrae", "pelvis", "ribcage","","skull"},

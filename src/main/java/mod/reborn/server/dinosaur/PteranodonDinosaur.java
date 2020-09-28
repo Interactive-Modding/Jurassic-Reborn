@@ -33,7 +33,6 @@ public class PteranodonDinosaur extends Dinosaur
         this.setAttackBias(800);
         this.shouldDefendOffspring();
         this.setImprintable(false);
-        this.setStorage(12);
         this.setBreeding(false, 2, 6, 80, false, true);
         String[][] recipe = {
                 {"tail_vertebrae", "pelvis", "ribcage", "skull"},
