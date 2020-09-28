@@ -88,11 +88,12 @@ public class DinosaurHerdWanderEntityAI extends EntityAIBase
     }
 
     @Override
-    public void startExecuting()
-    {
-        if(herd != null && herd.leader != null) {
-            for(DinosaurEntity entity : herd.members) {
-                entity.getNavigator().tryMoveToXYZ(this.xPosition + (entity.getRNG().nextDouble() * this.herd.leader.getDinosaur().getAdultSizeX()), this.yPosition, this.zPosition + (entity.getRNG().nextDouble() * this.herd.leader.getDinosaur().getAdultSizeX()), this.speed);
+    public void startExecuting() {
+        if (herd != null && herd.leader != null) {
+            for (DinosaurEntity entity : herd.members) {
+                if (entity.getOrder() != DinosaurEntity.Order.FOLLOW) {
+                    entity.getNavigator().tryMoveToXYZ(this.xPosition + (entity.getRNG().nextDouble() * this.herd.leader.getDinosaur().getAdultSizeX()), this.yPosition, this.zPosition + (entity.getRNG().nextDouble() * this.herd.leader.getDinosaur().getAdultSizeX()), this.speed);
+                }
             }
         }
     }
