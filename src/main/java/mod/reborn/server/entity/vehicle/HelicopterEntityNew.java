@@ -3,20 +3,25 @@ package mod.reborn.server.entity.vehicle;
 import com.google.common.collect.Lists;
 
 import mod.reborn.RebornMod;
+import mod.reborn.client.render.entity.TyretrackRenderer;
 import mod.reborn.server.entity.ai.util.InterpValue;
 import mod.reborn.server.event.KeyBindingHandler;
+import mod.reborn.server.item.ItemHandler;
 import mod.reborn.server.message.HelicopterDirectionMessage;
 import mod.reborn.server.message.HelicopterEngineMessage;
 import mod.reborn.server.util.MutableVec3;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumHandSide;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -29,6 +34,7 @@ import java.util.function.Predicate;
 
 
 public class HelicopterEntityNew extends EntityLivingBase {
+    public final float MAX_HEALTH;
     public static final float MAX_POWER = 80.0F;
     public static final float REQUIRED_POWER = MAX_POWER / 2.0F;
     private static final DataParameter<Boolean> DATA_WATCHER_ENGINE_RUNNING = EntityDataManager.createKey(HelicopterEntityNew.class, DataSerializers.BOOLEAN);
@@ -47,6 +53,9 @@ public class HelicopterEntityNew extends EntityLivingBase {
     public final InterpValue interpRotationRoll = new InterpValue(this, 0.25D);
     public final InterpValue interpSpeed = new InterpValue(this, 0.01F);
 
+    private float healAmount;
+    private int healCooldown = 40;
+
     public HelicopterEntityNew(World worldIn) {
         super(worldIn);
         double w = 3f; // width in blocks
@@ -61,6 +70,48 @@ public class HelicopterEntityNew extends EntityLivingBase {
         }
 
         this.direction = new MutableVec3(0, 0, 0);
+        MAX_HEALTH = this.getMaxHealth();
+    }
+
+    @Override
+    protected void applyEntityAttributes() {
+        super.applyEntityAttributes();
+        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(50D);
+    }
+
+    @Override
+    public void setDead() {
+        RebornMod.getLogger().debug("The vehicle at the coordinates " + this.getPosition() + " has been destroyed! " + this.getHealth() + " "+ this.motionX + " " + this.motionY + " " + this.motionZ);
+        super.setDead();
+    }
+
+    protected void updateHeal() {
+        if (this.healCooldown > 0) {
+            this.healCooldown--;
+        } else if (this.healAmount > 0) {
+            this.setHealth(this.getHealth() + 1);
+            this.healAmount--;
+            if (this.getHealth() > MAX_HEALTH) {
+                this.setHealth(MAX_HEALTH);
+                this.healAmount = 0;
+            }
+        }
+    }
+
+    @Override
+    public boolean attackEntityFrom(DamageSource source, float amount) {
+        if (this.isEntityInvulnerable(source)) {
+            return false;
+        }
+        if (!this.world.isRemote) {
+            if (source.getTrueSource() instanceof EntityPlayer) {
+                amount *= 10;
+                this.healAmount += amount;
+                this.healCooldown = 40;
+            }
+            this.setHealth(this.getHealth() - amount);
+        }
+        return true;
     }
 
     /**
@@ -92,6 +143,16 @@ public class HelicopterEntityNew extends EntityLivingBase {
     }
 
     @Override
+    public boolean canBeCollidedWith() {
+        return true;
+    }
+
+    @Override
+    protected boolean canTriggerWalking() {
+        return false;
+    }
+
+    @Override
     public Iterable<ItemStack> getArmorInventoryList() {
         return Lists.newArrayList();
     }
@@ -111,10 +172,18 @@ public class HelicopterEntityNew extends EntityLivingBase {
     @Override
     public void onLivingUpdate() {
         this.interpSpeed.setTarget(3F);
-        super.onLivingUpdate();
         if (this.motionX * this.motionX + this.motionZ * this.motionZ > 1.1 * 1.1 && this.collidedHorizontally) {
             world.createExplosion(this.getRidingEntity(), posX, posY, posZ, 12, true);
         }
+        updateHeal();
+
+        if(this.getHealth() < 1) {
+            this.setDead();
+            if (this.world.getGameRules().getBoolean("doEntityDrops")) {
+                this.entityDropItem(new ItemStack(ItemHandler.VEHICLE_ITEM, 1, 2), 0.1f);
+            }
+        }
+        super.onLivingUpdate();
 
         // update rotor angle
         float time = this.enginePower / MAX_POWER; //Why is this called time ?
@@ -350,6 +419,20 @@ public class HelicopterEntityNew extends EntityLivingBase {
                 break;
             }
         }
+    }
+
+    @Override
+    public void readFromNBT(NBTTagCompound compound) {
+        this.setHealth(compound.getFloat("Health"));
+        this.healAmount = compound.getFloat("HealAmount");
+        super.readFromNBT(compound);
+    }
+
+    @Override
+    public NBTTagCompound writeToNBT(NBTTagCompound compound) {
+        compound.setFloat("Health", this.getHealth());
+        compound.setFloat("HealAmount", this.healAmount);
+        return super.writeToNBT(compound);
     }
 
     @Override
