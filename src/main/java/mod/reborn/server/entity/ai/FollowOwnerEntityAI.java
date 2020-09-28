@@ -23,7 +23,7 @@ public class FollowOwnerEntityAI extends EntityAIBase {
         if (this.entity.getNavigator().noPath() && this.entity.getOrder() == DinosaurEntity.Order.FOLLOW) {
             UUID ownerId = this.entity.getOwner();
             EntityPlayer owner = this.entity.world.getPlayerEntityByUUID(ownerId);
-            return owner != null && this.isOwnerFar(owner) && this.entity.getAttackTarget() == null;
+            return owner != null;
         }
 
         return false;
