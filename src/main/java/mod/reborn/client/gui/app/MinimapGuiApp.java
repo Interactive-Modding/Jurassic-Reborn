@@ -5,6 +5,7 @@ import mod.reborn.RebornMod;
 import mod.reborn.client.gui.PaleoPadGui;
 import mod.reborn.server.dinosaur.Dinosaur;
 import mod.reborn.server.entity.DinosaurEntity;
+import mod.reborn.server.entity.GrowthStage;
 import mod.reborn.server.item.ItemHandler;
 import mod.reborn.server.paleopad.MinimapApp;
 import net.minecraft.block.Block;
@@ -139,11 +140,13 @@ public class MinimapGuiApp extends GuiApp
 
                         if (entity instanceof DinosaurEntity) {
                             DinosaurEntity dino = (DinosaurEntity) entity;
-
-                            if (dino.hasTracker() && dino.getOwner().toString().equals(player.getUniqueID().toString())) {
-                                Dinosaur dinosaur = dino.getDinosaur();
+                            Dinosaur dinosaur = dino.getDinosaur();
+                            if (dino.hasTracker() && canTrack(dinosaur, dino, player)) {
                                 int colour;
-                                if (dino.getHealth() < dino.getMaxHealth() % 10) {
+                                if(dino.getHealth() <= dino.getMaxHealth()/100*50 && dino.getHealth() >= (dino.getMaxHealth()/100)*10) {
+                                    colour = 0xFF9900;
+                                }
+                                else if (dino.getHealth() <= (dino.getMaxHealth()/100)*10 || dino.isCarcass()) {
                                     colour = 0xFF0000;
                                 } else {
                                     colour = dino.isMale() ? dinosaur.getEggPrimaryColorMale() : dinosaur.getEggPrimaryColorFemale();
@@ -218,6 +221,11 @@ public class MinimapGuiApp extends GuiApp
             return pos;
         }
     }
+
+    private boolean canTrack(Dinosaur dinosaur, DinosaurEntity dinosaurEntity, EntityPlayer player) {
+        return !dinosaur.isImprintable() || dinosaurEntity.getOwner().toString().equals(player.getUniqueID().toString()) && dinosaurEntity.getAgePercentage() >= 75;
+    }
+
 
     /**
      * Fills the given list of all entities that intersect within the given bounding box that aren't the passed entity.
