@@ -194,24 +194,11 @@ public abstract class Dinosaur implements Comparable<Dinosaur> {
             if (!this.doesSupportGrowthStage(growthStage)) {
                 growthStageName = GrowthStage.ADULT.name().toLowerCase(Locale.ENGLISH);
             }
+            this.maleTextures.put(growthStage, new ResourceLocation(RebornMod.MODID, baseTextures + formattedName + "_male_" + growthStageName + ".png"));
+            this.femaleTextures.put(growthStage, new ResourceLocation(RebornMod.MODID, baseTextures + formattedName + "_female_" + growthStageName + ".png"));
+            this.eyelidTextures.put(new GrowthStageGenderContainer(growthStage, true), new ResourceLocation(RebornMod.MODID, baseTextures + formattedName + "_male_" + growthStageName + "_eyelid.png"));
+            this.eyelidTextures.put(new GrowthStageGenderContainer(growthStage, false), new ResourceLocation(RebornMod.MODID, baseTextures + formattedName + "_female_" + growthStageName + "_eyelid.png"));
 
-            if (this instanceof Hybrid) {
-                String baseName = baseTextures + formattedName + "_" + growthStageName;
-
-                ResourceLocation hybridTexture = new ResourceLocation(RebornMod.MODID, baseName + ".png");
-
-                this.maleTextures.put(growthStage, hybridTexture);
-                this.femaleTextures.put(growthStage, hybridTexture);
-
-                ResourceLocation eyelidTexture = new ResourceLocation(RebornMod.MODID, baseName + "_eyelid.png");
-                this.eyelidTextures.put(new GrowthStageGenderContainer(growthStage, false), eyelidTexture);
-                this.eyelidTextures.put(new GrowthStageGenderContainer(growthStage, true), eyelidTexture);
-            } else {
-                this.maleTextures.put(growthStage, new ResourceLocation(RebornMod.MODID, baseTextures + formattedName + "_male_" + growthStageName + ".png"));
-                this.femaleTextures.put(growthStage, new ResourceLocation(RebornMod.MODID, baseTextures + formattedName + "_female_" + growthStageName + ".png"));
-                this.eyelidTextures.put(new GrowthStageGenderContainer(growthStage, true), new ResourceLocation(RebornMod.MODID, baseTextures + formattedName + "_male_" + growthStageName + "_eyelid.png"));
-                this.eyelidTextures.put(new GrowthStageGenderContainer(growthStage, false), new ResourceLocation(RebornMod.MODID, baseTextures + formattedName + "_female_" + growthStageName + "_eyelid.png"));
-            }
 
             List<ResourceLocation> overlaysForGrowthStage = new ArrayList<>();
 

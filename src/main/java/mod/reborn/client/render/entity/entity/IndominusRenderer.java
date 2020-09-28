@@ -19,7 +19,7 @@ public class IndominusRenderer extends DinosaurRenderer
     {
         super(renderDef, manager);
 
-        addLayer(new LayerIndominusCamo(this));
+        //addLayer(new LayerIndominusCamo(this));
     }
 
     @Override

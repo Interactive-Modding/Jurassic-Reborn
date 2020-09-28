@@ -45,7 +45,9 @@ public class DisplayBlockItem extends Item {
             renderer.registerItemRenderer(this, getMetadata(dex, 0, false), "action_figure/action_figure_" + dinoName);
             renderer.registerItemRenderer(this, getMetadata(dex, 1, false), "action_figure/action_figure_" + dinoName);
             renderer.registerItemRenderer(this, getMetadata(dex, 2, false), "action_figure/action_figure_" + dinoName);
-            renderer.registerItemRenderer(this, getMetadata(dex, 1, true), "skeleton/fossil/skeleton_fossil_" + dinoName);
+            if(!dino.isHybrid) {
+                renderer.registerItemRenderer(this, getMetadata(dex, 1, true), "skeleton/fossil/skeleton_fossil_" + dinoName);
+            }
             renderer.registerItemRenderer(this, getMetadata(dex, 2, true), "skeleton/fresh/skeleton_fresh_" + dinoName);
         }
     }
@@ -104,9 +106,8 @@ public class DisplayBlockItem extends Item {
             for (Dinosaur dinosaur : dinosaurs) {
                 if (dinosaur.shouldRegister()) {
                     subtypes.add(new ItemStack(this, 1, getMetadata(EntityHandler.getDinosaurId(dinosaur), 0, false)));
-                    for (int variant = 1; variant < 3; variant++) {
-                        subtypes.add(new ItemStack(this, 1, getMetadata(EntityHandler.getDinosaurId(dinosaur), variant, true)));
-                    }
+                    if(!dinosaur.isHybrid) subtypes.add(new ItemStack(this, 1, getMetadata(EntityHandler.getDinosaurId(dinosaur), 1, true)));
+                    subtypes.add(new ItemStack(this, 1, getMetadata(EntityHandler.getDinosaurId(dinosaur), 2, true)));
                 }
             }
     }

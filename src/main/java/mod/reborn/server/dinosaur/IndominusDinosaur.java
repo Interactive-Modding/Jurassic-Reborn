@@ -9,8 +9,6 @@ import net.minecraft.util.ResourceLocation;
 
 public class IndominusDinosaur extends Dinosaur implements Hybrid
 {
-    private ResourceLocation texture;
-
     private ResourceLocation overlayTexture;
 
     public static final double SPEED = 0.4F;
@@ -48,7 +46,6 @@ public class IndominusDinosaur extends Dinosaur implements Hybrid
         this.setRecipe(recipe);
         this.enableSkeleton();
 
-        this.texture = new ResourceLocation(getDinosaurTexture("camouflage"));
         this.overlayTexture = new ResourceLocation(getDinosaurTexture(""));
 
     }
@@ -57,18 +54,6 @@ public class IndominusDinosaur extends Dinosaur implements Hybrid
     public Class<? extends Dinosaur>[] getDinosaurs()
     {
         return new Class[] { TyrannosaurusDinosaur.class, VelociraptorDinosaur.class, GiganotosaurusDinosaur.class, RugopsDinosaur.class, MajungasaurusDinosaur.class, CarnotaurusDinosaur.class, TherizinosaurusDinosaur.class };
-    }
-
-    @Override
-    public ResourceLocation getMaleTexture(GrowthStage stage)
-    {
-        return texture;
-    }
-
-    @Override
-    public ResourceLocation getFemaleTexture(GrowthStage stage)
-    {
-        return texture;
     }
 
     public ResourceLocation getCamoTexture(GrowthStage stage)

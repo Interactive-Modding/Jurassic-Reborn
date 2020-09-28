@@ -50,21 +50,7 @@ public class IndoraptorDinosaur extends Dinosaur implements Hybrid
     }
 
     @Override
-    public Class<? extends Dinosaur>[] getDinosaurs()
-    {
-        return new Class[] { IndominusDinosaur.class, VelociraptorDinosaur.class };
-    }
-    @Override
-    public ResourceLocation getMaleTexture(GrowthStage stage)
-    {
-        this.texture = new ResourceLocation(getDinosaurTexture("adult_male"));
-        return texture;
-    }
-
-    @Override
-    public ResourceLocation getFemaleTexture(GrowthStage stage)
-    {
-        this.texture = new ResourceLocation(getDinosaurTexture("adult_female"));
-        return texture;
+    public Class<? extends Dinosaur>[] getDinosaurs() {
+        return new Class[]{IndominusDinosaur.class, VelociraptorDinosaur.class};
     }
 }
