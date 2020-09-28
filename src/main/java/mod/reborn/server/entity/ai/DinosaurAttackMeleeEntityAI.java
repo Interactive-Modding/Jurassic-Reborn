@@ -15,6 +15,9 @@ public class DinosaurAttackMeleeEntityAI extends EntityAIAttackMelee {
 
     @Override
     public boolean shouldContinueExecuting() {
+        if(this.dinosaur.getOrder() == DinosaurEntity.Order.FOLLOW) {
+            return false;
+        }
         if(this.attacker != null && super.shouldContinueExecuting()) {
             EntityLivingBase target = this.attacker.getAttackTarget();
             assert target != null;

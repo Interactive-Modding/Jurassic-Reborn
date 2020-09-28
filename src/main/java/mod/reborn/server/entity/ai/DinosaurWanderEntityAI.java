@@ -66,7 +66,7 @@ public class DinosaurWanderEntityAI extends EntityAIBase
     }
     
     protected boolean innerShouldStopExcecuting() { //TODO: merge into one
-	return this.entity.getRNG().nextInt(this.executionChance) != 0;
+	return this.entity.getRNG().nextInt(this.executionChance) != 0 && !(this.entity.getOrder() == DinosaurEntity.Order.FOLLOW);
     }
     
     protected boolean outterShouldExecute() {

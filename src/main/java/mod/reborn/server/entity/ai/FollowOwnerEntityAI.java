@@ -22,10 +22,8 @@ public class FollowOwnerEntityAI extends EntityAIBase {
     public boolean shouldExecute() {
         if (this.entity.getNavigator().noPath() && this.entity.getOrder() == DinosaurEntity.Order.FOLLOW) {
             UUID ownerId = this.entity.getOwner();
-            if (ownerId != null) {
-                EntityPlayer owner = this.entity.world.getPlayerEntityByUUID(ownerId);
-                return owner != null && this.isOwnerFar(owner) && this.entity.getAttackTarget() == null;
-            }
+            EntityPlayer owner = this.entity.world.getPlayerEntityByUUID(ownerId);
+            return owner != null && this.isOwnerFar(owner) && this.entity.getAttackTarget() == null;
         }
 
         return false;
@@ -58,15 +56,8 @@ public class FollowOwnerEntityAI extends EntityAIBase {
         if (!this.entity.isMovementBlocked()) {
             if (this.recalculateTime-- <= 0) {
                 this.recalculateTime = 10;
-
-                if (this.isOwnerFar(this.owner)) {
-                    this.entity.getNavigator().tryMoveToEntityLiving(this.owner, 0.8F);
-                }
+                this.entity.getNavigator().tryMoveToEntityLiving(this.owner, 0.8F);
             }
         }
-    }
-
-    private boolean isOwnerFar(EntityPlayer owner) {
-        return this.entity.getDistanceSq(owner) > this.entity.width * 40;
     }
 }
