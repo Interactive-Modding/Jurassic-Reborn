@@ -20,4 +20,9 @@ public class CultivatorSyringeSlot extends Slot {
     public int getItemStackLimit(ItemStack stack) {
         return 1;
     }
+
+    @Override
+    public int getSlotStackLimit() {
+        return 1;
+    }
 }
