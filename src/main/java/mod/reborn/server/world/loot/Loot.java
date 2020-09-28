@@ -270,7 +270,7 @@ public class Loot {
         public ItemStack apply(ItemStack stack, Random rand, LootContext context) {
             List<Dinosaur> dinosaurs = EntityHandler.getRegisteredDinosaurs();
             Dinosaur dinosaur = dinosaurs.get(rand.nextInt(dinosaurs.size()));
-            if (stack.getItem() instanceof FossilItem) {
+            if (stack.getItem() instanceof FossilItem && !dinosaur.isHybrid) {
                 String boneName = dinosaur.getBones()[rand.nextInt(dinosaur.getBones().length)];
                 stack = new ItemStack(ItemHandler.FOSSILS.get(boneName), 1, EntityHandler.getDinosaurId(dinosaur));
                 return stack;
