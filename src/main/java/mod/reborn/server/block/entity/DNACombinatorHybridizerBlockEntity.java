@@ -140,7 +140,6 @@ public class DNACombinatorHybridizerBlockEntity extends MachineBaseBlockEntity {
                 dna.writeToNBT(nbt);
 
                 ItemStack output = new ItemStack(ItemHandler.STORAGE_DISC);
-                output.setItemDamage(EntityHandler.getDinosaurId(dna.getDinosaur()));
                 output.setTagCompound(nbt);
 
                 this.mergeStack(this.getOutputSlot(output), output);
