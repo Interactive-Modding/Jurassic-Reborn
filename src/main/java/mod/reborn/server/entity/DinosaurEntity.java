@@ -718,25 +718,6 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
     public void onLivingUpdate() {
         super.onLivingUpdate();
 
-        if(this.hasTracker) {
-            if(this.owner != null) {
-                EntityPlayer player = this.world.getPlayerEntityByUUID(owner);
-                if(messageTick <= 0 && player != null) {
-                    if (this.getHealth() <= (getMaxHealth() / 100) * 45 && !this.isCarcass) {
-                        player.sendMessage(new TextComponentString(this.dinosaur.getName() + " is at low health! at " + this.chunkCoordX + " " + " " + this.chunkCoordY + " " + this.chunkCoordZ));
-                        messageTick = 80;
-                    } else if (this.isCarcass) {
-                        player.sendMessage(new TextComponentString(this.dinosaur.getName() + " has died!"));
-                        messageTick = 80;
-                    }
-                }
-            }
-        }
-
-        if(messageTick >= 0) {
-            messageTick--;
-        }
-
         if(this.inventory.getSizeInventory() > 0 && !hasTracker) {
             if (this.inventory.contains(ItemHandler.TRACKER)) {
                 this.setHasTracker(true);
