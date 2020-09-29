@@ -950,10 +950,10 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
 
                 if (this == this.herd.leader && !this.dinosaur.isMarineCreature()) {
                     this.herd.update();
-                    this.tasks.addTask(0, new DinosaurHerdWanderEntityAI(this.herd, 0.8D, 2, 25));
+                    //this.tasks.addTask(0, new DinosaurHerdWanderEntityAI(this.herd, 0.8D, 2, 25));
                 } else {
-                    this.tasks.removeTask(new DinosaurWanderEntityAI(this, 0.8D, 2, 10));
-                    this.tasks.removeTask(new DinosaurHerdWanderEntityAI(this.herd, 0.8D, 2, 25));
+                    //this.tasks.removeTask(new DinosaurWanderEntityAI(this, 0.8D, 2, 10));
+                    //this.tasks.removeTask(new DinosaurHerdWanderEntityAI(this.herd, 0.8D, 2, 25));
                 }
 
                 if (this.ticksExisted % 10 == 0) {
