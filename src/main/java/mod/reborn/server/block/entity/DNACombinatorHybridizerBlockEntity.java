@@ -7,6 +7,7 @@ import mod.reborn.server.container.DNACombinatorHybridizerContainer;
 import mod.reborn.server.dinosaur.Dinosaur;
 import mod.reborn.server.entity.EntityHandler;
 import mod.reborn.server.genetics.DinoDNA;
+import mod.reborn.server.genetics.GeneticsHelper;
 import mod.reborn.server.genetics.PlantDNA;
 import mod.reborn.server.item.ItemHandler;
 import net.minecraft.entity.player.EntityPlayer;
@@ -135,8 +136,12 @@ public class DNACombinatorHybridizerBlockEntity extends MachineBaseBlockEntity {
                 Dinosaur hybrid = this.getHybrid();
 
                 NBTTagCompound nbt = new NBTTagCompound();
-
-                DinoDNA dna = new DinoDNA(hybrid, 100, this.slots.get(0).getTagCompound().getString("Genetics"));
+                DinoDNA dna = new DinoDNA(getHybrid(), 100, GeneticsHelper.randomGenetics(world.rand));
+                try {
+                    dna = new DinoDNA(hybrid, 100, this.slots.get(0).getTagCompound().getString("Genetics"));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 dna.writeToNBT(nbt);
 
                 ItemStack output = new ItemStack(ItemHandler.STORAGE_DISC);
