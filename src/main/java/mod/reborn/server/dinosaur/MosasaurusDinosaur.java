@@ -13,8 +13,8 @@ public class MosasaurusDinosaur extends Dinosaur {
         this.setDinosaurType(DinosaurType.AGGRESSIVE);
         this.setDinosaurClass(MosasaurusEntity.class);
         this.setTimePeriod(TimePeriod.CRETACEOUS);
-        this.setEggColorMale(0xB5ACB6, 0x5B4F5F);
-        this.setEggColorFemale(0xA0AEB2, 0x4F595D);
+        this.setEggColorMale(0x7e7257, 0x49412e);
+        this.setEggColorFemale(0x5e8086, 0x4c6b70);
         this.setHealth(20, 150);
         this.setSpeed((SPEED -0.40), SPEED);
         this.setStrength(20, 50);
@@ -26,12 +26,15 @@ public class MosasaurusDinosaur extends Dinosaur {
         this.setStorage(27);
         this.setDiet(Diet.PCARNIVORE.get());
         this.setBones("front_flipper", "hind_flipper", "inner_teeth", "ribcage", "skull", "spine", "tail_fluke", "tail_vertebrae", "tooth");
-        this.setHeadCubeName("Head");
+        this.setHeadCubeName("Main head");
         this.setScale(4F, 0.40F);
         this.setMarineAnimal(true);
         this.setBirthType(BirthType.LIVE_BIRTH);
         this.setAttackBias(1200);
+        this.setAttackSpeed(2);
+        this.setRotationAngle(50, 20);
         this.setStorage(12);
+        this.setPaleoPadScale(3);
         this.setImprintable(false);
         this.setBreeding(true, 1, 3, 80, false, true);
         String[][] recipe =     {{ "tail_fluke", "tail_vertebrae", "spine", "ribcage", "skull"},

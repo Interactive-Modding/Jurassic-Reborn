@@ -10,23 +10,35 @@
     "SWIMMING": [
       {
         "pose": "mosasaurus_adult_swimming_1",
-        "time": 8
+        "time": 7
       },
       {
         "pose": "mosasaurus_adult_swimming_2",
-        "time": 8
+        "time": 7
       },
       {
         "pose": "mosasaurus_adult_swimming_3",
-        "time": 8
+        "time": 7
       },
       {
         "pose": "mosasaurus_adult_swimming_4",
-        "time": 8
+        "time": 7
       },
       {
         "pose": "mosasaurus_adult_swimming_5",
-        "time": 8
+        "time": 7
+      },
+      {
+        "pose": "mosasaurus_adult_swimming_6",
+        "time": 7
+      },
+      {
+        "pose": "mosasaurus_adult_swimming_7",
+        "time": 7
+      },
+      {
+        "pose": "mosasaurus_adult_swimming_8",
+        "time": 7
       }
  ],
     "INJURED": [
@@ -42,14 +54,33 @@
         "pose": "mosasaurus_adult_idle",
         "time": 10
       }
+],
+    "ROARING": [
+      {
+        "pose": "mosasaurus_adult_roar",
+        "time": 25
+      },
+      {
+        "pose": "mosasaurus_adult_idle",
+        "time": 15
+      }
+
     ],
     "ATTACKING": [
       {
-        "pose": "mosasaurus_adult_eating_1",
+        "pose": "mosasaurus_adult_attack_1",
         "time": 10
       },
       {
-        "pose": "mosasaurus_adult_eating_2",
+        "pose": "mosasaurus_adult_attack_2",
+        "time": 10
+      },
+      {
+        "pose": "mosasaurus_adult_attack_3",
+        "time": 10
+      },
+      {
+        "pose": "mosasaurus_adult_attack_4",
         "time": 10
       },
       {
@@ -87,7 +118,7 @@
   ],
     "GIVING_BIRTH": [
       {
-        "pose": "mosasaurus_adult_givingbirth",
+        "pose": "mosasaurus_adult_giving_birth",
         "time": 40
       },
       {
@@ -98,11 +129,15 @@
     "ON_LAND": [
       {
         "pose": "mosasaurus_adult_onland_1",
-        "time": 30
+        "time": 25
       },
       {
         "pose": "mosasaurus_adult_onland_2",
-        "time": 30
+        "time": 25
+      },
+      {
+        "pose": "mosasaurus_adult_onland_3",
+        "time": 25
       }
     ]
   }
