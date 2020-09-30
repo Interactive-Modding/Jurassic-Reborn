@@ -26,6 +26,24 @@
       }
     ]
   },
+  "fire": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:fire"
+    ]
+  },
+  "empty": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:empty"
+    ]
+  },
+  "reload": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:reload"
+    ]
+  },
   "fence_shock": {
     "category": "hostile",
     "sounds": [
