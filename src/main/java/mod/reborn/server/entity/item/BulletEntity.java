@@ -70,9 +70,9 @@ public class BulletEntity extends EntityThrowable implements IEntityAdditionalSp
 	@Override
     protected void onImpact(RayTraceResult result) {
 		if (!this.world.isRemote) {
-			if (stack != null) {
+			if (stack != null || result.entityHit instanceof EntityPlayer && result.entityHit != thrower) {
 				Item item = stack.getItem();
-				if (result.entityHit instanceof EntityLiving || result.entityHit instanceof EntityPlayer && result.entityHit != thrower) {
+				if (result.entityHit instanceof EntityLiving) {
 					if (item instanceof Bullet) {
 						result.entityHit.attackEntityFrom(DamageSources.BULLET, damage);
 					} else {
