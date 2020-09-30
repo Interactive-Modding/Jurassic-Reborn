@@ -31,7 +31,7 @@ public class BulletEntity extends EntityThrowable implements IEntityAdditionalSp
 
     public BulletEntity(World worldIn) {
 		super(worldIn);
-		this.setSize(0.4F, 0.4F);
+		this.setSize(0.2F, 0.2F);
 	}
 
 	public void setDamage(int damage) {
@@ -58,14 +58,7 @@ public class BulletEntity extends EntityThrowable implements IEntityAdditionalSp
 
 	@SideOnly(Side.CLIENT)
 	private void spawnParticles() {
-		Minecraft.getMinecraft().effectRenderer.spawnEffectParticle(
-				EnumParticleTypes.CRIT.getParticleID(),
-				this.posX + this.motionX / 4.0D,
-				this.posY + this.motionY / 4.0D,
-				this.posZ + this.motionZ / 4.0D,
-				-this.motionX / 20.0D,
-				-this.motionY / 20.0D + 0.2D,
-				-this.motionZ / 20.0D);
+		Minecraft.getMinecraft().effectRenderer.spawnEffectParticle(EnumParticleTypes.CRIT.getParticleID(), this.posX, this.posY, this.posZ, 0, 0,0);
 	}
 
 
@@ -97,7 +90,7 @@ public class BulletEntity extends EntityThrowable implements IEntityAdditionalSp
 		float f = -MathHelper.sin(rotationYawIn * 0.017453292F) * MathHelper.cos(rotationPitchIn * 0.017453292F);
 		float f1 = -MathHelper.sin((rotationPitchIn + pitchOffset) * 0.017453292F);
 		float f2 = MathHelper.cos(rotationYawIn * 0.017453292F) * MathHelper.cos(rotationPitchIn * 0.017453292F);
-		this.shoot((double)f, (double)f1, (double)f2, velocity, inaccuracy);
+		this.shoot(f, f1, f2, velocity, inaccuracy);
 		this.motionX += entityThrower.motionX;
 		this.motionZ += entityThrower.motionZ;
 
@@ -108,6 +101,13 @@ public class BulletEntity extends EntityThrowable implements IEntityAdditionalSp
 		}
 	}
 
+
+	@Override
+	public void onEntityUpdate() {
+		if(this.ticksExisted > 50) {
+			this.setDead();
+		}
+	}
 
 	@Override
     public void writeSpawnData(ByteBuf buffer) {
