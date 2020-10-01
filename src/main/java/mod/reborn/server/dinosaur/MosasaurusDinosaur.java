@@ -41,5 +41,6 @@ public class MosasaurusDinosaur extends Dinosaur {
                                 { "hind_flipper", "", "front_flipper", "inner_teeth", "tooth"}};
         this.setRecipe(recipe);
         this.enableSkeleton();
+        this.setOffset(0,1,0);
     }
 }
