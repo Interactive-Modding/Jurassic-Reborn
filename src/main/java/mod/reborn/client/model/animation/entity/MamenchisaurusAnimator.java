@@ -3,6 +3,7 @@ package mod.reborn.client.model.animation.entity;
 import mod.reborn.client.model.AnimatableModel;
 import mod.reborn.client.model.animation.EntityAnimator;
 import net.ilexiconn.llibrary.client.model.tools.AdvancedModelRenderer;
+import net.minecraft.client.Minecraft;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import mod.reborn.server.entity.dinosaur.MamenchisaurusEntity;
@@ -29,8 +30,6 @@ public class MamenchisaurusAnimator extends EntityAnimator<MamenchisaurusEntity>
         AdvancedModelRenderer tail4 = model.getCube("tail4");
         AdvancedModelRenderer tail5 = model.getCube("tail5");
 
-        AdvancedModelRenderer thighLeft = model.getCube("top leg left");
-        AdvancedModelRenderer thighRight = model.getCube("top leg right");
 
         AdvancedModelRenderer lowerThighLeft = model.getCube("bottom front left leg");
         AdvancedModelRenderer lowerThighRight = model.getCube("bottom front right leg");
@@ -47,11 +46,26 @@ public class MamenchisaurusAnimator extends EntityAnimator<MamenchisaurusEntity>
         AdvancedModelRenderer handRight = model.getCube("front right foot");
         AdvancedModelRenderer handLeft = model.getCube("front left foot");
 
+        AdvancedModelRenderer backLeftCalf = model.getCube("bottom leg left");
+        AdvancedModelRenderer backLeftThigh = model.getCube("top leg left");
+
+        AdvancedModelRenderer backRightThigh = model.getCube("top leg right");
+
+        AdvancedModelRenderer backRightCalf = model.getCube("bottom leg right");
+
         AdvancedModelRenderer stomach = model.getCube("Stomach");
         AdvancedModelRenderer body = model.getCube("body");
 
         AdvancedModelRenderer[] neckParts = new AdvancedModelRenderer[] { head, neck6, neck5, neck4, neck3, neck2, neck1, body };
         AdvancedModelRenderer[] tailParts = new AdvancedModelRenderer[] { tail5, tail4, tail3, tail2, tail1 };
+        float delta = Minecraft.getMinecraft().getRenderPartialTicks();
+
+        LegArticulator.articulateQuadruped(entity, entity.legSolver, waist, neck1,
+                backLeftThigh, backLeftCalf, backRightThigh, backRightCalf, armLeft, lowerArmLeft, armRight, lowerArmRight,
+                0.25F, 0.4F, -0.2F, -0.3F,
+                delta
+        );
+
 
         float globalSpeed = 0.5F;
         float globalHeight = 0.5F;
@@ -60,18 +74,18 @@ public class MamenchisaurusAnimator extends EntityAnimator<MamenchisaurusEntity>
         float frontOffset = 1.0F;
 
         model.bob(waist, globalSpeed * 1.0F, globalHeight * 4.0F, false, f, f1);
-        model.bob(thighLeft, globalSpeed * 1.0F, globalHeight * 1.0F, false, f, f1);
-        model.bob(thighRight, globalSpeed * 1.0F, globalHeight * 1.0F, false, f, f1);
+        model.bob(backLeftThigh, globalSpeed * 1.0F, globalHeight * 1.0F, false, f, f1);
+        model.bob(backRightThigh, globalSpeed * 1.0F, globalHeight * 1.0F, false, f, f1);
 
         model.chainWave(tailParts, globalSpeed * 1.0F, globalHeight * 0.25F, 3, f, f1);
         model.chainSwing(tailParts, globalSpeed * 0.5F, globalHeight * 0.5F, 3, f, f1);
         model.chainWave(neckParts, globalSpeed * 1.0F, globalHeight * 0.125F, -4, f, f1);
 
-        model.walk(thighLeft, 1F * globalSpeed, 0.7F * globalDegree, false, 0F, -0.4F, f, f1);
+        model.walk(backLeftThigh, 1F * globalSpeed, 0.7F * globalDegree, false, 0F, -0.4F, f, f1);
         model.walk(lowerThighLeft, 1F * globalSpeed, 0.6F * globalDegree, true, 1F, 0.5F, f, f1);
         model.walk(footLeft, 1F * globalSpeed, 0.6F * globalDegree, false, -1.5F, 0.85F, f, f1);
 
-        model.walk(thighRight, 1F * globalSpeed, 0.7F * globalDegree, true, 0F, -0.4F, f, f1);
+        model.walk(backRightThigh, 1F * globalSpeed, 0.7F * globalDegree, true, 0F, -0.4F, f, f1);
         model.walk(lowerThighRight, 1F * globalSpeed, 0.6F * globalDegree, false, 1F, 0.5F, f, f1);
         model.walk(footRight, 1F * globalSpeed, 0.6F * globalDegree, true, -1.5F, 0.85F, f, f1);
 

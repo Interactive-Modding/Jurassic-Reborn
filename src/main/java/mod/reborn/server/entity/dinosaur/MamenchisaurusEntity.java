@@ -3,6 +3,8 @@ package mod.reborn.server.entity.dinosaur;
 import mod.reborn.client.model.animation.EntityAnimation;
 import mod.reborn.client.sound.SoundHandler;
 import mod.reborn.server.entity.DinosaurEntity;
+import mod.reborn.server.entity.LegSolver;
+import mod.reborn.server.entity.LegSolverQuadruped;
 import net.ilexiconn.llibrary.server.animation.Animation;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
@@ -14,10 +16,18 @@ public class MamenchisaurusEntity extends DinosaurEntity {
     private static boolean isKingSet = false;
     private boolean isKing = false;
     private MamenchisaurusEntity king = null;
+    private int stepCount = 0;
+
+    public LegSolverQuadruped legSolver;
 
     public MamenchisaurusEntity(World world) {
         super(world);
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
+    }
+
+    @Override
+    protected LegSolver createLegSolver() {
+        return this.legSolver = new LegSolverQuadruped(2.6F, 0.9F, 0.9F, 0.9F);
     }
 
     @Override

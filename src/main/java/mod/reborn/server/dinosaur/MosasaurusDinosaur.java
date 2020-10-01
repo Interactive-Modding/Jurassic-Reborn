@@ -16,9 +16,9 @@ public class MosasaurusDinosaur extends Dinosaur {
         this.setEggColorMale(0x7e7257, 0x49412e);
         this.setEggColorFemale(0x5e8086, 0x4c6b70);
         this.setHealth(20, 150);
-        this.setSpeed((SPEED -0.40), SPEED);
+        this.setSpeed((SPEED -0.25), SPEED);
         this.setStrength(20, 50);
-        this.setMaximumAge(fromDays(40));
+        this.setMaximumAge(fromDays(70));
         this.setMarineAnimal(true);
         this.setEyeHeight(0.225F, 1.3F);
         this.setSizeX(2.0F, 4F);
