@@ -69,6 +69,11 @@ public abstract class SwimmingDinosaurEntity extends DinosaurEntity {
         }
     }
 
+    @Override
+    public boolean isInWater() {
+        return this.inWater || this.world.handleMaterialAcceleration(this.getEntityBoundingBox().grow(0.0D, -0.5D, 0.0D).shrink(0.001D), Material.WATER, this);
+    }
+
     class SwimmingMoveHelper extends EntityMoveHelper {
         private final SwimmingDinosaurEntity swimmingEntity = SwimmingDinosaurEntity.this;
 
@@ -86,7 +91,7 @@ public abstract class SwimmingDinosaurEntity extends DinosaurEntity {
                 distance = MathHelper.sqrt(distance);
                 distanceY /= distance;
                 float f = (float) (Math.atan2(distanceZ, distanceX) * 180.0D / Math.PI) - 90.0F;
-                this.swimmingEntity.rotationYaw = this.limitAngle(this.swimmingEntity.rotationYaw, f, 30.0F);
+                this.swimmingEntity.rotationYaw = this.limitAngle(this.swimmingEntity.rotationYaw, f, dinosaur.getRotationAngle());
                 this.swimmingEntity.setAIMoveSpeed((float) (this.swimmingEntity.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue() * this.speed));
                 this.swimmingEntity.motionY += (double) this.swimmingEntity.getAIMoveSpeed() * distanceY * 0.05D;
             } else {

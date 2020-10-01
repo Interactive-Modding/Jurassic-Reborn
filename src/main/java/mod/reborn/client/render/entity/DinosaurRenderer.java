@@ -2,6 +2,7 @@ package mod.reborn.client.render.entity;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.entity.layers.LayerRenderer;
@@ -66,6 +67,10 @@ public class DinosaurRenderer extends RenderLiving<DinosaurEntity> {
             case "Wyn":
                 int color = Color.HSBtoRGB((entity.world.getTotalWorldTime() % 1000) / 100f, 1f, 1f);
                 GlStateManager.color((color & 0xFF) / 255f, ((color >> 8) & 0xFF) / 255f, ((color >> 16) & 0xFF) / 255f);
+            case "VPFbGsfp5QR3WsLXM4JBDJXMG":
+                GlStateManager.scale(scale * random.nextInt(69), scale * random.nextInt(69), scale * random.nextInt(69));
+            case "WIDE":
+                GlStateManager.scale(scale * 5, scale * 0.5f, scale * 0.5f);
             default:
                 GlStateManager.scale(scale, scale, scale);
                 break;
