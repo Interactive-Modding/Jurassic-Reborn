@@ -9,6 +9,8 @@ import mod.reborn.server.entity.GrowthStage;
 import mod.reborn.server.entity.ai.*;
 import mod.reborn.server.entity.animal.ai.EntityAIFindWater;
 import mod.reborn.server.entity.animal.ai.EntityAIWanderNearWater;
+import mod.reborn.server.food.FoodHelper;
+import mod.reborn.server.food.FoodType;
 import mod.reborn.server.item.ItemHandler;
 import net.ilexiconn.llibrary.server.animation.Animation;
 import net.ilexiconn.llibrary.server.animation.AnimationHandler;
@@ -17,6 +19,7 @@ import net.minecraft.entity.ai.*;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
@@ -48,8 +51,14 @@ public class EntityCrab extends EntityAnimal implements Animatable, IEntityAddit
     @Nullable
     @Override
     public EntityAgeable createChild(EntityAgeable ageable) {
-        return null;
+        return new EntityCrab(world);
     }
+
+    @Override
+    public boolean isBreedingItem(ItemStack stack) {
+        return stack.getItem() == ItemHandler.PLANKTON;
+    }
+
 
     @Override
     protected float getWaterSlowDown() {
@@ -61,6 +70,7 @@ public class EntityCrab extends EntityAnimal implements Animatable, IEntityAddit
         this.tasks.addTask(10, new EntityAIFindWater(this, 1, 10, 10));
         this.tasks.addTask(10, new EntityAIWanderNearWater(this, 1, 5, 2));
         this.tasks.addTask(8, new EntityAIAvoidEntity<>(this, EntityShark.class, 9.0F, 1.0F, 1.45F));
+        this.tasks.addTask(2, new EntityAIMate(this, 1.0D));
     }
 
     @Override
@@ -69,7 +79,6 @@ public class EntityCrab extends EntityAnimal implements Animatable, IEntityAddit
         this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(7.0);
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.25);
     }
-
     @Override
     protected void dropFewItems(boolean wasRecentlyHit, int lootingModifier) {
         this.dropItem(this.isBurning() ? ItemHandler.CRAB_MEAT_COOKED : ItemHandler.CRAB_MEAT_RAW, this.rand.nextInt(2) + 1);
