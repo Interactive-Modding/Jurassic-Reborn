@@ -27,7 +27,7 @@ public class MamenchisaurusEntity extends DinosaurEntity {
 
     @Override
     protected LegSolver createLegSolver() {
-        return this.legSolver = new LegSolverQuadruped(2.6F, 0.9F, 0.9F, 0.9F);
+        return this.legSolver = new LegSolverQuadruped(2.4F, 0.7F, 0.9F, 0.4F);
     }
 
     @Override
