@@ -34,6 +34,8 @@ public class TroodonDinosaur extends Dinosaur
         this.setAttackBias(600);
         this.setScale(0.75F, 0.25F);
         this.setOffset(0.0F, 0.0F, 0.5F);
+        this.setRotationAngle(10, 75);
+        this.setAttackSpeed(1.2F);
         this.shouldDefendOffspring();
         this.setCanClimb(true);
         this.setDefendOwner(true);
