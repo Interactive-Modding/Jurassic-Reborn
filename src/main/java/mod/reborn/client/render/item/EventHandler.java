@@ -31,10 +31,10 @@ public class EventHandler {
     @SubscribeEvent
     public static void onTextureStitch(TextureStitchEvent event) {
 	DART_GUN_GUI = getModel(new ResourceLocation(RebornMod.MODID, "item/dart_gun_gui"), event.getMap());
-	GLOCK_GUI = getModel(new ResourceLocation(RebornMod.MODID, "item/dart_gun_gui"), event.getMap());
-	REMINGTON_GUI = getModel(new ResourceLocation(RebornMod.MODID, "item/dart_gun_gui"), event.getMap());
-	SPAS12_GUI = getModel(new ResourceLocation(RebornMod.MODID, "item/dart_gun_gui"), event.getMap());
-	UTAS_UTS_15 = getModel(new ResourceLocation(RebornMod.MODID, "item/dart_gun_gui"), event.getMap());
+	GLOCK_GUI = getModel(new ResourceLocation(RebornMod.MODID, "item/glock_gui"), event.getMap());
+	REMINGTON_GUI = getModel(new ResourceLocation(RebornMod.MODID, "item/remington_gui"), event.getMap());
+	SPAS12_GUI = getModel(new ResourceLocation(RebornMod.MODID, "item/spas_12_gui"), event.getMap());
+	UTAS_UTS_15 = getModel(new ResourceLocation(RebornMod.MODID, "item/uts15_gui"), event.getMap());
     }
     
     @SubscribeEvent

@@ -415,6 +415,15 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
         return false;
     }
 
+    @Override
+    public EntityLivingBase getAttackTarget() {
+        if(super.getAttackTarget() != null && super.getAttackTarget().isDead) {
+            return null;
+        } else {
+            return super.getAttackTarget();
+        }
+    }
+
     private boolean canEatEntity(DinosaurEntity entity) {
         boolean isMarine = entity.getDinosaur().isMarineCreature();
         if(!isMarine) return entity.dinosaur.getDiet().canEat(entity, FoodType.MEAT);
@@ -722,10 +731,6 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
             if (this.inventory.contains(ItemHandler.TRACKER)) {
                 this.setHasTracker(true);
             }
-        }
-
-        if(this.getAttackTarget() != null) {
-            if(this.getAttackTarget().isDead || this.getAttackTarget() instanceof EntityPlayer && ((EntityPlayer) this.getAttackTarget()).isCreative()) this.setAttackTarget(null);
         }
 
         if(this.animation != null && EntityAnimation.getAnimation(this.animation).doesBlockMovement()) {
@@ -1395,7 +1400,7 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
         if (oldAnimation != newAnimation) {
             this.animationTick = 0;
             this.animationLength = (int) this.dinosaur.getPoseHandler().getAnimationLength(newAnimation, this.getGrowthStage());
-            AnimationHandler.INSTANCE.sendAnimationMessage(this, newAnimation);
+            this.animation = newAnimation;
         }
 
     }
