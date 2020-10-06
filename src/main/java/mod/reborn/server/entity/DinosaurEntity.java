@@ -418,6 +418,7 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
     @Override
     public EntityLivingBase getAttackTarget() {
         if(super.getAttackTarget() != null && super.getAttackTarget().isDead) {
+            this.setAttackTarget(null);
             return null;
         } else {
             return super.getAttackTarget();
