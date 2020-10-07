@@ -182,10 +182,6 @@ item.perisphinctes_beak_fresh.name=Fresh {dino} Beak
 item.shell_cover_fresh.name=Fresh {dino} Shell Cover
 item.scales_fresh.name=Fresh {dino} Scales
 item.tail_fin_fresh.name=Fresh {dino} Tail Fin
-item.cooked_crab_meat.name= Cooked Crab Meat
-item.cooked_shark_meat.name= Cooked Shark Meat
-item.raw_crab_meat.name= Raw Crab Meat
-item.raw_shark_meat.name= Raw Shark Meat
 item.foot_bone_fresh.name=Fresh {dino} Foot Bone
 item.tusks_fresh.name=Fresh {dino} Tusks
 
@@ -676,7 +672,7 @@ key.vehicle_7.switch=Attempt to move to Seat 8
 key.vehicle_8.switch=Attempt to move to Seat 9
 
 //Other =============
-message.tame.name=You have tamed a {dinosaur}
+message.tame.name=You have tamed an {dinosaur}
 message.not_owned.name=You do not own this dinosaur!
 message.too_young.name=This dinosaur is too young to hold items!
 message.set_order.name=You have commanded your dinosaur to {order}.
