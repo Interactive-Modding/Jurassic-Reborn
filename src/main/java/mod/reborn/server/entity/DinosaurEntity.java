@@ -474,6 +474,14 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
         } else if (!this.world.isRemote) {
 
             if(!(((float)this.hurtResistantTime > (float)this.maxHurtResistantTime / 2.0F))) {
+                boolean carcassAllowed = RebornConfig.ENTITIES.allowCarcass;
+                if(!carcassAllowed) {
+                    for(int i=2; i<0; i--) {
+                        this.dropMeat(attacker);
+                    }
+                    this.onDeath(damageSource);
+                    this.setDead();
+                }
 
                 if (damageSource != DamageSource.DROWN) {
                     if (!this.dead && this.carcassHealth >= 0 && this.world.getGameRules().getBoolean("doMobLoot")) {
@@ -728,6 +736,10 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
     public void onLivingUpdate() {
         super.onLivingUpdate();
 
+
+        if(!RebornConfig.ENTITIES.allowCarcass && this.isCarcass) {
+            this.attackEntityFrom(DamageSource.ANVIL, 1000);
+        }
         if(this.getAttackTarget() instanceof DinosaurEntity) {
             DinosaurEntity entity = (DinosaurEntity) this.getAttackTarget();
             if(entity != null && entity.isCarcass) {
@@ -1292,14 +1304,13 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
         }
         if (carcass && carcassAllowed) {
             this.setAnimation(EntityAnimation.DYING.get());
-            this.carcassHealth = MathHelper.clamp(Math.max(1, (int) Math.sqrt(this.width * this.height) * 2), 0, 10);
+            this.carcassHealth = MathHelper.clamp(Math.max(1, (int) Math.sqrt(this.width * this.height)), 0, 8);
             this.ticksExisted = 0;
             this.inventory.dropItems(this.world, this.rand);
         }else if (carcass){
             this.setAnimation(EntityAnimation.DYING.get());
             this.carcassHealth = 0;
             this.inventory.dropItems(this.world, this.rand);
-            this.setDead();
         }
     }
 
