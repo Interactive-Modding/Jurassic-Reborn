@@ -69,7 +69,7 @@ public class SoftTissueItem extends Item implements SequencableItem {
 
         if (nbt == null) {
             nbt = new NBTTagCompound();
-            int quality = SequencableItem.randomQuality(random);
+            int quality = ((SequencableItem.randomQuality(random))/2);
             DinoDNA dna = new DinoDNA(EntityHandler.getDinosaurById(stack.getItemDamage()), quality, GeneticsHelper.randomGenetics(random));
             dna.writeToNBT(nbt);
         } else if (!nbt.hasKey("Dinosaur")) {
