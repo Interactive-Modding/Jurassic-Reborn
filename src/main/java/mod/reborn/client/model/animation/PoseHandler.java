@@ -166,7 +166,9 @@ public class PoseHandler<ENTITY extends EntityLivingBase & Animatable> {
                 AdvancedModelRenderer cube = model.getCubeByIdentifier(identifier);
                 if (cube == null) {
                     AdvancedModelRenderer mainCube = mainModel.getCubeByIdentifier(identifier);
-                    RebornMod.getLogger().error("Could not retrieve cube " + identifier + " (" + mainCube.boxName + ", " + partIndex + ") from the model " + resource);
+                    if(RebornMod.INSTANCE.getEnv()) {
+                        RebornMod.getLogger().error("Could not retrieve cube " + identifier + " (" + mainCube.boxName + ", " + partIndex + ") from the model " + resource);
+                    }
                     pose[partIndex] = new PosedCuboid(mainCube);
                 } else {
                     pose[partIndex] = new PosedCuboid(cube);

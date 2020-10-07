@@ -3,7 +3,7 @@
 	"poses": {
 		"IDLE": [
 		  {
-			"pose": "pachycephalosauru_skeleton_idle",
+			"pose": "pachycephalosaurus_skeleton_idle",
 			"time": 1
 		  }
 		]

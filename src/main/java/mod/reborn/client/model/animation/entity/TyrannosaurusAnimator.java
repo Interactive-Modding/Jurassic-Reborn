@@ -67,8 +67,6 @@ public class TyrannosaurusAnimator extends EntityAnimator<TyrannosaurusEntity> {
         model.chainWave(leftArmParts, -0.1F, 0.2F, 4, ticks, 0.25F);
         model.chainWave(tailParts, 0.1F, -0.1F, 2, ticks, 0.1F);
 
-        model.faceTarget(rotationYaw, rotationPitch, 1.5F, chest, neck1, neck5, head);
-
         entity.tailBuffer.applyChainSwingBuffer(tailParts);
     }
 }

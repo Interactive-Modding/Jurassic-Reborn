@@ -1,0 +1,52 @@
+{
+  "variants": {
+    "variant=0": {
+      "model": "rebornmod:encased_fossil_5"
+    },
+    "variant=1": {
+      "model": "rebornmod:encased_fossil_5"
+    },
+    "variant=2": {
+      "model": "rebornmod:encased_fossil_5"
+    },
+    "variant=3": {
+      "model": "rebornmod:encased_fossil_5"
+    },
+    "variant=4": {
+      "model": "rebornmod:encased_fossil_5"
+    },
+    "variant=5": {
+      "model": "rebornmod:encased_fossil_5"
+    },
+    "variant=6": {
+      "model": "rebornmod:encased_fossil_5"
+    },
+    "variant=7": {
+      "model": "rebornmod:encased_fossil_5"
+    },
+    "variant=8": {
+      "model": "rebornmod:encased_fossil_5"
+    },
+    "variant=9": {
+      "model": "rebornmod:encased_fossil_5"
+    },
+    "variant=10": {
+      "model": "rebornmod:encased_fossil_5"
+    },
+    "variant=11": {
+      "model": "rebornmod:encased_fossil_5"
+    },
+    "variant=12": {
+      "model": "rebornmod:encased_fossil_5"
+    },
+    "variant=13": {
+      "model": "rebornmod:encased_fossil_5"
+    },
+    "variant=14": {
+      "model": "rebornmod:encased_fossil_5"
+    },
+    "variant=15": {
+      "model": "rebornmod:encased_fossil_5"
+    }
+  }
+}

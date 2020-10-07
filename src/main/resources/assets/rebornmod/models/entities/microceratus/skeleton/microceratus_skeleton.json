@@ -3,7 +3,7 @@
 	"poses": {
 		"IDLE": [
 		  {
-			"pose": microceratus_skeleton_idle",
+			"pose": "microceratus_skeleton_idle",
 			"time": 1
 		  }
 		]

@@ -3,7 +3,7 @@
 	"poses": {
 		"IDLE": [
 		  {
-			"pose": metriacanthosaurus_skeleton_idle",
+			"pose": "metriacanthosaurus_skeleton_idle",
 			"time": 1
 		  }
 		]
