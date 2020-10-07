@@ -6,22 +6,30 @@ import mod.reborn.client.model.animation.EntityAnimation;
 import mod.reborn.client.model.animation.PoseHandler;
 import mod.reborn.server.api.Animatable;
 import mod.reborn.server.entity.GrowthStage;
+import mod.reborn.server.entity.ai.MateEntityAI;
 import mod.reborn.server.entity.ai.SmartBodyHelper;
 import mod.reborn.server.entity.animal.ai.MoveUnderwaterEntityAI;
 import mod.reborn.server.item.ItemHandler;
 import net.ilexiconn.llibrary.client.model.tools.ChainBuffer;
 import net.ilexiconn.llibrary.server.animation.Animation;
 import net.ilexiconn.llibrary.server.animation.AnimationHandler;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.monster.EntityMob;
+import net.minecraft.entity.monster.IMob;
+import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntitySquid;
 import net.minecraft.entity.passive.EntityWaterMob;
+import net.minecraft.entity.passive.IAnimals;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.pathfinding.PathNavigateSwimmer;
+import net.minecraft.pathfinding.PathNodeType;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -29,7 +37,7 @@ import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.IEntityAdditionalSpawnData;
 
-public class EntityShark extends EntityMob implements Animatable, IEntityAdditionalSpawnData {
+public class EntityShark extends EntityAnimal implements Animatable, IEntityAdditionalSpawnData, IMob {
     public static final PoseHandler<EntityShark> SHARK_POSE_HANDLER = new PoseHandler<>("shark", Lists.newArrayList(GrowthStage.ADULT));
 
     private static final DataParameter<Boolean> WATCHER_IS_RUNNING = EntityDataManager.createKey(EntityShark.class, DataSerializers.BOOLEAN);
@@ -46,9 +54,68 @@ public class EntityShark extends EntityMob implements Animatable, IEntityAdditio
         this.stepHeight = 1.0F;
         this.animationTick = 0;
         this.preventEntitySpawning = false;
+        this.setPathPriority(PathNodeType.WATER, 0);
         this.moveHelper = new SwimmingMoveHelper();
         this.navigator = new PathNavigateSwimmer(this, world);
         this.setAnimation(EntityAnimation.IDLE.get());
+    }
+
+    @Override
+    public EntityAgeable createChild(EntityAgeable ageable) {
+        return new EntityShark(world);
+    }
+
+    public boolean attackEntityAsMob(Entity entityIn)
+    {
+        float f = (float)this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue();
+        int i = 0;
+
+        if (entityIn instanceof EntityLivingBase)
+        {
+            f += EnchantmentHelper.getModifierForCreature(this.getHeldItemMainhand(), ((EntityLivingBase)entityIn).getCreatureAttribute());
+            i += EnchantmentHelper.getKnockbackModifier(this);
+        }
+
+        boolean flag = entityIn.attackEntityFrom(DamageSource.causeMobDamage(this), f);
+
+        if (flag)
+        {
+            if (i > 0 && entityIn instanceof EntityLivingBase)
+            {
+                ((EntityLivingBase)entityIn).knockBack(this, (float)i * 0.5F, (double)MathHelper.sin(this.rotationYaw * 0.017453292F), (double)(-MathHelper.cos(this.rotationYaw * 0.017453292F)));
+                this.motionX *= 0.6D;
+                this.motionZ *= 0.6D;
+            }
+
+            int j = EnchantmentHelper.getFireAspectModifier(this);
+
+            if (j > 0)
+            {
+                entityIn.setFire(j * 4);
+            }
+
+            if (entityIn instanceof EntityPlayer)
+            {
+                EntityPlayer entityplayer = (EntityPlayer)entityIn;
+                ItemStack itemstack = this.getHeldItemMainhand();
+                ItemStack itemstack1 = entityplayer.isHandActive() ? entityplayer.getActiveItemStack() : ItemStack.EMPTY;
+
+                if (!itemstack.isEmpty() && !itemstack1.isEmpty() && itemstack.getItem().canDisableShield(itemstack, itemstack1, entityplayer, this) && itemstack1.getItem().isShield(itemstack1, entityplayer))
+                {
+                    float f1 = 0.25F + (float)EnchantmentHelper.getEfficiencyModifier(this) * 0.05F;
+
+                    if (this.rand.nextFloat() < f1)
+                    {
+                        entityplayer.getCooldownTracker().setCooldown(itemstack1.getItem(), 100);
+                        this.world.setEntityState(entityplayer, (byte)30);
+                    }
+                }
+            }
+
+            this.applyEnchantments(this, entityIn);
+        }
+
+        return flag;
     }
 
     @Override
@@ -61,13 +128,6 @@ public class EntityShark extends EntityMob implements Animatable, IEntityAdditio
     }
 
     @Override
-    protected void initEntityAI() {
-        this.tasks.addTask(1, new MoveUnderwaterEntityAI(this));
-        this.tasks.addTask(1, new SharkAIHunt());
-        this.applyEntityAI();
-    }
-
-    @Override
     protected void dropFewItems(boolean wasRecentlyHit, int lootingModifier) {
         this.dropItem(this.isBurning() ? ItemHandler.SHARK_MEAT_COOKED : ItemHandler.SHARK_MEAT_RAW, this.rand.nextInt(2) + 1);
     }
@@ -75,9 +135,10 @@ public class EntityShark extends EntityMob implements Animatable, IEntityAdditio
     @Override
     protected void applyEntityAttributes() {
         super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(5);
         this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(15.0);
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.25);
+        this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE);
+        this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(6.0D);
     }
 
     protected void applyEntityAI()
@@ -181,30 +242,7 @@ public class EntityShark extends EntityMob implements Animatable, IEntityAdditio
             this.dataManager.set(WATCHER_IS_RUNNING, this.getAIMoveSpeed() > this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue());
         }
     }
-    public class SharkAIHunt extends EntityAIAttackMelee {
-        public SharkAIHunt() {
-            super(EntityShark.this, 5D, false);
-        }
 
-        @Override
-        public void startExecuting() {
-            super.startExecuting();
-        }
-
-        @Override
-        protected double getAttackReachSqr(EntityLivingBase attackTarget) {
-            if (attackTarget.getEntityBoundingBox().intersects(this.attacker.getEntityBoundingBox().expand(0.9, 0.9, 0.9))) {
-                return 1024.0;
-            } else {
-                return width;
-            }
-        }
-    }
-    @Override
-    protected boolean isValidLightLevel()
-    {
-        return true;
-    }
     @Override
     public boolean getCanSpawnHere()
     {
@@ -274,6 +312,11 @@ public class EntityShark extends EntityMob implements Animatable, IEntityAdditio
     }
 
     @Override
+    public boolean attackEntityFrom(DamageSource source, float amount) {
+        return super.attackEntityFrom(source, amount);
+    }
+
+    @Override
     public void onEntityUpdate() {
         int i = this.getAir();
         super.onEntityUpdate();
@@ -309,7 +352,7 @@ public class EntityShark extends EntityMob implements Animatable, IEntityAdditio
     }
 
     class SwimmingMoveHelper extends EntityMoveHelper {
-        private EntityShark swimmingEntity = EntityShark.this;
+        private final EntityShark swimmingEntity = EntityShark.this;
 
         public SwimmingMoveHelper() {
             super(EntityShark.this);
@@ -336,6 +379,20 @@ public class EntityShark extends EntityMob implements Animatable, IEntityAdditio
 
     public boolean isPushedByWater() {
         return false;
+    }
+
+    @Override
+    public boolean isBreedingItem(ItemStack stack) {
+        return stack.getItem().equals(Items.FISH);
+    }
+
+    @Override
+    protected void initEntityAI() {
+        super.initEntityAI();
+        this.tasks.addTask(1, new MoveUnderwaterEntityAI(this));
+        this.tasks.addTask(0, new EntityAIAttackMelee(this, 1.6D, true));
+        this.tasks.addTask(0, new EntityAIMate(this, 1));
+        this.applyEntityAI();
     }
 }
 

@@ -8,8 +8,12 @@ import mod.reborn.server.entity.animal.EntityShark;
 import mod.reborn.server.entity.animal.GoatEntity;
 import mod.reborn.server.entity.item.*;
 import mod.reborn.server.entity.vehicle.*;
+import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntitySpawnPlacementRegistry;
 import net.minecraft.entity.EnumCreatureType;
+import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.init.Biomes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.biome.Biome;
@@ -228,8 +232,9 @@ public class EntityHandler {
 
         ArrayList<Biome> biomeBeach = new ArrayList<>(BiomeDictionary.getBiomes(BiomeDictionary.Type.BEACH));
 
-        EntityRegistry.addSpawn(EntityCrab.class, 5, 4, 8, EnumCreatureType.CREATURE, biomeBeach.toArray(new Biome[biomeBeach.size()]));
-        EntityRegistry.addSpawn(EntityShark.class, 5, 1, 4, EnumCreatureType.WATER_CREATURE, Biomes.OCEAN);
+        EntityRegistry.addSpawn(EntityCrab.class, 20, 4, 8, EnumCreatureType.CREATURE, biomeBeach.toArray(new Biome[biomeBeach.size()]));
+        EntityRegistry.addSpawn(EntityShark.class, 3, 1, 4, EnumCreatureType.WATER_CREATURE, Biomes.OCEAN);
+        EntitySpawnPlacementRegistry.setPlacementType(EntityShark.class, EntityLiving.SpawnPlacementType.IN_WATER);
 
         registerEntity(DinosaurEggEntity.class, "Dinosaur Egg");
         registerEntity(HelicopterEntityNew.class, "Helicopter base");
@@ -262,6 +267,7 @@ public class EntityHandler {
             if (canSpawn && RebornConfig.ENTITIES.naturalSpawning) {
                 if(dinosaur.getSpawnBiomes() != null)
                 EntityRegistry.addSpawn(clazz, dinosaur.getSpawnChance(), 1, Math.min(6, dinosaur.getMaxHerdSize() / 2), dinosaur.isMarineCreature() ? EnumCreatureType.WATER_CREATURE : EnumCreatureType.CREATURE, dinosaur.getSpawnBiomes());
+                if(dinosaur.isMarineCreature()) EntitySpawnPlacementRegistry.setPlacementType(EntityShark.class, EntityLiving.SpawnPlacementType.IN_WATER);
             }
         }
     }
