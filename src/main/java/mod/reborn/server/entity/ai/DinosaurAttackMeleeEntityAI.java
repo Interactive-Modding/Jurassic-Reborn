@@ -36,7 +36,7 @@ public class DinosaurAttackMeleeEntityAI extends EntityAIBase {
         this.world = creature.world;
         this.speedTowardsTarget = speedIn;
         this.longMemory = useLongMemory;
-        this.setMutexBits(3);
+        this.setMutexBits(Mutex.ATTACK);
     }
 
     /**
@@ -196,8 +196,11 @@ public class DinosaurAttackMeleeEntityAI extends EntityAIBase {
         }
     }
 
-    protected double getAttackReachSqr(EntityLivingBase attackTarget)
-    {
-        return this.attacker.width * 2.0F * this.attacker.width * 2.0F + attackTarget.width;
+    protected double getAttackReachSqr(EntityLivingBase attackTarget) {
+        if (attackTarget.getEntityBoundingBox().intersects(this.attacker.getEntityBoundingBox().expand(1, 1, 1))) {
+            return 1024.0;
+        }
+        double grownWidth = this.attacker.width + 1.0;
+        return grownWidth * grownWidth;
     }
 }

@@ -4,6 +4,7 @@ import mod.reborn.client.model.animation.EntityAnimation;
 import mod.reborn.server.block.entity.FeederBlockEntity;
 import mod.reborn.server.block.machine.FeederBlock;
 import mod.reborn.server.conf.RebornConfig;
+import mod.reborn.server.entity.ai.DinosaurAttackMeleeEntityAI;
 import mod.reborn.server.entity.ai.navigation.DinosaurMoveHelper;
 import mod.reborn.server.entity.ai.util.OnionTraverser;
 import mod.reborn.server.entity.dinosaur.*;
@@ -45,6 +46,7 @@ public abstract class FlyingDinosaurEntity extends DinosaurEntity implements Ent
         this.tasks.addTask(0, new FlyingDinosaurEntity.AIRandomFly());
         this.tasks.addTask(0, new FlyingDinosaurEntity.AIWander());
         this.tasks.addTask(2, new AILookAround());
+        this.tasks.addTask(0, new DinosaurAttackMeleeEntityAI(this,1,true));
         this.doesEatEggs(true);
         this.doTarget();
     }
