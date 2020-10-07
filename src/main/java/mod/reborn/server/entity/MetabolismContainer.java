@@ -42,7 +42,7 @@ public class MetabolismContainer {
             }
 
             if (this.digestingFood > 0) {
-                this.increaseEnergy(10);
+                this.increaseEnergy(25);
                 this.digestingFood--;
             }
         }
