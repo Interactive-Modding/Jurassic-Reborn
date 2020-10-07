@@ -328,6 +328,7 @@ item.dart_tranquilizer.name=Dart Tranquilizer
 item.dart_poison_cycasin.name=Poisoned Dart
 item.dart_poison_executioner_concoction.name=Lethal Dart
 item.dart_tipped_potion.name=Potion Dart
+item.tracking_dart.name=Tracking Dart
 item.west_indian_lilac_berries.name=West Indian Lilac Berries
 
 filled_map.rebornmod.visitorcenter=Visitor Center Map
