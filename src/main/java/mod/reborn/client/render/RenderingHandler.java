@@ -433,7 +433,7 @@ public enum RenderingHandler {
         registerItemRenderer(DART_POISON_CYCASIN, "dart_colored");
         registerItemRenderer(DART_POISON_EXECUTIONER_CONCOCTION, "dart_colored");
         registerItemRenderer(DART_TIPPED_POTION, "dart_colored");
-        registerItemRenderer(DART_TRANQUILIZER, "dart_colored");
+        registerItemRenderer(TRACKER_DART, "dart_colored");
 
         registerItemRenderer(GLOCK, "glock");
         registerItemRenderer(REMINGTON, "remington");
@@ -585,7 +585,7 @@ public enum RenderingHandler {
             }
             return 0xFFFFFF;
         }, SPAWN_EGG);
-        itemColors.registerItemColorHandler(((stack, tintIndex) -> tintIndex == 1 ? ((Dart)stack.getItem()).getDartColor(stack) : -1), DART_POISON_CYCASIN, DART_POISON_EXECUTIONER_CONCOCTION, DART_TIPPED_POTION, DART_TRANQUILIZER);
+        itemColors.registerItemColorHandler(((stack, tintIndex) -> tintIndex == 1 ? ((Dart)stack.getItem()).getDartColor(stack) : -1), DART_POISON_CYCASIN, DART_POISON_EXECUTIONER_CONCOCTION, DART_TIPPED_POTION, DART_TRANQUILIZER, TRACKER_DART);
         if (RebornConfig.VEHICLES.helicopterZoomout) {
             if (mc.entityRenderer.getClass() == EntityRenderer.class) {
                 entityRenderer = new OverridenEntityRenderer(Minecraft.getMinecraft(),
