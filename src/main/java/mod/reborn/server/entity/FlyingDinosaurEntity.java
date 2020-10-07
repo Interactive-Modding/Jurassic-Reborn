@@ -57,8 +57,10 @@ public abstract class FlyingDinosaurEntity extends DinosaurEntity implements Ent
 
     @Override
     public void onEntityUpdate() {
+        if(!this.onGround && this.getAnimation() == EntityAnimation.SLEEPING.get()) {
+            this.setMoveVertical(-5);
+        }
 
-        setNoGravity(!isOnGround());
         if(this.getMetabolism().isStarving() || this.getMetabolism().isThirsty()) {
             this.shouldLand = true;
         }
@@ -93,58 +95,63 @@ public abstract class FlyingDinosaurEntity extends DinosaurEntity implements Ent
 
     @Override
     public void fall(float distance, float damageMultiplier) {
+        if(!this.isOnGround()) {
+            super.fall(distance, damageMultiplier);
+        }
     }
 
     @Override
     public void travel(float strafe, float vertical, float forward) {
-        if(isOnGround()) {
-            super.travel(strafe, vertical, forward);
+        if(!this.tranqed && !isOnGround()) {
+            if (this.inWater()) {
+                this.moveRelative(strafe, forward, 0.02F, 0F);
+                this.move(MoverType.SELF, this.motionX, this.motionY, this.motionZ);
+                this.motionX *= 0.800000011920929D;
+                this.motionY *= 0.800000011920929D;
+                this.motionZ *= 0.800000011920929D;
+                return;
+            } else if (this.inLava()) {
+                this.moveRelative(strafe, forward, 0.02F, 0F);
+                this.move(MoverType.SELF, this.motionX, this.motionY, this.motionZ);
+                this.motionX *= 0.5D;
+                this.motionY *= 0.5D;
+                this.motionZ *= 0.5D;
+                return;
+            } else {
+                float friction = 0.91F;
+
+                if (this.onGround) {
+                    friction = this.world.getBlockState(new BlockPos(MathHelper.floor(this.posX), MathHelper.floor(this.getEntityBoundingBox().minY) - 1, MathHelper.floor(this.posZ))).getBlock().slipperiness * 0.91F;
+                }
+
+                float f3 = 0.16277136F / (friction * friction * friction);
+                this.moveRelative(strafe, forward, this.onGround ? f3 * 0.1F : 0.02F, 0F);
+                friction = 0.91F;
+
+                if (this.onGround) {
+                    friction = this.world.getBlockState(new BlockPos(MathHelper.floor(this.posX), MathHelper.floor(this.getEntityBoundingBox().minY) - 1, MathHelper.floor(this.posZ))).getBlock().slipperiness * 0.91F;
+                }
+
+                this.move(MoverType.SELF, this.motionX, this.motionY, this.motionZ);
+                this.motionX *= friction;
+                this.motionY *= friction;
+                this.motionZ *= friction;
+            }
+
+            this.prevLimbSwingAmount = this.limbSwingAmount;
+            double moveX = this.posX - this.prevPosX;
+            double moveZ = this.posZ - this.prevPosZ;
+            float dist = MathHelper.sqrt(moveX * moveX + moveZ * moveZ) * 4.0F;
+
+            if (dist > 1.0F) {
+                dist = 1.0F;
+            }
+
+            this.limbSwingAmount += (dist - this.limbSwingAmount) * 0.4F;
+            this.limbSwing += this.limbSwingAmount;
             return;
         }
-        if (this.inWater()) {
-            this.moveRelative(strafe, forward, 0.02F, 0F);
-            this.move(MoverType.SELF, this.motionX, this.motionY, this.motionZ);
-            this.motionX *= 0.800000011920929D;
-            this.motionY *= 0.800000011920929D;
-            this.motionZ *= 0.800000011920929D;
-        } else if (this.inLava()) {
-            this.moveRelative(strafe, forward, 0.02F, 0F);
-            this.move(MoverType.SELF, this.motionX, this.motionY, this.motionZ);
-            this.motionX *= 0.5D;
-            this.motionY *= 0.5D;
-            this.motionZ *= 0.5D;
-        } else {
-            float friction = 0.91F;
-
-            if (this.onGround) {
-                friction = this.world.getBlockState(new BlockPos(MathHelper.floor(this.posX), MathHelper.floor(this.getEntityBoundingBox().minY) - 1, MathHelper.floor(this.posZ))).getBlock().slipperiness * 0.91F;
-            }
-
-            float f3 = 0.16277136F / (friction * friction * friction);
-            this.moveRelative(strafe, forward, this.onGround ? f3 * 0.1F : 0.02F, 0F);
-            friction = 0.91F;
-
-            if (this.onGround) {
-                friction = this.world.getBlockState(new BlockPos(MathHelper.floor(this.posX), MathHelper.floor(this.getEntityBoundingBox().minY) - 1, MathHelper.floor(this.posZ))).getBlock().slipperiness * 0.91F;
-            }
-
-            this.move(MoverType.SELF, this.motionX, this.motionY, this.motionZ);
-            this.motionX *= (double) friction;
-            this.motionY *= (double) friction;
-            this.motionZ *= (double) friction;
-        }
-
-        this.prevLimbSwingAmount = this.limbSwingAmount;
-        double moveX = this.posX - this.prevPosX;
-        double moveZ = this.posZ - this.prevPosZ;
-        float dist = MathHelper.sqrt(moveX * moveX + moveZ * moveZ) * 4.0F;
-
-        if (dist > 1.0F) {
-            dist = 1.0F;
-        }
-
-        this.limbSwingAmount += (dist - this.limbSwingAmount) * 0.4F;
-        this.limbSwing += this.limbSwingAmount;
+        super.travel(strafe, vertical, forward);
     }
 
     @Override
@@ -250,7 +257,7 @@ public abstract class FlyingDinosaurEntity extends DinosaurEntity implements Ent
     }
 
     class AIFlyLand extends EntityAIBase {
-        private FlyingDinosaurEntity dino = FlyingDinosaurEntity.this;
+        private final FlyingDinosaurEntity dino = FlyingDinosaurEntity.this;
 
         public AIFlyLand() {
             this.setMutexBits(1);
@@ -317,7 +324,7 @@ public abstract class FlyingDinosaurEntity extends DinosaurEntity implements Ent
 
                 if (this.timer-- <= 0) {
                     this.timer += this.parentEntity.getRNG().nextInt(5) + 2;
-                    distance = (double) MathHelper.sqrt(distance);
+                    distance = MathHelper.sqrt(distance);
 
                     if (this.isNotColliding(this.posX, this.posY, this.posZ, distance)) {
                         this.parentEntity.motionX += distanceX / distance * this.speed * 0.1D;
@@ -377,7 +384,7 @@ public abstract class FlyingDinosaurEntity extends DinosaurEntity implements Ent
     }
 
     class AILookAround extends EntityAIBase {
-        private FlyingDinosaurEntity dino = FlyingDinosaurEntity.this;
+        private final FlyingDinosaurEntity dino = FlyingDinosaurEntity.this;
 
         public AILookAround() {
             this.setMutexBits(2);
@@ -407,7 +414,7 @@ public abstract class FlyingDinosaurEntity extends DinosaurEntity implements Ent
 
     class AIWander extends DinosaurWanderEntityAI {
 
-        private FlyingDinosaurEntity dino = FlyingDinosaurEntity.this;
+        private final FlyingDinosaurEntity dino = FlyingDinosaurEntity.this;
 
         public AIWander() {
             super(FlyingDinosaurEntity.this, 0.8D, 10, RebornConfig.ENTITIES.dinosaurWalkingRadius);

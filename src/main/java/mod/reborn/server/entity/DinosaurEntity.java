@@ -141,6 +141,7 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
     private UUID owner;
     private List<Class<? extends EntityLivingBase>> attackTargets = new ArrayList<>();
     private String genetics;
+    public boolean tranqed;
 
     private boolean deserializing;
 
@@ -1170,6 +1171,7 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
                     if (!this.shouldSleep() && !this.world.isRemote && tranquilizerTicks-- <= 0) {
                         this.isSleeping = false;
                         this.tranquilizerTicks = 0;
+                        this.tranqed = false;
                     }
                 } else if (this.getAnimation() == EntityAnimation.SLEEPING.get()) {
                     this.setAnimation(EntityAnimation.IDLE.get());
@@ -1701,6 +1703,7 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
     public void tranquilize(int ticks) {
         tranquilizerTicks = 50 + ticks + this.rand.nextInt(50);
         setSleeping(true);
+        this.tranqed = true;
     }
 
     public int getStayAwakeTime() {
