@@ -433,6 +433,7 @@ public enum RenderingHandler {
         registerItemRenderer(DART_POISON_CYCASIN, "dart_colored");
         registerItemRenderer(DART_POISON_EXECUTIONER_CONCOCTION, "dart_colored");
         registerItemRenderer(DART_TIPPED_POTION, "dart_colored");
+        registerItemRenderer(DART_TRANQUILIZER, "dart_colored");
 
         registerItemRenderer(GLOCK, "glock");
         registerItemRenderer(REMINGTON, "remington");

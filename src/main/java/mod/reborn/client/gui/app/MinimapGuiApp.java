@@ -66,7 +66,7 @@ public class MinimapGuiApp extends GuiApp
         int renderChunkX = 0;
         int renderChunkY = 0;
 
-        gui.drawBoxOutline(89, 14, 16 * 8 + 1, 16 * 8 + 1, 1, 1.0F, (renderChunkX + renderChunkY) % 2 == 0 ? 0x606060 : 0x505050);
+        gui.drawBoxOutline(89, 14, 16 * 8 + 1, 16 * 8 + 1, 1, 1.0F, 0x606060);
 
 
         for (int chunkX = playerChunkX - 4; chunkX < playerChunkX + 4; chunkX++) {
@@ -168,12 +168,13 @@ public class MinimapGuiApp extends GuiApp
                                 trackedEntities++;
 
                                 gui.drawScaledTexturedModalRect(entityRenderX, entityRenderY, 0, 0, 16, 16, 16, 16, 0.6F);
-
+                                gui.drawCenteredScaledText(dinosaur.getName(), entityRenderX + 5, entityRenderY + 8, 0.3F, colour);
                                 gui.drawCenteredScaledText(dinoX + " " + (int) dino.posY + " " + dinoZ, entityRenderX + 5, entityRenderY + 8, 0.3F, 0xFFFFFF);
                             }
                         } else if (player == entity) {
                             mc.getTextureManager().bindTexture(MinimapGuiApp.entity);
 
+                            gui.drawScaledText("You!", playerX, (int) player.posY, playerZ, 0xFFFFFF);
                             gui.drawScaledTexturedModalRect((playerX & 15) + (renderChunkX * 16) + 90 - 4, (playerZ & 15) + (renderChunkY * 16) + 15 - 4, 0, 0, 16, 16, 16, 16, 0.6F);
                         }
                     }
