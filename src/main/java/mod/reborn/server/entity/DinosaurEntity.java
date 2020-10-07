@@ -230,7 +230,7 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
             this.tasks.addTask(0, new AdvancedSwimEntityAI(this));
         }
         this.tasks.addTask(0, new DinosaurWanderEntityAI(this, 0.8D, 2, 10));
-        //this.tasks.addTask(0, new DinosaurWanderAvoidWater(this, 0.8D, 10));
+        this.tasks.addTask(0, new DinosaurWanderAvoidWater(this, 0.8D, 10));
         if (dinosaur.getDiet().canEat(this, FoodType.PLANT)) {
             this.tasks.addTask(1, new GrazeEntityAI(this));
         }
