@@ -377,9 +377,30 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
             this.owner = player.getUniqueID();
 
             if (!this.owner.equals(prevOwner)) {
+                ArrayList<String> vowels = buildArray("a", "e", "i", "o", "u");
+                boolean hasvowel = false;
+                for(String vowel : vowels) {
+                    if(dinosaur.getName().toLowerCase().startsWith(vowel)) {
+                        hasvowel = true;
+                        break;
+                    }
+                    hasvowel = false;
+                    break;
+                }
+                if(hasvowel) {
+                    player.sendMessage(new TextComponentString(LangUtils.translate(LangUtils.TAME).replace("{dinosaur}", LangUtils.getDinoName(this.dinosaur))));
+                } else {
+                    player.sendMessage(new TextComponentString(LangUtils.translate(LangUtils.TAME).replace("{dinosaur}", LangUtils.getDinoName(this.dinosaur)).replace("an", "a")));
+                }
                 player.sendMessage(new TextComponentString(LangUtils.translate(LangUtils.TAME).replace("{dinosaur}", LangUtils.getDinoName(this.dinosaur))));
             }
         }
+    }
+
+    public ArrayList<String> buildArray(String... strings) {
+        ArrayList<String> list = new ArrayList<>();
+        Collections.addAll(list, strings);
+        return list;
     }
 
     @Override

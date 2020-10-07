@@ -3,6 +3,7 @@ package mod.reborn.server.block.entity;
 import com.google.common.primitives.Ints;
 import mod.reborn.RebornMod;
 import mod.reborn.server.container.EmbryoCalcificationMachineContainer;
+import mod.reborn.server.dinosaur.BeelzebufoDinosaur;
 import mod.reborn.server.dinosaur.Dinosaur;
 import mod.reborn.server.entity.EntityHandler;
 import mod.reborn.server.item.ItemHandler;
@@ -34,7 +35,7 @@ public class EmbryoCalcificationMachineBlockEntity extends MachineBaseBlockEntit
         if (!input.isEmpty() && input.getItem() instanceof SyringeItem && !egg.isEmpty() && egg.getItem() == Items.EGG) {
             Dinosaur dino = EntityHandler.getDinosaurById(input.getItemDamage());
 
-            if (dino.getBirthType() == Dinosaur.BirthType.EGG_LAYING && !dino.isMarineCreature()) {
+            if (dino.getBirthType() == Dinosaur.BirthType.EGG_LAYING && (!dino.isMarineCreature() || dino == EntityHandler.BEELZEBUFO)) {
                 ItemStack output = new ItemStack(ItemHandler.EGG, 1, input.getItemDamage());
                 output.setTagCompound(input.getTagCompound());
 
