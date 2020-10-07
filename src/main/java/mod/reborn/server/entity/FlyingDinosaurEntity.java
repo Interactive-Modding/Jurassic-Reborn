@@ -77,7 +77,7 @@ public abstract class FlyingDinosaurEntity extends DinosaurEntity implements Ent
     }
 
     public boolean isOnGround() {
-        return !this.world.getCollisionBoxes(this, this.getEntityBoundingBox().grow(0.24d)).isEmpty() && !takingOff || this.isDead || this.isCarcass();
+        return !this.world.getCollisionBoxes(this, this.getEntityBoundingBox().grow(0.24d)).isEmpty() && !takingOff || this.isDead || this.isCarcass() || this.isInWater();
     }
 
     public void startTakeOff() {
