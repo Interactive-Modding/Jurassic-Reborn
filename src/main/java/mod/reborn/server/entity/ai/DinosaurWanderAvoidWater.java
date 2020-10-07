@@ -34,9 +34,8 @@ public class DinosaurWanderAvoidWater extends DinosaurWanderEntityAI {
 	Vec3d vec3d = null;
 	for(int i = 0; i < 100; i++) {
 	    Vec3d vec = RandomPositionGenerator.getLandPos(this.entity, walkradius + 5, walkradius);
-	    if(vec == null) {
-		continue;
-	    } else if(vec3d == null || this.entity.getPositionVector().distanceTo(vec) < this.entity.getPositionVector().distanceTo(vec3d)) {
+	    assert vec != null;
+        if(vec3d == null || this.entity.getPositionVector().distanceTo(vec) < this.entity.getPositionVector().distanceTo(vec3d)) {
 		vec3d = vec;
 	    }
 	}
