@@ -260,7 +260,8 @@ public class EntityHandler {
             registerEntity(clazz, dinosaur.getName());
 
             if (canSpawn && RebornConfig.ENTITIES.naturalSpawning) {
-                //EntityRegistry.addSpawn(clazz, dinosaur.getSpawnChance(), 1, Math.min(6, dinosaur.getMaxHerdSize() / 2), dinosaur.isMarineCreature() ? EnumCreatureType.WATER_CREATURE : EnumCreatureType.CREATURE, dinosaur.getSpawnBiomes());
+                if(dinosaur.getSpawnBiomes() != null)
+                EntityRegistry.addSpawn(clazz, dinosaur.getSpawnChance(), 1, Math.min(6, dinosaur.getMaxHerdSize() / 2), dinosaur.isMarineCreature() ? EnumCreatureType.WATER_CREATURE : EnumCreatureType.CREATURE, dinosaur.getSpawnBiomes());
             }
         }
     }

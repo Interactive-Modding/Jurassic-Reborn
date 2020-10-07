@@ -1,21 +1,26 @@
 package mod.reborn.server.block;
 
+import javafx.util.Pair;
+import mod.reborn.server.conf.RebornConfig;
 import mod.reborn.server.tab.TabHandler;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockDirt;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeSwamp;
 
 import java.util.Random;
 
-public class PeatBlock extends Block {
+public class PeatBlock  extends Block {
     public static final PropertyInteger MOISTURE = PropertyInteger.create("moisture", 0, 7);
+    public int peatGenerationSpeed = RebornConfig.PLANT_GENERATION.peatSpreadSpeed;
 
     public PeatBlock() {
         super(Material.GROUND);
@@ -38,6 +43,27 @@ public class PeatBlock extends Block {
             }
         } else if (moisture < 7) {
             world.setBlockState(pos, state.withProperty(MOISTURE, 7), 2);
+        }
+        if (world.getBiome(pos) instanceof BiomeSwamp) {
+            for (int i = 0; i < 4; ++i) {
+                BlockPos blockpos = pos.add(rand.nextInt(peatGenerationSpeed + 1), rand.nextInt(peatGenerationSpeed + 1), rand.nextInt(peatGenerationSpeed + 1));
+
+                if (blockpos.getY() >= 0 && blockpos.getY() < 256 && !world.isBlockLoaded(blockpos)) {
+                    return;
+                }
+
+                IBlockState iblockstate = world.getBlockState(blockpos.up());
+                IBlockState iblockstate1 = world.getBlockState(blockpos);
+                IBlockState iBlockState2 = world.getBlockState(blockpos.up(2));
+                IBlockState iBlockState3 = world.getBlockState(blockpos.up(3));
+
+
+                if (iblockstate1.getBlock() == Blocks.DIRT && iblockstate1.getValue(BlockDirt.VARIANT) == BlockDirt.DirtType.DIRT) {
+                    if (iblockstate.getBlock() == Blocks.GRASS || iBlockState2.getBlock() == Blocks.GRASS || iBlockState3.getBlock() == Blocks.GRASS) {
+                        world.setBlockState(blockpos, BlockHandler.PEAT.getDefaultState());
+                    }
+                }
+            }
         }
     }
 

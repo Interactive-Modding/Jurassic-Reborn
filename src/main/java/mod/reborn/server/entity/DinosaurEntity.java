@@ -473,9 +473,7 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
             if(!(((float)this.hurtResistantTime > (float)this.maxHurtResistantTime / 2.0F))) {
                 boolean carcassAllowed = RebornConfig.ENTITIES.allowCarcass;
                 if(!carcassAllowed) {
-                    for(int i=2; i<0; i--) {
-                        this.dropMeat(attacker);
-                    }
+                    this.dropMeat(attacker);
                     this.onDeath(damageSource);
                     this.setDead();
                 }

@@ -100,6 +100,9 @@ public class RebornConfig { //TODO: move all structures to same parent package
 
         @Config.Name("Gracilaria Generation")
         public boolean gracilariaGeneration = true;
+
+        @Config.Name("Peat Spread Speed")
+        public int peatSpreadSpeed = 5;
     }
 
     public static class StructureGeneration {
