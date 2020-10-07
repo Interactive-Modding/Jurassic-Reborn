@@ -1038,6 +1038,15 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
     @Override
     public void onUpdate() {
         super.onUpdate();
+        if(GameRuleHandler.DINO_METABOLISM.getBoolean(this.world)) {
+            if(this.getMetabolism().getEnergy() < this.getMetabolism().getMaxEnergy()) {
+                this.getMetabolism().setEnergy(this.getMetabolism().getMaxEnergy());
+            }
+
+            if(this.getMetabolism().getWater() < this.getMetabolism().getMaxWater()) {
+                this.getMetabolism().setWater(this.getMetabolism().getMaxWater());
+            }
+        }
         if(this.world.isRemote && this.dataManager.get(WATCHER_WAS_FED)) {
             this.world.spawnParticle(EnumParticleTypes.VILLAGER_HAPPY, this.posX + (double)(this.rand.nextFloat() * this.width * 2.0F) - (double)this.width, this.posY + 0.5D + (double)(this.rand.nextFloat() * this.height), this.posZ + (double)(this.rand.nextFloat() * this.width * 2.0F) - (double)this.width, 0.0D, 0.0D, 0.0D);
         }
