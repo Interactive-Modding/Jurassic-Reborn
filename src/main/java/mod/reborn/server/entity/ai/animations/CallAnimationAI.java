@@ -25,7 +25,7 @@ public class CallAnimationAI extends EntityAIBase {
 
     @Override
     public boolean shouldExecute() {
-        if (!this.dinosaur.isBusy() && this.dinosaur.getRNG().nextInt(50) < 2) {
+        if (!this.dinosaur.isBusy() && this.dinosaur.getRNG().nextInt(15) < 2 && this.dinosaur.getRNG().nextBoolean()) {
             List<Entity> entities = this.getEntitiesWithinDistance(this.dinosaur, 50, 10);
 
             for (Entity entity : entities) {
