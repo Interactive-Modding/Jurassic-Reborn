@@ -110,7 +110,7 @@ public class CompsognathusEntity extends DinosaurEntity {
         String formattedName = this.dinosaur.getName().toLowerCase(Locale.ENGLISH).replaceAll(" ", "_");
         String baseTextures = "textures/entities/" + formattedName + "/";
         String texture = baseTextures + formattedName;
-        return isMale()?new ResourceLocation(RebornMod.MODID, texture + "_male_" + getGrowthStage().getLocalization().toLowerCase() + "_" + variant + ".png"):new ResourceLocation(RebornMod.MODID, texture + "_female_" + getGrowthStage().getLocalization().toLowerCase() + "_" + variant +".png");
+        return isMale()?new ResourceLocation(RebornMod.MODID, texture + "_male_" + "adult" + "_" + variant + ".png"):new ResourceLocation(RebornMod.MODID, texture + "_female_" + "adult" + "_" + variant +".png");
     }
 }
 

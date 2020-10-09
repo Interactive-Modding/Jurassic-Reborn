@@ -85,6 +85,7 @@ public class DinosaurAttackMeleeEntityAI extends EntityAIBase {
                 return this.getAttackReachSqr(entitylivingbase) >= this.attacker.getDistanceSq(entitylivingbase.posX, entitylivingbase.getEntityBoundingBox().minY, entitylivingbase.posZ);
             }
         }
+        return false;
     }
 
     /**
