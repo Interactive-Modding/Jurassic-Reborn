@@ -45,12 +45,12 @@ public class DinosaurAttackMeleeEntityAI extends EntityAIBase {
     public boolean shouldExecute()
     {
         EntityLivingBase entitylivingbase = this.attacker.getAttackTarget();
-
+        
         if (entitylivingbase == null)
         {
             return false;
         }
-        else if (!entitylivingbase.isEntityAlive())
+        else if (!entitylivingbase.isEntityAlive() || attacker.isInWater())
         {
             return false;
         }
@@ -114,6 +114,9 @@ public class DinosaurAttackMeleeEntityAI extends EntityAIBase {
         {
             return false;
         }
+        else if(!entitylivingbase.isInWater() && !this.attacker.isMarineCreature()) {
+            return false;
+        }
         else
         {
             return !(entitylivingbase instanceof EntityPlayer) || !((EntityPlayer)entitylivingbase).isSpectator() && !((EntityPlayer)entitylivingbase).isCreative();
@@ -136,7 +139,7 @@ public class DinosaurAttackMeleeEntityAI extends EntityAIBase {
     {
         EntityLivingBase entitylivingbase = this.attacker.getAttackTarget();
 
-        if (entitylivingbase instanceof EntityPlayer && (((EntityPlayer)entitylivingbase).isSpectator() || ((EntityPlayer)entitylivingbase).isCreative()))
+        if (entitylivingbase instanceof EntityPlayer && (((EntityPlayer)entitylivingbase).isSpectator() || ((EntityPlayer)entitylivingbase).isCreative()) || entitylivingbase.isInWater() && !attacker.isMarineCreature())
         {
             this.attacker.setAttackTarget(null);
         }

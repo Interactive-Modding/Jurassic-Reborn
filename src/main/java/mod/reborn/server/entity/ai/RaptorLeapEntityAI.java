@@ -25,7 +25,7 @@ public class RaptorLeapEntityAI extends EntityAIBase {
 
     @Override
     public boolean shouldExecute() {
-        if (this.entity.herd != null && this.entity.herd.fleeing) {
+        if (this.entity.herd != null && this.entity.herd.fleeing && !entity.isInWater()) {
             return false;
         }
 

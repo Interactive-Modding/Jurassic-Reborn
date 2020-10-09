@@ -53,6 +53,7 @@ import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.pathfinding.Path;
+import net.minecraft.pathfinding.PathNodeType;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.DamageSource;
@@ -223,6 +224,11 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
         this.animationTick = 0;
         this.setAnimation(EntityAnimation.IDLE.get());
 
+        this.setPathPriority(PathNodeType.OPEN, 50);
+        this.setPathPriority(PathNodeType.FENCE, -5);
+        this.setPathPriority(PathNodeType.DOOR_WOOD_CLOSED, -5);
+        this.setPathPriority(PathNodeType.DOOR_IRON_CLOSED, -5);
+
         this.setUseInertialTweens(true);
 
         this.animationTasks = new EntityAITasks(world.profiler);
@@ -231,7 +237,6 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
             this.tasks.addTask(0, new AdvancedSwimEntityAI(this));
         }
         this.tasks.addTask(0, new DinosaurWanderEntityAI(this, 0.8D, 2, 10));
-        this.tasks.addTask(0, new DinosaurWanderAvoidWater(this, 0.8D, 10));
         if (dinosaur.getDiet().canEat(this, FoodType.PLANT)) {
             this.tasks.addTask(1, new GrazeEntityAI(this));
         }
