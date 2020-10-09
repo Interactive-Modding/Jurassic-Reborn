@@ -54,6 +54,11 @@ public class DinosaurAttackMeleeEntityAI extends EntityAIBase {
         {
             return false;
         }
+        else if (!entitylivingbase.isInWater()) {
+            if(!attacker.isMarineCreature()) {
+                return false;
+            }
+        }
         else
         {
             if (canPenalize)
