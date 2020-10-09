@@ -6,7 +6,7 @@ import mod.reborn.server.entity.DinosaurEntity;
 import mod.reborn.server.entity.ai.LeapingMeleeEntityAI;
 import mod.reborn.server.entity.ai.RaptorLeapEntityAI;
 import mod.reborn.server.entity.animal.GoatEntity;
-import net.minecraft.client.resources.Locale;
+import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
@@ -20,7 +20,8 @@ import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
-import scala.tools.nsc.doc.model.Class;
+
+import java.util.Locale;
 
 public class CompsognathusEntity extends DinosaurEntity {
     private static final DataParameter<Integer> VARIANT = EntityDataManager.createKey(CompsognathusEntity.class, DataSerializers.VARINT);
@@ -51,9 +52,8 @@ public class CompsognathusEntity extends DinosaurEntity {
 
 
         public CompyHurtByTarget() {
-            super(CompsognathusEntity.this, false, new Class[0]);
+            super(CompsognathusEntity.this, true);
         }
-
 
         public void startExecuting() {
             if (CompsognathusEntity.this.herd.size() >= 3) {
@@ -110,7 +110,7 @@ public class CompsognathusEntity extends DinosaurEntity {
         String formattedName = this.dinosaur.getName().toLowerCase(Locale.ENGLISH).replaceAll(" ", "_");
         String baseTextures = "textures/entities/" + formattedName + "/";
         String texture = baseTextures + formattedName;
-        return isMale()?new ResourceLocation(RebornMod.MODID, texture + "_male_" + variant + ".png"):new ResourceLocation(RebornMod.MODID, texture + "_female_" + variant +".png");
+        return isMale()?new ResourceLocation(RebornMod.MODID, texture + "_male_" + getGrowthStage().getLocalization().toLowerCase() + "_" + variant + ".png"):new ResourceLocation(RebornMod.MODID, texture + "_female_" + getGrowthStage().getLocalization().toLowerCase() + "_" + variant +".png");
     }
 }
 
