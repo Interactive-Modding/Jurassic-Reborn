@@ -38,8 +38,14 @@ public class TroodonRenderer extends DinosaurRenderer {
                 ITextureObject textureObject = Minecraft.getMinecraft().getTextureManager().getTexture(texture);
                 if (textureObject != TextureUtil.MISSING_TEXTURE) {
                     this.renderer.bindTexture(texture);
-                    OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, 5, 5);
+                    int i = 61680;
+                    int j = i % 65536;
+                    OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, j, 0);
                     this.renderer.getMainModel().render(entitylivingbaseIn, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale);
+                    i = entitylivingbaseIn.getBrightnessForRender();
+                    j = i % 65536;
+                    int k = i / 65536;
+                    OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, j, k);
                     this.renderer.setLightmap(entitylivingbaseIn);
 
                 }
