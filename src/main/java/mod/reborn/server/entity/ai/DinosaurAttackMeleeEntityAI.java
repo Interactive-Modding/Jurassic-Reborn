@@ -45,19 +45,14 @@ public class DinosaurAttackMeleeEntityAI extends EntityAIBase {
     public boolean shouldExecute()
     {
         EntityLivingBase entitylivingbase = this.attacker.getAttackTarget();
-        
+
         if (entitylivingbase == null)
         {
             return false;
         }
-        else if (!entitylivingbase.isEntityAlive() || attacker.isInWater())
+        else if (!entitylivingbase.isEntityAlive())
         {
             return false;
-        }
-        else if (!entitylivingbase.isInWater()) {
-            if(!attacker.isMarineCreature()) {
-                return false;
-            }
         }
         else
         {
@@ -85,7 +80,6 @@ public class DinosaurAttackMeleeEntityAI extends EntityAIBase {
                 return this.getAttackReachSqr(entitylivingbase) >= this.attacker.getDistanceSq(entitylivingbase.posX, entitylivingbase.getEntityBoundingBox().minY, entitylivingbase.posZ);
             }
         }
-        return false;
     }
 
     /**
@@ -114,9 +108,6 @@ public class DinosaurAttackMeleeEntityAI extends EntityAIBase {
         {
             return false;
         }
-        else if(!entitylivingbase.isInWater() && !this.attacker.isMarineCreature()) {
-            return false;
-        }
         else
         {
             return !(entitylivingbase instanceof EntityPlayer) || !((EntityPlayer)entitylivingbase).isSpectator() && !((EntityPlayer)entitylivingbase).isCreative();
@@ -139,7 +130,7 @@ public class DinosaurAttackMeleeEntityAI extends EntityAIBase {
     {
         EntityLivingBase entitylivingbase = this.attacker.getAttackTarget();
 
-        if (entitylivingbase instanceof EntityPlayer && (((EntityPlayer)entitylivingbase).isSpectator() || ((EntityPlayer)entitylivingbase).isCreative()) || entitylivingbase.isInWater() && !attacker.isMarineCreature())
+        if (entitylivingbase instanceof EntityPlayer && (((EntityPlayer)entitylivingbase).isSpectator() || ((EntityPlayer)entitylivingbase).isCreative()))
         {
             this.attacker.setAttackTarget(null);
         }
@@ -209,7 +200,7 @@ public class DinosaurAttackMeleeEntityAI extends EntityAIBase {
         if (attackTarget.getEntityBoundingBox().intersects(this.attacker.getEntityBoundingBox().expand(1, 1, 1))) {
             return 1024.0;
         }
-        double grownWidth = this.attacker.width + 1.0;
+        double grownWidth = this.attacker.width;
         return grownWidth * grownWidth;
     }
 }

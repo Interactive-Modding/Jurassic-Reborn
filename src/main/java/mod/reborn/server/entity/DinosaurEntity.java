@@ -207,6 +207,8 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
 
         this.setFullyGrown();
         this.updateAttributes();
+        this.setPathPriority(PathNodeType.DOOR_WOOD_CLOSED, 0);
+        this.setPathPriority(PathNodeType.DOOR_IRON_CLOSED, 0);
 
         this.navigator = new DinosaurPathNavigate(this, this.world);
         ((DinosaurPathNavigate) this.navigator).setCanSwim(true);
@@ -224,11 +226,6 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
         this.animationTick = 0;
         this.setAnimation(EntityAnimation.IDLE.get());
 
-        this.setPathPriority(PathNodeType.OPEN, 50);
-        this.setPathPriority(PathNodeType.FENCE, -5);
-        this.setPathPriority(PathNodeType.DOOR_WOOD_CLOSED, -5);
-        this.setPathPriority(PathNodeType.DOOR_IRON_CLOSED, -5);
-
         this.setUseInertialTweens(true);
 
         this.animationTasks = new EntityAITasks(world.profiler);
@@ -237,6 +234,7 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
             this.tasks.addTask(0, new AdvancedSwimEntityAI(this));
         }
         this.tasks.addTask(0, new DinosaurWanderEntityAI(this, 0.8D, 2, 10));
+        this.tasks.addTask(0, new DinosaurWanderAvoidWater(this, 0.8D, 10));
         if (dinosaur.getDiet().canEat(this, FoodType.PLANT)) {
             this.tasks.addTask(1, new GrazeEntityAI(this));
         }
@@ -255,7 +253,7 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
         this.tasks.addTask(1, new EntityAIPanic(this, 1.25D));
         this.tasks.addTask(2, new ProtectInfantEntityAI<>(this));
         this.tasks.addTask(3, new FollowOwnerEntityAI(this));
-        this.tasks.addTask(3, this.getAttackAI());
+        this.tasks.addTask(3, new DinosaurAttackMeleeEntityAI(this,1.0F, false));
         this.tasks.addTask(4, new EntityAILookIdle(this));
         this.tasks.addTask(4, new EntityAIWatchClosest(this, EntityLivingBase.class, 6.0F));
         this.animationTasks.addTask(0, new SleepEntityAI(this));
@@ -389,15 +387,12 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
                         hasvowel = true;
                         break;
                     }
-                    hasvowel = false;
-                    break;
                 }
                 if(hasvowel) {
                     player.sendMessage(new TextComponentString(LangUtils.translate(LangUtils.TAME).replace("{dinosaur}", LangUtils.getDinoName(this.dinosaur))));
                 } else {
                     player.sendMessage(new TextComponentString(LangUtils.translate(LangUtils.TAME).replace("{dinosaur}", LangUtils.getDinoName(this.dinosaur)).replace("an", "a")));
                 }
-                player.sendMessage(new TextComponentString(LangUtils.translate(LangUtils.TAME).replace("{dinosaur}", LangUtils.getDinoName(this.dinosaur))));
             }
         }
     }
@@ -769,7 +764,7 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
             }
         }
 
-        if(GameRuleHandler.DINO_METABOLISM.getBoolean(this.world)) {
+        if(!GameRuleHandler.DINO_METABOLISM.getBoolean(this.world)) {
             if(this.getMetabolism().getEnergy() < this.getMetabolism().getMaxEnergy()) {
                 this.getMetabolism().setEnergy(this.getMetabolism().getMaxEnergy());
             }

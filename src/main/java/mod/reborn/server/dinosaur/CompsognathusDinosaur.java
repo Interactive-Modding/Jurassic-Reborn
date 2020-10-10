@@ -7,7 +7,7 @@ import mod.reborn.server.period.TimePeriod;
 
 public class CompsognathusDinosaur extends Dinosaur
 {
-    public static final double SPEED = 0.2F;
+    public static final double SPEED = 0.4F;
     public CompsognathusDinosaur()
     {
         super();
@@ -35,7 +35,6 @@ public class CompsognathusDinosaur extends Dinosaur
         this.setBreeding(false, 2, 6, 15, false, true);
         this.setJumpHeight(2);
         this.setCanClimb(true);
-        this.setRotationAngle(240, 180);
         this.setImprintable(true);
         String[][] recipe =     {{"", "", "", "neck_vertebrae", "skull"},
                 {"tail_vertebrae", "pelvis", "ribcage","shoulder","teeth"},

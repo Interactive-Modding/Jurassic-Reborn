@@ -215,10 +215,6 @@ public class DinosaurWalkNodeProcessor extends WalkNodeProcessor {
             if (groundNodeType == PathNodeType.DAMAGE_CACTUS) {
                 nodeType = PathNodeType.DAMAGE_CACTUS;
             }
-
-            if(groundNodeType == PathNodeType.WATER) {
-                nodeType = PathNodeType.WATER;
-            }
         }
 
         BlockPos.PooledMutableBlockPos pool = BlockPos.PooledMutableBlockPos.retain();
