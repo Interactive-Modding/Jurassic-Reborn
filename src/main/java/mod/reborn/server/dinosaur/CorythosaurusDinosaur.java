@@ -13,7 +13,7 @@ public class CorythosaurusDinosaur extends Dinosaur
         super();
 
         this.setName("Corythosaurus");
-        this.setDinosaurType(DinosaurType.SCARED);
+        this.setDinosaurType(DinosaurType.PASSIVE);
         this.setDinosaurClass(CorythosaurusEntity.class);
         this.setTimePeriod(TimePeriod.CRETACEOUS);
         this.setEggColorMale(0xBAA87E, 0x5E7201);
@@ -34,7 +34,7 @@ public class CorythosaurusDinosaur extends Dinosaur
         this.setScale(2.2F, 0.4F);
         this.setOffset(0.0F, 0.775F, 0.0F);
         this.setImprintable(true);
-        this.setFlockSpeed(2.5F);
+        this.setFlockSpeed(1.5F);
         this.setBreeding(false, 2, 6, 40, false, true);
         String[][] recipe = {
                 {"tail_vertebrae", "pelvis", "ribcage","neck_vertebrae","skull"},

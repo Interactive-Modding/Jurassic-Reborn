@@ -20,6 +20,7 @@ public class BrachiosaurusAnimator extends EntityAnimator<BrachiosaurusEntity> {
         AdvancedModelRenderer neck4 = model.getCube("neck4");
         AdvancedModelRenderer neck5 = model.getCube("neck5");
         AdvancedModelRenderer neck6 = model.getCube("neck6");
+        AdvancedModelRenderer neck8 = model.getCube("neck8");
 
         AdvancedModelRenderer neck7 = model.getCube("neck7");
         AdvancedModelRenderer tail1 = model.getCube("tail1");
@@ -28,7 +29,7 @@ public class BrachiosaurusAnimator extends EntityAnimator<BrachiosaurusEntity> {
         AdvancedModelRenderer tail4 = model.getCube("tail4");
         AdvancedModelRenderer tail5 = model.getCube("tail5");
 
-        AdvancedModelRenderer[] neckParts = new AdvancedModelRenderer[] { head, neck7, neck6, neck5, neck4, neck3, neck2, neck1 };
+        AdvancedModelRenderer[] neckParts = new AdvancedModelRenderer[] { head, neck8, neck7, neck6, neck5, neck4, neck3, neck2, neck1 };
         AdvancedModelRenderer[] tailParts = new AdvancedModelRenderer[] { tail5, tail4, tail3 };
         AdvancedModelRenderer[] tailParts2 = new AdvancedModelRenderer[] { tail5, tail4, tail3, tail2, tail1 };
 

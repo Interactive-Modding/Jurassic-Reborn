@@ -13,7 +13,7 @@ public class LambeosaurusDinosaur extends Dinosaur
         super();
 
         this.setName("Lambeosaurus");
-        this.setDinosaurType(DinosaurType.SCARED);
+        this.setDinosaurType(DinosaurType.PASSIVE);
         this.setDinosaurClass(LambeosaurusEntity.class);
         this.setTimePeriod(TimePeriod.CRETACEOUS);
         this.setEggColorMale(0x82947A, 0x2F3129);
@@ -34,7 +34,7 @@ public class LambeosaurusDinosaur extends Dinosaur
         this.setAttackBias(-50);
         this.setImprintable(true);
         this.setDefendOwner(true);
-        this.setFlockSpeed(2.5F);
+        this.setFlockSpeed(1.5F);
         this.setBreeding(false, 2, 6, 40, false, true);
         String[][] recipe = {
                 {"tail_vertebrae", "pelvis", "ribcage","neck_vertebrae","skull"},
