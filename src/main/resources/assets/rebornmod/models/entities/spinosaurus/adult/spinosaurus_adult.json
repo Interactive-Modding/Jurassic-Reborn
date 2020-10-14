@@ -201,6 +201,20 @@
         "pose": "spinosaurus_adult_idle",
         "time": 15
       }
+  ],
+    "DYING": [
+      {
+        "pose": "spinosaurus_adult_death_1",
+        "time": 15
+      },
+      {
+        "pose": "spinosaurus_adult_death_2",
+        "time": 15
+      },
+      {
+        "pose": "spinosaurus_adult_death_3",
+        "time": 15
+      }
     ],
     "ROARING": [
       {
