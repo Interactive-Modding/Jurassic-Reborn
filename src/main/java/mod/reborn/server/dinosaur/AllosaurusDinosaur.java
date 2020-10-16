@@ -21,13 +21,13 @@ public class AllosaurusDinosaur extends Dinosaur {
         this.setStrength(1, 20);
         this.setMaximumAge(fromDays(45));
         this.setEyeHeight(0.45F, 1.6F);
-        this.setSizeX(0.5F, 2.5F);
-        this.setSizeY(0.75F, 4F);
+        this.setSizeX(0.4F, 2.5F);
+        this.setSizeY(0.65F, 4F);
         this.setDiet(Diet.CARNIVORE.get());
         this.setBones("leg_bones", "neck_vertebrae", "arm_bones", "claw", "foot_bones", "leg_bones", "pelvis", "shoulder", "tooth", "ribcage", "skull", "tail_vertebrae");
         this.setHeadCubeName("Head");
         this.setBreeding(false, 2, 4, 40, false, true);
-        this.setScale(2.4F, 0.35F);
+        this.setScale(2.4F, 0.31F);
         this.shouldDefendOffspring();
         String[][] recipe = {{"", "", "","neck_vertebrae","skull"},
                 {"tail_vertebrae", "pelvis", "ribcage","shoulder","tooth"},
