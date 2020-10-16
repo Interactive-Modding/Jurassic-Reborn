@@ -34,6 +34,8 @@ public class CarnotaurusAnimator extends EntityAnimator<CarnotaurusEntity>
         AdvancedModelRenderer tail4 = model.getCube("Tail 4");
         AdvancedModelRenderer tail5 = model.getCube("Tail 5");
         AdvancedModelRenderer tail6 = model.getCube("Tail 6");
+        AdvancedModelRenderer tail7 = model.getCube("Tail 7");
+
 
         AdvancedModelRenderer leftThigh = model.getCube("Left Thigh");
         AdvancedModelRenderer rightThigh = model.getCube("Right Thigh");
@@ -60,7 +62,7 @@ public class CarnotaurusAnimator extends EntityAnimator<CarnotaurusEntity>
         AdvancedModelRenderer upperJaw = model.getCube("Upper Jaw");
 
         AdvancedModelRenderer[] body = new AdvancedModelRenderer[] { head, neck4, neck3, neck2, neck1, shoulders, waist, hips };
-        AdvancedModelRenderer[] tail = new AdvancedModelRenderer[] { tail6, tail5, tail4, tail3, tail2, tail1 };
+        AdvancedModelRenderer[] tail = new AdvancedModelRenderer[] { tail7, tail7, tail6, tail5, tail4, tail3, tail2, tail1 };
 
         AdvancedModelRenderer[] armRight = new AdvancedModelRenderer[] { handRight, lowerArmRight, upperArmRight };
         AdvancedModelRenderer[] armLeft = new AdvancedModelRenderer[] { handLeft, lowerArmLeft, upperArmLeft };

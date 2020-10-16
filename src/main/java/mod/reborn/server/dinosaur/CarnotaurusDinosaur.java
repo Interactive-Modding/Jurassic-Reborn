@@ -17,8 +17,8 @@ public class CarnotaurusDinosaur extends Dinosaur
         this.setDinosaurType(DinosaurType.AGGRESSIVE);
         this.setDinosaurClass(CarnotaurusEntity.class);
         this.setTimePeriod(TimePeriod.CRETACEOUS);
-        this.setEggColorMale(0xA2996E, 0x545338);
-        this.setEggColorFemale(0x9C8E6A, 0x635639);
+        this.setEggColorMale(0x535023, 0x292d0f);
+        this.setEggColorFemale(0x964e26, 0x492f11);
         this.setHealth(10, 35);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(5, 20);
