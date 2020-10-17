@@ -24,6 +24,10 @@ public abstract class SwimmingDinosaurEntity extends DinosaurEntity {
 
     @Override
     public void onEntityUpdate() {
+        if (this.isInsideOfMaterial(Material.WATER) || (this.getNavigator().noPath() && this.inWater() || this.inLava())) {
+            this.setMoveVertical(-0.1F);
+        }
+
         int air = this.getAir();
         super.onEntityUpdate();
 

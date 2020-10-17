@@ -954,10 +954,6 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
                         }
                     }
                 }
-            } else {
-                if (this.isInsideOfMaterial(Material.WATER) || (this.getNavigator().noPath() && this.inWater() || this.inLava())) {
-                    this.getJumpHelper().setJumping();
-                }
             }
 
             if (this.herd == null) {
