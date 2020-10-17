@@ -64,7 +64,7 @@ public abstract class Dinosaur implements Comparable<Dinosaur> {
     private String headCubeName;
     private MovementType movementType = MovementType.NEAR_SURFACE;
     private BirthType birthType = BirthType.EGG_LAYING;
-    private boolean isImprintable;
+    private boolean isImprintable = false;
 
     private boolean randomFlock = true;
 
