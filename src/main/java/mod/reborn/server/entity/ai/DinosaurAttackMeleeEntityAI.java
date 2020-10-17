@@ -53,34 +53,22 @@ public class DinosaurAttackMeleeEntityAI extends EntityAIBase {
         else if (!entitylivingbase.isEntityAlive())
         {
             return false;
-        } else if(!attacker.getDinosaur().isMarineCreature()) {
-            if(entitylivingbase.isInWater()) {
-                return false;
-            }
         }
-        else
-        {
-            if (canPenalize)
-            {
-                if (--this.delayCounter <= 0)
-                {
+        else {
+            if (canPenalize) {
+                if (--this.delayCounter <= 0) {
                     this.path = this.attacker.getNavigator().getPathToEntityLiving(entitylivingbase);
                     this.delayCounter = 4 + this.attacker.getRNG().nextInt(7);
                     return this.path != null;
-                }
-                else
-                {
+                } else {
                     return true;
                 }
             }
             this.path = this.attacker.getNavigator().getPathToEntityLiving(entitylivingbase);
 
-            if (this.path != null)
-            {
+            if (this.path != null) {
                 return true;
-            }
-            else
-            {
+            } else {
                 return this.getAttackReachSqr(entitylivingbase) >= this.attacker.getDistanceSq(entitylivingbase.posX, entitylivingbase.getEntityBoundingBox().minY, entitylivingbase.posZ);
             }
         }
