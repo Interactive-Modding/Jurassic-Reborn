@@ -12,7 +12,7 @@ public class DimorphodonEntity extends FlyingDinosaurEntity
     public DimorphodonEntity(World world)
     {
         super(world);
-        this.target(AlvarezsaurusEntity.class, EntityPlayer.class, EntityAnimal.class, EntityVillager.class, EntityMob.class, CompsognathusEntity.class, DodoEntity.class, LeaellynasauraEntity.class, LeptictidiumEntity.class, MicroceratusEntity.class, MicroraptorEntity.class, OthnieliaEntity.class, SegisaurusEntity.class);
+        this.target(AlvarezsaurusEntity.class, EntityPlayer.class, EntityAnimal.class, EntityVillager.class, CompsognathusEntity.class, DodoEntity.class, LeaellynasauraEntity.class, LeptictidiumEntity.class, MicroceratusEntity.class, MicroraptorEntity.class, OthnieliaEntity.class, SegisaurusEntity.class);
     }
 
     @Override
