@@ -79,23 +79,23 @@ public class MamenchisaurusAnimator extends EntityAnimator<MamenchisaurusEntity>
 
         model.chainWave(tailParts, globalSpeed * 1.0F, globalHeight * 0.25F, 3, f, f1);
         model.chainSwing(tailParts, globalSpeed * 0.5F, globalHeight * 0.5F, 3, f, f1);
-        model.chainWave(neckParts, globalSpeed * 1.0F, globalHeight * 0.125F, -4, f, f1);
+     //   model.chainWave(neckParts, globalSpeed * 1.0F, globalHeight * 0.125F, -4, f, f1);
 
-        model.walk(backLeftThigh, 1F * globalSpeed, 0.7F * globalDegree, false, 0F, -0.4F, f, f1);
-        model.walk(lowerThighLeft, 1F * globalSpeed, 0.6F * globalDegree, true, 1F, 0.5F, f, f1);
-        model.walk(footLeft, 1F * globalSpeed, 0.6F * globalDegree, false, -1.5F, 0.85F, f, f1);
+    //    model.walk(backLeftThigh, 1F * globalSpeed, 0.7F * globalDegree, false, 0F, -0.4F, f, f1);
+    //    model.walk(lowerThighLeft, 1F * globalSpeed, 0.6F * globalDegree, true, 1F, 0.5F, f, f1);
+    //    model.walk(footLeft, 1F * globalSpeed, 0.6F * globalDegree, false, -1.5F, 0.85F, f, f1);
 
-        model.walk(backRightThigh, 1F * globalSpeed, 0.7F * globalDegree, true, 0F, -0.4F, f, f1);
-        model.walk(lowerThighRight, 1F * globalSpeed, 0.6F * globalDegree, false, 1F, 0.5F, f, f1);
-        model.walk(footRight, 1F * globalSpeed, 0.6F * globalDegree, true, -1.5F, 0.85F, f, f1);
+    //    model.walk(backRightThigh, 1F * globalSpeed, 0.7F * globalDegree, true, 0F, -0.4F, f, f1);
+    //    model.walk(lowerThighRight, 1F * globalSpeed, 0.6F * globalDegree, false, 1F, 0.5F, f, f1);
+   //     model.walk(footRight, 1F * globalSpeed, 0.6F * globalDegree, true, -1.5F, 0.85F, f, f1);
 
-        model.walk(armLeft, 1F * globalSpeed, 0.7F * globalDegree, true, frontOffset + 0F, -0.2F, f, f1);
-        model.walk(lowerArmLeft, 1F * globalSpeed, 0.6F * globalDegree, true, frontOffset + 1F, -0.2F, f, f1);
-        model.walk(handLeft, 1F * globalSpeed, 0.6F * globalDegree, false, frontOffset + 2F, 0.8F, f, f1);
+    //    model.walk(armLeft, 1F * globalSpeed, 0.7F * globalDegree, true, frontOffset + 0F, -0.2F, f, f1);
+    //    model.walk(lowerArmLeft, 1F * globalSpeed, 0.6F * globalDegree, true, frontOffset + 1F, -0.2F, f, f1);
+     //   model.walk(handLeft, 1F * globalSpeed, 0.6F * globalDegree, false, frontOffset + 2F, 0.8F, f, f1);
 
-        model.walk(armRight, 1F * globalSpeed, 0.7F * globalDegree, false, frontOffset + 0F, -0.2F, f, f1);
-        model.walk(lowerArmRight, 1F * globalSpeed, 0.6F * globalDegree, false, frontOffset + 1F, -0.2F, f, f1);
-        model.walk(handRight, 1F * globalSpeed, 0.6F * globalDegree, true, frontOffset + 2F, 0.8F, f, f1);
+     //   model.walk(armRight, 1F * globalSpeed, 0.7F * globalDegree, false, frontOffset + 0F, -0.2F, f, f1);
+     //   model.walk(lowerArmRight, 1F * globalSpeed, 0.6F * globalDegree, false, frontOffset + 1F, -0.2F, f, f1);
+    //    model.walk(handRight, 1F * globalSpeed, 0.6F * globalDegree, true, frontOffset + 2F, 0.8F, f, f1);
 
         model.chainWave(tailParts, globalSpeed * 0.25F, globalHeight * 1.0F, 3, ticks, 0.025F);
         model.chainWave(neckParts, globalSpeed * 0.25F, globalHeight * 0.25F, -4, ticks, 0.025F);

@@ -25,14 +25,14 @@ public class SinoceratopsDinosaur extends Dinosaur {
         this.setHealth(10, 70);
         this.setStrength(5, 20);
         this.setMaximumAge(this.fromDays(45));
-        this.setEyeHeight(0.45F, 1.8F);
-        this.setSizeX(0.35F, 2.5F);
-        this.setSizeY(0.6F, 3.0F);
+        this.setEyeHeight(0.15F, 1.8F);
+        this.setSizeX(0.15F, 2.5F);
+        this.setSizeY(0.3F, 3.0F);
         this.setStorage(36);
         this.setDiet(Diet.HERBIVORE.get());
         this.setBones("front_leg_bones", "hind_leg_bones", "horn", "neck_vertebrae", "pelvis", "ribcage", "shoulder", "skull", "tail_vertebrae", "tooth");
         this.setHeadCubeName("Head");
-        this.setScale(1.35F, 0.325F);
+        this.setScale(1.35F, 0.125F);
         this.setOffset(0.0F, 0.45F, 0.0F);
         this.setImprintable(true);
         this.setDefendOwner(true);

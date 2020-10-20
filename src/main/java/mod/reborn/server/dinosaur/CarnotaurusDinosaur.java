@@ -24,13 +24,13 @@ public class CarnotaurusDinosaur extends Dinosaur
         this.setStrength(5, 20);
         this.setMaximumAge(fromDays(45));
         this.setEyeHeight(0.4F, 2.4F);
-        this.setSizeX(0.45F, 2.25F);
-        this.setSizeY(0.6F, 2.8F);
+        this.setSizeX(0.45F, 2.35F);
+        this.setSizeY(0.6F, 2.9F);
         this.setDiet(Diet.CARNIVORE.get());
         this.setSleepTime(SleepTime.CREPUSCULAR);
         this.setBones("skull", "tooth", "claw", "foot_bones", "neck_vertebrae", "pelvis", "shoulder", "arm_bones", "leg_bones", "ribcage", "tail_vertebrae");
         this.setHeadCubeName("Head");
-        this.setScale(1.3F, 0.15F);
+        this.setScale(1.5F, 0.15F);
         this.setBreeding(false, 2, 4, 40, false, true);
         this.shouldDefendOffspring();
 

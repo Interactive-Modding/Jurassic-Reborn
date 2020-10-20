@@ -26,11 +26,11 @@ public class MamenchisaurusDinosaur extends Dinosaur
         this.setMaximumAge(fromDays(95));
         this.setEyeHeight(1.55F, 13.95F);
         this.setRotationAngle(50, 10);
-        this.setSizeX(0.75F, 5.5F);
-        this.setSizeY(0.75F, 5.95F);
+        this.setSizeX(0.75F, 5.6F);
+        this.setSizeY(0.75F, 6F);
         this.setBones("skull", "tooth", "front_leg_bones", "hind_leg_bones", "neck_vertebrae", "pelvis", "ribcage", "shoulder", "tail_vertebrae");
         this.setHeadCubeName("Head");
-        this.setScale(1.8F, 0.2F);
+        this.setScale(2.1F, 0.2F);
         this.setPaleoPadScale(5);
         this.setOffset(0.0F, 0.0F, -0.5F);
         this.shouldDefendOffspring();
