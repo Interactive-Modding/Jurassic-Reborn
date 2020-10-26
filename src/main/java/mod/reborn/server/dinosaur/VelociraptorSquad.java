@@ -27,7 +27,7 @@ public class VelociraptorSquad {
         @Override
         public Class[] getDinosaurs()
         {
-            return new Class[] { VelociraptorCharlieDinosaur.class };
+            return new Class[] { VelociraptorDinosaur.class };
         }
 
         @Override
@@ -75,7 +75,7 @@ public class VelociraptorSquad {
         @Override
         public Class[] getDinosaurs()
         {
-            return new Class[] { VelociraptorEchoDinosaur.class };
+            return new Class[] { VelociraptorDinosaur.class };
         }
 
         @Override
@@ -99,7 +99,7 @@ public class VelociraptorSquad {
         @Override
         public Class[] getDinosaurs()
         {
-            return new Class[] { VelociraptorCharlieDinosaur.class };
+            return new Class[] { VelociraptorDinosaur.class };
         }
 
         @Override
