@@ -16,7 +16,7 @@ public class DinosaurWanderAvoidWater extends DinosaurWanderEntityAI {
     
     @Override
     protected boolean innerShouldStopExcecuting() { 
-        return !this.entity.isInWater();
+        return this.entity.canDinoSwim() || !this.entity.isInWater();
     }
     
     @Override
