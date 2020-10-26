@@ -35,7 +35,12 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.MoverType;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.*;
+import net.minecraft.entity.ai.EntityAIBase;
+import net.minecraft.entity.ai.EntityAILookIdle;
+import net.minecraft.entity.ai.EntityAIPanic;
+import net.minecraft.entity.ai.EntityAITasks;
+import net.minecraft.entity.ai.EntityAIWatchClosest;
+import net.minecraft.entity.ai.EntityLookHelper;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -227,7 +232,6 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
 
         if (!dinosaur.isMarineCreature()) {
             this.tasks.addTask(0, new AdvancedSwimEntityAI(this));
-            this.tasks.addTask(0, new EntityAISwimming(this));
         }
         this.tasks.addTask(0, new DinosaurWanderEntityAI(this, 0.8D, 2, 10));
         this.tasks.addTask(0, new DinosaurWanderAvoidWater(this, 0.8D, 10));
@@ -935,28 +939,28 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
             }
 
             if (!dinosaur.isMarineCreature()) {
-                if (this.isSwimming()) {
-                    Path path = this.getNavigator().getPath();
-                    if (path != null) {
-                        AxisAlignedBB detectionBox = this.getEntityBoundingBox().expand(0.5, 0.5, 0.5);
-                        if (this.world.collidesWithAnyBlock(detectionBox)) {
-                            List<AxisAlignedBB> colliding = this.world.getCollisionBoxes(this.getAttackingEntity(), detectionBox);
-                            boolean swimUp = false;
-                            for (AxisAlignedBB bound : colliding) {
-                                if (bound.maxY > this.getEntityBoundingBox().minY) {
-                                    swimUp = true;
-                                    break;
+                if (this.isInsideOfMaterial(Material.WATER) || (this.getNavigator().noPath() && this.inWater() || this.inLava())) {
+                    this.getJumpHelper().setJumping();
+                } else {
+                    if (this.isSwimming()) {
+                        Path path = this.getNavigator().getPath();
+                        if (path != null) {
+                            AxisAlignedBB detectionBox = this.getEntityBoundingBox().expand(0.5, 0.5, 0.5);
+                            if (this.world.collidesWithAnyBlock(detectionBox)) {
+                                List<AxisAlignedBB> colliding = this.world.getCollisionBoxes(this.getAttackingEntity(), detectionBox);
+                                boolean swimUp = false;
+                                for (AxisAlignedBB bound : colliding) {
+                                    if (bound.maxY > this.getEntityBoundingBox().minY) {
+                                        swimUp = true;
+                                        break;
+                                    }
                                 }
-                            }
-                            if (swimUp) {
-                                this.getJumpHelper().setJumping();
+                                if (swimUp) {
+                                    this.getJumpHelper().setJumping();
+                                }
                             }
                         }
                     }
-                }
-            } else {
-                if (this.isInsideOfMaterial(Material.WATER) || (this.getNavigator().noPath() && this.inWater() || this.inLava())) {
-                    this.getJumpHelper().setJumping();
                 }
             }
 
