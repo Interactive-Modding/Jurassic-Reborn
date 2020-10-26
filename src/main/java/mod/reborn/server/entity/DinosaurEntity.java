@@ -674,8 +674,8 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
 
     private void updateBounds() {
         float scale = this.attributes.getScaleModifier();
-        float width = MathHelper.clamp((float) this.interpolate(dinosaur.getBabySizeX(), dinosaur.getAdultSizeX()) * scale, 0.3F, 4.0F);
-        float height = MathHelper.clamp((float) this.interpolate(dinosaur.getBabySizeY(), dinosaur.getAdultSizeY()) * scale, 0.3F, 4.0F);
+        float width = MathHelper.clamp((float) this.interpolate(dinosaur.getBabySizeX(), dinosaur.getAdultSizeX()) * scale, 0.8F, 2.0F);
+        float height = MathHelper.clamp((float) this.interpolate(dinosaur.getBabySizeY(), dinosaur.getAdultSizeY()) * scale, 0.8F, 2.0F);
 
         this.stepHeight = Math.max(1.0F, (float) (Math.ceil(height / 2.0F) / 2.0F));
 
@@ -953,6 +953,10 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
                             }
                         }
                     }
+                }
+            } else {
+                if (this.isInsideOfMaterial(Material.WATER) || (this.getNavigator().noPath() && this.inWater() || this.inLava())) {
+                    this.getJumpHelper().setJumping();
                 }
             }
 

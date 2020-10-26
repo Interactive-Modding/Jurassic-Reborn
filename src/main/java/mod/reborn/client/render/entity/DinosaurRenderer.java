@@ -1,6 +1,7 @@
 package mod.reborn.client.render.entity;
 
 import mod.reborn.server.entity.dinosaur.CompsognathusEntity;
+import mod.reborn.server.entity.dinosaur.ParasaurolophusEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.OpenGlHelper;
@@ -95,6 +96,9 @@ public class DinosaurRenderer extends RenderLiving<DinosaurEntity> {
         }
         if(entity instanceof CompsognathusEntity && !entity.isSkeleton()) {
             return ((CompsognathusEntity) entity).getTexture();
+        }
+        if(entity instanceof ParasaurolophusEntity && !entity.isSkeleton()) {
+            return ((ParasaurolophusEntity) entity).getTexture();
         }
 
         return entity.isMale() ? this.dinosaur.getMaleTexture(growthStage) : this.dinosaur.getFemaleTexture(growthStage);

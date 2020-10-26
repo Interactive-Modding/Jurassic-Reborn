@@ -24,14 +24,14 @@ public class ParasaurolophusDinosaur extends Dinosaur {
         this.setStrength(2, 8);
         this.setMaximumAge(this.fromDays(45));
         this.setEyeHeight(0.45F, 2.45F);
-        this.setSizeX(0.5F, 2.5F);
-        this.setSizeY(0.8F, 3.5F);
+        this.setSizeX(0.2F, 2.7F);
+        this.setSizeY(0.4F, 3.7F);
         this.setOffset(0.0F, 0.0F, 0.6F);
         this.setStorage(36);
         this.setDiet(Diet.HERBIVORE.get());
         this.setBones("cheek_teeth", "front_leg_bones", "hind_leg_bones", "neck_vertebrae", "pelvis", "ribcage", "shoulder","skull", "tail_vertebrae");
         this.setHeadCubeName("Head");
-        this.setScale(1.6F, 0.4F);
+        this.setScale(1.7F, 0.1F);
         this.setImprintable(true);
         this.setFlockSpeed(1.5F);
         this.setAttackBias(-100.0);

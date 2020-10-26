@@ -32,7 +32,7 @@ public class DreadnoughtusDinosaur extends Dinosaur {
         this.setDiet(Diet.HERBIVORE.get());
         this.setBones("front_leg_bones", "hind_leg_bones", "neck_vertebrae", "pelvis", "ribcage", "shoulder", "skull", "tail_vertebrae", "tooth");
         this.setHeadCubeName("Head");
-        this.setScale(1.9F, 0.1F);
+        this.setScale(2.5F, 0.1F);
         this.setOffset(0.0F, 0.0F, 1.0F);
         this.setAttackBias(1200.0);
         this.setMaxHerdSize(4);
