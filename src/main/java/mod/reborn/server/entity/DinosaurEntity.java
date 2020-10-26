@@ -278,6 +278,8 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
         return null;
     }
 
+
+
     private void eatEggs() {
         for (Entity egg : world.loadedEntityList)
             if (egg instanceof DinosaurEggEntity) {
@@ -405,7 +407,7 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
 
     @Override
     public boolean attackEntityAsMob(Entity entity) {
-        if (entity instanceof DinosaurEntity && ((DinosaurEntity) entity).isCarcass() && this.canEat((DinosaurEntity) entity)) {
+        if (entity instanceof DinosaurEntity && ((DinosaurEntity) entity).isCarcass() && this.canEatEntity(entity)) {
             this.setAnimation(EntityAnimation.EATING.get());
         } else {
             this.setAnimation(EntityAnimation.ATTACKING.get());
@@ -445,7 +447,7 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
         }
     }
 
-    private boolean canEat(DinosaurEntity entity) {
+    private boolean canEatEntity(DinosaurEntity entity) {
         boolean isMarine = entity.getDinosaur().isMarineCreature();
         if(!isMarine) return entity.dinosaur.getDiet().canEat(entity, FoodType.MEAT);
         else return entity.dinosaur.getDiet().canEat(entity, FoodType.FISH);
@@ -469,6 +471,7 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
                     this.getRelationship(attacker, true).onAttacked(amount);
                 }
 
+                return super.attackEntityFrom(damageSource, amount);
             } else {
                 if (this.getAnimation() == EntityAnimation.RESTING.get() && !this.world.isRemote) {
                     this.setAnimation(EntityAnimation.IDLE.get());
@@ -488,8 +491,8 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
                     this.respondToAttack((EntityLivingBase)attacker);
                 }
 
+                return super.attackEntityFrom(damageSource, amount);
             }
-            return super.attackEntityFrom(damageSource, amount);
         } else if (!this.world.isRemote) {
 
             if(!(((float)this.hurtResistantTime > (float)this.maxHurtResistantTime / 2.0F))) {
