@@ -25,14 +25,14 @@ public class DreadnoughtusDinosaur extends Dinosaur {
         this.setMaximumAge(this.fromDays(85));
         this.setEyeHeight(2.2F, 18.4F);
         this.setRotationAngle(50, 20);
-        this.setSizeX(0.4F, 6.5F);
-        this.setSizeY(0.5F, 7.0F);
+        this.setSizeX(0.4F, 6.1F);
+        this.setSizeY(0.5F, 6.6F);
         this.setStorage(54);
         this.setPaleoPadScale(1);
         this.setDiet(Diet.HERBIVORE.get());
         this.setBones("front_leg_bones", "hind_leg_bones", "neck_vertebrae", "pelvis", "ribcage", "shoulder", "skull", "tail_vertebrae", "tooth");
         this.setHeadCubeName("Head");
-        this.setScale(2.5F, 0.1F);
+        this.setScale(2.05F, 0.1F);
         this.setOffset(0.0F, 0.0F, 1.0F);
         this.setAttackBias(1200.0);
         this.setMaxHerdSize(4);
