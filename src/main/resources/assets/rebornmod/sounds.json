@@ -93,6 +93,44 @@
       "rebornmod:dinosaurs/stegosaurus/stegosaurus_death_1",
       "rebornmod:dinosaurs/stegosaurus/stegosaurus_death_2"
     ]
+
+  },
+  "cearadactylus_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/cearadactylus/cearadactylus_living_1",
+      "rebornmod:dinosaurs/cearadactylus/cearadactylus_living_2",
+      "rebornmod:dinosaurs/cearadactylus/cearadactylus_living_3",
+      "rebornmod:dinosaurs/cearadactylus/cearadactylus_living_4",
+      "rebornmod:dinosaurs/cearadactylus/cearadactylus_living_5"
+    ]
+  },
+  "cearadactylus_death": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/cearadactylus/cearadactylus_death_1",
+      "rebornmod:dinosaurs/cearadactylus/cearadactylus_death_2"
+    ]
+  },
+  "cearadactylus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/cearadactylus/cearadactylus_hurt_1",
+      "rebornmod:dinosaurs/cearadactylus/cearadactylus_hurt_2",
+      "rebornmod:dinosaurs/cearadactylus/cearadactylus_hurt_3"
+    ]
+},
+    "cearadactylus_threat":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/cearadactylus/cearadactylus_threat"
+        ]
+  },
+  "cearadactylus_call": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/cearadactylus/cearadactylus_calling"
+    ]
   },
   "dilophosaurus_living": {
     "category": "hostile",
