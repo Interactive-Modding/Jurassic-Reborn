@@ -7,7 +7,7 @@ import mod.reborn.server.period.TimePeriod;
 
 public class CearadactylusDinosaur extends Dinosaur
 {
-    public static final double SPEED = 0.3F;
+    public static final double SPEED = 0.4F;
     public CearadactylusDinosaur()
     {
         super();

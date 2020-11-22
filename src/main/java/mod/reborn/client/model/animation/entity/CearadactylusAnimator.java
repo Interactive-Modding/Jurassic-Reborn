@@ -47,9 +47,9 @@ public class CearadactylusAnimator extends EntityAnimator<CearadactylusEntity>
         AdvancedModelRenderer[] legLeft = new AdvancedModelRenderer[]{leftThigh, leftCalf, leftUpperFoot, leftFoot};
         AdvancedModelRenderer[] legRight = new AdvancedModelRenderer[]{rightThigh, rightCalf, rightUpperFoot, rightFoot};
 
-        float globalSpeed = 0.45F;
+        float globalSpeed = 0.5F;
         float globalDegree = 1F;
-        float globalHeight = 2F;
+        float globalHeight = 1F;
         float frontOffset = -0.35f;
 
         if (entity.isOnGround() && !entity.isCarcass()) {

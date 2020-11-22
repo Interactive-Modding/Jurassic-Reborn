@@ -16,8 +16,8 @@ public class SpinosaurusDinosaur extends Dinosaur
         this.setDinosaurType(DinosaurType.AGGRESSIVE);
         this.setDinosaurClass(SpinosaurusEntity.class);
         this.setTimePeriod(TimePeriod.CRETACEOUS);
-        this.setEggColorMale(0x48403D, 0xC5CFDA);
-        this.setEggColorFemale(0x756862, 0x91594D);
+        this.setEggColorMale(0x667178, 0x365d76);
+        this.setEggColorFemale(0x786c66, 0x80493e);
         this.setHealth(10, 60);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(10, 20);
