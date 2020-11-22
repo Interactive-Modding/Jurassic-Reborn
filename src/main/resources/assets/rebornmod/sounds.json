@@ -132,42 +132,6 @@
       "rebornmod:dinosaurs/cearadactylus/cearadactylus_calling"
     ]
   },
-  "chilesaurus_living":{
-    "category": "hostile",
-    "sounds": [
-      "rebornmod:dinosaurs/Chilesaurus/chilesaurus_living_1",
-      "rebornmod:dinosaurs/Chilesaurus/chilesaurus_living_2",
-      "rebornmod:dinosaurs/Chilesaurus/chilesaurus_living_3",
-      "rebornmod:dinosaurs/Chilesaurus/chilesaurus_living_4",
-      "rebornmod:dinosaurs/Chilesaurus/chilesaurus_living_5"
-    ]
-  },
-  "chilesaurus_threat":{
-    "category": "hostile",
-    "sounds": [
-      "rebornmod:dinosaurs/Chilesaurus/chilesaurus_threat"
-    ]
-  },
-  "chilesaurus_mate_call":{
-    "category": "hostile",
-    "sounds": [
-      "rebornmod:dinosaurs/Chilesaurus/chilesaurus_mate_call"
-    ]
-  },
-  "chilesaurus_hurt": {
-    "category": "hostile",
-    "sounds": [
-      "rebornmod:dinosaurs/Chilesaurus/chilesaurus_hurt_1",
-      "rebornmod:dinosaurs/Chilesaurus/chilesaurus_hurt_2",
-      "rebornmod:dinosaurs/Chilesaurus/chilesaurus_hurt_3"
-    ]
-  },
-  "chilesaurus_death": {
-    "category": "hostile",
-    "sounds": [
-      "rebornmod:dinosaurs/Chilesaurus/chilesaurus_death"
-    ]
-  },
   "dilophosaurus_living": {
     "category": "hostile",
     "sounds": [
