@@ -360,6 +360,48 @@
       "rebornmod:dinosaurs/ankylosaurus/ankylosaurus_hurt_3"
     ]
   },
+  "apatosaurus_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/apatosaurus/apatosaurus_living_1",
+      "rebornmod:dinosaurs/apatosaurus/apatosaurus_living_2",
+      "rebornmod:dinosaurs/apatosaurus/apatosaurus_living_3",
+      "rebornmod:dinosaurs/apatosaurus/apatosaurus_living_4",
+      "rebornmod:dinosaurs/apatosaurus/apatosaurus_living_5"
+    ]
+ },
+  "apatosaurus_death": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/apatosaurus/apatosaurus_death"
+    ]
+ },
+  "apatosaurus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/apatosaurus/apatosaurus_hurt_1",
+      "rebornmod:dinosaurs/apatosaurus/apatosaurus_hurt_2",
+      "rebornmod:dinosaurs/apatosaurus/apatosaurus_hurt_3"
+    ]
+ },
+  "apatosaurus_mate_call":{
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/apatosaurus/apatosaurus_mate_call"
+    ]
+},
+  "apatosaurus_call": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/apatosaurus/apatosaurus_call"
+    ]
+  },
+    "apatosaurus_threat":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/apatosaurus/apatosaurus_threat"
+        ]
+  },
   "herrerasaurus_living": {
     "category": "hostile",
     "sounds": [
