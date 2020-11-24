@@ -241,6 +241,43 @@
         "sounds": [
             "rebornmod:dinosaurs/spinosaurus/spinosaurus_threat"
         ]
+ },
+  "compsognathus_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/compsognathus/compsognathus_living_1",
+      "rebornmod:dinosaurs/compsognathus/compsognathus_living_2",
+      "rebornmod:dinosaurs/compsognathus/compsognathus_living_3",
+      "rebornmod:dinosaurs/compsognathus/compsognathus_living_4",
+      "rebornmod:dinosaurs/compsognathus/compsognathus_living_5"
+    ]
+ },
+  "compsognathus_death": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/compsognathus/compsognathus_death"
+    ]
+  },
+    "compsognathus_threat":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/compsognathus/compsognathus_threat"
+        ]
+ },
+  "compsognathus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/compsognathus/compsognathus_hurt_1",
+      "rebornmod:dinosaurs/compsognathus/compsognathus_hurt_2",
+      "rebornmod:dinosaurs/compsognathus/compsognathus_hurt_3"
+    ]
+},
+  "compsognathus_call": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/compsognathus/compsognathus_call_1",
+      "rebornmod:dinosaurs/compsognathus/compsognathus_call_2"
+    ]
   },
   "spinosaurus_breathing": {
     "category": "hostile",

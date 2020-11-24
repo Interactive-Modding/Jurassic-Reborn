@@ -2,10 +2,12 @@ package mod.reborn.server.entity.dinosaur;
 
 import mod.reborn.RebornMod;
 import mod.reborn.client.model.animation.EntityAnimation;
+import mod.reborn.client.sound.SoundHandler;
 import mod.reborn.server.entity.DinosaurEntity;
 import mod.reborn.server.entity.ai.LeapingMeleeEntityAI;
 import mod.reborn.server.entity.ai.RaptorLeapEntityAI;
 import mod.reborn.server.entity.animal.GoatEntity;
+import net.ilexiconn.llibrary.server.animation.Animation;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.EntityAIBase;
@@ -19,6 +21,7 @@ import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 
 import java.util.Locale;
@@ -47,7 +50,25 @@ public class CompsognathusEntity extends DinosaurEntity {
             super.fall(distance, damageMultiplier);
         }
     }
+    @Override
+    public SoundEvent getSoundForAnimation(Animation animation)
+    {
+        switch (EntityAnimation.getAnimation(animation))
+        {
+            case SPEAK:
+                return SoundHandler.COMPSOGNATHUS_LIVING;
+            case DYING:
+                return SoundHandler.COMPSOGNATHUS_DEATH;
+            case INJURED:
+                return SoundHandler.COMPSOGNATHUS_HURT;
+            case CALLING:
+                return SoundHandler.COMPSOGNATHUS_CALL;
+            case BEGGING:
+                return SoundHandler.COMPSOGNATHUS_THREAT;
+        }
 
+        return null;
+    }
     class CompyHurtByTarget extends EntityAIHurtByTarget {
 
 
