@@ -286,6 +286,42 @@
       "rebornmod:dinosaurs/baryonyx/baryonyx_calling"
     ]
  },
+  "chasmosaurus_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/chasmosaurus/chasmosaurus_living_1",
+      "rebornmod:dinosaurs/chasmosaurus/chasmosaurus_living_2",
+      "rebornmod:dinosaurs/chasmosaurus/chasmosaurus_living_3",
+      "rebornmod:dinosaurs/chasmosaurus/chasmosaurus_living_4",
+      "rebornmod:dinosaurs/chasmosaurus/chasmosaurus_living_5"
+    ]
+ },
+  "chasmosaurus_death": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/chasmosaurus/chasmosaurus_death"
+    ]
+ },
+  "chasmosaurus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/chasmosaurus/chasmosaurus_hurt_1",
+      "rebornmod:dinosaurs/chasmosaurus/chasmosaurus_hurt_2",
+      "rebornmod:dinosaurs/chasmosaurus/chasmosaurus_hurt_3"
+    ]
+},
+  "chasmosaurus_call": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/chasmosaurus/chasmosaurus_call"
+    ]
+  },
+    "chasmosaurus_threat":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/chasmosaurus/chasmosaurus_threat"
+        ]
+ },
   "baryonyx_roar": {
     "category": "hostile",
     "sounds": [

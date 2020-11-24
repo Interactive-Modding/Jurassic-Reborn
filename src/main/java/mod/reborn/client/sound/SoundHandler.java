@@ -105,13 +105,17 @@ public class SoundHandler {
     public static final SoundEvent BARYONYX_ROAR = create("baryonyx_roar");
     public static final SoundEvent BARYONYX_THREAT = create("baryonyx_threat");
 
+    public static final SoundEvent CHASMOSAURUS_LIVING = create("chasmosaurus_living");
+    public static final SoundEvent CHASMOSAURUS_HURT = create("chasmosaurus_hurt");
+    public static final SoundEvent CHASMOSAURUS_DEATH = create("chasmosaurus_death");
+    public static final SoundEvent CHASMOSAURUS_CALL = create("chasmosaurus_call");
+    public static final SoundEvent CHASMOSAURUS_THREAT = create("chasmosaurus_threat");
 
     public static final SoundEvent APATOSAURUS_LIVING = create("apatosaurus_living");
     public static final SoundEvent APATOSAURUS_HURT = create("apatosaurus_hurt");
     public static final SoundEvent APATOSAURUS_DEATH = create("apatosaurus_death");
     public static final SoundEvent APATOSAURUS_CALL = create("apatosaurus_call");
     public static final SoundEvent APATOSAURUS_THREAT = create("apatosaurus_threat");
-
 
     public static final SoundEvent CEARADACTYLUS_LIVING = create("cearadactylus_living");
     public static final SoundEvent CEARADACTYLUS_HURT = create("cearadactylus_hurt");
