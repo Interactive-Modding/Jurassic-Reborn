@@ -255,6 +255,50 @@
       "rebornmod:dinosaurs/spinosaurus/spinosaurus_attack_2"
     ]
   },
+  "baryonyx_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/baryonyx/baryonyx_living_1",
+      "rebornmod:dinosaurs/baryonyx/baryonyx_living_2",
+      "rebornmod:dinosaurs/baryonyx/baryonyx_living_3",
+      "rebornmod:dinosaurs/baryonyx/baryonyx_living_4",
+      "rebornmod:dinosaurs/baryonyx/baryonyx_living_5",
+      "rebornmod:dinosaurs/baryonyx/baryonyx_living_6"
+    ]
+ },
+  "baryonyx_death": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/baryonyx/baryonyx_death"
+    ]
+ },
+  "baryonyx_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/baryonyx/baryonyx_hurt_1",
+      "rebornmod:dinosaurs/baryonyx/baryonyx_hurt_2",
+      "rebornmod:dinosaurs/baryonyx/baryonyx_hurt_3"
+    ]
+},
+  "baryonyx_call": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/baryonyx/baryonyx_calling"
+    ]
+ },
+  "baryonyx_roar": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/baryonyx/baryonyx_roar_1",
+      "rebornmod:dinosaurs/baryonyx/baryonyx_roar_2"
+    ]
+  },
+    "baryonyx_threat":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/baryonyx/baryonyx_threat"
+        ]
+  },
   "stomp": {
     "category": "hostile",
     "sounds": [

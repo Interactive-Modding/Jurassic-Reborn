@@ -166,7 +166,7 @@
     "SPEAK": [
       {
         "pose": "baryonyx_adult_speak",
-        "time": 6
+        "time": 10
       },
       {
         "pose": "baryonyx_adult_speak",
@@ -174,7 +174,7 @@
       },
       {
         "pose": "baryonyx_adult_idle",
-        "time": 6
+        "time": 10
       }
     ],
     "CALLING": [
