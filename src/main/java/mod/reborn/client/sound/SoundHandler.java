@@ -111,6 +111,12 @@ public class SoundHandler {
     public static final SoundEvent COMPSOGNATHUS_CALL = create("compsognathus_call");
     public static final SoundEvent COMPSOGNATHUS_THREAT = create("compsognathus_threat");
 
+    public static final SoundEvent CORYTHOSAURUS_LIVING = create("corythosaurus_living");
+    public static final SoundEvent CORYTHOSAURUS_HURT = create("corythosaurus_hurt");
+    public static final SoundEvent CORYTHOSAURUS_DEATH = create("corythosaurus_death");
+    public static final SoundEvent CORYTHOSAURUS_THREAT = create("corythosaurus_threat");
+    public static final SoundEvent CORYTHOSAURUS_CALL = create("corythosaurus_call");
+
     public static final SoundEvent CHASMOSAURUS_LIVING = create("chasmosaurus_living");
     public static final SoundEvent CHASMOSAURUS_HURT = create("chasmosaurus_hurt");
     public static final SoundEvent CHASMOSAURUS_DEATH = create("chasmosaurus_death");

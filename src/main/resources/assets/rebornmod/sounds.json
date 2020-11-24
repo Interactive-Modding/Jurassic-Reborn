@@ -404,6 +404,41 @@
       "rebornmod:stomp_3",
       "rebornmod:stomp_4"
     ]
+ },
+  "corythosaurus_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/corythosaurus/corythosaurus_living_1",
+      "rebornmod:dinosaurs/corythosaurus/corythosaurus_living_2",
+      "rebornmod:dinosaurs/corythosaurus/corythosaurus_living_3",
+      "rebornmod:dinosaurs/corythosaurus/corythosaurus_living_4"
+    ]
+},
+  "corythosaurus_call": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/corythosaurus/corythosaurus_calling"
+    ]
+ },
+  "corythosaurus_death": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/corythosaurus/corythosaurus_death_1",
+      "rebornmod:dinosaurs/corythosaurus/corythosaurus_death_2"
+    ]
+ },
+  "corythosaurus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/corythosaurus/corythosaurus_hurt_1",
+      "rebornmod:dinosaurs/corythosaurus/corythosaurus_hurt_2"
+    ]
+  },
+    "corythosaurus_threat":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/corythosaurus/corythosaurus_threat"
+        ]
   },
   "pteranodon_living": {
     "category": "hostile",
