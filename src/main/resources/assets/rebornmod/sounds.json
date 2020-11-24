@@ -309,17 +309,41 @@
       "rebornmod:dinosaurs/chasmosaurus/chasmosaurus_hurt_2",
       "rebornmod:dinosaurs/chasmosaurus/chasmosaurus_hurt_3"
     ]
-},
-  "chasmosaurus_call": {
-    "category": "hostile",
-    "sounds": [
-      "rebornmod:dinosaurs/chasmosaurus/chasmosaurus_call"
-    ]
   },
     "chasmosaurus_threat":{
         "category": "hostile",
         "sounds": [
             "rebornmod:dinosaurs/chasmosaurus/chasmosaurus_threat"
+        ]
+ },
+  "chilesaurus_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/chilesaurus/chilesaurus_living_1",
+      "rebornmod:dinosaurs/chilesaurus/chilesaurus_living_2",
+      "rebornmod:dinosaurs/chilesaurus/chilesaurus_living_3",
+      "rebornmod:dinosaurs/chilesaurus/chilesaurus_living_4",
+      "rebornmod:dinosaurs/chilesaurus/chilesaurus_living_5"
+    ]
+ },
+  "chilesaurus_death": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/chilesaurus/chilesaurus_death"
+    ]
+ },
+  "chilesaurus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/chilesaurus/chilesaurus_hurt_1",
+      "rebornmod:dinosaurs/chilesaurus/chilesaurus_hurt_2",
+      "rebornmod:dinosaurs/chilesaurus/chilesaurus_hurt_3"
+    ]
+  },
+    "chilesaurus_threat":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/chilesaurus/chilesaurus_threat"
         ]
  },
   "baryonyx_roar": {

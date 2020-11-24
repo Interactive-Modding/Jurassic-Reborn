@@ -27,8 +27,6 @@ public class ChasmosaurusEntity extends DinosaurEntity
                 return SoundHandler.CHASMOSAURUS_DEATH;
             case INJURED:
                 return SoundHandler.CHASMOSAURUS_HURT;
-            case CALLING:
-                return SoundHandler.CHASMOSAURUS_CALL;
             case BEGGING:
                 return SoundHandler.CHASMOSAURUS_THREAT;
         }
