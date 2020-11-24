@@ -69,10 +69,10 @@ public class IndominusAnimator extends EntityAnimator<IndominusEntity>
         AdvancedModelRenderer[] armLeft = new AdvancedModelRenderer[] { handLeft, lowerArmLeft, upperArmLeft };
         AdvancedModelRenderer[] armRight = new AdvancedModelRenderer[] { handRight, lowerArmRight, upperArmRight };
 
-        model.bob(bodyRear, globalSpeed * 1F, globalHeight * 1.0F, false, f, f1);
+        model.bob(bodyRear, globalSpeed * 1F, globalDegree * 1.0F, false, f, f1);
 
-        model.bob(leftThigh, globalSpeed * 1F, globalHeight * 1.0F, false, f, f1);
-        model.bob(rightThigh, globalSpeed * 1F, globalHeight * 1.0F, false, f, f1);
+        model.bob(leftThigh, globalSpeed * 1F, globalDegree * 1.0F, false, f, f1);
+        model.bob(rightThigh, globalSpeed * 1F, globalDegree * 1.0F, false, f, f1);
 
   //      model.chainWave(body, globalSpeed * 1F, globalHeight * 0.05F, 3, f, f1);
   //      model.chainWave(tail, globalSpeed * 1F, -globalHeight * 0.05F, 2, f, f1);
