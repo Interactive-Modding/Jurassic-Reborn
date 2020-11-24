@@ -19,12 +19,12 @@ public class CarcharodontosaurusDinosaur extends Dinosaur {
         this.setStrength(1, 20);
         this.setMaximumAge(fromDays(45));
         this.setEyeHeight(0.45F, 1.6F);
-        this.setSizeX(0.4F, 2.8F);
-        this.setSizeY(0.3F, 4F);
+        this.setSizeX(0.2F, 3.0F);
+        this.setSizeY(0.15F, 4.2F);
         this.setDiet(Diet.CARNIVORE.get());
         this.setBones("skull", "tooth", "arm_bones", "claw", "foot_bones", "leg_bones", "neck_vertebrae", "pelvis", "shoulder", "tail_vertebrae", "ribcage");
         this.setHeadCubeName("head");
-        this.setScale(1.8F, 0.25F);
+        this.setScale(2.0F, 0.1F);
         this.setBreeding(false, 2, 6, 60, false, true);
         this.shouldDefendOffspring();
         String[][] recipe = {

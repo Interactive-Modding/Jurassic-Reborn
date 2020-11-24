@@ -14,11 +14,19 @@
       },
       {
         "pose": "carcharodontosaurus_adult_attacking_2",
-        "time": 6
+        "time": 7
       },
       {
         "pose": "carcharodontosaurus_adult_attacking_3",
         "time": 7
+      },
+      {
+        "pose": "carcharodontosaurus_adult_attacking_4",
+        "time": 8
+      },
+      {
+        "pose": "carcharodontosaurus_adult_idle",
+        "time": 10
       }
     ],
     "DRINKING": [
@@ -28,7 +36,7 @@
       },
       {
         "pose": "carcharodontosaurus_adult_drinking_2",
-        "time": 15
+        "time": 10
       },
       {
         "pose": "carcharodontosaurus_adult_drinking_3",
@@ -36,28 +44,36 @@
       },
       {
         "pose": "carcharodontosaurus_adult_drinking_4",
-        "time": 15
+        "time": 10
       },
       {
         "pose": "carcharodontosaurus_adult_drinking_5",
         "time": 15
       },
       {
-        "pose": "carcharodontosaurus_adult_idle",
+        "pose": "carcharodontosaurus_adult_drinking_6",
+        "time": 10
+      },
+      {
+        "pose": "carcharodontosaurus_adult_drinking_7",
         "time": 15
+      },
+      {
+        "pose": "carcharodontosaurus_adult_idle",
+        "time": 10
       }
     ],
     "DYING": [
       {
-        "pose": "carcharodontosaurus_adult_dying_1",
+        "pose": "carcharodontosaurus_adult_death_1",
         "time": 10
       },
       {
-        "pose": "carcharodontosaurus_adult_dying_2",
+        "pose": "carcharodontosaurus_adult_death_2",
         "time": 10
       },
       {
-        "pose": "carcharodontosaurus_adult_dying_3",
+        "pose": "carcharodontosaurus_adult_death_3",
         "time": 10
       }
     ],
@@ -98,10 +114,18 @@
       },
       {
         "pose": "carcharodontosaurus_adult_eating_6",
-        "time": 15
+        "time": 10
       },
       {
         "pose": "carcharodontosaurus_adult_eating_7",
+        "time": 20
+      },
+      {
+        "pose": "carcharodontosaurus_adult_eating_8",
+        "time": 10
+      },
+      {
+        "pose": "carcharodontosaurus_adult_eating_9",
         "time": 20
       },
       {
@@ -112,33 +136,71 @@
  "LOOKING_LEFT": [
       {
         "pose": "carcharodontosaurus_adult_look_start",
-        "time": 10
+        "time": 15
       },
       {
-        "pose": "carcharodontosaurus_adult_look_left",
-        "time": 10
+        "pose": "carcharodontosaurus_adult_look_left_1",
+        "time": 15
       },
       {
-        "pose": "carcharodontosaurus_adult_look_left",
+        "pose": "carcharodontosaurus_adult_look_left_2",
+        "time": 15
+      },
+      {
+        "pose": "carcharodontosaurus_adult_look_left_3",
+        "time": 15
+      },
+      {
+        "pose": "carcharodontosaurus_adult_look_left_4",
+        "time": 15
+      },
+      {
+        "pose": "carcharodontosaurus_adult_look_left_5",
         "time": 20
       },
       {
         "pose": "carcharodontosaurus_adult_idle",
-        "time": 10
+        "time": 20
       }
     ],
     "LOOKING_RIGHT": [
       {
         "pose": "carcharodontosaurus_adult_look_start",
-        "time": 10
+        "time": 15
       },
       {
-        "pose": "carcharodontosaurus_adult_look_right",
-        "time": 10
+        "pose": "carcharodontosaurus_adult_look_right_1",
+        "time": 15
       },
       {
-        "pose": "carcharodontosaurus_adult_look_right",
+        "pose": "carcharodontosaurus_adult_look_right_2",
+        "time": 15
+      },
+      {
+        "pose": "carcharodontosaurus_adult_look_right_3",
+        "time": 15
+      },
+      {
+        "pose": "carcharodontosaurus_adult_look_right_4",
+        "time": 15
+      },
+      {
+        "pose": "carcharodontosaurus_adult_look_right_5",
         "time": 20
+      },
+      {
+        "pose": "carcharodontosaurus_adult_idle",
+        "time": 20
+      }
+    ],
+    "INJURED": [
+      {
+        "pose": "carcharodontosaurus_adult_injured",
+        "time": 10
+      },
+      {
+        "pose": "carcharodontosaurus_adult_injured",
+        "time": 10
       },
       {
         "pose": "carcharodontosaurus_adult_idle",
@@ -172,23 +234,37 @@
     "ROARING": [
       {
         "pose": "carcharodontosaurus_adult_roaring_1",
-        "time": 10
+        "time": 15
       },
       {
         "pose": "carcharodontosaurus_adult_roaring_2",
-        "time": 10
+        "time": 15
       },
       {
         "pose": "carcharodontosaurus_adult_roaring_3",
+        "time": 15
+      },
+      {
+        "pose": "carcharodontosaurus_adult_idle",
+        "time": 15
+      }
+    ],
+    "CALLING": [
+      {
+        "pose": "carcharodontosaurus_adult_calling_1",
         "time": 10
       },
       {
-        "pose": "carcharodontosaurus_adult_roaring_4",
+        "pose": "carcharodontosaurus_adult_calling_2",
         "time": 10
       },
       {
-        "pose": "carcharodontosaurus_adult_roaring_5",
-        "time": 10
+        "pose": "carcharodontosaurus_adult_calling_2",
+        "time": 20
+      },
+      {
+        "pose": "carcharodontosaurus_adult_idle",
+        "time": 15
       }
     ],
     "SLEEPING": [
@@ -206,6 +282,10 @@
       },
       {
         "pose": "carcharodontosaurus_adult_sleeping_4",
+        "time": 10
+      },
+      {
+        "pose": "carcharodontosaurus_adult_sleeping_5",
         "time": 10
       }
     ],
@@ -240,6 +320,22 @@
       },
       {
         "pose": "carcharodontosaurus_adult_walking_8",
+        "time": 4
+      },
+      {
+        "pose": "carcharodontosaurus_adult_walking_9",
+        "time": 4
+      },
+      {
+        "pose": "carcharodontosaurus_adult_walking_10",
+        "time": 4
+      },
+      {
+        "pose": "carcharodontosaurus_adult_walking_11",
+        "time": 4
+      },
+      {
+        "pose": "carcharodontosaurus_adult_walking_12",
         "time": 4
       }
   ],
