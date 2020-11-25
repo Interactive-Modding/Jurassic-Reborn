@@ -16,8 +16,8 @@ public class HerrerasaurusDinosaur extends Dinosaur
         this.setDinosaurType(DinosaurType.NEUTRAL);
         this.setDinosaurClass(HerrerasaurusEntity.class);
         this.setTimePeriod(TimePeriod.TRIASSIC);
-        this.setEggColorMale(0x2B1919, 0x932C23);
-        this.setEggColorFemale(0x7C6F44, 0x2B2721);
+        this.setEggColorMale(0xb22919, 0x71a36d);
+        this.setEggColorFemale(0xaa2616, 0x2a150b);
         this.setHealth(10, 36);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(5, 20);

@@ -38,7 +38,13 @@ public class HerrerasaurusEntity extends DinosaurEntity
             case DYING:
                 return SoundHandler.HERRERASAURUS_DEATH;
             case INJURED:
-                return SoundHandler.HERRERASAURUS_DEATH;
+                return SoundHandler.HERRERASAURUS_HURT;
+            case CALLING:
+                return SoundHandler.HERRERASAURUS_CALL;
+            case ROARING:
+                return SoundHandler.HERRERASAURUS_ROAR;
+            case BEGGING:
+                return SoundHandler.HERRERASAURUS_THREAT;
         }
 
         return null;

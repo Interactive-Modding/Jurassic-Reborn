@@ -105,6 +105,13 @@ public class SoundHandler {
     public static final SoundEvent GIGANOTOSAURUS_ROAR = create("giganotosaurus_roar");
     public static final SoundEvent GIGANOTOSAURUS_THREAT = create("giganotosaurus_threat");
 
+    public static final SoundEvent HERRERASAURUS_LIVING = create("herrerasaurus_living");
+    public static final SoundEvent HERRERASAURUS_HURT = create("herrerasaurus_hurt");
+    public static final SoundEvent HERRERASAURUS_DEATH = create("herrerasaurus_death");
+    public static final SoundEvent HERRERASAURUS_CALL = create("herrerasaurus_call");
+    public static final SoundEvent HERRERASAURUS_ROAR = create("herrerasaurus_roar");
+    public static final SoundEvent HERRERASAURUS_THREAT = create("herrerasaurus_threat");
+
     public static final SoundEvent EDMONTOSAURUS_LIVING = create("edmontosaurus_living");
     public static final SoundEvent EDMONTOSAURUS_HURT = create("edmontosaurus_hurt");
     public static final SoundEvent EDMONTOSAURUS_DEATH = create("edmontosaurus_death");
@@ -193,9 +200,6 @@ public class SoundHandler {
     public static final SoundEvent INDOMINUS_HURT = create("indominus_hurt");
     public static final SoundEvent INDOMINUS_ROAR = create("indominus_roar");
     public static final SoundEvent INDOMINUS_BREATHING = create("indominus_breathing");
-
-    public static final SoundEvent HERRERASAURUS_LIVING = create("herrerasaurus_living");
-    public static final SoundEvent HERRERASAURUS_DEATH = create("herrerasaurus_death");
 
     public static final SoundEvent TYRANNOSAURUS_BREATHING = create("tyrannosaurus_breathing");
     public static final SoundEvent TYRANNOSAURUS_DEATH = create("tyrannosaurus_death");

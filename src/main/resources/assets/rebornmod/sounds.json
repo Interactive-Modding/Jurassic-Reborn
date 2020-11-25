@@ -306,6 +306,50 @@
         "sounds": [
             "rebornmod:dinosaurs/spinosaurus/spinosaurus_threat"
         ]
+  },
+  "herrerasaurus_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/herrerasaurus/herrerasaurus_living_1",
+      "rebornmod:dinosaurs/herrerasaurus/herrerasaurus_living_2",
+      "rebornmod:dinosaurs/herrerasaurus/herrerasaurus_living_3",
+      "rebornmod:dinosaurs/herrerasaurus/herrerasaurus_living_4",
+      "rebornmod:dinosaurs/herrerasaurus/herrerasaurus_living_5"
+    ]
+ },
+  "herrerasaurus_death": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/herrerasaurus/herrerasaurus_death"
+    ]
+ },
+  "herrerasaurus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/herrerasaurus/herrerasaurus_hurt_1",
+      "rebornmod:dinosaurs/herrerasaurus/herrerasaurus_hurt_2",
+      "rebornmod:dinosaurs/herrerasaurus/herrerasaurus_hurt_3"
+    ]
+},
+  "herrerasaurus_call": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/herrerasaurus/herrerasaurus_calling"
+    ]
+ },
+  "herrerasaurus_roar": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/herrerasaurus/herrerasaurus_roar_1",
+      "rebornmod:dinosaurs/herrerasaurus/herrerasaurus_roar_2",
+      "rebornmod:dinosaurs/herrerasaurus/herrerasaurus_roar_3"
+    ]
+  },
+    "herrerasaurus_threat":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/herrerasaurus/herrerasaurus_threat"
+        ]
  },
   "giganotosaurus_living": {
     "category": "hostile",
@@ -722,18 +766,6 @@
         "sounds": [
             "rebornmod:dinosaurs/apatosaurus/apatosaurus_threat"
         ]
-  },
-  "herrerasaurus_living": {
-    "category": "hostile",
-    "sounds": [
-      "rebornmod:dinosaurs/herrerasaurus/herrerasaurus_living_1"
-    ]
-  },
-  "herrerasaurus_death": {
-    "category": "hostile",
-    "sounds": [
-      "rebornmod:dinosaurs/herrerasaurus/herrerasaurus_death_1"
-    ]
   },
   "velociraptor_hurt": {
     "category": "hostile",
