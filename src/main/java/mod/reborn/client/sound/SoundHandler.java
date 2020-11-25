@@ -105,6 +105,12 @@ public class SoundHandler {
     public static final SoundEvent BARYONYX_ROAR = create("baryonyx_roar");
     public static final SoundEvent BARYONYX_THREAT = create("baryonyx_threat");
 
+    public static final SoundEvent DIMORPHODON_LIVING = create("dimorphodon_living");
+    public static final SoundEvent DIMORPHODON_HURT = create("dimorphodon_hurt");
+    public static final SoundEvent DIMORPHODON_DEATH = create("dimorphodon_death");
+    public static final SoundEvent DIMORPHODON_CALL = create("dimorphodon_call");
+    public static final SoundEvent DIMORPHODON_THREAT = create("dimorphodon_threat");
+
     public static final SoundEvent COMPSOGNATHUS_LIVING = create("compsognathus_living");
     public static final SoundEvent COMPSOGNATHUS_HURT = create("compsognathus_hurt");
     public static final SoundEvent COMPSOGNATHUS_DEATH = create("compsognathus_death");

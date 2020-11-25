@@ -52,6 +52,38 @@
       "rebornmod:fence_shock_3",
       "rebornmod:fence_shock_4"
     ]
+ },
+  "dimorphodon_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/dimorphodon/dimorphodon_living_1",
+      "rebornmod:dinosaurs/dimorphodon/dimorphodon_living_2",
+      "rebornmod:dinosaurs/dimorphodon/dimorphodon_living_3"
+    ]
+ },
+  "dimorphodon_death": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/dimorphodon/dimorphodon_death"
+    ]
+  },
+    "dimorphodon_threat":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/dimorphodon/dimorphodon_threat"
+        ]
+ },
+  "dimorphodon_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/dimorphodon/dimorphodon_hurt"
+    ]
+},
+  "dimorphodon_call": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/dimorphodon/dimorphodon_calling"
+    ]
   },
   "triceratops_living": {
     "category": "hostile",

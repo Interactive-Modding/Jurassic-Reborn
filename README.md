@@ -20,13 +20,15 @@ Last_Dovahkiin
 
 ### Modelers / Sound Designers / Textures /  Concept Artists
 
-WinterKILLER435
+WinterKILLER435 // DroidBait284
 
-AveLardo12
+AveLardo12 // InnovativePachyderm
 
 DTRaptor, The Political Advisor
 
 Neicke
+
+TotallyTruthful
 
 Bastion16
 
