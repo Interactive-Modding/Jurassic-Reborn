@@ -84,6 +84,39 @@
     "sounds": [
       "rebornmod:dinosaurs/dimorphodon/dimorphodon_calling"
     ]
+ },
+  "dunkleosteus_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/dunkleosteus/dunkleosteus_living_1",
+      "rebornmod:dinosaurs/dunkleosteus/dunkleosteus_living_2"
+    ]
+ },
+  "dunkleosteus_death": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/dunkleosteus/dunkleosteus_death_1",
+      "rebornmod:dinosaurs/dunkleosteus/dunkleosteus_death_2"
+    ]
+  },
+    "dunkleosteus_threat":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/dunkleosteus/dunkleosteus_threat"
+        ]
+ },
+  "dunkleosteus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/dunkleosteus/dunkleosteus_hurt_1",
+      "rebornmod:dinosaurs/dunkleosteus/dunkleosteus_hurt_2"
+    ]
+},
+  "dunkleosteus_call": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/dunkleosteus/dunkleosteus_calling"
+    ]
   },
   "triceratops_living": {
     "category": "hostile",
