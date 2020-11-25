@@ -22,6 +22,8 @@ Last_Dovahkiin
 
 WinterKILLER435 // DroidBait284
 
+Verified_Bear // Alis
+
 AveLardo12 // InnovativePachyderm
 
 DTRaptor, The Political Advisor

@@ -62,19 +62,19 @@
     "RUNNING": [
       {
         "pose": "giganotosaurus_adult_running_1",
-        "time": 5
+        "time": 6
       },
       {
         "pose": "giganotosaurus_adult_running_2",
-        "time": 5
+        "time": 6
       },
       {
         "pose": "giganotosaurus_adult_running_3",
-        "time": 5
+        "time": 6
       },
       {
         "pose": "giganotosaurus_adult_running_4",
-        "time": 5
+        "time": 6
       }
     ],
     "SPEAK": [

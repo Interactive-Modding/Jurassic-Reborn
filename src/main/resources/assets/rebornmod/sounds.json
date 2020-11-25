@@ -306,6 +306,50 @@
         "sounds": [
             "rebornmod:dinosaurs/spinosaurus/spinosaurus_threat"
         ]
+ },
+  "giganotosaurus_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/giganotosaurus/giganotosaurus_living_1",
+      "rebornmod:dinosaurs/giganotosaurus/giganotosaurus_living_2",
+      "rebornmod:dinosaurs/giganotosaurus/giganotosaurus_living_3",
+      "rebornmod:dinosaurs/giganotosaurus/giganotosaurus_living_4",
+      "rebornmod:dinosaurs/giganotosaurus/giganotosaurus_living_5"
+    ]
+ },
+  "giganotosaurus_death": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/giganotosaurus/giganotosaurus_death"
+    ]
+ },
+  "giganotosaurus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/giganotosaurus/giganotosaurus_hurt_1",
+      "rebornmod:dinosaurs/giganotosaurus/giganotosaurus_hurt_2",
+      "rebornmod:dinosaurs/giganotosaurus/giganotosaurus_hurt_3"
+    ]
+},
+  "giganotosaurus_call": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/giganotosaurus/giganotosaurus_calling"
+    ]
+ },
+  "giganotosaurus_roar": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/giganotosaurus/giganotosaurus_roar_1",
+      "rebornmod:dinosaurs/giganotosaurus/giganotosaurus_roar_2",
+      "rebornmod:dinosaurs/giganotosaurus/giganotosaurus_roar_3"
+    ]
+  },
+    "giganotosaurus_threat":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/giganotosaurus/giganotosaurus_threat"
+        ]
   },
   "edmontosaurus_living": {
     "category": "hostile",

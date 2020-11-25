@@ -1,12 +1,15 @@
 package mod.reborn.server.entity.dinosaur;
 
+import mod.reborn.client.model.animation.EntityAnimation;
 import mod.reborn.client.sound.SoundHandler;
 import mod.reborn.server.entity.DinosaurEntity;
 import mod.reborn.server.entity.animal.GoatEntity;
+import net.ilexiconn.llibrary.server.animation.Animation;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 
 public class GiganotosaurusEntity extends DinosaurEntity
@@ -31,5 +34,26 @@ public class GiganotosaurusEntity extends DinosaurEntity
         }
 
         this.stepCount -= this.moveForward * 9.5;
+    }
+    @Override
+    public SoundEvent getSoundForAnimation(Animation animation)
+    {
+        switch (EntityAnimation.getAnimation(animation))
+        {
+            case SPEAK:
+                return SoundHandler.GIGANOTOSAURUS_LIVING;
+            case DYING:
+                return SoundHandler.GIGANOTOSAURUS_DEATH;
+            case INJURED:
+                return SoundHandler.GIGANOTOSAURUS_HURT;
+            case CALLING:
+                return SoundHandler.GIGANOTOSAURUS_CALL;
+            case ROARING:
+                return SoundHandler.GIGANOTOSAURUS_ROAR;
+            case BEGGING:
+                return SoundHandler.GIGANOTOSAURUS_THREAT;
+        }
+
+        return null;
     }
 }
