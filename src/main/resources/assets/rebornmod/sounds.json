@@ -306,6 +306,42 @@
         "sounds": [
             "rebornmod:dinosaurs/spinosaurus/spinosaurus_threat"
         ]
+  },
+  "edmontosaurus_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/edmontosaurus/edmontosaurus_living_1",
+      "rebornmod:dinosaurs/edmontosaurus/edmontosaurus_living_2",
+      "rebornmod:dinosaurs/edmontosaurus/edmontosaurus_living_3",
+      "rebornmod:dinosaurs/edmontosaurus/edmontosaurus_living_4"
+    ]
+ },
+  "edmontosaurus_death": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/edmontosaurus/edmontosaurus_death_1",
+      "rebornmod:dinosaurs/edmontosaurus/edmontosaurus_death_2",
+      "rebornmod:dinosaurs/edmontosaurus/edmontosaurus_death_3"
+    ]
+ },
+  "edmontosaurus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/edmontosaurus/edmontosaurus_hurt_1",
+      "rebornmod:dinosaurs/edmontosaurus/edmontosaurus_hurt_2"
+    ]
+},
+  "edmontosaurus_call": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/edmontosaurus/edmontosaurus_calling"
+    ]
+  },
+    "edmontosaurus_threat":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/edmontosaurus/edmontosaurus_threat"
+        ]
  },
   "compsognathus_living": {
     "category": "hostile",
