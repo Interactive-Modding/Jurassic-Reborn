@@ -306,6 +306,50 @@
         "sounds": [
             "rebornmod:dinosaurs/spinosaurus/spinosaurus_threat"
         ]
+ },
+  "metriacanthosaurus_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/metriacanthosaurus/metriacanthosaurus_living_1",
+      "rebornmod:dinosaurs/metriacanthosaurus/metriacanthosaurus_living_2",
+      "rebornmod:dinosaurs/metriacanthosaurus/metriacanthosaurus_living_3",
+      "rebornmod:dinosaurs/metriacanthosaurus/metriacanthosaurus_living_4"
+    ]
+ },
+  "metriacanthosaurus_death": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/metriacanthosaurus/metriacanthosaurus_death_1",
+      "rebornmod:dinosaurs/metriacanthosaurus/metriacanthosaurus_death_2",
+      "rebornmod:dinosaurs/metriacanthosaurus/metriacanthosaurus_death_3"
+    ]
+ },
+  "metriacanthosaurus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/metriacanthosaurus/metriacanthosaurus_hurt_1",
+      "rebornmod:dinosaurs/metriacanthosaurus/metriacanthosaurus_hurt_2",
+      "rebornmod:dinosaurs/metriacanthosaurus/metriacanthosaurus_hurt_3"
+    ]
+},
+  "metriacanthosaurus_call": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/metriacanthosaurus/metriacanthosaurus_calling"
+    ]
+ },
+  "metriacanthosaurus_roar": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/metriacanthosaurus/metriacanthosaurus_roar_1",
+      "rebornmod:dinosaurs/metriacanthosaurus/metriacanthosaurus_roar_2"
+    ]
+  },
+    "metriacanthosaurus_threat":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/metriacanthosaurus/metriacanthosaurus_threat"
+        ]
   },
   "leaellynasaura_living": {
     "category": "hostile",
