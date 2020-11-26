@@ -1,5 +1,6 @@
 package mod.reborn.client.render.entity;
 
+import mod.reborn.server.entity.dinosaur.AllosaurusEntity;
 import mod.reborn.server.entity.dinosaur.CompsognathusEntity;
 import mod.reborn.server.entity.dinosaur.ParasaurolophusEntity;
 import net.minecraft.client.Minecraft;
@@ -102,6 +103,9 @@ public class DinosaurRenderer extends RenderLiving<DinosaurEntity> {
         }
         if(entity instanceof CompsognathusEntity && !entity.isSkeleton()) {
             return ((CompsognathusEntity) entity).getTexture();
+        }
+        if(entity instanceof AllosaurusEntity && !entity.isSkeleton()) {
+            return ((AllosaurusEntity) entity).getTexture();
         }
         if(entity instanceof ParasaurolophusEntity && !entity.isSkeleton()) {
             return ((ParasaurolophusEntity) entity).getTexture();
