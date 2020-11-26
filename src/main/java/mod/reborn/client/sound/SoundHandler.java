@@ -224,7 +224,9 @@ public class SoundHandler {
     public static final SoundEvent COELURUS_DEATH = create("coelurus_death");
     public static final SoundEvent COELURUS_THREAT = create("coelurus_threat");
 
-
+    public static final SoundEvent OTHNIELIA_LIVING = create("othnielia_living");
+    public static final SoundEvent OTHNIELIA_HURT = create("othnielia_hurt");
+    public static final SoundEvent OTHNIELIA_DEATH = create("othnielia_death");
 
     public static final SoundEvent CERATOSAURUS_LIVING = create("ceratosaurus_living");
     public static final SoundEvent CERATOSAURUS_HURT = create("ceratosaurus_hurt");

@@ -626,6 +626,25 @@
             "rebornmod:dinosaurs/herrerasaurus/herrerasaurus_threat"
         ]
  },
+  "othnielia_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/othnielia/othnielia_living_1",
+      "rebornmod:dinosaurs/othnielia/othnielia_living_2"
+    ]
+  },
+  "othnielia_death": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/othnielia/othnielia_death_1"
+    ]
+  },
+  "othnielia_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/othnielia/othnielia_hurt_1"
+    ]
+ },
   "hyaenodon_living": {
     "category": "hostile",
     "sounds": [
