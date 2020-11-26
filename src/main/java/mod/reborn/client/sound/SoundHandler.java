@@ -108,6 +108,10 @@ public class SoundHandler {
     public static final SoundEvent LEAELLYNASAURA_HURT = create("leaellynasaura_hurt");
     public static final SoundEvent LEAELLYNASAURA_DEATH = create("leaellynasaura_death");
 
+    public static final SoundEvent LEPTICTIDIUM_LIVING = create("leptictidium_living");
+    public static final SoundEvent LEPTICTIDIUM_HURT = create("leptictidium_hurt");
+    public static final SoundEvent LEPTICTIDIUM_DEATH = create("leptictidium_death");
+
     public static final SoundEvent GIGANOTOSAURUS_LIVING = create("giganotosaurus_living");
     public static final SoundEvent GIGANOTOSAURUS_HURT = create("giganotosaurus_hurt");
     public static final SoundEvent GIGANOTOSAURUS_DEATH = create("giganotosaurus_death");
