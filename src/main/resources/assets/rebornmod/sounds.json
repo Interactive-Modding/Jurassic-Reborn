@@ -208,6 +208,33 @@
         "sounds": [
             "rebornmod:dinosaurs/coelurus/coelurus_threat_1"
         ]
+},
+  "segisaurus_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/segisaurus/segisaurus_living_1",
+      "rebornmod:dinosaurs/segisaurus/segisaurus_living_2",
+      "rebornmod:dinosaurs/segisaurus/segisaurus_living_3"
+    ]
+  },
+  "segisaurus_death": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/segisaurus/segisaurus_death_1",
+      "rebornmod:dinosaurs/segisaurus/segisaurus_death_2"
+    ]
+  },
+  "segisaurus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/segisaurus/segisaurus_hurt_1"
+    ]
+},
+    "segisaurus_threat":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/segisaurus/segisaurus_threat_1"
+        ]
  },
   "quetzalcoatlus_living": {
     "category": "hostile",
