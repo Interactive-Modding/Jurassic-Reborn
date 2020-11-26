@@ -61,7 +61,7 @@ public class DinosaurRenderer extends RenderLiving<DinosaurEntity> {
             case "Destruction":
                 GlStateManager.scale(scale * 1.2, scale * 1.2, scale * 1.2);
                 break;
-            case "Vitiate":
+            case "Wyn":
                 GlStateManager.scale(scale * 1.3, scale * 1.3, scale * 1.3);
                 break;
             case "Notch":
@@ -70,7 +70,7 @@ public class DinosaurRenderer extends RenderLiving<DinosaurEntity> {
             case "jglrxavpok":
                 GlStateManager.scale(scale, scale, scale * -1);
                 break;
-            case "Wyn":
+            case "Vitiate":
                 int color = Color.HSBtoRGB((entity.world.getTotalWorldTime() % 1000) / 100f, 1f, 1f);
                 GlStateManager.color((color & 0xFF) / 255f, ((color >> 8) & 0xFF) / 255f, ((color >> 16) & 0xFF) / 255f);
                 break;
