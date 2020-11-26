@@ -306,6 +306,45 @@
         "sounds": [
             "rebornmod:dinosaurs/spinosaurus/spinosaurus_threat"
         ]
+ },
+  "lambeosaurus_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/lambeosaurus/lambeosaurus_living_1",
+      "rebornmod:dinosaurs/lambeosaurus/lambeosaurus_living_2",
+      "rebornmod:dinosaurs/lambeosaurus/lambeosaurus_living_3",
+      "rebornmod:dinosaurs/lambeosaurus/lambeosaurus_living_4",
+      "rebornmod:dinosaurs/lambeosaurus/lambeosaurus_living_5"
+    ]
+ },
+  "lambeosaurus_death": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/lambeosaurus/lambeosaurus_death_1",
+      "rebornmod:dinosaurs/lambeosaurus/lambeosaurus_death_2",
+      "rebornmod:dinosaurs/lambeosaurus/lambeosaurus_death_3"
+    ]
+ },
+  "lambeosaurus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/lambeosaurus/lambeosaurus_hurt_1",
+      "rebornmod:dinosaurs/lambeosaurus/lambeosaurus_hurt_2",
+      "rebornmod:dinosaurs/lambeosaurus/lambeosaurus_hurt_3"
+    ]
+},
+  "lambeosaurus_call": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/lambeosaurus/lambeosaurus_calling"
+    ]
+  },
+    "lambeosaurus_threat":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/lambeosaurus/lambeosaurus_threat_1",
+            "rebornmod:dinosaurs/lambeosaurus/lambeosaurus_threat_2"
+        ]
   },
   "herrerasaurus_living": {
     "category": "hostile",
