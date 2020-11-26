@@ -214,6 +214,12 @@ public class SoundHandler {
     public static final SoundEvent CEARADACTYLUS_CALL = create("cearadactylus_call");
     public static final SoundEvent CEARADACTYLUS_THREAT = create("cearadactylus_threat");
 
+    public static final SoundEvent PACHYCEPHALOSAURUS_LIVING = create("pachycephalosaurus_living");
+    public static final SoundEvent PACHYCEPHALOSAURUS_HURT = create("pachycephalosaurus_hurt");
+    public static final SoundEvent PACHYCEPHALOSAURUS_DEATH = create("pachycephalosaurus_death");
+    public static final SoundEvent PACHYCEPHALOSAURUS_CALL = create("pachycephalosaurus_call");
+    public static final SoundEvent PACHYCEPHALOSAURUS_THREAT = create("pachycephalosaurus_threat");
+
     public static final SoundEvent MOGANOPTERUS_LIVING = create("moganopterus_living");
     public static final SoundEvent MOGANOPTERUS_HURT = create("moganopterus_hurt");
     public static final SoundEvent MOGANOPTERUS_DEATH = create("moganopterus_death");

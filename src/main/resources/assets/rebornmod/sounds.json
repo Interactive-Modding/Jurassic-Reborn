@@ -43,6 +43,39 @@
     "sounds": [
       "rebornmod:reload"
     ]
+ },
+  "pachycephalosaurus_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/pachycephalosaurus/pachycephalosaurus_living_1",
+      "rebornmod:dinosaurs/pachycephalosaurus/pachycephalosaurus_living_2"
+    ]
+  },
+  "pachycephalosaurus_death": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/pachycephalosaurus/pachycephalosaurus_death_1"
+    ]
+  },
+  "pachycephalosaurus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/pachycephalosaurus/pachycephalosaurus_hurt_1"
+    ]
+},
+    "pachycephalosaurus_threat":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/pachycephalosaurus/pachycephalosaurus_threat_1",
+            "rebornmod:dinosaurs/pachycephalosaurus/pachycephalosaurus_threat_2"
+        ]
+  },
+  "pachycephalosaurus_call": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/pachycephalosaurus/pachycephalosaurus_calling_1",
+      "rebornmod:dinosaurs/pachycephalosaurus/pachycephalosaurus_calling_2"
+    ]
   },
   "fence_shock": {
     "category": "hostile",
