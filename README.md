@@ -1,16 +1,9 @@
 # RebornMod
 
 ### RebornMod Leader
-Destruction
+Vitiate 
 
-### Reborn is the JurassiCraft code edited by (Destruction, Wyn Price, Last_Dovahkiin(darthvader45), Collinvht, and MSRandom)
-### Changes in this code
-50+ Creatures added
-Bug's fixed
-Item's added
-Entity Changes
-Gui things
-And much more!
+### Jurassic World Reborn is a prehistoric creature Mod, inspired by the classic dinosaur mod "JurassiCraft". While the mod carries several similarities to JurassiCraft, the code is not JurassiCraft's code, but our own property, having been entirely written by our coders. 
 
 ### Developers
 
