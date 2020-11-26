@@ -523,6 +523,40 @@
             "rebornmod:dinosaurs/tropeognathus/tropeognathus_threat_1"
         ]
   },
+  "zhenyuanopterus_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/zhenyuanopterus/zhenyuanopterus_living_1",
+      "rebornmod:dinosaurs/zhenyuanopterus/zhenyuanopterus_living_2",
+      "rebornmod:dinosaurs/zhenyuanopterus/zhenyuanopterus_living_3",
+      "rebornmod:dinosaurs/zhenyuanopterus/zhenyuanopterus_living_4"
+    ]
+ },
+  "zhenyuanopterus_death": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/zhenyuanopterus/zhenyuanopterus_death_1"
+    ]
+ },
+  "zhenyuanopterus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/zhenyuanopterus/zhenyuanopterus_hurt_1",
+      "rebornmod:dinosaurs/zhenyuanopterus/zhenyuanopterus_hurt_2"
+    ]
+ },
+  "zhenyuanopterus_roar": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/zhenyuanopterus/zhenyuanopterus_roar_1"
+    ]
+  },
+    "zhenyuanopterus_threat":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/zhenyuanopterus/zhenyuanopterus_threat_1"
+        ]
+  },
   "spinosaurus_living": {
     "category": "hostile",
     "sounds": [

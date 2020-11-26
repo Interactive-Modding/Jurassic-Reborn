@@ -108,6 +108,12 @@ public class SoundHandler {
     public static final SoundEvent TROPEOGNATHUS_ROAR = create("tropeognathus_roar");
     public static final SoundEvent TROPEOGNATHUS_THREAT = create("tropeognathus_threat");
 
+    public static final SoundEvent ZHENYUANOPTERUS_LIVING = create("zhenyuanopterus_living");
+    public static final SoundEvent ZHENYUANOPTERUS_HURT = create("zhenyuanopterus_hurt");
+    public static final SoundEvent ZHENYUANOPTERUS_DEATH = create("zhenyuanopterus_death");
+    public static final SoundEvent ZHENYUANOPTERUS_ROAR = create("zhenyuanopterus_roar");
+    public static final SoundEvent ZHENYUANOPTERUS_THREAT = create("zhenyuanopterus_threat");
+
     public static final SoundEvent MICROCERATUS_LIVING = create("microceratus_living");
     public static final SoundEvent MICROCERATUS_HURT = create("microceratus_hurt");
     public static final SoundEvent MICROCERATUS_DEATH = create("microceratus_death");
