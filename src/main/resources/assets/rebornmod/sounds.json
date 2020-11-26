@@ -265,6 +265,35 @@
       "rebornmod:dinosaurs/gallimimus/gallimimus_hurt_2"
     ]
   },
+  "microceratus_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/microceratus/microceratus_living_1",
+      "rebornmod:dinosaurs/microceratus/microceratus_living_2",
+      "rebornmod:dinosaurs/microceratus/microceratus_living_3",
+      "rebornmod:dinosaurs/microceratus/microceratus_living_4"
+    ]
+ },
+  "microceratus_death": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/microceratus/microceratus_death_1",
+      "rebornmod:dinosaurs/microceratus/microceratus_death_2"
+    ]
+ },
+  "microceratus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/microceratus/microceratus_hurt_1",
+      "rebornmod:dinosaurs/microceratus/microceratus_hurt_2"
+    ]
+  },
+    "microceratus_threat":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/microceratus/microceratus_threat"
+        ]
+  },
   "spinosaurus_living": {
     "category": "hostile",
     "sounds": [
