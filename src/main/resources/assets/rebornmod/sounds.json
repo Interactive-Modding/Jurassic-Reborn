@@ -490,6 +490,39 @@
             "rebornmod:dinosaurs/microceratus/microceratus_threat"
         ]
   },
+  "tropeognathus_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/tropeognathus/tropeognathus_living_1",
+      "rebornmod:dinosaurs/tropeognathus/tropeognathus_living_2",
+      "rebornmod:dinosaurs/tropeognathus/tropeognathus_living_3"
+    ]
+ },
+  "tropeognathus_death": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/tropeognathus/tropeognathus_death_1"
+    ]
+ },
+  "tropeognathus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/tropeognathus/tropeognathus_hurt_1",
+      "rebornmod:dinosaurs/tropeognathus/tropeognathus_hurt_2"
+    ]
+ },
+  "tropeognathus_roar": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/tropeognathus/tropeognathus_roar_1"
+    ]
+  },
+    "tropeognathus_threat":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/tropeognathus/tropeognathus_threat_1"
+        ]
+  },
   "spinosaurus_living": {
     "category": "hostile",
     "sounds": [

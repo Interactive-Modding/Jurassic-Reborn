@@ -102,6 +102,12 @@ public class SoundHandler {
     public static final SoundEvent SPINOSAURUS_BREATHING = create("spinosaurus_breathing");
     public static final SoundEvent SPINOSAURUS_THREAT = create("spinosaurus_threat");
 
+    public static final SoundEvent TROPEOGNATHUS_LIVING = create("tropeognathus_living");
+    public static final SoundEvent TROPEOGNATHUS_HURT = create("tropeognathus_hurt");
+    public static final SoundEvent TROPEOGNATHUS_DEATH = create("tropeognathus_death");
+    public static final SoundEvent TROPEOGNATHUS_ROAR = create("tropeognathus_roar");
+    public static final SoundEvent TROPEOGNATHUS_THREAT = create("tropeognathus_threat");
+
     public static final SoundEvent MICROCERATUS_LIVING = create("microceratus_living");
     public static final SoundEvent MICROCERATUS_HURT = create("microceratus_hurt");
     public static final SoundEvent MICROCERATUS_DEATH = create("microceratus_death");
