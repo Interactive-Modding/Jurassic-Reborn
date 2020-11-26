@@ -150,6 +150,38 @@
     "sounds": [
       "rebornmod:dinosaurs/dunkleosteus/dunkleosteus_calling"
     ]
+},
+  "therizinosaurus_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/therizinosaurus/therizinosaurus_living_1",
+      "rebornmod:dinosaurs/therizinosaurus/therizinosaurus_living_2",
+      "rebornmod:dinosaurs/therizinosaurus/therizinosaurus_living_3"
+    ]
+  },
+  "therizinosaurus_death": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/therizinosaurus/therizinosaurus_death_1"
+    ]
+  },
+  "therizinosaurus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/therizinosaurus/therizinosaurus_hurt_1"
+    ]
+},
+  "therizinosaurus_roar": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/therizinosaurus/therizinosaurus_roar_1"
+    ]
+},
+    "therizinosaurus_threat":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/therizinosaurus/therizinosaurus_threat_1"
+        ]
  },
   "protoceratops_living": {
     "category": "hostile",
@@ -1131,30 +1163,20 @@
     "sounds": [
       "rebornmod:dinosaurs/chilesaurus/chilesaurus_living_1",
       "rebornmod:dinosaurs/chilesaurus/chilesaurus_living_2",
-      "rebornmod:dinosaurs/chilesaurus/chilesaurus_living_3",
-      "rebornmod:dinosaurs/chilesaurus/chilesaurus_living_4",
-      "rebornmod:dinosaurs/chilesaurus/chilesaurus_living_5"
+      "rebornmod:dinosaurs/chilesaurus/chilesaurus_living_3"
     ]
  },
   "chilesaurus_death": {
     "category": "hostile",
     "sounds": [
-      "rebornmod:dinosaurs/chilesaurus/chilesaurus_death"
+      "rebornmod:dinosaurs/chilesaurus/chilesaurus_death_1"
     ]
  },
   "chilesaurus_hurt": {
     "category": "hostile",
     "sounds": [
-      "rebornmod:dinosaurs/chilesaurus/chilesaurus_hurt_1",
-      "rebornmod:dinosaurs/chilesaurus/chilesaurus_hurt_2",
-      "rebornmod:dinosaurs/chilesaurus/chilesaurus_hurt_3"
+      "rebornmod:dinosaurs/chilesaurus/chilesaurus_hurt_1"
     ]
-  },
-    "chilesaurus_threat":{
-        "category": "hostile",
-        "sounds": [
-            "rebornmod:dinosaurs/chilesaurus/chilesaurus_threat"
-        ]
  },
   "baryonyx_roar": {
     "category": "hostile",

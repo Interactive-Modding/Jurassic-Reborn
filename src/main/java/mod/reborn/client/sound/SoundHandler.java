@@ -179,6 +179,12 @@ public class SoundHandler {
     public static final SoundEvent DUNKLEOSTEUS_DEATH = create("dunkleosteus_death");
     public static final SoundEvent DUNKLEOSTEUS_THREAT = create("dunkleosteus_threat");
 
+    public static final SoundEvent THERIZINOSAURUS_LIVING = create("therizinosaurus_living");
+    public static final SoundEvent THERIZINOSAURUS_HURT = create("therizinosaurus_hurt");
+    public static final SoundEvent THERIZINOSAURUS_DEATH = create("therizinosaurus_death");
+    public static final SoundEvent THERIZINOSAURUS_ROAR = create("therizinosaurus_roar");
+    public static final SoundEvent THERIZINOSAURUS_THREAT = create("therizinosaurus_threat");
+
     public static final SoundEvent BARYONYX_LIVING = create("baryonyx_living");
     public static final SoundEvent BARYONYX_HURT = create("baryonyx_hurt");
     public static final SoundEvent BARYONYX_DEATH = create("baryonyx_death");
@@ -218,7 +224,6 @@ public class SoundHandler {
     public static final SoundEvent CHILESAURUS_LIVING = create("chilesaurus_living");
     public static final SoundEvent CHILESAURUS_HURT = create("chilesaurus_hurt");
     public static final SoundEvent CHILESAURUS_DEATH = create("chilesaurus_death");
-    public static final SoundEvent CHILESAURUS_THREAT = create("chilesaurus_threat");
 
     public static final SoundEvent CEARADACTYLUS_LIVING = create("cearadactylus_living");
     public static final SoundEvent CEARADACTYLUS_HURT = create("cearadactylus_hurt");

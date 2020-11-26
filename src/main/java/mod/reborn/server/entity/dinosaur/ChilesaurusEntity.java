@@ -29,8 +29,8 @@ public class ChilesaurusEntity extends DinosaurEntity {
                 return SoundHandler.CHILESAURUS_DEATH;
             case INJURED:
                 return SoundHandler.CHILESAURUS_HURT;
-            case BEGGING:
-                return SoundHandler.CHILESAURUS_THREAT;
+            case CALLING:
+                return SoundHandler.CHILESAURUS_LIVING;
         }
 
         return null;

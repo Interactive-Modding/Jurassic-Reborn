@@ -10,15 +10,19 @@
     "DRINKING": [
       {
         "pose": "hyaenodon_adult_drinking_1",
-        "time": 7
+        "time": 15
       },
       {
         "pose": "hyaenodon_adult_drinking_2",
-        "time": 6
+        "time": 15
       },
       {
         "pose": "hyaenodon_adult_drinking_3",
-        "time": 7
+        "time": 15
+      },
+      {
+        "pose": "hyaenodon_adult_idle",
+        "time": 10
       }
     ],
     "DYING": [
@@ -38,15 +42,31 @@
     "EATING": [
       {
         "pose": "hyaenodon_adult_eating_1",
-        "time": 7
+        "time": 15
       },
       {
         "pose": "hyaenodon_adult_eating_2",
-        "time": 6
+        "time": 15
       },
       {
         "pose": "hyaenodon_adult_eating_3",
-        "time": 7
+        "time": 15
+      },
+      {
+       "pose": "hyaenodon_adult_eating_1",
+        "time": 15
+      },
+      {
+        "pose": "hyaenodon_adult_eating_2",
+        "time": 15
+      },
+      {
+        "pose": "hyaenodon_adult_eating_3",
+        "time": 15
+      },
+      {
+        "pose": "hyaenodon_adult_idle",
+        "time": 10
       }
    ],
     "LOOKING_LEFT": [
