@@ -220,6 +220,11 @@ public class SoundHandler {
     public static final SoundEvent PACHYCEPHALOSAURUS_CALL = create("pachycephalosaurus_call");
     public static final SoundEvent PACHYCEPHALOSAURUS_THREAT = create("pachycephalosaurus_threat");
 
+    public static final SoundEvent PROTOCERATOPS_LIVING = create("protoceratops_living");
+    public static final SoundEvent PROTOCERATOPS_HURT = create("protoceratops_hurt");
+    public static final SoundEvent PROTOCERATOPS_DEATH = create("protoceratops_death");
+    public static final SoundEvent PROTOCERATOPS_THREAT = create("protoceratops_threat");
+
     public static final SoundEvent MOGANOPTERUS_LIVING = create("moganopterus_living");
     public static final SoundEvent MOGANOPTERUS_HURT = create("moganopterus_hurt");
     public static final SoundEvent MOGANOPTERUS_DEATH = create("moganopterus_death");

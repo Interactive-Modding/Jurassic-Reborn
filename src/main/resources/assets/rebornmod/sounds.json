@@ -151,6 +151,36 @@
       "rebornmod:dinosaurs/dunkleosteus/dunkleosteus_calling"
     ]
  },
+  "protoceratops_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/protoceratops/protoceratops_living_1",
+      "rebornmod:dinosaurs/protoceratops/protoceratops_living_2",
+      "rebornmod:dinosaurs/protoceratops/protoceratops_living_3",
+      "rebornmod:dinosaurs/protoceratops/protoceratops_living_4"
+    ]
+ },
+  "protoceratops_death": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/protoceratops/protoceratops_death_1",
+      "rebornmod:dinosaurs/protoceratops/protoceratops_death_2"
+    ]
+ },
+  "protoceratops_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/protoceratops/protoceratops_hurt_1",
+      "rebornmod:dinosaurs/protoceratops/protoceratops_hurt_2"
+    ]
+  },
+    "protoceratops_threat":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/protoceratops/protoceratops_threat_1",
+            "rebornmod:dinosaurs/protoceratops/protoceratops_threat_2"
+        ]
+ },
   "coelurus_living": {
     "category": "hostile",
     "sounds": [
