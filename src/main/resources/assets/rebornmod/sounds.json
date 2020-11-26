@@ -634,6 +634,50 @@
       "rebornmod:dinosaurs/spinosaurus/spinosaurus_attack_2"
     ]
   },
+  "majungasaurus_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/majungasaurus/majungasaurus_living_1",
+      "rebornmod:dinosaurs/majungasaurus/majungasaurus_living_2",
+      "rebornmod:dinosaurs/majungasaurus/majungasaurus_living_3"
+    ]
+ },
+  "majungasaurus_death": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/majungasaurus/majungasaurus_death"
+    ]
+ },
+  "majungasaurus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/majungasaurus/majungasaurus_hurt"
+    ]
+},
+  "majungasaurus_call": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/majungasaurus/majungasaurus_calling"
+    ]
+ },
+  "majungasaurus_roar": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/majungasaurus/majungasaurus_roar"
+    ]
+ },
+  "majungasaurus_breathing": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/majungasaurus/majungasaurus_breathing"
+    ]
+  },
+    "majungasaurus_threat":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/majungasaurus/majungasaurus_threat"
+        ]
+  },
   "baryonyx_living": {
     "category": "hostile",
     "sounds": [
