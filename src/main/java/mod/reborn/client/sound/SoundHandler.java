@@ -90,6 +90,10 @@ public class SoundHandler {
     public static final SoundEvent GALLIMIMUS_DEATH = create("gallimimus_death");
     public static final SoundEvent GALLIMIMUS_HURT = create("gallimimus_hurt");
 
+    public static final SoundEvent ORNITHOMIMUS_LIVING = create("ornithomimus_living");
+    public static final SoundEvent ORNITHOMIMUS_DEATH = create("ornithomimus_death");
+    public static final SoundEvent ORNITHOMIMUS_HURT = create("ornithomimus_hurt");
+
     public static final SoundEvent SPINOSAURUS_LIVING = create("spinosaurus_living");
     public static final SoundEvent SPINOSAURUS_HURT = create("spinosaurus_hurt");
     public static final SoundEvent SPINOSAURUS_DEATH = create("spinosaurus_death");
@@ -209,6 +213,18 @@ public class SoundHandler {
     public static final SoundEvent CEARADACTYLUS_DEATH = create("cearadactylus_death");
     public static final SoundEvent CEARADACTYLUS_CALL = create("cearadactylus_call");
     public static final SoundEvent CEARADACTYLUS_THREAT = create("cearadactylus_threat");
+
+    public static final SoundEvent MOGANOPTERUS_LIVING = create("moganopterus_living");
+    public static final SoundEvent MOGANOPTERUS_HURT = create("moganopterus_hurt");
+    public static final SoundEvent MOGANOPTERUS_DEATH = create("moganopterus_death");
+    public static final SoundEvent MOGANOPTERUS_THREAT = create("moganopterus_threat");
+
+    public static final SoundEvent COELURUS_LIVING = create("coelurus_living");
+    public static final SoundEvent COELURUS_HURT = create("coelurus_hurt");
+    public static final SoundEvent COELURUS_DEATH = create("coelurus_death");
+    public static final SoundEvent COELURUS_THREAT = create("coelurus_threat");
+
+
 
     public static final SoundEvent CERATOSAURUS_LIVING = create("ceratosaurus_living");
     public static final SoundEvent CERATOSAURUS_HURT = create("ceratosaurus_hurt");

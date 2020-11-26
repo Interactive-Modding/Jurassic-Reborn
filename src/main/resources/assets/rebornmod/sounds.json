@@ -117,6 +117,34 @@
     "sounds": [
       "rebornmod:dinosaurs/dunkleosteus/dunkleosteus_calling"
     ]
+ },
+  "coelurus_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/coelurus/coelurus_living_1",
+      "rebornmod:dinosaurs/coelurus/coelurus_living_2",
+      "rebornmod:dinosaurs/coelurus/coelurus_living_3"
+    ]
+  },
+  "coelurus_death": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/coelurus/coelurus_death_1",
+      "rebornmod:dinosaurs/coelurus/coelurus_death_2"
+    ]
+  },
+  "coelurus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/coelurus/coelurus_hurt_1",
+      "rebornmod:dinosaurs/coelurus/coelurus_hurt_2"
+    ]
+},
+    "coelurus_threat":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/coelurus/coelurus_threat_1"
+        ]
   },
   "triceratops_living": {
     "category": "hostile",
@@ -264,6 +292,29 @@
       "rebornmod:dinosaurs/gallimimus/gallimimus_hurt_1",
       "rebornmod:dinosaurs/gallimimus/gallimimus_hurt_2"
     ]
+ },
+  "ornithomimus_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/ornithomimus/ornithomimus_living_1",
+      "rebornmod:dinosaurs/ornithomimus/ornithomimus_living_2",
+      "rebornmod:dinosaurs/ornithomimus/ornithomimus_living_3",
+      "rebornmod:dinosaurs/ornithomimus/ornithomimus_living_4"
+    ]
+  },
+  "ornithomimus_death": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/ornithomimus/ornithomimus_death_1"
+    ]
+  },
+  "ornithomimus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/ornithomimus/ornithomimus_hurt_1",
+      "rebornmod:dinosaurs/ornithomimus/ornithomimus_hurt_2",
+      "rebornmod:dinosaurs/ornithomimus/ornithomimus_hurt_3"
+    ]
   },
   "microceratus_living": {
     "category": "hostile",
@@ -334,6 +385,38 @@
         "category": "hostile",
         "sounds": [
             "rebornmod:dinosaurs/spinosaurus/spinosaurus_threat"
+        ]
+  },
+  "moganopterus_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/moganopterus/moganopterus_living_1",
+      "rebornmod:dinosaurs/moganopterus/moganopterus_living_2",
+      "rebornmod:dinosaurs/moganopterus/moganopterus_living_3"
+    ]
+ },
+  "moganopterus_death": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/moganopterus/moganopterus_death_1"
+    ]
+ },
+  "moganopterus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/moganopterus/moganopterus_hurt_1"
+    ]
+},
+  "moganopterus_call": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/moganopterus/moganopterus_calling_1"
+    ]
+  },
+    "moganopterus_threat":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/moganopterus/moganopterus_threat_1"
         ]
  },
   "metriacanthosaurus_living": {
