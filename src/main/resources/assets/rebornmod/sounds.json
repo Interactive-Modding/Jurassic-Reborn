@@ -306,6 +306,29 @@
         "sounds": [
             "rebornmod:dinosaurs/spinosaurus/spinosaurus_threat"
         ]
+  },
+  "leaellynasaura_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/leaellynasaura/leaellynasaura_living_1",
+      "rebornmod:dinosaurs/leaellynasaura/leaellynasaura_living_2",
+      "rebornmod:dinosaurs/leaellynasaura/leaellynasaura_living_3",
+      "rebornmod:dinosaurs/leaellynasaura/leaellynasaura_living_4"
+    ]
+ },
+  "leaellynasaura_death": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/leaellynasaura/leaellynasaura_death_1",
+      "rebornmod:dinosaurs/leaellynasaura/leaellynasaura_death_2"
+    ]
+ },
+  "leaellynasaura_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/leaellynasaura/leaellynasaura_hurt_1",
+      "rebornmod:dinosaurs/leaellynasaura/leaellynasaura_hurt_2"
+        ]
  },
   "lambeosaurus_living": {
     "category": "hostile",
