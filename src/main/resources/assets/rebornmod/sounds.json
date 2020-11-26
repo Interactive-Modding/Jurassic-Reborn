@@ -368,6 +368,63 @@
             "rebornmod:dinosaurs/lambeosaurus/lambeosaurus_threat_1",
             "rebornmod:dinosaurs/lambeosaurus/lambeosaurus_threat_2"
         ]
+},
+  "leptictidium_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/leptictidium/leptictidium_living_1",
+      "rebornmod:dinosaurs/leptictidium/leptictidium_living_2",
+      "rebornmod:dinosaurs/leptictidium/leptictidium_living_3",
+      "rebornmod:dinosaurs/leptictidium/leptictidium_living_4"
+    ]
+ },
+  "leptictidium_death": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/leptictidium/leptictidium_death_1",
+      "rebornmod:dinosaurs/leptictidium/leptictidium_death_2"
+    ]
+ },
+  "leptictidium_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/leptictidium/leptictidium_hurt_1",
+      "rebornmod:dinosaurs/leptictidium/leptictidium_hurt_2"
+    ]
+ },
+  "ludodactylus_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/ludodactylus/ludodactylus_living_1",
+      "rebornmod:dinosaurs/ludodactylus/ludodactylus_living_2",
+      "rebornmod:dinosaurs/ludodactylus/ludodactylus_living_3"
+    ]
+ },
+  "ludodactylus_death": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/ludodactylus/ludodactylus_death"
+    ]
+ },
+  "ludodactylus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/ludodactylus/ludodactylus_hurt_1",
+      "rebornmod:dinosaurs/ludodactylus/ludodactylus_hurt_2"
+    ]
+},
+  "ludodactylus_call": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/ludodactylus/ludodactylus_calling"
+    ]
+  },
+    "ludodactylus_threat":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/ludodactylus/ludodactylus_threat_1",
+            "rebornmod:dinosaurs/ludodactylus/ludodactylus_threat_2"
+        ]
   },
   "herrerasaurus_living": {
     "category": "hostile",

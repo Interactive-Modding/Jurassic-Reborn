@@ -104,6 +104,12 @@ public class SoundHandler {
     public static final SoundEvent LAMBEOSAURUS_CALL = create("lambeosaurus_call");
     public static final SoundEvent LAMBEOSAURUS_THREAT = create("lambeosaurus_threat");
 
+    public static final SoundEvent LUDODACTYLUS_LIVING = create("ludodactylus_living");
+    public static final SoundEvent LUDODACTYLUS_HURT = create("ludodactylus_hurt");
+    public static final SoundEvent LUDODACTYLUS_DEATH = create("ludodactylus_death");
+    public static final SoundEvent LUDODACTYLUS_CALL = create("ludodactylus_call");
+    public static final SoundEvent LUDODACTYLUS_THREAT = create("ludodactylus_threat");
+
     public static final SoundEvent LEAELLYNASAURA_LIVING = create("leaellynasaura_living");
     public static final SoundEvent LEAELLYNASAURA_HURT = create("leaellynasaura_hurt");
     public static final SoundEvent LEAELLYNASAURA_DEATH = create("leaellynasaura_death");
