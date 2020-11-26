@@ -208,6 +208,30 @@
         "sounds": [
             "rebornmod:dinosaurs/coelurus/coelurus_threat_1"
         ]
+ },
+  "quetzalcoatlus_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/quetzalcoatlus/quetzalcoatlus_living_1"
+    ]
+  },
+  "quetzalcoatlus_death": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/quetzalcoatlus/quetzalcoatlus_death_1"
+    ]
+  },
+  "quetzalcoatlus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/quetzalcoatlus/quetzalcoatlus_hurt_1"
+    ]
+},
+    "quetzalcoatlus_threat":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/quetzalcoatlus/quetzalcoatlus_threat_1"
+        ]
   },
   "triceratops_living": {
     "category": "hostile",

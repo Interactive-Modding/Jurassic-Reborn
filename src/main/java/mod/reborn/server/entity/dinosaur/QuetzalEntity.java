@@ -25,13 +25,15 @@ public class QuetzalEntity extends FlyingDinosaurEntity
         switch (EntityAnimation.getAnimation(animation))
         {
             case SPEAK:
-                return SoundHandler.PTERANODON_LIVING;
+                return SoundHandler.QUETZALCOATLUS_LIVING;
             case CALLING:
-                return SoundHandler.PTERANODON_CALL;
+                return SoundHandler.QUETZALCOATLUS_LIVING;
             case DYING:
-                return SoundHandler.PTERANODON_DEATH;
+                return SoundHandler.QUETZALCOATLUS_DEATH;
             case INJURED:
-                return SoundHandler.PTERANODON_HURT;
+                return SoundHandler.QUETZALCOATLUS_HURT;
+            case BEGGING:
+                return SoundHandler.QUETZALCOATLUS_THREAT;
         }
 
         return null;
