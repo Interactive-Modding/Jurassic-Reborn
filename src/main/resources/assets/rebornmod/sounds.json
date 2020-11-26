@@ -224,6 +224,37 @@
     "sounds": [
       "rebornmod:dinosaurs/cearadactylus/cearadactylus_calling"
     ]
+ },
+  "oviraptor_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/oviraptor/oviraptor_living_1",
+      "rebornmod:dinosaurs/oviraptor/oviraptor_living_2"
+    ]
+  },
+  "oviraptor_death": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/oviraptor/oviraptor_death"
+    ]
+  },
+  "oviraptor_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/oviraptor/oviraptor_hurt"
+    ]
+},
+    "oviraptor_threat":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/oviraptor/oviraptor_threat"
+        ]
+  },
+  "oviraptor_call": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/oviraptor/oviraptor_calling"
+    ]
   },
   "dilophosaurus_living": {
     "category": "hostile",

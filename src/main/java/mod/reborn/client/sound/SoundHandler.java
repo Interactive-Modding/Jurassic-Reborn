@@ -224,6 +224,11 @@ public class SoundHandler {
     public static final SoundEvent COELURUS_DEATH = create("coelurus_death");
     public static final SoundEvent COELURUS_THREAT = create("coelurus_threat");
 
+    public static final SoundEvent OVIRAPTOR_LIVING = create("oviraptor_living");
+    public static final SoundEvent OVIRAPTOR_HURT = create("oviraptor_hurt");
+    public static final SoundEvent OVIRAPTOR_DEATH = create("oviraptor_death");
+    public static final SoundEvent OVIRAPTOR_THREAT = create("oviraptor_threat");
+
     public static final SoundEvent OTHNIELIA_LIVING = create("othnielia_living");
     public static final SoundEvent OTHNIELIA_HURT = create("othnielia_hurt");
     public static final SoundEvent OTHNIELIA_DEATH = create("othnielia_death");
