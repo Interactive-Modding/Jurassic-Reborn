@@ -195,6 +195,11 @@ public class SoundHandler {
     public static final SoundEvent PTERANODON_DEATH = create("pteranodon_death");
     public static final SoundEvent PTERANODON_CALL = create("pteranodon_call");
 
+    public static final SoundEvent HYAENODON_LIVING = create("hyaenodon_living");
+    public static final SoundEvent HYAENODON_HURT = create("hyaenodon_hurt");
+    public static final SoundEvent HYAENODON_DEATH = create("hyaenodon_death");
+    public static final SoundEvent HYAENODON_CALL = create("hyaenodon_call");
+
     public static final SoundEvent INDOMINUS_LIVING = create("indominus_living");
     public static final SoundEvent INDOMINUS_DEATH = create("indominus_death");
     public static final SoundEvent INDOMINUS_HURT = create("indominus_hurt");

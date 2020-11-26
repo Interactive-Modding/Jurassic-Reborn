@@ -351,6 +351,40 @@
             "rebornmod:dinosaurs/herrerasaurus/herrerasaurus_threat"
         ]
  },
+  "hyaenodon_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/hyaenodon/hyaenodon_living_1",
+      "rebornmod:dinosaurs/hyaenodon/hyaenodon_living_2",
+      "rebornmod:dinosaurs/hyaenodon/hyaenodon_living_3"
+    ]
+ },
+  "hyaenodon_death": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/hyaenodon/hyaenodon_death_1",
+      "rebornmod:dinosaurs/hyaenodon/hyaenodon_death_2"
+    ]
+ },
+  "hyaenodon_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/hyaenodon/hyaenodon_hurt_1",
+      "rebornmod:dinosaurs/hyaenodon/hyaenodon_hurt_2"
+    ]
+},
+  "hyaenodon_call": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/hyaenodon/hyaenodon_calling"
+    ]
+  },
+    "hyaenodon_threat":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/hyaenodon/hyaenodon_threat"
+        ]
+ },
   "giganotosaurus_living": {
     "category": "hostile",
     "sounds": [
