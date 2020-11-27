@@ -29,9 +29,9 @@ public class RebornConfig { //TODO: move all structures to same parent package
 
 
     public static class Entities {
-        @Config.Name("Dinosaur Spawning")
-        @Config.Comment("NOT WORKING AT THE MOMENT")
-        public boolean naturalSpawning = false;
+       //@Config.Name("Dinosaur Spawning")
+        //@Config.Comment("NOT WORKING AT THE MOMENT")
+        //public boolean naturalSpawning = false;
         
         @Config.Name("Goat Spawning")
         @Config.Comment("Allow Goat Spawning")
