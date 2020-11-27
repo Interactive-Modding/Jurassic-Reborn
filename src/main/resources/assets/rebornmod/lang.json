@@ -3,6 +3,10 @@
     {
       "locale": "en_US",
       "downloadURL": "https://raw.githubusercontent.com/Destruction-1/Reborn-Mod/master/src/main/resources/assets/rebornmod/lang/en_US.lang"
+      },
+      {
+      "locale": "es_MX",
+      "downloadURL": "https://raw.githubusercontent.com/Destruction-1/Reborn-Mod/master/src/main/resources/assets/rebornmod/lang/en_MX.lang"
     }
   ]
 }
