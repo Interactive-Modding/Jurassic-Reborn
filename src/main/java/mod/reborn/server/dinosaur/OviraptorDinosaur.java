@@ -38,7 +38,7 @@ public class OviraptorDinosaur extends Dinosaur
         this.setAttackBias(5);
         this.setImprintable(true);
         this.setDefendOwner(true);
-        this.setScale(0.65F, 0.18F);
+        this.setScale(0.65F, 0.15F);
         this.setBreeding(false, 2, 4, 30, false, true);
         String[][] recipe = {
                 {"", "","neck_vertebrae","skull"},

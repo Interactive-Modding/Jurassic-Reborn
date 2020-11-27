@@ -21,12 +21,12 @@ public class DiplocaulusDinosaur extends Dinosaur {
         this.setStrength(1, 20);
         this.setMaximumAge(fromDays(45));
         this.setEyeHeight(0.45F, 1.6F);
-        this.setSizeX(0.3F, 1.4F);
-        this.setSizeY(0.5F, 1.8F);
+        this.setSizeX(0.15F, 1.4F);
+        this.setSizeY(0.35F, 1.8F);
         this.setDiet(Diet.PISCIVORE.get());
         this.setBones("skull", "teeth", "foot_bone","leg_bones", "ribcage", "tail_vertebrae");
         this.setHeadCubeName("Head");
-        this.setScale(0.8F, 0.2F);
+        this.setScale(0.8F, 0.1F);
         this.setBirthType(BirthType.LIVE_BIRTH);
         this.setOffset(0,-4.5F,0);
         this.setAttackBias(10);

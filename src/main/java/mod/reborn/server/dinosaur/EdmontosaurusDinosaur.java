@@ -23,13 +23,13 @@ public class EdmontosaurusDinosaur extends Dinosaur
         this.setSpeed((SPEED -0.05), SPEED);
         this.setMaximumAge(fromDays(50));
         this.setEyeHeight(0.55F, 3.45F);
-        this.setSizeX(0.5F, 2.8F);
-        this.setSizeY(0.8F, 4.25F);
+        this.setSizeX(0.3F, 2.8F);
+        this.setSizeY(0.6F, 4.25F);
         this.setStorage(45);
         this.setDiet((Diet.HERBIVORE.get()));
         this.setBones("cheek_teeth", "pelvis", "skull", "front_leg_bones", "hind_leg_bones", "ribcage", "shoulder", "tail_vertebrae", "neck_vertebrae");
         this.setHeadCubeName("Head");
-        this.setScale(2.65F, 0.45F);
+        this.setScale(2.65F, 0.1F);
         this.setOffset(0.0F, 0.775F, 0.0F);
         this.setAttackBias(80);
         this.setImprintable(true);

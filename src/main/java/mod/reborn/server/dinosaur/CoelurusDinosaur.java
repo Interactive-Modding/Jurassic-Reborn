@@ -30,7 +30,7 @@ public class CoelurusDinosaur extends Dinosaur
         this.setDiet((Diet.CARNIVORE.get()));
         this.setBones("ribcage", "arm_bones", "claw", "foot_bones", "leg_bones", "neck_vertebrae", "pelvis", "shoulder", "skull", "tail_vertebrae", "tooth");
         this.setHeadCubeName("Head");
-        this.setScale(0.85F, 0.25F);
+        this.setScale(0.85F, 0.1F);
         this.setImprintable(true);
         this.setDefendOwner(true);
         this.setBreeding(false, 2, 4, 20, false, true);

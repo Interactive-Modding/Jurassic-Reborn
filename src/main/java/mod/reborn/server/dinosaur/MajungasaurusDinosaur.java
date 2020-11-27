@@ -23,14 +23,14 @@ public class MajungasaurusDinosaur extends Dinosaur
         this.setSpeed((SPEED -0.05), SPEED);
         this.setMaximumAge(fromDays(45));
         this.setEyeHeight(0.6F, 2.6F);
-        this.setSizeX(0.5F, 2.25F);
-        this.setSizeY(0.8F, 3.0F);
+        this.setSizeX(0.2F, 2.25F);
+        this.setSizeY(0.4F, 3.0F);
         this.setStorage(36);
         this.setDiet((Diet.CARNIVORE.get()));
         this.setBones("skull", "tooth", "claw", "foot_bones", "leg_bones", "neck_vertebrae", "pelvis", "ribcage", "shoulder", "tail_vertebrae");
         this.setHeadCubeName("Head");
         this.shouldDefendOffspring();
-        this.setScale(1.6F, 0.4F);
+        this.setScale(1.6F, 0.1F);
         this.setAttackBias(180);
         this.setImprintable(true);
         this.setBreeding(false, 2, 4, 70, false, true);

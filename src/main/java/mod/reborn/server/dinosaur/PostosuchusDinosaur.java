@@ -21,12 +21,12 @@ public class PostosuchusDinosaur extends Dinosaur {
         this.setStrength(2, 16);
         this.setMaximumAge(fromDays(45));
         this.setEyeHeight(0.45F, 1.6F);
-        this.setSizeX(0.3F, 1.4F);
-        this.setSizeY(0.5F, 1.8F);
+        this.setSizeX(0.15F, 1.4F);
+        this.setSizeY(0.3F, 1.8F);
         this.setDiet(Diet.CARNIVORE.get());
         this.setBones("skull", "tooth", "femur", "leg_bones", "neck_vertebrae", "ribcage", "shoulder", "tail_vertebrae", "tooth");
         this.setHeadCubeName("Head");
-        this.setScale(1.3F, 0.5F);
+        this.setScale(1.3F, 0.1F);
         this.setAttackBias(120);
         this.setBreeding(false, 2, 6, 20, false, true);
         String[][] recipe = {

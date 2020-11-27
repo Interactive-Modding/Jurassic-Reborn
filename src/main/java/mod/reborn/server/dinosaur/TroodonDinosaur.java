@@ -24,15 +24,15 @@ public class TroodonDinosaur extends Dinosaur
         this.setStrength(1, 5);
         this.setMaximumAge(fromDays(35));
         this.setEyeHeight(0.3F, 0.95F);
-        this.setSizeX(0.3F, 0.7F);
-        this.setSizeY(0.4F, 0.95F);
+        this.setSizeX(0.15F, 0.7F);
+        this.setSizeY(0.2F, 0.95F);
         this.setStorage(12);
         this.setDiet((Diet.CARNIVORE.get()));
         this.setSleepTime(SleepTime.NOCTURNAL);
         this.setBones("arm_bones", "foot_bones", "leg_bones", "neck_vertebrae", "pelvis", "ribcage", "shoulder", "skull", "tail_vertebrae", "tooth");
         this.setHeadCubeName("head UPPER");
         this.setAttackBias(600);
-        this.setScale(0.75F, 0.25F);
+        this.setScale(0.75F, 0.15F);
         this.setOffset(0.0F, 0.0F, 0.5F);
         this.setRotationAngle(10, 75);
         this.setAttackSpeed(1.2F);

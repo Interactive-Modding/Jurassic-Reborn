@@ -23,13 +23,13 @@ public class LeptictidiumDinosaur extends Dinosaur
         this.setSpeed((SPEED -0.05), SPEED);
         this.setMaximumAge(fromDays(25));
         this.setEyeHeight(0.21F, 0.63F);
-        this.setSizeX(0.2F, 0.5F);
-        this.setSizeY(0.25F, 0.75F);
+        this.setSizeX(0.1F, 0.5F);
+        this.setSizeY(0.15F, 0.75F);
         this.setMammal(true);
         this.setDiet((Diet.INHERBIVORE.get()));
         this.setBones("arm_bones", "leg_bones", "pelvis", "ribcage", "skull", "tail_vertebrae", "teeth", "neck_vertebrae", "shoulder");
         this.setHeadCubeName("Head");
-        this.setScale(0.6F, 0.25F);
+        this.setScale(0.6F, 0.15F);
         this.setAttackBias(-50);
         this.setImprintable(true);
         this.setBirthType(BirthType.LIVE_BIRTH);

@@ -23,14 +23,14 @@ public class TherizinosaurusDinosaur extends Dinosaur
         this.setStrength(10, 35);
         this.setMaximumAge(fromDays(65));
         this.setEyeHeight(0.95F, 5.85F);
-        this.setSizeX(0.65F, 2.25F);
-        this.setSizeY(1.0F, 5.95F);
+        this.setSizeX(0.34F, 2.25F);
+        this.setSizeY(0.5F, 5.95F);
         this.setStorage(36);
         this.setDiet(Diet.HERBIVORE.get());
         this.setSleepTime(SleepTime.DIURNAL);
         this.setBones("skull", "teeth", "ribcage", "arm_bones", "claw", "foot_bones", "leg_bones", "neck_vertebrae", "pelvis", "shoulder", "tail_vertebrae");
         this.setHeadCubeName("Head");
-        this.setScale(3.5F, 0.55F);
+        this.setScale(3.5F, 0.1F);
         this.setOffset(0.0F, 1.0F, 0.0F);
         this.setAttackSpeed(1);
         this.setAttackBias(800);

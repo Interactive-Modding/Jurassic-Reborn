@@ -23,12 +23,12 @@ public class OrnithomimusDinosaur extends Dinosaur
         this.setStrength(1, 5);
         this.setMaximumAge(fromDays(35));
         this.setEyeHeight(0.58F, 1.95F);
-        this.setSizeX(0.2F, 1.0F);
-        this.setSizeY(0.45F, 1.55F);
+        this.setSizeX(0.1F, 1.0F);
+        this.setSizeY(0.25F, 1.55F);
         this.setDiet((Diet.HERBIVORE.get()));
         this.setBones("arm_bones", "foot_bones", "leg_bones", "neck_vertebrae", "pelvis", "ribcage", "shoulder", "skull", "tail_vertebrae", "tooth");
         this.setHeadCubeName("Head Base");
-        this.setScale(0.9F, 0.25F);
+        this.setScale(0.9F, 0.15F);
         this.setFlockSpeed(1.4F);
         this.setAttackBias(-100);
         this.setFlee(true);

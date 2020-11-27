@@ -27,13 +27,13 @@ public class IndoraptorDinosaur extends Dinosaur implements Hybrid
         this.setStrength(10, 40);
         this.setMaximumAge(fromDays(30));
         this.setEyeHeight(0.55F, 5.4F);
-        this.setSizeX(0.4F, 2.8F);
-        this.setSizeY(0.3F, 4F);
+        this.setSizeX(0.2F, 2.8F);
+        this.setSizeY(0.2F, 4F);
         this.setStorage(54);
         this.setDiet((Diet.CARNIVORE.get()));
         this.setBones( "front_leg_bones", "hind_leg_bones", "foot_bones", "neck_vertebrae", "claw", "pelvis", "ribcage", "shoulder", "skull", "tail_vertebrae", "tooth");
         this.setHeadCubeName("Head");
-        this.setScale(1.4F, 0.25F);
+        this.setScale(1.4F, 0.15F);
         this.setAttackBias(4000);
         this.setBreeding(false, 0, 0, 999, false, false);
         this.setHybrid();

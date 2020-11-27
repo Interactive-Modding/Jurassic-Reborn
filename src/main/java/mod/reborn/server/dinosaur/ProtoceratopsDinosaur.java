@@ -23,14 +23,14 @@ public class ProtoceratopsDinosaur extends Dinosaur
         this.setStrength(5, 10);
         this.setMaximumAge(fromDays(40));
         this.setEyeHeight(0.35F, 0.85F);
-        this.setSizeX(0.3F, 1.0F);
-        this.setSizeY(0.4F, 1.25F);
+        this.setSizeX(0.15F, 1.0F);
+        this.setSizeY(0.2F, 1.25F);
         this.setStorage(9);
         this.setDiet((Diet.HERBIVORE.get()));
         this.setBones("skull", "teeth", "tail_vertebrae", "shoulder", "pelvis", "ribcage", "front_leg_bones", "hind_leg_bones", "shoulder");
         this.setHeadCubeName("Head");
         this.setAttackBias(1);
-        this.setScale(1.2F, 0.35F);
+        this.setScale(1.2F, 0.15F);
         this.setImprintable(true);
         this.setDefendOwner(true);
         this.setBreeding(false, 2, 5, 30, false, true);

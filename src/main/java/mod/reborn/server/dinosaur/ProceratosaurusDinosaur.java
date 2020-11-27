@@ -21,12 +21,12 @@ public class ProceratosaurusDinosaur extends Dinosaur {
         this.setStrength(3, 20);
         this.setMaximumAge(fromDays(45));
         this.setEyeHeight(0.45F, 1.6F);
-        this.setSizeX(0.3F, 1.4F);
-        this.setSizeY(0.5F, 1.8F);
+        this.setSizeX(0.15F, 1.4F);
+        this.setSizeY(0.2F, 1.8F);
         this.setDiet(Diet.CARNIVORE.get());
         this.setBones("ribcage", "tooth", "shoulder", "skull", "neck_vertebrae", "leg_bones", "pelvis", "ribcage", "arm_bones", "shoulder", "tail_vertebrae");
         this.setHeadCubeName("Head");
-        this.setScale(0.9F, 0.4F);
+        this.setScale(0.9F, 0.1F);
         this.shouldDefendOffspring();
         this.setAttackBias(120);
         this.setImprintable(true);

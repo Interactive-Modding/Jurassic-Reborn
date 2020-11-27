@@ -21,12 +21,12 @@ public class GuanlongDinosaur extends Dinosaur {
         this.setStrength(2, 15);
         this.setMaximumAge(fromDays(45));
         this.setEyeHeight(0.45F, 1.6F);
-        this.setSizeX(0.3F, 1.2F);
-        this.setSizeY(0.5F, 1.4F);
+        this.setSizeX(0.2F, 1.2F);
+        this.setSizeY(0.4F, 1.4F);
         this.setDiet(Diet.CARNIVORE.get());
         this.setBones("arm_bones", "leg_bones", "neck_vertebrae", "pelvis", "ribcage", "shoulder", "tail_vertebrae", "tooth", "claw", "foot_bones", "skull");
         this.setHeadCubeName("Head");
-        this.setScale(0.7F, 0.25F);
+        this.setScale(0.7F, 0.1F);
         this.shouldDefendOffspring();
         this.setAttackBias(1200);
         this.setAttackSpeed(1.2F);

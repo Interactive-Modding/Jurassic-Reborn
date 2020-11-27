@@ -33,7 +33,7 @@ public class VelociraptorDinosaur extends Dinosaur {
         this.setSleepTime(SleepTime.DIURNAL);
         this.setBones("claw", "arm_bones", "claw", "foot_bones", "leg_bones", "neck_vertebrae", "ribcage", "shoulder", "skull", "tail_vertebrae", "tooth", "pelvis");
         this.setHeadCubeName("Head");
-        this.setScale(1.3F, 0.3F);
+        this.setScale(1.3F, 0.1F);
         this.setImprintable(true);
         this.setDefendOwner(true);
         this.setMaxHerdSize(7);

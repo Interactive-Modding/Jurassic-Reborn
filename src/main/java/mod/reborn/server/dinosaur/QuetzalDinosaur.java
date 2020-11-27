@@ -24,13 +24,13 @@ public class QuetzalDinosaur extends Dinosaur
         this.setSpeed((SPEED -0.05), SPEED);
         this.setMaximumAge(fromDays(40));
         this.setEyeHeight(0.45F, 1.6F);
-        this.setSizeX(0.9F, 4.5F);
-        this.setSizeY(1.5F, 5.0F);
+        this.setSizeX(0.6F, 4.5F);
+        this.setSizeY(1.2F, 5.0F);
         this.setStorage(27);
         this.setDiet((Diet.CARNIVORE.get()));
         this.setBones("skull", "ribcage", "leg_bones", "neck_vertebrae", "pelvis", "tail_vertebrae", "wing_bones");
         this.setHeadCubeName("Head");
-        this.setScale(2.4F, 0.35F);
+        this.setScale(2.4F, 0.15F);
         this.setAttackBias(1200);
         this.shouldDefendOffspring();
         this.setBreeding(false, 1, 4, 80, false, true);

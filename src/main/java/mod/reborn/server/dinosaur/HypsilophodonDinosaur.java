@@ -33,7 +33,7 @@ public class HypsilophodonDinosaur extends Dinosaur
         this.setAttackBias(-50);
         this.setImprintable(true);
         this.setDefendOwner(true);
-        this.setScale(0.65F, 0.2F);
+        this.setScale(0.65F, 0.1F);
         String[][] recipe = {
                 {"", "pelvis", "","",""},
                 {"tail_vertebrae", "ribcage", "shoulder", "neck_vertebrae", "skull"},

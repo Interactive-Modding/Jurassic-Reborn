@@ -23,13 +23,13 @@ public class MoganopterusDinosaur extends Dinosaur
         this.setStrength(1, 5);
         this.setMaximumAge(fromDays(40));
         this.setEyeHeight(0.225F, 1.3F);
-        this.setSizeX(0.3F, 1.0F);
-        this.setSizeY(0.3F, 1.3F);
+        this.setSizeX(0.1F, 1.0F);
+        this.setSizeY(0.15F, 1.3F);
         this.setStorage(27);
         this.setDiet((Diet.PISCIVORE.get()));
         this.setBones("leg_bones", "pelvis", "ribcage", "skull", "tail_vertebrae", "teeth", "wing_bones");
         this.setHeadCubeName("Head");
-        this.setScale(0.725F, 0.2F);
+        this.setScale(0.725F, 0.1F);
         this.setAttackBias(200);
         this.setBreeding(false, 2, 6, 80, false, true);
         String[][] recipe = {

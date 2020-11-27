@@ -24,8 +24,8 @@ public class DunkleosteusDinosaur extends Dinosaur
         this.setStrength(10, 40);
         this.setMaximumAge(fromDays(30));
         this.setEyeHeight(0.3F, 1.2F);
-        this.setSizeX(0.8F, 2.7F);
-        this.setSizeY(0.5F, 2.0F);
+        this.setSizeX(0.3F, 2.7F);
+        this.setSizeY(0.2F, 2.0F);
         this.setMarineAnimal(true);
         this.setStorage(27);
         this.setDiet((Diet.CARNIVORE.get()));
@@ -33,7 +33,7 @@ public class DunkleosteusDinosaur extends Dinosaur
         this.setBirthType(BirthType.LIVE_BIRTH);
         this.setBones("mouth_plates", "skull", "dorsal_fin", "spine");
         this.setHeadCubeName("Main head");
-        this.setScale(2.1F, 0.55F);
+        this.setScale(2.1F, 0.15F);
         this.setOffset(0.0F, 1.0F, -0.25F);
         this.shouldDefendOffspring();
         this.setAttackBias(420);

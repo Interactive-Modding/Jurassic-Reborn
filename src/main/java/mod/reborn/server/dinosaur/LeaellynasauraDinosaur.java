@@ -23,13 +23,13 @@ public class LeaellynasauraDinosaur extends Dinosaur
         this.setSpeed((SPEED -0.05), SPEED);
         this.setMaximumAge(fromDays(35));
         this.setEyeHeight(0.35F, 0.95F);
-        this.setSizeX(0.25F, 0.6F);
-        this.setSizeY(0.35F, 0.95F);
+        this.setSizeX(0.15F, 0.6F);
+        this.setSizeY(0.25F, 0.95F);
         this.setStorage(9);
         this.setDiet((Diet.HERBIVORE.get()));
         this.setBones("shoulder", "skull", "tail_vertebrae", "tooth", "leg_bones", "neck_vertebrae", "pelvis", "ribcage");
         this.setHeadCubeName("Head ");
-        this.setScale(0.7F, 0.25F);
+        this.setScale(0.7F, 0.15F);
         this.setAttackBias(-50);
         this.setImprintable(true);
         this.setDefendOwner(true);

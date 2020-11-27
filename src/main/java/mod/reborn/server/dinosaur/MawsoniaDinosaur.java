@@ -33,14 +33,14 @@ public class MawsoniaDinosaur extends Dinosaur {
         this.setStrength(0.5, 3);
         this.setMaximumAge(this.fromDays(30));
         this.setEyeHeight(0.35F, 1.8F);
-        this.setSizeX(0.6F, 2.5F);
-        this.setSizeY(0.4F, 1.8F);
+        this.setSizeX(0.3F, 2.5F);
+        this.setSizeY(0.2F, 1.8F);
         this.setDiet((Diet.PCARNIVORE.get()));
         this.setSleepTime(SleepTime.NO_SLEEP);
         this.setBirthType(BirthType.LIVE_BIRTH);
         this.setBones("anal_fin", "caudal_fin", "first_dorsal_fin", "pectoral_fin_bones", "pelvic_fin_bones", "second_dorsal_fin", "skull", "spine", "teeth");
         this.setHeadCubeName("Main head");
-        this.setScale(1.8F, 0.38F);
+        this.setScale(1.8F, 0.1F);
         this.setMaxHerdSize(4);
         this.setOffset(0.0F, 1.0F, -0.2F);
         this.setAttackBias(100.0);

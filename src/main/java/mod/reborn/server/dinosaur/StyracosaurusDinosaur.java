@@ -21,12 +21,12 @@ public class StyracosaurusDinosaur extends Dinosaur {
         this.setStrength(5, 20);
         this.setMaximumAge(fromDays(45));
         this.setEyeHeight(0.45F, 1.6F);
-        this.setSizeX(0.3F, 1.4F);
-        this.setSizeY(0.5F, 1.8F);
+        this.setSizeX(0.15F, 1.4F);
+        this.setSizeY(0.3F, 1.8F);
         this.setDiet(Diet.HERBIVORE.get());
         this.setBones("front_leg_bones", "hind_leg_bones", "neck_vertebrae", "pelvis", "ribcage", "shoulder", "skull", "tail_vertebrae", "tooth");
         this.setHeadCubeName("Head");
-        this.setScale(1.8F, 0.43F);
+        this.setScale(1.8F, 0.15F);
         this.setOffset(0, 0.75F, 0);
         this.setAttackBias(120);
         this.shouldDefendOffspring();

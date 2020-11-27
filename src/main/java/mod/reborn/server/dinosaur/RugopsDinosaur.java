@@ -23,13 +23,13 @@ public class RugopsDinosaur extends Dinosaur
         this.setSpeed((SPEED -0.05), SPEED);
         this.setMaximumAge(fromDays(45));
         this.setEyeHeight(0.6F, 2.05F);
-        this.setSizeX(0.50F, 1.5F);
-        this.setSizeY(0.8F, 2.6F);
+        this.setSizeX(0.20F, 1.5F);
+        this.setSizeY(0.5F, 2.6F);
         this.setStorage(36);
         this.setDiet((Diet.CARNIVORE.get()));
         this.setBones("skull", "tooth", "arm_bones", "claw", "foot_bones", "leg_bones", "neck_vertebrae", "pelvis", "ribcage", "shoulder", "tail_vertebrae");
         this.setHeadCubeName("Head");
-        this.setScale(1.0F, 0.3F);
+        this.setScale(1.0F, 0.1F);
         this.setAttackBias(120);
         this.shouldDefendOffspring();
         this.setImprintable(true);

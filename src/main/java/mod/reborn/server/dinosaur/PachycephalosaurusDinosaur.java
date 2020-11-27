@@ -22,13 +22,13 @@ public class PachycephalosaurusDinosaur extends Dinosaur
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(4, 10);
         this.setMaximumAge(fromDays(40));
-        this.setSizeX(0.25F, 1.25F);
-        this.setSizeY(0.5F, 2.3F);
+        this.setSizeX(0.15F, 1.25F);
+        this.setSizeY(0.4F, 2.3F);
         this.setStorage(27);
         this.setDiet((Diet.HERBIVORE.get()));
         this.setBones("skull", "teeth", "ribcage", "leg_bones", "neck_vertebrae", "pelvis", "shoulder", "tail_vertebrae");
         this.setHeadCubeName("Head");
-        this.setScale(0.9F, 0.2F);
+        this.setScale(0.9F, 0.1F);
         this.setEyeHeight(0.4F, 1.8F);
         this.setAttackBias(400);
         this.setImprintable(true);

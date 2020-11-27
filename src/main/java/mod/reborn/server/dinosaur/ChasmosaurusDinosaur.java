@@ -29,7 +29,7 @@ public class ChasmosaurusDinosaur extends Dinosaur
         this.setDiet((Diet.HERBIVORE.get()));
         this.setBones("front_leg_bones", "hind_leg_bones", "tooth", "neck_vertebrae", "pelvis", "ribcage", "shoulder", "skull", "tail_vertebrae");
         this.setHeadCubeName("Head");
-        this.setScale(1.55F, 0.3F);
+        this.setScale(1.55F, 0.1F);
         this.setOffset(0.0F, 0.775F, 0.0F);
         this.setBreeding(false, 2, 6, 40, false, true);
         this.setImprintable(true);

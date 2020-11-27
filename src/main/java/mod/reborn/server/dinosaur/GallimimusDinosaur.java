@@ -26,13 +26,13 @@ public class GallimimusDinosaur extends Dinosaur {
         this.setStrength(1, 5);
         this.setMaximumAge(this.fromDays(35));
         this.setEyeHeight(0.58F, 2.7F);
-        this.setSizeX(0.3F, 1.2F);
-        this.setSizeY(0.55F, 2.45F);
+        this.setSizeX(0.2F, 1.2F);
+        this.setSizeY(0.35F, 2.45F);
         this.setStorage(27);
         this.setDiet(Diet.HERBIVORE.get().withModule(new Diet.DietModule(FoodType.INSECT).withCondition(entity -> entity.getAgePercentage() < 25)));
         this.setBones("arm_bones", "foot_bones", "leg_bones", "neck_vertebrae", "pelvis", "ribcage", "shoulder", "skull", "tail_vertebrae");
         this.setHeadCubeName("Head Base");
-        this.setScale(1.05F, 0.2F);
+        this.setScale(1.05F, 0.1F);
         this.setImprintable(true);
         this.setFlee(true);
         this.setFlockSpeed(1.4F);

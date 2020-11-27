@@ -21,12 +21,12 @@ public class MammothDinosaur extends Dinosaur {
         this.setStrength(5, 25);
         this.setMaximumAge(fromDays(45));
         this.setEyeHeight(0.45F, 1.8F);
-        this.setSizeX(0.4F, 2.2F);
-        this.setSizeY(0.6F, 2.5F);
+        this.setSizeX(0.15F, 2.2F);
+        this.setSizeY(0.3F, 2.5F);
         this.setDiet(Diet.HERBIVORE.get());
         this.setBones("skull", "tooth","front_leg_bones", "hind_leg_bones", "tusks", "neck_vertebrae", "pelvis", "ribcage", "shoulder", "tail_vertebrae");
         this.setHeadCubeName("Head");
-        this.setScale(1.7F, 0.30F);
+        this.setScale(1.7F, 0.10F);
         this.setMammal(true);
         this.setBirthType(BirthType.LIVE_BIRTH);
         this.shouldDefendOffspring();

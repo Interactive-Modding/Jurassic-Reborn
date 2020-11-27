@@ -23,13 +23,13 @@ public class TylosaurusDinosaur extends Dinosaur
         this.setStrength(5, 30);
         this.setMaximumAge(fromDays(60));
         this.setEyeHeight(0.35F, 2.35F);
-        this.setSizeX(0.85F, 4.5F);
-        this.setSizeY(0.55F, 2.95F);
+        this.setSizeX(0.45F, 4.5F);
+        this.setSizeY(0.25F, 2.95F);
         this.setStorage(54);
         this.setDiet((Diet.CARNIVORE.get()));
         this.setBones("front_flipper", "hind_flipper", "inner_teeth", "ribcage", "skull", "spine", "tail_fluke", "tail_vertebrae", "tooth");
         this.setHeadCubeName("Main head");
-        this.setScale(2.2F, 0.45F);
+        this.setScale(2.2F, 0.15F);
         this.setOffset(0.0F, 0.0F, 1.0F);
         this.shouldDefendOffspring();
         this.setBirthType(BirthType.LIVE_BIRTH);

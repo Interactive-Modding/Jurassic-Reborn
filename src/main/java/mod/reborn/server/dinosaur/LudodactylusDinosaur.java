@@ -23,13 +23,13 @@ public class LudodactylusDinosaur extends Dinosaur
         this.setStrength(3, 10);
         this.setMaximumAge(fromDays(40));
         this.setEyeHeight(0.48F, 1.25F);
-        this.setSizeX(0.4F, 1.0F);
-        this.setSizeY(0.55F, 1.35F);
+        this.setSizeX(0.15F, 1.0F);
+        this.setSizeY(0.35F, 1.35F);
         this.setStorage(18);
         this.setDiet((Diet.CARNIVORE.get()));
         this.setBones("leg_bones", "pelvis", "skull", "ribcage", "tail_vertebrae", "teeth", "wing_bones");
         this.setHeadCubeName("Head");
-        this.setScale(0.8F, 0.35F);
+        this.setScale(0.8F, 0.1F);
         this.shouldDefendOffspring();
         this.setAttackBias(120);
         this.setImprintable(true);

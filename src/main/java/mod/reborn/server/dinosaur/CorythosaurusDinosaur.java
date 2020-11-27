@@ -31,7 +31,7 @@ public class CorythosaurusDinosaur extends Dinosaur
         this.setDiet((Diet.HERBIVORE.get()));
         this.setBones("cheek_teeth", "front_leg_bones", "neck_vertebrae","hind_leg_bones", "pelvis", "shoulder", "skull", "tail_vertebrae", "ribcage");
         this.setHeadCubeName("Head");
-        this.setScale(2.2F, 0.4F);
+        this.setScale(2.2F, 0.1F);
         this.setOffset(0.0F, 0.775F, 0.0F);
         this.setImprintable(true);
         this.setFlockSpeed(1.5F);

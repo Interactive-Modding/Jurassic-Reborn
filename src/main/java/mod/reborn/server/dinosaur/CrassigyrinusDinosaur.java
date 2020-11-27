@@ -29,7 +29,7 @@ public class CrassigyrinusDinosaur extends Dinosaur {
         this.setBirthType(BirthType.LIVE_BIRTH);
         this.setHeadCubeName("Head");
         this.setAttackBias(5);
-        this.setScale(0.65F, 0.3F);
+        this.setScale(0.65F, 0.1F);
         this.setOffset(0,-2,0);
         this.setMarineAnimal(true);
         this.setBreeding(true, 2, 4, 20, false, true);

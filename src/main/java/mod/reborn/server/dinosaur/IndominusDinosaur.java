@@ -29,13 +29,13 @@ public class IndominusDinosaur extends Dinosaur implements Hybrid
         this.setMaximumAge(fromDays(30));
         this.setAttackSpeed(3);
         this.setEyeHeight(0.55F, 5.4F);
-        this.setSizeX(0.4F, 3.5F);
-        this.setSizeY(0.7F, 6.0F);
+        this.setSizeX(0.2F, 3.5F);
+        this.setSizeY(0.4F, 6.0F);
         this.setStorage(54);
         this.setDiet((Diet.CARNIVORE.get()));
         this.setBones("arm_bones", "foot_bones", "leg_bones", "neck_vertebrae", "claw", "pelvis", "ribcage", "shoulder", "skull", "tail_vertebrae", "tooth");
         this.setHeadCubeName("Head");
-        this.setScale(3.0F, 0.4F);
+        this.setScale(3.0F, 0.1F);
         this.setAttackBias(4000);
         this.setBreeding(false, 0, 0, 999, false, false);
         this.setHybrid();

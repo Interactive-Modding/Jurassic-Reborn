@@ -23,13 +23,13 @@ public class MetriacanthosaurusDinosaur extends Dinosaur
         this.setSpeed((SPEED -0.05), SPEED);
         this.setMaximumAge(fromDays(40));
         this.setEyeHeight(0.35F, 1.75F);
-        this.setSizeX(0.25F, 1.15F);
-        this.setSizeY(0.35F, 1.95F);
+        this.setSizeX(0.15F, 1.15F);
+        this.setSizeY(0.25F, 1.95F);
         this.setStorage(27);
         this.setDiet((Diet.CARNIVORE.get()));
         this.setBones("arm_bones", "foot_bones", "leg_bones", "neck_vertebrae", "pelvis", "ribcage", "shoulder", "skull", "tail_vertebrae", "tooth");
         this.setHeadCubeName("Head");
-        this.setScale(1.2F, 0.25F);
+        this.setScale(1.2F, 0.15F);
         this.shouldDefendOffspring();
         this.setAttackBias(120);
         this.setBreeding(false, 2, 4, 70, false, true);

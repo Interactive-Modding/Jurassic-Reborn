@@ -20,13 +20,13 @@ public class StegosaurusDinosaur extends Dinosaur{
         this.setSpeed((SPEED -0.05), SPEED);
         this.setMaximumAge(fromDays(50));
         this.setEyeHeight(0.26F, 2.2F);
-        this.setSizeX(0.5F, 4.0F);
-        this.setSizeY(0.7F, 4.8F);
+        this.setSizeX(0.2F, 4.0F);
+        this.setSizeY(0.3F, 4.8F);
         this.setStorage(36);
         this.setDiet(Diet.HERBIVORE.get());
         this.setBones("front_leg_bones", "hind_leg_bones", "neck", "pelvis", "ribcage", "shoulder", "skull", "tail", "thagomizer", "tooth");
         this.setHeadCubeName("Head");
-        this.setScale(2.55F, 0.35F);
+        this.setScale(2.55F, 0.15F);
         this.setOffset(0.0F, 0.775F, 0.0F);
         this.setAttackBias(350);
         this.shouldDefendOffspring();
