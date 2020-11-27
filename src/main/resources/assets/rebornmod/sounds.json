@@ -589,6 +589,51 @@
             "rebornmod:dinosaurs/zhenyuanopterus/zhenyuanopterus_threat_1"
         ]
   },
+  "styracosaurus_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/styracosaurus/styracosaurus_living_1",
+      "rebornmod:dinosaurs/styracosaurus/styracosaurus_living_2",
+      "rebornmod:dinosaurs/styracosaurus/styracosaurus_living_3",
+      "rebornmod:dinosaurs/styracosaurus/styracosaurus_living_4",
+      "rebornmod:dinosaurs/styracosaurus/styracosaurus_living_5"
+    ]
+ },
+  "styracosaurus_death": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/styracosaurus/styracosaurus_death_1",
+      "rebornmod:dinosaurs/styracosaurus/styracosaurus_death_2",
+      "rebornmod:dinosaurs/styracosaurus/styracosaurus_death_3"
+    ]
+ },
+  "styracosaurus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/styracosaurus/styracosaurus_hurt_1",
+      "rebornmod:dinosaurs/styracosaurus/styracosaurus_hurt_2"
+    ]
+},
+  "styracosaurus_call": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/styracosaurus/styracosaurus_calling"
+    ]
+ },
+  "styracosaurus_roar": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/styracosaurus/styracosaurus_roar_1",
+      "rebornmod:dinosaurs/styracosaurus/styracosaurus_roar_2"
+    ]
+  },
+    "styracosaurus_threat":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/styracosaurus/styracosaurus_threat_1",
+            "rebornmod:dinosaurs/styracosaurus/styracosaurus_threat_2"
+        ]
+  },
   "spinosaurus_living": {
     "category": "hostile",
     "sounds": [
@@ -2224,43 +2269,24 @@
       "rebornmod:dinosaurs/mammoth/mammoth_threat_4"
     ]
   },
-  "styracosaurus_call":{
-    "category": "hostile",
-    "sounds": [
-      "rebornmod:dinosaurs/styracosaurus/styracosaurus_call"
-    ]
-  },
-  "styracosaurus_death":{
-    "category": "hostile",
-    "sounds": [
-      "rebornmod:dinosaurs/styracosaurus/styracosaurus_death"
-    ]
-  },
-  "styracosaurus_roar":{
-    "category": "hostile",
-    "sounds": [
-      "rebornmod:dinosaurs/styracosaurus/styracosaurus_roar_1",
-      "rebornmod:dinosaurs/styracosaurus/styracosaurus_roar_2"
-    ]
-  },
   "postosuchus_attack":{
     "category": "hostile",
     "sounds": [
-      "rebornmod:dinosaurs/styracosaurus/postosuchus_attack"
+      "rebornmod:dinosaurs/postosuchus/postosuchus_attack"
     ]
   },
   "postosuchus_call":{
     "category": "hostile",
     "sounds": [
-      "rebornmod:dinosaurs/styracosaurus/postosuchus_call_1",
-      "rebornmod:dinosaurs/styracosaurus/postosuchus_call_2"
+      "rebornmod:dinosaurs/postosuchus/postosuchus_call_1",
+      "rebornmod:dinosaurs/postosuchus/postosuchus_call_2"
     ]
   },
   "postosuchus_death":{
     "category": "hostile",
     "sounds": [
-      "rebornmod:dinosaurs/styracosaurus/postosuchus_death_1",
-      "rebornmod:dinosaurs/styracosaurus/postosuchus_death_2"
+      "rebornmod:dinosaurs/postosuchus/postosuchus_death_1",
+      "rebornmod:dinosaurs/postosuchus/postosuchus_death_2"
     ]
   },
   "goat_death": {

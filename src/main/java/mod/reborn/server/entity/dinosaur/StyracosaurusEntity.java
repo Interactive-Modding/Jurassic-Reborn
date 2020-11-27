@@ -21,17 +21,25 @@ public class StyracosaurusEntity extends DinosaurEntity {
     }
 
     @Override
-    public SoundEvent getSoundForAnimation(Animation animation) {
-        switch (EntityAnimation.getAnimation(animation)) {
-            case CALLING:
-                return SoundHandler.STYRACOSAURUS_CALL;
+    public SoundEvent getSoundForAnimation(Animation animation)
+    {
+        switch (EntityAnimation.getAnimation(animation))
+        {
+            case SPEAK:
+                return SoundHandler.STYRACOSAURUS_LIVING;
             case DYING:
                 return SoundHandler.STYRACOSAURUS_DEATH;
+            case INJURED:
+                return SoundHandler.STYRACOSAURUS_HURT;
+            case CALLING:
+                return SoundHandler.STYRACOSAURUS_CALL;
             case ROARING:
                 return SoundHandler.STYRACOSAURUS_ROAR;
-            default:
-                return null;
+            case BEGGING:
+                return SoundHandler.STYRACOSAURUS_THREAT;
         }
+
+        return null;
     }
 
     @Override

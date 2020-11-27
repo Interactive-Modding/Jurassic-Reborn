@@ -102,6 +102,13 @@ public class SoundHandler {
     public static final SoundEvent SPINOSAURUS_BREATHING = create("spinosaurus_breathing");
     public static final SoundEvent SPINOSAURUS_THREAT = create("spinosaurus_threat");
 
+    public static final SoundEvent STYRACOSAURUS_LIVING = create("styracosaurus_living");
+    public static final SoundEvent STYRACOSAURUS_HURT = create("styracosaurus_hurt");
+    public static final SoundEvent STYRACOSAURUS_DEATH = create("styracosaurus_death");
+    public static final SoundEvent STYRACOSAURUS_CALL = create("styracosaurus_call");
+    public static final SoundEvent STYRACOSAURUS_ROAR = create("styracosaurus_roar");
+    public static final SoundEvent STYRACOSAURUS_THREAT = create("styracosaurus_threat");
+
     public static final SoundEvent TROPEOGNATHUS_LIVING = create("tropeognathus_living");
     public static final SoundEvent TROPEOGNATHUS_HURT = create("tropeognathus_hurt");
     public static final SoundEvent TROPEOGNATHUS_DEATH = create("tropeognathus_death");
@@ -395,10 +402,6 @@ public class SoundHandler {
     public static final SoundEvent MAMMOTH_LIVING = create("mammoth_living");
     public static final SoundEvent MAMMOTH_MATE_CALL = create("mammoth_mate_call");
     public static final SoundEvent MAMMOTH_THREAT = create("mammoth_threat");
-
-    public static final SoundEvent STYRACOSAURUS_CALL = create("styracosaurus_call");
-    public static final SoundEvent STYRACOSAURUS_DEATH = create("styracosaurus_death");
-    public static final SoundEvent STYRACOSAURUS_ROAR = create("styracosaurus_roar");
 
     public static final SoundEvent POSTOSUCHUS_ATTACK = create("postosuchus_attack");
     public static final SoundEvent POSTOSUCHUS_CALL = create("postosuchus_call");
