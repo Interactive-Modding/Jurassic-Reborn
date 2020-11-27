@@ -124,38 +124,6 @@
         "pose": "quetzalcoatlus_adult_gliding_2",
         "time": 20
       }
-    ],
-    "SPEAK": [
-      {
-        "pose": "quetzalcoatlus_adult_speak",
-        "time": 5
-      },
-      {
-        "pose": "quetzalcoatlus_adult_speak",
-        "time": 20
-      },
-      {
-        "pose": "quetzalcoatlus_adult_idle",
-        "time": 5
-      }
-  ],
-    "CALLING": [
-      {
-        "pose": "quetzalcoatlus_adult_calling",
-        "time": 12
-      },
-      {
-        "pose": "quetzalcoatlus_adult_idle",
-        "time": 5
-      },
-	  {
-        "pose": "quetzalcoatlus_adult_calling",
-        "time": 12
-      },
-      {
-        "pose": "quetzalcoatlus_adult_idle",
-        "time": 20
-      }
   ],
     "INJURED": [
       {
@@ -165,24 +133,6 @@
       {
         "pose": "quetzalcoatlus_adult_idle",
         "time": 20
-      }
- ],
- "LOOKING_LEFT": [
-      {
-        "pose": "quetzalcoatlus_adult_look_start",
-        "time": 10
-      },
-      {
-        "pose": "quetzalcoatlus_adult_look_left",
-        "time": 10
-      },
-      {
-        "pose": "quetzalcoatlus_adult_look_left",
-        "time": 20
-      },
-      {
-        "pose": "quetzalcoatlus_adult_idle",
-        "time": 10
       }
     ],
     "SLEEPING": [
@@ -195,24 +145,6 @@
       {
         "pose": "quetzalcoatlus_adult_laying",
         "time": 20
-      }
-    ],
-    "LOOKING_RIGHT": [
-      {
-        "pose": "quetzalcoatlus_adult_look_start",
-        "time": 10
-      },
-      {
-        "pose": "quetzalcoatlus_adult_look_right",
-        "time": 10
-      },
-      {
-        "pose": "quetzalcoatlus_adult_look_right",
-        "time": 20
-      },
-      {
-        "pose": "quetzalcoatlus_adult_idle",
-        "time": 10
       }
     ],
     "ATTACKING": [
