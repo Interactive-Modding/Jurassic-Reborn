@@ -66,7 +66,7 @@
       },
       {
         "pose": "hypsilophodon_adult_jumping_2",
-        "time": 2
+        "time": 1
       },
       {
         "pose": "hypsilophodon_adult_jumping_3",
@@ -74,7 +74,7 @@
       },
       {
         "pose": "hypsilophodon_adult_jumping_4",
-        "time": 2
+        "time": 1
       },
       {
         "pose": "hypsilophodon_adult_jumping_5",
@@ -82,7 +82,7 @@
       },
       {
         "pose": "hypsilophodon_adult_jumping_6",
-        "time": 2
+        "time": 1
       },
       {
         "pose": "hypsilophodon_adult_jumping_7",
@@ -90,41 +90,41 @@
       },
       {
         "pose": "hypsilophodon_adult_jumping_8",
-        "time": 2
+        "time": 1
       }
   ],
     "RUNNING": [
       {
         "pose": "hypsilophodon_adult_jumping_1",
-        "time": 1
+        "time": 2
       },
       {
         "pose": "hypsilophodon_adult_jumping_2",
-        "time": 1
+        "time": 2
       },
       {
         "pose": "hypsilophodon_adult_jumping_3",
-        "time": 1
+        "time": 2
       },
       {
         "pose": "hypsilophodon_adult_jumping_4",
-        "time": 1
+        "time": 2
       },
       {
         "pose": "hypsilophodon_adult_jumping_5",
-        "time": 1
+        "time": 2
       },
       {
         "pose": "hypsilophodon_adult_jumping_6",
-        "time": 1
+        "time": 2
       },
       {
         "pose": "hypsilophodon_adult_jumping_7",
-        "time": 1
+        "time": 2
       },
       {
         "pose": "hypsilophodon_adult_jumping_8",
-        "time": 1
+        "time": 2
       }
    ],
     "DRINKING": [

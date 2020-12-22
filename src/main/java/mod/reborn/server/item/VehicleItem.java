@@ -23,7 +23,7 @@ import java.util.List;
 
 public class VehicleItem extends Item {
 
-    public static final String[] variants = new String[] { "ford_explorer", "jeep_wrangler", "helicopter" };
+    public static final String[] variants = new String[] { "ford_explorer", "jeep_wrangler", "helicopter", "ford_explorer_snow" };
     // public static final String[] localized = new String[variants.length];
 
     public VehicleItem() {
@@ -66,6 +66,8 @@ public class VehicleItem extends Item {
                 entity = new FordExplorerEntity(world);
             } else if (stack.getMetadata() == 1) {
                 entity = new JeepWranglerEntity(world);
+            } else if (stack.getMetadata() == 3) {
+                entity = new FordExplorerSnowEntity(world);
             } else if (stack.getMetadata() == 2) {
                 entity = new HelicopterEntityNew(world);
             }
@@ -86,7 +88,7 @@ public class VehicleItem extends Item {
     @Override
     public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
         if (this.isInCreativeTab(tab)) {
-            for (int i = 0; i < 3; ++i) {
+            for (int i = 0; i < 4; ++i) {
                 items.add(new ItemStack(this, 1, i));
             }
         }

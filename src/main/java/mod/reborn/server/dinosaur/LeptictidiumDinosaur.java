@@ -7,7 +7,7 @@ import mod.reborn.server.period.TimePeriod;
 
 public class LeptictidiumDinosaur extends Dinosaur
 {
-    public static final double SPEED = 0.42F;
+    public static final double SPEED = 0.39F;
     public LeptictidiumDinosaur()
     {
         super();

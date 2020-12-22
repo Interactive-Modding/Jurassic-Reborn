@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "rebornmod:ford_explorer_snow",
+  "pattern": [
+    "AWB",
+    "LAR",
+    "CBQ"
+  ],
+  "key": {
+    "R": {
+      "item": "minecraft:dye",
+      "data": 7
+    },
+    "W": {
+      "item": "minecraft:glass_pane"
+    },
+    "G": {
+      "item": "minecraft:dye",
+      "data": 3
+    },
+    "L": {
+      "item": "minecraft:dye",
+      "data": 7
+    },
+    "C": {
+      "item": "rebornmod:unfinished_car"
+    },
+    "Y": {
+      "item": "minecraft:dye",
+      "data": 3
+    }
+  },
+  "result": {
+    "item": "rebornmod:vehicle_item",
+    "data": 3
+  }
+}

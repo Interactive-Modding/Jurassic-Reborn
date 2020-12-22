@@ -2,11 +2,23 @@
   "languages": [
     {
       "locale": "en_US",
-      "downloadURL": "https://raw.githubusercontent.com/Destruction-1/Reborn-Mod/master/src/main/resources/assets/rebornmod/lang/en_US.lang"
+      "downloadURL": "https://raw.githubusercontent.com/Interactive-Modding/JurassicWorldRebornMod/tree/master/src/main/resources/assets/rebornmod/lang/en_US.lang"
       },
       {
       "locale": "es_MX",
-      "downloadURL": "https://raw.githubusercontent.com/Destruction-1/Reborn-Mod/master/src/main/resources/assets/rebornmod/lang/en_MX.lang"
+      "downloadURL": "https://raw.githubusercontent.com/Interactive-Modding/JurassicWorldRebornMod/tree/master/src/main/resources/assets/rebornmod/lang/es_MX.lang"
+      },
+      {
+      "locale": "es_ES",
+      "downloadURL": "https://raw.githubusercontent.com/Interactive-Modding/JurassicWorldRebornMod/tree/master/src/main/resources/assets/rebornmod/lang/es_ES.lang"
+      },
+      {
+      "locale": "pt_BR",
+      "downloadURL": "https://raw.githubusercontent.com/Interactive-Modding/JurassicWorldRebornMod/tree/master/src/main/resources/assets/rebornmod/lang/pt_BR.lang"
+      },
+      {
+      "locale": "bg_BG",
+      "downloadURL": "https://raw.githubusercontent.com/Interactive-Modding/JurassicWorldRebornMod/tree/master/src/main/resources/assets/rebornmod/lang/bg_BG.lang"
     }
   ]
 }

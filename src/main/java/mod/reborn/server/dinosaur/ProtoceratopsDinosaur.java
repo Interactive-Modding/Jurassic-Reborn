@@ -33,7 +33,7 @@ public class ProtoceratopsDinosaur extends Dinosaur
         this.setScale(1.2F, 0.15F);
         this.setImprintable(true);
         this.setDefendOwner(true);
-        this.setBreeding(false, 2, 5, 30, false, true);
+        this.setBreeding(false, 2, 4, 40, false, true);
         String[][] recipe = {
                 {"tail_vertebrae", "pelvis", "ribcage","","skull"},
                 {"hind_leg_bones", "hind_leg_bones", "", "shoulder", "teeth"},

@@ -19,7 +19,7 @@ public class BaryonyxDinosaur extends Dinosaur
         this.setEggColorFemale(0x9D9442, 0x2A2405);
         this.setHealth(6, 35);
         this.setSpeed((SPEED -0.05), SPEED);
-        this.setAttackSpeed(2);
+        this.setAttackSpeed(1.5);
         this.setStrength(1, 10);
         this.setMaximumAge(fromDays(55));
         this.setEyeHeight(0.55F, 2.95F);

@@ -7,15 +7,11 @@ Vitiate
 
 ### Developers
 
-Wyn Price
-
 Last_Dovahkiin
 
 ### Modelers / Sound Designers / Textures /  Concept Artists
 
 WinterKILLER435 // DroidBait284
-
-Verified_Bear // Alis
 
 AveLardo12 // InnovativePachyderm
 
@@ -35,21 +31,19 @@ Pedro Resende
 
 ### Bug-Testers
 
-Spino mastermind
+ImaStego
+
+# Contributors
+
+Verified_Bear // Alis
+
+Just Monika
+
+Wyn Price 
 
 Sniffity
 
 Loxures
-
-Josef_Germany (MCingram) 
-
-Verified_Bear
-
-GuardianInASuit
-
-# Contributors
-
-Just Monika 
 
 Firewolf786YT
 
@@ -62,6 +56,8 @@ RextheZilla98
 ᗰι𝓬ʰ𝐈𝐠Ữ𝓝 (Michigun)
 
 AGSucho
+
+Josef_Germany (MCingram) 
 
 JurassicXenomorph
 

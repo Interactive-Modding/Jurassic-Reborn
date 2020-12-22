@@ -34,13 +34,13 @@ public class AlligatorGarDinosaur extends Dinosaur
         this.setStrength(0.5, 3);
         this.setMaximumAge(this.fromDays(30));
         this.setEyeHeight(0.35F, 1.2F);
-        this.setSizeX(0.1F, 1.1F);
-        this.setSizeY(0.02F, .4F);
+        this.setSizeX(0.1F, 1.3F);
+        this.setSizeY(0.02F, .6F);
         this.setDiet(Diet.PISCIVORE.get().withModule(new Diet.DietModule(FoodType.FILTER)));
         this.setSleepTime(SleepTime.NO_SLEEP);
         this.setBones("anal_fin", "dorsal_fin", "pectoral_fin_bones", "pelvic_fin_bones", "scales", "skull", "spine", "tail_fin", "teeth");
         this.setHeadCubeName("Head");
-        this.setScale(.65F, 0.15F);
+        this.setScale(.95F, 0.15F);
         this.setMaxHerdSize(30);
         this.setOffset(0.0F, .7F, 0F);
         this.setAttackBias(100.0);
