@@ -146,19 +146,19 @@
       },
       {
         "pose": "parasaurolophus_adult_resting_2",
-        "time": 6
+        "time": 15
       },
       {
         "pose": "parasaurolophus_adult_resting_3",
-        "time": 6
+        "time": 15
       },
       {
         "pose": "parasaurolophus_adult_resting_4",
-        "time": 6
+        "time": 15
       },
       {
         "pose": "parasaurolophus_adult_resting_5",
-        "time": 6
+        "time": 15
       }
     ],
     "DYING": [

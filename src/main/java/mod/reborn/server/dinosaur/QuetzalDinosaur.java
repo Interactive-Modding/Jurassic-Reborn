@@ -30,6 +30,7 @@ public class QuetzalDinosaur extends Dinosaur
         this.setDiet((Diet.CARNIVORE.get()));
         this.setBones("skull", "ribcage", "leg_bones", "neck_vertebrae", "pelvis", "tail_vertebrae", "wing_bones");
         this.setHeadCubeName("Head");
+        this.setRotationAngle(50, 10);
         this.setScale(2.4F, 0.15F);
         this.setAttackBias(1200);
         this.shouldDefendOffspring();
