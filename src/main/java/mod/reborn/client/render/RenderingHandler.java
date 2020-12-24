@@ -12,6 +12,7 @@ import mod.reborn.server.block.*;
 import mod.reborn.server.block.entity.*;
 import mod.reborn.server.block.machine.FeederBlock;
 import mod.reborn.server.conf.RebornConfig;
+import mod.reborn.server.dinosaur.ArsinoitheriumDinosaur;
 import mod.reborn.server.entity.animal.EntityCrab;
 import mod.reborn.server.entity.animal.EntityShark;
 import mod.reborn.server.entity.item.*;
@@ -534,6 +535,8 @@ public enum RenderingHandler {
 		registerRenderInfo(EntityHandler.INDORAPTOR, new IndoraptorAnimator(), 0.64F);
         registerRenderInfo(EntityHandler.DREADNOUGHTUS, new DreadnoughtusAnimator(), 1.5F);
         registerRenderInfo(EntityHandler.SINOCERATOPS, new SinoceratopsAnimator(), 0.65F);
+        registerRenderInfo(EntityHandler.ARSINOITHERIUM, new ArsinoitheriumAnimator(), 0.64F);
+
 
 
         RenderingRegistry.registerEntityRenderingHandler(PaddockSignEntity.class, new PaddockSignRenderer());

@@ -403,6 +403,11 @@ public class SoundHandler {
     public static final SoundEvent MAMMOTH_MATE_CALL = create("mammoth_mate_call");
     public static final SoundEvent MAMMOTH_THREAT = create("mammoth_threat");
 
+    public static final SoundEvent ARSINOITHERIUM_DEATH = create("arsinoitherium_death");
+    public static final SoundEvent ARSINOITHERIUM_HURT = create("arsinoitherium_hurt");
+    public static final SoundEvent ARSINOITHERIUM_LIVING = create("arsinoitherium_living");
+    public static final SoundEvent ARSINOITHERIUM_THREAT = create("arsinoitherium_threat");
+
     public static final SoundEvent POSTOSUCHUS_ATTACK = create("postosuchus_attack");
     public static final SoundEvent POSTOSUCHUS_CALL = create("postosuchus_call");
     public static final SoundEvent POSTOSUCHUS_DEATH = create("postosuchus_death");

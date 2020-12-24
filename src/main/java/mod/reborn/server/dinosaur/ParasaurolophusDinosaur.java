@@ -39,7 +39,7 @@ public class ParasaurolophusDinosaur extends Dinosaur {
 
         String[][] recipe = {
                 {"tail_vertebrae", "pelvis", "ribcage","neck_vertebrae","skull"},
-                {"hind_leg_bones", "hind_leg_bones", "", "shoulder_bone", "cheek_teeth"},
+                {"hind_leg_bones", "hind_leg_bones", "", "shoulder", "cheek_teeth"},
                 {"", "", "", "front_leg_bones", "front_leg_bones"}};
         this.setRecipe(recipe);
         

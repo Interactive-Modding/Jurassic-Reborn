@@ -2268,6 +2268,38 @@
       "rebornmod:dinosaurs/mammoth/mammoth_threat_3",
       "rebornmod:dinosaurs/mammoth/mammoth_threat_4"
     ]
+
+  },
+  "arsinoitherium_death":{
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/arsinoitherium/arsinoitherium_death_1"
+    ]
+  },
+  "arsinoitherium_hurt":{
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/arsinoitherium/arsinoitherium_hurt_1",
+      "rebornmod:dinosaurs/arsinoitherium/arsinoitherium_hurt_2"
+    ]
+  },
+  "arsinoitherium_living":{
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/arsinoitherium/arsinoitherium_living_1",
+      "rebornmod:dinosaurs/arsinoitherium/arsinoitherium_living_2",
+      "rebornmod:dinosaurs/arsinoitherium/arsinoitherium_living_3",
+      "rebornmod:dinosaurs/arsinoitherium/arsinoitherium_living_4",
+      "rebornmod:dinosaurs/arsinoitherium/arsinoitherium_living_5",
+      "rebornmod:dinosaurs/arsinoitherium/arsinoitherium_living_6",
+      "rebornmod:dinosaurs/arsinoitherium/arsinoitherium_living_7"
+    ]
+  },
+  "arsinoitherium_threat":{
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/arsinoitherium/arsinoitherium_threat_1"
+    ]
   },
   "postosuchus_attack":{
     "category": "hostile",

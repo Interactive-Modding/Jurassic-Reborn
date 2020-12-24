@@ -36,10 +36,9 @@ public class ChasmosaurusDinosaur extends Dinosaur
         this.setDefendOwner(true);
         this.shouldDefendOffspring();
         String[][] recipe = {
-                {"", "", "","",""},
-                {"tail_vertebrae", "pelvis", "ribcage","neck_vertebrae","skull"},
-                {"", "hind_leg_bones", "", "shoulder_bone", "tooth"},
-                {"", "", "", "", "front_leg_bones"}};
+                {"", "", "","neck_vertebrae","skull"},
+                {"tail_vertebrae", "pelvis", "ribcage","shoulder","tooth"},
+                {"", "", "hind_leg_bones", "front_leg_bones", ""}};
         this.setRecipe(recipe);
         this.enableSkeleton();
     }

@@ -6,6 +6,7 @@ import mod.reborn.server.dinosaur.*;
 import mod.reborn.server.entity.animal.EntityCrab;
 import mod.reborn.server.entity.animal.EntityShark;
 import mod.reborn.server.entity.animal.GoatEntity;
+import mod.reborn.server.entity.dinosaur.ArsinoitheriumEntity;
 import mod.reborn.server.entity.item.*;
 import mod.reborn.server.entity.vehicle.*;
 import net.minecraft.block.material.Material;
@@ -106,6 +107,7 @@ public class EntityHandler {
     public static final Dinosaur INDORAPTOR = new IndoraptorDinosaur();
     public static final Dinosaur DREADNOUGHTUS = new DreadnoughtusDinosaur();
     public static final Dinosaur SINOCERATOPS = new SinoceratopsDinosaur();
+    public static final Dinosaur ARSINOITHERIUM = new ArsinoitheriumDinosaur();
 
     private static final Map<Integer, Dinosaur> DINOSAURS = new HashMap<>();
     private static final Map<Dinosaur, Integer> DINOSAUR_IDS = new HashMap<>();
@@ -208,6 +210,7 @@ public class EntityHandler {
         registerDinosaur(78,INDORAPTOR);
         registerDinosaur(79,DREADNOUGHTUS);
         registerDinosaur(80,SINOCERATOPS);
+        registerDinosaur(81,ARSINOITHERIUM);
 
         dinosaurProgress = ProgressManager.push("Loading dinosaurs", DINOSAURS.size());
 

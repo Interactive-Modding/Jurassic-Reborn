@@ -37,8 +37,7 @@ public class DimorphodonDinosaur extends Dinosaur
         String[][] recipe = {
                 {"", "", "","neck","skull"},
                 {"tail_vertebrae", "ribs_and_spine", "shoulder_blade","","teeth"},
-                {"", "leg_bones", "wing_bones", "", ""},
-                {"", "", "", "", ""}};
+                {"", "leg_bones", "wing_bones", "", ""}};
         this.setRecipe(recipe);
         this.enableSkeleton();
     }

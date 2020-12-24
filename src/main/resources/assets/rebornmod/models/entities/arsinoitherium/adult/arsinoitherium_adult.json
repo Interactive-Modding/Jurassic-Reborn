@@ -1,0 +1,323 @@
+{
+  "version": 0,
+  "poses": {
+    "IDLE": [
+      {
+        "pose": "arsinoitherium_adult_idle",
+        "time": 15
+      }
+    ],
+	"ATTACKING": [
+	  {
+        "pose": "arsinoitherium_adult_attack_1",
+        "time": 8
+      },
+	  {
+        "pose": "arsinoitherium_adult_attack_2",
+        "time": 6
+      },
+	  {
+        "pose": "arsinoitherium_adult_attack_3",
+        "time": 4
+ },
+	  {
+        "pose": "arsinoitherium_adult_idle",
+        "time": 15
+      }
+	],
+	"CALLING": [
+	  {
+	    "pose": "arsinoitherium_adult_calling_1",
+        "time": 20
+      },
+      {
+        "pose": "arsinoitherium_adult_calling_2",
+        "time": 20
+      },
+      {
+        "pose": "arsinoitherium_adult_calling_3",
+        "time": 20
+ },
+	  {
+        "pose": "arsinoitherium_adult_idle",
+        "time": 20
+      }
+	],
+	"DYING": [
+	  {
+        "pose": "arsinoitherium_adult_death_1",
+        "time": 15
+          },
+	  {
+        "pose": "arsinoitherium_adult_death_2",
+        "time": 15
+       }
+	],
+	"DRINKING": [
+	  {
+        "pose": "arsinoitherium_adult_drinking_1",
+        "time": 25
+      },
+	  {
+        "pose": "arsinoitherium_adult_drinking_2",
+        "time": 15
+      },
+	  {
+        "pose": "arsinoitherium_adult_drinking_3",
+        "time": 15
+      },
+	  {
+        "pose": "arsinoitherium_adult_drinking_4",
+        "time": 15
+      },
+	  {
+        "pose": "arsinoitherium_adult_drinking_5",
+        "time": 15
+ },
+	  {
+        "pose": "arsinoitherium_adult_idle",
+        "time": 20
+      }
+    ],
+	"EATING": [
+	  {
+        "pose": "arsinoitherium_adult_eating_1",
+        "time": 15
+      },
+	  {
+        "pose": "arsinoitherium_adult_eating_2",
+        "time": 15
+      },
+	  {
+        "pose": "arsinoitherium_adult_eating_3",
+        "time": 15
+      },
+	  {
+        "pose": "arsinoitherium_adult_eating_4",
+        "time": 15
+      },
+	  {
+        "pose": "arsinoitherium_adult_eating_5",
+        "time": 20
+      },
+	  {
+        "pose": "arsinoitherium_adult_eating_6",
+        "time": 15
+      },
+	  {
+        "pose": "arsinoitherium_adult_eating_7",
+        "time": 20
+    },
+	  {
+        "pose": "arsinoitherium_adult_eating_1",
+        "time": 15
+    },
+	  {
+        "pose": "arsinoitherium_adult_eating_2",
+        "time": 15
+      },
+	  {
+        "pose": "arsinoitherium_adult_eating_3",
+        "time": 15
+      },
+	  {
+        "pose": "arsinoitherium_adult_eating_4",
+        "time": 15
+      },
+	  {
+        "pose": "arsinoitherium_adult_eating_5",
+        "time": 20
+      },
+	  {
+        "pose": "arsinoitherium_adult_eating_6",
+        "time": 15
+      },
+	  {
+        "pose": "arsinoitherium_adult_eating_7",
+        "time": 20
+ },
+	  {
+        "pose": "arsinoitherium_adult_idle",
+        "time": 20
+      }
+	],
+	"GIVING_BIRTH": [
+	  {
+        "pose": "arsinoitherium_adult_giving_birth",
+        "time": 35
+	  },
+	  {
+        "pose": "arsinoitherium_adult_idle",
+        "time": 10
+	  }
+	],
+	"INJURED": [
+	  {
+        "pose": "arsinoitherium_adult_injured",
+        "time": 20
+	  }
+	],
+	"LOOKING_LEFT": [
+	  {
+        "pose": "arsinoitherium_adult_looking_left_1",
+        "time": 20
+	  },
+	  {
+        "pose": "arsinoitherium_adult_looking_left_2",
+        "time": 10
+	  },
+	  {
+        "pose": "arsinoitherium_adult_looking_left_3",
+        "time": 10
+	  },
+	  {
+        "pose": "arsinoitherium_adult_looking_left_4",
+        "time": 10
+	  },
+	  {
+        "pose": "arsinoitherium_adult_looking_left_5",
+        "time": 10
+	  },
+	  {
+        "pose": "arsinoitherium_adult_looking_left_6",
+        "time": 10
+	  },
+	  {
+        "pose": "arsinoitherium_adult_looking_left_7",
+        "time": 10
+	  }
+	],
+	"LOOKING_RIGHT": [
+	  {
+        "pose": "arsinoitherium_adult_looking_right_1",
+        "time": 20
+	  },
+	  {
+        "pose": "arsinoitherium_adult_looking_right_2",
+        "time": 10
+	  },
+	  {
+        "pose": "arsinoitherium_adult_looking_right_3",
+        "time": 10
+	  },
+	  {
+        "pose": "arsinoitherium_adult_looking_right_4",
+        "time": 10
+	  },
+	  {
+        "pose": "arsinoitherium_adult_looking_right_5",
+        "time": 10
+	  },
+	  {
+        "pose": "arsinoitherium_adult_looking_right_6",
+        "time": 10
+	  },
+	  {
+        "pose": "arsinoitherium_adult_looking_right_7",
+        "time": 10
+	  }
+    ],
+    "SPEAK": [
+      {
+        "pose": "arsinoitherium_adult_speak_1",
+        "time": 10
+      },
+      {
+        "pose": "arsinoitherium_adult_speak_2",
+        "time": 10
+      },
+      {
+        "pose": "arsinoitherium_adult_speak_3",
+        "time": 10
+      },
+      {
+        "pose": "arsinoitherium_adult_speak_4",
+        "time": 10
+      },
+      {
+        "pose": "arsinoitherium_adult_idle",
+        "time": 10
+      }
+	],
+	"RESTING": [
+	  {
+        "pose": "arsinoitherium_adult_resting_1",
+        "time": 15
+	  },
+	  {
+        "pose": "arsinoitherium_adult_resting_2",
+        "time": 15
+	  }
+	],
+	"RUNNING": [
+	  {
+        "pose": "arsinoitherium_adult_running_1",
+        "time": 5
+	  },
+	  {
+        "pose": "arsinoitherium_adult_running_2",
+        "time": 5
+	  },
+	  {
+        "pose": "arsinoitherium_adult_running_3",
+        "time": 5
+	  },
+	  {
+        "pose": "arsinoitherium_adult_running_4",
+        "time": 5
+	  },
+	  {
+        "pose": "arsinoitherium_adult_running_5",
+        "time": 5
+	  }
+	],
+	"SLEEPING": [
+	  {
+        "pose": "arsinoitherium_adult_sleeping_1",
+        "time": 15
+	  },
+	  {
+        "pose": "arsinoitherium_adult_sleeping_2",
+        "time": 15
+	  },
+	  {
+        "pose": "arsinoitherium_adult_sleeping_3",
+        "time": 15
+	  }
+	],
+	"WALKING": [
+	  {
+        "pose": "arsinoitherium_adult_walking_1",
+        "time": 6
+	  },
+	  {
+        "pose": "arsinoitherium_adult_walking_2",
+        "time": 6
+	  },
+	  {
+        "pose": "arsinoitherium_adult_walking_3",
+        "time": 6
+	  },
+	  {
+        "pose": "arsinoitherium_adult_walking_4",
+        "time": 6
+	  },
+	  {
+        "pose": "arsinoitherium_adult_walking_5",
+        "time": 6
+	  },
+	  {
+        "pose": "arsinoitherium_adult_walking_6",
+        "time": 6
+	  },
+	  {
+        "pose": "arsinoitherium_adult_walking_7",
+        "time": 6
+	  },
+	  {
+        "pose": "arsinoitherium_adult_walking_8",
+        "time": 6
+	  }
+	]
+  }
+}
