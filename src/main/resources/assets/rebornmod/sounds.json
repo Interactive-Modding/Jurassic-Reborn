@@ -2268,7 +2268,62 @@
       "rebornmod:dinosaurs/mammoth/mammoth_threat_3",
       "rebornmod:dinosaurs/mammoth/mammoth_threat_4"
     ]
-
+    },
+  "deinotherium_alarm_call":{
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/deinotherium/deinotherium_alarm_call"
+    ]
+  },
+  "deinotherium_death":{
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/deinotherium/deinotherium_death"
+    ]
+  },
+  "deinotherium_hurt":{
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/deinotherium/deinotherium_hurt_1",
+      "rebornmod:dinosaurs/deinotherium/deinotherium_hurt_2",
+      "rebornmod:dinosaurs/deinotherium/deinotherium_hurt_3"
+    ]
+  },
+  "deinotherium_living":{
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/deinotherium/deinotherium_living_1",
+      "rebornmod:dinosaurs/deinotherium/deinotherium_living_2",
+      "rebornmod:dinosaurs/deinotherium/deinotherium_living_3",
+      "rebornmod:dinosaurs/deinotherium/deinotherium_living_4",
+      "rebornmod:dinosaurs/deinotherium/deinotherium_living_5",
+      "rebornmod:dinosaurs/deinotherium/deinotherium_living_6",
+      "rebornmod:dinosaurs/deinotherium/deinotherium_living_7",
+      "rebornmod:dinosaurs/deinotherium/deinotherium_living_8",
+      "rebornmod:dinosaurs/deinotherium/deinotherium_living_9",
+      "rebornmod:dinosaurs/deinotherium/deinotherium_living_10",
+      "rebornmod:dinosaurs/deinotherium/deinotherium_living_11",
+      "rebornmod:dinosaurs/deinotherium/deinotherium_living_12",
+      "rebornmod:dinosaurs/deinotherium/deinotherium_living_13",
+      "rebornmod:dinosaurs/deinotherium/deinotherium_living_14"
+    ]
+  },
+  "deinotherium_mate_call":{
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/deinotherium/deinotherium_mate_call_1",
+      "rebornmod:dinosaurs/deinotherium/deinotherium_mate_call_2",
+      "rebornmod:dinosaurs/deinotherium/deinotherium_mate_call_3"
+    ]
+  },
+  "deinotherium_threat":{
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/deinotherium/deinotherium_threat_1",
+      "rebornmod:dinosaurs/deinotherium/deinotherium_threat_2",
+      "rebornmod:dinosaurs/deinotherium/deinotherium_threat_3",
+      "rebornmod:dinosaurs/deinotherium/deinotherium_threat_4"
+    ]
   },
   "arsinoitherium_death":{
     "category": "hostile",

@@ -119,6 +119,10 @@
 	  {
         "pose": "mammoth_adult_injured",
         "time": 20
+	  },
+	  {
+        "pose": "mammoth_adult_idle",
+        "time": 10
 	  }
 	],
 	"LOOKING_LEFT": [

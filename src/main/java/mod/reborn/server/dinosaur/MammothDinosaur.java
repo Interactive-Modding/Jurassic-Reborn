@@ -12,7 +12,7 @@ public class MammothDinosaur extends Dinosaur {
         this.setName("Mammoth");
         this.setDinosaurType(DinosaurType.NEUTRAL);
         this.setDinosaurClass(MammothEntity.class);
-        this.setTimePeriod(TimePeriod.QUATERNARY);
+        this.setTimePeriod(TimePeriod.NEOGENE);
         this.setEggColorMale(0x84441A, 0x614532);
         this.setEggColorFemale(0x684B2D, 0x6F4E39);
         this.setHealth(10, 40);
