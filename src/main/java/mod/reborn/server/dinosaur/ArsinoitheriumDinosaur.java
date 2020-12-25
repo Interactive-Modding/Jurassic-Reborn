@@ -22,12 +22,12 @@ public class ArsinoitheriumDinosaur extends Dinosaur {
         this.setStrength(5, 25);
         this.setMaximumAge(fromDays(45));
         this.setEyeHeight(0.45F, 1.4F);
-        this.setSizeX(0.15F, 1.6F);
-        this.setSizeY(0.3F, 1.9F);
+        this.setSizeX(0.35F, 1.6F);
+        this.setSizeY(0.5F, 1.9F);
         this.setDiet(Diet.HERBIVORE.get());
         this.setBones("skull", "teeth","front_leg_bones", "hind_leg_bones", "neck_vertebrae", "pelvis", "ribcage", "shoulder", "tail_vertebrae");
         this.setHeadCubeName("Head");
-        this.setScale(1.05F, 0.10F);
+        this.setScale(1.05F, 0.30F);
         this.setMammal(true);
         this.setBirthType(BirthType.LIVE_BIRTH);
         this.shouldDefendOffspring();

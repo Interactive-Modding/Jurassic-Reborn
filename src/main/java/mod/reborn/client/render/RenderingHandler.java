@@ -537,6 +537,7 @@ public enum RenderingHandler {
         registerRenderInfo(EntityHandler.SINOCERATOPS, new SinoceratopsAnimator(), 0.65F);
         registerRenderInfo(EntityHandler.ARSINOITHERIUM, new ArsinoitheriumAnimator(), 0.64F);
         registerRenderInfo(EntityHandler.DEINOTHERIUM, new DeinotheriumAnimator(), 0.64F);
+        registerRenderInfo(EntityHandler.ELASMOTHERIUM, new ElasmotheriumAnimator(), 0.64F);
 
 
 

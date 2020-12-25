@@ -1,7 +1,5 @@
 package mod.reborn.server.message;
 
-import mod.reborn.server.entity.vehicle.FordExplorerEntity;
-
 import io.netty.buffer.ByteBuf;
 import mod.reborn.server.entity.vehicle.FordExplorerSnowEntity;
 import net.ilexiconn.llibrary.server.network.AbstractMessage;
@@ -14,7 +12,7 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 public class FordExplorerSnowChangeStateMessage extends AbstractMessage<FordExplorerSnowChangeStateMessage>
 {
     private int entityId;
-
+    
     private boolean onRails;
 
     public FordExplorerSnowChangeStateMessage()
@@ -29,7 +27,7 @@ public class FordExplorerSnowChangeStateMessage extends AbstractMessage<FordExpl
     @Override
     public void onClientReceived(Minecraft minecraft, FordExplorerSnowChangeStateMessage message, EntityPlayer player, MessageContext context)
     {
-        Entity entity = player.world.getEntityByID(message.entityId);
+	Entity entity = player.world.getEntityByID(message.entityId);
         if (entity instanceof FordExplorerSnowEntity)
         {
             FordExplorerSnowEntity car = (FordExplorerSnowEntity) entity;

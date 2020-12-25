@@ -2268,6 +2268,37 @@
       "rebornmod:dinosaurs/mammoth/mammoth_threat_3",
       "rebornmod:dinosaurs/mammoth/mammoth_threat_4"
     ]
+  },
+  "elasmotherium_death":{
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/elasmotherium/elasmotherium_death_1"
+    ]
+  },
+  "elasmotherium_hurt":{
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/elasmotherium/elasmotherium_hurt_1",
+      "rebornmod:dinosaurs/elasmotherium/elasmotherium_hurt_2"
+    ]
+  },
+  "elasmotherium_living":{
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/elasmotherium/elasmotherium_living_1",
+      "rebornmod:dinosaurs/elasmotherium/elasmotherium_living_2",
+      "rebornmod:dinosaurs/elasmotherium/elasmotherium_living_3",
+      "rebornmod:dinosaurs/elasmotherium/elasmotherium_living_4",
+      "rebornmod:dinosaurs/elasmotherium/elasmotherium_living_5",
+      "rebornmod:dinosaurs/elasmotherium/elasmotherium_living_6",
+      "rebornmod:dinosaurs/elasmotherium/elasmotherium_living_7"
+    ]
+  },
+  "elasmotherium_threat":{
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/elasmotherium/elasmotherium_threat_1"
+    ]
     },
   "deinotherium_alarm_call":{
     "category": "hostile",
