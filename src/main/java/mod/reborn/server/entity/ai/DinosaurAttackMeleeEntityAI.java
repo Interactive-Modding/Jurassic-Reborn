@@ -26,7 +26,7 @@ public class DinosaurAttackMeleeEntityAI extends EntityAIBase {
     private double targetX;
     private double targetY;
     private double targetZ;
-    protected final int attackInterval = 20;
+    protected final int attackInterval = 15;
     private int failedPathFindingPenalty = 0;
     private final boolean canPenalize = false;
 

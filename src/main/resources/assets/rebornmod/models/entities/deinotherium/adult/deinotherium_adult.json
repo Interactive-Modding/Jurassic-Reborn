@@ -40,23 +40,23 @@
 	"CALLING": [
 	  {
 	    "pose": "deinotherium_adult_calling_1",
-        "time": 15
+        "time": 10
       },
       {
         "pose": "deinotherium_adult_calling_2",
-        "time": 15
+        "time": 10
       },
       {
         "pose": "deinotherium_adult_calling_3",
-        "time": 15
+        "time": 10
       },
       {
         "pose": "deinotherium_adult_calling_4",
-        "time": 15
+        "time": 10
       },
       {
         "pose": "deinotherium_adult_calling_5",
-        "time": 15
+        "time": 10
  },
 	  {
         "pose": "deinotherium_adult_idle",
@@ -79,6 +79,20 @@
 	  {
         "pose": "deinotherium_adult_death_4",
         "time": 15
+       }
+	],
+	"GESTATED": [
+	  {
+        "pose": "deinotherium_adult_gestated_1",
+        "time": 55
+          },
+	  {
+        "pose": "deinotherium_adult_gestated_2",
+        "time": 55
+          },
+	  {
+        "pose": "deinotherium_adult_gestated_3",
+        "time": 55
        }
 	],
 	"DRINKING": [

@@ -190,7 +190,11 @@ public class AttractionSignEntity extends EntityHanging implements IEntityAdditi
         GARDEN_PLANTS,
         TRICERATOPS_TERRITORIUM_PLANTS,
         TYRANNOSAURUS_KINGDOM,
-        TYRANNOSAURUS_KINGDOM_PLANTS;
+        TYRANNOSAURUS_KINGDOM_PLANTS,
+        CENOZOIC_PARK,
+        CENOZOIC_PARK_PLANTS,
+        SMILODON_COVE,
+        SMILODON_COVE_PLANTS;
 
         public final int sizeX;
         public final int sizeY;

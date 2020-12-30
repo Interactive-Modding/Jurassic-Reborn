@@ -58,10 +58,8 @@ public class GeneticistCareer extends VillagerRegistry.VillagerCareer {
             possible.add(new MerchantRecipe(new ItemStack(Items.DIAMOND, random.nextInt(2) + 6), new ItemStack(ItemHandler.UNFINISHED_CAR)));
             possible.add(new MerchantRecipe(new ItemStack(Items.EMERALD, random.nextInt(10) + 5), new ItemStack(ItemHandler.AMBER)));
             possible.add(new MerchantRecipe(new ItemStack(Items.DIAMOND, random.nextInt(3) + 5), new ItemStack(BlockHandler.INCUBATOR)));
-            possible.add(new MerchantRecipe(new ItemStack(Items.EMERALD, random.nextInt(2) + 5), new ItemStack(BlockHandler.DISPLAY_BLOCK, 1,random.nextInt(EntityHandler.getHighestID() + 1))));
             possible.add(new MerchantRecipe(new ItemStack(Items.DIAMOND, random.nextInt(4) + 4), new ItemStack(BlockHandler.EMBRYONIC_MACHINE)));
             possible.add(new MerchantRecipe(new ItemStack(ItemHandler.COMPUTER_SCREEN, random.nextInt(2) + 2), new ItemStack(Items.DIAMOND, random.nextInt(2) + 2)));
-            possible.add(new MerchantRecipe(new ItemStack(Items.DIAMOND, random.nextInt(20) + 10), new ItemStack(ItemHandler.HATCHED_EGG, 1, random.nextInt(EntityHandler.getHighestID() + 1))));
             int count = 1;
             for (int i = 0; i < count; i++) {
                 recipeList.add(possible.get(random.nextInt(possible.size())));

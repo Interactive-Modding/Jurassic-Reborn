@@ -30,5 +30,7 @@ public class SmeltingRecipeHandler {
 
         GameRegistry.addSmelting(ItemHandler.WILD_POTATO, new ItemStack(ItemHandler.WILD_POTATO_COOKED), 0.5F);
         GameRegistry.addSmelting(ItemHandler.GOAT_RAW, new ItemStack(ItemHandler.GOAT_COOKED), 0.5F);
+        GameRegistry.addSmelting(ItemHandler.SHARK_MEAT_RAW, new ItemStack(ItemHandler.SHARK_MEAT_COOKED), 0.5F);
+        GameRegistry.addSmelting(ItemHandler.CRAB_MEAT_RAW, new ItemStack(ItemHandler.CRAB_MEAT_COOKED), 0.5F);
     }
 }

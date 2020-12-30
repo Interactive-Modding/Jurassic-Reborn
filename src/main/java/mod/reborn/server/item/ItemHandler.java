@@ -135,7 +135,7 @@ public class ItemHandler {
     public static final PlantCallusItem PLANT_CALLUS = new PlantCallusItem();
     public static final BasicItem PLANT_CELLS_PETRI_DISH = new BasicItem(TabHandler.ITEMS);
 
-    public static final BasicItem TRACKER = new BasicItem(TabHandler.ITEMS);
+   // public static final BasicItem TRACKER = new BasicItem(TabHandler.ITEMS);
 
     public static final AncientRecordItem JURASSICRAFT_THEME_DISC = new AncientRecordItem("jurassicraft_theme", SoundHandler.JURASSICRAFT_THEME);
     public static final AncientRecordItem TROODONS_AND_RAPTORS_DISC = new AncientRecordItem("troodons_and_raptors", SoundHandler.TROODONS_AND_RAPTORS);
@@ -288,7 +288,7 @@ public class ItemHandler {
     public static final Dart DART_POISON_CYCASIN = new Dart((entity, stack) -> entity.addPotionEffect(new PotionEffect(MobEffects.POISON, 2000)), 0xE2E1B8);
     public static final Dart DART_POISON_EXECUTIONER_CONCOCTION = new Dart((entity, stack) -> entity.setDeathIn(200), 0x000000);
     public static final Dart DART_TIPPED_POTION = new PotionDart();
-    public static final Dart TRACKER_DART = new TrackerDart();
+    //public static final Dart TRACKER_DART = new TrackerDart();
 
     public static final Glock GLOCK = new Glock();
     public static final Remington REMINGTON = new Remington();
@@ -355,7 +355,7 @@ public class ItemHandler {
         registerItem(IRON_ROD, "Iron Rod");
         registerItem(PLANT_CELLS, "Plant Cells");
         registerItem(PLANT_CALLUS, "Plant Callus");
-        registerItem(TRACKER, "Tracker");
+        //registerItem(TRACKER, "Tracker");
         registerItem(BASIC_CIRCUIT, "Basic Circuit");
         registerItem(ADVANCED_CIRCUIT, "Advanced Circuit");
         registerItem(COMPUTER_SCREEN, "Computer Screen");
@@ -444,7 +444,7 @@ public class ItemHandler {
         registerItem(DART_POISON_CYCASIN, "Dart Poison Cycasin");
         registerItem(DART_POISON_EXECUTIONER_CONCOCTION, "Dart Poison Executioner Concoction");
         registerItem(DART_TIPPED_POTION, "Dart Tipped Potion");
-        registerItem(TRACKER_DART, "Tracking Dart");
+       // registerItem(TRACKER_DART, "Tracking Dart");
 
         registerItem(GLOCK, "Glock");
         registerItem(REMINGTON, "remington");

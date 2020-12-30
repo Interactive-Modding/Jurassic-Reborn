@@ -27,7 +27,7 @@ public class ElasmotheriumDinosaur extends Dinosaur {
         this.setDiet(Diet.HERBIVORE.get());
         this.setBones("skull", "teeth","front_leg_bones", "hind_leg_bones", "neck_vertebrae", "pelvis", "ribcage", "shoulder", "tail_vertebrae");
         this.setHeadCubeName("Head");
-        this.setScale(1.7F, 0.30F);
+        this.setScale(1.7F, 0.45F);
         this.setMammal(true);
         this.setBirthType(BirthType.LIVE_BIRTH);
         this.shouldDefendOffspring();

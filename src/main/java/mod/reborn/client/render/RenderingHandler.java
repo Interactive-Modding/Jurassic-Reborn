@@ -139,9 +139,9 @@ public enum RenderingHandler {
             registerBlockRenderer(PETRIFIED_LOGS.get(type), name + "_log_petrified");
         }
 
-        /*for (EnumDyeColor color : EnumDyeColor.values()) {
+        for (EnumDyeColor color : EnumDyeColor.values()) {
             registerBlockRenderer(CULTIVATOR_BOTTOM, color.ordinal(), "cultivate/cultivate_bottom_" + color.getName().toLowerCase(Locale.ENGLISH));
-        }*/
+        }
 
         registerBlockRenderer(SCALY_TREE_FERN, "scaly_tree_fern");
         registerBlockRenderer(SMALL_ROYAL_FERN, "small_royal_fern");
@@ -246,7 +246,7 @@ public enum RenderingHandler {
 
         registerBlockRenderer(TOUR_RAIL, "tour_rail.tbl_rebornmod");
 
-        registerItemRenderer(TRACKER);
+        //registerItemRenderer(TRACKER);
         registerItemRenderer(PLANT_CELLS_PETRI_DISH);
         registerItemRenderer(PLANT_CELLS);
         registerItemRenderer(GROWTH_SERUM);
@@ -434,7 +434,7 @@ public enum RenderingHandler {
         registerItemRenderer(DART_POISON_CYCASIN, "dart_colored");
         registerItemRenderer(DART_POISON_EXECUTIONER_CONCOCTION, "dart_colored");
         registerItemRenderer(DART_TIPPED_POTION, "dart_colored");
-        registerItemRenderer(TRACKER_DART, "dart_colored");
+        //registerItemRenderer(TRACKER_DART, "dart_colored");
 
         registerItemRenderer(GLOCK, "glock");
         registerItemRenderer(REMINGTON, "remington");
@@ -536,8 +536,9 @@ public enum RenderingHandler {
         registerRenderInfo(EntityHandler.DREADNOUGHTUS, new DreadnoughtusAnimator(), 1.5F);
         registerRenderInfo(EntityHandler.SINOCERATOPS, new SinoceratopsAnimator(), 0.65F);
         registerRenderInfo(EntityHandler.ARSINOITHERIUM, new ArsinoitheriumAnimator(), 0.64F);
-        registerRenderInfo(EntityHandler.DEINOTHERIUM, new DeinotheriumAnimator(), 0.64F);
-        registerRenderInfo(EntityHandler.ELASMOTHERIUM, new ElasmotheriumAnimator(), 0.64F);
+        registerRenderInfo(EntityHandler.DEINOTHERIUM, new DeinotheriumAnimator(), 1.14F);
+        registerRenderInfo(EntityHandler.ELASMOTHERIUM, new ElasmotheriumAnimator(), 0.74F);
+        registerRenderInfo(EntityHandler.MEGATHERIUM, new MegatheriumAnimator(), 0.70F);
 
 
 
@@ -591,7 +592,7 @@ public enum RenderingHandler {
             }
             return 0xFFFFFF;
         }, SPAWN_EGG);
-        itemColors.registerItemColorHandler(((stack, tintIndex) -> tintIndex == 1 ? ((Dart)stack.getItem()).getDartColor(stack) : -1), DART_POISON_CYCASIN, DART_POISON_EXECUTIONER_CONCOCTION, DART_TIPPED_POTION, DART_TRANQUILIZER, TRACKER_DART);
+        itemColors.registerItemColorHandler(((stack, tintIndex) -> tintIndex == 1 ? ((Dart)stack.getItem()).getDartColor(stack) : -1), DART_POISON_CYCASIN, DART_POISON_EXECUTIONER_CONCOCTION, DART_TIPPED_POTION, DART_TRANQUILIZER);
         if (RebornConfig.VEHICLES.helicopterZoomout) {
             if (mc.entityRenderer.getClass() == EntityRenderer.class) {
                 entityRenderer = new OverridenEntityRenderer(Minecraft.getMinecraft(),
@@ -609,7 +610,7 @@ public enum RenderingHandler {
         ClientRegistry.bindTileEntitySpecialRenderer(FeederBlockEntity.class, new FeederRenderer());
         ClientRegistry.bindTileEntitySpecialRenderer(ElectricFencePoleBlockEntity.class, new ElectricFencePoleRenderer());
         ClientRegistry.bindTileEntitySpecialRenderer(CleaningStationBlockEntity.class, new CleaningStationRenderer());
-//        ClientRegistry.bindTileEntitySpecialRenderer(CultivatorBlockEntity.class, new CultivatorRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(CultivatorBlockEntity.class, new CultivatorRenderer());
     }
 
     public static void registerItemRenderer(Item item) {

@@ -420,6 +420,11 @@ public class SoundHandler {
     public static final SoundEvent ARSINOITHERIUM_LIVING = create("arsinoitherium_living");
     public static final SoundEvent ARSINOITHERIUM_THREAT = create("arsinoitherium_threat");
 
+    public static final SoundEvent MEGATHERIUM_DEATH = create("megatherium_death");
+    public static final SoundEvent MEGATHERIUM_HURT = create("megatherium_hurt");
+    public static final SoundEvent MEGATHERIUM_LIVING = create("megatherium_living");
+    public static final SoundEvent MEGATHERIUM_THREAT = create("megatherium_threat");
+
     public static final SoundEvent POSTOSUCHUS_ATTACK = create("postosuchus_attack");
     public static final SoundEvent POSTOSUCHUS_CALL = create("postosuchus_call");
     public static final SoundEvent POSTOSUCHUS_DEATH = create("postosuchus_death");

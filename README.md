@@ -3,7 +3,7 @@
 ### RebornMod Leader
 Vitiate 
 
-### Jurassic World Reborn is a prehistoric creature Mod, inspired by the classic dinosaur mod "JurassiCraft". While the mod carries several similarities to JurassiCraft, the code is not JurassiCraft's code, but our own property, having been entirely written by our coders. 
+### The code is modified and built up from an older version of JurassiCraft's code, having been also worked upon by JWR's coders. Credit goes to the original JurassiCraft team for laying the foundations for the code that was expanded upon to make this project a reality.
 
 ### Developers
 

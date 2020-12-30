@@ -1,0 +1,331 @@
+{
+  "version": 0,
+  "poses": {
+    "IDLE": [
+      {
+        "pose": "megatherium_adult_idle",
+        "time": 55
+          },
+	  {
+        "pose": "megatherium_adult_idle_1",
+        "time": 55
+      }
+    ],
+	"ATTACKING": [
+	  {
+        "pose": "megatherium_adult_attack_1",
+        "time": 8
+      },
+	  {
+        "pose": "megatherium_adult_attack_2",
+        "time": 6
+      },
+	  {
+        "pose": "megatherium_adult_attack_3",
+        "time": 4
+ },
+	  {
+        "pose": "megatherium_adult_idle",
+        "time": 15
+      }
+	],
+	"CALLING": [
+	  {
+	    "pose": "megatherium_adult_calling_1",
+        "time": 20
+      },
+      {
+        "pose": "megatherium_adult_calling_2",
+        "time": 20
+      },
+      {
+        "pose": "megatherium_adult_calling_3",
+        "time": 20
+ },
+	  {
+        "pose": "megatherium_adult_idle",
+        "time": 20
+      }
+	],
+	"DYING": [
+	  {
+        "pose": "megatherium_adult_death",
+        "time": 15
+       }
+	],
+	"DRINKING": [
+	  {
+        "pose": "megatherium_adult_drinking_1",
+        "time": 25
+      },
+	  {
+        "pose": "megatherium_adult_drinking_2",
+        "time": 15
+      },
+	  {
+        "pose": "megatherium_adult_drinking_3",
+        "time": 15
+      },
+	  {
+        "pose": "megatherium_adult_drinking_4",
+        "time": 15
+      },
+	  {
+        "pose": "megatherium_adult_drinking_5",
+        "time": 15
+      },
+	  {
+        "pose": "megatherium_adult_drinking_6",
+        "time": 15
+ },
+	  {
+        "pose": "megatherium_adult_idle",
+        "time": 20
+      }
+    ],
+	"EATING": [
+	  {
+        "pose": "megatherium_adult_eating_1",
+        "time": 15
+      },
+	  {
+        "pose": "megatherium_adult_eating_2",
+        "time": 15
+      },
+	  {
+        "pose": "megatherium_adult_eating_3",
+        "time": 15
+      },
+	  {
+        "pose": "megatherium_adult_eating_4",
+        "time": 15
+      },
+	  {
+        "pose": "megatherium_adult_eating_5",
+        "time": 20
+      },
+	  {
+        "pose": "megatherium_adult_eating_6",
+        "time": 15
+      },
+	  {
+        "pose": "megatherium_adult_eating_7",
+        "time": 20
+      },
+	  {
+        "pose": "megatherium_adult_eating_8",
+        "time": 15
+    },
+	  {
+        "pose": "megatherium_adult_eating_1",
+        "time": 15
+    },
+	  {
+        "pose": "megatherium_adult_eating_2",
+        "time": 15
+      },
+	  {
+        "pose": "megatherium_adult_eating_3",
+        "time": 15
+      },
+	  {
+        "pose": "megatherium_adult_eating_4",
+        "time": 15
+      },
+	  {
+        "pose": "megatherium_adult_eating_5",
+        "time": 20
+      },
+	  {
+        "pose": "megatherium_adult_eating_6",
+        "time": 15
+      },
+	  {
+        "pose": "megatherium_adult_eating_7",
+        "time": 20
+      },
+	  {
+        "pose": "megatherium_adult_eating_8",
+        "time": 15
+ },
+	  {
+        "pose": "megatherium_adult_idle",
+        "time": 20
+      }
+	],
+	"GIVING_BIRTH": [
+	  {
+        "pose": "megatherium_adult_giving_birth_1",
+        "time": 20
+	  },
+	  {
+        "pose": "megatherium_adult_giving_birth_2",
+        "time": 20
+	  },
+	  {
+        "pose": "megatherium_adult_idle",
+        "time": 10
+	  }
+	],
+	"INJURED": [
+	  {
+        "pose": "megatherium_adult_injured",
+        "time": 20
+ },
+	  {
+        "pose": "megatherium_adult_idle",
+        "time": 10
+	  }
+	],
+	"LOOKING_LEFT": [
+	  {
+        "pose": "megatherium_adult_looking_left_1",
+        "time": 15
+	  },
+	  {
+        "pose": "megatherium_adult_looking_left_2",
+        "time": 15
+	  },
+	  {
+        "pose": "megatherium_adult_looking_left_3",
+        "time": 15
+	  },
+	  {
+        "pose": "megatherium_adult_idle",
+        "time": 15
+	  }
+	],
+	"LOOKING_RIGHT": [
+	  {
+        "pose": "megatherium_adult_looking_right_1",
+        "time": 15
+	  },
+	  {
+        "pose": "megatherium_adult_looking_right_2",
+        "time": 15
+	  },
+	  {
+        "pose": "megatherium_adult_looking_right_3",
+        "time": 15
+	  },
+	  {
+        "pose": "megatherium_adult_idle",
+        "time": 15
+	  }
+	],
+	"RESTING": [
+	  {
+        "pose": "megatherium_adult_resting",
+        "time": 20
+	  }
+	],
+	"SLEEPING": [
+	  {
+        "pose": "megatherium_adult_sleeping_1",
+        "time": 15
+	  },
+	  {
+        "pose": "megatherium_adult_sleeping_2",
+        "time": 15
+	  }
+	],
+	"RUNNING": [
+	  {
+        "pose": "megatherium_adult_running_1",
+        "time": 5
+	  },
+	  {
+        "pose": "megatherium_adult_running_2",
+        "time": 5
+	  },
+	  {
+        "pose": "megatherium_adult_running_3",
+        "time": 5
+	  },
+	  {
+        "pose": "megatherium_adult_running_4",
+        "time": 5
+	  },
+	  {
+        "pose": "megatherium_adult_running_5",
+        "time": 5
+	  },
+	  {
+        "pose": "megatherium_adult_running_6",
+        "time": 5
+	  },
+	  {
+        "pose": "megatherium_adult_running_7",
+        "time": 5
+	  },
+	  {
+        "pose": "megatherium_adult_running_8",
+        "time": 5
+	  },
+	  {
+        "pose": "megatherium_adult_running_9",
+        "time": 5
+	  },
+	  {
+        "pose": "megatherium_adult_running_10",
+        "time": 5
+	  }
+	],
+	"WALKING": [
+	  {
+        "pose": "megatherium_adult_walking_1",
+        "time": 6
+	  },
+	  {
+        "pose": "megatherium_adult_walking_2",
+        "time": 6
+	  },
+	  {
+        "pose": "megatherium_adult_walking_3",
+        "time": 6
+	  },
+	  {
+        "pose": "megatherium_adult_walking_4",
+        "time": 6
+	  },
+	  {
+        "pose": "megatherium_adult_walking_5",
+        "time": 6
+	  },
+	  {
+        "pose": "megatherium_adult_walking_6",
+        "time": 6
+	  },
+	  {
+        "pose": "megatherium_adult_walking_7",
+        "time": 6
+	  },
+	  {
+        "pose": "megatherium_adult_walking_8",
+        "time": 6
+	  },
+	  {
+        "pose": "megatherium_adult_walking_9",
+        "time": 6
+	  },
+	  {
+        "pose": "megatherium_adult_walking_10",
+        "time": 6
+	  }
+    ],
+    "SPEAK": [
+      {
+        "pose": "megatherium_adult_speak",
+        "time": 5
+      },
+      {
+        "pose": "megatherium_adult_speak",
+        "time": 20
+      },
+      {
+        "pose": "megatherium_adult_idle",
+        "time": 10
+      }
+     ]
+  }
+}

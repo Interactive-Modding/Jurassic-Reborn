@@ -589,6 +589,36 @@
             "rebornmod:dinosaurs/zhenyuanopterus/zhenyuanopterus_threat_1"
         ]
   },
+  "megatherium_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/megatherium/megatherium_living_1",
+      "rebornmod:dinosaurs/megatherium/megatherium_living_2",
+      "rebornmod:dinosaurs/megatherium/megatherium_living_3",
+      "rebornmod:dinosaurs/megatherium/megatherium_living_4",
+      "rebornmod:dinosaurs/megatherium/megatherium_living_5"
+    ]
+ },
+  "megatherium_death": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/megatherium/megatherium_death"
+    ]
+ },
+  "megatherium_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/megatherium/megatherium_hurt_1",
+      "rebornmod:dinosaurs/megatherium/megatherium_hurt_2"
+    ]
+  },
+    "megatherium_threat":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/megatherium/megatherium_threat_1",
+            "rebornmod:dinosaurs/megatherium/megatherium_threat_2"
+        ]
+  },
   "styracosaurus_living": {
     "category": "hostile",
     "sounds": [

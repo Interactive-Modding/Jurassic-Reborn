@@ -112,7 +112,7 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
     private static final DataParameter<Boolean> WATCHER_IS_CARCASS = EntityDataManager.createKey(DinosaurEntity.class, DataSerializers.BOOLEAN);
     private static final DataParameter<Integer> WATCHER_AGE = EntityDataManager.createKey(DinosaurEntity.class, DataSerializers.VARINT);
     private static final DataParameter<Boolean> WATCHER_IS_SLEEPING = EntityDataManager.createKey(DinosaurEntity.class, DataSerializers.BOOLEAN);
-    private static final DataParameter<Boolean> WATCHER_HAS_TRACKER = EntityDataManager.createKey(DinosaurEntity.class, DataSerializers.BOOLEAN);
+   // private static final DataParameter<Boolean> WATCHER_HAS_TRACKER = EntityDataManager.createKey(DinosaurEntity.class, DataSerializers.BOOLEAN);
     private static final DataParameter<String> WATCHER_OWNER_IDENTIFIER = EntityDataManager.createKey(DinosaurEntity.class, DataSerializers.STRING);
     private static final DataParameter<Byte> WATCHER_CURRENT_ORDER = EntityDataManager.createKey(DinosaurEntity.class, DataSerializers.BYTE);
     private static final DataParameter<Boolean> WATCHER_IS_RUNNING = EntityDataManager.createKey(DinosaurEntity.class, DataSerializers.BOOLEAN);
@@ -129,7 +129,7 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
     private boolean wasMoved;
     private boolean blocked;
     private boolean isMale;
-    private boolean hasTracker;
+    //private boolean hasTracker;
     private boolean isSleeping;
     private boolean useInertialTweens;
     private boolean eatsEggs = false;
@@ -362,16 +362,16 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
         return (int) time;
     }
 
-    public boolean hasTracker() {
-        return this.dataManager.get(WATCHER_HAS_TRACKER);
-    }
+    //public boolean hasTracker() {
+    //    return this.dataManager.get(WATCHER_HAS_TRACKER);
+   // }
 
-    public void setHasTracker(boolean hasTracker) {
-        this.hasTracker = hasTracker;
-        if (!this.world.isRemote) {
-            this.dataManager.set(WATCHER_HAS_TRACKER, hasTracker);
-        }
-    }
+   // public void setHasTracker(boolean hasTracker) {
+   //     this.hasTracker = hasTracker;
+   //     if (!this.world.isRemote) {
+    //        this.dataManager.set(WATCHER_HAS_TRACKER, hasTracker);
+   //     }
+   // }
 
     public UUID getOwner() {
         return this.owner;
@@ -644,7 +644,7 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
         this.dataManager.register(WATCHER_IS_CARCASS, this.isCarcass);
         this.dataManager.register(WATCHER_AGE, this.dinosaurAge);
         this.dataManager.register(WATCHER_IS_SLEEPING, this.isSleeping);
-        this.dataManager.register(WATCHER_HAS_TRACKER, this.hasTracker);
+        //this.dataManager.register(WATCHER_HAS_TRACKER, this.hasTracker);
         this.dataManager.register(WATCHER_OWNER_IDENTIFIER, "");
         this.dataManager.register(WATCHER_CURRENT_ORDER, (byte) 0);
         this.dataManager.register(WATCHER_IS_RUNNING, false);
@@ -778,11 +778,11 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
             }
         }
 
-        if(this.inventory.getSizeInventory() > 0 && !hasTracker) {
-            if (this.inventory.contains(ItemHandler.TRACKER)) {
-                this.setHasTracker(true);
-            }
-        }
+    //    if(this.inventory.getSizeInventory() > 0 && !hasTracker) {
+     //       if (this.inventory.contains(ItemHandler.TRACKER)) {
+      //          this.setHasTracker(true);
+      //      }
+      //  }
 
         if(this.animation != null && EntityAnimation.getAnimation(this.animation).doesBlockMovement()) {
             this.blocked = true;
@@ -1135,7 +1135,7 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
             this.dataManager.set(WATCHER_AGE, this.dinosaurAge);
             this.dataManager.set(WATCHER_IS_SLEEPING, this.isSleeping);
             this.dataManager.set(WATCHER_IS_CARCASS, this.isCarcass);
-            this.dataManager.set(WATCHER_HAS_TRACKER, this.hasTracker);
+          //  this.dataManager.set(WATCHER_HAS_TRACKER, this.hasTracker);
             this.dataManager.set(WATCHER_CURRENT_ORDER, (byte) this.order.ordinal());
             this.dataManager.set(WATCHER_OWNER_IDENTIFIER, this.owner != null ? this.owner.toString() : "");
             this.dataManager.set(WATCHER_IS_RUNNING, this.getAIMoveSpeed() > this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue());
@@ -1145,7 +1145,7 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
             this.dinosaurAge = this.dataManager.get(WATCHER_AGE);
             this.isSleeping = this.dataManager.get(WATCHER_IS_SLEEPING);
             this.isCarcass = this.dataManager.get(WATCHER_IS_CARCASS);
-            this.hasTracker = this.dataManager.get(WATCHER_HAS_TRACKER);
+         //   this.hasTracker = this.dataManager.get(WATCHER_HAS_TRACKER);
             String owner = this.dataManager.get(WATCHER_OWNER_IDENTIFIER);
             this.order = Order.values()[this.dataManager.get(WATCHER_CURRENT_ORDER)];
 
@@ -1786,7 +1786,7 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
 //                ", currentAnim=" + currentAnim +
 //                ", animation=" + animation +
 //                ", animTick=" + animTick +
-                ", hasTracker=" + hasTracker +
+//                ", hasTracker=" + hasTracker +
 //                ", tailBuffer=" + tailBuffer +
                 ", owner=" + owner +
                 ", inventory=" + inventory +
@@ -2106,6 +2106,7 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
     }
 
     public Vector3f getDinosaurCultivatorRotation() {
+        this.setAnimation(EntityAnimation.GESTATED.get());
         return new Vector3f();
     }
 

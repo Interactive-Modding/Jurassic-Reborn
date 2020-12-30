@@ -68,6 +68,7 @@ entity.rebornmod.elasmotherium.name=Elasmoterio
 entity.rebornmod.ornithomimus.name=Ornithomimus
 entity.rebornmod.zhenyuanopterus.name=Zhenyuanopterus
 entity.rebornmod.troodon.name=Troodon
+entity.rebornmod.megatherium.name=Megaterio
 entity.rebornmod.pachycephalosaurus.name=Paquicefalosaurio
 entity.rebornmod.alligator_gar.name=Catan
 entity.rebornmod.allosaurus.name=Alosaurio
@@ -129,6 +130,11 @@ attraction_sign.triceratops_territorium.name=Territorio del Triceratops
 attraction_sign.triceratops_territorium_plants.name=Territorio del Triceratops con Plantas
 attraction_sign.tyrannosaurus_kingdom.name=Reino del Tirannosaurio
 attraction_sign.tyrannosaurus_kingdom_plants.name=Reino del Tirannosaurio con plantas
+attraction_sign.cenozoic_park.name=Parque Cenozoico
+attraction_sign.cenozoic_park_plants.name=Parque Cenozoico con plantas
+attraction_sign.smilodon_cove.name=Cala Smilodon
+attraction_sign.smilodon_cove_plants.name=Cala Smilodon con plantas
+
 
 item.goat_raw.name=Cabra cruda
 item.goat_cooked.name=Cabra cocinada
@@ -766,6 +772,7 @@ info.dodo.name=El dodo (Raphus cucullatus) es uno de los animales extintos más 
 info.echo.name=El Velociraptor era un pequeño dinosaurio terópodo que vivió en el este de Asia durante el período Cretácico tardío. Era un oportunista, cazando una amplia variedad de presas desde pequeños mamíferos o lagartijas, hasta dinosaurios de tamaño mediano. Rápidos, muy inteligentes y muy agresivos, son muy difíciles de mantener. Son artistas del escape consumados, que rivalizan con la velocidad de un guepardo y saltan hasta 4 metros verticalmente.
 info.herrerasaurus.name= Uno de los dinosaurios terópodos más primitivos que se conocen, el Herrerasaurio ischigualastensis, vivió en el noroeste de Argentina durante el Triásico Tardío, hace unos 231,4 millones de años. Este dinosaurio primitivo medía entre 3 y 6 metros de largo y probablemente era un depredador. Acechaba las exuberantes llanuras aluviales y los bosques de coníferas de su época, cazando presas de tamaño pequeño a mediano, como rynchosaurs, reptiles parecidos a mamíferos y dinosaurios tempranos más pequeños.
 info.lambeosaurus.name=Lambeosaurio fue un herbívoro Hadrosaurido que vivió en la región occidental de América del Norte alrededor de 74 a 76 millones de años durante el período cretácico. El Lambeosaurio era conocido por su cresta en forma de hacha ubicada en la parte superior de su cabeza que producía sonidos, mejoraba su sentido del olfato y se sumaba a su exhibición de cortejo.
+info.megatherium.name=Un perezoso terrestre gigante, Megatherium fue uno de los mamíferos terrestres más grandes de todos los tiempos después del Paraceratherium y algunos de los mamuts, midiendo hasta 6 metros de largo y con un peso estimado de 4 toneladas. Megatherium estaba estrechamente relacionado con los perezosos y osos hormigueros modernos. Como un oso hormiguero, caminaba sobre los lados de sus pies, ya que las garras de sus dedos eran demasiado largas y curvadas para tumbarse en el suelo.
 info.mawsonia.name=Mawsonia era un pez carnívoro que se sabía que vivía en América del Sur y el norte de África hace unos 99 a 112 millones de años. Mawsonia era un tipo de celacanto y puede haber tenido algunos depredadores, como tiburones más grandes, pliosaurios y quizás incluso dinosaurios espinosáuridos. Al igual que otros celacantos, navegaban por el fondo del mar capturando peces e invertebrados más grandes que se refugiaban en grietas entre rocas y corales.
 info.leptictidium.name= Leptictidium era un mamífero placentario inusual que vivió durante el Eoceno, hace entre 50 y 35 millones de años en la actual Francia y Alemania. Era un omnívoro no especializado que comía insectos, lagartos, mamíferos más pequeños y hojas basándose en los restos encontrados en The Messel Pit en Alemania.
 info.leaellynasaura.name=El Leaellynasaura es un dinosaurio ornitisquio herbívoro ornitisquio que vivió en Australia durante el período Cretácico temprano. Vivió hace 118 a 110 millones de años. El Leaellynasaura tenía aproximadamente un metro de largo y pesaba alrededor de 30 kg. Leaellynasaura tenía un cerebro muy grande y muy buena vista también. Solo se ha encontrado un fósil incompleto de Leaellynasaura, los fósiles consisten en dientes y un cráneo juvenil.

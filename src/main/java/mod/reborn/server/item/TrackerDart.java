@@ -7,14 +7,14 @@ import net.minecraft.item.ItemStack;
 
 import java.util.function.BiConsumer;
 
-public class TrackerDart extends Dart {
-    public TrackerDart() {
-        super((entity, stack) -> init(entity), 0x111111);
-    }
+//public class TrackerDart extends Dart {
+ //   public TrackerDart() {
+    //    super((entity, stack) -> init(entity), 0x111111);
+  //  }
 
-    public static void init(DinosaurEntity entity) {
-        if(entity.getInventory().getStackInSlot(0).isEmpty() && !entity.hasTracker()){
-            entity.getInventory().setInventorySlotContents(0, new ItemStack(ItemHandler.TRACKER));
-        }
-    }
-}
+  //  public static void init(DinosaurEntity entity) {
+  //      if(entity.getInventory().getStackInSlot(0).isEmpty() && !entity.hasTracker()){
+  //          entity.getInventory().setInventorySlotContents(0, new ItemStack(ItemHandler.TRACKER));
+  //      }
+  //  }
+//}
