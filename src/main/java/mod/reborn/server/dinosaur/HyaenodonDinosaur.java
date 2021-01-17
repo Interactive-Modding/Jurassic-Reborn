@@ -5,7 +5,7 @@ import mod.reborn.server.entity.dinosaur.HyaenodonEntity;
 import mod.reborn.server.period.TimePeriod;
 
 public class HyaenodonDinosaur extends Dinosaur {
-    public static final double SPEED = 0.4F;
+    public static final double SPEED = 0.40F;
     public HyaenodonDinosaur() {
         super();
 
@@ -30,7 +30,8 @@ public class HyaenodonDinosaur extends Dinosaur {
         this.setBirthType(BirthType.LIVE_BIRTH);
         this.shouldDefendOffspring();
         this.setBreeding(true, 2, 4, 40, false, true);
-        this.setAttackBias(50);
+        this.setAttackBias(600);
+        this.setAttackSpeed(1.9);
         this.setImprintable(true);
         this.setDefendOwner(true);
         this.setMammal(true);

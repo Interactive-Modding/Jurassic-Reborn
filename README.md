@@ -27,13 +27,15 @@ CreatarCreator
 
 Fluffy Taco // JR_2202
 
-Pedro Resende
+
 
 ### Bug-Testers
 
 ImaStego
 
 # Contributors
+
+Pedro Resende
 
 Verified_Bear // Alis
 

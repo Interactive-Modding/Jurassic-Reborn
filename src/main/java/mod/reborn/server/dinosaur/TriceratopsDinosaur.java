@@ -41,7 +41,7 @@ public class TriceratopsDinosaur extends Dinosaur {
         String[][] recipe = {
                 {"", "", "","","horn"},
                 {"tail_vertebrae", "pelvis", "ribcage","neck_vertebrae","skull"},
-                {"hind_leg_bones", "hind_leg_bones", "", "shoulder_bone", "tooth"},
+                {"hind_leg_bones", "hind_leg_bones", "", "shoulder", "tooth"},
                 {"", "", "", "front_leg_bones", "front_leg_bones"}};
         this.setRecipe(recipe);
         

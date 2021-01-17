@@ -1128,6 +1128,42 @@
       "rebornmod:dinosaurs/spinosaurus/spinosaurus_attack_2"
     ]
   },
+  "smilodon_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/smilodon/smilodon_living_1",
+      "rebornmod:dinosaurs/smilodon/smilodon_living_2",
+      "rebornmod:dinosaurs/smilodon/smilodon_living_3",
+      "rebornmod:dinosaurs/smilodon/smilodon_living_4",
+      "rebornmod:dinosaurs/smilodon/smilodon_living_5",
+      "rebornmod:dinosaurs/smilodon/smilodon_living_6"
+    ]
+ },
+  "smilodon_death": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/smilodon/smilodon_death_1"
+    ]
+ },
+  "smilodon_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/smilodon/smilodon_hurt_1",
+      "rebornmod:dinosaurs/smilodon/smilodon_hurt_2"
+    ]
+  },
+  "smilodon_breathing": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/smilodon/smilodon_breath_1"
+    ]
+},
+  "smilodon_attack": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/smilodon/smilodon_attack_1"
+    ]
+  },
   "majungasaurus_living": {
     "category": "hostile",
     "sounds": [

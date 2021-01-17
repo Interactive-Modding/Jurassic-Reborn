@@ -10,45 +10,27 @@
     "WALKING": [
       {
         "pose": "quetzalcoatlus_adult_walking_1",
-        "time": 3
+        "time": 4
       },
       {
         "pose": "quetzalcoatlus_adult_walking_2",
-        "time": 3
+        "time": 4
       },
       {
         "pose": "quetzalcoatlus_adult_walking_3",
-        "time": 3
+        "time": 4
       },
       {
         "pose": "quetzalcoatlus_adult_walking_4",
-        "time": 3
+        "time": 4
       },
       {
         "pose": "quetzalcoatlus_adult_walking_5",
-        "time": 3
+        "time": 4
       },
       {
         "pose": "quetzalcoatlus_adult_walking_6",
-        "time": 3
-      }
-],
-    "RUNNING": [
-      {
-        "pose": "quetzalcoatlus_adult_running_1",
-        "time": 3
-      },
-      {
-        "pose": "quetzalcoatlus_adult_running_2",
-        "time": 3
-      },
-      {
-        "pose": "quetzalcoatlus_adult_running_3",
-        "time": 3
-      },
-      {
-        "pose": "quetzalcoatlus_adult_running_4",
-        "time": 3
+        "time": 4
       }
     ],
     "SLEEPING": [
