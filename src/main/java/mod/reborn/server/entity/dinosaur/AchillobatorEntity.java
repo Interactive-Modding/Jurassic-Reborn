@@ -25,7 +25,7 @@ public class AchillobatorEntity extends DinosaurEntity
         this.tasks.addTask(1, new LeapingMeleeEntityAI(this, this.dinosaur.getAttackSpeed()));
         this.tasks.addTask(1, new RaptorLeapEntityAI(this));
 
-        this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true, EntityPlayer.class, TyrannosaurusEntity.class, GiganotosaurusEntity.class, SpinosaurusEntity.class));
+        this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true, EntityPlayer.class, RaphusrexEntity.class, IndominusEntity.class, TyrannosaurusEntity.class, GiganotosaurusEntity.class, SpinosaurusEntity.class));
         doesEatEggs(true);
     }
 

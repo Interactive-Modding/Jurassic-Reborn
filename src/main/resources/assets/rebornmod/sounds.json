@@ -1441,6 +1441,46 @@
       "rebornmod:dinosaurs/ankylosaurus/ankylosaurus_hurt_2",
       "rebornmod:dinosaurs/ankylosaurus/ankylosaurus_hurt_3"
     ]
+ },
+  "raphusrex_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/raphusrex/raphusrex_living_1",
+      "rebornmod:dinosaurs/raphusrex/raphusrex_living_2",
+      "rebornmod:dinosaurs/raphusrex/raphusrex_living_3",
+      "rebornmod:dinosaurs/raphusrex/raphusrex_living_4",
+      "rebornmod:dinosaurs/raphusrex/raphusrex_living_5",
+      "rebornmod:dinosaurs/raphusrex/raphusrex_living_6"
+    ]
+ },
+  "raphusrex_roar": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/raphusrex/raphusrex_roar_1",
+      "rebornmod:dinosaurs/raphusrex/raphusrex_roar_2",
+      "rebornmod:dinosaurs/raphusrex/raphusrex_roar_3",
+      "rebornmod:dinosaurs/raphusrex/raphusrex_roar_4",
+      "rebornmod:dinosaurs/raphusrex/raphusrex_roar_5",
+      "rebornmod:dinosaurs/raphusrex/raphusrex_roar_6"
+    ]
+  },
+  "raphusrex_death": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/raphusrex/raphusrex_death_1"
+    ]
+  },
+  "raphusrex_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/raphusrex/raphusrex_hurt_1"
+    ]
+  },
+  "raphusrex_breathing": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/raphusrex/raphusrex_breathing_1"
+    ]
   },
   "apatosaurus_living": {
     "category": "hostile",

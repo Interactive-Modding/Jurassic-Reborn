@@ -321,6 +321,12 @@ public class SoundHandler {
     public static final SoundEvent INDOMINUS_ROAR = create("indominus_roar");
     public static final SoundEvent INDOMINUS_BREATHING = create("indominus_breathing");
 
+    public static final SoundEvent RAPHUSREX_LIVING = create("raphusrex_living");
+    public static final SoundEvent RAPHUSREX_DEATH = create("raphusrex_death");
+    public static final SoundEvent RAPHUSREX_HURT = create("raphusrex_hurt");
+    public static final SoundEvent RAPHUSREX_ROAR = create("raphusrex_roar");
+    public static final SoundEvent RAPHUSREX_BREATHING = create("raphusrex_breathing");
+
     public static final SoundEvent TYRANNOSAURUS_BREATHING = create("tyrannosaurus_breathing");
     public static final SoundEvent TYRANNOSAURUS_DEATH = create("tyrannosaurus_death");
     public static final SoundEvent TYRANNOSAURUS_HURT = create("tyrannosaurus_hurt");

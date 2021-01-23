@@ -540,6 +540,7 @@ public enum RenderingHandler {
         registerRenderInfo(EntityHandler.ELASMOTHERIUM, new ElasmotheriumAnimator(), 0.74F);
         registerRenderInfo(EntityHandler.MEGATHERIUM, new MegatheriumAnimator(), 0.70F);
         registerRenderInfo(EntityHandler.SMILODON, new SmilodonAnimator(), 0.64F);
+        registerRenderInfo(EntityHandler.RAPHUSREX, new RaphusrexAnimator(), 0.65F);
 
 
 

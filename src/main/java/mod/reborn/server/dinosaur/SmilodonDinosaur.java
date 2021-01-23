@@ -19,8 +19,8 @@ public class SmilodonDinosaur extends Dinosaur {
         this.setDinosaurClass(SmilodonEntity.class);
         this.setDinosaurType(DinosaurType.AGGRESSIVE);
         this.setTimePeriod(TimePeriod.PALEOGENE);
-        this.setEggColorMale(0xA06238, 0x632D11);
-        this.setEggColorFemale(0x91765D, 0x5A4739);
+        this.setEggColorMale(0xac7620, 0x191103);
+        this.setEggColorFemale(0xc28e3c, 0x4e3208);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setAttackSpeed(1.9);
         this.setHealth(6, 30);
@@ -34,7 +34,7 @@ public class SmilodonDinosaur extends Dinosaur {
         this.setSleepTime(SleepTime.DIURNAL);
         this.setBones("skull", "tail_vertebrae", "front_leg_bones", "ribcage", "hind_leg_bones", "neck_vertebrae", "pelvis", "shoulder", "tooth");
         this.setHeadCubeName("Head");
-        this.setScale(0.6F, 0.1F);
+        this.setScale(0.55F, 0.1F);
         this.setImprintable(true);
         this.setDefendOwner(true);
         this.setMammal(true);
