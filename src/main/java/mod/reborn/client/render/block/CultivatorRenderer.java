@@ -31,7 +31,7 @@ public class CultivatorRenderer extends TileEntitySpecialRenderer<CultivatorBloc
             GlStateManager.rotate(vec.z, 0, 0, 0);
             GlStateManager.scale(percentageDone, percentageDone, percentageDone);
             GlStateManager.enableLight(2);
-            GlStateManager.scale(.07,.07,.07);
+            GlStateManager.scale(.04,.04,.04);
             if (entity != null) {
                 this.mc.getRenderManager().renderEntity(entity, 0, 0, 0, 0, 0, false);
             }

@@ -305,6 +305,11 @@ public class SoundHandler {
     public static final SoundEvent TROODON_CALL = create("troodon_call");
     public static final SoundEvent TROODON_THREAT = create("troodon_threat");
 
+    public static final SoundEvent TITANIS_LIVING = create("titanis_living");
+    public static final SoundEvent TITANIS_HURT = create("titanis_hurt");
+    public static final SoundEvent TITANIS_DEATH = create("titanis_death");
+    public static final SoundEvent TITANIS_THREAT = create("titanis_threat");
+
     public static final SoundEvent PTERANODON_LIVING = create("pteranodon_living");
     public static final SoundEvent PTERANODON_HURT = create("pteranodon_hurt");
     public static final SoundEvent PTERANODON_DEATH = create("pteranodon_death");

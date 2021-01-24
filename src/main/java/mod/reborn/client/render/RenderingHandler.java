@@ -541,6 +541,7 @@ public enum RenderingHandler {
         registerRenderInfo(EntityHandler.MEGATHERIUM, new MegatheriumAnimator(), 0.70F);
         registerRenderInfo(EntityHandler.SMILODON, new SmilodonAnimator(), 0.64F);
         registerRenderInfo(EntityHandler.RAPHUSREX, new RaphusrexAnimator(), 0.65F);
+        registerRenderInfo(EntityHandler.TITANIS, new TitanisAnimator(), 0.65F);
 
 
 

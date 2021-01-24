@@ -9,19 +9,19 @@ Vitiate
 
 Last_Dovahkiin
 
-### Modelers / Sound Designers / Textures /  Concept Artists
+Red
 
-WinterKILLER435 // DroidBait284
+### Modelers / Sound Designers / Textures /  Concept Artists
 
 AveLardo12 // InnovativePachyderm
 
 DTRaptor, The Political Advisor
 
+Giodude1580
+
 Neicke
 
 TotallyTruthful
-
-Bastion16
 
 CreatarCreator
 
@@ -34,6 +34,10 @@ Fluffy Taco // JR_2202
 ImaStego
 
 # Contributors
+
+Bastion16
+
+WinterKILLER435 // DroidBait284
 
 Pedro Resende
 

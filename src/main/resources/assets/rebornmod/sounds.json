@@ -1345,6 +1345,37 @@
         "sounds": [
             "rebornmod:dinosaurs/corythosaurus/corythosaurus_threat"
         ]
+},
+  "titanis_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/titanis/titanis_living_1",
+      "rebornmod:dinosaurs/titanis/titanis_living_2",
+      "rebornmod:dinosaurs/titanis/titanis_living_3",
+      "rebornmod:dinosaurs/titanis/titanis_living_4",
+      "rebornmod:dinosaurs/titanis/titanis_living_5",
+      "rebornmod:dinosaurs/titanis/titanis_living_6"
+    ]
+  },
+  "titanis_death": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/titanis/titanis_death_1"
+    ]
+  },
+  "titanis_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/titanis/titanis_hurt_1",
+      "rebornmod:dinosaurs/titanis/titanis_hurt_2"
+    ]
+  },
+  "titanis_threat": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/titanis/titanis_threat_1"
+    ]
+
   },
   "pteranodon_living": {
     "category": "hostile",

@@ -37,11 +37,12 @@ public class SmilodonDinosaur extends Dinosaur {
         this.setScale(0.55F, 0.1F);
         this.setImprintable(true);
         this.setDefendOwner(true);
+        this.setBirthType(BirthType.LIVE_BIRTH);
         this.setMammal(true);
         this.setMaxHerdSize(40);
         this.setAttackBias(600.0);
         this.setCanClimb(true);
-        this.setBreeding(false,1, 7, 30, false, true);
+        this.setBreeding(true,2, 5, 50, false, true);
         this.setJumpHeight(3);
         String[][] recipe =     {
                 { "tail_vertebrae", "pelvis", "ribcage","neck_vertebrae", "skull"},
