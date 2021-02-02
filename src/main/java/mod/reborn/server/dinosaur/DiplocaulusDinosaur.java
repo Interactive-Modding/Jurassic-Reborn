@@ -3,6 +3,9 @@ package mod.reborn.server.dinosaur;
 import mod.reborn.server.entity.Diet;
 import mod.reborn.server.entity.dinosaur.DiplocaulusEntity;
 import mod.reborn.server.period.TimePeriod;
+import java.util.ArrayList;
+import net.minecraft.world.biome.Biome;
+import net.minecraftforge.common.BiomeDictionary;
 
 public class DiplocaulusDinosaur extends Dinosaur {
     public static final double SPEED = 0.3F;
@@ -39,5 +42,9 @@ public class DiplocaulusDinosaur extends Dinosaur {
                                  { "", "", "foot_bone"}};
         this.setRecipe(recipe);
         this.enableSkeleton();
+        ArrayList<Biome> biomeList = new ArrayList<Biome>();
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.RIVER));
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.OCEAN));
+        this.setSpawn(1, biomeList.toArray(new Biome[biomeList.size()]));
     }
 }

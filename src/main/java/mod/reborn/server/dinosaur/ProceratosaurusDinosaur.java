@@ -3,6 +3,10 @@ package mod.reborn.server.dinosaur;
 import mod.reborn.server.entity.Diet;
 import mod.reborn.server.entity.dinosaur.ProceratosaurusEntity;
 import mod.reborn.server.period.TimePeriod;
+import net.minecraft.world.biome.Biome;
+import net.minecraftforge.common.BiomeDictionary;
+import java.util.ArrayList;
+
 
 public class ProceratosaurusDinosaur extends Dinosaur {
     public static final double SPEED = 0.3F;
@@ -28,6 +32,7 @@ public class ProceratosaurusDinosaur extends Dinosaur {
         this.setHeadCubeName("Head");
         this.setScale(0.9F, 0.1F);
         this.shouldDefendOffspring();
+        this.setMaxHerdSize(7);
         this.setAttackBias(120);
         this.setImprintable(true);
         this.setDefendOwner(true);
@@ -38,5 +43,11 @@ public class ProceratosaurusDinosaur extends Dinosaur {
                 {"", "", "leg_bones", "arm_bones", ""}};
         this.setRecipe(recipe);
         this.enableSkeleton();
+
+        ArrayList<Biome> biomeList = new ArrayList<Biome>();
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.CONIFEROUS));
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.SPARSE));
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.FOREST));
+        this.setSpawn(1, biomeList.toArray(new Biome[biomeList.size()]));
     }
 }

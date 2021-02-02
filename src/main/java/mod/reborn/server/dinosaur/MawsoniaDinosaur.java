@@ -52,10 +52,11 @@ public class MawsoniaDinosaur extends Dinosaur {
                 {"caudal_fin", "spine", "pectoral_fin_bones","skull"},
                 {"anal_fin","","pelvic_fin_bones","teeth"}};
         this.setRecipe(recipe);
-        
+
         ArrayList<Biome> biomeList = new ArrayList<Biome>();
         biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.OCEAN));
-        this.setSpawn(5, biomeList.toArray(new Biome[biomeList.size()]));
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.RIVER));
+        this.setSpawn(1, biomeList.toArray(new Biome[biomeList.size()]));
         this.enableSkeleton();
     }
 

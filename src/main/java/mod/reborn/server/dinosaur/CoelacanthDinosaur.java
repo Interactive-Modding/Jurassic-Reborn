@@ -8,7 +8,7 @@ import mod.reborn.server.entity.ai.util.MovementType;
 import mod.reborn.server.entity.dinosaur.CoelacanthEntity;
 import mod.reborn.server.food.FoodType;
 import mod.reborn.server.period.TimePeriod;
-
+import java.util.ArrayList;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.potion.PotionEffect;
@@ -56,7 +56,8 @@ public class CoelacanthDinosaur extends Dinosaur {
         
         ArrayList<Biome> biomeList = new ArrayList<Biome>();
         biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.OCEAN));
-        this.setSpawn(5, biomeList.toArray(new Biome[biomeList.size()]));
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.RIVER));
+        this.setSpawn(1, biomeList.toArray(new Biome[biomeList.size()]));
         this.enableSkeleton();
     }
 

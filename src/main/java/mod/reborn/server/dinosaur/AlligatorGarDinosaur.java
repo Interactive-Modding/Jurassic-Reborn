@@ -7,6 +7,7 @@ import mod.reborn.server.entity.SleepTime;
 import mod.reborn.server.entity.ai.util.MovementType;
 import mod.reborn.server.entity.dinosaur.AlligatorGarEntity;
 import mod.reborn.server.food.FoodType;
+import java.util.ArrayList;
 import mod.reborn.server.period.TimePeriod;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -57,7 +58,9 @@ public class AlligatorGarDinosaur extends Dinosaur
 
         ArrayList<Biome> biomeList = new ArrayList<Biome>();
         biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.OCEAN));
-        this.setSpawn(5, biomeList.toArray(new Biome[biomeList.size()]));
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.SWAMP));
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.RIVER));
+        this.setSpawn(1, biomeList.toArray(new Biome[biomeList.size()]));
         this.enableSkeleton();
     }
 

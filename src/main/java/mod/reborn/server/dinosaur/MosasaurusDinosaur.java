@@ -3,6 +3,9 @@ package mod.reborn.server.dinosaur;
 import mod.reborn.server.entity.Diet;
 import mod.reborn.server.entity.dinosaur.MosasaurusEntity;
 import mod.reborn.server.period.TimePeriod;
+import net.minecraft.world.biome.Biome;
+import net.minecraftforge.common.BiomeDictionary;
+import java.util.ArrayList;
 
 public class MosasaurusDinosaur extends Dinosaur {
     public static final double SPEED = 0.45F;
@@ -42,5 +45,9 @@ public class MosasaurusDinosaur extends Dinosaur {
         this.setRecipe(recipe);
         this.enableSkeleton();
         this.setOffset(0,1,0);
+        ArrayList<Biome> biomeList = new ArrayList<Biome>();
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.OCEAN));
+        this.setSpawn(1, biomeList.toArray(new Biome[biomeList.size()]));
+        this.enableSkeleton();
     }
 }

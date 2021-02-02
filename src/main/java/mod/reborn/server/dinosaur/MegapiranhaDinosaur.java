@@ -5,6 +5,9 @@ import mod.reborn.server.entity.Diet;
 import mod.reborn.server.entity.dinosaur.MegapiranhaEntity;
 import mod.reborn.server.food.FoodType;
 import mod.reborn.server.period.TimePeriod;
+import net.minecraft.world.biome.Biome;
+import java.util.ArrayList;
+import net.minecraftforge.common.BiomeDictionary;
 
 public class MegapiranhaDinosaur extends Dinosaur
 {
@@ -42,5 +45,9 @@ public class MegapiranhaDinosaur extends Dinosaur
                                 { "anal_fin","","", "teeth"}};
         this.setRecipe(recipe);
         this.enableSkeleton();
+        ArrayList<Biome> biomeList = new ArrayList<Biome>();
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.OCEAN));
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.RIVER));
+        this.setSpawn(1, biomeList.toArray(new Biome[biomeList.size()]));
     }
 }

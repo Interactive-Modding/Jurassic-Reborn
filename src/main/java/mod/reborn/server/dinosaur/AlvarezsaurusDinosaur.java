@@ -3,6 +3,9 @@ package mod.reborn.server.dinosaur;
 import mod.reborn.server.entity.Diet;
 import mod.reborn.server.entity.dinosaur.AlvarezsaurusEntity;
 import mod.reborn.server.period.TimePeriod;
+import net.minecraft.world.biome.Biome;
+import java.util.ArrayList;
+import net.minecraftforge.common.BiomeDictionary;
 
 public class AlvarezsaurusDinosaur extends Dinosaur {
     public static final double SPEED = 0.4F;
@@ -37,5 +40,10 @@ public class AlvarezsaurusDinosaur extends Dinosaur {
                 {"leg_bones", "leg_bones", "arm_bones", "arm_bones", ""}};
         this.setRecipe(recipe);
         this.enableSkeleton();
+        ArrayList<Biome> biomeList = new ArrayList<Biome>();
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.PLAINS));
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.SANDY));
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.SAVANNA));
+        this.setSpawn(1, biomeList.toArray(new Biome[biomeList.size()]));
     }
 }

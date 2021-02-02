@@ -3,6 +3,9 @@ package mod.reborn.server.dinosaur;
 import mod.reborn.server.entity.Diet;
 import mod.reborn.server.entity.dinosaur.CarcharodontosaurusEntity;
 import mod.reborn.server.period.TimePeriod;
+import net.minecraft.world.biome.Biome;
+import java.util.ArrayList;
+import net.minecraftforge.common.BiomeDictionary;
 
 public class CarcharodontosaurusDinosaur extends Dinosaur {
     public static final double SPEED = 0.44F;
@@ -35,5 +38,12 @@ public class CarcharodontosaurusDinosaur extends Dinosaur {
                 {"", "foot_bones", "foot_bones", "", ""}};
         this.setRecipe(recipe);
         this.enableSkeleton();
+        this.setRecipe(recipe);
+        ArrayList<Biome> biomeList = new ArrayList<Biome>();
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.SAVANNA));
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.PLAINS));
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.FOREST));
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.DRY));
+        this.setSpawn(1, biomeList.toArray(new Biome[biomeList.size()]));
     }
 }

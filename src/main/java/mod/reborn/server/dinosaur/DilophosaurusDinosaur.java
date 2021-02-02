@@ -43,10 +43,16 @@ public class DilophosaurusDinosaur extends Dinosaur {
                                 {"tail_vertebrae", "pelvis", "ribcage","shoulder","tooth"},
                                  {"leg_bones", "leg_bones", "", "", "arm_bones"}};
         this.setRecipe(recipe);
-        
+
         ArrayList<Biome> biomeList = new ArrayList<Biome>();
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.SAVANNA));
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.SANDY));
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.PLAINS));
         biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.FOREST));
-        this.setSpawn(10, biomeList.toArray(new Biome[biomeList.size()]));
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.MESA));
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.CONIFEROUS));
+        this.setSpawn(1, biomeList.toArray(new Biome[biomeList.size()]));
         this.enableSkeleton();
+
     }
 }

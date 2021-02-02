@@ -4,6 +4,9 @@ package mod.reborn.server.dinosaur;
 import mod.reborn.server.entity.Diet;
 import mod.reborn.server.entity.dinosaur.CearadactylusEntity;
 import mod.reborn.server.period.TimePeriod;
+import net.minecraft.world.biome.Biome;
+import java.util.ArrayList;
+import net.minecraftforge.common.BiomeDictionary;
 
 public class CearadactylusDinosaur extends Dinosaur
 {
@@ -29,6 +32,7 @@ public class CearadactylusDinosaur extends Dinosaur
         this.setBones("leg_bones", "pelvis", "skull", "neck_vertebrae", "tail_vertebrae", "teeth", "wing_bones", "ribcage");
         this.setHeadCubeName("Head");
         this.setScale(1.0F, 0.1F);
+        this.setAvianAnimal(true);
         this.setBreeding(false, 2, 6, 80, false, true);
         this.shouldDefendOffspring();
         String[][] recipe = {
@@ -37,5 +41,13 @@ public class CearadactylusDinosaur extends Dinosaur
                 {"", "leg_bones", "", "wing_bones", ""}};
         this.setRecipe(recipe);
         this.enableSkeleton();
+        ArrayList<Biome> biomeList = new ArrayList<Biome>();
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.SAVANNA));
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.JUNGLE));
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.MOUNTAIN));
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.PLAINS));
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.FOREST));
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.MESA));
+        this.setSpawn(1, biomeList.toArray(new Biome[biomeList.size()]));
     }
 }

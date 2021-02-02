@@ -4,6 +4,9 @@ package mod.reborn.server.dinosaur;
 import mod.reborn.server.entity.Diet;
 import mod.reborn.server.entity.dinosaur.DimorphodonEntity;
 import mod.reborn.server.period.TimePeriod;
+import java.util.ArrayList;
+import net.minecraft.world.biome.Biome;
+import net.minecraftforge.common.BiomeDictionary;
 
 public class DimorphodonDinosaur extends Dinosaur
 {
@@ -31,6 +34,7 @@ public class DimorphodonDinosaur extends Dinosaur
         this.setBones("leg_bones", "neck", "ribs_and_spine", "shoulder_blade", "skull", "tail_vertebrae", "teeth", "wing_bones");
         this.setHeadCubeName("Head");
         this.setImprintable(true);
+        this.setAvianAnimal(true);
         this.setStorage(12);
         this.setScale(0.5F, 0.15F);
         this.setBreeding(false, 2, 6, 80, false, true);
@@ -40,5 +44,13 @@ public class DimorphodonDinosaur extends Dinosaur
                 {"", "leg_bones", "wing_bones", "", ""}};
         this.setRecipe(recipe);
         this.enableSkeleton();
+        ArrayList<Biome> biomeList = new ArrayList<Biome>();
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.SAVANNA));
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.JUNGLE));
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.MOUNTAIN));
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.PLAINS));
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.FOREST));
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.MESA));
+        this.setSpawn(1, biomeList.toArray(new Biome[biomeList.size()]));
     }
 }

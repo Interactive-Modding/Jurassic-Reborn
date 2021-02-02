@@ -5,6 +5,7 @@ import mod.reborn.server.entity.dinosaur.MussaurusEntity;
 import mod.reborn.server.period.TimePeriod;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
+import java.util.ArrayList;
 
 import java.util.ArrayList;
 
@@ -46,7 +47,7 @@ public class MussaurusDinosaur extends Dinosaur {
         ArrayList<Biome> biomeList = new ArrayList<Biome>();
         biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.PLAINS));
         biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.FOREST));
-        this.setSpawn(15, biomeList.toArray(new Biome[biomeList.size()]));
+        this.setSpawn(1, biomeList.toArray(new Biome[biomeList.size()]));
         this.enableSkeleton();
         
     }

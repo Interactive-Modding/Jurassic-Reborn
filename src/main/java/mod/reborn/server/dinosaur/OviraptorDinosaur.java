@@ -7,6 +7,9 @@ import mod.reborn.server.entity.dinosaur.MicroraptorEntity;
 import mod.reborn.server.entity.dinosaur.OviraptorEntity;
 import mod.reborn.server.food.FoodType;
 import mod.reborn.server.period.TimePeriod;
+import net.minecraft.world.biome.Biome;
+import net.minecraftforge.common.BiomeDictionary;
+import java.util.ArrayList;
 
 public class OviraptorDinosaur extends Dinosaur
 {
@@ -46,5 +49,10 @@ public class OviraptorDinosaur extends Dinosaur
                 {"", "leg_bones", "", "arm_bones"}};
         this.setRecipe(recipe);
         this.enableSkeleton();
+        ArrayList<Biome> biomeList = new ArrayList<Biome>();
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.SAVANNA));
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.SANDY));
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.DRY));
+        this.setSpawn(1, biomeList.toArray(new Biome[biomeList.size()]));
     }
 }

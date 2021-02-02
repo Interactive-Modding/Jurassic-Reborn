@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "rebornmod:bullet",
+  "pattern": [
+    "AAE",
+    " EC"
+  ],
+  "key": {
+    "E": {
+      "item": "minecraft:gold_ingot",
+      "data": 0
+    },
+    "C": {
+      "item": "minecraft:iron_ingot",
+      "data": 0
+    },
+    "A": {
+      "item": "minecraft:gunpowder",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "rebornmod:bullet",
+    "data": 0
+  }
+}

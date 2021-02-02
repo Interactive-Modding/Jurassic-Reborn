@@ -52,7 +52,7 @@ public class MicroraptorDinosaur extends Dinosaur {
         biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.JUNGLE));
         biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.FOREST));
         biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.DENSE));
-        this.setSpawn(10, biomeList.toArray(new Biome[biomeList.size()]));
+        this.setSpawn(1, biomeList.toArray(new Biome[biomeList.size()]));
         this.enableSkeleton();
     }
 }

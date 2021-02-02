@@ -4,6 +4,9 @@ import mod.reborn.server.entity.Diet;
 import mod.reborn.server.entity.dinosaur.AmmoniteEntity;
 import mod.reborn.server.food.FoodType;
 import mod.reborn.server.period.TimePeriod;
+import java.util.ArrayList;
+import net.minecraft.world.biome.Biome;
+import net.minecraftforge.common.BiomeDictionary;
 
 public class AmmoniteDinosaur extends Dinosaur {
     public static final double SPEED = 0.3F;
@@ -37,5 +40,8 @@ public class AmmoniteDinosaur extends Dinosaur {
                 { "shell_cover","perisphinctes_beak"}};
         this.setRecipe(recipe);
         this.enableSkeleton();
+        ArrayList<Biome> biomeList = new ArrayList<Biome>();
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.OCEAN));
+        this.setSpawn(1, biomeList.toArray(new Biome[biomeList.size()]));
     }
 }

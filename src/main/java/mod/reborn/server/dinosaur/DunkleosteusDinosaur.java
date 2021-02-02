@@ -5,6 +5,9 @@ import mod.reborn.server.entity.Diet;
 import mod.reborn.server.entity.SleepTime;
 import mod.reborn.server.entity.dinosaur.DunkleosteusEntity;
 import mod.reborn.server.period.TimePeriod;
+import java.util.ArrayList;
+import net.minecraft.world.biome.Biome;
+import net.minecraftforge.common.BiomeDictionary;
 
 public class DunkleosteusDinosaur extends Dinosaur
 {
@@ -44,5 +47,9 @@ public class DunkleosteusDinosaur extends Dinosaur
                 {"spine", "spine", "spine", "skull", "mouth_plates"}};
         this.setRecipe(recipe);
         this.enableSkeleton();
+        ArrayList<Biome> biomeList = new ArrayList<Biome>();
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.OCEAN));
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.RIVER));
+        this.setSpawn(1, biomeList.toArray(new Biome[biomeList.size()]));
     }
 }

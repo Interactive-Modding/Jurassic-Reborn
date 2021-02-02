@@ -5,6 +5,9 @@ import mod.reborn.server.entity.Diet;
 import mod.reborn.server.entity.dinosaur.PteranodonEntity;
 import mod.reborn.server.entity.dinosaur.QuetzalEntity;
 import mod.reborn.server.period.TimePeriod;
+import java.util.ArrayList;
+import net.minecraft.world.biome.Biome;
+import net.minecraftforge.common.BiomeDictionary;
 
 public class QuetzalDinosaur extends Dinosaur
 {
@@ -36,11 +39,19 @@ public class QuetzalDinosaur extends Dinosaur
         this.shouldDefendOffspring();
         this.setBreeding(false, 1, 4, 80, false, true);
         this.enableSkeleton();
+        this.setAvianAnimal(true);
         String[][] recipe = {
                 {"", "", "", "neck_vertebrae", "skull"},
                 {"tail_vertebrae", "pelvis", "ribcage","",""},
                 {"", "leg_bones", "", "wing_bones", ""}};
         this.setRecipe(recipe);
-
+        ArrayList<Biome> biomeList = new ArrayList<Biome>();
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.SAVANNA));
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.JUNGLE));
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.MOUNTAIN));
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.PLAINS));
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.FOREST));
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.MESA));
+        this.setSpawn(1, biomeList.toArray(new Biome[biomeList.size()]));
     }
 }

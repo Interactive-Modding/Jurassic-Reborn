@@ -49,6 +49,15 @@ public class SmilodonDinosaur extends Dinosaur {
                 { "hind_leg_bones", "", "front_leg_bones", "shoulder", "tooth"}};
         this.setRecipe(recipe);
         doSkeletonCheck();
+        ArrayList<Biome> biomeList = new ArrayList<Biome>();
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.SAVANNA));
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.PLAINS));
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.FOREST));
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.MESA));
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.SNOWY));
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.CONIFEROUS));
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.COLD));
+        this.setSpawn(1, biomeList.toArray(new Biome[biomeList.size()]));
     }
 
     protected void doSkeletonCheck(){

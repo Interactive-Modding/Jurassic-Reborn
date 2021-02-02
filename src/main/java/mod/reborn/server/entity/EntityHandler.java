@@ -249,7 +249,7 @@ public class EntityHandler {
         ArrayList<Biome> biomeBeach = new ArrayList<>(BiomeDictionary.getBiomes(BiomeDictionary.Type.BEACH));
 
         EntityRegistry.addSpawn(EntityCrab.class, 20, 4, 8, EnumCreatureType.CREATURE, biomeBeach.toArray(new Biome[biomeBeach.size()]));
-    //EntityRegistry.addSpawn(EntityShark.class, 3, 1, 4, EnumCreatureType.WATER_CREATURE, Biomes.OCEAN);
+        EntityRegistry.addSpawn(EntityShark.class, 1, 4, 8, EnumCreatureType.WATER_CREATURE, Biomes.OCEAN);
         EntitySpawnPlacementRegistry.setPlacementType(EntityShark.class, EntityLiving.SpawnPlacementType.IN_WATER);
 
         registerEntity(DinosaurEggEntity.class, "Dinosaur Egg");
@@ -282,7 +282,7 @@ public class EntityHandler {
 
             if (canSpawn && RebornConfig.ENTITIES.naturalSpawning) {
                 if(dinosaur.getSpawnBiomes() != null)
-                EntityRegistry.addSpawn(clazz, dinosaur.getSpawnChance(), 1, Math.min(6, dinosaur.getMaxHerdSize() / 2), dinosaur.isMarineCreature() ? EnumCreatureType.WATER_CREATURE : EnumCreatureType.CREATURE, dinosaur.getSpawnBiomes());
+                EntityRegistry.addSpawn(clazz, dinosaur.getSpawnChance(), 1, Math.min(1, dinosaur.getMaxHerdSize()/2), dinosaur.isMarineCreature() ? EnumCreatureType.WATER_CREATURE : EnumCreatureType.CREATURE, dinosaur.getSpawnBiomes());
                 if(dinosaur.isMarineCreature()) EntitySpawnPlacementRegistry.setPlacementType(EntityShark.class, EntityLiving.SpawnPlacementType.IN_WATER);
             }
         }

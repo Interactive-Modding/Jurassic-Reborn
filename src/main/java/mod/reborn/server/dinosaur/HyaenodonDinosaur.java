@@ -3,6 +3,9 @@ package mod.reborn.server.dinosaur;
 import mod.reborn.server.entity.Diet;
 import mod.reborn.server.entity.dinosaur.HyaenodonEntity;
 import mod.reborn.server.period.TimePeriod;
+import net.minecraft.world.biome.Biome;
+import net.minecraftforge.common.BiomeDictionary;
+import java.util.ArrayList;
 
 public class HyaenodonDinosaur extends Dinosaur {
     public static final double SPEED = 0.40F;
@@ -40,5 +43,9 @@ public class HyaenodonDinosaur extends Dinosaur {
                 { "hind_leg_bones", "", "front_leg_bones", "shoulder", "tooth"}};
         this.setRecipe(recipe);
         this.enableSkeleton();
+        ArrayList<Biome> biomeList = new ArrayList<Biome>();
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.SAVANNA));
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.PLAINS));
+        this.setSpawn(1, biomeList.toArray(new Biome[biomeList.size()]));
     }
 }

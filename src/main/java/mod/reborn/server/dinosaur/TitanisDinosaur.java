@@ -2,9 +2,8 @@ package mod.reborn.server.dinosaur;
 
 import mod.reborn.server.entity.Diet;
 import mod.reborn.server.entity.SleepTime;
-import mod.reborn.server.entity.dinosaur.SmilodonEntity;
+import java.util.ArrayList;
 import mod.reborn.server.entity.dinosaur.TitanisEntity;
-import mod.reborn.server.entity.dinosaur.VelociraptorEntity;
 import mod.reborn.server.period.TimePeriod;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
@@ -48,6 +47,15 @@ public class TitanisDinosaur extends Dinosaur {
                 { "leg_bones", "", "leg_bones", "shoulder", ""}};
         this.setRecipe(recipe);
         doSkeletonCheck();
+        ArrayList<Biome> biomeList = new ArrayList<Biome>();
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.SAVANNA));
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.PLAINS));
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.FOREST));
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.MESA));
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.SNOWY));
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.CONIFEROUS));
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.COLD));
+        this.setSpawn(1, biomeList.toArray(new Biome[biomeList.size()]));
     }
 
     protected void doSkeletonCheck(){

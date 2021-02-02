@@ -4,6 +4,9 @@ import mod.reborn.server.entity.Diet;
 import mod.reborn.server.entity.dinosaur.ArsinoitheriumEntity;
 import mod.reborn.server.entity.dinosaur.MegatheriumEntity;
 import mod.reborn.server.period.TimePeriod;
+import net.minecraft.world.biome.Biome;
+import java.util.ArrayList;
+import net.minecraftforge.common.BiomeDictionary;
 
 public class MegatheriumDinosaur extends Dinosaur {
     public static final double SPEED = 0.3F;
@@ -42,5 +45,12 @@ public class MegatheriumDinosaur extends Dinosaur {
                 {"", "", "hind_leg_bones", "arm_bones", ""}};
         this.setRecipe(recipe);
         this.enableSkeleton();
+        ArrayList<Biome> biomeList = new ArrayList<Biome>();
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.PLAINS));
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.FOREST));
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.SAVANNA));
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.CONIFEROUS));
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.SNOWY));
+        this.setSpawn(1, biomeList.toArray(new Biome[biomeList.size()]));
     }
 }

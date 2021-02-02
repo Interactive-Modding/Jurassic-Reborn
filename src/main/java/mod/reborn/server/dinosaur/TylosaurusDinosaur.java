@@ -4,6 +4,9 @@ package mod.reborn.server.dinosaur;
 import mod.reborn.server.entity.Diet;
 import mod.reborn.server.entity.dinosaur.TylosaurusEntity;
 import mod.reborn.server.period.TimePeriod;
+import net.minecraft.world.biome.Biome;
+import net.minecraftforge.common.BiomeDictionary;
+import java.util.ArrayList;
 
 public class TylosaurusDinosaur extends Dinosaur
 {
@@ -45,5 +48,8 @@ public class TylosaurusDinosaur extends Dinosaur
                 {"hind_flipper", "hind_flipper", "", "front_flipper", "front_flipper"}};
         this.setRecipe(recipe);
         this.enableSkeleton();
+        ArrayList<Biome> biomeList = new ArrayList<Biome>();
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.OCEAN));
+        this.setSpawn(1, biomeList.toArray(new Biome[biomeList.size()]));
     }
 }

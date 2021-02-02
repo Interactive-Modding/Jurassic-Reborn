@@ -6,6 +6,7 @@ import mod.reborn.server.entity.dinosaur.VelociraptorEntity;
 import mod.reborn.server.period.TimePeriod;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
+import java.util.ArrayList;
 
 import java.util.ArrayList;
 
@@ -53,7 +54,7 @@ public class VelociraptorDinosaur extends Dinosaur {
         biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.JUNGLE));
         biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.FOREST));
         biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.DENSE));
-        this.setSpawn(10, biomeList.toArray(new Biome[biomeList.size()]));
+        this.setSpawn(1, biomeList.toArray(new Biome[biomeList.size()]));
         doSkeletonCheck();
     }
 

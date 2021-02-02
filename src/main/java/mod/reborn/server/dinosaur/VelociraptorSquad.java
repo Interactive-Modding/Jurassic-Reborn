@@ -6,6 +6,7 @@ import mod.reborn.server.entity.dinosaur.VelociraptorCharlieEntity;
 import mod.reborn.server.entity.dinosaur.VelociraptorDeltaEntity;
 import mod.reborn.server.entity.dinosaur.VelociraptorEchoEntity;
 import net.minecraft.util.ResourceLocation;
+import java.util.ArrayList;
 
 public class VelociraptorSquad {
     private ResourceLocation texture;

@@ -5,6 +5,9 @@ import mod.reborn.server.entity.Diet;
 import mod.reborn.server.entity.dinosaur.CoelurusEntity;
 import mod.reborn.server.entity.dinosaur.CompsognathusEntity;
 import mod.reborn.server.period.TimePeriod;
+import java.util.ArrayList;
+import net.minecraft.world.biome.Biome;
+import net.minecraftforge.common.BiomeDictionary;
 
 public class CoelurusDinosaur extends Dinosaur
 {
@@ -39,5 +42,12 @@ public class CoelurusDinosaur extends Dinosaur
                 {"leg_bones", "leg_bones", "", "", "arm_bones"}};
         this.setRecipe(recipe);
         this.enableSkeleton();
+        ArrayList<Biome> biomeList = new ArrayList<Biome>();
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.SAVANNA));
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.SANDY));
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.PLAINS));
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.FOREST));
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.MESA));
+        this.setSpawn(1, biomeList.toArray(new Biome[biomeList.size()]));
     }
 }

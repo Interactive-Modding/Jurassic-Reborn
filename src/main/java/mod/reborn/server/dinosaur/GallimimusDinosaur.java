@@ -48,8 +48,7 @@ public class GallimimusDinosaur extends Dinosaur {
         ArrayList<Biome> biomeList = new ArrayList<Biome>();
         biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.PLAINS));
         biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.DRY));
-        
-        this.setSpawn(25, biomeList.toArray(new Biome[biomeList.size()]));
+        this.setSpawn(1, biomeList.toArray(new Biome[biomeList.size()]));
         this.enableSkeleton();
     }
 }

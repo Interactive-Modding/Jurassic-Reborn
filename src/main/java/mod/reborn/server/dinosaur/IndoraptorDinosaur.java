@@ -7,6 +7,7 @@ import mod.reborn.server.entity.dinosaur.IndoraptorEntity;
 import mod.reborn.server.period.TimePeriod;
 import net.minecraft.util.ResourceLocation;
 
+
 public class IndoraptorDinosaur extends Dinosaur implements Hybrid
 {
     private ResourceLocation texture;
