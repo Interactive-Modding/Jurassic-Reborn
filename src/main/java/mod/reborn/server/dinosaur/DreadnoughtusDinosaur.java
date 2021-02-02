@@ -42,7 +42,7 @@ public class DreadnoughtusDinosaur extends Dinosaur {
                                  {"tail_vertebrae","pelvis","ribcage","shoulder",""},
                                  {"","hind_leg_bones","hind_leg_bones","front_leg_bones","front_leg_bones"}};
         this.setRecipe(recipe);
-        this.setRecipe(recipe);
+        this.enableSkeleton();
         ArrayList<Biome> biomeList = new ArrayList<Biome>();
         biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.SAVANNA));
         biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.PLAINS));
