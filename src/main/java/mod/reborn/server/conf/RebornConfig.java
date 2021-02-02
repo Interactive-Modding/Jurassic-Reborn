@@ -30,7 +30,7 @@ public class RebornConfig { //TODO: move all structures to same parent package
 
     public static class Entities {
         @Config.Name("Dinosaur Spawning")
-        @Config.Comment("NOT WORKING AT THE MOMENT")
+        @Config.Comment("Requires 3+ Gigabytes of Ram")
         public boolean naturalSpawning = false;
         
         @Config.Name("Goat Spawning")
@@ -52,7 +52,7 @@ public class RebornConfig { //TODO: move all structures to same parent package
         public boolean allowCarcass = true;
 
         @Config.Name("Allow baby's to swim")
-        public boolean canBabysSwim = false;
+        public boolean canBabysSwim = true;
 
         @Config.Name("Allow Feathered Dinosaur Swimming")
         public boolean featheredDinosaurSwimming = false;
