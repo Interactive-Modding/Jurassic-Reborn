@@ -16,7 +16,7 @@ version = '1.0'
 group = 'mod.reborn'
 archivesBaseName = 'rebornmod'
 
-sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
+sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
 
 println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
 minecraft {
@@ -69,11 +69,11 @@ jar {
   manifest {
     attributes([
             "Specification-Title": "rebornmod",
-            "Specification-Vendor": "rebornmodsareus",
+            "Specification-Vendor": "RebornTeam",
             "Specification-Version": "1",
             "Implementation-Title": project.name,
             "Implementation-Version": "${version}",
-            "Implementation-Vendor" :"rebornmodsareus",
+            "Implementation-Vendor" :"RebornTeam",
             "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
     ])
   }
