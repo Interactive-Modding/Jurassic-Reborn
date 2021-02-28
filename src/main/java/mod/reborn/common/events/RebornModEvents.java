@@ -3,6 +3,7 @@ package mod.reborn.common.events;
 import mod.reborn.RebornMod;
 import mod.reborn.common.networking.RebornNetworking;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 
 public class RebornModEvents {
