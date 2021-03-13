@@ -12,15 +12,23 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockLiquid;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.ScaledResolution;
+import net.minecraft.client.renderer.BufferBuilder;
+import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ClassInheritanceMultiMap;
 import net.minecraft.util.EntitySelectors;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
@@ -32,11 +40,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.awt.Color;
 
 public class MinimapGuiApp extends GuiApp
 {
     private static final ResourceLocation texture = new ResourceLocation(RebornMod.MODID, "textures/gui/paleo_pad/apps/minimap.png");
-
+    private static final ResourceLocation widgets = new ResourceLocation(RebornMod.MODID, "textures/gui/widget.png");
     private static final ResourceLocation entity = new ResourceLocation(RebornMod.MODID, "textures/gui/paleo_pad/apps/background/entity.png");
 
     public MinimapGuiApp(App app)
@@ -52,6 +61,9 @@ public class MinimapGuiApp extends GuiApp
 
         EntityPlayer player = mc.player;
         World world = mc.world;
+        ScaledResolution dimensions = new ScaledResolution(mc);
+        int left = dimensions.getScaledWidth() / 2 - 115;
+        int top = 65;
 
         gui.drawScaledText("Loc: " + (int) player.posX + " " + (int) player.posY + " " + (int) player.posZ, 2, 3, 1.0F, 0xFFFFFF);
 
@@ -69,13 +81,18 @@ public class MinimapGuiApp extends GuiApp
         gui.drawBoxOutline(89, 14, 16 * 8 + 1, 16 * 8 + 1, 1, 1.0F, 0x606060);
 
 
-        for (int chunkX = playerChunkX - 4; chunkX < playerChunkX + 4; chunkX++) {
-            for (int chunkZ = playerChunkZ - 4; chunkZ < playerChunkZ + 4; chunkZ++) {
+        for (int chunkX = playerChunkX - 4; chunkX < playerChunkX + 4; chunkX++)
+        {
+            for (int chunkZ = playerChunkZ - 4; chunkZ < playerChunkZ + 4; chunkZ++)
+            {
                 Chunk chunk = world.getChunkFromChunkCoords(chunkX, chunkZ);
 
-                if (!chunk.isEmpty()) {
-                    for (int x = 0; x < 16; x++) {
-                        for (int z = 0; z < 16; z++) {
+                if (!chunk.isEmpty())
+                {
+                    for (int x = 0; x < 16; x++)
+                    {
+                        for (int z = 0; z < 16; z++)
+                        {
                             int blockX = x + (chunkX * 16);
                             int blockZ = z + (chunkZ * 16);
 
@@ -128,65 +145,52 @@ public class MinimapGuiApp extends GuiApp
         renderChunkX = 0;
         renderChunkY = 0;
 
-     //   int trackedEntities = 0;
-
+        int trackedEntities = 0;
+        List<String> dinos = new ArrayList<>();
         for (int chunkX = playerChunkX - 4; chunkX < playerChunkX + 4; chunkX++) {
             for (int chunkZ = playerChunkZ - 4; chunkZ < playerChunkZ + 4; chunkZ++) {
                 Chunk chunk = world.getChunkFromChunkCoords(chunkX, chunkZ);
 
                 if (!chunk.isEmpty()) {
-                    for (Object e : getEntitiesInChunk(chunk, null, EntitySelectors.NOT_SPECTATING)) {
-                        Entity entity = (Entity) e;
-
-                        if (entity instanceof DinosaurEntity) {
-                            DinosaurEntity dino = (DinosaurEntity) entity;
-                            Dinosaur dinosaur = dino.getDinosaur();
-                            //if (dino.hasTracker() && canTrack(dinosaur, dino, player)) {
-                                int colour;
-                                if(dino.getHealth() <= dino.getMaxHealth()/100*50 && dino.getHealth() >= (dino.getMaxHealth()/100)*10) {
-                                    colour = 0xFF9900;
+                    for (Entity e : getEntitiesInChunk(chunk, null, EntitySelectors.NOT_SPECTATING))
+                    {
+                        if(e instanceof DinosaurEntity)
+                        {
+                            DinosaurEntity dino = (DinosaurEntity)e;
+                            if(!dino.trackersUUID.isEmpty())
+                            {
+                                if(dino.trackersUUID.contains(mc.player.getGameProfile().getId().toString()))
+                                {
+                                    trackedEntities++;
+                                    String pos = "("+ (int)e.posX + " " + (int)e.posY + " " + (int)e.posZ + ")";
+                                    dinos.add("-" + dino.getName() + " " + pos);
+                                    int x = (int)e.posX - (playerChunkX-4)*16 + 90 - 1 + left;
+                                    int y = (int)e.posZ - (playerChunkZ-4)*16 + 15 - 1 + top;
+                                    GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+                                    mc.getTextureManager().bindTexture(widgets);
+                                    gui.drawTexturedModalRect(x, y, 0, 0, 3, 3);
                                 }
-                                else if (dino.getHealth() <= (dino.getMaxHealth()/100)*10 || dino.isCarcass()) {
-                                    colour = 0xFF0000;
-                                } else {
-                                    colour = dino.isMale() ? dinosaur.getEggPrimaryColorMale() : dinosaur.getEggPrimaryColorFemale();
-                                }
-
-                                float red = (colour >> 16 & 255) / 255.0F;
-                                float green = (colour >> 8 & 255) / 255.0F;
-                                float blue = (colour & 255) / 255.0F;
-
-                                GL11.glColor3f(red, green, blue);
-
-                                mc.getTextureManager().bindTexture(MinimapGuiApp.entity);
-                                int dinoX = (int) dino.posX;
-                                int dinoZ = (int) dino.posZ;
-
-                                int entityRenderX = (dinoX & 15) + (renderChunkX * 16) + 90 - 4;
-                                int entityRenderY = (dinoZ & 15) + (renderChunkY * 16) + 15 - 4;
-
-                             //   trackedEntities++;
-
-                                gui.drawScaledTexturedModalRect(entityRenderX, entityRenderY, 0, 0, 16, 16, 16, 16, 0.6F);
-                                gui.drawCenteredScaledText(dinosaur.getName(), entityRenderX + 5, entityRenderY + 8, 0.3F, colour);
-                                gui.drawCenteredScaledText(dinoX + " " + (int) dino.posY + " " + dinoZ, entityRenderX + 5, entityRenderY + 8, 0.3F, 0xFFFFFF);
                             }
-
-                            gui.drawScaledText("You!", playerX, (int) player.posY, playerZ, 0xFFFFFF);
-                            gui.drawScaledTexturedModalRect((playerX & 15) + (renderChunkX * 16) + 90 - 4, (playerZ & 15) + (renderChunkY * 16) + 15 - 4, 0, 0, 16, 16, 16, 16, 0.6F);
                         }
                     }
                 }
-
-                renderChunkY++;
             }
+            for(int i = 0; i < dinos.size(); i++)
+            {
+                String s = dinos.get(i);
+                gui.drawScaledText(s, 2, 23 + 10*i, 0.6F, 0xFFFFFF);
 
-            renderChunkY = 0;
-            renderChunkX++;
+            }
         }
-
-   //     gui.drawScaledText("Tracked Entities: " + trackedEntities, 2, 13, 0.67F, 0xFFFFFF);
-//    }
+        gui.drawScaledText("Tracked Dinos : " + trackedEntities, 2, 13, 0.67F, 0xFFFFFF);
+        mc.getTextureManager().bindTexture(widgets);
+        int x = (int)player.posX - (playerChunkX-4)*16 + 90 - 1 + left;
+        int y = (int)player.posZ - (playerChunkZ-4)*16 + 15 - 1 + top;
+        gui.drawTexturedModalRect(x, y, 3, 0, 3, 3);
+        renderChunkY = 0;
+        renderChunkX++;
+        }
+//  }
 
     private BlockPos getHeight(World world, int x, int z)
     {
@@ -220,10 +224,6 @@ public class MinimapGuiApp extends GuiApp
             return pos;
         }
     }
-
-  //  private boolean canTrack(Dinosaur dinosaur, DinosaurEntity dinosaurEntity, EntityPlayer player) {
-  //      return !dinosaur.isImprintable() || dinosaurEntity.getOwner().toString().equals(player.getUniqueID().toString()) && dinosaurEntity.getAgePercentage() >= 75;
-//    }
 
 
     /**
