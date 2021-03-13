@@ -19,6 +19,8 @@ import net.minecraft.entity.passive.IAnimals;
 import net.minecraft.init.Blocks;
 import net.minecraft.pathfinding.Path;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -177,6 +179,29 @@ public abstract class FlyingDinosaurEntity extends DinosaurEntity implements Ent
         }
 
         return true;
+    }
+
+    @Override
+    protected void damageEntity(DamageSource damageSrc, float damageAmount)
+    {
+        super.damageEntity(damageSrc, damageAmount);
+        if(damageSrc != DamageSource.IN_WALL) return;
+        BlockPos p = new BlockPos(this.posX, this.posY, this.posZ);
+        for(int x = -1; x <= 1; x+=2)
+            for(int z = -1; z <= 1; z+=2)
+            {
+                if(!world.getBlockState(p.add(x, 0, z)).isFullBlock())
+                {
+                    this.motionX = x/8D;
+                    this.motionZ = z/8D;
+                    return;
+                }
+            }
+        if(!world.getBlockState(p.down()).isFullBlock())
+        {
+            this.motionY = -0.1D;
+            return;
+        }
     }
 
     class AIStartFlying extends EntityAIBase {
