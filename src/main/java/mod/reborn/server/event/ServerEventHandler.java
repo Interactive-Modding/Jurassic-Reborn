@@ -5,6 +5,7 @@ import mod.reborn.server.block.FossilizedTrackwayBlock;
 import mod.reborn.server.block.plant.DoublePlantBlock;
 import mod.reborn.server.conf.RebornConfig;
 import mod.reborn.server.datafixers.PlayerData;
+import mod.reborn.server.entity.animal.EntityShark;
 import mod.reborn.server.item.ItemHandler;
 import mod.reborn.server.util.GameRuleHandler;
 import net.ilexiconn.llibrary.server.capability.EntityDataHandler;
@@ -15,16 +16,19 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeDecorator;
+import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.gen.feature.WorldGenMinable;
 import net.minecraft.world.storage.loot.LootTable;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.event.entity.EntityEvent;
+import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.event.terraingen.DecorateBiomeEvent;
 import net.minecraftforge.event.world.BlockEvent;
@@ -206,5 +210,16 @@ public class ServerEventHandler {
                 event.getDrops().add(new ItemStack(bugs.get(rand.nextInt(bugs.size()))));
             }
         }
+    }
+
+    @SubscribeEvent
+    public static void removeSharks(EntityJoinWorldEvent event)
+    {
+        if(!(event.getEntity() instanceof EntityShark)) return;
+        Chunk chunk = event.getWorld().getChunkFromChunkCoords((int) event.getEntity().posX >> 4, (int)event.getEntity().posZ >> 4);
+        AxisAlignedBB aa_bb = new AxisAlignedBB((chunk.x-1)*16, 0.0D, (chunk.z-1)*16, (chunk.x+2)*16, event.getWorld().getSeaLevel(), (chunk.z+2)*16);
+        int count = event.getWorld().getEntitiesWithinAABB(EntityShark.class, aa_bb).size();
+        if(count > 18)
+            event.getEntity().setDead();
     }
 }
