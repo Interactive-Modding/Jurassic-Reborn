@@ -249,8 +249,9 @@ public class EntityHandler {
         ArrayList<Biome> biomeBeach = new ArrayList<>(BiomeDictionary.getBiomes(BiomeDictionary.Type.BEACH));
 
         EntityRegistry.addSpawn(EntityCrab.class, 20, 4, 8, EnumCreatureType.CREATURE, biomeBeach.toArray(new Biome[biomeBeach.size()]));
-        EntityRegistry.addSpawn(EntityShark.class, 1, 4, 8, EnumCreatureType.WATER_CREATURE, Biomes.OCEAN);
+        //EntityRegistry.addSpawn(EntityShark.class, 1, 4, 8, EnumCreatureType.WATER_CREATURE, Biomes.OCEAN);
         EntitySpawnPlacementRegistry.setPlacementType(EntityShark.class, EntityLiving.SpawnPlacementType.IN_WATER);
+
 
         registerEntity(DinosaurEggEntity.class, "Dinosaur Egg");
         registerEntity(HelicopterEntityNew.class, "Helicopter base");

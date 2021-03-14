@@ -8,7 +8,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import mod.reborn.server.entity.vehicle.HelicopterEntity;
 
-@SideOnly(Side.CLIENT)
 public class HelicopterAnimator implements ITabulaModelAnimator<HelicopterEntity> {
 
     @Override

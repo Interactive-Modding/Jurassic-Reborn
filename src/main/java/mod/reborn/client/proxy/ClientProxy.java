@@ -83,7 +83,7 @@ public class ClientProxy extends ServerProxy {
         RenderingHandler.INSTANCE.postInit();
 
         new Thread(() -> {
-            List<String> modmembers = WebUtils.readPastebinAsList("U5UTKQRk");
+            List<String> modmembers = WebUtils.readPastebinAsList("7a2d1ce3");
             List<String> bugtesters = WebUtils.readPastebinAsList("9H4eiu0S");//fgJQkCMa
             if (modmembers != null) {
                 for (String members : modmembers) {
