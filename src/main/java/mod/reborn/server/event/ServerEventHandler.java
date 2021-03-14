@@ -219,7 +219,7 @@ public class ServerEventHandler {
         Chunk chunk = event.getWorld().getChunkFromChunkCoords((int) event.getEntity().posX >> 4, (int)event.getEntity().posZ >> 4);
         AxisAlignedBB aa_bb = new AxisAlignedBB((chunk.x-1)*16, 0.0D, (chunk.z-1)*16, (chunk.x+2)*16, event.getWorld().getSeaLevel(), (chunk.z+2)*16);
         int count = event.getWorld().getEntitiesWithinAABB(EntityShark.class, aa_bb).size();
-        if(count > 18)
+        if(count > 12)
             event.getEntity().setDead();
     }
 }
