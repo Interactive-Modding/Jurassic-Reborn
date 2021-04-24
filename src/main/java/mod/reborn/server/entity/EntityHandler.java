@@ -16,6 +16,7 @@ import net.minecraft.entity.EntitySpawnPlacementRegistry;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.init.Biomes;
+import net.minecraft.item.ItemMonsterPlacer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
@@ -241,8 +242,7 @@ public class EntityHandler {
 
         registerEntity(GoatEntity.class, "Goat", 0xEFEDE7, 0x7B3E20);
         registerEntity(EntityCrab.class, "Crab", 0xEFEDE7, 0x7B3E20);
-        registerEntity(EntityShark.class, "Shark", 0xEFEDE7, 0x7B3E20);
-
+        registerEntity(EntityShark.class, "Shark");
         registerEntity(TranquilizerDartEntity.class, "Tranquilizer Dart");
         registerEntity(BulletEntity.class, "bullet");
 

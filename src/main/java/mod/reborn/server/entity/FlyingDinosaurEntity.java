@@ -83,7 +83,7 @@ public abstract class FlyingDinosaurEntity extends DinosaurEntity implements Ent
     }
 
     public boolean isOnGround() {
-        return !this.world.getCollisionBoxes(this, this.getEntityBoundingBox().grow(0.24d)).isEmpty() && !takingOff || this.isDead || this.isCarcass() || this.isInWater();
+        return !this.world.getCollisionBoxes(this, this.getEntityBoundingBox().grow(0.24d).offset(0, -0.5, 0)).isEmpty() && !takingOff || this.isDead || this.isCarcass() || this.isInWater();
     }
 
     public void startTakeOff() {
@@ -252,6 +252,7 @@ public abstract class FlyingDinosaurEntity extends DinosaurEntity implements Ent
                 double moveY = moveHelper.getY() - this.dino.posY;
                 double moveZ = moveHelper.getZ() - this.dino.posZ;
                 double distance = moveX * moveX + moveY * moveY + moveZ * moveZ;
+                System.out.println(distance);
                 return distance < 3.0D || distance > 3600.0D;
             }
         }
@@ -266,12 +267,14 @@ public abstract class FlyingDinosaurEntity extends DinosaurEntity implements Ent
             Vec3d lookVec = new Vec3d(dino.getLookVec().x * 10D, dino.getLookVec().y * 10D, dino.getLookVec().z * 10D).add(new Vec3d(getPosition()));
             Random random = this.dino.getRNG();
             for(int i = 0; i < 100; i++) {
-                double destinationX = this.dino.posX + (double) ((random.nextFloat() * 2.0F - 1.0F) * 16.0F);
-                double destinationY = this.dino.posY + (double) ((random.nextFloat() * 2.0F - 1.0F) * 8.0F);
-                double destinationZ = this.dino.posZ + (double) ((random.nextFloat() * 2.0F - 1.0F) * 16.0F);
+                double destinationX = this.dino.posX + (double) ((random.nextFloat() * 8.0F + 8.0F));
+                double destinationY = this.dino.posY + (double) ((random.nextFloat() * 4.0F + 4.0F));
+                double destinationZ = this.dino.posZ + (double) ((random.nextFloat() * 8.0F + 8.0F));
+                destinationX = random.nextInt(2) == 0 ? destinationX : -1.0D*destinationX;
+                destinationY = random.nextInt(2) == 0 ? destinationY : -1.0D*destinationY;
+                destinationZ = random.nextInt(2) == 0 ? destinationZ : -1.0D*destinationZ;
                 Vec3d vecPos = new Vec3d(destinationX, destinationY, destinationZ);
-                if(dino.isCourseTraversable(vecPos) && Math.abs(MathUtils.cosineFromPoints(vecPos, lookVec, new Vec3d(getPosition()))) < 45D)
-                {
+                if(dino.isCourseTraversable(vecPos) && Math.abs(MathUtils.cosineFromPoints(vecPos, lookVec, new Vec3d(getPosition()))) < 45D) {
                     this.dino.getLookHelper().setLookPosition(destinationX, destinationY, destinationZ, this.dino.getHorizontalFaceSpeed(), this.dino.getVerticalFaceSpeed());
                     this.dino.setAnimation(EntityAnimation.FLYING.get());
                     this.dino.getMoveHelper().setMoveTo(destinationX, destinationY, destinationZ, 2D);
