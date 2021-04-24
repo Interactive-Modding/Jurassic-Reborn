@@ -213,13 +213,17 @@ public class ServerEventHandler {
     }
 
     @SubscribeEvent
-    public static void removeSharks(EntityJoinWorldEvent event)
+    public void preventSharkOverspawning(EntityJoinWorldEvent e)
     {
-        if(!(event.getEntity() instanceof EntityShark)) return;
-        Chunk chunk = event.getWorld().getChunkFromChunkCoords((int) event.getEntity().posX >> 4, (int)event.getEntity().posZ >> 4);
-        AxisAlignedBB aa_bb = new AxisAlignedBB((chunk.x-1)*16, 0.0D, (chunk.z-1)*16, (chunk.x+2)*16, event.getWorld().getSeaLevel(), (chunk.z+2)*16);
-        int count = event.getWorld().getEntitiesWithinAABB(EntityShark.class, aa_bb).size();
-        if(count > 12)
-            event.getEntity().setDead();
+        if(e.getWorld().isRemote) return;
+        if(!(e.getEntity() instanceof EntityShark)) return;
+        if(((EntityShark)e.getEntity()).isSpawnedByEgg) return;
+        AxisAlignedBB aa_bb = new AxisAlignedBB(e.getEntity().posX-64, 0, e.getEntity().posZ-64, e.getEntity().posX+64, e.getWorld().getSeaLevel(), e.getEntity().posZ+64);
+        int count = e.getWorld().getEntitiesWithinAABB(EntityShark.class, aa_bb).size();
+        if(count >= 8)
+        {
+            System.out.println("shark removed");
+            e.getEntity().setDead();
+        }
     }
 }
