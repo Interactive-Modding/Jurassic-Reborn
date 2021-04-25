@@ -34,6 +34,7 @@ public class RugopsDinosaur extends Dinosaur
         this.setHeadCubeName("Head");
         this.setScale(1.0F, 0.1F);
         this.setAttackBias(120);
+        this.setAttackSpeed(1.5);
         this.shouldDefendOffspring();
         this.setImprintable(true);
         this.setBreeding(false, 2, 6, 20, false, true);

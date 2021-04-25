@@ -33,6 +33,10 @@ public class RugopsEntity extends DinosaurEntity
                 return SoundHandler.RUGOPS_DEATH;
             case INJURED:
                 return SoundHandler.RUGOPS_HURT;
+            case ROARING:
+                return SoundHandler.RUGOPS_DEATH;
+            case CALLING:
+                return SoundHandler.RUGOPS_LIVING;
         }
 
         return null;

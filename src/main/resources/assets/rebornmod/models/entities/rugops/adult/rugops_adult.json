@@ -32,19 +32,19 @@
     "ATTACKING": [
       {
         "pose": "rugops_adult_attack_1",
-        "time": 6
+        "time": 4
       },
       {
         "pose": "rugops_adult_attack_2",
-        "time": 6
+        "time": 4
       },
       {
         "pose": "rugops_adult_attack_3",
-        "time": 6
+        "time": 4
       },
       {
         "pose": "rugops_adult_idle",
-        "time": 10
+        "time": 8
       }
 
     ],
