@@ -252,6 +252,7 @@ public class EntityHandler {
         EntityRegistry.addSpawn(EntityShark.class, 4, 4, 8, EnumCreatureType.WATER_CREATURE, Biomes.OCEAN);
         EntitySpawnPlacementRegistry.setPlacementType(EntityShark.class, EntityLiving.SpawnPlacementType.IN_WATER);
 
+
         registerEntity(DinosaurEggEntity.class, "Dinosaur Egg");
         registerEntity(HelicopterEntityNew.class, "Helicopter base");
     }

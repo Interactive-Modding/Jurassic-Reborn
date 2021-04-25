@@ -29,13 +29,13 @@
   "fire": {
     "category": "hostile",
     "sounds": [
-      "rebornmod:fire"
+      "rebornmod:empty"
     ]
   },
   "empty": {
     "category": "hostile",
     "sounds": [
-      "rebornmod:empty"
+      "rebornmod:fire"
     ]
   },
   "reload": {
