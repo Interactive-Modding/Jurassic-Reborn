@@ -400,6 +400,7 @@ public enum RenderingHandler {
         for (NestFossilBlock.Variant variant : NestFossilBlock.Variant.values()) {
             registerItemRenderer(FOSSILIZED_EGG, variant.ordinal(), "fossilized_egg_" + (variant.ordinal() + 1));
         }
+        registerItemRenderer(SHARK_EGG, "shark_egg");
 
         for (TreeType type : TreeType.values()) {
             String name = type.name().toLowerCase(Locale.ENGLISH);
@@ -434,7 +435,7 @@ public enum RenderingHandler {
         registerItemRenderer(DART_POISON_CYCASIN, "dart_colored");
         registerItemRenderer(DART_POISON_EXECUTIONER_CONCOCTION, "dart_colored");
         registerItemRenderer(DART_TIPPED_POTION, "dart_colored");
-        //registerItemRenderer(TRACKER_DART, "dart_colored");
+        registerItemRenderer(TRACKER_DART, "dart_colored");
 
         registerItemRenderer(GLOCK, "glock");
         registerItemRenderer(REMINGTON, "remington");
