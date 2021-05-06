@@ -23,18 +23,22 @@ import net.minecraft.entity.passive.EntitySquid;
 import net.minecraft.entity.passive.EntityWaterMob;
 import net.minecraft.entity.passive.IAnimals;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Biomes;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.pathfinding.PathNavigateSwimmer;
 import net.minecraft.pathfinding.PathNodeType;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.Biome;
 import net.minecraftforge.fml.common.registry.IEntityAdditionalSpawnData;
 
 public class EntityShark extends EntityAnimal implements Animatable, IEntityAdditionalSpawnData, IMob {
@@ -47,6 +51,7 @@ public class EntityShark extends EntityAnimal implements Animatable, IEntityAddi
     private int animationTick;
     private int animationLength;
     private boolean inLava;
+    public boolean isSpawnedByEgg;
 
     public EntityShark(World world) {
         super(world);
@@ -58,6 +63,21 @@ public class EntityShark extends EntityAnimal implements Animatable, IEntityAddi
         this.moveHelper = new SwimmingMoveHelper();
         this.navigator = new PathNavigateSwimmer(this, world);
         this.setAnimation(EntityAnimation.IDLE.get());
+        this.isSpawnedByEgg = false;
+    }
+
+    @Override
+    public void writeEntityToNBT(NBTTagCompound compound)
+    {
+        super.writeEntityToNBT(compound);
+        compound.setBoolean("egg_spawned", this.isSpawnedByEgg);
+    }
+
+    @Override
+    public void readEntityFromNBT(NBTTagCompound compound)
+    {
+        super.readEntityFromNBT(compound);
+        this.isSpawnedByEgg = compound.getBoolean("egg_spawned");
     }
 
     @Override
@@ -241,6 +261,12 @@ public class EntityShark extends EntityAnimal implements Animatable, IEntityAddi
         if (!this.world.isRemote) {
             this.dataManager.set(WATCHER_IS_RUNNING, this.getAIMoveSpeed() > this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue());
         }
+    }
+
+    @Override
+    public int getMaxSpawnedInChunk()
+    {
+        return 1;
     }
 
     @Override
