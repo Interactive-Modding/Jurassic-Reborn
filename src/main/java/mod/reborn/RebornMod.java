@@ -1,5 +1,6 @@
 package mod.reborn;
 
+import mod.reborn.client.events.RebornClientEvents;
 import mod.reborn.common.RebornConfig;
 import mod.reborn.common.events.RebornForgeEvents;
 import mod.reborn.common.events.RebornModEvents;
@@ -19,6 +20,8 @@ public class RebornMod {
     public static final String MOD_ID = "rebornmod";
     public static final Logger LOGGER = LogManager.getLogger();
 
+    public static long timerTicks;
+
     public boolean isTestEnv() {
         return !FMLEnvironment.production;
     }
@@ -29,5 +32,6 @@ public class RebornMod {
         IEventBus forgeEventBus = MinecraftForge.EVENT_BUS;
         RebornModEvents.Register(modEventBus).Log();
         RebornForgeEvents.Register(forgeEventBus).Log();
+        RebornClientEvents.Register(forgeEventBus).Log();
     }
 }
