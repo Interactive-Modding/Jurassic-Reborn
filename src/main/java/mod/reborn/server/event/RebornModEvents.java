@@ -1,4 +1,4 @@
-package mod.reborn.server.events;
+package mod.reborn.server.event;
 
 import mod.reborn.RebornMod;
 import mod.reborn.server.networking.RebornNetworking;

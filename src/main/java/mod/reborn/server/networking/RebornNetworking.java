@@ -1,4 +1,4 @@
-package mod.reborn.common.networking;
+package mod.reborn.server.networking;
 
 import mod.reborn.RebornMod;
 import net.minecraft.util.ResourceLocation;

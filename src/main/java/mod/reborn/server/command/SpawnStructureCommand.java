@@ -1,4 +1,4 @@
-package mod.reborn.server.commands;
+package mod.reborn.server.command;
 
 import com.mojang.brigadier.CommandDispatcher;
 import net.minecraft.command.CommandSource;
