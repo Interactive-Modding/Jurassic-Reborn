@@ -1,7 +1,7 @@
-package mod.reborn.common.events;
+package mod.reborn.server.events;
 
 import mod.reborn.RebornMod;
-import mod.reborn.common.commands.SpawnStructureCommand;
+import mod.reborn.server.command.SpawnStructureCommand;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 

@@ -1,9 +1,7 @@
-package mod.reborn.common.commands;
+package mod.reborn.server.commands;
 
-import com.mojang.brigadier.Command;
 import com.mojang.brigadier.CommandDispatcher;
 import net.minecraft.command.CommandSource;
-import net.minecraft.command.Commands;
 
 public class SpawnStructureCommand {
 

@@ -46,34 +46,7 @@ public class RebornClientEvents {
     private void onGUIRender(GuiScreenEvent.DrawScreenEvent.Pre event) {
         this.isGUI = true;
     }
-/*
-    private void onRenderPlayer(RenderPlayerEvent.Pre event) {
-        if(!replacedPlayerModel) {
-            EntityRenderer<? super PlayerEntity> render = Minecraft.getInstance().getRenderManager().getRenderer(event.getPlayer());
-            Map<String, PlayerRenderer> skinMap = render.getRenderManager().getSkinMap();
-            fixPlayerRenderers(skinMap.get("default"), false);
-            fixPlayerRenderers(skinMap.get("slim"), true);
-            replacedPlayerModel = true;
-        }
-    }
 
-    private void fixPlayerRenderers(PlayerRenderer player, boolean slimArms) {
-
-        BipedModel<AbstractClientPlayerEntity> model = new PlayerModel<>(0.0F, slimArms);
-        List<LayerRenderer<PlayerEntity, EntityModel<PlayerEntity>>> layers = ObfuscationReflectionHelper.getPrivateValue(LivingRenderer.class, player, (Boolean) Launch.blackboard.get("fml.deobfuscatedEnvironment") ? "layerRenderers" : "field_177097_h");
-        if(layers != null)
-        {
-            for(int i = 0; i < layers.size(); i++) {
-                LayerRenderer<PlayerEntity, EntityModel<PlayerEntity>> layer = layers.get(i);
-                if(layer instanceof )
-                    layers.remove(layer);
-            }
-            layers.add(new LayerCustomHead(model.bipedHead));
-        }
-
-        ObfuscationReflectionHelper.setPrivateValue(LivingRenderer.class, player, model, (Boolean) Launch.blackboard.get("fml.deobfuscatedEnvironment") ? "entityModel" : "field_77045_g");
-    }
-*/
     private void tick(TickEvent.ClientTickEvent event) {
         RebornMod.timerTicks++;
     }

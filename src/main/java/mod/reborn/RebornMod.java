@@ -1,9 +1,9 @@
 package mod.reborn;
 
 import mod.reborn.client.events.RebornClientEvents;
-import mod.reborn.common.RebornConfig;
-import mod.reborn.common.events.RebornForgeEvents;
-import mod.reborn.common.events.RebornModEvents;
+import mod.reborn.server.RebornConfig;
+import mod.reborn.server.event.RebornForgeEvents;
+import mod.reborn.server.event.RebornModEvents;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModLoadingContext;

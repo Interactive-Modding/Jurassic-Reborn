@@ -1,9 +1,8 @@
-package mod.reborn.common.events;
+package mod.reborn.server.events;
 
 import mod.reborn.RebornMod;
-import mod.reborn.common.networking.RebornNetworking;
+import mod.reborn.server.networking.RebornNetworking;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 
 public class RebornModEvents {

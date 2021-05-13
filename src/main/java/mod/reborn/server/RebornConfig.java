@@ -1,4 +1,4 @@
-package mod.reborn.common;
+package mod.reborn.server;
 
 import net.minecraftforge.common.ForgeConfigSpec;
 
