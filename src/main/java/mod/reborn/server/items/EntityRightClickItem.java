@@ -4,6 +4,7 @@ import mod.reborn.server.tab.TabHandler;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
@@ -16,6 +17,11 @@ public class EntityRightClickItem extends Item {
 
     public EntityRightClickItem(Function<Interaction, ActionResultType> func) {
         super(new Properties().group(TabHandler.ITEMS));
+        this.func = func;
+    }
+
+    public EntityRightClickItem(Function<Interaction, ActionResultType> func, ItemGroup tab) {
+        super(new Properties().group(tab));
         this.func = func;
     }
 

@@ -1,11 +1,7 @@
 package mod.reborn.server.util;
 
 import net.minecraft.client.resources.I18n;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
 import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.SignTileEntity;
-import net.minecraft.util.registry.Registry;
 import net.minecraft.util.text.TextFormatting;
 
 import java.util.Locale;
