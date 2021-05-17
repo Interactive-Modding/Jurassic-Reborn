@@ -1,6 +1,6 @@
 package mod.reborn;
 
-import mod.reborn.client.events.RebornClientEvents;
+import mod.reborn.client.event.RebornClientEvents;
 import mod.reborn.server.RebornConfig;
 import mod.reborn.server.event.RebornForgeEvents;
 import mod.reborn.server.event.RebornModEvents;

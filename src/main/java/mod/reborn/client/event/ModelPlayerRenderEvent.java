@@ -1,4 +1,4 @@
-package mod.reborn.client.events;
+package mod.reborn.client.event;
 
 import net.minecraft.client.entity.player.AbstractClientPlayerEntity;
 import net.minecraft.client.renderer.entity.model.PlayerModel;

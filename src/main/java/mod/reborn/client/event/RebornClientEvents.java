@@ -1,4 +1,4 @@
-package mod.reborn.client.events;
+package mod.reborn.client.event;
 
 import com.mojang.blaze3d.platform.GlStateManager;
 import mod.reborn.RebornMod;

@@ -1,11 +1,12 @@
 package mod.reborn.server.dinosaur;
 
-import net.minecraft.util.RegistryKey;
+import mod.reborn.server.entity.Diet;
+import mod.reborn.server.entity.dinosaur.AchillobatorEntity;
+import mod.reborn.server.period.TimePeriod;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
 
 import java.util.ArrayList;
-import java.util.stream.Collectors;
 
 public class AchillobatorDinosaur extends Dinosaur {
     public static final double SPEED = 0.4F;
@@ -46,7 +47,7 @@ public class AchillobatorDinosaur extends Dinosaur {
                 {"foot_bones", "foot_bones", "", ""}};
         this.setRecipe(recipe);
 
-        ArrayList<Biome> biomeList = new ArrayList<Biome>();
+        ArrayList<Biome> biomeList = new ArrayList<>();
         biomeList.addAll(new ArrayList(BiomeDictionary.getBiomes(BiomeDictionary.Type.JUNGLE)));
         biomeList.addAll(new ArrayList(BiomeDictionary.getBiomes(BiomeDictionary.Type.FOREST)));
         biomeList.addAll(new ArrayList(BiomeDictionary.getBiomes(BiomeDictionary.Type.DENSE)));

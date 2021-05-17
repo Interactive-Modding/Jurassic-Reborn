@@ -47,10 +47,10 @@ public class FoodNutrients {
         register(Items.WHEAT, 0.100, 0.220, 0.100, 0.030);
         register(Items.MUTTON, 0.460, 0.310, 0.390, 0.380);
         register(Items.COOKED_MUTTON, 0.580, 0.390, 0.490, 0.470);
-        register(ItemHandler.GOAT_RAW, 0.460, 0.310, 0.390, 0.380);
-        register(ItemHandler.GOAT_COOKED, 0.580, 0.390, 0.490, 0.470);
-        register(ItemHandler.DINOSAUR_MEAT, 0.460, 0.310, 0.390, 0.380);
-        register(ItemHandler.DINOSAUR_STEAK, 0.580, 0.390, 0.490, 0.470);
+        //register(ItemHandler.GOAT_RAW, 0.460, 0.310, 0.390, 0.380);
+        //register(ItemHandler.GOAT_COOKED, 0.580, 0.390, 0.490, 0.470);
+        //register(ItemHandler.DINOSAUR_MEAT, 0.460, 0.310, 0.390, 0.380);
+        //register(ItemHandler.DINOSAUR_STEAK, 0.580, 0.390, 0.490, 0.470);
     }
 
     public static void register(Item item, double foodProximates, double foodMinerals, double foodVitamins, double foodLipids) {

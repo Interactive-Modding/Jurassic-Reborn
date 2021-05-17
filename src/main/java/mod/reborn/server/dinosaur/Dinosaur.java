@@ -1,9 +1,11 @@
 package mod.reborn.server.dinosaur;
 
 import mod.reborn.RebornMod;
+import mod.reborn.server.entity.Diet;
 import mod.reborn.server.entity.DinosaurEntity;
 import mod.reborn.server.entity.GrowthStage;
 import mod.reborn.server.entity.SleepTime;
+import mod.reborn.server.period.TimePeriod;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.biome.Biome;
