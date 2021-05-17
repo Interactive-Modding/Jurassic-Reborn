@@ -20,6 +20,8 @@ public class RebornMod {
     public static final String MOD_ID = "rebornmod";
     public static final Logger LOGGER = LogManager.getLogger();
 
+    public static Logger getLogger() { return LOGGER; }
+
     public static long timerTicks;
 
     public boolean isTestEnv() {
