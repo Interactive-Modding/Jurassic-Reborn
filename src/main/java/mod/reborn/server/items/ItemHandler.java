@@ -1,6 +1,7 @@
 package mod.reborn.server.items;
 
 import mod.reborn.RebornMod;
+import mod.reborn.server.entity.DinosaurEntity;
 import mod.reborn.server.tab.TabHandler;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
