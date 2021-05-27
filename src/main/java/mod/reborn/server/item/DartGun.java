@@ -45,6 +45,8 @@ public class DartGun extends Item {
         	event = SoundEvents.BLOCK_COMPARATOR_CLICK;
             }
         } else if (!worldIn.isRemote) {
+            if(!dartItem.hasTagCompound())
+                dartItem.setTagCompound(new NBTTagCompound());
             dartItem.getTagCompound().setString("uuid", playerIn.getGameProfile().getId().toString());
             TranquilizerDartEntity dart = new TranquilizerDartEntity(worldIn, playerIn, dartItem);
             dart.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, 2.5F, 0.5F);
