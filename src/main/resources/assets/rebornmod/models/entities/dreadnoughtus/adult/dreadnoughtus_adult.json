@@ -42,7 +42,7 @@
     "LOOKING_LEFT": [
       {
         "pose": "dreadnoughtus_adult_looking_left_1",
-        "time": 30
+        "time": 65
       },
       {
         "pose": "dreadnoughtus_adult_looking_left_2",
@@ -58,7 +58,7 @@
       },
       {
         "pose": "dreadnoughtus_adult_idle",
-        "time": 25
+        "time": 65
       }
     ],
     "LOOKING_RIGHT": [

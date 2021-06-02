@@ -21,7 +21,7 @@ public class RugopsDinosaur extends Dinosaur
         this.setTimePeriod(TimePeriod.CRETACEOUS);
         this.setEggColorMale(0xB5F75D, 0x202022);
         this.setEggColorFemale(0xE1A857, 0x5A2108);
-        this.setHealth(10, 40);
+        this.setHealth(10, 30);
         this.setStrength(5, 15);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setMaximumAge(fromDays(45));

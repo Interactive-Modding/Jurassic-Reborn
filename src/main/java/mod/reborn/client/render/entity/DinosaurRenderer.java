@@ -6,6 +6,7 @@ import mod.reborn.server.entity.dinosaur.ParasaurolophusEntity;
 import mod.reborn.server.entity.dinosaur.DeinotheriumEntity;
 import mod.reborn.server.entity.dinosaur.SmilodonEntity;
 import mod.reborn.server.entity.dinosaur.TitanisEntity;
+import mod.reborn.server.entity.dinosaur.CeratosaurusEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.OpenGlHelper;
@@ -121,6 +122,9 @@ public class DinosaurRenderer extends RenderLiving<DinosaurEntity> {
         }
         if(entity instanceof TitanisEntity && !entity.isSkeleton()) {
             return ((TitanisEntity)entity).getTexture();
+        }
+        if(entity instanceof CeratosaurusEntity && !entity.isSkeleton()) {
+            return ((CeratosaurusEntity)entity).getTexture();
         }
 
         return entity.isMale() ? this.dinosaur.getMaleTexture(growthStage) : this.dinosaur.getFemaleTexture(growthStage);
