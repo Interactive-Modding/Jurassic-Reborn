@@ -99,6 +99,7 @@ entity.rebornmod.indoraptor.name=Indoraptor
 entity.rebornmod.dreadnoughtus.name=Dreadnoughtus
 entity.rebornmod.deinotherium.name=Deinotherium
 entity.rebornmod.sinoceratops.name=Sinoceratops
+entity.rebornmod.spinoraptor.name=Spinoraptor
 
 entity.rebornmod.goat.name=Goat
 entity.rebornmod.jeep_wrangler.name=Jeep Wrangler
@@ -815,6 +816,7 @@ info.zhenyuanopterus.name=The Zhenyuanopterus lived in China during the Early Cr
 info.hyaenodon.name=The Hyaenodon was a highly successful genus of Creodont that lived from the Late Eocene to the early Miocene in Asia, Africa, and North America. Despite their appearance, Creodonts were a separate order to the more familiar Carnivora. The two orders separated from a common ancestor around the K-T boundary. Hyaenodons were extremely efficient predators that were able to spread across most of the world.
 info.dreadnoughtus.name= Native to Argentina in the Late Cretaceous period, the Dreadnoughtus was a towering giant that dwarfed most other sauropods in sheer scale. Like most of Titanosauria, it’s hide was studded with small, boney osteoderms that protected the weaker juveniles from predators. They would have lived in loose herds of 3-4 members, but usually regrouped in large numbers during mating season.
 info.sinoceratops.name= Sinoceratops was a large ceratopsian that lived in East Asia during the Late Cretaceous. Their diet was mainly made up of tough plant matter such as ferns and cycads. Unlike their larger cousin triceratops, Sinoceratops only had a single nose horn but made up for this in a much more elaborate frill. They mainly lived in smaller family groups than other ceratopsians of 4-10 individuals led by a breeding pair.
+info.spinoraptor.name= Spinoraptor is a hereditarily altered type of dinosaur, made by Dr. Henry Wu by consolidating the base genome of Spinosaurus with that of Velociraptor. The Spinoraptor is a social creature and needs somewhere in the range of two and four individuals from their species to stay content.
 
 journal.chef_alejandro.name=Chef Alejandro
 journal.dennis_nedry.name=Dennis Nedry
