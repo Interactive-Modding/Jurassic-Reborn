@@ -204,9 +204,9 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
 
     public DinosaurEntity(World world) {
         super(world);
-        this.setSize(width + 0.1F, height + 0.1F);
-        this.moveHelper = new DinosaurMoveHelper(this);
-        this.jumpHelper = new DinosaurJumpHelper(this);
+        blocked = false;
+        //Necessary to set the bounding box, rather than having NULL_BOX
+        setSize(1, 1);
 
         this.setFullyGrown();
         this.updateAttributes();
