@@ -201,7 +201,7 @@ public class MuralEntity extends EntityHanging implements IEntityAdditionalSpawn
         SKETCH(64, 32),
         TRICERATOPS(128, 32),
         VALLEY(64, 32),
-        JOHN_HAMMOND(32, 16);
+        JOHN_HAMMOND(32, 32);
 
         public final int sizeX;
         public final int sizeY;
