@@ -31,6 +31,7 @@ public class IndoraptorDinosaur extends Dinosaur implements Hybrid
         this.setSizeX(0.2F, 2.8F);
         this.setSizeY(0.2F, 4F);
         this.setStorage(54);
+        this.setAttackSpeed(1.6);
         this.setDiet((Diet.CARNIVORE.get()));
         this.setBones( "front_leg_bones", "hind_leg_bones", "foot_bones", "neck_vertebrae", "claw", "pelvis", "ribcage", "shoulder", "skull", "tail_vertebrae", "tooth");
         this.setHeadCubeName("Head");
@@ -38,6 +39,8 @@ public class IndoraptorDinosaur extends Dinosaur implements Hybrid
         this.setAttackBias(4000);
         this.setBreeding(false, 0, 0, 999, false, false);
         this.setHybrid();
+        this.setCanClimb(true);
+        this.setJumpHeight(3);
         this.setDefendOwner(true);
         this.setImprintable(true);
         String[][] recipe = {
