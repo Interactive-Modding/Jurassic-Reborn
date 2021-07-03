@@ -228,11 +228,11 @@
       },
       {
         "pose": "parasaurolophus_adult_eating_2",
-        "time": 10
+        "time": 15
       },
       {
         "pose": "parasaurolophus_adult_eating_3",
-        "time": 5
+        "time": 15
       },
       {
         "pose": "parasaurolophus_adult_eating_4",
@@ -244,11 +244,11 @@
       },
       {
         "pose": "parasaurolophus_adult_eating_6",
-        "time": 5
+        "time": 15
      },
       {
         "pose": "parasaurolophus_adult_eating_7",
-        "time": 5
+        "time": 15
       },
       {
         "pose": "parasaurolophus_adult_eating_8",
@@ -260,7 +260,7 @@
       },
       {
         "pose": "parasaurolophus_adult_eating_10",
-        "time": 5
+        "time": 15
       },
       {
         "pose": "parasaurolophus_adult_idle",

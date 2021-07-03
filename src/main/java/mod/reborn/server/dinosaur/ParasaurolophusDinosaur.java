@@ -32,7 +32,7 @@ public class ParasaurolophusDinosaur extends Dinosaur {
         this.setDiet(Diet.HERBIVORE.get());
         this.setBones("cheek_teeth", "front_leg_bones", "hind_leg_bones", "neck_vertebrae", "pelvis", "ribcage", "shoulder","skull", "tail_vertebrae");
         this.setHeadCubeName("Head");
-        this.setScale(1.7F, 0.1F);
+        this.setScale(1.55F, 0.1F);
         this.setImprintable(true);
         this.setFlockSpeed(1.5F);
         this.setAttackBias(-100.0);
