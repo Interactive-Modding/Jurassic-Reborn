@@ -31,7 +31,7 @@ public class ApatosaurusDinosaur extends Dinosaur
         this.setDiet((Diet.HERBIVORE.get()));
         this.setBones("front_leg_bones", "hind_leg_bones", "neck_vertebrae", "pelvis", "ribcage", "shoulder", "skull", "tail_vertebrae", "tooth");
         this.setHeadCubeName("Head");
-        this.setScale(1.8F, 0.1F);
+        this.setScale(1.45F, 0.1F);
         this.setBreeding(false, 4, 8, 70, false, true);
         this.setImprintable(true);
         this.setMaxHerdSize(6);

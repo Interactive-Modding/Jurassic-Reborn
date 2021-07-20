@@ -182,6 +182,32 @@
         "sounds": [
             "rebornmod:dinosaurs/therizinosaurus/therizinosaurus_threat_1"
         ]
+},
+  "diplodocus_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/diplodocus/diplodocus_living_1",
+      "rebornmod:dinosaurs/diplodocus/diplodocus_living_2",
+      "rebornmod:dinosaurs/diplodocus/diplodocus_living_3",
+      "rebornmod:dinosaurs/diplodocus/diplodocus_living_4",
+      "rebornmod:dinosaurs/diplodocus/diplodocus_living_5",
+      "rebornmod:dinosaurs/diplodocus/diplodocus_living_6",
+      "rebornmod:dinosaurs/diplodocus/diplodocus_living_7",
+      "rebornmod:dinosaurs/diplodocus/diplodocus_living_8",
+      "rebornmod:dinosaurs/diplodocus/diplodocus_living_9"
+    ]
+  },
+  "diplodocus_death": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/diplodocus/diplodocus_death"
+    ]
+  },
+  "diplodocus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/diplodocus/diplodocus_hurt"
+    ]
  },
   "protoceratops_living": {
     "category": "hostile",
