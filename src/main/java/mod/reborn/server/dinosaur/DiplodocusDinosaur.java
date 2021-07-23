@@ -25,7 +25,7 @@ public class DiplodocusDinosaur extends Dinosaur
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStorage(52);
         this.setDiet((Diet.HERBIVORE.get()));
-        this.setStrength(20, 60);
+        this.setStrength(10, 60);
         this.setMaximumAge(fromDays(95));
         this.setEyeHeight(1.55F, 8.95F);
         this.setRotationAngle(50, 10);

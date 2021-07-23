@@ -101,6 +101,7 @@ entity.rebornmod.dreadnoughtus.name=Dreadnoughtus
 entity.rebornmod.sinoceratops.name=Sinoceratopo
 entity.rebornmod.spinoraptor.name=Spinoraptor
 entity.rebornmod.diplodocus.name=Diplodocus 
+entity.rebornmod.ankylodocus.name=Ankylodocus
 
 entity.rebornmod.goat.name=Cabra
 entity.rebornmod.jeep_wrangler.name=Jeep
@@ -819,6 +820,7 @@ info.dreadnoughtus.name=Nativo da Argentina no período Cretáceo Superior, o Dr
 info.sinoceratops.name=Sinoceratops foi um grande ceratopsiano que viveu no Leste Asiático durante o Cretáceo Superior. Sua dieta era composta principalmente de matéria vegetal resistente, como samambaias e cicadáceas. Ao contrário de seu primo maior, o tricerátopo, os Sinocerátopos tinham apenas um único chifre de nariz, mas compensavam isso com um folho muito mais elaborado. Eles viveram principalmente em grupos familiares menores do que outros ceratopsianos de 4-10 indivíduos liderados por um casal reprodutor.
 info.spinoraptor.name=O Spinoraptor é um tipo de dinossauro alterado hereditariamente, feito pelo Dr. Henry Wu pela consolidação do genoma base do Spinosaurus com o do Velociraptor. O Spinoraptor é uma criatura social e precisa de algo entre dois e quatro indivíduos de sua espécie para ficar contente.
 info.diplodocus.name=Nativo da América do Norte durante o Jurássico Superior (cerca de 154-150 milhões de anos atrás), o Diplodocus pode crescer até cerca de 35 metros de comprimento e cerca de 10-16 toneladas de peso. Embora não seja o maior saurópode conhecido, ainda é o mais longo dinossauro do qual um esqueleto completo foi encontrado. Devido ao seu tamanho enorme, o diplodoco totalmente crescido e saudável provavelmente não precisava se preocupar muito com predadores.
+info.ankylodocus.name=O Ankylodocus é um tipo de dinossauro alterado hereditariamente, feito pelo Dr. Henry Wu ao consolidar o genoma base do Diplodocus com o do Ankylosaurus. O Ankylodocus tem a figura longa e nivelada do saurópode diplodoco e os destaques forçados e cautelosos do Ankylosaurus, por exemplo, pontas afiadas cobrindo suas costas e uma cauda torturada.
 
 journal.chef_alejandro.name=Chef Alejandro
 journal.dennis_nedry.name=Dennis Nedry

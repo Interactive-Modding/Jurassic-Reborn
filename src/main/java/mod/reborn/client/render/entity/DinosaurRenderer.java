@@ -11,6 +11,7 @@ import mod.reborn.server.entity.dinosaur.BaryonyxEntity;
 import mod.reborn.server.entity.dinosaur.IndoraptorEntity;
 import mod.reborn.server.entity.dinosaur.DiplodocusEntity;
 import mod.reborn.server.entity.dinosaur.CeratosaurusEntity;
+import mod.reborn.server.entity.dinosaur.AnkylodocusEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.OpenGlHelper;
@@ -142,6 +143,10 @@ public class DinosaurRenderer extends RenderLiving<DinosaurEntity> {
         if(entity instanceof DiplodocusEntity && !entity.isSkeleton()) {
             return ((DiplodocusEntity)entity).getTexture();
         }
+        if(entity instanceof AnkylodocusEntity && !entity.isSkeleton()) {
+            return ((AnkylodocusEntity)entity).getTexture();
+        }
+
 
         return entity.isMale() ? this.dinosaur.getMaleTexture(growthStage) : this.dinosaur.getFemaleTexture(growthStage);
     }

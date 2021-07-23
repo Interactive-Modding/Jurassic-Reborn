@@ -99,6 +99,7 @@ entity.rebornmod.sinoceratops.name=Sinoceratops
 entity.rebornmod.arsinoitherium.name=Arsinoitherium
 entity.rebornmod.spinoraptor.name=Espinoraptor
 entity.rebornmod.diplodocus.name=Diplodocus
+entity.rebornmod.ankylodocus.name=Ankylodocus
 
 entity.rebornmod.goat.name=Cabra
 entity.rebornmod.jeep_wrangler.name=Jeep Wrangler
@@ -819,6 +820,8 @@ info.dreadnoughtus.name=Originario de Argentina en el período Cretácico tardí
 info.sinoceratops.name=Sinoceratops fue un gran ceratopsiano que vivió en el este de Asia durante el Cretácico Superior. Su dieta se componía principalmente de materia vegetal dura como helechos y cícadas. A diferencia de su primo más grande, el triceratops, el Sinoceratops solo tenía un cuerno en la nariz, pero lo compensaba con un volante mucho más elaborado. Vivían principalmente en grupos familiares más pequeños que otros ceratopsianos de 4 a 10 individuos liderados por una pareja reproductora.
 info.spinoraptor.name=Spinoraptor es un tipo de dinosaurio alterado hereditariamente, creado por el Dr. Henry Wu al consolidar el genoma base de Spinosaurus con el de Velociraptor. El Spinoraptor es una criatura social y necesita un rango de dos o cuatro individuos de su especie para mantenerse contento.
 info.diplodocus.name=Originario de América del Norte durante el Jurásico tardío (hace unos 154-150 millones de años), el Diplodocus podía crecer hasta unos 35 metros de longitud y un peso estimado de 10 a 16 toneladas. Aunque no es el saurópodo más grande conocido, sigue siendo el dinosaurio más largo del que se ha encontrado un esqueleto completo. Debido a su tamaño masivo, lo más probable es que el Diplodocus sano y completamente desarrollado no tenga que preocuparse demasiado por los depredadores.
+info.ankylodocus.name=Ankylodocus es un tipo de dinosaurio cambiado hereditariamente, creado por el Dr. Henry Wu al consolidar el genoma base de Diplodocus con el de Ankylosaurus. Ankylodocus tiene la figura larga y nivelada del saurópodo Diplodocus, y los reflejos cautelosos y forzados del Ankylosaurus, por ejemplo, picos afilados que cubren su espalda y una cola apaleada.
+
 
 journal.chef_alejandro.name=Chef Alejandro
 journal.dennis_nedry.name=Dennis Nedry

@@ -208,6 +208,30 @@
     "sounds": [
       "rebornmod:dinosaurs/diplodocus/diplodocus_hurt"
     ]
+},
+  "ankylodocus_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/ankylodocus/ankylodocus_living_1",
+      "rebornmod:dinosaurs/ankylodocus/ankylodocus_living_2",
+      "rebornmod:dinosaurs/ankylodocus/ankylodocus_living_3",
+      "rebornmod:dinosaurs/ankylodocus/ankylodocus_living_4",
+      "rebornmod:dinosaurs/ankylodocus/ankylodocus_living_5",
+      "rebornmod:dinosaurs/ankylodocus/ankylodocus_living_6",
+      "rebornmod:dinosaurs/ankylodocus/ankylodocus_living_7"
+    ]
+  },
+  "ankylodocus_death": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/ankylodocus/ankylodocus_death"
+    ]
+  },
+  "ankylodocus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/ankylodocus/ankylodocus_hurt"
+    ]
  },
   "protoceratops_living": {
     "category": "hostile",

@@ -545,6 +545,7 @@ public enum RenderingHandler {
         registerRenderInfo(EntityHandler.TITANIS, new TitanisAnimator(), 0.65F);
         registerRenderInfo(EntityHandler.SPINORAPTOR, new SpinoraptorAnimator(),0.65F);
         registerRenderInfo(EntityHandler.DIPLODOCUS, new DiplodocusAnimator(), 1.5F);
+        registerRenderInfo(EntityHandler.ANKYLODOCUS, new AnkylodocusAnimator(), 1.5F);
 
 
 
