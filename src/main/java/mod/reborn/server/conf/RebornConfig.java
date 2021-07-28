@@ -20,6 +20,8 @@ public class RebornConfig { //TODO: move all structures to same parent package
     @Config.Name("plant Generation")
     public static final PlantGeneration PLANT_GENERATION = new PlantGeneration();
 
+    @Config.Name("dimension Blacklist")
+    public static final Dimensions DIM_BLACKLIST = new Dimensions();
 
     @Config.Name("structure Generation")
     public static final StructureGeneration STRUCTURE_GENERATION = new StructureGeneration();
@@ -27,6 +29,11 @@ public class RebornConfig { //TODO: move all structures to same parent package
     @Config.Name("vehicles")
     public static final Vehicles VEHICLES = new Vehicles();
 
+    public static class Dimensions {
+        @Config.Name("Dimension Blacklist")
+        @Config.Comment("Prevents Reborn making worldgen changes in these dimension IDs")
+        public int[] dimBlacklist = new int[]{-1, 1};
+    }
 
     public static class Entities {
         @Config.Name("Dinosaur Spawning")

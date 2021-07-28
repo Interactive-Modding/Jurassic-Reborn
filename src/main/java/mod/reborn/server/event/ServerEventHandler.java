@@ -63,7 +63,7 @@ public class ServerEventHandler {
     public void decorate(DecorateBiomeEvent.Pre event) {
         World world = event.getWorld();
 
-        if (world.provider.getDimension() == 0) {
+        if (!dimCheck(world.provider.getDimension(), RebornConfig.DIM_BLACKLIST.dimBlacklist)) {
 
             BlockPos pos = event.getPos();
             Random rand = event.getRand();
@@ -100,14 +100,15 @@ public class ServerEventHandler {
                         }
                     }
                 }
-            }
 
-            if (BiomeDictionary.hasType(biome, BiomeDictionary.Type.JUNGLE)) {
-                if (rand.nextInt(8) == 0) {
-                    BlockPos topBlock = world.getTopSolidOrLiquidBlock(pos);
-                    if (world.getBlockState(topBlock.down()).isOpaqueCube() && !world.getBlockState(topBlock).getMaterial().isLiquid()) {
-                        world.setBlockState(topBlock.up(), BlockHandler.HELICONIA.getDefaultState(), 2 | 16);
-                        world.setBlockState(topBlock, BlockHandler.HELICONIA.getDefaultState().withProperty(DoublePlantBlock.HALF, DoublePlantBlock.BlockHalf.LOWER), 2 | 16);
+
+                if (BiomeDictionary.hasType(biome, BiomeDictionary.Type.JUNGLE)) {
+                    if (rand.nextInt(8) == 0) {
+                        BlockPos topBlock = world.getTopSolidOrLiquidBlock(pos);
+                        if (world.getBlockState(topBlock.down()).isOpaqueCube() && !world.getBlockState(topBlock).getMaterial().isLiquid()) {
+                            world.setBlockState(topBlock.up(), BlockHandler.HELICONIA.getDefaultState(), 2 | 16);
+                            world.setBlockState(topBlock, BlockHandler.HELICONIA.getDefaultState().withProperty(DoublePlantBlock.HALF, DoublePlantBlock.BlockHalf.LOWER), 2 | 16);
+                        }
                     }
                 }
             }
@@ -171,8 +172,15 @@ public class ServerEventHandler {
         }
     }
 
-
-
+    public boolean dimCheck(int id, int[] dims) {
+        for (int i = 0; i < dims.length; ++i) {
+            int dim = dims[i];
+            if (dim == id) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     @SubscribeEvent
     public void onLootTableLoad(LootTableLoadEvent event) {
