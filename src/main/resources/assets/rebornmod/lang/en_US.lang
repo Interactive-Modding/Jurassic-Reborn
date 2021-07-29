@@ -102,6 +102,7 @@ entity.rebornmod.deinotherium.name=Deinotherium
 entity.rebornmod.sinoceratops.name=Sinoceratops
 entity.rebornmod.spinoraptor.name=Spinoraptor
 entity.rebornmod.ankylodocus.name=Ankylodocus
+entity.rebornmod.camarasaurus.name=Camarasaurus
 
 entity.rebornmod.goat.name=Goat
 entity.rebornmod.jeep_wrangler.name=Jeep Wrangler
@@ -821,6 +822,8 @@ info.sinoceratops.name= Sinoceratops was a large ceratopsian that lived in East 
 info.spinoraptor.name= Spinoraptor is a hereditarily altered type of dinosaur, made by Dr. Henry Wu by consolidating the base genome of Spinosaurus with that of Velociraptor. The Spinoraptor is a social creature and needs somewhere in the range of two and four individuals from their species to stay content.
 info.diplodocus.name= Native to North America during the Late Jurassic (about 154-150 million years ago), Diplodocus could grow up to about 35 meters in length, and an estimated 10-16 tons in weight. Although not the biggest known sauropod, it is still the longest dinosaur of which a complete skeleton has been found. Due to their massive size, fully grown, healthy Diplodocus most likely didn't need to worry too much about predators.
 info.ankylodocus.name=Ankylodocus is a hereditarily changed types of dinosaur, made by Dr. Henry Wu by consolidating the base genome of Diplodocus with that of Ankylosaurus. Ankylodocus has the long, level figure of the sauropod Diplodocus, and the forcing, cautious highlights of the Ankylosaurus, for example, sharp spikes covering its back and a clubbed tail.
+info.camarasaurus.name=One of the most common sauropods, Camarasaurus lived in North America during the Late Jurassic. It had very strong teeth, and little evidence of gastroliths (gizzard stones), implying that it may have processed its food to some degree before swallowing it. Its diet would mostly have consisted of tough, fibrous plants.
+
 
 journal.chef_alejandro.name=Chef Alejandro
 journal.dennis_nedry.name=Dennis Nedry

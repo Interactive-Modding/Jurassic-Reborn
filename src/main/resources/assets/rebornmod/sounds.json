@@ -209,6 +209,30 @@
       "rebornmod:dinosaurs/diplodocus/diplodocus_hurt"
     ]
 },
+  "camarasaurus_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/camarasaurus/camarasaurus_living_1",
+      "rebornmod:dinosaurs/camarasaurus/camarasaurus_living_2",
+      "rebornmod:dinosaurs/camarasaurus/camarasaurus_living_3",
+      "rebornmod:dinosaurs/camarasaurus/camarasaurus_living_4",
+      "rebornmod:dinosaurs/camarasaurus/camarasaurus_living_5",
+      "rebornmod:dinosaurs/camarasaurus/camarasaurus_living_6",
+      "rebornmod:dinosaurs/camarasaurus/camarasaurus_living_7"
+    ]
+  },
+  "camarasaurus_death": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/camarasaurus/camarasaurus_death"
+    ]
+  },
+  "camarasaurus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/camarasaurus/camarasaurus_hurt"
+    ]
+},
   "ankylodocus_living": {
     "category": "hostile",
     "sounds": [

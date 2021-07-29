@@ -65,6 +65,10 @@ public class SoundHandler {
     public static final SoundEvent DIPLODOCUS_HURT = create("diplodocus_hurt");
     public static final SoundEvent DIPLODOCUS_LIVING = create("diplodocus_living");
 
+    public static final SoundEvent CAMARASAURUS_DEATH = create("camarasaurus_death");
+    public static final SoundEvent CAMARASAURUS_HURT = create("camarasaurus_hurt");
+    public static final SoundEvent CAMARASAURUS_LIVING = create("camarasaurus_living");
+
     public static final SoundEvent ANKYLODOCUS_DEATH = create("ankylodocus_death");
     public static final SoundEvent ANKYLODOCUS_HURT = create("ankylodocus_hurt");
     public static final SoundEvent ANKYLODOCUS_LIVING = create("ankylodocus_living");
