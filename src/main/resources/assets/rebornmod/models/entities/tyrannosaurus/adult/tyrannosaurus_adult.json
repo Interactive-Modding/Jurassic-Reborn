@@ -146,15 +146,15 @@
     "DYING": [
       {
         "pose": "tyrannosaurus_adult_death_1",
-        "time": 4
+        "time": 10
       },
       {
         "pose": "tyrannosaurus_adult_death_2",
-        "time": 4
+        "time": 10
       },
       {
         "pose": "tyrannosaurus_adult_death_3",
-        "time": 4
+        "time": 10
       }
     ],
     "ROARING": [

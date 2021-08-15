@@ -13,6 +13,7 @@ import mod.reborn.server.entity.dinosaur.DiplodocusEntity;
 import mod.reborn.server.entity.dinosaur.CeratosaurusEntity;
 import mod.reborn.server.entity.dinosaur.AnkylodocusEntity;
 import mod.reborn.server.entity.dinosaur.CamarasaurusEntity;
+import mod.reborn.server.entity.dinosaur.BrachiosaurusEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.OpenGlHelper;
@@ -149,6 +150,9 @@ public class DinosaurRenderer extends RenderLiving<DinosaurEntity> {
         }
         if(entity instanceof CamarasaurusEntity && !entity.isSkeleton()) {
             return ((CamarasaurusEntity)entity).getTexture();
+        }
+        if(entity instanceof BrachiosaurusEntity && !entity.isSkeleton()) {
+            return ((BrachiosaurusEntity)entity).getTexture();
         }
 
 

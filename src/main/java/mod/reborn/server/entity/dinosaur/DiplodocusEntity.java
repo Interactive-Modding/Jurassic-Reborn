@@ -41,6 +41,8 @@ public class DiplodocusEntity extends DinosaurEntity {
                 return SoundHandler.DIPLODOCUS_LIVING;
             case BEGGING:
                 return SoundHandler.DIPLODOCUS_HURT;
+            case WALKING:
+                return SoundHandler.STOMP;
         }
 
         return null;

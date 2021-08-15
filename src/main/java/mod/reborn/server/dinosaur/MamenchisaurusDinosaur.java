@@ -33,7 +33,7 @@ public class MamenchisaurusDinosaur extends Dinosaur
         this.setSizeY(0.5F, 5.8F);
         this.setBones("skull", "tooth", "front_leg_bones", "hind_leg_bones", "neck_vertebrae", "pelvis", "ribcage", "shoulder", "tail_vertebrae");
         this.setHeadCubeName("Head");
-        this.setScale(1.6F, 0.1F);
+        this.setScale(1.5F, 0.1F);
         this.setPaleoPadScale(5);
         this.setOffset(0.0F, 0.0F, -0.5F);
         this.shouldDefendOffspring();

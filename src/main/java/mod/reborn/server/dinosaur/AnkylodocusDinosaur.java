@@ -34,7 +34,7 @@ public class AnkylodocusDinosaur extends Dinosaur implements Hybrid
         this.setSizeY(0.5F, 5.8F);
         this.setStorage(54);
         this.setDiet((Diet.HERBIVORE.get()));
-        this.setBones("skull", "tooth", "front_leg_bones", "hind_leg_bones", "neck_vertebrae", "pelvis", "ribcage", "shoulder", "tail_vertebrae");
+        this.setBones("armor_plating", "front_leg_bones", "hind_leg_bones", "neck_vertebrae", "pelvis", "ribcage", "shoulder", "skull", "tail_club", "tail_vertebrae", "tooth");
         this.setHeadCubeName("Head");
         this.setScale(1.8F, 0.1F);
         this.setPaleoPadScale(5);
@@ -44,10 +44,11 @@ public class AnkylodocusDinosaur extends Dinosaur implements Hybrid
         this.setDefendOwner(true);
         this.setImprintable(true);
         this.setBreeding(false, 4, 8, 80, false, true);
-        String[][] recipe =     {{"", "", "", "", "skull"},
-                {"", "", "", "neck_vertebrae","tooth"},
-                {"tail_vertebrae","pelvis","ribcage","shoulder",""},
-                {"","hind_leg_bones","hind_leg_bones","front_leg_bones","front_leg_bones"}};
+        String[][] recipe = {
+                {"tail_club", "armor_plating", "","",""},
+                {"tail_vertebrae", "pelvis", "ribcage","neck_vertebrae","skull"},
+                {"hind_leg_bones", "hind_leg_bones", "", "shoulder", "tooth"},
+                {"", "", "", "front_leg_bones", "front_leg_bones"}};
         this.setRecipe(recipe);
         this.enableSkeleton();
     }

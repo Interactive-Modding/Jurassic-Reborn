@@ -41,6 +41,8 @@ public class CamarasaurusEntity extends DinosaurEntity {
                 return SoundHandler.CAMARASAURUS_LIVING;
             case BEGGING:
                 return SoundHandler.CAMARASAURUS_HURT;
+            case WALKING:
+                return SoundHandler.STOMP;
         }
 
         return null;

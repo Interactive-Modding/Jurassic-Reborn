@@ -41,6 +41,8 @@ public class AnkylodocusEntity extends DinosaurEntity {
                 return SoundHandler.ANKYLODOCUS_LIVING;
             case BEGGING:
                 return SoundHandler.ANKYLODOCUS_HURT;
+            case WALKING:
+                return SoundHandler.STOMP;
         }
 
         return null;
