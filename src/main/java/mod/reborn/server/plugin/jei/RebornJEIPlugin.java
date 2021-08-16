@@ -34,6 +34,8 @@ import mod.reborn.server.plugin.jei.category.cleaningstation.CleaningStationReci
 import mod.reborn.server.plugin.jei.category.cultivate.CultivateInput;
 import mod.reborn.server.plugin.jei.category.cultivate.CultivatorRecipeCategory;
 import mod.reborn.server.plugin.jei.category.cultivate.CultivatorRecipeWrapper;
+import mod.reborn.server.plugin.jei.category.dnaextractor.DNAExtractorRecipeCategory;
+import mod.reborn.server.plugin.jei.category.dnaextractor.DNAExtractorRecipeWrapper;
 import mod.reborn.server.plugin.jei.category.dnasequencer.DNASequencerRecipeCategory;
 import mod.reborn.server.plugin.jei.category.dnasequencer.DNASequencerRecipeWrapper;
 import mod.reborn.server.plugin.jei.category.dnasequencer.SequencerInput;
@@ -77,6 +79,7 @@ public class RebornJEIPlugin implements IModPlugin {
     public static final String DNA_SEQUENCER = "rebornmod.dna_sequencer";
     public static final String CULTIVATEOR = "rebornmod.cultivator";
     public static final String INCUBATOR = "rebornmod.incubator";
+    public static final String DNA_EXTRACTOR = "rebornmod.dna_extractor";
 
 
     @Override
@@ -100,6 +103,14 @@ public class RebornJEIPlugin implements IModPlugin {
         blacklist.addIngredientToBlacklist(new ItemStack(BlockHandler.GRACILARIA));
         blacklist.addIngredientToBlacklist(new ItemStack(ItemHandler.HATCHED_EGG));
 
+        
+        //register DNA Extractor Recipes
+        registry.addRecipes(DNAExtractorRecipeWrapper.getRecipes(registry.getJeiHelpers()), DNA_EXTRACTOR);
+        registry.addRecipeClickArea(DNAExtractorGui.class, 77, 37, 22, 16, DNA_EXTRACTOR);
+        registry.getRecipeTransferRegistry().addRecipeTransferHandler(DNAExtractorContainer.class, DNA_EXTRACTOR, 0, 2, 3, 36);
+        registry.addRecipeCatalyst(new ItemStack(BlockHandler.DNA_EXTRACTOR), DNA_EXTRACTOR);
+        
+        
         //register recipe hander stuff
         registry.handleRecipes(GrinderInput.class, FossilGrinderRecipeWrapper::new, FOSSIL_GRINDER);
         registry.addRecipeCatalyst(new ItemStack(BlockHandler.FOSSIL_GRINDER), FOSSIL_GRINDER);
@@ -219,7 +230,8 @@ public class RebornJEIPlugin implements IModPlugin {
                 new SkeletonAssemblyRecipeCategory(guiHelper),
                 new DNASequencerRecipeCategory(guiHelper),
                 new CultivatorRecipeCategory(guiHelper),
-                new IncubatorRecipeCategory(guiHelper)
+                new IncubatorRecipeCategory(guiHelper),
+                new DNAExtractorRecipeCategory(guiHelper)
         );
     }
 }

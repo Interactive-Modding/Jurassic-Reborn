@@ -44,7 +44,7 @@ public class DNAExtractorBlockEntity extends MachineBaseBlockEntity {
     protected boolean canProcess(int process) {
         ItemStack extraction = this.slots.get(0);
         ItemStack storage = this.slots.get(1);
-        if (storage.getItem() == ItemHandler.STORAGE_DISC && (extraction.getItem() == ItemHandler.AMBER || extraction.getItem() == ItemHandler.SEA_LAMPREY || (extraction.getItem() == ItemHandler.DINOSAUR_MEAT && extraction.hasTagCompound())) && (storage.getTagCompound() == null || !storage.getTagCompound().hasKey("Genetics"))) {
+        if (storage.getItem() == ItemHandler.STORAGE_DISC && (extraction.getItem() == ItemHandler.AMBER || extraction.getItem() == ItemHandler.SEA_LAMPREY || extraction.getItem() == ItemHandler.DINOSAUR_MEAT) && (storage.getTagCompound() == null || !storage.getTagCompound().hasKey("Genetics"))) {
             for (int i = 2; i < 6; i++) {
                 if (this.slots.get(i).isEmpty()) {
                     return true;
@@ -115,8 +115,14 @@ public class DNAExtractorBlockEntity extends MachineBaseBlockEntity {
                     disc.setTagCompound(nbt);
                 }
             } else if (item == ItemHandler.DINOSAUR_MEAT) {
+    			Dinosaur dino = EntityHandler.getDinosaurById(input.getMetadata());
                 disc = new ItemStack(ItemHandler.STORAGE_DISC);
-                disc.setTagCompound(input.getTagCompound());
+                DinoDNA dna = new DinoDNA(dino, 100, GeneticsHelper.randomGenetics(rand));
+
+                NBTTagCompound nbt = new NBTTagCompound();
+                dna.writeToNBT(nbt);
+
+                disc.setTagCompound(nbt);
             }
 
             int empty = this.getOutputSlot(disc);

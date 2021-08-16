@@ -87,7 +87,6 @@ public class ServerProxy implements IGuiHandler {
     public void onPreInit(FMLPreInitializationEvent event) {
         EntityHandler.init();
         ModSerializers.registerSerializers();
-
         FossilItem.init();
 
         PlantHandler.init();

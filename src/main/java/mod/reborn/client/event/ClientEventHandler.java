@@ -35,6 +35,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.GuiScreenEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
+import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.client.event.RenderWorldLastEvent;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
@@ -117,6 +118,7 @@ public class ClientEventHandler {
 
     @SubscribeEvent
     public void onGameOverlay(RenderGameOverlayEvent.Post event) {
+    	if(event.getType() != ElementType.FOOD) return;
         Minecraft mc = Minecraft.getMinecraft();
         EntityPlayer player = mc.player;
         for(EnumHand hand : EnumHand.values()) {
