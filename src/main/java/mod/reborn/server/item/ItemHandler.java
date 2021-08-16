@@ -174,6 +174,7 @@ public class ItemHandler {
     public static final Map<String, FossilItem> FRESH_FOSSILS = new HashMap<>();
 
     public static final FossilizedEggItem FOSSILIZED_EGG = new FossilizedEggItem();
+    public static final SharkEggItem SHARK_EGG = new SharkEggItem();
 
     public static final BasicItem GYPSUM_POWDER = new BasicItem(TabHandler.ITEMS);
 
@@ -299,6 +300,7 @@ public class ItemHandler {
 
     public static void init() {
         registerItem(FOSSILIZED_EGG, "Fossilized Egg");
+        registerItem(SHARK_EGG, "Shark Egg");
 
         for (Map.Entry<Integer, Dinosaur> entry : EntityHandler.getDinosaurs().entrySet()) {
             Dinosaur dinosaur = entry.getValue();
@@ -369,7 +371,7 @@ public class ItemHandler {
         registerItem(TWIG_FOSSIL, "Twig Fossil");
 
 
-//        registerItem(MINIGUN_MODULE, "Helicopter Minigun");
+ //       registerItem(MINIGUN_MODULE, "Helicopter Minigun");
 
         registerItem(PALEO_PAD, "Paleo Pad");
 
@@ -444,7 +446,7 @@ public class ItemHandler {
         registerItem(DART_POISON_CYCASIN, "Dart Poison Cycasin");
         registerItem(DART_POISON_EXECUTIONER_CONCOCTION, "Dart Poison Executioner Concoction");
         registerItem(DART_TIPPED_POTION, "Dart Tipped Potion");
-       // registerItem(TRACKER_DART, "Tracking Dart");
+        registerItem(TRACKER_DART, "Tracking Dart");
 
         registerItem(GLOCK, "Glock");
         registerItem(REMINGTON, "remington");

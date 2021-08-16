@@ -11,6 +11,7 @@ import mod.reborn.server.item.ItemHandler;
 import mod.reborn.server.item.JournalItem;
 import mod.reborn.server.maps.VillagerTradeHandler;
 import mod.reborn.server.paleopad.AppHandler;
+import mod.reborn.server.util.ModSerializers;
 import mod.reborn.server.util.RegistryHandler;
 import mod.reborn.RebornMod;
 import mod.reborn.server.block.entity.BugCrateBlockEntity;

@@ -38,9 +38,9 @@ public class GuanlongDinosaur extends Dinosaur {
         this.setBreeding(false, 2, 4, 24, false, true);
         String[][] recipe = {
                 {"", "","neck_vertebrae","skull"},
-                {"tail_vertebrae","pelvis", "ribcage","shoulder","tooth"},
-                {"", "leg_bones", "arm_bones", "claw"},
-                {"", "foot_bones", "", ""}};
+                {"tail_vertebrae","pelvis", "ribcage","shoulder"},
+                {"leg_bones", "arm_bones", "claw", "tooth"},
+                {"foot_bones", "", "", ""}};
         this.setRecipe(recipe);
         this.enableSkeleton();
         ArrayList<Biome> biomeList = new ArrayList<Biome>();

@@ -15,7 +15,7 @@ public class DeinotheriumDinosaur extends Dinosaur {
         this.setName("Deinotherium");
         this.setDinosaurType(DinosaurType.NEUTRAL);
         this.setDinosaurClass(DeinotheriumEntity.class);
-        this.setTimePeriod(TimePeriod.NEOGENE);
+        this.setTimePeriod(TimePeriod.PALEOGENE);
         this.setEggColorMale(0x625b54, 0x997969);
         this.setEggColorFemale(0x868275, 0xc9bcae);
         this.setHealth(10, 40);
