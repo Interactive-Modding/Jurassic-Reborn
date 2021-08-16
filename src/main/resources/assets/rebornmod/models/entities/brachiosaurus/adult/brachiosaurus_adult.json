@@ -52,11 +52,11 @@
       },
       {
         "pose": "brachiosaurus_adult_roar_7",
-        "time": 20
+        "time": 10
       },
       {
         "pose": "brachiosaurus_adult_roar_8",
-        "time": 20
+        "time": 10
       },
       {
         "pose": "brachiosaurus_adult_idle",
@@ -192,35 +192,35 @@
     "WALKING": [
       {
         "pose": "brachiosaurus_adult_walking_1",
-        "time": 4
+        "time": 5
       },
       {
         "pose": "brachiosaurus_adult_walking_2",
-        "time": 4
+        "time": 5
       },
       {
         "pose": "brachiosaurus_adult_walking_3",
-        "time": 4
+        "time": 5
       },
       {
         "pose": "brachiosaurus_adult_walking_4",
-        "time": 4
+        "time": 5
       },
       {
         "pose": "brachiosaurus_adult_walking_5",
-        "time": 4
+        "time": 5
       },
       {
         "pose": "brachiosaurus_adult_walking_6",
-        "time": 4
+        "time": 5
       },
       {
         "pose": "brachiosaurus_adult_walking_7",
-        "time": 4
+        "time": 5
       },
       {
         "pose": "brachiosaurus_adult_walking_8",
-        "time": 4
+        "time": 5
       }
     ],
     "CALLING": [
