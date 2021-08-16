@@ -26,9 +26,9 @@ public class IncubatorRenderer extends TileEntitySpecialRenderer<IncubatorBlockE
             GlStateManager.disableRescaleNormal();
 
             this.renderEgg(tileEntity.getStackInSlot(0), x, y, z, 0.6, 0.7);
-            this.renderEgg(tileEntity.getStackInSlot(1), x, y, z, 0.2, 0.1);
+            this.renderEgg(tileEntity.getStackInSlot(1), x, y, z, 0.2, 0.2);
             this.renderEgg(tileEntity.getStackInSlot(3), x, y, z, 0.8, 0.5);
-            this.renderEgg(tileEntity.getStackInSlot(4), x, y, z, 1.0, 0.2);
+            this.renderEgg(tileEntity.getStackInSlot(4), x, y, z, 0.6, 0.2);
             this.renderEgg(tileEntity.getStackInSlot(2), x, y, z, 0.3, 0.5);
 
             GlStateManager.enableRescaleNormal();
@@ -40,7 +40,7 @@ public class IncubatorRenderer extends TileEntitySpecialRenderer<IncubatorBlockE
         if (!stack.isEmpty()) {
             GlStateManager.pushMatrix();
             GlStateManager.translate(x, y + 0.65, z);
-            GlStateManager.translate(xOffset, 1.2, zOffset);
+            GlStateManager.translate(xOffset, 1.45, zOffset);
             GlStateManager.scale(-0.5F, -0.5F, -0.5F);
             DinosaurRenderInfo renderDef = RenderingHandler.INSTANCE.getRenderInfo(EntityHandler.getDinosaurById(stack.getItemDamage()));
             this.mc.getTextureManager().bindTexture(renderDef.getEggTexture());
