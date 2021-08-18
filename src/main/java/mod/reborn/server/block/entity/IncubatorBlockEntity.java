@@ -12,13 +12,17 @@ import mod.reborn.server.message.TileEntityFieldsMessage;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.NonNullList;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fml.common.FMLCommonHandler;
@@ -39,6 +43,9 @@ public class IncubatorBlockEntity extends MachineBaseBlockEntity implements Temp
     private static final int[] ENVIRONMENT = new int[] { 5 };
 
     private int[] temperature = new int[5];
+    
+    public float lidAngle, prevLidAngle;
+    public int ticksSinceSync, numPlayersUsing;
 
     private NonNullList<ItemStack> slots = NonNullList.withSize(6, ItemStack.EMPTY);
 
@@ -164,27 +171,44 @@ public class IncubatorBlockEntity extends MachineBaseBlockEntity implements Temp
     }
 
     @Override
-    public int getField(int id) {
-        if (id < 5) {
+    public int getField(int id) 
+    {
+        if (id < 5) 
             return this.processTime[id];
-        } else if (id < 10) {
+        else if (id < 10) 
             return this.totalProcessTime[id - 5];
-        } else if (id < 15) {
+        else if (id < 15) 
             return this.temperature[id - 10];
-        }
-
+        if(id == 15)
+        	return this.numPlayersUsing;
+        if(id == 16)
+        	return this.ticksSinceSync;
+        if(id == 17)
+        	return (int)(this.lidAngle*100);
+        if(id == 18)
+        	return (int)(this.prevLidAngle*100);
+        
         return 0;
     }
 
     @Override
-    public void setField(int id, int value) {
-        if (id < 5) {
+    public void setField(int id, int value) 
+    {
+        if (id < 5)
             this.processTime[id] = value;
-        } else if (id < 10) {
+        else if (id < 10)
             this.totalProcessTime[id - 5] = value;
-        } else if (id < 15) {
+        else if (id < 15)
             this.temperature[id - 10] = value;
-        }
+        if(id == 15)
+        	this.numPlayersUsing = value;
+        if(id == 16)
+        	this.ticksSinceSync = value;
+        if(id == 17)
+        	this.lidAngle = (float)(value)/100.0f;
+        if(id == 18)
+        	this.prevLidAngle = (float)(value)/100.0f;
+        
     }
     
     @Override
@@ -214,7 +238,28 @@ public class IncubatorBlockEntity extends MachineBaseBlockEntity implements Temp
 	}
 	
 	@Override
-	public void update() {
+	public void update() 
+	{
+		updateLid();
+		updateTileInventory();
+	}
+	
+	@Override
+	public boolean receiveClientEvent(int id, int type)
+    {
+        if (id == 1)
+        {
+            this.numPlayersUsing = type;
+            return true;
+        }
+        else
+        {
+            return super.receiveClientEvent(id, type);
+        }
+    }
+	
+	public void updateTileInventory()
+	{
 		boolean send = false;
 		if (!world.isRemote && FMLCommonHandler.instance().getMinecraftServerInstance().getTickCounter() % 100 == 0) {
 
@@ -231,8 +276,90 @@ public class IncubatorBlockEntity extends MachineBaseBlockEntity implements Temp
 			final BlockPos pos = this.getPos();
 			RebornMod.NETWORK_WRAPPER.sendToAllTracking(new TileEntityFieldsMessage(this.getSyncFields(NonNullList.create()), this), new TargetPoint(this.world.provider.getDimension(), pos.getX(), pos.getY(), pos.getZ(), 5));
 		}
-
 	}
+	
+	public void updateLid()
+	{
+		if (!this.world.isRemote && this.numPlayersUsing != 0 && (this.ticksSinceSync + pos.getX() + pos.getY() + pos.getZ()) % 200 == 0)
+    	{
+        		this.numPlayersUsing = 0;
+        		float f = 5.0F;
+
+        		for (EntityPlayer entityplayer : this.world.getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB((double)((float)pos.getX() - 5.0F), (double)((float)pos.getY() - 5.0F), (double)((float)pos.getZ() - 5.0F), (double)((float)(pos.getX() + 1) + 5.0F), (double)((float)(pos.getY() + 1) + 5.0F), (double)((float)(pos.getZ() + 1) + 5.0F))))
+        		{
+            		if (entityplayer.openContainer instanceof IncubatorContainer)
+            		{
+                			if (((IncubatorContainer)entityplayer.openContainer).getIncubatorBlockEntity().equals(this))
+                			{
+                    			++this.numPlayersUsing;
+                			}
+            		}
+        		}
+    	}
+
+    	this.prevLidAngle = this.lidAngle;
+    	float f1 = 0.1F;
+
+    	if (this.numPlayersUsing > 0 && this.lidAngle == 0.0F)
+    	{
+        		double d1 = (double)pos.getX() + 0.5D;
+        		double d2 = (double)pos.getZ() + 0.5D;
+        		this.world.playSound((EntityPlayer)null, d1, (double)pos.getY() + 0.5D, d2, SoundEvents.BLOCK_IRON_TRAPDOOR_OPEN, SoundCategory.BLOCKS, 0.5F, this.world.rand.nextFloat() * 0.1F + 0.9F);
+    	}
+
+    	if (this.numPlayersUsing == 0 && this.lidAngle > 0.0F || this.numPlayersUsing > 0 && this.lidAngle < 1.0F)
+    	{
+        		float f2 = this.lidAngle;
+
+        		if (this.numPlayersUsing > 0)
+        		{
+        			this.lidAngle += 0.1F;
+        		}
+        		else
+        		{
+            		this.lidAngle -= 0.1F;
+        		}
+
+        		if (this.lidAngle > 1.0F)
+        		{
+            		this.lidAngle = 1.0F;
+        		}
+
+        		if (this.lidAngle < 0.5F && f2 >= 0.5F)
+        		{
+            		double d3 = (double)pos.getX() + 0.5D;
+            		double d0 = (double)pos.getZ() + 0.5D;
+            		this.world.playSound((EntityPlayer)null, d3, (double)pos.getY() + 0.5D, d0, SoundEvents.BLOCK_IRON_TRAPDOOR_CLOSE, SoundCategory.BLOCKS, 0.5F, this.world.rand.nextFloat() * 0.1F + 0.9F);
+        		}
+
+        		if (this.lidAngle < 0.0F)
+        		{
+            		this.lidAngle = 0.0F;
+        		}
+    	}
+    	if(this.world.getTotalWorldTime()%10 == 0)
+    		System.out.println("\r\n(remote = " + this.world.isRemote + ") : angle = " + this.lidAngle + "\r\n"
+    												    + "                  # players = " + this.numPlayersUsing);
+	}
+	
+	@Override
+	public void openInventory(EntityPlayer player) 
+	{
+		System.out.println("opening");
+		++this.numPlayersUsing;
+		this.world.addBlockEvent(this.pos, this.getBlockType(), 1, this.numPlayersUsing);
+		this.world.notifyNeighborsOfStateChange(this.pos, this.getBlockType(), false);
+	}
+	
+	@Override
+	public void closeInventory(EntityPlayer player) 
+	{
+		System.out.println("closing");
+		--this.numPlayersUsing;
+		this.world.addBlockEvent(this.pos, this.getBlockType(), 1, this.numPlayersUsing);
+		this.world.notifyNeighborsOfStateChange(this.pos, this.getBlockType(), false);
+	}
+	
 	
 	@Override
     @Nullable
@@ -289,12 +416,20 @@ public class IncubatorBlockEntity extends MachineBaseBlockEntity implements Temp
 	};
 	
 	@Override
-	public void packetDataHandler(ByteBuf fields) {
-		if (FMLCommonHandler.instance().getSide().isClient()) {
-			for (int slot = 0; slot < 5; slot++) {
+	public void packetDataHandler(ByteBuf fields) 
+	{
+		if (FMLCommonHandler.instance().getSide().isClient()) 
+		{
+			for (int slot = 0; slot < 5; slot++) 
+			{
 				this.setInventorySlotContents(slot, ByteBufUtils.readItemStack(fields));
 			}
-			for (int field = 0; field < 10; field++) {
+			for (int field = 0; field < 10; field++) 
+			{
+				this.setField(field, fields.readInt());
+			}
+			for (int field = 15; field <= 18; field++) 
+			{
 				this.setField(field, fields.readInt());
 			}
 		}
@@ -315,12 +450,19 @@ public class IncubatorBlockEntity extends MachineBaseBlockEntity implements Temp
 	}
 	
 	@Override
-	public NonNullList getSyncFields(NonNullList fields) {
-		for (int slot = 0; slot < 5; slot++) {
+	public NonNullList getSyncFields(NonNullList fields)
+	{
+		for (int slot = 0; slot < 5; slot++) 
+		{
 			fields.add(this.slots.get(slot));
 		}
 		
-		for (int field = 0; field < 10; field++) {
+		for (int field = 0; field < 10; field++) 
+		{
+			fields.add(this.getField(field));
+		}
+		for (int field = 15; field <= 18; field++) 
+		{
 			fields.add(this.getField(field));
 		}
 		return fields;
