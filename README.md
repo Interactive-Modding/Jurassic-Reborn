@@ -1,13 +1,20 @@
 # RebornMod
 
 ### RebornMod Leader
+
 Vitiate 
 
 ### The code is modified and built up from an older version of JurassiCraft's code, having been also worked upon by JWR's coders. Credit goes to the original JurassiCraft team for laying the foundations for the code that was expanded upon to make this project a reality.
 
+###RebornMod Co-Leader
+
+Angelicmax
+
 ### Developers
 
 Last_Dovahkiin
+
+Polarfox
 
 Red
 
@@ -21,8 +28,6 @@ Giodude1580
 
 Neicke
 
-TotallyTruthful
-
 CreatarCreator
 
 Fluffy Taco // JR_2202
@@ -31,11 +36,21 @@ Fluffy Taco // JR_2202
 
 ### Bug-Testers
 
-ImaStego
+LordBlaines
+
+Rexthezilla98
+
+Shadow...
+
+HaruYukima
 
 # Contributors
 
 Bastion16
+
+ImaStego
+
+Totally Truthful
 
 WinterKILLER435 // DroidBait284
 
