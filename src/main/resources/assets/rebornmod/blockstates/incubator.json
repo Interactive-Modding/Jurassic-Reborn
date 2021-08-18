@@ -1,20 +1,20 @@
 {
-	"variants": {
-    	"facing=north": {
-    		"model": "rebornmod:transparent",
-      		"y": 0
-    	},
-    	"facing=south": {
-    		"model": "rebornmod:transparent",
-      		"y": 180
-    	},
-    	"facing=west": {
-    		"model": "rebornmod:transparent",
-      		"y": 270
-    	},
-    	"facing=east": {
-    		"model": "rebornmod:transparent",
-      		"y": 90
-    	}
-  	}
+  "forge_marker": 1,
+  "defaults": {
+    "model": "rebornmod:incubator.tbl"
+  },
+  "variants": {
+    "facing=north": {
+      "y": 0
+    },
+    "facing=south": {
+      "y": 180
+    },
+    "facing=west": {
+      "y": 270
+    },
+    "facing=east": {
+      "y": 90
+    }
+  }
 }

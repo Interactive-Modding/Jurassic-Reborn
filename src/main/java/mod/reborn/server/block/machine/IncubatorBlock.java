@@ -12,7 +12,6 @@ import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
-import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
@@ -65,17 +64,13 @@ public class IncubatorBlock extends OrientedBlock {
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
         if (world.isRemote) {
             return true;
-        } else if (!player.isSneaking()) 
-        {
+        } else if (!player.isSneaking()) {
             TileEntity tile = world.getTileEntity(pos);
 
-            if (tile instanceof IncubatorBlockEntity) 
-            {
+            if (tile instanceof IncubatorBlockEntity) {
                 IncubatorBlockEntity incubator = (IncubatorBlockEntity) tile;
 
-                if (incubator.isUsableByPlayer(player)) 
-                {
-                	incubator.openInventory(player);
+                if (incubator.isUsableByPlayer(player)) {
                     player.openGui(RebornMod.INSTANCE, ServerProxy.GUI_INCUBATOR_ID, world, pos.getX(), pos.getY(), pos.getZ());
                     return true;
                 }
@@ -89,12 +84,6 @@ public class IncubatorBlock extends OrientedBlock {
     @SideOnly(Side.CLIENT)
     public BlockRenderLayer getBlockLayer() {
         return BlockRenderLayer.CUTOUT_MIPPED;
-    }
-    
-    @Override
-    public EnumBlockRenderType getRenderType(IBlockState state) 
-    {
-    	return EnumBlockRenderType.ENTITYBLOCK_ANIMATED;
     }
 
     @Override
