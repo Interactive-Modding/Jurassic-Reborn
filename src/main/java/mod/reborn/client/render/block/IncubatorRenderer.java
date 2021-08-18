@@ -50,6 +50,5 @@ public class IncubatorRenderer extends TileEntitySpecialRenderer<IncubatorBlockE
     	GlStateManager.disableRescaleNormal();
     	GlStateManager.popMatrix();
     	GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
-    	
-    }
+  }
 }

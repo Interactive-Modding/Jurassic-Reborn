@@ -22,8 +22,8 @@ public class QuetzalDinosaur extends Dinosaur
         this.setTimePeriod(TimePeriod.CRETACEOUS);
         this.setEggColorMale(0x8d8f8b, 0x1c2d40);
         this.setEggColorFemale(0x8d8f8b, 0x2e201a);
-        this.setHealth(10, 20);
-        this.setStrength(5, 20);
+        this.setHealth(10, 30);
+        this.setStrength(5, 10);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setMaximumAge(fromDays(40));
         this.setEyeHeight(0.45F, 1.6F);

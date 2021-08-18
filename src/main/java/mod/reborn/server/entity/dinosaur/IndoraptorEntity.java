@@ -1,34 +1,49 @@
 package mod.reborn.server.entity.dinosaur;
 
+import mod.reborn.RebornMod;
 import mod.reborn.client.model.animation.EntityAnimation;
 import mod.reborn.client.sound.SoundHandler;
-import mod.reborn.server.dinosaur.Dinosaur;
 import mod.reborn.server.entity.DinosaurEntity;
-import mod.reborn.server.entity.EntityHandler;
+import mod.reborn.server.entity.ai.LeapingMeleeEntityAI;
+import mod.reborn.server.entity.ai.RaptorLeapEntityAI;
+import mod.reborn.server.entity.animal.GoatEntity;
 import net.ilexiconn.llibrary.server.animation.Animation;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.Minecraft;
+import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.EntityAIBase;
+import net.minecraft.entity.ai.EntityAIHurtByTarget;
+import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
+import net.minecraft.entity.monster.EntityMob;
+import net.minecraft.entity.passive.EntityAnimal;
+import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
-import net.minecraft.util.EnumFacing;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.util.ArrayList;
-import java.util.List;
-public class IndoraptorEntity extends DinosaurEntity
-{
-    public IndoraptorEntity(World world)
-    {
+import java.util.Locale;
+
+public class IndoraptorEntity extends DinosaurEntity {
+    private static final DataParameter<Integer> VARIANT = EntityDataManager.createKey(IndoraptorEntity.class, DataSerializers.VARINT);
+    private static final Class[] targets = {EntityLivingBase.class, EntityPlayer.class};
+
+    public IndoraptorEntity(World world) {
         super(world);
+        this.setVariant(this.getRNG().nextInt(2));
         this.target(EntityLivingBase.class, EntityPlayer.class);
-        doesEatEggs(true);
+        this.tasks.addTask(0, new LeapingMeleeEntityAI(this, this.dinosaur.getAttackSpeed()));
+        this.tasks.addTask(1, new RaptorLeapEntityAI(this));
+        this.target(targets);
+        for(Class entity : targets) {
+            this.tasks.addTask(0, new EntityAINearestAttackableTarget<EntityLivingBase>(this, entity, true, false));
+            this.targetTasks.addTask(0, new EntityAINearestAttackableTarget<EntityLivingBase>(this, entity, false));
+        }
+        this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true, EntityPlayer.class, TyrannosaurusEntity.class, GiganotosaurusEntity.class, SpinosaurusEntity.class));
     }
     @Override
     public SoundEvent getSoundForAnimation(Animation animation) {
@@ -56,4 +71,58 @@ public class IndoraptorEntity extends DinosaurEntity
     {
         return SoundHandler.INDORAPTOR_BREATHING;
     }
+
+    @Override
+    public EntityAIBase getAttackAI() {
+        return new RaptorLeapEntityAI(this);
+    }
+
+    @Override
+    public void fall(float distance, float damageMultiplier) {
+        if (this.getAnimation() != EntityAnimation.LEAP_LAND.get()) {
+            super.fall(distance, damageMultiplier);
+        }
+    }
+    protected void applyEntityAttributes()
+    {
+        super.applyEntityAttributes();
+        this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(35.0D);
+    }
+
+    public void entityInit() {
+        super.entityInit();
+        this.dataManager.register(VARIANT, 0);
+    }
+
+    public void writeEntityToNBT(NBTTagCompound tagCompound) {
+        super.writeEntityToNBT(tagCompound);
+        tagCompound.setInteger("Variant", this.getVariant());
+    }
+
+    public void readEntityFromNBT(NBTTagCompound tagCompound) {
+        super.readEntityFromNBT(tagCompound);
+        this.setVariant(tagCompound.getInteger("Variant"));
+    }
+
+    public void setVariant(int value){
+        this.dataManager.set(VARIANT, value);
+    }
+
+    public int getVariant(){
+        return this.dataManager.get(VARIANT);
+    }
+
+    public ResourceLocation getTexture(){
+        switch(getVariant()){
+            case 0: default: return texture("black");
+            case 1: return texture("white");
+        }
+    }
+    private ResourceLocation texture(String variant){
+        String formattedName = this.dinosaur.getName().toLowerCase(Locale.ENGLISH).replaceAll(" ", "_");
+        String baseTextures = "textures/entities/" + formattedName + "/";
+        String texture = baseTextures + formattedName;
+        return isMale()?new ResourceLocation(RebornMod.MODID, texture + "_male_" + "adult" + "_" + variant + ".png"):new ResourceLocation(RebornMod.MODID, texture + "_female_" + "adult" + "_" + variant +".png");
+    }
 }
+

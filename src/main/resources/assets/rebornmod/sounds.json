@@ -182,6 +182,80 @@
         "sounds": [
             "rebornmod:dinosaurs/therizinosaurus/therizinosaurus_threat_1"
         ]
+},
+  "diplodocus_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/diplodocus/diplodocus_living_1",
+      "rebornmod:dinosaurs/diplodocus/diplodocus_living_2",
+      "rebornmod:dinosaurs/diplodocus/diplodocus_living_3",
+      "rebornmod:dinosaurs/diplodocus/diplodocus_living_4",
+      "rebornmod:dinosaurs/diplodocus/diplodocus_living_5",
+      "rebornmod:dinosaurs/diplodocus/diplodocus_living_6",
+      "rebornmod:dinosaurs/diplodocus/diplodocus_living_7",
+      "rebornmod:dinosaurs/diplodocus/diplodocus_living_8",
+      "rebornmod:dinosaurs/diplodocus/diplodocus_living_9"
+    ]
+  },
+  "diplodocus_death": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/diplodocus/diplodocus_death"
+    ]
+  },
+  "diplodocus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/diplodocus/diplodocus_hurt"
+    ]
+},
+  "camarasaurus_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/camarasaurus/camarasaurus_living_1",
+      "rebornmod:dinosaurs/camarasaurus/camarasaurus_living_2",
+      "rebornmod:dinosaurs/camarasaurus/camarasaurus_living_3",
+      "rebornmod:dinosaurs/camarasaurus/camarasaurus_living_4",
+      "rebornmod:dinosaurs/camarasaurus/camarasaurus_living_5",
+      "rebornmod:dinosaurs/camarasaurus/camarasaurus_living_6",
+      "rebornmod:dinosaurs/camarasaurus/camarasaurus_living_7"
+    ]
+  },
+  "camarasaurus_death": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/camarasaurus/camarasaurus_death"
+    ]
+  },
+  "camarasaurus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/camarasaurus/camarasaurus_hurt"
+    ]
+},
+  "ankylodocus_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/ankylodocus/ankylodocus_living_1",
+      "rebornmod:dinosaurs/ankylodocus/ankylodocus_living_2",
+      "rebornmod:dinosaurs/ankylodocus/ankylodocus_living_3",
+      "rebornmod:dinosaurs/ankylodocus/ankylodocus_living_4",
+      "rebornmod:dinosaurs/ankylodocus/ankylodocus_living_5",
+      "rebornmod:dinosaurs/ankylodocus/ankylodocus_living_6",
+      "rebornmod:dinosaurs/ankylodocus/ankylodocus_living_7"
+    ]
+  },
+  "ankylodocus_death": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/ankylodocus/ankylodocus_death"
+    ]
+  },
+  "ankylodocus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/ankylodocus/ankylodocus_hurt"
+    ]
  },
   "protoceratops_living": {
     "category": "hostile",
@@ -2690,6 +2764,47 @@
     "category": "hostile",
     "sounds": [
       "rebornmod:dinosaurs/dreadnoughtus/dreadnoughtus_threat"
+    ]
+ },
+  "spinoraptor_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/spinoraptor/spinoraptor_hurt_1",
+      "rebornmod:dinosaurs/spinoraptor/spinoraptor_hurt_2"
+    ]
+  },
+  "spinoraptor_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/spinoraptor/spinoraptor_living_1",
+      "rebornmod:dinosaurs/spinoraptor/spinoraptor_living_2",
+      "rebornmod:dinosaurs/spinoraptor/spinoraptor_living_3",
+      "rebornmod:dinosaurs/spinoraptor/spinoraptor_living_4",
+      "rebornmod:dinosaurs/spinoraptor/spinoraptor_living_5",
+      "rebornmod:dinosaurs/spinoraptor/spinoraptor_living_6",
+      "rebornmod:dinosaurs/spinoraptor/spinoraptor_living_7",
+      "rebornmod:dinosaurs/spinoraptor/spinoraptor_living_8"
+    ]
+  },
+  "spinoraptor_call": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/spinoraptor/spinoraptor_bark_1",
+      "rebornmod:dinosaurs/spinoraptor/spinoraptor_bark_2"
+    ]
+  },
+  "spinoraptor_breathing": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/spinoraptor/spinoraptor_breathing_1",
+      "rebornmod:dinosaurs/spinoraptor/spinoraptor_breathing_2",
+      "rebornmod:dinosaurs/spinoraptor/spinoraptor_breathing_3"
+    ]
+  },
+  "spinoraptor_death": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/spinoraptor/spinoraptor_death"
     ]
   }
 }

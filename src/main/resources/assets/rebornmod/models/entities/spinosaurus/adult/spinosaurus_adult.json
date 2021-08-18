@@ -183,27 +183,27 @@
     "SLEEPING": [
       {
         "pose": "spinosaurus_adult_sleeping_1",
-        "time": 10
+        "time": 25
       },
       {
         "pose": "spinosaurus_adult_sleeping_2",
-        "time": 10
+        "time": 15
       },
       {
         "pose": "spinosaurus_adult_sleeping_3",
-        "time": 10
+        "time": 15
       },
       {
         "pose": "spinosaurus_adult_sleeping_4",
-        "time": 10
+        "time": 15
       },
       {
         "pose": "spinosaurus_adult_sleeping_5",
-        "time": 10
+        "time": 15
       },
       {
         "pose": "spinosaurus_adult_sleeping_6",
-        "time": 10
+        "time": 15
       }
     ],
     "LOOKING_RIGHT": [

@@ -68,35 +68,12 @@ public class RugopsAnimator extends EntityAnimator<RugopsEntity>
         AdvancedModelRenderer[] tailParts = new AdvancedModelRenderer[] { tail6, tail5, tail4, tail3, tail2, tail1 };
         AdvancedModelRenderer[] bodyParts = new AdvancedModelRenderer[] { head, neck1, neck2, neck3, neck4, shoulders, waist };
 
-        model.bob(leftThigh, 1F * globalSpeed, height, false, f, f1);
-        model.bob(neck4, 1F * globalSpeed, height, false, f, f1);
-        model.bob(rightThigh, 1F * globalSpeed, height, false, f, f1);
-        leftThigh.rotationPointY -= -2 * f1 * Math.cos(f * 0.5 * globalSpeed);
-        rightThigh.rotationPointY -= 2 * f1 * Math.cos(f * 0.5 * globalSpeed);
-        model.chainWave(bodyParts, 1F * globalSpeed, 0.05F, 3, f, f1);
         model.chainWave(tailParts, 1F * globalSpeed, height * 0.05F, 3, f, f1);
         model.chainWave(leftArmParts, 1F * globalSpeed, height * 0.05F, 3, f, f1);
         model.chainWave(rightArmParts, 1F * globalSpeed, height * 0.05F, 3, f, f1);
 
-        model.walk(head, 1F * globalSpeed, 0.15F, true, 0F, -0.2F, f, f1);
-        model.walk(neck1, 1F * globalSpeed, 0.03F, false, 0F, 0.04F, f, f1);
-        model.walk(neck2, 1F * globalSpeed, 0.03F, false, 0F, 0.04F, f, f1);
-        model.walk(neck3, 1F * globalSpeed, 0.03F, false, 0F, 0.04F, f, f1);
-        model.walk(neck4, 1F * globalSpeed, 0.03F, false, 0F, 0.04F, f, f1);
-
-        model.walk(leftThigh, 0.5F * globalSpeed, 0.8F * globalDegree, false, 0F, 0.2F, f, f1);
-        model.walk(leftCalf1, 0.5F * globalSpeed, 1F * globalDegree, true, 1F, 0.4F, f, f1);
-        model.walk(leftCalf2, 0.5F * globalSpeed, 1F * globalDegree, false, 0F, 0F, f, f1);
-        model.walk(leftFoot, 0.5F * globalSpeed, 1.5F * globalDegree, true, 0.5F, -0.1F, f, f1);
-
-        model.walk(rightThigh, 0.5F * globalSpeed, 0.8F * globalDegree, true, 0F, 0.2F, f, f1);
-        model.walk(rightCalf1, 0.5F * globalSpeed, 1F * globalDegree, false, 1F, 0.4F, f, f1);
-        model.walk(rightCalf2, 0.5F * globalSpeed, 1F * globalDegree, true, 0F, 0F, f, f1);
-        model.walk(rightFoot, 0.5F * globalSpeed, 1.5F * globalDegree, false, 0.5F, -0.1F, f, f1);
-
         // idling
         model.chainWave(tailParts, 0.1F, 0.05F, 2, ticks, 0.25F);
-        model.chainWave(bodyParts, 0.1F, -0.03F, 5, ticks, 0.25F);
         model.chainWave(rightArmParts, 0.1F, -0.1F, 4, ticks, 0.25F);
         model.chainWave(leftArmParts, 0.1F, -0.1F, 4, ticks, 0.25F);
 

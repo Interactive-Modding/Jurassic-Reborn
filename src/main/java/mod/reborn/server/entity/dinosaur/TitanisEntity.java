@@ -29,7 +29,7 @@ import net.minecraft.world.World;
 import java.util.Locale;
 
 public class TitanisEntity extends DinosaurEntity {
-    private static final DataParameter<Integer> VARIANT = EntityDataManager.createKey(SmilodonEntity.class, DataSerializers.VARINT);
+    private static final DataParameter<Integer> VARIANT = EntityDataManager.createKey(TitanisEntity.class, DataSerializers.VARINT);
     private static final Class[] targets = {CompsognathusEntity.class, MammothEntity.class, VelociraptorEntity.class, VelociraptorBlueEntity.class, VelociraptorCharlieEntity.class, VelociraptorDeltaEntity.class, VelociraptorEchoEntity.class, MegatheriumEntity.class, ElasmotheriumEntity.class, ArsinoitheriumEntity.class, EntityPlayer.class, DilophosaurusEntity.class, DimorphodonEntity.class, DodoEntity.class, LeaellynasauraEntity.class, HypsilophodonEntity.class, StegosaurusEntity.class, ProtoceratopsEntity.class, OthnieliaEntity.class, MicroceratusEntity.class};
 
     public TitanisEntity(World world) {

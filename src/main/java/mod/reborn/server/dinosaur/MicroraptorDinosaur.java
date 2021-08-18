@@ -10,7 +10,7 @@ import net.minecraftforge.common.BiomeDictionary;
 import java.util.ArrayList;
 
 public class MicroraptorDinosaur extends Dinosaur {
-    public static final double SPEED = 0.2F;
+    public static final double SPEED = 0.4F;
     public MicroraptorDinosaur() {
         super();
         this.setName("Microraptor");
@@ -20,7 +20,6 @@ public class MicroraptorDinosaur extends Dinosaur {
         this.setEggColorMale(0x142146, 0x101625);
         this.setEggColorFemale(0x0E1423, 0x121827);
         this.setSpeed((SPEED -0.05), SPEED);
-        this.setAttackSpeed(1.3);
         this.setHealth(4, 10);
         this.setStrength(0.5, 2);
         this.setMaximumAge(this.fromDays(30));

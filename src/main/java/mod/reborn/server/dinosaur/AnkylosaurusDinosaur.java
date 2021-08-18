@@ -30,7 +30,7 @@ public class AnkylosaurusDinosaur extends Dinosaur
         this.setDiet(Diet.HERBIVORE.get());
         this.setBones("armor_plating", "front_leg_bones", "hind_leg_bones", "neck_vertebrae", "pelvis", "ribcage", "shoulder", "skull", "tail_club", "tail_vertebrae", "tooth");
         this.setHeadCubeName("head ");
-        this.setScale(2.3F, 0.15F);
+        this.setScale(2.2F, 0.15F);
         this.setBreeding(false, 0, 6, 44, false, true);
         this.setImprintable(true);
         this.setDefendOwner(true);

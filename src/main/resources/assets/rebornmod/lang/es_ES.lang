@@ -97,6 +97,11 @@ entity.rebornmod.crab.name=Cangrejo
 entity.rebornmod.shark.name=Tiburon
 entity.rebornmod.sinoceratops.name=Sinoceratops
 entity.rebornmod.arsinoitherium.name=Arsinoitherium
+entity.rebornmod.spinoraptor.name=Espinoraptor
+entity.rebornmod.diplodocus.name=Diplodocus
+entity.rebornmod.ankylodocus.name=Ankylodocus
+entity.rebornmod.camarasaurus.name=Camarasaurus
+
 entity.rebornmod.goat.name=Cabra
 entity.rebornmod.jeep_wrangler.name=Jeep Wrangler
 entity.rebornmod.ford_explorer.name=Ford Explorer
@@ -814,6 +819,11 @@ info.zhenyuanopterus.name=El Zhenyuanopterus vivió en China durante el período
 info.hyaenodon.name=El Hyaenodon fue un género de creodonte de gran éxito que vivió desde el Eoceno tardío hasta el Mioceno temprano en Asia, África y América del Norte. A pesar de su apariencia, los creodontes eran una orden separada de los carnívoros más familiares. Los dos órdenes se separaron de un ancestro común alrededor del límite K-T. Los hienodones eran depredadores extremadamente eficientes que pudieron extenderse por la mayor parte del mundo.
 info.dreadnoughtus.name=Originario de Argentina en el período Cretácico tardío, el Dreadnoughtus era un gigante imponente que empequeñecía a la mayoría de los otros saurópodos en gran escala. Como la mayoría de Titanosauria, su piel estaba tachonada de pequeños osteodermos óseos que protegían a los juveniles más débiles de los depredadores. Habrían vivido en manadas sueltas de 3-4 miembros, pero generalmente se reagruparon en grandes cantidades durante la temporada de apareamiento.
 info.sinoceratops.name=Sinoceratops fue un gran ceratopsiano que vivió en el este de Asia durante el Cretácico Superior. Su dieta se componía principalmente de materia vegetal dura como helechos y cícadas. A diferencia de su primo más grande, el triceratops, el Sinoceratops solo tenía un cuerno en la nariz, pero lo compensaba con un volante mucho más elaborado. Vivían principalmente en grupos familiares más pequeños que otros ceratopsianos de 4 a 10 individuos liderados por una pareja reproductora.
+info.spinoraptor.name=Spinoraptor es un tipo de dinosaurio alterado hereditariamente, creado por el Dr. Henry Wu al consolidar el genoma base de Spinosaurus con el de Velociraptor. El Spinoraptor es una criatura social y necesita un rango de dos o cuatro individuos de su especie para mantenerse contento.
+info.diplodocus.name=Originario de América del Norte durante el Jurásico tardío (hace unos 154-150 millones de años), el Diplodocus podía crecer hasta unos 35 metros de longitud y un peso estimado de 10 a 16 toneladas. Aunque no es el saurópodo más grande conocido, sigue siendo el dinosaurio más largo del que se ha encontrado un esqueleto completo. Debido a su tamaño masivo, lo más probable es que el Diplodocus sano y completamente desarrollado no tenga que preocuparse demasiado por los depredadores.
+info.ankylodocus.name=Ankylodocus es un tipo de dinosaurio cambiado hereditariamente, creado por el Dr. Henry Wu al consolidar el genoma base de Diplodocus con el de Ankylosaurus. Ankylodocus tiene la figura larga y nivelada del saurópodo Diplodocus, y los reflejos cautelosos y forzados del Ankylosaurus, por ejemplo, picos afilados que cubren su espalda y una cola apaleada.
+info.camarasaurus.name=Uno de los saurópodos más comunes, Camarasaurus vivió en América del Norte durante el Jurásico tardío. Tenía dientes muy fuertes y poca evidencia de gastrolitos (piedras de molleja), lo que implica que pudo haber procesado su comida hasta cierto punto antes de tragarla. Su dieta habría consistido principalmente en plantas duras y fibrosas.
+
 
 journal.chef_alejandro.name=Chef Alejandro
 journal.dennis_nedry.name=Dennis Nedry

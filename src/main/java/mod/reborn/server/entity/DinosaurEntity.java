@@ -208,9 +208,6 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
         //Necessary to set the bounding box, rather than having NULL_BOX
         setSize(1, 1);
 
-        this.moveHelper = new DinosaurMoveHelper(this);
-        this.jumpHelper = new DinosaurJumpHelper(this);
-
         this.setFullyGrown();
         this.updateAttributes();
         this.setPathPriority(PathNodeType.DOOR_WOOD_CLOSED, 0);

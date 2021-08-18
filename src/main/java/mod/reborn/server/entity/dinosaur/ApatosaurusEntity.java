@@ -33,6 +33,8 @@ public class ApatosaurusEntity extends DinosaurEntity
                 return SoundHandler.APATOSAURUS_CALL;
             case BEGGING:
                 return SoundHandler.APATOSAURUS_THREAT;
+            case WALKING:
+                return SoundHandler.STOMP;
         }
 
         return null;
