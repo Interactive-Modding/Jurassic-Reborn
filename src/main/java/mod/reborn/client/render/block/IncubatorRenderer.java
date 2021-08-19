@@ -1,23 +1,18 @@
 package mod.reborn.client.render.block;
 
 import mod.reborn.RebornMod;
+import mod.reborn.client.model.IncubatorLidModel;
 import mod.reborn.client.model.IncubatorModel;
-import mod.reborn.client.render.RenderingHandler;
-import net.minecraft.block.state.IBlockState;
+import mod.reborn.server.block.entity.IncubatorBlockEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.World;
-import mod.reborn.client.render.entity.dinosaur.DinosaurRenderInfo;
-import mod.reborn.server.block.BlockHandler;
-import mod.reborn.server.block.entity.IncubatorBlockEntity;
-import mod.reborn.server.entity.EntityHandler;
 
 public class IncubatorRenderer extends TileEntitySpecialRenderer<IncubatorBlockEntity> {
     private Minecraft mc;
     private final IncubatorModel MODEL = new IncubatorModel();
+    private final IncubatorLidModel LID_MODEL = new IncubatorLidModel();
     private static final ResourceLocation TEXTURES = new ResourceLocation(RebornMod.MODID + ":textures/blocks/incubator.png");
     
     public IncubatorRenderer() 
@@ -33,6 +28,7 @@ public class IncubatorRenderer extends TileEntitySpecialRenderer<IncubatorBlockE
     	GlStateManager.depthMask(true);
     	this.bindTexture(TEXTURES);
     	IncubatorModel model = MODEL;
+    	IncubatorLidModel lid_model = LID_MODEL;
     	float angle = te.lidAngle;
     	float prevAngle = te.prevLidAngle;
     	GlStateManager.pushMatrix();
@@ -45,8 +41,10 @@ public class IncubatorRenderer extends TileEntitySpecialRenderer<IncubatorBlockE
     	float f = prevAngle + (angle - prevAngle) * partialTicks;
     	f = 1.0f - f;
     	f = 1.0f - f*f*f;
-    	model.glass_main1.rotateAngleZ = (f * ((float)Math.PI)/2.0f);
+    	f = f*0.6f;
     	model.renderAll();
+    	GlStateManager.translate(0, -f + 0.15f, 0.23f);
+    	lid_model.renderAll();
     	GlStateManager.disableRescaleNormal();
     	GlStateManager.popMatrix();
     	GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
