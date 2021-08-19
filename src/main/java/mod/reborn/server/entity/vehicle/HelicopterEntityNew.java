@@ -1,14 +1,20 @@
 package mod.reborn.server.entity.vehicle;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.UUID;
+import java.util.function.Predicate;
+
 import com.google.common.collect.Lists;
 
 import mod.reborn.RebornMod;
-import mod.reborn.client.render.entity.TyretrackRenderer;
 import mod.reborn.server.entity.ai.util.InterpValue;
 import mod.reborn.server.event.KeyBindingHandler;
 import mod.reborn.server.item.ItemHandler;
 import mod.reborn.server.message.HelicopterDirectionMessage;
 import mod.reborn.server.message.HelicopterEngineMessage;
+import mod.reborn.server.util.ModSerializers;
 import mod.reborn.server.util.MutableVec3;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
@@ -22,6 +28,7 @@ import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumHandSide;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -30,14 +37,13 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.util.function.Predicate;
-
 
 public class HelicopterEntityNew extends EntityLivingBase {
     public final float MAX_HEALTH;
     public static final float MAX_POWER = 80.0F;
     public static final float REQUIRED_POWER = MAX_POWER / 2.0F;
     private static final DataParameter<Boolean> DATA_WATCHER_ENGINE_RUNNING = EntityDataManager.createKey(HelicopterEntityNew.class, DataSerializers.BOOLEAN);
+    private static final DataParameter<Map<UUID, Integer>> DATA_WATCHER_ENTITIES_IN_SEATS = EntityDataManager.createKey(HelicopterEntityNew.class, ModSerializers.UUID_MAP);
     private final Seat[] seats;
     public float rotAmount;
     //    private UUID heliID;
@@ -55,6 +61,7 @@ public class HelicopterEntityNew extends EntityLivingBase {
 
     private float healAmount;
     private int healCooldown = 40;
+    private Map<UUID, Integer> entities_on_seats = new HashMap<>();
 
     public HelicopterEntityNew(World worldIn) {
         super(worldIn);
@@ -66,7 +73,8 @@ public class HelicopterEntityNew extends EntityLivingBase {
         this.seats = new Seat[3];
         for (int i = 0; i < this.seats.length; i++) {
             float distance = i == 0 ? 1.5f : 0;
-            this.seats[i] = new Seat(i, 0, 0F, distance, 0.5F, 0.25F);
+            float offsetX = i == 0 ? 0 : i == 1 ? 0.5f : -0.5f;
+            this.seats[i] = new Seat(i, offsetX, 0F, distance, 0.5F, 0.25F);
         }
 
         this.direction = new MutableVec3(0, 0, 0);
@@ -140,6 +148,7 @@ public class HelicopterEntityNew extends EntityLivingBase {
     protected void entityInit() {
         super.entityInit();
         this.dataManager.register(DATA_WATCHER_ENGINE_RUNNING, false);
+        this.dataManager.register(DATA_WATCHER_ENTITIES_IN_SEATS, new HashMap<>());
     }
 
     @Override
@@ -253,7 +262,7 @@ public class HelicopterEntityNew extends EntityLivingBase {
         }
         if (controller != null && this.enginePower >= REQUIRED_POWER) {
             // We can fly \o/
-            // ♪ Fly on the wings of code! ♪
+            //  Fly on the wings of code! 
             MutableVec3 localDir = new MutableVec3(this.direction.xCoord, this.direction.yCoord, this.direction.zCoord * 8f);
             localDir = localDir.rotateYaw((float) Math.toRadians(-this.rotationYaw));
             final float gravityCancellation = 0.08f;
@@ -352,51 +361,66 @@ public class HelicopterEntityNew extends EntityLivingBase {
         return false;
     }
 
-//    @Override
-//    public EnumActionResult applyPlayerInteraction(EntityPlayer player, Vec3d vec, EnumHand hand) {
-//        // Transforms the vector in local coordinates (cancels possible rotations to simplify 'seat detection')
-//        Vec3d localVec = vec.rotateYaw((float) Math.toRadians(this.rotationYaw));
-//
-//        if (!this.attachModule(player, localVec, activeItemStack)) {
-//
-//            if (localVec.z > 0.6) {
-//                player.startRiding(this.seats[0]);
-//                return EnumActionResult.SUCCESS;
-//            } else if (localVec.z < 0.6 && localVec.x > 0) {
-//                player.startRiding(this.seats[1]);
-//                return EnumActionResult.SUCCESS;
-//            } else if (localVec.z < 0.6 && localVec.x < 0) {
-//                player.startRiding(this.seats[2]);
-//                return EnumActionResult.SUCCESS;
-//            }
-//            for (HelicopterModuleSpot spot : this.moduleSpots) {
-//                if (spot != null && spot.isClicked(localVec)) {
-//                    System.out.println(spot);
-//                    spot.onClicked(player, vec);
-//                    return EnumActionResult.SUCCESS;
-//                }
-//            }
-//        }
-//        return EnumActionResult.PASS;
-//    }
-
     @Override
-    public boolean processInitialInteract(EntityPlayer player, EnumHand hand) {
-        if (!this.world.isRemote && !player.isSneaking()) {
-            player.startRiding(this);
+    public EnumActionResult applyPlayerInteraction(EntityPlayer player, Vec3d vec, EnumHand hand) {
+         //Transforms the vector in local coordinates (cancels possible rotations to simplify 'seat detection')
+        Vec3d localVec = vec.rotateYaw((float) Math.toRadians(this.rotationYaw));
+
+        if (localVec.z > 0.6) 
+        {
+        	this.addPassengerInSeat(player, 0);
+            return EnumActionResult.SUCCESS;
+        } 
+        else if (localVec.z < 0.6 && localVec.x > 0) 
+        {
+        	this.addPassengerInSeat(player, 1);
+            return EnumActionResult.SUCCESS;
+        } 
+        else if (localVec.z < 0.6 && localVec.x < 0) 
+        {
+            this.addPassengerInSeat(player, 2);
+            return EnumActionResult.SUCCESS;
         }
-        return true;
+        return EnumActionResult.PASS;
     }
-
+    
+    private void addPassengerInSeat(Entity passenger, int index)
+    {
+    	if(this.seats[index].occupant != null) return;
+    	this.entities_on_seats.put(passenger.getUniqueID(), index);
+    	if(!passenger.world.isRemote)
+    		this.dataManager.set(DATA_WATCHER_ENTITIES_IN_SEATS, this.entities_on_seats);
+    	passenger.startRiding(this);
+    }
+    
     @Override
-    protected void addPassenger(Entity passenger) {
+    protected void addPassenger(Entity passenger) 
+    {
         super.addPassenger(passenger);
-        if (!this.world.isRemote && passenger instanceof EntityPlayer && !(this.getControllingPassenger() instanceof EntityPlayer)) {
+        int index = 2;
+        if(this.world.isRemote)
+        {
+        	boolean flag = this.entities_on_seats.containsKey(passenger.getUniqueID());
+        	if(flag)
+        		index = this.entities_on_seats.get(passenger.getUniqueID());
+        	else
+        		index = this.dataManager.get(DATA_WATCHER_ENTITIES_IN_SEATS).containsKey(passenger.getUniqueID()) ? 
+            			this.dataManager.get(DATA_WATCHER_ENTITIES_IN_SEATS).get(passenger.getUniqueID()) : 2;
+        }
+        else
+        {
+        	index = this.entities_on_seats.containsKey(passenger.getUniqueID()) ? 
+        			this.entities_on_seats.get(passenger.getUniqueID()) : 2;
+        }
+        if (!this.world.isRemote && index == 0 && passenger instanceof EntityPlayer && !(this.getControllingPassenger() instanceof EntityPlayer)) 
+        {
             Entity existing = this.seats[0].occupant;
             this.seats[0].occupant = passenger;
             this.usherPassenger(existing, 1);
-        } else {
-            this.usherPassenger(passenger, 0);
+        } 
+        else 
+        {
+            this.usherPassenger(passenger, index);
         }
     }
 
@@ -413,6 +437,11 @@ public class HelicopterEntityNew extends EntityLivingBase {
     @Override
     protected void removePassenger(Entity passenger) {
         super.removePassenger(passenger);
+        if(!passenger.world.isRemote)
+        {
+        	this.entities_on_seats.remove(passenger.getUniqueID());
+            this.dataManager.set(DATA_WATCHER_ENTITIES_IN_SEATS, this.entities_on_seats);
+        }
         for (Seat seat : this.seats) {
             if (passenger.equals(seat.occupant)) {
                 seat.occupant = null;
@@ -561,10 +590,16 @@ public class HelicopterEntityNew extends EntityLivingBase {
             this.offsetZ = z;
         }
 
-        public Entity getOccupant() {
+        public Entity getOccupant() 
+        {
             return this.occupant;
         }
-
+        
+        public boolean isEmpty()
+        {
+        	return this.occupant == null;
+        }
+        
         public Vec3d getPos() {
             double theta = Math.toRadians(HelicopterEntityNew.this.rotationYaw);
             double sideX = Math.cos(theta);
