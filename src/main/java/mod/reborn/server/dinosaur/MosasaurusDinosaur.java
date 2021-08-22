@@ -47,6 +47,8 @@ public class MosasaurusDinosaur extends Dinosaur {
         this.setOffset(0,1,0);
         ArrayList<Biome> biomeList = new ArrayList<Biome>();
         biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.OCEAN));
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.WATER));
+
         this.setSpawn(1, biomeList.toArray(new Biome[biomeList.size()]));
         this.enableSkeleton();
     }

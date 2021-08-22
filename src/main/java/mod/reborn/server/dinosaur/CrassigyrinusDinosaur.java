@@ -45,6 +45,7 @@ public class CrassigyrinusDinosaur extends Dinosaur {
         this.enableSkeleton();
         ArrayList<Biome> biomeList = new ArrayList<Biome>();
         biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.RIVER));
+        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.WATER));
         biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.OCEAN));
         this.setSpawn(1, biomeList.toArray(new Biome[biomeList.size()]));
     }

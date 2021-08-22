@@ -52,9 +52,6 @@ public class BrachiosaurusAnimator extends EntityAnimator<BrachiosaurusEntity> {
         float globalSpeed = 0.4F;
         float globalHeight = 0.5F;
 
-        model.chainWave(tailParts, globalSpeed * 0.25F, globalHeight * 1.0F, 3, ticks, 0.025F);
-        model.chainWave(neckParts, globalSpeed * 0.25F, globalHeight * 0.25F, -3, ticks, 0.025F);
-
         entity.tailBuffer.applyChainSwingBuffer(tailParts2);
     }
 }

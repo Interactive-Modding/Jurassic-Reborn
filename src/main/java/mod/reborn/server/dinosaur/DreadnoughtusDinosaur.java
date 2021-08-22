@@ -17,8 +17,8 @@ public class DreadnoughtusDinosaur extends Dinosaur {
         this.setDinosaurType(DinosaurType.NEUTRAL);
         this.setDinosaurClass(DreadnoughtusEntity.class);
         this.setTimePeriod(TimePeriod.CRETACEOUS);
-        this.setEggColorMale(0x846247, 0x33303c);
-        this.setEggColorFemale(0xa38f53, 0x6f5939);
+        this.setEggColorMale(0x587175, 0x4e5050);
+        this.setEggColorFemale(0x836d4b, 0xb2a07b);
         this.setHealth(10, 160);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(5, 15);
@@ -32,8 +32,8 @@ public class DreadnoughtusDinosaur extends Dinosaur {
         this.setDiet(Diet.HERBIVORE.get());
         this.setBones("front_leg_bones", "hind_leg_bones", "neck_vertebrae", "pelvis", "ribcage", "shoulder", "skull", "tail_vertebrae", "tooth");
         this.setHeadCubeName("Head");
-        this.setScale(2.05F, 0.1F);
-        this.setOffset(0.0F, 0.0F, 1.0F);
+        this.setScale(1.35F, 0.1F);
+        this.setOffset(0.0F, 0.0F, 0.0F);
         this.setAttackBias(1200.0);
         this.setMaxHerdSize(4);
         this.setBreeding(false, 4, 8, 70, true, false);

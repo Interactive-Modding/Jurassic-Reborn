@@ -13,7 +13,11 @@
     ],
     "SLEEPING": [
       {
-        "pose": "ankylosaurus_adult_sleeping",
+        "pose": "ankylosaurus_adult_sleeping_1",
+        "time": 20
+      },
+	  {
+        "pose": "ankylosaurus_adult_sleeping_2",
         "time": 20
       }
     ],
@@ -24,7 +28,11 @@
       },
 	  {
         "pose": "ankylosaurus_adult_attacking_2",
-        "time": 15
+        "time": 8
+      },
+	  {
+        "pose": "ankylosaurus_adult_attacking_3",
+        "time": 8
       },
 	  {
         "pose": "ankylosaurus_adult_idle",
@@ -33,7 +41,11 @@
     ],
     "CALLING": [
       {
-        "pose": "ankylosaurus_adult_calling",
+        "pose": "ankylosaurus_adult_calling_1",
+        "time": 10
+          },
+	  {
+        "pose": "ankylosaurus_adult_calling_2",
         "time": 10
       },
 	  {
@@ -49,34 +61,100 @@
     ],
     "EATING": [
       {
-        "pose": "ankylosaurus_adult_eating",
-        "time": 5
+        "pose": "ankylosaurus_adult_eating_1",
+        "time": 15
       },
 	  {
-        "pose": "ankylosaurus_adult_eating",
-        "time": 10
+        "pose": "ankylosaurus_adult_eating_2",
+        "time": 15
       },
 	  {
-        "pose": "ankylosaurus_adult_eating",
-        "time": 8
+        "pose": "ankylosaurus_adult_eating_3",
+        "time": 15
+      },
+	  {
+        "pose": "ankylosaurus_adult_eating_4",
+        "time": 15
+      },
+	  {
+        "pose": "ankylosaurus_adult_eating_5",
+        "time": 15
+      },
+	  {
+        "pose": "ankylosaurus_adult_eating_6",
+        "time": 15
+      },
+	  {
+        "pose": "ankylosaurus_adult_eating_7",
+        "time": 15
+      },
+	  {
+        "pose": "ankylosaurus_adult_eating_8",
+        "time": 15
+      },
+	  {
+        "pose": "ankylosaurus_adult_eating_9",
+        "time": 15
       },
 	  {
         "pose": "ankylosaurus_adult_idle",
         "time": 20
       }
     ],
-    "DRINKING": [
+    "ROARING": [
       {
-        "pose": "ankylosaurus_adult_drinking",
-        "time": 5
-      },
-	  {
-        "pose": "ankylosaurus_adult_drinking",
+        "pose": "ankylosaurus_adult_roar_1",
         "time": 10
       },
 	  {
-        "pose": "ankylosaurus_adult_drinking",
-        "time": 8
+        "pose": "ankylosaurus_adult_roar_2",
+        "time": 10
+      },
+	  {
+        "pose": "ankylosaurus_adult_roar_3",
+        "time": 10
+      },
+	  {
+        "pose": "ankylosaurus_adult_roar_4",
+        "time": 10
+      },
+	  {
+        "pose": "ankylosaurus_adult_roar_5",
+        "time": 10
+      },
+	  {
+        "pose": "ankylosaurus_adult_roar_6",
+        "time": 10
+      },
+	  {
+        "pose": "ankylosaurus_adult_idle",
+        "time": 15
+      }
+    ],
+    "DRINKING": [
+      {
+        "pose": "ankylosaurus_adult_drinking_1",
+        "time": 15
+      },
+	  {
+        "pose": "ankylosaurus_adult_drinking_2",
+        "time": 15
+      },
+	  {
+        "pose": "ankylosaurus_adult_drinking_3",
+        "time": 15
+      },
+	  {
+        "pose": "ankylosaurus_adult_drinking_4",
+        "time": 15
+      },
+	  {
+        "pose": "ankylosaurus_adult_drinking_5",
+        "time": 15
+      },
+	  {
+        "pose": "ankylosaurus_adult_drinking_6",
+        "time": 15
       },
 	  {
         "pose": "ankylosaurus_adult_idle",
@@ -95,8 +173,16 @@
     ],
     "LOOKING_LEFT": [
       {
-        "pose": "ankylosaurus_adult_looking_left",
-        "time": 10
+        "pose": "ankylosaurus_adult_looking_left_1",
+        "time": 20
+      },
+	  {
+        "pose": "ankylosaurus_adult_looking_left_2",
+        "time": 20
+      },
+	  {
+        "pose": "ankylosaurus_adult_looking_left_3",
+        "time": 20
       },
 	  {
         "pose": "ankylosaurus_adult_idle",
@@ -105,8 +191,20 @@
     ],
     "LOOKING_RIGHT": [
       {
-        "pose": "ankylosaurus_adult_looking_right",
-        "time": 10
+        "pose": "ankylosaurus_adult_looking_right_1",
+        "time": 20
+      },
+	  {
+        "pose": "ankylosaurus_adult_looking_right_2",
+        "time": 20
+      },
+	  {
+        "pose": "ankylosaurus_adult_looking_right_3",
+        "time": 20
+      },
+	  {
+        "pose": "ankylosaurus_adult_looking_right_4",
+        "time": 20
       },
 	  {
         "pose": "ankylosaurus_adult_idle",
@@ -132,19 +230,35 @@
     "WALKING": [
       {
         "pose": "ankylosaurus_adult_walking_1",
-        "time": 5
+        "time": 4
       },
       {
         "pose": "ankylosaurus_adult_walking_2",
-        "time": 5
+        "time": 4
       },
       {
         "pose": "ankylosaurus_adult_walking_3",
-        "time": 5
+        "time": 4
       },
       {
         "pose": "ankylosaurus_adult_walking_4",
-        "time": 3
+        "time": 4
+      },
+      {
+        "pose": "ankylosaurus_adult_walking_5",
+        "time": 4
+      },
+      {
+        "pose": "ankylosaurus_adult_walking_6",
+        "time": 4
+      },
+      {
+        "pose": "ankylosaurus_adult_walking_7",
+        "time": 4
+      },
+      {
+        "pose": "ankylosaurus_adult_walking_8",
+        "time": 4
       }
     ],
     "RUNNING": [
@@ -162,6 +276,22 @@
       },
       {
         "pose": "ankylosaurus_adult_running_4",
+        "time": 4
+      },
+      {
+        "pose": "ankylosaurus_adult_running_5",
+        "time": 4
+      },
+      {
+        "pose": "ankylosaurus_adult_running_6",
+        "time": 4
+      },
+      {
+        "pose": "ankylosaurus_adult_running_7",
+        "time": 4
+      },
+      {
+        "pose": "ankylosaurus_adult_running_8",
         "time": 4
       }
     ]

@@ -115,6 +115,10 @@ public class EntityHandler {
     public static final Dinosaur SMILODON= new SmilodonDinosaur();
     public static final Dinosaur RAPHUSREX= new RaphusrexDinosaur();
     public static final Dinosaur TITANIS= new TitanisDinosaur();
+    public static final Dinosaur SPINORAPTOR=new SpinoraptorDinosaur();
+    public static final Dinosaur DIPLODOCUS=new DiplodocusDinosaur();
+    public static final Dinosaur ANKYLODOCUS=new AnkylodocusDinosaur();
+    public static final Dinosaur CAMARASAURUS=new CamarasaurusDinosaur();
 
     private static final Map<Integer, Dinosaur> DINOSAURS = new HashMap<>();
     private static final Map<Dinosaur, Integer> DINOSAUR_IDS = new HashMap<>();
@@ -224,6 +228,10 @@ public class EntityHandler {
         registerDinosaur(85,SMILODON);
         registerDinosaur(86,RAPHUSREX);
         registerDinosaur(87,TITANIS);
+        registerDinosaur(88,SPINORAPTOR);
+        registerDinosaur(89,DIPLODOCUS);
+        registerDinosaur(90,ANKYLODOCUS);
+        registerDinosaur(91,CAMARASAURUS);
 
         dinosaurProgress = ProgressManager.push("Loading dinosaurs", DINOSAURS.size());
 

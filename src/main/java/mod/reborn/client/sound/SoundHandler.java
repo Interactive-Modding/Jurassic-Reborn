@@ -61,6 +61,18 @@ public class SoundHandler {
     public static final SoundEvent RUGOPS_HURT = create("rugops_hurt");
     public static final SoundEvent RUGOPS_LIVING = create("rugops_living");
 
+    public static final SoundEvent DIPLODOCUS_DEATH = create("diplodocus_death");
+    public static final SoundEvent DIPLODOCUS_HURT = create("diplodocus_hurt");
+    public static final SoundEvent DIPLODOCUS_LIVING = create("diplodocus_living");
+
+    public static final SoundEvent CAMARASAURUS_DEATH = create("camarasaurus_death");
+    public static final SoundEvent CAMARASAURUS_HURT = create("camarasaurus_hurt");
+    public static final SoundEvent CAMARASAURUS_LIVING = create("camarasaurus_living");
+
+    public static final SoundEvent ANKYLODOCUS_DEATH = create("ankylodocus_death");
+    public static final SoundEvent ANKYLODOCUS_HURT = create("ankylodocus_hurt");
+    public static final SoundEvent ANKYLODOCUS_LIVING = create("ankylodocus_living");
+
     public static final SoundEvent HYPSILOPHODON_HURT = create("hypsilophodon_hurt");
     public static final SoundEvent HYPSILOPHODON_LIVING = create("hypsilophodon_living");
 
@@ -351,6 +363,14 @@ public class SoundHandler {
     public static final SoundEvent ACHILLOBATOR_CALL = create("achillobator_call");
     public static final SoundEvent ACHILLOBATOR_DEATH = create("achillobator_death");
     public static final SoundEvent ACHILLOBATOR_ATTACK = create("achillobator_attack");
+
+    public static final SoundEvent SPINORAPTOR_LIVING = create("spinoraptor_living");
+    public static final SoundEvent SPINORAPTOR_HURT = create("spinoraptor_hurt");
+    public static final SoundEvent SPINORAPTOR_BREATHING = create("spinoraptor_breathing");
+    public static final SoundEvent SPINORAPTOR_CALL = create("spinoraptor_call");
+    public static final SoundEvent SPINORAPTOR_DEATH = create("spinoraptor_death");
+    public static final SoundEvent SPINORAPTOR_ATTACK = create("spinoraptor_attack");
+
 
     public static final SoundEvent ANKYLOSAURUS_LIVING = create("ankylosaurus_living");
     public static final SoundEvent ANKYLOSAURUS_HURT = create("ankylosaurus_hurt");

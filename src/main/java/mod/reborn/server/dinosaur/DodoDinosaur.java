@@ -18,7 +18,7 @@ public class DodoDinosaur extends Dinosaur
         this.setName("Dodo");
         this.setDinosaurType(DinosaurType.SCARED);
         this.setDinosaurClass(DodoEntity.class);
-        this.setTimePeriod(TimePeriod.QUATERNARY);
+        this.setTimePeriod(TimePeriod.NEOGENE);
         this.setEggColorMale(0xA2996E, 0x545338);
         this.setEggColorFemale(0x908B80, 0x665C51);
         this.setHealth(4, 16);

@@ -11,7 +11,7 @@ import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
 
 public class GallimimusDinosaur extends Dinosaur {
-    public static final double SPEED = 0.3F;
+    public static final double SPEED = 0.41F;
     public GallimimusDinosaur() {
         super();
 
@@ -35,7 +35,7 @@ public class GallimimusDinosaur extends Dinosaur {
         this.setScale(1.05F, 0.1F);
         this.setImprintable(true);
         this.setFlee(true);
-        this.setFlockSpeed(1.4F);
+        this.setFlockSpeed(1.35F);
         this.setBreeding(false, 2, 6, 20, false, true);
         this.setJumpHeight(3);
         String[][] recipe =

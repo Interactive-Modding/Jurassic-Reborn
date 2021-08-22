@@ -5,7 +5,16 @@ import mod.reborn.server.entity.dinosaur.CompsognathusEntity;
 import mod.reborn.server.entity.dinosaur.ParasaurolophusEntity;
 import mod.reborn.server.entity.dinosaur.DeinotheriumEntity;
 import mod.reborn.server.entity.dinosaur.SmilodonEntity;
+import mod.reborn.server.entity.dinosaur.SpinoraptorEntity;
 import mod.reborn.server.entity.dinosaur.TitanisEntity;
+import mod.reborn.server.entity.dinosaur.BaryonyxEntity;
+import mod.reborn.server.entity.dinosaur.IndoraptorEntity;
+import mod.reborn.server.entity.dinosaur.DiplodocusEntity;
+import mod.reborn.server.entity.dinosaur.CeratosaurusEntity;
+import mod.reborn.server.entity.dinosaur.AnkylodocusEntity;
+import mod.reborn.server.entity.dinosaur.CamarasaurusEntity;
+import mod.reborn.server.entity.dinosaur.BrachiosaurusEntity;
+import mod.reborn.server.entity.dinosaur.AnkylosaurusEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.OpenGlHelper;
@@ -122,6 +131,34 @@ public class DinosaurRenderer extends RenderLiving<DinosaurEntity> {
         if(entity instanceof TitanisEntity && !entity.isSkeleton()) {
             return ((TitanisEntity)entity).getTexture();
         }
+        if(entity instanceof CeratosaurusEntity && !entity.isSkeleton()) {
+            return ((CeratosaurusEntity)entity).getTexture();
+        }
+        if(entity instanceof SpinoraptorEntity && !entity.isSkeleton()) {
+            return ((SpinoraptorEntity)entity).getTexture();
+        }
+        if(entity instanceof IndoraptorEntity && !entity.isSkeleton()) {
+            return ((IndoraptorEntity)entity).getTexture();
+        }
+        if(entity instanceof BaryonyxEntity && !entity.isSkeleton()) {
+            return ((BaryonyxEntity)entity).getTexture();
+        }
+        if(entity instanceof DiplodocusEntity && !entity.isSkeleton()) {
+            return ((DiplodocusEntity)entity).getTexture();
+        }
+        if(entity instanceof AnkylodocusEntity && !entity.isSkeleton()) {
+            return ((AnkylodocusEntity)entity).getTexture();
+        }
+        if(entity instanceof CamarasaurusEntity && !entity.isSkeleton()) {
+            return ((CamarasaurusEntity)entity).getTexture();
+        }
+        if(entity instanceof BrachiosaurusEntity && !entity.isSkeleton()) {
+            return ((BrachiosaurusEntity)entity).getTexture();
+        }
+        if(entity instanceof AnkylosaurusEntity && !entity.isSkeleton()) {
+            return ((AnkylosaurusEntity)entity).getTexture();
+        }
+
 
         return entity.isMale() ? this.dinosaur.getMaleTexture(growthStage) : this.dinosaur.getFemaleTexture(growthStage);
     }

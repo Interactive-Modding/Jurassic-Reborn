@@ -67,11 +67,11 @@ public class IncubatorRenderer extends TileEntitySpecialRenderer<IncubatorBlockE
         }
     	GlStateManager.disableRescaleNormal();
     	GlStateManager.popMatrix();
-    	GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
-    	
+    	GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);    	
     }
     
-    private void renderEgg(ItemStack stack, double x, double y, double z, double xOffset, double zOffset) {
+    private void renderEgg(ItemStack stack, double x, double y, double z, double xOffset, double zOffset) 
+    {
         if (!stack.isEmpty()) 
         {
             GlStateManager.pushMatrix();
@@ -84,4 +84,5 @@ public class IncubatorRenderer extends TileEntitySpecialRenderer<IncubatorBlockE
             GlStateManager.popMatrix();
         }
     }
+  }
 }
