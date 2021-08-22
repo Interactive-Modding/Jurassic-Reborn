@@ -3,10 +3,15 @@ package mod.reborn.client.render.block;
 import mod.reborn.RebornMod;
 import mod.reborn.client.model.IncubatorLidModel;
 import mod.reborn.client.model.IncubatorModel;
+import mod.reborn.client.render.RenderingHandler;
+import mod.reborn.client.render.entity.dinosaur.DinosaurRenderInfo;
+import mod.reborn.server.block.BlockHandler;
 import mod.reborn.server.block.entity.IncubatorBlockEntity;
+import mod.reborn.server.entity.EntityHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
 public class IncubatorRenderer extends TileEntitySpecialRenderer<IncubatorBlockEntity> {
@@ -42,11 +47,42 @@ public class IncubatorRenderer extends TileEntitySpecialRenderer<IncubatorBlockE
     	f = 1.0f - f;
     	f = 1.0f - f*f*f;
     	f = f*0.6f;
-    	model.renderAll();
+    	model.renderAll(); //render block
     	GlStateManager.translate(0, -f + 0.15f, 0.23f);
-    	lid_model.renderAll();
+    	lid_model.renderAll(); //render lid
+    	GlStateManager.translate(0, f - 0.15f, -0.23f);
+    	if (te.getWorld().getBlockState(te.getPos()).getBlock() == BlockHandler.INCUBATOR)
+    	{
+            GlStateManager.cullFace(GlStateManager.CullFace.FRONT);
+            GlStateManager.disableRescaleNormal();
+
+            this.renderEgg(te.getStackInSlot(0), x, y, z, 0.55, 0.65);
+            this.renderEgg(te.getStackInSlot(1), x, y, z, 0.3, 0.3);
+            this.renderEgg(te.getStackInSlot(3), x, y, z, 0.7, 0.5);
+            this.renderEgg(te.getStackInSlot(4), x, y, z, 0.55, 0.3);
+            this.renderEgg(te.getStackInSlot(2), x, y, z, 0.4, 0.5);
+
+            GlStateManager.enableRescaleNormal();
+            GlStateManager.cullFace(GlStateManager.CullFace.BACK);
+        }
     	GlStateManager.disableRescaleNormal();
     	GlStateManager.popMatrix();
-    	GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
+    	GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);    	
+    }
+    
+    private void renderEgg(ItemStack stack, double x, double y, double z, double xOffset, double zOffset) 
+    {
+        if (!stack.isEmpty()) 
+        {
+            GlStateManager.pushMatrix();
+            GlStateManager.translate(-0.5f, -0.65f, -0.45f);
+            GlStateManager.translate(xOffset, 1.45, zOffset);
+            GlStateManager.scale(-0.5F, -0.5F, -0.5F);
+            DinosaurRenderInfo renderDef = RenderingHandler.INSTANCE.getRenderInfo(EntityHandler.getDinosaurById(stack.getItemDamage()));
+            this.mc.getTextureManager().bindTexture(renderDef.getEggTexture());
+            renderDef.getEggModel().render(null, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
+            GlStateManager.popMatrix();
+        }
+    }
   }
 }

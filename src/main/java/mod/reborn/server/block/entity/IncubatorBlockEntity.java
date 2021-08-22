@@ -337,15 +337,11 @@ public class IncubatorBlockEntity extends MachineBaseBlockEntity implements Temp
             		this.lidAngle = 0.0F;
         		}
     	}
-    	if(this.world.getTotalWorldTime()%10 == 0)
-    		System.out.println("\r\n(remote = " + this.world.isRemote + ") : angle = " + this.lidAngle + "\r\n"
-    												    + "                  # players = " + this.numPlayersUsing);
 	}
 	
 	@Override
 	public void openInventory(EntityPlayer player) 
 	{
-		System.out.println("opening");
 		++this.numPlayersUsing;
 		this.world.addBlockEvent(this.pos, this.getBlockType(), 1, this.numPlayersUsing);
 		this.world.notifyNeighborsOfStateChange(this.pos, this.getBlockType(), false);
@@ -354,7 +350,6 @@ public class IncubatorBlockEntity extends MachineBaseBlockEntity implements Temp
 	@Override
 	public void closeInventory(EntityPlayer player) 
 	{
-		System.out.println("closing");
 		--this.numPlayersUsing;
 		this.world.addBlockEvent(this.pos, this.getBlockType(), 1, this.numPlayersUsing);
 		this.world.notifyNeighborsOfStateChange(this.pos, this.getBlockType(), false);
