@@ -56,9 +56,4 @@ public class IncubatorContainer extends MachineContainer {
     public boolean canInteractWith(EntityPlayer player) {
         return this.incubator.isUsableByPlayer(player);
     }
-    
-    public IncubatorBlockEntity getIncubatorBlockEntity() 
-    {
-		return incubator;
-	}
 }

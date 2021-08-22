@@ -8,10 +8,11 @@ import mod.reborn.client.render.entity.dinosaur.DinosaurRenderInfo;
 import mod.reborn.server.block.BlockHandler;
 import mod.reborn.server.block.entity.IncubatorBlockEntity;
 import mod.reborn.server.entity.EntityHandler;
+
+import mod.reborn.server.block.entity.IncubatorBlockEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
 public class IncubatorRenderer extends TileEntitySpecialRenderer<IncubatorBlockEntity> {
@@ -65,6 +66,9 @@ public class IncubatorRenderer extends TileEntitySpecialRenderer<IncubatorBlockE
             GlStateManager.enableRescaleNormal();
             GlStateManager.cullFace(GlStateManager.CullFace.BACK);
         }
+    	model.renderAll();
+    	GlStateManager.translate(0, -f + 0.15f, 0.23f);
+    	lid_model.renderAll();
     	GlStateManager.disableRescaleNormal();
     	GlStateManager.popMatrix();
     	GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);    	

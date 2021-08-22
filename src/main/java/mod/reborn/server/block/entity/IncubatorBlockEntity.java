@@ -12,17 +12,13 @@ import mod.reborn.server.message.TileEntityFieldsMessage;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.NonNullList;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fml.common.FMLCommonHandler;
@@ -43,9 +39,6 @@ public class IncubatorBlockEntity extends MachineBaseBlockEntity implements Temp
     private static final int[] ENVIRONMENT = new int[] { 5 };
 
     private int[] temperature = new int[5];
-    
-    public float lidAngle, prevLidAngle;
-    public int ticksSinceSync, numPlayersUsing;
 
     private NonNullList<ItemStack> slots = NonNullList.withSize(6, ItemStack.EMPTY);
 
@@ -171,44 +164,27 @@ public class IncubatorBlockEntity extends MachineBaseBlockEntity implements Temp
     }
 
     @Override
-    public int getField(int id) 
-    {
-        if (id < 5) 
+    public int getField(int id) {
+        if (id < 5) {
             return this.processTime[id];
-        else if (id < 10) 
+        } else if (id < 10) {
             return this.totalProcessTime[id - 5];
-        else if (id < 15) 
+        } else if (id < 15) {
             return this.temperature[id - 10];
-        if(id == 15)
-        	return this.numPlayersUsing;
-        if(id == 16)
-        	return this.ticksSinceSync;
-        if(id == 17)
-        	return (int)(this.lidAngle*100);
-        if(id == 18)
-        	return (int)(this.prevLidAngle*100);
-        
+        }
+
         return 0;
     }
 
     @Override
-    public void setField(int id, int value) 
-    {
-        if (id < 5)
+    public void setField(int id, int value) {
+        if (id < 5) {
             this.processTime[id] = value;
-        else if (id < 10)
+        } else if (id < 10) {
             this.totalProcessTime[id - 5] = value;
-        else if (id < 15)
+        } else if (id < 15) {
             this.temperature[id - 10] = value;
-        if(id == 15)
-        	this.numPlayersUsing = value;
-        if(id == 16)
-        	this.ticksSinceSync = value;
-        if(id == 17)
-        	this.lidAngle = (float)(value)/100.0f;
-        if(id == 18)
-        	this.prevLidAngle = (float)(value)/100.0f;
-        
+        }
     }
     
     @Override
@@ -238,28 +214,7 @@ public class IncubatorBlockEntity extends MachineBaseBlockEntity implements Temp
 	}
 	
 	@Override
-	public void update() 
-	{
-		updateLid();
-		updateTileInventory();
-	}
-	
-	@Override
-	public boolean receiveClientEvent(int id, int type)
-    {
-        if (id == 1)
-        {
-            this.numPlayersUsing = type;
-            return true;
-        }
-        else
-        {
-            return super.receiveClientEvent(id, type);
-        }
-    }
-	
-	public void updateTileInventory()
-	{
+	public void update() {
 		boolean send = false;
 		if (!world.isRemote && FMLCommonHandler.instance().getMinecraftServerInstance().getTickCounter() % 100 == 0) {
 
@@ -276,6 +231,7 @@ public class IncubatorBlockEntity extends MachineBaseBlockEntity implements Temp
 			final BlockPos pos = this.getPos();
 			RebornMod.NETWORK_WRAPPER.sendToAllTracking(new TileEntityFieldsMessage(this.getSyncFields(NonNullList.create()), this), new TargetPoint(this.world.provider.getDimension(), pos.getX(), pos.getY(), pos.getZ(), 5));
 		}
+
 	}
 	
 	public void updateLid()
@@ -356,7 +312,8 @@ public class IncubatorBlockEntity extends MachineBaseBlockEntity implements Temp
 	}
 	
 	
-	@Override
+
+  @Override
     @Nullable
     public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing)
     {
@@ -411,20 +368,12 @@ public class IncubatorBlockEntity extends MachineBaseBlockEntity implements Temp
 	};
 	
 	@Override
-	public void packetDataHandler(ByteBuf fields) 
-	{
-		if (FMLCommonHandler.instance().getSide().isClient()) 
-		{
-			for (int slot = 0; slot < 5; slot++) 
-			{
+	public void packetDataHandler(ByteBuf fields) {
+		if (FMLCommonHandler.instance().getSide().isClient()) {
+			for (int slot = 0; slot < 5; slot++) {
 				this.setInventorySlotContents(slot, ByteBufUtils.readItemStack(fields));
 			}
-			for (int field = 0; field < 10; field++) 
-			{
-				this.setField(field, fields.readInt());
-			}
-			for (int field = 15; field <= 18; field++) 
-			{
+			for (int field = 0; field < 10; field++) {
 				this.setField(field, fields.readInt());
 			}
 		}
@@ -445,19 +394,12 @@ public class IncubatorBlockEntity extends MachineBaseBlockEntity implements Temp
 	}
 	
 	@Override
-	public NonNullList getSyncFields(NonNullList fields)
-	{
-		for (int slot = 0; slot < 5; slot++) 
-		{
+	public NonNullList getSyncFields(NonNullList fields) {
+		for (int slot = 0; slot < 5; slot++) {
 			fields.add(this.slots.get(slot));
 		}
 		
-		for (int field = 0; field < 10; field++) 
-		{
-			fields.add(this.getField(field));
-		}
-		for (int field = 15; field <= 18; field++) 
-		{
+		for (int field = 0; field < 10; field++) {
 			fields.add(this.getField(field));
 		}
 		return fields;
