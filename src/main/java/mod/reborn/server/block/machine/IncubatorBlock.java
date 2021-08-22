@@ -88,7 +88,7 @@ public class IncubatorBlock extends OrientedBlock {
     @Override
     @SideOnly(Side.CLIENT)
     public BlockRenderLayer getBlockLayer() {
-        return BlockRenderLayer.CUTOUT_MIPPED;
+        return BlockRenderLayer.TRANSLUCENT;
     }
     
     @Override
