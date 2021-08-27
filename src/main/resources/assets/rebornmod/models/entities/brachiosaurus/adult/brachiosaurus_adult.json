@@ -52,11 +52,11 @@
       },
       {
         "pose": "brachiosaurus_adult_roar_7",
-        "time": 10
+        "time": 16
       },
       {
         "pose": "brachiosaurus_adult_roar_8",
-        "time": 10
+        "time": 16
       },
       {
         "pose": "brachiosaurus_adult_idle",
@@ -240,19 +240,19 @@
     "DYING": [
       {
         "pose": "brachiosaurus_adult_death_1",
-        "time": 15
+        "time": 25
       },
       {
         "pose": "brachiosaurus_adult_death_2",
-        "time": 15
+        "time": 25
       },
       {
         "pose": "brachiosaurus_adult_death_3",
-        "time": 15
+        "time": 25
       },
       {
         "pose": "brachiosaurus_adult_death_4",
-        "time": 15
+        "time": 25
       },
       {
         "pose": "brachiosaurus_adult_death_5",
@@ -268,11 +268,11 @@
       },
       {
         "pose": "brachiosaurus_adult_death_8",
-        "time": 10
+        "time": 15
       },
       {
         "pose": "brachiosaurus_adult_death_9",
-        "time": 10
+        "time": 15
       }
     ],
     "DRINKING": [

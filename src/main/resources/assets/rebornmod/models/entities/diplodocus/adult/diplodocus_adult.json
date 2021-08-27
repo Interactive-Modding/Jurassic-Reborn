@@ -52,11 +52,11 @@
       },
       {
         "pose": "diplodocus_adult_roar_8",
-        "time": 20
+        "time": 12
       },
       {
         "pose": "diplodocus_adult_roar_9",
-        "time": 20
+        "time": 11
       },
       {
         "pose": "diplodocus_adult_idle",
@@ -118,7 +118,7 @@
       },
       {
         "pose": "diplodocus_adult_looking_right_4",
-        "time": 20
+        "time": 15
       },
       {
         "pose": "diplodocus_adult_looking_right_5",

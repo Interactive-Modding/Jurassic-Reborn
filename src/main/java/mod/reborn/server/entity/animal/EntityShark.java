@@ -155,10 +155,10 @@ public class EntityShark extends EntityAnimal implements Animatable, IEntityAddi
     @Override
     protected void applyEntityAttributes() {
         super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(15.0);
+        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(10.0);
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.25);
         this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE);
-        this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(6.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(3.0D);
     }
 
     protected void applyEntityAI()
@@ -166,7 +166,6 @@ public class EntityShark extends EntityAnimal implements Animatable, IEntityAddi
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true, EntityPlayer.class));
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, GoatEntity.class, false));
         this.targetTasks.addTask(3, new EntityAINearestAttackableTarget<>(this, EntityCrab.class, false));
-        this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, false));
         this.targetTasks.addTask(3, new EntityAINearestAttackableTarget<>(this, EntitySquid.class, false));
     }
 
