@@ -5,6 +5,7 @@ import mod.reborn.server.entity.EntityHandler;
 import mod.reborn.server.items.ItemHandler;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 
 import java.util.List;
 
@@ -31,6 +32,7 @@ public class RebornFoodTab extends ItemGroup {
 
     @Override
     public ItemStack createIcon() {
-        return new ItemStack(ItemHandler.DINOSAUR_MEAT);
+        //return new ItemStack(ItemHandler.DINOSAUR_MEAT);
+        return new ItemStack(Items.COOKED_BEEF);
     }
 }

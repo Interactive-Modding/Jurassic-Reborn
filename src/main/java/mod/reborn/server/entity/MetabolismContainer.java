@@ -2,6 +2,7 @@ package mod.reborn.server.entity;
 
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.DamageSource;
+import net.minecraft.world.GameRules;
 
 public class MetabolismContainer {
     public static final int MAX_DIGESTION_AMOUNT = 3000;
@@ -28,13 +29,14 @@ public class MetabolismContainer {
     }
 
     public void update() {
-        if (!this.dinosaur.getShouldBeDead() && !this.dinosaur.isCarcass() && GameRuleHandler.DINO_METABOLISM.getBoolean(this.dinosaur.world)) {
+        //if (!this.dinosaur.getShouldBeDead() && !this.dinosaur.isCarcass() && GameRuleHandler.DINO_METABOLISM.getBoolean(this.dinosaur.world)) {
+        if (!this.dinosaur.getShouldBeDead() && !this.dinosaur.isCarcass()) {
             this.decreaseEnergy(1);
             this.decreaseWater(1);
 
             if (this.dinosaur.isWet()) {
                 if (this.isThirsty()) {
-                    this.dinosaur.setAnimation(EntityAnimation.DRINKING.get());
+                    //this.dinosaur.setAnimation(EntityAnimation.DRINKING.get());
                 }
                 this.water = this.maxWater;
             }

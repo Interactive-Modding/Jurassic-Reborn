@@ -15,7 +15,7 @@ public class AchillobatorEntity extends DinosaurEntity {
         //this.goalSelector.addGoal(1, new RaptorLeapEntityAI(this));
 
         //this.goalSelector.addGoal(1, new EntityAIHurtByTarget(this, true, EntityPlayer.class, RaphusrexEntity.class, IndominusEntity.class, TyrannosaurusEntity.class, GiganotosaurusEntity.class, SpinosaurusEntity.class));
-        doesEatEggs(true);
+        //doesEatEggs(true);
     }
 
     /*
@@ -54,7 +54,7 @@ public class AchillobatorEntity extends DinosaurEntity {
 
     */
     protected void applyEntityAttributes() {
-        super.applyEntityAttributes();
+        //super.applyEntityAttributes();
         this.getAttribute(Attributes.FOLLOW_RANGE).setBaseValue(35D);
     }
 }

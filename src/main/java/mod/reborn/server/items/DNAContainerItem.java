@@ -33,7 +33,7 @@ public class DNAContainerItem extends Item {
         return quality;
     }
 
-    public static String getGeneticCode(PlayerEntity player, ItemStack stack) {
+    /*public static String getGeneticCode(PlayerEntity player, ItemStack stack) {
         CompoundNBT nbt = stack.getTag();
 
         String genetics = GeneticsHelper.randomGenetics(player.world.rand);
@@ -51,5 +51,5 @@ public class DNAContainerItem extends Item {
         stack.setTag(nbt);
 
         return genetics;
-    }
+    }*/
 }

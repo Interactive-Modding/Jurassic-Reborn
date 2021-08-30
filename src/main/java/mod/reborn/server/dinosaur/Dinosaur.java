@@ -17,13 +17,13 @@ public abstract class Dinosaur implements Comparable<Dinosaur> {
     private final Map<GrowthStage, List<ResourceLocation>> overlays = new HashMap<>();
     private final Map<GrowthStage, ResourceLocation> maleTextures = new HashMap<>();
     private final Map<GrowthStage, ResourceLocation> femaleTextures = new HashMap<>();
-    private final Map<GrowthStageGenderContainer, ResourceLocation> eyelidTextures = new HashMap<>();
+    //private final Map<GrowthStageGenderContainer, ResourceLocation> eyelidTextures = new HashMap<>();
     public boolean isHybrid = false;
     public String getDietName;
 
     private String name;
     private Class<? extends DinosaurEntity> entityClass;
-    private DinosaurType dinosaurType;
+    //private DinosaurType dinosaurType;
     private int primaryEggColorMale, primaryEggColorFemale;
     private int secondaryEggColorMale, secondaryEggColorFemale;
     private TimePeriod timePeriod;
@@ -47,8 +47,8 @@ public abstract class Dinosaur implements Comparable<Dinosaur> {
     private String[] bones;
     private int maximumAge;
     private String headCubeName;
-    private MovementType movementType = MovementType.NEAR_SURFACE;
-    private BirthType birthType = BirthType.EGG_LAYING;
+    //private MovementType movementType = MovementType.NEAR_SURFACE;
+    //private BirthType birthType = BirthType.EGG_LAYING;
     private boolean isImprintable = false;
 
     private boolean randomFlock = true;
@@ -61,13 +61,13 @@ public abstract class Dinosaur implements Comparable<Dinosaur> {
     private float offsetY;
     private float offsetZ;
 
-    private TabulaModelContainer modelAdult;
-    private TabulaModelContainer modelInfant;
-    private TabulaModelContainer modelJuvenile;
-    private TabulaModelContainer modelAdolescent;
-    private TabulaModelContainer modelSkeleton;
+    //private TabulaModelContainer modelAdult;
+    //private TabulaModelContainer modelInfant;
+    //private TabulaModelContainer modelJuvenile;
+    //private TabulaModelContainer modelAdolescent;
+    //private TabulaModelContainer modelSkeleton;
 
-    private PoseHandler<?> poseHandler;
+    //private PoseHandler<?> poseHandler;
 
     private boolean defendOwner;
     private boolean hasSkeleton;
@@ -92,7 +92,7 @@ public abstract class Dinosaur implements Comparable<Dinosaur> {
 
     private String[][] recipe;
 
-    public static Matrix4d getParentRotationMatrix(TabulaModelContainer model, TabulaCubeContainer cube, boolean includeParents, boolean ignoreSelf, float rot) {
+    /*public static Matrix4d getParentRotationMatrix(TabulaModelContainer model, TabulaCubeContainer cube, boolean includeParents, boolean ignoreSelf, float rot) {
         List<TabulaCubeContainer> parentCubes = new ArrayList<>();
 
         do {
@@ -281,15 +281,15 @@ public abstract class Dinosaur implements Comparable<Dinosaur> {
     public void setMovementType(MovementType type) {
         this.movementType = type;
     }
-
+*/
     public String getName() {
         return this.name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
 
+/*
     public void setBreeding(boolean directBirth, int minClutch, int maxClutch, int breedCooldown, boolean breedAroundOffspring, boolean defendOffspring) {
         this.directBirth = directBirth;
         this.minClutch = minClutch;
@@ -298,11 +298,11 @@ public abstract class Dinosaur implements Comparable<Dinosaur> {
         this.breedAroundOffspring = breedAroundOffspring;
         this.defendOffspring = defendOffspring;
     }
-
+*/
     public Class<? extends DinosaurEntity> getDinosaurClass() {
         return this.entityClass;
     }
-
+/*
     public void setDinosaurClass(Class<? extends DinosaurEntity> clazz) {
         this.entityClass = clazz;
     }
@@ -334,7 +334,7 @@ public abstract class Dinosaur implements Comparable<Dinosaur> {
     public TimePeriod getPeriod() {
         return this.timePeriod;
     }
-
+*/
     public double getBabyHealth() {
         return this.babyHealth;
     }
@@ -410,11 +410,9 @@ public abstract class Dinosaur implements Comparable<Dinosaur> {
     public void setAttackSpeed(double attackSpeed) {
         this.attackSpeed = attackSpeed;
     }
-
     public boolean shouldRegister() {
         return this.shouldRegister;
     }
-
     public void disableRegistry(){ this.shouldRegister = false; }
 
     protected String getDinosaurTexture(String subtype) {
@@ -429,28 +427,29 @@ public abstract class Dinosaur implements Comparable<Dinosaur> {
         return texture + ".png";
     }
 
-    public void setBirthType(BirthType birthType) {
-        this.birthType = birthType;
-    }
+    /*
+        public void setBirthType(BirthType birthType) {
+            this.birthType = birthType;
+        }
 
-    public BirthType getBirthType() {
-        return birthType;
-    }
+        public BirthType getBirthType() {
+            return birthType;
+        }
 
-    @Override
-    public int hashCode() {
-        return this.getName().hashCode();
-    }
+        @Override
+        public int hashCode() {
+            return this.getName().hashCode();
+        }
 
-    protected int fromDays(int days) {
-        return (days * 24000) / 8;
-    }
+        protected int fromDays(int days) {
+            return (days * 24000) / 8;
+        }
 
-    @Override
-    public int compareTo(Dinosaur dinosaur) {
-        return this.getName().compareTo(dinosaur.getName());
-    }
-
+        @Override
+        public int compareTo(Dinosaur dinosaur) {
+            return this.getName().compareTo(dinosaur.getName());
+        }
+    */
     public boolean isMarineCreature() {
         return this.isMarineAnimal;
     }
@@ -458,7 +457,7 @@ public abstract class Dinosaur implements Comparable<Dinosaur> {
     public void setMarineAnimal(boolean marineAnimal) {
         this.isMarineAnimal = marineAnimal;
     }
-
+/*
     public boolean isAvianCreature() {
         return this.isAvianAnimal;
     }
@@ -818,5 +817,5 @@ public abstract class Dinosaur implements Comparable<Dinosaur> {
     public enum BirthType {
         LIVE_BIRTH,
         EGG_LAYING
-    }
+    }*/
 }

@@ -1,5 +1,6 @@
 package mod.reborn.server.util;
 
+import mod.reborn.server.dinosaur.Dinosaur;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextFormatting;
@@ -55,7 +56,8 @@ public class LangUtils {
     }
 
     public static String getAttractionSignName(ItemStack stack) {
-        return translate("attraction_sign." + (AttractionSignEntity.AttractionSignType.values()[stack.getDamage()].name().toLowerCase(Locale.ENGLISH)) + ".name");
+        //return translate("attraction_sign." + (AttractionSignEntity.AttractionSignType.values()[stack.getDamage()].name().toLowerCase(Locale.ENGLISH)) + ".name");
+        return "";
     }
 
     public static String getGenderMode(int mode) {
@@ -67,17 +69,16 @@ public class LangUtils {
         }
 
         return translate("gender." + modeString + ".name");
-    }
+    }/*
     public static String getPlantName(int plantId) {
         return getPlantName(PlantHandler.getPlantById(plantId));
     }
 
     public static String getPlantName(Plant plant) {
         return translate("plants." + (plant == null ? "null" : plant.getName().toLowerCase(Locale.ENGLISH).replaceAll(" ", "_")) + ".name");
-    }
+    }*/
 
-    public static final class TranslateKey
-    {
+    public static final class TranslateKey {
         private final String key;
 
         public TranslateKey(String key) {

@@ -2,6 +2,7 @@ package mod.reborn.client.event;
 
 import com.mojang.blaze3d.platform.GlStateManager;
 import mod.reborn.RebornMod;
+import mod.reborn.server.items.ItemHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.player.ClientPlayerEntity;
 import net.minecraft.client.gui.FontRenderer;
@@ -58,7 +59,7 @@ public class RebornClientEvents {
     }
 
     private void onGameOverlay(RenderGameOverlayEvent.Post event) {
-        Minecraft mc = Minecraft.getInstance();
+        /*Minecraft mc = Minecraft.getInstance();
         ClientPlayerEntity player = mc.player;
         for(Hand hand : Hand.values()) {
             assert player != null;
@@ -77,11 +78,11 @@ public class RebornClientEvents {
                 }
                 break;
             }
-        }
+        }*/
     }
 
     private void shootableItemRender(Minecraft mc) {
-        ItemRenderer renderItem = mc.getItemRenderer();
+        /*ItemRenderer renderItem = mc.getItemRenderer();
         FontRenderer fontRenderer = mc.fontRenderer;
         ScaledResolution scaledResolution = new ScaledResolution(mc);
         mc.render
@@ -92,6 +93,6 @@ public class RebornClientEvents {
         String s = String.valueOf(bullet.getCount());
         GlStateManager.disableDepthTest();
         fontRenderer.drawStringWithShadow(s, xPosition + 17 - fontRenderer.getStringWidth(s), yPosition + 9, 0xFFFFFFFF);
-        GlStateManager.enableDepthTest();
+        GlStateManager.enableDepthTest();*/
     }
 }

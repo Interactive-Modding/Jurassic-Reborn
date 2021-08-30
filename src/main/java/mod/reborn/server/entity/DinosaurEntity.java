@@ -66,11 +66,11 @@ public class DinosaurEntity extends CreatureEntity implements IEntityAdditionalS
     private static final DataParameter<Boolean> WATCHER_WAS_FED = EntityDataManager.createKey(DinosaurEntity.class, DataSerializers.BOOLEAN);
     private static final DataParameter<Boolean> WATCHER_WAS_MOVED = EntityDataManager.createKey(DinosaurEntity.class, DataSerializers.BOOLEAN);
     public HashMap<Animation, Byte> variants = new HashMap<>();
-    private final InventoryDinosaur inventory;
-    private final MetabolismContainer metabolism;
+    //private final InventoryDinosaur inventory;
+    //private final MetabolismContainer metabolism;
     protected Dinosaur dinosaur;
     protected GoalSelector animationTasks;
-    protected Order order = Order.WANDER;
+    //protected Order order = Order.WANDER;
     private boolean isCarcass;
     private boolean wasMoved;
     private boolean blocked;
@@ -92,27 +92,27 @@ public class DinosaurEntity extends CreatureEntity implements IEntityAdditionalS
     private boolean deserializing;
     private int ticksUntilDeath;
     private int attackCooldown;
-    public FixedChainBuffer tailBuffer;
-    public Herd herd;
-    public Family family;
-    public Set<Relationship> relationships = new HashSet<>();
+    //public FixedChainBuffer tailBuffer;
+    //public Herd herd;
+    //public Family family;
+    //public Set<Relationship> relationships = new HashSet<>();
     public int wireTicks;
     public int disableHerdingTicks;
     private boolean isSittingNaturally;
     private Animation animation;
     private int animationTick;
     private int animationLength;
-    private DinosaurLookHelper lookHelper;
+    //private DinosaurLookHelper lookHelper;
     private BlockPos closestFeeder;
     private int feederSearchTick;
     private boolean inLava;
-    private DinosaurAttributes attributes;
+    //private DinosaurAttributes attributes;
     private int breedCooldown;
     private DinosaurEntity breeding;
     private Set<DinosaurEntity> children = new HashSet<>();
     private int pregnantTime;
     private int jumpHeight;
-    private final LegSolver legSolver;
+    //private final LegSolver legSolver;
     private boolean isSkeleton;
     private byte skeletonVariant;
     private boolean isFossile;
@@ -124,14 +124,14 @@ public class DinosaurEntity extends CreatureEntity implements IEntityAdditionalS
     public DinosaurEntity(EntityType<? extends CreatureEntity> type, World worldIn) {
         super(type, worldIn);
         this.blocked = false;
-        setSize(1, 1);
+        //setSize(1, 1);
     }
 
+    /*
     @Nullable
     protected LegSolver createLegSolver() {
         return null;
     }
-
 
 
     private void eatEggs() {
@@ -245,9 +245,9 @@ public class DinosaurEntity extends CreatureEntity implements IEntityAdditionalS
                     }
                 }
                 if(hasvowel) {
-                    player.sendMessage(new StringTextComponent(LangUtils.translate(LangUtils.TAME).replace("{dinosaur}", LangUtils.getDinoName(this.dinosaur))));
+                    //player.sendMessage(new StringTextComponent(LangUtils.translate(LangUtils.TAME).replace("{dinosaur}", LangUtils.getDinoName(this.dinosaur))));
                 } else {
-                    player.sendMessage(new StringTextComponent(LangUtils.translate(LangUtils.TAME).replace("{dinosaur}", LangUtils.getDinoName(this.dinosaur)).replace("an", "a")));
+                    //player.sendMessage(new StringTextComponent(LangUtils.translate(LangUtils.TAME).replace("{dinosaur}", LangUtils.getDinoName(this.dinosaur)).replace("an", "a")));
                 }
             }
         }
@@ -262,9 +262,9 @@ public class DinosaurEntity extends CreatureEntity implements IEntityAdditionalS
     @Override
     public boolean attackEntityAsMob(Entity entity) {
         if (entity instanceof DinosaurEntity && ((DinosaurEntity) entity).isCarcass() && this.canEatEntity(entity)) {
-            this.setAnimation(EntityAnimation.EATING.get());
+            //this.setAnimation(EntityAnimation.EATING.get());
         } else {
-            this.setAnimation(EntityAnimation.ATTACKING.get());
+            //this.setAnimation(EntityAnimation.ATTACKING.get());
         }
 
         while (entity.getRidingEntity() != null) {
@@ -1094,6 +1094,7 @@ public class DinosaurEntity extends CreatureEntity implements IEntityAdditionalS
         return distance;
     }
 
+*/
     public int getDaysExisted() {
         return (int) Math.floor((this.dinosaurAge * 8.0F) / 24000.0F);
     }
@@ -1107,14 +1108,13 @@ public class DinosaurEntity extends CreatureEntity implements IEntityAdditionalS
     }
 
     @Override
-    public boolean canDespawn() {
+    public boolean canDespawn(double distanceToClosestPlayer) {
         return false;
     }
 
     public int getDinosaurAge() {
         return this.dinosaurAge;
     }
-
     public void setAge(int age) {
         this.dinosaurAge = age;
         if (!this.world.isRemote) {
@@ -1122,246 +1122,246 @@ public class DinosaurEntity extends CreatureEntity implements IEntityAdditionalS
         }
     }
 
-    @Override
-    public float getEyeHeight() {
-        return (float) this.interpolate(dinosaur.getBabyEyeHeight(), dinosaur.getAdultEyeHeight()) * this.attributes.getScaleModifier();
-    }
+    /*
+        @Override
+        public float getEyeHeight() {
+            return (float) this.interpolate(dinosaur.getBabyEyeHeight(), dinosaur.getAdultEyeHeight()) * this.attributes.getScaleModifier();
+        }
 
-    @Override
-    protected void dropFewItems(boolean playerAttack, int looting) {
-        for (String bone : this.dinosaur.getBones()) {
-            if (this.rand.nextInt(10) != 0) {
-                this.dropStackWithGenetics(new ItemStack(ItemHandler.FRESH_FOSSILS.get(bone), 1, EntityHandler.getDinosaurId(this.dinosaur)));
+        @Override
+        protected void dropFewItems(boolean playerAttack, int looting) {
+            for (String bone : this.dinosaur.getBones()) {
+                if (this.rand.nextInt(10) != 0) {
+                    this.dropStackWithGenetics(new ItemStack(ItemHandler.FRESH_FOSSILS.get(bone), 1, EntityHandler.getDinosaurId(this.dinosaur)));
+                }
             }
         }
-    }
 
-    private void dropStackWithGenetics(ItemStack stack) {
-        CompoundNBT nbt = new CompoundNBT();
-        nbt.putInt("DNAQuality", this.geneticsQuality);
-        nbt.putInt("Dinosaur", EntityHandler.getDinosaurId(this.dinosaur));
-        nbt.putString("Genetics", this.genetics);
-        stack.setTag(nbt);
+        private void dropStackWithGenetics(ItemStack stack) {
+            CompoundNBT nbt = new CompoundNBT();
+            nbt.putInt("DNAQuality", this.geneticsQuality);
+            nbt.putInt("Dinosaur", EntityHandler.getDinosaurId(this.dinosaur));
+            nbt.putString("Genetics", this.genetics);
+            stack.setTag(nbt);
 
-        this.entityDropItem(stack, 0.0F);
-    }
-
-    @Override
-    public boolean isCarcass() {
-        return this.isCarcass;
-    }
-
-    public void setCarcass(boolean carcass) {
-        if(!this.world.isRemote && carcass != this.isCarcass && !this.wasMoved) {
-            this.moveTicks = 18;
+            this.entityDropItem(stack, 0.0F);
         }
-        this.isCarcass = carcass;
-
-        boolean carcassAllowed = RebornConfig.ENTITIES_CONFIG.allowCarcass.get();
-        if (!this.world.isRemote) {
-            this.dataManager.set(WATCHER_IS_CARCASS, this.isCarcass);
+*/
+        public boolean isCarcass() {
+            return this.isCarcass;
         }
-        if (carcass && carcassAllowed) {
-            this.setAnimation(EntityAnimation.DYING.get());
-            this.carcassHealth = MathHelper.clamp(Math.max(1, (int) Math.sqrt(this.width * this.height)), 0, 8);
-            this.ticksExisted = 0;
-            this.inventory.dropItems(this.world, this.rand);
-        }else if (carcass){
-            this.setAnimation(EntityAnimation.DYING.get());
-            this.carcassHealth = 0;
-            this.inventory.dropItems(this.world, this.rand);
-        }
-    }
+/*
+        public void setCarcass(boolean carcass) {
+            if(!this.world.isRemote && carcass != this.isCarcass && !this.wasMoved) {
+                this.moveTicks = 18;
+            }
+            this.isCarcass = carcass;
 
-    @Override
-    public boolean processInteract(PlayerEntity player, Hand hand) {
-        ItemStack stack = player.getHeldItem(hand);
-        if (player.isSneaking() && hand == Hand.MAIN_HAND) {
-            if (this.isOwner(player)) {
-                if (this.getAgePercentage() > 75) {
-                    player.displayGUIChest(this.inventory);
+            boolean carcassAllowed = RebornConfig.ENTITIES_CONFIG.allowCarcass.get();
+            if (!this.world.isRemote) {
+                this.dataManager.set(WATCHER_IS_CARCASS, this.isCarcass);
+            }
+            if (carcass && carcassAllowed) {
+                this.setAnimation(EntityAnimation.DYING.get());
+                this.carcassHealth = MathHelper.clamp(Math.max(1, (int) Math.sqrt(this.width * this.height)), 0, 8);
+                this.ticksExisted = 0;
+                this.inventory.dropItems(this.world, this.rand);
+            }else if (carcass){
+                this.setAnimation(EntityAnimation.DYING.get());
+                this.carcassHealth = 0;
+                this.inventory.dropItems(this.world, this.rand);
+            }
+        }
+
+        @Override
+        public boolean processInteract(PlayerEntity player, Hand hand) {
+            ItemStack stack = player.getHeldItem(hand);
+            if (player.isSneaking() && hand == Hand.MAIN_HAND) {
+                if (this.isOwner(player)) {
+                    if (this.getAgePercentage() > 75) {
+                        player.displayGUIChest(this.inventory);
+                    } else {
+                        if (this.world.isRemote) {
+                            StringTextComponent denied = new StringTextComponent(LangUtils.translate("message.too_young.name"));
+                            denied.getStyle().setColor(Color.fromTextFormatting(TextFormatting.RED));
+                            ClientProxy.MC.ingameGUI.addChatMessage(ChatType.GAME_INFO, denied);
+                        }
+                    }
                 } else {
                     if (this.world.isRemote) {
-                        StringTextComponent denied = new StringTextComponent(LangUtils.translate("message.too_young.name"));
+                        StringTextComponent denied = new StringTextComponent(LangUtils.translate("message.not_owned.name"));
                         denied.getStyle().setColor(Color.fromTextFormatting(TextFormatting.RED));
                         ClientProxy.MC.ingameGUI.addChatMessage(ChatType.GAME_INFO, denied);
                     }
                 }
             } else {
-                if (this.world.isRemote) {
-                    StringTextComponent denied = new StringTextComponent(LangUtils.translate("message.not_owned.name"));
-                    denied.getStyle().setColor(Color.fromTextFormatting(TextFormatting.RED));
-                    ClientProxy.MC.ingameGUI.addChatMessage(ChatType.GAME_INFO, denied);
-                }
-            }
-        } else {
-            if (stack.isEmpty() && hand == Hand.MAIN_HAND && this.world.isRemote) {
-                if (this.isOwner(player)) {
-                    RebornMod.NETWORK_WRAPPER.sendToServer(new BiPacketOrder(this));
-                } else {
-                    StringTextComponent denied = new StringTextComponent(LangUtils.translate("message.not_owned.name"));
-                    denied.getStyle().setColor(Color.fromTextFormatting(TextFormatting.RED));
-                    ClientProxy.MC.ingameGUI.addChatMessage(ChatType.GAME_INFO, denied);
-                }
-            } else if (!stack.isEmpty()&& (this.metabolism.isThirsty() || this.metabolism.isHungry())) {
-                if (!this.world.isRemote) {
-                    Item item = stack.getItem();
-                    boolean fed = false;
-                    if (item == Items.POTION) {
-                        fed = true;
-                        this.metabolism.increaseWater(1000);
-                        this.setAnimation(EntityAnimation.DRINKING.get());
-                    } else if (FoodHelper.isEdible(this, this.dinosaur.getDiet(), item)) {
-                        fed = true;
-                        this.metabolism.eat(FoodHelper.getHealAmount(item));
-                        this.setAnimation(EntityAnimation.EATING.get());
-                        FoodHelper.applyEatEffects(this, item);
+                if (stack.isEmpty() && hand == Hand.MAIN_HAND && this.world.isRemote) {
+                    if (this.isOwner(player)) {
+                        RebornMod.NETWORK_WRAPPER.sendToServer(new BiPacketOrder(this));
+                    } else {
+                        StringTextComponent denied = new StringTextComponent(LangUtils.translate("message.not_owned.name"));
+                        denied.getStyle().setColor(Color.fromTextFormatting(TextFormatting.RED));
+                        ClientProxy.MC.ingameGUI.addChatMessage(ChatType.GAME_INFO, denied);
                     }
-                    if (fed) {
-                        this.dataManager.set(WATCHER_WAS_FED, true);
-                        if (!player.isCreative()) {
-                            stack.shrink(1);
-                            if (item == Items.POTION) {
-                                player.inventory.addItemStackToInventory(new ItemStack(Items.GLASS_BOTTLE));
-                            }
+                } else if (!stack.isEmpty()&& (this.metabolism.isThirsty() || this.metabolism.isHungry())) {
+                    if (!this.world.isRemote) {
+                        Item item = stack.getItem();
+                        boolean fed = false;
+                        if (item == Items.POTION) {
+                            fed = true;
+                            this.metabolism.increaseWater(1000);
+                            this.setAnimation(EntityAnimation.DRINKING.get());
+                        } else if (FoodHelper.isEdible(this, this.dinosaur.getDiet(), item)) {
+                            fed = true;
+                            this.metabolism.eat(FoodHelper.getHealAmount(item));
+                            this.setAnimation(EntityAnimation.EATING.get());
+                            FoodHelper.applyEatEffects(this, item);
                         }
-                        if (!this.isOwner(player)) {
-                            if (this.rand.nextFloat() < 0.30) {
-                                if (this.dinosaur.getDinosaurType() == Dinosaur.DinosaurType.AGGRESSIVE) {
-                                    if (this.rand.nextFloat() * 4.0F < (float) this.herd.members.size() / this.dinosaur.getMaxHerdSize()) {
-                                        this.herd.enemies.add(player);
-                                    } else {
-                                        this.attackEntityAsMob(player);
-                                    }
-                                } else if (this.dinosaur.getDinosaurType() == Dinosaur.DinosaurType.SCARED) {
-                                    this.herd.fleeing = true;
-                                    this.herd.enemies.add(player);
+                        if (fed) {
+                            this.dataManager.set(WATCHER_WAS_FED, true);
+                            if (!player.isCreative()) {
+                                stack.shrink(1);
+                                if (item == Items.POTION) {
+                                    player.inventory.addItemStackToInventory(new ItemStack(Items.GLASS_BOTTLE));
                                 }
                             }
+                            if (!this.isOwner(player)) {
+                                if (this.rand.nextFloat() < 0.30) {
+                                    if (this.dinosaur.getDinosaurType() == Dinosaur.DinosaurType.AGGRESSIVE) {
+                                        if (this.rand.nextFloat() * 4.0F < (float) this.herd.members.size() / this.dinosaur.getMaxHerdSize()) {
+                                            this.herd.enemies.add(player);
+                                        } else {
+                                            this.attackEntityAsMob(player);
+                                        }
+                                    } else if (this.dinosaur.getDinosaurType() == Dinosaur.DinosaurType.SCARED) {
+                                        this.herd.fleeing = true;
+                                        this.herd.enemies.add(player);
+                                    }
+                                }
+                            }
+                            player.swingArm(hand);
                         }
-                        player.swingArm(hand);
                     }
                 }
             }
+
+            return false;
         }
 
-        return false;
-    }
-
-    public boolean isOwner(PlayerEntity player) {
-        return player.getUniqueID().equals(this.getOwner());
-    }
-
-    @Override
-    public boolean canBeLeashedTo(PlayerEntity player) {
-        return !this.getLeashed() && (this.getWidth() < 1.5);
-    }
-
-    public int getDNAQuality() {
-        return this.geneticsQuality;
-    }
-
-    public void setDNAQuality(int quality) {
-        this.geneticsQuality = quality;
-    }
-
-    @Override
-    public Animation[] getAnimations() {
-        return EntityAnimation.getAnimations();
-    }
-
-    @Override
-    public Animation getAnimation() {
-        return this.animation;
-    }
-
-    @Override
-    public void setAnimation(Animation newAnimation) {
-        if (this.isSleeping()) {
-            newAnimation = EntityAnimation.SLEEPING.get();
+        public boolean isOwner(PlayerEntity player) {
+            return player.getUniqueID().equals(this.getOwner());
         }
 
-        if (this.isCarcass()) {
-            newAnimation = EntityAnimation.DYING.get();
-        }
-        Animation oldAnimation = this.animation;
-        this.animation = newAnimation;
-        if (oldAnimation != newAnimation) {
-            this.animationTick = 0;
-            this.animationLength = (int) this.dinosaur.getPoseHandler().getAnimationLength(newAnimation, this.getGrowthStage());
-            AnimationHandler.INSTANCE.sendAnimationMessage(this, newAnimation);
+        @Override
+        public boolean canBeLeashedTo(PlayerEntity player) {
+            return !this.getLeashed() && (this.getWidth() < 1.5);
         }
 
-    }
+        public int getDNAQuality() {
+            return this.geneticsQuality;
+        }
 
-    @Override
-    public int getAnimationTick() {
-        return this.animationTick;
-    }
+        public void setDNAQuality(int quality) {
+            this.geneticsQuality = quality;
+        }
 
-    @Override
-    public void setAnimationTick(int tick) {
-        this.animationTick = tick;
-    }
+        @Override
+        public Animation[] getAnimations() {
+            return EntityAnimation.getAnimations();
+        }
 
-    public boolean isBusy() {
-        return !this.isAlive() ||
-                this.getAnimation() == EntityAnimation.IDLE.get() ||
-                (this.herd != null && this.herd.isBusy()) ||
-                this.getAttackTarget() != null ||
-                this.isSwimming() ||
-                this.shouldSleep();
-    }
+        @Override
+        public Animation getAnimation() {
+            return this.animation;
+        }
 
-    public boolean isAlive() {
-        return !this.isCarcass && !this.getShouldBeDead();
-    }
+        @Override
+        public void setAnimation(Animation newAnimation) {
+            if (this.isSleeping()) {
+                newAnimation = EntityAnimation.SLEEPING.get();
+            }
 
-    @Override
-    public SoundEvent getAmbientSound() {
-        return this.getSoundForAnimation(EntityAnimation.SPEAK.get());
-    }
+            if (this.isCarcass()) {
+                newAnimation = EntityAnimation.DYING.get();
+            }
+            Animation oldAnimation = this.animation;
+            this.animation = newAnimation;
+            if (oldAnimation != newAnimation) {
+                this.animationTick = 0;
+                this.animationLength = (int) this.dinosaur.getPoseHandler().getAnimationLength(newAnimation, this.getGrowthStage());
+                AnimationHandler.INSTANCE.sendAnimationMessage(this, newAnimation);
+            }
+
+        }
+
+        @Override
+        public int getAnimationTick() {
+            return this.animationTick;
+        }
+
+        @Override
+        public void setAnimationTick(int tick) {
+            this.animationTick = tick;
+        }
+
+        public boolean isBusy() {
+            return !this.isAlive() ||
+                    this.getAnimation() == EntityAnimation.IDLE.get() ||
+                    (this.herd != null && this.herd.isBusy()) ||
+                    this.getAttackTarget() != null ||
+                    this.isSwimming() ||
+                    this.shouldSleep();
+        }
+
+        public boolean isAlive() {
+            return !this.isCarcass && !this.getShouldBeDead();
+        }
+
+        @Override
+        public SoundEvent getAmbientSound() {
+            return this.getSoundForAnimation(EntityAnimation.SPEAK.get());
+        }
 
 
-    @Override
-    public SoundEvent getHurtSound(DamageSource damageSourceIn) {
-        return this.getSoundForAnimation(EntityAnimation.INJURED.get());
-    }
+        @Override
+        public SoundEvent getHurtSound(DamageSource damageSourceIn) {
+            return this.getSoundForAnimation(EntityAnimation.INJURED.get());
+        }
 
-    @Override
-    public SoundEvent getDeathSound() {
-        return this.getSoundForAnimation(EntityAnimation.DYING.get());
-    }
+        @Override
+        public SoundEvent getDeathSound() {
+            return this.getSoundForAnimation(EntityAnimation.DYING.get());
+        }
 
-    public SoundEvent getSoundForAnimation(Animation animation) {
-        return null;
-    }
+        public SoundEvent getSoundForAnimation(Animation animation) {
+            return null;
+        }
 
-    public SoundEvent getBreathingSound() {
-        return null;
-    }
+        public SoundEvent getBreathingSound() {
+            return null;
+        }
 
-    public double getAttackDamage() {
-        return this.interpolate(dinosaur.getBabyStrength(), dinosaur.getAdultStrength());
-    }
+        public double getAttackDamage() {
+            return this.interpolate(dinosaur.getBabyStrength(), dinosaur.getAdultStrength());
+        }
+*/
+        public boolean isMale() {
+            return this.isMale;
+        }
 
-    public boolean isMale() {
-        return this.isMale;
-    }
+        public boolean isPregnant() {
+            return !this.isMale() && this.pregnantTime > 0;
+        }
 
-    public boolean isPregnant() {
-        return !this.isMale() && this.pregnantTime > 0;
-    }
-
-    public void setMale(boolean male) {
-        this.isMale = male;
-    }
+        public void setMale(boolean male) {
+            this.isMale = male;
+        }
 
     public int getAgePercentage() {
         int age = this.getDinosaurAge();
         return age != 0 ? age * 100 / this.dinosaur.getMaximumAge() : 0;
     }
-
+/*
     @Override
     public GrowthStage getGrowthStage() {
 
@@ -1372,6 +1372,7 @@ public class DinosaurEntity extends CreatureEntity implements IEntityAdditionalS
         return percent > 75 ? GrowthStage.ADULT : percent > 50 ? GrowthStage.ADOLESCENT : percent > 25 ? GrowthStage.JUVENILE : GrowthStage.INFANT;
     }
 
+*/
     public void increaseGrowthSpeed() {
         this.growthSpeedOffset += 240;
     }
@@ -1379,11 +1380,10 @@ public class DinosaurEntity extends CreatureEntity implements IEntityAdditionalS
     public int getBreedCooldown() {
         return this.breedCooldown;
     }
-
     public void breed(DinosaurEntity partner) {
         this.breeding = partner;
     }
-
+/*
     @Override
     public boolean isSwimming() {
         return (this.isInWater() || this.inLava()) && !this.onGround;
@@ -1541,7 +1541,17 @@ public class DinosaurEntity extends CreatureEntity implements IEntityAdditionalS
         this.updateAttributes();
         this.updateBounds();
     }
+*/
+    @Override
+    public void writeSpawnData(PacketBuffer buffer) {
 
+    }
+
+    @Override
+    public void readSpawnData(PacketBuffer additionalData) {
+
+    }
+/*
     public MetabolismContainer getMetabolism() {
         return this.metabolism;
     }
@@ -1966,7 +1976,7 @@ public class DinosaurEntity extends CreatureEntity implements IEntityAdditionalS
     public void readSpawnData(PacketBuffer additionalData) {
 
     }
-
+*/
     public static class FieldGuideInfo {
         public int hunger;
         public int thirst;
@@ -1989,6 +1999,7 @@ public class DinosaurEntity extends CreatureEntity implements IEntityAdditionalS
         }
 
         public static FieldGuideInfo serialize(ByteBuf buf, DinosaurEntity entity) {
+            /*
             MetabolismContainer metabolism = entity.getMetabolism();
             Herd herd = entity.herd;
             FieldGuideInfo info = new FieldGuideInfo();
@@ -2006,6 +2017,15 @@ public class DinosaurEntity extends CreatureEntity implements IEntityAdditionalS
             buf.writeBoolean(info.hungry);
             buf.writeBoolean(info.thirsty);
             buf.writeBoolean(info.poisoned);
+            return info;*/
+            FieldGuideInfo info = new FieldGuideInfo();
+            info.flocking = false;
+            info.scared = false;
+            info.hunger = 0;
+            info.thirst = 0;
+            info.hungry = false;
+            info.thirsty = false;
+            info.poisoned = entity.isPotionActive(Effects.POISON);
             return info;
         }
     }

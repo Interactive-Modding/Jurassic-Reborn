@@ -2,22 +2,25 @@ package mod.reborn.server.tab;
 
 import mod.reborn.server.block.BlockHandler;
 import mod.reborn.server.items.ItemHandler;
+import net.minecraft.block.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 
 public class TabHandler {
     public static final ItemGroup ITEMS = new ItemGroup("rebornmod.items") {
         @Override
         public ItemStack createIcon() {
-            return new ItemStack(ItemHandler.AMBER);
+            //return new ItemStack(ItemHandler.AMBER);
+            return new ItemStack(Items.GOLD_INGOT);
         }
     };
 
     public static final ItemGroup BLOCKS = new ItemGroup("rebornmod.blocks") {
         @Override
         public ItemStack createIcon() {
-            return new ItemStack(Item.getItemFromBlock(BlockHandler.GYPSUM_BRICKS));
+            return new ItemStack(Items.BRICKS);
         }
     };
 
@@ -30,7 +33,8 @@ public class TabHandler {
     public static final ItemGroup EGGS = new ItemGroup("rebornmod.eggs") {
         @Override
         public ItemStack createIcon() {
-            return new ItemStack(ItemHandler.SPAWN_EGG);
+            //return new ItemStack(ItemHandler.SPAWN_EGG);
+            return new ItemStack(Items.EGG);
         }
     };
 

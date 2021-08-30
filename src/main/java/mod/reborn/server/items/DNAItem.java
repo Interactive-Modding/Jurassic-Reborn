@@ -1,5 +1,7 @@
 package mod.reborn.server.items;
 
+import mod.reborn.server.dinosaur.Dinosaur;
+import mod.reborn.server.entity.EntityHandler;
 import mod.reborn.server.tab.TabHandler;
 import mod.reborn.server.util.LangUtils;
 import net.minecraft.item.ItemGroup;
@@ -10,6 +12,7 @@ import net.minecraft.util.text.StringTextComponent;
 
 import java.util.Collections;
 import java.util.LinkedList;
+import java.util.List;
 
 public class DNAItem extends DNAContainerItem {
     public DNAItem() {
@@ -25,7 +28,7 @@ public class DNAItem extends DNAContainerItem {
         Dinosaur dinosaur = EntityHandler.getDinosaurById(stack.getDamage());
 
         if (dinosaur == null) {
-            dinosaur = EntityHandler.VELOCIRAPTOR;
+            //dinosaur = EntityHandler.VELOCIRAPTOR;
         }
 
         return dinosaur;
@@ -33,11 +36,12 @@ public class DNAItem extends DNAContainerItem {
 
     @Override
     public int getContainerId(ItemStack stack) {
-        return EntityHandler.getDinosaurId(this.getDinosaur(stack));
+        //return EntityHandler.getDinosaurId(this.getDinosaur(stack));
+        return 0;
     }
 
     public void getSubItems(ItemGroup tab, NonNullList<ItemStack> subtypes) {
-        List<Dinosaur> dinosaurs = new LinkedList<>(EntityHandler.getDinosaurs().values());
+        /*List<Dinosaur> dinosaurs = new LinkedList<Dinosaur>(EntityHandler.getDinosaurs().values());
 
         Collections.sort(dinosaurs);
         if(this.getCreativeTabs().contains(tab))
@@ -45,6 +49,6 @@ public class DNAItem extends DNAContainerItem {
                 if (dinosaur.shouldRegister()) {
                     subtypes.add(new ItemStack(this, 1, EntityHandler.getDinosaurId(dinosaur)));
                 }
-            }
+            }*/
     }
 }

@@ -7,6 +7,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.util.ActionResultType;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
@@ -87,21 +88,22 @@ public class ItemHandler {
     public static final RegistryObject<EntityRightClickItem> BIRTHING_WAND;
     public static final RegistryObject<EntityRightClickItem> PREGNANCY_TEST;
     static {
-        GROWTH_SERUM = new EntityRightClickItem(interaction -> {
+        GROWTH_SERUM = REGISTERS.register("growth_serum", () -> new EntityRightClickItem(interaction -> {
             if (interaction.getTarget() instanceof DinosaurEntity) {
                 DinosaurEntity dinosaur = (DinosaurEntity) interaction.getTarget();
                 if (!dinosaur.isCarcass()) {
-                    dinosaur.increaseGrowthSpeed();
+                    //dinosaur.increaseGrowthSpeed();
                     interaction.getStack().shrink(1);
-                    if (!interaction.getPlayer().capabilities.isCreativeMode) {
-                        interaction.getPlayer().inventory.addItemStackToInventory(new ItemStack(ItemHandler.EMPTY_SYRINGE));
+                    if (!interaction.getPlayer().isCreative()) {
+                        //interaction.getPlayer().inventory.addItemStackToInventory(new ItemStack(ItemHandler.EMPTY_SYRINGE));
                     }
-                    return true;
+                    return ActionResultType.SUCCESS;
                 }
             }
-            return false;
-        }, TabHandler.ITEMS);
-        BREEDING_WAND = new EntityRightClickItem(interaction -> {
+            return ActionResultType.FAIL;
+        }, TabHandler.ITEMS));
+
+        BREEDING_WAND = REGISTERS.register("breeding_wand", () -> new EntityRightClickItem(interaction -> {
             ItemStack stack = interaction.getPlayer().getHeldItem(interaction.getHand());
             CompoundNBT nbt = stack.getOrCreateChildTag("wand_info");
             Entity entity = interaction.getPlayer().world.getEntityByID(nbt.getInt("dino_id"));
@@ -116,29 +118,29 @@ public class ItemHandler {
                 } else {
                     nbt.putInt("dino_id", interaction.getTarget().getEntityId());
                 }
-                return true;
+                return ActionResultType.SUCCESS;
             }
-            return false;
-        }, TabHandler.CREATIVE);
-        BIRTHING_WAND = new EntityRightClickItem(interaction -> {
+            return ActionResultType.FAIL;
+        }, TabHandler.CREATIVE));
+        BIRTHING_WAND = REGISTERS.register("birthing_wand", () -> new EntityRightClickItem(interaction -> {
             if(interaction.getTarget() instanceof DinosaurEntity) {
                 DinosaurEntity dino = ((DinosaurEntity)interaction.getTarget());
                 if (dino.isPregnant() && !dino.getDinosaur().isHybrid) {
-                    ((DinosaurEntity) interaction.getTarget()).giveBirth();
-                    return true;
+                    //((DinosaurEntity) interaction.getTarget()).giveBirth();
+                    return ActionResultType.SUCCESS;
                 } else {
                     interaction.getPlayer().sendStatusMessage(new StringTextComponent("dinosaur.birthingwand." + (dino.isMale() ? "male" : "not_pregnant")), true);
                 }
             }
-            return false;
-        }, TabHandler.CREATIVE);
-        PREGNANCY_TEST = new EntityRightClickItem(interaction -> {
+            return ActionResultType.FAIL;
+        }, TabHandler.CREATIVE));
+        PREGNANCY_TEST = REGISTERS.register("pregnancy_test", () -> new EntityRightClickItem(interaction -> {
             if(interaction.getTarget() instanceof DinosaurEntity && !interaction.getPlayer().world.isRemote) {
                 DinosaurEntity dino = ((DinosaurEntity)interaction.getTarget());
                 interaction.getPlayer().sendStatusMessage(new StringTextComponent("dinosaur.pregnancytest." + (dino.isMale() ? "male" : dino.isPregnant() ? "pregnant" : "not_pregnant")), true);
-                return true;
+                return ActionResultType.SUCCESS;
             }
-            return false;
-        }, TabHandler.CREATIVE);
+            return ActionResultType.FAIL;
+        }, TabHandler.CREATIVE));
     }
 }

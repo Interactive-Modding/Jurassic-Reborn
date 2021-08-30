@@ -3,6 +3,7 @@ package mod.reborn.server.tab;
 import mod.reborn.server.items.ItemHandler;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 
 import java.util.Comparator;
 
@@ -16,6 +17,7 @@ public class RebornPlantTab extends ItemGroup {
 
     @Override
     public ItemStack createIcon() {
-        return new ItemStack(ItemHandler.PLANT_CALLUS);
+        //return new ItemStack(ItemHandler.PLANT_CALLUS);
+        return new ItemStack(Items.CACTUS);
     }
 }
