@@ -4,16 +4,16 @@ import mod.reborn.server.entity.Diet;
 import mod.reborn.server.entity.dinosaur.AchillobatorEntity;
 import mod.reborn.server.period.TimePeriod;
 import net.minecraft.world.biome.Biome;
-import java.util.ArrayList;
 import net.minecraftforge.common.BiomeDictionary;
 
-public class AchillobatorDinosaur extends Dinosaur
-{
+import java.util.ArrayList;
+
+public class AchillobatorDinosaur extends Dinosaur {
     public static final double SPEED = 0.4F;
     public AchillobatorDinosaur() {
         super();
         this.setName("Achillobator");
-        this.setDinosaurType(DinosaurType.AGGRESSIVE);
+        /*this.setDinosaurType(DinosaurType.AGGRESSIVE);
         this.setDinosaurClass(AchillobatorEntity.class);
         this.setTimePeriod(TimePeriod.CRETACEOUS);
         this.setEggColorMale(0x7A7268, 0x7E4941);
@@ -39,25 +39,30 @@ public class AchillobatorDinosaur extends Dinosaur
         this.setDefendOwner(true);
         this.setStorage(27);
         this.setJumpHeight(3);
-        this.shouldDefendOffspring();
+        this.shouldDefendOffspring();*/
         String[][] recipe = {
                 {"", "","neck_vertebrae","skull"},
                 {"tail_vertebrae", "ribcage","shoulder","tooth"},
                 {"leg_bones", "leg_bones", "arm_bones", "claw"},
                 {"foot_bones", "foot_bones", "", ""}};
-        this.setRecipe(recipe);
+        //this.setRecipe(recipe);
 
-        ArrayList<Biome> biomeList = new ArrayList<Biome>();
-        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.JUNGLE));
-        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.FOREST));
-        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.DENSE));
-        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.SAVANNA));
-        this.setSpawn(1, biomeList.toArray(new Biome[biomeList.size()]));
-        doSkeletonCheck();
+        ArrayList<Biome> biomeList = new ArrayList<>();
+        biomeList.addAll(new ArrayList(BiomeDictionary.getBiomes(BiomeDictionary.Type.JUNGLE)));
+        biomeList.addAll(new ArrayList(BiomeDictionary.getBiomes(BiomeDictionary.Type.FOREST)));
+        biomeList.addAll(new ArrayList(BiomeDictionary.getBiomes(BiomeDictionary.Type.DENSE)));
+        biomeList.addAll(new ArrayList(BiomeDictionary.getBiomes(BiomeDictionary.Type.SAVANNA)));
+        //this.setSpawn(1, biomeList.toArray(new Biome[biomeList.size()]));
+        //doSkeletonCheck();
     }
 
+    @Override
+    public int compareTo(Dinosaur o) {
+        return 0;
+    }
+/*
     protected void doSkeletonCheck(){
         this.enableSkeleton();
 
-    }
+    }*/
 }

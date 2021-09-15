@@ -1,8 +1,8 @@
 package mod.reborn.server.entity;
 
-import net.minecraft.block.state.IBlockState;
+import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -15,7 +15,7 @@ public class LegSolver {
         this.legs = legs;
     }
 
-    public final void update(EntityLivingBase entity, float scale) {
+    public final void update(LivingEntity entity, float scale) {
         this.update(entity, entity.renderYawOffset, scale);
     }
 
@@ -54,7 +54,7 @@ public class LegSolver {
 
         public void update(Entity entity, double sideX, double sideZ, double forwardX, double forwardZ, float scale) {
             this.prevHeight = this.height;
-            float settledHeight = this.settle(entity, entity.posX + sideX * this.side + forwardX * this.forward, entity.posY, entity.posZ + sideZ * this.side + forwardZ * this.forward, this.height);
+            float settledHeight = this.settle(entity, entity.getPosX() + sideX * this.side + forwardX * this.forward, entity.getPosY(), entity.getPosZ() + sideZ * this.side + forwardZ * this.forward, this.height);
             this.height = MathHelper.clamp(settledHeight, -this.range * scale, this.range * scale);
         }
 
@@ -66,7 +66,7 @@ public class LegSolver {
             } else {
                 dist -= 1 - (y % 1);
             }
-            if (entity.onGround && height <= dist) {
+            if (entity.isOnGround() && height <= dist) {
                 return height == dist ? height : Math.min(height + this.getFallSpeed(), dist);
             } else if (height > 0) {
                 return Math.max(height - this.getRiseSpeed(), dist);
@@ -75,9 +75,9 @@ public class LegSolver {
         }
 
         private float getDistance(World world, BlockPos pos) {
-            IBlockState state = world.getBlockState(pos);
-            AxisAlignedBB aabb = state.getCollisionBoundingBox(world, pos);
-            return aabb == null ? 1 : 1 - Math.min((float) aabb.maxY, 1);
+            BlockState state = world.getBlockState(pos);
+            AxisAlignedBB aabb = state.getCollisionShape(world, pos).getBoundingBox();
+            return 1 - Math.min((float) aabb.maxY, 1);
         }
 
         protected float getFallSpeed() {

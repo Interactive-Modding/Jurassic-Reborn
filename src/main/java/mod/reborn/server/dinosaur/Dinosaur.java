@@ -1,44 +1,29 @@
 package mod.reborn.server.dinosaur;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-
-import javax.vecmathimpl.Matrix4d;
-import javax.vecmathimpl.Vector3d;
-
 import mod.reborn.RebornMod;
-import mod.reborn.client.model.animation.PoseHandler;
-import mod.reborn.server.api.GrowthStageGenderContainer;
-import mod.reborn.server.api.Hybrid;
 import mod.reborn.server.entity.Diet;
 import mod.reborn.server.entity.DinosaurEntity;
 import mod.reborn.server.entity.GrowthStage;
 import mod.reborn.server.entity.SleepTime;
-import mod.reborn.server.entity.ai.util.MovementType;
 import mod.reborn.server.period.TimePeriod;
-import mod.reborn.server.tabula.TabulaModelHelper;
-
-import net.ilexiconn.llibrary.client.model.tabula.container.TabulaCubeContainer;
-import net.ilexiconn.llibrary.client.model.tabula.container.TabulaModelContainer;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.biome.Biome;
+
+import javax.vecmathimpl.Matrix4d;
+import java.util.*;
 
 public abstract class Dinosaur implements Comparable<Dinosaur> {
     private final Map<GrowthStage, List<ResourceLocation>> overlays = new HashMap<>();
     private final Map<GrowthStage, ResourceLocation> maleTextures = new HashMap<>();
     private final Map<GrowthStage, ResourceLocation> femaleTextures = new HashMap<>();
-    private final Map<GrowthStageGenderContainer, ResourceLocation> eyelidTextures = new HashMap<>();
+    //private final Map<GrowthStageGenderContainer, ResourceLocation> eyelidTextures = new HashMap<>();
     public boolean isHybrid = false;
     public String getDietName;
 
     private String name;
     private Class<? extends DinosaurEntity> entityClass;
-    private DinosaurType dinosaurType;
+    //private DinosaurType dinosaurType;
     private int primaryEggColorMale, primaryEggColorFemale;
     private int secondaryEggColorMale, secondaryEggColorFemale;
     private TimePeriod timePeriod;
@@ -62,8 +47,8 @@ public abstract class Dinosaur implements Comparable<Dinosaur> {
     private String[] bones;
     private int maximumAge;
     private String headCubeName;
-    private MovementType movementType = MovementType.NEAR_SURFACE;
-    private BirthType birthType = BirthType.EGG_LAYING;
+    //private MovementType movementType = MovementType.NEAR_SURFACE;
+    //private BirthType birthType = BirthType.EGG_LAYING;
     private boolean isImprintable = false;
 
     private boolean randomFlock = true;
@@ -76,13 +61,13 @@ public abstract class Dinosaur implements Comparable<Dinosaur> {
     private float offsetY;
     private float offsetZ;
 
-    private TabulaModelContainer modelAdult;
-    private TabulaModelContainer modelInfant;
-    private TabulaModelContainer modelJuvenile;
-    private TabulaModelContainer modelAdolescent;
-    private TabulaModelContainer modelSkeleton;
+    //private TabulaModelContainer modelAdult;
+    //private TabulaModelContainer modelInfant;
+    //private TabulaModelContainer modelJuvenile;
+    //private TabulaModelContainer modelAdolescent;
+    //private TabulaModelContainer modelSkeleton;
 
-    private PoseHandler<?> poseHandler;
+    //private PoseHandler<?> poseHandler;
 
     private boolean defendOwner;
     private boolean hasSkeleton;
@@ -107,7 +92,7 @@ public abstract class Dinosaur implements Comparable<Dinosaur> {
 
     private String[][] recipe;
 
-    public static Matrix4d getParentRotationMatrix(TabulaModelContainer model, TabulaCubeContainer cube, boolean includeParents, boolean ignoreSelf, float rot) {
+    /*public static Matrix4d getParentRotationMatrix(TabulaModelContainer model, TabulaCubeContainer cube, boolean includeParents, boolean ignoreSelf, float rot) {
         List<TabulaCubeContainer> parentCubes = new ArrayList<>();
 
         do {
@@ -194,16 +179,16 @@ public abstract class Dinosaur implements Comparable<Dinosaur> {
             if (!this.doesSupportGrowthStage(growthStage)) {
                 growthStageName = GrowthStage.ADULT.name().toLowerCase(Locale.ENGLISH);
             }
-            this.maleTextures.put(growthStage, new ResourceLocation(RebornMod.MODID, baseTextures + formattedName + "_male_" + growthStageName + ".png"));
-            this.femaleTextures.put(growthStage, new ResourceLocation(RebornMod.MODID, baseTextures + formattedName + "_female_" + growthStageName + ".png"));
-            this.eyelidTextures.put(new GrowthStageGenderContainer(growthStage, true), new ResourceLocation(RebornMod.MODID, baseTextures + formattedName + "_male_" + growthStageName + "_eyelid.png"));
-            this.eyelidTextures.put(new GrowthStageGenderContainer(growthStage, false), new ResourceLocation(RebornMod.MODID, baseTextures + formattedName + "_female_" + growthStageName + "_eyelid.png"));
+            this.maleTextures.put(growthStage, new ResourceLocation(RebornMod.MOD_ID, baseTextures + formattedName + "_male_" + growthStageName + ".png"));
+            this.femaleTextures.put(growthStage, new ResourceLocation(RebornMod.MOD_ID, baseTextures + formattedName + "_female_" + growthStageName + ".png"));
+            this.eyelidTextures.put(new GrowthStageGenderContainer(growthStage, true), new ResourceLocation(RebornMod.MOD_ID, baseTextures + formattedName + "_male_" + growthStageName + "_eyelid.png"));
+            this.eyelidTextures.put(new GrowthStageGenderContainer(growthStage, false), new ResourceLocation(RebornMod.MOD_ID, baseTextures + formattedName + "_female_" + growthStageName + "_eyelid.png"));
 
 
             List<ResourceLocation> overlaysForGrowthStage = new ArrayList<>();
 
             for (int i = 1; i <= this.getOverlayCount(); i++) {
-                overlaysForGrowthStage.add(new ResourceLocation(RebornMod.MODID, baseTextures + formattedName + "_overlay_" + growthStageName + "_" + i + ".png"));
+                overlaysForGrowthStage.add(new ResourceLocation(RebornMod.MOD_ID, baseTextures + formattedName + "_overlay_" + growthStageName + "_" + i + ".png"));
             }
 
             this.overlays.put(growthStage, overlaysForGrowthStage);
@@ -296,15 +281,15 @@ public abstract class Dinosaur implements Comparable<Dinosaur> {
     public void setMovementType(MovementType type) {
         this.movementType = type;
     }
-
+*/
     public String getName() {
         return this.name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
 
+/*
     public void setBreeding(boolean directBirth, int minClutch, int maxClutch, int breedCooldown, boolean breedAroundOffspring, boolean defendOffspring) {
         this.directBirth = directBirth;
         this.minClutch = minClutch;
@@ -313,11 +298,11 @@ public abstract class Dinosaur implements Comparable<Dinosaur> {
         this.breedAroundOffspring = breedAroundOffspring;
         this.defendOffspring = defendOffspring;
     }
-
+*/
     public Class<? extends DinosaurEntity> getDinosaurClass() {
         return this.entityClass;
     }
-
+/*
     public void setDinosaurClass(Class<? extends DinosaurEntity> clazz) {
         this.entityClass = clazz;
     }
@@ -349,7 +334,7 @@ public abstract class Dinosaur implements Comparable<Dinosaur> {
     public TimePeriod getPeriod() {
         return this.timePeriod;
     }
-
+*/
     public double getBabyHealth() {
         return this.babyHealth;
     }
@@ -425,11 +410,9 @@ public abstract class Dinosaur implements Comparable<Dinosaur> {
     public void setAttackSpeed(double attackSpeed) {
         this.attackSpeed = attackSpeed;
     }
-
     public boolean shouldRegister() {
         return this.shouldRegister;
     }
-
     public void disableRegistry(){ this.shouldRegister = false; }
 
     protected String getDinosaurTexture(String subtype) {
@@ -444,28 +427,29 @@ public abstract class Dinosaur implements Comparable<Dinosaur> {
         return texture + ".png";
     }
 
-    public void setBirthType(BirthType birthType) {
-        this.birthType = birthType;
-    }
+    /*
+        public void setBirthType(BirthType birthType) {
+            this.birthType = birthType;
+        }
 
-    public BirthType getBirthType() {
-        return birthType;
-    }
+        public BirthType getBirthType() {
+            return birthType;
+        }
 
-    @Override
-    public int hashCode() {
-        return this.getName().hashCode();
-    }
+        @Override
+        public int hashCode() {
+            return this.getName().hashCode();
+        }
 
-    protected int fromDays(int days) {
-        return (days * 24000) / 8;
-    }
+        protected int fromDays(int days) {
+            return (days * 24000) / 8;
+        }
 
-    @Override
-    public int compareTo(Dinosaur dinosaur) {
-        return this.getName().compareTo(dinosaur.getName());
-    }
-
+        @Override
+        public int compareTo(Dinosaur dinosaur) {
+            return this.getName().compareTo(dinosaur.getName());
+        }
+    */
     public boolean isMarineCreature() {
         return this.isMarineAnimal;
     }
@@ -473,7 +457,7 @@ public abstract class Dinosaur implements Comparable<Dinosaur> {
     public void setMarineAnimal(boolean marineAnimal) {
         this.isMarineAnimal = marineAnimal;
     }
-
+/*
     public boolean isAvianCreature() {
         return this.isAvianAnimal;
     }
@@ -820,7 +804,7 @@ public abstract class Dinosaur implements Comparable<Dinosaur> {
         return this.recipe;
     }
 
-    public void applyMeatEffect(EntityPlayer player, boolean cooked) {
+    public void applyMeatEffect(PlayerEntity player, boolean cooked) {
     }
 
     public enum DinosaurType {
@@ -833,5 +817,5 @@ public abstract class Dinosaur implements Comparable<Dinosaur> {
     public enum BirthType {
         LIVE_BIRTH,
         EGG_LAYING
-    }
+    }*/
 }

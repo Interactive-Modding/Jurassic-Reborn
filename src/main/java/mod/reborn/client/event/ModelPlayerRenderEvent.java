@@ -1,57 +1,53 @@
 package mod.reborn.client.event;
 
-import net.minecraft.client.model.ModelPlayer;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.client.entity.player.AbstractClientPlayerEntity;
+import net.minecraft.client.renderer.entity.model.PlayerModel;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 
-public abstract class ModelPlayerRenderEvent extends PlayerEvent
-{
-    private ModelPlayer model;
-    private float partialTicks;
+public abstract class ModelPlayerRenderEvent extends PlayerEvent {
 
-    private ModelPlayerRenderEvent(EntityPlayer player, ModelPlayer model, float partialTicks)
-    {
+    private final PlayerModel<AbstractClientPlayerEntity> model;
+    private final float partialTicks;
+
+    public ModelPlayerRenderEvent(PlayerEntity player, PlayerModel<AbstractClientPlayerEntity> model, float partialTicks) {
         super(player);
         this.model = model;
         this.partialTicks = partialTicks;
     }
 
-    public ModelPlayer getModel()
-    {
+    public PlayerModel<AbstractClientPlayerEntity> getModel() {
         return model;
     }
 
-    public float getPartialTicks()
-    {
+    public float getPartialTicks() {
         return partialTicks;
     }
 
-    public static class Render extends ModelPlayerRenderEvent
-    {
-        private Render(EntityPlayer player, ModelPlayer modelPlayer, float partialTicks)
-        {
-            super(player, modelPlayer, partialTicks);
+    public static class Render extends ModelPlayerRenderEvent {
+
+        private Render(PlayerEntity playerEntity, PlayerModel<AbstractClientPlayerEntity> playerModel, float partialTicks) {
+            super(playerEntity, playerModel, partialTicks);
         }
 
-        public static class Pre extends Render
-        {
-            public Pre(EntityPlayer player, ModelPlayer modelPlayer, float partialTicks)
+        public static class Pre extends Render {
+
+            public Pre(PlayerEntity playerEntity, PlayerModel<AbstractClientPlayerEntity> playerModel, float partialTicks)
             {
-                super(player, modelPlayer, partialTicks);
+                super(playerEntity, playerModel, partialTicks);
             }
-            
+
             @Override
-            public boolean isCancelable()
-            {
+            public boolean isCancelable() {
                 return true;
             }
         }
 
-        public static class Post extends Render
-        {
-            public Post(EntityPlayer player, ModelPlayer modelPlayer, float partialTicks)
+        public static class Post extends Render {
+
+            public Post(PlayerEntity playerEntity, PlayerModel<AbstractClientPlayerEntity> playerModel, float partialTicks)
             {
-                super(player, modelPlayer, partialTicks);
+                super(playerEntity, playerModel, partialTicks);
             }
 
             @Override
@@ -60,5 +56,7 @@ public abstract class ModelPlayerRenderEvent extends PlayerEvent
                 return false;
             }
         }
+
+
     }
 }

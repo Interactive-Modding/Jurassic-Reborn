@@ -1,16 +1,15 @@
 package mod.reborn.server.tab;
 
-import java.util.List;
-
 import mod.reborn.server.dinosaur.Dinosaur;
 import mod.reborn.server.entity.EntityHandler;
-import mod.reborn.server.item.DisplayBlockItem;
-import mod.reborn.server.item.ItemHandler;
-
-import net.minecraft.creativetab.CreativeTabs;
+import mod.reborn.server.items.ItemHandler;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 
-public class RebornDecorationsTab extends CreativeTabs {
+import java.util.List;
+
+public class RebornDecorationsTab extends ItemGroup {
     private int[] metas;
 
     public RebornDecorationsTab(String label) {
@@ -20,12 +19,13 @@ public class RebornDecorationsTab extends CreativeTabs {
         this.metas = new int[registeredDinosaurs.size()];
 
         for (int i = 0; i < registeredDinosaurs.size(); i++) {
-            this.metas[i] = DisplayBlockItem.getMetadata(EntityHandler.getDinosaurId(registeredDinosaurs.get(i)), 0, false);
+            //this.metas[i] = DisplayBlockItem.getMetadata(EntityHandler.getDinosaurId(registeredDinosaurs.get(i)), 0, false);
         }
     }
 
     @Override
-    public ItemStack getTabIconItem() {
-        return new ItemStack(ItemHandler.DISPLAY_BLOCK);
+    public ItemStack createIcon() {
+        //return new ItemStack(ItemHandler.DISPLAY_BLOCK);
+        return new ItemStack(Items.MUSIC_DISC_11);
     }
 }

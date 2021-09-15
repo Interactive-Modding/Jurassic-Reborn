@@ -1,23 +1,13 @@
 package mod.reborn.server.tab;
 
-import com.google.common.collect.Ordering;
-import mod.reborn.server.block.BlockHandler;
-import mod.reborn.server.dinosaur.Dinosaur;
-import mod.reborn.server.entity.EntityHandler;
-import mod.reborn.server.item.FossilItem;
-import mod.reborn.server.item.ItemHandler;
-import net.minecraft.block.Block;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
+import mod.reborn.server.items.ItemHandler;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.NonNullList;
-import scala.actors.threadpool.Arrays;
+import net.minecraft.item.Items;
 
-import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.List;
 
-public class RebornPlantTab extends CreativeTabs {
+public class RebornPlantTab extends ItemGroup {
     private int[] metas;
     static Comparator<ItemStack> tabSorter;
 
@@ -26,7 +16,8 @@ public class RebornPlantTab extends CreativeTabs {
     }
 
     @Override
-    public ItemStack getTabIconItem() {
-        return new ItemStack(ItemHandler.PLANT_CALLUS);
+    public ItemStack createIcon() {
+        //return new ItemStack(ItemHandler.PLANT_CALLUS);
+        return new ItemStack(Items.CACTUS);
     }
 }

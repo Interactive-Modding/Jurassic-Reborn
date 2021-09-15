@@ -1,6 +1,5 @@
 package mod.reborn.server.entity;
 
-import mod.reborn.server.dinosaur.Dinosaur;
 import mod.reborn.server.food.FoodHelper;
 import mod.reborn.server.food.FoodType;
 import net.minecraft.item.Item;

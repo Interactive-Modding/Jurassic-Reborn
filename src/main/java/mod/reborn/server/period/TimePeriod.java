@@ -40,16 +40,16 @@ public enum TimePeriod implements IStringSerializable {
         return this.name;
     }
 
-    @Override
-    public String getName() {
-        return this.name;
-    }
-
     public float getStartTime() {
         return this.startTime;
     }
 
     public float getEndTime() {
         return this.endTime;
+    }
+
+    @Override
+    public String getString() {
+        return this.name;
     }
 }

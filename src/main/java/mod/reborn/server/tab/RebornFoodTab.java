@@ -1,15 +1,15 @@
 package mod.reborn.server.tab;
 
-import java.util.List;
-
 import mod.reborn.server.dinosaur.Dinosaur;
 import mod.reborn.server.entity.EntityHandler;
-import mod.reborn.server.item.ItemHandler;
-
-import net.minecraft.creativetab.CreativeTabs;
+import mod.reborn.server.items.ItemHandler;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 
-public class RebornFoodTab extends CreativeTabs {
+import java.util.List;
+
+public class RebornFoodTab extends ItemGroup {
     private int[] metas;
 
     public RebornFoodTab(String label) {
@@ -31,7 +31,8 @@ public class RebornFoodTab extends CreativeTabs {
 
 
     @Override
-    public ItemStack getTabIconItem() {
-        return new ItemStack(ItemHandler.DINOSAUR_MEAT);
+    public ItemStack createIcon() {
+        //return new ItemStack(ItemHandler.DINOSAUR_MEAT);
+        return new ItemStack(Items.COOKED_BEEF);
     }
 }
