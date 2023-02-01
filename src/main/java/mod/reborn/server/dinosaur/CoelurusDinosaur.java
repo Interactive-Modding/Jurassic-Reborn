@@ -39,7 +39,8 @@ public class CoelurusDinosaur extends Dinosaur
         this.setBreeding(false, 2, 4, 20, false, true);
         String[][] recipe =     {{"", "", "", "neck_vertebrae", "skull"},
                 {"tail_vertebrae", "pelvis", "ribcage","shoulder","tooth"},
-                {"leg_bones", "leg_bones", "", "", "arm_bones"}};
+                {"leg_bones", "leg_bones", "", "", "arm_bones"},
+                {"foot_bones", "foot_bones", "", ""}};
         this.setRecipe(recipe);
         this.enableSkeleton();
         ArrayList<Biome> biomeList = new ArrayList<Biome>();

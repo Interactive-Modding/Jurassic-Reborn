@@ -26,8 +26,8 @@ public class OviraptorDinosaur extends Dinosaur
         this.setHealth(4, 16);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStorage(9);
-        this.setAttackSpeed(0.11);
-        this.setStrength(2, 6);
+        this.setAttackSpeed(1.6);
+        this.setStrength(2, 4);
         this.setAttackSpeed(2);
         this.setMaximumAge(fromDays(25));
         this.setEyeHeight(0.32F, 0.95F);
@@ -41,7 +41,7 @@ public class OviraptorDinosaur extends Dinosaur
         this.setAttackBias(5);
         this.setImprintable(true);
         this.setDefendOwner(true);
-        this.setScale(0.65F, 0.15F);
+        this.setScale(0.4F, 0.09F);
         this.setBreeding(false, 2, 4, 30, false, true);
         String[][] recipe = {
                 {"", "","neck_vertebrae","skull"},

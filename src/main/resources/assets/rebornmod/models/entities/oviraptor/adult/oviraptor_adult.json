@@ -4,7 +4,11 @@
     "IDLE": [
       {
         "pose": "oviraptor_adult_idle",
-        "time": 20
+        "time": 55
+      },
+      {
+        "pose": "oviraptor_adult_idle_1",
+        "time": 55
      }
    ],
     "ATTACKING": [
@@ -40,41 +44,122 @@
         "pose": "oviraptor_adult_death",
         "time": 25 
       }
-    ],
+     ],
     "EATING": [
       {
-        "pose": "oviraptor_adult_eating",
-        "time": 20
-      },
-      {
-        "pose": "oviraptor_adult_idle",
+        "pose": "oviraptor_adult_eating_1",
         "time": 15
       },
       {
-        "pose": "oviraptor_adult_eating",
-        "time": 20
+        "pose": "oviraptor_adult_eating_2",
+        "time": 15
+      },
+      {
+        "pose": "oviraptor_adult_eating_3",
+        "time": 15
+      },
+      {
+        "pose": "oviraptor_adult_eating_4",
+        "time": 40
+      },
+      {
+        "pose": "oviraptor_adult_eating_5",
+        "time": 40
+      },
+      {
+        "pose": "oviraptor_adult_eating_6",
+        "time": 40
+      },
+      {
+        "pose": "oviraptor_adult_eating_7",
+        "time": 40
+      },
+      {
+        "pose": "oviraptor_adult_eating_5",
+        "time": 40
+      },
+      {
+        "pose": "oviraptor_adult_eating_6",
+        "time": 40
+      },
+      {
+        "pose": "oviraptor_adult_eating_7",
+        "time": 40
+      },
+      {
+        "pose": "oviraptor_adult_eating_5",
+        "time": 40
+      },
+      {
+        "pose": "oviraptor_adult_eating_6",
+        "time": 40
+      },
+      {
+        "pose": "oviraptor_adult_eating_7",
+        "time": 40
       },
       {
         "pose": "oviraptor_adult_idle",
-        "time": 15
+        "time": 10
       }
-   ],
+
+     ],
     "DRINKING": [
       {
-        "pose": "oviraptor_adult_drinking",
-        "time": 20
-      },
-      {
-        "pose": "oviraptor_adult_idle",
+        "pose": "oviraptor_adult_drinking_1",
         "time": 15
       },
       {
-        "pose": "oviraptor_adult_drinking",
-        "time": 20
+        "pose": "oviraptor_adult_drinking_2",
+        "time": 15
+      },
+      {
+        "pose": "oviraptor_adult_drinking_3",
+        "time": 15
+      },
+      {
+        "pose": "oviraptor_adult_drinking_4",
+        "time": 40
+      },
+      {
+        "pose": "oviraptor_adult_drinking_5",
+        "time": 40
+      },
+      {
+        "pose": "oviraptor_adult_drinking_6",
+        "time": 40
+      },
+      {
+        "pose": "oviraptor_adult_drinking_7",
+        "time": 40
+      },
+      {
+        "pose": "oviraptor_adult_drinking_5",
+        "time": 40
+      },
+      {
+        "pose": "oviraptor_adult_drinking_6",
+        "time": 40
+      },
+      {
+        "pose": "oviraptor_adult_drinking_7",
+        "time": 40
+      },
+      {
+        "pose": "oviraptor_adult_drinking_5",
+        "time": 40
+      },
+      {
+        "pose": "oviraptor_adult_drinking_6",
+        "time": 40
+      },
+      {
+        "pose": "oviraptor_adult_drinking_7",
+        "time": 40
       },
       {
         "pose": "oviraptor_adult_idle",
-        "time": 15
+        "time": 10
       }
     ],
     "INJURED": [
@@ -162,19 +247,19 @@
     "WALKING": [
       {
         "pose": "oviraptor_adult_walking_1",
-        "time": 5
+        "time": 6
       },
       {
         "pose": "oviraptor_adult_walking_2",
-        "time": 5
+        "time": 6
       },
       {
         "pose": "oviraptor_adult_walking_3",
-        "time": 5
+        "time": 6
       },
       {
         "pose": "oviraptor_adult_walking_4",
-        "time": 5
+        "time": 6
       }
    ],
     "RUNNING": [
