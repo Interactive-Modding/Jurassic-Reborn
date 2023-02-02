@@ -19,8 +19,8 @@ public class ChasmosaurusDinosaur extends Dinosaur
         this.setDinosaurType(DinosaurType.NEUTRAL);
         this.setDinosaurClass(ChasmosaurusEntity.class);
         this.setTimePeriod(TimePeriod.CRETACEOUS);
-        this.setEggColorMale(0xB6B293, 0x85563E);
-        this.setEggColorFemale(0xB9B597, 0x323232);
+        this.setEggColorMale(0x011332, 0x28475c);
+        this.setEggColorFemale(0x604b41, 0x866e5e);
         this.setHealth(10, 40);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(5, 15);
@@ -32,8 +32,7 @@ public class ChasmosaurusDinosaur extends Dinosaur
         this.setDiet((Diet.HERBIVORE.get()));
         this.setBones("front_leg_bones", "hind_leg_bones", "tooth", "neck_vertebrae", "pelvis", "ribcage", "shoulder", "skull", "tail_vertebrae");
         this.setHeadCubeName("Head");
-        this.setScale(1.55F, 0.1F);
-        this.setOffset(0.0F, 0.775F, 0.0F);
+        this.setScale(1.05F, 0.1F);
         this.setBreeding(false, 2, 6, 40, false, true);
         this.setImprintable(true);
         this.setDefendOwner(true);
