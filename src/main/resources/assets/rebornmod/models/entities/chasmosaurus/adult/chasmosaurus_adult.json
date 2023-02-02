@@ -168,6 +168,28 @@
         "time": 5
       }
     ],
+    "ROARING": [
+      {
+        "pose": "chasmosaurus_adult_roar_1",
+        "time": 15
+      },
+      {
+        "pose": "chasmosaurus_adult_roar_2",
+        "time": 15
+      },
+      {
+        "pose": "chasmosaurus_adult_roar_3",
+        "time": 15
+      },
+      {
+        "pose": "chasmosaurus_adult_roar_4",
+        "time": 15
+      },
+      {
+        "pose": "chasmosaurus_adult_idle",
+        "time": 15
+      }
+    ],
     "RESTING": [
       {
         "pose": "chasmosaurus_adult_resting",

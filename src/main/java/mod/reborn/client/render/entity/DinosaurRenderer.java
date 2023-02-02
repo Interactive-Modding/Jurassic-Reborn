@@ -18,6 +18,7 @@ import mod.reborn.server.entity.dinosaur.AnkylosaurusEntity;
 import mod.reborn.server.entity.dinosaur.ApatosaurusEntity;
 import mod.reborn.server.entity.dinosaur.OviraptorEntity;
 import mod.reborn.server.entity.dinosaur.ChasmosaurusEntity;
+import mod.reborn.server.entity.dinosaur.StyracosaurusEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.OpenGlHelper;
@@ -169,6 +170,9 @@ public class DinosaurRenderer extends RenderLiving<DinosaurEntity> {
         }
         if(entity instanceof ChasmosaurusEntity && !entity.isSkeleton()) {
             return ((ChasmosaurusEntity)entity).getTexture();
+        }
+        if(entity instanceof StyracosaurusEntity && !entity.isSkeleton()) {
+            return ((StyracosaurusEntity)entity).getTexture();
         }
 
 

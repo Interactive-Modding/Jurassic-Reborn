@@ -16,8 +16,8 @@ public class StyracosaurusDinosaur extends Dinosaur {
         this.setDinosaurType(DinosaurType.NEUTRAL);
         this.setDinosaurClass(StyracosaurusEntity.class);
         this.setTimePeriod(TimePeriod.CRETACEOUS);
-        this.setEggColorMale(0x823B2A, 0xA14525);
-        this.setEggColorFemale(0x785B43, 0x816149);
+        this.setEggColorMale(0x4d4a2f, 0x341b15);
+        this.setEggColorFemale(0x585536, 0x958261);
         this.setHealth(10, 40);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStorage(27);
@@ -29,8 +29,7 @@ public class StyracosaurusDinosaur extends Dinosaur {
         this.setDiet(Diet.HERBIVORE.get());
         this.setBones("front_leg_bones", "hind_leg_bones", "neck_vertebrae", "pelvis", "ribcage", "shoulder", "skull", "tail_vertebrae", "tooth");
         this.setHeadCubeName("Head");
-        this.setScale(1.8F, 0.15F);
-        this.setOffset(0, 0.75F, 0);
+        this.setScale(1.05F, 0.15F);
         this.setAttackBias(120);
         this.shouldDefendOffspring();
         this.setImprintable(true);
