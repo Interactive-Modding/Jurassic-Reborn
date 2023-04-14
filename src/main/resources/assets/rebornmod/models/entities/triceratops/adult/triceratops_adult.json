@@ -1,42 +1,95 @@
 {
-  "version": 0,
   "poses": {
     "IDLE": [
       {
         "pose": "triceratops_adult_idle",
-        "time": 20
-      }
+        "time": 60
+    },
+      {
+        "pose": "triceratops_adult_idle_1",
+        "time": 60
+     }
     ],
     "SLEEPING": [
       {
-        "pose": "triceratops_adult_sleeping",
-        "time": 20
+        "pose": "triceratops_adult_sleeping_1",
+        "time": 25
+      },
+      {
+        "pose": "triceratops_adult_sleeping_2",
+        "time": 25
       }
     ],
     "EATING": [
       {
-        "pose": "triceratops_adult_eating1",
+        "pose": "triceratops_adult_eating_1",
         "time": 20
       },
       {
-        "pose": "triceratops_adult_eating2",
-        "time": 10
+        "pose": "triceratops_adult_eating_2",
+        "time": 20
       },
       {
-        "pose": "triceratops_adult_eating1",
-        "time": 10
+        "pose": "triceratops_adult_eating_1",
+        "time": 20
       },
       {
-        "pose": "triceratops_adult_eating2",
-        "time": 10
+        "pose": "triceratops_adult_eating_2",
+        "time": 20
       },
       {
-        "pose": "triceratops_adult_eating1",
-        "time": 10
+        "pose": "triceratops_adult_eating_1",
+        "time": 20
+      },
+      {
+        "pose": "triceratops_adult_eating_2",
+        "time": 20
+      },
+      {
+        "pose": "triceratops_adult_eating_1",
+        "time": 20
+      },
+      {
+        "pose": "triceratops_adult_eating_2",
+        "time": 20
       },
       {
         "pose": "triceratops_adult_idle",
         "time": 20
+      }
+    ],
+    "WALKING": [
+      {
+        "pose": "triceratops_adult_walking_1",
+        "time": 4
+      },
+      {
+        "pose": "triceratops_adult_walking_2",
+        "time": 4
+      },
+      {
+        "pose": "triceratops_adult_walking_3",
+        "time": 4
+      },
+      {
+        "pose": "triceratops_adult_walking_4",
+        "time": 4
+      },
+      {
+        "pose": "triceratops_adult_walking_5",
+        "time": 4
+      },
+      {
+        "pose": "triceratops_adult_walking_6",
+        "time": 4
+      },
+      {
+        "pose": "triceratops_adult_walking_7",
+        "time": 4
+      },
+      {
+        "pose": "triceratops_adult_walking_8",
+        "time": 4
       }
     ],
     "SPEAK": [
@@ -56,77 +109,57 @@
     "DRINKING": [
       {
         "pose": "triceratops_adult_drinking_1",
-        "time": 8
+        "time": 30
       },
       {
         "pose": "triceratops_adult_drinking_2",
-        "time": 5
-      },
-      {
-        "pose": "triceratops_adult_drinking_2",
-        "time": 5
+        "time": 30
       },
       {
         "pose": "triceratops_adult_drinking_3",
-        "time": 10
+        "time": 30
       },
       {
-        "pose": "triceratops_adult_drinking_3",
-        "time": 10
+        "pose": "triceratops_adult_drinking_4",
+        "time": 30
       },
       {
         "pose": "triceratops_adult_drinking_1",
-        "time": 8
+        "time": 30
       },
       {
         "pose": "triceratops_adult_drinking_2",
-        "time": 5
-      },
-      {
-        "pose": "triceratops_adult_drinking_2",
-        "time": 5
+        "time": 30
       },
       {
         "pose": "triceratops_adult_drinking_3",
-        "time": 10
+        "time": 30
       },
       {
-        "pose": "triceratops_adult_drinking_3",
-        "time": 10
-      },
-      {
-        "pose": "triceratops_adult_drinking_1",
-        "time": 8
-      },
-      {
-        "pose": "triceratops_adult_drinking_2",
-        "time": 5
-      },
-      {
-        "pose": "triceratops_adult_drinking_2",
-        "time": 5
-      },
-      {
-        "pose": "triceratops_adult_drinking_3",
-        "time": 10
-      },
-      {
-        "pose": "triceratops_adult_drinking_3",
-        "time": 10
+        "pose": "triceratops_adult_drinking_4",
+        "time": 30
       },
       {
         "pose": "triceratops_adult_idle",
-        "time": 10
+        "time": 20
       }
     ],
     "CALLING": [
       {
-        "pose": "triceratops_adult_calling",
-        "time": 10
+        "pose": "triceratops_adult_calling_1",
+        "time": 15
       },
       {
-        "pose": "triceratops_adult_calling",
-        "time": 30
+        "pose": "triceratops_adult_calling_2",
+        "time": 15
+      },
+      {
+        "pose": "triceratops_adult_calling_3",
+        "time": 15
+      },
+      {
+        "pose": "triceratops_adult_calling_4",
+        "time": 15
       },
       {
         "pose": "triceratops_adult_idle",
@@ -136,19 +169,29 @@
     "ATTACKING": [
       {
         "pose": "triceratops_adult_attacking_1",
-        "time": 5
-      },
-      {
-        "pose": "triceratops_adult_attacking_1",
-        "time": 2
+        "time": 10
       },
       {
         "pose": "triceratops_adult_attacking_2",
-        "time": 5
+        "time": 10
       },
       {
         "pose": "triceratops_adult_idle",
         "time": 5
+      }
+    ],
+    "ROARING": [
+      {
+        "pose": "triceratops_adult_roar_1",
+        "time": 15
+      },
+      {
+        "pose": "triceratops_adult_roar_2",
+        "time": 15
+      },
+      {
+        "pose": "triceratops_adult_idle",
+        "time": 15
       }
     ],
     "RESTING": [
@@ -159,73 +202,17 @@
     ],
     "DYING": [
       {
-        "pose": "triceratops_adult_death_1",
-        "time": 10
-      },
-      {
-        "pose": "triceratops_adult_death_2",
-        "time": 10
-      },
-      {
-        "pose": "triceratops_adult_death_3",
-        "time": 5
-      },
-      {
-        "pose": "triceratops_adult_death_4",
-        "time": 5
-      }
-    ],
-    "WALKING": [
-      {
-        "pose": "triceratops_adult_walking_1",
-        "time": 5
-      },
-      {
-        "pose": "triceratops_adult_walking_2",
-        "time": 5
-      },
-      {
-        "pose": "triceratops_adult_walking_3",
-        "time": 5
-      },
-      {
-        "pose": "triceratops_adult_walking_4",
-        "time": 5
-      }
-    ],
-    "RUNNING": [
-      {
-        "pose": "triceratops_adult_running_1",
-        "time": 3
-      },
-      {
-        "pose": "triceratops_adult_running_2",
-        "time": 3
-      },
-      {
-        "pose": "triceratops_adult_running_3",
-        "time": 3
-      },
-      {
-        "pose": "triceratops_adult_running_4",
-        "time": 3
-      },
-      {
-        "pose": "triceratops_adult_running_5",
-        "time": 3
-      },
-      {
-        "pose": "triceratops_adult_running_6",
-        "time": 3
+        "pose": "triceratops_adult_death",
+        "time": 35
       }
     ],
     "LOOKING_LEFT": [
       {
-        "pose": "triceratops_adult_look_left",
+        "pose": "triceratops_adult_looking_left",
         "time": 20
       },
       {
-        "pose": "triceratops_adult_look_left",
+        "pose": "triceratops_adult_looking_left",
         "time": 20
       },
       {
@@ -235,16 +222,34 @@
     ],
     "LOOKING_RIGHT": [
       {
-        "pose": "triceratops_adult_look_right",
+        "pose": "triceratops_adult_looking_right",
         "time": 20
       },
       {
-        "pose": "triceratops_adult_look_right",
+        "pose": "triceratops_adult_looking_right",
         "time": 20
       },
       {
         "pose": "triceratops_adult_idle",
         "time": 10
+      }
+    ],
+    "RUNNING": [
+      {
+        "pose": "triceratops_adult_running_1",
+        "time": 5
+      },
+      {
+        "pose": "triceratops_adult_running_2",
+        "time": 5
+      },
+      {
+        "pose": "triceratops_adult_running_3",
+        "time": 5
+      },
+      {
+        "pose": "triceratops_adult_running_4",
+        "time": 5
       }
     ],
     "INJURED": [
@@ -261,28 +266,10 @@
         "time": 10
       }
     ],
-    "SWIMMING": [
-      {
-        "pose": "triceratops_adult_swimming_1",
-        "time": 6
-      },
-      {
-        "pose": "triceratops_adult_swimming_2",
-        "time": 6
-      }
-    ],
     "LAYING_EGG": [
       {
-        "pose": "triceratops_adult_laying_1",
-        "time": 10
-      },
-      {
-        "pose": "triceratops_adult_laying_2",
-        "time": 20
-      },
-      {
-        "pose": "triceratops_adult_laying_3",
-        "time": 20
+        "pose": "triceratops_adult_laying",
+        "time": 50
       },
       {
         "pose": "triceratops_adult_idle",
