@@ -1,15 +1,14 @@
 {
-  "version": 0,
   "poses": {
     "IDLE": [
       {
         "pose": "sinoceratops_adult_idle",
         "time": 60
-      },
+    },
       {
         "pose": "sinoceratops_adult_idle_1",
         "time": 60
-      }
+     }
     ],
     "SLEEPING": [
       {
@@ -19,152 +18,40 @@
     ],
     "EATING": [
       {
-        "pose": "sinoceratops_adult_eating1",
+        "pose": "sinoceratops_adult_eating_1",
         "time": 20
       },
       {
-        "pose": "sinoceratops_adult_eating2",
-        "time": 10
-      },
-      {
-        "pose": "sinoceratops_adult_eating1",
-        "time": 10
-      },
-      {
-        "pose": "sinoceratops_adult_eating2",
-        "time": 10
-      },
-      {
-        "pose": "sinoceratops_adult_eating1",
-        "time": 10
-      },
-      {
-        "pose": "sinoceratops_adult_idle",
+        "pose": "sinoceratops_adult_eating_2",
         "time": 20
-      }
-    ],
-    "SPEAK": [
-      {
-        "pose": "sinoceratops_adult_speak",
-        "time": 10
       },
       {
-        "pose": "sinoceratops_adult_speak",
+        "pose": "sinoceratops_adult_eating_3",
+        "time": 20
+      },
+      {
+        "pose": "sinoceratops_adult_eating_4",
+        "time": 20
+      },
+      {
+        "pose": "sinoceratops_adult_eating_1",
+        "time": 20
+      },
+      {
+        "pose": "sinoceratops_adult_eating_2",
+        "time": 20
+      },
+      {
+        "pose": "sinoceratops_adult_eating_3",
+        "time": 20
+      },
+      {
+        "pose": "sinoceratops_adult_eating_4",
         "time": 20
       },
       {
         "pose": "sinoceratops_adult_idle",
-        "time": 10
-      }
-    ],
-    "DRINKING": [
-      {
-        "pose": "sinoceratops_adult_drinking_1",
-        "time": 10
-      },
-      {
-        "pose": "sinoceratops_adult_drinking_2",
-        "time": 15
-      },
-      {
-        "pose": "sinoceratops_adult_drinking_2",
-        "time": 15
-      },
-      {
-        "pose": "sinoceratops_adult_drinking_3",
-        "time": 15
-      },
-      {
-        "pose": "sinoceratops_adult_drinking_3",
-        "time": 15
-      },
-      {
-        "pose": "sinoceratops_adult_drinking_1",
-        "time": 10
-      },
-      {
-        "pose": "sinoceratops_adult_drinking_2",
-        "time": 15
-      },
-      {
-        "pose": "sinoceratops_adult_drinking_2",
-        "time": 15
-      },
-      {
-        "pose": "sinoceratops_adult_drinking_3",
-        "time": 15
-      },
-      {
-        "pose": "sinoceratops_adult_drinking_3",
-        "time": 15
-      },
-      {
-        "pose": "sinoceratops_adult_drinking_1",
-        "time": 10
-      },
-      {
-        "pose": "sinoceratops_adult_drinking_2",
-        "time": 5
-      },
-      {
-        "pose": "sinoceratops_adult_drinking_2",
-        "time": 5
-      },
-      {
-        "pose": "sinoceratops_adult_drinking_3",
-        "time": 10
-      },
-      {
-        "pose": "sinoceratops_adult_drinking_3",
-        "time": 10
-      },
-      {
-        "pose": "sinoceratops_adult_idle",
-        "time": 10
-      }
-    ],
-    "CALLING": [
-      {
-        "pose": "sinoceratops_adult_calling",
-        "time": 10
-      },
-      {
-        "pose": "sinoceratops_adult_calling",
-        "time": 30
-      },
-      {
-        "pose": "sinoceratops_adult_idle",
-        "time": 10
-      }
-    ],
-    "ATTACKING": [
-      {
-        "pose": "sinoceratops_adult_attacking_1",
-        "time": 5
-      },
-      {
-        "pose": "sinoceratops_adult_attacking_1",
-        "time": 2
-      },
-      {
-        "pose": "sinoceratops_adult_attacking_2",
-        "time": 5
-      },
-      {
-        "pose": "sinoceratops_adult_idle",
-        "time": 5
-      }
-    ],
-    "RESTING": [
-      {
-        "pose": "sinoceratops_adult_resting",
         "time": 20
-      }
-    ],
-    "DYING": [
-      {
-        "pose": "sinoceratops_adult_death",
-        "time": 30
       }
     ],
     "WALKING": [
@@ -183,33 +70,149 @@
       {
         "pose": "sinoceratops_adult_walking_4",
         "time": 5
+      },
+      {
+        "pose": "sinoceratops_adult_walking_5",
+        "time": 5
+      },
+      {
+        "pose": "sinoceratops_adult_walking_6",
+        "time": 5
+      },
+      {
+        "pose": "sinoceratops_adult_walking_7",
+        "time": 5
+      },
+      {
+        "pose": "sinoceratops_adult_walking_8",
+        "time": 5
       }
     ],
-    "RUNNING": [
+    "SPEAK": [
       {
-        "pose": "sinoceratops_adult_running_1",
-        "time": 3
+        "pose": "sinoceratops_adult_speak_1",
+        "time": 10
       },
       {
-        "pose": "sinoceratops_adult_running_2",
-        "time": 3
+        "pose": "sinoceratops_adult_speak_2",
+        "time": 10
       },
       {
-        "pose": "sinoceratops_adult_running_3",
-        "time": 3
+        "pose": "sinoceratops_adult_speak_3",
+        "time": 10
       },
       {
-        "pose": "sinoceratops_adult_running_4",
-        "time": 3
+        "pose": "sinoceratops_adult_speak_4",
+        "time": 10
+      },
+      {
+        "pose": "sinoceratops_adult_idle",
+        "time": 10
+      }
+    ],
+    "DRINKING": [
+      {
+        "pose": "sinoceratops_adult_drinking_1",
+        "time": 30
+      },
+      {
+        "pose": "sinoceratops_adult_drinking_2",
+        "time": 30
+      },
+      {
+        "pose": "sinoceratops_adult_drinking_1",
+        "time": 30
+      },
+      {
+        "pose": "sinoceratops_adult_drinking_2",
+        "time": 30
+      },
+      {
+        "pose": "sinoceratops_adult_drinking_1",
+        "time": 30
+      },
+      {
+        "pose": "sinoceratops_adult_drinking_2",
+        "time": 30
+      },
+      {
+        "pose": "sinoceratops_adult_drinking_1",
+        "time": 30
+      },
+      {
+        "pose": "sinoceratops_adult_drinking_2",
+        "time": 30
+      },
+      {
+        "pose": "sinoceratops_adult_idle",
+        "time": 20
+      }
+    ],
+    "CALLING": [
+      {
+        "pose": "sinoceratops_adult_calling_1",
+        "time": 15
+      },
+      {
+        "pose": "sinoceratops_adult_calling_2",
+        "time": 15
+      },
+      {
+        "pose": "sinoceratops_adult_calling_3",
+        "time": 15
+      },
+      {
+        "pose": "sinoceratops_adult_idle",
+        "time": 10
+      }
+    ],
+    "ATTACKING": [
+      {
+        "pose": "sinoceratops_adult_attacking_1",
+        "time": 15
+      },
+      {
+        "pose": "sinoceratops_adult_attacking_2",
+        "time": 15
+      },
+      {
+        "pose": "sinoceratops_adult_idle",
+        "time": 5
+      }
+    ],
+    "ROARING": [
+      {
+        "pose": "sinoceratops_adult_roar",
+        "time": 15
+      },
+      {
+        "pose": "sinoceratops_adult_roar",
+        "time": 15
+      },
+      {
+        "pose": "sinoceratops_adult_idle",
+        "time": 15
+      }
+    ],
+    "RESTING": [
+      {
+        "pose": "sinoceratops_adult_resting",
+        "time": 20
+      }
+    ],
+    "DYING": [
+      {
+        "pose": "sinoceratops_adult_death",
+        "time": 35
       }
     ],
     "LOOKING_LEFT": [
       {
-        "pose": "sinoceratops_adult_look_left",
+        "pose": "sinoceratops_adult_looking_left",
         "time": 20
       },
       {
-        "pose": "sinoceratops_adult_look_left",
+        "pose": "sinoceratops_adult_looking_left",
         "time": 20
       },
       {
@@ -219,16 +222,34 @@
     ],
     "LOOKING_RIGHT": [
       {
-        "pose": "sinoceratops_adult_look_right",
+        "pose": "sinoceratops_adult_looking_right",
         "time": 20
       },
       {
-        "pose": "sinoceratops_adult_look_right",
+        "pose": "sinoceratops_adult_looking_right",
         "time": 20
       },
       {
         "pose": "sinoceratops_adult_idle",
         "time": 10
+      }
+    ],
+    "RUNNING": [
+      {
+        "pose": "sinoceratops_adult_running_1",
+        "time": 5
+      },
+      {
+        "pose": "sinoceratops_adult_running_2",
+        "time": 5
+      },
+      {
+        "pose": "sinoceratops_adult_running_3",
+        "time": 5
+      },
+      {
+        "pose": "sinoceratops_adult_running_4",
+        "time": 5
       }
     ],
     "INJURED": [
@@ -248,7 +269,7 @@
     "LAYING_EGG": [
       {
         "pose": "sinoceratops_adult_laying",
-        "time": 30
+        "time": 50
       },
       {
         "pose": "sinoceratops_adult_idle",

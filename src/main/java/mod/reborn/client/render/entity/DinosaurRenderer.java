@@ -5,7 +5,22 @@ import mod.reborn.server.entity.dinosaur.CompsognathusEntity;
 import mod.reborn.server.entity.dinosaur.ParasaurolophusEntity;
 import mod.reborn.server.entity.dinosaur.DeinotheriumEntity;
 import mod.reborn.server.entity.dinosaur.SmilodonEntity;
+import mod.reborn.server.entity.dinosaur.SpinoraptorEntity;
 import mod.reborn.server.entity.dinosaur.TitanisEntity;
+import mod.reborn.server.entity.dinosaur.BaryonyxEntity;
+import mod.reborn.server.entity.dinosaur.IndoraptorEntity;
+import mod.reborn.server.entity.dinosaur.DiplodocusEntity;
+import mod.reborn.server.entity.dinosaur.CeratosaurusEntity;
+import mod.reborn.server.entity.dinosaur.AnkylodocusEntity;
+import mod.reborn.server.entity.dinosaur.CamarasaurusEntity;
+import mod.reborn.server.entity.dinosaur.BrachiosaurusEntity;
+import mod.reborn.server.entity.dinosaur.AnkylosaurusEntity;
+import mod.reborn.server.entity.dinosaur.ApatosaurusEntity;
+import mod.reborn.server.entity.dinosaur.OviraptorEntity;
+import mod.reborn.server.entity.dinosaur.ChasmosaurusEntity;
+import mod.reborn.server.entity.dinosaur.StyracosaurusEntity;
+import mod.reborn.server.entity.dinosaur.SinoceratopsEntity;
+import mod.reborn.server.entity.dinosaur.TriceratopsEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.OpenGlHelper;
@@ -122,6 +137,53 @@ public class DinosaurRenderer extends RenderLiving<DinosaurEntity> {
         if(entity instanceof TitanisEntity && !entity.isSkeleton()) {
             return ((TitanisEntity)entity).getTexture();
         }
+        if(entity instanceof CeratosaurusEntity && !entity.isSkeleton()) {
+            return ((CeratosaurusEntity)entity).getTexture();
+        }
+        if(entity instanceof SpinoraptorEntity && !entity.isSkeleton()) {
+            return ((SpinoraptorEntity)entity).getTexture();
+        }
+        if(entity instanceof IndoraptorEntity && !entity.isSkeleton()) {
+            return ((IndoraptorEntity)entity).getTexture();
+        }
+        if(entity instanceof BaryonyxEntity && !entity.isSkeleton()) {
+            return ((BaryonyxEntity)entity).getTexture();
+        }
+        if(entity instanceof DiplodocusEntity && !entity.isSkeleton()) {
+            return ((DiplodocusEntity)entity).getTexture();
+        }
+        if(entity instanceof AnkylodocusEntity && !entity.isSkeleton()) {
+            return ((AnkylodocusEntity)entity).getTexture();
+        }
+        if(entity instanceof CamarasaurusEntity && !entity.isSkeleton()) {
+            return ((CamarasaurusEntity)entity).getTexture();
+        }
+        if(entity instanceof BrachiosaurusEntity && !entity.isSkeleton()) {
+            return ((BrachiosaurusEntity)entity).getTexture();
+        }
+        if(entity instanceof AnkylosaurusEntity && !entity.isSkeleton()) {
+            return ((AnkylosaurusEntity)entity).getTexture();
+        }
+        if(entity instanceof ApatosaurusEntity && !entity.isSkeleton()) {
+            return ((ApatosaurusEntity)entity).getTexture();
+        }
+        if(entity instanceof OviraptorEntity && !entity.isSkeleton()) {
+            return ((OviraptorEntity)entity).getTexture();
+        }
+        if(entity instanceof ChasmosaurusEntity && !entity.isSkeleton()) {
+            return ((ChasmosaurusEntity)entity).getTexture();
+        }
+        if(entity instanceof StyracosaurusEntity && !entity.isSkeleton()) {
+            return ((StyracosaurusEntity)entity).getTexture();
+        }
+        if(entity instanceof SinoceratopsEntity && !entity.isSkeleton()) {
+            return ((SinoceratopsEntity)entity).getTexture();
+        }
+        if(entity instanceof TriceratopsEntity && !entity.isSkeleton()) {
+            return ((TriceratopsEntity)entity).getTexture();
+        }
+
+
 
         return entity.isMale() ? this.dinosaur.getMaleTexture(growthStage) : this.dinosaur.getFemaleTexture(growthStage);
     }

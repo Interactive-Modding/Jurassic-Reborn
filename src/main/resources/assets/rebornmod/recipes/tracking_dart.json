@@ -1,0 +1,22 @@
+{
+  "type": "forge:ore_shaped",
+  "group": "rebornmod:tracking_dart",
+  "pattern": [
+    " F",
+    "N "
+  ],
+  "key": {
+    "N": {
+      "type": "forge:ore_dict",
+      "ore": "nuggetIron"
+    },
+    "F": {
+      "item": "minecraft:compass",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "rebornmod:tracking_dart",
+    "count": 6
+  }
+}

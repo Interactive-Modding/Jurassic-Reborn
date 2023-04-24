@@ -30,35 +30,35 @@
     "WALKING": [
       {
         "pose": "leptictidium_adult_walking_1",
-        "time": 2
+        "time": 1
       },
       {
         "pose": "leptictidium_adult_walking_2",
-        "time": 2
+        "time": 1
       },
       {
         "pose": "leptictidium_adult_walking_3",
-        "time": 2
+        "time": 1
       },
       {
         "pose": "leptictidium_adult_walking_4",
-        "time": 2
+        "time": 1
       },
       {
         "pose": "leptictidium_adult_walking_5",
-        "time": 2
+        "time": 1
       },
       {
         "pose": "leptictidium_adult_walking_6",
-        "time": 2
+        "time": 1
       },
       {
         "pose": "leptictidium_adult_walking_7",
-        "time": 2
+        "time": 1
       },
       {
         "pose": "leptictidium_adult_walking_8",
-        "time": 2
+        "time": 1
       }
  ],
     "PECKING": [

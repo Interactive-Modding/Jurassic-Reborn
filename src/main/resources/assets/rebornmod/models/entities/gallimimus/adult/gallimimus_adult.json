@@ -292,19 +292,19 @@
     "WALKING": [
       {
         "pose": "gallimimus_adult_walk_1",
-        "time": 5
+        "time": 4
       },
       {
         "pose": "gallimimus_adult_walk_2",
-        "time": 5
+        "time": 4
       },
       {
         "pose": "gallimimus_adult_walk_3",
-        "time": 5
+        "time": 4
       },
       {
         "pose": "gallimimus_adult_walk_4",
-        "time": 5
+        "time": 4
       }
     ],
     "SWIMMING": [

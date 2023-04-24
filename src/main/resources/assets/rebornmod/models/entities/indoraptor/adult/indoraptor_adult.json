@@ -4,17 +4,49 @@
     "IDLE": [
       {
         "pose": "indoraptor_adult_idle",
-        "time": 60
+        "time": 55
       },
       {
         "pose": "indoraptor_adult_idle_1",
-        "time": 60
+        "time": 55
+      }
+    ],
+    "DYING": [
+      {
+        "pose": "indoraptor_adult_death_1",
+        "time": 15
+      },
+      {
+        "pose": "indoraptor_adult_death_2",
+        "time": 15
+      },
+      {
+        "pose": "indoraptor_adult_death_3",
+        "time": 15
+      }
+    ],
+    "RESTING": [
+      {
+        "pose": "indoraptor_adult_resting_1",
+        "time": 15
+      },
+      {
+        "pose": "indoraptor_adult_resting_2",
+        "time": 15
       }
     ],
     "SLEEPING": [
       {
-        "pose": "indoraptor_adult_sleeping",
-        "time": 20
+        "pose": "indoraptor_adult_sleeping_1",
+        "time": 15
+      },
+      {
+        "pose": "indoraptor_adult_sleeping_2",
+        "time": 15
+      },
+      {
+        "pose": "indoraptor_adult_sleeping_3",
+        "time": 15
       }
     ],
     "ROARING": [
@@ -27,108 +59,22 @@
         "time": 15
       },
       {
-        "pose": "indoraptor_adult_roaring_1",
-        "time": 15
-      },
-      {
-        "pose": "indoraptor_adult_roaring_2",
-        "time": 15
-      },
-      {
-        "pose": "indoraptor_adult_roaring_1",
-        "time": 15
-      },
-      {
-        "pose": "indoraptor_adult_roaring_2",
-        "time": 15
-      },
-      {
-        "pose": "indoraptor_adult_idle",
-        "time": 15
-      }
-    ],
-    "EATING": [
-      {
-        "pose": "indoraptor_adult_eating_1",
-        "time": 15
-      },
-      {
-        "pose": "indoraptor_adult_eating_2",
-        "time": 15
-      },
-      {
-        "pose": "indoraptor_adult_eating_3",
-        "time": 15
-      },
-      {
-        "pose": "indoraptor_adult_eating_4",
-        "time": 15
-     },
-      {
-        "pose": "indoraptor_adult_eating_5",
-        "time": 15
-      },
-      {
-        "pose": "indoraptor_adult_idle",
-        "time": 15
-      },
-      {
-        "pose": "indoraptor_adult_eating_1",
-        "time": 15
-      },
-      {
-        "pose": "indoraptor_adult_eating_2",
-        "time": 15
-      },
-      {
-        "pose": "indoraptor_adult_eating_3",
-        "time": 15
-      },
-      {
-        "pose": "indoraptor_adult_eating_4",
-        "time": 15
-     },
-      {
-        "pose": "indoraptor_adult_eating_5",
-        "time": 15
-      },
-      {
-        "pose": "indoraptor_adult_idle",
-        "time": 15
-      }
-    ],
-    "RESTING": [
-      {
-        "pose": "indoraptor_adult_resting",
+        "pose": "indoraptor_adult_roaring_3",
         "time": 20
-      }
-    ],
-    "DRINKING": [
-      {
-        "pose": "indoraptor_adult_drinking_1",
-        "time": 7
       },
       {
-        "pose": "indoraptor_adult_drinking_2",
-        "time": 6
+        "pose": "indoraptor_adult_roaring_4",
+        "time": 20
       },
       {
-        "pose": "indoraptor_adult_drinking_1",
-        "time": 7
+        "pose": "indoraptor_adult_roaring_5",
+        "time": 20
       },
       {
-        "pose": "indoraptor_adult_drinking_2",
-        "time": 6
+        "pose": "indoraptor_adult_roaring_6",
+        "time": 20
       },
       {
-        "pose": "indoraptor_adult_drinking_1",
-        "time": 7
-      },
-      {
-        "pose": "indoraptor_adult_drinking_2",
-        "time": 6
-        },
-        {
         "pose": "indoraptor_adult_idle",
         "time": 15
       }
@@ -147,72 +93,94 @@
         "time": 5
       }
     ],
-    "ATTACKING": [
+    "CALLING": [
       {
-        "pose": "indoraptor_adult_attacking",
-        "time": 15
+        "pose": "indoraptor_adult_calling_1",
+        "time": 20
+      },
+      {
+        "pose": "indoraptor_adult_calling_2",
+        "time": 8
+      },
+      {
+        "pose": "indoraptor_adult_calling_1",
+        "time": 20
+      },
+      {
+        "pose": "indoraptor_adult_calling_2",
+        "time": 8
       },
       {
         "pose": "indoraptor_adult_idle",
-        "time": 10
+        "time": 20
       }
     ],
-    "INJURED": [
+    "PREPARE_LEAP": [
       {
-        "pose": "indoraptor_adult_injured",
-        "time": 10
+        "pose": "indoraptor_adult_prepare_pounce_1",
+        "time": 5
       },
       {
-        "pose": "indoraptor_adult_idle",
+        "pose": "indoraptor_adult_prepare_pounce_2",
         "time": 5
       }
     ],
-    "DYING": [
+    "LEAP": [
       {
-        "pose": "indoraptor_adult_death",
-        "time": 25
+        "pose": "indoraptor_adult_leap_1",
+        "time": 4
+      },
+      {
+        "pose": "indoraptor_adult_leap_2",
+        "time": 4
+      },
+      {
+        "pose": "indoraptor_adult_leap_3",
+        "time": 4
+      },
+      {
+        "pose": "indoraptor_adult_leap_3",
+        "time": 4
       }
     ],
-    "CALLING": [
+    "LEAP_LAND": [
       {
-        "pose": "indoraptor_adult_calling",
+        "pose": "indoraptor_adult_landing_1",
+        "time": 6
+      },
+      {
+        "pose": "indoraptor_adult_landing_2",
+        "time": 6
+      }
+    ],
+    "DRINKING": [
+      {
+        "pose": "indoraptor_adult_drinking_1",
+        "time": 25
+      },
+      {
+        "pose": "indoraptor_adult_drinking_2",
         "time": 15
       },
       {
-        "pose": "indoraptor_adult_calling",
-        "time": 20
+        "pose": "indoraptor_adult_drinking_3",
+        "time": 15
+      },
+      {
+        "pose": "indoraptor_adult_drinking_1",
+        "time": 15
+      },
+      {
+        "pose": "indoraptor_adult_drinking_2",
+        "time": 15
+      },
+      {
+        "pose": "indoraptor_adult_drinking_3",
+        "time": 15
       },
       {
         "pose": "indoraptor_adult_idle",
-        "time": 10
-      }
-    ],
-    "LOOKING_LEFT": [
-       {
-        "pose": "indoraptor_adult_look_left",
         "time": 20
-      },
-      {
-        "pose": "indoraptor_adult_look_left",
-        "time": 20
-      },
-      {
-        "pose": "indoraptor_adult_idle",
-        "time": 10
-      }
-    ],
-    "LOOKING_RIGHT": [
-    {
-        "pose": "indoraptor_adult_look_right",
-        "time": 20
-      },
-      {
-        "pose": "indoraptor_adult_look_right",
-        "time": 20
-      },
-      {
-        "pose": "indoraptor_adult_idle",
-        "time": 10
       }
     ],
     "WALKING": [
@@ -235,8 +203,28 @@
       {
         "pose": "indoraptor_adult_walking_5",
         "time": 5
+      },
+      {
+        "pose": "indoraptor_adult_walking_6",
+        "time": 5
+      },
+      {
+        "pose": "indoraptor_adult_walking_7",
+        "time": 5
+      },
+      {
+        "pose": "indoraptor_adult_walking_8",
+        "time": 5
+      },
+      {
+        "pose": "indoraptor_adult_walking_9",
+        "time": 5
+      },
+      {
+        "pose": "indoraptor_adult_walking_10",
+        "time": 5
       }
-],
+    ],
     "RUNNING": [
       {
         "pose": "indoraptor_adult_running_1",
@@ -257,6 +245,175 @@
       {
         "pose": "indoraptor_adult_running_5",
         "time": 4
+      },
+      {
+        "pose": "indoraptor_adult_running_6",
+        "time": 4
+
+      },
+      {
+        "pose": "indoraptor_adult_running_7",
+        "time": 4
+      },
+      {
+        "pose": "indoraptor_adult_running_8",
+        "time": 4
+      },
+      {
+        "pose": "indoraptor_adult_running_9",
+        "time": 4
+      },
+      {
+        "pose": "indoraptor_adult_running_10",
+        "time": 4
+      }
+    ],
+    "ATTACKING": [
+      {
+        "pose": "indoraptor_adult_attacking_1",
+        "time": 6
+      },
+      {
+        "pose": "indoraptor_adult_attacking_2",
+        "time": 6
+      },
+      {
+        "pose": "indoraptor_adult_attacking_3",
+        "time": 6
+      },
+      {
+        "pose": "indoraptor_adult_idle",
+        "time": 6
+      }
+    ],
+    "LOOKING_LEFT": [
+      {
+        "pose": "indoraptor_adult_look_start",
+        "time": 20
+      },
+      {
+        "pose": "indoraptor_adult_look_left_1",
+        "time": 25
+      },
+      {
+        "pose": "indoraptor_adult_look_left_2",
+        "time": 20
+      },
+      {
+        "pose": "indoraptor_adult_look_left_3",
+        "time": 20
+      },
+      {
+        "pose": "indoraptor_adult_look_left_4",
+        "time": 20
+      },
+      {
+        "pose": "indoraptor_adult_look_left_5",
+        "time": 20
+      },
+      {
+        "pose": "indoraptor_adult_look_left_6",
+        "time": 20
+      },
+      {
+        "pose": "indoraptor_adult_look_left_7",
+        "time": 20
+      },
+      {
+        "pose": "indoraptor_adult_idle",
+        "time": 15
+      }
+    ],
+    "LOOKING_RIGHT": [
+      {
+        "pose": "indoraptor_adult_look_start",
+        "time": 25
+      },
+      {
+        "pose": "indoraptor_adult_look_right_1",
+        "time": 20
+      },
+      {
+        "pose": "indoraptor_adult_look_right_2",
+        "time": 20
+      },
+      {
+        "pose": "indoraptor_adult_look_right_3",
+        "time": 20
+      },
+      {
+        "pose": "indoraptor_adult_look_right_4",
+        "time": 20
+      },
+      {
+        "pose": "indoraptor_adult_look_right_5",
+        "time": 20
+      },
+      {
+        "pose": "indoraptor_adult_look_right_6",
+        "time": 20
+      },
+      {
+        "pose": "indoraptor_adult_idle",
+        "time": 15
+      }
+    ],
+    "INJURED": [
+      {
+        "pose": "indoraptor_adult_injured",
+        "time": 8
+      },
+      {
+        "pose": "indoraptor_adult_injured",
+        "time": 8
+      },
+      {
+        "pose": "indoraptor_adult_idle",
+        "time": 8
+      }
+    ],
+    "EATING": [
+      {
+        "pose": "indoraptor_adult_eating_1",
+        "time": 25
+      },
+      {
+        "pose": "indoraptor_adult_eating_2",
+        "time": 15
+      },
+      {
+        "pose": "indoraptor_adult_eating_3",
+        "time": 15
+      },
+      {
+        "pose": "indoraptor_adult_eating_4",
+        "time": 20
+      },
+      {
+        "pose": "indoraptor_adult_eating_5",
+        "time": 15
+      },
+      {
+        "pose": "indoraptor_adult_eating_6",
+        "time": 15
+      },
+      {
+        "pose": "indoraptor_adult_idle",
+        "time": 20
+      }
+    ],
+    "LAYING_EGG": [
+      {
+        "pose": "indoraptor_adult_laying_1",
+        "time": 40
+      },
+      {
+        "pose": "indoraptor_adult_laying_2",
+        "time": 40
+      },
+      {
+        "pose": "indoraptor_adult_idle",
+        "time": 10
       }
     ]
   }

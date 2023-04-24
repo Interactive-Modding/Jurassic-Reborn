@@ -1,0 +1,417 @@
+{
+  "version": 0,
+  "poses": {
+    "IDLE": [
+      {
+        "pose": "diplodocus_adult_idle",
+        "time": 60
+      },
+      {
+        "pose": "diplodocus_adult_idle_1",
+        "time": 60
+      }
+    ],
+    "RESTING": [
+      {
+        "pose": "diplodocus_adult_resting_1",
+        "time": 20
+      },
+      {
+        "pose": "diplodocus_adult_resting_2",
+        "time": 20
+      }
+    ],
+    "ROARING": [
+      {
+        "pose": "diplodocus_adult_roar_1",
+        "time": 25
+      },
+      {
+        "pose": "diplodocus_adult_roar_2",
+        "time": 20
+      },
+      {
+        "pose": "diplodocus_adult_roar_3",
+        "time": 15
+      },
+      {
+        "pose": "diplodocus_adult_roar_4",
+        "time": 15
+      },
+      {
+        "pose": "diplodocus_adult_roar_5",
+        "time": 15
+      },
+      {
+        "pose": "diplodocus_adult_roar_6",
+        "time": 15
+      },
+      {
+        "pose": "diplodocus_adult_roar_7",
+        "time": 25
+      },
+      {
+        "pose": "diplodocus_adult_roar_8",
+        "time": 12
+      },
+      {
+        "pose": "diplodocus_adult_roar_9",
+        "time": 11
+      },
+      {
+        "pose": "diplodocus_adult_idle",
+        "time": 15
+      }
+    ],
+    "SPEAK": [
+      {
+        "pose": "diplodocus_adult_speak_1",
+        "time": 20
+      },
+      {
+        "pose": "diplodocus_adult_speak_2",
+        "time": 20
+      },
+      {
+        "pose": "diplodocus_adult_speak_3",
+        "time": 20
+      },
+      {
+        "pose": "diplodocus_adult_idle",
+        "time": 10
+      }
+    ],
+    "LOOKING_LEFT": [
+      {
+        "pose": "diplodocus_adult_looking_left_1",
+        "time": 65
+      },
+      {
+        "pose": "diplodocus_adult_looking_left_2",
+        "time": 25
+      },
+      {
+        "pose": "diplodocus_adult_looking_left_3",
+        "time": 35
+      },
+      {
+        "pose": "diplodocus_adult_looking_left_4",
+        "time": 35
+      },
+      {
+        "pose": "diplodocus_adult_idle",
+        "time": 65
+      }
+    ],
+    "LOOKING_RIGHT": [
+      {
+        "pose": "diplodocus_adult_looking_right_1",
+        "time": 30
+      },
+      {
+        "pose": "diplodocus_adult_looking_right_2",
+        "time": 20
+      },
+      {
+        "pose": "diplodocus_adult_looking_right_3",
+        "time": 20
+      },
+      {
+        "pose": "diplodocus_adult_looking_right_4",
+        "time": 15
+      },
+      {
+        "pose": "diplodocus_adult_looking_right_5",
+        "time": 25
+      },
+      {
+        "pose": "diplodocus_adult_looking_right_6",
+        "time": 25
+      },
+      {
+        "pose": "diplodocus_adult_idle",
+        "time": 25
+      }
+    ],
+    "SLEEPING": [
+      {
+        "pose": "diplodocus_adult_sleeping_1",
+        "time": 20
+      },
+      {
+        "pose": "diplodocus_adult_sleeping_2",
+        "time": 20
+      },
+      {
+        "pose": "diplodocus_adult_sleeping_3",
+        "time": 20
+      }
+    ],
+    "WALKING": [
+      {
+        "pose": "diplodocus_adult_walking_1",
+        "time": 4
+      },
+      {
+        "pose": "diplodocus_adult_walking_2",
+        "time": 4
+      },
+      {
+        "pose": "diplodocus_adult_walking_3",
+        "time": 4
+      },
+      {
+        "pose": "diplodocus_adult_walking_4",
+        "time": 4
+      },
+      {
+        "pose": "diplodocus_adult_walking_5",
+        "time": 4
+      },
+      {
+        "pose": "diplodocus_adult_walking_6",
+        "time": 4
+      },
+      {
+        "pose": "diplodocus_adult_walking_7",
+        "time": 4
+      },
+      {
+        "pose": "diplodocus_adult_walking_8",
+        "time": 4
+      }
+    ],
+    "RUNNING": [
+      {
+        "pose": "diplodocus_adult_running_1",
+        "time": 3
+      },
+      {
+        "pose": "diplodocus_adult_running_2",
+        "time": 3
+      },
+      {
+        "pose": "diplodocus_adult_running_3",
+        "time": 3
+      },
+      {
+        "pose": "diplodocus_adult_running_4",
+        "time": 3
+      },
+      {
+        "pose": "diplodocus_adult_running_5",
+        "time": 3
+      },
+      {
+        "pose": "diplodocus_adult_running_6",
+        "time": 3
+      },
+      {
+        "pose": "diplodocus_adult_running_7",
+        "time": 3
+      },
+      {
+        "pose": "diplodocus_adult_running_8",
+        "time": 3
+      }
+    ],
+    "CALLING": [
+      {
+        "pose": "diplodocus_adult_calling_1",
+        "time": 10
+      },
+      {
+        "pose": "diplodocus_adult_calling_2",
+        "time": 10
+      },
+      {
+        "pose": "diplodocus_adult_calling_2",
+        "time": 20
+      },
+      {
+        "pose": "diplodocus_adult_calling_3",
+        "time": 25
+      },
+      {
+        "pose": "diplodocus_adult_calling_4",
+        "time": 25
+      },
+      {
+        "pose": "diplodocus_adult_idle",
+        "time": 20
+      }
+    ],
+    "DYING": [
+      {
+        "pose": "diplodocus_adult_death_1",
+        "time": 15
+      },
+      {
+        "pose": "diplodocus_adult_death_2",
+        "time": 15
+      },
+      {
+        "pose": "diplodocus_adult_death_3",
+        "time": 15
+      },
+      {
+        "pose": "diplodocus_adult_death_4",
+        "time": 10
+      },
+      {
+        "pose": "diplodocus_adult_death_5",
+        "time": 15
+      }
+    ],
+    "DRINKING": [
+      {
+        "pose": "diplodocus_adult_drinking_1",
+        "time": 20
+      },
+      {
+        "pose": "diplodocus_adult_drinking_2",
+        "time": 20
+      },
+      {
+        "pose": "diplodocus_adult_drinking_3",
+        "time": 20
+      },
+      {
+        "pose": "diplodocus_adult_drinking_3",
+        "time": 20
+      },
+      {
+        "pose": "diplodocus_adult_drinking_4",
+        "time": 20
+      },
+      {
+        "pose": "diplodocus_adult_drinking_5",
+        "time": 20
+      },
+      {
+        "pose": "diplodocus_adult_drinking_6",
+        "time": 20
+      },
+      {
+        "pose": "diplodocus_adult_drinking_7",
+        "time": 20
+      },
+      {
+        "pose": "diplodocus_adult_idle",
+        "time": 30
+      }
+    ],
+    "ATTACKING": [
+      {
+        "pose": "diplodocus_adult_attacking_1",
+        "time": 15
+      },
+      {
+        "pose": "diplodocus_adult_attacking_2",
+        "time": 15
+      },
+      {
+        "pose": "diplodocus_adult_attacking_3",
+        "time": 15
+      },
+      {
+        "pose": "diplodocus_adult_idle",
+        "time": 15
+      }
+    ],
+    "INJURED": [
+      {
+        "pose": "diplodocus_adult_injured",
+        "time": 10
+      },
+      {
+        "pose": "diplodocus_adult_injured",
+        "time": 10
+      },
+      {
+        "pose": "diplodocus_adult_idle",
+        "time": 10
+      }
+    ],
+    "EATING": [
+      {
+        "pose": "diplodocus_adult_eating_1",
+        "time": 20
+      },
+      {
+        "pose": "diplodocus_adult_eating_2",
+        "time": 20
+      },
+      {
+        "pose": "diplodocus_adult_eating_3",
+        "time": 20
+      },
+      {
+        "pose": "diplodocus_adult_eating_4",
+        "time": 20
+      },
+      {
+        "pose": "diplodocus_adult_eating_5",
+        "time": 20
+      },
+      {
+        "pose": "diplodocus_adult_eating_6",
+        "time": 20
+      },
+      {
+        "pose": "diplodocus_adult_eating_7",
+        "time": 20
+      },
+      {
+        "pose": "diplodocus_adult_eating_8",
+        "time": 20
+      },
+      {
+        "pose": "diplodocus_adult_eating_9",
+        "time": 20
+      },
+      {
+        "pose": "diplodocus_adult_eating_10",
+        "time": 20
+      },
+      {
+        "pose": "diplodocus_adult_eating_11",
+        "time": 20
+      },
+      {
+        "pose": "diplodocus_adult_eating_12",
+        "time": 20
+      },
+      {
+        "pose": "diplodocus_adult_eating_13",
+        "time": 20
+      },
+      {
+        "pose": "diplodocus_adult_eating_14",
+        "time": 20
+      },
+      {
+        "pose": "diplodocus_adult_eating_15",
+        "time": 20
+      },
+      {
+        "pose": "diplodocus_adult_eating_16",
+        "time": 20
+      },
+      {
+        "pose": "diplodocus_adult_idle",
+        "time": 20
+      }
+    ],
+    "LAYING_EGG": [
+      {
+        "pose": "diplodocus_adult_laying",
+        "time": 120
+      },
+      {
+        "pose": "diplodocus_adult_idle",
+        "time": 20
+      }
+    ]
+  }
+}
