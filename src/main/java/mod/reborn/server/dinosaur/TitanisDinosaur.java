@@ -34,7 +34,7 @@ public class TitanisDinosaur extends Dinosaur {
         this.setSleepTime(SleepTime.DIURNAL);
         this.setBones("skull", "leg_bones", "ribcage", "neck_vertebrae", "pelvis", "shoulder");
         this.setHeadCubeName("Head");
-        this.setScale(1.6F, 0.2F);
+        this.setScale(1.35F, 0.2F);
         this.setImprintable(true);
         this.setDefendOwner(true);
         this.setMaxHerdSize(40);

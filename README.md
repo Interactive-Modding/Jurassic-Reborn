@@ -6,45 +6,51 @@ Vitiate
 
 ### The code is modified and built up from an older version of JurassiCraft's code, having been also worked upon by JWR's coders. Credit goes to the original JurassiCraft team for laying the foundations for the code that was expanded upon to make this project a reality.
 
-###RebornMod Co-Leader
-
-Angelicmax
 
 ### Developers
 
-Last_Dovahkiin
+Vitiate
 
-Polarfox
-
-Red
+Gamma_002
 
 ### Modelers / Sound Designers / Textures /  Concept Artists
 
-AveLardo12 // InnovativePachyderm
-
-DTRaptor, The Political Advisor
-
-Giodude1580
-
-Neicke
+NightEagle
 
 CreatarCreator
 
-Fluffy Taco // JR_2202
+GameVideosForLife
 
+HuskyTacodile
+
+Lord Udon
+
+Scoob (Mr.Dino)
+
+Neickee
 
 
 ### Bug-Testers
 
-LordBlaines
+Ryu Enyo
 
 Rexthezilla98
 
-Shadow...
+Goofy
+
+Last_Dovahkiin
 
 HaruYukima
 
 # Contributors
+
+AveLardo12 // InnovativePachyderm
+
+Fluffy Taco // JR_2202
+
+DTRaptor, The Political Advisor
+
+Giodude1580
 
 Bastion16
 
