@@ -159,6 +159,10 @@
 	  {
         "pose": "arsinoitherium_adult_injured",
         "time": 20
+	  },
+	  {
+        "pose": "arsinoitherium_adult_idle",
+        "time": 10
 	  }
 	],
 	"LOOKING_LEFT": [
