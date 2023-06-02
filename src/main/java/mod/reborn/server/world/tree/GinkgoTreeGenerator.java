@@ -25,72 +25,70 @@ public class GinkgoTreeGenerator extends WorldGenAbstractTree {
         IBlockState log = BlockHandler.ANCIENT_LOGS.get(TreeType.GINKGO).getDefaultState();
         IBlockState leaves = BlockHandler.ANCIENT_LEAVES.get(TreeType.GINKGO).getDefaultState();
 
-        int height = rand.nextInt(10) + 10;
-        int branchIndex = 0;
-
-        int halfDistance = height / 2;
+        int height = rand.nextInt(16) + 4;
 
         for (int y = 0; y < height; y++) {
             BlockPos logPos = position.up(y);
             this.setBlockState(world, logPos, log);
 
-            boolean upperHalf = y > halfDistance;
+            int branchLength = Math.max(1, (height - y) / 3);
 
-            branchIndex++;
+            if (y >= 2) {
+                for (int x = -1; x <= 1; x++) {
+                    for (int z = -1; z <= 1; z++) {
+                        if (x != 0 || z != 0) {
+                            this.setBlockState(world, logPos.add(x, 0, z), leaves);
+                        }
+                    }
+                }
 
-            if (branchIndex > (upperHalf ? 2 : 3)) {
-                branchIndex = 0;
+                int bushSize = (int) (branchLength * 0.8);
+
+                for (int x = -bushSize; x <= bushSize; x++) {
+                    for (int z = -bushSize; z <= bushSize; z++) {
+                        if ((x != 0 || z != 0) && Math.sqrt(x * x + z * z) < bushSize) {
+                            this.setBlockState(world, logPos.add(x, 0, z), leaves);
+                        }
+                    }
+                }
             }
 
-            boolean branch = upperHalf ? branchIndex >= 2 : branchIndex >= 3;
-
-            if (branch) {
+            if (y % 3 == 2) {
                 for (int face = 0; face < 4; face++) {
                     EnumFacing facing = EnumFacing.getHorizontal(face);
                     BlockPos branchPos = logPos.offset(facing);
                     IBlockState facingLog = log.withProperty(AncientLogBlock.LOG_AXIS, BlockLog.EnumAxis.fromFacingAxis(facing.getAxis()));
 
                     this.setBlockState(world, branchPos, facingLog);
-                    this.setBlockState(world, branchPos.up(), leaves);
 
-                    int leaveOut = Math.max(1, (upperHalf ? -(halfDistance - y) : (halfDistance - y) + halfDistance) / 2) + (rand.nextInt(2) - 1);
+                    this.setBlockState(world, branchPos.up(2), leaves);
+                    this.setBlockState(world, branchPos.down(), leaves);
+                    this.setBlockState(world, branchPos.offset(facing.rotateY(), 2), leaves);
+                    this.setBlockState(world, branchPos.offset(facing.rotateYCCW(), 2), leaves);
 
-                    for (int i = 0; i < leaveOut; i++) {
-                        BlockPos leavePos = branchPos.offset(facing, i + 1).up(i / 2 + 1);
+                    for (int i = 0; i < branchLength; i++) {
+                        BlockPos pos = branchPos.offset(facing, i + 1).up(i / 2 + 1);
 
-                        this.setBlockState(world, leavePos, leaves);
+                        this.setBlockState(world, pos, facingLog);
+                        this.setBlockState(world, pos.up(), leaves);
+                        this.setBlockState(world, pos.down(), leaves);
+                        this.setBlockState(world, pos.offset(facing.rotateY()), leaves);
+                        this.setBlockState(world, pos.offset(facing.rotateYCCW()), leaves);
 
-                        if (!upperHalf) {
-                            if (i < leaveOut / 4 || height < 12) {
-                                this.setBlockState(world, leavePos.up(), leaves);
-                            }
-
-                            if (i < leaveOut - 2) {
-                                this.setBlockState(world, leavePos.down(), leaves);
-                                this.setBlockState(world, leavePos.offset(facing.rotateYCCW()), leaves);
-                                this.setBlockState(world, leavePos.offset(facing.rotateY()), leaves);
-                            } else if (i >= leaveOut - 2) {
-                                this.setBlockState(world, leavePos.up(), leaves);
-                            }
-                        } else if (i >= leaveOut - 1) {
-                            this.setBlockState(world, leavePos.up(), leaves);
-                            this.setBlockState(world, leavePos.up(1).offset(facing), leaves);
+                        if (i >= branchLength - 1) {
+                            this.setBlockState(world, pos.offset(facing), leaves);
                         }
-                    }
-
-                    if (!upperHalf) {
-                        this.setBlockState(world, branchPos.offset(facing).up(), facingLog);
-                        this.setBlockState(world, branchPos.offset(facing), leaves);
-                    } else {
-                        this.setBlockState(world, branchPos.offset(facing).up(2), leaves);
                     }
                 }
             }
         }
 
-        for (int i = 0; i < height / 4 + 1; i++) {
-            this.setBlockState(world, position.up(height + i), leaves);
-        }
+        this.setBlockState(world, position.up(height), leaves);
+        this.setBlockState(world, position.up(height).north(), leaves);
+        this.setBlockState(world, position.up(height).south(), leaves);
+        this.setBlockState(world, position.up(height).west(), leaves);
+        this.setBlockState(world, position.up(height).east(), leaves);
+        this.setBlockState(world, position.up(height + 1), leaves);
 
         return true;
     }
