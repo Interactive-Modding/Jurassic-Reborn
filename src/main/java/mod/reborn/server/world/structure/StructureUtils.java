@@ -35,6 +35,8 @@ public class StructureUtils {
 
         private boolean IslaSornaLab = RebornConfig.STRUCTURE_GENERATION.islasornalabgenereation;
         private boolean raptorPaddock = RebornConfig.STRUCTURE_GENERATION.raptorgeneration;
+
+        private boolean AbandonedPaddock = RebornConfig.STRUCTURE_GENERATION.abandonedgeneration;
         private BlockPos visitorCenterPosition;
 
         private BlockPos IslaSornaLabPosition;
@@ -51,6 +53,7 @@ public class StructureUtils {
             compound.setBoolean("VisitorCenter", this.visitorCenter);
             compound.setBoolean("IslaSornaLab", this.IslaSornaLab);
             compound.setBoolean("RaptorPaddock", this.raptorPaddock);
+            compound.setBoolean("AbandonedPaddock",this.AbandonedPaddock);
             compound.setLong("VisitorCenterBlockPosition", this.visitorCenterPosition.toLong());
             compound.setLong("IslaSornaLabBlockPosition", this.IslaSornaLabPosition.toLong());
             return compound;
@@ -61,6 +64,7 @@ public class StructureUtils {
             this.visitorCenter = nbt.getBoolean("VisitorCenter");
             this.IslaSornaLab = nbt.getBoolean("IslaSornaLab");
             this.raptorPaddock = nbt.getBoolean("RaptorPaddock");
+            this.AbandonedPaddock= nbt.getBoolean("AbandonedPaddock");
             this.visitorCenterPosition = BlockPos.fromLong(nbt.getLong("VisitorCenterBlockPosition"));
             this.IslaSornaLabPosition = BlockPos.fromLong(nbt.getLong("IslaSornaLabPosition"));
         }
@@ -75,6 +79,10 @@ public class StructureUtils {
 
         public boolean isRaptorPaddock() {
             return raptorPaddock;
+        }
+
+        public boolean isAbandonedPaddock() {
+            return AbandonedPaddock;
         }
 
         public BlockPos getVisitorCenterPosition() {

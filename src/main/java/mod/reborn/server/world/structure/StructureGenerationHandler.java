@@ -58,6 +58,7 @@ public enum StructureGenerationHandler implements IWorldGenerator {
         StructureGenerationHandler.registerGenerator(VisitorCentreGenerator::new, StructureUtils.StructureData::isVisitorCenter,(world, pos, random) -> world.getChunkFromBlockCoords(pos) == world.getChunkFromBlockCoords(MapUtils.getVisitorCenterPosition()));
         StructureGenerationHandler.registerGenerator(IslaSornaLabGenerator::new, StructureUtils.StructureData::isIslaSornaLab,(world, pos, random) -> world.getChunkFromBlockCoords(pos)== world.getChunkFromBlockCoords(MapUtils.getIslaSornaLabPosition()));
         registerGenerator(RaptorPaddockGenerator::new, StructureUtils.StructureData::isRaptorPaddock,4000, Biomes.JUNGLE, Biomes.MUTATED_JUNGLE, Biomes.JUNGLE_EDGE, Biomes.MUTATED_JUNGLE_EDGE, Biomes.SAVANNA, Biomes.MUTATED_SAVANNA);
+        registerGenerator(AbandonedPaddockGenerator::new, StructureUtils.StructureData::isAbandonedPaddock,4000, Biomes.SAVANNA, Biomes.MUTATED_SAVANNA, Biomes.PLAINS,Biomes.FOREST);
     }
 
 

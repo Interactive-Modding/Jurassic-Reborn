@@ -115,10 +115,11 @@ public class RebornConfig { //TODO: move all structures to same parent package
     public static class StructureGeneration {
         @Config.Name("Visitor Center Generation")
         public boolean visitorcentergeneration = true;
-
-        @Config.Name("Isla Sorna Lab Generation")
+        @Config.Name("InGen Compound Generation")
         public boolean islasornalabgenereation = true;
 
+        @Config.Name("Abandoned Paddock Generation")
+        public boolean abandonedgeneration = true;
         @Config.Name("Raptor Paddock Generation")
         public boolean raptorgeneration = true;
     }

@@ -1,10 +1,7 @@
 package mod.reborn.server.command;
 
 import com.google.common.collect.Lists;
-import mod.reborn.server.world.structure.IslaSornaLabGenerator;
-import mod.reborn.server.world.structure.RaptorPaddockGenerator;
-import mod.reborn.server.world.structure.StructureGenerator;
-import mod.reborn.server.world.structure.VisitorCentreGenerator;
+import mod.reborn.server.world.structure.*;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
@@ -45,6 +42,8 @@ public class SpawnStructureCommand extends CommandBase {
             generator = new VisitorCentreGenerator(random);
         } else if(name.equalsIgnoreCase("raptor_paddock")) {
             generator = new RaptorPaddockGenerator(random);
+        } else if(name.equalsIgnoreCase("abandoned_paddock")) {
+            generator = new AbandonedPaddockGenerator(random);
         } else if(name.equalsIgnoreCase("isla_sorna_lab")) {
             generator = new IslaSornaLabGenerator(random);
         } else {
@@ -76,7 +75,7 @@ public class SpawnStructureCommand extends CommandBase {
     @Override
     public List<String> getTabCompletions(MinecraftServer server, ICommandSender sender, String[] args, @Nullable BlockPos targetPos) {
         if(args.length == 1) {
-            return getListOfStringsMatchingLastWord(args, Lists.newArrayList("visitor_center", "raptor_paddock", "isla_sorna_lab"));
+            return getListOfStringsMatchingLastWord(args, Lists.newArrayList("visitor_center","abandoned_paddock", "raptor_paddock", "isla_sorna_lab"));
         } else if(args.length == 2) {
             return getListOfStringsMatchingLastWord(args, Stream.of(Rotation.values()).map(Enum::name).map(String::toLowerCase).collect(Collectors.toList()));
         } else if(args.length == 3) {
