@@ -32,8 +32,12 @@ public class StructureUtils {
     public static class StructureData extends WorldSavedData {
 
         private boolean visitorCenter = RebornConfig.STRUCTURE_GENERATION.visitorcentergeneration;
+
+        private boolean IslaSornaLab = RebornConfig.STRUCTURE_GENERATION.islasornalabgenereation;
         private boolean raptorPaddock = RebornConfig.STRUCTURE_GENERATION.raptorgeneration;
         private BlockPos visitorCenterPosition;
+
+        private BlockPos IslaSornaLabPosition;
 
         public StructureData(String string) {
             super(string);
@@ -45,20 +49,28 @@ public class StructureUtils {
         @Override
         public NBTTagCompound writeToNBT(NBTTagCompound compound) {
             compound.setBoolean("VisitorCenter", this.visitorCenter);
+            compound.setBoolean("IslaSornaLab", this.IslaSornaLab);
             compound.setBoolean("RaptorPaddock", this.raptorPaddock);
             compound.setLong("VisitorCenterBlockPosition", this.visitorCenterPosition.toLong());
+            compound.setLong("IslaSornaLabBlockPosition", this.IslaSornaLabPosition.toLong());
             return compound;
         }
 
         @Override
         public void readFromNBT(NBTTagCompound nbt) {
             this.visitorCenter = nbt.getBoolean("VisitorCenter");
+            this.IslaSornaLab = nbt.getBoolean("IslaSornaLab");
             this.raptorPaddock = nbt.getBoolean("RaptorPaddock");
             this.visitorCenterPosition = BlockPos.fromLong(nbt.getLong("VisitorCenterBlockPosition"));
+            this.IslaSornaLabPosition = BlockPos.fromLong(nbt.getLong("IslaSornaLabPosition"));
         }
 
         public boolean isVisitorCenter() {
             return visitorCenter;
+        }
+
+        public boolean isIslaSornaLab()  {
+            return IslaSornaLab;
         }
 
         public boolean isRaptorPaddock() {
@@ -67,6 +79,15 @@ public class StructureUtils {
 
         public BlockPos getVisitorCenterPosition() {
             return visitorCenterPosition;
+        }
+
+        public BlockPos getIslaSornaLabPosition()  {
+            return IslaSornaLabPosition;
+        }
+
+        public void setIslaSornaLabPosition(BlockPos IslaSornaLabPosition) {
+            this.IslaSornaLabPosition = IslaSornaLabPosition;
+            this.markDirty();
         }
 
         public void setVisitorCenterPosition(BlockPos visitorCenterPosition) {

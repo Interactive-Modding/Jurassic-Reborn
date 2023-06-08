@@ -351,6 +351,7 @@ item.dart_tipped_potion.name=Dardo de poción
 item.west_indian_lilac_berries.name=Bayas de Lilas de Persia
 
 filled_map.rebornmod.visitorcenter=Mapa del centro de visitantes
+filled_map.rebornmod.islasornalab=Mapa compuesto de InGen
 
 // Crops ========================================
 item.ajuginucula_smithii_seeds.name=Semillas de Ajuginucula Smithii

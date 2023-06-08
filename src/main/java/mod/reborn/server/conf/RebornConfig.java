@@ -116,6 +116,9 @@ public class RebornConfig { //TODO: move all structures to same parent package
         @Config.Name("Visitor Center Generation")
         public boolean visitorcentergeneration = true;
 
+        @Config.Name("Isla Sorna Lab Generation")
+        public boolean islasornalabgenereation = true;
+
         @Config.Name("Raptor Paddock Generation")
         public boolean raptorgeneration = true;
     }

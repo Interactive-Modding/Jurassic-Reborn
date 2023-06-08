@@ -348,7 +348,8 @@ item.dart_tipped_potion.name=Отварна Стреличка
 item.tracking_dart.name=Проследяваща стрела
 item.west_indian_lilac_berries.name=Западноиндийски люлякови Боровинки
 
-filled_map.rebornmod.visitorcenter=Карта на посетителския център
+filled_map.rebornmod.visitorcenter=Карта на посетителския центърw
+filled_map.rebornmod.islasornalab=Карта на InGen Compound
 
 // Crops ========================================
 item.ajuginucula_smithii_seeds.name=Семена на Аджугинилула Смитий

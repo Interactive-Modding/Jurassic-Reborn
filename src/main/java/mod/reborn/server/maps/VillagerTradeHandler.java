@@ -29,14 +29,25 @@ public class VillagerTradeHandler {
                     if(StructureUtils.getStructureData().isVisitorCenter()) {
                         World world = FMLCommonHandler.instance().getMinecraftServerInstance().getWorld(0);
                         BlockPos blockpos = MapUtils.getVisitorCenterPosition();
-                        ItemStack itemstack = ItemMap.setupNewMap(world, blockpos.getX(), blockpos.getZ(), (byte)2, true, true);
+                        ItemStack itemstack = ItemMap.setupNewMap(world, blockpos.getX(), blockpos.getZ(), (byte) 2, true, true);
                         ItemMap.renderBiomePreviewMap(world, itemstack);
                         MapData.addTargetDecoration(itemstack, blockpos, "+", MapDecoration.Type.MANSION);
                         itemstack.setTranslatableName("filled_map.rebornmod.visitorcenter");
                         recipeList.add(new MerchantRecipe(new ItemStack(Items.EMERALD, random.nextInt(12) + 16), new ItemStack(Items.COMPASS), itemstack));
-
                     }
-                });
+                        if(StructureUtils.getStructureData().isIslaSornaLab()) {
+                            World world = FMLCommonHandler.instance().getMinecraftServerInstance().getWorld(0);
+                            BlockPos blockpos = MapUtils.getIslaSornaLabPosition();
+                            ItemStack itemstack = ItemMap.setupNewMap(world, blockpos.getX(), blockpos.getZ(), (byte) 3, true,true);
+                            ItemMap.renderBiomePreviewMap(world, itemstack);
+                            MapData.addTargetDecoration(itemstack, blockpos, "+", MapDecoration.Type.MANSION);
+                            itemstack.setTranslatableName("filled_map.rebornmod.islasornalab");
+                            recipeList.add(new MerchantRecipe(new ItemStack(Items.EMERALD, random.nextInt(12) + 16), new ItemStack(Items.COMPASS), itemstack));
+
+                        }
+
+                })
+                ;
                 RebornMod.getLogger().info("Successfully registered maps trade");
             } else {
                 RebornMod.getLogger().error("Could not find cartographer maps career");

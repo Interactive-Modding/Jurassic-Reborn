@@ -48,7 +48,7 @@ public class Loot {
     public static final DinosaurData DINOSAUR_DATA = new DinosaurData();
     public static final PlantData PLANT_DATA = new PlantData();
     public static final RandomDNA RANDOM_DNA = new RandomDNA();
-    public static final RandomDNA FULL_DNA = new RandomDNA(true);
+    public static final RandomDNA DNA = new RandomDNA(true);
 
 
     private static long tableID = 0;

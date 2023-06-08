@@ -46,7 +46,7 @@ public enum StructureGenerationHandler implements IWorldGenerator {
                     if (generatorEntry != null) {
                         if (generatorEntry.predicate.canSpawn(world, pos, random)&& generatorEntry.configPredicate.test(data)) {
                             generatorEntry.generatorFunction.apply(random).generate(world, random, pos);
-                        }
+                            }
                     }
                 }
             }
@@ -56,8 +56,10 @@ public enum StructureGenerationHandler implements IWorldGenerator {
     public static void register() {
         GameRegistry.registerWorldGenerator(INSTANCE, 0);
         StructureGenerationHandler.registerGenerator(VisitorCentreGenerator::new, StructureUtils.StructureData::isVisitorCenter,(world, pos, random) -> world.getChunkFromBlockCoords(pos) == world.getChunkFromBlockCoords(MapUtils.getVisitorCenterPosition()));
+        StructureGenerationHandler.registerGenerator(IslaSornaLabGenerator::new, StructureUtils.StructureData::isIslaSornaLab,(world, pos, random) -> world.getChunkFromBlockCoords(pos)== world.getChunkFromBlockCoords(MapUtils.getIslaSornaLabPosition()));
         registerGenerator(RaptorPaddockGenerator::new, StructureUtils.StructureData::isRaptorPaddock,4000, Biomes.JUNGLE, Biomes.MUTATED_JUNGLE, Biomes.JUNGLE_EDGE, Biomes.MUTATED_JUNGLE_EDGE, Biomes.SAVANNA, Biomes.MUTATED_SAVANNA);
     }
+
 
     public static void registerGenerator(Function<Random, StructureGenerator> generatorFunction, Predicate<StructureUtils.StructureData> configPredicate, int weight, Biome... validBiomes) {
         registerGenerator(generatorFunction, configPredicate, (world, pos, random) -> random.nextInt(weight) == 0, validBiomes);
