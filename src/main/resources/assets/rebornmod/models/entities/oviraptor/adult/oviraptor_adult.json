@@ -247,7 +247,7 @@
     "WALKING": [
       {
         "pose": "oviraptor_adult_walking_1",
-        "time": 6
+        "time": 5
       },
       {
         "pose": "oviraptor_adult_walking_2",
@@ -255,7 +255,7 @@
       },
       {
         "pose": "oviraptor_adult_walking_3",
-        "time": 6
+        "time": 5
       },
       {
         "pose": "oviraptor_adult_walking_4",
