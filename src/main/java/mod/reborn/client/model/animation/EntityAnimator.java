@@ -30,7 +30,7 @@ public abstract class EntityAnimator<ENTITY extends EntityLivingBase & Animatabl
         JabelarAnimationHandler<ENTITY> animationHandler = getAnimationHelper(entity, (AnimatableModel) model, entity.shouldUseInertia());
         animationHandler.performAnimations(entity, limbSwing, limbSwingAmount, ticks);
 
-        // Iterate through neck and throat cubes to scale them
+        // Iterate cubes to scale them
         for (int i = 0; ; i++) {
             AdvancedModelRenderer cube = model.getCube("neck" + i);
             if (cube == null) {
