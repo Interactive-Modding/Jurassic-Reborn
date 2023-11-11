@@ -20,41 +20,32 @@ public abstract class EntityAnimator<ENTITY extends EntityLivingBase & Animatabl
 
     private JabelarAnimationHandler<ENTITY> getAnimationHelper(ENTITY entity, AnimatableModel model, boolean useInertialTweens) {
         GrowthStage growth = entity.getGrowthStage();
-        Map<ENTITY, JabelarAnimationHandler<ENTITY>> growthToRender = this.animationHandlers.get(growth);
-
-        if (growthToRender == null) {
-            growthToRender = new WeakHashMap<>();
-            this.animationHandlers.put(growth, growthToRender);
-        }
-
-        JabelarAnimationHandler<ENTITY> render = growthToRender.get(entity);
-
-        if (render == null) {
-            render = entity.<ENTITY>getPoseHandler().createAnimationHandler(entity, model, growth, useInertialTweens);
-            growthToRender.put(entity, render);
-        }
-
-        return render;
+        return animationHandlers
+                .computeIfAbsent(growth, k -> new WeakHashMap<>())
+                .computeIfAbsent(entity, k -> entity.<ENTITY>getPoseHandler().createAnimationHandler(entity, model, growth, useInertialTweens));
     }
 
     @Override
     public final void setRotationAngles(TabulaModel model, ENTITY entity, float limbSwing, float limbSwingAmount, float ticks, float rotationYaw, float rotationPitch, float scale) {
-        this.getAnimationHelper(entity, (AnimatableModel) model, entity.shouldUseInertia()).performAnimations(entity, limbSwing, limbSwingAmount, ticks);
-        for(int i = 0;true;i++) {
-            AdvancedModelRenderer cube = model.getCube("neck" + i++);
-            if(cube == null) {
-                cube = model.getCube("throat" + i++);
+        JabelarAnimationHandler<ENTITY> animationHandler = getAnimationHelper(entity, (AnimatableModel) model, entity.shouldUseInertia());
+        animationHandler.performAnimations(entity, limbSwing, limbSwingAmount, ticks);
+
+        // Iterate through neck and throat cubes to scale them
+        for (int i = 0; ; i++) {
+            AdvancedModelRenderer cube = model.getCube("neck" + i);
+            if (cube == null) {
+                cube = model.getCube("throat" + i);
+            }
+            if (cube == null) {
+                break;
             }
             float j = 1 - (i * 0.00001F);
-            if(cube != null ) {
-                cube.scaleX *= j;
-                cube.scaleY *= j;
-                cube.scaleZ *= j;
-
-            }
-            break;
+            cube.scaleX *= j;
+            cube.scaleY *= j;
+            cube.scaleZ *= j;
         }
-        this.performAnimations((AnimatableModel) model, entity, limbSwing, limbSwingAmount, ticks, rotationYaw, rotationPitch, scale);
+
+        performAnimations((AnimatableModel) model, entity, limbSwing, limbSwingAmount, ticks, rotationYaw, rotationPitch, scale);
     }
 
     protected void performAnimations(AnimatableModel parModel, ENTITY entity, float limbSwing, float limbSwingAmount, float ticks, float rotationYaw, float rotationPitch, float scale) {
