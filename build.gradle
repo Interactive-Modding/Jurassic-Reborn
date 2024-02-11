@@ -460,6 +460,8 @@ repositories {
 
 dependencies {
 
+    implementation 'org.jetbrains:annotations:20.1.0'
+  implementation 'org.jetbrains:annotations:20.1.0'
     deobfProvided "mezz.jei:jei_1.12.2:4.9.1.187:api"
 
     runtime "mezz.jei:jei_1.12.2:4.9.1.187"

@@ -20,7 +20,7 @@ import mod.reborn.server.command.SpawnStructureCommand;
 public class RebornMod {
     public static final String MODID = "rebornmod";
     public static final String NAME = "JWReborn";
-    public static final String VERSION = "1.3.0";
+    public static final String VERSION = "1.3.1";
 
     private final boolean TestEnv = false;
 

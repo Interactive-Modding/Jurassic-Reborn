@@ -16,7 +16,7 @@ public class CearadactylusEntity extends FlyingDinosaurEntity
     public CearadactylusEntity(World world)
     {
         super(world);
-        this.target(AlligatorGarEntity.class, AlvarezsaurusEntity.class, BeelzebufoEntity.class, CompsognathusEntity.class, CoelacanthEntity.class, MicroceratusEntity.class, MicroraptorEntity.class, MegapiranhaEntity.class, LeptictidiumEntity.class, LudodactylusEntity.class, OthnieliaEntity.class, OviraptorEntity.class, ProtoceratopsEntity.class, SegisaurusEntity.class, TroodonEntity.class, ZhenyuanopterusEntity.class, CrassigyrinusEntity.class, DiplocaulusEntity.class, DimorphodonEntity.class, EntityPlayer.class, EntityAnimal.class, EntityVillager.class);
+        this.target(AlligatorGarEntity.class, AlvarezsaurusEntity.class, BeelzebufoEntity.class, CompsognathusEntity.class, CoelacanthEntity.class, DimetrodonEntity.class, MicroceratusEntity.class, DimetrodonEntity.class, MicroraptorEntity.class, MegapiranhaEntity.class, LeptictidiumEntity.class, LudodactylusEntity.class, OthnieliaEntity.class, OviraptorEntity.class, ProtoceratopsEntity.class, SegisaurusEntity.class, TroodonEntity.class, ZhenyuanopterusEntity.class, CrassigyrinusEntity.class, DiplocaulusEntity.class, DimorphodonEntity.class, EntityPlayer.class, EntityAnimal.class, EntityVillager.class);
     }
         @Override
         public SoundEvent getSoundForAnimation(Animation animation)
