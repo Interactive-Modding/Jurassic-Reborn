@@ -296,6 +296,9 @@ public class EntityHandler {
                 EntityRegistry.addSpawn(clazz, dinosaur.getSpawnChance(), 1, Math.min(1, dinosaur.getMaxHerdSize()/2), dinosaur.isMarineCreature() ? EnumCreatureType.WATER_CREATURE : EnumCreatureType.CREATURE, dinosaur.getSpawnBiomes());
                 if(dinosaur.isMarineCreature()) EntitySpawnPlacementRegistry.setPlacementType(EntityShark.class, EntityLiving.SpawnPlacementType.IN_WATER);
             }
+            EntitySpawnPlacementRegistry.setPlacementType(clazz, dinosaur.isMarineCreature() ? EntityLiving.SpawnPlacementType.IN_WATER : EntityLiving.SpawnPlacementType.ON_GROUND);
+
+
         }
     }
     

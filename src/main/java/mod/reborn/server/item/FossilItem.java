@@ -1,22 +1,45 @@
 package mod.reborn.server.item;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 import com.google.common.collect.Lists;
 import mod.reborn.server.api.GrindableItem;
 import mod.reborn.server.api.Hybrid;
+import mod.reborn.server.dinosaur.TyrannosaurusDinosaur;
 import mod.reborn.server.tab.TabHandler;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.world.World;
 import org.apache.commons.lang3.tuple.Pair;
 import mod.reborn.server.dinosaur.Dinosaur;
 import mod.reborn.server.entity.EntityHandler;
+
+import net.minecraft.util.SoundCategory;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Rotations;
+import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.text.ChatType;
+import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
+import net.minecraft.item.ItemBlock;
+import mod.reborn.server.entity.dinosaur.TyrannosaurusEntity;
+import mod.reborn.server.block.BlockHandler;
+import mod.reborn.server.block.entity.DisplayBlockEntity;
+import mod.reborn.server.block.entity.SkullDisplayEntity;
+import com.sun.javafx.geom.Vec2d;
+import net.minecraft.advancements.CriteriaTriggers;
+import net.minecraft.block.Block;
+import net.minecraft.block.SoundType;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.Minecraft;
+
+
+
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
@@ -28,6 +51,8 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import mod.reborn.server.util.LangUtils;
+
+import javax.vecmath.Vector2d;
 
 public class FossilItem extends Item implements GrindableItem {
     public static Map<String, List<Dinosaur>> fossilDinosaurs = new HashMap<>();
@@ -121,6 +146,11 @@ public class FossilItem extends Item implements GrindableItem {
             lore.add(colour + LangUtils.translate(LangUtils.LORE.get("dna_quality")).replace("{quality}", LangUtils.getFormattedQuality(quality)));
             lore.add(TextFormatting.BLUE + LangUtils.translate(LangUtils.LORE.get("genetic_code")).replace("{code}", LangUtils.getFormattedGenetics(nbt.getString("Genetics"))));
         }
+
+        if(((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == TyrannosaurusDinosaur.class) {
+            lore.add(TextFormatting.GOLD + LangUtils.translate("pose.name") + ": " + LangUtils.getStandType(getHasStand(stack)));
+            lore.add(TextFormatting.WHITE + LangUtils.translate("lore.change_variant.name"));
+        }
     }
 
     @Override
@@ -134,6 +164,123 @@ public class FossilItem extends Item implements GrindableItem {
     
     public String getBoneType(){
         return type;
+    }
+    @Override
+    public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
+        IBlockState blockstate = world.getBlockState(pos);
+        Block worldBlock = blockstate.getBlock();
+
+        if (worldBlock.isReplaceable(world, pos))
+        {
+            side = EnumFacing.UP;
+            pos = pos.down();
+        }
+        worldBlock = world.getBlockState(pos).getBlock();
+
+        if (!worldBlock.isReplaceable(world, pos))
+        {
+            if (!world.getBlockState(pos).getMaterial().isSolid() || !world.isSideSolid(pos, side, true))
+            {
+                return EnumActionResult.FAIL;
+            }
+
+            pos = pos.offset(side);
+        }
+
+        ItemStack stack = player.getHeldItem(hand);
+        Block block = BlockHandler.SKULL_DISPLAY;
+        if (!player.world.isRemote && player.canPlayerEdit(pos, side, stack) && world.mayPlace(block, pos, false, side, (Entity) null) && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == TyrannosaurusDinosaur.class) {
+
+            if (side == EnumFacing.DOWN)
+            {
+                return EnumActionResult.FAIL;
+            }
+
+            if (block.canPlaceBlockAt(world, pos)) {
+                IBlockState blockstatePlacement = block.getStateForPlacement(world, pos, side, hitX, hitY, hitZ, /*meta*/ 0, player, hand);
+                if (!world.setBlockState(pos, blockstatePlacement, 11))
+                    return EnumActionResult.FAIL;
+
+                IBlockState state = world.getBlockState(pos);
+                if (state.getBlock() == block)
+                {
+                    ItemBlock.setTileEntityNBT(world, player, pos, stack);
+                    block.onBlockPlacedBy(world, pos, state, player, stack);
+
+                    if (player instanceof EntityPlayerMP)
+                        CriteriaTriggers.PLACED_BLOCK.trigger((EntityPlayerMP) player, pos, stack);
+                }
+
+                world.playSound(null, pos, SoundType.STONE.getPlaceSound(), SoundCategory.BLOCKS, (SoundType.STONE.getVolume() + 1.0F) / 2.0F, SoundType.STONE.getPitch() * 0.8F);
+                SkullDisplayEntity tile = (SkullDisplayEntity) world.getTileEntity(pos);
+
+                if (tile != null) {
+                    tile.setModel(stack.getItemDamage(), !this.isFresh(), getHasStand(stack));
+                    EnumFacing.Axis axis = side.getAxis();
+                    if (axis == EnumFacing.Axis.Y) {
+                        tile.setAngle(angleToPlayer(pos, new Vector2d(player.posX, player.posZ)));
+                    }else if(axis == EnumFacing.Axis.X) {
+                        tile.setAngle((short) side.getHorizontalAngle());
+                    }else if(axis == EnumFacing.Axis.Z) {
+                        tile.setAngle((short) (180 + side.getHorizontalAngle()));
+                    }
+                    world.notifyBlockUpdate(pos, state, state, 0);
+                    tile.markDirty();
+                    stack.shrink(1);
+
+                }
+
+            }
+        }
+
+        return EnumActionResult.SUCCESS;
+    }
+
+    private static short angleToPlayer(BlockPos block, Vector2d player) {
+        return (short) (90 - Math.toDegrees(Math.atan2(((double) block.getZ() + 0.5 - player.y), ((double) block.getX() + 0.5 - player.x))));
+    }
+
+    public static boolean getHasStand(ItemStack stack) {
+
+        if(stack.hasTagCompound() && stack.getTagCompound().hasKey("Type")) {
+            return stack.getTagCompound().getBoolean("Type");
+        }else {
+            return true;
+        }
+    }
+
+    public static void setHasStand(ItemStack stack, boolean hasStand) {
+        NBTTagCompound nbt = stack.getTagCompound();
+        if(nbt == null) {
+            nbt = new NBTTagCompound();
+            stack.setTagCompound(nbt);
+        }
+        nbt.setBoolean("Type", hasStand);
+    }
+
+    public static boolean changeStandType(ItemStack stack) {
+
+        boolean newType = !getHasStand(stack);
+
+        setHasStand(stack, newType);
+        return newType;
+    }
+
+    @Override
+    public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+        ItemStack stack = player.getHeldItem(hand);
+
+        if (player.isSneaking() && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == TyrannosaurusDinosaur.class) {
+            boolean oldType = getHasStand(stack);
+            boolean type = changeStandType(stack);
+            if (type != oldType && world.isRemote) {
+                TextComponentString change = new TextComponentString(LangUtils.translate(LangUtils.STAND_CHANGE.get("type")).replace("{mode}", LangUtils.getStandType(type)));
+                change.getStyle().setColor(TextFormatting.YELLOW);
+                Minecraft.getMinecraft().ingameGUI.addChatMessage(ChatType.GAME_INFO, change);
+            }
+        }
+
+        return new ActionResult<>(EnumActionResult.SUCCESS, stack);
     }
     
     @Override
@@ -152,6 +299,7 @@ public class FossilItem extends Item implements GrindableItem {
 
         return new ItemStack(Items.FLINT);
     }
+
 
     @Override
     public List<ItemStack> getJEIRecipeTypes() {

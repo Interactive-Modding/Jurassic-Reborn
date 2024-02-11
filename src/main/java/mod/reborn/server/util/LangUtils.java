@@ -20,6 +20,7 @@ public final class LangUtils
     public static final TranslateKey TAME = new TranslateKey("message.tame.name");
     public static final TranslateKey SET_ORDER = new TranslateKey("message.set_order.name");
     public static final TranslateKey ORDER_VALUE = new TranslateKey("order.%s.name");
+    public static final TranslateKey STAND_CHANGE = new TranslateKey("%s.standchange.name");
     public static final TranslateKey GENDER_CHANGE = new TranslateKey("%s.genderchange.name");
     public static final TranslateKey GUI = new TranslateKey("gui.%s.name");
     public static final TranslateKey STATUS = new TranslateKey("status.%s.name");
@@ -101,6 +102,10 @@ public final class LangUtils
 
     public static String getPlantName(Plant plant) {
         return translate("plants." + (plant == null ? "null" : plant.getName().toLowerCase(Locale.ENGLISH).replaceAll(" ", "_")) + ".name");
+    }
+
+    public static String getStandType(boolean type) {
+        return type == true ? translate("stand.stand.name") : translate("stand.placed.name");
     }
 
     public static final class TranslateKey

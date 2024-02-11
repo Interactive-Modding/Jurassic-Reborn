@@ -185,6 +185,7 @@ public enum RenderingHandler {
         registerBlockRenderer(GYPSUM_STONE, "gypsum_stone");
         registerBlockRenderer(GYPSUM_COBBLESTONE, "gypsum_cobblestone");
         registerBlockRenderer(GYPSUM_BRICKS, "gypsum_bricks");
+        registerBlockRenderer(SKULL_DISPLAY, "skull_display");
         registerBlockRenderer(BlockHandler.DISPLAY_BLOCK, "display_block");
 
         registerBlockRenderer(MOSS, "moss");
@@ -618,6 +619,7 @@ public enum RenderingHandler {
         ClientRegistry.bindTileEntitySpecialRenderer(DNASequencerBlockEntity.class, new DNASequencerRenderer());
         ClientRegistry.bindTileEntitySpecialRenderer(IncubatorBlockEntity.class, new IncubatorRenderer());
         ClientRegistry.bindTileEntitySpecialRenderer(FeederBlockEntity.class, new FeederRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(SkullDisplayEntity.class, new SkullDisplayRenderer());
         ClientRegistry.bindTileEntitySpecialRenderer(ElectricFencePoleBlockEntity.class, new ElectricFencePoleRenderer());
         ClientRegistry.bindTileEntitySpecialRenderer(CleaningStationBlockEntity.class, new CleaningStationRenderer());
         ClientRegistry.bindTileEntitySpecialRenderer(CultivatorBlockEntity.class, new CultivatorRenderer());

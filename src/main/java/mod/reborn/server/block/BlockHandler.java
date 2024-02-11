@@ -123,7 +123,7 @@ public class BlockHandler
     public static final FeederBlock FEEDER = new FeederBlock();
 
     public static final BugCrateBlock BUG_CRATE = new BugCrateBlock();
-
+    public static final SkullDisplay SKULL_DISPLAY = new SkullDisplay();
     public static final SwarmBlock PLANKTON_SWARM = new SwarmBlock(() -> ItemHandler.PLANKTON);
     public static final SwarmBlock KRILL_SWARM = new SwarmBlock(() -> ItemHandler.KRILL);
 
@@ -247,6 +247,7 @@ public class BlockHandler
         registerBlock(DNAExtractorBlockEntity.class, DNA_EXTRACTOR, "DNA Extractor");
         registerBlock(DNACombinatorHybridizerBlockEntity.class, DNA_COMBINATOR_HYBRIDIZER, "DNA Combinator Hybridizer");
         registerBlock(IncubatorBlockEntity.class, INCUBATOR, "Incubator");
+        registerBlock(SkullDisplayEntity.class, SKULL_DISPLAY, "Skull Display Block");
         registerBlock(DisplayBlockEntity.class, DISPLAY_BLOCK, "Display Block");
         registerBlock(FeederBlockEntity.class, FEEDER, "Feeder");
         registerBlock(BugCrateBlockEntity.class, BUG_CRATE, "Bug Crate");

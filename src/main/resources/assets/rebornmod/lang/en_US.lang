@@ -628,6 +628,11 @@ spawnegg.genderchange.name=This egg will now spawn a {mode} gender.
 actionfigure.genderchange.name=This action figure will now spawn a {mode} gender.
 amber.mosquito.name=Mosquito
 amber.aphid.name=Aphid
+stand.stand.name=standing
+stand.placed.name=placed
+pose.name=Pose
+lore.change_variant.name=Shift Right Click in air to change the pose
+type.standchange.name=This skull will now spawn {mode} blocks.
 
 color.red.name=Red
 color.orange.name=Orange

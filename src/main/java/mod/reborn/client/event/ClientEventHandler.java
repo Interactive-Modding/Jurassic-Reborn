@@ -2,6 +2,8 @@ package mod.reborn.client.event;
 
 import mod.reborn.RebornMod;
 import mod.reborn.client.proxy.ClientProxy;
+import mod.reborn.server.block.SkullDisplay;
+import mod.reborn.server.block.entity.SkullDisplayEntity;
 import mod.reborn.server.entity.DinosaurEntity;
 import mod.reborn.server.entity.vehicle.HelicopterEntity;
 import mod.reborn.server.entity.vehicle.VehicleEntity;
@@ -12,6 +14,8 @@ import mod.reborn.server.item.guns.Gun;
 import mod.reborn.server.message.AttemptMoveToSeatMessage;
 import net.ilexiconn.llibrary.LLibrary;
 import net.ilexiconn.llibrary.client.util.ClientUtils;
+import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.gui.FontRenderer;
@@ -31,13 +35,14 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.launchwrapper.Launch;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.client.event.GuiScreenEvent;
-import net.minecraftforge.client.event.RenderGameOverlayEvent;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.util.math.Vec3d;
+import net.minecraftforge.client.event.*;
 import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
-import net.minecraftforge.client.event.RenderPlayerEvent;
-import net.minecraftforge.client.event.RenderWorldLastEvent;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
@@ -76,6 +81,46 @@ public class ClientEventHandler {
             fixPlayerRenderers(skinMap.get("slim"), true);
             //skinMap.forEach((key, value) -> patchPlayerRender(key, value.));
             replacedPlayerModel = true;
+        }
+    }
+    @SubscribeEvent
+    public static void hightlightEvent(final DrawBlockHighlightEvent e) {
+        if (e.getTarget().typeOfHit == RayTraceResult.Type.BLOCK)
+        {
+            final BlockPos blockpos = e.getTarget().getBlockPos();
+            final IBlockState iblockstate = e.getPlayer().world.getBlockState(blockpos);
+            if (iblockstate.getBlock() instanceof SkullDisplay) {
+
+                GlStateManager.enableBlend();
+                GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
+                GlStateManager.glLineWidth(2.0F);
+                GlStateManager.disableTexture2D();
+                GlStateManager.depthMask(false);
+
+                if (iblockstate.getMaterial() != Material.AIR && e.getPlayer().world.getWorldBorder().contains(blockpos)) {
+                    final double x = e.getPlayer().lastTickPosX + (e.getPlayer().posX - e.getPlayer().lastTickPosX) * (double) e.getPartialTicks();
+                    final double y = e.getPlayer().lastTickPosY + (e.getPlayer().posY - e.getPlayer().lastTickPosY) * (double) e.getPartialTicks();
+                    final double z = e.getPlayer().lastTickPosZ + (e.getPlayer().posZ - e.getPlayer().lastTickPosZ) * (double) e.getPartialTicks();
+
+                    Vec3d pos = new Vec3d(blockpos.getX() + 0.5D, blockpos.getY(), blockpos.getZ() + 0.5D).subtract(new Vec3d(x, y, z));
+                    GL11.glPushMatrix();
+                    GL11.glTranslated(pos.x, pos.y, pos.z);
+                    final TileEntity tile = e.getPlayer().world.getTileEntity(blockpos);
+
+                    if (tile != null && tile instanceof SkullDisplayEntity && ((SkullDisplayEntity) tile).hasData())
+                        GlStateManager.rotate(((SkullDisplayEntity) tile).getAngle(), 0.0F, 1.0F, 0.0F);
+
+                    GL11.glTranslated(-0.5D, 0D, -0.5D);
+                    RenderGlobal.drawSelectionBoundingBox(iblockstate.getCollisionBoundingBox(e.getPlayer().world, blockpos).grow(0.002D), 0.0f, 0.0f, 0.0f, 0.4f);
+                    GL11.glPopMatrix();
+
+                }
+
+                GlStateManager.depthMask(true);
+                GlStateManager.enableTexture2D();
+                GlStateManager.disableBlend();
+                e.setCanceled(true);
+            }
         }
     }
 
