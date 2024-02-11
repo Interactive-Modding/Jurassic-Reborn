@@ -33,7 +33,7 @@ public class DiplodocusDinosaur extends Dinosaur
         this.setSizeY(0.5F, 5.8F);
         this.setBones("skull", "tooth", "front_leg_bones", "hind_leg_bones", "neck_vertebrae", "pelvis", "ribcage", "shoulder", "tail_vertebrae");
         this.setHeadCubeName("Head");
-        this.setScale(1.8F, 0.1F);
+        this.setScale(1.4F, 0.1F);
         this.setPaleoPadScale(5);
         this.shouldDefendOffspring();
         this.setAttackBias(1500);

@@ -1,6 +1,6 @@
 {
 "parent": "item/generated",
 "textures": {
-"layer0": "rebornmod:items/bones/carnotaurus_shoulder"
+"layer0": "rebornmod:items/bones/carnotaurus_arm_bones"
 }
 }
