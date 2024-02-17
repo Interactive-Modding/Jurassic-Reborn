@@ -334,6 +334,7 @@ public enum RenderingHandler {
         registerItemRenderer(CAR_WINDSCREEN, "car_windscreen");
         registerItemRenderer(UNFINISHED_CAR, "unfinished_car");
         registerItemRenderer(MURAL, "mural");
+        registerItemRenderer(BLUEPRINT,"Blueprint");
 
         for (Dinosaur dinosaur : EntityHandler.getDinosaurs().values()) {
             int meta = EntityHandler.getDinosaurId(dinosaur);
@@ -563,6 +564,7 @@ public enum RenderingHandler {
 //        RenderingRegistry.registerEntityRenderingHandler(TransportHelicopterEntity.class, HeliRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(HelicopterEntityNew.class, HelicopterNewRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(MuralEntity.class, MuralRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(BlueprintEntity.class, BlueprintRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(GoatEntity.class, GoatRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityCrab.class, CrabRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityShark.class, SharkRenderer::new);

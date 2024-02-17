@@ -244,6 +244,7 @@ public class EntityHandler {
         registerEntity(AttractionSignEntity.class, "Attraction Sign");
         registerEntity(PaddockSignEntity.class, "Paddock Sign");
         registerEntity(MuralEntity.class, "Mural");
+        registerEntity(BlueprintEntity.class,"Blueprint");
         registerEntity(VenomEntity.class, "Venom");
 
         registerEntity(JeepWranglerEntity.class, "Jeep Wrangler");

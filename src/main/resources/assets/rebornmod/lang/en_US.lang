@@ -118,6 +118,7 @@ entity.Villager.rebornmod:geneticist=Geneticist
 
 //Items ==================================================
 item.plaster_and_bandage.name=Plaster and Bandage
+item.blueprint.name=Blueprint
 
 item.attraction_sign.name={type} Attraction Sign
 attraction_sign.aquarium.name=Aquarium

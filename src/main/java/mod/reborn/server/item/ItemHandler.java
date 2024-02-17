@@ -208,6 +208,8 @@ public class ItemHandler {
     public static final VehicleItem VEHICLE_ITEM = new VehicleItem();
 
     public static final MuralItem MURAL = new MuralItem();
+    public static final BlueprintItem BLUEPRINT = new BlueprintItem();
+
 
     public static final SaplingSeedItem PHOENIX_SEEDS = (SaplingSeedItem) new SaplingSeedItem(BlockHandler.ANCIENT_SAPLINGS.get(TreeType.PHOENIX));
     public static final SeededFruitItem PHOENIX_FRUIT = (SeededFruitItem) new SeededFruitItem(PHOENIX_SEEDS, 4, 0.4F).setCreativeTab(TabHandler.FOODS);
@@ -346,6 +348,7 @@ public class ItemHandler {
         registerItem(PADDOCK_SIGN, "Paddock Sign");
         registerItem(ATTRACTION_SIGN, "Attraction Sign");
         registerItem(MURAL, "Mural");
+        registerItem(BLUEPRINT,"Blueprint");
         registerItem(DNA, "DNA");
         registerItem(SOFT_TISSUE, "Soft Tissue");
         registerItem(SYRINGE, "Syringe");

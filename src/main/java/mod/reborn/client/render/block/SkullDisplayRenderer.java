@@ -41,28 +41,32 @@ public class SkullDisplayRenderer extends TileEntitySpecialRenderer<SkullDisplay
             GlStateManager.rotate(tile.getAngle(), 0.0F, 1.0F, 0.0F);
 
             if (tile.model == null) {
-            	if(tile.hasData()) {
-				try {
-					final String dinosaur = tile.getDinosaur().getName().toString();
-					final boolean isFossilized = tile.isFossilized();		
-					if(horizontal) {
-						tile.model = new TabulaModel(TabulaModelHelper.loadTabulaModel(new ResourceLocation(RebornMod.MODID, "models/block/skull_display/tyrannosaurus_horizontal")));
-						tile.texture = new ResourceLocation(RebornMod.MODID, "textures/blocks/skull_display/" + dinosaur + "_" + (isFossilized ? "fossilized" : "fresh") + "_" + "vertical.png");
-					}else {
-						tile.model = new TabulaModel(TabulaModelHelper.loadTabulaModel(new ResourceLocation(RebornMod.MODID, "models/block/skull_display/tyrannosaurus_vertical")));
-						tile.texture = new ResourceLocation(RebornMod.MODID, "textures/blocks/skull_display/" + dinosaur + "_" + (isFossilized ? "fossilized" : "fresh") + "_" + "horizontal.png");
+				if (tile.hasData()) {
+					try {
+						final String dinosaur = tile.getDinosaur().getName().toString();
+						final boolean isFossilized = tile.isFossilized();
+						if (horizontal) {
+							tile.model = new TabulaModel(TabulaModelHelper.loadTabulaModel(new ResourceLocation(RebornMod.MODID, "models/block/skull_display/" + dinosaur  + "_" + "horizontal")));
+							tile.texture = new ResourceLocation(RebornMod.MODID, "textures/blocks/skull_display/" + dinosaur + "_" + (isFossilized ? "fossilized" : "fresh") + "_" + "vertical.png");
+
+						} else {
+							tile.model = new TabulaModel(TabulaModelHelper.loadTabulaModel(new ResourceLocation(RebornMod.MODID, "models/block/skull_display/" + dinosaur + "_" + "vertical")));
+							tile.texture = new ResourceLocation(RebornMod.MODID, "textures/blocks/skull_display/" + dinosaur + "_" + (isFossilized ? "fossilized" : "fresh") + "_" + "horizontal.png");
+
+						}
+
+					} catch (Exception e) {
+						e.printStackTrace();
 					}
-					
-				} catch (Exception e) {
-					e.printStackTrace();
+
 				}
-            	}
 			}
-			GlStateManager.scale(2, -2, 2);
-			if(!horizontal) 
-			   GlStateManager.translate(0, 0.2, -0.25);
-			
-			GlStateManager.translate(0.0F, -1.26F, 0.0F);
+				GlStateManager.scale(1.6, -1.6, 1.6);
+
+			if(!horizontal)
+			   GlStateManager.translate(0, 0.15, -0.18);
+
+			GlStateManager.translate(0.0F, -1.194F, 0.0F);
 			if(tile.model != null) {
 				ClientProxy.MC.getTextureManager().bindTexture(tile.texture);
 				tile.model.render(null, 0, 0, 0, 0, 0, 0.0625F);
