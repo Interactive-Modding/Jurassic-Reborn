@@ -1,0 +1,35 @@
+{
+    "display": {
+        "icon": {
+            "item": "rebornmod:incubator"
+        },
+        "title": {
+            "translate": "advancements.reborn.incubator.title"
+        },
+        "description": {
+            "translate": "advancements.reborn.incubator.description"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "incubator": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "rebornmod:incubator"
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "incubator"
+        ]
+    ],
+    "parent": "rebornmod:reborn/dino_egg"
+}

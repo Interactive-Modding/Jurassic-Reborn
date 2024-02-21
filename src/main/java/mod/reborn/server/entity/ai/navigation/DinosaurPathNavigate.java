@@ -18,7 +18,7 @@ public class DinosaurPathNavigate extends PathNavigateGround {
     @Override
     protected PathFinder getPathFinder() {
         this.nodeProcessor = new DinosaurWalkNodeProcessor(((DinosaurEntity) this.entity).getDinosaur());
-        this.nodeProcessor.setCanEnterDoors(false);
+        this.nodeProcessor.setCanEnterDoors(true);
         return new PathFinder(this.nodeProcessor);
     }
 

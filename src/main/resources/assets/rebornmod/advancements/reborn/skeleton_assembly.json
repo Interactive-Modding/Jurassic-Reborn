@@ -1,0 +1,35 @@
+{
+    "display": {
+        "icon": {
+            "item": "rebornmod:skeleton_assembly"
+        },
+        "title": {
+            "translate": "advancements.reborn.skeleton_assembly.title"
+        },
+        "description": {
+            "translate": "advancements.reborn.skeleton_assembly.description"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "skeleton_assembly": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "rebornmod:skeleton_assembly"
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "skeleton_assembly"
+        ]
+    ],
+    "parent": "rebornmod:reborn/fossil_grinder"
+}

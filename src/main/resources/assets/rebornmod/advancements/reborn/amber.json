@@ -1,0 +1,59 @@
+{
+    "display": {
+        "icon": {
+            "item": "rebornmod:amber"
+        },
+        "title": {
+            "translate": "advancements.reborn.amber.title"
+        },
+        "description": {
+            "translate": "advancements.reborn.amber.description"
+        },
+        "frame": "challenge",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "sea_lamprey": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "rebornmod:sea_lamprey"
+                    }
+                ]
+            }
+        },
+        "amber": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "rebornmod:amber",
+            		"data": 0
+                    }
+                ]
+            }
+        },
+        "amber_1": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "rebornmod:amber",
+           		 "data": 1
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+	    "sea_lamprey",
+            "amber",
+            "amber_1"
+        ]
+    ],
+    "parent": "rebornmod:reborn/dna_extractor"
+}

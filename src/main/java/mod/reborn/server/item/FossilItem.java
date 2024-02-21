@@ -270,6 +270,10 @@ public class FossilItem extends Item implements GrindableItem {
             lore.add(TextFormatting.GOLD + LangUtils.translate("pose.name") + ": " + LangUtils.getStandType(getHasStand(stack)));
             lore.add(TextFormatting.WHITE + LangUtils.translate("lore.change_variant.name"));
         }
+        if(((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == IndoraptorDinosaur.class) {
+            lore.add(TextFormatting.GOLD + LangUtils.translate("pose.name") + ": " + LangUtils.getStandType(getHasStand(stack)));
+            lore.add(TextFormatting.WHITE + LangUtils.translate("lore.change_variant.name"));
+        }
 
 
     }
@@ -741,6 +745,49 @@ public class FossilItem extends Item implements GrindableItem {
             }
         }
         if (!player.world.isRemote && player.canPlayerEdit(pos, side, stack) && world.mayPlace(block, pos, false, side, (Entity) null) && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == AnkylodocusDinosaur.class) {
+
+            if (side == EnumFacing.DOWN)
+            {
+                return EnumActionResult.FAIL;
+            }
+
+            if (block.canPlaceBlockAt(world, pos)) {
+                IBlockState blockstatePlacement = block.getStateForPlacement(world, pos, side, hitX, hitY, hitZ, /*meta*/ 0, player, hand);
+                if (!world.setBlockState(pos, blockstatePlacement, 11))
+                    return EnumActionResult.FAIL;
+
+                IBlockState state = world.getBlockState(pos);
+                if (state.getBlock() == block)
+                {
+                    ItemBlock.setTileEntityNBT(world, player, pos, stack);
+                    block.onBlockPlacedBy(world, pos, state, player, stack);
+
+                    if (player instanceof EntityPlayerMP)
+                        CriteriaTriggers.PLACED_BLOCK.trigger((EntityPlayerMP) player, pos, stack);
+                }
+
+                world.playSound(null, pos, SoundType.STONE.getPlaceSound(), SoundCategory.BLOCKS, (SoundType.STONE.getVolume() + 1.0F) / 2.0F, SoundType.STONE.getPitch() * 0.8F);
+                SkullDisplayEntity tile = (SkullDisplayEntity) world.getTileEntity(pos);
+
+                if (tile != null) {
+                    tile.setModel(stack.getItemDamage(), !this.isFresh(), getHasStand(stack));
+                    EnumFacing.Axis axis = side.getAxis();
+                    if (axis == EnumFacing.Axis.Y) {
+                        tile.setAngle(angleToPlayer(pos, new Vector2d(player.posX, player.posZ)));
+                    }else if(axis == EnumFacing.Axis.X) {
+                        tile.setAngle((short) side.getHorizontalAngle());
+                    }else if(axis == EnumFacing.Axis.Z) {
+                        tile.setAngle((short) (180 + side.getHorizontalAngle()));
+                    }
+                    world.notifyBlockUpdate(pos, state, state, 0);
+                    tile.markDirty();
+                    stack.shrink(1);
+
+                }
+
+            }
+        }
+        if (!player.world.isRemote && player.canPlayerEdit(pos, side, stack) && world.mayPlace(block, pos, false, side, (Entity) null) && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == IndoraptorDinosaur.class) {
 
             if (side == EnumFacing.DOWN)
             {
@@ -1952,6 +1999,15 @@ public class FossilItem extends Item implements GrindableItem {
             }
         }
         if (player.isSneaking() && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == HyaenodonDinosaur.class) {
+            boolean oldType = getHasStand(stack);
+            boolean type = changeStandType(stack);
+            if (type != oldType && world.isRemote) {
+                TextComponentString change = new TextComponentString(LangUtils.translate(LangUtils.STAND_CHANGE.get("type")).replace("{mode}", LangUtils.getStandType(type)));
+                change.getStyle().setColor(TextFormatting.YELLOW);
+                Minecraft.getMinecraft().ingameGUI.addChatMessage(ChatType.GAME_INFO, change);
+            }
+        }
+        if (player.isSneaking() && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == IndoraptorDinosaur.class) {
             boolean oldType = getHasStand(stack);
             boolean type = changeStandType(stack);
             if (type != oldType && world.isRemote) {

@@ -1,0 +1,29 @@
+{
+    "display": {
+        "icon": {
+            "item": "rebornmod:skull",
+            "data": 46
+        },
+        "title": {
+            "translate": "advancements.reborn.root.title"
+        },
+        "description": {
+            "translate": "advancements.reborn.root.description"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false,
+        "background": "rebornmod:textures/blocks/gypsum_bricks.png"
+    },
+    "criteria": {
+        "tick": {
+            "trigger": "minecraft:tick"
+        }
+    },
+    "requirements": [
+        [
+            "tick"
+        ]
+    ]
+}

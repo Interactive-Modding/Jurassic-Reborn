@@ -1,0 +1,35 @@
+{
+    "display": {
+        "icon": {
+            "item": "rebornmod:enallhelia"
+        },
+        "title": {
+            "translate": "advancements.reborn.plant_callus.title"
+        },
+        "description": {
+            "translate": "advancements.reborn.plant_callus.description"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "plant_callus": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "rebornmod:plant_callus"
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "plant_callus"
+        ]
+    ],
+    "parent": "rebornmod:reborn/plant_dna"
+}

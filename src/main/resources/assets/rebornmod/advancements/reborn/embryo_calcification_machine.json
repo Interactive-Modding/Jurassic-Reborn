@@ -1,0 +1,35 @@
+{
+    "display": {
+        "icon": {
+            "item": "rebornmod:embryo_calcification_machine"
+        },
+        "title": {
+            "translate": "advancements.reborn.embryo_calcification_machine.title"
+        },
+        "description": {
+            "translate": "advancements.reborn.embryo_calcification_machine.description"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "embryo_calcification_machine": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "rebornmod:embryo_calcification_machine"
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "embryo_calcification_machine"
+        ]
+    ],
+    "parent": "rebornmod:reborn/embryonic_machine"
+}

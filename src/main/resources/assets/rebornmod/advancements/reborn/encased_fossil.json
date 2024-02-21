@@ -1,0 +1,90 @@
+{
+    "display": {
+        "icon": {
+            "item": "rebornmod:fossil_block_0"
+        },
+        "title": {
+            "translate": "advancements.reborn.encased_fossil.title"
+        },
+        "description": {
+            "translate": "advancements.reborn.encased_fossil.description"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "parent": "rebornmod:reborn/plaster",
+    "criteria": {
+        "encased_fossil_0": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "rebornmod:encased_fossil_0"
+                    }
+                ]
+            }
+        },
+        "encased_fossil_1": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "rebornmod:encased_fossil_1"
+                    }
+                ]
+            }
+        },
+        "encased_fossil_2": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "rebornmod:encased_fossil_2"
+                    }
+                ]
+            }
+        },
+        "encased_fossil_3": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "rebornmod:encased_fossil_3"
+                    }
+                ]
+            }
+        },
+        "encased_fossil_4": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "rebornmod:encased_fossil_4"
+                    }
+                ]
+            }
+        },
+        "encased_fossil_5": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "rebornmod:encased_fossil_5"
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "encased_fossil_0",
+            "encased_fossil_1",
+            "encased_fossil_2",
+            "encased_fossil_3",
+            "encased_fossil_4",
+            "encased_fossil_5"
+        ]
+    ]
+}

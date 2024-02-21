@@ -1,0 +1,35 @@
+{
+    "display": {
+        "icon": {
+            "item": "rebornmod:mr_dna_keychain"
+        },
+        "title": {
+            "translate": "advancements.reborn.dna.title"
+        },
+        "description": {
+            "translate": "advancements.reborn.dna.description"
+        },
+        "frame": "challenge",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "dna": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "rebornmod:dna"
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "dna"
+        ]
+    ],
+    "parent": "rebornmod:reborn/dna_synthesizer"
+}

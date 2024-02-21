@@ -1,0 +1,36 @@
+{
+    "display": {
+        "icon": {
+            "item": "rebornmod:dino_egg",
+            "data": 46
+        },
+        "title": {
+            "translate": "advancements.reborn.dino_egg.title"
+        },
+        "description": {
+            "translate": "advancements.reborn.dino_egg.description"
+        },
+        "frame": "challenge",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "dino_egg": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "rebornmod:dino_egg"
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "dino_egg"
+        ]
+    ],
+    "parent": "rebornmod:reborn/embryo_calcification_machine"
+}

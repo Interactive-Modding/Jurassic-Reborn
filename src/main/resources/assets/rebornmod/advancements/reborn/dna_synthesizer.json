@@ -1,0 +1,35 @@
+{
+    "display": {
+        "icon": {
+            "item": "rebornmod:dna_synthesizer"
+        },
+        "title": {
+            "translate": "advancements.reborn.dna_synthesizer.title"
+        },
+        "description": {
+            "translate": "advancements.reborn.dna_synthesizer.description"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "dna_synthesizer": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "rebornmod:dna_synthesizer"
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "dna_synthesizer"
+        ]
+    ],
+    "parent": "rebornmod:reborn/dna_combinator_hybridizer"
+}

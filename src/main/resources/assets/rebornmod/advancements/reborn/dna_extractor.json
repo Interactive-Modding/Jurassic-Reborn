@@ -1,0 +1,35 @@
+{
+    "display": {
+        "icon": {
+            "item": "rebornmod:dna_extractor"
+        },
+        "title": {
+            "translate": "advancements.reborn.dna_extractor.title"
+        },
+        "description": {
+            "translate": "advancements.reborn.dna_extractor.description"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "dna_extractor": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "rebornmod:dna_extractor"
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "dna_extractor"
+        ]
+    ],
+    "parent": "rebornmod:reborn/dna_combinator_hybridizer"
+}

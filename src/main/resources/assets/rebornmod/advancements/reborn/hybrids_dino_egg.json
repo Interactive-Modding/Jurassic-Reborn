@@ -1,0 +1,132 @@
+{
+    "display": {
+        "icon": {
+            "item": "rebornmod:mr_dna_keychain"
+        },
+        "title": {
+            "translate": "advancements.reborn.hybrids_hatched_egg.title"
+        },
+        "description": {
+            "translate": "advancements.reborn.hybrids_hatched_egg.description"
+        },
+        "frame": "challenge",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "parent": "rebornmod:reborn/dna_combinator_hybridizer",
+    "criteria": {
+        "hatched_egg_0": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "rebornmod:hatched_egg",
+			"data":90
+                    }
+                ]
+            }
+        },
+        "hatched_egg_1": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "rebornmod:hatched_egg",
+			"data":88
+                    }
+                ]
+            }
+        },
+        "hatched_egg_2": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "rebornmod:hatched_egg",
+			"data":86
+                    }
+                ]
+            }
+        },
+        "hatched_egg_3": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "rebornmod:hatched_egg",
+			"data":38
+                    }
+                ]
+            }
+        },
+        "hatched_egg_4": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "rebornmod:hatched_egg",
+			"data":39
+                    }
+                ]
+            }
+        },
+        "hatched_egg_6": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "rebornmod:hatched_egg",
+			"data":40
+                    }
+                ]
+            }
+        },
+        "hatched_egg_7": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "rebornmod:hatched_egg",
+			"data":78
+                    }
+                ]
+            }
+        },
+        "hatched_egg_8": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "rebornmod:hatched_egg",
+			"data":78
+                    }
+                ]
+            }
+        },
+        "hatched_egg_5": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "rebornmod:hatched_egg",
+			"data":41
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "hatched_egg_0",
+            "hatched_egg_1",
+            "hatched_egg_2",
+            "hatched_egg_3",
+            "hatched_egg_4",
+            "hatched_egg_6",
+            "hatched_egg_7",
+            "hatched_egg_8",
+            "hatched_egg_5"
+        ]
+    ]
+}

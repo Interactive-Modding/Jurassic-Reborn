@@ -1,0 +1,101 @@
+{
+    "display": {
+        "icon": {
+            "item": "rebornmod:plant_fossil_block"
+        },
+        "title": {
+            "translate": "advancements.reborn.plant_fossils.title"
+        },
+        "description": {
+            "translate": "advancements.reborn.plant_fossils.description"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "parent": "rebornmod:reborn/root",
+    "criteria": {
+        "plant_fossil": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "rebornmod:plant_fossil"
+                    }
+                ]
+            }
+        },
+        "twig_fossil": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "rebornmod:twig_fossil"
+                    }
+                ]
+            }
+        },
+        "ginkgo_log_petrified": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "rebornmod:ginkgo_log_petrified"
+                    }
+                ]
+            }
+        },
+        "psaronius_log_petrified": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "rebornmod:psaronius_log_petrified"
+                    }
+                ]
+            }
+        },
+        "calamites_log_petrified": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "rebornmod:calamites_log_petrified"
+                    }
+                ]
+            }
+        },
+        "araucaria_log_petrified": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "rebornmod:araucaria_log_petrified"
+                    }
+                ]
+            }
+        },
+        "phoenix_log_petrified": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "rebornmod:phoenix_log_petrified"
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "plant_fossil",
+            "twig_fossil",
+            "ginkgo_log_petrified",
+            "psaronius_log_petrified",
+            "calamites_log_petrified",
+            "araucaria_log_petrified",
+            "phoenix_log_petrified"
+        ]
+    ]
+}
