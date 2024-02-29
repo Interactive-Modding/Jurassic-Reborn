@@ -274,6 +274,130 @@ public class FossilItem extends Item implements GrindableItem {
             lore.add(TextFormatting.GOLD + LangUtils.translate("pose.name") + ": " + LangUtils.getStandType(getHasStand(stack)));
             lore.add(TextFormatting.WHITE + LangUtils.translate("lore.change_variant.name"));
         }
+        if(((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == DimetrodonDinosaur.class) {
+            lore.add(TextFormatting.GOLD + LangUtils.translate("pose.name") + ": " + LangUtils.getStandType(getHasStand(stack)));
+            lore.add(TextFormatting.WHITE + LangUtils.translate("lore.change_variant.name"));
+        }
+        if(((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == LudodactylusDinosaur.class) {
+            lore.add(TextFormatting.GOLD + LangUtils.translate("pose.name") + ": " + LangUtils.getStandType(getHasStand(stack)));
+            lore.add(TextFormatting.WHITE + LangUtils.translate("lore.change_variant.name"));
+        }
+        if(((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == MajungasaurusDinosaur.class) {
+            lore.add(TextFormatting.GOLD + LangUtils.translate("pose.name") + ": " + LangUtils.getStandType(getHasStand(stack)));
+            lore.add(TextFormatting.WHITE + LangUtils.translate("lore.change_variant.name"));
+        }
+        if(((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == LambeosaurusDinosaur.class) {
+            lore.add(TextFormatting.GOLD + LangUtils.translate("pose.name") + ": " + LangUtils.getStandType(getHasStand(stack)));
+            lore.add(TextFormatting.WHITE + LangUtils.translate("lore.change_variant.name"));
+        }
+        if(((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == MawsoniaDinosaur.class) {
+            lore.add(TextFormatting.GOLD + LangUtils.translate("pose.name") + ": " + LangUtils.getStandType(getHasStand(stack)));
+            lore.add(TextFormatting.WHITE + LangUtils.translate("lore.change_variant.name"));
+        }
+        if(((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == MamenchisaurusDinosaur.class) {
+            lore.add(TextFormatting.GOLD + LangUtils.translate("pose.name") + ": " + LangUtils.getStandType(getHasStand(stack)));
+            lore.add(TextFormatting.WHITE + LangUtils.translate("lore.change_variant.name"));
+        }
+        if(((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == MammothDinosaur.class) {
+            lore.add(TextFormatting.GOLD + LangUtils.translate("pose.name") + ": " + LangUtils.getStandType(getHasStand(stack)));
+            lore.add(TextFormatting.WHITE + LangUtils.translate("lore.change_variant.name"));
+        }
+        if(((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == PachycephalosaurusDinosaur.class) {
+            lore.add(TextFormatting.GOLD + LangUtils.translate("pose.name") + ": " + LangUtils.getStandType(getHasStand(stack)));
+            lore.add(TextFormatting.WHITE + LangUtils.translate("lore.change_variant.name"));
+        }
+        if(((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == DilophosaurusDinosaur.class) {
+            lore.add(TextFormatting.GOLD + LangUtils.translate("pose.name") + ": " + LangUtils.getStandType(getHasStand(stack)));
+            lore.add(TextFormatting.WHITE + LangUtils.translate("lore.change_variant.name"));
+        }
+        if(((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == MetriacanthosaurusDinosaur.class) {
+            lore.add(TextFormatting.GOLD + LangUtils.translate("pose.name") + ": " + LangUtils.getStandType(getHasStand(stack)));
+            lore.add(TextFormatting.WHITE + LangUtils.translate("lore.change_variant.name"));
+        }
+        if(((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == MegatheriumDinosaur.class) {
+            lore.add(TextFormatting.GOLD + LangUtils.translate("pose.name") + ": " + LangUtils.getStandType(getHasStand(stack)));
+            lore.add(TextFormatting.WHITE + LangUtils.translate("lore.change_variant.name"));
+        }
+        if(((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == MosasaurusDinosaur.class) {
+            lore.add(TextFormatting.GOLD + LangUtils.translate("pose.name") + ": " + LangUtils.getStandType(getHasStand(stack)));
+            lore.add(TextFormatting.WHITE + LangUtils.translate("lore.change_variant.name"));
+        }
+        if(((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == ProtoceratopsDinosaur.class) {
+            lore.add(TextFormatting.GOLD + LangUtils.translate("pose.name") + ": " + LangUtils.getStandType(getHasStand(stack)));
+            lore.add(TextFormatting.WHITE + LangUtils.translate("lore.change_variant.name"));
+        }
+        if(((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == ParasaurolophusDinosaur.class) {
+            lore.add(TextFormatting.GOLD + LangUtils.translate("pose.name") + ": " + LangUtils.getStandType(getHasStand(stack)));
+            lore.add(TextFormatting.WHITE + LangUtils.translate("lore.change_variant.name"));
+        }
+        if(((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == PostosuchusDinosaur.class) {
+            lore.add(TextFormatting.GOLD + LangUtils.translate("pose.name") + ": " + LangUtils.getStandType(getHasStand(stack)));
+            lore.add(TextFormatting.WHITE + LangUtils.translate("lore.change_variant.name"));
+        }
+        if(((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == PteranodonDinosaur.class) {
+            lore.add(TextFormatting.GOLD + LangUtils.translate("pose.name") + ": " + LangUtils.getStandType(getHasStand(stack)));
+            lore.add(TextFormatting.WHITE + LangUtils.translate("lore.change_variant.name"));
+        }
+        if(((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == SuchomimusDinosaur.class) {
+            lore.add(TextFormatting.GOLD + LangUtils.translate("pose.name") + ": " + LangUtils.getStandType(getHasStand(stack)));
+            lore.add(TextFormatting.WHITE + LangUtils.translate("lore.change_variant.name"));
+        }
+        if(((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == StegosaurusDinosaur.class) {
+            lore.add(TextFormatting.GOLD + LangUtils.translate("pose.name") + ": " + LangUtils.getStandType(getHasStand(stack)));
+            lore.add(TextFormatting.WHITE + LangUtils.translate("lore.change_variant.name"));
+        }
+        if(((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == SmilodonDinosaur.class) {
+            lore.add(TextFormatting.GOLD + LangUtils.translate("pose.name") + ": " + LangUtils.getStandType(getHasStand(stack)));
+            lore.add(TextFormatting.WHITE + LangUtils.translate("lore.change_variant.name"));
+        }
+        if(((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == StyracosaurusDinosaur.class) {
+            lore.add(TextFormatting.GOLD + LangUtils.translate("pose.name") + ": " + LangUtils.getStandType(getHasStand(stack)));
+            lore.add(TextFormatting.WHITE + LangUtils.translate("lore.change_variant.name"));
+        }
+        if(((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == SpinosaurusDinosaur.class) {
+            lore.add(TextFormatting.GOLD + LangUtils.translate("pose.name") + ": " + LangUtils.getStandType(getHasStand(stack)));
+            lore.add(TextFormatting.WHITE + LangUtils.translate("lore.change_variant.name"));
+        }
+        if(((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == SpinoraptorDinosaur.class) {
+            lore.add(TextFormatting.GOLD + LangUtils.translate("pose.name") + ": " + LangUtils.getStandType(getHasStand(stack)));
+            lore.add(TextFormatting.WHITE + LangUtils.translate("lore.change_variant.name"));
+        }
+        if(((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == SinoceratopsDinosaur.class) {
+            lore.add(TextFormatting.GOLD + LangUtils.translate("pose.name") + ": " + LangUtils.getStandType(getHasStand(stack)));
+            lore.add(TextFormatting.WHITE + LangUtils.translate("lore.change_variant.name"));
+        }
+        if(((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == RaphusrexDinosaur.class) {
+            lore.add(TextFormatting.GOLD + LangUtils.translate("pose.name") + ": " + LangUtils.getStandType(getHasStand(stack)));
+            lore.add(TextFormatting.WHITE + LangUtils.translate("lore.change_variant.name"));
+        }
+        if(((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == RugopsDinosaur.class) {
+            lore.add(TextFormatting.GOLD + LangUtils.translate("pose.name") + ": " + LangUtils.getStandType(getHasStand(stack)));
+            lore.add(TextFormatting.WHITE + LangUtils.translate("lore.change_variant.name"));
+        }
+        if(((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == QuetzalDinosaur.class) {
+            lore.add(TextFormatting.GOLD + LangUtils.translate("pose.name") + ": " + LangUtils.getStandType(getHasStand(stack)));
+            lore.add(TextFormatting.WHITE + LangUtils.translate("lore.change_variant.name"));
+        }
+        if(((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == TherizinosaurusDinosaur.class) {
+            lore.add(TextFormatting.GOLD + LangUtils.translate("pose.name") + ": " + LangUtils.getStandType(getHasStand(stack)));
+            lore.add(TextFormatting.WHITE + LangUtils.translate("lore.change_variant.name"));
+        }
+        if(((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == TylosaurusDinosaur.class) {
+            lore.add(TextFormatting.GOLD + LangUtils.translate("pose.name") + ": " + LangUtils.getStandType(getHasStand(stack)));
+            lore.add(TextFormatting.WHITE + LangUtils.translate("lore.change_variant.name"));
+        }
+        if(((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == TropeognathusDinosaur.class) {
+            lore.add(TextFormatting.GOLD + LangUtils.translate("pose.name") + ": " + LangUtils.getStandType(getHasStand(stack)));
+            lore.add(TextFormatting.WHITE + LangUtils.translate("lore.change_variant.name"));
+        }
+        if(((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == TriceratopsDinosaur.class) {
+            lore.add(TextFormatting.GOLD + LangUtils.translate("pose.name") + ": " + LangUtils.getStandType(getHasStand(stack)));
+            lore.add(TextFormatting.WHITE + LangUtils.translate("lore.change_variant.name"));
+        }
+        if(((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == TitanisDinosaur.class) {
+            lore.add(TextFormatting.GOLD + LangUtils.translate("pose.name") + ": " + LangUtils.getStandType(getHasStand(stack)));
+            lore.add(TextFormatting.WHITE + LangUtils.translate("lore.change_variant.name"));
+        }
 
 
     }
@@ -401,6 +525,135 @@ public class FossilItem extends Item implements GrindableItem {
             }
         }
         if (!player.world.isRemote && player.canPlayerEdit(pos, side, stack) && world.mayPlace(block, pos, false, side, (Entity) null) && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == VelociraptorSquad.VelociraptorEchoDinosaur.class) {
+
+            if (side == EnumFacing.DOWN)
+            {
+                return EnumActionResult.FAIL;
+            }
+
+            if (block.canPlaceBlockAt(world, pos)) {
+                IBlockState blockstatePlacement = block.getStateForPlacement(world, pos, side, hitX, hitY, hitZ, /*meta*/ 0, player, hand);
+                if (!world.setBlockState(pos, blockstatePlacement, 11))
+                    return EnumActionResult.FAIL;
+
+                IBlockState state = world.getBlockState(pos);
+                if (state.getBlock() == block)
+                {
+                    ItemBlock.setTileEntityNBT(world, player, pos, stack);
+                    block.onBlockPlacedBy(world, pos, state, player, stack);
+
+                    if (player instanceof EntityPlayerMP)
+                        CriteriaTriggers.PLACED_BLOCK.trigger((EntityPlayerMP) player, pos, stack);
+                }
+
+                world.playSound(null, pos, SoundType.STONE.getPlaceSound(), SoundCategory.BLOCKS, (SoundType.STONE.getVolume() + 1.0F) / 2.0F, SoundType.STONE.getPitch() * 0.8F);
+                SkullDisplayEntity tile = (SkullDisplayEntity) world.getTileEntity(pos);
+
+                if (tile != null) {
+                    tile.setModel(stack.getItemDamage(), !this.isFresh(), getHasStand(stack));
+                    EnumFacing.Axis axis = side.getAxis();
+                    if (axis == EnumFacing.Axis.Y) {
+                        tile.setAngle(angleToPlayer(pos, new Vector2d(player.posX, player.posZ)));
+                    }else if(axis == EnumFacing.Axis.X) {
+                        tile.setAngle((short) side.getHorizontalAngle());
+                    }else if(axis == EnumFacing.Axis.Z) {
+                        tile.setAngle((short) (180 + side.getHorizontalAngle()));
+                    }
+                    world.notifyBlockUpdate(pos, state, state, 0);
+                    tile.markDirty();
+                    stack.shrink(1);
+
+                }
+
+            }
+        }
+        if (!player.world.isRemote && player.canPlayerEdit(pos, side, stack) && world.mayPlace(block, pos, false, side, (Entity) null) && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == MajungasaurusDinosaur.class) {
+
+            if (side == EnumFacing.DOWN)
+            {
+                return EnumActionResult.FAIL;
+            }
+
+            if (block.canPlaceBlockAt(world, pos)) {
+                IBlockState blockstatePlacement = block.getStateForPlacement(world, pos, side, hitX, hitY, hitZ, /*meta*/ 0, player, hand);
+                if (!world.setBlockState(pos, blockstatePlacement, 11))
+                    return EnumActionResult.FAIL;
+
+                IBlockState state = world.getBlockState(pos);
+                if (state.getBlock() == block)
+                {
+                    ItemBlock.setTileEntityNBT(world, player, pos, stack);
+                    block.onBlockPlacedBy(world, pos, state, player, stack);
+
+                    if (player instanceof EntityPlayerMP)
+                        CriteriaTriggers.PLACED_BLOCK.trigger((EntityPlayerMP) player, pos, stack);
+                }
+
+                world.playSound(null, pos, SoundType.STONE.getPlaceSound(), SoundCategory.BLOCKS, (SoundType.STONE.getVolume() + 1.0F) / 2.0F, SoundType.STONE.getPitch() * 0.8F);
+                SkullDisplayEntity tile = (SkullDisplayEntity) world.getTileEntity(pos);
+
+                if (tile != null) {
+                    tile.setModel(stack.getItemDamage(), !this.isFresh(), getHasStand(stack));
+                    EnumFacing.Axis axis = side.getAxis();
+                    if (axis == EnumFacing.Axis.Y) {
+                        tile.setAngle(angleToPlayer(pos, new Vector2d(player.posX, player.posZ)));
+                    }else if(axis == EnumFacing.Axis.X) {
+                        tile.setAngle((short) side.getHorizontalAngle());
+                    }else if(axis == EnumFacing.Axis.Z) {
+                        tile.setAngle((short) (180 + side.getHorizontalAngle()));
+                    }
+                    world.notifyBlockUpdate(pos, state, state, 0);
+                    tile.markDirty();
+                    stack.shrink(1);
+
+                }
+
+            }
+        }
+        if (!player.world.isRemote && player.canPlayerEdit(pos, side, stack) && world.mayPlace(block, pos, false, side, (Entity) null) && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == LambeosaurusDinosaur.class) {
+
+            if (side == EnumFacing.DOWN)
+            {
+                return EnumActionResult.FAIL;
+            }
+
+            if (block.canPlaceBlockAt(world, pos)) {
+                IBlockState blockstatePlacement = block.getStateForPlacement(world, pos, side, hitX, hitY, hitZ, /*meta*/ 0, player, hand);
+                if (!world.setBlockState(pos, blockstatePlacement, 11))
+                    return EnumActionResult.FAIL;
+
+                IBlockState state = world.getBlockState(pos);
+                if (state.getBlock() == block)
+                {
+                    ItemBlock.setTileEntityNBT(world, player, pos, stack);
+                    block.onBlockPlacedBy(world, pos, state, player, stack);
+
+                    if (player instanceof EntityPlayerMP)
+                        CriteriaTriggers.PLACED_BLOCK.trigger((EntityPlayerMP) player, pos, stack);
+                }
+
+                world.playSound(null, pos, SoundType.STONE.getPlaceSound(), SoundCategory.BLOCKS, (SoundType.STONE.getVolume() + 1.0F) / 2.0F, SoundType.STONE.getPitch() * 0.8F);
+                SkullDisplayEntity tile = (SkullDisplayEntity) world.getTileEntity(pos);
+
+                if (tile != null) {
+                    tile.setModel(stack.getItemDamage(), !this.isFresh(), getHasStand(stack));
+                    EnumFacing.Axis axis = side.getAxis();
+                    if (axis == EnumFacing.Axis.Y) {
+                        tile.setAngle(angleToPlayer(pos, new Vector2d(player.posX, player.posZ)));
+                    }else if(axis == EnumFacing.Axis.X) {
+                        tile.setAngle((short) side.getHorizontalAngle());
+                    }else if(axis == EnumFacing.Axis.Z) {
+                        tile.setAngle((short) (180 + side.getHorizontalAngle()));
+                    }
+                    world.notifyBlockUpdate(pos, state, state, 0);
+                    tile.markDirty();
+                    stack.shrink(1);
+
+                }
+
+            }
+        }
+        if (!player.world.isRemote && player.canPlayerEdit(pos, side, stack) && world.mayPlace(block, pos, false, side, (Entity) null) && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == LudodactylusDinosaur.class) {
 
             if (side == EnumFacing.DOWN)
             {
@@ -573,6 +826,221 @@ public class FossilItem extends Item implements GrindableItem {
             }
         }
         if (!player.world.isRemote && player.canPlayerEdit(pos, side, stack) && world.mayPlace(block, pos, false, side, (Entity) null) && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == ArsinoitheriumDinosaur.class) {
+
+            if (side == EnumFacing.DOWN)
+            {
+                return EnumActionResult.FAIL;
+            }
+
+            if (block.canPlaceBlockAt(world, pos)) {
+                IBlockState blockstatePlacement = block.getStateForPlacement(world, pos, side, hitX, hitY, hitZ, /*meta*/ 0, player, hand);
+                if (!world.setBlockState(pos, blockstatePlacement, 11))
+                    return EnumActionResult.FAIL;
+
+                IBlockState state = world.getBlockState(pos);
+                if (state.getBlock() == block)
+                {
+                    ItemBlock.setTileEntityNBT(world, player, pos, stack);
+                    block.onBlockPlacedBy(world, pos, state, player, stack);
+
+                    if (player instanceof EntityPlayerMP)
+                        CriteriaTriggers.PLACED_BLOCK.trigger((EntityPlayerMP) player, pos, stack);
+                }
+
+                world.playSound(null, pos, SoundType.STONE.getPlaceSound(), SoundCategory.BLOCKS, (SoundType.STONE.getVolume() + 1.0F) / 2.0F, SoundType.STONE.getPitch() * 0.8F);
+                SkullDisplayEntity tile = (SkullDisplayEntity) world.getTileEntity(pos);
+
+                if (tile != null) {
+                    tile.setModel(stack.getItemDamage(), !this.isFresh(), getHasStand(stack));
+                    EnumFacing.Axis axis = side.getAxis();
+                    if (axis == EnumFacing.Axis.Y) {
+                        tile.setAngle(angleToPlayer(pos, new Vector2d(player.posX, player.posZ)));
+                    }else if(axis == EnumFacing.Axis.X) {
+                        tile.setAngle((short) side.getHorizontalAngle());
+                    }else if(axis == EnumFacing.Axis.Z) {
+                        tile.setAngle((short) (180 + side.getHorizontalAngle()));
+                    }
+                    world.notifyBlockUpdate(pos, state, state, 0);
+                    tile.markDirty();
+                    stack.shrink(1);
+
+                }
+
+            }
+        }
+        if (!player.world.isRemote && player.canPlayerEdit(pos, side, stack) && world.mayPlace(block, pos, false, side, (Entity) null) && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == TylosaurusDinosaur.class) {
+
+            if (side == EnumFacing.DOWN)
+            {
+                return EnumActionResult.FAIL;
+            }
+
+            if (block.canPlaceBlockAt(world, pos)) {
+                IBlockState blockstatePlacement = block.getStateForPlacement(world, pos, side, hitX, hitY, hitZ, /*meta*/ 0, player, hand);
+                if (!world.setBlockState(pos, blockstatePlacement, 11))
+                    return EnumActionResult.FAIL;
+
+                IBlockState state = world.getBlockState(pos);
+                if (state.getBlock() == block)
+                {
+                    ItemBlock.setTileEntityNBT(world, player, pos, stack);
+                    block.onBlockPlacedBy(world, pos, state, player, stack);
+
+                    if (player instanceof EntityPlayerMP)
+                        CriteriaTriggers.PLACED_BLOCK.trigger((EntityPlayerMP) player, pos, stack);
+                }
+
+                world.playSound(null, pos, SoundType.STONE.getPlaceSound(), SoundCategory.BLOCKS, (SoundType.STONE.getVolume() + 1.0F) / 2.0F, SoundType.STONE.getPitch() * 0.8F);
+                SkullDisplayEntity tile = (SkullDisplayEntity) world.getTileEntity(pos);
+
+                if (tile != null) {
+                    tile.setModel(stack.getItemDamage(), !this.isFresh(), getHasStand(stack));
+                    EnumFacing.Axis axis = side.getAxis();
+                    if (axis == EnumFacing.Axis.Y) {
+                        tile.setAngle(angleToPlayer(pos, new Vector2d(player.posX, player.posZ)));
+                    }else if(axis == EnumFacing.Axis.X) {
+                        tile.setAngle((short) side.getHorizontalAngle());
+                    }else if(axis == EnumFacing.Axis.Z) {
+                        tile.setAngle((short) (180 + side.getHorizontalAngle()));
+                    }
+                    world.notifyBlockUpdate(pos, state, state, 0);
+                    tile.markDirty();
+                    stack.shrink(1);
+
+                }
+
+            }
+        }
+        if (!player.world.isRemote && player.canPlayerEdit(pos, side, stack) && world.mayPlace(block, pos, false, side, (Entity) null) && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == TropeognathusDinosaur.class) {
+
+            if (side == EnumFacing.DOWN)
+            {
+                return EnumActionResult.FAIL;
+            }
+
+            if (block.canPlaceBlockAt(world, pos)) {
+                IBlockState blockstatePlacement = block.getStateForPlacement(world, pos, side, hitX, hitY, hitZ, /*meta*/ 0, player, hand);
+                if (!world.setBlockState(pos, blockstatePlacement, 11))
+                    return EnumActionResult.FAIL;
+
+                IBlockState state = world.getBlockState(pos);
+                if (state.getBlock() == block)
+                {
+                    ItemBlock.setTileEntityNBT(world, player, pos, stack);
+                    block.onBlockPlacedBy(world, pos, state, player, stack);
+
+                    if (player instanceof EntityPlayerMP)
+                        CriteriaTriggers.PLACED_BLOCK.trigger((EntityPlayerMP) player, pos, stack);
+                }
+
+                world.playSound(null, pos, SoundType.STONE.getPlaceSound(), SoundCategory.BLOCKS, (SoundType.STONE.getVolume() + 1.0F) / 2.0F, SoundType.STONE.getPitch() * 0.8F);
+                SkullDisplayEntity tile = (SkullDisplayEntity) world.getTileEntity(pos);
+
+                if (tile != null) {
+                    tile.setModel(stack.getItemDamage(), !this.isFresh(), getHasStand(stack));
+                    EnumFacing.Axis axis = side.getAxis();
+                    if (axis == EnumFacing.Axis.Y) {
+                        tile.setAngle(angleToPlayer(pos, new Vector2d(player.posX, player.posZ)));
+                    }else if(axis == EnumFacing.Axis.X) {
+                        tile.setAngle((short) side.getHorizontalAngle());
+                    }else if(axis == EnumFacing.Axis.Z) {
+                        tile.setAngle((short) (180 + side.getHorizontalAngle()));
+                    }
+                    world.notifyBlockUpdate(pos, state, state, 0);
+                    tile.markDirty();
+                    stack.shrink(1);
+
+                }
+
+            }
+        }
+        if (!player.world.isRemote && player.canPlayerEdit(pos, side, stack) && world.mayPlace(block, pos, false, side, (Entity) null) && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == TriceratopsDinosaur.class) {
+
+            if (side == EnumFacing.DOWN)
+            {
+                return EnumActionResult.FAIL;
+            }
+
+            if (block.canPlaceBlockAt(world, pos)) {
+                IBlockState blockstatePlacement = block.getStateForPlacement(world, pos, side, hitX, hitY, hitZ, /*meta*/ 0, player, hand);
+                if (!world.setBlockState(pos, blockstatePlacement, 11))
+                    return EnumActionResult.FAIL;
+
+                IBlockState state = world.getBlockState(pos);
+                if (state.getBlock() == block)
+                {
+                    ItemBlock.setTileEntityNBT(world, player, pos, stack);
+                    block.onBlockPlacedBy(world, pos, state, player, stack);
+
+                    if (player instanceof EntityPlayerMP)
+                        CriteriaTriggers.PLACED_BLOCK.trigger((EntityPlayerMP) player, pos, stack);
+                }
+
+                world.playSound(null, pos, SoundType.STONE.getPlaceSound(), SoundCategory.BLOCKS, (SoundType.STONE.getVolume() + 1.0F) / 2.0F, SoundType.STONE.getPitch() * 0.8F);
+                SkullDisplayEntity tile = (SkullDisplayEntity) world.getTileEntity(pos);
+
+                if (tile != null) {
+                    tile.setModel(stack.getItemDamage(), !this.isFresh(), getHasStand(stack));
+                    EnumFacing.Axis axis = side.getAxis();
+                    if (axis == EnumFacing.Axis.Y) {
+                        tile.setAngle(angleToPlayer(pos, new Vector2d(player.posX, player.posZ)));
+                    }else if(axis == EnumFacing.Axis.X) {
+                        tile.setAngle((short) side.getHorizontalAngle());
+                    }else if(axis == EnumFacing.Axis.Z) {
+                        tile.setAngle((short) (180 + side.getHorizontalAngle()));
+                    }
+                    world.notifyBlockUpdate(pos, state, state, 0);
+                    tile.markDirty();
+                    stack.shrink(1);
+
+                }
+
+            }
+        }
+        if (!player.world.isRemote && player.canPlayerEdit(pos, side, stack) && world.mayPlace(block, pos, false, side, (Entity) null) && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == TitanisDinosaur.class) {
+
+            if (side == EnumFacing.DOWN)
+            {
+                return EnumActionResult.FAIL;
+            }
+
+            if (block.canPlaceBlockAt(world, pos)) {
+                IBlockState blockstatePlacement = block.getStateForPlacement(world, pos, side, hitX, hitY, hitZ, /*meta*/ 0, player, hand);
+                if (!world.setBlockState(pos, blockstatePlacement, 11))
+                    return EnumActionResult.FAIL;
+
+                IBlockState state = world.getBlockState(pos);
+                if (state.getBlock() == block)
+                {
+                    ItemBlock.setTileEntityNBT(world, player, pos, stack);
+                    block.onBlockPlacedBy(world, pos, state, player, stack);
+
+                    if (player instanceof EntityPlayerMP)
+                        CriteriaTriggers.PLACED_BLOCK.trigger((EntityPlayerMP) player, pos, stack);
+                }
+
+                world.playSound(null, pos, SoundType.STONE.getPlaceSound(), SoundCategory.BLOCKS, (SoundType.STONE.getVolume() + 1.0F) / 2.0F, SoundType.STONE.getPitch() * 0.8F);
+                SkullDisplayEntity tile = (SkullDisplayEntity) world.getTileEntity(pos);
+
+                if (tile != null) {
+                    tile.setModel(stack.getItemDamage(), !this.isFresh(), getHasStand(stack));
+                    EnumFacing.Axis axis = side.getAxis();
+                    if (axis == EnumFacing.Axis.Y) {
+                        tile.setAngle(angleToPlayer(pos, new Vector2d(player.posX, player.posZ)));
+                    }else if(axis == EnumFacing.Axis.X) {
+                        tile.setAngle((short) side.getHorizontalAngle());
+                    }else if(axis == EnumFacing.Axis.Z) {
+                        tile.setAngle((short) (180 + side.getHorizontalAngle()));
+                    }
+                    world.notifyBlockUpdate(pos, state, state, 0);
+                    tile.markDirty();
+                    stack.shrink(1);
+
+                }
+
+            }
+        }
+        if (!player.world.isRemote && player.canPlayerEdit(pos, side, stack) && world.mayPlace(block, pos, false, side, (Entity) null) && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == TherizinosaurusDinosaur.class) {
 
             if (side == EnumFacing.DOWN)
             {
@@ -1303,6 +1771,135 @@ public class FossilItem extends Item implements GrindableItem {
 
             }
         }
+        if (!player.world.isRemote && player.canPlayerEdit(pos, side, stack) && world.mayPlace(block, pos, false, side, (Entity) null) && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == MammothDinosaur.class) {
+
+            if (side == EnumFacing.DOWN)
+            {
+                return EnumActionResult.FAIL;
+            }
+
+            if (block.canPlaceBlockAt(world, pos)) {
+                IBlockState blockstatePlacement = block.getStateForPlacement(world, pos, side, hitX, hitY, hitZ, /*meta*/ 0, player, hand);
+                if (!world.setBlockState(pos, blockstatePlacement, 11))
+                    return EnumActionResult.FAIL;
+
+                IBlockState state = world.getBlockState(pos);
+                if (state.getBlock() == block)
+                {
+                    ItemBlock.setTileEntityNBT(world, player, pos, stack);
+                    block.onBlockPlacedBy(world, pos, state, player, stack);
+
+                    if (player instanceof EntityPlayerMP)
+                        CriteriaTriggers.PLACED_BLOCK.trigger((EntityPlayerMP) player, pos, stack);
+                }
+
+                world.playSound(null, pos, SoundType.STONE.getPlaceSound(), SoundCategory.BLOCKS, (SoundType.STONE.getVolume() + 1.0F) / 2.0F, SoundType.STONE.getPitch() * 0.8F);
+                SkullDisplayEntity tile = (SkullDisplayEntity) world.getTileEntity(pos);
+
+                if (tile != null) {
+                    tile.setModel(stack.getItemDamage(), !this.isFresh(), getHasStand(stack));
+                    EnumFacing.Axis axis = side.getAxis();
+                    if (axis == EnumFacing.Axis.Y) {
+                        tile.setAngle(angleToPlayer(pos, new Vector2d(player.posX, player.posZ)));
+                    }else if(axis == EnumFacing.Axis.X) {
+                        tile.setAngle((short) side.getHorizontalAngle());
+                    }else if(axis == EnumFacing.Axis.Z) {
+                        tile.setAngle((short) (180 + side.getHorizontalAngle()));
+                    }
+                    world.notifyBlockUpdate(pos, state, state, 0);
+                    tile.markDirty();
+                    stack.shrink(1);
+
+                }
+
+            }
+        }
+        if (!player.world.isRemote && player.canPlayerEdit(pos, side, stack) && world.mayPlace(block, pos, false, side, (Entity) null) && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == MawsoniaDinosaur.class) {
+
+            if (side == EnumFacing.DOWN)
+            {
+                return EnumActionResult.FAIL;
+            }
+
+            if (block.canPlaceBlockAt(world, pos)) {
+                IBlockState blockstatePlacement = block.getStateForPlacement(world, pos, side, hitX, hitY, hitZ, /*meta*/ 0, player, hand);
+                if (!world.setBlockState(pos, blockstatePlacement, 11))
+                    return EnumActionResult.FAIL;
+
+                IBlockState state = world.getBlockState(pos);
+                if (state.getBlock() == block)
+                {
+                    ItemBlock.setTileEntityNBT(world, player, pos, stack);
+                    block.onBlockPlacedBy(world, pos, state, player, stack);
+
+                    if (player instanceof EntityPlayerMP)
+                        CriteriaTriggers.PLACED_BLOCK.trigger((EntityPlayerMP) player, pos, stack);
+                }
+
+                world.playSound(null, pos, SoundType.STONE.getPlaceSound(), SoundCategory.BLOCKS, (SoundType.STONE.getVolume() + 1.0F) / 2.0F, SoundType.STONE.getPitch() * 0.8F);
+                SkullDisplayEntity tile = (SkullDisplayEntity) world.getTileEntity(pos);
+
+                if (tile != null) {
+                    tile.setModel(stack.getItemDamage(), !this.isFresh(), getHasStand(stack));
+                    EnumFacing.Axis axis = side.getAxis();
+                    if (axis == EnumFacing.Axis.Y) {
+                        tile.setAngle(angleToPlayer(pos, new Vector2d(player.posX, player.posZ)));
+                    }else if(axis == EnumFacing.Axis.X) {
+                        tile.setAngle((short) side.getHorizontalAngle());
+                    }else if(axis == EnumFacing.Axis.Z) {
+                        tile.setAngle((short) (180 + side.getHorizontalAngle()));
+                    }
+                    world.notifyBlockUpdate(pos, state, state, 0);
+                    tile.markDirty();
+                    stack.shrink(1);
+
+                }
+
+            }
+        }
+        if (!player.world.isRemote && player.canPlayerEdit(pos, side, stack) && world.mayPlace(block, pos, false, side, (Entity) null) && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == MamenchisaurusDinosaur.class) {
+
+            if (side == EnumFacing.DOWN)
+            {
+                return EnumActionResult.FAIL;
+            }
+
+            if (block.canPlaceBlockAt(world, pos)) {
+                IBlockState blockstatePlacement = block.getStateForPlacement(world, pos, side, hitX, hitY, hitZ, /*meta*/ 0, player, hand);
+                if (!world.setBlockState(pos, blockstatePlacement, 11))
+                    return EnumActionResult.FAIL;
+
+                IBlockState state = world.getBlockState(pos);
+                if (state.getBlock() == block)
+                {
+                    ItemBlock.setTileEntityNBT(world, player, pos, stack);
+                    block.onBlockPlacedBy(world, pos, state, player, stack);
+
+                    if (player instanceof EntityPlayerMP)
+                        CriteriaTriggers.PLACED_BLOCK.trigger((EntityPlayerMP) player, pos, stack);
+                }
+
+                world.playSound(null, pos, SoundType.STONE.getPlaceSound(), SoundCategory.BLOCKS, (SoundType.STONE.getVolume() + 1.0F) / 2.0F, SoundType.STONE.getPitch() * 0.8F);
+                SkullDisplayEntity tile = (SkullDisplayEntity) world.getTileEntity(pos);
+
+                if (tile != null) {
+                    tile.setModel(stack.getItemDamage(), !this.isFresh(), getHasStand(stack));
+                    EnumFacing.Axis axis = side.getAxis();
+                    if (axis == EnumFacing.Axis.Y) {
+                        tile.setAngle(angleToPlayer(pos, new Vector2d(player.posX, player.posZ)));
+                    }else if(axis == EnumFacing.Axis.X) {
+                        tile.setAngle((short) side.getHorizontalAngle());
+                    }else if(axis == EnumFacing.Axis.Z) {
+                        tile.setAngle((short) (180 + side.getHorizontalAngle()));
+                    }
+                    world.notifyBlockUpdate(pos, state, state, 0);
+                    tile.markDirty();
+                    stack.shrink(1);
+
+                }
+
+            }
+        }
         if (!player.world.isRemote && player.canPlayerEdit(pos, side, stack) && world.mayPlace(block, pos, false, side, (Entity) null) && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == DiplodocusDinosaur.class) {
 
             if (side == EnumFacing.DOWN)
@@ -1519,6 +2116,178 @@ public class FossilItem extends Item implements GrindableItem {
 
             }
         }
+        if (!player.world.isRemote && player.canPlayerEdit(pos, side, stack) && world.mayPlace(block, pos, false, side, (Entity) null) && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == ParasaurolophusDinosaur.class) {
+
+            if (side == EnumFacing.DOWN)
+            {
+                return EnumActionResult.FAIL;
+            }
+
+            if (block.canPlaceBlockAt(world, pos)) {
+                IBlockState blockstatePlacement = block.getStateForPlacement(world, pos, side, hitX, hitY, hitZ, /*meta*/ 0, player, hand);
+                if (!world.setBlockState(pos, blockstatePlacement, 11))
+                    return EnumActionResult.FAIL;
+
+                IBlockState state = world.getBlockState(pos);
+                if (state.getBlock() == block)
+                {
+                    ItemBlock.setTileEntityNBT(world, player, pos, stack);
+                    block.onBlockPlacedBy(world, pos, state, player, stack);
+
+                    if (player instanceof EntityPlayerMP)
+                        CriteriaTriggers.PLACED_BLOCK.trigger((EntityPlayerMP) player, pos, stack);
+                }
+
+                world.playSound(null, pos, SoundType.STONE.getPlaceSound(), SoundCategory.BLOCKS, (SoundType.STONE.getVolume() + 1.0F) / 2.0F, SoundType.STONE.getPitch() * 0.8F);
+                SkullDisplayEntity tile = (SkullDisplayEntity) world.getTileEntity(pos);
+
+                if (tile != null) {
+                    tile.setModel(stack.getItemDamage(), !this.isFresh(), getHasStand(stack));
+                    EnumFacing.Axis axis = side.getAxis();
+                    if (axis == EnumFacing.Axis.Y) {
+                        tile.setAngle(angleToPlayer(pos, new Vector2d(player.posX, player.posZ)));
+                    }else if(axis == EnumFacing.Axis.X) {
+                        tile.setAngle((short) side.getHorizontalAngle());
+                    }else if(axis == EnumFacing.Axis.Z) {
+                        tile.setAngle((short) (180 + side.getHorizontalAngle()));
+                    }
+                    world.notifyBlockUpdate(pos, state, state, 0);
+                    tile.markDirty();
+                    stack.shrink(1);
+
+                }
+
+            }
+        }
+        if (!player.world.isRemote && player.canPlayerEdit(pos, side, stack) && world.mayPlace(block, pos, false, side, (Entity) null) && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == ProtoceratopsDinosaur.class) {
+
+            if (side == EnumFacing.DOWN)
+            {
+                return EnumActionResult.FAIL;
+            }
+
+            if (block.canPlaceBlockAt(world, pos)) {
+                IBlockState blockstatePlacement = block.getStateForPlacement(world, pos, side, hitX, hitY, hitZ, /*meta*/ 0, player, hand);
+                if (!world.setBlockState(pos, blockstatePlacement, 11))
+                    return EnumActionResult.FAIL;
+
+                IBlockState state = world.getBlockState(pos);
+                if (state.getBlock() == block)
+                {
+                    ItemBlock.setTileEntityNBT(world, player, pos, stack);
+                    block.onBlockPlacedBy(world, pos, state, player, stack);
+
+                    if (player instanceof EntityPlayerMP)
+                        CriteriaTriggers.PLACED_BLOCK.trigger((EntityPlayerMP) player, pos, stack);
+                }
+
+                world.playSound(null, pos, SoundType.STONE.getPlaceSound(), SoundCategory.BLOCKS, (SoundType.STONE.getVolume() + 1.0F) / 2.0F, SoundType.STONE.getPitch() * 0.8F);
+                SkullDisplayEntity tile = (SkullDisplayEntity) world.getTileEntity(pos);
+
+                if (tile != null) {
+                    tile.setModel(stack.getItemDamage(), !this.isFresh(), getHasStand(stack));
+                    EnumFacing.Axis axis = side.getAxis();
+                    if (axis == EnumFacing.Axis.Y) {
+                        tile.setAngle(angleToPlayer(pos, new Vector2d(player.posX, player.posZ)));
+                    }else if(axis == EnumFacing.Axis.X) {
+                        tile.setAngle((short) side.getHorizontalAngle());
+                    }else if(axis == EnumFacing.Axis.Z) {
+                        tile.setAngle((short) (180 + side.getHorizontalAngle()));
+                    }
+                    world.notifyBlockUpdate(pos, state, state, 0);
+                    tile.markDirty();
+                    stack.shrink(1);
+
+                }
+
+            }
+        }
+        if (!player.world.isRemote && player.canPlayerEdit(pos, side, stack) && world.mayPlace(block, pos, false, side, (Entity) null) && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == PostosuchusDinosaur.class) {
+
+            if (side == EnumFacing.DOWN)
+            {
+                return EnumActionResult.FAIL;
+            }
+
+            if (block.canPlaceBlockAt(world, pos)) {
+                IBlockState blockstatePlacement = block.getStateForPlacement(world, pos, side, hitX, hitY, hitZ, /*meta*/ 0, player, hand);
+                if (!world.setBlockState(pos, blockstatePlacement, 11))
+                    return EnumActionResult.FAIL;
+
+                IBlockState state = world.getBlockState(pos);
+                if (state.getBlock() == block)
+                {
+                    ItemBlock.setTileEntityNBT(world, player, pos, stack);
+                    block.onBlockPlacedBy(world, pos, state, player, stack);
+
+                    if (player instanceof EntityPlayerMP)
+                        CriteriaTriggers.PLACED_BLOCK.trigger((EntityPlayerMP) player, pos, stack);
+                }
+
+                world.playSound(null, pos, SoundType.STONE.getPlaceSound(), SoundCategory.BLOCKS, (SoundType.STONE.getVolume() + 1.0F) / 2.0F, SoundType.STONE.getPitch() * 0.8F);
+                SkullDisplayEntity tile = (SkullDisplayEntity) world.getTileEntity(pos);
+
+                if (tile != null) {
+                    tile.setModel(stack.getItemDamage(), !this.isFresh(), getHasStand(stack));
+                    EnumFacing.Axis axis = side.getAxis();
+                    if (axis == EnumFacing.Axis.Y) {
+                        tile.setAngle(angleToPlayer(pos, new Vector2d(player.posX, player.posZ)));
+                    }else if(axis == EnumFacing.Axis.X) {
+                        tile.setAngle((short) side.getHorizontalAngle());
+                    }else if(axis == EnumFacing.Axis.Z) {
+                        tile.setAngle((short) (180 + side.getHorizontalAngle()));
+                    }
+                    world.notifyBlockUpdate(pos, state, state, 0);
+                    tile.markDirty();
+                    stack.shrink(1);
+
+                }
+
+            }
+        }
+        if (!player.world.isRemote && player.canPlayerEdit(pos, side, stack) && world.mayPlace(block, pos, false, side, (Entity) null) && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == PteranodonDinosaur.class) {
+
+            if (side == EnumFacing.DOWN)
+            {
+                return EnumActionResult.FAIL;
+            }
+
+            if (block.canPlaceBlockAt(world, pos)) {
+                IBlockState blockstatePlacement = block.getStateForPlacement(world, pos, side, hitX, hitY, hitZ, /*meta*/ 0, player, hand);
+                if (!world.setBlockState(pos, blockstatePlacement, 11))
+                    return EnumActionResult.FAIL;
+
+                IBlockState state = world.getBlockState(pos);
+                if (state.getBlock() == block)
+                {
+                    ItemBlock.setTileEntityNBT(world, player, pos, stack);
+                    block.onBlockPlacedBy(world, pos, state, player, stack);
+
+                    if (player instanceof EntityPlayerMP)
+                        CriteriaTriggers.PLACED_BLOCK.trigger((EntityPlayerMP) player, pos, stack);
+                }
+
+                world.playSound(null, pos, SoundType.STONE.getPlaceSound(), SoundCategory.BLOCKS, (SoundType.STONE.getVolume() + 1.0F) / 2.0F, SoundType.STONE.getPitch() * 0.8F);
+                SkullDisplayEntity tile = (SkullDisplayEntity) world.getTileEntity(pos);
+
+                if (tile != null) {
+                    tile.setModel(stack.getItemDamage(), !this.isFresh(), getHasStand(stack));
+                    EnumFacing.Axis axis = side.getAxis();
+                    if (axis == EnumFacing.Axis.Y) {
+                        tile.setAngle(angleToPlayer(pos, new Vector2d(player.posX, player.posZ)));
+                    }else if(axis == EnumFacing.Axis.X) {
+                        tile.setAngle((short) side.getHorizontalAngle());
+                    }else if(axis == EnumFacing.Axis.Z) {
+                        tile.setAngle((short) (180 + side.getHorizontalAngle()));
+                    }
+                    world.notifyBlockUpdate(pos, state, state, 0);
+                    tile.markDirty();
+                    stack.shrink(1);
+
+                }
+
+            }
+        }
         if (!player.world.isRemote && player.canPlayerEdit(pos, side, stack) && world.mayPlace(block, pos, false, side, (Entity) null) && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == HerrerasaurusDinosaur.class) {
 
             if (side == EnumFacing.DOWN)
@@ -1606,6 +2375,694 @@ public class FossilItem extends Item implements GrindableItem {
             }
         }
         if (!player.world.isRemote && player.canPlayerEdit(pos, side, stack) && world.mayPlace(block, pos, false, side, (Entity) null) && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == IndominusDinosaur.class) {
+
+            if (side == EnumFacing.DOWN)
+            {
+                return EnumActionResult.FAIL;
+            }
+
+            if (block.canPlaceBlockAt(world, pos)) {
+                IBlockState blockstatePlacement = block.getStateForPlacement(world, pos, side, hitX, hitY, hitZ, /*meta*/ 0, player, hand);
+                if (!world.setBlockState(pos, blockstatePlacement, 11))
+                    return EnumActionResult.FAIL;
+
+                IBlockState state = world.getBlockState(pos);
+                if (state.getBlock() == block)
+                {
+                    ItemBlock.setTileEntityNBT(world, player, pos, stack);
+                    block.onBlockPlacedBy(world, pos, state, player, stack);
+
+                    if (player instanceof EntityPlayerMP)
+                        CriteriaTriggers.PLACED_BLOCK.trigger((EntityPlayerMP) player, pos, stack);
+                }
+
+                world.playSound(null, pos, SoundType.STONE.getPlaceSound(), SoundCategory.BLOCKS, (SoundType.STONE.getVolume() + 1.0F) / 2.0F, SoundType.STONE.getPitch() * 0.8F);
+                SkullDisplayEntity tile = (SkullDisplayEntity) world.getTileEntity(pos);
+
+                if (tile != null) {
+                    tile.setModel(stack.getItemDamage(), !this.isFresh(), getHasStand(stack));
+                    EnumFacing.Axis axis = side.getAxis();
+                    if (axis == EnumFacing.Axis.Y) {
+                        tile.setAngle(angleToPlayer(pos, new Vector2d(player.posX, player.posZ)));
+                    }else if(axis == EnumFacing.Axis.X) {
+                        tile.setAngle((short) side.getHorizontalAngle());
+                    }else if(axis == EnumFacing.Axis.Z) {
+                        tile.setAngle((short) (180 + side.getHorizontalAngle()));
+                    }
+                    world.notifyBlockUpdate(pos, state, state, 0);
+                    tile.markDirty();
+                    stack.shrink(1);
+
+                }
+
+            }
+        }
+        if (!player.world.isRemote && player.canPlayerEdit(pos, side, stack) && world.mayPlace(block, pos, false, side, (Entity) null) && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == SuchomimusDinosaur.class) {
+
+            if (side == EnumFacing.DOWN)
+            {
+                return EnumActionResult.FAIL;
+            }
+
+            if (block.canPlaceBlockAt(world, pos)) {
+                IBlockState blockstatePlacement = block.getStateForPlacement(world, pos, side, hitX, hitY, hitZ, /*meta*/ 0, player, hand);
+                if (!world.setBlockState(pos, blockstatePlacement, 11))
+                    return EnumActionResult.FAIL;
+
+                IBlockState state = world.getBlockState(pos);
+                if (state.getBlock() == block)
+                {
+                    ItemBlock.setTileEntityNBT(world, player, pos, stack);
+                    block.onBlockPlacedBy(world, pos, state, player, stack);
+
+                    if (player instanceof EntityPlayerMP)
+                        CriteriaTriggers.PLACED_BLOCK.trigger((EntityPlayerMP) player, pos, stack);
+                }
+
+                world.playSound(null, pos, SoundType.STONE.getPlaceSound(), SoundCategory.BLOCKS, (SoundType.STONE.getVolume() + 1.0F) / 2.0F, SoundType.STONE.getPitch() * 0.8F);
+                SkullDisplayEntity tile = (SkullDisplayEntity) world.getTileEntity(pos);
+
+                if (tile != null) {
+                    tile.setModel(stack.getItemDamage(), !this.isFresh(), getHasStand(stack));
+                    EnumFacing.Axis axis = side.getAxis();
+                    if (axis == EnumFacing.Axis.Y) {
+                        tile.setAngle(angleToPlayer(pos, new Vector2d(player.posX, player.posZ)));
+                    }else if(axis == EnumFacing.Axis.X) {
+                        tile.setAngle((short) side.getHorizontalAngle());
+                    }else if(axis == EnumFacing.Axis.Z) {
+                        tile.setAngle((short) (180 + side.getHorizontalAngle()));
+                    }
+                    world.notifyBlockUpdate(pos, state, state, 0);
+                    tile.markDirty();
+                    stack.shrink(1);
+
+                }
+
+            }
+        }
+        if (!player.world.isRemote && player.canPlayerEdit(pos, side, stack) && world.mayPlace(block, pos, false, side, (Entity) null) && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == StyracosaurusDinosaur.class) {
+
+            if (side == EnumFacing.DOWN)
+            {
+                return EnumActionResult.FAIL;
+            }
+
+            if (block.canPlaceBlockAt(world, pos)) {
+                IBlockState blockstatePlacement = block.getStateForPlacement(world, pos, side, hitX, hitY, hitZ, /*meta*/ 0, player, hand);
+                if (!world.setBlockState(pos, blockstatePlacement, 11))
+                    return EnumActionResult.FAIL;
+
+                IBlockState state = world.getBlockState(pos);
+                if (state.getBlock() == block)
+                {
+                    ItemBlock.setTileEntityNBT(world, player, pos, stack);
+                    block.onBlockPlacedBy(world, pos, state, player, stack);
+
+                    if (player instanceof EntityPlayerMP)
+                        CriteriaTriggers.PLACED_BLOCK.trigger((EntityPlayerMP) player, pos, stack);
+                }
+
+                world.playSound(null, pos, SoundType.STONE.getPlaceSound(), SoundCategory.BLOCKS, (SoundType.STONE.getVolume() + 1.0F) / 2.0F, SoundType.STONE.getPitch() * 0.8F);
+                SkullDisplayEntity tile = (SkullDisplayEntity) world.getTileEntity(pos);
+
+                if (tile != null) {
+                    tile.setModel(stack.getItemDamage(), !this.isFresh(), getHasStand(stack));
+                    EnumFacing.Axis axis = side.getAxis();
+                    if (axis == EnumFacing.Axis.Y) {
+                        tile.setAngle(angleToPlayer(pos, new Vector2d(player.posX, player.posZ)));
+                    }else if(axis == EnumFacing.Axis.X) {
+                        tile.setAngle((short) side.getHorizontalAngle());
+                    }else if(axis == EnumFacing.Axis.Z) {
+                        tile.setAngle((short) (180 + side.getHorizontalAngle()));
+                    }
+                    world.notifyBlockUpdate(pos, state, state, 0);
+                    tile.markDirty();
+                    stack.shrink(1);
+
+                }
+
+            }
+        }
+        if (!player.world.isRemote && player.canPlayerEdit(pos, side, stack) && world.mayPlace(block, pos, false, side, (Entity) null) && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == StegosaurusDinosaur.class) {
+
+            if (side == EnumFacing.DOWN)
+            {
+                return EnumActionResult.FAIL;
+            }
+
+            if (block.canPlaceBlockAt(world, pos)) {
+                IBlockState blockstatePlacement = block.getStateForPlacement(world, pos, side, hitX, hitY, hitZ, /*meta*/ 0, player, hand);
+                if (!world.setBlockState(pos, blockstatePlacement, 11))
+                    return EnumActionResult.FAIL;
+
+                IBlockState state = world.getBlockState(pos);
+                if (state.getBlock() == block)
+                {
+                    ItemBlock.setTileEntityNBT(world, player, pos, stack);
+                    block.onBlockPlacedBy(world, pos, state, player, stack);
+
+                    if (player instanceof EntityPlayerMP)
+                        CriteriaTriggers.PLACED_BLOCK.trigger((EntityPlayerMP) player, pos, stack);
+                }
+
+                world.playSound(null, pos, SoundType.STONE.getPlaceSound(), SoundCategory.BLOCKS, (SoundType.STONE.getVolume() + 1.0F) / 2.0F, SoundType.STONE.getPitch() * 0.8F);
+                SkullDisplayEntity tile = (SkullDisplayEntity) world.getTileEntity(pos);
+
+                if (tile != null) {
+                    tile.setModel(stack.getItemDamage(), !this.isFresh(), getHasStand(stack));
+                    EnumFacing.Axis axis = side.getAxis();
+                    if (axis == EnumFacing.Axis.Y) {
+                        tile.setAngle(angleToPlayer(pos, new Vector2d(player.posX, player.posZ)));
+                    }else if(axis == EnumFacing.Axis.X) {
+                        tile.setAngle((short) side.getHorizontalAngle());
+                    }else if(axis == EnumFacing.Axis.Z) {
+                        tile.setAngle((short) (180 + side.getHorizontalAngle()));
+                    }
+                    world.notifyBlockUpdate(pos, state, state, 0);
+                    tile.markDirty();
+                    stack.shrink(1);
+
+                }
+
+            }
+        }
+        if (!player.world.isRemote && player.canPlayerEdit(pos, side, stack) && world.mayPlace(block, pos, false, side, (Entity) null) && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == SmilodonDinosaur.class) {
+
+            if (side == EnumFacing.DOWN)
+            {
+                return EnumActionResult.FAIL;
+            }
+
+            if (block.canPlaceBlockAt(world, pos)) {
+                IBlockState blockstatePlacement = block.getStateForPlacement(world, pos, side, hitX, hitY, hitZ, /*meta*/ 0, player, hand);
+                if (!world.setBlockState(pos, blockstatePlacement, 11))
+                    return EnumActionResult.FAIL;
+
+                IBlockState state = world.getBlockState(pos);
+                if (state.getBlock() == block)
+                {
+                    ItemBlock.setTileEntityNBT(world, player, pos, stack);
+                    block.onBlockPlacedBy(world, pos, state, player, stack);
+
+                    if (player instanceof EntityPlayerMP)
+                        CriteriaTriggers.PLACED_BLOCK.trigger((EntityPlayerMP) player, pos, stack);
+                }
+
+                world.playSound(null, pos, SoundType.STONE.getPlaceSound(), SoundCategory.BLOCKS, (SoundType.STONE.getVolume() + 1.0F) / 2.0F, SoundType.STONE.getPitch() * 0.8F);
+                SkullDisplayEntity tile = (SkullDisplayEntity) world.getTileEntity(pos);
+
+                if (tile != null) {
+                    tile.setModel(stack.getItemDamage(), !this.isFresh(), getHasStand(stack));
+                    EnumFacing.Axis axis = side.getAxis();
+                    if (axis == EnumFacing.Axis.Y) {
+                        tile.setAngle(angleToPlayer(pos, new Vector2d(player.posX, player.posZ)));
+                    }else if(axis == EnumFacing.Axis.X) {
+                        tile.setAngle((short) side.getHorizontalAngle());
+                    }else if(axis == EnumFacing.Axis.Z) {
+                        tile.setAngle((short) (180 + side.getHorizontalAngle()));
+                    }
+                    world.notifyBlockUpdate(pos, state, state, 0);
+                    tile.markDirty();
+                    stack.shrink(1);
+
+                }
+
+            }
+        }
+        if (!player.world.isRemote && player.canPlayerEdit(pos, side, stack) && world.mayPlace(block, pos, false, side, (Entity) null) && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == SpinoraptorDinosaur.class) {
+
+            if (side == EnumFacing.DOWN)
+            {
+                return EnumActionResult.FAIL;
+            }
+
+            if (block.canPlaceBlockAt(world, pos)) {
+                IBlockState blockstatePlacement = block.getStateForPlacement(world, pos, side, hitX, hitY, hitZ, /*meta*/ 0, player, hand);
+                if (!world.setBlockState(pos, blockstatePlacement, 11))
+                    return EnumActionResult.FAIL;
+
+                IBlockState state = world.getBlockState(pos);
+                if (state.getBlock() == block)
+                {
+                    ItemBlock.setTileEntityNBT(world, player, pos, stack);
+                    block.onBlockPlacedBy(world, pos, state, player, stack);
+
+                    if (player instanceof EntityPlayerMP)
+                        CriteriaTriggers.PLACED_BLOCK.trigger((EntityPlayerMP) player, pos, stack);
+                }
+
+                world.playSound(null, pos, SoundType.STONE.getPlaceSound(), SoundCategory.BLOCKS, (SoundType.STONE.getVolume() + 1.0F) / 2.0F, SoundType.STONE.getPitch() * 0.8F);
+                SkullDisplayEntity tile = (SkullDisplayEntity) world.getTileEntity(pos);
+
+                if (tile != null) {
+                    tile.setModel(stack.getItemDamage(), !this.isFresh(), getHasStand(stack));
+                    EnumFacing.Axis axis = side.getAxis();
+                    if (axis == EnumFacing.Axis.Y) {
+                        tile.setAngle(angleToPlayer(pos, new Vector2d(player.posX, player.posZ)));
+                    }else if(axis == EnumFacing.Axis.X) {
+                        tile.setAngle((short) side.getHorizontalAngle());
+                    }else if(axis == EnumFacing.Axis.Z) {
+                        tile.setAngle((short) (180 + side.getHorizontalAngle()));
+                    }
+                    world.notifyBlockUpdate(pos, state, state, 0);
+                    tile.markDirty();
+                    stack.shrink(1);
+
+                }
+
+            }
+        }
+        if (!player.world.isRemote && player.canPlayerEdit(pos, side, stack) && world.mayPlace(block, pos, false, side, (Entity) null) && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == SpinosaurusDinosaur.class) {
+
+            if (side == EnumFacing.DOWN)
+            {
+                return EnumActionResult.FAIL;
+            }
+
+            if (block.canPlaceBlockAt(world, pos)) {
+                IBlockState blockstatePlacement = block.getStateForPlacement(world, pos, side, hitX, hitY, hitZ, /*meta*/ 0, player, hand);
+                if (!world.setBlockState(pos, blockstatePlacement, 11))
+                    return EnumActionResult.FAIL;
+
+                IBlockState state = world.getBlockState(pos);
+                if (state.getBlock() == block)
+                {
+                    ItemBlock.setTileEntityNBT(world, player, pos, stack);
+                    block.onBlockPlacedBy(world, pos, state, player, stack);
+
+                    if (player instanceof EntityPlayerMP)
+                        CriteriaTriggers.PLACED_BLOCK.trigger((EntityPlayerMP) player, pos, stack);
+                }
+
+                world.playSound(null, pos, SoundType.STONE.getPlaceSound(), SoundCategory.BLOCKS, (SoundType.STONE.getVolume() + 1.0F) / 2.0F, SoundType.STONE.getPitch() * 0.8F);
+                SkullDisplayEntity tile = (SkullDisplayEntity) world.getTileEntity(pos);
+
+                if (tile != null) {
+                    tile.setModel(stack.getItemDamage(), !this.isFresh(), getHasStand(stack));
+                    EnumFacing.Axis axis = side.getAxis();
+                    if (axis == EnumFacing.Axis.Y) {
+                        tile.setAngle(angleToPlayer(pos, new Vector2d(player.posX, player.posZ)));
+                    }else if(axis == EnumFacing.Axis.X) {
+                        tile.setAngle((short) side.getHorizontalAngle());
+                    }else if(axis == EnumFacing.Axis.Z) {
+                        tile.setAngle((short) (180 + side.getHorizontalAngle()));
+                    }
+                    world.notifyBlockUpdate(pos, state, state, 0);
+                    tile.markDirty();
+                    stack.shrink(1);
+
+                }
+
+            }
+        }
+        if (!player.world.isRemote && player.canPlayerEdit(pos, side, stack) && world.mayPlace(block, pos, false, side, (Entity) null) && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == SinoceratopsDinosaur.class) {
+
+            if (side == EnumFacing.DOWN)
+            {
+                return EnumActionResult.FAIL;
+            }
+
+            if (block.canPlaceBlockAt(world, pos)) {
+                IBlockState blockstatePlacement = block.getStateForPlacement(world, pos, side, hitX, hitY, hitZ, /*meta*/ 0, player, hand);
+                if (!world.setBlockState(pos, blockstatePlacement, 11))
+                    return EnumActionResult.FAIL;
+
+                IBlockState state = world.getBlockState(pos);
+                if (state.getBlock() == block)
+                {
+                    ItemBlock.setTileEntityNBT(world, player, pos, stack);
+                    block.onBlockPlacedBy(world, pos, state, player, stack);
+
+                    if (player instanceof EntityPlayerMP)
+                        CriteriaTriggers.PLACED_BLOCK.trigger((EntityPlayerMP) player, pos, stack);
+                }
+
+                world.playSound(null, pos, SoundType.STONE.getPlaceSound(), SoundCategory.BLOCKS, (SoundType.STONE.getVolume() + 1.0F) / 2.0F, SoundType.STONE.getPitch() * 0.8F);
+                SkullDisplayEntity tile = (SkullDisplayEntity) world.getTileEntity(pos);
+
+                if (tile != null) {
+                    tile.setModel(stack.getItemDamage(), !this.isFresh(), getHasStand(stack));
+                    EnumFacing.Axis axis = side.getAxis();
+                    if (axis == EnumFacing.Axis.Y) {
+                        tile.setAngle(angleToPlayer(pos, new Vector2d(player.posX, player.posZ)));
+                    }else if(axis == EnumFacing.Axis.X) {
+                        tile.setAngle((short) side.getHorizontalAngle());
+                    }else if(axis == EnumFacing.Axis.Z) {
+                        tile.setAngle((short) (180 + side.getHorizontalAngle()));
+                    }
+                    world.notifyBlockUpdate(pos, state, state, 0);
+                    tile.markDirty();
+                    stack.shrink(1);
+
+                }
+
+            }
+        }
+        if (!player.world.isRemote && player.canPlayerEdit(pos, side, stack) && world.mayPlace(block, pos, false, side, (Entity) null) && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == RaphusrexDinosaur.class) {
+
+            if (side == EnumFacing.DOWN)
+            {
+                return EnumActionResult.FAIL;
+            }
+
+            if (block.canPlaceBlockAt(world, pos)) {
+                IBlockState blockstatePlacement = block.getStateForPlacement(world, pos, side, hitX, hitY, hitZ, /*meta*/ 0, player, hand);
+                if (!world.setBlockState(pos, blockstatePlacement, 11))
+                    return EnumActionResult.FAIL;
+
+                IBlockState state = world.getBlockState(pos);
+                if (state.getBlock() == block)
+                {
+                    ItemBlock.setTileEntityNBT(world, player, pos, stack);
+                    block.onBlockPlacedBy(world, pos, state, player, stack);
+
+                    if (player instanceof EntityPlayerMP)
+                        CriteriaTriggers.PLACED_BLOCK.trigger((EntityPlayerMP) player, pos, stack);
+                }
+
+                world.playSound(null, pos, SoundType.STONE.getPlaceSound(), SoundCategory.BLOCKS, (SoundType.STONE.getVolume() + 1.0F) / 2.0F, SoundType.STONE.getPitch() * 0.8F);
+                SkullDisplayEntity tile = (SkullDisplayEntity) world.getTileEntity(pos);
+
+                if (tile != null) {
+                    tile.setModel(stack.getItemDamage(), !this.isFresh(), getHasStand(stack));
+                    EnumFacing.Axis axis = side.getAxis();
+                    if (axis == EnumFacing.Axis.Y) {
+                        tile.setAngle(angleToPlayer(pos, new Vector2d(player.posX, player.posZ)));
+                    }else if(axis == EnumFacing.Axis.X) {
+                        tile.setAngle((short) side.getHorizontalAngle());
+                    }else if(axis == EnumFacing.Axis.Z) {
+                        tile.setAngle((short) (180 + side.getHorizontalAngle()));
+                    }
+                    world.notifyBlockUpdate(pos, state, state, 0);
+                    tile.markDirty();
+                    stack.shrink(1);
+
+                }
+
+            }
+        }
+        if (!player.world.isRemote && player.canPlayerEdit(pos, side, stack) && world.mayPlace(block, pos, false, side, (Entity) null) && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == RugopsDinosaur.class) {
+
+            if (side == EnumFacing.DOWN)
+            {
+                return EnumActionResult.FAIL;
+            }
+
+            if (block.canPlaceBlockAt(world, pos)) {
+                IBlockState blockstatePlacement = block.getStateForPlacement(world, pos, side, hitX, hitY, hitZ, /*meta*/ 0, player, hand);
+                if (!world.setBlockState(pos, blockstatePlacement, 11))
+                    return EnumActionResult.FAIL;
+
+                IBlockState state = world.getBlockState(pos);
+                if (state.getBlock() == block)
+                {
+                    ItemBlock.setTileEntityNBT(world, player, pos, stack);
+                    block.onBlockPlacedBy(world, pos, state, player, stack);
+
+                    if (player instanceof EntityPlayerMP)
+                        CriteriaTriggers.PLACED_BLOCK.trigger((EntityPlayerMP) player, pos, stack);
+                }
+
+                world.playSound(null, pos, SoundType.STONE.getPlaceSound(), SoundCategory.BLOCKS, (SoundType.STONE.getVolume() + 1.0F) / 2.0F, SoundType.STONE.getPitch() * 0.8F);
+                SkullDisplayEntity tile = (SkullDisplayEntity) world.getTileEntity(pos);
+
+                if (tile != null) {
+                    tile.setModel(stack.getItemDamage(), !this.isFresh(), getHasStand(stack));
+                    EnumFacing.Axis axis = side.getAxis();
+                    if (axis == EnumFacing.Axis.Y) {
+                        tile.setAngle(angleToPlayer(pos, new Vector2d(player.posX, player.posZ)));
+                    }else if(axis == EnumFacing.Axis.X) {
+                        tile.setAngle((short) side.getHorizontalAngle());
+                    }else if(axis == EnumFacing.Axis.Z) {
+                        tile.setAngle((short) (180 + side.getHorizontalAngle()));
+                    }
+                    world.notifyBlockUpdate(pos, state, state, 0);
+                    tile.markDirty();
+                    stack.shrink(1);
+
+                }
+
+            }
+        }
+        if (!player.world.isRemote && player.canPlayerEdit(pos, side, stack) && world.mayPlace(block, pos, false, side, (Entity) null) && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == QuetzalDinosaur.class) {
+
+            if (side == EnumFacing.DOWN)
+            {
+                return EnumActionResult.FAIL;
+            }
+
+            if (block.canPlaceBlockAt(world, pos)) {
+                IBlockState blockstatePlacement = block.getStateForPlacement(world, pos, side, hitX, hitY, hitZ, /*meta*/ 0, player, hand);
+                if (!world.setBlockState(pos, blockstatePlacement, 11))
+                    return EnumActionResult.FAIL;
+
+                IBlockState state = world.getBlockState(pos);
+                if (state.getBlock() == block)
+                {
+                    ItemBlock.setTileEntityNBT(world, player, pos, stack);
+                    block.onBlockPlacedBy(world, pos, state, player, stack);
+
+                    if (player instanceof EntityPlayerMP)
+                        CriteriaTriggers.PLACED_BLOCK.trigger((EntityPlayerMP) player, pos, stack);
+                }
+
+                world.playSound(null, pos, SoundType.STONE.getPlaceSound(), SoundCategory.BLOCKS, (SoundType.STONE.getVolume() + 1.0F) / 2.0F, SoundType.STONE.getPitch() * 0.8F);
+                SkullDisplayEntity tile = (SkullDisplayEntity) world.getTileEntity(pos);
+
+                if (tile != null) {
+                    tile.setModel(stack.getItemDamage(), !this.isFresh(), getHasStand(stack));
+                    EnumFacing.Axis axis = side.getAxis();
+                    if (axis == EnumFacing.Axis.Y) {
+                        tile.setAngle(angleToPlayer(pos, new Vector2d(player.posX, player.posZ)));
+                    }else if(axis == EnumFacing.Axis.X) {
+                        tile.setAngle((short) side.getHorizontalAngle());
+                    }else if(axis == EnumFacing.Axis.Z) {
+                        tile.setAngle((short) (180 + side.getHorizontalAngle()));
+                    }
+                    world.notifyBlockUpdate(pos, state, state, 0);
+                    tile.markDirty();
+                    stack.shrink(1);
+
+                }
+
+            }
+        }
+        if (!player.world.isRemote && player.canPlayerEdit(pos, side, stack) && world.mayPlace(block, pos, false, side, (Entity) null) && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == DimetrodonDinosaur.class) {
+
+            if (side == EnumFacing.DOWN)
+            {
+                return EnumActionResult.FAIL;
+            }
+
+            if (block.canPlaceBlockAt(world, pos)) {
+                IBlockState blockstatePlacement = block.getStateForPlacement(world, pos, side, hitX, hitY, hitZ, /*meta*/ 0, player, hand);
+                if (!world.setBlockState(pos, blockstatePlacement, 11))
+                    return EnumActionResult.FAIL;
+
+                IBlockState state = world.getBlockState(pos);
+                if (state.getBlock() == block)
+                {
+                    ItemBlock.setTileEntityNBT(world, player, pos, stack);
+                    block.onBlockPlacedBy(world, pos, state, player, stack);
+
+                    if (player instanceof EntityPlayerMP)
+                        CriteriaTriggers.PLACED_BLOCK.trigger((EntityPlayerMP) player, pos, stack);
+                }
+
+                world.playSound(null, pos, SoundType.STONE.getPlaceSound(), SoundCategory.BLOCKS, (SoundType.STONE.getVolume() + 1.0F) / 2.0F, SoundType.STONE.getPitch() * 0.8F);
+                SkullDisplayEntity tile = (SkullDisplayEntity) world.getTileEntity(pos);
+
+                if (tile != null) {
+                    tile.setModel(stack.getItemDamage(), !this.isFresh(), getHasStand(stack));
+                    EnumFacing.Axis axis = side.getAxis();
+                    if (axis == EnumFacing.Axis.Y) {
+                        tile.setAngle(angleToPlayer(pos, new Vector2d(player.posX, player.posZ)));
+                    }else if(axis == EnumFacing.Axis.X) {
+                        tile.setAngle((short) side.getHorizontalAngle());
+                    }else if(axis == EnumFacing.Axis.Z) {
+                        tile.setAngle((short) (180 + side.getHorizontalAngle()));
+                    }
+                    world.notifyBlockUpdate(pos, state, state, 0);
+                    tile.markDirty();
+                    stack.shrink(1);
+
+                }
+
+            }
+        }
+        if (!player.world.isRemote && player.canPlayerEdit(pos, side, stack) && world.mayPlace(block, pos, false, side, (Entity) null) && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == MegatheriumDinosaur.class) {
+
+            if (side == EnumFacing.DOWN)
+            {
+                return EnumActionResult.FAIL;
+            }
+
+            if (block.canPlaceBlockAt(world, pos)) {
+                IBlockState blockstatePlacement = block.getStateForPlacement(world, pos, side, hitX, hitY, hitZ, /*meta*/ 0, player, hand);
+                if (!world.setBlockState(pos, blockstatePlacement, 11))
+                    return EnumActionResult.FAIL;
+
+                IBlockState state = world.getBlockState(pos);
+                if (state.getBlock() == block)
+                {
+                    ItemBlock.setTileEntityNBT(world, player, pos, stack);
+                    block.onBlockPlacedBy(world, pos, state, player, stack);
+
+                    if (player instanceof EntityPlayerMP)
+                        CriteriaTriggers.PLACED_BLOCK.trigger((EntityPlayerMP) player, pos, stack);
+                }
+
+                world.playSound(null, pos, SoundType.STONE.getPlaceSound(), SoundCategory.BLOCKS, (SoundType.STONE.getVolume() + 1.0F) / 2.0F, SoundType.STONE.getPitch() * 0.8F);
+                SkullDisplayEntity tile = (SkullDisplayEntity) world.getTileEntity(pos);
+
+                if (tile != null) {
+                    tile.setModel(stack.getItemDamage(), !this.isFresh(), getHasStand(stack));
+                    EnumFacing.Axis axis = side.getAxis();
+                    if (axis == EnumFacing.Axis.Y) {
+                        tile.setAngle(angleToPlayer(pos, new Vector2d(player.posX, player.posZ)));
+                    }else if(axis == EnumFacing.Axis.X) {
+                        tile.setAngle((short) side.getHorizontalAngle());
+                    }else if(axis == EnumFacing.Axis.Z) {
+                        tile.setAngle((short) (180 + side.getHorizontalAngle()));
+                    }
+                    world.notifyBlockUpdate(pos, state, state, 0);
+                    tile.markDirty();
+                    stack.shrink(1);
+
+                }
+
+            }
+        }
+        if (!player.world.isRemote && player.canPlayerEdit(pos, side, stack) && world.mayPlace(block, pos, false, side, (Entity) null) && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == DilophosaurusDinosaur.class) {
+
+            if (side == EnumFacing.DOWN)
+            {
+                return EnumActionResult.FAIL;
+            }
+
+            if (block.canPlaceBlockAt(world, pos)) {
+                IBlockState blockstatePlacement = block.getStateForPlacement(world, pos, side, hitX, hitY, hitZ, /*meta*/ 0, player, hand);
+                if (!world.setBlockState(pos, blockstatePlacement, 11))
+                    return EnumActionResult.FAIL;
+
+                IBlockState state = world.getBlockState(pos);
+                if (state.getBlock() == block)
+                {
+                    ItemBlock.setTileEntityNBT(world, player, pos, stack);
+                    block.onBlockPlacedBy(world, pos, state, player, stack);
+
+                    if (player instanceof EntityPlayerMP)
+                        CriteriaTriggers.PLACED_BLOCK.trigger((EntityPlayerMP) player, pos, stack);
+                }
+
+                world.playSound(null, pos, SoundType.STONE.getPlaceSound(), SoundCategory.BLOCKS, (SoundType.STONE.getVolume() + 1.0F) / 2.0F, SoundType.STONE.getPitch() * 0.8F);
+                SkullDisplayEntity tile = (SkullDisplayEntity) world.getTileEntity(pos);
+
+                if (tile != null) {
+                    tile.setModel(stack.getItemDamage(), !this.isFresh(), getHasStand(stack));
+                    EnumFacing.Axis axis = side.getAxis();
+                    if (axis == EnumFacing.Axis.Y) {
+                        tile.setAngle(angleToPlayer(pos, new Vector2d(player.posX, player.posZ)));
+                    }else if(axis == EnumFacing.Axis.X) {
+                        tile.setAngle((short) side.getHorizontalAngle());
+                    }else if(axis == EnumFacing.Axis.Z) {
+                        tile.setAngle((short) (180 + side.getHorizontalAngle()));
+                    }
+                    world.notifyBlockUpdate(pos, state, state, 0);
+                    tile.markDirty();
+                    stack.shrink(1);
+
+                }
+
+            }
+        }
+        if (!player.world.isRemote && player.canPlayerEdit(pos, side, stack) && world.mayPlace(block, pos, false, side, (Entity) null) && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == PachycephalosaurusDinosaur.class) {
+
+            if (side == EnumFacing.DOWN)
+            {
+                return EnumActionResult.FAIL;
+            }
+
+            if (block.canPlaceBlockAt(world, pos)) {
+                IBlockState blockstatePlacement = block.getStateForPlacement(world, pos, side, hitX, hitY, hitZ, /*meta*/ 0, player, hand);
+                if (!world.setBlockState(pos, blockstatePlacement, 11))
+                    return EnumActionResult.FAIL;
+
+                IBlockState state = world.getBlockState(pos);
+                if (state.getBlock() == block)
+                {
+                    ItemBlock.setTileEntityNBT(world, player, pos, stack);
+                    block.onBlockPlacedBy(world, pos, state, player, stack);
+
+                    if (player instanceof EntityPlayerMP)
+                        CriteriaTriggers.PLACED_BLOCK.trigger((EntityPlayerMP) player, pos, stack);
+                }
+
+                world.playSound(null, pos, SoundType.STONE.getPlaceSound(), SoundCategory.BLOCKS, (SoundType.STONE.getVolume() + 1.0F) / 2.0F, SoundType.STONE.getPitch() * 0.8F);
+                SkullDisplayEntity tile = (SkullDisplayEntity) world.getTileEntity(pos);
+
+                if (tile != null) {
+                    tile.setModel(stack.getItemDamage(), !this.isFresh(), getHasStand(stack));
+                    EnumFacing.Axis axis = side.getAxis();
+                    if (axis == EnumFacing.Axis.Y) {
+                        tile.setAngle(angleToPlayer(pos, new Vector2d(player.posX, player.posZ)));
+                    }else if(axis == EnumFacing.Axis.X) {
+                        tile.setAngle((short) side.getHorizontalAngle());
+                    }else if(axis == EnumFacing.Axis.Z) {
+                        tile.setAngle((short) (180 + side.getHorizontalAngle()));
+                    }
+                    world.notifyBlockUpdate(pos, state, state, 0);
+                    tile.markDirty();
+                    stack.shrink(1);
+
+                }
+
+            }
+        }
+        if (!player.world.isRemote && player.canPlayerEdit(pos, side, stack) && world.mayPlace(block, pos, false, side, (Entity) null) && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == MosasaurusDinosaur.class) {
+
+            if (side == EnumFacing.DOWN)
+            {
+                return EnumActionResult.FAIL;
+            }
+
+            if (block.canPlaceBlockAt(world, pos)) {
+                IBlockState blockstatePlacement = block.getStateForPlacement(world, pos, side, hitX, hitY, hitZ, /*meta*/ 0, player, hand);
+                if (!world.setBlockState(pos, blockstatePlacement, 11))
+                    return EnumActionResult.FAIL;
+
+                IBlockState state = world.getBlockState(pos);
+                if (state.getBlock() == block)
+                {
+                    ItemBlock.setTileEntityNBT(world, player, pos, stack);
+                    block.onBlockPlacedBy(world, pos, state, player, stack);
+
+                    if (player instanceof EntityPlayerMP)
+                        CriteriaTriggers.PLACED_BLOCK.trigger((EntityPlayerMP) player, pos, stack);
+                }
+
+                world.playSound(null, pos, SoundType.STONE.getPlaceSound(), SoundCategory.BLOCKS, (SoundType.STONE.getVolume() + 1.0F) / 2.0F, SoundType.STONE.getPitch() * 0.8F);
+                SkullDisplayEntity tile = (SkullDisplayEntity) world.getTileEntity(pos);
+
+                if (tile != null) {
+                    tile.setModel(stack.getItemDamage(), !this.isFresh(), getHasStand(stack));
+                    EnumFacing.Axis axis = side.getAxis();
+                    if (axis == EnumFacing.Axis.Y) {
+                        tile.setAngle(angleToPlayer(pos, new Vector2d(player.posX, player.posZ)));
+                    }else if(axis == EnumFacing.Axis.X) {
+                        tile.setAngle((short) side.getHorizontalAngle());
+                    }else if(axis == EnumFacing.Axis.Z) {
+                        tile.setAngle((short) (180 + side.getHorizontalAngle()));
+                    }
+                    world.notifyBlockUpdate(pos, state, state, 0);
+                    tile.markDirty();
+                    stack.shrink(1);
+
+                }
+
+            }
+        }
+        if (!player.world.isRemote && player.canPlayerEdit(pos, side, stack) && world.mayPlace(block, pos, false, side, (Entity) null) && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == MetriacanthosaurusDinosaur.class) {
 
             if (side == EnumFacing.DOWN)
             {
@@ -2007,7 +3464,286 @@ public class FossilItem extends Item implements GrindableItem {
                 Minecraft.getMinecraft().ingameGUI.addChatMessage(ChatType.GAME_INFO, change);
             }
         }
+        if (player.isSneaking() && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == DimetrodonDinosaur.class) {
+            boolean oldType = getHasStand(stack);
+            boolean type = changeStandType(stack);
+            if (type != oldType && world.isRemote) {
+                TextComponentString change = new TextComponentString(LangUtils.translate(LangUtils.STAND_CHANGE.get("type")).replace("{mode}", LangUtils.getStandType(type)));
+                change.getStyle().setColor(TextFormatting.YELLOW);
+                Minecraft.getMinecraft().ingameGUI.addChatMessage(ChatType.GAME_INFO, change);
+            }
+        }
         if (player.isSneaking() && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == IndoraptorDinosaur.class) {
+            boolean oldType = getHasStand(stack);
+            boolean type = changeStandType(stack);
+            if (type != oldType && world.isRemote) {
+                TextComponentString change = new TextComponentString(LangUtils.translate(LangUtils.STAND_CHANGE.get("type")).replace("{mode}", LangUtils.getStandType(type)));
+                change.getStyle().setColor(TextFormatting.YELLOW);
+                Minecraft.getMinecraft().ingameGUI.addChatMessage(ChatType.GAME_INFO, change);
+            }
+        }
+        if (player.isSneaking() && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == LudodactylusDinosaur.class) {
+            boolean oldType = getHasStand(stack);
+            boolean type = changeStandType(stack);
+            if (type != oldType && world.isRemote) {
+                TextComponentString change = new TextComponentString(LangUtils.translate(LangUtils.STAND_CHANGE.get("type")).replace("{mode}", LangUtils.getStandType(type)));
+                change.getStyle().setColor(TextFormatting.YELLOW);
+                Minecraft.getMinecraft().ingameGUI.addChatMessage(ChatType.GAME_INFO, change);
+            }
+        }
+        if (player.isSneaking() && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == LambeosaurusDinosaur.class) {
+            boolean oldType = getHasStand(stack);
+            boolean type = changeStandType(stack);
+            if (type != oldType && world.isRemote) {
+                TextComponentString change = new TextComponentString(LangUtils.translate(LangUtils.STAND_CHANGE.get("type")).replace("{mode}", LangUtils.getStandType(type)));
+                change.getStyle().setColor(TextFormatting.YELLOW);
+                Minecraft.getMinecraft().ingameGUI.addChatMessage(ChatType.GAME_INFO, change);
+            }
+        }
+        if (player.isSneaking() && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == MajungasaurusDinosaur.class) {
+            boolean oldType = getHasStand(stack);
+            boolean type = changeStandType(stack);
+            if (type != oldType && world.isRemote) {
+                TextComponentString change = new TextComponentString(LangUtils.translate(LangUtils.STAND_CHANGE.get("type")).replace("{mode}", LangUtils.getStandType(type)));
+                change.getStyle().setColor(TextFormatting.YELLOW);
+                Minecraft.getMinecraft().ingameGUI.addChatMessage(ChatType.GAME_INFO, change);
+            }
+        }
+        if (player.isSneaking() && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == MawsoniaDinosaur.class) {
+            boolean oldType = getHasStand(stack);
+            boolean type = changeStandType(stack);
+            if (type != oldType && world.isRemote) {
+                TextComponentString change = new TextComponentString(LangUtils.translate(LangUtils.STAND_CHANGE.get("type")).replace("{mode}", LangUtils.getStandType(type)));
+                change.getStyle().setColor(TextFormatting.YELLOW);
+                Minecraft.getMinecraft().ingameGUI.addChatMessage(ChatType.GAME_INFO, change);
+            }
+        }
+        if (player.isSneaking() && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == MamenchisaurusDinosaur.class) {
+            boolean oldType = getHasStand(stack);
+            boolean type = changeStandType(stack);
+            if (type != oldType && world.isRemote) {
+                TextComponentString change = new TextComponentString(LangUtils.translate(LangUtils.STAND_CHANGE.get("type")).replace("{mode}", LangUtils.getStandType(type)));
+                change.getStyle().setColor(TextFormatting.YELLOW);
+                Minecraft.getMinecraft().ingameGUI.addChatMessage(ChatType.GAME_INFO, change);
+            }
+        }
+        if (player.isSneaking() && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == MetriacanthosaurusDinosaur.class) {
+            boolean oldType = getHasStand(stack);
+            boolean type = changeStandType(stack);
+            if (type != oldType && world.isRemote) {
+                TextComponentString change = new TextComponentString(LangUtils.translate(LangUtils.STAND_CHANGE.get("type")).replace("{mode}", LangUtils.getStandType(type)));
+                change.getStyle().setColor(TextFormatting.YELLOW);
+                Minecraft.getMinecraft().ingameGUI.addChatMessage(ChatType.GAME_INFO, change);
+            }
+        }
+        if (player.isSneaking() && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == DilophosaurusDinosaur.class) {
+            boolean oldType = getHasStand(stack);
+            boolean type = changeStandType(stack);
+            if (type != oldType && world.isRemote) {
+                TextComponentString change = new TextComponentString(LangUtils.translate(LangUtils.STAND_CHANGE.get("type")).replace("{mode}", LangUtils.getStandType(type)));
+                change.getStyle().setColor(TextFormatting.YELLOW);
+                Minecraft.getMinecraft().ingameGUI.addChatMessage(ChatType.GAME_INFO, change);
+            }
+        }
+        if (player.isSneaking() && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == PachycephalosaurusDinosaur.class) {
+            boolean oldType = getHasStand(stack);
+            boolean type = changeStandType(stack);
+            if (type != oldType && world.isRemote) {
+                TextComponentString change = new TextComponentString(LangUtils.translate(LangUtils.STAND_CHANGE.get("type")).replace("{mode}", LangUtils.getStandType(type)));
+                change.getStyle().setColor(TextFormatting.YELLOW);
+                Minecraft.getMinecraft().ingameGUI.addChatMessage(ChatType.GAME_INFO, change);
+            }
+        }
+        if (player.isSneaking() && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == MosasaurusDinosaur.class) {
+            boolean oldType = getHasStand(stack);
+            boolean type = changeStandType(stack);
+            if (type != oldType && world.isRemote) {
+                TextComponentString change = new TextComponentString(LangUtils.translate(LangUtils.STAND_CHANGE.get("type")).replace("{mode}", LangUtils.getStandType(type)));
+                change.getStyle().setColor(TextFormatting.YELLOW);
+                Minecraft.getMinecraft().ingameGUI.addChatMessage(ChatType.GAME_INFO, change);
+            }
+        }
+        if (player.isSneaking() && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == MegatheriumDinosaur.class) {
+            boolean oldType = getHasStand(stack);
+            boolean type = changeStandType(stack);
+            if (type != oldType && world.isRemote) {
+                TextComponentString change = new TextComponentString(LangUtils.translate(LangUtils.STAND_CHANGE.get("type")).replace("{mode}", LangUtils.getStandType(type)));
+                change.getStyle().setColor(TextFormatting.YELLOW);
+                Minecraft.getMinecraft().ingameGUI.addChatMessage(ChatType.GAME_INFO, change);
+            }
+        }
+        if (player.isSneaking() && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == MammothDinosaur.class) {
+            boolean oldType = getHasStand(stack);
+            boolean type = changeStandType(stack);
+            if (type != oldType && world.isRemote) {
+                TextComponentString change = new TextComponentString(LangUtils.translate(LangUtils.STAND_CHANGE.get("type")).replace("{mode}", LangUtils.getStandType(type)));
+                change.getStyle().setColor(TextFormatting.YELLOW);
+                Minecraft.getMinecraft().ingameGUI.addChatMessage(ChatType.GAME_INFO, change);
+            }
+        }
+        if (player.isSneaking() && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == ParasaurolophusDinosaur.class) {
+            boolean oldType = getHasStand(stack);
+            boolean type = changeStandType(stack);
+            if (type != oldType && world.isRemote) {
+                TextComponentString change = new TextComponentString(LangUtils.translate(LangUtils.STAND_CHANGE.get("type")).replace("{mode}", LangUtils.getStandType(type)));
+                change.getStyle().setColor(TextFormatting.YELLOW);
+                Minecraft.getMinecraft().ingameGUI.addChatMessage(ChatType.GAME_INFO, change);
+            }
+        }
+        if (player.isSneaking() && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == PostosuchusDinosaur.class) {
+            boolean oldType = getHasStand(stack);
+            boolean type = changeStandType(stack);
+            if (type != oldType && world.isRemote) {
+                TextComponentString change = new TextComponentString(LangUtils.translate(LangUtils.STAND_CHANGE.get("type")).replace("{mode}", LangUtils.getStandType(type)));
+                change.getStyle().setColor(TextFormatting.YELLOW);
+                Minecraft.getMinecraft().ingameGUI.addChatMessage(ChatType.GAME_INFO, change);
+            }
+        }
+        if (player.isSneaking() && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == ProtoceratopsDinosaur.class) {
+            boolean oldType = getHasStand(stack);
+            boolean type = changeStandType(stack);
+            if (type != oldType && world.isRemote) {
+                TextComponentString change = new TextComponentString(LangUtils.translate(LangUtils.STAND_CHANGE.get("type")).replace("{mode}", LangUtils.getStandType(type)));
+                change.getStyle().setColor(TextFormatting.YELLOW);
+                Minecraft.getMinecraft().ingameGUI.addChatMessage(ChatType.GAME_INFO, change);
+            }
+        }
+        if (player.isSneaking() && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == RugopsDinosaur.class) {
+            boolean oldType = getHasStand(stack);
+            boolean type = changeStandType(stack);
+            if (type != oldType && world.isRemote) {
+                TextComponentString change = new TextComponentString(LangUtils.translate(LangUtils.STAND_CHANGE.get("type")).replace("{mode}", LangUtils.getStandType(type)));
+                change.getStyle().setColor(TextFormatting.YELLOW);
+                Minecraft.getMinecraft().ingameGUI.addChatMessage(ChatType.GAME_INFO, change);
+            }
+        }
+        if (player.isSneaking() && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == RaphusrexDinosaur.class) {
+            boolean oldType = getHasStand(stack);
+            boolean type = changeStandType(stack);
+            if (type != oldType && world.isRemote) {
+                TextComponentString change = new TextComponentString(LangUtils.translate(LangUtils.STAND_CHANGE.get("type")).replace("{mode}", LangUtils.getStandType(type)));
+                change.getStyle().setColor(TextFormatting.YELLOW);
+                Minecraft.getMinecraft().ingameGUI.addChatMessage(ChatType.GAME_INFO, change);
+            }
+        }
+        if (player.isSneaking() && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == SinoceratopsDinosaur.class) {
+            boolean oldType = getHasStand(stack);
+            boolean type = changeStandType(stack);
+            if (type != oldType && world.isRemote) {
+                TextComponentString change = new TextComponentString(LangUtils.translate(LangUtils.STAND_CHANGE.get("type")).replace("{mode}", LangUtils.getStandType(type)));
+                change.getStyle().setColor(TextFormatting.YELLOW);
+                Minecraft.getMinecraft().ingameGUI.addChatMessage(ChatType.GAME_INFO, change);
+            }
+        }
+        if (player.isSneaking() && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == SpinosaurusDinosaur.class) {
+            boolean oldType = getHasStand(stack);
+            boolean type = changeStandType(stack);
+            if (type != oldType && world.isRemote) {
+                TextComponentString change = new TextComponentString(LangUtils.translate(LangUtils.STAND_CHANGE.get("type")).replace("{mode}", LangUtils.getStandType(type)));
+                change.getStyle().setColor(TextFormatting.YELLOW);
+                Minecraft.getMinecraft().ingameGUI.addChatMessage(ChatType.GAME_INFO, change);
+            }
+        }
+        if (player.isSneaking() && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == SpinoraptorDinosaur.class) {
+            boolean oldType = getHasStand(stack);
+            boolean type = changeStandType(stack);
+            if (type != oldType && world.isRemote) {
+                TextComponentString change = new TextComponentString(LangUtils.translate(LangUtils.STAND_CHANGE.get("type")).replace("{mode}", LangUtils.getStandType(type)));
+                change.getStyle().setColor(TextFormatting.YELLOW);
+                Minecraft.getMinecraft().ingameGUI.addChatMessage(ChatType.GAME_INFO, change);
+            }
+        }
+        if (player.isSneaking() && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == QuetzalDinosaur.class) {
+            boolean oldType = getHasStand(stack);
+            boolean type = changeStandType(stack);
+            if (type != oldType && world.isRemote) {
+                TextComponentString change = new TextComponentString(LangUtils.translate(LangUtils.STAND_CHANGE.get("type")).replace("{mode}", LangUtils.getStandType(type)));
+                change.getStyle().setColor(TextFormatting.YELLOW);
+                Minecraft.getMinecraft().ingameGUI.addChatMessage(ChatType.GAME_INFO, change);
+            }
+        }
+        if (player.isSneaking() && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == SmilodonDinosaur.class) {
+            boolean oldType = getHasStand(stack);
+            boolean type = changeStandType(stack);
+            if (type != oldType && world.isRemote) {
+                TextComponentString change = new TextComponentString(LangUtils.translate(LangUtils.STAND_CHANGE.get("type")).replace("{mode}", LangUtils.getStandType(type)));
+                change.getStyle().setColor(TextFormatting.YELLOW);
+                Minecraft.getMinecraft().ingameGUI.addChatMessage(ChatType.GAME_INFO, change);
+            }
+        }
+        if (player.isSneaking() && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == StegosaurusDinosaur.class) {
+            boolean oldType = getHasStand(stack);
+            boolean type = changeStandType(stack);
+            if (type != oldType && world.isRemote) {
+                TextComponentString change = new TextComponentString(LangUtils.translate(LangUtils.STAND_CHANGE.get("type")).replace("{mode}", LangUtils.getStandType(type)));
+                change.getStyle().setColor(TextFormatting.YELLOW);
+                Minecraft.getMinecraft().ingameGUI.addChatMessage(ChatType.GAME_INFO, change);
+            }
+        }
+        if (player.isSneaking() && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == StyracosaurusDinosaur.class) {
+            boolean oldType = getHasStand(stack);
+            boolean type = changeStandType(stack);
+            if (type != oldType && world.isRemote) {
+                TextComponentString change = new TextComponentString(LangUtils.translate(LangUtils.STAND_CHANGE.get("type")).replace("{mode}", LangUtils.getStandType(type)));
+                change.getStyle().setColor(TextFormatting.YELLOW);
+                Minecraft.getMinecraft().ingameGUI.addChatMessage(ChatType.GAME_INFO, change);
+            }
+        }
+        if (player.isSneaking() && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == SuchomimusDinosaur.class) {
+            boolean oldType = getHasStand(stack);
+            boolean type = changeStandType(stack);
+            if (type != oldType && world.isRemote) {
+                TextComponentString change = new TextComponentString(LangUtils.translate(LangUtils.STAND_CHANGE.get("type")).replace("{mode}", LangUtils.getStandType(type)));
+                change.getStyle().setColor(TextFormatting.YELLOW);
+                Minecraft.getMinecraft().ingameGUI.addChatMessage(ChatType.GAME_INFO, change);
+            }
+        }
+        if (player.isSneaking() && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == PteranodonDinosaur.class) {
+            boolean oldType = getHasStand(stack);
+            boolean type = changeStandType(stack);
+            if (type != oldType && world.isRemote) {
+                TextComponentString change = new TextComponentString(LangUtils.translate(LangUtils.STAND_CHANGE.get("type")).replace("{mode}", LangUtils.getStandType(type)));
+                change.getStyle().setColor(TextFormatting.YELLOW);
+                Minecraft.getMinecraft().ingameGUI.addChatMessage(ChatType.GAME_INFO, change);
+            }
+        }
+        if (player.isSneaking() && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == TropeognathusDinosaur.class) {
+            boolean oldType = getHasStand(stack);
+            boolean type = changeStandType(stack);
+            if (type != oldType && world.isRemote) {
+                TextComponentString change = new TextComponentString(LangUtils.translate(LangUtils.STAND_CHANGE.get("type")).replace("{mode}", LangUtils.getStandType(type)));
+                change.getStyle().setColor(TextFormatting.YELLOW);
+                Minecraft.getMinecraft().ingameGUI.addChatMessage(ChatType.GAME_INFO, change);
+            }
+        }
+        if (player.isSneaking() && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == TherizinosaurusDinosaur.class) {
+            boolean oldType = getHasStand(stack);
+            boolean type = changeStandType(stack);
+            if (type != oldType && world.isRemote) {
+                TextComponentString change = new TextComponentString(LangUtils.translate(LangUtils.STAND_CHANGE.get("type")).replace("{mode}", LangUtils.getStandType(type)));
+                change.getStyle().setColor(TextFormatting.YELLOW);
+                Minecraft.getMinecraft().ingameGUI.addChatMessage(ChatType.GAME_INFO, change);
+            }
+        }
+        if (player.isSneaking() && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == TylosaurusDinosaur.class) {
+            boolean oldType = getHasStand(stack);
+            boolean type = changeStandType(stack);
+            if (type != oldType && world.isRemote) {
+                TextComponentString change = new TextComponentString(LangUtils.translate(LangUtils.STAND_CHANGE.get("type")).replace("{mode}", LangUtils.getStandType(type)));
+                change.getStyle().setColor(TextFormatting.YELLOW);
+                Minecraft.getMinecraft().ingameGUI.addChatMessage(ChatType.GAME_INFO, change);
+            }
+        }
+        if (player.isSneaking() && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == TitanisDinosaur.class) {
+            boolean oldType = getHasStand(stack);
+            boolean type = changeStandType(stack);
+            if (type != oldType && world.isRemote) {
+                TextComponentString change = new TextComponentString(LangUtils.translate(LangUtils.STAND_CHANGE.get("type")).replace("{mode}", LangUtils.getStandType(type)));
+                change.getStyle().setColor(TextFormatting.YELLOW);
+                Minecraft.getMinecraft().ingameGUI.addChatMessage(ChatType.GAME_INFO, change);
+            }
+        }
+        if (player.isSneaking() && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == TriceratopsDinosaur.class) {
             boolean oldType = getHasStand(stack);
             boolean type = changeStandType(stack);
             if (type != oldType && world.isRemote) {

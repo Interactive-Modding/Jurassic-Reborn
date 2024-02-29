@@ -1,6 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
-  "group": "rebornmod:gypsum_stone",
+  "group": "rebornmod:gypsum_cobblestone",
   "pattern": [
     "AAA",
     "AAA",
@@ -13,7 +13,7 @@
     }
   },
   "result": {
-    "item": "rebornmod:gypsum_stone",
+    "item": "rebornmod:gypsum_cobblestone",
     "data": 0
   }
 }

@@ -80,9 +80,11 @@ public class WaterLeapAI extends EntityAIBase {
 
     private boolean isAirAbove(BlockPos pos, int xOffset, int zOffset, int multiplier) {
         for(float i = 1; i != 5; i++) {
-            if (this.entity.world.getBlockState(pos.add(xOffset * multiplier, i, zOffset * multiplier)).getBlock() == Blocks.AIR) {
-                this.jumpheight = yeetheight + ((i/2)-0.5f);
-                return true;
+            if (this.entity.world.isBlockLoaded(pos.add(xOffset * multiplier, i, zOffset * multiplier))) {
+                if (this.entity.world.getBlockState(pos.add(xOffset * multiplier, i, zOffset * multiplier)).getBlock() == Blocks.AIR) {
+                    this.jumpheight = yeetheight + ((i / 2) - 0.5f);
+                    return true;
+                }
             }
         }
         return false;

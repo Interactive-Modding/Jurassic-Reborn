@@ -171,6 +171,7 @@ public enum RenderingHandler {
 
         registerBlockRenderer(AMBER_ORE, "amber_ore");
         registerBlockRenderer(ICE_SHARD, "ice_shard");
+        registerBlockRenderer(ICE_AGE_SHARD, "ice_age_shard");
         registerBlockRenderer(CLEANING_STATION, "cleaning_station");
         registerBlockRenderer(FOSSIL_GRINDER, "fossil_grinder");
         registerBlockRenderer(DNA_SEQUENCER, "dna_sequencer");
@@ -185,6 +186,9 @@ public enum RenderingHandler {
         registerBlockRenderer(GYPSUM_STONE, "gypsum_stone");
         registerBlockRenderer(GYPSUM_COBBLESTONE, "gypsum_cobblestone");
         registerBlockRenderer(GYPSUM_BRICKS, "gypsum_bricks");
+        registerBlockRenderer(GYPSUM_PATHWAY, "gypsum_pathway");
+        registerBlockRenderer(GYPSUM_MIXED_PATH, "gypsum_mixed_path");
+        registerBlockRenderer(GYPSUM_TILES, "gypsum_tiles");
         registerBlockRenderer(SKULL_DISPLAY, "skull_display");
         registerBlockRenderer(BlockHandler.DISPLAY_BLOCK, "display_block");
 
@@ -288,6 +292,7 @@ public enum RenderingHandler {
         registerItemRenderer(LASER);
         registerItemRenderer(DNA_NUCLEOTIDES, "dna_base_material");
         registerItemRenderer(SEA_LAMPREY);
+        registerItemRenderer(FROZEN_LEECH);
 
         registerItemRenderer(AMBER, 0, "amber_mosquito");
         registerItemRenderer(AMBER, 1, "amber_aphid");

@@ -44,7 +44,7 @@ public class DNAExtractorBlockEntity extends MachineBaseBlockEntity {
     protected boolean canProcess(int process) {
         ItemStack extraction = this.slots.get(0);
         ItemStack storage = this.slots.get(1);
-        if (storage.getItem() == ItemHandler.STORAGE_DISC && (extraction.getItem() == ItemHandler.AMBER || extraction.getItem() == ItemHandler.SEA_LAMPREY || extraction.getItem() == ItemHandler.DINOSAUR_MEAT) && (storage.getTagCompound() == null || !storage.getTagCompound().hasKey("Genetics"))) {
+        if (storage.getItem() == ItemHandler.STORAGE_DISC && (extraction.getItem() == ItemHandler.AMBER || extraction.getItem() == ItemHandler.SEA_LAMPREY || extraction.getItem() == ItemHandler.FROZEN_LEECH || extraction.getItem() == ItemHandler.DINOSAUR_MEAT) && (storage.getTagCompound() == null || !storage.getTagCompound().hasKey("Genetics"))) {
             for (int i = 2; i < 6; i++) {
                 if (this.slots.get(i).isEmpty()) {
                     return true;
@@ -62,7 +62,7 @@ public class DNAExtractorBlockEntity extends MachineBaseBlockEntity {
 	@Override
 	public boolean isItemValidForSlot(int slotID, ItemStack itemstack) {
 
-		if ((slotID == 0 && itemstack != null && itemstack.getItem() == ItemHandler.AMBER || itemstack.getItem() == ItemHandler.SEA_LAMPREY || itemstack.getItem() == ItemHandler.DINOSAUR_MEAT)
+		if ((slotID == 0 && itemstack != null && itemstack.getItem() == ItemHandler.AMBER || itemstack.getItem() == ItemHandler.SEA_LAMPREY || itemstack.getItem() == ItemHandler.FROZEN_LEECH || itemstack.getItem() == ItemHandler.DINOSAUR_MEAT)
 				|| slotID == 1 && itemstack != null && itemstack.getItem() == ItemHandler.STORAGE_DISC && (itemstack.getTagCompound() == null || !itemstack.getTagCompound().hasKey("DNAQuality"))) {
 
 			return true;
@@ -114,7 +114,25 @@ public class DNAExtractorBlockEntity extends MachineBaseBlockEntity {
 
                     disc.setTagCompound(nbt);
                 }
-            } else if (item == ItemHandler.DINOSAUR_MEAT) {
+            }
+            if (item == ItemHandler.AMBER || item == ItemHandler.FROZEN_LEECH) {
+                if (input.getItemDamage() == 0) {
+                    List<Dinosaur> possibleDinos = item == ItemHandler.AMBER ? EntityHandler.getDinosaursFromAmber() : EntityHandler.getMammalCreatures();
+
+                    Dinosaur dino = possibleDinos.get(rand.nextInt(possibleDinos.size()));
+
+                    disc = new ItemStack(ItemHandler.STORAGE_DISC);
+
+                    int quality = 50 + (rand.nextInt(50));
+
+                    DinoDNA dna = new DinoDNA(dino, quality, GeneticsHelper.randomGenetics(rand));
+
+                    NBTTagCompound nbt = new NBTTagCompound();
+                    dna.writeToNBT(nbt);
+
+                    disc.setTagCompound(nbt);
+                }
+            }else if (item == ItemHandler.DINOSAUR_MEAT) {
     			Dinosaur dino = EntityHandler.getDinosaurById(input.getMetadata());
                 disc = new ItemStack(ItemHandler.STORAGE_DISC);
                 DinoDNA dna = new DinoDNA(dino, 100, GeneticsHelper.randomGenetics(rand));

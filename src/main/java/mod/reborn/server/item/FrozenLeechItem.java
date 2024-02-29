@@ -9,8 +9,8 @@ import net.minecraft.util.NonNullList;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class FrozenLeachItem extends Item {
-    public FrozenLeachItem() {
+public class FrozenLeechItem extends Item {
+    public FrozenLeechItem() {
         super();
         this.setCreativeTab(TabHandler.ITEMS);
         this.setHasSubtypes(true);
@@ -18,16 +18,6 @@ public class FrozenLeachItem extends Item {
 
     @Override
     public String getItemStackDisplayName(ItemStack stack) {
-        return LangUtils.translate(this.getUnlocalizedName() + ".name").replace("{stored}", LangUtils.translate("frozen." + "leach" + ".name"));
-    }
-
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> subItems) {
-        if(this.isInCreativeTab(tab))
-        {
-            subItems.add(new ItemStack(this, 1, 0));
-            subItems.add(new ItemStack(this, 1, 1));
-        }
+        return LangUtils.translate(this.getUnlocalizedName() + ".name").replace("{stored}", LangUtils.translate("frozen." + "leech" + ".name"));
     }
 }

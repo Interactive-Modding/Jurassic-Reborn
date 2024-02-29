@@ -140,6 +140,15 @@ public class EntityHandler {
         }
         return marineDinosaurs;
     }
+    public static List<Dinosaur> getMammalCreatures() {
+        List<Dinosaur> mammalcreatures = new ArrayList<>();
+        for (Dinosaur dino : getRegisteredDinosaurs()) {
+            if (dino.isMammal() && !(dino instanceof Hybrid)) {
+                mammalcreatures.add(dino);
+            }
+        }
+        return mammalcreatures;
+    }
 
     public static void init() {
         registerDinosaur(0,VELOCIRAPTOR);

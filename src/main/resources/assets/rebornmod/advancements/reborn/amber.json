@@ -36,6 +36,17 @@
                 ]
             }
         },
+        "frozen_leech": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "rebornmod:frozen_leech",
+            		"data": 0
+                    }
+                ]
+            }
+        },
         "amber_1": {
             "trigger": "minecraft:inventory_changed",
             "conditions": {
@@ -51,6 +62,7 @@
     "requirements": [
         [
 	    "sea_lamprey",
+	    "frozen_leech",
             "amber",
             "amber_1"
         ]

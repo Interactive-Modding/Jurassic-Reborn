@@ -41,12 +41,15 @@ public class DNAExtractorRecipeWrapper implements IRecipeWrapper{
 		Random rand = new Random();
 		List<List<ItemStack>> outputs = new ArrayList<List<ItemStack>>();
 		outputs.add(new ArrayList<ItemStack>());
-		if (input.getItem() == ItemHandler.AMBER || input.getItem() == ItemHandler.SEA_LAMPREY) 
+		if (input.getItem() == ItemHandler.AMBER || input.getItem() == ItemHandler.SEA_LAMPREY)
 		{
-            if (input.getItemDamage() == 0) 
+            if (input.getItemDamage() == 0)
             {
                 List<Dinosaur> possibleDinos = input.getItem() == ItemHandler.AMBER ? EntityHandler.getDinosaursFromAmber() : EntityHandler.getMarineCreatures();
+
+
                 for(Dinosaur dino : possibleDinos)
+
                 {
                 	ItemStack disc = ItemStack.EMPTY;
                 	disc = new ItemStack(ItemHandler.STORAGE_DISC);
@@ -61,8 +64,9 @@ public class DNAExtractorRecipeWrapper implements IRecipeWrapper{
                     disc.setTagCompound(nbt);
                     outputs.get(0).add(disc);
                 }
-            } 
-            else if (input.getItemDamage() == 1) 
+            }
+            }
+            else if (input.getItemDamage() == 1)
             {
                 List<Plant> possiblePlants = PlantHandler.getPrehistoricPlantsAndTrees();
                 for(Plant plant : possiblePlants)
@@ -83,7 +87,31 @@ public class DNAExtractorRecipeWrapper implements IRecipeWrapper{
                     outputs.get(0).add(disc);
                 }
             }
-        } 
+        else if (input.getItem() == ItemHandler.AMBER || input.getItem() == ItemHandler.FROZEN_LEECH)
+        {
+            if (input.getItemDamage() == 0)
+            {
+                List<Dinosaur> possibleDinos = input.getItem() == ItemHandler.AMBER ? EntityHandler.getDinosaursFromAmber() : EntityHandler.getMammalCreatures();
+
+
+                for(Dinosaur dino : possibleDinos)
+
+                {
+                    ItemStack disc = ItemStack.EMPTY;
+                    disc = new ItemStack(ItemHandler.STORAGE_DISC);
+
+                    int quality = 50 + (rand.nextInt(50));
+
+                    DinoDNA dna = new DinoDNA(dino, quality, GeneticsHelper.randomGenetics(rand));
+
+                    NBTTagCompound nbt = new NBTTagCompound();
+                    dna.writeToNBT(nbt);
+
+                    disc.setTagCompound(nbt);
+                    outputs.get(0).add(disc);
+                }
+            }
+        }
 		else if (input.getItem() == ItemHandler.DINOSAUR_MEAT) 
 		{
 			ItemStack disc = ItemStack.EMPTY;
@@ -98,14 +126,17 @@ public class DNAExtractorRecipeWrapper implements IRecipeWrapper{
             outputs.get(0).add(disc);
         }
 		return outputs;
+
 	}
+
 	
 	public static List<DNAExtractorRecipeWrapper> getRecipes(IJeiHelpers helpers)
 	{
 		List<DNAExtractorRecipeWrapper> list = new ArrayList<>();
 		list.add(new DNAExtractorRecipeWrapper(new ItemStack(ItemHandler.AMBER)));
 		list.add(new DNAExtractorRecipeWrapper(new ItemStack(ItemHandler.SEA_LAMPREY)));
-		list.add(new DNAExtractorRecipeWrapper(new ItemStack(ItemHandler.AMBER, 1, 1)));
+        list.add(new DNAExtractorRecipeWrapper(new ItemStack(ItemHandler.FROZEN_LEECH)));
+        list.add(new DNAExtractorRecipeWrapper(new ItemStack(ItemHandler.AMBER, 1, 1)));
 		for(int dino = 0; dino < EntityHandler.getDinosaurs().size(); dino++)
 			list.add(new DNAExtractorRecipeWrapper(new ItemStack(ItemHandler.DINOSAUR_MEAT, 1, dino)));
 		return list;

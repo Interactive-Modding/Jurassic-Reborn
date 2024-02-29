@@ -54,7 +54,7 @@ public class ItemHandler {
     public static final AttractionSignItem ATTRACTION_SIGN = new AttractionSignItem();
 
     public static final AmberItem AMBER = new AmberItem();
-    public static final FrozenLeachItem FROZEN_LEACH = new FrozenLeachItem();
+    public static final FrozenLeechItem FROZEN_LEECH = new FrozenLeechItem();
     public static final BasicItem PETRI_DISH = new BasicItem(TabHandler.ITEMS);
     public static final BasicItem PETRI_DISH_AGAR = new BasicItem(TabHandler.ITEMS);
     public static final BasicItem EMPTY_TEST_TUBE = new BasicItem(TabHandler.ITEMS);
@@ -329,6 +329,7 @@ public class ItemHandler {
         registerItem(SPAWN_EGG, "Dino Spawn Egg");
         registerItem(FIELD_GUIDE, "Field Guide");
         registerItem(AMBER, "Amber");
+        registerItem(FROZEN_LEECH,"Frozen Leech");
         registerItem(SEA_LAMPREY, "Sea Lamprey");
         registerItem(PLASTER_AND_BANDAGE, "Plaster And Bandage");
         registerItem(EMPTY_TEST_TUBE, "Empty Test Tube");

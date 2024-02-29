@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "rebornmod:gypsum_mixed_path",
+  "pattern": [
+    "   ",
+    " AA",
+    " AA"
+  ],
+  "key": {
+    "A": {
+      "item": "rebornmod:gypsum_pathway",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "rebornmod:gypsum_mixed_path",
+    "data": 0,
+    "count": 4
+  }
+}

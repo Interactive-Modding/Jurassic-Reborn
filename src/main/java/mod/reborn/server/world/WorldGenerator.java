@@ -147,11 +147,16 @@ public enum WorldGenerator implements IWorldGenerator {
                 this.generateOre(world, chunkX, chunkZ, 20, 8, 3, BlockHandler.ICE_SHARD.getDefaultState(), random, defaultPredicate);
             }
         }
+        if (RebornConfig.MINERAL_GENERATION.iceAgeShardGeneration) {
+            this.generateOre(world, chunkX, chunkZ, 20, 8, 4, BlockHandler.ICE_AGE_SHARD.getDefaultState(), random, defaultPredicate);
+        }
 
         if (RebornConfig.MINERAL_GENERATION.gypsumGeneration) {
             this.generateOre(world, chunkX, chunkZ, 128, 32, 10, BlockHandler.GYPSUM_STONE.getDefaultState(), random, defaultPredicate);
         }
     }
+
+
 
     public void generateOre(World world, int chunkX, int chunkZ, int minHeight, int veinsPerChunk, int veinSize, IBlockState state, Random random, Predicate<IBlockState> predicate) {
         WorldGenMinable worldGenMinable = new WorldGenMinable(state, veinSize, predicate);
