@@ -34,7 +34,6 @@ public class AttractionSignRenderer implements IRenderFactory<AttractionSignEnti
             GlStateManager.pushMatrix();
             GlStateManager.translate(x, y, z);
             GlStateManager.rotate(180.0F - yaw, 0.0F, 1.0F, 0.0F);
-            GlStateManager.scale(0.15F,0.15F,0.15F);
             GlStateManager.enableRescaleNormal();
             GlStateManager.disableCull();
 
