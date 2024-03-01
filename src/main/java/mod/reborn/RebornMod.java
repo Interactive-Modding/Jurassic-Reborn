@@ -16,7 +16,7 @@ import org.apache.logging.log4j.Logger;
 import mod.reborn.server.command.ForceAnimationCommand;
 import mod.reborn.server.command.SpawnStructureCommand;
 
-@Mod(modid = RebornMod.MODID, name = RebornMod.NAME, version = RebornMod.VERSION, dependencies = "required-after:llibrary@[1.7.19,);required-after:forge@[14.23.5.2772,)")
+@Mod(modid = RebornMod.MODID, name = RebornMod.NAME, version = RebornMod.VERSION, dependencies = "required-after:llibrary@[1.7.15,);required-after:forge@[14.23.5.2772,)")
 public class RebornMod {
     public static final String MODID = "rebornmod";
     public static final String NAME = "JWReborn";
