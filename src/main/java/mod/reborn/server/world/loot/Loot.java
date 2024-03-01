@@ -103,13 +103,13 @@ public class Loot {
             LootEntry skull = Loot.entry(ItemHandler.FOSSILS.get("skull")).weight(2).function(DINOSAUR_DATA).count(1, 2).build();
 
 
-            table.addPool(Loot.pool("fossils").rolls(1, 2).entries(plantFossil, twig, amber, display, skull).build());
+            table.addPool(Loot.pool("jwr_fossils").rolls(1, 2).entries(plantFossil, twig, amber, display, skull).build());
 
             LootEntry[] records = Loot.entries(ItemHandler.JURASSICRAFT_THEME_DISC, ItemHandler.DONT_MOVE_A_MUSCLE_DISC, ItemHandler.TROODONS_AND_RAPTORS_DISC).buildEntries();
             table.addPool(Loot.pool("records").rolls(0, 2).entries(records).build());
         } else if (name == LootTableList.CHESTS_VILLAGE_BLACKSMITH || name == LootTableList.CHESTS_NETHER_BRIDGE || name == LootTableList.CHESTS_SIMPLE_DUNGEON || name == LootTableList.CHESTS_STRONGHOLD_CORRIDOR || name == LootTableList.CHESTS_DESERT_PYRAMID || name == LootTableList.CHESTS_ABANDONED_MINESHAFT || name == LootTableList.CHESTS_IGLOO_CHEST || name == LootTableList.CHESTS_JUNGLE_TEMPLE || name == LootTableList.CHESTS_WOODLAND_MANSION || name == LootTableList.CHESTS_STRONGHOLD_LIBRARY) {
             LootEntry actionFigure = Loot.entry(ItemHandler.DISPLAY_BLOCK).function(DINOSAUR_DATA).weight(1).build();
-            table.addPool(Loot.pool("fossils").rolls(1, 2).entries(actionFigure).build());
+            table.addPool(Loot.pool("jwr_fossils").rolls(1, 2).entries(actionFigure).build());
         }   else if (name == Loot.VISITOR_GROUND_STORAGE) {
             LootEntry amber = Loot.entry(ItemHandler.AMBER).data(0, 1).count(0, 3).build();
             LootEntry wool = Loot.entry(Blocks.WOOL).data(0, 15).count(0, 64).build();
