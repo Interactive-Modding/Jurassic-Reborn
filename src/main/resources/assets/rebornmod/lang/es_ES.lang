@@ -254,6 +254,7 @@ item.shell_cover.name=Cubierta de cascara de {dino}
 item.scales.name=Escamas de {dino}
 item.tail_fin.name=Aleta de la cola de {dino}
 item.tusks.name=Colmillos de {dino}
+item.vehicle_item.place.name=Haga click derecho para colocar un vehiculo 
 
 item.fossilized_egg.name=Huevo Fósilizado
 
@@ -711,7 +712,7 @@ advancements.reborn.spinosaurus_hatched_egg.title=No está en la lista de InGen.
 advancements.reborn.spinosaurus_hatched_egg.description=Coge un espinosaurio.
 advancements.reborn.indominus_hatched_egg.title=Esto dará pesadillas a los padres...
 advancements.reborn.indominus_hatched_egg.description=Coge un Indominus-Rex.
-advancements.reborn.parasaurolophus_hatched_egg.title=¿Evlis?
+advancements.reborn.parasaurolophus_hatched_egg.title=¿Elvis?
 advancements.reborn.parasaurolophus_hatched_egg.description=Coge un Parasaurolophus.
 advancements.reborn.hybrids_hatched_egg.title=Secretos de Henry Wu...
 advancements.reborn.hybrids_hatched_egg.description=Coge un híbrido.

@@ -418,6 +418,7 @@ tile.ginkgo_fence.name=Ginkgo Fence
 tile.ginkgo_fence_gate.name=Ginkgo Fence Gate
 tile.ginkgo_door.name=Ginkgo Door
 item.ginkgo_door_item.name=Ginkgo Door
+item.vehicle_item.place.name=Right click to place a vehicle
 
 tile.araucaria_sapling.name=Araucaria Sapling
 tile.araucaria_planks.name=Araucaria Planks
@@ -760,7 +761,7 @@ advancements.reborn.spinosaurus_hatched_egg.title=Not on InGen's List...
 advancements.reborn.spinosaurus_hatched_egg.description=Hatch a Spinosaurus.
 advancements.reborn.indominus_hatched_egg.title=This will give the parents nightmares...
 advancements.reborn.indominus_hatched_egg.description=Hatch an Indominus-Rex.
-advancements.reborn.parasaurolophus_hatched_egg.title=Evlis?
+advancements.reborn.parasaurolophus_hatched_egg.title=Elvis?
 advancements.reborn.parasaurolophus_hatched_egg.description=Hatch a Parasaurolophus.
 advancements.reborn.hybrids_hatched_egg.title=Secrets of Henry Wu...
 advancements.reborn.hybrids_hatched_egg.description=Hatch a Hybrid.

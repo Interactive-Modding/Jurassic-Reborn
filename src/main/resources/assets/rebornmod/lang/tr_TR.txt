@@ -121,6 +121,7 @@ item.scales_fresh.name=taze {dino name} pulları
 item.tail_fin_fresh.name=taze {dino name} kuyruk yüzgeçleri
 item.foot_bone_fresh.name=taze {dino name} ayak kemiği
 item.tusks_fresh.name=taze {dino name} uzun dişi
+item.vehicle_item.place.name=Araç yerleştirmek için sağ tıklayın
 
 // Bones
 item.bones.name={dino name} kemikleri
@@ -625,7 +626,7 @@ advancements.reborn.spinosaurus_hatched_egg.title=InGen'in Listesinde Değil...
 advancements.reborn.spinosaurus_hatched_egg.description=Bir Spinosaurus yakalayın.
 advancements.reborn.indominus_hatched_egg.title=Bu ebeveynlere kabuslar yaşatacak...
 advancements.reborn.indominus_hatched_egg.description=Bir Indominus-Rex yakalayın.
-advancements.reborn.parasaurolophus_hatched_egg.title=Evlis?
+advancements.reborn.parasaurolophus_hatched_egg.title=Elvis?
 advancements.reborn.parasaurolophus_hatched_egg.description=Bir Parasaurolophus yumurtla.
 advancements.reborn.hybrids_hatched_egg.title=Henry Wu'nun Sırları...
 advancements.reborn.hybrids_hatched_egg.description=Bir Melez Yakala.

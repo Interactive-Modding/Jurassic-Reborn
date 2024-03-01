@@ -253,6 +253,7 @@ item.shell_cover.name=Раковина {dino}
 item.scales.name=Чешуя {dino} 
 item.tail_fin.name=Хвостовой Плавник {dino} 
 item.tusks.name=Бивни {dino} 
+item.vehicle_item.place.name=Щелкните правой кнопкой мыши, чтобы разместить транспортное средство
 
 item.fossilized_egg.name=Окаменевшее Яйцо
 
@@ -709,7 +710,7 @@ advancements.reborn.spinosaurus_hatched_egg.title=Нет в списке InGen..
 advancements.reborn.spinosaurus_hatched_egg.description=Поймать спинозавра.
 advancements.reborn.indominus_hatched_egg.title=Это будет сниться родителям в кошмарах...
 advancements.reborn.indominus_hatched_egg.description=Поймать Индоминус-Рекса.
-advancements.reborn.parasaurolophus_hatched_egg.title=Эвлис?
+advancements.reborn.parasaurolophus_hatched_egg.title=Элвис?
 advancements.reborn.parasaurolophus_hatched_egg.description=Поймать паразауролофа.
 advancements.reborn.hybrids_hatched_egg.title=Секреты Генри Ву...
 advancements.reborn.hybrids_hatched_egg.description=Поймать гибрида.

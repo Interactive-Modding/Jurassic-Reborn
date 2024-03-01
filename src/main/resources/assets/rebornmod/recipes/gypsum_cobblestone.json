@@ -2,9 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "group": "rebornmod:gypsum_cobblestone",
   "pattern": [
-    "AAA",
-    "AAA",
-    "AAA"
+    "   ",
+    " AA",
+    " AA"
   ],
   "key": {
     "A": {

@@ -202,6 +202,7 @@ item.scales_fresh.name=Escamas Frescas {dino}
 item.tail_fin_fresh.name=Nadadeira Fresca do Rabo de {dino}
 item.foot_bone_fresh.name=Ossadas Frescas dos Pés de {dino}
 item.tusks_fresh.name=Presas Frescas de {dino}
+item.vehicle_item.place.name=Clique com o botão direito para colocar um veículo
 
 // Bones
 item.bones.name=Osso de {dino}
@@ -710,7 +711,7 @@ advancements.reborn.spinosaurus_hatched_egg.title=Não está na lista da InGen..
 advancements.reborn.spinosaurus_hatched_egg.description=Casca um Espinossauro.
 advancements.reborn.indominus_hatched_egg.title=Isso dará pesadelos aos pais...
 advancements.reborn.indominus_hatched_egg.description=Casca um Indominus-Rex.
-advancements.reborn.parasaurolophus_hatched_egg.title=Evlis?
+advancements.reborn.parasaurolophus_hatched_egg.title=Elvis?
 advancements.reborn.parasaurolophus_hatched_egg.description=Casca um Parasaurolophus.
 advancements.reborn.hybrids_hatched_egg.title=Segredos de Henry Wu...
 advancements.reborn.hybrids_hatched_egg.description=Casque um híbrido.
