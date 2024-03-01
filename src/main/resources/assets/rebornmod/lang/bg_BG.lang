@@ -251,6 +251,7 @@ item.shell_cover.name={dino} Капак на черупката
 item.scales.name={dino} Люспи
 item.tail_fin.name={dino} Опашна перка
 item.tusks.name={dino} Бивни
+item.vehicle_item.place.name=Щракнете с десния бутон, за да поставите превозно средство
 
 item.fossilized_egg.name=Вкаменени Яйца
 
@@ -704,7 +705,7 @@ advancements.reborn.spinosaurus_hatched_egg.title=Не е в списъка на
 advancements.reborn.spinosaurus_hatched_egg.description=Излюпи спинозавър.
 advancements.reborn.indominus_hatched_egg.title=Това ще докара на родителите кошмари...
 advancements.reborn.indominus_hatched_egg.description=Излюпи индоминус-рекс.
-advancements.reborn.parasaurolophus_hatched_egg.title=Евлис?
+advancements.reborn.parasaurolophus_hatched_egg.title=Елвис?
 advancements.reborn.parasaurolophus_hatched_egg.description=Излюпи паразавролофус.
 advancements.reborn.hybrids_hatched_egg.title=Тайните на Хенри Ву...
 advancements.reborn.hybrids_hatched_egg.description=Излюпване на хибрид.

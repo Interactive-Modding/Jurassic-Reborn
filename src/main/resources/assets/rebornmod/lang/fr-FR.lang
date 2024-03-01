@@ -235,6 +235,7 @@ item.shell_cover.name=Coquille de {dino}
 item.scales.name=Écailles de {dino}
 item.tail_fin.name=Nageoire Caudale de {dino}
 item.tusks.name=Défenses de {dino}
+item.vehicle_item.place.name=Clic droit pour placer un véhicule
 
 item.fossilized_egg.name=Oeufs fossilisés
 
@@ -689,7 +690,7 @@ advancements.reborn.spinosaurus_hatched_egg.title=Pas sur la liste d'InGen...
 advancements.reborn.spinosaurus_hatched_egg.description=Accrocher un Spinosaurus.
 advancements.reborn.indominus_hatched_egg.title=Cela va donner des cauchemars aux parents...
 advancements.reborn.indominus_hatched_egg.description=Faites éclore un Indominus-Rex.
-advancements.reborn.parasaurolophus_hatched_egg.title=Evlis ?
+advancements.reborn.parasaurolophus_hatched_egg.title=Elvis ?
 advancements.reborn.parasaurolophus_hatched_egg.description=Accrocher un Parasaurolophus.
 advancements.reborn.hybrids_hatched_egg.title=Secrets d'Henry Wu...
 advancements.reborn.hybrids_hatched_egg.description=Accrochez un hybride.
