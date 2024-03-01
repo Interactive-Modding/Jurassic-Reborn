@@ -99,6 +99,7 @@ entity.rebornmod.ford_explorer.name=Ford Explorer
 entity.rebornmod.helicopter_base.name=Hélicoptère
 entity.rebornmod.mural.name=Peinture Murale
 entity.rebornmod.attraction_sign.name=Panneau d'Attraction
+entity.rebornmod.blueprint.name=Blueprint
 entity.rebornmod.paddock_sign.name=Panneau d'Enclos
 
 entity.Villager.rebornmod:geneticist=Généticien

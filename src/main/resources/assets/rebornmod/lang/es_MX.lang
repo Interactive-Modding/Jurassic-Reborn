@@ -111,6 +111,7 @@ entity.rebornmod.ford_explorer_snow.name=Ford Explorer de Nieve
 entity.rebornmod.helicopter_base.name=Helicoptero
 entity.rebornmod.mural.name=Mural
 entity.rebornmod.attraction_sign.name=Cartel de atraccion
+entity.rebornmod.blueprint.name=Plano azul
 entity.rebornmod.paddock_sign.name=Señal de recinto
 
 entity.Villager.rebornmod:geneticist=Genetista

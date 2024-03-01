@@ -35,6 +35,7 @@ entity.rebornmod.ford_explorer.name=Ford Explorer
 entity.rebornmod.helicopter_base.name=Helikopter
 entity.rebornmod.mural.name=Duvar (I'm not sure exactly, but I think it translates like this, if I got this word wrong I'll fix it soon)
 entity.rebornmod.attraction_sign.name=Atraksiyon tabelası
+entity.rebornmod.blueprint.name=Taslak
 entity.rebornmod.paddock_sign.name=Kafes tabelası
 
 entity.Villager.rebornmod:geneticist=Genetikçi
@@ -652,7 +653,7 @@ advancements.reborn.tylosaurus_hatched_egg.title=Knob Kertenkele
 advancements.reborn.tylosaurus_hatched_egg.description=Bir Tylosaurus üretin.
 info.dimetrodon.name=Dimetrodon, Geç Permiyen Avrupa ve Amerika'sından büyük bir sinapsitti. Dimetrodon'un en belirleyici özelliği, onları ısıtmak ve eşlerini çekmek için kullanılan deri ağlı bir yelken oluşturan büyük ölçüde uzatılmış omurlarıydı. Adı "iki ölçü diş" anlamına gelir ve ağzındaki iki tür dişe atıfta bulunur: Daha kısa dişler ve daha uzun dişler.
 entity.rebornmod.dimetrodon.name=Dimetrodon
-item.blueprint.name=Blueprint
+item.blueprint.name=Taslak
 stand.stand.name=standing
 stand.placed.name=placed
 pose.name=Pose

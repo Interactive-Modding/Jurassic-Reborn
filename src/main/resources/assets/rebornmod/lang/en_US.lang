@@ -112,6 +112,7 @@ entity.rebornmod.helicopter_base.name=Helicopter
 entity.rebornmod.ford_explorer_snow.name=Snow Ford Explorer 
 entity.rebornmod.mural.name=Mural
 entity.rebornmod.attraction_sign.name=Attraction Sign
+entity.rebornmod.blueprint.name=Blueprint
 entity.rebornmod.paddock_sign.name=Paddock Sign
 
 entity.Villager.rebornmod:geneticist=Geneticist
