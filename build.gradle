@@ -126,15 +126,15 @@ project.afterEvaluate {
 
   project.task(type: JacocoReport, "junitPlatformJacocoReport",
 
-  {
+          {
 
-    sourceDirectories = files("./src/main")
+            sourceDirectories = files("./src/main")
 
-    classDirectories = files("$buildDir/classes/main")
+            classDirectories = files("$buildDir/classes/main")
 
 //    executionData junitPlatformTestTask
 
-  })
+          })
 
 }
 
@@ -182,7 +182,7 @@ tasks.withType(JavaCompile) {
 
   options.compilerArgs = [
 
-    '-Xlint:deprecation', // deprecation, rawtypes, cast, unchecked, all
+          '-Xlint:deprecation', // deprecation, rawtypes, cast, unchecked, all
 
 //  '-Xdiags:verbose',
 
@@ -439,37 +439,31 @@ repositories {
   }
 
   maven {
+    name 'tehnut'
+
+    url "https://maven.tehnut.info"
+  }
+
+
+  maven {
 
     name 'JEI'
 
-	url = "http://dvs1.progwml6.com/files/maven"
+    url = "http://dvs1.progwml6.com/files/maven"
 
   }
-
-  	maven { // HWYLA
-
-		name 'tehnut'
-
-		url 'http://tehnut.info/maven/'
-
-	}
-
 }
 
 
 
 dependencies {
 
-    implementation 'org.jetbrains:annotations:20.1.0'
   implementation 'org.jetbrains:annotations:20.1.0'
-    deobfProvided "mezz.jei:jei_1.12.2:4.9.1.187:api"
-
-    runtime "mezz.jei:jei_1.12.2:4.9.1.187"
-
-    deobfCompile "net.ilexiconn:llibrary:${llibrary_version}-1.12.2"
-
-	deobfCompile "mcp.mobius.waila:Hwyla:1.8.26-B41_1.12.2"
-
+  implementation 'org.jetbrains:annotations:20.1.0'
+  deobfProvided "mezz.jei:jei_1.12.2:4.9.1.187:api"
+  runtime "mezz.jei:jei_1.12.2:4.9.1.187"
+  deobfCompile "net.ilexiconn:llibrary:${llibrary_version}-1.12.2"
+  deobfCompile "mcp.mobius.waila:Hwyla:1.8.26-B41_1.12.2"
 }
 
 
@@ -720,9 +714,9 @@ publishing {
 
 curseforge {
 
-   if (project.hasProperty('cf_project_id') && project.hasProperty('cf_release_type') && project.hasProperty('cf_changelog_filename') &&
+  if (project.hasProperty('cf_project_id') && project.hasProperty('cf_release_type') && project.hasProperty('cf_changelog_filename') &&
 
-      ((project.cf_release_type == 'alpha') || (project.cf_release_type == 'beta') || (project.cf_release_type == 'release'))) {
+          ((project.cf_release_type == 'alpha') || (project.cf_release_type == 'beta') || (project.cf_release_type == 'release'))) {
 
     apiKey = secret.curseforgeAPIKey
 
@@ -894,7 +888,7 @@ sonarqube {
 
     property 'sonar.projectKey', secret.sonarKey
 
-	// property 'sonar.projectName', project.archivesBaseName
+    // property 'sonar.projectName', project.archivesBaseName
 
     // property 'sonar.branch.name', 'master-1.12.2'
 
