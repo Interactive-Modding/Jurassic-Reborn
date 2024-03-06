@@ -143,11 +143,14 @@ public class AIUtils {
         // MAX RADIUS
         while (radius < 32) {
             RingXZTraverser traverser = new RingXZTraverser(center, radius);
+
             for (BlockPos pos : traverser) {
-                IBlockState state = world.getBlockState(pos);
-                Block block = state.getBlock();
-                if (!(block instanceof BlockLiquid)) {
-                    return pos;
+                if (world.isBlockLoaded(pos)) {
+                    IBlockState state = world.getBlockState(pos);
+                    Block block = state.getBlock();
+                    if (!(block instanceof BlockLiquid)) {
+                        return pos;
+                    }
                 }
             }
             ++radius;

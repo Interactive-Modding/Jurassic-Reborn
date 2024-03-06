@@ -72,21 +72,24 @@ public class GrazeEntityAI extends EntityAIBase {
                                 OnionTraverser traverser = new OnionTraverser(head, LOOK_RADIUS);
                                 this.ai.target = null;
 
+
                                 // scans all blocks around the LOOK_RADIUS
                                 for (BlockPos pos : traverser) {
-                                    Block block = world.getBlockState(pos).getBlock();
-                                    if (FoodHelper.isEdible(this.entity, this.entity.getDinosaur().getDiet(), block) && pos != this.ai.previousTarget) {
-                                        this.ai.target = pos;
-                                        for (int i = 0; i < 16; i++) {
-                                            IBlockState state = world.getBlockState(pos);
-                                            if (!state.getBlock().isLeaves(state, world, pos) && !state.getBlock().isAir(state, world, pos)) {
-                                                break;
+                                    if (world.isBlockLoaded(pos)) {
+                                        Block block = world.getBlockState(pos).getBlock();
+                                        if (FoodHelper.isEdible(this.entity, this.entity.getDinosaur().getDiet(), block) && pos != this.ai.previousTarget) {
+                                            this.ai.target = pos;
+                                            for (int i = 0; i < 16; i++) {
+                                                IBlockState state = world.getBlockState(pos);
+                                                if (!state.getBlock().isLeaves(state, world, pos) && !state.getBlock().isAir(state, world, pos)) {
+                                                    break;
+                                                }
+                                                pos = pos.down();
                                             }
-                                            pos = pos.down();
+                                            this.ai.moveTarget = pos;
+                                            this.ai.targetVec = new Vec3d(this.ai.target.getX(), this.ai.target.getY(), this.ai.target.getZ());
+                                            break;
                                         }
-                                        this.ai.moveTarget = pos;
-                                        this.ai.targetVec = new Vec3d(this.ai.target.getX(), this.ai.target.getY(), this.ai.target.getZ());
-                                        break;
                                     }
                                 }
                             }

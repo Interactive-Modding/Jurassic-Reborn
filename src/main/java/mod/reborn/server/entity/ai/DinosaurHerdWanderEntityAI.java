@@ -46,7 +46,10 @@ public class DinosaurHerdWanderEntityAI extends EntityAIBase
                 for (int i = 0; i < 100; i++) {
                     Vec3d vec = getWanderPosition();
                     if (vec != null) {
-                        for (BlockPos pos : BlockPos.getAllInBox(new BlockPos(vec.addVector(0, 1, 0)), new BlockPos(vec.addVector(1, 2, 1)))) {
+                        for (BlockPos pos : BlockPos.getAllInBox(new BlockPos(vec.addVector(1, 0, 0)), new BlockPos(vec.addVector(1, 2, 1)))) {
+                            if (!this.herd.leader.world.isBlockLoaded(pos)) {
+                                continue overlist;
+                            }
                             if (this.herd.leader.world.getBlockState(pos).getMaterial() != Material.AIR) {
                                 continue overlist;
                             }

@@ -49,10 +49,13 @@ public class DinosaurWanderEntityAI extends EntityAIBase
         	Vec3d vec = getWanderPosition();
         	if (vec != null) {
                 for (BlockPos pos : BlockPos.getAllInBox(new BlockPos(vec.addVector(0, 1, 0)), new BlockPos(vec.addVector(1, 2, 1)))) {
+                    if (!this.entity.world.isBlockLoaded(pos)) {
+                        continue overlist;
+                    }
                     if (this.entity.world.getBlockState(pos).getMaterial() != Material.AIR) {
                         continue overlist;
                     }
-        	    }
+                }
         	    this.xPosition = vec.x;
         	    this.yPosition = vec.y;
         	    this.zPosition = vec.z;
