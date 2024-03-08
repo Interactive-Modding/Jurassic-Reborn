@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "facing=south": {
+      "model": "rebornmod:skull_display_block"
+    },
+    "facing=north": {
+      "model": "rebornmod:skull_display_block"
+    },
+    "facing=west": {
+      "model": "rebornmod:skull_display_block"
+    },
+    "facing=east": {
+      "model": "rebornmod:skull_display_block"
+    },
+    "facing=up": {
+      "model": "rebornmod:skull_display_block"
+    },
+    "facing=down": {
+      "model": "rebornmod:skull_display_block"
+    }
+  }
+}

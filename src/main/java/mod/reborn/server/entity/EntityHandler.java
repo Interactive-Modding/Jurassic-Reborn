@@ -119,6 +119,7 @@ public class EntityHandler {
     public static final Dinosaur DIPLODOCUS=new DiplodocusDinosaur();
     public static final Dinosaur ANKYLODOCUS=new AnkylodocusDinosaur();
     public static final Dinosaur CAMARASAURUS=new CamarasaurusDinosaur();
+    public static final Dinosaur DIMETRODON=new DimetrodonDinosaur();
 
     private static final Map<Integer, Dinosaur> DINOSAURS = new HashMap<>();
     private static final Map<Dinosaur, Integer> DINOSAUR_IDS = new HashMap<>();
@@ -138,6 +139,15 @@ public class EntityHandler {
             }
         }
         return marineDinosaurs;
+    }
+    public static List<Dinosaur> getMammalCreatures() {
+        List<Dinosaur> mammalcreatures = new ArrayList<>();
+        for (Dinosaur dino : getRegisteredDinosaurs()) {
+            if (dino.isMammal() && !(dino instanceof Hybrid)) {
+                mammalcreatures.add(dino);
+            }
+        }
+        return mammalcreatures;
     }
 
     public static void init() {
@@ -232,6 +242,7 @@ public class EntityHandler {
         registerDinosaur(89,DIPLODOCUS);
         registerDinosaur(90,ANKYLODOCUS);
         registerDinosaur(91,CAMARASAURUS);
+        registerDinosaur(92,DIMETRODON);
 
         dinosaurProgress = ProgressManager.push("Loading dinosaurs", DINOSAURS.size());
 
@@ -242,6 +253,7 @@ public class EntityHandler {
         registerEntity(AttractionSignEntity.class, "Attraction Sign");
         registerEntity(PaddockSignEntity.class, "Paddock Sign");
         registerEntity(MuralEntity.class, "Mural");
+        registerEntity(BlueprintEntity.class,"Blueprint");
         registerEntity(VenomEntity.class, "Venom");
 
         registerEntity(JeepWranglerEntity.class, "Jeep Wrangler");
@@ -294,6 +306,9 @@ public class EntityHandler {
                 EntityRegistry.addSpawn(clazz, dinosaur.getSpawnChance(), 1, Math.min(1, dinosaur.getMaxHerdSize()/2), dinosaur.isMarineCreature() ? EnumCreatureType.WATER_CREATURE : EnumCreatureType.CREATURE, dinosaur.getSpawnBiomes());
                 if(dinosaur.isMarineCreature()) EntitySpawnPlacementRegistry.setPlacementType(EntityShark.class, EntityLiving.SpawnPlacementType.IN_WATER);
             }
+            EntitySpawnPlacementRegistry.setPlacementType(clazz, dinosaur.isMarineCreature() ? EntityLiving.SpawnPlacementType.IN_WATER : EntityLiving.SpawnPlacementType.ON_GROUND);
+
+
         }
     }
     

@@ -2,6 +2,7 @@ package mod.reborn.server.entity.dinosaur;
 
 import mod.reborn.client.model.animation.EntityAnimation;
 import mod.reborn.client.sound.SoundHandler;
+import mod.reborn.server.entity.ai.WaterLeapAI;
 import mod.reborn.server.entity.SwimmingDinosaurEntity;
 import net.ilexiconn.llibrary.server.animation.Animation;
 import net.minecraft.entity.EntityLivingBase;
@@ -13,6 +14,7 @@ public class MosasaurusEntity extends SwimmingDinosaurEntity {
     public MosasaurusEntity(World world) {
         super(world);
         this.target(EntityLivingBase.class);
+        //this.tasks.addTask(0, new WaterLeapAI(this, 12, 1.1F));
     }
 
     @Override

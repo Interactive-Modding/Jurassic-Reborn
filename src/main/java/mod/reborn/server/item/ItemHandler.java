@@ -54,7 +54,7 @@ public class ItemHandler {
     public static final AttractionSignItem ATTRACTION_SIGN = new AttractionSignItem();
 
     public static final AmberItem AMBER = new AmberItem();
-    public static final FrozenLeachItem FROZEN_LEACH = new FrozenLeachItem();
+    public static final FrozenLeechItem FROZEN_LEECH = new FrozenLeechItem();
     public static final BasicItem PETRI_DISH = new BasicItem(TabHandler.ITEMS);
     public static final BasicItem PETRI_DISH_AGAR = new BasicItem(TabHandler.ITEMS);
     public static final BasicItem EMPTY_TEST_TUBE = new BasicItem(TabHandler.ITEMS);
@@ -208,6 +208,8 @@ public class ItemHandler {
     public static final VehicleItem VEHICLE_ITEM = new VehicleItem();
 
     public static final MuralItem MURAL = new MuralItem();
+    public static final BlueprintItem BLUEPRINT = new BlueprintItem();
+
 
     public static final SaplingSeedItem PHOENIX_SEEDS = (SaplingSeedItem) new SaplingSeedItem(BlockHandler.ANCIENT_SAPLINGS.get(TreeType.PHOENIX));
     public static final SeededFruitItem PHOENIX_FRUIT = (SeededFruitItem) new SeededFruitItem(PHOENIX_SEEDS, 4, 0.4F).setCreativeTab(TabHandler.FOODS);
@@ -327,6 +329,7 @@ public class ItemHandler {
         registerItem(SPAWN_EGG, "Dino Spawn Egg");
         registerItem(FIELD_GUIDE, "Field Guide");
         registerItem(AMBER, "Amber");
+        registerItem(FROZEN_LEECH,"Frozen Leech");
         registerItem(SEA_LAMPREY, "Sea Lamprey");
         registerItem(PLASTER_AND_BANDAGE, "Plaster And Bandage");
         registerItem(EMPTY_TEST_TUBE, "Empty Test Tube");
@@ -346,6 +349,7 @@ public class ItemHandler {
         registerItem(PADDOCK_SIGN, "Paddock Sign");
         registerItem(ATTRACTION_SIGN, "Attraction Sign");
         registerItem(MURAL, "Mural");
+        registerItem(BLUEPRINT,"Blueprint");
         registerItem(DNA, "DNA");
         registerItem(SOFT_TISSUE, "Soft Tissue");
         registerItem(SYRINGE, "Syringe");

@@ -1,0 +1,37 @@
+{
+    "display": {
+        "icon": {
+            "item": "rebornmod:hatched_egg",
+            "data": 15
+        },
+        "title": {
+            "translate": "advancements.reborn.indominus_hatched_egg.title"
+        },
+        "description": {
+            "translate": "advancements.reborn.indominus_hatched_egg.description"
+        },
+        "frame": "challenge",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "hatched_egg": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "rebornmod:hatched_egg",
+			"data": 15
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "hatched_egg"
+        ]
+    ],
+    "parent": "rebornmod:reborn/dna_combinator_hybridizer"
+}

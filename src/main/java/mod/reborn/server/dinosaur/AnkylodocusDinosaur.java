@@ -36,7 +36,7 @@ public class AnkylodocusDinosaur extends Dinosaur implements Hybrid
         this.setDiet((Diet.HERBIVORE.get()));
         this.setBones("armor_plating", "front_leg_bones", "hind_leg_bones", "neck_vertebrae", "pelvis", "ribcage", "shoulder", "skull", "tail_club", "tail_vertebrae", "tooth");
         this.setHeadCubeName("Head");
-        this.setScale(1.8F, 0.1F);
+        this.setScale(1.2F, 0.1F);
         this.setPaleoPadScale(5);
         this.shouldDefendOffspring();
         this.setHybrid();

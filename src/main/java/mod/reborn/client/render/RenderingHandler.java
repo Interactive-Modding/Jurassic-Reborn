@@ -171,6 +171,7 @@ public enum RenderingHandler {
 
         registerBlockRenderer(AMBER_ORE, "amber_ore");
         registerBlockRenderer(ICE_SHARD, "ice_shard");
+        registerBlockRenderer(ICE_AGE_SHARD, "ice_age_shard");
         registerBlockRenderer(CLEANING_STATION, "cleaning_station");
         registerBlockRenderer(FOSSIL_GRINDER, "fossil_grinder");
         registerBlockRenderer(DNA_SEQUENCER, "dna_sequencer");
@@ -185,6 +186,10 @@ public enum RenderingHandler {
         registerBlockRenderer(GYPSUM_STONE, "gypsum_stone");
         registerBlockRenderer(GYPSUM_COBBLESTONE, "gypsum_cobblestone");
         registerBlockRenderer(GYPSUM_BRICKS, "gypsum_bricks");
+        registerBlockRenderer(GYPSUM_PATHWAY, "gypsum_pathway");
+        registerBlockRenderer(GYPSUM_MIXED_PATH, "gypsum_mixed_path");
+        registerBlockRenderer(GYPSUM_TILES, "gypsum_tiles");
+        registerBlockRenderer(SKULL_DISPLAY, "skull_display");
         registerBlockRenderer(BlockHandler.DISPLAY_BLOCK, "display_block");
 
         registerBlockRenderer(MOSS, "moss");
@@ -287,6 +292,7 @@ public enum RenderingHandler {
         registerItemRenderer(LASER);
         registerItemRenderer(DNA_NUCLEOTIDES, "dna_base_material");
         registerItemRenderer(SEA_LAMPREY);
+        registerItemRenderer(FROZEN_LEECH);
 
         registerItemRenderer(AMBER, 0, "amber_mosquito");
         registerItemRenderer(AMBER, 1, "amber_aphid");
@@ -333,6 +339,7 @@ public enum RenderingHandler {
         registerItemRenderer(CAR_WINDSCREEN, "car_windscreen");
         registerItemRenderer(UNFINISHED_CAR, "unfinished_car");
         registerItemRenderer(MURAL, "mural");
+        registerItemRenderer(BLUEPRINT,"Blueprint");
 
         for (Dinosaur dinosaur : EntityHandler.getDinosaurs().values()) {
             int meta = EntityHandler.getDinosaurId(dinosaur);
@@ -547,6 +554,7 @@ public enum RenderingHandler {
         registerRenderInfo(EntityHandler.DIPLODOCUS, new DiplodocusAnimator(), 1.5F);
         registerRenderInfo(EntityHandler.ANKYLODOCUS, new AnkylodocusAnimator(), 1.5F);
         registerRenderInfo(EntityHandler.CAMARASAURUS, new CamarasaurusAnimator(), 1.5F);
+        registerRenderInfo(EntityHandler.DIMETRODON, new DimetrodonAnimator(),0.64F);
 
 
 
@@ -561,6 +569,7 @@ public enum RenderingHandler {
 //        RenderingRegistry.registerEntityRenderingHandler(TransportHelicopterEntity.class, HeliRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(HelicopterEntityNew.class, HelicopterNewRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(MuralEntity.class, MuralRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(BlueprintEntity.class, BlueprintRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(GoatEntity.class, GoatRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityCrab.class, CrabRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityShark.class, SharkRenderer::new);
@@ -617,6 +626,7 @@ public enum RenderingHandler {
         ClientRegistry.bindTileEntitySpecialRenderer(DNASequencerBlockEntity.class, new DNASequencerRenderer());
         ClientRegistry.bindTileEntitySpecialRenderer(IncubatorBlockEntity.class, new IncubatorRenderer());
         ClientRegistry.bindTileEntitySpecialRenderer(FeederBlockEntity.class, new FeederRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(SkullDisplayEntity.class, new SkullDisplayRenderer());
         ClientRegistry.bindTileEntitySpecialRenderer(ElectricFencePoleBlockEntity.class, new ElectricFencePoleRenderer());
         ClientRegistry.bindTileEntitySpecialRenderer(CleaningStationBlockEntity.class, new CleaningStationRenderer());
         ClientRegistry.bindTileEntitySpecialRenderer(CultivatorBlockEntity.class, new CultivatorRenderer());

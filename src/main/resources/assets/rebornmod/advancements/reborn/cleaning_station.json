@@ -1,0 +1,35 @@
+{
+    "display": {
+        "icon": {
+            "item": "rebornmod:cleaning_station"
+        },
+        "title": {
+            "translate": "advancements.reborn.cleaning_station.title"
+        },
+        "description": {
+            "translate": "advancements.reborn.cleaning_station.description"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "cleaning_station": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "rebornmod:cleaning_station"
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "cleaning_station"
+        ]
+    ],
+    "parent": "rebornmod:reborn/encased_fossil"
+}

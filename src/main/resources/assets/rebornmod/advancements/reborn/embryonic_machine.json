@@ -1,0 +1,35 @@
+{
+    "display": {
+        "icon": {
+            "item": "rebornmod:embryonic_machine"
+        },
+        "title": {
+            "translate": "advancements.reborn.embryonic_machine.title"
+        },
+        "description": {
+            "translate": "advancements.reborn.embryonic_machine.description"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "embryonic_machine": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "rebornmod:embryonic_machine"
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "embryonic_machine"
+        ]
+    ],
+    "parent": "rebornmod:reborn/dna_synthesizer"
+}

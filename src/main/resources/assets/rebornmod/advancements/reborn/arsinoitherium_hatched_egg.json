@@ -1,0 +1,37 @@
+{
+    "display": {
+        "icon": {
+            "item": "rebornmod:hatched_egg",
+            "data": 81
+        },
+        "title": {
+            "translate": "advancements.reborn.arsinoitherium_hatched_egg.title"
+        },
+        "description": {
+            "translate": "advancements.reborn.arsinoitherium_hatched_egg.description"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "hatched_egg": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "rebornmod:hatched_egg",
+			"data":81
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "hatched_egg"
+        ]
+    ],
+    "parent": "rebornmod:reborn/incubator"
+}

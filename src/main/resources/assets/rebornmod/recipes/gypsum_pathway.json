@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "rebornmod:gypsum_pathway",
+  "pattern": [
+    "   ",
+    "AAA",
+    "AAA"
+  ],
+  "key": {
+    "A": {
+      "item": "rebornmod:gypsum_stone",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "rebornmod:gypsum_pathway",
+    "data": 0,
+    "count": 6
+  }
+}

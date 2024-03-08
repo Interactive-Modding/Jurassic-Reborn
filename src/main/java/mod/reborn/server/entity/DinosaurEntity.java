@@ -210,8 +210,9 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
 
         this.setFullyGrown();
         this.updateAttributes();
-        this.setPathPriority(PathNodeType.DOOR_WOOD_CLOSED, 0);
-        this.setPathPriority(PathNodeType.DOOR_IRON_CLOSED, 0);
+        this.setPathPriority(PathNodeType.FENCE, -1);
+        this.setPathPriority(PathNodeType.DOOR_WOOD_CLOSED, -1);
+        this.setPathPriority(PathNodeType.DOOR_IRON_CLOSED, -1);
 
         this.navigator = new DinosaurPathNavigate(this, this.world);
         ((DinosaurPathNavigate) this.navigator).setCanSwim(true);
@@ -240,6 +241,7 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
         this.tasks.addTask(0, new DinosaurWanderAvoidWater(this, 0.8D, 10));
         if (dinosaur.getDiet().canEat(this, FoodType.PLANT)) {
             this.tasks.addTask(1, new GrazeEntityAI(this));
+
         }
         if (dinosaur.getDiet().canEat(this, FoodType.MEAT)) {
             this.tasks.addTask(1, new TargetCarcassEntityAI(this));
@@ -2007,28 +2009,48 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
         return true;
     }
 
+
     public BlockPos getClosestFeeder() {
-        if (this.ticksExisted - this.feederSearchTick > 200) {
-            this.feederSearchTick = this.ticksExisted;
-            OnionTraverser traverser = new OnionTraverser(this.getPosition(), 32);
-            for (BlockPos pos : traverser) {
-                IBlockState state = this.world.getBlockState(pos);
-                if (state.getBlock() instanceof FeederBlock) {
-                    TileEntity tile = this.world.getTileEntity(pos);
-                    if (tile instanceof FeederBlockEntity) {
-                        FeederBlockEntity feeder = (FeederBlockEntity) tile;
-                        if (feeder.canFeedDinosaur(this) && feeder.getFeeding() == null && feeder.openAnimation == 0) {
-                            Path path = this.getNavigator().getPathToPos(pos);
-                            if (path != null && path.getCurrentPathLength() != 0) {
-                                return this.closestFeeder = pos;
+        int posX = (int) this.posX;
+        int posY = (int) this.posY;
+        int posZ = (int) this.posZ;
+
+        int closestDist = Integer.MAX_VALUE;
+        BlockPos closestPos = null;
+
+        int range = 16;
+
+        for (int x = posX - range; x < posX + range; x++) {
+            for (int y = posY - 8; y < posY + 8; y++) {
+                for (int z = posZ - range; z < posZ + range; z++) {
+                    if (y > 0 && y < this.world.getHeight()) {
+                        BlockPos pos = new BlockPos(x, y, z);
+                        TileEntity tile = this.world.getTileEntity(pos);
+
+                        if (tile instanceof FeederBlockEntity) {
+                            FeederBlockEntity feeder = (FeederBlockEntity) tile;
+
+                            if (feeder.canFeedDinosaur(this) && feeder.getFeeding() == null && feeder.openAnimation == 0) {
+                                int deltaX = Math.abs(posX - x);
+                                int deltaY = Math.abs(posY - y);
+                                int deltaZ = Math.abs(posZ - z);
+
+                                int distance = (deltaX * deltaX) + (deltaY * deltaY) + (deltaZ * deltaZ);
+
+                                if (distance < closestDist) {
+                                    closestDist = distance;
+                                    closestPos = pos;
+                                }
                             }
                         }
                     }
                 }
             }
         }
-        return this.closestFeeder;
+
+        return closestPos;
     }
+
 
     @Override
     public boolean isClimbing() {

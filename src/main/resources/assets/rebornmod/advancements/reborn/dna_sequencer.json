@@ -1,0 +1,35 @@
+{
+    "display": {
+        "icon": {
+            "item": "rebornmod:dna_sequencer"
+        },
+        "title": {
+            "translate": "advancements.reborn.dna_sequencer.title"
+        },
+        "description": {
+            "translate": "advancements.reborn.dna_sequencer.description"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "dna_sequencer": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "rebornmod:dna_sequencer"
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "dna_sequencer"
+        ]
+    ],
+    "parent": "rebornmod:reborn/fossil_grinder"
+}

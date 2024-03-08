@@ -69,7 +69,6 @@ public class DinosaurRenderer extends RenderLiving<DinosaurEntity> {
 
         String name = entity.getCustomNameTag();
         switch (name) {
-            case "Kashmoney360":
             case "JTGhawk137":
                 GlStateManager.scale(0.1F, scale, scale);
                 break;

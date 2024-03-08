@@ -1,0 +1,35 @@
+{
+    "display": {
+        "icon": {
+            "item": "rebornmod:dna_combinator_hybridizer"
+        },
+        "title": {
+            "translate": "advancements.reborn.dna_combinator_hybridizer.title"
+        },
+        "description": {
+            "translate": "advancements.reborn.dna_combinator_hybridizer.description"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "dna_combinator_hybridizer": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "rebornmod:dna_combinator_hybridizer"
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "dna_combinator_hybridizer"
+        ]
+    ],
+    "parent": "rebornmod:reborn/dna_sequencer"
+}

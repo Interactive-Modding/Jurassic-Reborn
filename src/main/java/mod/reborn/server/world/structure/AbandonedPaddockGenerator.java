@@ -45,6 +45,6 @@ public class AbandonedPaddockGenerator extends StructureGenerator {
     }
     @Override
     public int getOffsetY() {
-        return -1;
+        return -2;
     }
 }

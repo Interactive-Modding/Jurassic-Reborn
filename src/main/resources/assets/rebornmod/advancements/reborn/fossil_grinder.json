@@ -1,0 +1,35 @@
+{
+    "display": {
+        "icon": {
+            "item": "rebornmod:fossil_grinder"
+        },
+        "title": {
+            "translate": "advancements.reborn.fossil_grinder.title"
+        },
+        "description": {
+            "translate": "advancements.reborn.fossil_grinder.description"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "fossil_grinder": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "rebornmod:fossil_grinder"
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "fossil_grinder"
+        ]
+    ],
+    "parent": "rebornmod:reborn/cleaning_station"
+}

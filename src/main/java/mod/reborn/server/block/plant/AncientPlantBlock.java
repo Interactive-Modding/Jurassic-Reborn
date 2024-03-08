@@ -36,7 +36,7 @@ public class AncientPlantBlock extends BlockBush {
             int light = world.getLight(pos);
 
             if (light >= 5) {
-                if (rand.nextInt((75 - light) / 2 + 10) == 0) {
+                if (rand.nextInt((15 - light) / 2 + 10) == 0) {
                     int allowedInArea = DENSITY_PER_AREA;
 
                     BlockPos nextPos = null;

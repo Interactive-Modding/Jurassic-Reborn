@@ -1,0 +1,1052 @@
+﻿//Tabs
+itemGroup.rebornmod.items=Reborn Eşyalar
+itemGroup.rebornmod.blocks=Reborn Bloklar
+itemGroup.rebornmod.dna=Reborn DNA'lar
+itemGroup.rebornmod.foods=Reborn Yemekler
+itemGroup.rebornmod.plants=Reborn Bitkiler
+itemGroup.rebornmod.fossils=Reborn Fossiler
+itemGroup.rebornmod.decorations=Reborn Dekorasyonlar
+itemGroup.rebornmod.eggs=Reborn Yumurtaları
+itemGroup.rebornmod.creative=Reborn çağırma yumurtaları
+
+//Entities ==================================================
+entity.rebornmod.velociraptor.name=Velociraptor
+entity.rebornmod.tyrannosaurus.name=Tyrannosaurus Rex
+entity.rebornmod.dilophosaurus.name=Dilophosaurus
+entity.rebornmod.gallimimus.name=Gallimimus
+entity.rebornmod.parasaurolophus.name=Parasaurolophus
+entity.rebornmod.triceratops.name=Triceratops
+entity.rebornmod.brachiosaurus.name=Brachiosaurus
+entity.rebornmod.coelacanth.name=Coelacanth
+entity.rebornmod.microraptor.name=Microraptor
+entity.rebornmod.mussaurus.name=Mussaurus
+entity.rebornmod.spinosaurus.name=Spinosaurus
+entity.rebornmod.rugops.name=Rugops
+entity.rebornmod.indominus.name=Indominus Rex
+entity.rebornmod.stegosaurus.name=Stegosaurus
+entity.rebornmod.achillobator.name=Achillobator
+entity.rebornmod.carnotaurus.name=Carnotaurus
+
+(shortly, how they are written in English, the same is written in Turkish)
+
+entity.rebornmod.goat.name=Keçi
+entity.rebornmod.jeep_wrangler.name=Jip
+entity.rebornmod.ford_explorer.name=Ford Explorer
+entity.rebornmod.helicopter_base.name=Helikopter
+entity.rebornmod.mural.name=Duvar (I'm not sure exactly, but I think it translates like this, if I got this word wrong I'll fix it soon)
+entity.rebornmod.attraction_sign.name=Atraksiyon tabelası
+entity.rebornmod.blueprint.name=Taslak
+entity.rebornmod.paddock_sign.name=Kafes tabelası
+
+entity.Villager.rebornmod:geneticist=Genetikçi
+
+//Items ==================================================
+item.plaster.name=Alçı
+item.Bandage.name=Bandaj
+item.attraction_sign.name={type} Atraksiyon tabelası
+attraction_sign.aquarium.name=Akvaryum
+attraction_sign.aquarium_coral.name=Mercanlı Akvaryum
+attraction_sign.aviary.name=Büyük Kuş Kafesi
+attraction_sign.aviary_plants.name=Büyük Kuş Kafesi bitkileri
+attraction_sign.gallimimus_valley.name=Gallimimus Vadisi
+attraction_sign.gallimimus_valley_plants.name=Gallimimus Vadisi bitkileri
+attraction_sign.gentle_giants.name=Kibar Devler
+attraction_sign.gentle_giants_plants.name=Kibar Devler bitkileri
+attraction_sign.raptor_paddock.name=Raptor Kafesi
+attraction_sign.raptor_paddock_plants.name=Raptor Kafesi bitkiler
+attraction_sign.garden_plants.name=Bahçe bitkileri
+attraction_sign.garden.name=Bahçe
+attraction_sign.safari.name=Safari
+attraction_sign.safari_plants.name=Safari bitkileri
+attraction_sign.triceratops_territorium.name=Triceratops bölgesi
+attraction_sign.triceratops_territorium_plants.name=Triceratops bölgesi bitkileri
+attraction_sign.tyrannosaurus_kingdom.name=Tyrannosaurus Rex krallığı
+attraction_sign.tyrannosaurus_kingdom_plants.name=Tyrannosaurus Rex krallığı
+
+item.goat_raw.name=Çiğ keçi eti
+item.goat_cooked.name=Pişmiş keçi eti
+item.cooked_crab_meat.name=Pişmiş yengeç eti
+item.cooked_shark_meat.name=Pişmiş köpekbalığı eti
+item.raw_crab_meat.name=Çiğ yengeç eti
+item.raw_shark_meat.name=Çiğ köpekbalığı eti
+gender.name=Cinsiyet
+
+//Fresh bones
+item.bones_fresh.name=Taze {dino name} kemiği
+item.femur_fresh.name=Taze {dino name} kalça kemiği
+item.skull_fresh.name=Taze {dino name} kafatası kemiği
+item.tooth_fresh.name=Taze {dino name} dişi
+item.anal_fin_fresh.name=Taze {dino name} anal yüzgeçleri
+item.shoulders_fresh.name=Taze omuz {dino name} kemiği
+item.ribcage_fresh.name=Taze {dino name} göğüs kafesi
+item.foot_bones_fresh.name=Taze {dino name}ayak kemikleri
+item.tail_fluke_fresh.name=Taze {dino name}kuyruk şansı
+item.armor_plating_fresh.name=Taze {dino name} zırh kaplaması
+item.ribs_and_spine_fresh.name=Taze {dino name} kaburgası ve omurgası
+item.neck_vertebrae_fresh.name=Taze {dino name} omuru
+item.pelvis_fresh.name=Taze {dino name} leğen kemiği
+item.shoulder_blade_fresh.name=Taze {dino name} kürek kemiği
+item.cheek_teeth_fresh.name=Taze {dino name}yanak dişleri
+item.tail_vertebrae_fresh.name=Taze {dino name} kuyruk omurları
+item.second_dorsal_fin_fresh.name=Taze ikinci {dino name}sırt yüzgeçleri
+item.pectoral_fin_bones_fresh.name=taze {dino name} göğüs yüzgeçleri
+item.inner_teeth_fresh.name=taze {dino name} iç dişleri
+item.teeth_fresh.name=taze {dino name} dişleri
+item.shoulder_fresh.name=taze    {dino name} omuzu
+item.mouth_plates_fresh.name=taze {dino name}
+Ağız plakaları
+item.hind_flipper_fresh.name=taze {dino name} arka yüzgeçleri
+item.shoulder_bone_fresh.name=taze {dino name} omuz kemikleri
+item.hind_leg_bones_fresh.name=taze      {dino name} arka bacak kemikleri
+item.tail_fresh.name=taze {dino name} kuyruğu
+item.front_flipper_fresh.name=taze {dino name} ön yüzgeçleri
+item.spine_fresh.name=taze {dino name} dikenleri
+item.front_leg_bones_fresh.name=taze {dino name}. Ön bacak kemikleri
+item.neck_fresh.name=taze {dino name} boyunu
+item.body_fins_fresh.name=taze {dino name} vücut yüzgeçleri
+item.dorsal_fin_fresh.name=taze   {dino name} sırt yüzgeçleri
+item.claw_fresh.name=taze {dino name} pençeleri
+item.tail_club_fresh.name=taze {dino name} kuyruk kulübu
+item.leg_bones_fresh.name=taze {dino name} bacak kemikleri
+item.horn_fresh.name=taze {dino name} boynuzu
+item.thagomizer_fresh.name=taze {dino name} thagomizeri
+item.caudal_fin_fresh.name=taze {dino name} kuyruk yüzgeci
+item.wing_bones_fresh.name=taze {dino name} kanat kemikleri
+item.arm_bones_fresh.name=taze {dino name} kol kemikleri
+item.first_dorsal_fin_fresh.name=taze birinci {dino name} sırt yüzgeçleri
+item.pelvic_fin_bones_fresh.name=taze {dino name} pelvik yüzgeci kemikleri
+item.perisphinctes_beak_fresh.name=taze {dino name} perisfinktler gagası
+item.shell_cover_fresh.name=taze {dino name} kabuk örtüsü
+item.scales_fresh.name=taze {dino name} pulları
+item.tail_fin_fresh.name=taze {dino name} kuyruk yüzgeçleri
+item.foot_bone_fresh.name=taze {dino name} ayak kemiği
+item.tusks_fresh.name=taze {dino name} uzun dişi
+item.vehicle_item.place.name=Araç yerleştirmek için sağ tıklayın
+
+// Bones
+item.bones.name={dino name} kemikleri
+item.femur.name={dino name} kalça kemiği
+item.skull.name={dino name} kafatası
+item.tooth.name={dino name} dişleri
+item.anal_fin.name={dino name} anal yüzgeçleri
+item.shoulders.name={dino name}omuzu
+item.ribcage.name={dino name} göğüs kafesi
+item.foot_bones.name={dino name} ayak kemikleri
+item.tail_fluke.name={dino name} kuyruk şansı
+item.armor_plating.name={dino name} zırh kaplaması
+item.ribs_and_spine.name={dino name} kaburgası ve omurgası
+item.neck_vertebrae.name={dino name} omuru
+item.pelvis.name={dino name} leğen kemiği
+item.shoulder_blade.name={dino name} kürek kemiği
+item.cheek_teeth.name={dino name} yanak kemikleri
+item.tail_vertebrae.name={dino name} kemik omurları
+item.second_dorsal_fin.name=ikinci {dino name} sırt yüzgeci
+item.pectoral_fin_bones.name={dino name} göğüs yüzgeci
+item.inner_teeth.name={dino name}İç dişleri
+item.teeth.name={dino name}dişleri
+item.shoulder.name={dino name} omzu
+item.mouth_plates.name={dino name}Ağız plakası
+item.hind_flipper.name={dino name}Arka yüzgeç
+item.shoulder_bone.name={dino name}omuz kemiği
+item.hind_leg_bones.name={dino name} arka bacak kemikleri
+item.tail.name={dino name} kuyruğu
+item.front_flipper.name={dino name} ön yüzgeçi
+item.spine.name={dino name}omurgası
+item.front_leg_bones.name={dino name}Ön bacak kemikleri
+item.neck.name={dino name}Boyunu
+item.body_fins.name={dino name}Vücut yüzgeçleri
+item.dorsal_fin.name={dino name}Sırt yüzgeci
+item.claw.name={dino name}Pençeleri
+item.tail_club.name={dino name}Kuyruk kulübü
+item.leg_bones.name={dino name} bacak kemikleri
+item.first_dorsal_fin.name=birinci {dino name} sırt yüzgeçleri
+item.pelvic_fin_bones.name={dino name}Pelvik yüzgeci
+item.thagomizer.name={dino name}thagomizeri
+item.caudal_fin.name={dino name}Kuyruk yüzgeci
+item.wing_bones.name={dino name}kanat kemikleri
+item.arm_bones.name={dino name}Kol kemikleri
+item.foot_bone.name={dino name}ayak kemikleri
+item.perisphinctes_beak.name={dino name} perisphinctes gaga
+item.shell_cover.name={dino name}Kabuk örtüsü
+item.scales.name={dino name}Pulları
+item.tail_fin.name={dino name}kuyruk yüzgeçleri
+item.tusks.name={dino name}uzun dişleri
+
+item.fossilized_egg.name=fosilleşmiş yumurta
+
+item.lunch_box.name=öğle yemeği kutusu
+item.stamp_set.name=pul seti
+item.fun_fries.name=eğlenceli kızartma
+item.oiled_potato_strips.name=yağlı patates şeritleri
+
+
+item.glock.name=Glock 
+item.remington.name=Remington
+item.spas_12.name=SPAS-12
+item.uts15.name= UTS-15
+item.bullet.name=mermi
+
+item.dino_egg.name={dino name}yumurtası
+item.hatched_egg.name={dino name}Çatlamış yumurtası
+item.gestated.name=hamile {dino name} 
+item.dino_spawn_egg.name= {dino name} çağırma yumurtası
+item.dinosaur_meat.name={dino name}eti
+item.dinosaur_steak.name= {dino name}bifteği
+item.dna.name= {dino name}DNA'sı
+item.blue_print.name= {type}taslağı
+item.paddock_sign.name=kafes işareti
+item.soft_tissue.name= {dino name}yumuşak dokusu
+item.amber.name={stored} kehribarı
+item.petri_dish.name=Petri kabı
+item.petri_dish_agar.name=agar petri kabı
+item.empty_test_tube.name=Boş test tüpü
+item.syringe.name= {dino name}şırıngası
+item.empty_syringe.name=Boş şırınga
+item.storage_disc.name=Depolama diski
+item.dna_base_material.name=DNA temel malzemesi
+item.cage_small.name=küçük kafes
+item.plant_dna.name={plant name}DNA'sı
+item.sea_lamprey.name=Deniz taşağı
+item.iron_blades.name=demir bıçaklar
+item.iron_rod.name=Demir çubuklar
+item.growth_serum.name=büyütme serumu
+item.needle.name=iğne
+item.plant_cells.name=Bitki hücreleri
+item.plant_cells_petri_dish.name=Petri kabında bitki hücreleri
+item.plant_callus.name= {plant name}nasrı
+item.tracker.name=izleyici
+item.disc_reader.name=dış okuyucu
+item.laser.name=Lazer
+item.disc_jurassicraft_theme.name=jurassicraft tema diski
+item.disc_troodons_and_raptors.name=Troodonlar ve raptorler diski
+item.disc_dont_move_a_muscle.name=kılını bile kıpırdatma diski
+item.action_figure.name={dino name}aksiyon figürü
+item.skeleton.fresh.name= {dino name}taze iskeleti
+item.skeleton.fossil.name={dino name}fosilleşmiş iskelet
+item.amber_cane.name=kehribar kamışı
+item.amber_keychain.name=kehribar anahtarlık
+item.mr_dna_keychain.name=Bay.DNA anahtarlığı
+item.dino_scanner.name=Dinazor tarayıcısı
+item.basic_circuit.name=temel devre
+item.advanced_circuit.name=gelişmiş devre
+item.gypsum_powder.name=alçı tozu
+item.plant_soft_tissue.name= {plant name}yumuşak dokusu
+item.plant_fossil.name=bitki fosili
+item.twig_fossil.name=dal fosili
+item.keyboard.name=klavye
+item.helicopter.name=Helikopter
+item.computer_screen.name=bilgisayar ekranı
+item.dna_analyzer.name=DNA analizörü
+item.chilean_sea_bass.name=şili levreği
+item.field_guide.name=Alan rehberi
+item.car_chassis.name=araba şasisi
+item.engine_system.name=motor sistemi
+item.car_seats.name=Araba koltukları
+item.car_tire.name=Araba tekerlekleri
+item.car_windscreen.name=araba ön camlar
+item.jeep_wrangler.name=arazi aracı
+item.ford_explorer.name=Ford Explorer
+item.unfinished_car.name=tamamlanmamış araba
+item.phoenix_fruit.name=phoenix meyvesi
+item.phoenix_seeds.name=phoenix tohumu
+item.crickets.name=çekirgeler
+item.cockroaches.name=hamam böcekleri
+item.mealworm_beetles.name=kurtçuklar
+item.fine_net.name=iyi ağ
+item.plankton.name=Plankton
+item.krill.name=Krill
+item.mural.name=Mural
+item.ingen_journal.name= InGen günlüğü
+item.birthing_wand.name=doğurtma asası 
+item.breeding_wand.name=çiftleştirme asası
+item.pregnancy_test.name=hamilelik testi
+item.dart_gun.name=dart silahı
+item.dart_tranquilizer.name=bayıltıcı dart
+item.dart_poison_cycasin.name=zehirli dart
+item.dart_poison_executioner_concoction.name=
+dart zehiri cellat karışımı
+item.dart_tipped_potion.name=iksir dartı
+item.tracking_dart.name=izleme dartı
+item.west_indian_lilac_berries.name=batı hint leylağı meyveleri
+
+filled_map.rebornmod.visitorcenter=reborn modu dolu harita
+
+// Crops ========================================
+item.ajuginucula_smithii_seeds.name=ajuginucula smithii tohumları
+item.ajuginucula_smithii_leaves.name=ajuginucula smithii yaprakları
+item.ajuginucula_smithii_oil.name=ajuginucula smithii yağı
+item.wild_onion.name=yabani soğan
+item.rhamnus_salicifolius.name=Rhamnus Salicifolius
+item.rhamnus_salicifolius_seeds.name=rhamnus salicifolius tohumları
+item.rhamnus_salicifolius_berries.name=rhamnus salicifolius meyveleri
+item.gracilaria.name=Gracilaria
+item.liquid_agar.name=sıvı agar
+item.wild_potato_seeds.name=yabani patates tohumları
+item.wild_potato.name=yabani patates
+item.wild_potato_cooked.name=pişmiş yabani patates
+
+//Blocks ==================================================
+tile.fossil_block.name={dino name}fosil bloğu
+tile.encased_fossil.name=alçıya alınmış {dino name} fosili
+tile.plant_fossil_block.name=bitki fosili
+tile.fossilized_trackway.name=fosilleşmiş yol {variant}
+tile.nest_fossil.name=fosilleşmiş yuva
+tile.encased_nest_fossil.name=alçıya alınmış yuva fosili
+tile.amber_ore.name=kehribar cevheri
+tile.ice_shard.name=buz parçası
+tile.moss.name=yosun
+tile.peat.name=Turba
+tile.peat_moss.name=Turba fosili
+
+tile.cleaning_station.name=temizleme istasyonu
+tile.fossil_grinder.name=fosil öğütücü
+tile.dna_sequencer.name=dna düzenleyici
+tile.dna_synthesizer.name=DNA sentezleyici
+tile.embryonic_machine.name=embriyonik makine
+tile.embryo_calcification_machine.name=embriyo kireçleme makinesi
+tile.incubator.name=kuluçka makinesi
+tile.dna_extractor.name=DNA çıkarıcı
+tile.dna_combinator_hybridizer.name=DNA birleştirici/füzyonlayıcı
+tile.skeleton_assembly.name=iskelet montajı
+
+tile.tour_rail.name=Tur rayı
+tile.tour_rail_slow.name=yavaş tur rayı
+tile.tour_rail_medium.name=orta hızlı tur rayı
+tile.tour_rail_fast.name=hızlı tur rayı
+tile.gypsum_stone.name=alçı taşı
+tile.gypsum_cobblestone.name=Parkelenmiş alçı taşı
+tile.gypsum_bricks.name=alçıtaşı tuğlası
+
+tile.ginkgo_sapling.name=Ginkgo fidanı
+tile.ginkgo_planks.name=Ginkgo kalasları
+tile.ginkgo_log.name=Ginkgo kütüğü
+tile.ginkgo_leaves.name=Ginkgo yaprakları
+tile.ginkgo_stairs.name=Ginkgo merdivenleri
+tile.ginkgo_slab.name=Ginkgo döşemesi
+tile.ginkgo_log_petrified.name=Ginkgo taşlaşmış kütüğü
+tile.ginkgo_fence.name=Ginkgo çiti
+tile.ginkgo_fence_gate.name= Ginkgo çit kapısı
+tile.ginkgo_door.name=Ginkgo kapısı
+item.ginkgo_door_item.name=Ginkgo kapısı
+
+tile.araucaria_sapling.name=Araucaria fidanı
+tile.araucaria_planks.name=Araucaria kalasları
+tile.araucaria_log.name=Araucaria kütüğü
+tile.araucaria_leaves.name=Araucaria yaprakları
+tile.araucaria_stairs.name=Araucaria merdivenleri
+title.araucaria_slab.name= Araucaria döşemesi
+tile.araucaria_log_petrified.name=Araucaria taşlaşmış kütüğü
+tile.araucaria_fence.name= Araucaria çiti
+tile.araucaria_fence_gate.name=Araucaria çit kapısı
+tile.araucaria_door.name=Araucaria kapısı
+item.araucaria_door_item.name= Araucaria kapısı
+
+tile.calamites_sapling.name=Calamites fidanı
+tile.calamites_leaves.name=Calamites yaprakları
+tile.calamites_log.name=Calamites kütüğü
+tile.calamites_planks.name= Calamites kalasları
+tile.calamites_stairs.name=Calamites merdivenleri
+tile.calamites_slab.name=Calamites döşemeleri
+tile.calamites_log_petrified.name=Calamites taşlaşmış kütüğü
+tile.calamites_fence.name=Calamites çiti
+tile.calamites_fence_gate.name=Calamites çit kapısı
+tile.calamites_door.name=Calamites kapısı
+item.calamites_door_item.name= Calamites kapısı
+
+tile.psaronius_sapling.name=Psaronius fidanı
+tile.psaronius_planks.name=Psaronius kalasları
+tile.psaronius_log.name=Psaronius kütüğü
+tile.psaronius_leaves.name=Psaronius yaprakları
+tile.psaronius_stairs.name=Psaronius merdivenleri
+tile.psaronius_slab.name=Psaronius döşemeleri
+tile.psaronius_log_petrified.name=Psaronius taşlaşmış kütüğü
+tile.psaronius_fence.name= Psaronius çiti
+tile.psaronius_fence_gate.name=Psaronius çit kapısı
+tile.psaronius_door.name= Psaronius kapısı
+item.psaronius_door_item.name= Psaronius kapısı
+
+tile.phoenix_sapling.name=phoenix fidanı
+tile.phoenix_planks.name=phoenix kalasları
+tile.phoenix_log.name=phoenix kütüğü
+tile.phoenix_leaves.name=phoenix yaprakları
+tile.phoenix_stairs.name=phoenix merdivenleri
+tile.phoenix_slab.name=phoenix döşemesi
+tile.phoenix_log_petrified.name=phoenix taşlaşmış kütüğü
+tile.phoenix_fence.name=phoenix çiti 
+tile.phoenix_fence_gate.name=phoenix çit kapısı
+tile.phoenix_door.name=phoenix kapısı
+item.phoenix_door_item.name=phoenix kapısı
+
+item.paleo_pad.name=Paleo Pad
+
+tile.small_royal_fern.name=Royal fern
+tile.small_chain_fern.name=Chain fern
+tile.small_cycad.name=Cycad
+tile.bennettitalean_cycadeoidea.name=Cycadeoidea
+tile.cry_pansy.name=Cry Pansy
+tile.scaly_tree_fern.name=pullu eğreltiotu
+tile.cycad_zamites.name=Zamites
+tile.dicksonia.name=Dicksonia
+tile.dicroidium_zuberi.name=Dicroidium Zuberi
+tile.west_indian_lilac.name=batı hint leylağı
+tile.west_indian_lilac_flowers.name=batı hint leylağının çiçekleri
+tile.west_indian_lilac_fruit.name=batı hint leylağının meyvesi
+item.west_indian_lilac_fruit.name=batı hint leylağının meyvesi
+tile.dictyophyllum.name=Dictyophyllum
+tile.serenna_veriformans.name=Serenna Veriformans
+tile.ladinia_simplex.name=Ladinia Simplex
+tile.orontium_mackii.name=Orontium Mackii
+tile.umaltolepis.name=Umaltolepis
+tile.liriodendrites.name=Liriodendrites
+tile.raphaelia.name=Raphaelia
+tile.encephalartos.name=Encephalartos
+tile.cinnamon_fern.name=Tarçınlı Eğreltiotu
+tile.bristle_fern.name=Kıllı Eğreltiotu
+tile.tempskya.name=Tempskya
+tile.woolly_stalked_begonia.name=Yünlü Begonya
+tile.largestipule_leather_root.name=Largestipule köklü deri
+tile.rhacophyton.name=Rhacophyton
+tile.graminidites_bambusoides.name=Graminidites Bambusoides
+tile.enallhelia.name=Enallhelia
+tile.aulopora.name=Aulopora
+tile.cladochonus.name=Cladochonus
+tile.lithostrotion.name=Lithostrotion
+tile.stylophyllopsis.name=Stylophyllopsis
+tile.hippurites_radiosus.name=Hippurites Radiosus
+tile.heliconia.name=Heliconia
+tile.rhamnus_salicifolius.name=Rhamnus Salicifolius
+
+tile.reinforced_stone.name=takviyeli taş
+tile.reinforced_bricks.name=takviyeli tuğla
+
+tile.cultivate.name={color}yetiştirici
+tile.cultivator.name=kültivatör
+
+tile.clear_glass.name=açık cam
+
+tile.feeder.name=otomatik besleyici
+tile.bug_crate.name=böcek sandığı
+
+tile.paleo_bale_cycadeoidea.name=tarih öncesi cycadeoidea balyası
+tile.paleo_bale_cycad.name=tarih öncesi Cycad balyası
+tile.paleo_bale_fern.name=tarih öncesi eğrelti otu balyası
+tile.paleo_bale_leaves.name=tarih öncesi yaprak balyası
+tile.paleo_bale_other.name=tarih öncesi balyası diğer
+
+tile.low_security_fence_pole.name=düşük güvenlikli çit direği
+tile.low_security_fence_base.name=düşük güvenlikli çit temeli
+tile.low_security_fence_wire.name=düşük güvenlikli çit teli
+
+tile.med_security_fence_pole.name=orta güvenlikli çit direği
+tile.med_security_fence_base.name=orta güvenlikli çit temeli
+tile.med_security_fence_wire.name=orta güvenlikli çit teli
+
+tile.high_security_fence_pole.name=yüksek güvenlikli çit direği
+tile.high_security_fence_base.name=yüksek güvenlikli çit temeli
+tile.high_security_fence_wire.name=yüksek güvenlikli çit teli
+
+trackway.biped_medium.name=iki ayaklı orta boy
+trackway.biped_small.name=iki ayaklı küçük boy
+trackway.raptor.name=Raptor
+
+// Crops ========================================
+tile.ajuginucula_smithii.name=Ajuginucula Smithii
+tile.wild_onion_plant.name=yabani soğan
+tile.gracilaria_seaweed.name=Gracilaria bitkisi
+tile.wild_potato_plant.name=yabani patates
+
+//Plants =========================================
+plants.small_royal_fern.name=Royal fern
+plants.calamites.name=Calamites
+plants.small_chain_fern.name=Chain fern
+plants.small_cycad.name=Cycad
+plants.ginkgo.name=Ginkgo
+plants.psaronius.name=Psaronius
+plants.phoenix.name=Phoenix
+plants.bennettitalean_cycadeoidea.name=Cycadeoidea
+plants.cry_pansy.name=Cry Pansy
+plants.scaly_tree_fern.name=pullu eğrelti otu
+plants.cycad_zamites.name=Zamites
+plants.dicksonia.name=Dicksonia
+plants.ajuginucula_smithii.name=Ajuginucula Smithii
+plants.wild_onion.name=yabani soğan
+plants.dicroidium_zuberi.name=Dicroidium Zuberi
+plants.west_indian_lilac.name=Batı Hint Leylağı
+plants.dictyophyllum.name=Dictyophyllum
+plants.serenna_veriformans.name=Serenna Veriformans
+plants.ladinia_simplex.name=Ladinia Simplex
+plants.orontium_mackii.name=Orontium Mackii
+plants.umaltolepis.name=Umaltolepis
+plants.liriodendrites.name=Liriodendrites
+plants.raphaelia.name=Raphaelia
+plants.encephalartos.name=Encephalartos
+plants.wild_potato.name=yabani patates
+plants.araucaria.name=Araucaria
+plants.cinnamon_fern.name=tarçınlı eğreltiotu
+plants.bristle_fern.name=kıllı eğrelti otu
+plants.tempskya.name=Tempskya
+plants.woolly_stalked_begonia.name=Yünlü Begonya
+plants.largestipule_leather_root.name=Largestipule köklü deri
+plants.rhacophyton.name=Rhacophyton
+plants.graminidites_bambusoides.name=Graminidites Bambusoides
+plants.enallhelia.name=Enallhelia
+plants.aulopora.name=Aulopora
+plants.cladochonus.name=Cladochonus
+plants.lithostrotion.name=Lithostrotion
+plants.stylophyllopsis.name=Stylophyllopsis
+plants.hippurites_radiosus.name=Hippurites Radiosus
+plants.heliconia.name=Heliconia
+plants.rhamnus_salifocifus.name=Rhamnus Salifocifus
+
+//Containers ==================================================
+container.cleaning_station=temizleme istasyonu
+container.cleaning_station.cleanFossilButton=temizleme istasyonu fosili temizle butonu
+container.fossil_grinder=fosil öğütücü
+container.dna_sequencer=DNA düzenleyici
+container.dna_synthesizer=DNA sentezleyici
+container.embryonic_machine=embriyonik makine
+container.embryo_calcification_machine=embriyo kireçleme makinesi
+container.incubator=kuluçkaya makinesi
+container.dna_extractor=DNA çıkarıcı
+container.dna_combinator_hybridizer=DNA birleştirici-füzyonlaştırıcı
+container.dna_combinator=DNA birleştirici
+container.dna_hybridizer=DNA füzyonlaştırıcı
+container.cultivator=kültivatör
+container.cultivator.progress=ilerleme
+container.cultivator.cultivating=yetiştiriliyor
+container.close.name=kapalı
+container.feeder=otomatik besleyici
+container.bug_crate=böcek sandığı
+container.skeletonassembly=iskelet montajı
+cultivator.proximates.name=yakınlar
+cultivator.minerals.name=Minareller
+cultivator.vitamins.name=Vitaminler
+cultivator.lipids.name=Lipitler
+
+
+//Others ==================================================
+blue_print.blank.name=taslak
+lore.dna_quality.name=DNA kalitesi : {quality}%%
+lore.baby_dino.name=Bir  yavru doğurmak için Shift + Sağ tıklama
+lore.genetic_code.name=genetik kod: {code}
+lore.dinosaur.name=dinazor: {dino}
+lore.plant.name=bitki: {plant}
+lore.change_gender.name=cinsiyet değiştirmek için Shift + Sağ tıklama
+item.record.jurassicraft_theme.desc=PigeonAce - Reborn Teması
+item.record.troodons_and_raptors.desc=PigeonAce - Troodonlar ve Raptorlar
+item.record.dont_move_a_muscle.desc=PigeonAce - kılını bile kıpırdatma
+
+cage.empty.name=boş
+gender.male.name=erkek
+gender.female.name=dişi
+gender.random.name=rastgele
+spawnegg.genderchange.name=bu yumurta çatlayacak{mode}
+actionfigure.genderchange.name=Bu Aksiyon figürü {mode} görünecektir.
+amber.mosquito.name=Sivrisinek
+amber.aphid.name=yaprak biti
+
+color.red.name=kırmızı
+color.orange.name=turuncu
+color.yellow.name=sarı
+color.green.name=yeşil
+color.lime.name=açık yeşil
+color.blue.name=mavi
+color.light_blue.name=açık mavi
+color.purple.name=mor
+color.pink.name=pembe
+color.magenta.name=magenta
+color.white.name=beyaz
+color.black.name=siyah
+color.brown.name=kahverengi
+color.gray.name=gri
+color.silver.name=gümüş
+color.cyan.name=camgöbeği
+
+period.quaternary.name=Kuaterner
+period.neogene.name=Neojen
+period.paleogene.name=Paleojen
+period.cretaceous.name=kretase.
+period.jurassic.name=Jurassic
+period.triassic.name=triyasik
+period.permian.name=Permian
+period.carboniferous.name=karbon 
+period.devonian.name=Devoniyen
+period.silurian.name=Silüriyen
+period.ordovician.name=Ordovisyen
+period.cambrian.name=Kamboçya
+
+//Achievements ==============================================
+advancements.reborn.root.title=Jurassic World Reborn
+advancements.reborn.root.description=Jurassic World Reborn'a hoş geldiniz!
+advancements.reborn.encased_fossil.title=Fosil mi kazıyorsun?
+advancements.reborn.encased_fossil.description=Alçı kullanarak bir fosil bloğu çıkar.
+advancements.reborn.plant_fossils.title=Paleobotanik
+advancements.reborn.plant_fossils.description=Bir bitki fosili çıkarın.
+advancements.reborn.plaster.title=Paleontoloji
+advancements.reborn.plaster.description=Alçı ve bandaj elde edin. 
+advancements.reborn.amber.title=Fosilleşmiş Mücevher
+advancements.reborn.amber.description=Kehribar elde edin.
+advancements.reborn.cleaning_station.title=Haydi temizleyelim!
+advancements.reborn.cleaning_station.description=Bir temizlik istasyonu edinin.
+advancements.reborn.fossil_grinder.title=Öğütmeye Başla 
+advancements.reborn.fossil_grinder.description=Bir fosil öğütücü edinin.
+advancements.reborn.dna_sequencer.title=Yumuşak Doku Sıralayıcı 
+advancements.reborn.dna_sequencer.description=Bir DNA Dizileme Cihazı edinin.
+advancements.reborn.dna_combinator_hybridizer.title=Bir adım daha yakın...
+advancements.reborn.dna_combinator_hybridizer.description=Bir DNA Birleştirici-Hibritleyici elde edin.
+advancements.reborn.dna_extractor.title=Fosilleşmiş Ağaç Özsuyu Çıkarıcı
+advancements.reborn.dna_extractor.description=Bir DNA Çıkarıcı edinin.
+advancements.reborn.dna_synthesizer.title=Klonlama Mucizesi
+advancements.reborn.dna_synthesizer.description=Bir DNA Sentezleyici elde edin.
+advancements.reborn.incubator.title=İnsan Dinozorları Yaratır
+advancements.reborn.incubator.description=Bir İnkübatör Edin.
+advancements.reborn.embryonic_machine.title=Embriyo Oluşturma
+advancements.reborn.embryonic_machine.description=Bir Embriyonik Makine elde edin.
+advancements.reborn.embryo_calcification_machine.title=Neredeyse orada...
+advancements.reborn.embryo_calcification_machine.description=Bir Embriyonik Kalsifikasyon Makinesi elde et.
+advancements.reborn.dna.title=Bingo! Dino DNA'sı!
+advancements.reborn.dna.description=DNA test tüpü elde edin.
+advancements.reborn.plant_dna.title=Bingo! Bitki DNA'sı!
+advancements.reborn.plant_dna.description=Bitki DNA'sı test tüpü edinin.
+advancements.reborn.dino_egg.title=Bu bir Dinozor yumurtası...
+advancements.reborn.dino_egg.description=Bir dinozor yumurtası elde edin.
+advancements.reborn.plant_callus.title=Bitkilerin Dönüşü!
+advancements.reborn.plant_callus.description=Bir bitki nasırı elde edin.
+advancements.reborn.skeleton_assembly.title=İskeletler Birleşiyor!
+advancements.reborn.skeleton_assembly.description=Bir iskelet montaj tablosu elde edin.
+advancements.reborn.velociraptor_hatched_egg.title=Clever Girl...
+advancements.reborn.velociraptor_hatched_egg.description=Bir Velociraptor yumurtadan çıkar.
+advancements.reborn.brachiosaurus_hatched_egg.title=Sürüler Halinde Hareket Ediyorlar
+advancements.reborn.brachiosaurus_hatched_egg.description=Bir Brachiosaurus yakalayın.
+advancements.reborn.dilophosaurus_hatched_egg.title=Spitter
+advancements.reborn.dilophosaurus_hatched_egg.description=Bir Dilophosaurus yakalayın.
+advancements.reborn.tyrannosaurus_hatched_egg.title=Bir T-rex'imiz var!
+advancements.reborn.tyrannosaurus_hatched_egg.description=Bir Tyrannosaurus yakalayın.
+advancements.reborn.spinosaurus_hatched_egg.title=InGen'in Listesinde Değil...
+advancements.reborn.spinosaurus_hatched_egg.description=Bir Spinosaurus yakalayın.
+advancements.reborn.indominus_hatched_egg.title=Bu ebeveynlere kabuslar yaşatacak...
+advancements.reborn.indominus_hatched_egg.description=Bir Indominus-Rex yakalayın.
+advancements.reborn.parasaurolophus_hatched_egg.title=Elvis?
+advancements.reborn.parasaurolophus_hatched_egg.description=Bir Parasaurolophus yumurtla.
+advancements.reborn.hybrids_hatched_egg.title=Henry Wu'nun Sırları...
+advancements.reborn.hybrids_hatched_egg.description=Bir Melez Yakala.
+advancements.reborn.indoraptor_hatched_egg.title=Bu şey nedir...
+advancements.reborn.indoraptor_hatched_egg.description=Bir Indoraptor yakalayın.
+advancements.reborn.pachycephalosaurus_hatched_egg.title=Friar Tuck
+advancements.reborn.pachycephalosaurus_hatched_egg.description=Bir Pachycephalosaurus yakalayın.
+advancements.reborn.giganotosaurus_hatched_egg.title=Kralların Kralı!
+advancements.reborn.giganotosaurus_hatched_egg.description=Bir Giganotosaurus yakalayın.
+advancements.reborn.coelacanth_hatched_egg.title=Yaşayan fosil...
+advancements.reborn.coelacanth_hatched_egg.description=Bir Coelacanth yumurtlayın.
+advancements.reborn.mosasaurus_hatched_egg.title=Tank yeterince büyük mü?
+advancements.reborn.mosasaurus_hatched_egg.description=Bir Mosasaurus yetiştirin.
+advancements.reborn.oviraptor_hatched_egg.title=Yumurta hırsızı!
+advancements.reborn.oviraptor_hatched_egg.description=Bir Oviraptor yumurtla.
+advancements.reborn.arsinoitherium_hatched_egg.title=Ah şu Nostalji.
+advancements.reborn.arsinoitherium_hatched_egg.description=Bir Arsinoitherum yumurtla.
+advancements.reborn.beelzebufo_hatched_egg.title=Big Frogo
+advancements.reborn.beelzebufo_hatched_egg.description=Bir Beelzebufo yetiştirin.
+advancements.reborn.troodon_hatched_egg.title=Sorkin'in Çocukları
+advancements.reborn.troodon_hatched_egg.description=Bir Troodon yakalayın.
+advancements.reborn.mamenchisaurus_hatched_egg.title=Mamenchi kertenkelesi
+advancements.reborn.mamenchisaurus_hatched_egg.description=Bir Mamenchisaurus yakalayın.
+advancements.reborn.tylosaurus_hatched_egg.title=Knob Kertenkele
+advancements.reborn.tylosaurus_hatched_egg.description=Bir Tylosaurus üretin.
+info.dimetrodon.name=Dimetrodon, Geç Permiyen Avrupa ve Amerika'sından büyük bir sinapsitti. Dimetrodon'un en belirleyici özelliği, onları ısıtmak ve eşlerini çekmek için kullanılan deri ağlı bir yelken oluşturan büyük ölçüde uzatılmış omurlarıydı. Adı "iki ölçü diş" anlamına gelir ve ağzındaki iki tür dişe atıfta bulunur: Daha kısa dişler ve daha uzun dişler.
+entity.rebornmod.dimetrodon.name=Dimetrodon
+item.blueprint.name=Taslak
+stand.stand.name=standing
+stand.placed.name=placed
+pose.name=Pose
+lore.change_variant.name=Shift Pozu değiştirmek için havada sağ tıklayın
+type.standchange.name=Bu kafatası artık {mode} bloklarını ortaya çıkaracak.
+tile.gypsum_pathway.name=Alçıtaşı Yolu
+tile.gypsum_mixed_path.name=Alçı Karışık Yol
+tile.gypsum_tiles.name=Alçı Karolar
+tile.ice_age_shard.name=Cenozoic Shard Ore
+item.frozen_leech.name=Dondurulmuş Sülük
+
+
+//Keybinds ==============================================
+key.microraptor_dismount=Microraptor'ı indirin
+key.vehicle_0.switch=1. koltuğa taşındı
+key.vehicle_1.switch=2.koltuğa taşındı
+key.vehicle_2.switch=3.koltuğa taşındı
+key.vehicle_3.switch=4.koltuğa taşındı
+key.vehicle_4.switch=5.
+key.vehicle_5.switch=6.koltuğa taşındı
+key.vehicle_6.switch=7.koltuğa taşındı
+key.vehicle_7.switch=8.koltuğa taşındı
+key.vehicle_8.switch=9.koltuğa taşındı
+
+//Other =============
+message.tame.name=Tebrikler!  Bir {dino name} evcilleştirdin
+message.not_owned.name=bu dinozora sahip değilsin
+message.too_young.name=Bu yaratık eşya taşıyamayacak kadar genç!
+message.set_order.name={Order} için dinozoruna emifoverdin.
+
+growth_stage.infant.name=yavru
+growth_stage.juvenile.name=Çocuk
+growth_stage.adolescent.name=Genç
+growth_stage.adult.name=yetişkin
+
+order.wander.name=Rahatça hareket et
+order.sit.name=Otur
+order.follow.name=takip et
+
+gui.select_order.name=emir seç
+
+gui.dinosaur_statistics.name=Dinozor İstatistikleri:
+gui.health.name=sağlık:
+gui.hunger.name=açlık:
+gui.thirst.name=susuzluk:
+gui.age.name=yaş:
+gui.days_old.name=kaç gündür hayatta{value} 
+
+status.drowning.name=boğulma
+status.hungry.name=açlık
+status.low_health.name=düşük can
+status.poisoned.name=zehirlenmiş
+status.sleepy.name=uykulu
+status.tamed.name=evcilleştirilmiş
+status.thirsty.name=susamış
+status.flocking.name=sürü ile birlikte
+status.scared.name=korkmuş
+status.carnivorous.name=etçil
+status.herbivorous.name=otçul
+status.diurnal.name=gündüz canlısı
+status.nocturnal.name=gece ve gündüz canlısı
+status.crepuscular.name=gece canlısı
+status.piscivorous.name=balıkçıl
+status.insectivorous.name=böcek yiyici
+
+info.apatosaurus.name = Kuzey Amerika'ya özgü olan apatosaurus, geç Jura döneminde (152-151 milyon yıl önce) yaşamış diploid bir sauropod dinozoruydu.  Ortalama olarak, apatozorun uzunluğu yaklaşık 22,8 metreye ulaşırdı ve yaklaşık 16-25 ton ağırlığındaydı.  Genellikle uysal hayvanlardır ve küçük çiftlerden büyük sürülere (yaklaşık 2 ila 15 birey), genellikle yaşlı bir alfa dişisinin ("anaerkil") önderliğinde barış içinde otlarlardı.
+
+info.baryonyx.name = Avrupa ve Afrika'ya özgü olan Baryonyx, Alt Kretase döneminde (130-125 milyon yıl önce) yaşamış bir theropod spinosaurus dinozoruydu.  Esas olarak balık ve diğer su avlarını avladıklarına inanılıyor.  Bir etobur için şaşırtıcı derecede naziktir, ancak boyutu nedeniyle, baryonyx bazen insanları veya küçük dinozorları aç olduklarında av olarak görebilir.
+
+
+info.beelzebufo.name = Şeytan kurbağası, şeytan kurbağası veya cehennem kurbağası olarak da bilinen Beelzebufo, bir tür yaygın boynuzlu kurbağa (veya "Pac-Man" kurbağası) idi.  Üst Kretase döneminde (70 milyon yıl önce) Madagaskar'da yaşadı.  Büyüklüğü ve canavarca boynuzlu kafası nedeniyle, bu kurbağa, Şeytan ile yakından ilişkili veya eşanlamlı bir İncil iblisi olan Beelzebufo olarak adlandırıldı.
+
+
+info.alvarezsaurus.name = Alvarezssauro, Üst Kretase döneminde (86-83 milyon yıl önce) yaşamış oldukça küçük bir theropod dinozordu (2 metre uzunluğunda).  Modern Arjantin'e özgüdür.  Takma adı "Alvy" veya "Alvie" olan Alvarezsaurus, insanlar için tehlikeli değildir.  Bu ilginç alacakaranlık yaratığı esas olarak böcekleri avlar ve bazen küçük memelileri veya kertenkeleleri yer.
+
+
+
+info.ammonite.name = Perisphinctes Ammonite, Paleozoik ve Mezozoik (erken Devoniyen - geç Kretase) boyunca yaşamış soyu tükenmiş bir kafadanbacaklı alt sınıftadır.  Muhtemelen nesli tükenmiş en ünlü hayvanlardan biri olan Persphinctes, spiral kabuklarıyla bilinirler.  Kabuklar, uzaktan nautilus kabuklarına benzer, ancak kabukların bölmelerini ayıran dikişlerdeki çentikler, çıkıntılar ve hatta "uçlar" ile tanımlanabilir.
+
+info.ankylosaurus.name = Ankylosaurus, Kuzey Amerika'daki geç Kretase döneminden kalma büyük bir ankilozordur.  Gelişmiş savunma yöntemleri nedeniyle genellikle "canlı tank" olarak bilinir.  Bu hayvanlar, minimum beyin boyutu ve zayıf görme nedeniyle yüksek düzeyde saldırganlığa eğilimlidir.  Bu canlı bulunduğunda ciddiye alınmalı ve özenle tedavi edilmelidir.
+
+
+info.allosaurus.name = Üst Jura döneminin (yaklaşık 155-150 milyon yıl önce) en büyük karasal avcılarından biri olan Allosaurus, büyük bir etobur theropod dinozordu.  Kalıntıları Amerika Birleşik Devletleri, Portekiz ve Afrika bölgelerinde bulundu.  Allosaurus, sauropodlar gibi gerçekten büyük avları öldürmek için ara sıra gruplar halinde avlanmıştır.
+
+
+info.alligator_gar.name = Kuzey Amerika'daki en büyük tatlı su balıklarından biri olan Alligator Gar, güney Amerika Birleşik Devletleri ve kuzey Meksika'da bulunur.  Bu balıklar 3 metre uzunluğa kadar büyüyebilir ve ılıman ve tropikal iklimde tuzlu göllerde, nehirlerde, bataklıklarda, haliçlerde ve koylarda bulunur. Alligator Garın kendisi, su yüzeyindeki küçük memelileri yedikleri bilinmesine rağmen, esas olarak daha küçük balıklarla beslenen bir tuzak avcısıdır.
+
+
+info.achillobator.name = Achillobator veya "Asil savaşçı", bir yetişkin olarak yaklaşık 5 metre uzunluğunda olan bilinen en büyük dromeosauridlerden biriydi.  Bu dinozorlar, Yukarı Kretase döneminde yaklaşık 93-80 milyon yıl önce Moğolistan'da yaşadılar.  Uzmanlar, kemiklerinden dolayı Achillobator'un yeni bir dinozor türü veya iki farklı dinozordan yanlış bir şekilde yeniden inşa edilmiş bir "kimera" olduğuna inanıyorlar.
+
+
+info.mamenchisaurus.name = Geç Jura döneminde (160-145 milyon yıl önce) Çin'e özgü olan mamenchisaurus'un vücudunun yaklaşık yarısını kaplayan bir boynu vardı.  Mamenchisaurus türlerinin çoğunun vücut uzunluğu yaklaşık 15-25 metredir, ancak M. sinocanadorum türünün 35 metreye kadar uzunluklara ulaşabildiğine ve bu da onu en uzun sauropodlardan biri yaptığına inanılıyor.
+
+
+info.triceratops.name = Triceratops, Üst Kretase döneminde Kuzey Amerika'da yaşadı.  Otçuldu, çoğunlukla palmiyeler, sikadlar ve eğrelti otları yerlerdi.  Tamamen büyüdüğünde, Triceratops 8-9 metre uzunluğunda ve 6-12 ton ağırlığındaydı.  Baş fırfırı sergilemek için kullanılırken, boynuzlar saldırı ve savunma için kullanıldı.  Triceratops, yetişkin bir anne tarafından yönetilen 5 ila 15 kişilik aile gruplarında yaşar.
+
+
+
+
+info.dilophosaurus.name = Arizona'daki Alt Jura'dan bir theropod olan Dilophosaurus, 6 ila 7 metre uzunluğundaki ilk büyük yırtıcı dinozorlardan biriydi.  Sergilemek için kafasında ikiz armalar vardı.  Aslında zehirlidirler, avlarının gözüne zehir tükürmeyi tercih ederler.  Zehir göze ulaşırsa körlüğe, acı verici ağrıya ve sonunda felce neden olur.  Küçük ve dağınık erkek ve kadın çetelerinde (3 ila 10 kişilik) yaşıyorlardı.
+
+
+info.brachiosaurus.name = Brachiosaurus, Jura döneminin sonlarında Kuzey Amerika'da yaşayan dev bir sauropoddu.  Boyu 25-26 metreye, boyu 15 metreden fazla  büyüyebilir ve ağırlığı 40 tona kadar çıkabilir.  Ağaçların tepesinden yelken açtığında, çoğunlukla ginkgo yaprakları, iğne yapraklılar, eğrelti otları ve büyük cicadaceae yediğine inanılıyor.  Bir alfa erkeğinin veya dişinin önderliğinde 2 ila 15 kişilik sürülerde yaşarlar.  Birbirleriyle iletişim kurmak için yüksek sesli çağrılar yaparlardı.
+
+
+
+info.parasaurolophus.name = Parasaurolofo, Üst Kretase döneminde Kuzey Amerika'da yaşamış bir hadrazordu.  10 metre uzunluğunda ve 2.5 ton ağırlığındaydı.  Kafasındaki kavisli boru şeklindeki tepe oyuktu ve ses çıkarmak için kullanılıyordu.  Parasaurolophus bir otoburdu ve yanak dişlerini yiyecekleri öğütmek için kullanıyordu.  Parasaurolophus, erkek ve dişilerin karışımıyla yaklaşık 5 ila 50 kişilik sürülerde yaşadı.   kilometrelerce seyahat edebilir ve çok gürültülü.
+
+
+
+info.tyrannosaurus.name = Tyrannosaurus Rex, Kuzey Amerika'da Üst Kretase döneminde yaşamış büyük bir theropoddu.  Yaklaşık 12-13 metre uzunluğunda ve 6 ton ağırlığındaydı.  Otçulların kemiklerinde bulunan iyileşmiş tyrannosaurus ısırık yaraları onun bir yırtıcı olduğunu öne sürüyor, ancak aynı zamanda çöpçülerle de besleniyor.  Şiddetli bir yaşam tarzına öncülük ettiler ve şiddetle bölgeciydi.  Tyrannosaurus muhteşemdir, ancak hafife alınmamalıdır!
+
+
+info.velociraptor.name = Velociraptor, Yukarı Kretase döneminde Doğu Asya'da yaşamış küçük bir theropod dinozordu.  Küçük memelilerden veya kertenkelelerden orta büyüklükteki dinozorlara kadar çok çeşitli avları avlayan bir fırsatçıydı.  Hızlı, çok zeki ve çok agresif, bakımı çok zor.  Bir çitanın hızına rakip olan ve dikey olarak 4 metreye kadar zıplayan yetenekli kaçış sanatçılarıdır.
+
+
+info.gallimimus.name = Gallimimus, Üst Kretase döneminde Moğolistan'da yaşayan otçul bir theropoddu.  Tamamen büyüdüğünde 6 ila 8 metre olurdu.  Suya yakın yaşamayı, bitki örtüsü ve yosun üzerinde otlamayı tercih etti.  Gallimimus hızlı bir koşucuydu, ancak şu anda ulaşabildiği en yüksek hız bilinmemektedir.  Genellikle erkek ve dişilerin bir karışımı olan otlayan hayvanlardır (10 ila 100 kişilik).  Son derece panik içindeler ve herhangi bir potansiyel tehdit bir izdihama neden olabilir.
+
+
+info.microraptor.name = Şimdiye kadar bulunan en ünlü tüylü dinozorlardan biri olan Microraptor, Aşağı Kretase döneminde (125-122 milyon yıl önce) kuzeydoğu Çin'de yaşıyordu.  Tüylerinin yanardöner siyah olduğu bilinmektedir.  Uzmanlar, bu tüyler sayesinde süzülebileceklerini düşünüyorlar.  Microraptor, böcekleri ve diğer küçük hayvanları yiyen akıllı bir sürü avcısıdır.
+
+
+info.coelacanth.name =coelacanth, Devoniyen'den kalma son modern Celacanthiform balığıdır.  "Coelacanth" kelimesi "oyuk omurga" anlamına gelir.  Coelacanth, 8 farklı kanat kullanarak neredeyse her yöne kolayca dönebilir.  Celacanths, yalnızca Hint Okyanusu'nun derinliklerinde bulunan, geceleri balık sürükleyen avcılardır.  Tarih öncesi bir tür olmalarına rağmen bugün hala yaşıyorlar!
+
+
+
+info.mussaurus.name = Mussaurus, Yukarı Triyas döneminde Arjantin'den küçük bir prosauropod dinozorudur.  Adı "fare kertenkelesi" anlamına geliyor çünkü uzun zamandır sadece minik bebeklerin iskeletleri tarafından biliniyordu.  Bebeklerin oranları yetişkinlerin onlara baktığını gösteriyor.  Mussaurus, sauropodomorflar için çok küçüktür ve hayatta kalmak için sadece yemyeşil bitki örtüsüne, bazı ağaçlara ve suya ihtiyaç duyar.
+
+
+
+info.blue.name = Velociraptor, Üst Kretase döneminde Doğu Asya'da yaşamış küçük bir theropod dinozordu.  Küçük memelilerden veya kertenkelelerden orta büyüklükteki dinozorlara kadar çok çeşitli avları avlayan bir fırsatçıydı.  Hızlı, çok zeki ve çok agresif, bakımı çok zor.  Bir çitanın hızına rakip olan ve dikey olarak 4 metreye kadar zıplayan yetenekli kaçış sanatçılarıdır.
+
+
+
+info.carcharodontosaurus.name = Carcharodontosaurus, yaklaşık 13,7 metre uzunluğuyla en büyük theropod etoburlarından biriydi.  Kretase döneminde (105 ila 94 milyon yıl önce) yaşadı.  Afrika'da ve muhtemelen Güney Amerika'da yaşıyordu. Carcharodontosaurus'un boyutu, büyük sauropodlara saldırmak ve avlarını hızla öldürmek için aşırı  avantajlıydı.
+
+
+
+info.carnotaurus.name = Carnotaurus, Üst Kretase döneminde (72-69.9 milyon yıl önce) yaşamış bir abelissaurid theropod dinozoruydu.  8-9 metre uzunluğundaki bu 1 tonluk yırtıcı bir hayvan .  Hızlı bir koşucuydu, muhtemelen en hızlı theropoddu.  Diyeti tartışılıyor, ancak bazı uzmanlar hızlı ve yıkıcı saldırılarda büyük  avlar avladığını düşünürken, diğerleri onun çoğunlukla küçük avlar avladığını düşünüyor.
+
+
+
+info.cearadactylus.name = cearadactylus, Alt Kretase döneminde (112 milyon yıl önce) yaşamış bir pterozor cinsiydi.  Orta büyüklükte kabul ediliyor, kanat açıklığı yaklaşık 4 ila 5 metre ve ağırlığı yaklaşık 15 kg idi.  Uzun, iç içe geçmiş dişleri, esas olarak balık ağırlıklı bir beslenmeyi gösterir.  Cearadactylus, oldukça bölgesel ve karamsar bir pterozordur.  Yaklaşık 5 ila 100 bireyden oluşan sürülerde yaşarlar ve diğer pterozorları bir dereceye kadar ortadan kaldırırlar.
+
+
+info.ceratosaurus.name = Ceratosaurus, Üst Jura döneminde Kuzey Amerika ve Portekiz'de yaşamış 6 metre uzunluğunda, 1 tonluk yırtıcı bir dinozordu.  Burun boynuzunun bir zamanlar savaşmak için kullanıldığı düşünülüyordu, ancak şimdi teşhir amaçlı olduğu tahmin ediliyor.  Ayrıca sırtından aşağı doğru inen bir dizi osteoderm vardı.  Diğer büyük dinozorların kemiklerinde diş izleri bulundu, ancak onları avlayıp yok edip etmediği tartışılmadı.
+
+
+info.charlie.name = Velociraptor, Üst Kretase döneminde Doğu Asya'da yaşamış küçük bir theropod dinozordu.  Küçük memelilerden veya kertenkelelerden orta büyüklükteki dinozorlara kadar çok çeşitli avları avlayan bir fırsatçıydı.  Hızlı, çok zeki ve çok agresif, bakımı çok zor.  Bir çitanın hızına rakip olan ve dikey olarak 4 metreye kadar zıplayan yetenekli kaçış sanatçılarıdır.
+
+
+info.chasmosaurus.name = Chasmosaurus, Kuzey Amerika'daki Üst Kretase dönemine ait bir keratopsid dinozor cinsidir.  Adı, fırfırındaki büyük açıklıklara atıfta bulunan 'açık kertenkele' anlamına gelir.  Chasmosaurus büyük olasılıkla triceratops'a benziyordu çünkü çobandı, boynuzları olan bitki yiyen bir hayvandı.  Chasmosaurus genellikle sikadlarda, palmiye ağaçlarında ve diğer tarih öncesi bitkilerde ziyafet çekerdi.
+
+
+
+info.chilesaurus.name = Şili'ye özgü olan chilesaurus , yaklaşık 145 milyon yıl önce Üst Jura döneminde yaşamış küçük bir theropod dinozor türüdür.  Bitkileri yemeye yönelik uyarlamalarınızdan bazıları özel dişler ve kalın bağırsak içerir.  Bir yırtıcı tarafından köşeye sıkıştırılmosassaurkendinizi savunmak için muhtemelen ellerindeki büyük pençeleri kullanacaktır.  Birkaç iskelet bulunduğundan, araştırmacılar chilesaurus'nun neye benzediğini biliyorlar.
+
+
+info.coelurus.name = Coelurus, geç Jura döneminden kalma küçük bir Celurasaurian theropoddu.  Çoğu zaman yanlışlıkla çağdaş Ornitoestes olarak adlandırılan bu hayvanın çoğu tek bir fosilden bilinmektedir.  Amerika Birleşik Devletleri'nin Wyoming kentinde 2,5 metre uzunluğa kadar büyüyen ve 13 kilo ağırlığa sahip yetişkinler bulundu.  Coelurus'un adı, dinozorun kuyruğu oyuk olduğu için iskeletten gelmektedir.
+
+
+
+info.compsognathus.name=Compsognathus, küçük, iki ayaklı etçil bir theropod cinsidir.  Compsognathus, türünün tek üyesi olan bir hindi boyutuna kadar büyüyebilir.  Geç Jura döneminde Avrupa'da 150 milyon yıl önce yaşadılar.  Bu canlı, daha küçük olduğu için hafife alınmamalıdır.  Bir Compsognathus tek başına zararsız görünse de, gruplar halinde çok tehlikeli olabilir.
+
+
+info.corythosaurus.name = corythosaurus, Üst Kretase döneminde yaşamış bir hadrozor dinozordur.  Üst ve alt çenenin her iki yanında tek bir taşlama yüzeyi oluşturan "piller" halinde sıkıştırılmış çok sayıda dişe sahipti.  Bu, dinozorun aynı anda büyük miktarlarda yiyeceği işlemesine izin verdi.  corythosaurus'un çenesinin arkasına dolanmış yüzlerce küçük dişi vardı ve bu da bitkileri çok daha kolay öğütmesini sağladı.
+
+
+
+info.crassigyrinus.name=Crassigirino scoticus, İskoçya'nın tropikal bataklıklarında saklanan 2 metre (6 fit) uzunluğunda bir amfibiydi.  Yaklaşık 345-328 milyon yıl önce Carboniferous Visean'da yaşadı.  Güçlü bir ısırığa sahip hızlı bir avcı, uzuvları küçüktü, bu yüzden muhtemelen tüm hayatı boyunca suda yaşadı.  Crassigirino, pusu avcısı olarak kabul edilir.  Büyük gözleri, gececi olduklarını ve derin suda avlanabileceklerini gösteriyordu.
+
+
+
+info.delta.name=Velociraptor, Yukarı Kretase döneminde Doğu Asya'da yaşamış küçük bir theropod dinozordu.  Küçük memelilerden veya kertenkelelerden orta büyüklükteki dinozorlara kadar çok çeşitli avları avlayan bir fırsatçıydı.  Hızlı, çok zeki ve çok agresif, bakımı çok zor.  Bir çitanın hızına rakip olan ve dikey olarak 4 metreye kadar zıplayan yetenekli kaçış sanatçılarıdır.
+
+
+
+info.dimorphodon.name=dimorphodon, Alt Jura döneminde yaşamış ve Avrupa'da ikamet eden bir pterozordur.  Diyeti bazen daha küçük omurgalılardan oluşmasına rağmen, o bir piskivordu.  Dimorphodon'un ("iki diş şekli") sivri uçlu çenelerinde iki tip diş vardır; en uzun olanı avını yakalamaya yöneliktir ve arkadaki muhtemelen kolayca öğütmek için en kısa ve en düz olanıdır.
+
+
+info.diplocaulus.name = Kuzey Amerika'ya özgü Diplocaulus, Permiyen'in başlangıcından neredeyse Büyük Ölüm'e veya Permiyen-Triyas'ın (299 - 251 milyon yıl önce) toplu yok oluşuna kadar yaşadı.  Bu lepospondil, soyu tükenmiş en ünlü amfibilerden biridir.  Vücudunun şekli nedeniyle dalgalı bir şekilde yüzdüğüne inanılıyor.  Karada seyahat edebilmesine rağmen, muhtemelen suyun dibindeki tortularda saklanarak zaman geçirdi.
+
+
+ info.edmontosaurus.name = Kuzey Amerika'da (daha spesifik olarak Montana, Nebraska ve New Jersey) yaşayan bir hadrosaurid olan Edmontosaurus, Üst Kretase döneminde yaşamıştır.  Edmontosaurus, diğer dinozorlara göre daha fazla ördek gagasına sahipti ve diğer hadrosauridler kadar kemikli olmadığı için kretiyle tanınır.  Araştırmalar, göçebe olduklarını ve kendilerini tepedeki avcılardan korumak için büyük sürülerde seyahat ettiklerini gösteriyor.
+
+info.giganotosaurus.name = Giganotosaurus oldukça tehlikeli bir hayvan ve sağlam bir yırtıcıydı, muhtemelen büyük sauropodları avlamakta uzmanlaşmıştı.  Giganotosaurus, büyük su kuyuları ve pusular içinde ağaçların uzandığı, makul derecede açık düz ovalarda en iyisini yapar.  Giganotosaurus dişileri, erkeklerden daha ağır ve saldırgandır ve sevgilerini en çok sergileyen ve rekabet eden onlardır.
+
+
+
+ info.guanlong.name = Guanlong 3 metre uzunluğundaydı, 54-90 kg ağırlığındaydı ve her elinde 3 uzun parmak vardı.  Theropod, yaklaşık 160 milyon yıl önce, Jura döneminin sonlarında Çin'de yaşadı.  Kafasında ona "taç ejderha" takma adını veren hava dolu bir ibik vardı.  Bu, bilinen ilk tyrannosaur dinozorudur.  Guanlong, bir ilkel tüy tabakasıyla keşfedilmiş olabilir, ancak buna dair hiçbir kanıt yoktur.
+
+
+ info.hypsilophodon.name = hypsilophodon erken Kretase döneminde (125 milyon yıl önce) yaşamış küçük bir ornitoloji idi.  İngiltere, İspanya ve Birleşik Krallık'ta yaşadı.  Bu dinozorun ortalama uzunluğu 2,3 ​​metredir ve 50 kg ağırlığa kadar çıkabilir.  Pasif bir otoburdu ve küçük boyutu ile bu kuş gözlemciliği yırtıcılar için kolay bir avdı.  Hypsilophodon muhtemelen tehlikeye göz kulak olmak için büyük gruplar halinde yaşıyordu.
+
+
+
+
+ info.indominus.name = Şiddet içeren, güçlü ve kurnaz olan bu genetiği değiştirilmiş melez, hesaba katılması gereken güçlü bir kuvvettir.  Tam boy olarak Indominus 15 metre uzunluğa ve 5,8 metre yüksekliğe ulaşabilir.  Yalnızca en büyük theropodlar ona meydan okuyabilir.  Indominus genomu, Tyrannosaurus, Velociraptor, Carnotaurus, Majungasaurus, Rugops, Giganotosaurus ve Terizinosaurus dahil olmak üzere birçok farklı dinozor ve diğer hayvanlardan oluşur.  Onun adı "Aşılmaz Kral" anlamına geliyor.
+
+
+
+ info.dunkleosteus.name = Güçlü bir deniz avcısı olan Dunkleosteus, Yukarı Devoniyen döneminde (380-360 milyon yıl önce) Kuzey Amerika, Avrupa ve Afrika'da yaşadı.  Ağzının dişleri yok ama keskin kemik plakalarla donatılmış.  Bu plakalar makas gibi davranarak zırhlı avlarını yıkıcı bir ısırıkla keserdi.  Dunkleosteus'un başka bir besin kaynağı bulamazlarsa bazen yamyamlığa başvuracağına inanılıyor.
+
+
+
+ info.dodo.name = Dodo, soyu tükenmiş en ünlü hayvanlardan biridir.  Bu büyük, uçamayan kuşlar, güvercinlerle yakından ilişkiliydi.  Hint Okyanusu'ndaki Mauritius adasına özgü olan dodo, insanlar tarafından avlanma ve istilacı türlerin baskısı sonucu yok olmaya sürüklendi.  Uçmayan bu kuşlar genellikle tek başlarına ya da küçük, gevşek sürüler halinde, bireyin büyüklüğüne göre bir hiyerarşi ile yaşarlar.
+
+
+
+ info.echo.name = Velociraptor, Üst Kretase döneminde Doğu Asya'da yaşamış küçük bir theropod dinozordu.  Küçük memelilerden veya kertenkelelerden orta büyüklükteki dinozorlara kadar çok çeşitli avları avlayan bir fırsatçıydı.  Hızlı, çok zeki ve çok agresif, bakımı çok zor.  Bir çitanın hızına rakip olan ve dikey olarak 4 metreye kadar zıplayan yetenekli kaçış sanatçılarıdır.
+
+
+
+ info.herrerasaurus.name = Bilinen en ilkel theropod dinozorlarından biri olan Herrerasaurus, Triyas'ın sonlarında (231.4 milyon yıl önce) kuzeybatı Arjantin'de yaşadı.  Bu ilkel dinozor uzunluğu 3 ila 6 metre arasındadır ve muhtemelen bir avcıydı.  Yemyeşil taşkın yataklarını ve iğne yapraklı ormanları kovalayarak gergedanlar, memeli benzeri sürüngenler ve küçük dinozorlar gibi küçük ve orta büyüklükteki avları avladı.
+
+
+
+ info.lambeosaurus.name = Lambeosaurus, Kretase döneminde (yaklaşık 74 ila 76 milyon yıl önce) Kuzey Amerika'da yaşayan otçul bir hadrosauriddi.  Lambeosaurus, başının tepesinde ses üreten, kokuyu artıran ve kesik görüntüsünü artıran balta şeklindeki sorgusuyla biliniyordu.  Bu dinozorun dengesinin diğer hadrosauridlerden çok daha iyi olduğuna ve arka ayakları üzerinde yürüyebildiğine inanılıyor.
+
+
+
+ info.mawsonia.name = Mawsonia, yaklaşık 99 ila 112 milyon yıl önce Güney Amerika ve Kuzey Afrika'da yaşadığı bilinen etçil bir balıktı.  Bir tür Coelacanth'dı ve daha büyük köpekbalıkları, pliosaurlar ve belki spinosaurid dinozorları gibi bazı yırtıcı hayvanlara sahip olabilirdi.  Diğer Coelacanth'lara benzer şekilde, Mawsonia denizin dibinde yaşadı, balıkları ve kayalar ve mercanlardaki yarıklara sığınan daha büyük omurgasızları yakaladı.
+
+
+ info.leptictidium.name = Leptictidio, Eosen döneminde (yaklaşık 50 ila 35 milyon yıl önce) Fransa ve Almanya'da yaşayan alışılmadık bir plasental memeliydi.  Bulunan kalıntılara dayanarak böcekleri, kertenkeleleri, daha küçük memelileri ve yaprakları yiyen vasıfsız bir omnivordu.  Arka ayakları üzerinde yürüyen ender memelilerden biridir.  Her yere atladığına inanılıyordu, ancak kemik yapısı çok zayıftı, bu yüzden şimdi çevik bir koşucu olarak kabul ediliyor.
+
+
+
+ info.leaellynasaura.name = Leaellynassaura, erken Kretase döneminde (yaklaşık 118-110 milyon yıl önce) Avustralya'da yaşamış küçük bir otçul kuş gözlemcisidir.  Leaellynassaura yaklaşık 3 fit uzunluğundaydı - 91 cm - ve yaklaşık 30 kg ağırlığındaydı.  Gözlerini büyütürdu ve otoburu düşük ışık seviyelerinde görürdü.  Leaellynassaura'da bulunan, dişler ve genç bir kafatasından oluşan tamamlanmamış tek bir fosil bulunmuştur.
+
+
+
+ info.ludodactylus.name = Ludodactylus, Brezilya, Ceará'da bulunan Alt Kretase dönemine ait bir pterodactyloid pterosaur cinsiydi.  Adı, oyuncak kopyalarında sıklıkla yapılan bir hata nedeniyle "oyuncak parmak" anlamına gelir.  Ludodactylus balıklar, leşler, yavru dinozorlar ve diğer birkaç hayvanla beslenmiş olabilir.  Paleontologlar tarafından yalnızca bir örnek bulundu ve bu canlıyla ilgili bilgilerin çoğunu bir sır olarak bıraktı.
+
+
+ info.mammoth.name = Yünlü Mamut, Pleistosen'den Holosen'e kadar (yaklaşık 150000 ila 4000 yıl önce) yaşayan fillerin soyu tükenmiş bir akrabasıydı.  Sağlıklı bir yetişkin mamutun doğal yırtıcıları çok azdı veya hiç yoktu, ancak buzağılar, hasta veya yaşlı yetişkinler kurtlara, mağara sırtlanlarına ve kedigillere karşı savunmasızdı.  Yünlü Mamut, soğuk bir iklimde büyük karlı bir tundrada veya otlatma alanında yaşıyordu.
+
+
+ info.majungasaurus.name = Majungasaurus, Üst Kretase döneminde (yaklaşık 70-66 milyon yıl önce) yaşamış bir abelissaurid theropoddu.  Bu fırsatçı avcı, küçük sauropodlar gibi oldukça büyük avlarla yüzleşebiliyordu.  Boğumlu kafasını ve güçlü vücudunu kurbanı teslim etmek ve bitirmek için kullandı.  Majungasaurus, modern kuşlarınkine benzer bir solunum sistemi olasılığına sahipti.
+
+
+
+ info.megapiranha.name = Arjantin'e özgü olan Megapiranha, Üst Miyosen'de (yaklaşık 10 ila 8 milyon yıl önce) yaşamış bir caracino balığıdır.  Megapiranha, devasa boyutu dışında görünüm ve davranış açısından modern piranaların akrabalarına çok benzer.  Bu balığın bilinen tek izleri, etçil veya otçul beslenmede kullanılabilecek çenenin ön tarafındaki büyük dişleridir.
+
+
+
+ info.metriacanthosaurus.name = Yerli İngilterede olan Metriacantosaurus, Orta Jura döneminde (yaklaşık 160 milyon yıl önce) yaşamış bir theropod dinozordu.  Theropodların en büyüğü olmasa da (8.3 metre uzunluğunda), Metriacantosaurus oldukça şaşırtıcı oldu!  Bu şaşırtıcı derecede kaslı dinozor, avını yükleyip çarparak sersemletir ve boğazını yırtarak öldürür.
+
+
+
+ info.microceratus.name = Çin'e özgü olan Microceratus, Kretase döneminde (129.4-66 milyon yıl önce) yaşamış küçük bir otçul keratopsi dinozordur.  Microceratus, beslenmesinde eğrelti otları, sikadlar ve iğne yapraklılar da dahil olmak üzere dönemin baskın çiçeklerine sahip birkaç bitkiyi tercih etti.  Bu yaratık, papağan gagalarıyla yemek için yaprakları veya iğneleri çekerdi.
+ info.moganopterus.name = Çin'e özgü olan Moganopterus, Alt Kretase döneminde (yaklaşık 125 milyon yıl önce) yaşamıştır.  Bu yaratık bilinen herhangi bir dişli pterozorun en uzun kafatasına ve aynı zamanda orantılı olarak uzun bir boyuna sahipti.  Moganopterus küçük avları avlamakta uzmanlaştı ve gün içinde daha aktifti.  Alışkanlıkları leylek veya balıkçıl kuşlara benziyordu, çünkü uzun, dar gagasını mızrağa benzer bir saldırı hareketinde avını yakalamak için kullanıyordu.
+
+
+
+ info.mosasaurus.name = En büyük mosasaurlardan biri olan mosasaurus, geç Kretase döneminde (yaklaşık 70 ila 66 milyon yıl önce) yaşayan dev bir deniz kertenkelesiydi.  Kemikleri Avrupa, Kuzey Amerika, Asya ve Yeni Zelanda'da bulundu.  Bu dev sürüngenler bölgeseldir ve çiftleşmedikleri veya yavrularını savunmadıkları sürece genellikle savaşırlar.  Bu yaratık geniş su bölgelerinde yaşadı ve çoğunlukla balıkları, plesiosaurları ve hatta diğer mosasaurları yedi.
+
+
+ info.ornithomimus.name = Kuzey Amerika'ya özgü olan Ornitomimus, Üst Kretase döneminde (74 ila 65 milyon yıl önce) yaşamış hızlı iki ayaklı bir theropoddu.  Bir devekuşuna garip benzerliğinden dolayı "kuş taklitçisi" olarak bilinir.  Ornithomimus muhtemelen bir devekuşu gibi davrandı ve muhtemelen saatte yaklaşık 48 km koşma hızlarını koştu.
+
+
+ info.oviraptor.name = Moğolistan'a özgü olan Oviraptor, Üst Kretase döneminde (yaklaşık 75 milyon yıl önce) yaşamış bir oviraptorid theropod dinozor türüdür.  İsmi, "yumurta hırsızı" anlamına gelir, çünkü iskeletin, Protoceratops yumurtalarının bir çöpü olduğu varsayılan şeyin üzerinde yatarken keşfedilmiş olması.  Oviraptor'un çeneleri sert nesneleri ezerdi ve dinozorun yumurta, balık ve kabukluları yemiş olduğu varsayılır.
+
+
+
+ info.othnielia.name = Şu anda Kuzey Amerika'da bulunan bu otçul ornitopod dinozor, geç Jura döneminde (237 ila 66 milyon yıl önce) yaşamıştır.  Othnielia 5 ila 6.6 fit uzunluğundaydı ve yaklaşık 22 kilo ağırlığındaydı.  Bu ornitopodun üyeleri bize onun da iyi bir koşucu olabileceğini gösteriyor.  Ne yazık ki, Othnielia çok iyi bilinmemektedir ve bu dinozorun çok az fosili bulunmuştur.
+
+
+
+ info.pachycephalosaurus.name = Pachycephalosaurus veya "kalın başlı kertenkele", Geç Kretase döneminde (yaklaşık 72 - 66 milyon yıl önce) Kuzey Amerika'da yaşamıştır.  Küçük ve orta boy paketlerde yaşamayı ve muhtemelen bitki yemeyi seviyor.  Pachycephalosaurus'un 24 cm kalınlığa kadar kubbe şeklinde bir kafatasında küçük çıkıntılar ve uçlar vardı.  Şu anda en büyük kubbe şeklindeki kafatasına sahip dinozor olarak biliniyor.
+
+
+
+ info.postosuchus.name = Kuzey Amerika'ya özgü olan Postosucus, Orta - Üst Triyas Döneminde (230 - 220 milyon yıl önce) yaşamıştır.  Postuchus'un sınıflandırılması hakkında çok sayıda tartışma olmuştur.  Bazıları onu bir Rauisuchid sürüngen olarak sınıflandırılmadan önce bir archosaur (timsah sonrası; sonunda bir timsah veya pterozora dönüştü) olarak görüyordu.  Postuchus, en büyük rauisuchuslardan biri ve türünün sonuncusu unvanını alır.
+
+
+
+ info.proceratosaurus.name = Yerli İngiltere olan Proceratosaurus, Orta Jura döneminde (165 milyon yıl önce) yaşamış bir theropod dinozordu.  Başlangıçta keratosaurus'un bir akrabası olduğu düşünülüyordu, bir cellurosaurus olarak yeniden sınıflandırıldı.  Özellikle, yakın akrabası Guanlong olarak ilk tyrannosaurus'lardan biriydi.  Bir Proceratosaurus, saklamak için bol miktarda çalılık bulunan ormanlık, çitle çevrili bir alana ihtiyaç duyar.
+
+
+
+ info.protoceratops.name = Moğolistan'a özgü olan Protoceratops, Üst Kretase Döneminden (83-70 milyon yıl önce) otçul bir keratopsi dinozoruydu.  İyi gelişmiş boynuzları olmayan, kırılgan bir fırfıra sahip olan ve daha sonraki cinslerde görülmeyen bazı ilkel özelliklerini koruyan çok daha küçük bir yaratıktı.  Küçük görünümlerine rağmen bu canlılar, çok güçlü bir ısırık oluşturmalarına izin veren çok güçlü çene kaslarına sahipti.
+
+
+
+ info.pteranodon.name = Pteranodon, Üst Kretase döneminde Kuzey Amerika'da yaşadı.  Okyanusun yüzeyinde uçan bir balık yiyiciydi, özellikle Batı İç Denizyolu çevresinde yaygındı.  Diğer pterozorlara tahammül ederler, ancak büyük bir iki ayaklı yaratıkla karşı karşıya kaldıklarında (çoğunlukla theropodlar, ne yazık ki, maalesef insanları görmeleri de onları tetikleyebilir) saldırgan hale gelirler.
+
+
+
+ info.quetzalcoatlus.name = Quetzalcoatlus, Üst Kretase döneminin sonunda Kuzey Amerika'da yaşadı.  10 metre veya daha fazla tahmini kanat açıklığıyla, en büyük pterozorlardan ve tüm zamanların en büyük uçan hayvanlarından biriydi.  Ayakta durduğunda, gözlerinin içine bir zürafa bakacak kadar uzun olurdu.  Quetzalcoatlus, daha küçük yaratıkları korkutmaktan veya onlardan kurtulmaktan eşit derecede mutlu olan fırsatçı avcılar ve çöpçülerdir.
+
+
+
+ info.rugops.name = Yerli Afrika olan Rugops, Üst Kretase döneminde (95 milyon yıl önce) yaşamış orta büyüklükte bir theropod dinozorudur.  İlgilenmesi en az zorlayıcı Abelisaur'lardan biridir.  Rugops, yaşadığı yer konusunda özellikle seçici değildir, ancak en iyisini düz, açık arazide çok sığ sularda yapar.  Rugops esas olarak bir çöpçü olmasına rağmen, bazen kertenkeleler, kuşlar ve çok küçük dinozorlar gibi küçük avların peşine düşebilir.
+
+
+
+ info.segisaurus.name = Kuzey Amerika'ya özgü olan Segisaurus, Jura döneminde (183 milyon yıl önce) yaşamış etobur bir selofizoid theropoddu.  Bu küçük theropodun uzun bir kuyruğu ve ön kolları vardı.  Vücut uzunluğuna göre uzun olan güçlü bacakları vardı.  Segisaurus, bilim adamları için ilk theropodların da iyi bir temsiliydi.  Muhtemelen böcekleri ve kertenkeleler gibi küçük omurgalıları avlamakla sınırlıydı.
+
+
+
+ info.spinosaurus.name = Kuzey Afrika'ya özgü Spinosaurus, Kretase'nin başından sonuna kadar (112-97 milyon yıl önce) yaşamış dev bir theropod dinozor.  Bazı film sekanslarının iddialarına rağmen, Spinosaurus'un Mawsonia ve Onchopristis gibi büyük balıkları avlayan oldukça özel bir yarı suda yaşayan avcı olduğuna inanılıyor.
+
+
+
+ info.stegosaurus.name = Esas olarak Kuzey Amerika'da, Stegosaurus ("örtülü kertenkele"), Geç Jura Dönemi'nde (155 - 150 milyon yıl önce) yaşamış zırhlı bir otçul dinozordu.  Sıcaklığı düzenlemek ve sergilemek için kullanılan plakalar ve avcılara karşı savunma için kullanılan kuyruğun ucuna yakın büyük uçlar ile en büyüğü ve en iyi bilinenidir.  Fosil bolluğu ve neredeyse eksiksiz iskeleti ile bilinen en iyi dinozordur.
+
+
+
+ info.styracosaurus.name = Sticarosaurus veya dikenli kertenkele, geç Kretase döneminde (veya 76 ila 70 milyon yıl önce) Kuzey Amerika'da yaşamış bir keratopsia dinozorudur.  Styracosaurus hakkında pek bir şey bilinmiyor.  Sürülerle yürüdü, ancak diğer birkaç boynuzlu dinozorun aksine esas olarak dayanışma içinde yaşadığı görülüyor.  Otoburun güçlü dişleri, diğer dinozorların mücadele etmiş olabileceği sert bitki örtüsünü yiyebildiğini gösteriyor.
+
+
+
+ info.indoraptor.name = Indoraptor, genetikçi Dr. Wu'nun tutku projesiydi.  Indominus rex'ten elde edilen genomdan Velociraptor'dan ekstra DNA ile birlikte oluşturuldu.  Boyu 7 metreye ve yüksekliği 2 metreye kadar büyüyen, başlıca dört ayaklı birkaç theropoddan biridir.  Indoraptor askeri kitle imhasına neden olabilir;  güçlü bir koku alma duyusuna ve ekolokasyona sahipti ve lazer komutlarına yanıt vermek için genetik olarak yaratıldı.
+
+
+
+ info.suchomimus.name = Nijer'de bulunan Suchomimus (veya "timsah taklitçisi") erken Kretase döneminde veya yaklaşık 121 ila 112 milyon yıl önce yaşamış büyük bir theropoddu.  Zayıf nitelikteki fosillerini öğrenmek zordur, ancak Suchomimo'nun diğer spinosaurus'lara benzer bir yaşam tarzına sahip olduğu tahmin edilmektedir.  Tamamen balığa bağımlı değildi ve dinozorlar ve pterozorlarla beslenen bir fırsatçıydı.
+
+
+
+ info.therizinosaurus.name = Yerli Moğolistanda olan Therizinosaurus, Üst Kretase döneminde (85-70 milyon yıl önce) yaşamıştır.  Bu dinozorlar, yaklaşık 9 ila 12 metre uzunluğundaki en büyük otçul theropodlar arasındaydı.  Latince anlamı olan "orak kertenkele", dinozorun kollarındaki tuhaf metre uzunluğundaki pençeleri ifade eder.  Üreme mevsimi boyunca onları yemek veya sergilemek için yaprakları kesmek için kullandıkları tahmin edilmektedir.
+
+
+
+ info.troodon.name = Kuzey Amerika'ya özgü olan Troodon, Üst Kretase döneminde (77.5 - 69 milyon yıl önce) yaşadı.  Troodon'un çok büyük gözleri vardı, bu da mükemmel bir görüşe sahip olduğunu ve muhtemelen geceleri avlandığını gösteriyordu.  Gözler öne çevrildi, bu da muhtemelen dürbün görüşüne sahip olduğu ve dolayısıyla iyi derinlik algısı olduğu anlamına geliyordu.  Ayrıca bugün bilinen herhangi bir dinozorun en büyük kafatası kutusuna sahipti.
+
+
+
+ info.tylosaurus.name = Tylosaurus, 88-80.5 milyon yıl önce, Üst Kretase döneminde Kuzey Amerika'da yaşadı.  Tylosaurus şiddetli ve bölgesel bir yaşam sürdü ve kemikleri genellikle kendi türünün neden olduğu ısırık izleri ve diğer yaralanmalarla bulunur.  Midenin içeriği, onların balık, köpekbalıkları, plesiosaurs, Hesperornis ve minör mosasaurları yiyen apeks yırtıcıları olduklarını gösteriyor.
+
+
+
+ info.tropeognathus.name = Tropeognathus veya "korunmuş çene", Albian Kretase döneminde (veya 110 milyon yıl önce) Brezilya'da yaşamış bir pterozordur.  En büyük pterozorlardan biridir ve büyük su kütlelerinin üzerinde uçmaya adapte olmuştur.  Tropeognathus'un dişli bir gagası ve "omurga" adı verilen büyük yuvarlak çıkıntıları vardı.  Bu canlının çok fazla izi olmadığı için çok fazla genetik bilgi içermiyor.
+
+
+
+ info.zhenyuanopterus.name = Zhenyuanopterus, Aşağı Kretase döneminde (yaklaşık 125 milyon yıl önce) Çin'de yaşadı.  Gün ışığında en aktif olan, yumuşak şekillerde ve biraz uzak bir yaratıktır.  Tehdit edilir veya rahatsız edilirse, saldırmaktansa kaçmayı tercih ederdi, bu yüzden dişlerini kırma riskini almamıştı.  Net bir "lider" olmadan küçük, dağınık çeteler (yaklaşık 3 ila 12 kişi) halinde birlikte seyahat ederler.
+
+
+
+ info.hyaenodon.name = Hyaenodon, Asya, Afrika ve Kuzey Amerika'da Eosen'in sonundan Miyosen'in başlangıcına kadar yaşamış oldukça başarılı bir Creodon türüdür.  Görünüşlerine rağmen, kreodontlar daha tanıdık etoburlar için ayrı bir düzendi.  İki düzen, K-T sınırı çevresinde ortak bir atadan ayrıldı.  Hyaenodonlar, neredeyse herkese yayılabilen son derece etkili avcılardı.
+
+
+ info.dreadnoughtus.name = Üst Kretase döneminde Arjantin'e özgü olan Dreadnoughtus, diğer sauropodların çoğunu mutlak ölçekte geride bırakan heybetli bir devdi.  Çoğu Titanosauria gibi, derileri de en zayıf yavruları avcılardan koruyan küçük kemik osteodermleriyle süslenmişti.  3-4 üyeden oluşan gevşek sürülerde yaşarlardı, ancak üreme mevsimi boyunca genellikle çok sayıda yeniden gruplanırlardı.
+
+
+
+
+ info.sinoceratops.name = Sinoceratops, Üst Kretase'de Doğu Asya'da yaşamış büyük bir keratopsia'ydı.  Diyetleri esas olarak eğrelti otları ve sikadlar gibi dirençli bitki materyalinden oluşuyordu.  Büyük kuzenleri olan triceratops'un aksine, Synoceratops'un sadece tek bir burun boynuzu vardı, ancak bunu çok daha ayrıntılı bir fırfırla telafi ettiler.  Üreyen bir çiftin önderlik ettiği 4-10 kişilik diğer keratopyalılardan daha küçük aile gruplarında yaşadılar.
+
+
+
+
+
+journal.chef_alejandro.name=Chef Alejandro
+journal.dennis_nedry.name=Dennis Nedry
+journal.dr_gerry_harding.name=Dr. Gerry Harding
+journal.dr_henry_wu.name=Dr. Henry Wu
+journal.dr_laura_sorkin.name=Dra. Laura Sorkin
+journal.ed_regis.name=Ed Regis
+journal.john_hammond.name=John Hammond
+journal.ray_arnold.name=Ray Arnold
+journal.robert_muldoon.name=Robert Muldoon
+
+death.attack.shock.1=% s son derece öfkeli!
+death.attack.shock.2=%s sinirli!
+
+death.attack.reborn.car0=% s'e araba çarptı!
+death.attack.reborn.car1=% s yola bakma!
+death.attack.reborn.car2=% s her iki yönde de görünmüyor
+
+death.attack.reborn.bullet1=% s vuruldu!
+death.attack.reborn.bullet2=% s silah atışından öldü!
+death.attack.reborn.bullet3=% s vuruldu!
+death.attack.reborn.bullet4=% s vuruldu!
+
+crafting.skeleton.needed={Bonename} gerekiyor
+crafting.skeleton.toomany={Bonename} gerekiyor
+crafting.skeleton.mismatched=Uyumsuz Kemikler
+
+dinosaur.pregnancytest.male=erkek dinozorlar hamile kalamaz
+dinosaur.pregnancytest.not_pregnant=dinozorun hamile değil
+dinosaur.pregnancytest.pregnant=tebrikler dinozorun hamile
+
+dinosaur.birthingwand.male=erkek dinozorlar hamile kalamaz
+dinosaur.birthingwand.not_pregnant=dinozorun hamile değil
+
+paleopad.os.name=PaleoPad 1.0.1
+
+#Commands
+commands.spawnrb.usuage=/spawnrb <structure> [rotation] [mirror] [seed]
+commands.spawnrb.notfound=%s yapısı bulunamadı
+commands.spawnrb.notrot=%s rotası bulunamadı
+commands.spawnrb.notmirror=%s mirror bulunamadı

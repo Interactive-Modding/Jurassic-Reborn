@@ -88,6 +88,9 @@ public class RebornConfig { //TODO: move all structures to same parent package
         @Config.Name("Ice Shard Generation")
         public boolean iceShardGeneration = true;
 
+        @Config.Name("Cenozoic Shard Generation")
+        public boolean iceAgeShardGeneration = true;
+
         @Config.Name("Gypsum Generation")
         public boolean gypsumGeneration = true;
 

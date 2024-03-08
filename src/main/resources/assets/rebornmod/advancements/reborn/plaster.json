@@ -1,0 +1,35 @@
+{
+    "display": {
+        "icon": {
+            "item": "rebornmod:plaster_and_bandage"
+        },
+        "title": {
+            "translate": "advancements.reborn.plaster.title"
+        },
+        "description": {
+            "translate": "advancements.reborn.plaster.description"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "plaster_and_bandage": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "rebornmod:plaster_and_bandage"
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "plaster_and_bandage"
+        ]
+    ],
+    "parent": "rebornmod:reborn/root"
+}

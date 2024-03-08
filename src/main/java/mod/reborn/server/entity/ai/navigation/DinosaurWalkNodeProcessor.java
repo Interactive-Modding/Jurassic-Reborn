@@ -215,24 +215,35 @@ public class DinosaurWalkNodeProcessor extends WalkNodeProcessor {
             if (groundNodeType == PathNodeType.DAMAGE_CACTUS) {
                 nodeType = PathNodeType.DAMAGE_CACTUS;
             }
+            if(groundNodeType == PathNodeType.WATER) {
+                nodeType = PathNodeType.WATER;
+            }
         }
 
         BlockPos.PooledMutableBlockPos pool = BlockPos.PooledMutableBlockPos.retain();
 
         if (nodeType == PathNodeType.WALKABLE) {
-            for (int offsetX = -1; offsetX <= 1; ++offsetX) {
-                for (int offsetZ = -1; offsetZ <= 1; ++offsetZ) {
+            for (int offsetX = -1; offsetX <= 1; offsetX++) {
+                for (int offsetZ = -1; offsetZ <= 1; offsetZ++) {
                     if (offsetX != 0 || offsetZ != 0) {
-                        IBlockState state = world.getBlockState(pool.setPos(x + offsetX, y, z + offsetZ));
-                        Block block = state.getBlock();
-                        if (block == Blocks.CACTUS || block instanceof ElectricFenceBaseBlock || block instanceof ElectricFencePoleBlock) {
-                            nodeType = PathNodeType.DANGER_CACTUS;
-                        } else if (block == Blocks.FIRE) {
-                            nodeType = PathNodeType.DANGER_FIRE;
-                        } else if (block instanceof ElectricFenceWireBlock) {
-                            TileEntity entity = world.getTileEntity(pool);
-                            if (entity instanceof ElectricFenceWireBlockEntity && ((ElectricFenceWireBlockEntity) entity).isPowered()) {
-                                nodeType = PathNodeType.DAMAGE_CACTUS;
+                        if (this.entity == null) {
+                            nodeType = PathNodeType.BLOCKED;
+                        }
+                        else if (!this.entity.world.isBlockLoaded(pool.setPos(x + offsetX, y, z + offsetZ))) {
+                            nodeType = PathNodeType.BLOCKED;
+                        }
+                        else {
+                            IBlockState state = world.getBlockState(pool.setPos(x + offsetX, y, z + offsetZ));
+                            Block block = state.getBlock();
+                            if (block == Blocks.CACTUS || block instanceof ElectricFenceBaseBlock || block instanceof ElectricFencePoleBlock) {
+                                nodeType = PathNodeType.DANGER_CACTUS;
+                            } else if (block == Blocks.FIRE) {
+                                nodeType = PathNodeType.DANGER_FIRE;
+                            } else if (block instanceof ElectricFenceWireBlock) {
+                                TileEntity entity = world.getTileEntity(pool);
+                                if (entity instanceof ElectricFenceWireBlockEntity && ((ElectricFenceWireBlockEntity) entity).isPowered()) {
+                                    nodeType = PathNodeType.DAMAGE_CACTUS;
+                                }
                             }
                         }
                     }
@@ -243,6 +254,7 @@ public class DinosaurWalkNodeProcessor extends WalkNodeProcessor {
         pool.release();
         return nodeType;
     }
+
 
     // TODO: getCanBreakDoors gone???
     private PathNodeType getPathNodeType(EntityLiving entity, int x, int y, int z) {

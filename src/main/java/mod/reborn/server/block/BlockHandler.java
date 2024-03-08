@@ -58,10 +58,20 @@ public class BlockHandler
 
     public static final AmberBlock AMBER_ORE = new AmberBlock();
     public static final IceShardBlock ICE_SHARD = new IceShardBlock();
+    public static final IceAgeShardBlock ICE_AGE_SHARD = new IceAgeShardBlock();
+
+
 
     public static final GypsumStoneBlock GYPSUM_STONE = new GypsumStoneBlock();
     public static final Block GYPSUM_COBBLESTONE = new BasicBlock(Material.ROCK).setHardness(1.5F);
     public static final Block GYPSUM_BRICKS = new BasicBlock(Material.ROCK).setHardness(2.0F);
+    public static final Block GYPSUM_PATHWAY = new BasicBlock(Material.ROCK).setHardness(2.0F);
+
+    public static final Block GYPSUM_MIXED_PATH = new BasicBlock(Material.ROCK).setHardness(2.0F);
+
+    public static final Block GYPSUM_TILES = new BasicBlock(Material.ROCK).setHardness(2.0F);
+
+
 
     public static final Block REINFORCED_STONE = new BasicBlock(Material.ROCK).setHardness(2.0F);
     public static final Block REINFORCED_BRICKS = new BasicBlock(Material.ROCK).setHardness(3.0F);
@@ -123,7 +133,7 @@ public class BlockHandler
     public static final FeederBlock FEEDER = new FeederBlock();
 
     public static final BugCrateBlock BUG_CRATE = new BugCrateBlock();
-
+    public static final SkullDisplay SKULL_DISPLAY = new SkullDisplay();
     public static final SwarmBlock PLANKTON_SWARM = new SwarmBlock(() -> ItemHandler.PLANKTON);
     public static final SwarmBlock KRILL_SWARM = new SwarmBlock(() -> ItemHandler.KRILL);
 
@@ -178,9 +188,13 @@ public class BlockHandler
 
         registerBlock(AMBER_ORE, "Amber Ore");
         registerBlock(ICE_SHARD, "Ice Shard");
+        registerBlock(ICE_AGE_SHARD, "Ice Age Shard");
         registerBlock(GYPSUM_STONE, "Gypsum Stone");
         registerBlock(GYPSUM_COBBLESTONE, "Gypsum Cobblestone");
         registerBlock(GYPSUM_BRICKS, "Gypsum Bricks");
+        registerBlock(GYPSUM_PATHWAY, "Gypsum Pathway");
+        registerBlock(GYPSUM_MIXED_PATH, "Gypsum Mixed Path");
+        registerBlock(GYPSUM_TILES, "Gypsum Tiles");
         registerBlock(REINFORCED_STONE, "Reinforced Stone");
         registerBlock(REINFORCED_BRICKS, "Reinforced Bricks");
 
@@ -247,6 +261,7 @@ public class BlockHandler
         registerBlock(DNAExtractorBlockEntity.class, DNA_EXTRACTOR, "DNA Extractor");
         registerBlock(DNACombinatorHybridizerBlockEntity.class, DNA_COMBINATOR_HYBRIDIZER, "DNA Combinator Hybridizer");
         registerBlock(IncubatorBlockEntity.class, INCUBATOR, "Incubator");
+        registerBlock(SkullDisplayEntity.class, SKULL_DISPLAY, "Skull Display Block");
         registerBlock(DisplayBlockEntity.class, DISPLAY_BLOCK, "Display Block");
         registerBlock(FeederBlockEntity.class, FEEDER, "Feeder");
         registerBlock(BugCrateBlockEntity.class, BUG_CRATE, "Bug Crate");

@@ -19,6 +19,18 @@
       {
       "locale": "bg_BG",
       "downloadURL": "https://raw.githubusercontent.com/Interactive-Modding/JurassicWorldRebornMod/tree/master/src/main/resources/assets/rebornmod/lang/bg_BG.lang"
+      },
+      {
+      "locale": "ru_RU",
+      "downloadURL": "https://raw.githubusercontent.com/Interactive-Modding/JurassicWorldRebornMod/tree/master/src/main/resources/assets/rebornmod/lang/ru_RU.lang"
+      },
+      {
+      "locale": "fr_FR",
+      "downloadURL": "https://raw.githubusercontent.com/Interactive-Modding/JurassicWorldRebornMod/tree/master/src/main/resources/assets/rebornmod/lang/fr_FR.lang"
+      },
+      {
+      "locale": "tr_TR",
+      "downloadURL": "https://raw.githubusercontent.com/Interactive-Modding/JurassicWorldRebornMod/tree/master/src/main/resources/assets/rebornmod/lang/tr_TR.lang"
     }
   ]
 }

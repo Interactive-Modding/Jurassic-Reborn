@@ -40,11 +40,12 @@ public class SleepEntityAI extends EntityAIBase {
             for (int x = posX - range; x < posX + range; x++) {
                 for (int z = posZ - range; z < posZ + range; z++) {
                     BlockPos possiblePos = world.getTopSolidOrLiquidBlock(new BlockPos(x, 0, z));
-
-                    if (world.isAirBlock(possiblePos) && world.getBlockState(possiblePos.down()).getMaterial() != Material.WATER) {
-                        if (this.canFit(possiblePos) && !world.canSeeSky(possiblePos) && this.dinosaur.setSleepLocation(possiblePos, true)) {
-                            this.path = this.dinosaur.getNavigator().getPath();
-                            break;
+                    if (world.isBlockLoaded(possiblePos)) {
+                        if (world.isAirBlock(possiblePos) && world.getBlockState(possiblePos.down()).getMaterial() != Material.WATER) {
+                            if (this.canFit(possiblePos) && !world.canSeeSky(possiblePos) && this.dinosaur.setSleepLocation(possiblePos, true)) {
+                                this.path = this.dinosaur.getNavigator().getPath();
+                                break;
+                            }
                         }
                     }
                 }

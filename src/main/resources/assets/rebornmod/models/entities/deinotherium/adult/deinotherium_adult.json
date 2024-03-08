@@ -48,19 +48,19 @@
       },
       {
         "pose": "deinotherium_adult_calling_3",
-        "time": 10
+        "time": 9
       },
       {
         "pose": "deinotherium_adult_calling_4",
-        "time": 10
+        "time": 9
       },
       {
         "pose": "deinotherium_adult_calling_5",
-        "time": 10
+        "time": 9
  },
 	  {
         "pose": "deinotherium_adult_idle",
-        "time": 20
+        "time": 10
       }
 	],
 	"DYING": [
@@ -237,6 +237,10 @@
 	  {
         "pose": "deinotherium_adult_injured",
         "time": 20
+	  },
+	  {
+        "pose": "deinotherium_adult_idle",
+        "time": 10
 	  }
 	],
 	"LOOKING_LEFT": [

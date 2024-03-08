@@ -59,6 +59,9 @@ public class RaptorClimbTreeAI extends EntityAIBase {
             for (int iteration = 0; iteration <= 15; iteration++) {
                 target = target.up();
                 IBlockState state = this.world.getBlockState(target);
+                if (!world.isBlockLoaded(target)) {
+                    return false;
+                }
                 if (state.getMaterial() == Material.LEAVES || state.getMaterial() == Material.WOOD) {
                     for (EnumFacing direction : EnumFacing.HORIZONTALS) {
                         BlockPos offsetTarget = target.offset(direction);
