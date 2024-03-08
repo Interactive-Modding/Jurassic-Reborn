@@ -38,7 +38,7 @@ public class RebornMod {
         return TestEnv;
     }
 
-    @NetworkWrapper({ OpenPaleoPadEntityMessage.class, PlacePaddockSignMessage.class, ChangeTemperatureMessage.class, SwitchHybridizerCombinatorMode.class, SetOrderMessage.class, OpenFieldGuideGuiMessage.class, UpdateVehicleControlMessage.class, BiPacketOrder.class, MicroraptorDismountMessage.class, FordExplorerChangeStateMessage.class, FordExplorerUpdatePositionStateMessage.class,FordExplorerSnowUpdatePositionStateMessage.class, FordExplorerSnowChangeStateMessage.class, DNASequenceTransferClicked.class, CultivatorSyncNutrients.class, CarEntityPlayRecord.class, AttemptMoveToSeatMessage.class, TileEntityFieldsMessage.class, HelicopterDirectionMessage.class, HelicopterEngineMessage.class})
+    @NetworkWrapper({ OpenPaleoPadEntityMessage.class, PlacePaddockSignMessage.class, ChangeTemperatureMessage.class, SwitchHybridizerCombinatorMode.class, SetOrderMessage.class, OpenFieldGuideGuiMessage.class, UpdateVehicleControlMessage.class, BiPacketOrder.class, MicroraptorDismountMessage.class, FordExplorerChangeStateMessage.class, FordExplorerUpdatePositionStateMessage.class,FordExplorerSnowUpdatePositionStateMessage.class, FordExplorerSnowChangeStateMessage.class, DNASequenceTransferClicked.class, CultivatorSyncNutrients.class, CarEntityPlayRecord.class, AttemptMoveToSeatMessage.class, TileEntityFieldsMessage.class})
     public static SimpleNetworkWrapper NETWORK_WRAPPER;
 
     private static Logger logger;

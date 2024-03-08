@@ -1,15 +1,7 @@
 package mod.reborn.server.entity.vehicle;
 
-import mod.reborn.RebornMod;
 import mod.reborn.client.particle.HelicopterEngineParticle;
-import mod.reborn.client.particle.HelicopterGroundParticle;
-import mod.reborn.client.particle.WashingParticle;
-import mod.reborn.client.proxy.ClientProxy;
-import mod.reborn.client.render.RenderingHandler;
-import mod.reborn.server.entity.ai.util.InterpValue;
-import mod.reborn.server.event.KeyBindingHandler;
-import mod.reborn.server.item.ItemHandler;
-import mod.reborn.server.util.MutableVec3;
+import net.ilexiconn.llibrary.LLibrary;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockAir;
 import net.minecraft.block.material.Material;
@@ -18,23 +10,42 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.*;
-import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.entity.Entity;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import javax.annotation.Nonnull;
+import net.minecraft.entity.Entity;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.BlockPos.MutableBlockPos;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.world.World;
+
+import mod.reborn.RebornMod;
+import mod.reborn.client.particle.HelicopterGroundParticle;
+import mod.reborn.client.particle.WashingParticle;
+import mod.reborn.client.proxy.ClientProxy;
+import mod.reborn.client.render.RenderingHandler;
+import mod.reborn.server.entity.ai.util.InterpValue;
+import mod.reborn.server.event.KeyBindingHandler;
+import mod.reborn.server.item.ItemHandler;
+import mod.reborn.server.util.MutableVec3;
+
 import java.util.List;
 
-public abstract class HelicopterEntity  extends VehicleEntity {
+import javax.annotation.Nonnull;
+
+public abstract class HelicopterEntity extends VehicleEntity {
 
     private static final byte UPWARD = 0b010000;
     private static final byte DOWNWARD = 0b100000;
@@ -48,13 +59,13 @@ public abstract class HelicopterEntity  extends VehicleEntity {
     protected MutableVec3 direction;
     private final int MAX_MOVEMENT_ROTATION = 15;
     private boolean shouldFallDamage;
-    public double previousRotAmount = 0D;
     public double rotAmount = 0D;
     private Vec3d prevInAirPos;
     private float damageAmount;
-    private BlockPos.MutableBlockPos mb = new BlockPos.MutableBlockPos();
+    private MutableBlockPos mb = new MutableBlockPos();
     protected boolean lockOn;
     protected int blastHeight = 6;
+    @SideOnly(Side.CLIENT)
 
     private float currentEngineSpeed = 0;
     protected float torque;
@@ -98,20 +109,16 @@ public abstract class HelicopterEntity  extends VehicleEntity {
         this.physicalDepth = depthIn;
         this.setEntityBoundingBox(new AxisAlignedBB(0, 0, 0, this.physicalWidth, this.physicalHeight, this.physicalDepth));
         this.setSize((float) this.physicalDepth, (float) this.physicalHeight);
-
         this.enginePower = (int) ((float) enginePowerIn * 735.5f);
         this.engineSpeed = engineSpeedIn;
         this.weight = weightIn;
         this.rotorLength = rotorLengthIn;
         this.torque = this.computeTorque();
-
         this.speedModifier = 1.5f;
         this.isFlying = false;
         this.direction = new MutableVec3(0, 1, 0);
-
         this.simpleControle = true;
         this.lockOn = true;
-
         this.warnignSoundResource = new ResourceLocation(RebornMod.MODID, "helicopter_warning");
     }
 
@@ -406,7 +413,7 @@ public abstract class HelicopterEntity  extends VehicleEntity {
                     this.gearLift = 0f;
                 }
             }
-            this.previousRotAmount = this.rotAmount;
+
             this.rotAmount += this.getCurrentEngineSpeed() * 0.00666666666 / 2d;
 
             if (this.getCurrentEngineSpeed() >= 1 && !this.isRotorAreaFree()) {
@@ -662,7 +669,6 @@ public abstract class HelicopterEntity  extends VehicleEntity {
     }
 
 
-
     protected void blastItems() {
         float dist = this.getDistanceToGround();
         if (dist >= 0) {
@@ -820,6 +826,7 @@ public abstract class HelicopterEntity  extends VehicleEntity {
             }
         }
     }
+
 
 
     private boolean shouldAdjustEngineSpeedByHorizontalControls(float requiredSpeedForHovering) {

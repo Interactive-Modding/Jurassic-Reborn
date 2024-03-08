@@ -257,6 +257,12 @@ public class EntityHandler {
         registerEntity(VenomEntity.class, "Venom");
 
         registerEntity(JeepWranglerEntity.class, "Jeep Wrangler");
+        registerEntity(BlueJeepWranglerEntity.class,"Blue Jeep Wrangler");
+        registerEntity(GreenJeepWranglerEntity.class, "Green Jeep Wrangler");
+        registerEntity(PurpleJeepWranglerEntity.class, "Purple Jeep Wrangler");
+        registerEntity(PinkJeepWranglerEntity.class, "Pink Jeep Wrangler");
+        registerEntity(SornaJeepWranglerEntity.class,"Sorna Jeep Wrangler");
+        registerEntity(LimeJeepWranglerEntity.class,"Lime Jeep Wrangler");
         registerEntity(FordExplorerEntity.class, "Ford Explorer");
         registerEntity(FordExplorerSnowEntity.class, "Ford Explorer Snow");
 
@@ -266,6 +272,7 @@ public class EntityHandler {
         registerEntity(TranquilizerDartEntity.class, "Tranquilizer Dart");
         registerEntity(BulletEntity.class, "bullet");
 
+
         ArrayList<Biome> biomeBeach = new ArrayList<>(BiomeDictionary.getBiomes(BiomeDictionary.Type.BEACH));
 
         EntityRegistry.addSpawn(EntityCrab.class, 20, 4, 8, EnumCreatureType.CREATURE, biomeBeach.toArray(new Biome[biomeBeach.size()]));
@@ -274,7 +281,7 @@ public class EntityHandler {
 
 
         registerEntity(DinosaurEggEntity.class, "Dinosaur Egg");
-        registerEntity(HelicopterEntityNew.class, "Helicopter base");
+        registerEntity(TransportHelicopterEntity.class, "Helicopter base");
     }
 
     private static void initDinosaurs() {

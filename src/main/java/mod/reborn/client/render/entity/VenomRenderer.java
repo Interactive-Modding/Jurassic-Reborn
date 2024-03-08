@@ -8,8 +8,10 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import mod.reborn.server.entity.VenomEntity;
 
+
 @SideOnly(Side.CLIENT)
 public class VenomRenderer implements IRenderFactory<VenomEntity> {
+
     @Override
     public Render<? super VenomEntity> createRenderFor(RenderManager manager) {
         return new Renderer(manager);

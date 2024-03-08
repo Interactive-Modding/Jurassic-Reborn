@@ -1,6 +1,5 @@
 package mod.reborn.server.item.vehicles;
 
-import mod.reborn.server.entity.vehicle.HelicopterEntityNew;
 import mod.reborn.server.entity.vehicle.TransportHelicopterEntity;
 import mod.reborn.server.tab.TabHandler;
 import net.minecraft.client.util.ITooltipFlag;
@@ -33,7 +32,8 @@ public class HelicopterItem extends Item {
     public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
         ItemStack stack = player.getHeldItem(hand);
         if (!world.isRemote) {
-            HelicopterEntityNew helicopter = new HelicopterEntityNew(world);
+            TransportHelicopterEntity helicopter = new TransportHelicopterEntity(world) {
+            };
             helicopter.setPositionAndRotation(pos.getX() + hitX, pos.getY() + hitY, pos.getZ() + hitZ, player.rotationYaw, 0.0F);
             world.spawnEntity(helicopter); //Uncomment for testing
             stack.shrink(1);

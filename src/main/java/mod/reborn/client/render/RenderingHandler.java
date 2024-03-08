@@ -285,6 +285,7 @@ public enum RenderingHandler {
             registerItemRenderer(ATTRACTION_SIGN, type.ordinal(), "attraction_sign_" + type.name().toLowerCase(Locale.ENGLISH));
         }
 
+
         registerItemRenderer(EMPTY_TEST_TUBE);
         registerItemRenderer(EMPTY_SYRINGE);
         registerItemRenderer(STORAGE_DISC);
@@ -564,10 +565,16 @@ public enum RenderingHandler {
         RenderingRegistry.registerEntityRenderingHandler(DinosaurEggEntity.class, new DinosaurEggRenderer());
         RenderingRegistry.registerEntityRenderingHandler(VenomEntity.class, new VenomRenderer());
         RenderingRegistry.registerEntityRenderingHandler(JeepWranglerEntity.class, JeepWranglerRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(BlueJeepWranglerEntity.class, BlueJeepWranglerRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(GreenJeepWranglerEntity.class, GreenJeepWranglerRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(LimeJeepWranglerEntity.class, LimeJeepWranglerRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(PurpleJeepWranglerEntity.class, PurpleJeepWranglerRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(PinkJeepWranglerEntity.class, PinkJeepWranglerRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(SornaJeepWranglerEntity.class, SornaJeepWranglerRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(FordExplorerEntity.class, FordExplorerRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(FordExplorerSnowEntity.class, FordExplorerSnowRenderer::new);
-//        RenderingRegistry.registerEntityRenderingHandler(TransportHelicopterEntity.class, HeliRenderer::new);
-        RenderingRegistry.registerEntityRenderingHandler(HelicopterEntityNew.class, HelicopterNewRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(TransportHelicopterEntity.class, HeliRenderer::new);
+//        RenderingRegistry.registerEntityRenderingHandler(HelicopterEntityNew.class, HelicopterNewRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(MuralEntity.class, MuralRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(BlueprintEntity.class, BlueprintRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(GoatEntity.class, GoatRenderer::new);

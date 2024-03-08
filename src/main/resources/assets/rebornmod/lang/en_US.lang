@@ -106,7 +106,13 @@ entity.rebornmod.camarasaurus.name=Camarasaurus
 entity.rebornmod.dimetrodon.name=Dimetrodon
 
 entity.rebornmod.goat.name=Goat
-entity.rebornmod.jeep_wrangler.name=Jeep Wrangler
+entity.rebornmod.jeep_wrangler.name=Red Jeep Wrangler
+entity.rebornmod.blue_jeep_wrangler.name=Blue Jeep Wrangler
+entity.rebornmod.green_jeep_wrangler.name=Green Jeep Wrangler
+entity.rebornmod.lime_jeep_wrangler.name=Lime Jeep Wrangler
+entity.rebornmod.sorna_jeep_wrangler.name=Sorna Jeep Wrangler
+entity.rebornmod.purple_jeep_wrangler.name=Purple Jeep Wrangler
+entity.rebornmod.pink_jeep_wrangler.name=Pink Jeep Wrangler
 entity.rebornmod.ford_explorer.name=Ford Explorer
 entity.rebornmod.helicopter_base.name=Helicopter
 entity.rebornmod.ford_explorer_snow.name=Snow Ford Explorer 

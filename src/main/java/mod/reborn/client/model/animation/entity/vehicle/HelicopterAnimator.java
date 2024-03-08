@@ -15,7 +15,8 @@ public class HelicopterAnimator implements ITabulaModelAnimator<HelicopterEntity
         AdvancedModelRenderer rotor = model.getCube("rotorbase_rotatehere");
         AdvancedModelRenderer tailrotor = model.getCube("tailrotor_rotatehere");
 
-        tailrotor.rotateAngleX  = rotor.rotateAngleY = (float) (entity.previousRotAmount + (entity.rotAmount - entity.previousRotAmount) * partialTicks);
+        rotor.rotateAngleY = (float) entity.rotAmount;
+        tailrotor.rotateAngleX = (float) entity.rotAmount;
         AdvancedModelRenderer ctrl1 = model.getCube("controlstick1");
         AdvancedModelRenderer ctrl2 = model.getCube("controlstick2");
         AdvancedModelRenderer gearL1 = model.getCube("gearL1");

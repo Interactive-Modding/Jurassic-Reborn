@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "rebornmod:pink_jeep_wrangler",
+  "pattern": [
+    "ABA",
+    "BCD",
+    "ABA"
+  ],
+  "key": {
+    "C": {
+      "item": "rebornmod:unfinished_car",
+      "data": 0
+    },
+    "D": {
+      "item": "rebornmod:car_tire",
+      "data": 0
+    },
+    "A": {
+      "item": "minecraft:dye",
+      "data": 7
+    },
+    "B": {
+      "item": "minecraft:dye",
+      "data": 9
+    }
+  },
+  "result": {
+    "item": "rebornmod:vehicle_item",
+    "data": 7
+  }
+}
