@@ -24,8 +24,8 @@ public class DeinotheriumDinosaur extends Dinosaur {
         this.setStrength(3, 15);
         this.setMaximumAge(fromDays(45));
         this.setEyeHeight(0.45F, 1.8F);
-        this.setSizeX(0.35F, 3F);
-        this.setSizeY(0.5F, 3.3F);
+        this.setSizeX(0.45F, 3F);
+        this.setSizeY(0.6F, 3.3F);
         this.setDiet(Diet.HERBIVORE.get());
         this.setBones("skull", "tooth","front_leg_bones", "hind_leg_bones", "tusk", "neck_vertebrae", "pelvis", "ribcage", "shoulder", "tail_vertebrae");
         this.setHeadCubeName("Head");

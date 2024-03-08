@@ -40,6 +40,20 @@
         "pose": "mosasaurus_adult_swimming_8",
         "time": 7
       }
+    ],
+    "PREPARE_LEAP": [
+      {
+        "pose": "mosasaurus_adult_prepare_leap_1",
+        "time": 5
+      },
+      {
+        "pose": "mosasaurus_adult_prepare_leap_2",
+        "time": 5
+      },
+      {
+        "pose": "mosasaurus_adult_prepare_leap_3",
+        "time": 5
+      }
  ],
     "INJURED": [
       {

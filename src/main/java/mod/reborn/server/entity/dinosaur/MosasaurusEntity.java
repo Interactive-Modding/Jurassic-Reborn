@@ -14,7 +14,7 @@ public class MosasaurusEntity extends SwimmingDinosaurEntity {
     public MosasaurusEntity(World world) {
         super(world);
         this.target(EntityLivingBase.class);
-        //this.tasks.addTask(0, new WaterLeapAI(this, 12, 1.1F));
+//        this.tasks.addTask(0, new WaterLeapAI(this, 1, 1.5F));
     }
 
     @Override
