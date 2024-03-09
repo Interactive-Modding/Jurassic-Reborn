@@ -533,6 +533,7 @@ public enum RenderingHandler {
 		registerRenderInfo(EntityHandler.GUANLONG , new GuanlongAnimator(), 0.64F);
 		registerRenderInfo(EntityHandler.HYAENODON , new HyaenodonAnimator(), 0.64F);
 		registerRenderInfo(EntityHandler.AMMONITE , new AmmoniteAnimator(), 0.64F);
+        registerRenderInfo(EntityHandler.ASTEROCERAS , new AsterocerasAnimator(),0.64F);
 		registerRenderInfo(EntityHandler.POSTOSUCHUS , new PostosuchusAnimator(), 0.64F);
 		registerRenderInfo(EntityHandler.STYRACOSAURUS , new StyracosaurusAnimator(), 0.64F);
 		registerRenderInfo(EntityHandler.SUCHOMIMUS , new SuchomimusAnimator(), 0.64F);

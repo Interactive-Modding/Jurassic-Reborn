@@ -8,6 +8,7 @@ import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.item.ItemStack;
 import javax.vecmath.Vector3f;
+import mod.reborn.client.proxy.ClientProxy;
 import mod.reborn.server.block.entity.CultivatorBlockEntity;
 import org.lwjgl.opengl.GL11;
 
@@ -15,7 +16,7 @@ public class CultivatorRenderer extends TileEntitySpecialRenderer<CultivatorBloc
     private Minecraft mc = Minecraft.getMinecraft();
 
     @Override
-    public void render(CultivatorBlockEntity tileEntity, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
+    public void render(final CultivatorBlockEntity tileEntity, final double x, final double y, final double z, final float partialTicks, final int destroyStage, final float alpha) {
         GlStateManager.pushMatrix();
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         GlStateManager.translate(x + 0.5, y + 1, z + 0.5);
@@ -32,6 +33,8 @@ public class CultivatorRenderer extends TileEntitySpecialRenderer<CultivatorBloc
             GlStateManager.scale(percentageDone, percentageDone, percentageDone);
             GlStateManager.enableLight(2);
             GlStateManager.scale(.04,.04,.04);
+            ItemStack stack = tileEntity.getStackInSlot(0);
+            ClientProxy.MC.getRenderItem().renderItem(stack, ItemCameraTransforms.TransformType.GROUND);
             if (entity != null) {
                 this.mc.getRenderManager().renderEntity(entity, 0, 0, 0, 0, 0, false);
             }
