@@ -44,7 +44,7 @@ public class AncientPlantBlock extends BlockBush {
 
                     while (nextPos == null && placementAttempts > 0) {
                         int doubleRadius = SPREAD_RADIUS * 2;
-                        BlockPos tmp = pos.add(rand.nextInt(doubleRadius) - SPREAD_RADIUS, SPREAD_RADIUS, rand.nextInt(doubleRadius) - SPREAD_RADIUS);
+                        BlockPos tmp = pos.add(rand.nextInt(doubleRadius) - SPREAD_RADIUS, -SPREAD_RADIUS, rand.nextInt(doubleRadius) - SPREAD_RADIUS);
                         nextPos = this.findGround(world, tmp);
                         placementAttempts--;
                     }

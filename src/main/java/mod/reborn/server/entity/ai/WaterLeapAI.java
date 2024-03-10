@@ -8,6 +8,8 @@ import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 
+import java.util.Random;
+
 public class WaterLeapAI extends EntityAIBase {
     private static final int[] OFFSET_MULTIPLIERS = new int[]{0, 1, 4, 5, 6, 7};
     private final SwimmingDinosaurEntity entity;
@@ -60,9 +62,7 @@ public class WaterLeapAI extends EntityAIBase {
         if (this.animation == EntityAnimation.PREPARE_LEAP && tick < this.prevTick) {
             this.entity.setAnimation(EntityAnimation.LEAP.get());
             this.entity.playSound(this.entity.getSoundForAnimation(EntityAnimation.LEAP.get()), this.entity.getSoundVolume(), this.entity.getSoundPitch());
-            this.entity.motionX = 2F;
             this.entity.motionY = this.jumpheight;
-            this.entity.motionZ = 2F;
         } else if (this.animation == EntityAnimation.LEAP && this.entity.motionY < 0) {
             this.animation = EntityAnimation.LEAP_LAND;
             this.launched = true;

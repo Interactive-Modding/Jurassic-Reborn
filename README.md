@@ -11,11 +11,21 @@ Vitiate
 
 Vitiate
 
+Aecht Rob
+
+Sniffity
+
 Gamma_002
 
 ### Modelers / Sound Designers / Textures /  Concept Artists
 
 NightEagle
+
+PanicPlay
+
+Seentro
+
+Zth404(Z)
 
 CreatarCreator
 
@@ -35,6 +45,10 @@ Neickee
 Ryu Enyo
 
 Rexthezilla98
+
+HireAMercenary
+
+Firewolf786
 
 Goofy
 

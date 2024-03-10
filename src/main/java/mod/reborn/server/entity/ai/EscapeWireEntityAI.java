@@ -33,6 +33,9 @@ public class EscapeWireEntityAI extends EntityAIBase {
             if (surface != null) {
                 Iterable<BlockPos.MutableBlockPos> surrounding = BlockPos.getAllInBoxMutable(surface.add(-1, -1, -1), surface.add(1, 1, 1));
                 for (BlockPos p : surrounding) {
+                    if (!this.entity.world.isBlockLoaded(pos)) {
+                        continue search;
+                    }
                     if (this.entity.world.getBlockState(p).getBlock() == BlockHandler.LOW_SECURITY_FENCE_WIRE) {
                         continue search;
                     }

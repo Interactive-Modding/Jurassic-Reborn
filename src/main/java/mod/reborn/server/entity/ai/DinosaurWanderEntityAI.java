@@ -49,10 +49,13 @@ public class DinosaurWanderEntityAI extends EntityAIBase
         	Vec3d vec = getWanderPosition();
         	if (vec != null) {
                 for (BlockPos pos : BlockPos.getAllInBox(new BlockPos(vec.addVector(0, 1, 0)), new BlockPos(vec.addVector(1, 2, 1)))) {
+                    if (!this.entity.world.isBlockLoaded(pos)) {
+                        continue overlist;
+                    }
                     if (this.entity.world.getBlockState(pos).getMaterial() != Material.AIR) {
                         continue overlist;
                     }
-        	    }
+                }
         	    this.xPosition = vec.x;
         	    this.yPosition = vec.y;
         	    this.zPosition = vec.z;
@@ -88,7 +91,14 @@ public class DinosaurWanderEntityAI extends EntityAIBase
     {
         if(herd != null) {
             for(DinosaurEntity entity : herd.members) {
-                entity.getNavigator().tryMoveToXYZ(this.xPosition + (entity.getRNG().nextDouble()*2), this.yPosition, this.zPosition + (entity.getRNG().nextDouble()*2), this.speed);
+                double xPos = this.xPosition + (entity.getRNG().nextDouble()*2);
+                double zPos = this.zPosition + (entity.getRNG().nextDouble()*2);
+                if (this.entity.world.isBlockLoaded(new BlockPos(xPos, this.yPosition, zPos))) {
+                    entity.getNavigator().tryMoveToXYZ(xPos, this.yPosition, zPos, this.speed);
+                }
+                else {
+                    this.entity.getNavigator().tryMoveToXYZ(this.xPosition, this.yPosition, this.zPosition, this.speed);
+                }
             }
         } else {
             this.entity.getNavigator().tryMoveToXYZ(this.xPosition, this.yPosition, this.zPosition, this.speed);
