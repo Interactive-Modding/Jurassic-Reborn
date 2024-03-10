@@ -226,10 +226,7 @@ public class DinosaurWalkNodeProcessor extends WalkNodeProcessor {
             for (int offsetX = -1; offsetX <= 1; offsetX++) {
                 for (int offsetZ = -1; offsetZ <= 1; offsetZ++) {
                     if (offsetX != 0 || offsetZ != 0) {
-                        if (this.entity == null) {
-                            nodeType = PathNodeType.BLOCKED;
-                        }
-                        else if (!this.entity.world.isBlockLoaded(pool.setPos(x + offsetX, y, z + offsetZ))) {
+                        if (!this.entity.world.isBlockLoaded(pool.setPos(x + offsetX, y, z + offsetZ))) {
                             nodeType = PathNodeType.BLOCKED;
                         }
                         else {
