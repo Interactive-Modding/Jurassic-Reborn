@@ -91,14 +91,7 @@ public class DinosaurWanderEntityAI extends EntityAIBase
     {
         if(herd != null) {
             for(DinosaurEntity entity : herd.members) {
-                double xPos = this.xPosition + (entity.getRNG().nextDouble()*2);
-                double zPos = this.zPosition + (entity.getRNG().nextDouble()*2);
-                if (this.entity.world.isBlockLoaded(new BlockPos(xPos, this.yPosition, zPos))) {
-                    entity.getNavigator().tryMoveToXYZ(xPos, this.yPosition, zPos, this.speed);
-                }
-                else {
-                    this.entity.getNavigator().tryMoveToXYZ(this.xPosition, this.yPosition, this.zPosition, this.speed);
-                }
+                entity.getNavigator().tryMoveToXYZ(this.xPosition + (entity.getRNG().nextDouble()*2), this.yPosition, this.zPosition + (entity.getRNG().nextDouble()*2), this.speed);
             }
         } else {
             this.entity.getNavigator().tryMoveToXYZ(this.xPosition, this.yPosition, this.zPosition, this.speed);
