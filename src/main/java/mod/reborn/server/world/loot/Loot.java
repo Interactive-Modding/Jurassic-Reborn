@@ -100,7 +100,7 @@ public class Loot {
             LootEntry twig = Loot.entry(ItemHandler.TWIG_FOSSIL).weight(5).count(1, 3).build();
             LootEntry amber = Loot.entry(ItemHandler.AMBER).weight(2).count(0, 1).data(0, 1).build();
             LootEntry display = Loot.entry(ItemHandler.DISPLAY_BLOCK).function(DINOSAUR_DATA).weight(25).build();
-            LootEntry skull = Loot.entry(ItemHandler.FOSSILS.get("skull")).weight(2).function(DINOSAUR_DATA).count(1, 2).build();
+            LootEntry skull = Loot.entry(ItemHandler.FOSSILS.get("jwr_skull")).weight(2).function(DINOSAUR_DATA).count(1, 2).build();
 
 
             table.addPool(Loot.pool("jwr_fossils").rolls(1, 2).entries(plantFossil, twig, amber, display, skull).build());
