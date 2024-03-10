@@ -210,6 +210,7 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
 
         this.setFullyGrown();
         this.updateAttributes();
+        this.setPathPriority(PathNodeType.OPEN, 0);
         this.setPathPriority(PathNodeType.FENCE, -1);
         this.setPathPriority(PathNodeType.DOOR_WOOD_CLOSED, -1);
         this.setPathPriority(PathNodeType.DOOR_IRON_CLOSED, -1);
