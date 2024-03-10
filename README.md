@@ -2,7 +2,7 @@
 
 ### RebornMod Leader
 
-Vitiate
+Vitiate 
 
 ### The code is modified and built up from an older version of JurassiCraft's code, having been also worked upon by JWR's coders. Credit goes to the original JurassiCraft team for laying the foundations for the code that was expanded upon to make this project a reality.
 
@@ -11,21 +11,11 @@ Vitiate
 
 Vitiate
 
-Aecht Rob
-
-Sniffity
-
 Gamma_002
 
 ### Modelers / Sound Designers / Textures /  Concept Artists
 
 NightEagle
-
-PanicPlay
-
-Seentro
-
-Zth404(Z)
 
 CreatarCreator
 
@@ -45,10 +35,6 @@ Neickee
 Ryu Enyo
 
 Rexthezilla98
-
-HireAMercenary
-
-Firewolf786
 
 Goofy
 
@@ -80,7 +66,7 @@ Verified_Bear // Alis
 
 Just Monika
 
-Wyn Price
+Wyn Price 
 
 Sniffity
 
@@ -98,7 +84,7 @@ RextheZilla98
 
 AGSucho
 
-Josef_Germany (MCingram)
+Josef_Germany (MCingram) 
 
 JurassicXenomorph
 
@@ -128,7 +114,7 @@ Raptorek20
 
 LordofLustria
 
-jglrxavpok
+jglrxavpok 
 
 amellinger
 
@@ -136,37 +122,37 @@ iLexiconn
 
 PapaWhale
 
-SoggyMustache
+SoggyMustache 
 
 Wyn Price
 
 JTGHawk137
 
-CarrotJet
+CarrotJet   
 
-RaptorWhisper
+RaptorWhisper 
 
-HarvNut
+HarvNut    
 
-Andreas
+Andreas  
 
-Reuxertz
+Reuxertz   
 
-AnarchCassius
+AnarchCassius   
+    
+NeusFear   
 
-NeusFear
+SanAndreasP    
 
-SanAndreasP
+Shrek5InTheatres2019    
 
-Shrek5InTheatres2019
-
-Compaszer
+Compaszer    
 
 Brownboiiwonder
 
-PT400C
+PT400C     
 
-CarrotJet
+CarrotJet   
 
 Cody
 
