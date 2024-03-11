@@ -1,0 +1,89 @@
+{
+  "version": 0,
+  "poses": {
+    "IDLE": [
+      {
+        "pose": "titanites_adult_idle",
+        "time": 20
+      }
+    ],
+    "DYING": [
+      {
+        "pose": "titanites_adult_death",
+        "time": 10
+      }
+    ],
+    "INJURED": [
+      {
+        "pose": "titanites_adult_injured_1",
+        "time": 10
+      },
+	  {
+        "pose": "titanites_adult_injured_2",
+        "time": 10
+      },
+	  {
+        "pose": "titanites_adult_idle",
+        "time": 10
+      }
+    ],
+    "ON_LAND": [
+      {
+        "pose": "titanites_adult_on_land_1",
+        "time": 10
+      },
+	  {
+        "pose": "titanites_adult_on_land_2",
+        "time": 18
+      },
+	  {
+        "pose": "titanites_adult_on_land_3",
+        "time": 20
+      },
+	  {
+        "pose": "titanites_adult_on_land_4",
+        "time": 10
+      }
+    ],
+    "EATING": [
+      {
+        "pose": "titanites_adult_eating_1",
+        "time": 8
+      },
+	  {
+        "pose": "titanites_adult_eating_2",
+        "time": 8
+      },
+	  {
+        "pose": "titanites_adult_eating_3",
+        "time": 8
+      },
+	  {
+        "pose": "titanites_adult_eating_4",
+        "time": 8
+      },
+      {
+        "pose": "titanites_adult_idle",
+        "time": 5
+      }
+    ],
+    "SWIMMING": [
+      {
+        "pose": "titanites_adult_swimming_1",
+        "time": 8
+      },
+      {
+        "pose": "titanites_adult_swimming_2",
+        "time": 8
+      },
+      {
+        "pose": "titanites_adult_swimming_3",
+        "time": 8
+      },
+      {
+        "pose": "titanites_adult_swimming_4",
+        "time": 8
+      }
+    ]
+  }
+}

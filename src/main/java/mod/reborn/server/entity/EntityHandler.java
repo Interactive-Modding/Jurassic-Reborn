@@ -98,6 +98,7 @@ public class EntityHandler {
     public static final Dinosaur HYAENODON = new HyaenodonDinosaur();
     public static final Dinosaur AMMONITE = new AmmoniteDinosaur();
     public static final Dinosaur ASTEROCERAS = new AsterocerasDinosaur();
+    public static final Dinosaur TITANITES = new TitanitesDinosaur();
     public static final Dinosaur POSTOSUCHUS = new PostosuchusDinosaur();
     public static final Dinosaur STYRACOSAURUS = new StyracosaurusDinosaur();
     public static final Dinosaur SUCHOMIMUS = new SuchomimusDinosaur();
@@ -245,6 +246,7 @@ public class EntityHandler {
         registerDinosaur(91,CAMARASAURUS);
         registerDinosaur(92,DIMETRODON);
         registerDinosaur(93,ASTEROCERAS);
+        registerDinosaur(94,TITANITES);
 
         dinosaurProgress = ProgressManager.push("Loading dinosaurs", DINOSAURS.size());
 
