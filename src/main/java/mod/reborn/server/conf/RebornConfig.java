@@ -118,11 +118,22 @@ public class RebornConfig { //TODO: move all structures to same parent package
     public static class StructureGeneration {
         @Config.Name("Visitor Center Generation")
         public boolean visitorcentergeneration = true;
+
         @Config.Name("InGen Compound Generation")
         public boolean islasornalabgenereation = true;
 
+        @Config.Name("JP San Diego Generation")
+        public boolean jpsandiegogeneration = true;
         @Config.Name("Abandoned Paddock Generation")
         public boolean abandonedgeneration = true;
+        @Config.Name("Ice Fossil Digsite Generation")
+        public boolean icegeneration = true;
+
+        @Config.Name("Amber Mine Generation")
+        public boolean minegeneration = true;
+
+        @Config.Name("Desert Digsite Generation")
+        public boolean desertgeneration = true;
         @Config.Name("Raptor Paddock Generation")
         public boolean raptorgeneration = true;
     }

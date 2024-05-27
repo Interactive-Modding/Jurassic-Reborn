@@ -403,6 +403,8 @@ item.west_indian_lilac_berries.name=West Indian Lilac Berries
 
 filled_map.rebornmod.visitorcenter=Visitor Center Map
 filled_map.rebornmod.islasornalab=InGen Compound Map
+filled_map.rebornmod.jpsandiego=JP:San Diego Map
+
 
 // Crops ========================================
 item.ajuginucula_smithii_seeds.name=Ajuginucula Smithii Seeds

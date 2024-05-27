@@ -34,12 +34,23 @@ public class StructureUtils {
         private boolean visitorCenter = RebornConfig.STRUCTURE_GENERATION.visitorcentergeneration;
 
         private boolean IslaSornaLab = RebornConfig.STRUCTURE_GENERATION.islasornalabgenereation;
+
+        private boolean JPSanDiego = RebornConfig.STRUCTURE_GENERATION.jpsandiegogeneration;
+
         private boolean raptorPaddock = RebornConfig.STRUCTURE_GENERATION.raptorgeneration;
+
+        private boolean IceFossilDigsite = RebornConfig.STRUCTURE_GENERATION.icegeneration;
+
+        private boolean DesertDigsite = RebornConfig.STRUCTURE_GENERATION.desertgeneration;
+        private boolean AmberMine = RebornConfig.STRUCTURE_GENERATION.minegeneration;
 
         private boolean AbandonedPaddock = RebornConfig.STRUCTURE_GENERATION.abandonedgeneration;
         private BlockPos visitorCenterPosition;
 
         private BlockPos IslaSornaLabPosition;
+
+        private BlockPos JPSanDiegoPosition;
+
 
         public StructureData(String string) {
             super(string);
@@ -54,6 +65,9 @@ public class StructureUtils {
             compound.setBoolean("IslaSornaLab", this.IslaSornaLab);
             compound.setBoolean("RaptorPaddock", this.raptorPaddock);
             compound.setBoolean("AbandonedPaddock",this.AbandonedPaddock);
+            compound.setBoolean("IceFossilDigsite",this.IceFossilDigsite);
+            compound.setBoolean("DesertDigsite",this.DesertDigsite);
+            compound.setBoolean("AmberMine",this.AmberMine);
             compound.setLong("VisitorCenterBlockPosition", this.visitorCenterPosition.toLong());
             compound.setLong("IslaSornaLabBlockPosition", this.IslaSornaLabPosition.toLong());
             return compound;
@@ -65,8 +79,13 @@ public class StructureUtils {
             this.IslaSornaLab = nbt.getBoolean("IslaSornaLab");
             this.raptorPaddock = nbt.getBoolean("RaptorPaddock");
             this.AbandonedPaddock= nbt.getBoolean("AbandonedPaddock");
+            this.IceFossilDigsite= nbt.getBoolean("IceFossilDigsite");
+            this.DesertDigsite= nbt.getBoolean("DesertDigsite");
+            this.AmberMine= nbt.getBoolean("AmberMine");
             this.visitorCenterPosition = BlockPos.fromLong(nbt.getLong("VisitorCenterBlockPosition"));
             this.IslaSornaLabPosition = BlockPos.fromLong(nbt.getLong("IslaSornaLabPosition"));
+            this.JPSanDiegoPosition = BlockPos.fromLong(nbt.getLong("SanDiegoPosition"));
+
         }
 
         public boolean isVisitorCenter() {
@@ -76,6 +95,9 @@ public class StructureUtils {
         public boolean isIslaSornaLab()  {
             return IslaSornaLab;
         }
+        public boolean isJPSanDiego()  {
+            return JPSanDiego;
+        }
 
         public boolean isRaptorPaddock() {
             return raptorPaddock;
@@ -84,6 +106,17 @@ public class StructureUtils {
         public boolean isAbandonedPaddock() {
             return AbandonedPaddock;
         }
+        public boolean isIceFossilDigsite() {
+            return IceFossilDigsite;
+        }
+        public boolean isDesertDigsite() {
+            return DesertDigsite;
+        }
+
+        public boolean isAmberMine() {
+            return AmberMine;
+        }
+
 
         public BlockPos getVisitorCenterPosition() {
             return visitorCenterPosition;
@@ -93,8 +126,17 @@ public class StructureUtils {
             return IslaSornaLabPosition;
         }
 
+        public BlockPos getJPSanDiegoPosition()  {
+            return JPSanDiegoPosition;
+        }
+
         public void setIslaSornaLabPosition(BlockPos IslaSornaLabPosition) {
             this.IslaSornaLabPosition = IslaSornaLabPosition;
+            this.markDirty();
+        }
+
+        public void setJPSanDiegoPosition(BlockPos JPSanDiegoPosition) {
+            this.JPSanDiegoPosition = JPSanDiegoPosition;
             this.markDirty();
         }
 

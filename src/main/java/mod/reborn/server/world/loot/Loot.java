@@ -33,7 +33,9 @@ import java.util.Random;
 
 public class Loot {
     public static final ResourceLocation GENETICIST_HOUSE_CHEST = new ResourceLocation(RebornMod.MODID, "structure/geneticist_house");
+    public static final ResourceLocation ICE_FOSSIL_CHEST = new ResourceLocation(RebornMod.MODID, "structure/ice_fossil_chest");
 
+    public static final ResourceLocation RAPTOR_CHEST = new ResourceLocation(RebornMod.MODID, "structure/raptor_chest");
     public static final ResourceLocation VISITOR_GROUND_STORAGE = new ResourceLocation(RebornMod.MODID, "structure/visitor_centre/ground_storage");
     public static final ResourceLocation VISITOR_CONTROL_ROOM = new ResourceLocation(RebornMod.MODID, "structure/visitor_centre/control_room");
     public static final ResourceLocation VISITOR_LABORATORY = new ResourceLocation(RebornMod.MODID, "structure/visitor_centre/laboratory");
@@ -48,7 +50,7 @@ public class Loot {
     public static final DinosaurData DINOSAUR_DATA = new DinosaurData();
     public static final PlantData PLANT_DATA = new PlantData();
     public static final RandomDNA RANDOM_DNA = new RandomDNA();
-    public static final RandomDNA DNA = new RandomDNA(true);
+    public static final RandomDNA FULL_DNA = new RandomDNA(true);
 
 
     private static long tableID = 0;
@@ -102,27 +104,42 @@ public class Loot {
             LootEntry display = Loot.entry(ItemHandler.DISPLAY_BLOCK).function(DINOSAUR_DATA).weight(25).build();
             LootEntry skull = Loot.entry(ItemHandler.FOSSILS.get("skull")).weight(2).function(DINOSAUR_DATA).count(1, 2).build();
 
-
             table.addPool(Loot.pool("jwr_fossils").rolls(1, 2).entries(plantFossil, twig, amber, display, skull).build());
 
             LootEntry[] records = Loot.entries(ItemHandler.JURASSICRAFT_THEME_DISC, ItemHandler.DONT_MOVE_A_MUSCLE_DISC, ItemHandler.TROODONS_AND_RAPTORS_DISC).buildEntries();
             table.addPool(Loot.pool("jwr_records").rolls(0, 2).entries(records).build());
         } else if (name == LootTableList.CHESTS_VILLAGE_BLACKSMITH || name == LootTableList.CHESTS_NETHER_BRIDGE || name == LootTableList.CHESTS_SIMPLE_DUNGEON || name == LootTableList.CHESTS_STRONGHOLD_CORRIDOR || name == LootTableList.CHESTS_DESERT_PYRAMID || name == LootTableList.CHESTS_ABANDONED_MINESHAFT || name == LootTableList.CHESTS_IGLOO_CHEST || name == LootTableList.CHESTS_JUNGLE_TEMPLE || name == LootTableList.CHESTS_WOODLAND_MANSION || name == LootTableList.CHESTS_STRONGHOLD_LIBRARY) {
             LootEntry actionFigure = Loot.entry(ItemHandler.DISPLAY_BLOCK).function(DINOSAUR_DATA).weight(1).build();
-            table.addPool(Loot.pool("jwr_fossils").rolls(1, 2).entries(actionFigure).build());
+            table.addPool(Loot.pool("jwr_fossils_1").rolls(1, 2).entries(actionFigure).build());
         }   else if (name == Loot.VISITOR_GROUND_STORAGE) {
-            LootEntry amber = Loot.entry(ItemHandler.AMBER).data(0, 1).count(0, 3).build();
+            LootEntry amber = Loot.entry(ItemHandler.FROZEN_LEECH).count(0, 1).build();
+            LootEntry amber_2 = Loot.entry(ItemHandler.SEA_LAMPREY).count(0, 1).build();
+            LootEntry amber_1 = Loot.entry(ItemHandler.AMBER).data(0, 1).count(0, 2).build();
             LootEntry wool = Loot.entry(Blocks.WOOL).data(0, 15).count(0, 64).build();
-            table.addPool(Loot.pool("jwr_items").rolls(5, 6).entries(amber, wool).build());
+            table.addPool(Loot.pool("jwr_items").rolls(5, 6).entries(amber,amber_1,amber_2, wool).build());
         } else if (name == Loot.VISITOR_LABORATORY) {
             LootEntry softTissue = Loot.entry(ItemHandler.SOFT_TISSUE).count(0, 3).function(DINOSAUR_DATA).build();
             LootEntry plantSoftTissue = Loot.entry(ItemHandler.PLANT_SOFT_TISSUE).count(0, 3).function(PLANT_DATA).build();
-            LootEntry amber = Loot.entry(ItemHandler.AMBER).data(0, 1).count(0, 5).build();
-            LootEntry dna = Loot.entry(ItemHandler.DNA).function(DINOSAUR_DATA).function(RANDOM_DNA).build();
-            table.addPool(Loot.pool("jwr_items").rolls(3, 4).entries(dna, softTissue, plantSoftTissue, amber).build());
+            LootEntry amber = Loot.entry(ItemHandler.AMBER).data(0, 1).count(0, 6).build();
+            table.addPool(Loot.pool("jwr_items").rolls(3, 4).entries( softTissue, plantSoftTissue, amber).build());
+        } else if (name == Loot.VISITOR_CRYONICS) {
+            LootEntry dna = Loot.entry(ItemHandler.DNA).function(DINOSAUR_DATA).function(FULL_DNA).build();
+            table.addPool(Loot.pool("jwr_items").rolls(7, 12).entries(dna).build());
+        } else if (name == Loot.ICE_FOSSIL_CHEST) {
+            LootEntry actionFigure = Loot.entry(ItemHandler.DISPLAY_BLOCK).function(DINOSAUR_DATA).weight(1).build();
+            LootEntry twig = Loot.entry(ItemHandler.TWIG_FOSSIL).weight(5).count(1, 3).build();
+            LootEntry plantFossil = Loot.entry(ItemHandler.PLANT_FOSSIL).weight(5).count(1, 3).build();
+            LootEntry amber = Loot.entry(ItemHandler.FROZEN_LEECH).count(0, 1).build();
+            table.addPool(Loot.pool("jwr_items").rolls(5, 6).entries(actionFigure,twig,plantFossil,amber).build());
+        } else if (name == Loot.RAPTOR_CHEST) {
+            LootEntry actionFigure = Loot.entry(ItemHandler.DISPLAY_BLOCK).function(DINOSAUR_DATA).weight(1).build();
+            LootEntry twig = Loot.entry(ItemHandler.TWIG_FOSSIL).weight(5).count(1, 3).build();
+            LootEntry plantFossil = Loot.entry(ItemHandler.PLANT_FOSSIL).weight(5).count(1, 3).build();
+            LootEntry amber = Loot.entry(ItemHandler.AMBER).data(0, 1).count(0, 1).build();
+            table.addPool(Loot.pool("jwr_items").rolls(5, 6).entries(actionFigure,twig,plantFossil,amber).build());
         } else if (name == Loot.VISITOR_DINING_HALL) {
             LootEntry amber = Loot.entry(ItemHandler.AMBER).weight(2).count(0, 1).data(0, 1).build();
-            LootEntry tooth = Loot.entry(ItemHandler.FOSSILS.get("jwr_teeth")).weight(2).function(DINOSAUR_DATA).count(1, 2).build();
+            LootEntry tooth = Loot.entry(ItemHandler.FOSSILS.get("teeth")).weight(2).function(DINOSAUR_DATA).count(1, 2).build();
             LootEntry actionFigure = Loot.entry(ItemHandler.DISPLAY_BLOCK).function(DINOSAUR_DATA).weight(1).build();
             table.addPool(Loot.pool("jwr_items").rolls(8, 11).entries(amber, tooth, actionFigure).build());
         }

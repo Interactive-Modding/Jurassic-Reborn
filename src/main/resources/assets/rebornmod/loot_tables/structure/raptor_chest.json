@@ -1,0 +1,42 @@
+{
+  "pools": [
+    {
+      "name": "rebornmod",
+      "rolls": {"min": 0, "max": 3},
+      "conditions": [{"condition": "random_chance", "chance": 0.5}],
+      "entries": [
+        {
+          "type": "item",
+          "name": "rebornmod:gypsum_cobblestone",
+          "weight": 5,
+          "functions": [
+            {"function": "set_count", "count": {"min": 0, "max": 5}}
+          ]
+        },
+        {
+          "type": "item",
+          "name": "rebornmod:encased_fossil_0",
+          "weight": 5,
+          "functions": [
+            {"function": "set_count", "count": {"min": 0, "max": 5}},
+            {"function": "minecraft:set_data", "data": 0}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "junk",
+      "rolls": {"min": 0, "max": 1},
+      "entries": [
+        {
+          "type": "item",
+          "name": "rebornmod:plaster_and_bandage",
+          "weight": 8,
+          "functions": [
+            {"function": "set_count", "count": {"min": 0, "max": 32}}
+          ]
+        }
+      ]
+    }
+  ]
+}

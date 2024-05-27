@@ -44,8 +44,16 @@ public class SpawnStructureCommand extends CommandBase {
             generator = new RaptorPaddockGenerator(random);
         } else if(name.equalsIgnoreCase("abandoned_paddock")) {
             generator = new AbandonedPaddockGenerator(random);
+        } else if(name.equalsIgnoreCase("ice_fossil_digsite")) {
+            generator = new IceFossilDigsiteGenerator(random);
+        } else if(name.equalsIgnoreCase("desert_digsite")) {
+            generator = new DesertDigsiteGenerator(random);
+        } else if(name.equalsIgnoreCase("amber_mine")) {
+            generator = new AmberMineGenerator(random);
         } else if(name.equalsIgnoreCase("isla_sorna_lab")) {
             generator = new IslaSornaLabGenerator(random);
+        } else if(name.equalsIgnoreCase("jp_san_diego")) {
+            generator = new JPSanDiegoGenerator(random);
         } else {
             throw new CommandException("commands.spawnrb.notfound", name);
         }
@@ -75,7 +83,7 @@ public class SpawnStructureCommand extends CommandBase {
     @Override
     public List<String> getTabCompletions(MinecraftServer server, ICommandSender sender, String[] args, @Nullable BlockPos targetPos) {
         if(args.length == 1) {
-            return getListOfStringsMatchingLastWord(args, Lists.newArrayList("visitor_center","abandoned_paddock", "raptor_paddock", "isla_sorna_lab"));
+            return getListOfStringsMatchingLastWord(args, Lists.newArrayList("visitor_center", "abandoned_paddock", "ice_fossil_digsite", "desert_digsite", "amber_mine", "raptor_paddock", "isla_sorna_lab", "jp_san_diego"));
         } else if(args.length == 2) {
             return getListOfStringsMatchingLastWord(args, Stream.of(Rotation.values()).map(Enum::name).map(String::toLowerCase).collect(Collectors.toList()));
         } else if(args.length == 3) {

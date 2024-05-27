@@ -45,6 +45,16 @@ public class VillagerTradeHandler {
                             recipeList.add(new MerchantRecipe(new ItemStack(Items.EMERALD, random.nextInt(12) + 16), new ItemStack(Items.COMPASS), itemstack));
 
                         }
+                    if(StructureUtils.getStructureData().isJPSanDiego()) {
+                        World world = FMLCommonHandler.instance().getMinecraftServerInstance().getWorld(0);
+                        BlockPos blockpos = MapUtils.getJPSanDiegoPosition();
+                        ItemStack itemstack = ItemMap.setupNewMap(world, blockpos.getX(), blockpos.getZ(), (byte) 4, true,true);
+                        ItemMap.renderBiomePreviewMap(world, itemstack);
+                        MapData.addTargetDecoration(itemstack, blockpos, "+", MapDecoration.Type.MANSION);
+                        itemstack.setTranslatableName("filled_map.rebornmod.JPsandiego");
+                        recipeList.add(new MerchantRecipe(new ItemStack(Items.EMERALD, random.nextInt(12) + 16), new ItemStack(Items.COMPASS), itemstack));
+
+                    }
 
                 })
                 ;

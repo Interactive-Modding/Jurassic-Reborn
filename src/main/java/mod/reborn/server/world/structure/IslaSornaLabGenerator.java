@@ -28,10 +28,11 @@ public class IslaSornaLabGenerator extends StructureGenerator {
         LOOT_TABLES.put("Kitchen", Loot.VISITOR_KITCHEN);
         LOOT_TABLES.put("DormTower", Loot.VISITOR_DORM_TOWER);
         LOOT_TABLES.put("DiningHall", Loot.VISITOR_DINING_HALL);
+        LOOT_TABLES.put("Cryonics", Loot.VISITOR_CRYONICS);
     }
 
     public IslaSornaLabGenerator (Random rand) {
-        super(rand, 111, 50, 205);
+        super(rand, 154, 90, 262);
     }
 
     @Override
@@ -62,6 +63,6 @@ public class IslaSornaLabGenerator extends StructureGenerator {
     @Nullable
     @Override
     public BlockPos getLevelPosition() {
-        return new BlockPos(0, 4,0);
+        return new BlockPos(1, 44,10);
     }
 }

@@ -33,6 +33,15 @@ public class MapUtils {
         }
         return pos;
     }
+    public static BlockPos getJPSanDiegoPosition() {
+        StructureUtils.StructureData data = StructureUtils.getStructureData();
+        BlockPos pos = data.getJPSanDiegoPosition();
+        if(pos ==  null) {
+            pos = generateDiegoPosition();
+            data.setJPSanDiegoPosition(pos);
+        }
+        return pos;
+    }
 
     private static BlockPos generatePosition() {
         World world = FMLCommonHandler.instance().getMinecraftServerInstance().getWorld(0);
@@ -41,7 +50,7 @@ public class MapUtils {
         BlockPos pos = null;
         for(int i = 0; i < 10000; i++) {
             pos = new BlockPos(worldRandom.nextInt(range) + MIN_DISTANCE * (worldRandom.nextBoolean() ? 1 : -1), 0, worldRandom.nextInt(range) + MIN_DISTANCE * (worldRandom.nextBoolean() ? 1 : -1));
-            if(Lists.newArrayList(Biomes.JUNGLE, Biomes.MUTATED_JUNGLE, Biomes.JUNGLE_EDGE, Biomes.MUTATED_JUNGLE_EDGE, Biomes.SAVANNA, Biomes.MUTATED_SAVANNA).contains(world.getBiome(pos))) {
+            if(Lists.newArrayList( Biomes.MUTATED_JUNGLE, Biomes.JUNGLE_EDGE, Biomes.MUTATED_JUNGLE_EDGE, Biomes.SAVANNA, Biomes.MUTATED_SAVANNA).contains(world.getBiome(pos))) {
                 return pos;
             }
         }
@@ -49,12 +58,25 @@ public class MapUtils {
     }
     private static BlockPos generateLabPosition() {
         World world = FMLCommonHandler.instance().getMinecraftServerInstance().getWorld(0);
-        Random worldRandom = new Random(world.getSeed()-409283);
+        Random worldRandom = new Random(world.getSeed());
         int range = MAX_DISTANCE - MIN_DISTANCE;
         BlockPos pos = null;
         for(int i = 0; i < 10000; i++) {
             pos = new BlockPos(worldRandom.nextInt(range) + MIN_DISTANCE * (worldRandom.nextBoolean() ? 1 : -1), 0, worldRandom.nextInt(range) + MIN_DISTANCE * (worldRandom.nextBoolean() ? 1 : -1));
-            if(Lists.newArrayList(Biomes.JUNGLE, Biomes.MUTATED_JUNGLE, Biomes.JUNGLE_EDGE, Biomes.MUTATED_JUNGLE_EDGE, Biomes.SAVANNA, Biomes.MUTATED_SAVANNA).contains(world.getBiome(pos))) {
+            if(Lists.newArrayList(Biomes.JUNGLE).contains(world.getBiome(pos))) {
+                return pos;
+            }
+        }
+        return pos;
+    }
+    private static BlockPos generateDiegoPosition() {
+        World world = FMLCommonHandler.instance().getMinecraftServerInstance().getWorld(0);
+        Random worldRandom = new Random(world.getSeed());
+        int range = MAX_DISTANCE - MIN_DISTANCE;
+        BlockPos pos = null;
+        for(int i = 0; i < 10000; i++) {
+            pos = new BlockPos(worldRandom.nextInt(range) + MIN_DISTANCE * (worldRandom.nextBoolean() ? 1 : -1), 0, worldRandom.nextInt(range) + MIN_DISTANCE * (worldRandom.nextBoolean() ? 1 : -1));
+            if(Lists.newArrayList(Biomes.PLAINS,Biomes.FOREST,Biomes.FOREST_HILLS).contains(world.getBiome(pos))) {
                 return pos;
             }
         }
