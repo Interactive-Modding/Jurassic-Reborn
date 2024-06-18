@@ -40,7 +40,7 @@ public class BaryonyxDinosaur extends Dinosaur
                 {"", "", "","neck_vertebrae","skull"},
                 {"tail_vertebrae", "pelvis", "ribcage","shoulder","tooth"},
                 {"", "leg_bones", "", "arm_bones", ""},
-                {"", "foot_bones", "", "", ""}};
+                {"", "foot_bones", "", "claw", ""}};
         this.setRecipe(recipe);
         this.enableSkeleton();
         ArrayList<Biome> biomeList = new ArrayList<Biome>();

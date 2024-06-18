@@ -4,11 +4,7 @@
     "IDLE": [
       {
         "pose": "chilesaurus_adult_idle",
-        "time": 60
- },
-      {
-        "pose": "chilesaurus_adult_idle_1",
-        "time": 60
+        "time": 20
       }
     ],
     "LEAP": [
@@ -22,15 +18,15 @@
       },
       {
         "pose": "chilesaurus_adult_jumping_3",
-        "time": 4
+        "time": 2
       },
       {
         "pose": "chilesaurus_adult_jumping_4",
-        "time": 4
+        "time": 2
       },
       {
         "pose": "chilesaurus_adult_jumping_5",
-        "time": 4
+        "time": 2
       }
     ],
     "WALKING": [

@@ -1,107 +1,202 @@
 {
-  "version": 0,
   "poses": {
     "IDLE": [
       {
         "pose": "protoceratops_adult_idle",
         "time": 20
-      }
+     }
     ],
     "SLEEPING": [
       {
         "pose": "protoceratops_adult_sleeping",
         "time": 20
       }
-],
-    "ATTACKING": [
+    ],
+    "EATING": [
       {
-        "pose": "protoceratops_adult_attacking",
+        "pose": "protoceratops_adult_eating_1",
+        "time": 20
+      },
+      {
+        "pose": "protoceratops_adult_eating_2",
+        "time": 20
+      },
+      {
+        "pose": "protoceratops_adult_eating_3",
+        "time": 20
+      },
+      {
+        "pose": "protoceratops_adult_eating_4",
+        "time": 20
+      },
+      {
+        "pose": "protoceratops_adult_eating_1",
+        "time": 20
+      },
+      {
+        "pose": "protoceratops_adult_eating_2",
+        "time": 20
+      },
+      {
+        "pose": "protoceratops_adult_eating_3",
+        "time": 20
+      },
+      {
+        "pose": "protoceratops_adult_eating_4",
+        "time": 20
+      },
+      {
+        "pose": "protoceratops_adult_idle",
+        "time": 20
+      }
+    ],
+    "WALKING": [
+      {
+        "pose": "protoceratops_adult_walking_1",
+        "time": 4
+      },
+      {
+        "pose": "protoceratops_adult_walking_2",
+        "time": 4
+      },
+      {
+        "pose": "protoceratops_adult_walking_3",
+        "time": 4
+      },
+      {
+        "pose": "protoceratops_adult_walking_4",
+        "time": 4
+      },
+      {
+        "pose": "protoceratops_adult_walking_5",
+        "time": 4
+      },
+      {
+        "pose": "protoceratops_adult_walking_6",
+        "time": 4
+      },
+      {
+        "pose": "protoceratops_adult_walking_7",
+        "time": 4
+      },
+      {
+        "pose": "protoceratops_adult_walking_8",
+        "time": 4
+      }
+    ],
+    "SPEAK": [
+      {
+        "pose": "protoceratops_adult_speak",
+        "time": 10
+      },
+      {
+        "pose": "protoceratops_adult_speak",
         "time": 20
       },
       {
         "pose": "protoceratops_adult_idle",
         "time": 10
       }
-  ],
-    "RESTING": [
+    ],
+    "DRINKING": [
       {
-        "pose": "protoceratops_adult_resting",
-        "time": 15
-      }
-],
-    "DYING": [
-      {
-        "pose": "protoceratops_adult_dying_1",
-        "time": 7
+        "pose": "protoceratops_adult_drinking_1",
+        "time": 30
       },
       {
-        "pose": "protoceratops_adult_dying_2",
-        "time": 6
+        "pose": "protoceratops_adult_drinking_2",
+        "time": 30
       },
       {
-        "pose": "protoceratops_adult_dying_3",
-        "time": 7
+        "pose": "protoceratops_adult_drinking_3",
+        "time": 30
+      },
+      {
+        "pose": "protoceratops_adult_drinking_4",
+        "time": 30
+      },
+      {
+        "pose": "protoceratops_adult_drinking_1",
+        "time": 30
+      },
+      {
+        "pose": "protoceratops_adult_drinking_2",
+        "time": 30
+      },
+      {
+        "pose": "protoceratops_adult_drinking_3",
+        "time": 30
+      },
+      {
+        "pose": "protoceratops_adult_drinking_4",
+        "time": 30
+      },
+      {
+        "pose": "protoceratops_adult_idle",
+        "time": 20
       }
- ],
+    ],
     "CALLING": [
       {
         "pose": "protoceratops_adult_calling",
-        "time": 20
-      },
-      {
-        "pose": "protoceratops_adult_idle",
         "time": 10
       },
-	  {
+      {
         "pose": "protoceratops_adult_calling",
-        "time": 15
-      },
-      {
-        "pose": "protoceratops_adult_idle",
-        "time": 20
-      }
- ],
-    "INJURED": [
-      {
-        "pose": "protoceratops_adult_injured",
-        "time": 25
-      },
-      {
-        "pose": "protoceratops_adult_idle",
-        "time": 15
-      }
- ],
-    "LAYING_EGG": [
-      {
-        "pose": "protoceratops_adult_laying",
-        "time": 25
+        "time": 30
       },
       {
         "pose": "protoceratops_adult_idle",
         "time": 10
       }
- ],
-    "SPEAK": [
+    ],
+    "ATTACKING": [
       {
-        "pose": "protoceratops_adult_speaking",
-        "time": 5
+        "pose": "protoceratops_adult_attacking_1",
+        "time": 15
       },
       {
-        "pose": "protoceratops_adult_speaking",
-        "time": 20
+        "pose": "protoceratops_adult_attacking_2",
+        "time": 15
+      },
+      {
+        "pose": "protoceratops_adult_idle",
+        "time": 5
+      }
+    ],
+    "ROARING": [
+      {
+        "pose": "protoceratops_adult_roar_1",
+        "time": 15
+      },
+      {
+        "pose": "protoceratops_adult_roar_2",
+        "time": 15
       },
       {
         "pose": "protoceratops_adult_idle",
         "time": 15
       }
- ],
+    ],
+    "RESTING": [
+      {
+        "pose": "protoceratops_adult_resting",
+        "time": 20
+      }
+    ],
+    "DYING": [
+      {
+        "pose": "protoceratops_adult_death",
+        "time": 35
+      }
+    ],
     "LOOKING_LEFT": [
       {
-        "pose": "protoceratops_adult_look_left",
+        "pose": "protoceratops_adult_looking_left",
         "time": 20
       },
       {
-        "pose": "protoceratops_adult_look_left",
+        "pose": "protoceratops_adult_looking_left",
         "time": 20
       },
       {
@@ -111,11 +206,11 @@
     ],
     "LOOKING_RIGHT": [
       {
-        "pose": "protoceratops_adult_look_right",
+        "pose": "protoceratops_adult_looking_right",
         "time": 20
       },
       {
-        "pose": "protoceratops_adult_look_right",
+        "pose": "protoceratops_adult_looking_right",
         "time": 20
       },
       {
@@ -123,84 +218,46 @@
         "time": 10
       }
     ],
-    "EATING": [
-      {
-        "pose": "protoceratops_adult_eating",
-        "time": 20
-      },
-      {
-        "pose": "protoceratops_adult_idle",
-        "time": 15
-      },
-      {
-        "pose": "protoceratops_adult_eating",
-        "time": 20
-      },
-      {
-        "pose": "protoceratops_adult_idle",
-        "time": 15
-      }
-   ],
-    "DRINKING": [
-      {
-        "pose": "protoceratops_adult_drinking",
-        "time": 20
-      },
-      {
-        "pose": "protoceratops_adult_idle",
-        "time": 15
-      },
-      {
-        "pose": "protoceratops_adult_drinking",
-        "time": 20
-      },
-      {
-        "pose": "protoceratops_adult_idle",
-        "time": 15
-      }
- ],
-    "WALKING": [
-      {
-        "pose": "protoceratops_adult_walking_1",
-        "time": 5
-      },
-      {
-        "pose": "protoceratops_adult_walking_2",
-        "time": 5
-      },
-      {
-        "pose": "protoceratops_adult_walking_3",
-        "time": 5
-      },
-      {
-        "pose": "protoceratops_adult_walking_4",
-        "time": 5
-      }
-  ],
     "RUNNING": [
       {
         "pose": "protoceratops_adult_running_1",
-        "time": 3
+        "time": 5
       },
       {
         "pose": "protoceratops_adult_running_2",
-        "time": 3
+        "time": 5
       },
       {
         "pose": "protoceratops_adult_running_3",
-        "time": 3
+        "time": 5
       },
       {
         "pose": "protoceratops_adult_running_4",
-        "time": 3
+        "time": 5
+      }
+    ],
+    "INJURED": [
+      {
+        "pose": "protoceratops_adult_injured",
+        "time": 10
       },
       {
-        "pose": "protoceratops_adult_running_5",
-        "time": 3
+        "pose": "protoceratops_adult_injured",
+        "time": 10
       },
       {
-        "pose": "protoceratops_adult_running_6",
-        "time": 3
+        "pose": "protoceratops_adult_idle",
+        "time": 10
+      }
+    ],
+    "LAYING_EGG": [
+      {
+        "pose": "protoceratops_adult_laying",
+        "time": 50
+      },
+      {
+        "pose": "protoceratops_adult_idle",
+        "time": 10
       }
     ]
   }

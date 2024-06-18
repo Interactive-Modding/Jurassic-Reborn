@@ -22,19 +22,27 @@ import net.minecraft.world.World;
 public abstract class AmfibianDinosaurEntity extends DinosaurEntity {
     private boolean getOut = false;
     private boolean getInWater = false;
+
+    private boolean blocked;
+
     private PathNavigate navigateSwimmer = new PathNavigateSwimmer(this,world);
     private PathNavigate navigateLand = new PathNavigateGround(this, world);
     private int waterTicks;
     private int landTicks;
     public AmfibianDinosaurEntity(World world) {
         super(world);
+        setSize(1, 1);
+        blocked = false;
         this.tasks.removeTask(new DinosaurWanderEntityAI(this, 0.8D, 2, 10));
         this.tasks.addTask(10, new EntityAIFindWater(this, 1, 2, 30));
         this.tasks.addTask(10, new Wander(this,2, 10, 2));
         this.tasks.addTask(5, new MoveUnderwaterEntityAI(this));
         this.moveHelper = new AmfibianDinosaurEntity.SwimmingMoveHelper();
     }
-
+    @Override
+    public boolean isMovementBlocked() {
+        return this.isCarcass() || this.isSleeping() || blocked;
+    }
     @Override
     public void onEntityUpdate() {
         int air = this.getAir();

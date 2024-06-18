@@ -25,8 +25,8 @@ public class ZhenyuanopterusDinosaur extends Dinosaur
         this.setStrength(5, 20);
         this.setMaximumAge(fromDays(40));
         this.setEyeHeight(0.225F, 1.3F);
-        this.setSizeX(0.3F, 1.0F);
-        this.setSizeY(0.3F, 1.3F);
+        this.setSizeX(0.15F, 1.0F);
+        this.setSizeY(0.35F, 1.35F);
         this.setStorage(27);
         this.setDiet((Diet.PISCIVORE.get()));
         this.setBones("leg_bones", "pelvis", "skull", "tail_vertebrae", "wing_bones", "teeth", "ribcage");

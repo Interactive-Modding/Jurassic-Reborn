@@ -51,7 +51,7 @@ public class AlligatorGarDinosaur extends Dinosaur
         this.setRandomFlock(false);
         this.setImprintable(false);
         this.setBirthType(BirthType.LIVE_BIRTH);
-        String[][] recipe = {{"", "dorsal_fin", "", ""},
+        String[][] recipe = {{"", "dorsal_fin", "scales", ""},
                 {"tail_fin", "spine", "pectoral_fin_bones", "skull"},
                 {"anal_fin", "", "pelvic_fin_bones", "teeth"}};
         this.setRecipe(recipe);

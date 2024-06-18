@@ -28,7 +28,6 @@ public class DiplodocusDinosaur extends Dinosaur
         this.setStrength(10, 60);
         this.setMaximumAge(fromDays(95));
         this.setEyeHeight(1.55F, 8.95F);
-        this.setRotationAngle(50, 10);
         this.setSizeX(0.4F, 5.4F);
         this.setSizeY(0.5F, 5.8F);
         this.setBones("skull", "tooth", "front_leg_bones", "hind_leg_bones", "neck_vertebrae", "pelvis", "ribcage", "shoulder", "tail_vertebrae");

@@ -14,9 +14,14 @@ import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 import mod.reborn.server.entity.ai.MoveUnderwaterEntityAI;
 
+
 public abstract class SwimmingDinosaurEntity extends DinosaurEntity {
+    private boolean blocked;
+
     public SwimmingDinosaurEntity(World world) {
         super(world);
+        setSize(1, 1);
+        blocked = false;
         this.moveHelper = new SwimmingDinosaurEntity.SwimmingMoveHelper();
         this.tasks.addTask(1, new MoveUnderwaterEntityAI(this));
         this.navigator = new PathNavigateSwimmer(this, world);
@@ -48,6 +53,11 @@ public abstract class SwimmingDinosaurEntity extends DinosaurEntity {
     @Override
     protected boolean canTriggerWalking() {
         return false;
+    }
+
+    @Override
+    public boolean isMovementBlocked() {
+        return this.isCarcass() || this.isSleeping() || blocked;
     }
 
     @Override
@@ -91,7 +101,7 @@ public abstract class SwimmingDinosaurEntity extends DinosaurEntity {
                 distance = MathHelper.sqrt(distance);
                 distanceY /= distance;
                 float f = (float) (Math.atan2(distanceZ, distanceX) * 180.0D / Math.PI) - 90.0F;
-                this.swimmingEntity.rotationYaw = this.limitAngle(this.swimmingEntity.rotationYaw, f, dinosaur.getRotationAngle());
+                this.swimmingEntity.rotationYaw = this.limitAngle(this.swimmingEntity.rotationYaw, f, 30);
                 this.swimmingEntity.setAIMoveSpeed((float) (this.swimmingEntity.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue() * this.speed));
                 this.swimmingEntity.motionY += (double) this.swimmingEntity.getAIMoveSpeed() * distanceY * 0.05D;
             } else {

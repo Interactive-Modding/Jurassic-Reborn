@@ -34,7 +34,7 @@ public class CarcharodontosaurusDinosaur extends Dinosaur {
         String[][] recipe = {
                 {"", "", "","neck_vertebrae","skull"},
                 {"tail_vertebrae", "pelvis", "ribcage","shoulder","tooth"},
-                {"", "leg_bones", "leg_bones", "arm_bones", ""},
+                {"", "leg_bones", "leg_bones", "arm_bones", "claw"},
                 {"", "foot_bones", "foot_bones", "", ""}};
         this.setRecipe(recipe);
         this.enableSkeleton();

@@ -26,8 +26,8 @@ public class PteranodonDinosaur extends Dinosaur
         this.setSpeed((SPEED -0.05), SPEED);
         this.setMaximumAge(fromDays(40));
         this.setEyeHeight(0.45F, 1.6F);
-        this.setSizeX(0.4F, 2.0F);
-        this.setSizeY(0.3F, 1.8F);
+        this.setSizeX(0.15F, 2.0F);
+        this.setSizeY(0.35F, 1.8F);
         this.setStorage(27);
         this.setDiet((Diet.CARNIVORE.get()));
         this.setBones("leg_bones", "neck_vertebrae", "pelvis", "ribcage", "skull", "tail_vertebrae", "wing_bones");
@@ -39,8 +39,9 @@ public class PteranodonDinosaur extends Dinosaur
         this.setAvianAnimal(true);
         this.setBreeding(false, 2, 6, 80, false, true);
         String[][] recipe = {
-                {"tail_vertebrae", "pelvis", "ribcage", "skull"},
-                {"", "leg_bones", "wing_bones", "", ""}};
+                {"", "", "","neck_vertebrae","skull"},
+                {"tail_vertebrae", "pelvis", "ribcage","",""},
+                {"", "leg_bones", "", "wing_bones", ""}};
         this.setRecipe(recipe);
         this.enableSkeleton();
         ArrayList<Biome> biomeList = new ArrayList<Biome>();

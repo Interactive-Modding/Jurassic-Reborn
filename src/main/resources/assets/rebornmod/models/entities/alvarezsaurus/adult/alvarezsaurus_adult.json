@@ -4,11 +4,7 @@
     "IDLE": [
       {
         "pose": "alvarezsaurus_adult_idle",
-        "time": 60
-      },
-      {
-        "pose": "alvarezsaurus_adult_idle_1",
-        "time": 60
+        "time": 20
       }
     ],
     "ATTACKING": [

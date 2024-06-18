@@ -285,7 +285,8 @@ public class Loot {
 
         @Override
         public ItemStack apply(ItemStack stack, Random rand, LootContext context) {
-            List<Dinosaur> dinosaurs = EntityHandler.getRegisteredDinosaurs();
+            List<Dinosaur> dinosaurs = EntityHandler.getPrehistoricDinosaurs();
+            dinosaurs.removeIf(dinosaur -> dinosaur.isHybrid);
             Dinosaur dinosaur = dinosaurs.get(rand.nextInt(dinosaurs.size()));
             if (stack.getItem() instanceof FossilItem && !dinosaur.isHybrid) {
                 String boneName = dinosaur.getBones()[rand.nextInt(dinosaur.getBones().length)];

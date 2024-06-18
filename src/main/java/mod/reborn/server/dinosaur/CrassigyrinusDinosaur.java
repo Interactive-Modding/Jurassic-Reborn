@@ -25,8 +25,8 @@ public class CrassigyrinusDinosaur extends Dinosaur {
         this.setMaximumAge(fromDays(45));
         this.setAttackBias(120);
         this.setEyeHeight(0.45F, 1.6F);
-        this.setSizeX(0.3F, 1.4F);
-        this.setSizeY(0.5F, 1.8F);
+        this.setSizeX(0.1F, 1.0F);
+        this.setSizeY(0.1F, 1.0F);
         this.setDiet(Diet.CARNIVORE.get());
         this.setBones("skull", "teeth","tail_vertebrae","ribcage","foot_bone","hind_leg_bones", "front_leg_bones");
         this.setBirthType(BirthType.LIVE_BIRTH);

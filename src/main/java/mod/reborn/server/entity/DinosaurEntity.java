@@ -207,9 +207,11 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
         blocked = false;
         //Necessary to set the bounding box, rather than having NULL_BOX
         setSize(1, 1);
-
         this.setFullyGrown();
         this.updateAttributes();
+        this.moveHelper = new DinosaurMoveHelper(this);
+        this.jumpHelper = new DinosaurJumpHelper(this);
+        
         this.setPathPriority(PathNodeType.FENCE, -1);
         this.setPathPriority(PathNodeType.DOOR_WOOD_CLOSED, -1);
         this.setPathPriority(PathNodeType.DOOR_IRON_CLOSED, -1);
@@ -312,6 +314,10 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
         return new SmartBodyHelper(this);
     }
 
+    @Override
+    public void fall(float distance, float damageMultiplier) {
+
+    }
     @Override
     public EntityLookHelper getLookHelper() {
         return this.lookHelper;
@@ -695,9 +701,6 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
         }
     }
 
-    public double getRotationAngle() {
-        return interpolate(dinosaur.getBabyrotation(), dinosaur.getRotationAngle());
-    }
 
     public double interpolate(double baby, double adult) {
         int dinosaurAge = this.dinosaurAge;
@@ -1257,6 +1260,7 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
         }
         return distance;
     }
+
 
     public int getDaysExisted() {
         return (int) Math.floor((this.dinosaurAge * 8.0F) / 24000.0F);

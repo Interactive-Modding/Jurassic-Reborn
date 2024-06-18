@@ -35,7 +35,6 @@ public class MosasaurusDinosaur extends Dinosaur {
         this.setBirthType(BirthType.LIVE_BIRTH);
         this.setAttackBias(1200);
         this.setAttackSpeed(2);
-        this.setRotationAngle(50, 20);
         this.setStorage(12);
         this.setPaleoPadScale(3);
         this.setImprintable(false);

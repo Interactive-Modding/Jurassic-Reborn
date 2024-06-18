@@ -33,6 +33,8 @@ public abstract class FlyingDinosaurEntity extends DinosaurEntity implements Ent
 
     private int ticksOnFloor;
     private int ticksInAir;
+    private boolean blocked;
+
     private boolean takingOff;
     private int feederSearchTick;
     private BlockPos closestFeeder;
@@ -40,6 +42,8 @@ public abstract class FlyingDinosaurEntity extends DinosaurEntity implements Ent
 
     public FlyingDinosaurEntity(World world) {
         super(world);
+        setSize(1, 1);
+        blocked = false;
         this.moveHelper = new FlyingDinosaurEntity.FlyingMoveHelper();
         this.tasks.addTask(1, new FlyingDinosaurEntity.AIFlyLand());
         this.tasks.addTask(2, new FlyingDinosaurEntity.AIStartFlying());
@@ -78,6 +82,11 @@ public abstract class FlyingDinosaurEntity extends DinosaurEntity implements Ent
 
         rotationPitch = prevRotationPitch + (rotationPitch - prevRotationPitch);
         super.onEntityUpdate();
+    }
+
+    @Override
+    public boolean isMovementBlocked() {
+        return this.isCarcass() || this.isSleeping() || blocked;
     }
 
     public boolean isOnGround() {
@@ -361,26 +370,44 @@ public abstract class FlyingDinosaurEntity extends DinosaurEntity implements Ent
     }
 
     public BlockPos getClosestFeeder() {
-        if (this.ticksExisted - this.feederSearchTick > 200) {
-            this.feederSearchTick = this.ticksExisted;
-            OnionTraverser traverser = new OnionTraverser(this.getPosition(), 32);
-            for (BlockPos pos : traverser) {
-                IBlockState state = this.world.getBlockState(pos);
-                if (state.getBlock() instanceof FeederBlock) {
-                    TileEntity tile = this.world.getTileEntity(pos);
-                    if (tile instanceof FeederBlockEntity) {
-                        FeederBlockEntity feeder = (FeederBlockEntity) tile;
-                        if (feeder.canFeedDinosaur(this) && feeder.getFeeding() == null && feeder.openAnimation == 0 && this.isOnGround()) {
-                            Path path = this.getNavigator().getPathToPos(pos);
-                            if (path != null && path.getCurrentPathLength() != 0) {
-                                return this.closestFeeder = pos;
+        int posX = (int) this.posX;
+        int posY = (int) this.posY;
+        int posZ = (int) this.posZ;
+
+        int closestDist = Integer.MAX_VALUE;
+        BlockPos closestPos = null;
+
+        int range = 16;
+
+        for (int x = posX - range; x < posX + range; x++) {
+            for (int y = posY - 8; y < posY + 8; y++) {
+                for (int z = posZ - range; z < posZ + range; z++) {
+                    if (y > 0 && y < this.world.getHeight()) {
+                        BlockPos pos = new BlockPos(x, y, z);
+                        TileEntity tile = this.world.getTileEntity(pos);
+
+                        if (tile instanceof FeederBlockEntity) {
+                            FeederBlockEntity feeder = (FeederBlockEntity) tile;
+
+                            if (feeder.canFeedDinosaur(this) && feeder.getFeeding() == null && feeder.openAnimation == 0) {
+                                int deltaX = Math.abs(posX - x);
+                                int deltaY = Math.abs(posY - y);
+                                int deltaZ = Math.abs(posZ - z);
+
+                                int distance = (deltaX * deltaX) + (deltaY * deltaY) + (deltaZ * deltaZ);
+
+                                if (distance < closestDist) {
+                                    closestDist = distance;
+                                    closestPos = pos;
+                                }
                             }
                         }
                     }
                 }
             }
         }
-        return this.closestFeeder;
+
+        return closestPos;
     }
 
     class AILookAround extends EntityAIBase {

@@ -26,8 +26,8 @@ public class GallimimusDinosaur extends Dinosaur {
         this.setStrength(1, 5);
         this.setMaximumAge(this.fromDays(35));
         this.setEyeHeight(0.58F, 2.7F);
-        this.setSizeX(0.2F, 1.2F);
-        this.setSizeY(0.35F, 2.45F);
+        this.setSizeX(0.3F, 1.2F);
+        this.setSizeY(0.55F, 2.25F);
         this.setStorage(27);
         this.setDiet(Diet.HERBIVORE.get().withModule(new Diet.DietModule(FoodType.INSECT).withCondition(entity -> entity.getAgePercentage() < 25)));
         this.setBones("arm_bones", "foot_bones", "leg_bones", "neck_vertebrae", "pelvis", "ribcage", "shoulder", "skull", "tail_vertebrae");
@@ -38,6 +38,7 @@ public class GallimimusDinosaur extends Dinosaur {
         this.setFlockSpeed(1.35F);
         this.setBreeding(false, 2, 6, 20, false, true);
         this.setJumpHeight(3);
+        this.setCanClimb(true);
         String[][] recipe =
                 {{"", "", "", "neck_vertebrae", "skull"},
                 {"tail_vertebrae", "pelvis", "ribcage","shoulder",""},

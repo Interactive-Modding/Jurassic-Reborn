@@ -41,7 +41,7 @@ public class TitanisDinosaur extends Dinosaur {
         this.setAttackBias(600.0);
         this.setCanClimb(true);
         this.setBreeding(false,2, 4, 30, false, true);
-        this.setJumpHeight(2);
+        this.setJumpHeight(3);
         String[][] recipe =     {
                 { "", "pelvis", "ribcage","neck_vertebrae", "skull"},
                 { "leg_bones", "", "leg_bones", "shoulder", ""}};

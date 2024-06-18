@@ -145,12 +145,10 @@ public class AIUtils {
             RingXZTraverser traverser = new RingXZTraverser(center, radius);
 
             for (BlockPos pos : traverser) {
-                if (world.isBlockLoaded(pos)) {
-                    IBlockState state = world.getBlockState(pos);
-                    Block block = state.getBlock();
-                    if (!(block instanceof BlockLiquid)) {
-                        return pos;
-                    }
+                IBlockState state = world.getBlockState(pos);
+                Block block = state.getBlock();
+                if (!(block instanceof BlockLiquid)) {
+                    return pos;
                 }
             }
             ++radius;

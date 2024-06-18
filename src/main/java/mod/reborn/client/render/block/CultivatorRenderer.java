@@ -8,7 +8,6 @@ import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.item.ItemStack;
 import javax.vecmath.Vector3f;
-import mod.reborn.client.proxy.ClientProxy;
 import mod.reborn.server.block.entity.CultivatorBlockEntity;
 import org.lwjgl.opengl.GL11;
 
@@ -33,8 +32,6 @@ public class CultivatorRenderer extends TileEntitySpecialRenderer<CultivatorBloc
             GlStateManager.scale(percentageDone, percentageDone, percentageDone);
             GlStateManager.enableLight(2);
             GlStateManager.scale(.04,.04,.04);
-            ItemStack stack = tileEntity.getStackInSlot(0);
-            ClientProxy.MC.getRenderItem().renderItem(stack, ItemCameraTransforms.TransformType.GROUND);
             if (entity != null) {
                 this.mc.getRenderManager().renderEntity(entity, 0, 0, 0, 0, 0, false);
             }

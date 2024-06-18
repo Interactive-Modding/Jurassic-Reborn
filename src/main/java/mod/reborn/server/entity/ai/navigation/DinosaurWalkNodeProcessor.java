@@ -233,16 +233,16 @@ public class DinosaurWalkNodeProcessor extends WalkNodeProcessor {
                             nodeType = PathNodeType.BLOCKED;
                         }
                         else {
-                            IBlockState state = world.getBlockState(pool.setPos(x + offsetX, y, z + offsetZ));
-                            Block block = state.getBlock();
-                            if (block == Blocks.CACTUS || block instanceof ElectricFenceBaseBlock || block instanceof ElectricFencePoleBlock) {
-                                nodeType = PathNodeType.DANGER_CACTUS;
-                            } else if (block == Blocks.FIRE) {
-                                nodeType = PathNodeType.DANGER_FIRE;
-                            } else if (block instanceof ElectricFenceWireBlock) {
-                                TileEntity entity = world.getTileEntity(pool);
-                                if (entity instanceof ElectricFenceWireBlockEntity && ((ElectricFenceWireBlockEntity) entity).isPowered()) {
-                                    nodeType = PathNodeType.DAMAGE_CACTUS;
+                        IBlockState state = world.getBlockState(pool.setPos(x + offsetX, y, z + offsetZ));
+                        Block block = state.getBlock();
+                        if (block == Blocks.CACTUS || block instanceof ElectricFenceBaseBlock || block instanceof ElectricFencePoleBlock) {
+                            nodeType = PathNodeType.DANGER_CACTUS;
+                        } else if (block == Blocks.FIRE) {
+                            nodeType = PathNodeType.DANGER_FIRE;
+                        } else if (block instanceof ElectricFenceWireBlock) {
+                            TileEntity entity = world.getTileEntity(pool);
+                            if (entity instanceof ElectricFenceWireBlockEntity && ((ElectricFenceWireBlockEntity) entity).isPowered()) {
+                                nodeType = PathNodeType.DAMAGE_CACTUS;
                                 }
                             }
                         }
@@ -254,7 +254,6 @@ public class DinosaurWalkNodeProcessor extends WalkNodeProcessor {
         pool.release();
         return nodeType;
     }
-
 
     // TODO: getCanBreakDoors gone???
     private PathNodeType getPathNodeType(EntityLiving entity, int x, int y, int z) {

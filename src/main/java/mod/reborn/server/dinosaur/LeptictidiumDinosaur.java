@@ -32,7 +32,7 @@ public class LeptictidiumDinosaur extends Dinosaur
         this.setDiet((Diet.INHERBIVORE.get()));
         this.setBones("arm_bones", "leg_bones", "pelvis", "ribcage", "skull", "tail_vertebrae", "teeth", "neck_vertebrae", "shoulder");
         this.setHeadCubeName("Head");
-        this.setScale(0.6F, 0.15F);
+        this.setScale(0.3F, 0.15F);
         this.setAttackBias(-50);
         this.setImprintable(true);
         this.setBirthType(BirthType.LIVE_BIRTH);

@@ -13,7 +13,7 @@ public class StegosaurusDinosaur extends Dinosaur{
         super();
 
         this.setName("Stegosaurus");
-        this.setDinosaurType(DinosaurType.NEUTRAL);
+        this.setDinosaurType(DinosaurType.AGGRESSIVE);
         this.setDinosaurClass(StegosaurusEntity.class);
         this.setTimePeriod(TimePeriod.JURASSIC);
         this.setEggColorMale(0xBABF83, 0x75964E);

@@ -35,7 +35,7 @@ public class ParapuzosiaDinosaur extends Dinosaur {
         this.setScale(3.0F, 0.6F);
         this.setBreeding(true, 2, 10, 20, false, false);
         this.setImprintable(false);
-        this.setOffset(0, 0.2f, 0);
+        this.setOffset(0, 0.6f, 0);
         String[][] recipe = {
                 { "shell_cover","radula","beak"}};
         this.setRecipe(recipe);

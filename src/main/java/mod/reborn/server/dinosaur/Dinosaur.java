@@ -55,8 +55,6 @@ public abstract class Dinosaur implements Comparable<Dinosaur> {
     private boolean isMammal;
     private int storage;
     private int overlayCount;
-    private int babyrotation = 25;
-    private int rotationAngle = 25;
     private Diet diet;
     private SleepTime sleepTime = SleepTime.DIURNAL;
     private String[] bones;
@@ -132,9 +130,9 @@ public abstract class Dinosaur implements Comparable<Dinosaur> {
             transform.setTranslation(new Vector3d(cube.getPosition()));
             mat.mul(transform);
 
-            double rotX = cube.getRotation()[0];
-            double rotY = cube.getRotation()[1];
-            double rotZ = cube.getRotation()[2];
+            final double rotX = cube.getRotation()[0];
+            final double rotY = cube.getRotation()[1];
+            final double rotZ = cube.getRotation()[2];
 
             transform.rotZ(rotZ / 180 * Math.PI);
             mat.mul(transform);
@@ -147,8 +145,8 @@ public abstract class Dinosaur implements Comparable<Dinosaur> {
         return mat;
     }
 
-    private static double[][] getTransformation(Matrix4d matrix) {
-        double sinRotationAngleY, cosRotationAngleY, sinRotationAngleX, cosRotationAngleX, sinRotationAngleZ, cosRotationAngleZ;
+    private static double[][] getTransformation(final Matrix4d matrix) {
+        final double sinRotationAngleY, cosRotationAngleY, sinRotationAngleX, cosRotationAngleX, sinRotationAngleZ, cosRotationAngleZ;
 
         sinRotationAngleY = -matrix.m20;
         cosRotationAngleY = Math.sqrt(1 - sinRotationAngleY * sinRotationAngleY);
@@ -165,13 +163,13 @@ public abstract class Dinosaur implements Comparable<Dinosaur> {
             cosRotationAngleZ = 1;
         }
 
-        double rotationAngleX = epsilon(Math.atan2(sinRotationAngleX, cosRotationAngleX)) / Math.PI * 180;
-        double rotationAngleY = epsilon(Math.atan2(sinRotationAngleY, cosRotationAngleY)) / Math.PI * 180;
-        double rotationAngleZ = epsilon(Math.atan2(sinRotationAngleZ, cosRotationAngleZ)) / Math.PI * 180;
+        final double rotationAngleX = epsilon(Math.atan2(sinRotationAngleX, cosRotationAngleX)) / Math.PI * 180;
+        final double rotationAngleY = epsilon(Math.atan2(sinRotationAngleY, cosRotationAngleY)) / Math.PI * 180;
+        final double rotationAngleZ = epsilon(Math.atan2(sinRotationAngleZ, cosRotationAngleZ)) / Math.PI * 180;
         return new double[][] { { epsilon(matrix.m03), epsilon(matrix.m13), epsilon(matrix.m23) }, { rotationAngleX, rotationAngleY, rotationAngleZ } };
     }
 
-    private static double epsilon(double x) {
+    private static double epsilon(final double x) {
         return x < 0 ? x > -0.0001 ? 0 : x : x < 0.0001 ? 0 : x;
     }
 
@@ -322,13 +320,6 @@ public abstract class Dinosaur implements Comparable<Dinosaur> {
         this.entityClass = clazz;
     }
 
-    public int getRotationAngle() {
-        return rotationAngle;
-    }
-
-    public int getBabyrotation() {
-        return babyrotation;
-    }
 
     public int getEggPrimaryColorMale() {
         return this.primaryEggColorMale;
@@ -498,10 +489,6 @@ public abstract class Dinosaur implements Comparable<Dinosaur> {
         this.isHybrid = true;
     }
 
-    public void setRotationAngle(int baby, int adult) {
-        this.babyrotation = baby;
-        this.rotationAngle = adult;
-    }
 
     public int getLipids() {
         return 1500;

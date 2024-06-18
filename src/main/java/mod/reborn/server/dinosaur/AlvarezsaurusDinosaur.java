@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import net.minecraftforge.common.BiomeDictionary;
 
 public class AlvarezsaurusDinosaur extends Dinosaur {
-    public static final double SPEED = 0.4F;
+    public static final double SPEED = 0.36F;
     public AlvarezsaurusDinosaur(){
         super();
         this.setName("Alvarezsaurus");
@@ -37,7 +37,8 @@ public class AlvarezsaurusDinosaur extends Dinosaur {
         String[][] recipe = {
                 {"", "pelvis", "","",""},
                 {"tail_vertebrae", "ribcage", "shoulder", "neck_vertebrae", "skull"},
-                {"leg_bones", "leg_bones", "arm_bones", "arm_bones", ""}};
+                {"", "leg_bones", "", "arm_bones", "claw"},
+                {"", "foot_bones", "", "", ""}};
         this.setRecipe(recipe);
         this.enableSkeleton();
         ArrayList<Biome> biomeList = new ArrayList<Biome>();

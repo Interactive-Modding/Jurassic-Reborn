@@ -42,9 +42,9 @@ public class AchillobatorDinosaur extends Dinosaur
         this.shouldDefendOffspring();
         String[][] recipe = {
                 {"", "","neck_vertebrae","skull"},
-                {"tail_vertebrae", "ribcage","shoulder","tooth"},
-                {"leg_bones", "leg_bones", "arm_bones", "claw"},
-                {"foot_bones", "foot_bones", "", ""}};
+                {"tail_vertebrae","pelvis", "ribcage","shoulder"},
+                {"", "leg_bones", "arm_bones", "tooth"},
+                {"", "foot_bones", "claw", ""}};
         this.setRecipe(recipe);
 
         ArrayList<Biome> biomeList = new ArrayList<Biome>();

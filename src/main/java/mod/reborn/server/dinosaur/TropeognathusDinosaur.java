@@ -26,8 +26,8 @@ public class TropeognathusDinosaur extends Dinosaur
         this.setStrength(5, 20);
         this.setMaximumAge(fromDays(50));
         this.setEyeHeight(0.45F, 1.45F);
-        this.setSizeX(0.15F, 1.5F);
-        this.setSizeY(0.25F, 1.55F);
+        this.setSizeX(0.15F, 1.0F);
+        this.setSizeY(0.35F, 1.35F);
         this.setStorage(27);
         this.setDiet((Diet.PCARNIVORE.get()));
         this.setBones("leg_bones", "pelvis", "skull", "ribcage", "tail_vertebrae", "teeth", "wing_bones");

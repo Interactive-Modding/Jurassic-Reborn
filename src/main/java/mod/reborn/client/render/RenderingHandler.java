@@ -183,6 +183,7 @@ public enum RenderingHandler {
         registerBlockRenderer(DNA_EXTRACTOR, "dna_extractor");
         registerBlockRenderer(FEEDER, "feeder");
         registerBlockRenderer(SKELETON_ASSEMBLY, "skeleton_assembly");
+//        registerBlockRenderer(JPMAINGATEBLOCK, "jp_maingate");
         registerBlockRenderer(GYPSUM_STONE, "gypsum_stone");
         registerBlockRenderer(GYPSUM_COBBLESTONE, "gypsum_cobblestone");
         registerBlockRenderer(GYPSUM_BRICKS, "gypsum_bricks");

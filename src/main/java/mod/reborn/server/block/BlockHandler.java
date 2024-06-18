@@ -143,6 +143,8 @@ public class BlockHandler
 
 
     public static final SkeletonAssemblyBlock SKELETON_ASSEMBLY = new SkeletonAssemblyBlock();
+//    public static final JPMainGateBlock JPMAINGATEBLOCK = new JPMainGateBlock();
+
 
     public static ElectricFencePoleBlock LOW_SECURITY_FENCE_POLE = new ElectricFencePoleBlock(FenceType.LOW);
     public static ElectricFencePoleBlock MED_SECURITY_FENCE_POLE = new ElectricFencePoleBlock(FenceType.MED);
@@ -248,7 +250,7 @@ public class BlockHandler
             registerBlock(TourRailBlockEntity.class, TOUR_RAIL, "Tour Rail");
         }
         registerBlock(SKELETON_ASSEMBLY, "Skeleton Assembly");
-//        registerBlock(JP_MAIN_GATE_BLOCK, "Jurassic Park Gate");
+//        registerBlock(JPMAINGATEBLOCK, "Jurassic Park Gate");
 
         registerBlock(CultivatorBlockEntity.class, CULTIVATOR_BOTTOM, "Cultivate Bottom");
         registerBlock(CULTIVATOR_TOP, "Cultivate Top");

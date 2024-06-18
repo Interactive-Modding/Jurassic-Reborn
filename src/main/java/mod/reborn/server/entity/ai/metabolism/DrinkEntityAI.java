@@ -64,11 +64,10 @@ public class DrinkEntityAI extends EntityAIBase {
                                         HashMap<Float, BlockPos> distanceMap = new HashMap<>();
 
                                         for (BlockPos pos : traverser) {
-                                            if (world.isBlockLoaded(pos)) {
-                                                if (world.getBlockState(pos).getMaterial() == Material.WATER && !this.ai.unreachable.contains(pos)) {
-                                                    float distance = (float) pos.distanceSq(this.entity.getPosition());
-                                                    distanceMap.put(distance, pos);
-                                                }
+                                            if (world.getBlockState(pos).getMaterial() == Material.WATER && !this.ai.unreachable.contains(pos)) {
+                                                float distance = (float) pos.distanceSq(this.entity.getPosition());
+                                                distanceMap.put(distance, pos);
+
                                             }
                                         }
 

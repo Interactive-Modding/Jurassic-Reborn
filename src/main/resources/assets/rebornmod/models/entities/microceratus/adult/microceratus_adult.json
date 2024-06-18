@@ -25,6 +25,20 @@
         "time": 20
       }
     ],
+    "SPEAK": [
+      {
+        "pose": "microceratus_adult_speak",
+        "time": 5
+      },
+      {
+        "pose": "microceratus_adult_speak",
+        "time": 20
+      },
+      {
+        "pose": "microceratus_adult_idle",
+        "time": 5
+      }
+    ],
     "DYING": [
       {
         "pose": "microceratus_adult_death",
@@ -34,7 +48,7 @@
     "EATING": [
       {
         "pose": "microceratus_adult_eating",
-        "time": 20
+        "time": 40
       },
       {
         "pose": "microceratus_adult_idle",
@@ -42,7 +56,7 @@
       },
       {
         "pose": "microceratus_adult_eating",
-        "time": 20
+        "time": 40
       },
       {
         "pose": "microceratus_adult_idle",
@@ -52,7 +66,7 @@
     "DRINKING": [
       {
         "pose": "microceratus_adult_drinking",
-        "time": 20
+        "time": 40
       },
       {
         "pose": "microceratus_adult_idle",
@@ -60,7 +74,7 @@
       },
       {
         "pose": "microceratus_adult_drinking",
-        "time": 20
+        "time": 40
       },
       {
         "pose": "microceratus_adult_idle",

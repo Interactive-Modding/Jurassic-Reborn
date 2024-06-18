@@ -33,7 +33,7 @@ public class ProtoceratopsDinosaur extends Dinosaur
         this.setBones("skull", "teeth", "tail_vertebrae", "shoulder", "pelvis", "ribcage", "front_leg_bones", "hind_leg_bones", "shoulder");
         this.setHeadCubeName("Head");
         this.setAttackBias(1);
-        this.setScale(1.2F, 0.15F);
+        this.setScale(0.6F, 0.13F);
         this.setImprintable(true);
         this.setDefendOwner(true);
         this.setBreeding(false, 2, 4, 40, false, true);

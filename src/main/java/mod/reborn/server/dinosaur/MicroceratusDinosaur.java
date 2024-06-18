@@ -31,7 +31,7 @@ public class MicroceratusDinosaur extends Dinosaur
         this.setDiet((Diet.HERBIVORE.get()));
         this.setBones("arm_bones", "leg_bones", "neck_vertebrae", "pelvis", "ribcage", "shoulder", "skull", "tail_vertebrae", "teeth");
         this.setHeadCubeName("Head");
-        this.setScale(0.5F, 0.15F);
+        this.setScale(0.3F, 0.09F);
         this.setAttackBias(5);
         this.setImprintable(true);
         this.setFlee(true);
