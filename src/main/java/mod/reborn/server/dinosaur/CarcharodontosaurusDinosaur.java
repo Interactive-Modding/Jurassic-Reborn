@@ -19,7 +19,7 @@ public class CarcharodontosaurusDinosaur extends Dinosaur {
         this.setEggColorFemale(0x656462, 0x8d734f);
         this.setHealth(10, 70);
         this.setSpeed((SPEED -0.05), SPEED);
-        this.setAttackSpeed(1.5);
+        this.setAttackSpeed(1.2);
         this.setStrength(1, 20);
         this.setMaximumAge(fromDays(45));
         this.setEyeHeight(0.45F, 1.6F);

@@ -43,7 +43,7 @@ public class TherizinosaurusDinosaur extends Dinosaur
         this.setDefendOwner(true);
         String[][] recipe =
                 {{"", "", "", "neck_vertebrae", "skull"},
-                        {"tail_vertebrae", "pelvis", "ribcage","shoulder",""},
+                        {"tail_vertebrae", "pelvis", "ribcage","shoulder","teeth"},
                         {"", "leg_bones", "", "arm_bones", ""},
                         {"", "foot_bones", "", "claw", ""}};
         this.setRecipe(recipe);

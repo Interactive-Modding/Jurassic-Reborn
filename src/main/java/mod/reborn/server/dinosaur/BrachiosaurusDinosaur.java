@@ -33,6 +33,7 @@ public class BrachiosaurusDinosaur extends Dinosaur {
         this.setScale(1.75F, 0.1F);
         this.setOffset(0.0F, 0.0F, 1.0F);
         this.setAttackBias(1200.0);
+        this.setPaleoPadScale(5);
         this.setMaxHerdSize(15);
         this.setBreeding(false, 4, 8, 70, true, false);
         String[][] recipe =     {{"", "", "", "", "skull"},

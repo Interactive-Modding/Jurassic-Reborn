@@ -27,7 +27,7 @@ public class DreadnoughtusDinosaur extends Dinosaur {
         this.setSizeX(0.4F, 6.1F);
         this.setSizeY(0.5F, 6.6F);
         this.setStorage(54);
-        this.setPaleoPadScale(1);
+        this.setPaleoPadScale(5);
         this.setDiet(Diet.HERBIVORE.get());
         this.setBones("front_leg_bones", "hind_leg_bones", "neck_vertebrae", "pelvis", "ribcage", "shoulder", "skull", "tail_vertebrae", "tooth");
         this.setHeadCubeName("Head");

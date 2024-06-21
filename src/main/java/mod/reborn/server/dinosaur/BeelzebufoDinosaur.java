@@ -10,7 +10,7 @@ import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
 
 public class BeelzebufoDinosaur extends Dinosaur {
-    public static final double SPEED = 0.4F;
+    public static final double SPEED = 0.38F;
     public BeelzebufoDinosaur(){
         super();
         this.setName("Beelzebufo");

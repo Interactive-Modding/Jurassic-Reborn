@@ -41,7 +41,7 @@ public class TropeognathusDinosaur extends Dinosaur
         this.setStorage(12);
         String[][] recipe = {
                 {"tail_vertebrae", "pelvis", "ribcage", "skull"},
-                {"", "leg_bones", "wing_bones", "", ""}};
+                {"", "leg_bones", "wing_bones", "teeth", ""}};
         this.setRecipe(recipe);
         this.enableSkeleton();
         ArrayList<Biome> biomeList = new ArrayList<Biome>();

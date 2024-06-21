@@ -3,6 +3,7 @@ package mod.reborn.server.proxy;
 import java.util.List;
 
 import mod.reborn.server.block.BlockHandler;
+import mod.reborn.server.conf.RebornConfig;
 import mod.reborn.server.event.ServerEventHandler;
 import mod.reborn.server.food.FoodHelper;
 import mod.reborn.server.food.FoodNutrients;
@@ -126,7 +127,7 @@ public class ServerProxy implements IGuiHandler {
                     shouldAddGoat = true;
                 }
             }
-            if(shouldAddGoat) {
+            if(shouldAddGoat && RebornConfig.ENTITIES.goatSpawning) {
                 list.add(new Biome.SpawnListEntry(GoatEntity.class,  10, 2, 4));
             }
         }

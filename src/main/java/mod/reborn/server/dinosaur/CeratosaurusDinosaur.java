@@ -22,7 +22,7 @@ public class CeratosaurusDinosaur extends Dinosaur {
         this.setHealth(10, 45);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStorage(27);
-        this.setAttackSpeed(1.7);
+        this.setAttackSpeed(1.4);
         this.setStrength(1, 22);
         this.setMaximumAge(fromDays(45));
         this.setEyeHeight(0.45F, 1.6F);
