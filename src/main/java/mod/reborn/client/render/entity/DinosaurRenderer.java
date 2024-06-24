@@ -23,6 +23,7 @@ import mod.reborn.server.entity.dinosaur.SinoceratopsEntity;
 import mod.reborn.server.entity.dinosaur.TriceratopsEntity;
 import mod.reborn.server.entity.dinosaur.MicroceratusEntity;
 import mod.reborn.server.entity.dinosaur.ProtoceratopsEntity;
+import mod.reborn.server.entity.dinosaur.VectipeltaEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.OpenGlHelper;
@@ -188,6 +189,9 @@ public class DinosaurRenderer extends RenderLiving<DinosaurEntity> {
         }
         if(entity instanceof ProtoceratopsEntity && !entity.isSkeleton()) {
             return ((ProtoceratopsEntity)entity).getTexture();
+        }
+        if(entity instanceof VectipeltaEntity && !entity.isSkeleton()) {
+            return ((VectipeltaEntity)entity).getTexture();
         }
 
 

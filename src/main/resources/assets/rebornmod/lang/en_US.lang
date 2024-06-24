@@ -107,6 +107,7 @@ entity.rebornmod.spinoraptor.name=Spinoraptor
 entity.rebornmod.ankylodocus.name=Ankylodocus
 entity.rebornmod.camarasaurus.name=Camarasaurus
 entity.rebornmod.dimetrodon.name=Dimetrodon
+entity.rebornmod.vectipelta.name=Vectipelta
 
 entity.rebornmod.goat.name=Goat
 entity.rebornmod.jeep_wrangler.name=Red Jeep Wrangler
@@ -403,7 +404,7 @@ item.west_indian_lilac_berries.name=West Indian Lilac Berries
 
 filled_map.rebornmod.visitorcenter=Visitor Center Map
 filled_map.rebornmod.islasornalab=InGen Compound Map
-filled_map.rebornmod.jpsandiego=JP:San Diego Map
+filled_map.rebornmod.JPsandiego=JP:San Diego Map
 
 
 // Crops ========================================
@@ -968,6 +969,7 @@ info.diplodocus.name= Native to North America during the Late Jurassic (about 15
 info.ankylodocus.name=Ankylodocus is a hereditarily changed types of dinosaur, made by Dr. Henry Wu by consolidating the base genome of Diplodocus with that of Ankylosaurus. Ankylodocus has the long, level figure of the sauropod Diplodocus, and the forcing, cautious highlights of the Ankylosaurus, for example, sharp spikes covering its back and a clubbed tail.
 info.camarasaurus.name=One of the most common sauropods, Camarasaurus lived in North America during the Late Jurassic. It had very strong teeth, and little evidence of gastroliths (gizzard stones), implying that it may have processed its food to some degree before swallowing it. Its diet would mostly have consisted of tough, fibrous plants.
 info.dimetrodon.name=Dimetrodon was a large synapsid from Late Permian Europe and America. The Dimetrodon's most defining trait was their massively extended vertebrae that formed a skin-webbed sail was used to warm them up and attract mates.  Its name means "two measures of teeth", and refers to the two types of teeth in its mouth: Shorter teeth, and longer teeth.
+info.vectipelta.name=Vectipelta is a genus of ankylosaurid dinosaur discovered in New Mexico, known for its well-preserved skull and body armor. It lived during the Late Cretaceous period, approximately 75 million years ago, and its name means "spear shield" in reference to its formidable defensive adaptations. Vectipelta represents an important addition to our understanding of armored dinosaurs and their evolutionary adaptations.
 
 
 journal.chef_alejandro.name=Chef Alejandro

@@ -19,8 +19,8 @@ public class MicroceratusDinosaur extends Dinosaur
         this.setDinosaurType(DinosaurType.PASSIVE);
         this.setDinosaurClass(MicroceratusEntity.class);
         this.setTimePeriod(TimePeriod.CRETACEOUS);
-        this.setEggColorMale(0x956F2D, 0x92442C);
-        this.setEggColorFemale(0x958331, 0x7E4A1F);
+        this.setEggColorMale(0xcf2c2b, 0x9DE172);
+        this.setEggColorFemale(0xC7B94C, 0x943B2D);
         this.setHealth(2, 10);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(1, 5);

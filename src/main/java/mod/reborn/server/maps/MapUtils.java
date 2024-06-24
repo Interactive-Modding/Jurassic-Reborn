@@ -12,7 +12,7 @@ import java.util.Random;
 public class MapUtils {
 
     private static final int MIN_DISTANCE =  5000;
-    private static final int MAX_DISTANCE = 10000;
+    private static final int MAX_DISTANCE = 15000;
 
 
     public static BlockPos getVisitorCenterPosition() {
