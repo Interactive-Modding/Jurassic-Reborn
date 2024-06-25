@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "rebornmod:tour_rails_loop",
+  "ingredients": [
+    {
+      "item": "rebornmod:tour_rail_medium",
+      "data": 0
+    }
+  ],
+  "result": {
+    "item": "rebornmod:tour_rail_fast",
+    "data": 0
+  }
+}

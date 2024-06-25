@@ -229,21 +229,19 @@ public class RebornVanillaTabulaModel implements IModel {
             Point2f uv = new Point2f(sprite.getInterpolatedU(uvi.x / width * 16), sprite.getInterpolatedV(uvi.y / height * 16));
             this.putVertexData(quadBuilder, format, vertices[i], normal, uv);
         }
-
-        if (hasTransparency) {
-//            quadBuilder = new UnpackedBakedQuad.Builder(format);
-//            quadBuilder.setQuadOrientation(quadFacing.getOpposite());
-//            quadBuilder.setTexture(sprite);
-//            quadBuilder.setQuadTint(layer);
-//            for (int i = vertices.length - 1; i >= 0; i--) {
-//                Point2i uvi = uvs[i];
-//                Point2f uv = new Point2f(sprite.getInterpolatedU(uvi.x / width * 16), sprite.getInterpolatedV(uvi.y / height * 16));
-//                this.putVertexData(quadBuilder, format, vertices[i], normal, uv);
-//            }
-        }
-
         builder.add(quadBuilder.build());
 
+        if (hasTransparency) {
+            quadBuilder = new UnpackedBakedQuad.Builder(format);
+            quadBuilder.setQuadOrientation(quadFacing.getOpposite());
+            quadBuilder.setTexture(sprite);
+            for (int i = vertices.length - 1; i >= 0; i--) {
+                Point2i uvi = uvs[i];
+                Point2f uv = new Point2f(sprite.getInterpolatedU(uvi.x / width * 16), sprite.getInterpolatedV(uvi.y / height * 16));
+                this.putVertexData(quadBuilder, format, vertices[i], normal, uv);
+            }
+            builder.add(quadBuilder.build());
+        }
     }
 
     private boolean isQuadOneDimensional(Point3f[] vertices) {

@@ -140,6 +140,10 @@ public class BlockHandler
 
 
     public static final TourRailBlock TOUR_RAIL = new TourRailBlock(TourRailBlock.SpeedType.NONE);
+    public static final TourRailBlock TOUR_RAIL_SLOW = new TourRailBlock(TourRailBlock.SpeedType.SLOW);
+    public static final TourRailBlock TOUR_RAIL_MEDIUM = new TourRailBlock(TourRailBlock.SpeedType.MEDIUM);
+    public static final TourRailBlock TOUR_RAIL_FAST = new TourRailBlock(TourRailBlock.SpeedType.FAST);
+
 
 
 
@@ -249,6 +253,9 @@ public class BlockHandler
         registerBlock(KRILL_SWARM, "Krill Swarm");
         if(RebornConfig.VEHICLES.tourRailBlockEnabled) {
             registerBlock(TourRailBlockEntity.class, TOUR_RAIL, "Tour Rail");
+            registerBlock(TOUR_RAIL_SLOW, "Tour Rail Slow");
+            registerBlock(TOUR_RAIL_MEDIUM, "Tour Rail Medium");
+            registerBlock(TOUR_RAIL_FAST, "Tour Rail Fast");
         }
         registerBlock(SKELETON_ASSEMBLY, "Skeleton Assembly");
 //        registerBlock(JPMAINGATEBLOCK, "Jurassic Park Gate");

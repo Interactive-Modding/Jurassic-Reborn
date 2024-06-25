@@ -1,31 +1,37 @@
 package mod.reborn.client.proxy;
 
-import mod.reborn.client.gui.*;
-import mod.reborn.client.model.RebornTabulaModelHandler;
-import mod.reborn.server.block.entity.*;
+import mod.reborn.RebornMod;
+import mod.reborn.client.sound.CarSound;
 import net.ilexiconn.llibrary.client.lang.LanguageHandler;
 import net.ilexiconn.llibrary.server.util.WebUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.ISound;
 import net.minecraft.client.particle.ParticleManager;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoaderRegistry;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLInterModComms;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
+import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import mod.reborn.RebornMod;
 import mod.reborn.client.event.ClientEventHandler;
+import mod.reborn.client.gui.*;
+import mod.reborn.client.model.RebornTabulaModelHandler;
 import mod.reborn.client.render.RenderingHandler;
-import mod.reborn.client.sound.CarSound;
+import mod.reborn.client.render.entity.OverridenEntityRenderer;
+import mod.reborn.client.sound.SoundHandler;
+import mod.reborn.server.block.entity.*;
 import mod.reborn.server.entity.DinosaurEntity;
 import mod.reborn.server.entity.VenomEntity;
 import mod.reborn.server.entity.particle.VenomParticle;
@@ -36,22 +42,22 @@ import mod.reborn.server.proxy.ServerProxy;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.UUID;
 
 @SideOnly(Side.CLIENT)
 public class ClientProxy extends ServerProxy {
+
     public static final Minecraft MC = Minecraft.getMinecraft();
     private static KeyBindingHandler keyHandler = new KeyBindingHandler();
     public static final List<UUID> MEMBERS = new ArrayList<>();
     public static final List<UUID> TESTERS = new ArrayList<>();
 
     @Override
-    @SuppressWarnings("unchecked")
     public void onPreInit(FMLPreInitializationEvent event) {
         super.onPreInit(event);
 
         KeyBindingHandler.init();
-
         try {
             LanguageHandler.INSTANCE.loadRemoteLocalization(RebornMod.MODID);
         } catch (Exception e) {
@@ -60,19 +66,20 @@ public class ClientProxy extends ServerProxy {
 
         ClientEventHandler eventHandler = new ClientEventHandler();
         MinecraftForge.EVENT_BUS.register(eventHandler);
+        MinecraftForge.EVENT_BUS.register(ClientEventHandler.class);
         MinecraftForge.EVENT_BUS.register(RenderingHandler.INSTANCE);
         RenderingHandler.INSTANCE.preInit();
         ModelLoaderRegistry.registerLoader(RebornTabulaModelHandler.INSTANCE);
         RebornTabulaModelHandler.INSTANCE.addDomain(RebornMod.MODID);
     }
-
     public static void playHelicopterSound(VehicleEntity entity) {
         MC.getSoundHandler().playSound(new CarSound(entity));
     }
-
     @Override
     public void onInit(FMLInitializationEvent event) {
         super.onInit(event);
+        FMLInterModComms.sendMessage("waila", "register", "mod.reborn.server.plugin.waila.BlockDataProvider.init");
+        FMLInterModComms.sendMessage("waila", "register", "mod.reborn.server.plugin.waila.EntityDataProvider.init");
         RenderingHandler.INSTANCE.init();
     }
 
@@ -120,8 +127,10 @@ public class ClientProxy extends ServerProxy {
                 return new DNASequencerGui(player.inventory, (DNASequencerBlockEntity) tile);
             } else if (tile instanceof EmbryonicMachineBlockEntity && id == GUI_EMBRYONIC_MACHINE_ID) {
                 return new EmbryonicMachineGui(player.inventory, (EmbryonicMachineBlockEntity) tile);
-            } else if (tile instanceof EmbryoCalcificationMachineBlockEntity && id == GUI_EMBRYO_CALCIFICATION_MACHINE_ID) {
-                return new EmbryoCalcificationMachineGui(player.inventory, (EmbryoCalcificationMachineBlockEntity) tile);
+            } else if (tile instanceof EmbryoCalcificationMachineBlockEntity
+                    && id == GUI_EMBRYO_CALCIFICATION_MACHINE_ID) {
+                return new EmbryoCalcificationMachineGui(player.inventory,
+                        (EmbryoCalcificationMachineBlockEntity) tile);
             } else if (tile instanceof DNASynthesizerBlockEntity && id == GUI_DNA_SYNTHESIZER_ID) {
                 return new DNASynthesizerGui(player.inventory, (DNASynthesizerBlockEntity) tile);
             } else if (tile instanceof IncubatorBlockEntity && id == GUI_INCUBATOR_ID) {
@@ -143,15 +152,15 @@ public class ClientProxy extends ServerProxy {
                 return new BugCrateGui(player.inventory, (BugCrateBlockEntity) tile);
             }
         }
-        if(id == GUI_SKELETON_ASSEMBLER){
+        if (id == GUI_SKELETON_ASSEMBLER) {
             return new SkeletonAssemblyGui(SkeletonAssemblyGui.createContainer(player.inventory, world, pos));
         }
         return null;
     }
-    
+
     public static KeyBindingHandler getKeyHandler() {
-		return keyHandler;
-	}
+        return keyHandler;
+    }
 
     @Override
     public void openSelectDino(BlockPos pos, EnumFacing facing, EnumHand hand) {
@@ -167,7 +176,6 @@ public class ClientProxy extends ServerProxy {
     public void openFieldGuide(DinosaurEntity entity, DinosaurEntity.FieldGuideInfo fieldGuideInfo) {
         MC.displayGuiScreen(new FieldGuideGui(entity, fieldGuideInfo));
     }
-
     @Override
     public void openPaleoDinosaurPad(DinosaurEntity entity, DinosaurEntity.FieldGuideInfo guideInfo) {
         MC.displayGuiScreen(new PaleoPadViewDinosaurGui(entity, guideInfo));
@@ -198,6 +206,13 @@ public class ClientProxy extends ServerProxy {
             particleManager.addEffect(new VenomParticle(entity.world, size * Math.random() - size / 2,
                     size * Math.random() - size / 2, size * Math.random() - size / 2, 0.0F, 0.0F, 0.0F, 1.0F, entity));
         }
+    }
+
+    private static void registerEntity(Class<? extends Entity> entity, String name) {
+        String formattedName = name.toLowerCase(Locale.ENGLISH).replaceAll(" ", "_");
+        ResourceLocation registryName = new ResourceLocation("rebornmod:entities." + formattedName);
+        EntityRegistry.registerModEntity(registryName, entity, "rebornmod." + formattedName, 2055,
+                RebornMod.INSTANCE, 1024, 1, true);
     }
 
 }

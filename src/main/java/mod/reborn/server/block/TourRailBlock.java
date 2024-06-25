@@ -879,10 +879,10 @@ public final class TourRailBlock extends Block {
     }
 
     public enum SpeedType {
-        NONE(VehicleEntity.Speed.MEDIUM, 0xa80000);
-        /*SLOW(CarEntity.Speed.SLOW, 0xa80000), //RED
-        MEDIUM(CarEntity.Speed.MEDIUM, 0xff7600), //ORANGE
-        FAST(CarEntity.Speed.FAST, 0x00a800); //GREEN*/
+        NONE(null, -1),
+        SLOW(VehicleEntity.Speed.SLOW, 0xa80000), //RED
+        MEDIUM(VehicleEntity.Speed.MEDIUM, 0xff7600), //ORANGE
+        FAST(VehicleEntity.Speed.FAST, 0x00a800); //GREEN
 
         private final VehicleEntity.Speed speed;
         private final int color;

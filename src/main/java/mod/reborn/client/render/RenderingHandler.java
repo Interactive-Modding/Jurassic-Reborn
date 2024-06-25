@@ -1,23 +1,35 @@
 package mod.reborn.client.render;
 
 import com.google.common.collect.Maps;
+import mod.reborn.RebornMod;
 import mod.reborn.client.gui.app.GuiAppRegistry;
 import mod.reborn.client.model.MultipartStateMap;
 import mod.reborn.client.model.animation.EntityAnimator;
 import mod.reborn.client.model.animation.entity.*;
+import mod.reborn.client.proxy.ClientProxy;
 import mod.reborn.client.render.block.*;
 import mod.reborn.client.render.entity.*;
+import mod.reborn.client.render.entity.dinosaur.DinosaurRenderInfo;
+import mod.reborn.client.render.entity.dinosaur.IndominusRenderInfo;
 import mod.reborn.client.render.entity.dinosaur.TroodonRenderInfo;
 import mod.reborn.server.block.*;
 import mod.reborn.server.block.entity.*;
-import mod.reborn.server.block.machine.FeederBlock;
+import mod.reborn.server.block.plant.AncientCoralBlock;
+import mod.reborn.server.block.tree.AncientLeavesBlock;
+import mod.reborn.server.block.tree.TreeType;
 import mod.reborn.server.conf.RebornConfig;
-import mod.reborn.server.dinosaur.ArsinoitheriumDinosaur;
+import mod.reborn.server.dinosaur.Dinosaur;
+import mod.reborn.server.dinosaur.VelociraptorDinosaur;
+import mod.reborn.server.entity.EntityHandler;
+import mod.reborn.server.entity.VenomEntity;
 import mod.reborn.server.entity.animal.EntityCrab;
 import mod.reborn.server.entity.animal.EntityShark;
+import mod.reborn.server.entity.animal.GoatEntity;
 import mod.reborn.server.entity.item.*;
 import mod.reborn.server.entity.vehicle.*;
 import mod.reborn.server.item.*;
+import mod.reborn.server.plant.Plant;
+import mod.reborn.server.plant.PlantHandler;
 import net.ilexiconn.llibrary.client.model.tabula.TabulaModelHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDoor;
@@ -30,6 +42,7 @@ import net.minecraft.client.renderer.color.BlockColors;
 import net.minecraft.client.renderer.color.ItemColors;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.world.ColorizerFoliage;
 import net.minecraft.world.biome.BiomeColorHelper;
 import net.minecraftforge.client.event.ModelRegistryEvent;
@@ -40,19 +53,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import mod.reborn.RebornMod;
-import mod.reborn.client.render.entity.dinosaur.DinosaurRenderInfo;
-import mod.reborn.client.render.entity.dinosaur.IndominusRenderInfo;
-import mod.reborn.server.block.plant.AncientCoralBlock;
-import mod.reborn.server.block.tree.AncientLeavesBlock;
-import mod.reborn.server.block.tree.TreeType;
-import mod.reborn.server.dinosaur.Dinosaur;
-import mod.reborn.server.dinosaur.VelociraptorDinosaur;
-import mod.reborn.server.entity.EntityHandler;
-import mod.reborn.server.entity.animal.GoatEntity;
-import mod.reborn.server.entity.VenomEntity;
-import mod.reborn.server.plant.Plant;
-import mod.reborn.server.plant.PlantHandler;
 
 import java.util.List;
 import java.util.Locale;
@@ -251,6 +251,9 @@ public enum RenderingHandler {
         registerBlockRenderer(BRISTLE_FERN);
 
         registerBlockRenderer(TOUR_RAIL, "tour_rail.tbl_rebornmod");
+        registerBlockRenderer(TOUR_RAIL_SLOW, "tour_rail_stripe.tbl_rebornmod");
+        registerBlockRenderer(TOUR_RAIL_MEDIUM, "tour_rail_stripe.tbl_rebornmod");
+        registerBlockRenderer(TOUR_RAIL_FAST, "tour_rail_stripe.tbl_rebornmod");
 
         //registerItemRenderer(TRACKER);
         registerItemRenderer(PLANT_CELLS_PETRI_DISH);
@@ -602,7 +605,13 @@ public enum RenderingHandler {
 
         blockColors.registerBlockColorHandler((state, access, pos, tintIndex) -> pos == null ? ColorizerFoliage.getFoliageColorBasic() : BiomeColorHelper.getFoliageColorAtPos(access, pos), MOSS);
 
-        ItemColors itemColors = mc.getItemColors();
+        if(RebornConfig.VEHICLES.tourRailBlockEnabled)
+            blockColors.registerBlockColorHandler((state, access, pos, tintIndex) -> tintIndex == 1 ? ((TourRailBlock)state.getBlock()).getSpeedType().getColor() : -1, BlockHandler.TOUR_RAIL_SLOW, BlockHandler.TOUR_RAIL_MEDIUM, BlockHandler.TOUR_RAIL_FAST);
+
+        ItemColors itemColors = ClientProxy.MC.getItemColors();
+        if(RebornConfig.VEHICLES.tourRailBlockEnabled)
+            itemColors.registerItemColorHandler((stack, tintIndex) -> tintIndex == 1 ? ((TourRailBlock)((ItemBlock)stack.getItem()).getBlock()).getSpeedType().getColor() : -1, BlockHandler.TOUR_RAIL_SLOW, BlockHandler.TOUR_RAIL_MEDIUM, BlockHandler.TOUR_RAIL_FAST);
+
 
         for (Map.Entry<TreeType, AncientLeavesBlock> entry : ANCIENT_LEAVES.entrySet()) {
             itemColors.registerItemColorHandler((stack, tintIndex) -> ColorizerFoliage.getFoliageColorBasic(), entry.getValue());

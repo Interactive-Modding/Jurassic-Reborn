@@ -3,6 +3,7 @@ package mod.reborn.client.model;
 import com.google.common.collect.ImmutableList;
 import com.google.gson.*;
 import net.ilexiconn.llibrary.LLibrary;
+import net.ilexiconn.llibrary.client.model.tabula.baked.VanillaTabulaModel;
 import net.ilexiconn.llibrary.client.model.tabula.baked.deserializer.ItemCameraTransformsDeserializer;
 import net.ilexiconn.llibrary.client.model.tabula.baked.deserializer.ItemTransformVec3fDeserializer;
 import net.ilexiconn.llibrary.client.model.tabula.container.TabulaCubeContainer;
@@ -17,6 +18,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ICustomModelLoader;
 import net.minecraftforge.client.model.IModel;
 import net.minecraftforge.client.model.PerspectiveMapWrapper;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
