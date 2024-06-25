@@ -222,7 +222,13 @@ public class AttractionSignEntity extends EntityHanging implements IEntityAdditi
         GIFT_SHOP,
         GIFT_SHOP_PLANTS,
         RESTAURANT,
-        RESTAURANT_PLANTS;
+        RESTAURANT_PLANTS,
+        LABORATORY,
+        LABORATORY_PLANTS,
+        COELACANTH_POND_CORAL,
+        COELACANTH_POND,
+        PREHISTORIC_RIVER_PLANTS,
+        PREHISTORIC_RIVER;
 
         public final int sizeX;
         public final int sizeY;

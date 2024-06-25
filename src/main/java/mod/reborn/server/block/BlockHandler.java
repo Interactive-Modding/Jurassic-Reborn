@@ -142,6 +142,7 @@ public class BlockHandler
     public static final TourRailBlock TOUR_RAIL = new TourRailBlock(TourRailBlock.SpeedType.NONE);
 
 
+
     public static final SkeletonAssemblyBlock SKELETON_ASSEMBLY = new SkeletonAssemblyBlock();
 //    public static final JPMainGateBlock JPMAINGATEBLOCK = new JPMainGateBlock();
 

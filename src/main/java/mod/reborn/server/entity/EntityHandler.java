@@ -275,6 +275,7 @@ public class EntityHandler {
         registerEntity(LimeJeepWranglerEntity.class,"Lime Jeep Wrangler");
         registerEntity(FordExplorerEntity.class, "Ford Explorer");
         registerEntity(FordExplorerSnowEntity.class, "Ford Explorer Snow");
+        registerEntity(MonorailEntity.class, "Monorail");
 
         registerEntity(GoatEntity.class, "Goat", 0xEFEDE7, 0x7B3E20);
         registerEntity(EntityCrab.class, "Crab", 0xEFEDE7, 0x7B3E20);

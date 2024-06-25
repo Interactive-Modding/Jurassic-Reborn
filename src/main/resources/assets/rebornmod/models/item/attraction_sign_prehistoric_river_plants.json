@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "rebornmod:items/attraction_sign_prehistoric_river_plants"
+  }
+}

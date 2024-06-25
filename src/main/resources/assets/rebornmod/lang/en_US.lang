@@ -124,6 +124,7 @@ entity.rebornmod.mural.name=Mural
 entity.rebornmod.attraction_sign.name=Attraction Sign
 entity.rebornmod.blueprint.name=Blueprint
 entity.rebornmod.paddock_sign.name=Paddock Sign
+entity.rebornmod.monorail.name=Monorail
 
 entity.Villager.rebornmod:geneticist=Geneticist
 
@@ -181,6 +182,15 @@ attraction_sign.restaurant.name=Restaurant
 attraction_sign.restaurant_plants.name=Restaurant With Plants
 attraction_sign.gift_shop.name=Gift Shop
 attraction_sign.gift_shop_plants.name=Gift Shop With Plants
+attraction_sign.laboratory.name=Laboratory
+attraction_sign.laboratory_plants.name=Laboratory With Plants
+attraction_sign.coelacanth_pond.name=Coelacanth Pond
+attraction_sign.coelacanth_pond_coral.name=Coelacanth Pond With Plants
+attraction_sign.prehistoric_river.name=Prehistoric River
+attraction_sign.prehistoric_river_plants.name=Prehistoric River with Plants
+
+
+
 
 
 item.goat_raw.name=Raw Goat
@@ -378,6 +388,7 @@ item.lime_jeep_wrangler.name=Lime Jeep Wrangler
 item.sorna_jeep_wrangler.name=Sorna Jeep Wrangler
 item.purple_jeep_wrangler.name=Purple Jeep Wrangler
 item.pink_jeep_wrangler.name=Pink Jeep Wrangler
+item.monorail.name=Monorail
 item.ford_explorer.name=Ford Explorer
 item.ford_explorer_snow.name=Snow Ford Explorer
 item.unfinished_car.name=Unfinished Car

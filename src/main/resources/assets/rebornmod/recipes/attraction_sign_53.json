@@ -4,11 +4,11 @@
   "ingredients": [
     {
       "item": "rebornmod:attraction_sign",
-      "data": 55
+      "data": 51
     }
   ],
   "result": {
     "item": "rebornmod:attraction_sign",
-    "data": 0
+    "data": 52
   }
 }

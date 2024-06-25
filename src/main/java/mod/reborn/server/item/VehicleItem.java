@@ -23,7 +23,7 @@ import java.util.List;
 
 public class VehicleItem extends Item {
 
-    public static final String[] variants = new String[] { "ford_explorer", "jeep_wrangler", "helicopter", "ford_explorer_snow","blue_jeep_wrangler","green_jeep_wrangler","purple_jeep_wrangler","pink_jeep_wrangler","sorna_jeep_wrangler","lime_jeep_wrangler" };
+    public static final String[] variants = new String[] { "ford_explorer", "jeep_wrangler", "helicopter", "ford_explorer_snow","blue_jeep_wrangler","green_jeep_wrangler","purple_jeep_wrangler","pink_jeep_wrangler","sorna_jeep_wrangler","lime_jeep_wrangler","monorail" };
     // public static final String[] localized = new String[variants.length];
 
     public VehicleItem() {
@@ -82,7 +82,11 @@ public class VehicleItem extends Item {
                 entity = new SornaJeepWranglerEntity(world);
             } else if (stack.getMetadata() == 9) {
                 entity = new LimeJeepWranglerEntity(world);
+            } else if (stack.getMetadata() == 10) {
+                entity = new MonorailEntity(world);
             }
+
+
 
             if (stack.getMetadata() == 2) {
                 entity.setPositionAndRotation(pos.getX() + hitX, pos.getY() + hitY, pos.getZ() + hitZ, player.rotationYaw, 0.0F);
@@ -101,7 +105,7 @@ public class VehicleItem extends Item {
     @Override
     public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
         if (this.isInCreativeTab(tab)) {
-            for (int i = 0; i < 10; ++i) {
+            for (int i = 0; i < 11; ++i) {
                 items.add(new ItemStack(this, 1, i));
             }
         }

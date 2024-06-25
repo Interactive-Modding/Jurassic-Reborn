@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "rebornmod:ford_explorer",
+  "pattern": [
+    "GWR",
+    "RCG",
+    "YYY"
+  ],
+  "key": {
+    "R": {
+      "item": "minecraft:dye",
+      "data": 4
+    },
+    "W": {
+      "item": "minecraft:glass_pane"
+    },
+    "G": {
+      "item": "minecraft:dye",
+      "data": 12
+    },
+    "C": {
+      "item": "rebornmod:unfinished_car"
+    },
+    "Y": {
+      "item": "minecraft:iron_block"
+    }
+  },
+  "result": {
+    "item": "rebornmod:vehicle_item",
+    "data": 10
+  }
+}

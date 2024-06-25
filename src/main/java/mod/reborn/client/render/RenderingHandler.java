@@ -578,6 +578,8 @@ public enum RenderingHandler {
         RenderingRegistry.registerEntityRenderingHandler(SornaJeepWranglerEntity.class, SornaJeepWranglerRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(FordExplorerEntity.class, FordExplorerRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(FordExplorerSnowEntity.class, FordExplorerSnowRenderer::new);
+
+        RenderingRegistry.registerEntityRenderingHandler(MonorailEntity.class, MonorailRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(TransportHelicopterEntity.class, HeliRenderer::new);
 //        RenderingRegistry.registerEntityRenderingHandler(HelicopterEntityNew.class, HelicopterNewRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(MuralEntity.class, MuralRenderer::new);
