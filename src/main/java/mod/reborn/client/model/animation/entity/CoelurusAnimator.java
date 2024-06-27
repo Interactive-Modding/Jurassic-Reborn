@@ -57,13 +57,13 @@ public class CoelurusAnimator extends EntityAnimator<CoelurusEntity>
 
         model.chainSwing(tailParts, 0.5F * globalSpeed, -0.1F, 2, f, f1);
         model.chainWave(tailParts, 1F * globalSpeed, -0.1F, 2.5F, f, f1);
-        model.chainWave(bodyParts, 1F * globalSpeed, -0.1F, 4, f, f1);
+//        model.chainWave(bodyParts, 1F * globalSpeed, -0.1F, 4, f, f1);
 
-        model.chainWave(rightArmParts, 1F * globalSpeed, -0.3F, 4, f, f1);
-        model.chainWave(leftArmParts, 1F * globalSpeed, -0.3F, 4, f, f1);
+        model.chainWave(rightArmParts, 0.5F * globalSpeed, -0.3F, 4, f, f1);
+        model.chainWave(leftArmParts, 0.5F * globalSpeed, -0.3F, 4, f, f1);
 
         model.chainWave(tailParts, 0.2F, 0.05F, 2, ticks, 0.25F);
-        model.chainWave(bodyParts, 0.2F, -0.03F, 5, ticks, 0.25F);
+//        model.chainWave(bodyParts, 0.2F, -0.03F, 5, ticks, 0.25F);
         model.chainWave(rightArmParts, 0.2F, -0.1F, 4, ticks, 0.25F);
         model.chainWave(leftArmParts, 0.2F, -0.1F, 4, ticks, 0.25F);
 

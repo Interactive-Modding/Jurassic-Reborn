@@ -434,7 +434,7 @@ repositories {
 
     name 'MMD'
 
-    url 'https://maven.mcmoddev.com/'
+    url 'https://mmd.tophatcat.dev/'
 
   }
 

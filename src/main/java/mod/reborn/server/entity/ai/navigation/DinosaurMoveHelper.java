@@ -1,6 +1,5 @@
 package mod.reborn.server.entity.ai.navigation;
 
-import mod.reborn.server.dinosaur.Dinosaur;
 import mod.reborn.server.entity.DinosaurEntity;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityJumpHelper;
@@ -28,7 +27,8 @@ public class DinosaurMoveHelper extends EntityMoveHelper {
             float strafe = this.moveStrafe;
             float moveDistance = MathHelper.sqrt(forward * forward + strafe * strafe);
 
-            if (moveDistance < 1.0F) {
+
+            if (moveDistance < 1.5F) {
                 moveDistance = 0.8F;
             }
 

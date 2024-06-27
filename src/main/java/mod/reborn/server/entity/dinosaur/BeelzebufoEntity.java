@@ -4,16 +4,15 @@ import mod.reborn.client.model.animation.EntityAnimation;
 import mod.reborn.client.sound.SoundHandler;
 import mod.reborn.server.conf.RebornConfig;
 import mod.reborn.server.entity.AmfibianDinosaurEntity;
-import mod.reborn.server.entity.DinosaurEntity;
-import mod.reborn.server.entity.SwimmingDinosaurEntity;
 import mod.reborn.server.entity.ai.DinosaurWanderEntityAI;
 import mod.reborn.server.entity.ai.LeapingMeleeEntityAI;
 import mod.reborn.server.entity.ai.RaptorLeapEntityAI;
-import mod.reborn.server.entity.animal.ai.EntityAIWanderNearWater;
 import net.ilexiconn.llibrary.server.animation.Animation;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIBase;
-import net.minecraft.util.DamageSource;
+import net.minecraft.entity.passive.EntityAnimal;
+import net.minecraft.entity.passive.EntityVillager;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 
@@ -21,7 +20,7 @@ public class BeelzebufoEntity extends AmfibianDinosaurEntity {
 
     public BeelzebufoEntity(World world) {
         super(world);
-        this.target(AlvarezsaurusEntity.class, CompsognathusEntity.class, LeptictidiumEntity.class, OthnieliaEntity.class, MicroraptorEntity.class, MussaurusEntity.class, GuanlongEntity.class, GallimimusEntity.class);
+        this.target(AlvarezsaurusEntity.class, CompsognathusEntity.class, EntityPlayer.class, EntityAnimal.class, EntityVillager.class, LeptictidiumEntity.class, OthnieliaEntity.class, MicroraptorEntity.class, MussaurusEntity.class, GuanlongEntity.class, GallimimusEntity.class);
         this.tasks.addTask(0, new LeapingMeleeEntityAI(this, getAIMoveSpeed()));
         this.tasks.addTask(0, new DinosaurWanderEntityAI(this, getAIMoveSpeed(), 10, RebornConfig.ENTITIES.dinosaurWalkingRadius));
     }

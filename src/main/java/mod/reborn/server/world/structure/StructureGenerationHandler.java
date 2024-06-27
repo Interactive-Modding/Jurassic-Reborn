@@ -61,8 +61,8 @@ public enum StructureGenerationHandler implements IWorldGenerator {
         registerGenerator(RaptorPaddockGenerator::new, StructureUtils.StructureData::isRaptorPaddock,4000, Biomes.JUNGLE, Biomes.MUTATED_JUNGLE, Biomes.JUNGLE_EDGE, Biomes.MUTATED_JUNGLE_EDGE, Biomes.SAVANNA, Biomes.MUTATED_SAVANNA);
         registerGenerator(AbandonedPaddockGenerator::new, StructureUtils.StructureData::isAbandonedPaddock,4000, Biomes.SAVANNA, Biomes.MUTATED_SAVANNA, Biomes.PLAINS,Biomes.FOREST);
         registerGenerator(IceFossilDigsiteGenerator::new, StructureUtils.StructureData::isIceFossilDigsite,4000, Biomes.ICE_PLAINS, Biomes.MUTATED_ICE_FLATS, Biomes.ICE_MOUNTAINS);
-        registerGenerator(DesertDigsiteGenerator::new, StructureUtils.StructureData::isDesertDigsite,7000, Biomes.DESERT, Biomes.MUTATED_DESERT);
-        registerGenerator(AmberMineGenerator::new, StructureUtils.StructureData::isAmberMine,7000, Biomes.ROOFED_FOREST, Biomes.MUTATED_ROOFED_FOREST);
+        registerGenerator(DesertDigsiteGenerator::new, StructureUtils.StructureData::isDesertDigsite,4000, Biomes.DESERT, Biomes.MUTATED_DESERT);
+        registerGenerator(AmberMineGenerator::new, StructureUtils.StructureData::isAmberMine,4000, Biomes.ROOFED_FOREST, Biomes.MUTATED_ROOFED_FOREST);
 
     }
 

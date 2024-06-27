@@ -4,8 +4,9 @@ import mod.reborn.server.entity.Diet;
 import mod.reborn.server.entity.dinosaur.AllosaurusEntity;
 import mod.reborn.server.period.TimePeriod;
 import net.minecraft.world.biome.Biome;
-import java.util.ArrayList;
 import net.minecraftforge.common.BiomeDictionary;
+
+import java.util.ArrayList;
 
 public class AllosaurusDinosaur extends Dinosaur {
     public static final double SPEED = 0.42F;
@@ -23,9 +24,9 @@ public class AllosaurusDinosaur extends Dinosaur {
         this.setAttackSpeed(1.1);
         this.setStrength(1, 20);
         this.setMaximumAge(fromDays(45));
-        this.setEyeHeight(0.45F, 1.6F);
-        this.setSizeX(0.2F, 2.5F);
-        this.setSizeY(0.3F, 4F);
+        this.setEyeHeight(0.45F, 4.0F);
+        this.setSizeX(0.2F, 3.0F);
+        this.setSizeY(0.4F, 3.0F);
         this.setDiet(Diet.CARNIVORE.get());
         this.setBones("leg_bones", "neck_vertebrae", "arm_bones", "claw", "foot_bones", "leg_bones", "pelvis", "shoulder", "tooth", "ribcage", "skull", "tail_vertebrae");
         this.setHeadCubeName("Head");

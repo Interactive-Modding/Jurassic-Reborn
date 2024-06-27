@@ -3,9 +3,10 @@ package mod.reborn.server.dinosaur;
 import mod.reborn.server.entity.Diet;
 import mod.reborn.server.entity.dinosaur.DiplocaulusEntity;
 import mod.reborn.server.period.TimePeriod;
-import java.util.ArrayList;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
+
+import java.util.ArrayList;
 
 public class DiplocaulusDinosaur extends Dinosaur {
     public static final double SPEED = 0.3F;
@@ -23,9 +24,9 @@ public class DiplocaulusDinosaur extends Dinosaur {
         this.setStorage(18);
         this.setStrength(1, 20);
         this.setMaximumAge(fromDays(45));
-        this.setEyeHeight(0.45F, 1.6F);
-        this.setSizeX(0.15F, 1.4F);
-        this.setSizeY(0.35F, 1.8F);
+        this.setEyeHeight(0.45F, 0.6F);
+        this.setSizeX(0.1F, 1.0F);
+        this.setSizeY(0.3F, 0.6F);
         this.setDiet(Diet.PISCIVORE.get());
         this.setBones("skull", "teeth", "foot_bone","leg_bones", "ribcage", "tail_vertebrae");
         this.setHeadCubeName("Head");

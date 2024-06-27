@@ -19,6 +19,7 @@ public class MammothDinosaur extends Dinosaur {
         this.setEggColorMale(0x84441A, 0x614532);
         this.setEggColorFemale(0x684B2D, 0x6F4E39);
         this.setHealth(10, 40);
+        this.setHealth(10, 60);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStorage(27);
         this.setStrength(5, 25);

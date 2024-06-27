@@ -25,6 +25,7 @@ public class RaphusrexDinosaur extends Dinosaur implements Hybrid {
         this.setHealth(10, 80);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setAttackSpeed(2);
+        this.setAttackSpeed(1.5);
         this.setStrength(5, 25);
         this.setMaximumAge(this.fromDays(60));
         this.setEyeHeight(0.6F, 3.8F);

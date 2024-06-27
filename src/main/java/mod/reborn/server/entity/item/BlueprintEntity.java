@@ -6,7 +6,6 @@ import io.netty.buffer.ByteBuf;
 import mod.reborn.RebornMod;
 import mod.reborn.server.item.ItemHandler;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityHanging;
 import net.minecraft.entity.player.EntityPlayer;
@@ -226,7 +225,15 @@ public class BlueprintEntity extends EntityHanging implements IEntityAdditionalS
         SPINOSAURUS(1202,676),
         STYRACOSAURUS(1074,671),
         TITANIS(1074,671),
+        PERISPHINCTES(1074,671),
+        MICROCERATUS(1074,671),
+        PROTOCERATOPS(1074,671),
+        TITANITES(1074,671),
+        PARAPUZOSIA(1074,671),
+        ASTEROCERAS(1074,671),
+        VECTIPELTA(1074,671),
         TRICERATOPS(1074,671);
+
 
 
 

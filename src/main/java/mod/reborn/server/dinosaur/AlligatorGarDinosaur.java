@@ -1,20 +1,18 @@
 package mod.reborn.server.dinosaur;
 
-import java.util.ArrayList;
-
 import mod.reborn.server.entity.Diet;
 import mod.reborn.server.entity.SleepTime;
 import mod.reborn.server.entity.ai.util.MovementType;
 import mod.reborn.server.entity.dinosaur.AlligatorGarEntity;
 import mod.reborn.server.food.FoodType;
-import java.util.ArrayList;
 import mod.reborn.server.period.TimePeriod;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
+
+import java.util.ArrayList;
 
 public class AlligatorGarDinosaur extends Dinosaur
 {
@@ -35,8 +33,8 @@ public class AlligatorGarDinosaur extends Dinosaur
         this.setStrength(0.5, 3);
         this.setMaximumAge(this.fromDays(30));
         this.setEyeHeight(0.35F, 1.2F);
-        this.setSizeX(0.1F, 1.3F);
-        this.setSizeY(0.02F, .6F);
+        this.setSizeX(0.2F, 1.0F);
+        this.setSizeY(0.2F, 1.0F);
         this.setDiet(Diet.PISCIVORE.get().withModule(new Diet.DietModule(FoodType.FILTER)));
         this.setSleepTime(SleepTime.NO_SLEEP);
         this.setBones("anal_fin", "dorsal_fin", "pectoral_fin_bones", "pelvic_fin_bones", "scales", "skull", "spine", "tail_fin", "teeth");

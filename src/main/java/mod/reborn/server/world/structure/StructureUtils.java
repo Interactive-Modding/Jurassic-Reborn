@@ -63,6 +63,7 @@ public class StructureUtils {
         public NBTTagCompound writeToNBT(NBTTagCompound compound) {
             compound.setBoolean("VisitorCenter", this.visitorCenter);
             compound.setBoolean("IslaSornaLab", this.IslaSornaLab);
+            compound.setBoolean("JPSanDiego", this.JPSanDiego);
             compound.setBoolean("RaptorPaddock", this.raptorPaddock);
             compound.setBoolean("AbandonedPaddock",this.AbandonedPaddock);
             compound.setBoolean("IceFossilDigsite",this.IceFossilDigsite);
@@ -70,6 +71,7 @@ public class StructureUtils {
             compound.setBoolean("AmberMine",this.AmberMine);
             compound.setLong("VisitorCenterBlockPosition", this.visitorCenterPosition.toLong());
             compound.setLong("IslaSornaLabBlockPosition", this.IslaSornaLabPosition.toLong());
+            compound.setLong("SanDiegoBlockPosition",this.JPSanDiegoPosition.toLong());
             return compound;
         }
 
@@ -77,6 +79,7 @@ public class StructureUtils {
         public void readFromNBT(NBTTagCompound nbt) {
             this.visitorCenter = nbt.getBoolean("VisitorCenter");
             this.IslaSornaLab = nbt.getBoolean("IslaSornaLab");
+            this.JPSanDiego = nbt.getBoolean("JPSanDiego");
             this.raptorPaddock = nbt.getBoolean("RaptorPaddock");
             this.AbandonedPaddock= nbt.getBoolean("AbandonedPaddock");
             this.IceFossilDigsite= nbt.getBoolean("IceFossilDigsite");

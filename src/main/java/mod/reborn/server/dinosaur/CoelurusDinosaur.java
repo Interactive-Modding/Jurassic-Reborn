@@ -3,11 +3,11 @@ package mod.reborn.server.dinosaur;
 
 import mod.reborn.server.entity.Diet;
 import mod.reborn.server.entity.dinosaur.CoelurusEntity;
-import mod.reborn.server.entity.dinosaur.CompsognathusEntity;
 import mod.reborn.server.period.TimePeriod;
-import java.util.ArrayList;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
+
+import java.util.ArrayList;
 
 public class CoelurusDinosaur extends Dinosaur
 {
@@ -29,6 +29,7 @@ public class CoelurusDinosaur extends Dinosaur
         this.setSizeX(0.1F, 0.6F);
         this.setSizeY(0.25F, 0.95F);
         this.setStorage(9);
+        this.setAttackSpeed(1.2);
         this.setAttackBias(90);
         this.setDiet((Diet.CARNIVORE.get()));
         this.setBones("ribcage", "arm_bones", "claw", "foot_bones", "leg_bones", "neck_vertebrae", "pelvis", "shoulder", "skull", "tail_vertebrae", "tooth");

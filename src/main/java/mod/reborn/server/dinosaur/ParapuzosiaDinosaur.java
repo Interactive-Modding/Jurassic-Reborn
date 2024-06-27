@@ -4,9 +4,10 @@ import mod.reborn.server.entity.Diet;
 import mod.reborn.server.entity.dinosaur.ParapuzosiaEntity;
 import mod.reborn.server.food.FoodType;
 import mod.reborn.server.period.TimePeriod;
-import java.util.ArrayList;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
+
+import java.util.ArrayList;
 
 public class ParapuzosiaDinosaur extends Dinosaur {
     public static final double SPEED = 0.45F;
@@ -25,8 +26,8 @@ public class ParapuzosiaDinosaur extends Dinosaur {
         this.setMaximumAge(fromDays(50));
         this.setMarineAnimal(true);
         this.setEyeHeight(0.90F, 4.2F);
-        this.setSizeX(0.6F, 3.8F);
-        this.setSizeY(1.0F, 4.6F);
+        this.setSizeX(1.0F, 3.6F);
+        this.setSizeY(1.0F, 3.6F);
         this.setMarineAnimal(true);
         this.setBirthType(BirthType.LIVE_BIRTH);
         this.setDiet(Diet.PISCIVORE.get().withModule(new Diet.DietModule(FoodType.FILTER)));
