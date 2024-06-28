@@ -125,6 +125,7 @@ entity.rebornmod.attraction_sign.name=Attraction Sign
 entity.rebornmod.blueprint.name=Blueprint
 entity.rebornmod.paddock_sign.name=Paddock Sign
 entity.rebornmod.monorail.name=Monorail
+entity.rebornmod.gyrosphere.name=Gyrosphere
 
 entity.Villager.rebornmod:geneticist=Geneticist
 
@@ -371,6 +372,9 @@ item.plant_soft_tissue.name={plant} Soft Tissue
 item.plant_fossil.name=Plant Fossil
 item.twig_fossil.name=Twig Fossil
 item.keyboard.name=Keyboard
+item.gyrosphere_hoop.name=Gyrosphere Hoop
+item.gyrosphere_seats.name=Gyrosphere Seats
+item.gyrosphere_interior.name=Gyrosphere Interior
 item.helicopter.name=Helicopter
 item.computer_screen.name=Computer Screen
 item.dna_analyzer.name=DNA Analyzer
@@ -389,6 +393,7 @@ item.sorna_jeep_wrangler.name=Sorna Jeep Wrangler
 item.purple_jeep_wrangler.name=Purple Jeep Wrangler
 item.pink_jeep_wrangler.name=Pink Jeep Wrangler
 item.monorail.name=Monorail
+item.gyrosphere.name=Gyrosphere
 item.ford_explorer.name=Ford Explorer
 item.ford_explorer_snow.name=Snow Ford Explorer
 item.unfinished_car.name=Unfinished Car

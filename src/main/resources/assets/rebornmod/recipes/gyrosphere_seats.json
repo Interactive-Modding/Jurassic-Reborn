@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "rebornmod:gyrosphere_seats",
+  "pattern": [
+    "ABA",
+    "ACA",
+    "DDD"
+  ],
+  "key": {
+    "D": {
+      "item": "minecraft:iron_ingot",
+      "data": 0
+    },
+    "A": {
+      "item": "minecraft:leather",
+      "data": 0
+    },
+    "C": {
+      "item": "minecraft:saddle",
+      "data": 0
+    },
+    "B": {
+      "item": "minecraft:wool",
+      "data": 11
+    }
+  },
+  "result": {
+    "item": "rebornmod:gyrosphere_seats",
+    "data": 0
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "rebornmod:gyrosphere_interior",
+  "pattern": [
+    "CCC",
+    "BAB",
+    "CCC"
+  ],
+  "key": {
+    "A": {
+      "item": "rebornmod:gyrosphere_seats",
+      "data": 0
+    },
+    "B": {
+      "item": "rebornmod:gyrosphere_hoop",
+      "data": 0
+    },
+    "C": {
+      "item": "minecraft:iron_ingot",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "rebornmod:gyrosphere_interior",
+    "data": 0
+  }
+}

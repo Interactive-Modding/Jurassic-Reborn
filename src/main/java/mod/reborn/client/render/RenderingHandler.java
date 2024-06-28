@@ -331,6 +331,9 @@ public enum RenderingHandler {
         registerItemRenderer(TWIG_FOSSIL, "twig_fossil");
 
         registerItemRenderer(KEYBOARD, "keyboard");
+        registerItemRenderer(GYROSPHERE_HOOP,"gyrosphere_hoop");
+        registerItemRenderer(GYROSPHERE_SEATS,"gyrosphere_seats");
+        registerItemRenderer(GYROSPHERE_INTERIOR,"gyrosphere_interior");
         registerItemRenderer(COMPUTER_SCREEN, "computer_screen");
         registerItemRenderer(DNA_ANALYZER, "dna_analyzer");
 
@@ -581,7 +584,7 @@ public enum RenderingHandler {
         RenderingRegistry.registerEntityRenderingHandler(SornaJeepWranglerEntity.class, SornaJeepWranglerRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(FordExplorerEntity.class, FordExplorerRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(FordExplorerSnowEntity.class, FordExplorerSnowRenderer::new);
-
+        RenderingRegistry.registerEntityRenderingHandler(GyrosphereEntity.class, GyrosphereRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(MonorailEntity.class, MonorailRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(TransportHelicopterEntity.class, HeliRenderer::new);
 //        RenderingRegistry.registerEntityRenderingHandler(HelicopterEntityNew.class, HelicopterNewRenderer::new);

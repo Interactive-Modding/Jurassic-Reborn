@@ -1,29 +1,25 @@
 package mod.reborn.server.entity;
 
+import mod.reborn.RebornMod;
 import mod.reborn.server.api.Hybrid;
 import mod.reborn.server.conf.RebornConfig;
 import mod.reborn.server.dinosaur.*;
 import mod.reborn.server.entity.animal.EntityCrab;
 import mod.reborn.server.entity.animal.EntityShark;
 import mod.reborn.server.entity.animal.GoatEntity;
-import mod.reborn.server.entity.dinosaur.ArsinoitheriumEntity;
 import mod.reborn.server.entity.item.*;
 import mod.reborn.server.entity.vehicle.*;
-import net.minecraft.block.material.Material;
+import mod.reborn.server.period.TimePeriod;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntitySpawnPlacementRegistry;
 import net.minecraft.entity.EnumCreatureType;
-import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.init.Biomes;
-import net.minecraft.item.ItemMonsterPlacer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.fml.common.ProgressManager;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
-import mod.reborn.RebornMod;
-import mod.reborn.server.period.TimePeriod;
 
 import java.util.*;
 
@@ -276,6 +272,8 @@ public class EntityHandler {
         registerEntity(FordExplorerEntity.class, "Ford Explorer");
         registerEntity(FordExplorerSnowEntity.class, "Ford Explorer Snow");
         registerEntity(MonorailEntity.class, "Monorail");
+        registerEntity(GyrosphereEntity.class,"Gyrosphere");
+
 
         registerEntity(GoatEntity.class, "Goat", 0xEFEDE7, 0x7B3E20);
         registerEntity(EntityCrab.class, "Crab", 0xEFEDE7, 0x7B3E20);

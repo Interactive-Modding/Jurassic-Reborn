@@ -1,38 +1,32 @@
 package mod.reborn.server.item;
 
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
-
 import mod.reborn.client.sound.SoundHandler;
 import mod.reborn.server.api.Hybrid;
-import mod.reborn.server.item.guns.Glock;
-import mod.reborn.server.item.guns.Remington;
-import mod.reborn.server.item.guns.SPAS12;
-import mod.reborn.server.item.guns.UTS15;
-import mod.reborn.server.tab.TabHandler;
-import net.minecraft.util.text.TextComponentTranslation;
 import mod.reborn.server.block.BlockHandler;
 import mod.reborn.server.block.tree.TreeType;
 import mod.reborn.server.dinosaur.Dinosaur;
 import mod.reborn.server.entity.DinosaurEntity;
 import mod.reborn.server.entity.EntityHandler;
 import mod.reborn.server.item.block.AncientDoorItem;
-import mod.reborn.server.item.vehicles.HelicopterItem;
+import mod.reborn.server.item.guns.Glock;
+import mod.reborn.server.item.guns.Remington;
+import mod.reborn.server.item.guns.SPAS12;
+import mod.reborn.server.item.guns.UTS15;
+import mod.reborn.server.tab.TabHandler;
 import mod.reborn.server.util.RegistryHandler;
-
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemFood;
-import net.minecraft.item.ItemSeedFood;
-import net.minecraft.item.ItemSeeds;
-import net.minecraft.item.ItemStack;
+import net.minecraft.item.*;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.text.TextComponentTranslation;
+
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
 
 public class ItemHandler {
     public static final Map<TreeType, AncientDoorItem> ANCIENT_DOORS = new HashMap<>();
@@ -180,6 +174,10 @@ public class ItemHandler {
 
     public static final BasicItem COMPUTER_SCREEN = new BasicItem(TabHandler.ITEMS);
     public static final BasicItem KEYBOARD = new BasicItem(TabHandler.ITEMS);
+    public static final BasicItem GYROSPHERE_INTERIOR = new BasicItem(TabHandler.ITEMS);
+    public static final BasicItem GYROSPHERE_SEATS = new BasicItem(TabHandler.ITEMS);
+    public static final BasicItem GYROSPHERE_HOOP = new BasicItem(TabHandler.ITEMS);
+
 
     public static final BasicItem DNA_ANALYZER = new BasicItem(TabHandler.ITEMS);
 
@@ -366,6 +364,9 @@ public class ItemHandler {
         registerItem(ADVANCED_CIRCUIT, "Advanced Circuit");
         registerItem(COMPUTER_SCREEN, "Computer Screen");
         registerItem(KEYBOARD, "Keyboard");
+        registerItem(GYROSPHERE_SEATS,"Gyrosphere Seats");
+        registerItem(GYROSPHERE_INTERIOR,"Gyrosphere Interior");
+        registerItem(GYROSPHERE_HOOP,"Gyrosphere Hoop");
         registerItem(DNA_ANALYZER, "DNA Analyzer");
 
         registerItem(DINOSAUR_MEAT, "Dinosaur Meat");
