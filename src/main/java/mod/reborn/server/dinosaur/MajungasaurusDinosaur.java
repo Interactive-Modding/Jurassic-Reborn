@@ -5,8 +5,9 @@ import mod.reborn.server.entity.Diet;
 import mod.reborn.server.entity.dinosaur.MajungasaurusEntity;
 import mod.reborn.server.period.TimePeriod;
 import net.minecraft.world.biome.Biome;
-import java.util.ArrayList;
 import net.minecraftforge.common.BiomeDictionary;
+
+import java.util.ArrayList;
 
 public class MajungasaurusDinosaur extends Dinosaur
 {
@@ -25,9 +26,9 @@ public class MajungasaurusDinosaur extends Dinosaur
         this.setStrength(5, 20);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setMaximumAge(fromDays(45));
-        this.setEyeHeight(0.6F, 2.6F);
+        this.setEyeHeight(0.6F, 2.5F);
         this.setSizeX(0.2F, 2.25F);
-        this.setSizeY(0.4F, 3.0F);
+        this.setSizeY(0.4F, 2.5F);
         this.setStorage(36);
         this.setDiet((Diet.CARNIVORE.get()));
         this.setBones("skull", "tooth", "claw", "foot_bones", "leg_bones", "neck_vertebrae", "pelvis", "ribcage", "shoulder", "tail_vertebrae");

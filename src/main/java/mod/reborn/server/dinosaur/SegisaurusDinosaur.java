@@ -26,7 +26,7 @@ public class SegisaurusDinosaur extends Dinosaur
         this.setStrength(3, 7);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setMaximumAge(fromDays(30));
-        this.setEyeHeight(0.3F, 0.85F);
+        this.setEyeHeight(0.35F, 0.85F);
         this.setSizeX(0.28F, 0.43F);
         this.setSizeY(0.35F, 0.8F);
         this.setStorage(9);

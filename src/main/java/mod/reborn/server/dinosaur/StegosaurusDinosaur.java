@@ -4,8 +4,9 @@ import mod.reborn.server.entity.Diet;
 import mod.reborn.server.entity.dinosaur.StegosaurusEntity;
 import mod.reborn.server.period.TimePeriod;
 import net.minecraft.world.biome.Biome;
-import java.util.ArrayList;
 import net.minecraftforge.common.BiomeDictionary;
+
+import java.util.ArrayList;
 
 public class StegosaurusDinosaur extends Dinosaur{
     public static final double SPEED = 0.35F;
@@ -22,9 +23,9 @@ public class StegosaurusDinosaur extends Dinosaur{
         this.setStrength(12, 30);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setMaximumAge(fromDays(50));
-        this.setEyeHeight(0.26F, 2.2F);
-        this.setSizeX(0.2F, 4.0F);
-        this.setSizeY(0.3F, 4.8F);
+        this.setEyeHeight(0.26F, 3.6F);
+        this.setSizeX(0.2F, 3.6F);
+        this.setSizeY(0.3F, 3.6F);
         this.setStorage(36);
         this.setDiet(Diet.HERBIVORE.get());
         this.setBones("front_leg_bones", "hind_leg_bones", "neck", "pelvis", "ribcage", "shoulder", "skull", "tail", "thagomizer", "tooth");

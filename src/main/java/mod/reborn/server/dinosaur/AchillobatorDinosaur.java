@@ -4,8 +4,9 @@ import mod.reborn.server.entity.Diet;
 import mod.reborn.server.entity.dinosaur.AchillobatorEntity;
 import mod.reborn.server.period.TimePeriod;
 import net.minecraft.world.biome.Biome;
-import java.util.ArrayList;
 import net.minecraftforge.common.BiomeDictionary;
+
+import java.util.ArrayList;
 
 public class AchillobatorDinosaur extends Dinosaur
 {
@@ -25,7 +26,7 @@ public class AchillobatorDinosaur extends Dinosaur
         this.setAttackBias(1200.0);
         this.setAttackSpeed(1.9);
         this.setMaximumAge(fromDays(45));
-        this.setEyeHeight(0.45F, 1.6F);
+        this.setEyeHeight(0.45F, 1.8F);
         this.setSizeX(0.5F, 1.0F);
         this.setSizeY(0.5F, 1.8F);
         this.setDiet(Diet.CARNIVORE.get());

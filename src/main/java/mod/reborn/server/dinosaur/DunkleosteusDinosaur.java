@@ -5,9 +5,10 @@ import mod.reborn.server.entity.Diet;
 import mod.reborn.server.entity.SleepTime;
 import mod.reborn.server.entity.dinosaur.DunkleosteusEntity;
 import mod.reborn.server.period.TimePeriod;
-import java.util.ArrayList;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
+
+import java.util.ArrayList;
 
 public class DunkleosteusDinosaur extends Dinosaur
 {
@@ -26,7 +27,7 @@ public class DunkleosteusDinosaur extends Dinosaur
         this.setSpeed((SPEED -0.4), SPEED);
         this.setStrength(10, 40);
         this.setMaximumAge(fromDays(30));
-        this.setEyeHeight(0.3F, 1.2F);
+        this.setEyeHeight(0.3F, 2.0F);
         this.setSizeX(0.3F, 2.7F);
         this.setSizeY(0.2F, 2.0F);
         this.setMarineAnimal(true);

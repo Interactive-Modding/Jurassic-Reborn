@@ -5,8 +5,9 @@ import mod.reborn.server.entity.Diet;
 import mod.reborn.server.entity.dinosaur.EdmontosaurusEntity;
 import mod.reborn.server.period.TimePeriod;
 import net.minecraft.world.biome.Biome;
-import java.util.ArrayList;
 import net.minecraftforge.common.BiomeDictionary;
+
+import java.util.ArrayList;
 
 public class EdmontosaurusDinosaur extends Dinosaur
 {
@@ -25,9 +26,9 @@ public class EdmontosaurusDinosaur extends Dinosaur
         this.setStrength(5, 20);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setMaximumAge(fromDays(50));
-        this.setEyeHeight(0.55F, 3.45F);
+        this.setEyeHeight(0.6F, 4.25F);
         this.setSizeX(0.3F, 2.8F);
-        this.setSizeY(0.6F, 4.25F);
+        this.setSizeY(0.6F, 3.5F);
         this.setStorage(45);
         this.setDiet((Diet.HERBIVORE.get()));
         this.setBones("cheek_teeth", "pelvis", "skull", "front_leg_bones", "hind_leg_bones", "ribcage", "shoulder", "tail_vertebrae", "neck_vertebrae");

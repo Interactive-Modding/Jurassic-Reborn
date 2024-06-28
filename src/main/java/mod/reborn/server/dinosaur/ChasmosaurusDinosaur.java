@@ -5,8 +5,9 @@ import mod.reborn.server.entity.Diet;
 import mod.reborn.server.entity.dinosaur.ChasmosaurusEntity;
 import mod.reborn.server.period.TimePeriod;
 import net.minecraft.world.biome.Biome;
-import java.util.ArrayList;
 import net.minecraftforge.common.BiomeDictionary;
+
+import java.util.ArrayList;
 
 public class ChasmosaurusDinosaur extends Dinosaur
 {
@@ -25,7 +26,7 @@ public class ChasmosaurusDinosaur extends Dinosaur
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(5, 15);
         this.setMaximumAge(fromDays(40));
-        this.setEyeHeight(0.3F, 1.35F);
+        this.setEyeHeight(0.45F, 2.35F);
         this.setSizeX(0.35F, 1.75F);
         this.setSizeY(0.45F, 2.35F);
         this.setStorage(27);

@@ -24,7 +24,7 @@ public class MicroraptorDinosaur extends Dinosaur {
         this.setStrength(0.5, 2);
         this.setMaximumAge(this.fromDays(30));
         this.setFlee(true);
-        this.setEyeHeight(0.2F, 0.5F);
+        this.setEyeHeight(0.25F, 0.6F);
         this.setSizeX(0.2F, 0.7F);
         this.setSizeY(0.25F, 0.6F);
         this.setStorage(9);

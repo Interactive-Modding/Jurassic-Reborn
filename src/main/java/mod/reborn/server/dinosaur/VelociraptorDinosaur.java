@@ -6,7 +6,6 @@ import mod.reborn.server.entity.dinosaur.VelociraptorEntity;
 import mod.reborn.server.period.TimePeriod;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
-import java.util.ArrayList;
 
 import java.util.ArrayList;
 
@@ -26,7 +25,7 @@ public class VelociraptorDinosaur extends Dinosaur {
         this.setHealth(6, 35);
         this.setStrength(4, 10);
         this.setMaximumAge(this.fromDays(45));
-        this.setEyeHeight(0.45F, 1.7F);
+        this.setEyeHeight(0.45F, 1.8F);
         this.setSizeX(0.5F, 1.0F);
         this.setSizeY(0.5F, 1.8F);
         this.setStorage(27);

@@ -1,7 +1,6 @@
 package mod.reborn.server.dinosaur;
 
 import mod.reborn.server.entity.Diet;
-import mod.reborn.server.entity.dinosaur.AnkylosaurusEntity;
 import mod.reborn.server.entity.dinosaur.VectipeltaEntity;
 import mod.reborn.server.period.TimePeriod;
 import net.minecraft.world.biome.Biome;
@@ -25,7 +24,7 @@ public class VectipeltaDinosaur extends Dinosaur
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(6, 10);
         this.setMaximumAge(fromDays(50));
-        this.setEyeHeight(0.2F, 1.0F);
+        this.setEyeHeight(0.2F, 1.8F);
         this.setSizeX(0.15F, 1.4F);
         this.setSizeY(0.3F, 1.8F);
         this.setStorage(27);

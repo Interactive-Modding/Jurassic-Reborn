@@ -4,8 +4,9 @@ import mod.reborn.server.entity.Diet;
 import mod.reborn.server.entity.dinosaur.MammothEntity;
 import mod.reborn.server.period.TimePeriod;
 import net.minecraft.world.biome.Biome;
-import java.util.ArrayList;
 import net.minecraftforge.common.BiomeDictionary;
+
+import java.util.ArrayList;
 
 public class MammothDinosaur extends Dinosaur {
     public static final double SPEED = 0.3F;
@@ -18,13 +19,12 @@ public class MammothDinosaur extends Dinosaur {
         this.setTimePeriod(TimePeriod.NEOGENE);
         this.setEggColorMale(0x84441A, 0x614532);
         this.setEggColorFemale(0x684B2D, 0x6F4E39);
-        this.setHealth(10, 40);
         this.setHealth(10, 60);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStorage(27);
         this.setStrength(5, 25);
         this.setMaximumAge(fromDays(45));
-        this.setEyeHeight(0.45F, 1.8F);
+        this.setEyeHeight(0.5F, 3.5F);
         this.setSizeX(0.35F, 2.4F);
         this.setSizeY(0.5F, 2.7F);
         this.setDiet(Diet.HERBIVORE.get());

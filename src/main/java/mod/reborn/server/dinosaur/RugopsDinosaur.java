@@ -5,8 +5,9 @@ import mod.reborn.server.entity.Diet;
 import mod.reborn.server.entity.dinosaur.RugopsEntity;
 import mod.reborn.server.period.TimePeriod;
 import net.minecraft.world.biome.Biome;
-import java.util.ArrayList;
 import net.minecraftforge.common.BiomeDictionary;
+
+import java.util.ArrayList;
 
 public class RugopsDinosaur extends Dinosaur
 {
@@ -25,7 +26,7 @@ public class RugopsDinosaur extends Dinosaur
         this.setStrength(5, 15);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setMaximumAge(fromDays(45));
-        this.setEyeHeight(0.6F, 2.05F);
+        this.setEyeHeight(0.6F, 2.6F);
         this.setSizeX(0.20F, 1.5F);
         this.setSizeY(0.5F, 2.6F);
         this.setStorage(36);

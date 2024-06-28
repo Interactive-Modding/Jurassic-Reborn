@@ -1,12 +1,12 @@
 package mod.reborn.server.dinosaur;
 
 import mod.reborn.server.entity.Diet;
-import mod.reborn.server.entity.dinosaur.ArsinoitheriumEntity;
 import mod.reborn.server.entity.dinosaur.MegatheriumEntity;
 import mod.reborn.server.period.TimePeriod;
 import net.minecraft.world.biome.Biome;
-import java.util.ArrayList;
 import net.minecraftforge.common.BiomeDictionary;
+
+import java.util.ArrayList;
 
 public class MegatheriumDinosaur extends Dinosaur {
     public static final double SPEED = 0.3F;
@@ -25,7 +25,7 @@ public class MegatheriumDinosaur extends Dinosaur {
         this.setAttackSpeed(1.1);
         this.setStrength(2, 10);
         this.setMaximumAge(fromDays(45));
-        this.setEyeHeight(0.45F, 1.7F);
+        this.setEyeHeight(0.5F, 2.4F);
         this.setSizeX(0.35F, 2.1F);
         this.setSizeY(0.5F, 2.4F);
         this.setDiet(Diet.HERBIVORE.get());

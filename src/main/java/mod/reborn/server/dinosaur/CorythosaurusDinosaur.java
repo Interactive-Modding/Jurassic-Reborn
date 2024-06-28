@@ -4,9 +4,10 @@ package mod.reborn.server.dinosaur;
 import mod.reborn.server.entity.Diet;
 import mod.reborn.server.entity.dinosaur.CorythosaurusEntity;
 import mod.reborn.server.period.TimePeriod;
-import java.util.ArrayList;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
+
+import java.util.ArrayList;
 
 public class CorythosaurusDinosaur extends Dinosaur
 {
@@ -26,7 +27,7 @@ public class CorythosaurusDinosaur extends Dinosaur
         this.setStrength(5, 15);
         this.setMaximumAge(fromDays(40));
         this.setAttackBias(50);
-        this.setEyeHeight(0.45F, 2.45F);
+        this.setEyeHeight(0.45F, 3.5F);
         this.setSizeX(0.5F, 2.5F);
         this.setSizeY(0.8F, 3.5F);
         this.setStorage(36);

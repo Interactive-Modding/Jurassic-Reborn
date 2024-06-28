@@ -5,7 +5,6 @@ import mod.reborn.server.entity.dinosaur.MussaurusEntity;
 import mod.reborn.server.period.TimePeriod;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
-import java.util.ArrayList;
 
 import java.util.ArrayList;
 
@@ -26,7 +25,7 @@ public class MussaurusDinosaur extends Dinosaur {
         this.setMaximumAge(this.fromDays(30));
         this.setEyeHeight(0.25F, 1.2F);
         this.setSizeX(0.25F, 1F);
-        this.setSizeY(0.2F, 0.9F);
+        this.setSizeY(0.2F, 1.0F);
         this.setStorage(9);
         this.setDiet(Diet.HERBIVORE.get());
         this.setBones("arm_bones", "leg_bones", "neck_vertebrae", "pelvis", "ribcage", "shoulder", "skull", "tail_vertebrae", "teeth");

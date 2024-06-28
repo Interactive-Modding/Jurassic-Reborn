@@ -3,9 +3,10 @@ package mod.reborn.server.dinosaur;
 import mod.reborn.server.entity.Diet;
 import mod.reborn.server.entity.dinosaur.DeinotheriumEntity;
 import mod.reborn.server.period.TimePeriod;
-import java.util.ArrayList;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
+
+import java.util.ArrayList;
 
 public class DeinotheriumDinosaur extends Dinosaur {
     public static final double SPEED = 0.3F;
@@ -23,7 +24,7 @@ public class DeinotheriumDinosaur extends Dinosaur {
         this.setStorage(27);
         this.setStrength(3, 15);
         this.setMaximumAge(fromDays(45));
-        this.setEyeHeight(0.45F, 1.8F);
+        this.setEyeHeight(0.6F, 4.4F);
         this.setSizeX(0.45F, 3F);
         this.setSizeY(0.6F, 3.3F);
         this.setDiet(Diet.HERBIVORE.get());

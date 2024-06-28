@@ -4,9 +4,10 @@ import mod.reborn.server.entity.Diet;
 import mod.reborn.server.entity.dinosaur.AmmoniteEntity;
 import mod.reborn.server.food.FoodType;
 import mod.reborn.server.period.TimePeriod;
-import java.util.ArrayList;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
+
+import java.util.ArrayList;
 
 public class AmmoniteDinosaur extends Dinosaur {
     public static final double SPEED = 0.3F;
@@ -24,7 +25,7 @@ public class AmmoniteDinosaur extends Dinosaur {
         this.setStrength(2, 4);
         this.setMaximumAge(fromDays(45));
         this.setMarineAnimal(true);
-        this.setEyeHeight(0.25F, 0.6F);
+        this.setEyeHeight(0.25F, 0.8F);
         this.setSizeX(0.3F, 0.8F);
         this.setSizeY(0.5F, 0.8F);
         this.setMarineAnimal(true);

@@ -5,7 +5,6 @@ import mod.reborn.server.entity.dinosaur.ParasaurolophusEntity;
 import mod.reborn.server.period.TimePeriod;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
-import java.util.ArrayList;
 
 import java.util.ArrayList;
 
@@ -24,9 +23,9 @@ public class ParasaurolophusDinosaur extends Dinosaur {
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(2, 8);
         this.setMaximumAge(this.fromDays(45));
-        this.setEyeHeight(0.45F, 2.45F);
+        this.setEyeHeight(0.45F, 4.2F);
         this.setSizeX(0.2F, 2.7F);
-        this.setSizeY(0.4F, 3.7F);
+        this.setSizeY(0.4F, 3.5F);
         this.setOffset(0.0F, 0.0F, 0.6F);
         this.setStorage(36);
         this.setDiet(Diet.HERBIVORE.get());

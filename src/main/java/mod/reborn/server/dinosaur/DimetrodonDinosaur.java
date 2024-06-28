@@ -25,7 +25,7 @@ public class DimetrodonDinosaur extends Dinosaur
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(2, 10);
         this.setMaximumAge(fromDays(55));
-        this.setEyeHeight(0.3F, 1.0F);
+        this.setEyeHeight(0.3F, 1.8F);
         this.setSizeX(0.2F, 1.4F);
         this.setSizeY(0.3F, 1.8F);
         this.setStorage(20);

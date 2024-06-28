@@ -4,8 +4,9 @@ import mod.reborn.server.entity.Diet;
 import mod.reborn.server.entity.dinosaur.AlvarezsaurusEntity;
 import mod.reborn.server.period.TimePeriod;
 import net.minecraft.world.biome.Biome;
-import java.util.ArrayList;
 import net.minecraftforge.common.BiomeDictionary;
+
+import java.util.ArrayList;
 
 public class AlvarezsaurusDinosaur extends Dinosaur {
     public static final double SPEED = 0.36F;
@@ -21,7 +22,7 @@ public class AlvarezsaurusDinosaur extends Dinosaur {
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(2, 4);
         this.setMaximumAge(fromDays(40));
-        this.setEyeHeight(0.225F, 1.3F);
+        this.setEyeHeight(0.225F, 0.6F);
         this.setSizeX(0.3F, 0.5F);
         this.setSizeY(0.3F, 0.6F);
         this.setStorage(27);

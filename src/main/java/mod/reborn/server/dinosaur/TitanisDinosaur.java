@@ -2,7 +2,6 @@ package mod.reborn.server.dinosaur;
 
 import mod.reborn.server.entity.Diet;
 import mod.reborn.server.entity.SleepTime;
-import java.util.ArrayList;
 import mod.reborn.server.entity.dinosaur.TitanisEntity;
 import mod.reborn.server.period.TimePeriod;
 import net.minecraft.world.biome.Biome;
@@ -26,7 +25,7 @@ public class TitanisDinosaur extends Dinosaur {
         this.setHealth(6, 30);
         this.setStrength(4, 15);
         this.setMaximumAge(this.fromDays(45));
-        this.setEyeHeight(0.45F, 1.7F);
+        this.setEyeHeight(0.5F, 2.5F);
         this.setSizeX(0.5F, 2.3F);
         this.setSizeY(0.5F, 2.5F);
         this.setStorage(20);

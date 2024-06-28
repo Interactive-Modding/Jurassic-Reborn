@@ -25,7 +25,7 @@ public class HypsilophodonDinosaur extends Dinosaur
         this.setSpeed((SPEED -0.10), SPEED);
         this.setStrength(1, 5);
         this.setMaximumAge(fromDays(35));
-        this.setEyeHeight(0.2F, 0.7F);
+        this.setEyeHeight(0.25F, 0.85F);
         this.setSizeX(0.2F, 0.6F);
         this.setSizeY(0.25F, 0.85F);
         this.setStorage(9);

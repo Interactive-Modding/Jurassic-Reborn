@@ -2,12 +2,12 @@ package mod.reborn.server.dinosaur;
 
 
 import mod.reborn.server.entity.Diet;
-import mod.reborn.server.entity.SleepTime;
 import mod.reborn.server.entity.dinosaur.CarnotaurusEntity;
 import mod.reborn.server.period.TimePeriod;
 import net.minecraft.world.biome.Biome;
-import java.util.ArrayList;
 import net.minecraftforge.common.BiomeDictionary;
+
+import java.util.ArrayList;
 
 public class CarnotaurusDinosaur extends Dinosaur
 {
@@ -26,7 +26,7 @@ public class CarnotaurusDinosaur extends Dinosaur
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(5, 20);
         this.setMaximumAge(fromDays(45));
-        this.setEyeHeight(0.4F, 2.4F);
+        this.setEyeHeight(0.6F, 3.1F);
         this.setSizeX(0.45F, 2.35F);
         this.setSizeY(0.6F, 2.9F);
         this.setDiet(Diet.CARNIVORE.get());

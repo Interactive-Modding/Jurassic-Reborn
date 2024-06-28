@@ -4,8 +4,9 @@ import mod.reborn.server.entity.Diet;
 import mod.reborn.server.entity.dinosaur.SuchomimusEntity;
 import mod.reborn.server.period.TimePeriod;
 import net.minecraft.world.biome.Biome;
-import java.util.ArrayList;
 import net.minecraftforge.common.BiomeDictionary;
+
+import java.util.ArrayList;
 
 public class SuchomimusDinosaur extends Dinosaur {
     public static final double SPEED = 0.4F;
@@ -23,7 +24,7 @@ public class SuchomimusDinosaur extends Dinosaur {
         this.setStorage(27);
         this.setStrength(5, 30);
         this.setMaximumAge(fromDays(45));
-        this.setEyeHeight(0.45F, 1.6F);
+        this.setEyeHeight(0.45F, 3.2F);
         this.setSizeX(0.2F, 2.0F);
         this.setSizeY(0.4F, 3.2F);
         this.setDiet(Diet.PCARNIVORE.get());

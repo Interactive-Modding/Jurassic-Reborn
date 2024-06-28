@@ -4,9 +4,10 @@ package mod.reborn.server.dinosaur;
 import mod.reborn.server.entity.Diet;
 import mod.reborn.server.entity.dinosaur.DimorphodonEntity;
 import mod.reborn.server.period.TimePeriod;
-import java.util.ArrayList;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
+
+import java.util.ArrayList;
 
 public class DimorphodonDinosaur extends Dinosaur
 {
@@ -26,9 +27,9 @@ public class DimorphodonDinosaur extends Dinosaur
         this.setStrength(1, 5);
         this.setMaximumAge(fromDays(35));
         this.setAttackBias(80);
-        this.setEyeHeight(0.25F, 0.7F);
+        this.setEyeHeight(0.35F, 1.0F);
         this.setSizeX(0.15F, 1.0F);
-        this.setSizeY(0.35F, 1.35F);
+        this.setSizeY(0.35F, 1.0F);
         this.setStorage(9);
         this.setDiet((Diet.PCARNIVORE.get()));
         this.setBones("leg_bones", "neck", "ribs_and_spine", "shoulder_blade", "skull", "tail_vertebrae", "teeth", "wing_bones");

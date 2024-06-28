@@ -5,8 +5,9 @@ import mod.reborn.server.entity.Diet;
 import mod.reborn.server.entity.dinosaur.GiganotosaurusEntity;
 import mod.reborn.server.period.TimePeriod;
 import net.minecraft.world.biome.Biome;
-import java.util.ArrayList;
 import net.minecraftforge.common.BiomeDictionary;
+
+import java.util.ArrayList;
 
 public class GiganotosaurusDinosaur extends Dinosaur
 {
@@ -24,8 +25,8 @@ public class GiganotosaurusDinosaur extends Dinosaur
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(5, 35);
         this.setEyeHeight(0.6F, 4.8F);
-        this.setSizeX(0.2F, 4.0F);
-        this.setSizeY(0.5F, 5.8F);
+        this.setSizeX(0.2F, 3.6F);
+        this.setSizeY(0.5F, 3.6F);
         this.setMaximumAge(fromDays(60));
         this.setStorage(54);
         this.setAttackSpeed(2);

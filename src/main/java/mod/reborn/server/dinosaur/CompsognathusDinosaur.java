@@ -4,9 +4,10 @@ package mod.reborn.server.dinosaur;
 import mod.reborn.server.entity.Diet;
 import mod.reborn.server.entity.dinosaur.CompsognathusEntity;
 import mod.reborn.server.period.TimePeriod;
-import java.util.ArrayList;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
+
+import java.util.ArrayList;
 
 public class CompsognathusDinosaur extends Dinosaur
 {
@@ -26,7 +27,7 @@ public class CompsognathusDinosaur extends Dinosaur
         this.setStrength(1, 3);
         this.setMaximumAge(fromDays(20));
         this.setAttackBias(50);
-        this.setEyeHeight(0.2F, 0.5F);
+        this.setEyeHeight(0.25F, 0.55F);
         this.setSizeX(0.1F, 0.3F);
         this.setSizeY(0.25F, 0.55F);
         this.setStorage(9);

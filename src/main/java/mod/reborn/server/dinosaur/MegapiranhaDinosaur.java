@@ -6,8 +6,9 @@ import mod.reborn.server.entity.dinosaur.MegapiranhaEntity;
 import mod.reborn.server.food.FoodType;
 import mod.reborn.server.period.TimePeriod;
 import net.minecraft.world.biome.Biome;
-import java.util.ArrayList;
 import net.minecraftforge.common.BiomeDictionary;
+
+import java.util.ArrayList;
 
 public class MegapiranhaDinosaur extends Dinosaur
 {
@@ -26,7 +27,7 @@ public class MegapiranhaDinosaur extends Dinosaur
         this.setSpeed((SPEED -0.45), SPEED);
         this.setStrength(4, 8);
         this.setMaximumAge(fromDays(30));
-        this.setEyeHeight(0.35F, 0.35F);//TODO uh?
+        this.setEyeHeight(0.35F, 0.7F);//TODO uh?
         this.setSizeX(0.15F, 0.5F);
         this.setSizeY(0.15F, 0.7F);
         this.setStorage(18);

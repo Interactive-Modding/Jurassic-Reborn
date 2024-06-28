@@ -1,14 +1,13 @@
 package mod.reborn.server.dinosaur;
 
-import java.util.ArrayList;
-
 import mod.reborn.server.entity.Diet;
 import mod.reborn.server.entity.SleepTime;
 import mod.reborn.server.entity.dinosaur.DilophosaurusEntity;
 import mod.reborn.server.period.TimePeriod;
-
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
+
+import java.util.ArrayList;
 
 public class DilophosaurusDinosaur extends Dinosaur {
     public static final double SPEED = 0.4F;
@@ -25,7 +24,7 @@ public class DilophosaurusDinosaur extends Dinosaur {
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(2, 6);
         this.setMaximumAge(this.fromDays(40));
-        this.setEyeHeight(0.35F, 1.8F);
+        this.setEyeHeight(0.5F, 1.9F);
         this.setSizeX(0.4F, 1.2F);
         this.setSizeY(0.5F, 1.9F);
         this.setStorage(27);

@@ -1,15 +1,9 @@
 package mod.reborn.server.dinosaur;
 
-import java.util.ArrayList;
-
 import mod.reborn.server.api.Hybrid;
 import mod.reborn.server.entity.Diet;
 import mod.reborn.server.entity.dinosaur.RaphusrexEntity;
-import mod.reborn.server.entity.dinosaur.TyrannosaurusEntity;
 import mod.reborn.server.period.TimePeriod;
-
-import net.minecraft.world.biome.Biome;
-import net.minecraftforge.common.BiomeDictionary;
 
 public class RaphusrexDinosaur extends Dinosaur implements Hybrid {
     public static final double SPEED = 0.42F;
@@ -24,13 +18,12 @@ public class RaphusrexDinosaur extends Dinosaur implements Hybrid {
         this.setEggColorFemale(0x5d4625, 0x382014);
         this.setHealth(10, 80);
         this.setSpeed((SPEED -0.05), SPEED);
-        this.setAttackSpeed(2);
         this.setAttackSpeed(1.5);
         this.setStrength(5, 25);
         this.setMaximumAge(this.fromDays(60));
-        this.setEyeHeight(0.6F, 3.8F);
+        this.setEyeHeight(0.6F, 5.2F);
         this.setSizeX(0.2F, 3.0F);
-        this.setSizeY(0.4F, 4.0F);
+        this.setSizeY(0.4F, 3.6F);
         this.setStorage(54);
         this.setDiet(Diet.CARNIVORE.get());
         this.setBones("arm_bones", "foot_bones", "leg_bones", "neck_vertebrae", "pelvis", "ribcage", "shoulder", "skull", "tail_vertebrae", "tooth");

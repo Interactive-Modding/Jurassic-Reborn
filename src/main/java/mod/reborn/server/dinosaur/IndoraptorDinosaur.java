@@ -2,7 +2,6 @@ package mod.reborn.server.dinosaur;
 
 import mod.reborn.server.api.Hybrid;
 import mod.reborn.server.entity.Diet;
-import mod.reborn.server.entity.GrowthStage;
 import mod.reborn.server.entity.dinosaur.IndoraptorEntity;
 import mod.reborn.server.period.TimePeriod;
 import net.minecraft.util.ResourceLocation;
@@ -29,7 +28,7 @@ public class IndoraptorDinosaur extends Dinosaur implements Hybrid
         this.setMaximumAge(fromDays(30));
         this.setEyeHeight(0.55F, 5.4F);
         this.setSizeX(0.2F, 2.8F);
-        this.setSizeY(0.2F, 4F);
+        this.setSizeY(0.2F, 3.6F);
         this.setStorage(54);
         this.setAttackSpeed(1.6);
         this.setDiet((Diet.CARNIVORE.get()));

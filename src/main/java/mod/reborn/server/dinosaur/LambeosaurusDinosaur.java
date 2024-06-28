@@ -25,9 +25,9 @@ public class LambeosaurusDinosaur extends Dinosaur
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(5, 20);
         this.setMaximumAge(fromDays(50));
-        this.setEyeHeight(0.5F, 3.45F);
+        this.setEyeHeight(0.5F, 3.8F);
         this.setSizeX(0.2F, 2.8F);
-        this.setSizeY(0.3F, 4.25F);
+        this.setSizeY(0.3F, 3.5F);
         this.setStorage(45);
         this.setDiet((Diet.HERBIVORE.get()));
         this.setBones("cheek_teeth", "front_leg_bones", "hind_leg_bones", "neck_vertebrae", "shoulder", "pelvis", "ribcage", "skull", "tail_vertebrae");

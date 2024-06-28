@@ -4,8 +4,9 @@ import mod.reborn.server.entity.Diet;
 import mod.reborn.server.entity.dinosaur.ChilesaurusEntity;
 import mod.reborn.server.period.TimePeriod;
 import net.minecraft.world.biome.Biome;
-import java.util.ArrayList;
 import net.minecraftforge.common.BiomeDictionary;
+
+import java.util.ArrayList;
 
 public class ChilesaurusDinosaur extends Dinosaur {
     public static final double SPEED = 0.3F;
@@ -23,7 +24,7 @@ public class ChilesaurusDinosaur extends Dinosaur {
         this.setStorage(27);
         this.setStrength(1, 20);
         this.setMaximumAge(fromDays(45));
-        this.setEyeHeight(0.45F, 1.6F);
+        this.setEyeHeight(0.45F, 1.8F);
         this.setSizeX(0.2F, 1.4F);
         this.setSizeY(0.3F, 1.8F);
         this.setDiet(Diet.HERBIVORE.get());

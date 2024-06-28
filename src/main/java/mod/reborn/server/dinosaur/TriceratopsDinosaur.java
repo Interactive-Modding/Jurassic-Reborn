@@ -1,13 +1,12 @@
 package mod.reborn.server.dinosaur;
 
-import java.util.ArrayList;
-
 import mod.reborn.server.entity.Diet;
 import mod.reborn.server.entity.dinosaur.TriceratopsEntity;
 import mod.reborn.server.period.TimePeriod;
-
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
+
+import java.util.ArrayList;
 
 public class TriceratopsDinosaur extends Dinosaur {
     public static final double SPEED = 0.35F;
@@ -25,7 +24,7 @@ public class TriceratopsDinosaur extends Dinosaur {
         this.setHealth(10, 70);
         this.setStrength(5, 20);
         this.setMaximumAge(this.fromDays(45));
-        this.setEyeHeight(0.45F, 1.8F);
+        this.setEyeHeight(0.45F, 3.0F);
         this.setSizeX(0.15F, 2.5F);
         this.setSizeY(0.3F, 3.0F);
         this.setStorage(36);

@@ -4,8 +4,9 @@ import mod.reborn.server.entity.Diet;
 import mod.reborn.server.entity.dinosaur.ArsinoitheriumEntity;
 import mod.reborn.server.period.TimePeriod;
 import net.minecraft.world.biome.Biome;
-import java.util.ArrayList;
 import net.minecraftforge.common.BiomeDictionary;
+
+import java.util.ArrayList;
 
 public class ArsinoitheriumDinosaur extends Dinosaur {
     public static final double SPEED = 0.3F;
@@ -24,7 +25,7 @@ public class ArsinoitheriumDinosaur extends Dinosaur {
         this.setAttackSpeed(1.5);
         this.setStrength(5, 20);
         this.setMaximumAge(fromDays(45));
-        this.setEyeHeight(0.45F, 1.4F);
+        this.setEyeHeight(0.5F, 1.9F);
         this.setSizeX(0.35F, 1.6F);
         this.setSizeY(0.5F, 1.9F);
         this.setDiet(Diet.HERBIVORE.get());

@@ -25,7 +25,7 @@ public class MoganopterusDinosaur extends Dinosaur
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(1, 5);
         this.setMaximumAge(fromDays(40));
-        this.setEyeHeight(0.225F, 1.3F);
+        this.setEyeHeight(0.35F, 1.35F);
         this.setSizeX(0.15F, 1.0F);
         this.setSizeY(0.35F, 1.35F);
         this.setStorage(27);
