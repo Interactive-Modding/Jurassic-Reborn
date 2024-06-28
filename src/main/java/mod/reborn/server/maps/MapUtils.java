@@ -11,19 +11,19 @@ import java.util.Random;
 
 public class MapUtils {
 
-    private static final int MIN_DISTANCE =  5000;
-    private static final int MAX_DISTANCE = 15000;
+    private static final int MIN_DISTANCE = 5000;
+    private static final int MAX_DISTANCE = 10000;
 
+    private static BlockPos cachedPos = null;
 
     public static BlockPos getVisitorCenterPosition() {
-        StructureUtils.StructureData data = StructureUtils.getStructureData();
-        BlockPos pos = data.getVisitorCenterPosition();
-        if(pos ==  null) {
-            pos = generatePosition();
-            data.setVisitorCenterPosition(pos);
+        if(cachedPos == null) {
+            cachedPos = generatePosition();
         }
-        return pos;
+        return cachedPos;
     }
+
+
     public static BlockPos getIslaSornaLabPosition() {
         StructureUtils.StructureData data = StructureUtils.getStructureData();
         BlockPos pos = data.getIslaSornaLabPosition();
@@ -49,7 +49,7 @@ public class MapUtils {
         int range = MAX_DISTANCE - MIN_DISTANCE;
         BlockPos pos = null;
         for(int i = 0; i < 10000; i++) {
-            pos = new BlockPos(worldRandom.nextInt(range) + MIN_DISTANCE * (worldRandom.nextBoolean() ? 1 : -1), 0, worldRandom.nextInt(range) + MIN_DISTANCE * (worldRandom.nextBoolean() ? 1 : -1));
+            pos = new BlockPos(worldRandom.nextInt(range) + MIN_DISTANCE, 0, worldRandom.nextInt(range) + MIN_DISTANCE);
             if(Lists.newArrayList( Biomes.MUTATED_JUNGLE, Biomes.JUNGLE_EDGE, Biomes.MUTATED_JUNGLE_EDGE, Biomes.SAVANNA, Biomes.MUTATED_SAVANNA).contains(world.getBiome(pos))) {
                 return pos;
             }
@@ -76,7 +76,7 @@ public class MapUtils {
         BlockPos pos = null;
         for(int i = 0; i < 10000; i++) {
             pos = new BlockPos(worldRandom.nextInt(range) + MIN_DISTANCE * (worldRandom.nextBoolean() ? 1 : -1), 0, worldRandom.nextInt(range) + MIN_DISTANCE * (worldRandom.nextBoolean() ? 1 : -1));
-            if(Lists.newArrayList(Biomes.PLAINS,Biomes.FOREST,Biomes.FOREST_HILLS).contains(world.getBiome(pos))) {
+            if(Lists.newArrayList(Biomes.MESA, Biomes.MESA_ROCK, Biomes.MESA_CLEAR_ROCK, Biomes.MUTATED_MESA_ROCK,Biomes.MUTATED_MESA_CLEAR_ROCK).contains(world.getBiome(pos))) {
                 return pos;
             }
         }
