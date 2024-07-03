@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "rebornmod:cage",
+  "pattern": [
+    "BAB",
+    "ACA",
+    "BAB"
+  ],
+  "key": {
+    "B": {
+      "item": "minecraft:diamond",
+      "data": 0
+    },
+    "A": {
+      "item": "rebornmod:iron_rod",
+      "data": 0
+    },
+    "C": {
+      "item": "minecraft:lead",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "rebornmod:cage",
+    "data": 0
+  }
+}

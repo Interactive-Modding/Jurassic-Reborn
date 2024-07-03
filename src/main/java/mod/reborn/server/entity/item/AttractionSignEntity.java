@@ -228,7 +228,23 @@ public class AttractionSignEntity extends EntityHanging implements IEntityAdditi
         COELACANTH_POND_CORAL,
         COELACANTH_POND,
         PREHISTORIC_RIVER_PLANTS,
-        PREHISTORIC_RIVER;
+        PREHISTORIC_RIVER,
+        GYROSPHERE_STATION,
+        GYROSPHERE_STATION_PLANTS,
+        MONORAIL_STATION,
+        MONORAIL_STATION_PLANTS,
+        MUSEUM,
+        MUSEUM_PLANTS,
+        SAFARI_TOUR,
+        SAFARI_TOUR_PLANTS,
+        INDORAPTOR,
+        INDORAPTOR_VARIANT,
+        INDOMINUS_REX,
+        INDOMINUS_REX_VARIANT;
+
+
+
+
 
         public final int sizeX;
         public final int sizeY;

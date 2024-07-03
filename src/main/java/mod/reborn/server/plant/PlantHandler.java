@@ -31,6 +31,7 @@ public class PlantHandler {
     public static final Plant PHOENIX = new PhoenixPlant();
     public static final Plant WILD_POTATO = new WildPotatoPlant();
     public static final Plant ARAUCARIA = new AraucariaPlant();
+    public static final Plant MAGNOLIA = new MagnoliaPlant();
     public static final Plant BRISTLE_FERN = new BristleFernPlant();
     public static final Plant CINNAMON_FERN = new CinnamonFernPlant();
     public static final Plant TEMPSKYA = new TempskyaPlant();
@@ -91,6 +92,7 @@ public class PlantHandler {
         registerPlant(HIPPURITES_RADIOSUS);
         registerPlant(HELICONIA);
         registerPlant(RHAMNUS_SALIFOCIFUS);
+        registerPlant(MAGNOLIA);
     }
 
     public static Plant getPlantById(int id) {

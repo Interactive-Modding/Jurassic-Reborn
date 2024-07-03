@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "rebornmod:aquatic_cage",
+  "pattern": [
+    "BAB",
+    "ACA",
+    "BAB"
+  ],
+  "key": {
+    "B": {
+      "item": "minecraft:diamond",
+      "data": 0
+    },
+    "A": {
+      "item": "minecraft:string",
+      "data": 0
+    },
+    "C": {
+      "item": "minecraft:lead",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "rebornmod:aquatic_cage",
+    "data": 0
+  }
+}

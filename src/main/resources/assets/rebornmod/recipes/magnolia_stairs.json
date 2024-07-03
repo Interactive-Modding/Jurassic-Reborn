@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "rebornmod:magnolia_stairs",
+  "pattern": [
+    "A  ",
+    "AA ",
+    "AAA"
+  ],
+  "key": {
+    "A": {
+      "item": "rebornmod:magnolia_planks",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "rebornmod:magnolia_stairs",
+    "data": 0,
+    "count": 4
+  }
+}

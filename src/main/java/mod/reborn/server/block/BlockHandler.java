@@ -1,11 +1,18 @@
 package mod.reborn.server.block;
 
+import mod.reborn.RebornMod;
 import mod.reborn.server.api.SubBlocksBlock;
 import mod.reborn.server.block.entity.*;
+import mod.reborn.server.block.fence.ElectricFenceBaseBlock;
+import mod.reborn.server.block.fence.ElectricFencePoleBlock;
+import mod.reborn.server.block.fence.ElectricFenceWireBlock;
+import mod.reborn.server.block.fence.FenceType;
 import mod.reborn.server.block.machine.*;
 import mod.reborn.server.block.plant.*;
 import mod.reborn.server.block.tree.*;
 import mod.reborn.server.conf.RebornConfig;
+import mod.reborn.server.dinosaur.Dinosaur;
+import mod.reborn.server.entity.EntityHandler;
 import mod.reborn.server.item.ItemHandler;
 import mod.reborn.server.util.RegistryHandler;
 import net.minecraft.block.Block;
@@ -15,13 +22,6 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
-import mod.reborn.RebornMod;
-import mod.reborn.server.block.fence.ElectricFenceBaseBlock;
-import mod.reborn.server.block.fence.ElectricFencePoleBlock;
-import mod.reborn.server.block.fence.ElectricFenceWireBlock;
-import mod.reborn.server.block.fence.FenceType;
-import mod.reborn.server.dinosaur.Dinosaur;
-import mod.reborn.server.entity.EntityHandler;
 
 import java.util.*;
 
@@ -31,7 +31,6 @@ public class BlockHandler
     public static final Map<TreeType, AncientLogBlock> ANCIENT_LOGS = new HashMap<>();
     public static final Map<TreeType, AncientLeavesBlock> ANCIENT_LEAVES = new HashMap<>();
     public static final Map<TreeType, AncientSaplingBlock> ANCIENT_SAPLINGS = new HashMap<>();
-
     public static final Map<TreeType, AncientSlabHalfBlock> ANCIENT_SLABS = new HashMap<>();
     public static final Map<TreeType, AncientDoubleSlabBlock> ANCIENT_DOUBLE_SLABS = new HashMap<>();
     public static final Map<TreeType, AncientStairsBlock> ANCIENT_STAIRS = new HashMap<>();
@@ -61,20 +60,24 @@ public class BlockHandler
     public static final IceAgeShardBlock ICE_AGE_SHARD = new IceAgeShardBlock();
 
 
-
     public static final GypsumStoneBlock GYPSUM_STONE = new GypsumStoneBlock();
     public static final Block GYPSUM_COBBLESTONE = new BasicBlock(Material.ROCK).setHardness(1.5F);
+    public static final Block GYPSUM_COBBLESTONE_PATHWAY = new BasicBlock(Material.ROCK).setHardness(1.5F);
     public static final Block GYPSUM_BRICKS = new BasicBlock(Material.ROCK).setHardness(2.0F);
     public static final Block GYPSUM_PATHWAY = new BasicBlock(Material.ROCK).setHardness(2.0F);
-
     public static final Block GYPSUM_MIXED_PATH = new BasicBlock(Material.ROCK).setHardness(2.0F);
-
     public static final Block GYPSUM_TILES = new BasicBlock(Material.ROCK).setHardness(2.0F);
+    public static final Block REFINED_GYPSUM_PANEL = new BasicBlock(Material.ROCK).setHardness(2.0F);
+    public static final Block GYPSUM_STONE_PANEL = new BasicBlock(Material.ROCK).setHardness(2.0F);
 
 
 
     public static final Block REINFORCED_STONE = new BasicBlock(Material.ROCK).setHardness(2.0F);
+    public static final Block REINFORCED_STONE_TILES = new BasicBlock(Material.ROCK).setHardness(2.0F);
+    public static final Block REINFORCED_STONE_PATHWAY = new BasicBlock(Material.ROCK).setHardness(2.0F);
     public static final Block REINFORCED_BRICKS = new BasicBlock(Material.ROCK).setHardness(3.0F);
+    public static final Block REINFORCED_STONE_PANEL = new BasicBlock(Material.ROCK).setHardness(2.0F);
+
 
     public static final CultivatorTopBlock CULTIVATOR_TOP = new CultivatorTopBlock();
     public static final CultivatorBottomBlock CULTIVATOR_BOTTOM = new CultivatorBottomBlock();
@@ -202,8 +205,15 @@ public class BlockHandler
         registerBlock(GYPSUM_PATHWAY, "Gypsum Pathway");
         registerBlock(GYPSUM_MIXED_PATH, "Gypsum Mixed Path");
         registerBlock(GYPSUM_TILES, "Gypsum Tiles");
+        registerBlock(GYPSUM_COBBLESTONE_PATHWAY, "Gypsum Cobblestone Pathway");
+        registerBlock(REFINED_GYPSUM_PANEL, "Refined Gypsum Panel");
+        registerBlock(GYPSUM_STONE_PANEL,"Gypsum Stone Panel");
         registerBlock(REINFORCED_STONE, "Reinforced Stone");
         registerBlock(REINFORCED_BRICKS, "Reinforced Bricks");
+        registerBlock(REINFORCED_STONE_TILES, "Reinforced Stone Tiles");
+        registerBlock(REINFORCED_STONE_PATHWAY, "Reinforced Stone Pathway");
+        registerBlock(REINFORCED_STONE_PANEL,"Reinforced Stone Panel");
+
 
         registerBlock(AJUGINUCULA_SMITHII, "Ajuginucula Smithii");
         registerBlock(SMALL_ROYAL_FERN, "Small Royal Fern");

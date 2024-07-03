@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "rebornmod:reinforced_stone_pathway",
+  "pattern": [
+    "   ",
+    "AAA",
+    "AAA"
+  ],
+  "key": {
+    "A": {
+      "item": "rebornmod:reinforced_stone",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "rebornmod:reinforced_stone_pathway",
+    "data": 0,
+    "count": 6
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "rebornmod:magnolia_fence",
+  "pattern": [
+    "ABA",
+    "ABA"
+  ],
+  "key": {
+    "B": {
+      "item": "minecraft:stick",
+      "data": 0
+    },
+    "A": {
+      "item": "rebornmod:magnolia_planks",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "rebornmod:magnolia_fence",
+    "data": 0,
+    "count": 3
+  }
+}

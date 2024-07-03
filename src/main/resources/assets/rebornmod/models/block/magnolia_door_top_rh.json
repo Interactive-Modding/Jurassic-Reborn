@@ -1,0 +1,7 @@
+{
+  "parent": "block/door_top_rh",
+  "textures": {
+    "bottom": "rebornmod:blocks/door_magnolia_lower",
+    "top": "rebornmod:blocks/door_magnolia_upper"
+  }
+}

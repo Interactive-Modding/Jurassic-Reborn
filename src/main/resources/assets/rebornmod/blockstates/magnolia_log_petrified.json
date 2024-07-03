@@ -1,0 +1,18 @@
+{
+  "variants": {
+    "axis=y": {
+      "model": "rebornmod:magnolia_log_petrified"
+    },
+    "axis=z": {
+      "model": "rebornmod:magnolia_log_petrified",
+	  "x": 90
+    },
+    "axis=x": {
+      "model": "rebornmod:magnolia_log_petrified",
+      "x": 90, "y": 90
+    },
+    "axis=none": {
+      "model": "rebornmod:magnolia_petrified_bark"
+    }
+  }
+}

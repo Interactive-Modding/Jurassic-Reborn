@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "rebornmod:attraction_sign",
+  "ingredients": [
+    {
+      "item": "rebornmod:attraction_sign",
+      "data": 65
+    }
+  ],
+  "result": {
+    "item": "rebornmod:attraction_sign",
+    "data": 66
+  }
+}

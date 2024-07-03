@@ -1,22 +1,32 @@
 package mod.reborn.server.block.tree;
 
-import java.util.*;
-
+import com.google.common.collect.Lists;
 import mod.reborn.server.api.SubBlocksBlock;
 import mod.reborn.server.block.BlockHandler;
 import mod.reborn.server.item.block.AncientItemLeaves;
 import mod.reborn.server.tab.TabHandler;
-
-import com.google.common.collect.Lists;
-
-import net.minecraft.block.*;
-import net.minecraft.block.state.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockLeaves;
+import net.minecraft.block.BlockPlanks;
+import net.minecraft.block.SoundType;
+import net.minecraft.block.state.BlockStateContainer;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
-import net.minecraft.item.*;
-import net.minecraft.util.*;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.BlockRenderLayer;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.*;
-import net.minecraftforge.fml.relauncher.*;
+import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+import java.util.Random;
 
 public class AncientLeavesBlock extends BlockLeaves implements SubBlocksBlock {
     private TreeType treeType;
@@ -45,14 +55,14 @@ public class AncientLeavesBlock extends BlockLeaves implements SubBlocksBlock {
     public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
         if (!worldIn.isRemote) {
             if (state.getValue(CHECK_DECAY).booleanValue() && state.getValue(DECAYABLE).booleanValue()) {
-                
+
                 int maxBlocks = 7; // The maximum distance a log can be away from the leaf
-                
+
                 // The coords of the current leaf block
                 int posX = pos.getX();
                 int posY = pos.getY();
                 int posZ = pos.getZ();
-                
+
                 /*
                  * The blocks around this leaf block are stored in an 3D array for faster and easier access. For performance reasons this 3D array
                  * isn't a multidimensional one but a flat (1D) array, which means that the x, y, and z coordinates of the blocks represented have to
@@ -104,27 +114,27 @@ public class AncientLeavesBlock extends BlockLeaves implements SubBlocksBlock {
                      * maxBlocks. At the end it's known whether every leaf block around the center one is connected to a log, because then the number
                      * in the array is greater equal zero.
                      */
-                    
+
                     // Iterate as much times as maxBlocks is large
                     for (int i3 = 1; i3 <= maxBlocks; ++i3) {
-                        
+
                         // Iterate through the surroundings of the current leaf block
                         for (int offsetX = -maxBlocks; offsetX <= maxBlocks; ++offsetX) {
                             for (int offsetY = -maxBlocks; offsetY <= maxBlocks; ++offsetY) {
                                 for (int offsetZ = -maxBlocks; offsetZ <= maxBlocks; ++offsetZ) {
-                                    
+
                                     // If the block is a log or connected to one (so far)
                                     if (this.surroundings[(offsetX + halfCubeLength) * cubeLengthSq + (offsetY + halfCubeLength) * cubeLength + offsetZ
                                             + halfCubeLength] == i3 - 1) {
-                                        
+
                                         // Get all direct (orthogonal and diagonal) surroundings of the current block
                                         for (int dirX = -1; dirX <= 1; dirX++) {
                                             for (int dirY = -1; dirY <= 1; dirY++) {
                                                 for (int dirZ = -1; dirZ <= 1; dirZ++) {
-                                                    
+
                                                     // If all three numbers are zero, the current block would be checker, but it mustn't be
                                                     if (dirX != 0 || dirY != 0 || dirZ != 0) {
-                                                        
+
                                                         int index = (offsetX + halfCubeLength + dirX) * cubeLengthSq
                                                                 + (offsetY + halfCubeLength + dirY) * cubeLength + offsetZ + dirZ + halfCubeLength;
                                                         if (this.surroundings[index] == -2) {// If the surroundings are a leaf block
@@ -263,3 +273,4 @@ public class AncientLeavesBlock extends BlockLeaves implements SubBlocksBlock {
         return new AncientItemLeaves(this);
     }
 }
+

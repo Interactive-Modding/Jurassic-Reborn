@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "rebornmod:gypsum_cobblestone_pathway",
+  "pattern": [
+    "AA",
+    "AA"
+  ],
+  "key": {
+    "A": {
+      "item": "rebornmod:gypsum_cobblestone",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "rebornmod:gypsum_cobblestone_pathway",
+    "data": 0,
+    "count": 4
+  }
+}

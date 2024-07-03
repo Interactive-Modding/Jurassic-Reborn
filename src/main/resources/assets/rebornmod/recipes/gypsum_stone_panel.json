@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "rebornmod:gypsum_stone_panel",
+  "pattern": [
+    "AAA",
+    "AAA",
+    "AAA"
+  ],
+  "key": {
+    "A": {
+      "item": "rebornmod:gypsum_stone",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "rebornmod:gypsum_stone_panel",
+    "data": 0,
+    "count": 9
+  }
+}

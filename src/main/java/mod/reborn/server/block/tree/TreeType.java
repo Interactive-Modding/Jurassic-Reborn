@@ -2,15 +2,11 @@ package mod.reborn.server.block.tree;
 
 import mod.reborn.server.block.BlockHandler;
 import mod.reborn.server.item.ItemHandler;
+import mod.reborn.server.world.tree.*;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 import mod.reborn.server.plant.Plant;
 import mod.reborn.server.plant.PlantHandler;
-import mod.reborn.server.world.tree.AraucariaTreeGenerator;
-import mod.reborn.server.world.tree.CalamitesTreeGenerator;
-import mod.reborn.server.world.tree.GinkgoTreeGenerator;
-import mod.reborn.server.world.tree.PhoenixTreeGenerator;
-import mod.reborn.server.world.tree.PsaroniusTreeGenerator;
 
 import java.util.function.Supplier;
 
@@ -19,6 +15,7 @@ public enum TreeType {
     CALAMITES(PlantHandler.CALAMITES, new CalamitesTreeGenerator()),
     PSARONIUS(PlantHandler.PSARONIUS, new PsaroniusTreeGenerator()),
     PHOENIX(PlantHandler.PHOENIX, new PhoenixTreeGenerator(), 5, () -> new ItemStack(ItemHandler.PHOENIX_FRUIT)),
+    MAGNOLIA(PlantHandler.MAGNOLIA, new MagnoliaTreeGenerator()),
     ARAUCARIA(PlantHandler.ARAUCARIA, new AraucariaTreeGenerator());
 
     private WorldGenAbstractTree generator;

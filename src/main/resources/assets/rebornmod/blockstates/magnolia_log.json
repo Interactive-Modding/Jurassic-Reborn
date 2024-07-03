@@ -1,0 +1,18 @@
+{
+  "variants": {
+    "axis=y": {
+      "model": "rebornmod:magnolia_log"
+    },
+    "axis=z": {
+      "model": "rebornmod:magnolia_log",
+	  "x": 90
+    },
+    "axis=x": {
+      "model": "rebornmod:magnolia_log",
+      "x": 90, "y": 90
+    },
+    "axis=none": {
+      "model": "rebornmod:magnolia_bark"
+    }
+  }
+}

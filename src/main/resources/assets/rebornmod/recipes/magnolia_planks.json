@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "rebornmod:magnolia_planks",
+  "ingredients": [
+    {
+      "item": "rebornmod:magnolia_log",
+      "data": 0
+    }
+  ],
+  "result": {
+    "item": "rebornmod:magnolia_planks",
+    "data": 0,
+    "count": 4
+  }
+}

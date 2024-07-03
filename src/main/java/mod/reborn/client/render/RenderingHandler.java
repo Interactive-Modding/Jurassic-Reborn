@@ -164,6 +164,9 @@ public enum RenderingHandler {
         registerBlockRenderer(HELICONIA, "heliconia");
 
         registerBlockRenderer(REINFORCED_STONE, "reinforced_stone");
+        registerBlockRenderer(REINFORCED_STONE_TILES, "reinforced_stone_tiles");
+        registerBlockRenderer(REINFORCED_STONE_PATHWAY, "reinforced_stone_pathway");
+        registerBlockRenderer(REINFORCED_STONE_PANEL,"reinforced_stone_panel");
         registerBlockRenderer(REINFORCED_BRICKS, "reinforced_bricks");
 
         registerBlockRenderer(CULTIVATOR_BOTTOM, "cultivate_bottom");
@@ -186,10 +189,13 @@ public enum RenderingHandler {
 //        registerBlockRenderer(JPMAINGATEBLOCK, "jp_maingate");
         registerBlockRenderer(GYPSUM_STONE, "gypsum_stone");
         registerBlockRenderer(GYPSUM_COBBLESTONE, "gypsum_cobblestone");
+        registerBlockRenderer(GYPSUM_COBBLESTONE_PATHWAY, "gypsum_cobblestone_pathway");
         registerBlockRenderer(GYPSUM_BRICKS, "gypsum_bricks");
         registerBlockRenderer(GYPSUM_PATHWAY, "gypsum_pathway");
         registerBlockRenderer(GYPSUM_MIXED_PATH, "gypsum_mixed_path");
         registerBlockRenderer(GYPSUM_TILES, "gypsum_tiles");
+        registerBlockRenderer(REFINED_GYPSUM_PANEL, "refined_gypsum_panel");
+        registerBlockRenderer(GYPSUM_STONE_PANEL, "gypsum_stone_panel");
         registerBlockRenderer(SKULL_DISPLAY, "skull_display");
         registerBlockRenderer(BlockHandler.DISPLAY_BLOCK, "display_block");
 
@@ -456,7 +462,10 @@ public enum RenderingHandler {
         registerItemRenderer(REMINGTON, "remington");
         registerItemRenderer(SPAS_12, "spas_12");
         registerItemRenderer(UTS15, "uts15");
+//        registerItemRenderer(CAPTURE_GUN,"capture_gun");
         registerItemRenderer(BULLET, "bullet");
+        registerItemRenderer(CAGE,"cage");
+        registerItemRenderer(AQUATIC_CAGE,"aquatic_cage");
 
         registerItemRenderer(WEST_INDIAN_LILAC_BERRIES);
 
@@ -594,31 +603,68 @@ public enum RenderingHandler {
         RenderingRegistry.registerEntityRenderingHandler(EntityCrab.class, CrabRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityShark.class, SharkRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(BulletEntity.class, NullRenderer::new);
+//        RenderingRegistry.registerEntityRenderingHandler(CaptureNetEntity.class, NullRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(TranquilizerDartEntity.class, NullRenderer::new);
     }
 
     public void init() {
         GuiAppRegistry.register();
         BlockColors blockColors = mc.getBlockColors();
-        blockColors.registerBlockColorHandler((state, access, pos, tintIndex) -> pos != null ? BiomeColorHelper.getGrassColorAtPos(access, pos) : 0xFFFFFF, MOSS);
-
-        for (Map.Entry<TreeType, AncientLeavesBlock> entry : ANCIENT_LEAVES.entrySet()) {
-            blockColors.registerBlockColorHandler((state, access, pos, tintIndex) -> pos == null ? ColorizerFoliage.getFoliageColorBasic() : BiomeColorHelper.getFoliageColorAtPos(access, pos), entry.getValue());
-        }
-
-        blockColors.registerBlockColorHandler((state, access, pos, tintIndex) -> pos == null ? ColorizerFoliage.getFoliageColorBasic() : BiomeColorHelper.getFoliageColorAtPos(access, pos), MOSS);
-
-        if(RebornConfig.VEHICLES.tourRailBlockEnabled)
-            blockColors.registerBlockColorHandler((state, access, pos, tintIndex) -> tintIndex == 1 ? ((TourRailBlock)state.getBlock()).getSpeedType().getColor() : -1, BlockHandler.TOUR_RAIL_SLOW, BlockHandler.TOUR_RAIL_MEDIUM, BlockHandler.TOUR_RAIL_FAST);
-
         ItemColors itemColors = ClientProxy.MC.getItemColors();
-        if(RebornConfig.VEHICLES.tourRailBlockEnabled)
-            itemColors.registerItemColorHandler((stack, tintIndex) -> tintIndex == 1 ? ((TourRailBlock)((ItemBlock)stack.getItem()).getBlock()).getSpeedType().getColor() : -1, BlockHandler.TOUR_RAIL_SLOW, BlockHandler.TOUR_RAIL_MEDIUM, BlockHandler.TOUR_RAIL_FAST);
 
+        blockColors.registerBlockColorHandler(
+                (state, access, pos, tintIndex) -> pos != null ? BiomeColorHelper.getGrassColorAtPos(access, pos) : 0xFFFFFF,
+                MOSS
+        );
 
         for (Map.Entry<TreeType, AncientLeavesBlock> entry : ANCIENT_LEAVES.entrySet()) {
-            itemColors.registerItemColorHandler((stack, tintIndex) -> ColorizerFoliage.getFoliageColorBasic(), entry.getValue());
+            TreeType treeType = entry.getKey();
+            AncientLeavesBlock leavesBlock = entry.getValue();
+            if (treeType == TreeType.MAGNOLIA) {
+                blockColors.registerBlockColorHandler(
+                        (state, access, pos, tintIndex) -> 0xFFFFFF, // Pink color in hexadecimal
+                        leavesBlock
+                );
+            } else {
+                blockColors.registerBlockColorHandler(
+                        (state, access, pos, tintIndex) -> pos == null ? ColorizerFoliage.getFoliageColorBasic() : BiomeColorHelper.getFoliageColorAtPos(access, pos),
+                        leavesBlock
+                );
+            }
         }
+
+        blockColors.registerBlockColorHandler(
+                (state, access, pos, tintIndex) -> pos == null ? ColorizerFoliage.getFoliageColorBasic() : BiomeColorHelper.getFoliageColorAtPos(access, pos),
+                MOSS
+        );
+
+        if (RebornConfig.VEHICLES.tourRailBlockEnabled) {
+            blockColors.registerBlockColorHandler(
+                    (state, access, pos, tintIndex) -> tintIndex == 1 ? ((TourRailBlock) state.getBlock()).getSpeedType().getColor() : -1,
+                    BlockHandler.TOUR_RAIL_SLOW, BlockHandler.TOUR_RAIL_MEDIUM, BlockHandler.TOUR_RAIL_FAST
+            );
+            itemColors.registerItemColorHandler(
+                    (stack, tintIndex) -> tintIndex == 1 ? ((TourRailBlock) ((ItemBlock) stack.getItem()).getBlock()).getSpeedType().getColor() : -1,
+                    BlockHandler.TOUR_RAIL_SLOW, BlockHandler.TOUR_RAIL_MEDIUM, BlockHandler.TOUR_RAIL_FAST
+            );
+        }
+
+        for (Map.Entry<TreeType, AncientLeavesBlock> entry : ANCIENT_LEAVES.entrySet()) {
+            TreeType treeType = entry.getKey();
+            AncientLeavesBlock leavesBlock = entry.getValue();
+            if (treeType == TreeType.MAGNOLIA) {
+                itemColors.registerItemColorHandler(
+                        (stack, tintIndex) -> 0xFFC0CB, // Pink color in hexadecimal
+                        leavesBlock
+                );
+            } else {
+                itemColors.registerItemColorHandler(
+                        (stack, tintIndex) -> ColorizerFoliage.getFoliageColorBasic(),
+                        leavesBlock
+                );
+            }
+        }
+
 
         itemColors.registerItemColorHandler((stack, tintIndex) -> {
             DinosaurSpawnEggItem item = (DinosaurSpawnEggItem) stack.getItem();

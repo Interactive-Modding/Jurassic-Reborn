@@ -188,11 +188,19 @@ attraction_sign.laboratory_plants.name=Laboratory With Plants
 attraction_sign.coelacanth_pond.name=Coelacanth Pond
 attraction_sign.coelacanth_pond_coral.name=Coelacanth Pond With Plants
 attraction_sign.prehistoric_river.name=Prehistoric River
-attraction_sign.prehistoric_river_plants.name=Prehistoric River with Plants
-
-
-
-
+attraction_sign.prehistoric_river_plants.name=Prehistoric River With Plants
+attraction_sign.gyrosphere_station.name=Gyrosphere Station
+attraction_sign.gyrosphere_station_plants.name=Gyrosphere Station With Plants
+attraction_sign.monorail_station.name=Monorail Station
+attraction_sign.monorail_station_plants.name=Monorail Station With Plants
+attraction_sign.museum.name=Museum
+attraction_sign.museum_plants.name=Museum With Plants
+attraction_sign.safari_tour.name=Safari Tour
+attraction_sign.safari_tour_plants.name=Safari Tour With Plants
+attraction_sign.indoraptor.name=Indoraptor 
+attraction_sign.indoraptor_variant.name=Indoraptor Variant
+attraction_sign.indominus_rex.name=Indominus Rex 
+attraction_sign.indominus_rex_variant.name=Indominus Rex Variant
 
 item.goat_raw.name=Raw Goat
 item.goat_cooked.name=Cooked Goat
@@ -322,6 +330,8 @@ item.remington.name=Remington-870
 item.spas_12.name=Franchi SPAS-12
 item.uts15.name=UTAS UTS-15
 item.bullet.name=Bullet
+item.cage.name=Cage
+item.aquatic_cage.name=Aquatic Cage
 
 item.dino_egg.name={dino} Egg
 item.hatched_egg.name=Hatched {dino} Egg
@@ -468,11 +478,14 @@ tile.tour_rail_medium.name=Medium Tour Vehicle Track
 tile.tour_rail_fast.name=Fast Tour Vehicle Track
 
 tile.gypsum_stone.name=Gypsum Stone
+tile.gypsum_stone_panel.name=Gypsum Stone Panel
 tile.gypsum_cobblestone.name=Gypsum Cobblestone
+tile.gypsum_cobblestone_pathway.name=Gypsum Cobblestone Pathway
 tile.gypsum_bricks.name=Gypsum Bricks
 tile.gypsum_pathway.name=Gypsum Pathway
 tile.gypsum_mixed_path.name=Gypsum Mixed Path
 tile.gypsum_tiles.name=Gypsum Tiles
+tile.refined_gypsum_panel.name=Refined Gypsum Panel
 
 tile.ginkgo_sapling.name=Ginkgo Sapling
 tile.ginkgo_planks.name=Ginkgo Planks
@@ -498,6 +511,18 @@ tile.araucaria_fence.name=Araucaria Fence
 tile.araucaria_fence_gate.name=Araucaria Fence Gate
 tile.araucaria_door.name=Araucaria Door
 item.araucaria_door_item.name=Araucaria Door
+
+tile.magnolia_sapling.name=Magnolia Sapling
+tile.magnolia_planks.name=Magnolia Planks
+tile.magnolia_log.name=Magnolia Log
+tile.magnolia_leaves.name=Magnolia Leaves
+tile.magnolia_stairs.name=Magnolia Stairs
+tile.magnolia_slab.name=Magnolia Slab
+tile.magnolia_log_petrified.name=Petrified Magnolia Log
+tile.magnolia_fence.name=Magnolia Fence
+tile.magnolia_fence_gate.name=Magnolia Fence Gate
+tile.magnolia_door.name=Magnolia Door
+item.magnolia_door_item.name=Magnolia Door
 
 tile.calamites_sapling.name=Calamites Sapling
 tile.calamites_leaves.name=Calamites Leaves
@@ -575,12 +600,17 @@ tile.heliconia.name=Heliconia
 tile.rhamnus_salicifolius.name=Rhamnus Salicifolius
 
 tile.reinforced_stone.name=Reinforced Stone
+tile.reinforced_stone_pathway.name=Reinforced Stone Pathway
+tile.reinforced_stone_tiles.name=Reinforced Stone Tiles
 tile.reinforced_bricks.name=Reinforced Bricks
+tile.reinforced_stone_panel.name=Reinforced Stone Panel
+
 
 tile.cultivate.name={color} Cultivator
 tile.cultivator.name=Cultivator
 
 tile.clear_glass.name=Clear Glass
+tile.skull_display_block.name=Skull Display Block
 
 tile.feeder.name=Feeder
 tile.bug_crate.name=Bug Farming Crate
@@ -655,6 +685,7 @@ plants.stylophyllopsis.name=Stylophyllopsis
 plants.hippurites_radiosus.name=Hippurites Radiosus
 plants.heliconia.name=Heliconia
 plants.rhamnus_salifocifus.name=Rhamnus Salifocifus
+plants.magnolia.name=Magnolia
 
 //Containers ==================================================
 container.cleaning_station=Cleaning Station
@@ -707,6 +738,8 @@ stand.placed.name=placed
 pose.name=Pose
 lore.change_variant.name=Shift Right Click in air to change the pose
 type.standchange.name=This skull will now spawn {mode} blocks.
+tooltip.cage.stored=Stored: 
+tooltip.cage.empty=Empty
 
 color.red.name=Red
 color.orange.name=Orange

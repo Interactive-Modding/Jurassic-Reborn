@@ -8,10 +8,7 @@ import mod.reborn.server.dinosaur.Dinosaur;
 import mod.reborn.server.entity.DinosaurEntity;
 import mod.reborn.server.entity.EntityHandler;
 import mod.reborn.server.item.block.AncientDoorItem;
-import mod.reborn.server.item.guns.Glock;
-import mod.reborn.server.item.guns.Remington;
-import mod.reborn.server.item.guns.SPAS12;
-import mod.reborn.server.item.guns.UTS15;
+import mod.reborn.server.item.guns.*;
 import mod.reborn.server.tab.TabHandler;
 import mod.reborn.server.util.RegistryHandler;
 import net.minecraft.block.Block;
@@ -296,6 +293,11 @@ public class ItemHandler {
     public static final SPAS12 SPAS_12 = new SPAS12();
     public static final UTS15 UTS15 = new UTS15();
     public static final Bullet BULLET = new Bullet();
+    public static final Cage CAGE = new Cage();
+    public static final Aquatic_Cage AQUATIC_CAGE = new Aquatic_Cage();
+//    public static final CaptureGun CAPTURE_GUN = new CaptureGun();
+
+
     //public static final Bullet BULLET_PACK_12 = new Bullet();
 
     public static void init() {
@@ -457,7 +459,10 @@ public class ItemHandler {
         registerItem(REMINGTON, "remington");
         registerItem(SPAS_12, "spas_12");
         registerItem(UTS15, "uts15");
+//        registerItem(CAPTURE_GUN,"Capture Gun");
         registerItem(BULLET, "Bullet");
+        registerItem(CAGE, "Cage");
+        registerItem(AQUATIC_CAGE, "Aquatic Cage");
       // registerItem(BULLET_PACK_12, "Bullet_Pack");
         for (TreeType type : TreeType.values()) {
             registerTreeType(type);
