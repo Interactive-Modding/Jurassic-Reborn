@@ -23,7 +23,7 @@ public class SegisaurusDinosaur extends Dinosaur
         this.setEggColorMale(0x834B4C, 0x4B8FB5);
         this.setEggColorFemale(0xCEEE99, 0x776343);
         this.setHealth(4, 14);
-        this.setStrength(3, 7);
+        this.setStrength(1, 7);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setMaximumAge(fromDays(30));
         this.setEyeHeight(0.35F, 0.85F);

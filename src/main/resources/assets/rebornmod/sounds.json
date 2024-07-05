@@ -196,6 +196,18 @@
       "rebornmod:dinosaurs/diplodocus/diplodocus_living_8",
       "rebornmod:dinosaurs/diplodocus/diplodocus_living_9"
     ]
+},
+  "dimetrodon_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/dimetrodon/dimetrodon_living_1"
+    ]
+  },
+  "dimetrodon_roar": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/dimetrodon/dimetrodon_roar_1"
+    ]
   },
   "diplodocus_death": {
     "category": "hostile",
@@ -314,6 +326,34 @@
         "sounds": [
             "rebornmod:dinosaurs/coelurus/coelurus_threat_1"
         ]
+},
+  "paraceratherium_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/paraceratherium/paraceratherium_living_01",
+      "rebornmod:dinosaurs/paraceratherium/paraceratherium_living_02",
+      "rebornmod:dinosaurs/paraceratherium/paraceratherium_living_03"
+    ]
+  },
+  "paraceratherium_death": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/paraceratherium/paraceratherium_death"
+    ]
+  },
+  "paraceratherium_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/paraceratherium/paraceratherium_hurt_01",
+      "rebornmod:dinosaurs/paraceratherium/paraceratherium_hurt_02"
+    ]
+},
+    "paraceratherium_threat":{
+        "category": "hostile",
+        "sounds": [
+      "rebornmod:dinosaurs/paraceratherium/paraceratherium_threat_01",
+      "rebornmod:dinosaurs/paraceratherium/paraceratherium_threat_02"
+       ]
 },
   "segisaurus_living": {
     "category": "hostile",

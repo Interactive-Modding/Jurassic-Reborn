@@ -1,32 +1,12 @@
 package mod.reborn.client.render.entity;
 
-import mod.reborn.server.entity.dinosaur.AllosaurusEntity;
-import mod.reborn.server.entity.dinosaur.CompsognathusEntity;
-import mod.reborn.server.entity.dinosaur.ParasaurolophusEntity;
-import mod.reborn.server.entity.dinosaur.DeinotheriumEntity;
-import mod.reborn.server.entity.dinosaur.SmilodonEntity;
-import mod.reborn.server.entity.dinosaur.SpinoraptorEntity;
-import mod.reborn.server.entity.dinosaur.TitanisEntity;
-import mod.reborn.server.entity.dinosaur.BaryonyxEntity;
-import mod.reborn.server.entity.dinosaur.IndoraptorEntity;
-import mod.reborn.server.entity.dinosaur.DiplodocusEntity;
-import mod.reborn.server.entity.dinosaur.CeratosaurusEntity;
-import mod.reborn.server.entity.dinosaur.AnkylodocusEntity;
-import mod.reborn.server.entity.dinosaur.CamarasaurusEntity;
-import mod.reborn.server.entity.dinosaur.BrachiosaurusEntity;
-import mod.reborn.server.entity.dinosaur.AnkylosaurusEntity;
-import mod.reborn.server.entity.dinosaur.ApatosaurusEntity;
-import mod.reborn.server.entity.dinosaur.OviraptorEntity;
-import mod.reborn.server.entity.dinosaur.ChasmosaurusEntity;
-import mod.reborn.server.entity.dinosaur.StyracosaurusEntity;
-import mod.reborn.server.entity.dinosaur.SinoceratopsEntity;
-import mod.reborn.server.entity.dinosaur.TriceratopsEntity;
-import mod.reborn.server.entity.dinosaur.MicroceratusEntity;
-import mod.reborn.server.entity.dinosaur.ProtoceratopsEntity;
-import mod.reborn.server.entity.dinosaur.VectipeltaEntity;
+import mod.reborn.client.render.entity.dinosaur.DinosaurRenderInfo;
+import mod.reborn.server.dinosaur.Dinosaur;
+import mod.reborn.server.entity.DinosaurEntity;
+import mod.reborn.server.entity.GrowthStage;
+import mod.reborn.server.entity.dinosaur.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.entity.layers.LayerRenderer;
@@ -35,15 +15,8 @@ import net.minecraft.client.renderer.texture.TextureUtil;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import mod.reborn.client.render.entity.dinosaur.DinosaurRenderInfo;
-import mod.reborn.server.dinosaur.Dinosaur;
-import mod.reborn.server.entity.DinosaurEntity;
-import mod.reborn.server.entity.GrowthStage;
-import mod.reborn.server.entity.dinosaur.MammothEntity;
-
 
 import java.awt.*;
-import java.sql.Time;
 import java.util.Random;
 
 @SideOnly(Side.CLIENT)
@@ -192,6 +165,9 @@ public class DinosaurRenderer extends RenderLiving<DinosaurEntity> {
         }
         if(entity instanceof VectipeltaEntity && !entity.isSkeleton()) {
             return ((VectipeltaEntity)entity).getTexture();
+        }
+        if(entity instanceof ParaceratheriumEntity && !entity.isSkeleton()) {
+            return ((ParaceratheriumEntity)entity).getTexture();
         }
 
 

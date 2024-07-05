@@ -1,11 +1,10 @@
 package mod.reborn.client.sound;
 
 import com.google.common.collect.Lists;
-import net.minecraft.client.audio.Sound;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundEvent;
 import mod.reborn.RebornMod;
 import mod.reborn.server.util.RegistryHandler;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundEvent;
 
 import java.util.List;
 
@@ -35,6 +34,15 @@ public class SoundHandler {
     public static final SoundEvent DREADNOUGHTUS_HURT = create("dreadnoughtus_hurt");
     public static final SoundEvent DREADNOUGHTUS_THREAT = create("dreadnoughtus_threat");
     public static final SoundEvent DREADNOUGHTUS_MATING = create("dreadnoughtus_mate_call");
+
+    public static final SoundEvent PARACERATHERIUM_LIVING = create("paraceratherium_living");
+    public static final SoundEvent PARACERATHERIUM_DEATH = create("paraceratherium_death");
+    public static final SoundEvent PARACERATHERIUM_HURT = create("paraceratherium_hurt");
+    public static final SoundEvent PARACERATHERIUM_THREAT = create("paraceratherium_threat");
+
+    public static final SoundEvent DIMETRODON_LIVING = create("dimetrodon_living");
+    public static final SoundEvent DIMETRODON_ROAR = create("dimetrodon_roar");
+
 
     public static final SoundEvent INDORAPTOR_LIVING = create("indoraptor_living");
     public static final SoundEvent INDORAPTOR_CALLING = create("indoraptor_call");

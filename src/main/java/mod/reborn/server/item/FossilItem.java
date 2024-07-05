@@ -1,57 +1,41 @@
 package mod.reborn.server.item;
 
-import java.util.*;
-
 import com.google.common.collect.Lists;
 import mod.reborn.server.api.GrindableItem;
 import mod.reborn.server.api.Hybrid;
-import mod.reborn.server.dinosaur.*;
-import mod.reborn.server.tab.TabHandler;
-import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.world.World;
-import org.apache.commons.lang3.tuple.Pair;
-import mod.reborn.server.entity.EntityHandler;
-
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Rotations;
-import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.text.ChatType;
-import net.minecraft.util.text.TextComponentString;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
-import net.minecraft.item.ItemBlock;
-import mod.reborn.server.entity.dinosaur.TyrannosaurusEntity;
 import mod.reborn.server.block.BlockHandler;
-import mod.reborn.server.block.entity.DisplayBlockEntity;
 import mod.reborn.server.block.entity.SkullDisplayEntity;
-import com.sun.javafx.geom.Vec2d;
+import mod.reborn.server.dinosaur.*;
+import mod.reborn.server.entity.EntityHandler;
+import mod.reborn.server.tab.TabHandler;
+import mod.reborn.server.util.LangUtils;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
-
-
-
-
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.NonNullList;
+import net.minecraft.util.*;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.ChatType;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import mod.reborn.server.util.LangUtils;
+import org.apache.commons.lang3.tuple.Pair;
 
 import javax.vecmath.Vector2d;
+import java.util.*;
 
 public class FossilItem extends Item implements GrindableItem {
     public static Map<String, List<Dinosaur>> fossilDinosaurs = new HashMap<>();
@@ -395,6 +379,10 @@ public class FossilItem extends Item implements GrindableItem {
             lore.add(TextFormatting.WHITE + LangUtils.translate("lore.change_variant.name"));
         }
         if(((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == TitanisDinosaur.class) {
+            lore.add(TextFormatting.GOLD + LangUtils.translate("pose.name") + ": " + LangUtils.getStandType(getHasStand(stack)));
+            lore.add(TextFormatting.WHITE + LangUtils.translate("lore.change_variant.name"));
+        }
+        if(((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == ParaceratheriumDinosaur.class) {
             lore.add(TextFormatting.GOLD + LangUtils.translate("pose.name") + ": " + LangUtils.getStandType(getHasStand(stack)));
             lore.add(TextFormatting.WHITE + LangUtils.translate("lore.change_variant.name"));
         }
@@ -998,6 +986,49 @@ public class FossilItem extends Item implements GrindableItem {
             }
         }
         if (!player.world.isRemote && player.canPlayerEdit(pos, side, stack) && world.mayPlace(block, pos, false, side, (Entity) null) && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == TitanisDinosaur.class) {
+
+            if (side == EnumFacing.DOWN)
+            {
+                return EnumActionResult.FAIL;
+            }
+
+            if (block.canPlaceBlockAt(world, pos)) {
+                IBlockState blockstatePlacement = block.getStateForPlacement(world, pos, side, hitX, hitY, hitZ, /*meta*/ 0, player, hand);
+                if (!world.setBlockState(pos, blockstatePlacement, 11))
+                    return EnumActionResult.FAIL;
+
+                IBlockState state = world.getBlockState(pos);
+                if (state.getBlock() == block)
+                {
+                    ItemBlock.setTileEntityNBT(world, player, pos, stack);
+                    block.onBlockPlacedBy(world, pos, state, player, stack);
+
+                    if (player instanceof EntityPlayerMP)
+                        CriteriaTriggers.PLACED_BLOCK.trigger((EntityPlayerMP) player, pos, stack);
+                }
+
+                world.playSound(null, pos, SoundType.STONE.getPlaceSound(), SoundCategory.BLOCKS, (SoundType.STONE.getVolume() + 1.0F) / 2.0F, SoundType.STONE.getPitch() * 0.8F);
+                SkullDisplayEntity tile = (SkullDisplayEntity) world.getTileEntity(pos);
+
+                if (tile != null) {
+                    tile.setModel(stack.getItemDamage(), !this.isFresh(), getHasStand(stack));
+                    EnumFacing.Axis axis = side.getAxis();
+                    if (axis == EnumFacing.Axis.Y) {
+                        tile.setAngle(angleToPlayer(pos, new Vector2d(player.posX, player.posZ)));
+                    }else if(axis == EnumFacing.Axis.X) {
+                        tile.setAngle((short) side.getHorizontalAngle());
+                    }else if(axis == EnumFacing.Axis.Z) {
+                        tile.setAngle((short) (180 + side.getHorizontalAngle()));
+                    }
+                    world.notifyBlockUpdate(pos, state, state, 0);
+                    tile.markDirty();
+                    stack.shrink(1);
+
+                }
+
+            }
+        }
+        if (!player.world.isRemote && player.canPlayerEdit(pos, side, stack) && world.mayPlace(block, pos, false, side, (Entity) null) && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == ParaceratheriumDinosaur.class) {
 
             if (side == EnumFacing.DOWN)
             {
@@ -3735,6 +3766,15 @@ public class FossilItem extends Item implements GrindableItem {
             }
         }
         if (player.isSneaking() && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == TitanisDinosaur.class) {
+            boolean oldType = getHasStand(stack);
+            boolean type = changeStandType(stack);
+            if (type != oldType && world.isRemote) {
+                TextComponentString change = new TextComponentString(LangUtils.translate(LangUtils.STAND_CHANGE.get("type")).replace("{mode}", LangUtils.getStandType(type)));
+                change.getStyle().setColor(TextFormatting.YELLOW);
+                Minecraft.getMinecraft().ingameGUI.addChatMessage(ChatType.GAME_INFO, change);
+            }
+        }
+        if (player.isSneaking() && ((FossilItem) stack.getItem()).getBoneType().equals("skull") && ((FossilItem) stack.getItem()).getDinosaur(stack).getClass() == ParaceratheriumDinosaur.class) {
             boolean oldType = getHasStand(stack);
             boolean type = changeStandType(stack);
             if (type != oldType && world.isRemote) {

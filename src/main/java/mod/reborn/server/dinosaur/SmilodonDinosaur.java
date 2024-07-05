@@ -23,7 +23,7 @@ public class SmilodonDinosaur extends Dinosaur {
         this.setSpeed((SPEED -0.05), SPEED);
         this.setAttackSpeed(1.9);
         this.setHealth(6, 30);
-        this.setStrength(4, 10);
+        this.setStrength(2, 10);
         this.setMaximumAge(this.fromDays(45));
         this.setEyeHeight(0.45F, 1.8F);
         this.setSizeX(0.5F, 1.0F);

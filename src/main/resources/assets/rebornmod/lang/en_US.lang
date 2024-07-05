@@ -108,6 +108,7 @@ entity.rebornmod.ankylodocus.name=Ankylodocus
 entity.rebornmod.camarasaurus.name=Camarasaurus
 entity.rebornmod.dimetrodon.name=Dimetrodon
 entity.rebornmod.vectipelta.name=Vectipelta
+entity.rebornmod.paraceratherium.name=Paraceratherium
 
 entity.rebornmod.goat.name=Goat
 entity.rebornmod.jeep_wrangler.name=Red Jeep Wrangler
@@ -197,9 +198,9 @@ attraction_sign.museum.name=Museum
 attraction_sign.museum_plants.name=Museum With Plants
 attraction_sign.safari_tour.name=Safari Tour
 attraction_sign.safari_tour_plants.name=Safari Tour With Plants
-attraction_sign.indoraptor.name=Indoraptor 
+attraction_sign.indoraptor.name=Indoraptor
 attraction_sign.indoraptor_variant.name=Indoraptor Variant
-attraction_sign.indominus_rex.name=Indominus Rex 
+attraction_sign.indominus_rex.name=Indominus Rex
 attraction_sign.indominus_rex_variant.name=Indominus Rex Variant
 
 item.goat_raw.name=Raw Goat
@@ -1019,6 +1020,9 @@ info.ankylodocus.name=Ankylodocus is a hereditarily changed types of dinosaur, m
 info.camarasaurus.name=One of the most common sauropods, Camarasaurus lived in North America during the Late Jurassic. It had very strong teeth, and little evidence of gastroliths (gizzard stones), implying that it may have processed its food to some degree before swallowing it. Its diet would mostly have consisted of tough, fibrous plants.
 info.dimetrodon.name=Dimetrodon was a large synapsid from Late Permian Europe and America. The Dimetrodon's most defining trait was their massively extended vertebrae that formed a skin-webbed sail was used to warm them up and attract mates.  Its name means "two measures of teeth", and refers to the two types of teeth in its mouth: Shorter teeth, and longer teeth.
 info.vectipelta.name=Vectipelta is a genus of ankylosaurid dinosaur discovered in New Mexico, known for its well-preserved skull and body armor. It lived during the Late Cretaceous period, approximately 75 million years ago, and its name means "spear shield" in reference to its formidable defensive adaptations. Vectipelta represents an important addition to our understanding of armored dinosaurs and their evolutionary adaptations.
+info.paraceratherium.name=Paraceratherium, also known as Indricotherium, was a colossal herbivorous mammal that lived during the Oligocene epoch, around 34-23 million years ago. It is considered one of the largest land mammals to have ever existed, towering over modern-day elephants with an estimated shoulder height of up to 5 meters (16 feet) and a weight of around 15-20 tons. Despite its size, Paraceratherium was a gentle giant, feeding on leaves and soft vegetation in the forests of Eurasia.
+
+
 
 
 journal.chef_alejandro.name=Chef Alejandro

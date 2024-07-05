@@ -23,7 +23,7 @@ public class GiganotosaurusDinosaur extends Dinosaur
         this.setEggColorFemale(0x756E54, 0x4B474A);
         this.setHealth(20, 80);
         this.setSpeed((SPEED -0.05), SPEED);
-        this.setStrength(5, 35);
+        this.setStrength(4, 35);
         this.setEyeHeight(0.6F, 4.8F);
         this.setSizeX(0.2F, 3.6F);
         this.setSizeY(0.5F, 3.6F);

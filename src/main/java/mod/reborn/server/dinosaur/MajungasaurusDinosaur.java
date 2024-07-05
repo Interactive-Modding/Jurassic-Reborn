@@ -23,7 +23,7 @@ public class MajungasaurusDinosaur extends Dinosaur
         this.setEggColorMale(0xE6CC9B, 0x7C8A7D);
         this.setEggColorFemale(0xE8CF9C, 0xADAC7E);
         this.setHealth(10, 40);
-        this.setStrength(5, 20);
+        this.setStrength(2, 20);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setMaximumAge(fromDays(45));
         this.setEyeHeight(0.6F, 2.5F);

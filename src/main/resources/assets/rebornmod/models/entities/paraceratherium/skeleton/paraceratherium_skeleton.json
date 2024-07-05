@@ -1,0 +1,11 @@
+{
+	"version": 0,
+	"poses": {
+		"IDLE": [
+		  {
+			"pose": "paraceratherium_skeleton_idle",
+			"time": 1
+		  }
+		]
+	}
+}

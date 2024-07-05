@@ -1,0 +1,295 @@
+{
+  "version": 0,
+  "poses": {
+    "IDLE": [
+      {
+        "pose": "paraceratherium_adult_idle",
+        "time": 20
+          }
+         ],
+	"ATTACKING": [
+	  {
+        "pose": "paraceratherium_adult_attack_1",
+        "time": 8
+          },
+	  {
+        "pose": "paraceratherium_adult_attack_2",
+        "time": 6
+	 },
+	  {
+        "pose": "paraceratherium_adult_idle",
+        "time": 15
+      }
+	],
+	"CALLING": [
+	  {
+	    "pose": "paraceratherium_adult_calling_1",
+        "time": 10
+      },
+      {
+        "pose": "paraceratherium_adult_calling_2",
+        "time": 10
+       },
+	  {
+        "pose": "paraceratherium_adult_idle",
+        "time": 10
+      }
+	],
+	"DYING": [
+	  {
+        "pose": "paraceratherium_adult_death_1",
+        "time": 15
+          },
+	  {
+        "pose": "paraceratherium_adult_death_2",
+        "time": 15
+          },
+	  {
+        "pose": "paraceratherium_adult_death_3",
+        "time": 15
+       }
+	],
+	"DRINKING": [
+	  {
+        "pose": "paraceratherium_adult_drinking_1",
+        "time": 25
+      },
+	  {
+        "pose": "paraceratherium_adult_drinking_2",
+        "time": 15
+      },
+	  {
+        "pose": "paraceratherium_adult_drinking_3",
+        "time": 15
+      },
+	  {
+        "pose": "paraceratherium_adult_drinking_2",
+        "time": 15
+      },
+	  {
+        "pose": "paraceratherium_adult_drinking_3",
+        "time": 15
+      },
+	  {
+        "pose": "paraceratherium_adult_drinking_2",
+        "time": 15
+      },
+	  {
+        "pose": "paraceratherium_adult_drinking_3",
+        "time": 15
+      },
+	  {
+        "pose": "paraceratherium_adult_drinking_1",
+        "time": 15
+ },
+	  {
+        "pose": "paraceratherium_adult_idle",
+        "time": 20
+      }
+    ],
+	"EATING": [
+	  {
+        "pose": "paraceratherium_adult_eating_1",
+        "time": 25
+      },
+	  {
+        "pose": "paraceratherium_adult_eating_2",
+        "time": 15
+      },
+	  {
+        "pose": "paraceratherium_adult_eating_3",
+        "time": 15
+      },
+	  {
+        "pose": "paraceratherium_adult_eating_2",
+        "time": 15
+      },
+	  {
+        "pose": "paraceratherium_adult_eating_3",
+        "time": 20
+      },
+	  {
+        "pose": "paraceratherium_adult_eating_2",
+        "time": 15
+      },
+	  {
+        "pose": "paraceratherium_adult_eating_3",
+        "time": 20
+      },
+	  {
+        "pose": "paraceratherium_adult_eating_2",
+        "time": 20
+      },
+	  {
+        "pose": "paraceratherium_adult_eating_3",
+        "time": 15
+      },
+	  {
+        "pose": "paraceratherium_adult_eating_1",
+        "time": 20
+         },
+	  {
+        "pose": "paraceratherium_adult_idle",
+        "time": 20
+      }
+	],
+	"GIVING_BIRTH": [
+	  {
+        "pose": "paraceratherium_adult_giving_birth_1",
+        "time": 20
+	  },
+	  {
+        "pose": "paraceratherium_adult_giving_birth_2",
+        "time": 20
+	  },
+	  {
+        "pose": "paraceratherium_adult_idle",
+        "time": 10
+	  }
+	],
+	"INJURED": [
+	  {
+        "pose": "paraceratherium_adult_injured",
+        "time": 20
+	  },
+	  {
+        "pose": "paraceratherium_adult_idle",
+        "time": 10
+	  }
+	],
+	"LOOKING_LEFT": [
+	  {
+        "pose": "paraceratherium_adult_looking_left",
+        "time": 20
+	  },
+	  {
+        "pose": "paraceratherium_adult_idle",
+        "time": 10
+	  }
+	],
+	"LOOKING_RIGHT": [
+	  {
+        "pose": "paraceratherium_adult_looking_right",
+        "time": 20
+	  },
+	  {
+        "pose": "paraceratherium_adult_idle",
+        "time": 10
+	  }
+    ],
+    "SPEAK": [
+      {
+        "pose": "paraceratherium_adult_speak",
+        "time": 10
+       },
+      {
+        "pose": "paraceratherium_adult_idle",
+        "time": 10
+      }
+	],
+	"RESTING": [
+	  {
+        "pose": "paraceratherium_adult_resting_1",
+        "time": 15
+	  },
+	  {
+        "pose": "paraceratherium_adult_resting_2",
+        "time": 15
+	  },
+	  {
+        "pose": "paraceratherium_adult_resting_3",
+        "time": 15
+	  }
+	],
+	"RUNNING": [
+	  {
+        "pose": "paraceratherium_adult_running_1",
+        "time": 5
+	  },
+	  {
+        "pose": "paraceratherium_adult_running_2",
+        "time": 5
+	  },
+	  {
+        "pose": "paraceratherium_adult_running_3",
+        "time": 5
+	  },
+	  {
+        "pose": "paraceratherium_adult_running_4",
+        "time": 5
+	  },
+	  {
+        "pose": "paraceratherium_adult_running_5",
+        "time": 5
+	  },
+	  {
+        "pose": "paraceratherium_adult_running_6",
+        "time": 5
+	  },
+	  {
+        "pose": "paraceratherium_adult_running_7",
+        "time": 5
+	  },
+	  {
+        "pose": "paraceratherium_adult_running_8",
+        "time": 5
+	  }
+	],
+	"SLEEPING": [
+	  {
+        "pose": "paraceratherium_adult_sleeping_1",
+        "time": 15
+	  },
+	  {
+        "pose": "paraceratherium_adult_sleeping_2",
+        "time": 15
+	  },
+	  {
+        "pose": "paraceratherium_adult_sleeping_3",
+        "time": 15
+	  },
+	  {
+        "pose": "paraceratherium_adult_sleeping_4",
+        "time": 15
+	  },
+	  {
+        "pose": "paraceratherium_adult_sleeping_5",
+        "time": 35
+	  }
+	],
+	"WALKING": [
+	  {
+        "pose": "paraceratherium_adult_walking_1",
+        "time": 6
+	  },
+	  {
+        "pose": "paraceratherium_adult_walking_2",
+        "time": 6
+	  },
+	  {
+        "pose": "paraceratherium_adult_walking_3",
+        "time": 6
+	  },
+	  {
+        "pose": "paraceratherium_adult_walking_4",
+        "time": 6
+	  },
+	  {
+        "pose": "paraceratherium_adult_walking_5",
+        "time": 6
+	  },
+	  {
+        "pose": "paraceratherium_adult_walking_6",
+        "time": 6
+	  },
+	  {
+        "pose": "paraceratherium_adult_walking_7",
+        "time": 6
+	  },
+	  {
+        "pose": "paraceratherium_adult_walking_8",
+        "time": 6
+	  }
+	]
+  }
+}

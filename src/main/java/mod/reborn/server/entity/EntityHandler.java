@@ -119,6 +119,7 @@ public class EntityHandler {
     public static final Dinosaur ANKYLODOCUS=new AnkylodocusDinosaur();
     public static final Dinosaur CAMARASAURUS=new CamarasaurusDinosaur();
     public static final Dinosaur DIMETRODON=new DimetrodonDinosaur();
+    public static final Dinosaur PARACERATHERIUM=new ParaceratheriumDinosaur();
 
     public static final Dinosaur VECTIPELTA=new VectipeltaDinosaur();
 
@@ -248,6 +249,8 @@ public class EntityHandler {
         registerDinosaur(94,TITANITES);
         registerDinosaur(95,PARAPUZOSIA);
         registerDinosaur(96,VECTIPELTA);
+        registerDinosaur(97,PARACERATHERIUM);
+
 
 
         dinosaurProgress = ProgressManager.push("Loading dinosaurs", DINOSAURS.size());

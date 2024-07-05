@@ -21,7 +21,7 @@ public class HyaenodonDinosaur extends Dinosaur {
         this.setHealth(10, 40);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStorage(27);
-        this.setStrength(1, 20);
+        this.setStrength(1, 15);
         this.setMaximumAge(fromDays(45));
         this.setEyeHeight(0.45F, 1.8F);
         this.setSizeX(0.2F, 1.4F);

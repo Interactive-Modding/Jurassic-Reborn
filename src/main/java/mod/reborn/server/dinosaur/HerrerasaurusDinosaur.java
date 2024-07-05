@@ -23,7 +23,7 @@ public class HerrerasaurusDinosaur extends Dinosaur
         this.setEggColorFemale(0xaa2616, 0x2a150b);
         this.setHealth(10, 36);
         this.setSpeed((SPEED -0.05), SPEED);
-        this.setStrength(5, 20);
+        this.setStrength(2, 20);
         this.setMaximumAge(fromDays(45));
         this.setEyeHeight(0.55F, 2.55F);
         this.setSizeX(0.4F, 1.8F);

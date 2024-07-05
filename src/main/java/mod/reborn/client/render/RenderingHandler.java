@@ -576,6 +576,7 @@ public enum RenderingHandler {
         registerRenderInfo(EntityHandler.CAMARASAURUS, new CamarasaurusAnimator(), 1.5F);
         registerRenderInfo(EntityHandler.DIMETRODON, new DimetrodonAnimator(),0.64F);
         registerRenderInfo(EntityHandler.VECTIPELTA, new VectipeltaAnimator(), 0.85F);
+        registerRenderInfo(EntityHandler.PARACERATHERIUM, new ParaceratheriumAnimator(), 1.14F);
 
 
 

@@ -23,7 +23,7 @@ public class SpinosaurusDinosaur extends Dinosaur
         this.setEggColorFemale(0x786c66, 0x7b463b);
         this.setHealth(10, 60);
         this.setSpeed((SPEED -0.05), SPEED);
-        this.setStrength(10, 20);
+        this.setStrength(2, 20);
         this.setMaximumAge(fromDays(55));
         this.setEyeHeight(0.6F, 4.2F);
         this.setSizeX(0.2F, 2.7F);

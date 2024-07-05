@@ -22,7 +22,7 @@ public class MetriacanthosaurusDinosaur extends Dinosaur
         this.setEggColorMale(0xB05E1C, 0xE7DB27);
         this.setEggColorFemale(0xB5985E, 0x60451C);
         this.setHealth(10, 40);
-        this.setStrength(5, 20);
+        this.setStrength(2, 20);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setMaximumAge(fromDays(40));
         this.setEyeHeight(0.35F, 1.95F);
