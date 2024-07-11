@@ -25,9 +25,7 @@ import mod.reborn.server.entity.ai.metabolism.GrazeEntityAI;
 import mod.reborn.server.entity.ai.navigation.DinosaurJumpHelper;
 import mod.reborn.server.entity.ai.navigation.DinosaurMoveHelper;
 import mod.reborn.server.entity.ai.navigation.DinosaurPathNavigate;
-import mod.reborn.server.entity.dinosaur.MammothEntity;
-import mod.reborn.server.entity.dinosaur.MicroraptorEntity;
-import mod.reborn.server.entity.dinosaur.TyrannosaurusEntity;
+import mod.reborn.server.entity.dinosaur.*;
 import mod.reborn.server.entity.item.DinosaurEggEntity;
 import mod.reborn.server.food.FoodHelper;
 import mod.reborn.server.food.FoodType;
@@ -185,7 +183,7 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
         this.updateAttributes();
         this.moveHelper = new DinosaurMoveHelper(this);
         this.jumpHelper = new DinosaurJumpHelper(this);
-        
+
         this.setPathPriority(PathNodeType.FENCE, -1);
         this.setPathPriority(PathNodeType.DOOR_WOOD_CLOSED, -1);
         this.setPathPriority(PathNodeType.DOOR_IRON_CLOSED, -1);
@@ -213,8 +211,9 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
         if (!dinosaur.isMarineCreature()) {
             this.tasks.addTask(0, new AdvancedSwimEntityAI(this));
         }
-        this.tasks.addTask(0, new DinosaurWanderEntityAI(this, 0.8D, 2, 10));
+
         this.tasks.addTask(0, new DinosaurWanderAvoidWater(this, 0.8D, 10));
+
         if (dinosaur.getDiet().canEat(this, FoodType.PLANT)) {
             this.tasks.addTask(1, new GrazeEntityAI(this));
 
@@ -233,6 +232,7 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
         this.tasks.addTask(1, new RespondToAttackEntityAI(this));
         this.tasks.addTask(1, new EntityAIPanic(this, 1.25D));
         this.tasks.addTask(2, new ProtectInfantEntityAI<>(this));
+        this.tasks.addTask(3, new DinosaurWanderEntityAI(this, 0.8D, 2, 10));
         this.tasks.addTask(3, new FollowOwnerEntityAI(this));
         this.tasks.addTask(3, this.getAttackAI());
         this.tasks.addTask(4, new EntityAILookIdle(this));
@@ -740,7 +740,6 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
     public void onLivingUpdate() {
         super.onLivingUpdate();
 
-
         if(!RebornConfig.ENTITIES.allowCarcass && this.isCarcass) {
             this.attackEntityFrom(DamageSource.ANVIL, 1000);
         }
@@ -750,6 +749,7 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
                 this.setAttackTarget(null);
             }
         }
+
 
         if(!GameRuleHandler.DINO_METABOLISM.getBoolean(this.world)) {
             if(this.getMetabolism().getEnergy() < this.getMetabolism().getMaxEnergy()) {
@@ -784,7 +784,25 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
                 }
             }
         }
-        if(this.isCarcass() && (!(this instanceof TyrannosaurusEntity) || this.wasMoved) && !(this instanceof MicroraptorEntity)){
+        if (!this.world.isRemote && this instanceof TyrannosaurusEntity) {
+            if (this.moveTicks > 0) {
+                this.moveTicks--;
+                this.motionX = 0;
+                this.motionZ = 0;
+                this.motionX += MathHelper.sin(-(float) Math.toRadians(this.rotationYaw - 90)) * 0.03;
+                this.motionZ += MathHelper.cos((float) Math.toRadians(this.rotationYaw - 90)) * 0.03;
+                this.motionX *= 6.3;
+                this.motionZ *= 6.3;
+            }
+            if (this.moveTicks > -5) {
+                this.moveTicks--;
+
+                if (this.moveTicks == -4) {
+                    this.wasMoved = true;
+                }
+            }
+        }
+        if(this.isCarcass() && (this instanceof TyrannosaurusEntity ? this.wasMoved : true) && !(this instanceof MicroraptorEntity)){
             this.motionX = 0;
             this.motionZ = 0;
         }
@@ -820,8 +838,83 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
                         if(child instanceof MammothEntity){
                             ((MammothEntity) child).setVariant(((MammothEntity)this).getVariant());
                         }
+                        if(child instanceof DeinotheriumEntity){
+                            ((DeinotheriumEntity) child).setVariant(((DeinotheriumEntity)this).getVariant());
+                        }
+                        if(child instanceof SmilodonEntity){
+                            ((SmilodonEntity) child).setVariant(((SmilodonEntity)this).getVariant());
+                        }
+                        if(child instanceof TitanisEntity){
+                            ((TitanisEntity) child).setVariant(((TitanisEntity)this).getVariant());
+                        }
+                        if(child instanceof ParaceratheriumEntity){
+                            ((ParaceratheriumEntity) child).setVariant(((ParaceratheriumEntity)this).getVariant());
+                        }
                     } else {
                         entity = new DinosaurEggEntity(this.world, child, this);
+                        if(child instanceof CompsognathusEntity){
+                            ((CompsognathusEntity) child).setVariant(((CompsognathusEntity)this).getVariant());
+                        }
+                        if(child instanceof AllosaurusEntity){
+                            ((AllosaurusEntity) child).setVariant(((AllosaurusEntity)this).getVariant());
+                        }
+                        if(child instanceof ParasaurolophusEntity){
+                            ((ParasaurolophusEntity) child).setVariant(((ParasaurolophusEntity)this).getVariant());
+                        }
+                        if(child instanceof CeratosaurusEntity){
+                            ((CeratosaurusEntity) child).setVariant(((CeratosaurusEntity)this).getVariant());
+                        }
+                        if(child instanceof SpinoraptorEntity){
+                            ((SpinoraptorEntity) child).setVariant(((SpinoraptorEntity)this).getVariant());
+                        }
+                        if(child instanceof IndoraptorEntity){
+                            ((IndoraptorEntity) child).setVariant(((IndoraptorEntity)this).getVariant());
+                        }
+                        if(child instanceof BaryonyxEntity){
+                            ((BaryonyxEntity) child).setVariant(((BaryonyxEntity)this).getVariant());
+                        }
+                        if(child instanceof DiplodocusEntity){
+                            ((DiplodocusEntity) child).setVariant(((DiplodocusEntity)this).getVariant());
+                        }
+                        if(child instanceof AnkylodocusEntity){
+                            ((AnkylodocusEntity) child).setVariant(((AnkylodocusEntity)this).getVariant());
+                        }
+                        if(child instanceof CamarasaurusEntity){
+                            ((CamarasaurusEntity) child).setVariant(((CamarasaurusEntity)this).getVariant());
+                        }
+                        if(child instanceof BrachiosaurusEntity){
+                            ((BrachiosaurusEntity) child).setVariant(((BrachiosaurusEntity)this).getVariant());
+                        }
+                        if(child instanceof AnkylosaurusEntity){
+                            ((AnkylosaurusEntity) child).setVariant(((AnkylosaurusEntity)this).getVariant());
+                        }
+                        if(child instanceof ApatosaurusEntity){
+                            ((ApatosaurusEntity) child).setVariant(((ApatosaurusEntity)this).getVariant());
+                        }
+                        if(child instanceof OviraptorEntity){
+                            ((OviraptorEntity) child).setVariant(((OviraptorEntity)this).getVariant());
+                        }
+                        if(child instanceof ChasmosaurusEntity){
+                            ((ChasmosaurusEntity) child).setVariant(((ChasmosaurusEntity)this).getVariant());
+                        }
+                        if(child instanceof StyracosaurusEntity){
+                            ((StyracosaurusEntity) child).setVariant(((StyracosaurusEntity)this).getVariant());
+                        }
+                        if(child instanceof SinoceratopsEntity){
+                            ((SinoceratopsEntity) child).setVariant(((SinoceratopsEntity)this).getVariant());
+                        }
+                        if(child instanceof TriceratopsEntity){
+                            ((TriceratopsEntity) child).setVariant(((TriceratopsEntity)this).getVariant());
+                        }
+                        if(child instanceof MicroceratusEntity){
+                            ((MicroceratusEntity) child).setVariant(((MicroceratusEntity)this).getVariant());
+                        }
+                        if(child instanceof ProtoceratopsEntity){
+                            ((ProtoceratopsEntity) child).setVariant(((ProtoceratopsEntity)this).getVariant());
+                        }
+                        if(child instanceof VectipeltaEntity){
+                            ((VectipeltaEntity) child).setVariant(((VectipeltaEntity)this).getVariant());
+                        }
                     }
                     entity.setPosition(this.posX + (this.rand.nextFloat() - 0.5F), this.posY + 0.5F, this.posZ + (this.rand.nextFloat() - 0.5F));
                     this.world.spawnEntity(entity);

@@ -240,9 +240,9 @@ public class ElectricFenceWireBlock extends BlockContainer {
                 if(block.getType().equals(FenceType.LOW))
                 entity.attackEntityFrom(DamageSources.SHOCK, 1.0F);
                 if(block.getType().equals(FenceType.MED))
-                    entity.attackEntityFrom(DamageSources.SHOCK, 2.0F);
+                    entity.attackEntityFrom(DamageSources.SHOCK, 2.5F);
                 if(block.getType().equals(FenceType.HIGH))
-                    entity.attackEntityFrom(DamageSources.SHOCK, 3.0F);
+                    entity.attackEntityFrom(DamageSources.SHOCK, 5.0F);
                 if (entity instanceof DinosaurEntity) {
                     DinosaurEntity dinosaur = (DinosaurEntity) entity;
                     if (dinosaur.wireTicks < 2) {

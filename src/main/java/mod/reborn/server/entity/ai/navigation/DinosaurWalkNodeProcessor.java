@@ -19,11 +19,13 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
+
 import javax.annotation.Nullable;
 
 public class DinosaurWalkNodeProcessor extends WalkNodeProcessor {
     private Dinosaur dinosaur;
     private final Object lock = new Object(); // Object for synchronization
+
 
     public DinosaurWalkNodeProcessor(Dinosaur dinosaur) {
         this.dinosaur = dinosaur;
@@ -33,10 +35,10 @@ public class DinosaurWalkNodeProcessor extends WalkNodeProcessor {
     public int findPathOptions(PathPoint[] pathOptions, PathPoint currentPoint, PathPoint targetPoint, float maxDistance) {
         int optionIndex = 0;
         int stepHeight = 0;
-        PathNodeType type;
+
 
         synchronized (lock) {
-            type = this.getPathNodeType(this.entity, currentPoint.x, currentPoint.y + 1, currentPoint.z);
+            PathNodeType type = this.getPathNodeType(this.entity, currentPoint.x, currentPoint.y + 1, currentPoint.z);
 
             if (this.entity.getPathPriority(type) >= 0.0F) {
                 stepHeight = MathHelper.floor(Math.max(1.0F, this.entity.stepHeight));
@@ -52,9 +54,7 @@ public class DinosaurWalkNodeProcessor extends WalkNodeProcessor {
 
             double currentGroundY = groundY; // Assuming groundY is the current ground level
 
-            if (groundY - currentGroundY > stepHeight + 0.125) {
-                return 0; // Too high to step up, return no options
-            }
+
         }
 
 
@@ -131,6 +131,9 @@ public class DinosaurWalkNodeProcessor extends WalkNodeProcessor {
         double groundY = y - (1.0 - this.blockaccess.getBlockState(ground).getBoundingBox(this.blockaccess, ground).maxY);
 
         synchronized (lock) {
+            if (groundY - currentGroundY > stepHeight + 0.125) {
+                return null; // Too high to step up, return no options
+            }
             PathNodeType type = this.getPathNodeType(this.entity, x, y, z); // Ensure this.entity is not null
             if (type != null) { // Check if type is not null
                 float priority = this.entity.getPathPriority(type);
@@ -298,7 +301,7 @@ public class DinosaurWalkNodeProcessor extends WalkNodeProcessor {
             } else if (block instanceof ElectricFenceWireBlock) {
                 TileEntity entity = access.getTileEntity(pos);
                 if (entity instanceof ElectricFenceWireBlockEntity && ((ElectricFenceWireBlockEntity) entity).isPowered()) {
-                    return PathNodeType.DAMAGE_CACTUS;
+                    return PathNodeType.DAMAGE_CACTUS; // Return a higher penalty type for powered electric fence wire
                 }
             }
 
@@ -320,6 +323,7 @@ public class DinosaurWalkNodeProcessor extends WalkNodeProcessor {
             }
 
             return block.isPassable(access, pos) ? PathNodeType.OPEN : PathNodeType.BLOCKED;
+            
         }
     }
 }

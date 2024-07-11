@@ -240,7 +240,9 @@ public class AttractionSignEntity extends EntityHanging implements IEntityAdditi
         INDORAPTOR,
         INDORAPTOR_VARIANT,
         INDOMINUS_REX,
-        INDOMINUS_REX_VARIANT;
+        INDOMINUS_REX_VARIANT,
+        GARDEN_ALT,
+        GARDEN_ALT_PLANTS;
 
 
 

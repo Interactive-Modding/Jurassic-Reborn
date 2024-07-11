@@ -60,5 +60,63 @@ public class ElectricFencePoleRenderer extends TileEntitySpecialRenderer<Electri
                 GlStateManager.popMatrix();
             }
         }
+        if (tile != null) {
+            boolean active = false;
+
+            BlockPos position = tile.getPos();
+            IBlockState state = tile.getWorld().getBlockState(position);
+            if (state.getBlock() == BlockHandler.MED_SECURITY_FENCE_POLE) {
+                active = state.getActualState(tile.getWorld(), position).getValue(ElectricFencePoleBlock.ACTIVE);
+            }
+
+            if (active) {
+                GlStateManager.pushMatrix();
+
+                GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+                GlStateManager.translate(x + 0.5, y + 1.5, z + 0.5);
+
+                double scale = 1.0;
+                GlStateManager.scale(-scale, -scale, scale);
+
+                this.mc.getTextureManager().bindTexture(this.texture);
+
+                OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, 240, 240);
+
+                this.model.render(null, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
+
+                OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, OpenGlHelper.lastBrightnessX, OpenGlHelper.lastBrightnessY);
+
+                GlStateManager.popMatrix();
+            }
+        }
+        if (tile != null) {
+            boolean active = false;
+
+            BlockPos position = tile.getPos();
+            IBlockState state = tile.getWorld().getBlockState(position);
+            if (state.getBlock() == BlockHandler.HIGH_SECURITY_FENCE_POLE) {
+                active = state.getActualState(tile.getWorld(), position).getValue(ElectricFencePoleBlock.ACTIVE);
+            }
+
+            if (active) {
+                GlStateManager.pushMatrix();
+
+                GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+                GlStateManager.translate(x + 0.5, y + 1.5, z + 0.5);
+
+                double scale = 1.0;
+                GlStateManager.scale(-scale, -scale, scale);
+
+                this.mc.getTextureManager().bindTexture(this.texture);
+
+                OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, 240, 240);
+
+                this.model.render(null, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
+
+                OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, OpenGlHelper.lastBrightnessX, OpenGlHelper.lastBrightnessY);
+
+                GlStateManager.popMatrix();
+            }
+        }
     }
 }

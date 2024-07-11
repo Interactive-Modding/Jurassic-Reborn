@@ -232,7 +232,8 @@ public class BlueprintEntity extends EntityHanging implements IEntityAdditionalS
         PARAPUZOSIA(1074,671),
         ASTEROCERAS(1074,671),
         VECTIPELTA(1074,671),
-        TRICERATOPS(1074,671);
+        TRICERATOPS(1074,671),
+        PARACERATHERIUM(1074,671);
 
 
 

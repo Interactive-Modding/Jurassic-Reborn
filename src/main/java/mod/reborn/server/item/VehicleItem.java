@@ -5,7 +5,6 @@ import mod.reborn.server.tab.TabHandler;
 import mod.reborn.server.util.LangUtils;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -23,7 +22,7 @@ import java.util.List;
 
 public class VehicleItem extends Item {
 
-    public static final String[] variants = new String[] { "ford_explorer", "jeep_wrangler", "helicopter", "ford_explorer_snow","blue_jeep_wrangler","green_jeep_wrangler","purple_jeep_wrangler","pink_jeep_wrangler","sorna_jeep_wrangler","lime_jeep_wrangler","monorail","gyrosphere" };
+    public static final String[] variants = new String[] { "ford_explorer", "jeep_wrangler", "helicopter", "ford_explorer_snow","blue_jeep_wrangler","green_jeep_wrangler","purple_jeep_wrangler","pink_jeep_wrangler","sorna_jeep_wrangler","lime_jeep_wrangler","monorail","gyrosphere","black_jeep_wrangler" };
     // public static final String[] localized = new String[variants.length];
 
     public VehicleItem() {
@@ -61,7 +60,7 @@ public class VehicleItem extends Item {
 
         if (!world.isRemote) {
             pos = pos.offset(side);
-            Entity entity = null;
+            VehicleEntity entity = null;
             if (stack.getMetadata() == 0) {
                 entity = new FordExplorerEntity(world);
             } else if (stack.getMetadata() == 1) {
@@ -86,7 +85,11 @@ public class VehicleItem extends Item {
                 entity = new MonorailEntity(world);
             } else if (stack.getMetadata() == 11) {
             entity = new GyrosphereEntity(world);
+            } else if (stack.getMetadata() == 12) {
+                entity = new BlackJeepWranglerEntity(world);
             }
+
+
 
 
 
@@ -107,7 +110,7 @@ public class VehicleItem extends Item {
     @Override
     public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
         if (this.isInCreativeTab(tab)) {
-            for (int i = 0; i < 12; ++i) {
+            for (int i = 0; i < 13; ++i) {
                 items.add(new ItemStack(this, 1, i));
             }
         }

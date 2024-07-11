@@ -29,8 +29,6 @@ public class ParaceratheriumEntity extends DinosaurEntity {
                 return SoundHandler.PARACERATHERIUM_LIVING;
             case CALLING:
                 return SoundHandler.PARACERATHERIUM_LIVING;
-            case MATING:
-                return SoundHandler.DEINOTHERIUM_MATE_CALL;
             case DYING:
                 return SoundHandler.PARACERATHERIUM_DEATH;
             case INJURED:

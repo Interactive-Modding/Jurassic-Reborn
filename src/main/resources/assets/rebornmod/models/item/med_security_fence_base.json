@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "rebornmod:items/fence_base"
+    "layer0": "rebornmod:items/medium_security_fence_base"
   }
 }

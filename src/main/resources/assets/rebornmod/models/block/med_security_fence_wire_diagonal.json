@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "layer0": "rebornmod:blocks/med_security_fence_wire",
+    "particle": "blocks/iron_block"
+  },
+  "tabula": "rebornmod:models/block/med_security_fence_wire_diagonal"
+}

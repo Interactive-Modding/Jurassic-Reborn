@@ -28,6 +28,7 @@ public class GyrosphereEntity extends VehicleEntity {
 
     @Override
     protected WheelData createWheels() {
-	return new WheelData(0, 0, 0, 0);
+	return new WheelData(0.0000001, 0.0000002, 0.0000003, 0.0000004);
     }
+
 }

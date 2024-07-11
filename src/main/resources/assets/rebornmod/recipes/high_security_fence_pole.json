@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "rebornmod:high_security_fence_pole",
+  "pattern": [
+    "AAA",
+    "BBB",
+    "BBB"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:redstone",
+      "data": 0
+    },
+    "B": {
+      "item": "minecraft:iron_ingot",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "rebornmod:high_security_fence_pole",
+    "data": 0,
+    "count": 2
+  }
+}

@@ -30,19 +30,19 @@ public class VectipeltaEntity extends DinosaurEntity {
     public SoundEvent getSoundForAnimation(Animation animation) {
         switch (EntityAnimation.getAnimation(animation)) {
             case SPEAK:
-                return SoundHandler.ANKYLOSAURUS_LIVING;
+                return SoundHandler.VECTIPELTA_LIVING;
             case DYING:
-                return SoundHandler.ANKYLOSAURUS_DEATH;
+                return SoundHandler.VECTIPELTA_DEATH;
             case INJURED:
-                return SoundHandler.ANKYLOSAURUS_HURT;
+                return SoundHandler.VECTIPELTA_HURT;
             case CALLING:
-                return SoundHandler.ANKYLOSAURUS_CALL;
+                return SoundHandler.VECTIPELTA_CALL;
             case ROARING:
-                return SoundHandler.ANKYLOSAURUS_CALL;
+                return SoundHandler.VECTIPELTA_CALL;
             case ATTACKING:
-                return SoundHandler.ANKYLOSAURUS_ATTACK;
+                return SoundHandler.VECTIPELTA_ATTACK;
             case MATING:
-                return SoundHandler.ANKYLOSAURUS_MATE_CALL;
+                return SoundHandler.VECTIPELTA_MATE_CALL;
             default:
                 break;
         }

@@ -27,7 +27,7 @@ public class WaterLeapAI extends EntityAIBase {
     @Override
     public boolean shouldExecute() {
         // Check if the chance allows for executing the leap
-        if (entity.getRNG().nextInt(chance) != 0 || entity.isBusy() || (this.entity.getAgePercentage() > 50)) {
+        if (entity.getRNG().nextInt(chance) != 0 && entity.isBusy() && (this.entity.getAgePercentage() < 50)) {
             return false;
         }
 

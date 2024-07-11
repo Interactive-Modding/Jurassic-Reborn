@@ -111,6 +111,7 @@ entity.rebornmod.vectipelta.name=Vectipelta
 entity.rebornmod.paraceratherium.name=Paraceratherium
 
 entity.rebornmod.goat.name=Goat
+entity.rebornmod.jeep_wrangler.name=Black Jeep Wrangler
 entity.rebornmod.jeep_wrangler.name=Red Jeep Wrangler
 entity.rebornmod.blue_jeep_wrangler.name=Blue Jeep Wrangler
 entity.rebornmod.green_jeep_wrangler.name=Green Jeep Wrangler
@@ -202,6 +203,9 @@ attraction_sign.indoraptor.name=Indoraptor
 attraction_sign.indoraptor_variant.name=Indoraptor Variant
 attraction_sign.indominus_rex.name=Indominus Rex
 attraction_sign.indominus_rex_variant.name=Indominus Rex Variant
+attraction_sign.garden_alt.name=Botanical Garden Variant
+attraction_sign.garden_alt_plants.name=Botanical Garden Variant Plants
+
 
 item.goat_raw.name=Raw Goat
 item.goat_cooked.name=Cooked Goat
@@ -396,6 +400,7 @@ item.engine_system.name=Engine System
 item.car_seats.name=Car Seats
 item.car_tire.name=Car Tire
 item.car_windscreen.name=Car Windscreen
+item.black_jeep_wrangler.name=Black Jeep Wrangler
 item.jeep_wrangler.name=Red Jeep Wrangler
 item.blue_jeep_wrangler.name=Blue Jeep Wrangler
 item.green_jeep_wrangler.name=Green Jeep Wrangler

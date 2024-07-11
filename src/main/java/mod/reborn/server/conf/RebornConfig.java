@@ -23,6 +23,15 @@ public class RebornConfig { //TODO: move all structures to same parent package
     @Config.Name("dimension Blacklist")
     public static final Dimensions DIM_BLACKLIST = new Dimensions();
 
+    @Config.Name("entity Blacklist")
+    public static final EntityBlacklist ENTITY_BLACKLIST = new EntityBlacklist();
+
+    public static class EntityBlacklist {
+        @Config.Name("Entity Blacklist")
+        @Config.Comment("List of entity IDs that cannot be captured")
+        public String[] blacklist = new String[] {"minecraft:bat", "minecraft:ender_dragon"};
+    }
+
     @Config.Name("structure Generation")
     public static final StructureGeneration STRUCTURE_GENERATION = new StructureGeneration();
 
@@ -36,6 +45,15 @@ public class RebornConfig { //TODO: move all structures to same parent package
     }
 
     public static class Entities {
+
+        @Config.Name("Tylosaurus Leaping")
+        @Config.Comment("WARNING:EXPERIMENTAL")
+        public boolean tylosaurusleaping = false;
+
+        @Config.Name("Mosasaurus Leaping")
+        @Config.Comment("WARNING:EXPERIMENTAL")
+        public boolean mosaurusleaping = false;
+
         @Config.Name("Dinosaur Spawning")
         @Config.Comment("Requires 3+ Gigabytes of Ram")
         public boolean naturalSpawning = false;

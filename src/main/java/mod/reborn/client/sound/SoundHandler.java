@@ -387,6 +387,13 @@ public class SoundHandler {
     public static final SoundEvent ANKYLOSAURUS_DEATH = create("ankylosaurus_death");
     public static final SoundEvent ANKYLOSAURUS_ATTACK = create("ankylosaurus_attack");
 
+    public static final SoundEvent VECTIPELTA_LIVING = create("vectipelta_living");
+    public static final SoundEvent VECTIPELTA_HURT = create("vectipelta_hurt");
+    public static final SoundEvent VECTIPELTA_MATE_CALL = create("vectipelta_mate_call");
+    public static final SoundEvent VECTIPELTA_CALL = create("vectipelta_call");
+    public static final SoundEvent VECTIPELTA_DEATH = create("vectipelta_death");
+    public static final SoundEvent VECTIPELTA_ATTACK = create("vectipelta_attack");
+
     public static final SoundEvent MICRORAPTOR_LIVING = create("microraptor_living");
     public static final SoundEvent MICRORAPTOR_HURT = create("microraptor_hurt");
     public static final SoundEvent MICRORAPTOR_DEATH = create("microraptor_death");

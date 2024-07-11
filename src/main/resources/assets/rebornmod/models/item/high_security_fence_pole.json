@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "rebornmod:items/fence_pole"
+    "layer0": "rebornmod:items/high_security_fence_pole"
   }
 }

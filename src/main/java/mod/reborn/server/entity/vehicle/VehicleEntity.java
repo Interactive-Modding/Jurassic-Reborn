@@ -8,6 +8,10 @@ import mod.reborn.client.sound.EntitySound;
 import mod.reborn.server.conf.RebornConfig;
 import mod.reborn.server.damage.DamageSources;
 import mod.reborn.server.entity.ai.util.InterpValue;
+import mod.reborn.server.entity.vehicle.util.CarWheel;
+import mod.reborn.server.entity.vehicle.util.WheelParticleData;
+import mod.reborn.server.message.CarEntityPlayRecord;
+import mod.reborn.server.message.UpdateVehicleControlMessage;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -37,21 +41,14 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import mod.reborn.server.entity.vehicle.util.CarWheel;
-import mod.reborn.server.entity.vehicle.util.WheelParticleData;
-import mod.reborn.server.message.CarEntityPlayRecord;
-import mod.reborn.server.message.UpdateVehicleControlMessage;
-import org.lwjgl.input.Keyboard;
 import org.omg.CORBA.DoubleHolder;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.vecmath.Vector2d;
 import javax.vecmath.Vector4d;
-
 import java.lang.reflect.Field;
 import java.util.List;
-import java.util.function.Predicate;
 
 public abstract class VehicleEntity extends Entity implements MultiSeatedEntity {
     public static final DataParameter<Byte> WATCHER_STATE = EntityDataManager.createKey(VehicleEntity.class, DataSerializers.BYTE);
@@ -483,9 +480,14 @@ public abstract class VehicleEntity extends Entity implements MultiSeatedEntity 
             pos = wheel.getCurrentWheelPos();
             opposite = wheel.getOppositeWheel().getCurrentWheelPos();
         }
+        if (this instanceof GyrosphereEntity) {
+            return; // Skip rendering tire tracks
+        }
         if (wheel.getCurrentWheelPos().distanceTo(wheel.getPrevCurrentWheelPos()) >= 0.05D) {
             this.wheelDataList[wheel.getID()].add(new WheelParticleData(pos, opposite, world.getTotalWorldTime())
                     .setShouldRender(shouldTyresRender()));
+
+
         }
     }
 
@@ -624,6 +626,7 @@ public abstract class VehicleEntity extends Entity implements MultiSeatedEntity 
     }
 
     protected final double calculateWheelHeight(double distance, boolean rotate90) {
+
         float localYaw = this.prevRotationYaw + (this.rotationYaw - this.prevRotationYaw);
         double ret = Integer.MIN_VALUE;
 

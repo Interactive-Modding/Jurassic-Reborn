@@ -1586,6 +1586,48 @@
       "rebornmod:dinosaurs/ankylosaurus/ankylosaurus_hurt_2",
       "rebornmod:dinosaurs/ankylosaurus/ankylosaurus_hurt_3"
     ]
+  },
+  "vectipelta_call": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/vectipelta/vectipelta_calling"
+    ]
+  },
+ "vectipelta_attack": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/vectipelta/vectipelta_attack"
+    ]
+  },
+  "vectipelta_living": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/vectipelta/vectipelta_living_1",
+      "rebornmod:dinosaurs/vectipelta/vectipelta_living_2",
+      "rebornmod:dinosaurs/vectipelta/vectipelta_living_3",
+      "rebornmod:dinosaurs/vectipelta/vectipelta_living_4"
+    ]
+  },
+   "vectipelta_threat":{
+        "category": "hostile",
+        "sounds": [
+            "rebornmod:dinosaurs/vectipelta/vectipelta_threat_1",
+            "rebornmod:dinosaurs/vectipelta/vectipelta_threat_2"
+        ]
+  },
+  "vectipelta_mate_call":{
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/vectipelta/vectipelta_mate_call"
+    ]
+  },
+  "vectipelta_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "rebornmod:dinosaurs/vectipelta/vectipelta_hurt_1",
+      "rebornmod:dinosaurs/vectipelta/vectipelta_hurt_2",
+      "rebornmod:dinosaurs/vectipelta/vectipelta_hurt_3"
+    ]
  },
   "raphusrex_living": {
     "category": "hostile",

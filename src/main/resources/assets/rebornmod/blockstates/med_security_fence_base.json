@@ -2,7 +2,7 @@
   "multipart": [
     {
       "when": {"connections": 0, "pole": "false"},
-      "apply": {"model": "rebornmod:low_security_fence_base.tbl"}
+      "apply": {"model": "rebornmod:med_security_fence_base.tbl"}
     },
     {
       "when": {
@@ -11,7 +11,7 @@
           {"connections": 4, "south": "true", "pole": "false"}
         ]
       },
-      "apply": {"model": "rebornmod:low_security_fence_base_lower.tbl", "y": 0}
+      "apply": {"model": "rebornmod:med_security_fence_base_lower.tbl", "y": 0}
     },
     {
       "when": {
@@ -20,7 +20,7 @@
           {"connections": 4, "east": "true", "pole": "false"}
         ]
       },
-      "apply": {"model": "rebornmod:low_security_fence_base.tbl", "y": 90}
+      "apply": {"model": "rebornmod:med_security_fence_base.tbl", "y": 90}
     },
     {
       "when": {
@@ -30,7 +30,7 @@
           {"connections": 2, "west": "true", "east": "true", "pole": "false"}
         ]
       },
-      "apply": {"model": "rebornmod:low_security_fence_base.tbl"}
+      "apply": {"model": "rebornmod:med_security_fence_base.tbl"}
     },
     {
       "when": {
@@ -40,59 +40,59 @@
           {"connections": 2, "north": "true", "south": "true", "pole": "false"}
         ]
       },
-      "apply": {"model": "rebornmod:low_security_fence_base.tbl", "y": 90}
+      "apply": {"model": "rebornmod:med_security_fence_base.tbl", "y": 90}
     },
     {
       "when": {"connections": 3, "north": "true", "west": "true", "south": "true", "pole": "false"},
-      "apply": {"model": "rebornmod:low_security_fence_base_corner.tbl"}
+      "apply": {"model": "rebornmod:med_security_fence_base_corner.tbl"}
     },
     {
       "when": {"connections": 3, "north": "true", "west": "true", "south": "true", "pole": "false"},
-      "apply": {"model": "rebornmod:low_security_fence_base_corner_lower.tbl", "y": 90}
+      "apply": {"model": "rebornmod:med_security_fence_base_corner_lower.tbl", "y": 90}
     },
     {
       "when": {"connections": 3, "north": "true", "east": "true", "south": "true", "pole": "false"},
-      "apply": {"model": "rebornmod:low_security_fence_base_corner.tbl", "y": 180}
+      "apply": {"model": "rebornmod:med_security_fence_base_corner.tbl", "y": 180}
     },
     {
       "when": {"connections": 3, "north": "true", "east": "true", "south": "true", "pole": "false"},
-      "apply": {"model": "rebornmod:low_security_fence_base_corner_lower.tbl", "y": 270}
+      "apply": {"model": "rebornmod:med_security_fence_base_corner_lower.tbl", "y": 270}
     },
     {
       "when": {"connections": 3, "east": "true", "north": "true", "west": "true", "pole": "false"},
-      "apply": {"model": "rebornmod:low_security_fence_base_corner.tbl"}
+      "apply": {"model": "rebornmod:med_security_fence_base_corner.tbl"}
     },
     {
       "when": {"connections": 3, "east": "true", "north": "true", "west": "true", "pole": "false"},
-      "apply": {"model": "rebornmod:low_security_fence_base_corner_lower.tbl", "y": 270}
+      "apply": {"model": "rebornmod:med_security_fence_base_corner_lower.tbl", "y": 270}
     },
     {
       "when": {"connections": 3, "east": "true", "south": "true", "west": "true", "pole": "false"},
-      "apply": {"model": "rebornmod:low_security_fence_base_corner.tbl", "y": 90}
+      "apply": {"model": "rebornmod:med_security_fence_base_corner.tbl", "y": 90}
     },
     {
       "when": {"connections": 3, "east": "true", "south": "true", "west": "true", "pole": "false"},
-      "apply": {"model": "rebornmod:low_security_fence_base_corner_lower.tbl", "y": 180}
+      "apply": {"model": "rebornmod:med_security_fence_base_corner_lower.tbl", "y": 180}
     },
     {
       "when": {"connections": 2, "north": "true", "east": "true", "pole": "false"},
-      "apply": {"model": "rebornmod:low_security_fence_base_corner.tbl", "y": 270}
+      "apply": {"model": "rebornmod:med_security_fence_base_corner.tbl", "y": 270}
     },
     {
       "when": {"connections": 2, "east": "true", "south": "true", "pole": "false"},
-      "apply": {"model": "rebornmod:low_security_fence_base_corner.tbl", "y": 180}
+      "apply": {"model": "rebornmod:med_security_fence_base_corner.tbl", "y": 180}
     },
     {
       "when": {"connections": 2, "south": "true", "west": "true", "pole": "false"},
-      "apply": {"model": "rebornmod:low_security_fence_base_corner.tbl", "y": 90}
+      "apply": {"model": "rebornmod:med_security_fence_base_corner.tbl", "y": 90}
     },
     {
       "when": {"connections": 2, "north": "true", "west": "true", "pole": "false"},
-      "apply": {"model": "rebornmod:low_security_fence_base_corner.tbl"}
+      "apply": {"model": "rebornmod:med_security_fence_base_corner.tbl"}
     },
     {
       "when": {"pole": "true"},
-      "apply": {"model": "rebornmod:low_security_fence_base_pole.tbl"}
+      "apply": {"model": "rebornmod:med_security_fence_base_pole.tbl"}
     }
   ]
 }

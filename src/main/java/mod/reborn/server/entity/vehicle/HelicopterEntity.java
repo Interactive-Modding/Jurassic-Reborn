@@ -1,37 +1,7 @@
 package mod.reborn.server.entity.vehicle;
 
-import mod.reborn.client.particle.HelicopterEngineParticle;
-import net.ilexiconn.llibrary.LLibrary;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockAir;
-import net.minecraft.block.material.Material;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.Minecraft;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-import net.minecraft.init.SoundEvents;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.util.math.Vec3d;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-
-import net.minecraft.entity.Entity;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.BlockPos.MutableBlockPos;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.world.World;
-
 import mod.reborn.RebornMod;
+import mod.reborn.client.particle.HelicopterEngineParticle;
 import mod.reborn.client.particle.HelicopterGroundParticle;
 import mod.reborn.client.particle.WashingParticle;
 import mod.reborn.client.proxy.ClientProxy;
@@ -40,10 +10,30 @@ import mod.reborn.server.entity.ai.util.InterpValue;
 import mod.reborn.server.event.KeyBindingHandler;
 import mod.reborn.server.item.ItemHandler;
 import mod.reborn.server.util.MutableVec3;
-
-import java.util.List;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockAir;
+import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.Minecraft;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.SoundEvents;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.*;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.BlockPos.MutableBlockPos;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nonnull;
+import java.util.List;
 
 public abstract class HelicopterEntity extends VehicleEntity {
 
@@ -65,7 +55,6 @@ public abstract class HelicopterEntity extends VehicleEntity {
     private MutableBlockPos mb = new MutableBlockPos();
     protected boolean lockOn;
     protected int blastHeight = 6;
-    @SideOnly(Side.CLIENT)
 
     private float currentEngineSpeed = 0;
     protected float torque;
@@ -535,10 +524,6 @@ public abstract class HelicopterEntity extends VehicleEntity {
         return super.getAdjustedHorizontalFacing();
     }
 
-    @Override
-    protected boolean shouldTyresRender() {
-        return false;
-    }
 
     @Override
     public void updatePassenger(Entity passenger) {

@@ -1,30 +1,28 @@
 package mod.reborn.client.render.entity;
 
-import java.util.stream.IntStream;
-
-import javax.annotation.Nullable;
-import javax.vecmath.Vector2d;
-import javax.vecmath.Vector4d;
-
+import mod.reborn.RebornMod;
+import mod.reborn.client.model.TabulaModelUV;
 import mod.reborn.client.model.animation.entity.vehicle.HelicopterAnimator;
+import mod.reborn.server.entity.ai.util.MathUtils;
+import mod.reborn.server.entity.vehicle.HelicopterEntity;
+import mod.reborn.server.entity.vehicle.VehicleEntity;
+import mod.reborn.server.tabula.TabulaModelHelper;
 import net.ilexiconn.llibrary.client.model.tabula.TabulaModel;
 import net.ilexiconn.llibrary.client.model.tabula.container.TabulaModelContainer;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.RenderHelper;
-import mod.reborn.RebornMod;
-import mod.reborn.client.model.TabulaModelUV;
-import mod.reborn.server.entity.ai.util.MathUtils;
-import mod.reborn.server.entity.vehicle.VehicleEntity;
-
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import mod.reborn.server.entity.vehicle.HelicopterEntity;
-import mod.reborn.server.tabula.TabulaModelHelper;
+
+import javax.annotation.Nullable;
+import javax.vecmath.Vector2d;
+import javax.vecmath.Vector4d;
+import java.util.stream.IntStream;
 
 @SideOnly(Side.CLIENT)
 public abstract class HelicopterRenderer<E extends HelicopterEntity> extends Render<E> {

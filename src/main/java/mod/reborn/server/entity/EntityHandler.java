@@ -268,6 +268,7 @@ public class EntityHandler {
         registerEntity(JeepWranglerEntity.class, "Jeep Wrangler");
         registerEntity(BlueJeepWranglerEntity.class,"Blue Jeep Wrangler");
         registerEntity(GreenJeepWranglerEntity.class, "Green Jeep Wrangler");
+        registerEntity(BlackJeepWranglerEntity.class, "Black Jeep Wrangler");
         registerEntity(PurpleJeepWranglerEntity.class, "Purple Jeep Wrangler");
         registerEntity(PinkJeepWranglerEntity.class, "Pink Jeep Wrangler");
         registerEntity(SornaJeepWranglerEntity.class,"Sorna Jeep Wrangler");
@@ -291,7 +292,7 @@ public class EntityHandler {
             EntityRegistry.addSpawn(EntityCrab.class, 20, 4, 8, EnumCreatureType.CREATURE, biomeBeach.toArray(new Biome[biomeBeach.size()]));
         }
         if(RebornConfig.ENTITIES.sharkSpawning) {
-            EntityRegistry.addSpawn(EntityShark.class, 4, 4, 8, EnumCreatureType.WATER_CREATURE, Biomes.OCEAN);
+            EntityRegistry.addSpawn(EntityShark.class, 1, 1, 2, EnumCreatureType.WATER_CREATURE, Biomes.OCEAN);
             EntitySpawnPlacementRegistry.setPlacementType(EntityShark.class, EntityLiving.SpawnPlacementType.IN_WATER);
         }
 

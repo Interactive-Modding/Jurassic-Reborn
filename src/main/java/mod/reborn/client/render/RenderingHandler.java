@@ -96,12 +96,12 @@ public enum RenderingHandler {
         ModelLoader.setCustomStateMapper(BlockHandler.LOW_SECURITY_FENCE_BASE, new MultipartStateMap());
         ModelLoader.setCustomStateMapper(BlockHandler.LOW_SECURITY_FENCE_POLE, new MultipartStateMap());
         ModelLoader.setCustomStateMapper(BlockHandler.LOW_SECURITY_FENCE_WIRE, new MultipartStateMap());
-//        ModelLoader.setCustomStateMapper(BlockHandler.MED_SECURITY_FENCE_BASE, new MultipartStateMap());
-//        ModelLoader.setCustomStateMapper(BlockHandler.MED_SECURITY_FENCE_POLE, new MultipartStateMap());
-//        ModelLoader.setCustomStateMapper(BlockHandler.MED_SECURITY_FENCE_WIRE, new MultipartStateMap());
-//        ModelLoader.setCustomStateMapper(BlockHandler.HIGH_SECURITY_FENCE_BASE, new MultipartStateMap());
-//        ModelLoader.setCustomStateMapper(BlockHandler.HIGH_SECURITY_FENCE_POLE, new MultipartStateMap());
-//        ModelLoader.setCustomStateMapper(BlockHandler.HIGH_SECURITY_FENCE_WIRE, new MultipartStateMap());
+        ModelLoader.setCustomStateMapper(BlockHandler.MED_SECURITY_FENCE_BASE, new MultipartStateMap());
+        ModelLoader.setCustomStateMapper(BlockHandler.MED_SECURITY_FENCE_POLE, new MultipartStateMap());
+        ModelLoader.setCustomStateMapper(BlockHandler.MED_SECURITY_FENCE_WIRE, new MultipartStateMap());
+        ModelLoader.setCustomStateMapper(BlockHandler.HIGH_SECURITY_FENCE_BASE, new MultipartStateMap());
+        ModelLoader.setCustomStateMapper(BlockHandler.HIGH_SECURITY_FENCE_POLE, new MultipartStateMap());
+        ModelLoader.setCustomStateMapper(BlockHandler.HIGH_SECURITY_FENCE_WIRE, new MultipartStateMap());
 
         int i = 0;
 
@@ -241,12 +241,12 @@ public enum RenderingHandler {
         registerBlockRenderer(BlockHandler.LOW_SECURITY_FENCE_POLE);
         registerBlockRenderer(BlockHandler.LOW_SECURITY_FENCE_BASE);
         registerBlockRenderer(BlockHandler.LOW_SECURITY_FENCE_WIRE);
-//        registerBlockRenderer(BlockHandler.MED_SECURITY_FENCE_POLE);
-//        registerBlockRenderer(BlockHandler.MED_SECURITY_FENCE_BASE);
-//        registerBlockRenderer(BlockHandler.MED_SECURITY_FENCE_WIRE);
-//        registerBlockRenderer(BlockHandler.HIGH_SECURITY_FENCE_POLE);
-//        registerBlockRenderer(BlockHandler.HIGH_SECURITY_FENCE_BASE);
-//        registerBlockRenderer(BlockHandler.HIGH_SECURITY_FENCE_WIRE);
+        registerBlockRenderer(BlockHandler.MED_SECURITY_FENCE_POLE);
+        registerBlockRenderer(BlockHandler.MED_SECURITY_FENCE_BASE);
+        registerBlockRenderer(BlockHandler.MED_SECURITY_FENCE_WIRE);
+        registerBlockRenderer(BlockHandler.HIGH_SECURITY_FENCE_POLE);
+        registerBlockRenderer(BlockHandler.HIGH_SECURITY_FENCE_BASE);
+        registerBlockRenderer(BlockHandler.HIGH_SECURITY_FENCE_WIRE);
 
         registerBlockRenderer(WILD_POTATO_PLANT);
 
@@ -593,10 +593,12 @@ public enum RenderingHandler {
         RenderingRegistry.registerEntityRenderingHandler(PinkJeepWranglerEntity.class, PinkJeepWranglerRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(SornaJeepWranglerEntity.class, SornaJeepWranglerRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(FordExplorerEntity.class, FordExplorerRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(BlackJeepWranglerEntity.class, BlackJeepWranglerRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(FordExplorerSnowEntity.class, FordExplorerSnowRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(GyrosphereEntity.class, GyrosphereRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(MonorailEntity.class, MonorailRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(TransportHelicopterEntity.class, HeliRenderer::new);
+
 //        RenderingRegistry.registerEntityRenderingHandler(HelicopterEntityNew.class, HelicopterNewRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(MuralEntity.class, MuralRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(BlueprintEntity.class, BlueprintRenderer::new);

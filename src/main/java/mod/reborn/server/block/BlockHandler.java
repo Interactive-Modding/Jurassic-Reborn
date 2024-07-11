@@ -287,16 +287,16 @@ public class BlockHandler
         registerBlock(BugCrateBlockEntity.class, BUG_CRATE, "Bug Crate");
 
         registerBlock(ElectricFenceWireBlockEntity.class, "tileEntityElectricFence", LOW_SECURITY_FENCE_WIRE, "Low Security Fence Wire");
-//        registerBlock(MED_SECURITY_FENCE_WIRE, "Med Security Fence Wire");
-//        registerBlock(HIGH_SECURITY_FENCE_WIRE, "High Security Fence Wire");
+        registerBlock(ElectricFenceWireBlockEntity.class, "tileEntityElectricFence", MED_SECURITY_FENCE_WIRE, "Med Security Fence Wire");
+        registerBlock(ElectricFenceWireBlockEntity.class, "tileEntityElectricFence", HIGH_SECURITY_FENCE_WIRE, "High Security Fence Wire");
 
         registerBlock(ElectricFencePoleBlockEntity.class, "tileEntityElectricPole", LOW_SECURITY_FENCE_POLE, "Low Security Fence Pole");
-//        registerBlock(MED_SECURITY_FENCE_POLE, "Med Security Fence Pole");
-//        registerBlock(HIGH_SECURITY_FENCE_POLE, "High Security Fence Pole");
+        registerBlock(ElectricFencePoleBlockEntity.class, "tileEntityElectricPole", MED_SECURITY_FENCE_POLE, "Med Security Fence Pole");
+        registerBlock(ElectricFencePoleBlockEntity.class, "tileEntityElectricPole", HIGH_SECURITY_FENCE_POLE, "High Security Fence Pole");
 
         registerBlock(ElectricFenceBaseBlockEntity.class, "tileEntityElectricBase", LOW_SECURITY_FENCE_BASE, "Low Security Fence Base");
-//        registerBlock(MED_SECURITY_FENCE_BASE, "Med Security Fence Base");
-//        registerBlock(HIGH_SECURITY_FENCE_BASE, "High Security Fence Base");
+        registerBlock(ElectricFenceBaseBlockEntity.class, "tileEntityElectricBase", MED_SECURITY_FENCE_BASE, "Med Security Fence Base");
+        registerBlock(ElectricFenceBaseBlockEntity.class, "tileEntityElectricBase", HIGH_SECURITY_FENCE_BASE, "High Security Fence Base");
 
 
         registerBlock(PALEO_BALE_OTHER, "Paleo Bale Other");

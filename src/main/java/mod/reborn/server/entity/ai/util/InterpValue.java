@@ -16,7 +16,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import java.util.List;
 import java.util.function.Supplier;
 
-@EventBusSubscriber(modid= RebornMod.MODID)
+@EventBusSubscriber(modid = RebornMod.MODID)
 public class InterpValue implements INBTSerializable<NBTTagCompound> {
 
     private static final List<InterpValue> INSTANCES = Lists.newArrayList();
@@ -28,12 +28,7 @@ public class InterpValue implements INBTSerializable<NBTTagCompound> {
     private double target;
     private double current;
     private double previousCurrent;
-    private boolean initilized;
-
-    @Deprecated
-    public InterpValue(double speed) {
-        this(() -> true, speed);
-    }
+    private boolean initialized;
 
     public InterpValue(Entity entity, double speed) {
         this(entity::isEntityAlive, speed);
@@ -42,12 +37,14 @@ public class InterpValue implements INBTSerializable<NBTTagCompound> {
     public InterpValue(Supplier<Boolean> supplier, double speed) {
         this.speed = speed;
         this.supplier = supplier;
-        INSTANCES.add(this);
+        synchronized (INSTANCES) {
+            INSTANCES.add(this);
+        }
     }
 
     public void setTarget(double target) {
-        if(!initilized) {
-            initilized = true;
+        if (!initialized) {
+            initialized = true;
             reset(target);
         } else {
             this.target = target;
@@ -55,20 +52,22 @@ public class InterpValue implements INBTSerializable<NBTTagCompound> {
     }
 
     public void reset(double target) {
-	    this.previousCurrent = target;
+        this.previousCurrent = target;
         this.current = target;
         this.target = target;
     }
 
     private void tickInterp() {
-        if(!supplier.get()) {
-            MARKED_REMOVE.add(this);
+        if (!supplier.get()) {
+            synchronized (MARKED_REMOVE) {
+                MARKED_REMOVE.add(this);
+            }
             return;
         }
         this.previousCurrent = current;
-        if(Math.abs(current - target) <= speed) {
+        if (Math.abs(current - target) <= speed) {
             current = target;
-        } else if(current < target) {
+        } else if (current < target) {
             current += speed;
         } else {
             current -= speed;
@@ -80,7 +79,7 @@ public class InterpValue implements INBTSerializable<NBTTagCompound> {
     }
 
     public double getCurrent() {
-	return current;
+        return current;
     }
 
     public void setSpeed(double speed) {
@@ -105,11 +104,19 @@ public class InterpValue implements INBTSerializable<NBTTagCompound> {
     @SubscribeEvent
     public static void onTick(TickEvent event) {
         Side side = FMLCommonHandler.instance().getSide();
-        if((event instanceof ClientTickEvent && side.isClient()) || (event instanceof ServerTickEvent && side.isServer())) {
-            synchronized (MARKED_REMOVE) {
-            	INSTANCES.forEach(InterpValue::tickInterp);
-            	MARKED_REMOVE.forEach(INSTANCES::remove);
-            	MARKED_REMOVE.clear();
+        if ((event instanceof ClientTickEvent && side.isClient()) || (event instanceof ServerTickEvent && side.isServer())) {
+            synchronized (INSTANCES) {
+                List<InterpValue> toRemove = Lists.newArrayList();
+                for (InterpValue interpValue : INSTANCES) {
+                    interpValue.tickInterp();
+                    if (MARKED_REMOVE.contains(interpValue)) {
+                        toRemove.add(interpValue);
+                    }
+                }
+                synchronized (MARKED_REMOVE) {
+                    INSTANCES.removeAll(toRemove);
+                    MARKED_REMOVE.clear();
+                }
             }
         }
     }
