@@ -5,8 +5,9 @@ import mod.reborn.server.entity.Diet;
 import mod.reborn.server.entity.dinosaur.CearadactylusEntity;
 import mod.reborn.server.period.TimePeriod;
 import net.minecraft.world.biome.Biome;
-import java.util.ArrayList;
 import net.minecraftforge.common.BiomeDictionary;
+
+import java.util.ArrayList;
 
 public class CearadactylusDinosaur extends Dinosaur
 {
@@ -25,7 +26,7 @@ public class CearadactylusDinosaur extends Dinosaur
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(1, 10);
         this.setMaximumAge(fromDays(50));
-        this.setEyeHeight(0.45F, 1.45F);
+        this.setEyeHeight(0.35F, 1.35F);
         this.setSizeX(0.15F, 1.0F);
         this.setSizeY(0.35F, 1.35F);
         this.setDiet((Diet.CARNIVORE.get()));

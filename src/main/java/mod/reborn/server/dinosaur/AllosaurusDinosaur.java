@@ -24,7 +24,7 @@ public class AllosaurusDinosaur extends Dinosaur {
         this.setAttackSpeed(1.1);
         this.setStrength(1, 20);
         this.setMaximumAge(fromDays(45));
-        this.setEyeHeight(0.45F, 4.0F);
+        this.setEyeHeight(0.39F, 2.9F);
         this.setSizeX(0.2F, 3.0F);
         this.setSizeY(0.4F, 3.0F);
         this.setDiet(Diet.CARNIVORE.get());

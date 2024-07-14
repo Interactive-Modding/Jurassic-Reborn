@@ -22,7 +22,7 @@ public class AlvarezsaurusDinosaur extends Dinosaur {
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(2, 4);
         this.setMaximumAge(fromDays(40));
-        this.setEyeHeight(0.225F, 0.6F);
+        this.setEyeHeight(0.225F, 0.59F);
         this.setSizeX(0.3F, 0.5F);
         this.setSizeY(0.3F, 0.6F);
         this.setStorage(27);

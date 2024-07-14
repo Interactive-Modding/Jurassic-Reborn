@@ -1,14 +1,13 @@
 package mod.reborn.server.dinosaur;
 
-import java.util.ArrayList;
-
 import mod.reborn.server.entity.Diet;
 import mod.reborn.server.entity.dinosaur.GallimimusEntity;
 import mod.reborn.server.food.FoodType;
 import mod.reborn.server.period.TimePeriod;
-
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
+
+import java.util.ArrayList;
 
 public class GallimimusDinosaur extends Dinosaur {
     public static final double SPEED = 0.41F;
@@ -25,7 +24,7 @@ public class GallimimusDinosaur extends Dinosaur {
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(1, 5);
         this.setMaximumAge(this.fromDays(35));
-        this.setEyeHeight(0.58F, 2.7F);
+        this.setEyeHeight(0.55F, 2.15F);
         this.setSizeX(0.3F, 1.2F);
         this.setSizeY(0.55F, 2.25F);
         this.setStorage(27);

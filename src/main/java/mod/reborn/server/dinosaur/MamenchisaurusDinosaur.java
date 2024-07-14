@@ -5,8 +5,9 @@ import mod.reborn.server.entity.Diet;
 import mod.reborn.server.entity.dinosaur.MamenchisaurusEntity;
 import mod.reborn.server.period.TimePeriod;
 import net.minecraft.world.biome.Biome;
-import java.util.ArrayList;
 import net.minecraftforge.common.BiomeDictionary;
+
+import java.util.ArrayList;
 
 public class MamenchisaurusDinosaur extends Dinosaur
 {
@@ -27,7 +28,7 @@ public class MamenchisaurusDinosaur extends Dinosaur
         this.setDiet((Diet.HERBIVORE.get()));
         this.setStrength(20, 60);
         this.setMaximumAge(fromDays(95));
-        this.setEyeHeight(1.55F, 13.95F);
+        this.setEyeHeight(0.45F, 3.95F);
         this.setSizeX(0.4F, 5.4F);
         this.setSizeY(0.5F, 5.8F);
         this.setBones("skull", "tooth", "front_leg_bones", "hind_leg_bones", "neck_vertebrae", "pelvis", "ribcage", "shoulder", "tail_vertebrae");

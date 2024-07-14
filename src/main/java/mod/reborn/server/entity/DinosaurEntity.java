@@ -13,6 +13,7 @@ import mod.reborn.server.block.entity.FeederBlockEntity;
 import mod.reborn.server.conf.RebornConfig;
 import mod.reborn.server.damage.DinosaurDamageSource;
 import mod.reborn.server.dinosaur.Dinosaur;
+import mod.reborn.server.entity.ai.FollowOwnerEntityAI;
 import mod.reborn.server.entity.ai.*;
 import mod.reborn.server.entity.ai.animations.CallAnimationAI;
 import mod.reborn.server.entity.ai.animations.HeadCockAnimationAI;
@@ -109,6 +110,7 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
     private boolean isSleeping;
     private boolean useInertialTweens;
     private boolean eatsEggs = false;
+
     private int carcassHealth;
     private int geneticsQuality;
     private int tranquilizerTicks;
@@ -231,8 +233,9 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
         this.tasks.addTask(0, new EscapeWireEntityAI(this));
         this.tasks.addTask(1, new RespondToAttackEntityAI(this));
         this.tasks.addTask(1, new EntityAIPanic(this, 1.25D));
+        this.tasks.addTask(1, new TemptNonAdultEntityAI(this, 0.6));
         this.tasks.addTask(2, new ProtectInfantEntityAI<>(this));
-        this.tasks.addTask(3, new DinosaurWanderEntityAI(this, 0.8D, 2, 10));
+        this.tasks.addTask(3, new DinosaurWanderEntityAI(this, 0.8D, 2, RebornConfig.ENTITIES.dinosaurWalkingRadius));
         this.tasks.addTask(3, new FollowOwnerEntityAI(this));
         this.tasks.addTask(3, this.getAttackAI());
         this.tasks.addTask(4, new EntityAILookIdle(this));
@@ -252,6 +255,13 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
 
         this.ignoreFrustumCheck = true;
         this.setSkeleton(false);
+        if(dinosaur.isMarineCreature()) {
+            if(this.deserializing) {
+                this.updateBounds();
+            }
+        } else {
+            this.updateBounds();
+        }
     }
 
     @Nullable
@@ -740,13 +750,21 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
     public void onLivingUpdate() {
         super.onLivingUpdate();
 
-        if(!RebornConfig.ENTITIES.allowCarcass && this.isCarcass) {
+
+        if (!RebornConfig.ENTITIES.allowCarcass && this.isCarcass) {
             this.attackEntityFrom(DamageSource.ANVIL, 1000);
         }
-        if(this.getAttackTarget() instanceof DinosaurEntity) {
-            DinosaurEntity entity = (DinosaurEntity) this.getAttackTarget();
-            if(entity != null && entity.isCarcass) {
+
+        if (this.getAttackTarget() == null) {
+            return;
+        }
+
+        EntityLivingBase target = this.getAttackTarget();
+        if (target instanceof DinosaurEntity) {
+            DinosaurEntity entity = (DinosaurEntity) target;
+            if (entity != null && entity.isCarcass) {
                 this.setAttackTarget(null);
+                return;
             }
         }
 
@@ -765,24 +783,6 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
             this.blocked = true;
         } else {
             this.blocked = false;
-        }
-        if (!this.world.isRemote && this instanceof TyrannosaurusEntity) {
-            if (this.moveTicks > 0) {
-                this.moveTicks--;
-                this.motionX = 0;
-                this.motionZ = 0;
-                this.motionX += MathHelper.sin(-(float) Math.toRadians(this.rotationYaw - 90)) * 0.03;
-                this.motionZ += MathHelper.cos((float) Math.toRadians(this.rotationYaw - 90)) * 0.03;
-                this.motionX *= 6.3;
-                this.motionZ *= 6.3;
-            }
-            if (this.moveTicks > -5) {
-                this.moveTicks--;
-
-                if (this.moveTicks == -4) {
-                    this.wasMoved = true;
-                }
-            }
         }
         if (!this.world.isRemote && this instanceof TyrannosaurusEntity) {
             if (this.moveTicks > 0) {
@@ -927,8 +927,7 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
                 this.getNavigator().tryMoveToEntityLiving(this.breeding, 1.0);
             }
             boolean dead = this.breeding.isDead || this.breeding.isCarcass();
-            if (dead || this.getEntityBoundingBox().intersects(this.breeding.getEntityBoundingBox().expand(3, 3, 3))) {
-                if (!dead) {
+            if (dead || this.getEntityBoundingBox().intersects(this.breeding.getEntityBoundingBox().expand(3, 3, 3))) {                if (!dead) {
                     this.breedCooldown = dinosaur.getBreedCooldown();
                     if (!this.isMale()) {
                         int minClutch = dinosaur.getMinClutch();
@@ -982,6 +981,7 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
             }
 
             this.updateGrowth();
+
 
             if (!this.world.isRemote) {
                 if (this.metabolism.isHungry()) {
@@ -1359,7 +1359,9 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
 
     @Override
     public float getEyeHeight() {
-        return (float) this.interpolate(dinosaur.getBabyEyeHeight(), dinosaur.getAdultEyeHeight()) * this.attributes.getScaleModifier();
+        double interpolatedHeight = this.interpolate(dinosaur.getBabyEyeHeight(), dinosaur.getAdultEyeHeight());
+        float scaledHeight = (float) (interpolatedHeight * this.attributes.getScaleModifier());
+        return scaledHeight;
     }
 
     @Override
@@ -1642,9 +1644,11 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
         nbt.setInteger("PregnantTime", this.pregnantTime);
         nbt.setBoolean("WasMoved", this.wasMoved);
 
+        // Ensure trackersUUID is consistently saved
         NBTTagCompound trackers = new NBTTagCompound();
-        for(int i = 0; i < this.trackersUUID.size(); i++)
+        for(int i = 0; i < this.trackersUUID.size(); i++) {
             trackers.setString(Integer.toString(i), this.trackersUUID.get(i));
+        }
         nbt.setTag("trackers", trackers);
 
         this.metabolism.writeToNBT(nbt);
@@ -1662,13 +1666,11 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
         }
 
         NBTTagList relationshipList = new NBTTagList();
-
         for (Relationship relationship : this.relationships) {
             NBTTagCompound compound = new NBTTagCompound();
             relationship.writeToNBT(compound);
             relationshipList.appendTag(compound);
         }
-
         nbt.setTag("Relationships", relationshipList);
 
         NBTTagCompound attributes = new NBTTagCompound();
@@ -1711,7 +1713,6 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
         this.metabolism.readFromNBT(nbt);
 
         String ownerUUID = nbt.getString("OwnerUUID");
-
         if (ownerUUID.length() > 0) {
             this.owner = UUID.fromString(ownerUUID);
         }
@@ -1723,15 +1724,17 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
 
         this.inventory.readFromNBT(nbt);
 
-        if(nbt.hasKey("trackers"))
-        {
-            NBTTagCompound trackersNBT = (NBTTagCompound)nbt.getTag("trackers");
-            for(String s : trackersNBT.getKeySet())
+        // Ensure trackersUUID is correctly deserialized
+        if (nbt.hasKey("trackers")) {
+            NBTTagCompound trackersNBT = (NBTTagCompound) nbt.getTag("trackers");
+            this.trackersUUID.clear();
+            for (String s : trackersNBT.getKeySet()) {
                 this.trackersUUID.add(trackersNBT.getString(s));
+            }
         }
 
         NBTTagList relationships = nbt.getTagList("Relationships", Constants.NBT.TAG_COMPOUND);
-
+        this.relationships.clear();
         for (int i = 0; i < relationships.tagCount(); i++) {
             NBTTagCompound compound = relationships.getCompoundTagAt(i);
             this.relationships.add(Relationship.readFromNBT(compound));
@@ -1744,6 +1747,7 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
 
         if (nbt.hasKey("Children")) {
             NBTTagList children = nbt.getTagList("Children", Constants.NBT.TAG_COMPOUND);
+            this.children.clear();
             for (int i = 0; i < children.tagCount(); i++) {
                 NBTTagCompound childTag = children.getCompoundTagAt(i);
                 Entity entity = EntityList.createEntityFromNBT(childTag, this.world);
@@ -1951,7 +1955,9 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
             this.height = height;
             if (!this.deserializing) {
                 AxisAlignedBB bounds = this.getEntityBoundingBox();
-                AxisAlignedBB newBounds = new AxisAlignedBB(bounds.minX, bounds.minY, bounds.minZ, bounds.minX + this.width, bounds.minY + this.height, bounds.minZ + this.width);
+                float halfWidth = this.width / 2.0F;
+                AxisAlignedBB newBounds = new AxisAlignedBB(this.posX - halfWidth, this.posY, this.posZ - halfWidth,
+                        this.posX + halfWidth, this.posY + this.height, this.posZ + halfWidth);
                 if (!this.world.collidesWithAnyBlock(newBounds)) {
                     this.setEntityBoundingBox(newBounds);
                     if (this.width > prevWidth && !this.firstUpdate && !this.world.isRemote) {
@@ -1960,10 +1966,12 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
                 }
             } else {
                 float halfWidth = this.width / 2.0F;
-                this.setEntityBoundingBox(new AxisAlignedBB(this.posX - halfWidth, this.posY, this.posZ - halfWidth, this.posX + halfWidth, this.posY + this.height, this.posZ + halfWidth));
+                this.setEntityBoundingBox(new AxisAlignedBB(this.posX - halfWidth, this.posY, this.posZ - halfWidth,
+                        this.posX + halfWidth, this.posY + this.height, this.posZ + halfWidth));
             }
         }
     }
+
 
     public Order getOrder() {
         return this.order;
@@ -2208,7 +2216,6 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
     public boolean canDinoSwim() {
         return true;
     }
-
     public Vector3f getDinosaurCultivatorRotation() {
         this.setAnimation(EntityAnimation.GESTATED.get());
         return new Vector3f();

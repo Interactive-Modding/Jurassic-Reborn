@@ -1,13 +1,12 @@
 package mod.reborn.server.dinosaur;
 
-import java.util.ArrayList;
-
 import mod.reborn.server.entity.Diet;
 import mod.reborn.server.entity.dinosaur.BrachiosaurusEntity;
 import mod.reborn.server.period.TimePeriod;
-
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
+
+import java.util.ArrayList;
 
 public class BrachiosaurusDinosaur extends Dinosaur {
     public static final double SPEED = 0.22F;
@@ -24,7 +23,7 @@ public class BrachiosaurusDinosaur extends Dinosaur {
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(5, 30);
         this.setMaximumAge(this.fromDays(85));
-        this.setEyeHeight(2.2F, 17.4F);
+        this.setEyeHeight(1.0F, 3.4F);
         this.setSizeX(0.5F, 6.15F);
         this.setSizeY(1.1F, 6.65F);
         this.setDiet(Diet.HERBIVORE.get());

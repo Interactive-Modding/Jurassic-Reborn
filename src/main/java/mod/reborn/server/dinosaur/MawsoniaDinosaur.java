@@ -1,7 +1,5 @@
 package mod.reborn.server.dinosaur;
 
-import java.util.ArrayList;
-
 import mod.reborn.server.entity.Diet;
 import mod.reborn.server.entity.SleepTime;
 import mod.reborn.server.entity.ai.util.MovementType;
@@ -12,6 +10,8 @@ import net.minecraft.init.MobEffects;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
+
+import java.util.ArrayList;
 
 public class MawsoniaDinosaur extends Dinosaur {
 
@@ -32,7 +32,7 @@ public class MawsoniaDinosaur extends Dinosaur {
         this.setAttackSpeed(1.5);
         this.setStrength(0.5, 3);
         this.setMaximumAge(this.fromDays(30));
-        this.setEyeHeight(0.35F, 1.8F);
+        this.setEyeHeight(0.15F, 1.8F);
         this.setSizeX(0.3F, 2.5F);
         this.setSizeY(0.2F, 1.8F);
         this.setDiet((Diet.PCARNIVORE.get()));

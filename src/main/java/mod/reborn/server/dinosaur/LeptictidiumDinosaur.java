@@ -25,7 +25,7 @@ public class LeptictidiumDinosaur extends Dinosaur
         this.setStrength(2, 4);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setMaximumAge(fromDays(25));
-        this.setEyeHeight(0.21F, 0.75F);
+        this.setEyeHeight(0.14F, 0.75F);
         this.setSizeX(0.1F, 0.5F);
         this.setSizeY(0.15F, 0.75F);
         this.setMammal(true);

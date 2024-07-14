@@ -25,7 +25,7 @@ public class TherizinosaurusDinosaur extends Dinosaur
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(10, 35);
         this.setMaximumAge(fromDays(65));
-        this.setEyeHeight(0.95F, 5.85F);
+        this.setEyeHeight(0.45F, 3.55F);
         this.setSizeX(0.34F, 2.25F);
         this.setSizeY(0.5F, 3.6F);
         this.setStorage(36);

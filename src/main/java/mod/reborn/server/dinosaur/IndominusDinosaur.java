@@ -28,7 +28,7 @@ public class IndominusDinosaur extends Dinosaur implements Hybrid
         this.setStrength(4, 40);
         this.setMaximumAge(fromDays(30));
         this.setAttackSpeed(3);
-        this.setEyeHeight(0.55F, 5.4F);
+        this.setEyeHeight(0.35F, 3.4F);
         this.setSizeX(0.2F, 3.5F);
         this.setSizeY(0.4F, 3.6F);
         this.setStorage(54);

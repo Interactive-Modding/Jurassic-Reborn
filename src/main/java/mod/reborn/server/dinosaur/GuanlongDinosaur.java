@@ -23,7 +23,7 @@ public class GuanlongDinosaur extends Dinosaur {
         this.setStorage(27);
         this.setStrength(2, 15);
         this.setMaximumAge(fromDays(45));
-        this.setEyeHeight(0.45F, 1.6F);
+        this.setEyeHeight(0.35F, 1.3F);
         this.setSizeX(0.2F, 1.2F);
         this.setSizeY(0.4F, 1.4F);
         this.setDiet(Diet.CARNIVORE.get());

@@ -2,30 +2,26 @@ package mod.reborn.server.entity;
 
 import mod.reborn.client.model.animation.EntityAnimation;
 import mod.reborn.server.block.entity.FeederBlockEntity;
-import mod.reborn.server.block.machine.FeederBlock;
 import mod.reborn.server.conf.RebornConfig;
+import mod.reborn.server.entity.ai.AdvancedSwimEntityAI;
 import mod.reborn.server.entity.ai.DinosaurAttackMeleeEntityAI;
+import mod.reborn.server.entity.ai.DinosaurWanderEntityAI;
 import mod.reborn.server.entity.ai.navigation.DinosaurMoveHelper;
-import mod.reborn.server.entity.ai.util.OnionTraverser;
+import mod.reborn.server.entity.ai.util.MathUtils;
 import mod.reborn.server.entity.dinosaur.*;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.MoverType;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.ai.EntityMoveHelper;
 import net.minecraft.entity.passive.EntityFlying;
 import net.minecraft.entity.passive.IAnimals;
-import net.minecraft.init.Blocks;
-import net.minecraft.pathfinding.Path;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-import mod.reborn.server.entity.ai.DinosaurWanderEntityAI;
-import mod.reborn.server.entity.ai.util.MathUtils;
 
 import java.util.Random;
 
@@ -45,12 +41,13 @@ public abstract class FlyingDinosaurEntity extends DinosaurEntity implements Ent
         setSize(1, 1);
         blocked = false;
         this.moveHelper = new FlyingDinosaurEntity.FlyingMoveHelper();
+        this.tasks.addTask(0, new DinosaurAttackMeleeEntityAI(this,1,true));
         this.tasks.addTask(1, new FlyingDinosaurEntity.AIFlyLand());
         this.tasks.addTask(2, new FlyingDinosaurEntity.AIStartFlying());
-        this.tasks.addTask(0, new FlyingDinosaurEntity.AIRandomFly());
-        this.tasks.addTask(0, new FlyingDinosaurEntity.AIWander());
-        this.tasks.addTask(2, new AILookAround());
-        this.tasks.addTask(0, new DinosaurAttackMeleeEntityAI(this,1,true));
+        this.tasks.addTask(4, new FlyingDinosaurEntity.AIRandomFly());
+        this.tasks.addTask(5, new FlyingDinosaurEntity.AIWander());
+        this.tasks.addTask(3, new AILookAround());
+        this.tasks.addTask(6, new AdvancedSwimEntityAI(this));
         this.doesEatEggs(true);
         this.doTarget();
     }
@@ -109,11 +106,12 @@ public abstract class FlyingDinosaurEntity extends DinosaurEntity implements Ent
         }
     }
 
+
     @Override
     public void travel(float strafe, float vertical, float forward) {
-        if(!this.tranqed && !isOnGround()) {
+        if (!this.tranqed && !isOnGround()) {
             if (this.inWater()) {
-                this.moveRelative(strafe, forward, 0.02F, 0F);
+                this.moveRelative(strafe, forward, 0.1F, 0F); // Increased vertical movement speed
                 this.move(MoverType.SELF, this.motionX, this.motionY, this.motionZ);
                 this.motionX *= 0.800000011920929D;
                 this.motionY *= 0.800000011920929D;
@@ -184,7 +182,6 @@ public abstract class FlyingDinosaurEntity extends DinosaurEntity implements Ent
                 return false;
             }
         }
-
         return true;
     }
 
@@ -309,7 +306,6 @@ public abstract class FlyingDinosaurEntity extends DinosaurEntity implements Ent
             }
         }
     }
-
     class FlyingMoveHelper extends DinosaurMoveHelper {
         private final FlyingDinosaurEntity parentEntity = FlyingDinosaurEntity.this;
         private int timer;
@@ -318,10 +314,9 @@ public abstract class FlyingDinosaurEntity extends DinosaurEntity implements Ent
             super(FlyingDinosaurEntity.this);
         }
 
-
         @Override
         public void onUpdateMoveHelper() {
-            if(parentEntity.isOnGround()) {
+            if (parentEntity.isOnGround()) {
                 super.onUpdateMoveHelper();
                 return;
             }
@@ -340,7 +335,7 @@ public abstract class FlyingDinosaurEntity extends DinosaurEntity implements Ent
                         this.parentEntity.motionY += distanceY / distance * this.speed * 0.1D;
                         this.parentEntity.motionZ += distanceZ / distance * this.speed * 0.1D;
                     } else {
-                        this.action = EntityMoveHelper.Action.WAIT;
+                        findAlternativePathOrFallback();
                     }
                 }
                 if (distance < 2.5E-07) {
@@ -348,7 +343,21 @@ public abstract class FlyingDinosaurEntity extends DinosaurEntity implements Ent
                     return;
                 }
             }
+        }
 
+        private void findAlternativePathOrFallback() {
+            // Logic to find an alternative path or fallback behavior
+            Random random = this.parentEntity.getRNG();
+            double newX = this.parentEntity.posX + (random.nextFloat() * 2.0F - 1.0F) * 16.0F;
+            double newY = this.parentEntity.posY + (random.nextFloat() * 2.0F - 1.0F) * 8.0F;
+            double newZ = this.parentEntity.posZ + (random.nextFloat() * 2.0F - 1.0F) * 16.0F;
+            if (isNotColliding(newX, newY, newZ, MathHelper.sqrt(newX * newX + newY * newY + newZ * newZ))) {
+                this.setMoveTo(newX, newY, newZ, this.speed);
+                this.action = EntityMoveHelper.Action.MOVE_TO;
+            } else {
+                // If no alternative path is found, reset action to WAIT and try again next tick
+                this.action = EntityMoveHelper.Action.WAIT;
+            }
         }
 
         private boolean isNotColliding(double x, double y, double z, double distance) {
@@ -368,6 +377,7 @@ public abstract class FlyingDinosaurEntity extends DinosaurEntity implements Ent
             return true;
         }
     }
+
 
     public BlockPos getClosestFeeder() {
         int posX = (int) this.posX;

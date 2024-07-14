@@ -25,7 +25,7 @@ public class TylosaurusDinosaur extends Dinosaur
         this.setSpeed((SPEED -0.65), SPEED);
         this.setStrength(5, 30);
         this.setMaximumAge(fromDays(60));
-        this.setEyeHeight(0.35F, 2.95F);
+        this.setEyeHeight(0.23F, 2.95F);
         this.setSizeX(0.45F, 4.5F);
         this.setSizeY(0.25F, 2.95F);
         this.setStorage(54);

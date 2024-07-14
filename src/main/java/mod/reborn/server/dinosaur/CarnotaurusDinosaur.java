@@ -26,7 +26,7 @@ public class CarnotaurusDinosaur extends Dinosaur
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(5, 20);
         this.setMaximumAge(fromDays(45));
-        this.setEyeHeight(0.6F, 3.1F);
+        this.setEyeHeight(0.6F, 2.85F);
         this.setSizeX(0.45F, 2.35F);
         this.setSizeY(0.6F, 2.9F);
         this.setDiet(Diet.CARNIVORE.get());

@@ -23,7 +23,7 @@ public class MosasaurusDinosaur extends Dinosaur {
         this.setStrength(20, 50);
         this.setMaximumAge(fromDays(70));
         this.setMarineAnimal(true);
-        this.setEyeHeight(0.225F, 4.6F);
+        this.setEyeHeight(0.225F, 3.6F);
         this.setSizeX(1.8F, 3.6F);
         this.setSizeY(1.0F, 3.6F);
         this.setStorage(27);

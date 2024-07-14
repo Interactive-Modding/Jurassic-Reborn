@@ -25,7 +25,7 @@ public class ParapuzosiaDinosaur extends Dinosaur {
         this.setStrength(2, 4);
         this.setMaximumAge(fromDays(50));
         this.setMarineAnimal(true);
-        this.setEyeHeight(0.90F, 4.2F);
+        this.setEyeHeight(0.90F, 3.2F);
         this.setSizeX(1.0F, 3.6F);
         this.setSizeY(1.0F, 3.6F);
         this.setMarineAnimal(true);

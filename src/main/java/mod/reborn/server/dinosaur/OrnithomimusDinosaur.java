@@ -25,7 +25,7 @@ public class OrnithomimusDinosaur extends Dinosaur
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(1, 5);
         this.setMaximumAge(fromDays(35));
-        this.setEyeHeight(0.58F, 1.95F);
+        this.setEyeHeight(0.24F, 1.45F);
         this.setSizeX(0.1F, 1.0F);
         this.setSizeY(0.25F, 1.55F);
         this.setDiet((Diet.HERBIVORE.get()));

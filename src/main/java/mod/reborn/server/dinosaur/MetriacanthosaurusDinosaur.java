@@ -25,7 +25,7 @@ public class MetriacanthosaurusDinosaur extends Dinosaur
         this.setStrength(2, 20);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setMaximumAge(fromDays(40));
-        this.setEyeHeight(0.35F, 1.95F);
+        this.setEyeHeight(0.25F, 1.95F);
         this.setSizeX(0.15F, 1.15F);
         this.setSizeY(0.25F, 1.95F);
         this.setStorage(27);

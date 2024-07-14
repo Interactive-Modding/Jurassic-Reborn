@@ -26,8 +26,8 @@ public class PteranodonDinosaur extends Dinosaur
         this.setSpeed((SPEED -0.05), SPEED);
         this.setMaximumAge(fromDays(40));
         this.setEyeHeight(0.45F, 2.0F);
-        this.setSizeX(0.15F, 2.0F);
-        this.setSizeY(0.35F, 1.8F);
+        this.setSizeX(0.15F, 1.5F);
+        this.setSizeY(0.35F, 1.7F);
         this.setStorage(27);
         this.setDiet((Diet.CARNIVORE.get()));
         this.setBones("leg_bones", "neck_vertebrae", "pelvis", "ribcage", "skull", "tail_vertebrae", "wing_bones");

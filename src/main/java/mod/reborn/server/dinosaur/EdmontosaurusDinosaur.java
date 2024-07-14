@@ -26,7 +26,7 @@ public class EdmontosaurusDinosaur extends Dinosaur
         this.setStrength(5, 20);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setMaximumAge(fromDays(50));
-        this.setEyeHeight(0.6F, 4.25F);
+        this.setEyeHeight(0.6F, 3.45F);
         this.setSizeX(0.3F, 2.8F);
         this.setSizeY(0.6F, 3.5F);
         this.setStorage(45);

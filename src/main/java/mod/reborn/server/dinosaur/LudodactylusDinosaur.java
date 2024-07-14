@@ -26,7 +26,7 @@ public class LudodactylusDinosaur extends Dinosaur
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(3, 10);
         this.setMaximumAge(fromDays(40));
-        this.setEyeHeight(0.48F, 1.35F);
+        this.setEyeHeight(0.34F, 1.35F);
         this.setSizeX(0.15F, 1.0F);
         this.setSizeY(0.35F, 1.35F);
         this.setStorage(18);

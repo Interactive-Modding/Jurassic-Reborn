@@ -4,8 +4,9 @@ import mod.reborn.server.entity.Diet;
 import mod.reborn.server.entity.dinosaur.AnkylosaurusEntity;
 import mod.reborn.server.period.TimePeriod;
 import net.minecraft.world.biome.Biome;
-import java.util.ArrayList;
 import net.minecraftforge.common.BiomeDictionary;
+
+import java.util.ArrayList;
 
 public class AnkylosaurusDinosaur extends Dinosaur
 {
@@ -23,7 +24,7 @@ public class AnkylosaurusDinosaur extends Dinosaur
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(6, 40);
         this.setMaximumAge(fromDays(50));
-        this.setEyeHeight(0.4F, 2.0F);
+        this.setEyeHeight(0.29F, 2.0F);
         this.setSizeX(0.3F, 3.0F);
         this.setSizeY(0.3F, 3.0F);
         this.setStorage(27);

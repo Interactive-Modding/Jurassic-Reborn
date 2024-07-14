@@ -23,7 +23,7 @@ public class CarcharodontosaurusDinosaur extends Dinosaur {
         this.setAttackSpeed(1.2);
         this.setStrength(1, 20);
         this.setMaximumAge(fromDays(45));
-        this.setEyeHeight(0.45F, 4.6F);
+        this.setEyeHeight(0.15F, 3.6F);
         this.setSizeX(0.2F, 3.0F);
         this.setSizeY(0.15F, 3.6F);
         this.setDiet(Diet.CARNIVORE.get());

@@ -30,7 +30,7 @@ public class DiplocaulusDinosaur extends Dinosaur {
         this.setDiet(Diet.PISCIVORE.get());
         this.setBones("skull", "teeth", "foot_bone","leg_bones", "ribcage", "tail_vertebrae");
         this.setHeadCubeName("Head");
-        this.setScale(0.8F, 0.1F);
+        this.setScale(0.2F, 0.05F);
         this.setBirthType(BirthType.LIVE_BIRTH);
         this.setOffset(0,-4.5F,0);
         this.setAttackBias(10);

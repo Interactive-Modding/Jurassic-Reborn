@@ -26,7 +26,7 @@ public class IndoraptorDinosaur extends Dinosaur implements Hybrid
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(2, 15);
         this.setMaximumAge(fromDays(30));
-        this.setEyeHeight(0.55F, 5.4F);
+        this.setEyeHeight(0.2F, 3.4F);
         this.setSizeX(0.2F, 2.8F);
         this.setSizeY(0.2F, 3.6F);
         this.setStorage(54);

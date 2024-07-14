@@ -25,7 +25,7 @@ public class SpinosaurusDinosaur extends Dinosaur
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(2, 20);
         this.setMaximumAge(fromDays(55));
-        this.setEyeHeight(0.6F, 4.2F);
+        this.setEyeHeight(0.3F, 3.5F);
         this.setSizeX(0.2F, 2.7F);
         this.setSizeY(0.3F, 3.6F);
         this.setStorage(54);

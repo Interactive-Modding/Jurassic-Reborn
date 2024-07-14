@@ -23,7 +23,7 @@ public class MussaurusDinosaur extends Dinosaur {
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(1, 2);
         this.setMaximumAge(this.fromDays(30));
-        this.setEyeHeight(0.25F, 1.2F);
+        this.setEyeHeight(0.15F, 1.0F);
         this.setSizeX(0.25F, 1F);
         this.setSizeY(0.2F, 1.0F);
         this.setStorage(9);

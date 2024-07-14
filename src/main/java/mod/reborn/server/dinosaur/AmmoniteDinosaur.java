@@ -25,7 +25,7 @@ public class AmmoniteDinosaur extends Dinosaur {
         this.setStrength(2, 4);
         this.setMaximumAge(fromDays(45));
         this.setMarineAnimal(true);
-        this.setEyeHeight(0.25F, 0.8F);
+        this.setEyeHeight(0.25F, 0.78F);
         this.setSizeX(0.3F, 0.8F);
         this.setSizeY(0.5F, 0.8F);
         this.setMarineAnimal(true);

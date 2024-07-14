@@ -27,7 +27,7 @@ public class SpinoraptorDinosaur extends Dinosaur implements Hybrid
         this.setAttackSpeed(1.5);
         this.setStrength(2, 25);
         this.setMaximumAge(fromDays(30));
-        this.setEyeHeight(0.55F, 5.4F);
+        this.setEyeHeight(0.15F, 3.4F);
         this.setSizeX(0.2F, 2.8F);
         this.setSizeY(0.2F, 3.6F);
         this.setStorage(54);

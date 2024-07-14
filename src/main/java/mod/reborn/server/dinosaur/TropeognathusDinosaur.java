@@ -25,7 +25,7 @@ public class TropeognathusDinosaur extends Dinosaur
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(5, 20);
         this.setMaximumAge(fromDays(50));
-        this.setEyeHeight(0.45F, 1.45F);
+        this.setEyeHeight(0.35F, 1.35F);
         this.setSizeX(0.15F, 1.0F);
         this.setSizeY(0.35F, 1.35F);
         this.setStorage(27);

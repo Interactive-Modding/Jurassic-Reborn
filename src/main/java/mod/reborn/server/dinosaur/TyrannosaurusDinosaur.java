@@ -24,7 +24,7 @@ public class TyrannosaurusDinosaur extends Dinosaur {
         this.setAttackSpeed(2);
         this.setStrength(2, 25);
         this.setMaximumAge(this.fromDays(60));
-        this.setEyeHeight(0.6F, 3.6F);
+        this.setEyeHeight(0.4F, 3.6F);
         this.setSizeX(0.2F, 3.0F);
         this.setSizeY(0.4F, 3.6F);
         this.setStorage(54);

@@ -25,7 +25,7 @@ public class CrassigyrinusDinosaur extends Dinosaur {
         this.setStrength(1, 20);
         this.setMaximumAge(fromDays(45));
         this.setAttackBias(120);
-        this.setEyeHeight(0.45F, 0.6F);
+        this.setEyeHeight(0.05F, 0.45F);
         this.setSizeX(0.1F, 1.0F);
         this.setSizeY(0.1F, 0.5F);
         this.setDiet(Diet.CARNIVORE.get());

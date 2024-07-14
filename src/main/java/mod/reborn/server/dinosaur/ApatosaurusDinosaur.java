@@ -5,8 +5,9 @@ import mod.reborn.server.entity.Diet;
 import mod.reborn.server.entity.dinosaur.ApatosaurusEntity;
 import mod.reborn.server.period.TimePeriod;
 import net.minecraft.world.biome.Biome;
-import java.util.ArrayList;
 import net.minecraftforge.common.BiomeDictionary;
+
+import java.util.ArrayList;
 
 public class ApatosaurusDinosaur extends Dinosaur
 {
@@ -24,7 +25,7 @@ public class ApatosaurusDinosaur extends Dinosaur
         this.setStrength(5, 20);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setMaximumAge(fromDays(80));
-        this.setEyeHeight(0.7F, 6.6F);
+        this.setEyeHeight(0.5F, 3.59F);
         this.setSizeX(0.5F, 6.3F);
         this.setSizeY(0.6F, 6.6F);
         this.setStorage(54);

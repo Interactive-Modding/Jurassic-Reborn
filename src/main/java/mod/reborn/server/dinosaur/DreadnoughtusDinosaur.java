@@ -1,13 +1,12 @@
 package mod.reborn.server.dinosaur;
 
-import java.util.ArrayList;
-
 import mod.reborn.server.entity.Diet;
 import mod.reborn.server.entity.dinosaur.DreadnoughtusEntity;
 import mod.reborn.server.period.TimePeriod;
-
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
+
+import java.util.ArrayList;
 
 public class DreadnoughtusDinosaur extends Dinosaur {
     public static final double SPEED = 0.22F;
@@ -23,7 +22,7 @@ public class DreadnoughtusDinosaur extends Dinosaur {
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(5, 15);
         this.setMaximumAge(this.fromDays(85));
-        this.setEyeHeight(2.2F, 18.4F);
+        this.setEyeHeight(0.4F, 3.8F);
         this.setSizeX(0.4F, 6.1F);
         this.setSizeY(0.5F, 6.6F);
         this.setStorage(54);

@@ -25,7 +25,7 @@ public class TitanitesDinosaur extends Dinosaur {
         this.setStrength(2, 4);
         this.setMaximumAge(fromDays(45));
         this.setMarineAnimal(true);
-        this.setEyeHeight(0.45F, 2.1F);
+        this.setEyeHeight(0.05F, 1.1F);
         this.setSizeX(0.1F, 1.0F);
         this.setSizeY(0.1F, 1.2F);
         this.setMarineAnimal(true);

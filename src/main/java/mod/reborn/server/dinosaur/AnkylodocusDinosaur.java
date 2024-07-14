@@ -2,9 +2,7 @@ package mod.reborn.server.dinosaur;
 
 import mod.reborn.server.api.Hybrid;
 import mod.reborn.server.entity.Diet;
-import mod.reborn.server.entity.GrowthStage;
 import mod.reborn.server.entity.dinosaur.AnkylodocusEntity;
-import mod.reborn.server.entity.dinosaur.IndoraptorEntity;
 import mod.reborn.server.period.TimePeriod;
 import net.minecraft.util.ResourceLocation;
 
@@ -28,7 +26,7 @@ public class AnkylodocusDinosaur extends Dinosaur implements Hybrid
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(10, 50);
         this.setMaximumAge(fromDays(95));
-        this.setEyeHeight(1.55F, 8.95F);
+        this.setEyeHeight(0.45F, 3.75F);
         this.setSizeX(0.4F, 5.4F);
         this.setSizeY(0.5F, 5.8F);
         this.setStorage(54);
