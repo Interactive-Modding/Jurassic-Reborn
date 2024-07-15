@@ -25,7 +25,7 @@ public class CeratosaurusDinosaur extends Dinosaur {
         this.setAttackSpeed(1.4);
         this.setStrength(1, 22);
         this.setMaximumAge(fromDays(45));
-        this.setEyeHeight(0.25F, 3.5F);
+        this.setEyeHeight(0.25F, 3.45F);
         this.setSizeX(0.4F, 2.7F);
         this.setSizeY(0.3F, 3.5F);
         this.setDiet(Diet.CARNIVORE.get());

@@ -27,7 +27,7 @@ public class TitanitesDinosaur extends Dinosaur {
         this.setMarineAnimal(true);
         this.setEyeHeight(0.05F, 1.1F);
         this.setSizeX(0.1F, 1.0F);
-        this.setSizeY(0.1F, 1.2F);
+        this.setSizeY(0.1F, 1.8F);
         this.setMarineAnimal(true);
         this.setBirthType(BirthType.LIVE_BIRTH);
         this.setDiet(Diet.PISCIVORE.get().withModule(new Diet.DietModule(FoodType.FILTER)));

@@ -24,7 +24,7 @@ public class ProceratosaurusDinosaur extends Dinosaur {
         this.setStorage(27);
         this.setStrength(2, 20);
         this.setMaximumAge(fromDays(45));
-        this.setEyeHeight(0.45F, 1.8F);
+        this.setEyeHeight(0.45F, 1.7F);
         this.setSizeX(0.5F, 1.0F);
         this.setSizeY(0.5F, 1.8F);
         this.setDiet(Diet.CARNIVORE.get());

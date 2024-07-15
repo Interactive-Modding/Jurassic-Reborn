@@ -27,7 +27,7 @@ public class MegapiranhaDinosaur extends Dinosaur
         this.setSpeed((SPEED -0.45), SPEED);
         this.setStrength(4, 8);
         this.setMaximumAge(fromDays(30));
-        this.setEyeHeight(0.15F, 0.7F);//TODO uh?
+        this.setEyeHeight(0.15F, 0.65F);//TODO uh?
         this.setSizeX(0.15F, 0.5F);
         this.setSizeY(0.15F, 0.7F);
         this.setStorage(18);

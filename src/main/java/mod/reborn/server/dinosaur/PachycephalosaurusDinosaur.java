@@ -32,7 +32,7 @@ public class PachycephalosaurusDinosaur extends Dinosaur
         this.setBones("skull", "teeth", "ribcage", "leg_bones", "neck_vertebrae", "pelvis", "shoulder", "tail_vertebrae");
         this.setHeadCubeName("Head");
         this.setScale(0.9F, 0.1F);
-        this.setEyeHeight(0.4F, 2.3F);
+        this.setEyeHeight(0.35F, 2.2F);
         this.setAttackBias(400);
         this.setImprintable(true);
         this.setDefendOwner(true);

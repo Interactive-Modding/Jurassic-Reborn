@@ -26,7 +26,7 @@ public class RugopsDinosaur extends Dinosaur
         this.setStrength(2, 15);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setMaximumAge(fromDays(45));
-        this.setEyeHeight(0.5F, 2.6F);
+        this.setEyeHeight(0.5F, 2.5F);
         this.setSizeX(0.20F, 1.5F);
         this.setSizeY(0.5F, 2.6F);
         this.setStorage(36);

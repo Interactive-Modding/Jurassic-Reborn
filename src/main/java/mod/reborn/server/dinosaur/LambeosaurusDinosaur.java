@@ -25,7 +25,7 @@ public class LambeosaurusDinosaur extends Dinosaur
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(5, 20);
         this.setMaximumAge(fromDays(50));
-        this.setEyeHeight(0.3F, 3.4F);
+        this.setEyeHeight(0.25F, 3.4F);
         this.setSizeX(0.2F, 2.8F);
         this.setSizeY(0.3F, 3.5F);
         this.setStorage(45);

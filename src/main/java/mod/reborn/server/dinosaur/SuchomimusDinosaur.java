@@ -24,7 +24,7 @@ public class SuchomimusDinosaur extends Dinosaur {
         this.setStorage(27);
         this.setStrength(5, 30);
         this.setMaximumAge(fromDays(45));
-        this.setEyeHeight(0.35F, 3.2F);
+        this.setEyeHeight(0.35F, 3.1F);
         this.setSizeX(0.2F, 2.0F);
         this.setSizeY(0.4F, 3.2F);
         this.setDiet(Diet.PCARNIVORE.get());

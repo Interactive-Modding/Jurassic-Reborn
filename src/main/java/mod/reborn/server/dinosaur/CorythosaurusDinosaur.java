@@ -27,7 +27,7 @@ public class CorythosaurusDinosaur extends Dinosaur
         this.setStrength(5, 15);
         this.setMaximumAge(fromDays(40));
         this.setAttackBias(50);
-        this.setEyeHeight(0.45F, 3.5F);
+        this.setEyeHeight(0.45F, 3.45F);
         this.setSizeX(0.5F, 2.5F);
         this.setSizeY(0.8F, 3.5F);
         this.setStorage(36);

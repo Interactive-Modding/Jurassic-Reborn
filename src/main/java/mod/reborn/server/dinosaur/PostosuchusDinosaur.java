@@ -23,7 +23,7 @@ public class PostosuchusDinosaur extends Dinosaur {
         this.setStorage(27);
         this.setStrength(2, 16);
         this.setMaximumAge(fromDays(45));
-        this.setEyeHeight(0.25F, 1.8F);
+        this.setEyeHeight(0.25F, 1.7F);
         this.setSizeX(0.15F, 1.4F);
         this.setSizeY(0.3F, 1.8F);
         this.setDiet(Diet.CARNIVORE.get());

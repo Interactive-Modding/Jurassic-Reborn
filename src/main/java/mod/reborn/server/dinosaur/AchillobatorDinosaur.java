@@ -26,7 +26,7 @@ public class AchillobatorDinosaur extends Dinosaur
         this.setAttackBias(1200.0);
         this.setAttackSpeed(1.9);
         this.setMaximumAge(fromDays(45));
-        this.setEyeHeight(0.45F, 1.8F);
+        this.setEyeHeight(0.45F, 1.75F);
         this.setSizeX(0.5F, 1.0F);
         this.setSizeY(0.5F, 1.8F);
         this.setDiet(Diet.CARNIVORE.get());

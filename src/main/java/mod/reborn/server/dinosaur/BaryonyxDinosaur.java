@@ -5,8 +5,9 @@ import mod.reborn.server.entity.Diet;
 import mod.reborn.server.entity.dinosaur.BaryonyxEntity;
 import mod.reborn.server.period.TimePeriod;
 import net.minecraft.world.biome.Biome;
-import java.util.ArrayList;
 import net.minecraftforge.common.BiomeDictionary;
+
+import java.util.ArrayList;
 
 public class BaryonyxDinosaur extends Dinosaur
 {
@@ -25,7 +26,7 @@ public class BaryonyxDinosaur extends Dinosaur
         this.setAttackSpeed(1.6);
         this.setStrength(1, 10);
         this.setMaximumAge(fromDays(55));
-        this.setEyeHeight(0.55F, 2.95F);
+        this.setEyeHeight(0.45F, 2.85F);
         this.setSizeX(0.3F, 1.5F);
         this.setSizeY(0.5F, 2.95F);
         this.setDiet(Diet.PCARNIVORE.get());

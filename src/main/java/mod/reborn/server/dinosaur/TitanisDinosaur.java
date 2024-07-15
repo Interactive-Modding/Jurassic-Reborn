@@ -25,7 +25,7 @@ public class TitanisDinosaur extends Dinosaur {
         this.setHealth(6, 30);
         this.setStrength(2, 15);
         this.setMaximumAge(this.fromDays(45));
-        this.setEyeHeight(0.5F, 2.5F);
+        this.setEyeHeight(0.45F, 2.4F);
         this.setSizeX(0.5F, 2.3F);
         this.setSizeY(0.5F, 2.5F);
         this.setStorage(20);

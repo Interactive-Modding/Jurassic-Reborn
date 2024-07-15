@@ -24,7 +24,7 @@ public class GallimimusDinosaur extends Dinosaur {
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(1, 5);
         this.setMaximumAge(this.fromDays(35));
-        this.setEyeHeight(0.55F, 2.15F);
+        this.setEyeHeight(0.45F, 2.15F);
         this.setSizeX(0.3F, 1.2F);
         this.setSizeY(0.55F, 2.25F);
         this.setStorage(27);

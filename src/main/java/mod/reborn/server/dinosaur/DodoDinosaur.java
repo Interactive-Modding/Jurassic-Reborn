@@ -5,8 +5,9 @@ import mod.reborn.server.entity.Diet;
 import mod.reborn.server.entity.dinosaur.DodoEntity;
 import mod.reborn.server.period.TimePeriod;
 import net.minecraft.world.biome.Biome;
-import java.util.ArrayList;
 import net.minecraftforge.common.BiomeDictionary;
+
+import java.util.ArrayList;
 
 public class DodoDinosaur extends Dinosaur
 {
@@ -25,7 +26,7 @@ public class DodoDinosaur extends Dinosaur
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(1, 5);
         this.setMaximumAge(fromDays(20));
-        this.setEyeHeight(0.35F, 0.95F);
+        this.setEyeHeight(0.3F, 0.9F);
         this.setSizeX(0.25F, 0.5F);
         this.setSizeY(0.35F, 0.95F);
         this.setDiet((Diet.HERBIVORE.get()));

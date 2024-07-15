@@ -24,7 +24,7 @@ public class ParaceratheriumDinosaur extends Dinosaur {
         this.setStorage(27);
         this.setStrength(3, 15);
         this.setMaximumAge(fromDays(45));
-        this.setEyeHeight(1.6F, 3.4F);
+        this.setEyeHeight(1.6F, 3.3F);
         this.setSizeX(1.45F, 3F);
         this.setSizeY(1.6F, 3.4F);
         this.setDiet(Diet.HERBIVORE.get());

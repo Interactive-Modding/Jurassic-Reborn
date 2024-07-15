@@ -25,7 +25,7 @@ public class MegatheriumDinosaur extends Dinosaur {
         this.setAttackSpeed(1.1);
         this.setStrength(2, 10);
         this.setMaximumAge(fromDays(45));
-        this.setEyeHeight(0.5F, 2.4F);
+        this.setEyeHeight(0.45F, 2.3F);
         this.setSizeX(0.35F, 2.1F);
         this.setSizeY(0.5F, 2.4F);
         this.setDiet(Diet.HERBIVORE.get());

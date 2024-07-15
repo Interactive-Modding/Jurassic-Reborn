@@ -25,7 +25,7 @@ public class HerrerasaurusDinosaur extends Dinosaur
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(2, 20);
         this.setMaximumAge(fromDays(45));
-        this.setEyeHeight(0.55F, 2.55F);
+        this.setEyeHeight(0.5F, 2.5F);
         this.setSizeX(0.4F, 1.8F);
         this.setSizeY(0.55F, 2.55F);
         this.setStorage(36);

@@ -25,8 +25,8 @@ public class AsterocerasDinosaur extends Dinosaur {
         this.setStrength(2, 4);
         this.setMaximumAge(fromDays(45));
         this.setMarineAnimal(true);
-        this.setEyeHeight(0.45F, 1.8F);
-        this.setSizeX(0.3F, 1.4F);
+        this.setEyeHeight(0.45F, 1.75F);
+        this.setSizeX(0.3F, 1.0F);
         this.setSizeY(0.5F, 1.8F);
         this.setMarineAnimal(true);
         this.setBirthType(BirthType.LIVE_BIRTH);

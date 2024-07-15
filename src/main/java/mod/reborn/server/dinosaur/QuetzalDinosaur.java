@@ -26,7 +26,7 @@ public class QuetzalDinosaur extends Dinosaur
         this.setStrength(2, 10);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setMaximumAge(fromDays(40));
-        this.setEyeHeight(0.55F, 3.0F);
+        this.setEyeHeight(0.55F, 2.9F);
         this.setSizeX(0.8F, 2.4F);
         this.setSizeY(0.6F, 3.0F);
         this.setStorage(27);

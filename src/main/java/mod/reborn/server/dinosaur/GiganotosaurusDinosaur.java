@@ -24,7 +24,7 @@ public class GiganotosaurusDinosaur extends Dinosaur
         this.setHealth(20, 80);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(4, 35);
-        this.setEyeHeight(0.5F, 3.5F);
+        this.setEyeHeight(0.45F, 3.5F);
         this.setSizeX(0.2F, 3.6F);
         this.setSizeY(0.5F, 3.6F);
         this.setMaximumAge(fromDays(60));

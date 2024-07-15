@@ -1,9 +1,10 @@
 package mod.reborn;
 
+import mod.reborn.server.command.ForceAnimationCommand;
+import mod.reborn.server.command.SpawnStructureCommand;
 import mod.reborn.server.message.*;
 import mod.reborn.server.proxy.ServerProxy;
 import net.ilexiconn.llibrary.server.network.NetworkWrapper;
-import net.ilexiconn.llibrary.server.update.UpdateHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -13,14 +14,12 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import org.apache.logging.log4j.Logger;
-import mod.reborn.server.command.ForceAnimationCommand;
-import mod.reborn.server.command.SpawnStructureCommand;
 
 @Mod(modid = RebornMod.MODID, name = RebornMod.NAME, version = RebornMod.VERSION, dependencies = "required-after:llibrary@[1.7.15,);required-after:forge@[14.23.5.2772,)")
 public class RebornMod {
     public static final String MODID = "rebornmod";
     public static final String NAME = "JWReborn";
-    public static final String VERSION = "1.3.3";
+    public static final String VERSION = "1.3.31";
 
     private final boolean TestEnv = false;
 

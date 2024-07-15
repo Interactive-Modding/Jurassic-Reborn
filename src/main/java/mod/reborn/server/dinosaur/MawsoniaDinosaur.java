@@ -55,7 +55,6 @@ public class MawsoniaDinosaur extends Dinosaur {
 
         ArrayList<Biome> biomeList = new ArrayList<Biome>();
         biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.OCEAN));
-        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.WATER));
         biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.RIVER));
         this.setSpawn(1, biomeList.toArray(new Biome[biomeList.size()]));
         this.enableSkeleton();

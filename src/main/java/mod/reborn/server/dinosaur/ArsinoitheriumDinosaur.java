@@ -25,7 +25,7 @@ public class ArsinoitheriumDinosaur extends Dinosaur {
         this.setAttackSpeed(1.5);
         this.setStrength(5, 20);
         this.setMaximumAge(fromDays(45));
-        this.setEyeHeight(0.5F, 1.9F);
+        this.setEyeHeight(0.45F, 1.85F);
         this.setSizeX(0.35F, 1.6F);
         this.setSizeY(0.5F, 1.9F);
         this.setDiet(Diet.HERBIVORE.get());

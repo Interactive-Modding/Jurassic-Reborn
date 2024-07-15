@@ -24,7 +24,7 @@ public class MammothDinosaur extends Dinosaur {
         this.setStorage(27);
         this.setStrength(5, 25);
         this.setMaximumAge(fromDays(45));
-        this.setEyeHeight(1.0F, 2.6F);
+        this.setEyeHeight(0.9F, 2.6F);
         this.setSizeX(0.85F, 2.4F);
         this.setSizeY(1.0F, 2.7F);
         this.setDiet(Diet.HERBIVORE.get());

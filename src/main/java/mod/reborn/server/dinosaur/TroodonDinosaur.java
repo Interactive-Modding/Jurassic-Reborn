@@ -26,7 +26,7 @@ public class TroodonDinosaur extends Dinosaur
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(1, 5);
         this.setMaximumAge(fromDays(35));
-        this.setEyeHeight(0.2F, 0.95F);
+        this.setEyeHeight(0.15F, 0.9F);
         this.setSizeX(0.15F, 0.7F);
         this.setSizeY(0.2F, 0.95F);
         this.setStorage(12);

@@ -24,7 +24,7 @@ public class DeinotheriumDinosaur extends Dinosaur {
         this.setStorage(27);
         this.setStrength(3, 15);
         this.setMaximumAge(fromDays(45));
-        this.setEyeHeight(1.4F, 3.2F);
+        this.setEyeHeight(1.2F, 3.2F);
         this.setSizeX(1.25F, 3F);
         this.setSizeY(1.4F, 3.3F);
         this.setDiet(Diet.HERBIVORE.get());

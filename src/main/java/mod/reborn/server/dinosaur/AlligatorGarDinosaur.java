@@ -32,7 +32,7 @@ public class AlligatorGarDinosaur extends Dinosaur
         this.setAttackSpeed(1.5);
         this.setStrength(0.5, 3);
         this.setMaximumAge(this.fromDays(30));
-        this.setEyeHeight(0.2F, 1.0F);
+        this.setEyeHeight(0.18F, 0.9F);
         this.setSizeX(0.2F, 1.0F);
         this.setSizeY(0.2F, 1.0F);
         this.setDiet(Diet.PISCIVORE.get().withModule(new Diet.DietModule(FoodType.FILTER)));

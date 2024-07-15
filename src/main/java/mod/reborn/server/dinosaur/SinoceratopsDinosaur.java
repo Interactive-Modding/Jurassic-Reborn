@@ -24,7 +24,7 @@ public class SinoceratopsDinosaur extends Dinosaur {
         this.setHealth(10, 70);
         this.setStrength(5, 20);
         this.setMaximumAge(this.fromDays(45));
-        this.setEyeHeight(0.3F, 3.0F);
+        this.setEyeHeight(0.3F, 2.9F);
         this.setSizeX(0.15F, 2.5F);
         this.setSizeY(0.3F, 3.0F);
         this.setStorage(36);

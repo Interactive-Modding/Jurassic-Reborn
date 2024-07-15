@@ -25,7 +25,7 @@ public class VelociraptorDinosaur extends Dinosaur {
         this.setHealth(6, 35);
         this.setStrength(2, 10);
         this.setMaximumAge(this.fromDays(45));
-        this.setEyeHeight(0.45F, 1.8F);
+        this.setEyeHeight(0.45F, 1.7F);
         this.setSizeX(0.5F, 1.0F);
         this.setSizeY(0.5F, 1.8F);
         this.setStorage(27);

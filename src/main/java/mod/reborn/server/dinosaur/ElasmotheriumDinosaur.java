@@ -23,7 +23,7 @@ public class ElasmotheriumDinosaur extends Dinosaur {
         this.setStorage(27);
         this.setStrength(5, 25);
         this.setMaximumAge(fromDays(45));
-        this.setEyeHeight(0.45F, 2.5F);
+        this.setEyeHeight(0.45F, 2.45F);
         this.setSizeX(0.35F, 2.2F);
         this.setSizeY(0.5F, 2.5F);
         this.setDiet(Diet.HERBIVORE.get());

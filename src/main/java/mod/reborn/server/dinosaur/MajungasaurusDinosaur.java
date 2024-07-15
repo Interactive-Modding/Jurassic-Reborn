@@ -26,7 +26,7 @@ public class MajungasaurusDinosaur extends Dinosaur
         this.setStrength(2, 20);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setMaximumAge(fromDays(45));
-        this.setEyeHeight(0.35F, 2.5F);
+        this.setEyeHeight(0.35F, 2.45F);
         this.setSizeX(0.2F, 2.25F);
         this.setSizeY(0.4F, 2.5F);
         this.setStorage(36);

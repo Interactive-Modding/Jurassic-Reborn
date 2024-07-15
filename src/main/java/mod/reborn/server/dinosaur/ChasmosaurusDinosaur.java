@@ -26,7 +26,7 @@ public class ChasmosaurusDinosaur extends Dinosaur
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(5, 15);
         this.setMaximumAge(fromDays(40));
-        this.setEyeHeight(0.45F, 2.35F);
+        this.setEyeHeight(0.4F, 2.25F);
         this.setSizeX(0.35F, 1.75F);
         this.setSizeY(0.45F, 2.35F);
         this.setStorage(27);

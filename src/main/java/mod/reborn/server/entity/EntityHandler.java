@@ -326,13 +326,22 @@ public class EntityHandler {
             registerEntity(clazz, dinosaur.getName());
 
             if (canSpawn && RebornConfig.ENTITIES.naturalSpawning) {
-                if(dinosaur.getSpawnBiomes() != null)
-                EntityRegistry.addSpawn(clazz, dinosaur.getSpawnChance(), 1, Math.min(1, dinosaur.getMaxHerdSize()/2), dinosaur.isMarineCreature() ? EnumCreatureType.WATER_CREATURE : EnumCreatureType.CREATURE, dinosaur.getSpawnBiomes());
-                if(dinosaur.isMarineCreature()) EntitySpawnPlacementRegistry.setPlacementType(EntityShark.class, EntityLiving.SpawnPlacementType.IN_WATER);
+                if (dinosaur.getSpawnBiomes() != null) {
+                    int spawnChance = dinosaur.getSpawnChance();
+                    int maxHerdSize = dinosaur.getMaxHerdSize();
+                    int minHerdSize = 1;
+                    int groupSize = Math.min(minHerdSize, maxHerdSize / 2);
+
+                    EnumCreatureType creatureType = dinosaur.isMarineCreature() ? EnumCreatureType.WATER_CREATURE : EnumCreatureType.CREATURE;
+                    EntityRegistry.addSpawn(clazz, spawnChance, minHerdSize, groupSize, creatureType, dinosaur.getSpawnBiomes());
+
+                    if (dinosaur.isMarineCreature()) {
+                        EntitySpawnPlacementRegistry.setPlacementType(EntityShark.class, EntityLiving.SpawnPlacementType.IN_WATER);
+                    }
+                }
+
+                EntitySpawnPlacementRegistry.setPlacementType(clazz, dinosaur.isMarineCreature() ? EntityLiving.SpawnPlacementType.IN_WATER : EntityLiving.SpawnPlacementType.ON_GROUND);
             }
-            EntitySpawnPlacementRegistry.setPlacementType(clazz, dinosaur.isMarineCreature() ? EntityLiving.SpawnPlacementType.IN_WATER : EntityLiving.SpawnPlacementType.ON_GROUND);
-
-
         }
     }
     

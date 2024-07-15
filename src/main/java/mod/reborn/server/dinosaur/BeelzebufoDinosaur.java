@@ -23,7 +23,7 @@ public class BeelzebufoDinosaur extends Dinosaur {
         this.setSpeed((SPEED -0.35), SPEED);
         this.setStrength(2, 10);
         this.setMaximumAge(fromDays(40));
-        this.setEyeHeight(0.225F, 0.4F);
+        this.setEyeHeight(0.15F, 0.4F);
         this.setSizeX(0.2F, 0.5F);
         this.setSizeY(0.2F, 0.6F);
         this.setMovementType(MovementType.NEAR_SURFACE);

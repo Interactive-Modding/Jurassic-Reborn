@@ -25,7 +25,7 @@ public class OthnieliaDinosaur extends Dinosaur
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(1, 5);
         this.setMaximumAge(fromDays(25));
-        this.setEyeHeight(0.25F, 0.55F);
+        this.setEyeHeight(0.2F, 0.5F);
         this.setSizeX(0.15F, 0.4F);
         this.setSizeY(0.25F, 0.55F);
         this.setStorage(9);

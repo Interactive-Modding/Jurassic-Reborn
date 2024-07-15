@@ -13,7 +13,6 @@ import mod.reborn.server.block.entity.FeederBlockEntity;
 import mod.reborn.server.conf.RebornConfig;
 import mod.reborn.server.damage.DinosaurDamageSource;
 import mod.reborn.server.dinosaur.Dinosaur;
-import mod.reborn.server.entity.ai.FollowOwnerEntityAI;
 import mod.reborn.server.entity.ai.*;
 import mod.reborn.server.entity.ai.animations.CallAnimationAI;
 import mod.reborn.server.entity.ai.animations.HeadCockAnimationAI;
@@ -51,6 +50,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+import net.minecraft.nbt.NBTTagString;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
@@ -94,7 +94,6 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
     private static final DataParameter<Boolean> WATCHER_WAS_FED = EntityDataManager.createKey(DinosaurEntity.class, DataSerializers.BOOLEAN);
     private static final DataParameter<Boolean> WATCHER_WAS_MOVED = EntityDataManager.createKey(DinosaurEntity.class, DataSerializers.BOOLEAN);
     private static final DataParameter<List<String>> WATCHER_TRACKERS = EntityDataManager.createKey(DinosaurEntity.class, ModSerializers.STRING_ARRAY);
-
 
     public List<String> trackersUUID = new ArrayList<>();
     public HashMap<Animation, Byte> variants = new HashMap<>();
@@ -640,7 +639,7 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
         this.dataManager.register(WATCHER_IS_RUNNING, false);
         this.dataManager.register(WATCHER_WAS_FED, false);
         this.dataManager.register(WATCHER_WAS_MOVED, this.wasMoved);
-        this.dataManager.register(WATCHER_TRACKERS, this.trackersUUID);
+        this.dataManager.register(WATCHER_TRACKERS, new ArrayList<>());
     }
 
     @Override
@@ -755,16 +754,15 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
             this.attackEntityFrom(DamageSource.ANVIL, 1000);
         }
 
-        if (this.getAttackTarget() == null) {
-            return;
-        }
 
         EntityLivingBase target = this.getAttackTarget();
         if (target instanceof DinosaurEntity) {
             DinosaurEntity entity = (DinosaurEntity) target;
             if (entity != null && entity.isCarcass) {
-                this.setAttackTarget(null);
-                return;
+                if (this.getAttackTarget() == null) {
+                } else {
+                    super.onLivingUpdate();
+                }
             }
         }
 
@@ -1206,7 +1204,7 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
             this.dataManager.set(WATCHER_AGE, this.dinosaurAge);
             this.dataManager.set(WATCHER_IS_SLEEPING, this.isSleeping);
             this.dataManager.set(WATCHER_IS_CARCASS, this.isCarcass);
-            this.dataManager.set(WATCHER_TRACKERS, this.trackersUUID);
+            this.dataManager.set(WATCHER_TRACKERS, new ArrayList<>(this.trackersUUID)); // Ensure a new list is set
             this.dataManager.set(WATCHER_CURRENT_ORDER, (byte) this.order.ordinal());
             this.dataManager.set(WATCHER_OWNER_IDENTIFIER, this.owner != null ? this.owner.toString() : "");
             this.dataManager.set(WATCHER_IS_RUNNING, this.getAIMoveSpeed() > this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue());
@@ -1216,13 +1214,13 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
             this.dinosaurAge = this.dataManager.get(WATCHER_AGE);
             this.isSleeping = this.dataManager.get(WATCHER_IS_SLEEPING);
             this.isCarcass = this.dataManager.get(WATCHER_IS_CARCASS);
-            this.trackersUUID = this.dataManager.get(WATCHER_TRACKERS);
+            this.trackersUUID = new ArrayList<>(this.dataManager.get(WATCHER_TRACKERS)); // Ensure a new list is used
             String owner = this.dataManager.get(WATCHER_OWNER_IDENTIFIER);
             this.order = Order.values()[this.dataManager.get(WATCHER_CURRENT_ORDER)];
 
-            if (owner.length() > 0 && (this.owner == null || !owner.equals(this.owner.toString()))) {
+            if (!owner.isEmpty() && (this.owner == null || !owner.equals(this.owner.toString()))) {
                 this.owner = UUID.fromString(owner);
-            } else if (owner.length() == 0) {
+            } else if (owner.isEmpty()) {
                 this.owner = null;
             }
         }
@@ -1644,27 +1642,33 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
         nbt.setInteger("PregnantTime", this.pregnantTime);
         nbt.setBoolean("WasMoved", this.wasMoved);
 
-        // Ensure trackersUUID is consistently saved
-        NBTTagCompound trackers = new NBTTagCompound();
-        for(int i = 0; i < this.trackersUUID.size(); i++) {
-            trackers.setString(Integer.toString(i), this.trackersUUID.get(i));
+        // Serialize trackersUUID
+        NBTTagList trackers = new NBTTagList();
+        for (String uuid : this.trackersUUID) {
+            trackers.appendTag(new NBTTagString(uuid));
         }
-        nbt.setTag("trackers", trackers);
+        nbt.setTag("TrackersUUID", trackers);
 
+
+        // Serialize metabolism
         this.metabolism.writeToNBT(nbt);
 
+        // Serialize owner UUID
         if (this.owner != null) {
             nbt.setString("OwnerUUID", this.owner.toString());
         }
 
+        // Serialize inventory
         this.inventory.writeToNBT(nbt);
 
+        // Serialize family only if this entity is the head of the family or family head is null
         if (this.family != null && (this.family.getHead() == null || this.family.getHead().equals(this.getUniqueID()))) {
             NBTTagCompound familyTag = new NBTTagCompound();
             this.family.writeToNBT(familyTag);
             nbt.setTag("Family", familyTag);
         }
 
+        // Serialize relationships
         NBTTagList relationshipList = new NBTTagList();
         for (Relationship relationship : this.relationships) {
             NBTTagCompound compound = new NBTTagCompound();
@@ -1673,10 +1677,12 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
         }
         nbt.setTag("Relationships", relationshipList);
 
+        // Serialize genetic attributes
         NBTTagCompound attributes = new NBTTagCompound();
         this.attributes.writeToNBT(attributes);
         nbt.setTag("GeneticAttributes", attributes);
 
+        // Serialize children
         if (this.children.size() > 0) {
             NBTTagList children = new NBTTagList();
             for (DinosaurEntity child : this.children) {
@@ -1687,11 +1693,20 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
             nbt.setTag("Children", children);
         }
 
+        // Store additional states
         nbt.setInteger("TranquilizerTicks", tranquilizerTicks);
         nbt.setInteger("TicksUntilDeath", ticksUntilDeath);
+
         return nbt;
     }
+    public void setTrackersUUID(List<String> trackersUUID) {
+        this.trackersUUID = new ArrayList<>(trackersUUID); // Ensure a new list is used
+        this.dataManager.set(WATCHER_TRACKERS, this.trackersUUID);
+    }
 
+    public List<String> getTrackersUUID() {
+        return new ArrayList<>(this.dataManager.get(WATCHER_TRACKERS)); // Ensure a new list is returned
+    }
     @Override
     public void readFromNBT(NBTTagCompound nbt) {
         this.deserializing = true;
@@ -1713,7 +1728,7 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
         this.metabolism.readFromNBT(nbt);
 
         String ownerUUID = nbt.getString("OwnerUUID");
-        if (ownerUUID.length() > 0) {
+        if (!ownerUUID.isEmpty()) {
             this.owner = UUID.fromString(ownerUUID);
         }
 
@@ -1724,15 +1739,17 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
 
         this.inventory.readFromNBT(nbt);
 
-        // Ensure trackersUUID is correctly deserialized
-        if (nbt.hasKey("trackers")) {
-            NBTTagCompound trackersNBT = (NBTTagCompound) nbt.getTag("trackers");
+        // Deserialize trackersUUID
+        if (nbt.hasKey("TrackersUUID")) {
+            NBTTagList trackersNBT = nbt.getTagList("TrackersUUID", Constants.NBT.TAG_STRING);
             this.trackersUUID.clear();
-            for (String s : trackersNBT.getKeySet()) {
-                this.trackersUUID.add(trackersNBT.getString(s));
+            for (int i = 0; i < trackersNBT.tagCount(); i++) {
+                this.trackersUUID.add(trackersNBT.getStringTagAt(i));
             }
+            this.dataManager.set(WATCHER_TRACKERS, new ArrayList<>(this.trackersUUID)); // Ensure a new list is set
         }
 
+        // Deserialize relationships
         NBTTagList relationships = nbt.getTagList("Relationships", Constants.NBT.TAG_COMPOUND);
         this.relationships.clear();
         for (int i = 0; i < relationships.tagCount(); i++) {
@@ -1740,11 +1757,13 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
             this.relationships.add(Relationship.readFromNBT(compound));
         }
 
+        // Deserialize attributes
         if (nbt.hasKey("GeneticAttributes")) {
             NBTTagCompound attributes = nbt.getCompoundTag("GeneticAttributes");
             this.attributes = DinosaurAttributes.from(attributes);
         }
 
+        // Deserialize children
         if (nbt.hasKey("Children")) {
             NBTTagList children = nbt.getTagList("Children", Constants.NBT.TAG_COMPOUND);
             this.children.clear();
@@ -1765,6 +1784,8 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
 
         this.deserializing = false;
     }
+
+
 
     @Override
     public void writeSpawnData(ByteBuf buffer) {
@@ -1792,6 +1813,7 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
         this.updateAttributes();
         this.updateBounds();
     }
+
 
     public MetabolismContainer getMetabolism() {
         return this.metabolism;

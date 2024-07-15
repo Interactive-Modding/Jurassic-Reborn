@@ -25,7 +25,7 @@ public class MicroceratusDinosaur extends Dinosaur
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(1, 5);
         this.setMaximumAge(fromDays(30));
-        this.setEyeHeight(0.14F, 0.55F);
+        this.setEyeHeight(0.14F, 0.5F);
         this.setSizeX(0.15F, 0.4F);
         this.setSizeY(0.18F, 0.55F);
         this.setDiet((Diet.HERBIVORE.get()));

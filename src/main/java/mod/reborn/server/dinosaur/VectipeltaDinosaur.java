@@ -24,7 +24,7 @@ public class VectipeltaDinosaur extends Dinosaur
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(6, 10);
         this.setMaximumAge(fromDays(50));
-        this.setEyeHeight(0.2F, 1.8F);
+        this.setEyeHeight(0.2F, 1.7F);
         this.setSizeX(0.15F, 1.4F);
         this.setSizeY(0.3F, 1.8F);
         this.setStorage(27);
