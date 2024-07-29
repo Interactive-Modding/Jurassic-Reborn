@@ -106,12 +106,11 @@ public abstract class FlyingDinosaurEntity extends DinosaurEntity implements Ent
         }
     }
 
-
     @Override
     public void travel(float strafe, float vertical, float forward) {
-        if (!this.tranqed && !isOnGround()) {
+        if(!this.tranqed && !isOnGround()) {
             if (this.inWater()) {
-                this.moveRelative(strafe, forward, 0.1F, 0F); // Increased vertical movement speed
+                this.moveRelative(strafe, forward, 0.02F, 0F);
                 this.move(MoverType.SELF, this.motionX, this.motionY, this.motionZ);
                 this.motionX *= 0.800000011920929D;
                 this.motionY *= 0.800000011920929D;
@@ -182,6 +181,7 @@ public abstract class FlyingDinosaurEntity extends DinosaurEntity implements Ent
                 return false;
             }
         }
+
         return true;
     }
 
@@ -306,6 +306,7 @@ public abstract class FlyingDinosaurEntity extends DinosaurEntity implements Ent
             }
         }
     }
+
     class FlyingMoveHelper extends DinosaurMoveHelper {
         private final FlyingDinosaurEntity parentEntity = FlyingDinosaurEntity.this;
         private int timer;
@@ -314,9 +315,10 @@ public abstract class FlyingDinosaurEntity extends DinosaurEntity implements Ent
             super(FlyingDinosaurEntity.this);
         }
 
+
         @Override
         public void onUpdateMoveHelper() {
-            if (parentEntity.isOnGround()) {
+            if(parentEntity.isOnGround()) {
                 super.onUpdateMoveHelper();
                 return;
             }
@@ -335,7 +337,7 @@ public abstract class FlyingDinosaurEntity extends DinosaurEntity implements Ent
                         this.parentEntity.motionY += distanceY / distance * this.speed * 0.1D;
                         this.parentEntity.motionZ += distanceZ / distance * this.speed * 0.1D;
                     } else {
-                        findAlternativePathOrFallback();
+                        this.action = EntityMoveHelper.Action.WAIT;
                     }
                 }
                 if (distance < 2.5E-07) {
@@ -343,21 +345,7 @@ public abstract class FlyingDinosaurEntity extends DinosaurEntity implements Ent
                     return;
                 }
             }
-        }
 
-        private void findAlternativePathOrFallback() {
-            // Logic to find an alternative path or fallback behavior
-            Random random = this.parentEntity.getRNG();
-            double newX = this.parentEntity.posX + (random.nextFloat() * 2.0F - 1.0F) * 16.0F;
-            double newY = this.parentEntity.posY + (random.nextFloat() * 2.0F - 1.0F) * 8.0F;
-            double newZ = this.parentEntity.posZ + (random.nextFloat() * 2.0F - 1.0F) * 16.0F;
-            if (isNotColliding(newX, newY, newZ, MathHelper.sqrt(newX * newX + newY * newY + newZ * newZ))) {
-                this.setMoveTo(newX, newY, newZ, this.speed);
-                this.action = EntityMoveHelper.Action.MOVE_TO;
-            } else {
-                // If no alternative path is found, reset action to WAIT and try again next tick
-                this.action = EntityMoveHelper.Action.WAIT;
-            }
         }
 
         private boolean isNotColliding(double x, double y, double z, double distance) {
@@ -377,7 +365,6 @@ public abstract class FlyingDinosaurEntity extends DinosaurEntity implements Ent
             return true;
         }
     }
-
 
     public BlockPos getClosestFeeder() {
         int posX = (int) this.posX;

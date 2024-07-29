@@ -5,22 +5,16 @@ import mod.reborn.client.model.animation.EntityAnimation;
 import mod.reborn.client.sound.SoundHandler;
 import mod.reborn.server.entity.DinosaurEntity;
 import net.ilexiconn.llibrary.server.animation.Animation;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.world.World;
-
-import scala.tools.nsc.doc.model.Class;
+import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.ResourceLocation;
-
-import java.util.Locale;
-import net.ilexiconn.llibrary.server.animation.Animation;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
+
+import java.util.Locale;
 
 public class TriceratopsEntity extends DinosaurEntity {
     private static final DataParameter<Integer> VARIANT= EntityDataManager.createKey(TriceratopsEntity.class, DataSerializers.VARINT);
@@ -28,6 +22,7 @@ public class TriceratopsEntity extends DinosaurEntity {
 
     public TriceratopsEntity(World world) {
         super(world);
+        this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
         this.setVariant(this.getRNG().nextInt(3));
 
     }

@@ -23,7 +23,7 @@ public class StegosaurusDinosaur extends Dinosaur{
         this.setStrength(12, 30);
         this.setSpeed((SPEED -0.05), SPEED);
         this.setMaximumAge(fromDays(50));
-        this.setEyeHeight(0.26F, 3.5F);
+        this.setEyeHeight(0.26F, 3.4F);
         this.setSizeX(0.2F, 3.6F);
         this.setSizeY(0.3F, 3.6F);
         this.setStorage(36);

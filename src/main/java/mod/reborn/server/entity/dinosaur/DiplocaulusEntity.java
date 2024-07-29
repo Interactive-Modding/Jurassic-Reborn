@@ -8,6 +8,6 @@ public class DiplocaulusEntity extends SwimmingDinosaurEntity {
 
     public DiplocaulusEntity(World world) {
         super(world);
-        this.target(AlvarezsaurusEntity.class, BeelzebufoEntity.class, EntitySquid.class, CompsognathusEntity.class, LeptictidiumEntity.class);
+        this.target(AlvarezsaurusEntity.class, BeelzebufoEntity.class, EntitySquid.class, CompsognathusEntity.class, LeptictidiumEntity.class, MicroceratusEntity.class);
     }
 }
