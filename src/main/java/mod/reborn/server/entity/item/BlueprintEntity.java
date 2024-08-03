@@ -195,7 +195,7 @@ public class BlueprintEntity extends EntityHanging implements IEntityAdditionalS
         ANKYLOSAURUS(1074,671),
         APATOSAURUS(1074,671),
         ARSINOITHERIUM(1206,676),
-        BARYONYX(1206,672),
+        BARYONYX(1082,676),
         BRACHIOSAURUS(1202,676),
         CAMARASAURUS(1074,671),
         CARCHARODONTOSAURUS(1206,676),
