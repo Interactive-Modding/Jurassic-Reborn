@@ -773,8 +773,8 @@ period.ordovician.name=Ordoviciano
 period.cambrian.name=Cambriano
 
 //Achievements ==============================================
-advancements.reborn.root.title=Jurassic World Reborn
-advancements.reborn.root.description=Bem-vindo ao Jurassic World Reborn!
+advancements.reborn.root.title=Jurassic Reborn
+advancements.reborn.root.description=Bem-vindo ao Jurassic Reborn!
 advancements.reborn.encased_fossil.title=Então você escava fósseis?
 advancements.reborn.encased_fossil.description=Mina um bloco de fóssil usando gesso.
 advancements.reborn.plant_fossils.title=Paleobotânica

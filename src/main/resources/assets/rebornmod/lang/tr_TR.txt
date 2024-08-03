@@ -688,8 +688,8 @@ period.ordovician.name=Ordovisyen
 period.cambrian.name=Kamboçya
 
 //Achievements ==============================================
-advancements.reborn.root.title=Jurassic World Reborn
-advancements.reborn.root.description=Jurassic World Reborn'a hoş geldiniz!
+advancements.reborn.root.title=Jurassic Reborn
+advancements.reborn.root.description=Jurassic Reborn'a hoş geldiniz!
 advancements.reborn.encased_fossil.title=Fosil mi kazıyorsun?
 advancements.reborn.encased_fossil.description=Alçı kullanarak bir fosil bloğu çıkar.
 advancements.reborn.plant_fossils.title=Paleobotanik

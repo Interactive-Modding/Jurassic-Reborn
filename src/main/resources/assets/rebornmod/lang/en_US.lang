@@ -817,8 +817,8 @@ message.not_owned.name=You do not own this dinosaur!
 message.too_young.name=This dinosaur is too young to hold items!
 message.set_order.name=You have commanded your dinosaur to {order}.
 
-advancements.reborn.root.title=Jurassic World Reborn
-advancements.reborn.root.description=Welcome to Jurassic World Reborn!
+advancements.reborn.root.title=Jurassic Reborn
+advancements.reborn.root.description=Welcome to Jurassic Reborn!
 advancements.reborn.encased_fossil.title=So you dig up fossils?
 advancements.reborn.encased_fossil.description=Mine a fossil block using plaster.
 advancements.reborn.plant_fossils.title=Paleobotany
