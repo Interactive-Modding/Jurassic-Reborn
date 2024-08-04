@@ -773,8 +773,8 @@ period.ordovician.name=Ордовик
 period.cambrian.name=Кембрий
 
 //Achievements ==============================================
-advancements.reborn.root.title=Jurassic World Reborn
-advancements.reborn.root.description=Добро пожаловать в Jurassic World Reborn!
+advancements.reborn.root.title=Jurassic Reborn
+advancements.reborn.root.description=Добро пожаловать в Jurassic Reborn!
 advancements.reborn.encased_fossil.title=Вы копаете окаменелости?
 advancements.reborn.encased_fossil.description=Разработайте ископаемый блок с помощью гипса.
 advancements.reborn.plant_fossils.title=Палеоботаника
