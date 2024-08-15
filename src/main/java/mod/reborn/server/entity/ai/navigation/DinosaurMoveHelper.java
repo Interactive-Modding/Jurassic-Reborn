@@ -28,7 +28,7 @@ public class DinosaurMoveHelper extends EntityMoveHelper {
             float moveDistance = MathHelper.sqrt(forward * forward + strafe * strafe);
 
 
-            if (moveDistance < 1.5F) {
+            if (moveDistance < 1.0F) {
                 moveDistance = 0.8F;
             }
 

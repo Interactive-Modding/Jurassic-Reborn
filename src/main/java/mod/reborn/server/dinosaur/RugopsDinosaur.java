@@ -34,7 +34,7 @@ public class RugopsDinosaur extends Dinosaur
         this.setBones("skull", "tooth", "arm_bones", "claw", "foot_bones", "leg_bones", "neck_vertebrae", "pelvis", "ribcage", "shoulder", "tail_vertebrae");
         this.setHeadCubeName("Head");
         this.setScale(1.0F, 0.1F);
-        this.setAttackBias(120);
+        this.setAttackBias(120.0);
         this.setAttackSpeed(1.6);
         this.shouldDefendOffspring();
         this.setImprintable(true);

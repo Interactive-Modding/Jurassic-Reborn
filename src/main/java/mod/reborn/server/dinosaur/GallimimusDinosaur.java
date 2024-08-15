@@ -35,6 +35,8 @@ public class GallimimusDinosaur extends Dinosaur {
         this.setImprintable(true);
         this.setFlee(true);
         this.setFlockSpeed(1.35F);
+        this.shouldDefendOffspring();
+
         this.setBreeding(false, 2, 6, 20, false, true);
         this.setJumpHeight(3);
         this.setCanClimb(true);

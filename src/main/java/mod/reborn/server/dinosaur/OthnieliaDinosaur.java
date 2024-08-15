@@ -32,7 +32,6 @@ public class OthnieliaDinosaur extends Dinosaur
         this.setDiet((Diet.HERBIVORE.get()));
         this.setBones("skull", "teeth", "ribcage", "neck_vertebrae", "shoulder", "leg_bones", "pelvis", "tail_vertebrae");
         this.setHeadCubeName("Head ");
-        this.setAttackBias(-100);
         this.setScale(0.35F, 0.15F);
         this.setImprintable(true);
         this.setBreeding(false, 2, 6, 28, false, true);

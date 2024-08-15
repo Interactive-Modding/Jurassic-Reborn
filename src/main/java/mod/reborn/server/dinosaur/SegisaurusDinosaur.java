@@ -34,7 +34,7 @@ public class SegisaurusDinosaur extends Dinosaur
         this.setSleepTime(SleepTime.NOCTURNAL);
         this.setBones("skull", "tail_vertebrae", "teeth", "leg_bones", "foot_bones", "neck_vertebrae", "shoulder", "ribcage", "pelvis", "arm_bones", "claw");
         this.setHeadCubeName("head");
-        this.setAttackBias(90);
+        this.setAttackBias(90.0);
         this.setScale(0.45F, 0.13F);
         this.setImprintable(true);
         this.setDefendOwner(true);

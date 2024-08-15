@@ -34,6 +34,7 @@ public class SinoceratopsDinosaur extends Dinosaur {
         this.setScale(1.35F, 0.125F);
         this.setImprintable(true);
         this.setDefendOwner(true);
+        this.shouldDefendOffspring();
         this.setAttackBias(400.0);
         this.setBreeding(false, 2, 6, 48, false, true);
         String[][] recipe = {

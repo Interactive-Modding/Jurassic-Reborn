@@ -32,7 +32,7 @@ public class StegosaurusDinosaur extends Dinosaur{
         this.setHeadCubeName("Head");
         this.setScale(2.55F, 0.15F);
         this.setOffset(0.0F, 0.775F, 0.0F);
-        this.setAttackBias(350);
+        this.setAttackBias(350.0);
         this.shouldDefendOffspring();
         this.setImprintable(true);
         this.setDefendOwner(true);

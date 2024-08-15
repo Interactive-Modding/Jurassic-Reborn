@@ -33,7 +33,7 @@ public class LeaellynasauraDinosaur extends Dinosaur
         this.setBones("shoulder", "skull", "tail_vertebrae", "tooth", "leg_bones", "neck_vertebrae", "pelvis", "ribcage");
         this.setHeadCubeName("Head ");
         this.setScale(0.7F, 0.15F);
-        this.setAttackBias(-50);
+        this.setAttackBias(10.0);
         this.setImprintable(true);
         this.setDefendOwner(true);
         this.setBreeding(false, 2, 6, 20, false, true);

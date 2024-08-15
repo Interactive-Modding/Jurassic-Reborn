@@ -29,6 +29,7 @@ public class SmilodonDinosaur extends Dinosaur {
         this.setSizeX(0.5F, 1.0F);
         this.setSizeY(0.5F, 1.8F);
         this.setStorage(20);
+        this.shouldDefendOffspring();
         this.setDiet(Diet.CARNIVORE.get());
         this.setSleepTime(SleepTime.DIURNAL);
         this.setBones("skull", "tail_vertebrae", "front_leg_bones", "ribcage", "hind_leg_bones", "neck_vertebrae", "pelvis", "shoulder", "tooth");

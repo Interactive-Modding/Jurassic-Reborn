@@ -33,7 +33,7 @@ public class ProceratosaurusDinosaur extends Dinosaur {
         this.setScale(0.9F, 0.1F);
         this.shouldDefendOffspring();
         this.setMaxHerdSize(7);
-        this.setAttackBias(120);
+        this.setAttackBias(120.0);
         this.setImprintable(true);
         this.setDefendOwner(true);
         this.setBreeding(false, 2, 6, 20, false, true);

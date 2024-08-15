@@ -32,7 +32,7 @@ public class VelociraptorEntity extends DinosaurEntity {
         this.target(targets);
         for(Class entity : targets) {
             this.tasks.addTask(0, new EntityAINearestAttackableTarget<EntityLivingBase>(this, entity, true, false));
-            this.targetTasks.addTask(0, new EntityAINearestAttackableTarget<EntityLivingBase>(this, entity, false));
+            this.targetTasks.addTask(0, new EntityAINearestAttackableTarget<EntityLivingBase>(this, entity, true));
         }
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true, EntityPlayer.class, RaphusrexEntity.class, TyrannosaurusEntity.class, GiganotosaurusEntity.class, SpinosaurusEntity.class, IndominusEntity.class));
     }

@@ -29,6 +29,7 @@ public class DodoDinosaur extends Dinosaur
         this.setEyeHeight(0.3F, 0.9F);
         this.setSizeX(0.25F, 0.5F);
         this.setSizeY(0.35F, 0.95F);
+        this.shouldDefendOffspring();
         this.setDiet((Diet.HERBIVORE.get()));
         this.setBones("skull", "leg_bones", "neck_vertebrae", "pelvis", "ribcage", "shoulder");
         this.setHeadCubeName("Head");

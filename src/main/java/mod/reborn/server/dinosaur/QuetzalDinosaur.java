@@ -34,7 +34,7 @@ public class QuetzalDinosaur extends Dinosaur
         this.setBones("skull", "ribcage", "leg_bones", "neck_vertebrae", "pelvis", "tail_vertebrae", "wing_bones");
         this.setHeadCubeName("Head");
         this.setScale(2.4F, 0.15F);
-        this.setAttackBias(1200);
+        this.setAttackBias(1200.0);
         this.shouldDefendOffspring();
         this.setBreeding(false, 1, 4, 80, false, true);
         this.enableSkeleton();

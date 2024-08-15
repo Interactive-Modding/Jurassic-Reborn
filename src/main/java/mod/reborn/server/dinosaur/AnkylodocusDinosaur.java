@@ -26,7 +26,7 @@ public class AnkylodocusDinosaur extends Dinosaur implements Hybrid
         this.setSpeed((SPEED -0.05), SPEED);
         this.setStrength(10, 50);
         this.setMaximumAge(fromDays(95));
-        this.setEyeHeight(0.45F, 3.75F);
+        this.setEyeHeight(1.55F, 8.95F);
         this.setSizeX(0.4F, 5.4F);
         this.setSizeY(0.5F, 5.8F);
         this.setStorage(54);

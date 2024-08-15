@@ -37,9 +37,10 @@ public class OviraptorDinosaur extends Dinosaur
         this.setSleepTime(SleepTime.DIURNAL);
         this.setBones("arm_bones", "leg_bones", "neck_vertebrae", "pelvis", "ribcage", "shoulder", "skull", "tail_vertebrae");
         this.setHeadCubeName("Upper Head");
-        this.setAttackBias(5);
+        this.setAttackBias(90.0);
         this.setImprintable(true);
         this.setDefendOwner(true);
+        this.shouldDefendOffspring();
         this.setScale(0.4F, 0.09F);
         this.setBreeding(false, 2, 4, 30, false, true);
         String[][] recipe = {

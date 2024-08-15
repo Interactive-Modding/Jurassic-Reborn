@@ -33,7 +33,6 @@ public class OrnithomimusDinosaur extends Dinosaur
         this.setHeadCubeName("Head Base");
         this.setScale(0.9F, 0.15F);
         this.setFlockSpeed(1.4F);
-        this.setAttackBias(-100);
         this.setFlee(true);
         this.setStorage(12);
         this.setBreeding(false, 2, 6, 20, false, true);

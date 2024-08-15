@@ -31,7 +31,7 @@ public class GuanlongDinosaur extends Dinosaur {
         this.setHeadCubeName("Head");
         this.setScale(0.7F, 0.1F);
         this.shouldDefendOffspring();
-        this.setAttackBias(1200);
+        this.setAttackBias(1200.0);
         this.setAttackSpeed(1.2F);
         this.setDefendOwner(true);
         this.setImprintable(true);
