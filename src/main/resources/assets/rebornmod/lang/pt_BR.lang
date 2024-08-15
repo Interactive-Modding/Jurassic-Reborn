@@ -875,6 +875,14 @@ key.vehicle_5.switch=Moveu-se para o assento 6
 key.vehicle_6.switch=Moveu-se para o assento 7
 key.vehicle_7.switch=Moveu-se para o assento 8
 key.vehicle_8.switch=Moveu-se para o assento 9
+key.vehicle_helicopter.autopilot=Piloto Automático do Helicóptero
+key.vehicle_helicopter.down=Movimento para Baixo do Helicóptero
+key.vehicle_helicopter.lock=Trava do Helicóptero
+key.vehicle_helicopter.rotate_left=Rotação para a Esquerda do Helicóptero
+key.vehicle_helicopter.rotate_right=Rotação para a Direita do Helicóptero
+key.vehicle_helicopter.third_person_view_zoom_in=Aproximar em Terceira Pessoa (Helicóptero)
+key.vehicle_helicopter.third_person_view_zoom_out=Afastar em Terceira Pessoa (Helicóptero)
+key.vehicle_helicopter.up=Movimento para Cima do Helicóptero
 
 //Other =============
 message.tame.name=Parabéns! Você domesticou um {dinosaur}

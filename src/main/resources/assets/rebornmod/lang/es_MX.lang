@@ -875,6 +875,14 @@ key.vehicle_5.switch=Moverse al asiento 6
 key.vehicle_6.switch=Moverse al asiento 7
 key.vehicle_7.switch=Moverse al asiento 8
 key.vehicle_8.switch=Moverse al asiento 9
+key.vehicle_helicopter.autopilot=Autopiloto del helicóptero
+key.vehicle_helicopter.down=Movimiento hacia abajo del helicóptero
+key.vehicle_helicopter.lock=Bloqueo del helicóptero
+key.vehicle_helicopter.rotate_left=Rotación hacia la izquierda del helicóptero
+key.vehicle_helicopter.rotate_right=Rotación hacia la derecha del helicóptero
+key.vehicle_helicopter.third_person_view_zoom_in=Acerque en tercera persona (helicóptero)
+key.vehicle_helicopter.third_person_view_zoom_out=Aleje en tercera persona (helicóptero)
+key.vehicle_helicopter.up=Movimiento hacia arriba del helicóptero
 
 //Other =============
 message.tame.name=Haz domesticado un {dinosaur}

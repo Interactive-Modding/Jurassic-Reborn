@@ -869,6 +869,14 @@ key.vehicle_5.switch=Опит да се премести на място 6
 key.vehicle_6.switch=Опит да се премести на място 7
 key.vehicle_7.switch=Опит да се премести на място 8
 key.vehicle_8.switch=Опит да се премести на място 9
+key.vehicle_helicopter.autopilot=Автопилот на хеликоптера
+key.vehicle_helicopter.down=Движение на хеликоптера надолу
+key.vehicle_helicopter.lock=Заключване на хеликоптера
+key.vehicle_helicopter.rotate_left=Завъртане на хеликоптера наляво
+key.vehicle_helicopter.rotate_right=Завъртане на хеликоптера надясно
+key.vehicle_helicopter.third_person_view_zoom_in=Приближаване в трето лице (хеликоптер)
+key.vehicle_helicopter.third_person_view_zoom_out=Отдалечаване в трето лице (хеликоптер)
+key.vehicle_helicopter.up=Движение на хеликоптера нагоре
 
 //Other =============
 message.tame.name=Вие сте опитомили този {dinosaur}

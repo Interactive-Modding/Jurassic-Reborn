@@ -874,6 +874,14 @@ key.vehicle_5.switch=Пересесть На Место 6
 key.vehicle_6.switch=Пересесть На Место 7
 key.vehicle_7.switch=Пересесть На Место 8
 key.vehicle_8.switch=Пересесть На Место 9
+key.vehicle_helicopter.autopilot=Автопилот вертолета
+key.vehicle_helicopter.down=Движение вертолета вниз
+key.vehicle_helicopter.lock=Блокировка вертолета
+key.vehicle_helicopter.rotate_left=Поворот вертолета влево
+key.vehicle_helicopter.rotate_right=Поворот вертолета вправо
+key.vehicle_helicopter.third_person_view_zoom_in=Увеличение в третьем лице (вертолет)
+key.vehicle_helicopter.third_person_view_zoom_out=Уменьшение в третьем лице (вертолет)
+key.vehicle_helicopter.up=Движение вертолета вверх
 
 //Other =============
 message.tame.name=Вы приручили: {dinosaur}

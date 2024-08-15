@@ -781,15 +781,23 @@ item.frozen_leech.name=Dondurulmuş Sülük
 
 //Keybinds ==============================================
 key.microraptor_dismount=Microraptor'ı indirin
-key.vehicle_0.switch=1. koltuğa taşındı
-key.vehicle_1.switch=2.koltuğa taşındı
-key.vehicle_2.switch=3.koltuğa taşındı
-key.vehicle_3.switch=4.koltuğa taşındı
-key.vehicle_4.switch=5.
-key.vehicle_5.switch=6.koltuğa taşındı
-key.vehicle_6.switch=7.koltuğa taşındı
-key.vehicle_7.switch=8.koltuğa taşındı
-key.vehicle_8.switch=9.koltuğa taşındı
+key.vehicle_0.switch=Koltuk 1'e Geçmeyi Dene
+key.vehicle_1.switch=Koltuk 2'ye Geçmeyi Dene
+key.vehicle_2.switch=Koltuk 3'e Geçmeyi Dene
+key.vehicle_3.switch=Koltuk 4'e Geçmeyi Dene
+key.vehicle_4.switch=Koltuk 5'e Geçmeyi Dene
+key.vehicle_5.switch=Koltuk 6'ya Geçmeyi Dene
+key.vehicle_6.switch=Koltuk 7'ye Geçmeyi Dene
+key.vehicle_7.switch=Koltuk 8'e Geçmeyi Dene
+key.vehicle_8.switch=Koltuk 9'a Geçmeyi Dene
+key.vehicle_helicopter.autopilot=Helikopter Otomatik Pilot
+key.vehicle_helicopter.down=Helikopter Aşağı Hareket
+key.vehicle_helicopter.lock=Helikopter Kilitleme
+key.vehicle_helicopter.rotate_left=Helikopter Sol Dönüş
+key.vehicle_helicopter.rotate_right=Helikopter Sağ Dönüş
+key.vehicle_helicopter.third_person_view_zoom_in=Üçüncü Kişi Yakınlaştırma (Helikopter)
+key.vehicle_helicopter.third_person_view_zoom_out=Üçüncü Kişi Uzaklaştırma (Helikopter)
+key.vehicle_helicopter.up=Helikopter Yukarı Hareket
 
 //Other =============
 message.tame.name=Tebrikler!  Bir {dino name} evcilleştirdin

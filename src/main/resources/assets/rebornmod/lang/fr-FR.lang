@@ -852,6 +852,14 @@ key.vehicle_5.switch=Essai d'aller à la place 6
 key.vehicle_6.switch=Essai d'aller à la place 7
 key.vehicle_7.switch=Essai d'aller à la place 8
 key.vehicle_8.switch=Essai d'aller à la place 9
+key.vehicle_helicopter.autopilot=Pilote automatique de l'hélicoptère
+key.vehicle_helicopter.down=Mouvement vers le bas de l'hélicoptère
+key.vehicle_helicopter.lock=Verrouillage de l'hélicoptère
+key.vehicle_helicopter.rotate_left=Rotation vers la gauche de l'hélicoptère
+key.vehicle_helicopter.rotate_right=Rotation vers la droite de l'hélicoptère
+key.vehicle_helicopter.third_person_view_zoom_in=Zoom avant en troisième personne (hélicoptère)
+key.vehicle_helicopter.third_person_view_zoom_out=Zoom arrière en troisième personne (hélicoptère)
+key.vehicle_helicopter.up=Mouvement vers le haut de l'hélicoptère
 
 //Other =============
 message.tame.name=Vous avez apprivoisé un {dinosaur}
