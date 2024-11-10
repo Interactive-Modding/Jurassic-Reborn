@@ -47,11 +47,11 @@ public class SkullDisplayRenderer extends TileEntitySpecialRenderer<SkullDisplay
 						final boolean isFossilized = tile.isFossilized();
 						if (horizontal) {
 							tile.model = new TabulaModel(TabulaModelHelper.loadTabulaModel(new ResourceLocation(RebornMod.MODID, "models/block/skull_display/" + dinosaur  + "_" + "horizontal")));
-							tile.texture = new ResourceLocation(RebornMod.MODID, "textures/blocks/skull_display/" + dinosaur + "_" + (isFossilized ? "fossilized" : "fresh") + "_" + "vertical.png");
+							tile.texture = new ResourceLocation(RebornMod.MODID, "textures/skull_display/" + dinosaur + "_" + (isFossilized ? "fossilized" : "fresh") + "_" + "vertical.png");
 
 						} else {
 							tile.model = new TabulaModel(TabulaModelHelper.loadTabulaModel(new ResourceLocation(RebornMod.MODID, "models/block/skull_display/" + dinosaur + "_" + "vertical")));
-							tile.texture = new ResourceLocation(RebornMod.MODID, "textures/blocks/skull_display/" + dinosaur + "_" + (isFossilized ? "fossilized" : "fresh") + "_" + "horizontal.png");
+							tile.texture = new ResourceLocation(RebornMod.MODID, "textures/skull_display/" + dinosaur + "_" + (isFossilized ? "fossilized" : "fresh") + "_" + "horizontal.png");
 
 						}
 
