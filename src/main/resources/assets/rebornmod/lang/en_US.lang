@@ -530,6 +530,11 @@ tile.magnolia_fence_gate.name=Magnolia Fence Gate
 tile.magnolia_door.name=Magnolia Door
 item.magnolia_door_item.name=Magnolia Door
 
+tile.reinforced_door.name=Reinforced Door
+item.reinforced_door_item.name=Reinforced Door
+tile.security_door.name=Security Door
+item.security_door_item.name=Security Door
+
 tile.calamites_sapling.name=Calamites Sapling
 tile.calamites_leaves.name=Calamites Leaves
 tile.calamites_log.name=Calamites Log

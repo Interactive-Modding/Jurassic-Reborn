@@ -8,6 +8,8 @@ import mod.reborn.server.dinosaur.Dinosaur;
 import mod.reborn.server.entity.DinosaurEntity;
 import mod.reborn.server.entity.EntityHandler;
 import mod.reborn.server.item.block.AncientDoorItem;
+import mod.reborn.server.item.block.ReinforcedDoorItem;
+import mod.reborn.server.item.block.SecurityDoorItem;
 import mod.reborn.server.item.guns.*;
 import mod.reborn.server.tab.TabHandler;
 import mod.reborn.server.util.RegistryHandler;
@@ -155,6 +157,8 @@ public class ItemHandler {
 
     public static final GracilariaItem GRACILARIA = (GracilariaItem) new GracilariaItem(BlockHandler.GRACILARIA).setCreativeTab(TabHandler.PLANTS);
     public static final BasicItem LIQUID_AGAR = new BasicItem(TabHandler.PLANTS);
+    public static final ReinforcedDoorItem REINFORCED_DOOR_ITEM = new ReinforcedDoorItem(BlockHandler.REINFORCED_DOOR);
+    public static final SecurityDoorItem SECURITY_DOOR_ITEM = new SecurityDoorItem(BlockHandler.SECURITY_DOOR);
 
     public static final DinoScannerItem DINO_SCANNER = new DinoScannerItem();
 
@@ -197,7 +201,6 @@ public class ItemHandler {
     public static final BasicItem CAR_TIRE = new BasicItem(TabHandler.ITEMS);
     public static final BasicItem CAR_WINDSCREEN = new BasicItem(TabHandler.ITEMS);
     public static final BasicItem UNFINISHED_CAR = new BasicItem(TabHandler.ITEMS);
-
     public static final JournalItem INGEN_JOURNAL = new JournalItem();
 
     public static final VehicleItem VEHICLE_ITEM = new VehicleItem();
@@ -454,7 +457,8 @@ public class ItemHandler {
         registerItem(DART_POISON_EXECUTIONER_CONCOCTION, "Dart Poison Executioner Concoction");
         registerItem(DART_TIPPED_POTION, "Dart Tipped Potion");
         registerItem(TRACKER_DART, "Tracking Dart");
-
+        registerItem(REINFORCED_DOOR_ITEM,"Reinforced Door Item");
+        registerItem(SECURITY_DOOR_ITEM,"Security Door Item");
         registerItem(GLOCK, "Glock");
         registerItem(REMINGTON, "remington");
         registerItem(SPAS_12, "spas_12");

@@ -7,7 +7,14 @@ import net.minecraft.block.BlockBush;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -116,5 +123,47 @@ public class AncientPlantBlock extends BlockBush {
     @SideOnly(Side.CLIENT)
     public Block.EnumOffsetType getOffsetType() {
         return EnumOffsetType.XZ;
+    }
+
+    @Override
+    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
+        ItemStack heldItem = player.getHeldItem(hand);
+        if (!world.isRemote && heldItem.getItem() == Items.DYE && heldItem.getMetadata() == 15) { // Check for bone meal (white dye)
+            dropItem(world, pos); // Drop the item
+
+            if (!player.capabilities.isCreativeMode) {
+                heldItem.shrink(1); // Reduce the item count
+            }
+            world.playEvent(2005, pos, 0); // Trigger bone meal particle effect on the server
+
+            return true;
+        }
+
+        if (world.isRemote && heldItem.getItem() == Items.DYE && heldItem.getMetadata() == 15) { // Client-side particle spawning
+            spawnGrowthParticles(world, pos);
+        }
+
+        return super.onBlockActivated(world, pos, state, player, hand, side, hitX, hitY, hitZ);
+    }
+
+
+    @SideOnly(Side.CLIENT)
+    private void spawnGrowthParticles(World world, BlockPos pos) {
+        for (int i = 0; i < 10; i++) {
+            double x = pos.getX() + 0.5 + (world.rand.nextDouble() - 0.5) * 0.6;
+            double y = pos.getY() + 0.5;
+            double z = pos.getZ() + 0.5 + (world.rand.nextDouble() - 0.5) * 0.6;
+
+            world.spawnParticle(EnumParticleTypes.VILLAGER_HAPPY, x, y, z, 0.0D, 0.0D, 0.0D);
+        }
+    }
+
+
+
+    private void dropItem(World world, BlockPos pos) {
+        ItemStack plantItem = new ItemStack(this); // This will create an item based on the block itself, modify if you want a custom item
+
+        EntityItem entityItem = new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), plantItem);
+        world.spawnEntity(entityItem); // Spawn the item entity in the world
     }
 }

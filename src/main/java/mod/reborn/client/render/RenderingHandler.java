@@ -86,6 +86,8 @@ public enum RenderingHandler {
             ModelLoader.setCustomStateMapper(ANCIENT_FENCE_GATES.get(type), new StateMap.Builder().ignore(BlockFenceGate.POWERED).build());
             ModelLoader.setCustomStateMapper(BlockHandler.ANCIENT_DOORS.get(type), new StateMap.Builder().ignore(BlockDoor.POWERED).build());
         }
+        ModelLoader.setCustomStateMapper(SECURITY_DOOR, new StateMap.Builder().ignore(BlockDoor.POWERED).build());
+        ModelLoader.setCustomStateMapper(REINFORCED_DOOR, new StateMap.Builder().ignore(BlockDoor.POWERED).build());
         ModelLoader.setCustomStateMapper(ENALLHELIA, new StateMap.Builder().ignore(AncientCoralBlock.LEVEL).build());
         ModelLoader.setCustomStateMapper(AULOPORA, new StateMap.Builder().ignore(AncientCoralBlock.LEVEL).build());
         ModelLoader.setCustomStateMapper(CLADOCHONUS, new StateMap.Builder().ignore(AncientCoralBlock.LEVEL).build());
@@ -247,6 +249,10 @@ public enum RenderingHandler {
         registerBlockRenderer(BlockHandler.HIGH_SECURITY_FENCE_POLE);
         registerBlockRenderer(BlockHandler.HIGH_SECURITY_FENCE_BASE);
         registerBlockRenderer(BlockHandler.HIGH_SECURITY_FENCE_WIRE);
+        registerBlockRenderer(BlockHandler.SECURITY_DOOR, "security_door");
+        registerItemRenderer(ItemHandler.SECURITY_DOOR_ITEM, "security_door_item");
+        registerBlockRenderer(BlockHandler.REINFORCED_DOOR, "reinforced_door");
+        registerItemRenderer(REINFORCED_DOOR_ITEM, "reinforced_door_item");
 
         registerBlockRenderer(WILD_POTATO_PLANT);
 

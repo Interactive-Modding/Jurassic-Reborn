@@ -7,7 +7,8 @@ public enum GameRuleHandler {
     DINO_METABOLISM("dinoMetabolism", true),
     DINO_GROWTH("dinoGrowth", true),
     PLANT_SPREADING("plantSpreading", true),
-    KILL_HERD_OUTCAST("killHerdOutcast", true);
+    KILL_HERD_OUTCAST("killHerdOutcast", true),
+    DINO_BREEDING("dinoBreeding",true);
 
     String name;
     Object defaultValue;

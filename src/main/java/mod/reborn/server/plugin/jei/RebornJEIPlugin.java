@@ -1,7 +1,10 @@
 package mod.reborn.server.plugin.jei;
 
 import com.google.common.collect.Lists;
-import mezz.jei.api.*;
+import mezz.jei.api.IGuiHelper;
+import mezz.jei.api.IModPlugin;
+import mezz.jei.api.IModRegistry;
+import mezz.jei.api.JEIPlugin;
 import mezz.jei.api.ingredients.IIngredientBlacklist;
 import mezz.jei.api.recipe.IRecipeCategoryRegistration;
 import mezz.jei.api.recipe.VanillaRecipeCategoryUid;
@@ -9,22 +12,12 @@ import mezz.jei.api.recipe.transfer.IRecipeTransferRegistry;
 import mod.reborn.client.gui.*;
 import mod.reborn.server.api.*;
 import mod.reborn.server.block.BlockHandler;
-import mod.reborn.server.block.tree.AncientDoorBlock;
 import mod.reborn.server.container.*;
+import mod.reborn.server.dinosaur.Dinosaur;
 import mod.reborn.server.entity.EntityHandler;
 import mod.reborn.server.item.ItemHandler;
 import mod.reborn.server.plant.Plant;
 import mod.reborn.server.plant.PlantHandler;
-import net.minecraft.block.Block;
-import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.NonNullList;
-import net.minecraftforge.fml.common.registry.ForgeRegistries;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraftforge.oredict.OreDictionary;
-import mod.reborn.server.dinosaur.Dinosaur;
 import mod.reborn.server.plugin.jei.category.calcification.CalcificationInput;
 import mod.reborn.server.plugin.jei.category.calcification.CalcificationRecipeCategory;
 import mod.reborn.server.plugin.jei.category.calcification.CalcificationRecipeWrapper;
@@ -56,6 +49,15 @@ import mod.reborn.server.plugin.jei.category.skeletonassembly.SkeletonAssemblyRe
 import mod.reborn.server.plugin.jei.category.skeletonassembly.SkeletonAssemblyRecipeWrapper;
 import mod.reborn.server.plugin.jei.category.skeletonassembly.SkeletonInput;
 import mod.reborn.server.plugin.jei.vanilla.TippedDartRecipeWrapper;
+import net.minecraft.block.Block;
+import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.oredict.OreDictionary;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -86,10 +88,16 @@ public class RebornJEIPlugin implements IModPlugin {
     public void register(IModRegistry registry) {
         IIngredientBlacklist blacklist = registry.getJeiHelpers().getIngredientBlacklist();
 
-        Collection<AncientDoorBlock> doors = BlockHandler.ANCIENT_DOORS.values();
+        Collection<Block> doors = new ArrayList<>();
+        doors.addAll(BlockHandler.ANCIENT_DOORS.values());
+        doors.add(BlockHandler.SECURITY_DOOR);
+        doors.add(BlockHandler.REINFORCED_DOOR);
+
+
         for (Block door : doors) {
             blacklist.addIngredientToBlacklist(new ItemStack(door));
         }
+
 
         blacklist.addIngredientToBlacklist(new ItemStack(BlockHandler.CULTIVATOR_TOP, 1, OreDictionary.WILDCARD_VALUE));
         blacklist.addIngredientToBlacklist(new ItemStack(BlockHandler.DISPLAY_BLOCK));

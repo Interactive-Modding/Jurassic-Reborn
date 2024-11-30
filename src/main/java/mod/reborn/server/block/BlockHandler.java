@@ -77,6 +77,8 @@ public class BlockHandler
     public static final Block REINFORCED_STONE_PATHWAY = new BasicBlock(Material.ROCK).setHardness(2.0F);
     public static final Block REINFORCED_BRICKS = new BasicBlock(Material.ROCK).setHardness(3.0F);
     public static final Block REINFORCED_STONE_PANEL = new BasicBlock(Material.ROCK).setHardness(2.0F);
+    public static final Block REINFORCED_DOOR = new ReinforcedDoorBlock();
+    public static final Block SECURITY_DOOR = new SecurityDoorBlock();
 
 
     public static final CultivatorTopBlock CULTIVATOR_TOP = new CultivatorTopBlock();
@@ -171,7 +173,6 @@ public class BlockHandler
     public static PaleoBaleBlock PALEO_BALE_FERN = new PaleoBaleBlock(PaleoBaleBlock.Variant.FERN);
     public static PaleoBaleBlock PALEO_BALE_LEAVES = new PaleoBaleBlock(PaleoBaleBlock.Variant.LEAVES);
     public static PaleoBaleBlock PALEO_BALE_OTHER = new PaleoBaleBlock(PaleoBaleBlock.Variant.OTHER);
-
     public static void init()
     {
         registerBlock(PLANT_FOSSIL, "Plant Fossil Block");
@@ -304,6 +305,10 @@ public class BlockHandler
         registerBlock(PALEO_BALE_CYCAD, "Paleo Bale Cycad");
         registerBlock(PALEO_BALE_FERN, "Paleo Bale Fern");
         registerBlock(PALEO_BALE_LEAVES, "Paleo Bale Leaves");
+        registerBlock(REINFORCED_DOOR,"Reinforced Door");
+        registerBlock(SECURITY_DOOR,"Security Door");
+
+
     }
 
     public static void registerTreeType(TreeType type)

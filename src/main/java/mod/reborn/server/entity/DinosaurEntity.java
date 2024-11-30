@@ -630,6 +630,7 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
     @Override
     public void entityInit() {
         super.entityInit();
+        this.enablePersistence();
         this.dataManager.register(WATCHER_IS_CARCASS, this.isCarcass);
         this.dataManager.register(WATCHER_AGE, this.dinosaurAge);
         this.dataManager.register(WATCHER_IS_SLEEPING, this.isSleeping);
@@ -918,8 +919,12 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
                 }
             }
         }
+        if (!GameRuleHandler.DINO_BREEDING.getBoolean(this.world) && this.isPregnant()) {
+            this.pregnantTime = 0;
+            this.children.clear();
+        }
 
-        if (this.breeding != null) {
+        if (this.breeding != null && GameRuleHandler.DINO_BREEDING.getBoolean(this.world)) {
             if (this.ticksExisted % 10 == 0) {
                 this.getNavigator().tryMoveToEntityLiving(this.breeding, 1.0);
             }
