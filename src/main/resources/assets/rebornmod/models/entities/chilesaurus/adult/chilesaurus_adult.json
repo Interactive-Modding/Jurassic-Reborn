@@ -105,6 +105,10 @@
       {
         "pose": "chilesaurus_adult_drinking_2",
         "time": 10
+      },
+      {
+        "pose": "chilesaurus_adult_idle",
+        "time": 10
       }
     ],
     "EATING": [
@@ -119,6 +123,10 @@
       {
         "pose": "chilesaurus_adult_eating_3",
         "time": 7
+      },
+      {
+        "pose": "chilesaurus_adult_idle",
+        "time": 10
       }
     ],
     "ATTACKING": [

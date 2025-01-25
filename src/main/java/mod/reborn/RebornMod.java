@@ -15,16 +15,16 @@ import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import org.apache.logging.log4j.Logger;
 
-@Mod(modid = RebornMod.MODID, name = RebornMod.NAME, version = RebornMod.VERSION, dependencies = "required-after:llibrary@[1.7.15,);required-after:forge@[14.23.5.2772,)")
+@Mod(modid = RebornMod.MODID, name = RebornMod.NAME, version = RebornMod.VERSION, dependencies = "required-after:llibrary@[1.7.9,);required-after:forge@[14.23.5.2772,)")
 public class RebornMod {
     public static final String MODID = "rebornmod";
     public static final String NAME = "Jurassic Reborn";
-    public static final String VERSION = "1.3.35";
+    public static final String VERSION = "1.3.36";
 
     private final boolean TestEnv = false;
 
     @SuppressWarnings("unused")
-    public static final String LLIBRARY_VERSION = "1.7.15";
+    public static final String LLIBRARY_VERSION = "1.7.9";
     @SidedProxy(serverSide = "mod.reborn.server.proxy.ServerProxy", clientSide = "mod.reborn.client.proxy.ClientProxy")
     public static ServerProxy PROXY;
 

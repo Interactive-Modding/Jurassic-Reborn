@@ -25,7 +25,8 @@ public abstract class AncientSlabBlock extends BlockSlab implements SubBlocksBlo
         super(referenceState.getBlock().getMaterial(referenceState));
         this.type = type;
         IBlockState state = this.blockState.getBaseState();
-
+        this.setHardness(2.0F);
+        this.setResistance(5.0F);
         if (!this.isDouble()) {
             state = state.withProperty(HALF, BlockSlab.EnumBlockHalf.BOTTOM);
         }

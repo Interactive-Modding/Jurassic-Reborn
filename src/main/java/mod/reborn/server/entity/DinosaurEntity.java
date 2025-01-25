@@ -25,6 +25,7 @@ import mod.reborn.server.entity.ai.metabolism.GrazeEntityAI;
 import mod.reborn.server.entity.ai.navigation.DinosaurJumpHelper;
 import mod.reborn.server.entity.ai.navigation.DinosaurMoveHelper;
 import mod.reborn.server.entity.ai.navigation.DinosaurPathNavigate;
+import mod.reborn.server.entity.ai.util.DinosaurPersistenceHandler;
 import mod.reborn.server.entity.dinosaur.*;
 import mod.reborn.server.entity.item.DinosaurEggEntity;
 import mod.reborn.server.food.FoodHelper;
@@ -44,6 +45,7 @@ import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.Item;
@@ -68,7 +70,10 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldServer;
 import net.minecraftforge.common.util.Constants;
+import net.minecraftforge.event.entity.EntityTravelToDimensionEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.IEntityAdditionalSpawnData;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -1164,6 +1169,9 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
         if(this.world.isRemote && this.dataManager.get(WATCHER_WAS_FED)) {
             this.world.spawnParticle(EnumParticleTypes.VILLAGER_HAPPY, this.posX + (double)(this.rand.nextFloat() * this.width * 2.0F) - (double)this.width, this.posY + 0.5D + (double)(this.rand.nextFloat() * this.height), this.posZ + (double)(this.rand.nextFloat() * this.width * 2.0F) - (double)this.width, 0.0D, 0.0D, 0.0D);
         }
+        if (!this.world.isRemote) {
+            DinosaurPersistenceHandler.trackEntity(this);
+        }
         if(this.ticksUntilDeath > 0) {
             if(--this.ticksUntilDeath == 0) {
                 this.playSound(this.getSoundForAnimation(EntityAnimation.DYING.get()), this.getSoundVolume(), this.getSoundPitch());
@@ -1343,7 +1351,7 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
 
     @Override
     public boolean canDespawn() {
-        return false;
+        return false; // Ensures dinosaurs don't despawn naturally
     }
 
     public int getDinosaurAge() {
@@ -1688,8 +1696,15 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
         nbt.setInteger("TranquilizerTicks", tranquilizerTicks);
         nbt.setInteger("TicksUntilDeath", ticksUntilDeath);
 
+        // New additions
+        nbt.setString("UUID", this.getUniqueID().toString()); // Save the dinosaur's UUID
+        if (this.herd != null) {
+            nbt.setInteger("HerdSize", this.herd.size()); // Save herd information if applicable
+        }
+
         return nbt;
     }
+
     public void setTrackersUUID(List<String> trackersUUID) {
         this.trackersUUID = new ArrayList<>(trackersUUID); // Ensure a new list is used
         this.dataManager.set(WATCHER_TRACKERS, this.trackersUUID);
@@ -1725,11 +1740,15 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
         }
 
         UUID uuid = nbt.getUniqueId("UUID");
-        if (this.world != null && this.world.loadedEntityList.stream().anyMatch(entity -> entity.getUniqueID().equals(uuid))) {
-            this.setDead();
-            return;
+        if (this.world != null) {
+            boolean entityExists = this.world.loadedEntityList.stream()
+                    .anyMatch(entity -> entity.getUniqueID().equals(uuid));
+            if (entityExists) {
+                return; // Skip loading this entity instead of killing it
+            }
         }
         this.setUniqueId(uuid);
+
 
         if (nbt.hasKey("Family")) {
             NBTTagCompound familyTag = nbt.getCompoundTag("Family");
@@ -1768,7 +1787,9 @@ public abstract class DinosaurEntity extends EntityCreature implements IEntityAd
                 }
             }
         }
-
+        if (!this.world.isRemote) {
+            DinosaurPersistenceHandler.trackEntity(this);
+        }
 
 
         tranquilizerTicks = nbt.getInteger("TranquilizerTicks");

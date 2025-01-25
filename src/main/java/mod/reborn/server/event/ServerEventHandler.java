@@ -46,10 +46,8 @@ import java.util.Random;
 public class ServerEventHandler {
 
     @SubscribeEvent
-    public void onEntityConstruct(EntityEvent.EntityConstructing event)
-    {
-        if (event.getEntity() instanceof EntityPlayer)
-        {
+    public void onEntityConstruct(EntityEvent.EntityConstructing event) {
+        if (event.getEntity() instanceof EntityPlayer) {
             EntityDataHandler.INSTANCE.registerExtendedEntityData((EntityPlayer) event.getEntity(), new PlayerData());
         }
     }
@@ -190,10 +188,12 @@ public class ServerEventHandler {
 
         Loot.handleTable(table, name);
     }
+
     @SubscribeEvent
-    public void fall(LivingFallEvent e){
+    public void fall(LivingFallEvent e) {
         e.setCanceled(e.getEntity().getRidingEntity() instanceof HelicopterEntity);
     }
+
     @SubscribeEvent
     public void onHarvest(BlockEvent.HarvestDropsEvent event) {
         IBlockState state = event.getState();
@@ -225,17 +225,31 @@ public class ServerEventHandler {
     }
 
     @SubscribeEvent
-    public void preventSharkOverspawning(EntityJoinWorldEvent e)
-    {
-        if(e.getWorld().isRemote) return;
-        if(!(e.getEntity() instanceof EntityShark)) return;
-        if(((EntityShark)e.getEntity()).isSpawnedByEgg) return;
-        AxisAlignedBB aa_bb = new AxisAlignedBB(e.getEntity().posX-64, 0, e.getEntity().posZ-64, e.getEntity().posX+64, e.getWorld().getSeaLevel(), e.getEntity().posZ+64);
-        int count = e.getWorld().getEntitiesWithinAABB(EntityShark.class, aa_bb).size();
-        if(count >= 8)
-        {
-            System.out.println("shark removed");
-            e.getEntity().setDead();
+    public void preventSharkOverspawning(EntityJoinWorldEvent e) {
+        if (e.getWorld().isRemote) return; // Skip client-side execution
+        if (!(e.getEntity() instanceof EntityShark)) return; // Only target sharks
+
+        EntityShark shark = (EntityShark) e.getEntity();
+
+        if (shark.isSpawnedByEgg) return; // Allow egg-spawned sharks
+
+        // Define a bounding box around the spawning shark
+        AxisAlignedBB boundingBox = new AxisAlignedBB(
+                shark.posX - 64,
+                shark.posY - 64,
+                shark.posZ - 64,
+                shark.posX + 64,
+                shark.posY + 64,
+                shark.posZ + 64
+        );
+
+        // Count nearby sharks within the bounding box
+        int sharkCount = e.getWorld().getEntitiesWithinAABB(EntityShark.class, boundingBox).size();
+
+        // Kill the shark if the count exceeds the limit
+        if (sharkCount >= 2) { // Set the limit to 2 sharks
+            shark.setDead(); // Mark the shark for removal
+            System.out.println("Shark prevented from overspawning. Current count: " + sharkCount);
         }
     }
 }

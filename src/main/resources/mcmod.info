@@ -1,12 +1,12 @@
 [
     {
         "modid": "rebornmod",
-        "name": "RebornMod",
+        "name": "Jurassic Reborn",
         "version": "${version}",
 		"mcversion": "${mcversion}",
-        "authorList": ["Reborn Team"],
+        "authorList": ["Jurassic Reborn Team"],
         "url": "",
         "dependencies": [],
-        "description": ""
+        "description": "Reviving prehistoric animals for an epic adventure!"
     }
 ]

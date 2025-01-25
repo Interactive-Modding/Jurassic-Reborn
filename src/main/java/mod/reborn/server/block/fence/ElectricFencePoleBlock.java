@@ -42,13 +42,25 @@ public class ElectricFencePoleBlock extends BlockContainer {
     }
 
     @Override
-    public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
-        return BOUNDS;
+    public AxisAlignedBB getCollisionBoundingBox(IBlockState state, IBlockAccess world, BlockPos pos) {
+        return getBoundingBox(state, world, pos);
     }
 
     @Override
-    public AxisAlignedBB getCollisionBoundingBox(IBlockState state, IBlockAccess world, BlockPos pos) {
-        return this.getBoundingBox(state, world, pos);
+    public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess world, BlockPos pos) {
+        IBlockState actualState = this.getActualState(state, world, pos);
+
+        boolean north = actualState.getValue(NORTH);
+        boolean south = actualState.getValue(SOUTH);
+        boolean west = actualState.getValue(WEST);
+        boolean east = actualState.getValue(EAST);
+
+        double minX = west ? 0.0 : 0.3425;
+        double maxX = east ? 1.0 : 0.6575;
+        double minZ = north ? 0.0 : 0.3425;
+        double maxZ = south ? 1.0 : 0.6575;
+
+        return new AxisAlignedBB(minX, 0.0, minZ, maxX, 1.0, maxZ);
     }
 
     @Override
