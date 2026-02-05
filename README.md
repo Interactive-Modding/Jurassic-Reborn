@@ -1,4 +1,4 @@
-# Jurassic-World-Reborn
+# Jurassic-Reborn
 Jurassic Reborn port targeting Minecraft 1.20.1 (previously 1.18.2/1.19.2).
 
 ## License model
