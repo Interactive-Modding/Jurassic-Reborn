@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:refined_gypsum_panel_wall"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

@@ -59,7 +59,7 @@ public class JRRecipeProvider extends RecipeProvider {
     protected void buildRecipes(Consumer<FinishedRecipe> consumer) {
         ModBlockFamilies.getAllFamilies()
                 .filter(family -> family.shouldGenerateRecipe(FeatureFlags.REGISTRY.allFlags()))
-                .forEach(family -> generateRecipes(consumer, family.getFamily()));
+                .forEach(family -> generateRecipes(consumer, family));
         shapeless(WoodBlocks.ARAUCARIA_PLANKS.get(), 4)
                 .requires(Ingredient.of(WoodBlocks.ARAUCARIA_LOG.get(), WoodBlocks.STRIPPED_ARAUCARIA_LOG.get(), WoodBlocks.ARAUCARIA_WOOD.get(), WoodBlocks.STRIPPED_ARAUCARIA_WOOD.get()))
                 .unlockedBy(getHasName(WoodBlocks.ARAUCARIA_LOG.get()), has(WoodBlocks.ARAUCARIA_LOG.get()))
@@ -89,13 +89,6 @@ public class JRRecipeProvider extends RecipeProvider {
                 .requires(Ingredient.of(WoodBlocks.MAGNOLIA_LOG.get(), WoodBlocks.STRIPPED_MAGNOLIA_LOG.get(), WoodBlocks.MAGNOLIA_WOOD.get(), WoodBlocks.STRIPPED_MAGNOLIA_WOOD.get()))
                 .unlockedBy(getHasName(WoodBlocks.MAGNOLIA_LOG.get()), has(WoodBlocks.MAGNOLIA_LOG.get()))
                 .save(consumer);
-
-        hangingSignRecipe(consumer, WoodBlocks.ARAUCARIA_HANGING_SIGN.get(), WoodBlocks.STRIPPED_ARAUCARIA_LOG.get(), WoodBlocks.STRIPPED_ARAUCARIA_WOOD.get());
-        hangingSignRecipe(consumer, WoodBlocks.CALAMITES_HANGING_SIGN.get(), WoodBlocks.STRIPPED_CALAMITES_LOG.get(), WoodBlocks.STRIPPED_CALAMITES_WOOD.get());
-        hangingSignRecipe(consumer, WoodBlocks.GINKGO_HANGING_SIGN.get(), WoodBlocks.STRIPPED_GINKGO_LOG.get(), WoodBlocks.STRIPPED_GINKGO_WOOD.get());
-        hangingSignRecipe(consumer, WoodBlocks.MAGNOLIA_HANGING_SIGN.get(), WoodBlocks.STRIPPED_MAGNOLIA_LOG.get(), WoodBlocks.STRIPPED_MAGNOLIA_WOOD.get());
-        hangingSignRecipe(consumer, WoodBlocks.PHOENIX_HANGING_SIGN.get(), WoodBlocks.STRIPPED_PHOENIX_LOG.get(), WoodBlocks.STRIPPED_PHOENIX_WOOD.get());
-        hangingSignRecipe(consumer, WoodBlocks.PSARONIUS_HANGING_SIGN.get(), WoodBlocks.STRIPPED_PSARONIUS_LOG.get(), WoodBlocks.STRIPPED_PSARONIUS_WOOD.get());
 
         BOAT_RECIPES.forEach(data -> {
             ItemLike planks = data.planksItem();
@@ -167,14 +160,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .define('I',Tags.Items.INGOTS_IRON)
                 .unlockedBy(getHasName(Items.IRON_INGOT),has(Tags.Items.INGOTS_IRON))
                 .save(consumer);
-        shaped(ModBlocks.PEAT.get())
-                .pattern("ABA")
-                .pattern("ACA")
-                .define('A', Items.DIRT)
-                .define('B',Items.WATER_BUCKET)
-                .define('C',Items.DEAD_BUSH)
-                .unlockedBy(getHasName(Items.DIRT),has(Items.DIRT))
-                .save(consumer);
+
         shaped(ModItems.KEYBOARD.get())
                 .pattern("AAA")
                 .pattern("AAA")
@@ -381,9 +367,9 @@ public class JRRecipeProvider extends RecipeProvider {
                 .define('D', ModItems.UNFINISHED_CAR.get())
                 .unlockedBy(getHasName(ModItems.UNFINISHED_CAR.get()), has(ModItems.UNFINISHED_CAR.get()))
                 .save(consumer);
-        shaped(ModBlocks.REINFORCED_STONE_PATHWAY.get(),6)
+        shaped(ModBlocks.REINFORCED_STONE_PATHWAY.get(),5)
                 .pattern("   ")
-                .pattern("AAA")
+                .pattern("A A")
                 .pattern("AAA")
                 .define('A', ModBlocks.REINFORCED_STONE.get())
                 .unlockedBy(getHasName(ModBlocks.REINFORCED_STONE.get()), has(ModBlocks.REINFORCED_STONE.get()))
@@ -1562,18 +1548,6 @@ public class JRRecipeProvider extends RecipeProvider {
         String chestBoatId() {
             return woodName + "_chest_boat";
         }
-    }
-    private void hangingSignRecipe(Consumer<FinishedRecipe> consumer, ItemLike hangingSign, ItemLike strippedLog, ItemLike strippedWood) {
-        shaped(hangingSign, 6)
-                .group(JurassicReborn.MODID + ":hanging_sign")
-                .pattern("SSS")
-                .pattern("C C")
-                .pattern("SSS")
-                .define('S', Ingredient.of(strippedLog, strippedWood))
-                .define('C', Items.CHAIN)
-                .unlockedBy(getHasName(strippedLog), has(strippedLog))
-                .unlockedBy(getHasName(Items.CHAIN), has(Items.CHAIN))
-                .save(consumer);
     }
 
     private void baleRecipe(Consumer<FinishedRecipe> consumer, ItemLike ingredient, ItemLike result, String group, int count) {

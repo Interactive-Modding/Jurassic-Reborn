@@ -5,12 +5,12 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
+import net.minecraft.world.level.material.Material;
 import net.vit.jurassicreborn.common.blocks.wood.AncientLeavesBlock;
 import net.vit.jurassicreborn.common.blocks.wood.WoodBlocks;
 
@@ -115,30 +115,24 @@ public class BaseTreeGenerator extends Feature<NoneFeatureConfiguration> {
     }
 
     private boolean canPlace(FeaturePlaceContext<NoneFeatureConfiguration> pContext, int height) {
-        WorldGenLevel level = pContext.level();
-        BlockPos origin = pContext.origin();
 
-
+        // Ensure the entire trunk column is free before attempting to place the tree.
         for (int y = 0; y <= height + 1; y++) {
-            if (!TreePlaceUtil.validTreePos(level, origin.above(y))) {
+            if (!TreePlaceUtil.validTreePos(pContext.level(), pContext.origin().above(y))) {
                 return false;
             }
         }
 
+        BlockPos.MutableBlockPos min = pContext.origin().mutable();
+        min.move(-6, 1, -6);
 
-        int canopyRadius = 6;
-        int minY = origin.getY() + 2;
-        int maxY = origin.getY() + height + 2;
+        BlockPos.MutableBlockPos max = pContext.origin().mutable();
+        max.move(6, height + 4, 6);
 
-        for (int y = minY; y <= maxY; y++) {
-            for (int x = -canopyRadius; x <= canopyRadius; x++) {
-                for (int z = -canopyRadius; z <= canopyRadius; z++) {
-                    if (x * x + z * z > canopyRadius * canopyRadius) {
-                        continue;
-                    }
-
-                    BlockPos checkPos = new BlockPos(origin.getX() + x, y, origin.getZ() + z);
-                    if (!TreePlaceUtil.validTreePos(level, checkPos)) {
+        for (int x = min.getX(); x < max.getX(); x++) {
+            for (int y = min.getY(); y < max.getY(); y++) {
+                for (int z = min.getZ(); z < max.getZ(); z++) {
+                    if (!TreePlaceUtil.validTreePos(pContext.level(), new BlockPos(x, y, z))) {
                         return false;
                     }
                 }
@@ -146,6 +140,7 @@ public class BaseTreeGenerator extends Feature<NoneFeatureConfiguration> {
         }
 
         return true;
+
     }
 
     static void setBlockState(WorldGenLevel world, BlockPos pos, BlockState state) {
@@ -155,6 +150,9 @@ public class BaseTreeGenerator extends Feature<NoneFeatureConfiguration> {
         }
     }
     static boolean isReplaceablePlant(WorldGenLevel p_67289_, BlockPos p_67290_) {
-        return p_67289_.isStateAtPosition(p_67290_, state -> state.is(BlockTags.REPLACEABLE));
+        return p_67289_.isStateAtPosition(p_67290_, (p_160551_) -> {
+            Material material = p_160551_.getMaterial();
+            return material == Material.REPLACEABLE_PLANT;
+        });
     }
 }

@@ -70,8 +70,7 @@ public class ForceAnimationCommand {
             return 0;
         }
 
-        Component message = Component.literal("Played " + animKey + " on " + played + " entities");
-        ctx.getSource().sendSuccess(() -> message, true);
+        ctx.getSource().sendSuccess(Component.literal("Played " + animKey + " on " + played + " entities"), true);
         return played;
     }
 }

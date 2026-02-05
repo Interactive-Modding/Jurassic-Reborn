@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:reinforced_brick_pressure_plate"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

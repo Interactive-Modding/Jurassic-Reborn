@@ -9,7 +9,6 @@ public interface FossilBlock {
 
     boolean mustBandage();
 
-
     default BlockState getEncasedFossil(){
         return null;
     }

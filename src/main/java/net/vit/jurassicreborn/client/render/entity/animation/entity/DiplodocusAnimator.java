@@ -36,7 +36,6 @@ public class DiplodocusAnimator extends EntityAnimator<DiplodocusEntity> {
         };
 
         // Tail segments in this export aren’t named plainly (lots of backcubes);
-
         AdvancedModelBox tail1 = model.getCube("tail1");
         AdvancedModelBox tail2 = model.getCube("tail2");
         AdvancedModelBox tail3 = model.getCube("tail3");

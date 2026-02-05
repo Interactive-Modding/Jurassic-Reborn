@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:goat_cooked_from_smoking"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

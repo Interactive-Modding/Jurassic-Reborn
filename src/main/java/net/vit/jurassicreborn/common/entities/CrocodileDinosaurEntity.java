@@ -38,9 +38,9 @@ public abstract class CrocodileDinosaurEntity extends AmphibianDinosaurEntity {
     // --- Helpers ---
     /** True when we should be "pinned" while basking (server authoritative; client for pose only). */
     private boolean isBaskingNow() {
-        return !this.level().isClientSide
+        return !this.level.isClientSide
                 ? this.getAnimation() == EntityAnimation.BASKING.get()
-                && !this.isInWater() && this.onGround()
+                && !this.isInWater() && this.onGround
                 && this.getTarget() == null
                 : this.getAnimation() == EntityAnimation.BASKING.get();
     }
@@ -53,7 +53,7 @@ public abstract class CrocodileDinosaurEntity extends AmphibianDinosaurEntity {
         if (tailSweepCooldown > 0) tailSweepCooldown--;
 
         // Subtle land ambience while basking
-        if (!this.level().isClientSide
+        if (!this.level.isClientSide
                 && this.getAnimation() == EntityAnimation.BASKING.get()
                 && this.tickCount % 80 == 0) {
             this.playSound(SoundEvents.TURTLE_AMBIENT_LAND, 0.15F, 0.8F + this.random.nextFloat() * 0.4F);
@@ -68,7 +68,7 @@ public abstract class CrocodileDinosaurEntity extends AmphibianDinosaurEntity {
         // --- Maintain/exit basking state & immobilize ---
         if (this.getAnimation() == EntityAnimation.BASKING.get()) {
             // Abort basking if situation changes
-            if (this.getTarget() != null || this.isInWater() || !this.onGround() || this.hurtTime > 0) {
+            if (this.getTarget() != null || this.isInWater() || !this.onGround || this.hurtTime > 0) {
                 this.setAnimation(EntityAnimation.IDLE.get());
             }
         }
@@ -94,7 +94,7 @@ public abstract class CrocodileDinosaurEntity extends AmphibianDinosaurEntity {
         }
 
         // --- Death roll DoT while latched in water ---
-        if (!this.level().isClientSide
+        if (!this.level.isClientSide
                 && this.isInWater()
                 && this.getAnimation() == EntityAnimation.DEATH_ROLL.get()
                 && this.getTarget() != null
@@ -107,13 +107,13 @@ public abstract class CrocodileDinosaurEntity extends AmphibianDinosaurEntity {
         }
 
         // --- Idle basking trigger on land, sunny, idle (server-only) ---
-        if (!this.level().isClientSide
+        if (!this.level.isClientSide
                 && this.getTarget() == null
-                && !this.isInWater() && this.onGround()
+                && !this.isInWater() && this.onGround
                 && this.getAnimation() == EntityAnimation.IDLE.get()) {
 
-            boolean canSeeSky = this.level().canSeeSky(this.blockPosition());
-            int sky = this.level().getBrightness(LightLayer.SKY, this.blockPosition());
+            boolean canSeeSky = this.level.canSeeSky(this.blockPosition());
+            int sky = this.level.getBrightness(LightLayer.SKY, this.blockPosition());
             boolean bright = sky > 10;
 
             if (canSeeSky && bright && this.random.nextInt(BASKING_RAND) == 0) {
@@ -139,7 +139,7 @@ public abstract class CrocodileDinosaurEntity extends AmphibianDinosaurEntity {
 
             if (distance < AMBUSH_TRIGGER_DIST) {
                 this.setSpeed((float)(base * AMBUSH_LUNGE_MULT));
-                if (this.level().isClientSide && this.tickCount % 10 == 0) {
+                if (this.level.isClientSide && this.tickCount % 10 == 0) {
                     this.playSound(SoundEvents.PLAYER_SWIM, 0.25F, 0.9F + this.random.nextFloat() * 0.2F);
                 }
             } else {

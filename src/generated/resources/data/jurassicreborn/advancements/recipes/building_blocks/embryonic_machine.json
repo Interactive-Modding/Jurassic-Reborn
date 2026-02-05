@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:embryonic_machine"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

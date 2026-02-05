@@ -1,8 +1,8 @@
 package net.vit.jurassicreborn.client.screens;
 
+import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -94,16 +94,16 @@ public class HologramSelectScreen extends Screen {
     }
 
     @Override
-    public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
-        this.renderBackground(guiGraphics);
-        guiGraphics.drawCenteredString(this.font, this.title, width / 2, height / 2 - 50, 0xFFFFFF);
+    public void render(PoseStack ms, int mouseX, int mouseY, float partialTicks) {
+        this.renderBackground(ms);
+        drawCenteredString(ms, this.font, this.title, width / 2, height / 2 - 50, 0xFFFFFF);
 
         int id = dinoIds.get(currentIndex);
         Dinosaur dino = DinosaurHandler.getById(id);
         String name = dino.getName();
-        guiGraphics.drawCenteredString(this.font, Component.literal(name), width / 2, height / 2 + 10, 0xFFFF00);
+        drawCenteredString(ms, this.font, Component.literal(name), width / 2, height / 2 + 10, 0xFFFF00);
 
-        super.render(guiGraphics, mouseX, mouseY, partialTicks);
+        super.render(ms, mouseX, mouseY, partialTicks);
     }
 
     @Override

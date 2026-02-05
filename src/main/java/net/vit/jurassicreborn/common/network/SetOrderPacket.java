@@ -33,7 +33,7 @@ public class SetOrderPacket {
         context.enqueueWork(() -> {
             ServerPlayer player = context.getSender();
             if (player == null) return;
-            Level world = player.level();
+            Level world = player.level;
             Entity e = world.getEntity(pkt.entityId);
             if (e instanceof DinosaurEntity dinosaur) {
                 DinosaurEntity.Order[] orders = DinosaurEntity.Order.values();

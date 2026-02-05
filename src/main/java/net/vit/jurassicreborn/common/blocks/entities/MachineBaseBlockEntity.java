@@ -135,7 +135,7 @@ public abstract class MachineBaseBlockEntity<A extends MachineBaseBlockEntity> e
     public void setItem(int index, ItemStack stack) {
         NonNullList<ItemStack> slots = this.getSlots();
 
-        boolean stacksEqual = !stack.isEmpty() && stack.is(slots.get(index).getItem()) && ItemStack.isSameItemSameTags(stack, slots.get(index));
+        boolean stacksEqual = !stack.isEmpty() && stack.is(slots.get(index).getItem()) && ItemStack.isSame(stack, slots.get(index));
         slots.set(index, stack);
 
         if (!stack.isEmpty() && stack.getCount() > this.getInventoryStackLimit()) {
@@ -338,7 +338,7 @@ public abstract class MachineBaseBlockEntity<A extends MachineBaseBlockEntity> e
         int[] outputs = this.getOutputs();
         for (int slot : outputs) {
             ItemStack stack = slots.get(slot);
-            if (stack.isEmpty() || ((ItemStack.isSameItemSameTags(stack, output) && stack.getCount() + output.getCount() <= stack.getMaxStackSize()) && stack.getItem() == output.getItem() && stack.getDamageValue() == output.getDamageValue())) {
+            if (stack.isEmpty() || ((ItemStack.isSame(stack, output) && stack.getCount() + output.getCount() <= stack.getMaxStackSize()) && stack.getItem() == output.getItem() && stack.getDamageValue() == output.getDamageValue())) {
                 return slot;
             }
         }
@@ -395,7 +395,7 @@ public abstract class MachineBaseBlockEntity<A extends MachineBaseBlockEntity> e
         ItemStack previous = slots.get(slot);
         if (previous.isEmpty()) {
             slots.set(slot, stack);
-        } else if (ItemStack.isSameItemSameTags(previous, stack) && ItemStack.isSameItemSameTags(previous, stack)) {
+        } else if (ItemStack.isSame(previous, stack) && ItemStack.isSame(previous, stack)) {
             previous.setCount(previous.getCount() + stack.getCount());
         }
     }
@@ -465,7 +465,6 @@ public abstract class MachineBaseBlockEntity<A extends MachineBaseBlockEntity> e
 
     @Override
     public Component getDefaultName() {
-
 
         return Component.translatable("jurassicreborn:machine_base_block");
     }

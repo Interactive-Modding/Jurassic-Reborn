@@ -161,12 +161,12 @@ public class Herd implements Iterable<DinosaurEntity> {
 
                             int hx = Mth.floor(navigateX);
                             int hz = Mth.floor(navigateZ);
-                            int hy = entity.level().getHeight(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, hx, hz);
+                            int hy = entity.level.getHeight(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, hx, hz);
                             BlockPos basePos = BlockPos.containing(navigateX, hy, navigateZ);
 
                             // Avoid water: try shore
-                            if (entity.level().getFluidState(basePos).is(FluidTags.WATER)) {
-                                BlockPos shore = AIUtils.findShore(entity.level(), basePos);
+                            if (entity.level.getFluidState(basePos).is(FluidTags.WATER)) {
+                                BlockPos shore = AIUtils.findShore(entity.level, basePos);
                                 if (shore != null) basePos = shore;
                             }
 
@@ -276,7 +276,7 @@ public class Herd implements Iterable<DinosaurEntity> {
 
             List<Herd> otherHerds = new LinkedList<>();
 
-            for (Entity e : this.leader.level().getEntities((Entity) null, searchBounds, isDino)) {
+            for (Entity e : this.leader.level.getEntities((Entity) null, searchBounds, isDino)) {
                 if (e instanceof DinosaurEntity entity) {
                     if (!entity.isCarcass() && !entity.isDeadOrDying()
                             && !(entity.getMetabolism().isStarving() || entity.getMetabolism().isDehydrated())) {
@@ -316,7 +316,7 @@ public class Herd implements Iterable<DinosaurEntity> {
 
                 } else if (originalSize + 1 > this.herdType.getMaxHerdSize() && this.leader != null) {
                     // Use proper GameRules access and check the entity, not the herd
-                    boolean killOutcast = this.leader.level().getGameRules()
+                    boolean killOutcast = this.leader.level.getGameRules()
                             .getBoolean(net.vit.jurassicreborn.common.util.GameRuleHandler.KILL_HERD_OUTCAST);
                     if (killOutcast
                             && this.herdType.getDinosaurType() == net.vit.jurassicreborn.common.entities.Dinosaurs.Dinosaur.DinosaurType.AGGRESSIVE) {
@@ -360,7 +360,7 @@ public class Herd implements Iterable<DinosaurEntity> {
             return this.leader.position();
         }
 
-        int y = this.leader.level().getHeight(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+        int y = this.leader.level.getHeight(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 (int) Math.round(x), (int) Math.round(z));
         return new Vec3(x, y, z);
     }

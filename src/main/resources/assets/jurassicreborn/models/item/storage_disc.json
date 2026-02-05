@@ -909,12 +909,6 @@
         "custom_model_data": 1042
       },
       "model": "jurassicreborn:item/storage_disc/plants/woolly_stalked_begonia"
-    },
-    {
-      "predicate": {
-        "custom_model_data": 1043
-      },
-      "model": "jurassicreborn:item/storage_disc/plants/small_cycad"
     }
   ]
 }

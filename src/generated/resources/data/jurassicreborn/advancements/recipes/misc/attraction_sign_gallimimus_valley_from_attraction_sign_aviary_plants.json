@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:attraction_sign_gallimimus_valley_from_attraction_sign_aviary_plants"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

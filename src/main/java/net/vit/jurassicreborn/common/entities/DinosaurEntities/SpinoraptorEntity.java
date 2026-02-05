@@ -7,7 +7,6 @@ import net.vit.jurassicreborn.client.render.entity.animation.EntityAnimation;
 import net.vit.jurassicreborn.common.entities.AmphibianDinosaurEntity;
 import net.vit.jurassicreborn.common.entities.DinosaurEntity;
 import net.vit.jurassicreborn.common.entities.Dinosaurs.DinosaurHandler;
-import net.vit.jurassicreborn.common.entities.IHasVariants;
 import net.vit.jurassicreborn.common.entities.ai.HurtByTargetGoal;
 import net.vit.jurassicreborn.common.entities.ai.LeapingMeleeEntityAI;
 import net.vit.jurassicreborn.common.entities.ai.RaptorLeapEntityAI;
@@ -31,7 +30,7 @@ import net.minecraft.world.entity.EntityType;
 
 import java.util.Locale;
 
-public class SpinoraptorEntity extends AmphibianDinosaurEntity implements IHasVariants {
+public class SpinoraptorEntity extends AmphibianDinosaurEntity {
     private static final EntityDataAccessor<Integer> VARIANT = SynchedEntityData.defineId(SpinoraptorEntity.class, EntityDataSerializers.INT);
     private static final Class[] targets = {CompsognathusEntity.class, MammothEntity.class, VelociraptorEntity.class, VelociraptorBlueEntity.class, VelociraptorCharlieEntity.class, VelociraptorDeltaEntity.class, VelociraptorEchoEntity.class, MegatheriumEntity.class, ElasmotheriumEntity.class, ArsinoitheriumEntity.class, Player.class
 , DilophosaurusEntity.class, DimorphodonEntity.class, DodoEntity.class, LeaellynasauraEntity.class, HypsilophodonEntity.class, StegosaurusEntity.class, ProtoceratopsEntity.class, OthnieliaEntity.class, MicroceratusEntity.class};
@@ -136,4 +135,5 @@ public class SpinoraptorEntity extends AmphibianDinosaurEntity implements IHasVa
         return isMale()?new ResourceLocation(JurassicReborn.MODID, texture + "_male_" + "adult" + "_" + variant + ".png"):new ResourceLocation(JurassicReborn.MODID, texture + "_female_" + "adult" + "_" + variant +".png");
     }
 }
+
 

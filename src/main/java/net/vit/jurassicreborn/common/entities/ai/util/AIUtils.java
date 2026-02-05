@@ -73,7 +73,7 @@ public final class AIUtils {
     /** Convenience version for an entity already in water. */
     public static BlockPos findSurface(LivingEntity entity) {
         if (!entity.isInWater()) return null;
-        Level level = entity.level();
+        Level level = entity.level;
         BlockPos start = entity.blockPosition()
                 .below(Mth.floor(entity.getBbHeight() * 0.5F));
         return findSurface(level, start);
@@ -90,7 +90,7 @@ public final class AIUtils {
     public static int getWaterDepth(LivingEntity entity, boolean fromEntity) {
         if (!entity.isInWater()) return 0;
 
-        Level level = entity.level();
+        Level level = entity.level;
         BlockPos origin = entity.blockPosition();
         int depth = 0;
 

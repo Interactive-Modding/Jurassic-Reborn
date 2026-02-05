@@ -28,6 +28,5 @@
     "recipes": [
       "jurassicreborn:iron_rod"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

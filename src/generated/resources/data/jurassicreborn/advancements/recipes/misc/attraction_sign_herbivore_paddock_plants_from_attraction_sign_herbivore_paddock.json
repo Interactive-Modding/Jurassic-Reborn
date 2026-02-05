@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:attraction_sign_herbivore_paddock_plants_from_attraction_sign_herbivore_paddock"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

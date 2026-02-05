@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:phoenix_slab"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

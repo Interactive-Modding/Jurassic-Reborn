@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:attraction_sign_carnivore_paddock_from_attraction_sign_smilodon_cove_plants"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

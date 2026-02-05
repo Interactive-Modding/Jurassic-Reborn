@@ -12,7 +12,6 @@ import net.vit.jurassicreborn.client.sounds.SoundHandler;
 import net.vit.jurassicreborn.client.render.entity.animation.EntityAnimation;
 import net.vit.jurassicreborn.common.entities.DinosaurEntity;
 import net.vit.jurassicreborn.common.entities.Dinosaurs.DinosaurHandler;
-import net.vit.jurassicreborn.common.entities.IHasVariants;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.npc.Villager;
@@ -22,7 +21,7 @@ import net.minecraft.world.entity.EntityType;
 
 import java.util.Locale;
 
-public class GiganotosaurusEntity extends DinosaurEntity implements IHasVariants
+public class GiganotosaurusEntity extends DinosaurEntity
 {
     private int stepCount = 0;//why it step? - gamma_02
     private static final EntityDataAccessor<Integer> VARIANT = SynchedEntityData.defineId(GiganotosaurusEntity.class, EntityDataSerializers.INT);
@@ -111,3 +110,4 @@ public class GiganotosaurusEntity extends DinosaurEntity implements IHasVariants
         return isMale()?new ResourceLocation(JurassicReborn.MODID, texture + "_male_" + "adult" + "_" + variant + ".png"):new ResourceLocation(JurassicReborn.MODID, texture + "_female_" + "adult" + "_" + variant +".png");
     }
 }
+

@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:attraction_sign_garden_from_attraction_sign_triceratops_territorium_plants"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

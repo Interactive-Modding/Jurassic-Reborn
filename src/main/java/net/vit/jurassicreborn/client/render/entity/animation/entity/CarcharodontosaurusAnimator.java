@@ -56,7 +56,6 @@ public class CarcharodontosaurusAnimator extends EntityAnimator<Carcharodontosau
         model.chainSwing(tail, idleSpeed, 0.18F, -2, ticks, 1.0F);
         model.faceTarget(rotationYaw, rotationPitch, 0.6F, neck1, neck3, neck4, neck5, neck6);
 
-
         entity.tailBuffer.applyChainSwingBuffer(tail);
     }
 }

@@ -44,7 +44,7 @@ public class HatchedEggItem extends DNAContainerItem {
         if (nbt.contains("Gender")) {
             return nbt.getBoolean("Gender");
         }
-        boolean gender = (player != null ? player.level().random.nextBoolean()
+        boolean gender = (player != null ? player.level.random.nextBoolean()
                 : ((stack.hashCode() & 1) == 0));
         nbt.putBoolean("Gender", gender);
         stack.setTag(nbt);

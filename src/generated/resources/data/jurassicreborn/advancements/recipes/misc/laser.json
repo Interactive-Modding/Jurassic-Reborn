@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:laser"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

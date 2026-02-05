@@ -9,7 +9,6 @@ import net.vit.jurassicreborn.common.entities.animal.SharkEntity;
 import net.vit.jurassicreborn.common.entities.animal.GoatEntity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -20,8 +19,6 @@ import net.vit.jurassicreborn.common.entities.vehicle.boat.JurassicBoat;
 import net.vit.jurassicreborn.common.entities.vehicle.boat.JurassicChestBoat;
 
 import java.util.HashMap;
-import java.util.Locale;
-import java.util.Optional;
 
 
 public class ModEntities {
@@ -255,12 +252,12 @@ public class ModEntities {
     public static RegistryObject<EntityType<MicroraptorEntity>> MICRORAPTOR = MOD_ENTITY_TYPES.register("microraptor", () -> EntityType.Builder.of(MicroraptorEntity::new, MobCategory.CREATURE).build("microraptor"));
     public static RegistryObject<EntityType<MammothEntity>> MAMMOTH = MOD_ENTITY_TYPES.register("mammoth", () -> EntityType.Builder.of(MammothEntity::new, MobCategory.CREATURE).build("mammoth"));
     public static RegistryObject<EntityType<DodoEntity>> DODO = MOD_ENTITY_TYPES.register("dodo", () -> EntityType.Builder.of(DodoEntity::new, MobCategory.CREATURE).build("dodo"));
-    public static RegistryObject<EntityType<ZhenyuanopterusEntity>> ZHENYUANOPTERUS = MOD_ENTITY_TYPES.register("zhenyuanopterus", () -> EntityType.Builder.of(ZhenyuanopterusEntity::new, MobCategory.CREATURE).build("zhenyuanopterus"));
+    public static RegistryObject<EntityType<ZhenyuanopterusEntity>> ZHENYUANOPTERUS = MOD_ENTITY_TYPES.register("zhenyuanopterus", () -> EntityType.Builder.of(ZhenyuanopterusEntity::new, MobCategory.CREATURE).build("Zhenyuanopterus"));
     public static RegistryObject<EntityType<PostosuchusEntity>> POSTOSUCHUS = MOD_ENTITY_TYPES.register("postosuchus", () -> EntityType.Builder.of(PostosuchusEntity::new, MobCategory.CREATURE).build("postosuchus"));
-    public static RegistryObject<EntityType<IndoraptorEntity>> INDORAPTOR = MOD_ENTITY_TYPES.register("indoraptor", () -> EntityType.Builder.of(IndoraptorEntity::new, MobCategory.CREATURE).build("indoraptor"));
+    public static RegistryObject<EntityType<IndoraptorEntity>> INDORAPTOR = MOD_ENTITY_TYPES.register("indoraptor", () -> EntityType.Builder.of(IndoraptorEntity::new, MobCategory.CREATURE).build("Indoraptor"));
     public static RegistryObject<EntityType<OthnieliaEntity>> OTHNIELIA = MOD_ENTITY_TYPES.register("othnielia", () -> EntityType.Builder.of(OthnieliaEntity::new, MobCategory.CREATURE).build("othnielia"));
     public static RegistryObject<EntityType<PteranodonEntity>> PTERANODON = MOD_ENTITY_TYPES.register("pteranodon", () -> EntityType.Builder.<PteranodonEntity>of((type, world) -> new PteranodonEntity(world, type), MobCategory.CREATURE).build("pteranodon"));
-    public static RegistryObject<EntityType<IndominusEntity>> INDOMINUS = MOD_ENTITY_TYPES.register("indominus", () -> EntityType.Builder.<IndominusEntity>of((type, world) -> new IndominusEntity(world, type), MobCategory.CREATURE).build("indominus"));
+    public static RegistryObject<EntityType<IndominusEntity>> INDOMINUS = MOD_ENTITY_TYPES.register("indominus", () -> EntityType.Builder.<IndominusEntity>of((type, world) -> new IndominusEntity(world, type), MobCategory.CREATURE).build("Indominus"));
     public static RegistryObject<EntityType<AnkylosaurusEntity>> ANKYLOSAURUS = MOD_ENTITY_TYPES.register("ankylosaurus", () -> EntityType.Builder.<AnkylosaurusEntity>of((type, world) -> new AnkylosaurusEntity(world, type), MobCategory.CREATURE).build("ankylosaurus"));
     public static RegistryObject<EntityType<ArsinoitheriumEntity>> ARSINOITHERIUM = MOD_ENTITY_TYPES.register("arsinoitherium", () -> EntityType.Builder.<ArsinoitheriumEntity>of((type, world) -> new ArsinoitheriumEntity(world, type), MobCategory.CREATURE).build("arsinoitherium"));
     public static RegistryObject<EntityType<CrassigyrinusEntity>> CRASSIGYRINUS = MOD_ENTITY_TYPES.register("crassigyrinus", () -> EntityType.Builder.<CrassigyrinusEntity>of((type, world) -> new CrassigyrinusEntity(world, type), MobCategory.CREATURE).build("crassigyrinus"));
@@ -270,15 +267,15 @@ public class ModEntities {
     public static RegistryObject<EntityType<CarnotaurusEntity>> CARNOTAURUS = MOD_ENTITY_TYPES.register("carnotaurus", () -> EntityType.Builder.<CarnotaurusEntity>of((type, world) -> new CarnotaurusEntity(world, type), MobCategory.CREATURE).build("carnotaurus"));
     public static RegistryObject<EntityType<DunkleosteusEntity>> DUNKLEOSTEUS = MOD_ENTITY_TYPES.register("dunkleosteus", () -> EntityType.Builder.<DunkleosteusEntity>of((type, world) -> new DunkleosteusEntity(world, type), MobCategory.CREATURE).build("dunkleosteus"));
     public static RegistryObject<EntityType<TyrannosaurusEntity>> TYRANNOSAURUS = MOD_ENTITY_TYPES.register("tyrannosaurus", () -> EntityType.Builder.<TyrannosaurusEntity>of((type, world) -> new TyrannosaurusEntity(world, type), MobCategory.CREATURE).build("tyrannosaurus"));
-    public static RegistryObject<EntityType<RaphusrexEntity>> RAPHUSREX = MOD_ENTITY_TYPES.register("raphusrex", () -> EntityType.Builder.<RaphusrexEntity>of((type, world) -> new RaphusrexEntity(world, type), MobCategory.CREATURE).build("raphusrex"));
+    public static RegistryObject<EntityType<RaphusrexEntity>> RAPHUSREX = MOD_ENTITY_TYPES.register("raphusrex", () -> EntityType.Builder.<RaphusrexEntity>of((type, world) -> new RaphusrexEntity(world, type), MobCategory.CREATURE).build("Raphusrex"));
     public static RegistryObject<EntityType<ChasmosaurusEntity>> CHASMOSAURUS_ENTITY_TYPE = MOD_ENTITY_TYPES.register("chasmosaurus", () -> EntityType.Builder.<ChasmosaurusEntity>of((type, world) -> new ChasmosaurusEntity(world, type), MobCategory.CREATURE).build("chasmosaurus"));
     public static RegistryObject<EntityType<MetriacanthosaurusEntity>> METRIACANTHOSAURUS_ENTITY_TYPE = MOD_ENTITY_TYPES.register("metriacanthosaurus", () -> EntityType.Builder.of(MetriacanthosaurusEntity::new, MobCategory.CREATURE).build("metriacanthosaurus"));
     public static RegistryObject<EntityType<TroodonEntity>> TROODON = MOD_ENTITY_TYPES.register("troodon", () -> EntityType.Builder.<TroodonEntity>of((type, world) -> new TroodonEntity(world, type), MobCategory.CREATURE).build("troodon"));
     public static RegistryObject<EntityType<HerrerasaurusEntity>> HERRERASAURUS = MOD_ENTITY_TYPES.register("herrerasaurus", () -> EntityType.Builder.of(HerrerasaurusEntity::new, MobCategory.CREATURE).build("herrerasaurus"));
     public static RegistryObject<EntityType<BaryonyxEntity>> BARYONYX = MOD_ENTITY_TYPES.register("baryonyx", () -> EntityType.Builder.<BaryonyxEntity>of((type, world) -> new BaryonyxEntity(world, type), MobCategory.CREATURE).build("baryonyx"));
     public static RegistryObject<EntityType<BeelzebufoEntity>> BEELZEBUFO_ENTITY_TYPE = MOD_ENTITY_TYPES.register("beelzebufo", () -> EntityType.Builder.<BeelzebufoEntity>of((type, world) -> new BeelzebufoEntity(world, type), MobCategory.CREATURE).build("beelzebufo"));
-    public static RegistryObject<EntityType<VelociraptorBlueEntity>> VELOCIRAPTORBLUE_ENTITY_TYPE = MOD_ENTITY_TYPES.register("velociraptorblue", () -> EntityType.Builder.of(VelociraptorBlueEntity::new, MobCategory.CREATURE).build("velociraptorblue"));
-    public static RegistryObject<EntityType<VelociraptorEchoEntity>> VELOCIRAPTORECHO_ENTITY_TYPE = MOD_ENTITY_TYPES.register("velociraptorecho", () -> EntityType.Builder.of(VelociraptorEchoEntity::new, MobCategory.CREATURE).build("velociraptorecho"));
+    public static RegistryObject<EntityType<VelociraptorBlueEntity>> VELOCIRAPTORBLUE_ENTITY_TYPE = MOD_ENTITY_TYPES.register("velociraptorblue", () -> EntityType.Builder.of(VelociraptorBlueEntity::new, MobCategory.CREATURE).build("velociraptorBlue"));
+    public static RegistryObject<EntityType<VelociraptorEchoEntity>> VELOCIRAPTORECHO_ENTITY_TYPE = MOD_ENTITY_TYPES.register("velociraptorecho", () -> EntityType.Builder.of(VelociraptorEchoEntity::new, MobCategory.CREATURE).build("velociraptorEcho"));
     public static RegistryObject<EntityType<SinoceratopsEntity>> SINOCERATOPS = MOD_ENTITY_TYPES.register("sinoceratops", () -> EntityType.Builder.<SinoceratopsEntity>of((type, world) -> new SinoceratopsEntity(world, type), MobCategory.CREATURE).build("sinoceratops"));
     public static RegistryObject<EntityType<ParasaurolophusEntity>> PARASAUROLOPHUS_ENTITY_TYPE = MOD_ENTITY_TYPES.register("parasaurolophus", () -> EntityType.Builder.of(ParasaurolophusEntity::new, MobCategory.CREATURE).build("parasaurolophus"));
     public static RegistryObject<EntityType<MamenchisaurusEntity>> MAMENCHISAURUS_ENTITY_TYPE = MOD_ENTITY_TYPES.register("mamenchisaurus", () -> EntityType.Builder.of(MamenchisaurusEntity::new, MobCategory.CREATURE).build("mamenchisaurus"));
@@ -286,9 +283,9 @@ public class ModEntities {
     public static RegistryObject<EntityType<AllosaurusEntity>> ALLOSAURUS_ENTITY_TYPE = MOD_ENTITY_TYPES.register("allosaurus", () -> EntityType.Builder.<AllosaurusEntity>of((type, world) -> new AllosaurusEntity(world, type), MobCategory.CREATURE).build("allosaurus"));
     public static RegistryObject<EntityType<MosasaurusEntity>> MOSASAURUS_ENTITY_TYPE = MOD_ENTITY_TYPES.register("mosasaurus", () -> EntityType.Builder.<MosasaurusEntity>of((type, world) -> new MosasaurusEntity(world, type), MobCategory.CREATURE).build("mosasaurus"));
     public static RegistryObject<EntityType<MawsoniaEntity>> MAWSONIA_ENTITY_TYPE = MOD_ENTITY_TYPES.register("mawsonia", () -> EntityType.Builder.<MawsoniaEntity>of((type, world) -> new MawsoniaEntity(world, type), MobCategory.CREATURE).build("mawsonia"));
-    public static RegistryObject<EntityType<VelociraptorDeltaEntity>> VELOCIRAPTORDELTA = MOD_ENTITY_TYPES.register("velociraptordelta", () -> EntityType.Builder.of(VelociraptorDeltaEntity::new, MobCategory.CREATURE).build("velociraptordelta"));
+    public static RegistryObject<EntityType<VelociraptorDeltaEntity>> VELOCIRAPTORDELTA = MOD_ENTITY_TYPES.register("velociraptordelta", () -> EntityType.Builder.of(VelociraptorDeltaEntity::new, MobCategory.CREATURE).build("velociraptorDelta"));
     public static RegistryObject<EntityType<AlvarezsaurusEntity>> ALVAREZSAURUS = MOD_ENTITY_TYPES.register("alvarezsaurus", () -> EntityType.Builder.of(AlvarezsaurusEntity::new, MobCategory.CREATURE).build("alvarezsaurus"));
-    public static RegistryObject<EntityType<RugopsEntity>> RUGOPS = MOD_ENTITY_TYPES.register("rugops", () -> EntityType.Builder.of(RugopsEntity::new, MobCategory.CREATURE).build("rugops"));
+    public static RegistryObject<EntityType<RugopsEntity>> RUGOPS = MOD_ENTITY_TYPES.register("rugops", () -> EntityType.Builder.of(RugopsEntity::new, MobCategory.CREATURE).build("Rugops"));
     public static RegistryObject<EntityType<CearadactylusEntity>> CEARADACTYLUS = MOD_ENTITY_TYPES.register("cearadactylus", () -> EntityType.Builder.<CearadactylusEntity>of((type, world) -> new CearadactylusEntity(world, type), MobCategory.CREATURE).build("cearadactylus"));
     public static RegistryObject<EntityType<CorythosaurusEntity>> CORYTHOSAURUS = MOD_ENTITY_TYPES.register("corythosaurus", () -> EntityType.Builder.<CorythosaurusEntity>of((type, world) -> new CorythosaurusEntity(world, type), MobCategory.CREATURE).build("corythosaurus"));
     public static RegistryObject<EntityType<CompsognathusEntity>> COMPSOGNATHUS = MOD_ENTITY_TYPES.register("compsognathus", () -> EntityType.Builder.<CompsognathusEntity>of((type, world) -> new CompsognathusEntity(world, type), MobCategory.CREATURE).build("compsognathus"));
@@ -302,10 +299,10 @@ public class ModEntities {
     public static RegistryObject<EntityType<CoelacanthEntity>> COELACANTH_ENTITY_TYPE = MOD_ENTITY_TYPES.register("coelacanth", () -> EntityType.Builder.<CoelacanthEntity>of((type, world) -> new CoelacanthEntity(world, type), MobCategory.CREATURE).build("coelacanth"));
     public static RegistryObject<EntityType<GallimimusEntity>> GALLIMIMUS_ENTITY_TYPE = MOD_ENTITY_TYPES.register("gallimimus", () -> EntityType.Builder.<GallimimusEntity>of((type, world) -> new GallimimusEntity(world, type), MobCategory.CREATURE).build("gallimimus"));
     public static RegistryObject<EntityType<CeratosaurusEntity>> CERATOSAURUS_ENTITY_TYPE = MOD_ENTITY_TYPES.register("ceratosaurus", () -> EntityType.Builder.<CeratosaurusEntity>of((type, world) -> new CeratosaurusEntity(world, type), MobCategory.CREATURE).build("ceratosaurus"));
-    public static RegistryObject<EntityType<VelociraptorCharlieEntity>> VELOCIRAPTORCHARLIE_ENTITY_TYPE = MOD_ENTITY_TYPES.register("velociraptorcharlie", () -> EntityType.Builder.of(VelociraptorCharlieEntity::new, MobCategory.CREATURE).build("velociraptorcharlie"));
+    public static RegistryObject<EntityType<VelociraptorCharlieEntity>> VELOCIRAPTORCHARLIE_ENTITY_TYPE = MOD_ENTITY_TYPES.register("velociraptorcharlie", () -> EntityType.Builder.of(VelociraptorCharlieEntity::new, MobCategory.CREATURE).build("velociraptorCharlie"));
     public static RegistryObject<EntityType<SpinosaurusEntity>> SPINOSAURUS_ENTITY_TYPE = MOD_ENTITY_TYPES.register("spinosaurus", () -> EntityType.Builder.<SpinosaurusEntity>of((type, world) -> new SpinosaurusEntity(world, type), MobCategory.CREATURE).build("spinosaurus"));
     public static RegistryObject<EntityType<PachycephalosaurusEntity>> PACHYCEPHALOSAURUS_ENTITY_TYPE = MOD_ENTITY_TYPES.register("pachycephalosaurus", () -> EntityType.Builder.of(PachycephalosaurusEntity::new, MobCategory.CREATURE).build("pachycephalosaurus"));
-    public static RegistryObject<EntityType<QuetzalEntity>> QUETZAL = MOD_ENTITY_TYPES.register("quetzal", () -> EntityType.Builder.of(QuetzalEntity::new, MobCategory.CREATURE).build("quetzal"));
+    public static RegistryObject<EntityType<QuetzalEntity>> QUETZAL = MOD_ENTITY_TYPES.register("quetzal", () -> EntityType.Builder.of(QuetzalEntity::new, MobCategory.CREATURE).build("Quetzal"));
     public static RegistryObject<EntityType<CarcharodontosaurusEntity>> CARCHARODONTOSAURUS = MOD_ENTITY_TYPES.register("carcharodontosaurus", () -> EntityType.Builder.of(CarcharodontosaurusEntity::new, MobCategory.CREATURE).build("carcharodontosaurus"));
     public static RegistryObject<EntityType<TylosaurusEntity>> TYLOSAURUS_ENTITY_TYPE = MOD_ENTITY_TYPES.register("tylosaurus", () -> EntityType.Builder.<TylosaurusEntity>of((type, world) -> new TylosaurusEntity(world, type), MobCategory.CREATURE).build("tylosaurus"));
     public static RegistryObject<EntityType<LivyatanEntity>> LIVYATAN_ENTITY_TYPE = MOD_ENTITY_TYPES.register("livyatan", () -> EntityType.Builder.<LivyatanEntity>of((type, world) -> new LivyatanEntity(world, type), MobCategory.CREATURE).build("livyatan"));
@@ -373,14 +370,5 @@ public class ModEntities {
 
     public static void init(IEventBus modEventBus){
         MOD_ENTITY_TYPES.register(modEventBus);
-    }
-
-    public static Optional<EntityType<?>> getTypeForDinosaur(Dinosaur dinosaur) {
-        ResourceLocation key = new ResourceLocation(
-                JurassicReborn.MODID,
-                dinosaur.getName().toLowerCase(Locale.ROOT).replace(" ", "")
-        );
-
-        return Optional.ofNullable(ForgeRegistries.ENTITY_TYPES.getValue(key));
     }
 }

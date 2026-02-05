@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:liquid_agar"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

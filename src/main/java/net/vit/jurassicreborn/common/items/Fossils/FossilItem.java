@@ -392,9 +392,6 @@ public class FossilItem extends Item implements GrindableItem {
         BlockEntity be = level.getBlockEntity(pos);
         if (be instanceof SkullDisplayBlockEntity tile) {
             tile.setModel(DinosaurHandler.getId(this.dino), !this.isFresh(), getHasStand(stack));
-            ItemStack placedStack = stack.copy();
-            placedStack.setCount(1);
-            tile.setDisplayedStack(placedStack);
             Direction face = context.getClickedFace();
             if (face.getAxis() == Direction.Axis.Y && context.getPlayer() != null) {
                 tile.setAngle(angleToPlayer(pos, context.getPlayer().getX(), context.getPlayer().getZ()));
@@ -403,6 +400,7 @@ public class FossilItem extends Item implements GrindableItem {
             } else if (face.getAxis() == Direction.Axis.Z) {
                 tile.setAngle((short) (180 + face.toYRot()));
             }
+            tile.setChanged();
         }
 
         level.updateNeighborsAt(pos, block);

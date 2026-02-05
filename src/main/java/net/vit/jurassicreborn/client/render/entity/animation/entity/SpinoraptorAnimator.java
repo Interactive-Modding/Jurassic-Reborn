@@ -73,7 +73,6 @@ public class SpinoraptorAnimator extends EntityAnimator<SpinoraptorEntity> {
         model.faceTarget(rotationYaw, rotationPitch, 1.0F,
                 neckBase, neck9, head);
 
-
         entity.tailBuffer.applyChainSwingBuffer(tail);
     }
 }

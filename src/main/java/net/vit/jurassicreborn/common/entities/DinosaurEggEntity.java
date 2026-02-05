@@ -59,13 +59,13 @@ public class DinosaurEggEntity extends Entity implements IEntityAdditionalSpawnD
     public void tick() {
         super.tick();
         if (dinosaur == null) {
-            Optional<Entity> parentEntity = (this.level().isClientSide ? Optional.empty() : ((ServerLevel) level()).getEntity(this.parent) == null ? Optional.empty() : Optional.of(((ServerLevel) level()).getEntity(this.parent)));
+            Optional<Entity> parentEntity = (this.level.isClientSide ? Optional.empty() : ((ServerLevel) level).getEntity(this.parent) == null ? Optional.empty() : Optional.of(((ServerLevel) level).getEntity(this.parent)));
             if (parentEntity.isPresent() && parentEntity.get() instanceof DinosaurEntity) {
                 this.dinosaur = ((DinosaurEntity) parentEntity.get()).getDinosaur();
             }
         }
 
-        if (!this.level().isClientSide) {
+        if (!this.level.isClientSide) {
             if (this.entity == null) {
                 this.kill();
             }
@@ -82,7 +82,7 @@ public class DinosaurEggEntity extends Entity implements IEntityAdditionalSpawnD
             motion = motion.add(0.0, -0.04, 0.0);
         }
         this.move(MoverType.SELF, motion);
-        float drag = this.onGround() ? 0.7F : 0.98F;
+        float drag = this.onGround ? 0.7F : 0.98F;
         this.setDeltaMovement(motion.x * drag, motion.y * 0.98F, motion.z * drag);
     }
 
@@ -102,7 +102,7 @@ public class DinosaurEggEntity extends Entity implements IEntityAdditionalSpawnD
 
     @Override
     public boolean hurt(DamageSource source, float amount) {
-        if (!this.level().isClientSide && this.isAlive()) {
+        if (!this.level.isClientSide && this.isAlive()) {
             dropEggItem();
             this.kill();
         }
@@ -114,7 +114,7 @@ public class DinosaurEggEntity extends Entity implements IEntityAdditionalSpawnD
     public InteractionResult interact(Player pPlayer, InteractionHand pHand) {
 
 
-        if (this.entity != null && !this.level().isClientSide) {;
+        if (this.entity != null && !this.level.isClientSide) {;
             dropEggItem();
             this.kill();
         }
@@ -126,11 +126,11 @@ public class DinosaurEggEntity extends Entity implements IEntityAdditionalSpawnD
         if(dinosaur != null && this.entity != null) {
             try {
                 this.entity.setPos(this.getX(), this.getY(), this.getZ());
-                this.level().addFreshEntity(this.entity);
+                this.level.addFreshEntity(this.entity);
                 this.entity.playAmbientSound();
                 this.kill();
                 if(dinosaur == null) {
-                    Optional<Entity> parentEntity =  (this.level().isClientSide ? Optional.empty() : ((ServerLevel) level()).getEntity(this.parent) == null ? Optional.empty() : Optional.of(((ServerLevel) level()).getEntity(this.parent)));
+                    Optional<Entity> parentEntity =  (this.level.isClientSide ? Optional.empty() : ((ServerLevel) level).getEntity(this.parent) == null ? Optional.empty() : Optional.of(((ServerLevel) level).getEntity(this.parent)));
                     if(parentEntity.isPresent() && parentEntity.get() instanceof DinosaurEntity && this.dinosaur.shouldDefendOffspring() && ((DinosaurEntity) parentEntity.get()).family != null) {
                         ((DinosaurEntity) parentEntity.get()).family.addChild(this.entity.getUUID());
                     }
@@ -162,7 +162,7 @@ public class DinosaurEggEntity extends Entity implements IEntityAdditionalSpawnD
         CompoundTag entityTag = compound.getCompound("Hatchling");
 //        this.entity = (DinosaurEntity) EntityList.createEntityFromNBT(entityTag, this.level);
         if (!entityTag.isEmpty()) {
-            Entity loaded = EntityType.loadEntityRecursive(entityTag, this.level(), e -> e);
+            Entity loaded = EntityType.loadEntityRecursive(entityTag, this.level, e -> e);
             if (loaded instanceof DinosaurEntity dino) {
                 this.entity = dino;
                 this.dinosaur = dino.getDinosaur();

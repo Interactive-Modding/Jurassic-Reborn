@@ -61,7 +61,6 @@ public abstract class PenguinDinosaurEntity extends DinosaurEntity {
 
         this.blocked = false;
 
-
         this.goalSelector.addGoal(5,  new MoveUnderwaterGoal());
         this.goalSelector.addGoal(10, new FindWaterGoal());
         this.goalSelector.addGoal(10, new WanderGoal());
@@ -76,7 +75,7 @@ public abstract class PenguinDinosaurEntity extends DinosaurEntity {
     public void aiStep() {
         super.aiStep();
 
-        if (!this.level().isClientSide && this.isAlive()) {
+        if (!this.level.isClientSide && this.isAlive()) {
             if (this.isInWater()) {
                 waterTicks++;
                 landTicks = 0;
@@ -113,21 +112,21 @@ public abstract class PenguinDinosaurEntity extends DinosaurEntity {
     }
     public void tick() {
         super.tick();
-        if (this.level().isClientSide && this.isInWater() && this.getDeltaMovement().lengthSqr() > 0.005) {
+        if (this.level.isClientSide && this.isInWater() && this.getDeltaMovement().lengthSqr() > 0.005) {
             Vec3 viewVec = this.getViewVector(0.0F);
             float offsetX = Mth.cos(this.getYRot() * 0.017453292F) * 0.3F;
             float offsetZ = Mth.sin(this.getYRot() * 0.017453292F) * 0.3F;
             float distance = 1.2F - this.random.nextFloat() * 0.7F;
 
             for (int i = 0; i < 2; ++i) {
-                this.level().addParticle(
+                this.level.addParticle(
                         ParticleTypes.DOLPHIN,
                         this.getX() - viewVec.x * (double) distance + (double) offsetX,
                         this.getY() - viewVec.y,
                         this.getZ() - viewVec.z * (double) distance + (double) offsetZ,
                         0.0, 0.0, 0.0
                 );
-                this.level().addParticle(
+                this.level.addParticle(
                         ParticleTypes.DOLPHIN,
                         this.getX() - viewVec.x * (double) distance - (double) offsetX,
                         this.getY() - viewVec.y,
@@ -144,7 +143,7 @@ public abstract class PenguinDinosaurEntity extends DinosaurEntity {
         float forward = (float) vec.z;
         boolean noInput = strafe == 0 && vertical == 0 && forward == 0;
 
-        if (!this.level().isClientSide && this.isInWater() && !this.isCarcass()) {
+        if (!this.level.isClientSide && this.isInWater() && !this.isCarcass()) {
             this.moveRelative(0.25F, new Vec3(strafe, vertical, forward));
             this.move(MoverType.SELF, this.getDeltaMovement());
             Vec3 movement = this.getDeltaMovement().multiply(0.7, 0.7, 0.7);
@@ -201,7 +200,7 @@ public abstract class PenguinDinosaurEntity extends DinosaurEntity {
                 double y = mob.getY() + mob.getRandom().nextInt(vr * 2 + 1) - vr;
                 double z = mob.getZ() + mob.getRandom().nextInt(hr * 2 + 1) - hr;
                 BlockPos pos = BlockPos.containing(x, y, z);
-                if (!mob.level().getBlockState(pos).getFluidState().isEmpty()) {
+                if (mob.level.getBlockState(pos).getMaterial().isLiquid()) {
                     return new Vec3(x, y, z);
                 }
             }
@@ -215,7 +214,7 @@ public abstract class PenguinDinosaurEntity extends DinosaurEntity {
                 double y = mob.getY() + mob.getRandom().nextInt(vr * 2 + 1) - vr;
                 double z = mob.getZ() + mob.getRandom().nextInt(hr * 2 + 1) - hr;
                 BlockPos pos = BlockPos.containing(x, y, z);
-                if (mob.level().getBlockState(pos).isSolid()) {
+                if (mob.level.getBlockState(pos).getMaterial().isSolid()) {
                     return new Vec3(x, y, z);
                 }
             }
@@ -229,7 +228,6 @@ public abstract class PenguinDinosaurEntity extends DinosaurEntity {
         }
         @Override
         public boolean canUse() {
-
             return false;
         }
     }

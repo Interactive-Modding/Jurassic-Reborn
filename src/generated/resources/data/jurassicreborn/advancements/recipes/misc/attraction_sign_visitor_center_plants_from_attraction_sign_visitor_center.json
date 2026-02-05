@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:attraction_sign_visitor_center_plants_from_attraction_sign_visitor_center"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

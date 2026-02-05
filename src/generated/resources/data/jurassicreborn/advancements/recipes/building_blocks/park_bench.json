@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:park_bench"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

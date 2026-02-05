@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:cleaning_station"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

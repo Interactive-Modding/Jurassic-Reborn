@@ -33,6 +33,5 @@
     [
       "skeleton_assembly"
     ]
-  ],
-  "sends_telemetry_event": true
+  ]
 }

@@ -6,7 +6,6 @@ import net.vit.jurassicreborn.common.blocks.wood.AncientLeavesBlock;
 import net.vit.jurassicreborn.common.blocks.wood.WoodBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.*;
@@ -14,6 +13,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
+import net.minecraft.world.level.material.Material;
 
 public class AraucariaTreeGenerator extends Feature<NoneFeatureConfiguration> {
     public AraucariaTreeGenerator(Codec<NoneFeatureConfiguration> codec) {
@@ -146,6 +146,9 @@ public class AraucariaTreeGenerator extends Feature<NoneFeatureConfiguration> {
     }
 
     static boolean isReplaceablePlant(WorldGenLevel p_67289_, BlockPos p_67290_) {
-        return p_67289_.isStateAtPosition(p_67290_, state -> state.is(BlockTags.REPLACEABLE));
+        return p_67289_.isStateAtPosition(p_67290_, (p_160551_) -> {
+            Material material = p_160551_.getMaterial();
+            return material == Material.REPLACEABLE_PLANT;
+        });
     }
 }

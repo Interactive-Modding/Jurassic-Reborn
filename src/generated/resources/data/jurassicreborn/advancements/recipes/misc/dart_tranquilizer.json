@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:dart_tranquilizer"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

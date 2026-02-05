@@ -59,7 +59,6 @@ public final class LegArticulator {
                             - avg(legs.frontLeft.forward, legs.frontRight.forward)
             );
 
-
             float tilt = (float) (Mth.atan2(bodyLength * sc, backAvg - frontAvg) - Math.PI / 2);
 
             body.rotationPointY += 16 / sc * backAvg;

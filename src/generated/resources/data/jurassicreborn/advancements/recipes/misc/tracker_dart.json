@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:tracker_dart"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

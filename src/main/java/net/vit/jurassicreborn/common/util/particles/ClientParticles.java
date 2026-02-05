@@ -13,10 +13,10 @@ import net.vit.jurassicreborn.common.entities.vehicle.WashingParticle;
 public class ClientParticles {
     @SubscribeEvent
     public static void onRegisterParticles(RegisterParticleProvidersEvent event) {
-        event.registerSpriteSet(ModParticles.VENOM.get(), VenomParticle.Provider::new);
-        event.registerSpriteSet(ModParticles.HELICOPTER_ENGINE.get(), HelicopterEngineParticle.Provider::new);
-        event.registerSpriteSet(ModParticles.HELICOPTER_GROUND.get(), HelicopterGroundParticle.Provider::new);
-        event.registerSpriteSet(ModParticles.WASHING_DROPLET.get(), WashingParticle.Provider::new);
+        event.register(ModParticles.VENOM.get(), VenomParticle.Provider::new);
+        event.register(ModParticles.HELICOPTER_ENGINE.get(), HelicopterEngineParticle.Provider::new);
+        event.register(ModParticles.HELICOPTER_GROUND.get(), HelicopterGroundParticle.Provider::new);
+        event.register(ModParticles.WASHING_DROPLET.get(), WashingParticle.Provider::new);
 
     }
 }

@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:gyrosphere_seats"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

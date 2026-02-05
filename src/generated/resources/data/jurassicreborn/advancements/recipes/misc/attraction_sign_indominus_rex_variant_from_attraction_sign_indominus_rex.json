@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:attraction_sign_indominus_rex_variant_from_attraction_sign_indominus_rex"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

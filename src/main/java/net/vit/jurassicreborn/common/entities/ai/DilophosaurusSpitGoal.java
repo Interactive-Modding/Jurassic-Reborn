@@ -113,7 +113,7 @@ public class DilophosaurusSpitGoal extends Goal {
             if (deltaSq < 0.0125D) {
                 if (++this.stuckCheckTime > 12) {
                     this.dilo.getNavigation().recomputePath();
-                    if (this.dilo.onGround()) this.dilo.getJumpControl().jump();
+                    if (this.dilo.isOnGround()) this.dilo.getJumpControl().jump();
                     this.stuckCheckTime = 0;
                 }
             } else {

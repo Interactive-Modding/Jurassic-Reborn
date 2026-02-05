@@ -32,7 +32,7 @@ public class EatFoodItemEntityAI extends Goal {
         // NEW: Never try to eat if we’re in combat
         if (this.dinosaur.getTarget() != null) return false;
 
-        Level level = this.dinosaur.level();
+        Level level = this.dinosaur.level;
         if (level == null || !level.getGameRules().getRule(GameRuleHandler.DINO_METABOLISM).get()) return false;
         if (!this.dinosaur.getMetabolism().isHungry()) return false;
 

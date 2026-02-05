@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:dna_base_material"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

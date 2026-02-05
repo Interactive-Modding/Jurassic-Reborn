@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:storage_disc"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

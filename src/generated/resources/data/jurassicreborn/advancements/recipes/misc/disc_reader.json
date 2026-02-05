@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:disc_reader"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

@@ -25,7 +25,7 @@ public class DreadnoughtusEntity extends DinosaurEntity {
     @Override
     public void tick() {
         super.tick();
-        if (this.onGround() && !this.isInWater()) {
+        if (this.onGround && !this.isInWater()) {
             if (this.zza > 0 && (this.getX() - this.xOld > 0 || this.getZ() - this.zOld > 0) && this.stepCount <= 0) {
                 this.playSound(SoundHandler.STOMP, (float) this.interpolate(0.1F, 1.0F), this.getVoicePitch());
                 this.stepCount = 65;

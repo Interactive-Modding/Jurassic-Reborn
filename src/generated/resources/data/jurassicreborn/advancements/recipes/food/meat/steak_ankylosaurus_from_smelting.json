@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:meat/steak_ankylosaurus_from_smelting"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

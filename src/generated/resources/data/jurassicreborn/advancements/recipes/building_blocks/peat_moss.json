@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:peat_moss"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

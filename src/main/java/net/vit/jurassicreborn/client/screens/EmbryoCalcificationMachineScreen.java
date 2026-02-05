@@ -1,12 +1,11 @@
 package net.vit.jurassicreborn.client.screens;
 
 import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.blaze3d.vertex.PoseStack;
 import net.vit.jurassicreborn.JurassicReborn;
 import net.vit.jurassicreborn.common.blocks.entities.Embryoncis.EmbryoCalcificationMachine.EmbryoCalcificationMachineBlockEntity;
 import net.vit.jurassicreborn.common.blocks.entities.Embryoncis.EmbryoCalcificationMachine.EmbryoCalcificationMachineMenu;
-import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
-import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -20,10 +19,9 @@ public class EmbryoCalcificationMachineScreen extends AbstractContainerScreen<Em
     }
 
     @Override
-    public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
-        this.renderBackground(guiGraphics);
-        super.render(guiGraphics, mouseX, mouseY, partialTick);
-        this.renderTooltip(guiGraphics, mouseX, mouseY);
+    public void render(PoseStack pPoseStack, int pMouseX, int pMouseY, float pPartialTick) {
+        super.render(pPoseStack, pMouseX, pMouseY, pPartialTick);
+        this.renderTooltip(pPoseStack, pMouseX, pMouseY);
     }
 
     @Override
@@ -33,7 +31,7 @@ public class EmbryoCalcificationMachineScreen extends AbstractContainerScreen<Em
     }
 
     @Override
-    protected void renderBg(GuiGraphics guiGraphics, float partialTick, int mouseX, int mouseY) {
+    protected void renderBg(PoseStack pPoseStack, float pPartialTick, int pMouseX, int pMouseY) {
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
         RenderSystem.setShaderTexture(0, TEXTURE);
@@ -43,21 +41,21 @@ public class EmbryoCalcificationMachineScreen extends AbstractContainerScreen<Em
         int k = this.leftPos;
         int l = this.topPos;
 
-        guiGraphics.blit(TEXTURE, k, l, 0, 0, this.imageWidth, this.imageHeight);
+        this.blit(pPoseStack, k, l, 0, 0, this.imageWidth, this.imageHeight);
 
         int progress = this.getProgress(24);
         int progress1 = this.getProgress(9);
         int progress2 = this.getProgress(20);
 
         //background
-        guiGraphics.blit(TEXTURE, k + 67, l + 31, 176, 14, progress + 1, 16);
+        this.blit(pPoseStack, k + 67, l + 31, 176, 14, progress + 1, 16);
 
         // Syringe Top
-        guiGraphics.blit(TEXTURE, k + 38, l + 32, 177, 32, 9, progress1);
+        this.blit(pPoseStack, k + 38, l + 32, 177, 32, 9, progress1);
         // Syringe Inside
-        guiGraphics.blit(TEXTURE, k + 38, l + 38, 197, 38, 9, progress2);
+        this.blit(pPoseStack, k + 38, l + 38, 197, 38, 9, progress2);
         // Clean up
-        guiGraphics.blit(TEXTURE, k + 38, l + 32, 187, 32, 9, progress1 - 1);
+        this.blit(pPoseStack, k + 38, l + 32, 187, 32, 9, progress1 - 1);
 
     }
 

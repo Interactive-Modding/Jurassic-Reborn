@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:attraction_sign_hybrid_hills_plants_from_attraction_sign_hybrid_hills"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

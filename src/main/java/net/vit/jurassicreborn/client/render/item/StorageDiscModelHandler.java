@@ -35,7 +35,6 @@ public final class StorageDiscModelHandler {
         injectStorageDiscModel(event.getModels());
     }
 
-
     @SubscribeEvent
     public static void onBakingCompleted(ModelEvent.BakingCompleted event) {
         injectStorageDiscModel(event.getModels());

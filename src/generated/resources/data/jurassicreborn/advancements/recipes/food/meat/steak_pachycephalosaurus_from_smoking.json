@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:meat/steak_pachycephalosaurus_from_smoking"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

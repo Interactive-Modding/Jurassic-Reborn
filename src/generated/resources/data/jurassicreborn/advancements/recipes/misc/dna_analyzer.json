@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:dna_analyzer"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

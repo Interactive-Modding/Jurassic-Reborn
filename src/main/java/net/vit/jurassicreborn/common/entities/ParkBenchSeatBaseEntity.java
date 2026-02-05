@@ -58,11 +58,11 @@ public abstract class ParkBenchSeatBaseEntity extends Entity {
     @Override
     public void tick() {
         super.tick();
-        if (!level().isClientSide) {
+        if (!level.isClientSide) {
             age++;
 
             boolean invalidBench = this.benchPos == null
-                    || level().getBlockState(this.benchPos).getBlock() != ModBlocks.PARK_BENCH.get();
+                    || level.getBlockState(this.benchPos).getBlock() != ModBlocks.PARK_BENCH.get();
 
             if ((getPassengers().isEmpty() && age > EMPTY_GRACE_TICKS) || invalidBench) {
                 discard();
@@ -82,7 +82,7 @@ public abstract class ParkBenchSeatBaseEntity extends Entity {
     @Override
     protected void removePassenger(Entity passenger) {
         super.removePassenger(passenger);
-        if (!level().isClientSide) discard();
+        if (!level.isClientSide) discard();
     }
 
     @Override

@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:meat/steak_echo_from_blasting"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

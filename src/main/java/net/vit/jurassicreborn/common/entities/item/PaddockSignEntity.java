@@ -27,10 +27,9 @@ public class PaddockSignEntity extends HangingEntity implements IEntityAdditiona
     private int dinosaur;
     public ResourceLocation getTextureLocation(PaddockSignEntity sign) {
         String name = DinosaurHandler.getName(sign.getDinosaur());
-        String textureName = name.replace(' ', '_');
         // this will look for assets/jurassicreborn/textures/paddock/<name>_sign.png
         return new ResourceLocation(JurassicReborn.MODID,
-                "textures/paddock/" + textureName + ".png");
+                "textures/paddock/" + name + ".png");
     }
     // Normal (type + world) constructor
     public PaddockSignEntity(EntityType<? extends PaddockSignEntity> type, Level world) {
@@ -97,7 +96,6 @@ public class PaddockSignEntity extends HangingEntity implements IEntityAdditiona
         // read & set the hanging pos
         BlockPos p = BlockPos.of(buffer.readLong());
         this.pos = p;                   // super.pos
-
         this.setDirection(Direction.from2DDataValue(buffer.readUnsignedByte()));
     }
 
@@ -117,13 +115,12 @@ public class PaddockSignEntity extends HangingEntity implements IEntityAdditiona
 
     @Override
     public void dropItem(@Nullable Entity brokenEntity) {
-        if (!level().isClientSide()
-                && level().getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)) {
+        if (!level.isClientSide()
+                && level.getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)) {
 
             if (brokenEntity instanceof Player p && p.getAbilities().instabuild) {
                 return;
             }
-
 
             ItemStack stack = new ItemStack(ModItems.PADDOCK_SIGN.get());
             stack.getOrCreateTag().putInt("Dinosaur", this.dinosaur);

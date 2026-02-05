@@ -86,7 +86,7 @@ public abstract class FlyingDinosaurEntity extends DinosaurEntity {
 
     @Override
     public void tick() {
-        if (!this.onGround() && this.getAnimation() == EntityAnimation.SLEEPING.get()) {
+        if (!this.onGround && this.getAnimation() == EntityAnimation.SLEEPING.get()) {
             this.setDeltaMovement(this.getDeltaMovement().add(0.0D, -0.2D, 0.0D));
         }
 
@@ -156,8 +156,8 @@ public abstract class FlyingDinosaurEntity extends DinosaurEntity {
         if (this.isDeadOrDying() || this.isCarcass() || this.isInWater()) return true;
         if (this.takingOff) return false;
         AABB box = this.getBoundingBox().inflate(0.24D);
-        boolean anyCollision = !this.level().noCollision(this, box);
-        return anyCollision || this.onGround();
+        boolean anyCollision = !this.level.noCollision(this, box);
+        return anyCollision || this.onGround;
     }
 
     public void startTakeOff() {
@@ -187,7 +187,7 @@ public abstract class FlyingDinosaurEntity extends DinosaurEntity {
         AABB box = this.getBoundingBox();
         for (double i = 1.0; i < distance; i += 0.75) {
             box = box.move(dX, dY, dZ);
-            if (!this.level().noCollision(this, box)) return false;
+            if (!this.level.noCollision(this, box)) return false;
         }
         return true;
     }
@@ -222,26 +222,26 @@ public abstract class FlyingDinosaurEntity extends DinosaurEntity {
         else {
             float friction = 0.91F;
 
-            if (this.onGround()) {
+            if (this.onGround) {
                 BlockPos below = new BlockPos(
                         Mth.floor(this.getX()),
                         Mth.floor(this.getBoundingBox().minY - 1.0D),
                         Mth.floor(this.getZ())
                 );
-                friction = this.level().getBlockState(below).getFriction(this.level(), below, this) * 0.91F;
+                friction = this.level.getBlockState(below).getFriction(this.level, below, this) * 0.91F;
             }
 
-            float accel = this.onGround() ? (0.16277136F / (friction * friction * friction)) * 0.1F : 0.02F;
+            float accel = this.onGround ? (0.16277136F / (friction * friction * friction)) * 0.1F : 0.02F;
             this.moveRelative(accel, travelVec);
 
             friction = 0.91F;
-            if (this.onGround()) {
+            if (this.onGround) {
                 BlockPos below = new BlockPos(
                         Mth.floor(this.getX()),
                         Mth.floor(this.getBoundingBox().minY - 1.0D),
                         Mth.floor(this.getZ())
                 );
-                friction = this.level().getBlockState(below).getFriction(this.level(), below, this) * 0.91F;
+                friction = this.level.getBlockState(below).getFriction(this.level, below, this) * 0.91F;
             }
 
             this.move(MoverType.SELF, this.getDeltaMovement());
@@ -291,7 +291,7 @@ public abstract class FlyingDinosaurEntity extends DinosaurEntity {
         private final FlyingDinosaurEntity dino = FlyingDinosaurEntity.this;
 
         @Override public boolean canUse() {
-            if (dino.onGround()) return false;
+            if (dino.onGround) return false;
             MoveControl ctl = dino.getMoveControl();
             if (!ctl.hasWanted()) return true;
 
@@ -319,7 +319,7 @@ public abstract class FlyingDinosaurEntity extends DinosaurEntity {
     }
     private boolean isOverWater() {
         BlockPos posBelow = this.blockPosition().below();
-        return this.level().getBlockState(posBelow).is(Blocks.WATER);
+        return this.level.getBlockState(posBelow).is(Blocks.WATER);
     }
     class AIFlyLand extends Goal {
         private final FlyingDinosaurEntity dino = FlyingDinosaurEntity.this;
@@ -341,7 +341,7 @@ public abstract class FlyingDinosaurEntity extends DinosaurEntity {
                 double d = dx * dx + dy * dy + dz * dz;
                 if (d < 1.0D || d > 3600.0D) {
                     BlockPos posBelow = this.dino.blockPosition().below();
-                    return this.dino.level().getBlockState(posBelow).isAir() && this.dino.getRandom().nextFloat() < 0.01F;
+                    return this.dino.level.getBlockState(posBelow).isAir() && this.dino.getRandom().nextFloat() < 0.01F;
                 }
             }
             return false;
@@ -354,14 +354,14 @@ public abstract class FlyingDinosaurEntity extends DinosaurEntity {
             RandomSource random = this.dino.getRandom();
             double dstX = this.dino.getX() + ((random.nextFloat() * 2.0F - 1.0F) * 16.0F);
             double dstZ = this.dino.getZ() + ((random.nextFloat() * 2.0F - 1.0F) * 16.0F);
-            int topY = this.dino.level().getHeight(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+            int topY = this.dino.level.getHeight(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                     Mth.floor(dstX), Mth.floor(dstZ));
             double dstY = (double) topY;
 
             BlockPos.MutableBlockPos probe = new BlockPos.MutableBlockPos(
                     Mth.floor(dstX), Mth.floor(dstY - 1.0D), Mth.floor(dstZ)
             );
-            Level level = this.dino.level();
+            Level level = this.dino.level;
             while (probe.getY() > level.getMinBuildHeight() && level.getBlockState(probe).isAir()) {
                 probe.move(0, -1, 0);
             }
@@ -440,7 +440,7 @@ public abstract class FlyingDinosaurEntity extends DinosaurEntity {
 
             for (double i = 1.0; i < distance; i += 0.75) {
                 bounds = bounds.move(d0, d1, d2);
-                if (!this.parent.level().noCollision(this.parent, bounds)) return false;
+                if (!this.parent.level.noCollision(this.parent, bounds)) return false;
             }
             return true;
         }

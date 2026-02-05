@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:ford_explorer_snow"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

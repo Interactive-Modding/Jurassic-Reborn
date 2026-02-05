@@ -287,7 +287,7 @@ public class DNACombinatorHybridizerBlockEntity extends MachineBlockEntity imple
         ItemStack previous = getItem(slot);
         if (previous.isEmpty()) {
             setItem(slot, stack);
-        } else if (ItemStack.isSameItemSameTags(previous, stack) && ItemStack.isSameItemSameTags(previous, stack)) {
+        } else if (ItemStack.isSame(previous, stack) && ItemStack.isSame(previous, stack)) {
             previous.setCount(previous.getCount() + stack.getCount());
         }
     }
@@ -387,7 +387,7 @@ public class DNACombinatorHybridizerBlockEntity extends MachineBlockEntity imple
         for (int slot : outputs) {
             ItemStack stack = getItem(slot);
             //if the slot is empty or contains a stack that can combine with ours, return the slot
-            if (stack.isEmpty() || ((ItemStack.isSameItemSameTags(stack, output) && stack.getCount() + output.getCount() <= stack.getMaxStackSize()))) {
+            if (stack.isEmpty() || ((ItemStack.isSame(stack, output) && stack.getCount() + output.getCount() <= stack.getMaxStackSize()))) {
                 return slot;
             }
         }

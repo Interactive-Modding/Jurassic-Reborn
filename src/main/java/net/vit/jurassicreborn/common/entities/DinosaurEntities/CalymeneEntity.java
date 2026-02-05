@@ -25,13 +25,12 @@ import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.phys.Vec3;
 import net.vit.jurassicreborn.JurassicReborn;
 import net.vit.jurassicreborn.common.entities.Dinosaurs.DinosaurHandler;
-import net.vit.jurassicreborn.common.entities.IHasVariants;
 import net.vit.jurassicreborn.common.entities.SwimmingDinosaurEntity;
 
 import java.util.EnumSet;
 import java.util.Locale;
 
-public class CalymeneEntity extends SwimmingDinosaurEntity implements IHasVariants {
+public class CalymeneEntity extends SwimmingDinosaurEntity {
     private static final EntityDataAccessor<Integer> VARIANT =
             SynchedEntityData.defineId(CalymeneEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Boolean> ROLLED =
@@ -60,7 +59,7 @@ public class CalymeneEntity extends SwimmingDinosaurEntity implements IHasVarian
                 Tadpole.class, CompsognathusEntity.class, LeptictidiumEntity.class);
 
         this.setVariant(this.getRandom().nextInt(4));
-        this.setMaxUpStep(MAX_STEP_UP);
+        this.maxUpStep = MAX_STEP_UP; // <-- field assignment (not a call)
         this.goalSelector.addGoal(0, new BottomCrawlGoal(this, 1.05D, 8, 6));
     }
 
@@ -116,7 +115,7 @@ public class CalymeneEntity extends SwimmingDinosaurEntity implements IHasVarian
     @Override
     public boolean hurt(DamageSource source, float amount) {
         boolean res = super.hurt(source, amount);
-        if (!this.level().isClientSide && this.isInWater() && !this.isCarcass()) {
+        if (!this.level.isClientSide && this.isInWater() && !this.isCarcass()) {
             // Start/extend panic, maybe roll, and kick off a swim burst
             this.panicTicks = Math.max(this.panicTicks, 80 + this.getRandom().nextInt(80)); // 4–8s panic
             if (this.getHealth() / this.getMaxHealth() < 0.35F || this.getRandom().nextFloat() < 0.20F) {
@@ -138,7 +137,7 @@ public class CalymeneEntity extends SwimmingDinosaurEntity implements IHasVarian
         if (this.swimBurstTicks > 0) this.swimBurstTicks--;
 
         // Gentle bottom correction (server-side), only when not actively bursting
-        if (!this.level().isClientSide && this.isInWater() && !this.isCarcass() && this.swimBurstTicks == 0) {
+        if (!this.level.isClientSide && this.isInWater() && !this.isCarcass() && this.swimBurstTicks == 0) {
             double floorY = findSeafloorY(this.getX(), this.getY(), this.getZ());
             if (!Double.isNaN(floorY)) {
                 final double targetY = floorY + FLOOR_CLEARANCE;
@@ -213,7 +212,7 @@ public class CalymeneEntity extends SwimmingDinosaurEntity implements IHasVarian
      *
      */
     private double findSeafloorY(double x, double y, double z) {
-        final Level lvl = this.level();
+        final Level lvl = this.level;
         BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos(Mth.floor(x), Mth.floor(y), Mth.floor(z));
         final int minY = lvl.getMinBuildHeight();
         final int maxScan = 24; // scan up to 24 blocks down

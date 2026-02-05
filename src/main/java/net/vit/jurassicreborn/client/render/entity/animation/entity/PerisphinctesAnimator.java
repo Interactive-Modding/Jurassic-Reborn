@@ -13,8 +13,6 @@ public class PerisphinctesAnimator extends EntityAnimator<PerisphinctesEntity> {
                                      float ticks, float rotationYaw,
                                      float rotationPitch, float scale) {
 
-
-
         AdvancedModelBox tentacle1 = model.getCube("Tentacle 1 base");
         AdvancedModelBox tentacle2 = model.getCube("Tentacle 2 base");
         AdvancedModelBox tentacle3 = model.getCube("Tentacle 3 base");
@@ -25,7 +23,6 @@ public class PerisphinctesAnimator extends EntityAnimator<PerisphinctesEntity> {
         AdvancedModelBox tentacle8 = model.getCube("Tentacle 8 base");
 
         // Put them in an array from tip to base or vice versa,
-
         AdvancedModelBox[] tentacles = {
                 tentacle8, tentacle7, tentacle6, tentacle5,
                 tentacle4, tentacle3, tentacle2, tentacle1
@@ -44,6 +41,9 @@ public class PerisphinctesAnimator extends EntityAnimator<PerisphinctesEntity> {
         }
 
     /*
+      If you want to do something more advanced – for example,
+      distinct logic for each type of animation (like your "ON_LAND",
+      "INJURED", or "EATING" from perisphinctes_adult.json) – you can check
       the entity's current animation as follows:
 
         EntityAnimation anim = EntityAnimation.getAnimation(entity.getAnimation());
@@ -56,6 +56,7 @@ public class PerisphinctesAnimator extends EntityAnimator<PerisphinctesEntity> {
 
       Remember that these pose transitions (e.g. from "IDLE" to
       "ON_LAND") are already being handled by the PoseHandler/JabelarAnimationHandler.
+      Here, in performAnimations(), you can layer additional motion
       on top of the pose-based transformations.
     */
     }

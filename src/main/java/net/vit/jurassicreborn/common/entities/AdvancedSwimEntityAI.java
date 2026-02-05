@@ -50,7 +50,7 @@ public class AdvancedSwimEntityAI extends Goal {
     /* ------------------------------- helpers ------------------------------- */
 
     private boolean isWater(BlockPos p) {
-        return dino.level().getFluidState(p).is(FluidTags.WATER);
+        return dino.level.getFluidState(p).is(FluidTags.WATER);
     }
 
     /** Check all 6 neighbors (up/down + 4 sides) are water so we don't aim for edges or surface. */

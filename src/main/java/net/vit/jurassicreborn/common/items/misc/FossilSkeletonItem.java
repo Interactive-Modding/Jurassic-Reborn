@@ -54,10 +54,7 @@ public class FossilSkeletonItem extends Item {
         super(properties);
         this.dino = dino;
     }
-    @Override
-    public String getDescriptionId(ItemStack stack) {
-        return "item.jurassicreborn.skeleton.fossil.dynamic";
-    }
+
     @Override
     public ItemStack getDefaultInstance() {
         ItemStack stack = super.getDefaultInstance();
@@ -173,16 +170,7 @@ public class FossilSkeletonItem extends Item {
 
     @Override
     public @NotNull Component getName(@NotNull ItemStack stack) {
-        Dinosaur dino = this.getDinosaur(stack);
-
-        if (dino == Dinosaur.EMPTY) {
-            return Component.translatable("item.jurassicreborn.skeleton.fossil");
-        }
-
-        return Component.translatable(
-                "item.jurassicreborn.skeleton.fossil.dynamic",
-                dino.getTranslatedName()
-        );
+        return LangUtil.replaceWithDinoName(this.getDinosaur(stack), "item.JurassicReborn.skeleton.fossil");
     }
 
     @Override

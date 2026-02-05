@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:attraction_sign_prehistoric_lake_from_attraction_sign_mammoth_plains_plants"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:paleo_bale_cycad_from_small_cycad"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:attraction_sign_safari_tour_from_attraction_sign_museum_plants"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

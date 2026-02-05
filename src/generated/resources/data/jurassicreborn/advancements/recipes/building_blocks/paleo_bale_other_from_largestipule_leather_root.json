@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:paleo_bale_other_from_largestipule_leather_root"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

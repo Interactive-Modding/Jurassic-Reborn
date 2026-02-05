@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:blueprint"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

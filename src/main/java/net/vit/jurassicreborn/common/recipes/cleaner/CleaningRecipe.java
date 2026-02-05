@@ -91,7 +91,7 @@ public class CleaningRecipe implements Recipe<FluidAndItemRecipeWrapper> {
 
         @Override
         public CleaningRecipe fromJson(ResourceLocation pRecipeId, JsonObject pSerializedRecipe) {
-            Ingredient input = CraftingHelper.getIngredient(pSerializedRecipe.get("input"), false);
+            Ingredient input = CraftingHelper.getIngredient(pSerializedRecipe.getAsJsonObject("input"));
             ItemStack output = CraftingHelper.getItemStack(pSerializedRecipe.getAsJsonObject("output"), false);
 
             return new CleaningRecipe(pRecipeId, input, output);

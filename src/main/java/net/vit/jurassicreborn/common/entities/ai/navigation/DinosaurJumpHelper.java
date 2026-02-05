@@ -31,7 +31,7 @@ public class DinosaurJumpHelper extends JumpControl {
         this.speed = this.entity.getSpeed();
         Animation animation = this.entity.getAnimation();
         if (this.jumpHeight > 1 && animation != EntityAnimation.PREPARE_LEAP.get() && animation != EntityAnimation.LEAP.get() && animation != EntityAnimation.LEAP_LAND.get()) {
-            if (!this.entity.isInWater() && !this.entity.inLava() && this.entity.onGround()) {
+            if (!this.entity.isInWater() && !this.entity.inLava() && this.entity.isOnGround()) {
                 this.entity.setAnimation(EntityAnimation.PREPARE_LEAP.get());
             }
             this.sounded = false;

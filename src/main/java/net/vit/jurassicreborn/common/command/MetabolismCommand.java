@@ -24,7 +24,7 @@ public class MetabolismCommand {
         ServerLevel level = source.getLevel();
         GameRules.BooleanValue rule = level.getGameRules().getRule(GameRuleHandler.DINO_METABOLISM);
         rule.set(value, level.getServer());
-        source.sendSuccess(() -> Component.literal(value ? "Dinosaur metabolism enabled" : "Dinosaur metabolism disabled"), true);
+        source.sendSuccess(Component.literal(value ? "Dinosaur metabolism enabled" : "Dinosaur metabolism disabled"), true);
         return 1;
     }
 
@@ -33,7 +33,7 @@ public class MetabolismCommand {
         GameRules.BooleanValue rule = level.getGameRules().getRule(GameRuleHandler.DINO_METABOLISM);
         boolean value = !rule.get();
         rule.set(value, level.getServer());
-        source.sendSuccess(() -> Component.literal(value ? "Dinosaur metabolism enabled" : "Dinosaur metabolism disabled"), true);
+        source.sendSuccess(Component.literal(value ? "Dinosaur metabolism enabled" : "Dinosaur metabolism disabled"), true);
         return 1;
     }
 }

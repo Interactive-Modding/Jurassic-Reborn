@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:meat/steak_edmontosaurus_from_campfire_cooking"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

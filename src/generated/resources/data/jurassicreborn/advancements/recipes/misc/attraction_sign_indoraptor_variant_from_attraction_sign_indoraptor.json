@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:attraction_sign_indoraptor_variant_from_attraction_sign_indoraptor"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

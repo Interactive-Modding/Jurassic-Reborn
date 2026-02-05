@@ -30,15 +30,11 @@ public class MetabolismContainer {
     public void update() {
         if (!this.dinosaur.isDeadOrDying()
                 && !this.dinosaur.isCarcass()
-                && this.dinosaur.level().getGameRules().getBoolean(
+                && this.dinosaur.level.getGameRules().getBoolean(
                 net.vit.jurassicreborn.common.util.GameRuleHandler.DINO_METABOLISM)) {
 
-            // Sleeping dinosaurs shouldn’t lose hunger or thirst.  Let digestion
-            // keep working, but pause the passive drain until they wake up.
-            if (!this.dinosaur.isSleeping()) {
-                decreaseEnergy(1);
-                decreaseWater(1);
-            }
+            decreaseEnergy(1);
+            decreaseWater(1);
 
             if (this.dinosaur.isInWaterRainOrBubble()) {
                 if (isThirsty()) {

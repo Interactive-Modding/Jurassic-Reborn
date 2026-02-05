@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:attraction_sign_gentle_giants_from_attraction_sign_gallimimus_valley_plants"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

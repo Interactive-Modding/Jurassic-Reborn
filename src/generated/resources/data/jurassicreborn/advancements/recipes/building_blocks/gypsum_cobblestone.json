@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:gypsum_cobblestone"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

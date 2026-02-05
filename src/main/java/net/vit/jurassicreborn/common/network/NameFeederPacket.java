@@ -34,7 +34,7 @@ public class NameFeederPacket {
         ctx.get().enqueueWork(() -> {
             ServerPlayer player = ctx.get().getSender();
             if (player != null) {
-                Level level = player.level();
+                Level level = player.level;
                 BlockEntity be = level.getBlockEntity(pkt.pos);
                 if (be instanceof FeederBlockEntity feeder) {
                     Component nameComp = Component.literal(pkt.name);

@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:tour_rail_fast"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

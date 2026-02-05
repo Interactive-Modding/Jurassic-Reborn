@@ -6,7 +6,6 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.vit.jurassicreborn.JurassicReborn;
 import net.vit.jurassicreborn.common.worldgen.BiomeModification;
-import net.vit.jurassicreborn.common.worldgen.DinosaurSpawnBiomeModifier;
 import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
@@ -35,9 +34,6 @@ public class CommonRegistries {
 
         });
     });
-
-    public static RegistryObject<Codec<DinosaurSpawnBiomeModifier>> DINOSAUR_SPAWN_BIOME_MODIFIER_CODEC =
-            BIOME_MODIFIER_SERIALIZERS.register("dinosaur_spawns", () -> DinosaurSpawnBiomeModifier.CODEC);
 
 
     public static List<OreConfiguration.TargetBlockState> ORE_FAUNA_FOSSIL_LIST;

@@ -53,7 +53,7 @@ public class QuetzalAnimator extends EntityAnimator<QuetzalEntity>
         float globalHeight = 2F;
         float frontOffset = -1.35f;
 
-        if (entity.onGround() && !entity.isCarcass()) {
+        if (entity.isOnGround() && !entity.isCarcass()) {
         } else {
             if(!entity.isCarcass()) {
                 body1.rotateAngleX += 0.3;

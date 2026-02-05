@@ -1,4 +1,4 @@
-
+// ModOrePlacement.java
 package net.vit.jurassicreborn.common.worldgen;
 
 import net.minecraft.world.level.levelgen.placement.*;

@@ -33,6 +33,5 @@
     [
       "embryonic_machine"
     ]
-  ],
-  "sends_telemetry_event": true
+  ]
 }

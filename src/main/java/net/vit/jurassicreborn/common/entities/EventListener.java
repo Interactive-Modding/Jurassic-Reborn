@@ -47,7 +47,6 @@ public class EventListener {
     public static void finalizeSetup(final FMLLoadCompleteEvent evt){
         //Make sure the signs are actually added to the sign block entity
         addBlocksToBlockEntity(BlockEntityType.SIGN, WoodBlocks.getSigns());
-        addBlocksToBlockEntity(BlockEntityType.HANGING_SIGN, WoodBlocks.getHangingSigns());
 
         //Make our logs able to be stripped
         HashMap<Block, Block> logMap = new HashMap<>();

@@ -37,8 +37,7 @@ public class MuralPaintingEntity extends Painting {
     /* drop correct item */
     @Override
     public void dropItem(net.minecraft.world.entity.Entity breaker) {
-        Level world = level();
-        if (!world.getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)) return;
+        if (!level.getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)) return;
         if (breaker instanceof Player p && p.getAbilities().instabuild)     return;
         spawnAtLocation(ModItems.MURAL.get());
     }

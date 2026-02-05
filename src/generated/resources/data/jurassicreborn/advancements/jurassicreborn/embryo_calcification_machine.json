@@ -33,6 +33,5 @@
     [
       "embryo_calcification_machine"
     ]
-  ],
-  "sends_telemetry_event": true
+  ]
 }

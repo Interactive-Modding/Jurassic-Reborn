@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:gypsum_stone_panel_wall"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

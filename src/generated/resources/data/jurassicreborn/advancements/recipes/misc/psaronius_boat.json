@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:psaronius_boat"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:paleo_bale_other_from_woolly_stalked_begonia"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

@@ -14,11 +14,10 @@ import net.vit.jurassicreborn.client.render.entity.animation.EntityAnimation;
 import net.vit.jurassicreborn.client.sounds.SoundHandler;
 import net.vit.jurassicreborn.common.entities.DinosaurEntity;
 import net.vit.jurassicreborn.common.entities.Dinosaurs.DinosaurHandler;
-import net.vit.jurassicreborn.common.entities.IHasVariants;
 
 import java.util.Locale;
 
-public class MaiasauraEntity extends DinosaurEntity implements IHasVariants
+public class MaiasauraEntity extends DinosaurEntity
 {
     private static final EntityDataAccessor<Integer> VARIANT= SynchedEntityData.defineId(MaiasauraEntity.class, EntityDataSerializers.INT);
 

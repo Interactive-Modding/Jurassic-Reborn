@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:dna_combinator_hybridizer"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

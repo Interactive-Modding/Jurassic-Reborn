@@ -71,7 +71,7 @@ public class GrazeEntityAI extends Goal {
     public boolean canContinueToUse() {
         // stop if the target block is gone OR we enter combat
         if (dino.getTarget() != null) { abort(); return false; }
-        if (target != null && dino.level().isEmptyBlock(target)) { abort(); return false; }
+        if (target != null && dino.level.isEmptyBlock(target)) { abort(); return false; }
         return target != null;
     }
 
@@ -96,10 +96,10 @@ public class GrazeEntityAI extends Goal {
 
             dino.setAnimation(EntityAnimation.EATING.get());
 
-            BlockState state = dino.level().getBlockState(target);
+            BlockState state = dino.level.getBlockState(target);
             Item item = state.getBlock().asItem();
             if (item != Items.AIR) {
-                dino.level().destroyBlock(target, false);
+                dino.level.destroyBlock(target, false);
 
                 MetabolismContainer meta = dino.getMetabolism();
                 meta.eat(FoodHelper.getHealAmount(item));
@@ -141,9 +141,9 @@ public class GrazeEntityAI extends Goal {
 
         for (int i = 0; i < maxSteps && searchIter.hasNext(); i++) {
             BlockPos pos = searchIter.next();
-            if (!dino.level().isLoaded(pos)) continue;
+            if (!dino.level.isLoaded(pos)) continue;
 
-            BlockState state = dino.level().getBlockState(pos);
+            BlockState state = dino.level.getBlockState(pos);
             if (state.isAir() || state.is(BlockTags.LEAVES) || state.getBlock() instanceof LeavesBlock) continue;
 
             Item item = state.getBlock().asItem();
@@ -167,12 +167,12 @@ public class GrazeEntityAI extends Goal {
     private BlockPos lowestSolidBelow(BlockPos pos) {
         BlockPos p = pos;
         for (int i = 0; i < 16; i++) {
-            BlockState s = dino.level().getBlockState(p);
+            BlockState s = dino.level.getBlockState(p);
             if (!(s.getBlock() instanceof LeavesBlock) && !s.isAir()) break;
             p = p.below();
-            if (p.getY() <= dino.level().getMinBuildHeight()) break;
+            if (p.getY() <= dino.level.getMinBuildHeight()) break;
         }
-        BlockState ground = dino.level().getBlockState(p);
+        BlockState ground = dino.level.getBlockState(p);
         if (ground.isAir() || ground.getBlock() instanceof LeavesBlock) return null;
         return p;
     }

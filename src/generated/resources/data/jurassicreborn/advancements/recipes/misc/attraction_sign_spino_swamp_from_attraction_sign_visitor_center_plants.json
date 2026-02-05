@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:attraction_sign_spino_swamp_from_attraction_sign_visitor_center_plants"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

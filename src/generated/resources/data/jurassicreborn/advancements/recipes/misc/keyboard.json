@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:keyboard"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

@@ -3,7 +3,10 @@ package net.vit.jurassicreborn.common.blocks.entities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
-import net.minecraft.server.level.ServerLevel;
+import net.minecraft.network.Connection;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.vit.jurassicreborn.client.render.entity.animation.EntityAnimation;
@@ -36,26 +39,54 @@ public class HologramBlockEntity extends ActionFigureBlockEntity {
         return Math.floorMod(snapped, 360);
     }
 
-    private void saveAndSync() {
+    /**
+     * Marks this block entity as changed and ensures the chunk is marked for saving
+     */
+    private void markForSaving() {
         setChanged();
-        if (!suppressUpdates && level instanceof ServerLevel server) {
-            server.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), 3);
-            server.getChunkSource().blockChanged(worldPosition);
+        if (this.level != null && !this.level.isClientSide) {
+            this.level.getChunkAt(this.worldPosition).setUnsaved(true);
         }
     }
 
     // -----------------------------------------------------
-    // Load / Save (critical part for persistence)
+    // Load / Save (NBT only)
     // -----------------------------------------------------
 
     @Override
+    public CompoundTag getUpdateTag() {
+        return this.saveWithoutMetadata();
+    }
+
+    @Override
+    public Packet<ClientGamePacketListener> getUpdatePacket() {
+        return ClientboundBlockEntityDataPacket.create(this);
+    }
+
+    @Override
+    public void onDataPacket(Connection net, ClientboundBlockEntityDataPacket pkt) {
+        CompoundTag tag = pkt.getTag();
+        if (tag != null) {
+            this.load(tag);
+            if (this.level != null && this.level.isClientSide) {
+                checkAndLoadEntity();
+            }
+        }
+    }
+
+    @Override
     public void load(CompoundTag tag) {
-        // Load ActionFigure core data first
         super.load(tag);
+
+        if (this.level != null) {
+            System.out.println("Loading Hologram NBT - has dinoIndex: " + tag.contains(TAG_DINO_INDEX) +
+                    ", has pose: " + tag.contains(TAG_POSE_INDEX) +
+                    ", has rotating: " + tag.contains(TAG_ROTATING) +
+                    ", has rotation: " + tag.contains(TAG_ROTATION));
+        }
 
         DinosaurHandler.doDinosInit();
 
-        int dinoCount = Math.max(DinosaurHandler.count(), 1);
         int loadedIndex = this.dinoIndex;
         if (tag.contains(TAG_DINO_INDEX, Tag.TAG_INT)) {
             loadedIndex = tag.getInt(TAG_DINO_INDEX);
@@ -72,6 +103,20 @@ public class HologramBlockEntity extends ActionFigureBlockEntity {
 
         int storedRot = tag.contains(TAG_ROTATION, Tag.TAG_INT) ? tag.getInt(TAG_ROTATION) : this.cachedRotation;
 
+        int dinoCount = DinosaurHandler.count();
+        if (dinoCount <= 0) {
+            this.dinoIndex = loadedIndex;
+            this.poseIndex = Math.floorMod(loadedPose, poseCount);
+            this.rotating = loadedRotating;
+            int normalizedRotation = loadedRotating
+                    ? Math.floorMod(storedRot, 360)
+                    : snapRotation(storedRot);
+            this.cachedRotation = normalizedRotation;
+            setRotationSilently(normalizedRotation);
+            markForSaving();
+            return;
+        }
+
         applySettings(Math.floorMod(loadedIndex, Math.max(dinoCount, 1)),
                 Math.floorMod(loadedPose, Math.max(poseCount, 1)),
                 loadedRotating,
@@ -81,14 +126,15 @@ public class HologramBlockEntity extends ActionFigureBlockEntity {
 
     @Override
     public void saveAdditional(CompoundTag tag) {
-        // Save ActionFigure base data first
         super.saveAdditional(tag);
-
-        // Then hologram-specific
         tag.putInt(TAG_DINO_INDEX, this.dinoIndex);
         tag.putInt(TAG_POSE_INDEX, this.poseIndex);
         tag.putBoolean(TAG_ROTATING, this.rotating);
         tag.putInt(TAG_ROTATION, getRot());
+
+        if (this.level != null && !this.level.isClientSide) {
+            System.out.println("Saving Hologram NBT: dino=" + dinoIndex + ", pose=" + poseIndex + ", rotating=" + rotating + ", rotation=" + getRot());
+        }
     }
 
     // -----------------------------------------------------
@@ -124,11 +170,11 @@ public class HologramBlockEntity extends ActionFigureBlockEntity {
     }
 
     public void serverTick(Level level, BlockPos pos, BlockState state) {
-        // Nothing needed here; state is updated via packets
+        // No server-side logic needed; state is updated via packets
     }
 
     // -----------------------------------------------------
-    // State control
+    // State control (NBT only - no sync)
     // -----------------------------------------------------
 
     public void setDinosaurById(int id) {
@@ -138,7 +184,7 @@ public class HologramBlockEntity extends ActionFigureBlockEntity {
         Dinosaur dino = DinosaurHandler.getById(dinoIndex);
         setDinosaur(dino, true, false, false);
         applyPose();
-        saveAndSync();
+        markForSaving();
     }
 
     @Override
@@ -151,7 +197,7 @@ public class HologramBlockEntity extends ActionFigureBlockEntity {
         int count = EntityAnimation.values().length;
         this.poseIndex = Math.floorMod(poseIndex, count);
         applyPose();
-        saveAndSync();
+        markForSaving();
     }
 
     public void setRotating(boolean rotating) {
@@ -164,7 +210,7 @@ public class HologramBlockEntity extends ActionFigureBlockEntity {
             this.cachedRotation = snapped;
         }
 
-        saveAndSync();
+        markForSaving();
     }
 
     @Override
@@ -172,10 +218,7 @@ public class HologramBlockEntity extends ActionFigureBlockEntity {
         int finalRotation = rotating ? Math.floorMod(rotation, 360) : snapRotation(rotation);
         this.cachedRotation = finalRotation;
         setRotationSilently(finalRotation);
-        setChanged();
-        if (!suppressUpdates && this.level != null && !this.level.isClientSide) {
-            this.level.sendBlockUpdated(this.worldPosition, this.getBlockState(), this.getBlockState(), 3);
-        }
+        markForSaving();
     }
 
     // -----------------------------------------------------
@@ -228,19 +271,34 @@ public class HologramBlockEntity extends ActionFigureBlockEntity {
         boolean previousSuppressed = this.suppressUpdates;
         this.suppressUpdates = true;
         try {
-            setDinosaurById(normalizedDino);
-            setPoseIndex(normalizedPose);
-            setRotating(rotating);
-            setRot(normalizedRotation);
+            this.dinoIndex = normalizedDino;
+            this.poseIndex = normalizedPose;
+            this.rotating = rotating;
+            this.cachedRotation = normalizedRotation;
+            setRotationSilently(normalizedRotation);
+
+            Dinosaur dino = DinosaurHandler.getById(normalizedDino);
+            if (dino != null) {
+                setDinosaur(dino, true, false, false);
+            }
+            applyPose();
         } finally {
             this.suppressUpdates = previousSuppressed;
         }
 
-        if (sync) {
-            saveAndSync();
-        } else {
-            setChanged();
+        setChanged();
+        if (this.level != null && !this.level.isClientSide) {
+            this.level.getChunkAt(this.worldPosition).setUnsaved(true);
         }
+
+        if (sync && this.level != null && !this.level.isClientSide) {
+            this.level.sendBlockUpdated(this.worldPosition, this.getBlockState(), this.getBlockState(), 3);
+        }
+
+        System.out.println("Applied settings: dino=" + this.dinoIndex + ", pose=" + this.poseIndex +
+                ", rotating=" + this.rotating + ", rotation=" + this.cachedRotation +
+                ", isClient=" + (this.level != null && this.level.isClientSide) +
+                ", sync=" + sync);
     }
 
     public void applySettingsFromTag(CompoundTag tag, boolean sync) {

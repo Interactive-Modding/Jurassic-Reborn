@@ -33,18 +33,17 @@ public class RaptorLeapEntityAI extends Goal {
             return false;
         }
 
-
         LivingEntity tgt = this.entity.getTarget();
         if (tgt == null || !tgt.isAlive()) return false;
         if (tgt instanceof DinosaurEntity d && d.isCarcass()) return false;
 
         float distance = this.entity.distanceTo(tgt);
         if (!(distance >= 5.0F && distance <= 6.0F)) return false;
-        if (!this.entity.onGround()) return false;
+        if (!this.entity.isOnGround()) return false;
 
         // LOS check: from our eyes to target position
         Vec3 from = new Vec3(this.entity.getX(), this.entity.getEyeY(), this.entity.getZ());
-        HitResult hit = this.entity.level().clip(new ClipContext(
+        HitResult hit = this.entity.level.clip(new ClipContext(
                 from,
                 tgt.position(),
                 ClipContext.Block.OUTLINE,
@@ -62,7 +61,7 @@ public class RaptorLeapEntityAI extends Goal {
         this.animation = EntityAnimation.PREPARE_LEAP;
         this.entity.getLookControl().setLookAt(this.target, 30.0F, 30.0F);
         this.entity.getNavigation().stop();
-        if (!this.entity.level().isClientSide) {
+        if (!this.entity.level.isClientSide) {
             this.entity.setDeltaMovement(Vec3.ZERO);
         }
         this.ticked = false;
@@ -77,7 +76,6 @@ public class RaptorLeapEntityAI extends Goal {
 
         if (this.animation == EntityAnimation.PREPARE_LEAP && tick < this.prevTick) {
             this.animation = EntityAnimation.LEAP;
-
 
             this.entity.playSound(this.entity.getSoundForAnimation(EntityAnimation.ATTACKING.get()),
                     this.entity.getSoundVolume(), this.entity.getVoicePitch());
@@ -101,13 +99,13 @@ public class RaptorLeapEntityAI extends Goal {
             double my = Math.min(0.3, Math.max(0.0, (this.target.getY() - this.entity.getY()) * 0.1)) + 0.6;
 
             // Apply motion (server side authoritative)
-            if (!this.entity.level().isClientSide) {
+            if (!this.entity.level.isClientSide) {
                 this.entity.setDeltaMovement(mx, my, mz);
                 this.entity.hasImpulse = true;
             }
         } else if (this.animation == EntityAnimation.LEAP && this.entity.getDeltaMovement().y < 0.0) {
             this.animation = EntityAnimation.LEAP_LAND;
-        } else if (this.animation == EntityAnimation.LEAP_LAND && (this.entity.onGround() || this.entity.isSwimming())) {
+        } else if (this.animation == EntityAnimation.LEAP_LAND && (this.entity.isOnGround() || this.entity.isSwimming())) {
             this.animation = EntityAnimation.IDLE;
 
             if (this.entity.getBoundingBox() != null && this.target.getBoundingBox() != null &&

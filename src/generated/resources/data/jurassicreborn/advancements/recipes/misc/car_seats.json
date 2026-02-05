@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:car_seats"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

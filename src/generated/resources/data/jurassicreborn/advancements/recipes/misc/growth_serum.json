@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:growth_serum"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

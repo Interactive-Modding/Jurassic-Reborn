@@ -6,7 +6,6 @@ import net.vit.jurassicreborn.common.blocks.SkullDisplayBlock;
 import net.vit.jurassicreborn.common.blocks.ancientplants.*;
 import net.vit.jurassicreborn.common.blocks.ancientplants.DoublePlantBlock;
 import net.vit.jurassicreborn.common.blocks.ancientplants.moss.PeatBlock;
-import net.vit.jurassicreborn.common.blocks.entities.cultivator.CultivatorBottomBlock;
 import net.vit.jurassicreborn.common.blocks.entities.cultivator.CultivatorTopBlock;
 import net.vit.jurassicreborn.common.blocks.entities.trashcan.TrashCanBlock;
 import net.vit.jurassicreborn.common.blocks.fossil.FossilBlock;
@@ -58,9 +57,9 @@ public class ModItems {
 
     public static final DeferredRegister<Item> MOD_ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, JurassicReborn.MODID);
 
-    private static <T extends Item> RegistryObject<T> register(String name, RegistryObject<CreativeModeTab> tab, Supplier<T> supplier) {
+    private static <T extends Item> RegistryObject<T> register(String name, CreativeModeTab tab, Supplier<T> supplier) {
         RegistryObject<T> obj = MOD_ITEMS.register(name, supplier);
-        TabHandler.addToTab(tab.getId(), obj);
+        TabHandler.addToTab(tab, obj);
         return obj;
     }
 
@@ -268,7 +267,7 @@ public class ModItems {
     public static final RegistryObject<Item> UNFINISHED_CAR = register("unfinished_car", TabHandler.ITEMS,  () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<UseOnEntityItem> GROWTH_SERUM = register("growth_serum", TabHandler.ITEMS, () -> new UseOnEntityItem(new Item.Properties(), (interaction) -> {
-        if(interaction.getPlayer().level().isClientSide)
+        if(interaction.getPlayer().getLevel().isClientSide)
             return InteractionResult.PASS;
         if (interaction.getTarget() instanceof DinosaurEntity dinosaur) {
             if (!dinosaur.isCarcass()) {
@@ -283,11 +282,11 @@ public class ModItems {
         return InteractionResult.FAIL;
     }));
     public static final RegistryObject<Item> BREEDING_WAND = register("breeding_wand", TabHandler.ITEMS, () -> new UseOnEntityItem(new Item.Properties(), interaction -> {
-        if(interaction.getPlayer().level().isClientSide)
+        if(interaction.getPlayer().getLevel().isClientSide)
             return InteractionResult.PASS;
         ItemStack stack = interaction.getPlayer().getItemInHand(interaction.getHand());
         CompoundTag nbt = stack.getOrCreateTagElement("wand_info");
-        Entity entity = interaction.getPlayer().level().getEntity(nbt.getInt("dino_id"));
+        Entity entity = interaction.getPlayer().getLevel().getEntity(nbt.getInt("dino_id"));
         if (interaction.getTarget() instanceof DinosaurEntity) {
             if (nbt.contains("dino_id", 99)) {
                 if (entity instanceof DinosaurEntity && ((DinosaurEntity) entity).isMale() != ((DinosaurEntity) interaction.getTarget()).isMale() && !((DinosaurEntity) interaction.getTarget()).getDinosaur().isHybrid) {
@@ -306,7 +305,7 @@ public class ModItems {
 
     //CREATIVE
     public static final RegistryObject<Item> BIRTHING_WAND = register("birthing_wand", TabHandler.ITEMS, () -> new UseOnEntityItem(new Item.Properties(), interaction -> {
-        if(interaction.getPlayer().level().isClientSide)
+        if(interaction.getPlayer().getLevel().isClientSide)
             return InteractionResult.PASS;
         if(interaction.getTarget() instanceof DinosaurEntity) {
             DinosaurEntity dino = ((DinosaurEntity)interaction.getTarget());
@@ -325,7 +324,7 @@ public class ModItems {
         return InteractionResult.FAIL;
     }));
     public static final RegistryObject<Item> PREGNANCY_TEST = register("pregnancy_test", TabHandler.ITEMS, () -> new UseOnEntityItem(new Item.Properties(), (interaction) -> {
-        if(interaction.getPlayer().level().isClientSide){
+        if(interaction.getPlayer().getLevel().isClientSide){
             return InteractionResult.PASS;
         }
         if(interaction.getTarget() instanceof DinosaurEntity) {//why was this the only one to have a remote check and even then it did it wrong
@@ -335,7 +334,6 @@ public class ModItems {
         }
         return InteractionResult.FAIL;
     }));
-
 
     public static final RegistryObject<Item> FORD_EXPLORER =
             register("ford_explorer", TabHandler.ITEMS,
@@ -445,12 +443,6 @@ public class ModItems {
             new Item.Properties().stacksTo(16), WoodBlocks.PHOENIX_SIGN.get(),WoodBlocks.PHOENIX_SIGN.get()));
     public static final RegistryObject<SignItem> PSARONIUS_SIGN = register("psaronius_sign", TabHandler.BLOCKS, () -> new SignItem(
             new Item.Properties().stacksTo(16), WoodBlocks.PSARONIUS_SIGN.get(),WoodBlocks.PSARONIUS_WALL_SIGN.get()));
-    public static final RegistryObject<HangingSignItem> ARAUCARIA_HANGING_SIGN = register("araucaria_hanging_sign", TabHandler.BLOCKS, () -> new HangingSignItem(WoodBlocks.ARAUCARIA_HANGING_SIGN.get(), WoodBlocks.ARAUCARIA_WALL_HANGING_SIGN.get(), new Item.Properties().stacksTo(16)));
-    public static final RegistryObject<HangingSignItem> CALAMITES_HANGING_SIGN = register("calamites_hanging_sign", TabHandler.BLOCKS, () -> new HangingSignItem(WoodBlocks.CALAMITES_HANGING_SIGN.get(), WoodBlocks.CALAMITES_WALL_HANGING_SIGN.get(), new Item.Properties().stacksTo(16)));
-    public static final RegistryObject<HangingSignItem> GINKGO_HANGING_SIGN = register("ginkgo_hanging_sign", TabHandler.BLOCKS, () -> new HangingSignItem(WoodBlocks.GINKGO_HANGING_SIGN.get(), WoodBlocks.GINKGO_WALL_HANGING_SIGN.get(), new Item.Properties().stacksTo(16)));
-    public static final RegistryObject<HangingSignItem> MAGNOLIA_HANGING_SIGN = register("magnolia_hanging_sign", TabHandler.BLOCKS, () -> new HangingSignItem(WoodBlocks.MAGNOLIA_HANGING_SIGN.get(), WoodBlocks.MAGNOLIA_WALL_HANGING_SIGN.get(), new Item.Properties().stacksTo(16)));
-    public static final RegistryObject<HangingSignItem> PHOENIX_HANGING_SIGN = register("phoenix_hanging_sign", TabHandler.BLOCKS, () -> new HangingSignItem(WoodBlocks.PHOENIX_HANGING_SIGN.get(), WoodBlocks.PHOENIX_WALL_HANGING_SIGN.get(), new Item.Properties().stacksTo(16)));
-    public static final RegistryObject<HangingSignItem> PSARONIUS_HANGING_SIGN = register("psaronius_hanging_sign", TabHandler.BLOCKS, () -> new HangingSignItem(WoodBlocks.PSARONIUS_HANGING_SIGN.get(), WoodBlocks.PSARONIUS_WALL_HANGING_SIGN.get(), new Item.Properties().stacksTo(16)));
     public static HashMap<Dinosaur, LinkedHashMap<String, RegistryObject<Item>>> BONES = new HashMap<>();
     public static HashMap<Dinosaur, LinkedHashMap<String, RegistryObject<Item>>> FRESH_BONES = new HashMap<>();
     public static ArrayList<RegistryObject<Item>> ALL_BONES = new ArrayList<>();
@@ -533,7 +525,7 @@ public class ModItems {
 
                 RegistryObject<DinosaurEggItem> egg = MOD_ITEMS.register("egg/egg_" + formattedName, () -> new DinosaurEggItem(new Item.Properties(), a));
                 dinoEggs.put(a, egg);
-                TabHandler.addToTab(TabHandler.DNA.getId(), () -> {
+                TabHandler.addToTab(TabHandler.DNA, () -> {
                     ItemStack stack = egg.get().getDefaultInstance();
                     stack.getOrCreateTag().putBoolean("isCreative", true);
                     return stack;
@@ -542,7 +534,7 @@ public class ModItems {
             }
 
             RegistryObject<HatchedEggItem> hatchedEgg = MOD_ITEMS.register("hatched_egg/egg_" + formattedName, () -> new HatchedEggItem(new Item.Properties(), a));
-            TabHandler.addToTab(TabHandler.DNA.getId(), () -> {
+            TabHandler.addToTab(TabHandler.DNA, () -> {
                 ItemStack stack = hatchedEgg.get().getDefaultInstance();
                 stack.getOrCreateTag().putBoolean("isCreative", true);
                 return stack;
@@ -589,7 +581,7 @@ public class ModItems {
                     TabHandler.DNA,
                     () -> new PlantSoftTissueItem(new Item.Properties(), p));
 
-            TabHandler.addToTab(TabHandler.PLANTS.getId(), () -> {
+            TabHandler.addToTab(TabHandler.PLANTS, () -> {
                 ItemStack stack = ModItems.PLANT_CALLUS.get().getPlantInstance(p, 100);
                 stack.getOrCreateTag().putBoolean("isCreative", true);
                 return stack;
@@ -641,13 +633,15 @@ public class ModItems {
         }
         String id = "spawn_egg/" + formattedName + "_spawn_egg";
         RegistryObject<DinosaurSpawnEggItem> spawnEgg = MOD_ITEMS.register(id, () -> new DinosaurSpawnEggItem(dinosaur, entityType));
-        TabHandler.addToTab(TabHandler.SPAWN_EGGS.getId(), spawnEgg);
+        TabHandler.addToTab(TabHandler.SPAWN_EGGS, spawnEgg);
         return spawnEgg;
     }
 
     @Nullable
-    public static RegistryObject<Item> registerSingleBone(String boneName, RegistryObject<CreativeModeTab> tab, Supplier<Item> sup, Dinosaur dino, boolean fresh){
-
+    public static RegistryObject<Item> registerSingleBone(String boneName, CreativeModeTab tab, Supplier<Item> sup, Dinosaur dino, boolean fresh){
+        if(dino == DinosaurHandler.BLUE || dino == DinosaurHandler.CHARLIE || dino == DinosaurHandler.DELTA || dino == DinosaurHandler.ECHO){
+            return null;
+        }
         String formattedDinoName = dino.getName().toLowerCase(Locale.ROOT).replaceAll(" ", "_");
         String id = "/" + formattedDinoName + "_" + boneName;
         if(fresh){
@@ -737,9 +731,9 @@ public class ModItems {
         return MOD_ITEMS.register(name, () -> {
             Block block = blockSupplier.get();
             BlockItem item = new BlockItem(block, new Item.Properties());
-            ResourceLocation tabId = determineTab(block);
-            if (tabId != null) {
-                TabHandler.addToTab(tabId, () -> new ItemStack(item));
+            CreativeModeTab tab = determineTab(block);
+            if (tab != null) {
+                TabHandler.addToTab(tab, () -> new ItemStack(item));
             }
             return item;
         });
@@ -757,7 +751,7 @@ public class ModItems {
         return registryObject;
     }
 
-    private static ResourceLocation determineTab(Block block) {
+    private static CreativeModeTab determineTab(Block block) {
         if (block instanceof AncientPlantBlock
                 || block instanceof AncientCoralBlock
                 || block instanceof WestIndianLilacBlock
@@ -769,16 +763,12 @@ public class ModItems {
                 || block instanceof MossBlock
                 || block instanceof BaseCoralPlantBlock
                 || block instanceof AncientCrop) {
-            return TabHandler.PLANTS.getId();
-        } else if (block instanceof FossilBlock) {
-            return TabHandler.FOSSILS.getId();
-        } else if (block instanceof ParkBenchBlock || block instanceof TrashCanBlock) {
-            return TabHandler.DECORATIONS.getId();
-        } else if (block instanceof SkullDisplayBlock || block instanceof CultivatorTopBlock || block instanceof CultivatorBottomBlock) {
-            return null;
-        } else {
-            return TabHandler.BLOCKS.getId();
+            return TabHandler.PLANTS;
         }
+        if (block instanceof FossilBlock) return TabHandler.FOSSILS;
+        if (block instanceof ParkBenchBlock || block instanceof TrashCanBlock) return TabHandler.DECORATIONS;
+        if (block instanceof SkullDisplayBlock ||block instanceof CultivatorTopBlock) return null;
+        return TabHandler.BLOCKS;
     }
 
 

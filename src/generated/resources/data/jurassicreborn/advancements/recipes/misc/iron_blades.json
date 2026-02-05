@@ -28,6 +28,5 @@
     "recipes": [
       "jurassicreborn:iron_blades"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:attraction_sign_safari_from_attraction_sign_raptor_paddock_plants"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

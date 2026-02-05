@@ -64,7 +64,7 @@ public class SharkEntity extends Animal implements Animatable, IEntityAdditional
 
     public SharkEntity(EntityType<SharkEntity> sharkEntityEntityType, Level world){
         super(sharkEntityEntityType, world);
-        this.setMaxUpStep(1.0f);
+        this.maxUpStep = 1.0f;
         this.animationTick = 0;
         this.setPathfindingMalus(BlockPathTypes.WATER, 0);
         this.moveControl = new SmoothSwimmingMoveControl(this, 85, 10, 0.02F, 0.1F, true);
@@ -172,7 +172,7 @@ public class SharkEntity extends Animal implements Animatable, IEntityAdditional
                     if (this.random.nextFloat() < f1)
                     {
                         entityplayer.getCooldowns().addCooldown(itemstack1.getItem(), 100);
-                        this.level().broadcastEntityEvent(entityplayer, (byte)30);
+                        this.level.broadcastEntityEvent(entityplayer, (byte)30);
                     }
                 }
             }

@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:paleo_pad"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

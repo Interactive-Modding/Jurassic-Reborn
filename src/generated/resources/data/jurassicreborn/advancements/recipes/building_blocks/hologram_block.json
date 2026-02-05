@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:hologram_block"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

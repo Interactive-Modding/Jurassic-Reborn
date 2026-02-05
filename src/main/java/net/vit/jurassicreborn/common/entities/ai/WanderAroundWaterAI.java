@@ -44,7 +44,7 @@ public class WanderAroundWaterAI extends Goal {
                     BlockPos from = BlockPos.containing(vec.x + 0.0D, vec.y + 1.0D, vec.z + 0.0D);
                     BlockPos to   = BlockPos.containing(vec.x + 1.0D, vec.y + 1.0D, vec.z + 1.0D);
                     for (BlockPos pos : BlockPos.betweenClosed(from, to)) {
-                        if (!this.entity.level().getBlockState(pos).isAir()) {
+                        if (!this.entity.level.getBlockState(pos).isAir()) {
                             continue overlist;
                         }
                     }
@@ -70,7 +70,7 @@ public class WanderAroundWaterAI extends Goal {
     protected boolean outerShouldExecute() {
         return this.entity.getNavigation().isDone()
                 && this.entity.getTarget() == null
-                && this.entity.level().isDay()
+                && this.entity.level.isDay()
                 && this.entity.getAirSupply() > 0;
     }
 

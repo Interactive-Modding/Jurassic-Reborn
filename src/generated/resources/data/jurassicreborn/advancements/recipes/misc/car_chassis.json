@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:car_chassis"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

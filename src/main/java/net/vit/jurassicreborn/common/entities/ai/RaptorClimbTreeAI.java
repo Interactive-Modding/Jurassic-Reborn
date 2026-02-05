@@ -11,6 +11,7 @@ import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.Heightmap;
+import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.pathfinder.Path;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.HitResult;
@@ -50,7 +51,7 @@ public class RaptorClimbTreeAI extends Goal {
     public RaptorClimbTreeAI(MicroraptorEntity entity, double speed) {
         this.entity = entity;
         this.movementSpeed = speed;
-        this.level = entity.level();
+        this.level = entity.level;
         this.setFlags(EnumSet.noneOf(Flag.class));
     }
 
@@ -383,7 +384,8 @@ public class RaptorClimbTreeAI extends Goal {
     }
 
     private static boolean isLiquid(BlockState s) {
-        return !s.getFluidState().isEmpty();
+        Material m = s.getMaterial();
+        return m.isLiquid();
     }
 
     @Override

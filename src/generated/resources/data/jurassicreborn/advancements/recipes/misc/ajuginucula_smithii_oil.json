@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:ajuginucula_smithii_oil"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

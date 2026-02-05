@@ -40,7 +40,7 @@ public class SetIncubatorTempServerboundPacket{
             return;
         }
 
-        ServerLevel dim = player.serverLevel();
+        ServerLevel dim = player.getLevel();
 
         if(dim.isClientSide){
             return;

@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:attraction_sign_logo_from_attraction_sign_sauropod_valley_plants"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

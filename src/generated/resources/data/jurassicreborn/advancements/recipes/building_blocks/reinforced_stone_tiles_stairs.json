@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:reinforced_stone_tiles_stairs"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

@@ -17,7 +17,7 @@ public class PetrifiedTreeConfig implements FeatureConfiguration {
 
 
     public final int size;
-    public final float chance;
+    public final float chance; // Chance of petrified tree feature generating on an attept
 
     public PetrifiedTreeConfig( int Size, float chance) {
         this.chance = chance;

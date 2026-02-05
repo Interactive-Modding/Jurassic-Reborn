@@ -45,7 +45,7 @@ public class PaleoPadItem extends Item {
     @Override
     public InteractionResult interactLivingEntity(ItemStack stack, Player player, LivingEntity target, InteractionHand hand) {
         if (target instanceof DinosaurEntity) {
-            if (!player.level().isClientSide) {
+            if (!player.level.isClientSide) {
                 if (player instanceof net.minecraft.server.level.ServerPlayer serverPlayer) {
                     Network.sendTo(serverPlayer, new OpenPaleoPadEntityMessage((DinosaurEntity) target));
                 }

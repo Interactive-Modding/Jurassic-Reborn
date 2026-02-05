@@ -6,7 +6,6 @@ import net.vit.jurassicreborn.client.sounds.SoundHandler;
 import net.vit.jurassicreborn.client.render.entity.animation.EntityAnimation;
 import net.vit.jurassicreborn.common.entities.DinosaurEntity;
 import net.vit.jurassicreborn.common.entities.Dinosaurs.DinosaurHandler;
-import net.vit.jurassicreborn.common.entities.IHasVariants;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -20,7 +19,7 @@ import net.vit.jurassicreborn.common.entities.LegSolverQuadruped;
 
 import java.util.Locale;
 
-public class BrachiosaurusEntity extends DinosaurEntity implements IHasVariants {
+public class BrachiosaurusEntity extends DinosaurEntity {
     private static final EntityDataAccessor<Integer> VARIANT= SynchedEntityData.defineId(BrachiosaurusEntity.class, EntityDataSerializers.INT);
 
     private int stepCount = 0;
@@ -39,7 +38,7 @@ public class BrachiosaurusEntity extends DinosaurEntity implements IHasVariants 
     @Override
     public void tick() {
         super.tick();
-        if (this.onGround() && !this.isInWater()) {
+        if (this.onGround && !this.isInWater()) {
             if (this.zza > 0 && (this.getX() - this.xo > 0 || this.getZ() - this.zo > 0) && this.stepCount <= 0) {
                 this.playSound(SoundHandler.STOMP, (float) this.interpolate(0.1F, 1.0F), this.getVoicePitch());
                 this.stepCount = 65;
@@ -108,3 +107,4 @@ public class BrachiosaurusEntity extends DinosaurEntity implements IHasVariants 
         return isMale()?new ResourceLocation(JurassicReborn.MODID, texture + "_male_" + "adult" + "_" + variant + ".png"):new ResourceLocation(JurassicReborn.MODID, texture + "_female_" + "adult" + "_" + variant +".png");
     }
 }
+

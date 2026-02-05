@@ -33,7 +33,6 @@ public class AlligatorGarAnimator extends EntityAnimator<AlligatorGarEntity> {
                 AdvancedModelBox[] frontBody = new AdvancedModelBox[]{body3, body2, body1};
 
                 // The model's built-in methods (like chainSwing and walk) will work together with
-
                 model.chainSwing(frontBody, 0.6F, 0.4F, 3.0D, limbSwing, limbSwingAmount);
 
                 if (entity.isInWater()) {

@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:unfinished_car"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

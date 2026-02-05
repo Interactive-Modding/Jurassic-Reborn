@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:attraction_sign_coelacanth_pond_from_attraction_sign_laboratory_plants"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

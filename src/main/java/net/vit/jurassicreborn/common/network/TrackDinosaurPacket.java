@@ -32,7 +32,7 @@ public class TrackDinosaurPacket {
         ctx.enqueueWork(() -> {
             ServerPlayer player = ctx.getSender();
             if (player == null) return;
-            Level world = player.level();
+            Level world = player.level;
             Entity e = world.getEntity(msg.dinosaurEntityId);
             if (e instanceof DinosaurEntity dino) {
                 dino.addTracker(player.getUUID());

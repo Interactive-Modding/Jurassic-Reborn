@@ -45,7 +45,7 @@ public abstract class SwimmingDinosaurEntity extends DinosaurEntity {
         float vertical = (float) vec.y;
         float forward = (float) vec.z;
         boolean noInput = strafe == 0 && vertical == 0 && forward == 0;
-        if (!this.level().isClientSide && this.isInWater() && !this.isCarcass()) {
+        if (!this.level.isClientSide && this.isInWater() && !this.isCarcass()) {
             this.moveRelative(0.1F, new Vec3(strafe, vertical, forward));
             this.move(MoverType.SELF, this.getDeltaMovement());
             Vec3 movement = this.getDeltaMovement().multiply(0.7, 0.7, 0.7);
@@ -71,7 +71,7 @@ public abstract class SwimmingDinosaurEntity extends DinosaurEntity {
             double dx = this.random.nextGaussian() * 0.02D;
             double dy = this.random.nextGaussian() * 0.02D;
             double dz = this.random.nextGaussian() * 0.02D;
-            this.level().addParticle(ParticleTypes.SQUID_INK, this.getX() + x * 0.1D + (this.random.nextDouble() - 0.5D) * 0.6D, this.getY() + y * 0.1D + (this.random.nextDouble() - 0.5D) * 0.6D, this.getZ() + z * 0.1D + (this.random.nextDouble() - 0.5D) * 0.6D, dx, dy, dz);
+            this.level.addParticle(ParticleTypes.SQUID_INK, this.getX() + x * 0.1D + (this.random.nextDouble() - 0.5D) * 0.6D, this.getY() + y * 0.1D + (this.random.nextDouble() - 0.5D) * 0.6D, this.getZ() + z * 0.1D + (this.random.nextDouble() - 0.5D) * 0.6D, dx, dy, dz);
         }
     }
 
