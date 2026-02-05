@@ -1,0 +1,39 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "jurassicreborn:unfinished_car",
+  "pattern": [
+    "ABC",
+    "DEF",
+    "DDD"
+  ],
+  "key": {
+    "F": {
+      "item": "minecraft:iron_ingot",
+      "data": 0
+    },
+    "A": {
+      "item": "jurassicreborn:car_seats",
+      "data": 0
+    },
+    "D": {
+      "item": "jurassicreborn:car_tire",
+      "data": 0
+    },
+    "C": {
+      "item": "jurassicreborn:car_windscreen",
+      "data": 0
+    },
+    "E": {
+      "item": "jurassicreborn:engine_system",
+      "data": 0
+    },
+    "B": {
+      "item": "jurassicreborn:car_chassis",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "jurassicreborn:unfinished_car",
+    "data": 0
+  }
+}

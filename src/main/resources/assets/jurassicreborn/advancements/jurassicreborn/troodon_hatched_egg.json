@@ -1,0 +1,35 @@
+{
+    "display": {
+        "icon": {
+            "item": "jurassicreborn:hatched_egg/egg_troodon"
+        },
+        "title": {
+            "translate": "advancements.reborn.troodon_hatched_egg.title"
+        },
+        "description": {
+            "translate": "advancements.reborn.troodon_hatched_egg.description"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "hatched_egg": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "jurassicreborn:hatched_egg/egg_troodon"
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "hatched_egg"
+        ]
+    ],
+    "parent": "jurassicreborn:reborn/incubator"
+}

@@ -1,0 +1,49 @@
+package net.vit.jurassicreborn.common.jei.incubator;
+
+import mezz.jei.api.gui.drawable.IDrawable;
+import mezz.jei.api.helpers.IGuiHelper;
+import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
+import mezz.jei.api.recipe.IFocusGroup;
+import mezz.jei.api.recipe.RecipeType;
+import mezz.jei.api.recipe.category.IRecipeCategory;
+import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
+import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
+import net.vit.jurassicreborn.JurassicReborn;
+import net.vit.jurassicreborn.common.blocks.ModBlocks;
+
+/** JEI category for the incubator. */
+public class IncubatorRecipeCategory implements IRecipeCategory<IncubatorRecipeExtension> {
+
+    public static final RecipeType<IncubatorRecipeExtension> TYPE =
+            RecipeType.create(JurassicReborn.MODID, "incubator", IncubatorRecipeExtension.class);
+
+    private static final ResourceLocation TEX =
+            JurassicReborn.resource("textures/gui/incubator.png");
+
+    private final IDrawable bg;
+    private final Component title;
+    private final IDrawable icon;
+
+    public IncubatorRecipeCategory(IGuiHelper gui) {
+        this.bg = gui.createDrawable(TEX, 31, 13, 112, 53);
+        this.title = Component.translatable("container.incubator");
+        this.icon = gui.createDrawableItemStack(new ItemStack(ModBlocks.INCUBATOR.get()));
+    }
+
+    @Override public RecipeType<IncubatorRecipeExtension> getRecipeType() { return TYPE; }
+    @Override public Component getTitle()              { return title; }
+    @Override public IDrawable getBackground()          { return bg; }
+    @Override public IDrawable getIcon()                { return icon; }
+
+    @Override
+    public void setRecipe(IRecipeLayoutBuilder builder, IncubatorRecipeExtension recipe, IFocusGroup focuses) {
+        recipe.setRecipe(builder, focuses);
+    }
+
+    @Override
+    public void draw(IncubatorRecipeExtension recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics graphics, double mouseX, double mouseY) {
+    }
+}

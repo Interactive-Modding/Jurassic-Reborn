@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "jurassicreborn:block/bug_crate",
+      "y": 180
+    },
+    "facing=south": {
+      "model": "jurassicreborn:block/bug_crate"
+    },
+    "facing=west": {
+      "model": "jurassicreborn:block/bug_crate",
+      "y": 90
+    },
+    "facing=east": {
+      "model": "jurassicreborn:block/bug_crate",
+      "y": 270
+    }
+  }
+}

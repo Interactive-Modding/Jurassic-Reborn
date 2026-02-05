@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "bone_count=1": {
+      "model": "jurassicreborn:block/titanites_beak_fossil"
+    },
+    "bone_count=2": {
+      "model": "jurassicreborn:block/titanites_shell_cover_fossil"
+    }
+  }
+}

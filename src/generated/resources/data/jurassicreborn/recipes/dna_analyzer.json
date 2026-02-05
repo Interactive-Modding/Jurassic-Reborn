@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "tag": "forge:nuggets/iron"
+    },
+    "B": {
+      "item": "minecraft:glass"
+    },
+    "C": {
+      "item": "jurassicreborn:advanced_circuit"
+    },
+    "D": {
+      "item": "jurassicreborn:laser"
+    }
+  },
+  "pattern": [
+    "ABA",
+    "CDA",
+    "AAA"
+  ],
+  "result": {
+    "item": "jurassicreborn:dna_analyzer"
+  },
+  "show_notification": true
+}

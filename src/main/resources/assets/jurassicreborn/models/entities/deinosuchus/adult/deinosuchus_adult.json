@@ -1,0 +1,280 @@
+{
+  "version": 0,
+  "poses": {
+    "IDLE": [
+      {
+        "pose": "deinosuchus_adult_idle",
+        "time": 20
+      }
+    ],
+    "RESTING": [
+      {
+        "pose": "deinosuchus_adult_resting",
+        "time": 25
+      }
+    ],
+    "WALKING": [
+      {
+        "pose": "deinosuchus_adult_walking_1",
+        "time": 4
+      },
+      {
+        "pose": "deinosuchus_adult_walking_2",
+        "time": 4
+      },
+      {
+        "pose": "deinosuchus_adult_walking_3",
+        "time": 4
+      },
+      {
+        "pose": "deinosuchus_adult_walking_4",
+        "time": 4
+         }
+      ],
+      "SWIMMING": [
+        {
+          "pose": "deinosuchus_adult_swimming_1",
+          "time": 8
+        },
+        {
+          "pose": "deinosuchus_adult_swimming_2",
+          "time": 8
+        },
+        {
+          "pose": "deinosuchus_adult_swimming_3",
+          "time": 8
+        },
+        {
+          "pose": "deinosuchus_adult_swimming_4",
+          "time": 8
+        }
+      ],
+    "RUNNING": [
+      {
+        "pose": "deinosuchus_adult_walking_1",
+        "time": 6
+      },
+      {
+        "pose": "deinosuchus_adult_walking_2",
+        "time": 6
+      },
+      {
+        "pose": "deinosuchus_adult_walking_3",
+        "time": 6
+      },
+      {
+        "pose": "deinosuchus_adult_walking_4",
+        "time": 6
+      }
+    ],
+    "TAIL_SWEEP": [
+      {
+        "pose": "deinosuchus_adult_tail_sweep",
+        "time": 25
+      }
+    ],
+    "BASKING": [
+      {
+        "pose": "deinosuchus_adult_basking",
+        "time": 25
+      }
+
+    ],
+    "SPEAK": [
+      {
+        "pose": "deinosuchus_adult_speak",
+        "time": 10
+      },
+      {
+        "pose": "deinosuchus_adult_idle",
+        "time": 10
+      }
+    ],
+    "LOOKING_LEFT": [
+      {
+        "pose": "deinosuchus_adult_looking_left",
+        "time": 20
+      },
+      {
+        "pose": "deinosuchus_adult_idle",
+        "time": 20
+      }
+    ],
+    "LOOKING_RIGHT": [
+      {
+        "pose": "deinosuchus_adult_looking_right",
+        "time": 20
+      },
+      {
+        "pose": "deinosuchus_adult_idle",
+        "time": 15
+      }
+    ],
+    "SLEEPING": [
+      {
+        "pose": "deinosuchus_adult_sleeping",
+        "time": 25
+      }
+    ],
+    "CALLING": [
+      {
+        "pose": "deinosuchus_adult_calling_1",
+        "time": 15
+      },
+      {
+        "pose": "deinosuchus_adult_calling_2",
+        "time": 15
+      },
+      {
+        "pose": "deinosuchus_adult_idle",
+        "time": 20
+      }
+    ],
+    "DYING": [
+      {
+        "pose": "deinosuchus_adult_death_1",
+        "time": 20
+      },
+      {
+        "pose": "deinosuchus_adult_death_2",
+        "time": 20
+      },
+      {
+        "pose": "deinosuchus_adult_death_3",
+        "time": 20
+      }
+    ],
+    "ATTACKING": [
+      {
+        "pose": "deinosuchus_adult_attacking",
+        "time": 15
+      },
+      {
+        "pose": "deinosuchus_adult_idle",
+        "time": 10
+      }
+    ],
+    "INJURED": [
+      {
+        "pose": "deinosuchus_adult_injured",
+        "time": 10
+      },
+      {
+        "pose": "deinosuchus_adult_injured",
+        "time": 10
+      },
+      {
+        "pose": "deinosuchus_adult_idle",
+        "time": 10
+      }
+    ],
+    "DEATH_ROLL": [
+      {
+        "pose": "deinosuchus_adult_death_roll_1",
+        "time": 8
+      },
+      {
+        "pose": "deinosuchus_adult_death_roll_2",
+        "time": 8
+      },
+      {
+        "pose": "deinosuchus_adult_death_roll_3",
+        "time":  8
+      },
+      {
+        "pose": "deinosuchus_adult_death_roll_4",
+        "time":  8
+      },
+      {
+        "pose": "deinosuchus_adult_death_roll_5",
+        "time": 8
+      },
+      {
+        "pose": "deinosuchus_adult_idle",
+        "time": 35
+      }
+    ],
+    "ROARING": [
+      {
+        "pose": "deinosuchus_adult_roaring",
+        "time": 12
+      },
+      {
+        "pose": "deinosuchus_adult_idle",
+        "time": 12
+      },
+      {
+        "pose": "deinosuchus_adult_roaring",
+        "time":  12
+      },
+      {
+        "pose": "deinosuchus_adult_idle",
+        "time": 15
+      }
+    ],
+    "EATING": [
+      {
+        "pose": "deinosuchus_adult_eating_1",
+        "time": 8
+      },
+      {
+        "pose": "deinosuchus_adult_eating_2",
+        "time": 8
+      },
+      {
+        "pose": "deinosuchus_adult_eating_3",
+        "time": 8
+      },
+      {
+        "pose": "deinosuchus_adult_eating_4",
+        "time": 8
+      },
+      {
+        "pose": "deinosuchus_adult_eating_5",
+        "time": 8
+      },
+      {
+        "pose": "deinosuchus_adult_eating_6",
+        "time": 8
+      },
+      {
+        "pose": "deinosuchus_adult_eating_1",
+        "time": 8
+      },
+      {
+        "pose": "deinosuchus_adult_eating_2",
+        "time": 8
+      },
+      {
+        "pose": "deinosuchus_adult_eating_3",
+        "time": 8
+      },
+      {
+        "pose": "deinosuchus_adult_eating_4",
+        "time": 8
+      },
+      {
+        "pose": "deinosuchus_adult_eating_5",
+        "time": 8
+      },
+      {
+        "pose": "deinosuchus_adult_eating_6",
+        "time": 8
+      },
+      {
+        "pose": "deinosuchus_adult_idle",
+        "time": 10
+      }
+    ],
+    "LAYING_EGG": [
+      {
+        "pose": "deinosuchus_adult_laying",
+        "time": 120
+      },
+      {
+        "pose": "deinosuchus_adult_idle",
+        "time": 20
+      }
+    ]
+  }
+}

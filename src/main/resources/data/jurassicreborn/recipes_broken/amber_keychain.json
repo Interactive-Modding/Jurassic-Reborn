@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "jurassicreborn:amber_keychain",
+  "pattern": [
+    "A",
+    "B"
+  ],
+  "key": {
+    "B": {
+      "item": "minecraft:iron_ingot",
+      "data": 0
+    },
+    "A": {
+      "item": "jurassicreborn:amber",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "jurassicreborn:amber_keychain",
+    "data": 0
+  }
+}

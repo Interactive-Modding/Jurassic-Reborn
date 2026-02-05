@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_attraction_sign_gentle_giants_plants": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:attraction_sign_gentle_giants_plants"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "jurassicreborn:attraction_sign_raptor_paddock_from_attraction_sign_gentle_giants_plants"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_attraction_sign_gentle_giants_plants",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "jurassicreborn:attraction_sign_raptor_paddock_from_attraction_sign_gentle_giants_plants"
+    ]
+  },
+  "sends_telemetry_event": false
+}

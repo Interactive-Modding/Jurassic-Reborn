@@ -1,6 +1,0 @@
-{
-  "parent": "block/cross",
-  "textures": {
-    "cross": "rebornmod:blocks/plants/graminidites_bambusoides_bottom"
-  }
-}

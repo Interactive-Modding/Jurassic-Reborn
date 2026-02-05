@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_column",
+  "textures": {
+    "end": "jurassicreborn:block/paleo_bale/other_top",
+    "side": "jurassicreborn:block/paleo_bale/other_side"
+  }
+}

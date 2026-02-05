@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "particle": "jurassicreborn:block/clear_glass/clear_glass_all",
+    "up": "jurassicreborn:block/clear_glass/clear_glass_right",
+    "down": "jurassicreborn:block/clear_glass/clear_glass_right",
+    "north": "jurassicreborn:block/clear_glass/clear_glass_left",
+    "east": "jurassicreborn:block/clear_glass/empty",
+    "south": "jurassicreborn:block/clear_glass/clear_glass_right",
+    "west": "jurassicreborn:block/clear_glass/empty"
+  }
+}

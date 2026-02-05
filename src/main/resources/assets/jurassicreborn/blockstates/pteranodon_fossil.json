@@ -1,0 +1,25 @@
+{
+  "variants": {
+    "bone_count=1": {
+      "model": "jurassicreborn:block/pteranodon_leg_bones_fossil"
+    },
+    "bone_count=2": {
+      "model": "jurassicreborn:block/pteranodon_neck_vertebrae_fossil"
+    },
+    "bone_count=3": {
+      "model": "jurassicreborn:block/pteranodon_pelvis_fossil"
+    },
+    "bone_count=4": {
+      "model": "jurassicreborn:block/pteranodon_ribcage_fossil"
+    },
+    "bone_count=5": {
+      "model": "jurassicreborn:block/pteranodon_skull_fossil"
+    },
+    "bone_count=6": {
+      "model": "jurassicreborn:block/pteranodon_tail_vertebrae_fossil"
+    },
+    "bone_count=7": {
+      "model": "jurassicreborn:block/pteranodon_wing_bones_fossil"
+    }
+  }
+}

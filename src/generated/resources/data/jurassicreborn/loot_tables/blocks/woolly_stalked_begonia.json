@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:woolly_stalked_begonia"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "jurassicreborn:blocks/woolly_stalked_begonia"
+}

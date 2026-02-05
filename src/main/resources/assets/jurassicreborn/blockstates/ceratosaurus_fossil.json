@@ -1,0 +1,37 @@
+{
+  "variants": {
+    "bone_count=1": {
+      "model": "jurassicreborn:block/ceratosaurus_skull_fossil"
+    },
+    "bone_count=2": {
+      "model": "jurassicreborn:block/ceratosaurus_tooth_fossil"
+    },
+    "bone_count=3": {
+      "model": "jurassicreborn:block/ceratosaurus_arm_bones_fossil"
+    },
+    "bone_count=4": {
+      "model": "jurassicreborn:block/ceratosaurus_claw_fossil"
+    },
+    "bone_count=5": {
+      "model": "jurassicreborn:block/ceratosaurus_foot_bones_fossil"
+    },
+    "bone_count=6": {
+      "model": "jurassicreborn:block/ceratosaurus_leg_bones_fossil"
+    },
+    "bone_count=7": {
+      "model": "jurassicreborn:block/ceratosaurus_neck_vertebrae_fossil"
+    },
+    "bone_count=8": {
+      "model": "jurassicreborn:block/ceratosaurus_pelvis_fossil"
+    },
+    "bone_count=9": {
+      "model": "jurassicreborn:block/ceratosaurus_ribcage_fossil"
+    },
+    "bone_count=10": {
+      "model": "jurassicreborn:block/ceratosaurus_shoulder_fossil"
+    },
+    "bone_count=11": {
+      "model": "jurassicreborn:block/ceratosaurus_tail_vertebrae_fossil"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "jurassicreborn:block/araucaria_wood",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "jurassicreborn:block/araucaria_wood"
+    },
+    "axis=z": {
+      "model": "jurassicreborn:block/araucaria_wood",
+      "x": 90
+    }
+  }
+}

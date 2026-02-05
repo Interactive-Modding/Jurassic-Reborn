@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "jurassicreborn:block/psaronius_planks",
+    "side": "jurassicreborn:block/psaronius_planks",
+    "top": "jurassicreborn:block/psaronius_planks"
+  }
+}

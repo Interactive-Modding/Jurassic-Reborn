@@ -1,0 +1,7 @@
+{
+  "parent": "block/block",
+  "textures": {
+    "particle": "minecraft:block/oak_planks",
+    "cross": "jurassicreborn:block/skeleton_assembly_dummy"
+  }
+}

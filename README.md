@@ -1,195 +1,28 @@
-# RebornMod
+# Jurassic-World-Reborn
+Jurassic Reborn port targeting Minecraft 1.19.4 (previously 1.18/1.19.3).
 
-### RebornMod Leader
+## License model
+This repository uses a mixed-license model:
 
-Vitiate 
+| Component | License |
+| --- | --- |
+| JurassiCraft-derived code | GNU LGPL v2.1 |
+| Original Jurassic Reborn code not derived from JurassiCraft | All Rights Reserved unless otherwise stated |
+| Models, textures, sounds, animations, art, branding, and other assets | All Rights Reserved |
 
-### The code is modified and built up from an older version of JurassiCraft's code, having been also worked upon by JWR's coders. Credit goes to the original JurassiCraft team for laying the foundations for the code that was expanded upon to make this project a reality.
+## LGPL scope clarification
+Portions of this codebase are derived from JurassiCraft (LGPL v2.1), including legacy systems inherited from the original project such as entity behavior logic, world-generation behavior, and supporting gameplay infrastructure.
 
+All such derivative code remains licensed under LGPL v2.1.
+All other code is original to Jurassic Reborn and is All Rights Reserved unless explicitly noted otherwise.
 
-### Developers
+### License notice for distribution platforms
+This project contains code derived from JurassiCraft, originally licensed under the GNU LGPL v2.1.
+The LGPL-covered source code is available in this repository.
+All original code and all assets are © Jurassic Reborn Team and are All Rights Reserved.
 
-Vitiate
+### Platform guidance
+- CurseForge label: **All Rights Reserved**.
+- Modrinth label: **All Rights Reserved** with additional text noting that LGPL v2.1 applies only to the JurassiCraft-derived code.
 
-Aecht Rob
-
-Sniffity
-
-Gamma_002
-
-### Modelers / Sound Designers / Textures /  Concept Artists
-
-NightEagle
-
-PanicPlay
-
-Seentro
-
-Zth404(Z)
-
-CreatarCreator
-
-GameVideosForLife
-
-HuskyTacodile
-
-Lord Udon
-
-Scoob (Mr.Dino)
-
-Neickee
-
-
-### Bug-Testers
-
-Ryu Enyo
-
-Rexthezilla98
-
-HireAMercenary
-
-Firewolf786
-
-Goofy
-
-Last_Dovahkiin
-
-HaruYukima
-
-# Contributors
-
-AveLardo12 // InnovativePachyderm
-
-Fluffy Taco // JR_2202
-
-DTRaptor, The Political Advisor
-
-Giodude1580
-
-Bastion16
-
-ImaStego
-
-Totally Truthful
-
-WinterKILLER435 // DroidBait284
-
-Pedro Resende
-
-Verified_Bear // Alis
-
-Just Monika
-
-Wyn Price 
-
-Sniffity
-
-Loxures
-
-Firewolf786YT
-
-Collinvht
-
-Boom
-
-RextheZilla98
-
-ᗰι𝓬ʰ𝐈𝐠Ữ𝓝 (Michigun)
-
-AGSucho
-
-Josef_Germany (MCingram) 
-
-JurassicXenomorph
-
-Ms.Random
-
-Totemaster
-
-Tornado
-
-Bizarre Altispinax
-
-LordofLustria
-
-### Special Mentions To JurassiCraft
-
-Jabelar
-
-Gegy
-
-WorldSEnder
-
-Paul Fulham
-
-Cuchololthespanishman
-
-Raptorek20
-
-LordofLustria
-
-jglrxavpok 
-
-amellinger
-
-iLexiconn
-
-PapaWhale
-
-SoggyMustache 
-
-Wyn Price
-
-JTGHawk137
-
-CarrotJet   
-
-RaptorWhisper 
-
-HarvNut    
-
-Andreas  
-
-Reuxertz   
-
-AnarchCassius   
-    
-NeusFear   
-
-SanAndreasP    
-
-Shrek5InTheatres2019    
-
-Compaszer    
-
-Brownboiiwonder
-
-PT400C     
-
-CarrotJet   
-
-Cody
-
-# Contributing
-Feel free to speed up development and create pull requests. Here's a guide on how to setup your workspace.
-
-First, make a fork of this repository. When you've done that, you can clone that reposity. Depending on your installation settings, you either have to run the command in the git Bash, or the CMD/Terminal.
-```
-git clone https://github.com/<Your Username>/RebornMod
-```
-
-When that's done, go into the newly created directory `RebornMod` and run in the console if you're on Windows:
-
-```
-gradlew.bat setupDecompWorkspace
-```
-Or this when you're on any other operating system (Like Mac OS X and Ubuntu):
-```
-./gradlew setupDecompWorkspace
-```
-... and append the name of the IDE you use - eclipse or idea:
-
-__Example for Windows and IDEA:__
->gradlew.bat setupDecompWorkspace idea
-
-Now open the workspace and voilà, you can start contributing!
+See [LICENSE](./LICENSE) for the All Rights Reserved terms and [LICENSE-LGPL-2.1.txt](./LICENSE-LGPL-2.1.txt) for the full GNU LGPL v2.1 text.

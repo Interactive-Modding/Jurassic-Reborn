@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "jurassicreborn:attraction_sign",
+  "ingredients": [
+    {
+      "item": "jurassicreborn:attraction_sign_tylo_feeding"
+    }
+  ],
+  "result": {
+    "item": "jurassicreborn:attraction_sign_visitor_center"
+  }
+}

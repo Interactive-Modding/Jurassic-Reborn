@@ -1,0 +1,159 @@
+{
+    "format_version": "1.9.0",
+    "credit": "Made with Blockbench",
+    "parent": "minecraft:block/block",
+    "ambientocclusion": false,
+    "render_type": "minecraft:translucent",
+    "texture_size": [64, 64],
+    "textures": {
+        "0": "jurassicreborn:block/amber_mosquito",
+        "particle": "jurassicreborn:block/amber_mosquito"
+    },
+    "elements": [
+        {
+            "name": "Mosquito",
+            "from": [7, 4, 8],
+            "to": [9, 6, 8],
+            "rotation": {"angle": 0, "axis": "y", "origin": [6, 3, 6]},
+            "faces": {
+                "north": {"uv": [1, 5.75, 2.5, 7.25], "texture": "#0"},
+                "east": {"uv": [0, 5.75, 1, 7.25], "texture": "#0"},
+                "south": {"uv": [3.5, 5.75, 5, 7.25], "texture": "#0"},
+                "west": {"uv": [2.5, 5.75, 3.5, 7.25], "texture": "#0"},
+                "up": {"uv": [2.5, 5.75, 1, 4.75], "texture": "#0"},
+                "down": {"uv": [4, 4.75, 2.5, 5.75], "texture": "#0"}
+            }
+        },
+        {
+            "name": "Base",
+            "from": [5, 0, 5],
+            "to": [11, 1, 11],
+            "rotation": {"angle": 0, "axis": "y", "origin": [1, 0, 2]},
+            "faces": {
+                "north": {"uv": [1.5, 4.5, 3, 4.75], "texture": "#0"},
+                "east": {"uv": [0, 4.5, 1.5, 4.75], "texture": "#0"},
+                "south": {"uv": [4.5, 4.5, 6, 4.75], "texture": "#0"},
+                "west": {"uv": [3, 4.5, 4.5, 4.75], "texture": "#0"},
+                "up": {"uv": [3, 4.5, 1.5, 3], "texture": "#0"},
+                "down": {"uv": [4.5, 3, 3, 4.5], "texture": "#0"}
+            }
+        },
+        {
+            "name": "Label",
+            "from": [7.5, 0.25, 10.25],
+            "to": [8.5, 1.25, 11.25],
+            "rotation": {"angle": -22.5, "axis": "x", "origin": [8, 0.75, 10.75]},
+            "faces": {
+                "north": {"uv": [1.5, 1.5, 3, 3], "texture": "#0"},
+                "east": {"uv": [0, 1.5, 1.5, 3], "texture": "#0"},
+                "south": {"uv": [4.5, 1.5, 6, 3], "texture": "#0"},
+                "west": {"uv": [3, 1.5, 4.5, 3], "texture": "#0"},
+                "up": {"uv": [3, 1.5, 1.5, 0], "texture": "#0"},
+                "down": {"uv": [4.5, 0, 3, 1.5], "texture": "#0"}
+            }
+        },
+        {
+            "name": "amber_piece",
+            "from": [7, 1, 6],
+            "to": [9, 2, 10],
+            "rotation": {"angle": 0, "axis": "y", "origin": [1, 1, 2]},
+            "faces": {
+                "north": {"uv": [7, 1, 7.5, 1.25], "texture": "#0"},
+                "east": {"uv": [6, 1, 7, 1.25], "texture": "#0"},
+                "south": {"uv": [8.5, 1, 9, 1.25], "texture": "#0"},
+                "west": {"uv": [7.5, 1, 8.5, 1.25], "texture": "#0"},
+                "up": {"uv": [7.5, 1, 7, 0], "texture": "#0"},
+                "down": {"uv": [8, 0, 7.5, 1], "texture": "#0"}
+            }
+        },
+        {
+            "name": "amber_piece",
+            "from": [6, 1, 7],
+            "to": [10, 2, 9],
+            "rotation": {"angle": 0, "axis": "y", "origin": [8, 1.5, 8]},
+            "faces": {
+                "north": {"uv": [6.5, 1.75, 7.5, 2], "texture": "#0"},
+                "east": {"uv": [6, 1.75, 6.5, 2], "texture": "#0"},
+                "south": {"uv": [8, 1.75, 9, 2], "texture": "#0"},
+                "west": {"uv": [7.5, 1.75, 8, 2], "texture": "#0"},
+                "up": {"uv": [7.5, 1.75, 6.5, 1.25], "texture": "#0"},
+                "down": {"uv": [8.5, 1.25, 7.5, 1.75], "texture": "#0"}
+            }
+        },
+        {
+            "name": "amber_piece",
+            "from": [6, 2, 6],
+            "to": [10, 8, 10],
+            "rotation": {"angle": 0, "axis": "y", "origin": [8, 2.5, 8]},
+            "faces": {
+                "north": {"uv": [6, 5.75, 7, 7.25], "texture": "#0"},
+                "east": {"uv": [5, 5.75, 6, 7.25], "texture": "#0"},
+                "south": {"uv": [8, 5.75, 9, 7.25], "texture": "#0"},
+                "west": {"uv": [7, 5.75, 8, 7.25], "texture": "#0"},
+                "up": {"uv": [7, 5.75, 6, 4.75], "texture": "#0"},
+                "down": {"uv": [8, 4.75, 7, 5.75], "texture": "#0"}
+            }
+        },
+        {
+            "name": "amber_piece",
+            "from": [7, 8, 7],
+            "to": [9, 9, 9],
+            "rotation": {"angle": 0, "axis": "y", "origin": [8, 8.5, 8]},
+            "faces": {
+                "north": {"uv": [6.5, 4.25, 7, 4.5], "texture": "#0"},
+                "east": {"uv": [6, 4.25, 6.5, 4.5], "texture": "#0"},
+                "south": {"uv": [7.5, 4.25, 8, 4.5], "texture": "#0"},
+                "west": {"uv": [7, 4.25, 7.5, 4.5], "texture": "#0"},
+                "up": {"uv": [7, 4.25, 6.5, 3.75], "texture": "#0"},
+                "down": {"uv": [7.5, 3.75, 7, 4.25], "texture": "#0"}
+            }
+        },
+        {
+            "name": "amber_piece",
+            "from": [10, 2, 7],
+            "to": [11, 7, 9],
+            "rotation": {"angle": 0, "axis": "y", "origin": [12, 2.5, 8]},
+            "faces": {
+                "north": {"uv": [0.5, 7.75, 0.75, 9], "texture": "#0"},
+                "east": {"uv": [0, 7.75, 0.5, 9], "texture": "#0"},
+                "south": {"uv": [1.25, 7.75, 1.5, 9], "texture": "#0"},
+                "west": {"uv": [0.75, 7.75, 1.25, 9], "texture": "#0"},
+                "up": {"uv": [0.75, 7.75, 0.5, 7.25], "texture": "#0"},
+                "down": {"uv": [1, 7.25, 0.75, 7.75], "texture": "#0"}
+            }
+        },
+        {
+            "name": "amber_piece",
+            "from": [5, 2, 7],
+            "to": [6, 7, 9],
+            "rotation": {"angle": 0, "axis": "y", "origin": [7, 2.5, 8]},
+            "faces": {
+                "north": {"uv": [6.5, 2.5, 6.75, 3.75], "texture": "#0"},
+                "east": {"uv": [6, 2.5, 6.5, 3.75], "texture": "#0"},
+                "south": {"uv": [7.25, 2.5, 7.5, 3.75], "texture": "#0"},
+                "west": {"uv": [6.75, 2.5, 7.25, 3.75], "texture": "#0"},
+                "up": {"uv": [6.75, 2.5, 6.5, 2], "texture": "#0"},
+                "down": {"uv": [7, 2, 6.75, 2.5], "texture": "#0"}
+            }
+        }
+    ],
+    "groups": [
+        {
+            "name": "Full",
+            "origin": [1, 1, 2],
+            "color": 0,
+            "children": [
+                0,
+                1,
+                2,
+                {
+                    "name": "Amber",
+                    "origin": [1, 1, 2],
+                    "color": 0,
+                    "children": [3, 4, 5, 6, 7, 8]
+                }
+            ]
+        }
+    ]
+}
+

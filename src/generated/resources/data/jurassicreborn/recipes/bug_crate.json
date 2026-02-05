@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "A": {
+      "tag": "forge:nuggets/iron"
+    },
+    "B": {
+      "tag": "minecraft:planks"
+    },
+    "C": {
+      "tag": "forge:chests/wooden"
+    },
+    "D": [
+      {
+        "item": "minecraft:stone_slab"
+      },
+      {
+        "item": "minecraft:stone_brick_slab"
+      }
+    ]
+  },
+  "pattern": [
+    "AAA",
+    "BCB",
+    "DDD"
+  ],
+  "result": {
+    "item": "jurassicreborn:bug_crate"
+  },
+  "show_notification": true
+}

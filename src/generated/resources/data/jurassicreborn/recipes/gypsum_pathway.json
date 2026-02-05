@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "A": {
+      "item": "jurassicreborn:gypsum_stone"
+    }
+  },
+  "pattern": [
+    "A A",
+    "AAA"
+  ],
+  "result": {
+    "count": 5,
+    "item": "jurassicreborn:gypsum_pathway"
+  },
+  "show_notification": true
+}

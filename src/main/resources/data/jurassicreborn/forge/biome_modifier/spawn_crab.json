@@ -1,0 +1,17 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": [
+    "minecraft:beach",
+    "minecraft:snowy_beach",
+    "minecraft:stony_shore"
+  ],
+  "spawners": [
+    {
+      "type": "jurassicreborn:crab",
+      "weight": 12,
+      "minCount": 1,
+      "maxCount": 5
+    }
+  ]
+}
+

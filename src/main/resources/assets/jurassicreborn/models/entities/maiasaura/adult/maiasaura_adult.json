@@ -1,0 +1,331 @@
+{
+  "version": 0,
+  "poses": {
+    "IDLE": [
+      {
+        "pose": "maiasaura_adult_idle",
+        "time": 20
+      }
+    ],
+    "CALLING": [
+      {
+        "pose": "maiasaura_adult_call_1",
+        "time": 20
+      },
+      {
+        "pose": "maiasaura_adult_call_2",
+        "time": 8
+      },
+      {
+        "pose": "maiasaura_adult_call_3",
+        "time": 20
+      },
+      {
+        "pose": "maiasaura_adult_call_1",
+        "time": 8
+      },
+      {
+        "pose": "maiasaura_adult_call_3",
+        "time": 15
+      },
+      {
+        "pose": "maiasaura_adult_idle",
+        "time": 10
+      }
+    ],
+    "DRINKING": [
+      {
+        "pose": "maiasaura_adult_drinking_1",
+        "time": 10
+      },
+      {
+        "pose": "maiasaura_adult_drinking_2",
+        "time": 10
+      },
+      {
+        "pose": "maiasaura_adult_drinking_3",
+        "time": 15
+      },
+      {
+        "pose": "maiasaura_adult_drinking_4",
+        "time": 10
+      },
+      {
+        "pose": "maiasaura_adult_drinking_5",
+        "time": 10
+      },
+      {
+        "pose": "maiasaura_adult_drinking_4",
+        "time": 10
+      },
+      {
+        "pose": "maiasaura_adult_drinking_5",
+        "time": 10
+      },
+      {
+        "pose": "maiasaura_adult_drinking_4",
+        "time": 10
+      },
+      {
+        "pose": "maiasaura_adult_drinking_5",
+        "time": 10
+      },
+      {
+        "pose": "maiasaura_adult_drinking_4",
+        "time": 10
+      },
+      {
+        "pose": "maiasaura_adult_drinking_5",
+        "time": 10
+      },
+      {
+        "pose": "maiasaura_adult_drinking_6",
+        "time": 10
+      },
+      {
+        "pose": "maiasaura_adult_idle",
+        "time": 15
+      }
+    ],
+    "SPEAK": [
+      {
+        "pose": "maiasaura_adult_talk",
+        "time": 10
+      },
+      {
+        "pose": "maiasaura_adult_talk",
+        "time": 20
+      },
+      {
+        "pose": "maiasaura_adult_idle",
+        "time": 10
+      }
+    ],
+    "SLEEPING": [
+      {
+        "pose": "maiasaura_adult_resting",
+        "time": 25
+       },
+      {
+        "pose": "maiasaura_adult_sleeping",
+        "time": 20
+      }
+    ],
+    "RESTING": [
+      {
+        "pose": "maiasaura_adult_resting",
+        "time": 30
+         }
+    ],
+    "DYING": [
+      {
+        "pose": "maiasaura_adult_death_1",
+        "time": 3
+      },
+      {
+        "pose": "maiasaura_adult_death_2",
+        "time": 6
+      },
+      {
+        "pose": "maiasaura_adult_death_3",
+        "time": 6
+      },
+      {
+        "pose": "maiasaura_adult_death_4",
+        "time": 6
+      }
+    ],
+    "LOOKING_LEFT": [
+      {
+        "pose": "maiasaura_adult_look_left_1",
+        "time": 20
+      },
+      {
+        "pose": "maiasaura_adult_look_left_2",
+        "time": 20
+      },
+      {
+        "pose": "maiasaura_adult_idle",
+        "time": 10
+      }
+    ],
+    "LOOKING_RIGHT": [
+      {
+        "pose": "maiasaura_adult_look_right_1",
+        "time": 20
+      },
+      {
+        "pose": "maiasaura_adult_look_right_2",
+        "time": 20
+      },
+      {
+        "pose": "maiasaura_adult_idle",
+        "time": 10
+      }
+    ],
+    "INJURED": [
+      {
+        "pose": "maiasaura_adult_injured",
+        "time": 10
+      },
+      {
+        "pose": "maiasaura_adult_injured",
+        "time": 10
+      },
+      {
+        "pose": "maiasaura_adult_idle",
+        "time": 10
+      }
+    ],
+    "EATING": [
+      {
+        "pose": "maiasaura_adult_drinking_1",
+        "time": 10
+      },
+      {
+        "pose": "maiasaura_adult_drinking_2",
+        "time": 10
+      },
+      {
+        "pose": "maiasaura_adult_drinking_3",
+        "time": 15
+      },
+      {
+        "pose": "maiasaura_adult_drinking_4",
+        "time": 10
+      },
+      {
+        "pose": "maiasaura_adult_drinking_5",
+        "time": 10
+      },
+      {
+        "pose": "maiasaura_adult_drinking_4",
+        "time": 10
+      },
+      {
+        "pose": "maiasaura_adult_drinking_5",
+        "time": 10
+      },
+      {
+        "pose": "maiasaura_adult_drinking_4",
+        "time": 10
+      },
+      {
+        "pose": "maiasaura_adult_drinking_5",
+        "time": 10
+      },
+      {
+        "pose": "maiasaura_adult_drinking_4",
+        "time": 10
+      },
+      {
+        "pose": "maiasaura_adult_drinking_5",
+        "time": 10
+      },
+      {
+        "pose": "maiasaura_adult_drinking_6",
+        "time": 10
+      },
+      {
+        "pose": "maiasaura_adult_idle",
+        "time": 15
+      }
+    ],
+    "ATTACKING": [
+      {
+        "pose": "maiasaura_adult_attack_1",
+        "time": 10
+      },
+      {
+        "pose": "maiasaura_adult_attack_2",
+        "time": 5
+      },
+      {
+        "pose": "maiasaura_adult_attack_3",
+        "time": 5
+      },
+      {
+        "pose": "maiasaura_adult_attack_2",
+        "time": 5
+      },
+      {
+        "pose": "maiasaura_adult_attack_3",
+        "time": 5
+      },
+      {
+        "pose": "maiasaura_adult_idle",
+        "time": 10
+      }
+    ],
+    "WALKING": [
+      {
+        "pose": "maiasaura_adult_walking_1",
+        "time": 6
+      },
+      {
+        "pose": "maiasaura_adult_walking_2",
+        "time": 6
+      },
+      {
+        "pose": "maiasaura_adult_walking_3",
+        "time": 6
+      },
+      {
+        "pose": "maiasaura_adult_walking_4",
+        "time": 6
+      },
+      {
+        "pose": "maiasaura_adult_walking_5",
+        "time": 6
+      },
+      {
+        "pose": "maiasaura_adult_walking_6",
+        "time": 6
+      }
+    ],
+    "RUNNING": [
+      {
+        "pose": "maiasaura_adult_running_1",
+        "time": 4
+      },
+      {
+        "pose": "maiasaura_adult_running_2",
+        "time": 4
+      },
+      {
+        "pose": "maiasaura_adult_running_3",
+        "time": 4
+      },
+      {
+        "pose": "maiasaura_adult_running_4",
+        "time": 4
+     },
+      {
+        "pose": "maiasaura_adult_running_5",
+        "time": 4
+      },
+      {
+        "pose": "maiasaura_adult_running_6",
+        "time": 4
+      }
+    ],
+    "LAYING_EGG": [
+      {
+        "pose": "maiasaura_adult_laying",
+        "time": 10
+      },
+      {
+        "pose": "maiasaura_adult_laying",
+        "time": 20
+      },
+      {
+        "pose": "maiasaura_adult_laying",
+        "time": 20
+      },
+      {
+        "pose": "maiasaura_adult_idle",
+        "time": 10
+      }
+    ]
+  }
+}

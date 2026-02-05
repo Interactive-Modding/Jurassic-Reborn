@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "jurassicreborn:car_tire"
+    },
+    "B": {
+      "item": "jurassicreborn:iron_blades"
+    },
+    "C": {
+      "item": "minecraft:green_dye"
+    },
+    "D": {
+      "item": "minecraft:iron_block"
+    },
+    "E": {
+      "item": "jurassicreborn:engine_system"
+    },
+    "F": {
+      "item": "jurassicreborn:car_windscreen"
+    }
+  },
+  "pattern": [
+    "ABC",
+    "DEF",
+    "ADA"
+  ],
+  "result": {
+    "item": "jurassicreborn:helicopter"
+  },
+  "show_notification": true
+}

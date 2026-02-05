@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    [
+      {
+        "item": "jurassicreborn:magnolia_log"
+      },
+      {
+        "item": "jurassicreborn:stripped_magnolia_log"
+      },
+      {
+        "item": "jurassicreborn:magnolia_wood"
+      },
+      {
+        "item": "jurassicreborn:stripped_magnolia_wood"
+      }
+    ]
+  ],
+  "result": {
+    "count": 4,
+    "item": "jurassicreborn:magnolia_planks"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "type": "forge:ore_shaped",
+  "group": "jurassicreborn:dna_analyzer",
+  "pattern": [
+    "ABA",
+    "CDA",
+    "AAA"
+  ],
+  "key": {
+    "A": {
+      "type": "forge:ore_dict",
+      "ore": "nuggetIron"
+    },
+    "C": {
+      "item": "jurassicreborn:advanced_circuit",
+      "data": 0
+    },
+    "D": {
+      "item": "jurassicreborn:laser",
+      "data": 0
+    },
+    "B": {
+      "item": "minecraft:glass",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "jurassicreborn:dna_analyzer",
+    "data": 0
+  }
+}

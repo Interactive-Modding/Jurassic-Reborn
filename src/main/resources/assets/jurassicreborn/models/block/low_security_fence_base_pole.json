@@ -1,0 +1,335 @@
+{
+	"format_version": "1.9.0",
+	"credit": "Made with Blockbench",
+	"parent": "minecraft:block/block",
+	"texture_size": [128, 128],
+	"textures": {
+		"0": "jurassicreborn:block/low_security_fence_base_pole",
+		"particle": "jurassicreborn:block/low_security_fence_base_pole"
+	},
+	"elements": [
+		{
+			"name": "Slope base 1",
+			"from": [0, 0, 1.05],
+			"to": [16, 2, 4.05],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 0, 8]},
+			"faces": {
+				"north": {"uv": [6.625, 2.25, 8.625, 2.5], "texture": "#0"},
+				"east": {"uv": [6.25, 2.25, 6.625, 2.5], "texture": "#0"},
+				"south": {"uv": [9, 2.25, 11, 2.5], "texture": "#0"},
+				"west": {"uv": [8.625, 2.25, 9, 2.5], "texture": "#0"},
+				"up": {"uv": [8.625, 2.25, 6.625, 1.875], "texture": "#0"},
+				"down": {"uv": [10.625, 1.875, 8.625, 2.25], "texture": "#0"}
+			}
+		},
+		{
+			"name": "Slope 1",
+			"from": [0.5, -0.2, 0],
+			"to": [15.5, 8.8, 3],
+			"rotation": {"angle": 22.5, "axis": "x", "origin": [8, -2, 6]},
+			"faces": {
+				"north": {"uv": [6.625, 0.375, 8.5, 1.5], "texture": "#0"},
+				"east": {"uv": [6.25, 0.375, 6.625, 1.5], "texture": "#0"},
+				"south": {"uv": [8.875, 0.375, 10.75, 1.5], "texture": "#0"},
+				"west": {"uv": [8.5, 0.375, 8.875, 1.5], "texture": "#0"},
+				"up": {"uv": [8.5, 0.375, 6.625, 0], "texture": "#0"},
+				"down": {"uv": [10.375, 0, 8.5, 0.375], "texture": "#0"}
+			}
+		},
+		{
+			"name": "Slope base 2",
+			"from": [0, 0, 11.95],
+			"to": [16, 2, 14.95],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 0, 8]},
+			"faces": {
+				"north": {"uv": [6.625, 2.25, 8.625, 2.5], "texture": "#0"},
+				"east": {"uv": [6.25, 2.25, 6.625, 2.5], "texture": "#0"},
+				"south": {"uv": [9, 2.25, 11, 2.5], "texture": "#0"},
+				"west": {"uv": [8.625, 2.25, 9, 2.5], "texture": "#0"},
+				"up": {"uv": [8.625, 2.25, 6.625, 1.875], "texture": "#0"},
+				"down": {"uv": [10.625, 1.875, 8.625, 2.25], "texture": "#0"}
+			}
+		},
+		{
+			"name": "Slope 2",
+			"from": [0.5, -0.2, 13],
+			"to": [15.5, 8.8, 16],
+			"rotation": {"angle": -22.5, "axis": "x", "origin": [8, -2, 10]},
+			"faces": {
+				"north": {"uv": [6.625, 0.375, 8.5, 1.5], "texture": "#0"},
+				"east": {"uv": [6.25, 0.375, 6.625, 1.5], "texture": "#0"},
+				"south": {"uv": [8.875, 0.375, 10.75, 1.5], "texture": "#0"},
+				"west": {"uv": [8.5, 0.375, 8.875, 1.5], "texture": "#0"},
+				"up": {"uv": [8.5, 0.375, 6.625, 0], "texture": "#0"},
+				"down": {"uv": [10.375, 0, 8.5, 0.375], "texture": "#0"}
+			}
+		},
+		{
+			"name": "Base underslope 1",
+			"from": [1, 10.9, 4.5],
+			"to": [15, 12.9, 11.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 0, 8]},
+			"faces": {
+				"north": {"uv": [5.875, 6.5, 7.625, 6.75], "texture": "#0"},
+				"east": {"uv": [5, 6.5, 5.875, 6.75], "texture": "#0"},
+				"south": {"uv": [8.5, 6.5, 10.25, 6.75], "texture": "#0"},
+				"west": {"uv": [7.625, 6.5, 8.5, 6.75], "texture": "#0"},
+				"up": {"uv": [7.625, 6.5, 5.875, 5.625], "texture": "#0"},
+				"down": {"uv": [9.375, 5.625, 7.625, 6.5], "texture": "#0"}
+			}
+		},
+		{
+			"name": "Base top 1",
+			"from": [2.5, 12.8, 5],
+			"to": [13.5, 14.8, 11],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 0, 8]},
+			"faces": {
+				"north": {"uv": [0.75, 5.75, 2.125, 6], "texture": "#0"},
+				"east": {"uv": [0, 5.75, 0.75, 6], "texture": "#0"},
+				"south": {"uv": [2.875, 5.75, 4.25, 6], "texture": "#0"},
+				"west": {"uv": [2.125, 5.75, 2.875, 6], "texture": "#0"},
+				"up": {"uv": [2.125, 5.75, 0.75, 5], "texture": "#0"},
+				"down": {"uv": [3.5, 5, 2.125, 5.75], "texture": "#0"}
+			}
+		},
+		{
+			"name": "Slope base 3",
+			"from": [11.95, 0, 0],
+			"to": [14.95, 2, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 0, 8]},
+			"faces": {
+				"north": {"uv": [2, 15.125, 2.375, 15.375], "texture": "#0"},
+				"east": {"uv": [0, 15.125, 2, 15.375], "texture": "#0"},
+				"south": {"uv": [4.375, 15.125, 4.75, 15.375], "texture": "#0"},
+				"west": {"uv": [2.375, 15.125, 4.375, 15.375], "texture": "#0"},
+				"up": {"uv": [2.375, 15.125, 2, 13.125], "texture": "#0"},
+				"down": {"uv": [2.75, 13.125, 2.375, 15.125], "texture": "#0"}
+			}
+		},
+		{
+			"name": "Slope 3",
+			"from": [2.8, 1.1, 0.5],
+			"to": [5.8, 10.1, 15.5],
+			"rotation": {"angle": -22.5, "axis": "z", "origin": [4.21012, 5.71044, 8]},
+			"faces": {
+				"north": {"uv": [1.875, 11.875, 2.25, 13], "texture": "#0"},
+				"east": {"uv": [0, 11.875, 1.875, 13], "texture": "#0"},
+				"south": {"uv": [4.125, 11.875, 4.5, 13], "texture": "#0"},
+				"west": {"uv": [2.25, 11.875, 4.125, 13], "texture": "#0"},
+				"up": {"uv": [2.25, 11.875, 1.875, 10], "texture": "#0"},
+				"down": {"uv": [2.625, 10, 2.25, 11.875], "texture": "#0"}
+			}
+		},
+		{
+			"name": "Slope base 4",
+			"from": [1, 0, 0],
+			"to": [4, 2, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 0, 8]},
+			"faces": {
+				"north": {"uv": [2, 15.125, 2.375, 15.375], "texture": "#0"},
+				"east": {"uv": [0, 15.125, 2, 15.375], "texture": "#0"},
+				"south": {"uv": [4.375, 15.125, 4.75, 15.375], "texture": "#0"},
+				"west": {"uv": [2.375, 15.125, 4.375, 15.375], "texture": "#0"},
+				"up": {"uv": [2.375, 15.125, 2, 13.125], "texture": "#0"},
+				"down": {"uv": [2.75, 13.125, 2.375, 15.125], "texture": "#0"}
+			}
+		},
+		{
+			"name": "Slope 4",
+			"from": [10.2, 1.1, 0.5],
+			"to": [13.2, 10.1, 15.5],
+			"rotation": {"angle": 22.5, "axis": "z", "origin": [11.78988, 5.71044, 8]},
+			"faces": {
+				"north": {"uv": [1.875, 11.875, 2.25, 13], "texture": "#0"},
+				"east": {"uv": [0, 11.875, 1.875, 13], "texture": "#0"},
+				"south": {"uv": [4.125, 11.875, 4.5, 13], "texture": "#0"},
+				"west": {"uv": [2.25, 11.875, 4.125, 13], "texture": "#0"},
+				"up": {"uv": [2.25, 11.875, 1.875, 10], "texture": "#0"},
+				"down": {"uv": [2.625, 10, 2.25, 11.875], "texture": "#0"}
+			}
+		},
+		{
+			"name": "Base underslope 2",
+			"from": [4.5, 10.9, 1],
+			"to": [11.5, 12.9, 15],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 0, 8]},
+			"faces": {
+				"north": {"uv": [6.75, 4.875, 7.625, 5.125], "texture": "#0"},
+				"east": {"uv": [5, 4.875, 6.75, 5.125], "texture": "#0"},
+				"south": {"uv": [9.375, 4.875, 10.25, 5.125], "texture": "#0"},
+				"west": {"uv": [7.625, 4.875, 9.375, 5.125], "texture": "#0"},
+				"up": {"uv": [7.625, 4.875, 6.75, 3.125], "texture": "#0"},
+				"down": {"uv": [8.5, 3.125, 7.625, 4.875], "texture": "#0"}
+			}
+		},
+		{
+			"name": "Base very top",
+			"from": [4, 10.8, 4],
+			"to": [12, 15.8, 12],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 0, 8]},
+			"faces": {
+				"north": {"uv": [6, 11, 7, 11.625], "texture": "#0"},
+				"east": {"uv": [5, 11, 6, 11.625], "texture": "#0"},
+				"south": {"uv": [8, 11, 9, 11.625], "texture": "#0"},
+				"west": {"uv": [7, 11, 8, 11.625], "texture": "#0"},
+				"up": {"uv": [7, 11, 6, 10], "texture": "#0"},
+				"down": {"uv": [8, 10, 7, 11], "texture": "#0"}
+			}
+		},
+		{
+			"name": "Base top 2",
+			"from": [5, 12.8, 2.5],
+			"to": [11, 14.8, 13.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 0, 8]},
+			"faces": {
+				"north": {"uv": [1.375, 3.875, 2.125, 4.125], "texture": "#0"},
+				"east": {"uv": [0, 3.875, 1.375, 4.125], "texture": "#0"},
+				"south": {"uv": [3.5, 3.875, 4.25, 4.125], "texture": "#0"},
+				"west": {"uv": [2.125, 3.875, 3.5, 4.125], "texture": "#0"},
+				"up": {"uv": [2.125, 3.875, 1.375, 2.5], "texture": "#0"},
+				"down": {"uv": [2.875, 2.5, 2.125, 3.875], "texture": "#0"}
+			}
+		},
+		{
+			"name": "Base 2",
+			"from": [4, -0.1, 0],
+			"to": [12, 10.9, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 0, 8]},
+			"faces": {
+				"north": {"uv": [2, 8.25, 3, 9.625], "texture": "#0"},
+				"east": {"uv": [0, 8.25, 2, 9.625], "texture": "#0"},
+				"south": {"uv": [5, 8.25, 6, 9.625], "texture": "#0"},
+				"west": {"uv": [3, 8.25, 5, 9.625], "texture": "#0"},
+				"up": {"uv": [3, 8.25, 2, 6.25], "texture": "#0"},
+				"down": {"uv": [4, 6.25, 3, 8.25], "texture": "#0"}
+			}
+		},
+		{
+			"name": "Base 1",
+			"from": [0, -0.1, 4],
+			"to": [16, 10.9, 12],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 0, 8]},
+			"faces": {
+				"north": {"uv": [1, 1, 3, 2.375], "texture": "#0"},
+				"east": {"uv": [0, 1, 1, 2.375], "texture": "#0"},
+				"south": {"uv": [4, 1, 6, 2.375], "texture": "#0"},
+				"west": {"uv": [3, 1, 4, 2.375], "texture": "#0"},
+				"up": {"uv": [3, 1, 1, 0], "texture": "#0"},
+				"down": {"uv": [5, 0, 3, 1], "texture": "#0"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "root",
+			"origin": [8, 24, 8],
+			"color": 0,
+			"children": [
+				{
+					"name": "Base1",
+					"origin": [8, 0, 8],
+					"color": 0,
+					"children": [
+						{
+							"name": "Slope1",
+							"origin": [8, 1, 0.9],
+							"color": 0,
+							"children": [
+								{
+									"name": "Slopebase1",
+									"origin": [8, 1, 1.05],
+									"color": 0,
+									"children": [0]
+								},
+								1
+							]
+						},
+						{
+							"name": "Slope2",
+							"origin": [8, 1, 15.1],
+							"color": 0,
+							"children": [
+								{
+									"name": "Slopebase2",
+									"origin": [8, 1, 14.95],
+									"color": 0,
+									"children": [2]
+								},
+								3
+							]
+						},
+						{
+							"name": "Baseunderslope1",
+							"origin": [8, 11.9, 8],
+							"color": 0,
+							"children": [4]
+						},
+						{
+							"name": "Basetop1",
+							"origin": [8, 12.8, 8],
+							"color": 0,
+							"children": [5]
+						},
+						{
+							"name": "Base2",
+							"origin": [8, 0, 8],
+							"color": 0,
+							"children": [
+								{
+									"name": "Slope3",
+									"origin": [15.1, 1, 8],
+									"color": 0,
+									"children": [
+										{
+											"name": "Slopebase3",
+											"origin": [14.95, 1, 8],
+											"color": 0,
+											"children": [6]
+										},
+										7
+									]
+								},
+								{
+									"name": "Slope4",
+									"origin": [0.9, 1, 8],
+									"color": 0,
+									"children": [
+										{
+											"name": "Slopebase4",
+											"origin": [0.75, 2, 8],
+											"color": 0,
+											"children": [8]
+										},
+										9
+									]
+								},
+								{
+									"name": "Baseunderslope2",
+									"origin": [8, 11.9, 8],
+									"color": 0,
+									"children": [10]
+								},
+								{
+									"name": "Basetop2",
+									"origin": [8, 12.8, 8],
+									"color": 0,
+									"children": [
+										{
+											"name": "Baseverytop",
+											"origin": [8, 14.8, 8],
+											"color": 0,
+											"children": [11]
+										},
+										12
+									]
+								},
+								13
+							]
+						},
+						14
+					]
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "bone_count=1": {
+      "model": "jurassicreborn:block/megalodon_lower_jaw_fossil"
+    },
+    "bone_count=2": {
+      "model": "jurassicreborn:block/megalodon_upper_jaw_fossil"
+    },
+    "bone_count=3": {
+      "model": "jurassicreborn:block/megalodon_tooth_fossil"
+    }
+  }
+}

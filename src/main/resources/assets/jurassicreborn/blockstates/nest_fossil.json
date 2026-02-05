@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "variant=0": { "model": "jurassicreborn:block/nest_fossil_1" },
+    "variant=1": { "model": "jurassicreborn:block/nest_fossil_2" },
+    "variant=2": { "model": "jurassicreborn:block/nest_fossil_3" }
+  }
+}

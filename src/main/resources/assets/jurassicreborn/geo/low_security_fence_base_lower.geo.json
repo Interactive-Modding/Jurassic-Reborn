@@ -1,0 +1,105 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.unknown",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 4,
+				"visible_bounds_height": 3.5,
+				"visible_bounds_offset": [0, 1.25, 0]
+			},
+			"bones": [
+				{
+					"name": "root",
+					"pivot": [0, 24, 0]
+				},
+				{
+					"name": "Base",
+					"parent": "root",
+					"pivot": [0, 0, 0],
+					"cubes": [
+						{"origin": [-8, -0.1, -4], "size": [16, 11, 8], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "Slope1",
+					"parent": "Base",
+					"pivot": [0, 1, -7.1],
+					"rotation": [-15.65, 0, 0],
+					"cubes": [
+						{"origin": [-7.5, 1.9, -7.1], "size": [15, 9, 3], "uv": [20, 38]}
+					]
+				},
+				{
+					"name": "Slopebase1",
+					"parent": "Slope1",
+					"pivot": [0, 1, -6.95],
+					"rotation": [15.65, 0, 0],
+					"cubes": [
+						{"origin": [-8, 0, -6.95], "size": [16, 2, 3], "uv": [23, 57]}
+					]
+				},
+				{
+					"name": "Slope2",
+					"parent": "Base",
+					"pivot": [0, 1, 7.1],
+					"rotation": [15.65, 0, 0],
+					"cubes": [
+						{"origin": [-7.5, 1.9, 4.1], "size": [15, 9, 3], "uv": [20, 38]}
+					]
+				},
+				{
+					"name": "Slopebase2",
+					"parent": "Slope2",
+					"pivot": [0, 1, 6.95],
+					"rotation": [-15.65, 0, 0],
+					"cubes": [
+						{"origin": [-8, 0, 3.95], "size": [16, 2, 3], "uv": [23, 57]}
+					]
+				},
+				{
+					"name": "Baseunderslope",
+					"parent": "Base",
+					"pivot": [0, 11.45, 0],
+					"cubes": [
+						{"origin": [-7.5, 10.45, -3.5], "size": [15, 1, 7], "uv": [0, 20]}
+					]
+				},
+				{
+					"name": "Basetop",
+					"parent": "Base",
+					"pivot": [0, 11.9, 0],
+					"cubes": [
+						{"origin": [-8, 10.9, -2.5], "size": [16, 1, 5], "uv": [0, 30]}
+					]
+				},
+				{
+					"name": "Railingholder",
+					"parent": "Base",
+					"pivot": [0, 7.5, 0],
+					"cubes": [
+						{"origin": [-1, 4, -6], "size": [2, 4, 12], "uv": [0, 40]}
+					]
+				},
+				{
+					"name": "Railing1",
+					"parent": "Railingholder",
+					"pivot": [0, 8.2, -5.6],
+					"cubes": [
+						{"origin": [-8, 7.2, -6.1], "size": [16, 1, 1], "uv": [0, 62]}
+					]
+				},
+				{
+					"name": "Railing2",
+					"parent": "Railingholder",
+					"pivot": [0, 7.6, 5.6],
+					"cubes": [
+						{"origin": [-8, 7.1, 5.1], "size": [16, 1, 1], "uv": [0, 62]}
+					]
+				}
+			]
+		}
+	]
+}

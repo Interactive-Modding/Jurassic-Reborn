@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "facing=south": {
+      "model": "jurassicreborn:block/feeder"
+    },
+    "facing=north": {
+      "model": "jurassicreborn:block/feeder"
+    },
+    "facing=west": {
+      "model": "jurassicreborn:block/feeder"
+    },
+    "facing=east": {
+      "model": "jurassicreborn:block/feeder"
+    },
+    "facing=up": {
+      "model": "jurassicreborn:block/feeder"
+    },
+    "facing=down": {
+      "model": "jurassicreborn:block/feeder"
+    }
+  }
+}

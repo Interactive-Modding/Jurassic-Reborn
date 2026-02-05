@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/wall_inventory",
+  "textures": {
+    "wall": "jurassicreborn:block/refined_gypsum_panel"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "jurassicreborn:block/gypsum_mixed_path",
+    "side": "jurassicreborn:block/gypsum_mixed_path",
+    "top": "jurassicreborn:block/gypsum_mixed_path"
+  }
+}

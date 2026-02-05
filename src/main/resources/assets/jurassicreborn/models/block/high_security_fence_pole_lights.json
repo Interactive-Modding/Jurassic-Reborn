@@ -1,0 +1,60 @@
+{
+	"format_version": "1.9.0",
+	"credit": "Made with Blockbench",
+	"texture_size": [32, 32],
+	"textures": {
+		"0": "jurassicreborn:block/high_security_fence_pole",
+		"particle": "jurassicreborn:block/high_security_fence_pole"
+	},
+	"elements": [
+		{
+			"name": "Blue light active",
+			"from": [8, 17.5, 6.2],
+			"to": [9, 19.5, 7.2],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 0, 8]},
+			"faces": {
+				"north": {"uv": [12.5, 0.5, 13, 1.5], "texture": "#0"},
+				"east": {"uv": [12, 0.5, 12.5, 1.5], "texture": "#0"},
+				"south": {"uv": [13.5, 0.5, 14, 1.5], "texture": "#0"},
+				"west": {"uv": [13, 0.5, 13.5, 1.5], "texture": "#0"},
+				"up": {"uv": [13, 0.5, 12.5, 0], "texture": "#0"},
+				"down": {"uv": [13.5, 0, 13, 0.5], "texture": "#0"}
+			}
+		},
+		{
+			"name": "Orange light active",
+			"from": [7.8, 18, 8.7],
+			"to": [8.8, 20, 9.7],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 0, 8]},
+			"faces": {
+				"north": {"uv": [10.5, 0.5, 11, 1.5], "texture": "#0"},
+				"east": {"uv": [10, 0.5, 10.5, 1.5], "texture": "#0"},
+				"south": {"uv": [11.5, 0.5, 12, 1.5], "texture": "#0"},
+				"west": {"uv": [11, 0.5, 11.5, 1.5], "texture": "#0"},
+				"up": {"uv": [11, 0.5, 10.5, 0], "texture": "#0"},
+				"down": {"uv": [11.5, 0, 11, 0.5], "texture": "#0"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "root",
+			"origin": [8, 24, 8],
+			"color": 0,
+			"children": [
+				{
+					"name": "Bluelightactive",
+					"origin": [8.5, 19, 6.7],
+					"color": 0,
+					"children": [0]
+				},
+				{
+					"name": "Orangelightactive",
+					"origin": [8.3, 19.5, 9.2],
+					"color": 0,
+					"children": [1]
+				}
+			]
+		}
+	]
+}

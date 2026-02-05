@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "jurassicreborn:block/gypsum_cobblestone",
+    "side": "jurassicreborn:block/gypsum_cobblestone",
+    "top": "jurassicreborn:block/gypsum_cobblestone"
+  }
+}

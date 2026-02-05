@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "bone_count=1": {
+      "model": "jurassicreborn:block/triceratops_front_leg_bones_fossil"
+    },
+    "bone_count=2": {
+      "model": "jurassicreborn:block/triceratops_hind_leg_bones_fossil"
+    },
+    "bone_count=3": {
+      "model": "jurassicreborn:block/triceratops_horn_fossil"
+    },
+    "bone_count=4": {
+      "model": "jurassicreborn:block/triceratops_neck_vertebrae_fossil"
+    },
+    "bone_count=5": {
+      "model": "jurassicreborn:block/triceratops_pelvis_fossil"
+    },
+    "bone_count=6": {
+      "model": "jurassicreborn:block/triceratops_ribcage_fossil"
+    },
+    "bone_count=7": {
+      "model": "jurassicreborn:block/triceratops_shoulder_fossil"
+    },
+    "bone_count=8": {
+      "model": "jurassicreborn:block/triceratops_skull_fossil"
+    },
+    "bone_count=9": {
+      "model": "jurassicreborn:block/triceratops_tail_vertebrae_fossil"
+    },
+    "bone_count=10": {
+      "model": "jurassicreborn:block/triceratops_tooth_fossil"
+    }
+  }
+}

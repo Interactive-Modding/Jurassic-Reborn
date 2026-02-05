@@ -1,0 +1,38 @@
+{
+  "parent": "jurassicreborn:jurassicreborn/dna_combinator_hybridizer",
+  "criteria": {
+    "dna_synthesizer": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna_synthesizer"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.jurassicreborn.dna_synthesizer.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "jurassicreborn:dna_synthesizer"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.jurassicreborn.dna_synthesizer.title"
+    }
+  },
+  "requirements": [
+    [
+      "dna_synthesizer"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

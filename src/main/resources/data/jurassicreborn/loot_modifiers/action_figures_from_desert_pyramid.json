@@ -1,0 +1,12 @@
+{
+  "type": "jurassicreborn:add_item",
+
+  "conditions": [
+    { "condition": "forge:loot_table_id",
+      "loot_table_id": "minecraft:chests/desert_pyramid" }
+  ],
+
+  "tag": "jurassicreborn:action_figures",
+  "chance": 0.25,
+  "count": 1
+}

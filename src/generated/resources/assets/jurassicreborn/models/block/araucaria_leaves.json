@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/leaves",
+  "textures": {
+    "all": "jurassicreborn:block/araucaria_leaves"
+  }
+}

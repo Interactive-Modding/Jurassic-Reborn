@@ -1,0 +1,17 @@
+{
+	"version": 0,
+	"poses": {
+		"IDLE": [
+		  {
+			"pose": "orthoceras_skeleton_horizontal",
+			"time": 1
+		  }
+		],
+		"VERTICAL": [
+			{
+				"pose": "orthoceras_skeleton_vertical",
+				"time": 1
+			}
+		]
+	}
+}

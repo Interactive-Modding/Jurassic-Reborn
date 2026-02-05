@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "jurassicreborn:block/ginkgo_sapling"
+  }
+}

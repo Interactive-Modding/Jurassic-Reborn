@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "waterlogged=false": { "model": "jurassicreborn:block/skull_display_block" },
+    "waterlogged=true": { "model": "jurassicreborn:block/skull_display_block" }
+  }
+}

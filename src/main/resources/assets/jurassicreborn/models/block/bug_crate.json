@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "up": "jurassicreborn:block/bug_crate_top",
+    "down": "jurassicreborn:block/bug_crate_bottom",
+    "north": "jurassicreborn:block/bug_crate_side",
+    "south": "jurassicreborn:block/bug_crate_side",
+    "west": "jurassicreborn:block/bug_crate_side",
+    "east": "jurassicreborn:block/bug_crate_side",
+    "particle": "jurassicreborn:block/bug_crate_side"
+  }
+}

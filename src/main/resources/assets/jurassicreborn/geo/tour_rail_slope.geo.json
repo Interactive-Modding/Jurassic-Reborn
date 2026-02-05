@@ -1,0 +1,154 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.unknown",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 3,
+				"visible_bounds_height": 2.5,
+				"visible_bounds_offset": [0, 0.75, 0]
+			},
+			"bones": [
+				{
+					"name": "root",
+					"pivot": [0, 24, 0]
+				},
+				{
+					"name": "Part1",
+					"parent": "root",
+					"pivot": [0, 7.3, -2.65],
+					"rotation": [35, 0, 0],
+					"cubes": [
+						{"origin": [-3.5, 2.3, -13.65], "size": [7, 5, 15], "uv": [0, 18]}
+					]
+				},
+				{
+					"name": "Part3",
+					"parent": "Part1",
+					"pivot": [0, 8, -2.65],
+					"cubes": [
+						{"origin": [-0.5, 5, -13.65], "size": [1, 3, 15], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "Part3b",
+					"parent": "Part3",
+					"pivot": [0, 8, 12.35],
+					"cubes": [
+						{"origin": [-0.5, 5, 1.35], "size": [1, 3, 15], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "Part4",
+					"parent": "Part1",
+					"pivot": [-2.5, 8, -2.65],
+					"cubes": [
+						{"origin": [-3, 5, -13.65], "size": [1, 3, 15], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "Part4b",
+					"parent": "Part4",
+					"pivot": [-2.5, 8, 12.35],
+					"cubes": [
+						{"origin": [-3, 5, 1.35], "size": [1, 3, 15], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "Part5",
+					"parent": "Part1",
+					"pivot": [-0.175, 8.00071, -1.63154],
+					"rotation": [0, 0, -135],
+					"cubes": [
+						{"origin": [-0.175, 10.00071, -13.63154], "size": [2, 4, 15], "uv": [0, 45]}
+					]
+				},
+				{
+					"name": "Part5b",
+					"parent": "Part5",
+					"pivot": [-0.175, 8.00071, 13.36846],
+					"cubes": [
+						{"origin": [-0.175, 10.00071, 1.36846], "size": [2, 4, 14], "uv": [19, 42]}
+					]
+				},
+				{
+					"name": "Part6",
+					"parent": "Part1",
+					"pivot": [0.175, 8.00516, -1.64996],
+					"rotation": [0, 0, 135],
+					"cubes": [
+						{"origin": [-1.825, 10.00516, -13.64996], "size": [2, 4, 15], "uv": [0, 45]}
+					]
+				},
+				{
+					"name": "Part6b",
+					"parent": "Part6",
+					"pivot": [-0.825, 6.00516, 8.35004],
+					"cubes": [
+						{"origin": [-1.825, 10.00516, 1.35004], "size": [2, 4, 14], "uv": [19, 42]}
+					]
+				},
+				{
+					"name": "Part1b",
+					"parent": "Part1",
+					"pivot": [0, 7.3, 12.19],
+					"cubes": [
+						{"origin": [-3.5, 2.3, 1.19], "size": [7, 5, 15], "uv": [0, 18]}
+					]
+				},
+				{
+					"name": "Pillar2",
+					"parent": "Part1b",
+					"pivot": [1.4, 6.3, 12.09],
+					"rotation": [-35, 0, 0],
+					"cubes": [
+						{"origin": [-0.6, -9, 12.09], "size": [2, 12, 2], "uv": [35, 0]}
+					]
+				},
+				{
+					"name": "PillarPlateau2",
+					"parent": "Pillar2",
+					"pivot": [1.8, -8.1, 11.09],
+					"cubes": [
+						{"origin": [-1.2, -9.1, 11.09], "size": [3, 1, 4], "uv": [18, 0]}
+					]
+				},
+				{
+					"name": "Pillar",
+					"parent": "Part1b",
+					"pivot": [1.5, 6.3, 12.19],
+					"rotation": [-35, 0, 0],
+					"cubes": [
+						{"origin": [-0.5, -8.9, 4.29], "size": [2, 7, 2], "uv": [43, 0]}
+					]
+				},
+				{
+					"name": "PillarPlateau1",
+					"parent": "Pillar",
+					"pivot": [1.9, -8.1, 3.19],
+					"cubes": [
+						{"origin": [-1.1, -9.1, 3.19], "size": [3, 1, 4], "uv": [18, 0]}
+					]
+				},
+				{
+					"name": "Part2",
+					"parent": "Part1",
+					"pivot": [2.5, 8, -2.65],
+					"cubes": [
+						{"origin": [2, 5, -13.65], "size": [1, 3, 15], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "Part2b",
+					"parent": "Part2",
+					"pivot": [2.5, 8, 12.35],
+					"cubes": [
+						{"origin": [2, 5, 1.35], "size": [1, 3, 15], "uv": [0, 0]}
+					]
+				}
+			]
+		}
+	]
+}

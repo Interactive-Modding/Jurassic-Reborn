@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "jurassicreborn:refined_gypsum_panel"
+    }
+  },
+  "pattern": [
+    "###"
+  ],
+  "result": {
+    "count": 6,
+    "item": "jurassicreborn:refined_gypsum_panel_slab"
+  },
+  "show_notification": true
+}

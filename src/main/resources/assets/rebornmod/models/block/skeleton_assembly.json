@@ -1,8 +1,0 @@
-{
-  "parent": "block/cube_all",
-  "textures": {
-    "layer0": "rebornmod:blocks/skeleton_assembly",
-    "particle": "blocks/planks_oak"
-  },
-  "tabula": "rebornmod:models/block/skeleton_assembly"
-}

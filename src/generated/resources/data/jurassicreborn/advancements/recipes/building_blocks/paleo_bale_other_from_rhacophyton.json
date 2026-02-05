@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_rhacophyton": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:rhacophyton"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "jurassicreborn:paleo_bale_other_from_rhacophyton"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_rhacophyton",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "jurassicreborn:paleo_bale_other_from_rhacophyton"
+    ]
+  },
+  "sends_telemetry_event": false
+}

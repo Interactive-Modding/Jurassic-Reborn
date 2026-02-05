@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "jurassicreborn:fine_net",
+  "pattern": [
+    "ABC",
+    " BB",
+    "B A"
+  ],
+  "key": {
+    "C": {
+      "item": "minecraft:wool",
+      "data": 0
+    },
+    "B": {
+      "item": "minecraft:stick",
+      "data": 0
+    },
+    "A": {
+      "item": "minecraft:string",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "jurassicreborn:fine_net",
+    "data": 0
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "jurassicreborn:item/hatched_egg/cearadactylus",
+    "layer1": "jurassicreborn:item/overlay/cearadactylus"
+  }
+}

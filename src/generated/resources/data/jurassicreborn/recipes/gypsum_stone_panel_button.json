@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    {
+      "item": "jurassicreborn:gypsum_stone_panel"
+    }
+  ],
+  "result": {
+    "item": "jurassicreborn:gypsum_stone_panel_button"
+  }
+}

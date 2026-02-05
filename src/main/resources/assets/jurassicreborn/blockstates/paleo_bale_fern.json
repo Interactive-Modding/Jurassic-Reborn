@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=y": {
+      "model": "jurassicreborn:block/paleo_bale/fern"
+    },
+    "axis=z": {
+      "model": "jurassicreborn:block/paleo_bale/fern",
+      "x": 90
+    },
+    "axis=x": {
+      "model": "jurassicreborn:block/paleo_bale/fern",
+      "x": 90,
+      "y": 90
+    }
+  }
+}

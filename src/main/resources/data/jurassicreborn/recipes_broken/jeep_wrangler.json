@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "jurassicreborn:jeep_wrangler",
+  "pattern": [
+    "ABA",
+    "CDB",
+    "ABA"
+  ],
+  "key": {
+    "D": {
+      "item": "jurassicreborn:unfinished_car",
+      "data": 0
+    },
+    "B": {
+      "item": "minecraft:dye",
+      "data": 1
+    },
+    "C": {
+      "item": "jurassicreborn:car_tire",
+      "data": 0
+    },
+    "A": {
+      "item": "minecraft:dye",
+      "data": 7
+    }
+  },
+  "result": {
+    "item": "jurassicreborn:vehicle_item",
+    "data": 1
+  }
+}

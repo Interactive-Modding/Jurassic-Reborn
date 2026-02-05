@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "A": {
+      "item": "minecraft:lapis_lazuli"
+    },
+    "B": {
+      "item": "minecraft:paper"
+    },
+    "C": {
+      "tag": "minecraft:wooden_slabs"
+    },
+    "D": {
+      "item": "minecraft:crafting_table"
+    },
+    "E": {
+      "tag": "minecraft:wooden_fences"
+    },
+    "F": {
+      "item": "jurassicreborn:low_security_fence_wire"
+    }
+  },
+  "pattern": [
+    "ABB",
+    "CDC",
+    "EFE"
+  ],
+  "result": {
+    "item": "jurassicreborn:skeleton_assembly"
+  },
+  "show_notification": true
+}

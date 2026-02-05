@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "jurassicreborn:tour_rails_loop",
+  "ingredients": [
+    {
+      "item": "jurassicreborn:tour_rail"
+    }
+  ],
+  "result": {
+    "item": "jurassicreborn:tour_rail_slow"
+  }
+}

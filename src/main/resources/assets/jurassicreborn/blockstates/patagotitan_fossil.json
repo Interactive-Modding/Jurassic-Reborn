@@ -1,0 +1,31 @@
+{
+  "variants": {
+    "bone_count=1": {
+      "model": "jurassicreborn:block/patagotitan_front_leg_bones_fossil"
+    },
+    "bone_count=2": {
+      "model": "jurassicreborn:block/patagotitan_hind_leg_bones_fossil"
+    },
+    "bone_count=3": {
+      "model": "jurassicreborn:block/patagotitan_neck_vertebrae_fossil"
+    },
+    "bone_count=4": {
+      "model": "jurassicreborn:block/patagotitan_pelvis_fossil"
+    },
+    "bone_count=5": {
+      "model": "jurassicreborn:block/patagotitan_ribcage_fossil"
+    },
+    "bone_count=6": {
+      "model": "jurassicreborn:block/patagotitan_shoulder_fossil"
+    },
+    "bone_count=7": {
+      "model": "jurassicreborn:block/patagotitan_skull_fossil"
+    },
+    "bone_count=8": {
+      "model": "jurassicreborn:block/patagotitan_tail_vertebrae_fossil"
+    },
+    "bone_count=9": {
+      "model": "jurassicreborn:block/patagotitan_tooth_fossil"
+    }
+  }
+}

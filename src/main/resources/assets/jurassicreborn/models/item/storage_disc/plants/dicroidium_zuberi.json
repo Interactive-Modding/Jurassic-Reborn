@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "jurassicreborn:item/storage_disc",
+    "layer1": "jurassicreborn:item/overlay/plants/dicroidium_zuberi"
+  }
+}

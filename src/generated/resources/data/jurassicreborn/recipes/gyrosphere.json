@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "jurassicreborn:gyrosphere",
+  "key": {
+    "A": {
+      "item": "minecraft:glass_pane"
+    },
+    "B": {
+      "item": "minecraft:iron_block"
+    },
+    "C": {
+      "item": "jurassicreborn:engine_system"
+    },
+    "D": {
+      "item": "jurassicreborn:gyrosphere_interior"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "ADA",
+    "BCB"
+  ],
+  "result": {
+    "item": "jurassicreborn:gyrosphere"
+  },
+  "show_notification": true
+}

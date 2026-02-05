@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_gyrosphere_interior": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:gyrosphere_interior"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "jurassicreborn:gyrosphere"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_gyrosphere_interior",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "jurassicreborn:gyrosphere"
+    ]
+  },
+  "sends_telemetry_event": false
+}

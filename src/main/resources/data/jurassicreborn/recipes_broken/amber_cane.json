@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "jurassicreborn:amber_cane",
+  "pattern": [
+    "A",
+    "B",
+    "B"
+  ],
+  "key": {
+    "B": {
+      "item": "minecraft:stick",
+      "data": 0
+    },
+    "A": {
+      "item": "jurassicreborn:amber",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "jurassicreborn:amber_cane",
+    "data": 0
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "bone_count=1": {
+      "model": "jurassicreborn:block/perisphinctes_beak_fossil"
+    },
+    "bone_count=2": {
+      "model": "jurassicreborn:block/perisphinctes_shell_cover_fossil"
+    }
+  }
+}

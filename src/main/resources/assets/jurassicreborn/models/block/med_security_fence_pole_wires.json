@@ -1,0 +1,168 @@
+{
+	"format_version": "1.9.0",
+	"credit": "Made with Blockbench",
+	"texture_size": [32, 32],
+	"textures": {
+		"0": "jurassicreborn:block/med_security_fence_wire",
+		"particle": "jurassicreborn:block/med_security_fence_wire"
+	},
+	"elements": [
+		{
+			"name": "Wire 3",
+			"from": [13.5, 4.5, 7.5],
+			"to": [14.5, 11.5, 8.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [4, 6.5, 8]},
+			"faces": {
+				"north": {"uv": [11.5, 5.5, 12, 9], "texture": "#0"},
+				"east": {"uv": [11, 5.5, 11.5, 9], "texture": "#0"},
+				"south": {"uv": [10.5, 5.5, 11, 9], "texture": "#0"},
+				"west": {"uv": [10, 5.5, 10.5, 9], "texture": "#0"},
+				"up": {"uv": [11, 5.5, 10.5, 5], "rotation": 180, "texture": "#0"},
+				"down": {"uv": [11.5, 5, 11, 5.5], "rotation": 180, "texture": "#0"}
+			}
+		},
+		{
+			"name": "Wire 1",
+			"from": [11, 11.5, 7.5],
+			"to": [16, 12.5, 8.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [4, 6.5, 8]},
+			"faces": {
+				"north": {"uv": [13.5, 5.5, 16, 6], "texture": "#0"},
+				"east": {"uv": [13, 5.5, 13.5, 6], "texture": "#0"},
+				"south": {"uv": [10.5, 5.5, 13, 6], "texture": "#0"},
+				"west": {"uv": [10, 5.5, 10.5, 6], "texture": "#0"},
+				"up": {"uv": [13, 5.5, 10.5, 5], "rotation": 180, "texture": "#0"},
+				"down": {"uv": [15.5, 5, 13, 5.5], "rotation": 180, "texture": "#0"}
+			}
+		},
+		{
+			"name": "Wire base 1",
+			"from": [9, 11, 7],
+			"to": [11, 13, 9],
+			"rotation": {"angle": 0, "axis": "y", "origin": [4, 6.5, 8]},
+			"faces": {
+				"north": {"uv": [13, 4, 14, 5], "texture": "#0"},
+				"east": {"uv": [12, 4, 13, 5], "texture": "#0"},
+				"south": {"uv": [11, 4, 12, 5], "texture": "#0"},
+				"west": {"uv": [10, 4, 11, 5], "texture": "#0"},
+				"up": {"uv": [12, 4, 11, 3], "rotation": 180, "texture": "#0"},
+				"down": {"uv": [13, 3, 12, 4], "rotation": 180, "texture": "#0"}
+			}
+		},
+		{
+			"name": "Wire 2",
+			"from": [11, 3.5, 7.5],
+			"to": [16, 4.5, 8.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [4, 6.5, 8]},
+			"faces": {
+				"north": {"uv": [13.5, 5.5, 16, 6], "texture": "#0"},
+				"east": {"uv": [13, 5.5, 13.5, 6], "texture": "#0"},
+				"south": {"uv": [10.5, 5.5, 13, 6], "texture": "#0"},
+				"west": {"uv": [10, 5.5, 10.5, 6], "texture": "#0"},
+				"up": {"uv": [13, 5.5, 10.5, 5], "rotation": 180, "texture": "#0"},
+				"down": {"uv": [15.5, 5, 13, 5.5], "rotation": 180, "texture": "#0"}
+			}
+		},
+		{
+			"name": "Wire base 2",
+			"from": [9, 3, 7],
+			"to": [11, 5, 9],
+			"rotation": {"angle": 0, "axis": "y", "origin": [4, 6.5, 8]},
+			"faces": {
+				"north": {"uv": [13, 4, 14, 5], "texture": "#0"},
+				"east": {"uv": [12, 4, 13, 5], "texture": "#0"},
+				"south": {"uv": [11, 4, 12, 5], "texture": "#0"},
+				"west": {"uv": [10, 4, 11, 5], "texture": "#0"},
+				"up": {"uv": [12, 4, 11, 3], "rotation": 180, "texture": "#0"},
+				"down": {"uv": [13, 3, 12, 4], "rotation": 180, "texture": "#0"}
+			}
+		},
+		{
+			"name": "Wire 4",
+			"from": [11, 0.5, 7.5],
+			"to": [16, 1.5, 8.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [4, 6.5, 8]},
+			"faces": {
+				"north": {"uv": [13.5, 5.5, 16, 6], "texture": "#0"},
+				"east": {"uv": [13, 5.5, 13.5, 6], "texture": "#0"},
+				"south": {"uv": [10.5, 5.5, 13, 6], "texture": "#0"},
+				"west": {"uv": [10, 5.5, 10.5, 6], "texture": "#0"},
+				"up": {"uv": [13, 5.5, 10.5, 5], "rotation": 180, "texture": "#0"},
+				"down": {"uv": [15.5, 5, 13, 5.5], "rotation": 180, "texture": "#0"}
+			}
+		},
+		{
+			"name": "Wire base 3",
+			"from": [9, 0, 7],
+			"to": [11, 2, 9],
+			"rotation": {"angle": 0, "axis": "y", "origin": [4, 6.5, 8]},
+			"faces": {
+				"north": {"uv": [13, 4, 14, 5], "texture": "#0"},
+				"east": {"uv": [12, 4, 13, 5], "texture": "#0"},
+				"south": {"uv": [11, 4, 12, 5], "texture": "#0"},
+				"west": {"uv": [10, 4, 11, 5], "texture": "#0"},
+				"up": {"uv": [12, 4, 11, 3], "rotation": 180, "texture": "#0"},
+				"down": {"uv": [13, 3, 12, 4], "rotation": 180, "texture": "#0"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "root",
+			"origin": [8, 24, 8],
+			"color": 0,
+			"children": [
+				{
+					"name": "Wirebase1",
+					"origin": [6, 12, 8],
+					"color": 0,
+					"children": [
+						{
+							"name": "Wire1",
+							"origin": [5, 12, 8],
+							"color": 0,
+							"children": [
+								{
+									"name": "Wire3",
+									"origin": [2, 11.5, 8],
+									"color": 0,
+									"children": [0]
+								},
+								1
+							]
+						},
+						2
+					]
+				},
+				{
+					"name": "Wirebase2",
+					"origin": [6, 4, 8],
+					"color": 0,
+					"children": [
+						{
+							"name": "Wire2",
+							"origin": [5, 4, 8],
+							"color": 0,
+							"children": [3]
+						},
+						4
+					]
+				},
+				{
+					"name": "Wirebase3",
+					"origin": [6, 1, 8],
+					"color": 0,
+					"children": [
+						{
+							"name": "Wire4",
+							"origin": [5, 1, 8],
+							"color": 0,
+							"children": [5]
+						},
+						6
+					]
+				}
+			]
+		}
+	]
+}

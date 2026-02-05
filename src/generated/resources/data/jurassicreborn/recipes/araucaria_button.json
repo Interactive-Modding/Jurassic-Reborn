@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "wooden_button",
+  "ingredients": [
+    {
+      "item": "jurassicreborn:araucaria_planks"
+    }
+  ],
+  "result": {
+    "item": "jurassicreborn:araucaria_button"
+  }
+}

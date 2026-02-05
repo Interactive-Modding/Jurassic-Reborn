@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "jurassicreborn:desert_digsite",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 2136476,
+    "spacing": 40,
+    "separation": 8,
+    "type": "minecraft:random_spread"
+  }
+}

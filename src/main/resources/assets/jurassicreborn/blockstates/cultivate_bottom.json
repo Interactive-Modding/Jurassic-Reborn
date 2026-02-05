@@ -1,0 +1,55 @@
+{
+  "variants": {
+    "color=white": {
+      "model": "jurassicreborn:block/cultivator/bottom/cultivate_bottom_white"
+    },
+    "color=orange": {
+      "model": "jurassicreborn:block/cultivator/bottom/cultivate_bottom_orange"
+    },
+    "color=magenta": {
+      "model": "jurassicreborn:block/cultivator/bottom/cultivate_bottom_magenta"
+    },
+    "color=light_blue": {
+      "model": "jurassicreborn:block/cultivator/bottom/cultivate_bottom_light_blue"
+    },
+    "color=light_gray": {
+      "model": "jurassicreborn:block/cultivator/bottom/cultivate_bottom_light_gray"
+    },
+    "color=yellow": {
+      "model": "jurassicreborn:block/cultivator/bottom/cultivate_bottom_yellow"
+    },
+    "color=lime": {
+      "model": "jurassicreborn:block/cultivator/bottom/cultivate_bottom_lime"
+    },
+    "color=pink": {
+      "model": "jurassicreborn:block/cultivator/bottom/cultivate_bottom_pink"
+    },
+    "color=gray": {
+      "model": "jurassicreborn:block/cultivator/bottom/cultivate_bottom_gray"
+    },
+    "color=light_gray": {
+      "model": "jurassicreborn:block/cultivator/bottom/cultivate_bottom_silver"
+    },
+    "color=cyan": {
+      "model": "jurassicreborn:block/cultivator/bottom/cultivate_bottom_cyan"
+    },
+    "color=purple": {
+      "model": "jurassicreborn:block/cultivator/bottom/cultivate_bottom_purple"
+    },
+    "color=blue": {
+      "model": "jurassicreborn:block/cultivator/bottom/cultivate_bottom_blue"
+    },
+    "color=brown": {
+      "model": "jurassicreborn:block/cultivator/bottom/cultivate_bottom_brown"
+    },
+    "color=green": {
+      "model": "jurassicreborn:block/cultivator/bottom/cultivate_bottom_green"
+    },
+    "color=red": {
+      "model": "jurassicreborn:block/cultivator/bottom/cultivate_bottom_red"
+    },
+    "color=black": {
+      "model": "jurassicreborn:block/cultivator/bottom/cultivate_bottom_black"
+    }
+  }
+}

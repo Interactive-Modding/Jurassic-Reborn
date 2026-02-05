@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "jurassicreborn:block/clear_glass/clear_glass",
+    "particle": "jurassicreborn:block/clear_glass/clear_glass_all"
+  }
+}

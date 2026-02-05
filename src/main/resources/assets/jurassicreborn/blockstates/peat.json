@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "moisture=0": {
+      "model": "jurassicreborn:block/peat"
+    },
+    "moisture=1": {
+      "model": "jurassicreborn:block/peat"
+    },
+    "moisture=2": {
+      "model": "jurassicreborn:block/peat"
+    },
+    "moisture=3": {
+      "model": "jurassicreborn:block/peat"
+    },
+    "moisture=4": {
+      "model": "jurassicreborn:block/peat"
+    },
+    "moisture=5": {
+      "model": "jurassicreborn:block/peat"
+    },
+    "moisture=6": {
+      "model": "jurassicreborn:block/peat"
+    },
+    "moisture=7": {
+      "model": "jurassicreborn:block/peat"
+    }
+  }
+}

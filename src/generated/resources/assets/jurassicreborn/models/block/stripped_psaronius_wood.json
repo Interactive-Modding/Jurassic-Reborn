@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "jurassicreborn:block/stripped_psaronius_log",
+    "side": "jurassicreborn:block/stripped_psaronius_log"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "jurassicreborn:block/trash_can" },
+    "facing=east":  { "model": "jurassicreborn:block/trash_can", "y": 90 },
+    "facing=south": { "model": "jurassicreborn:block/trash_can", "y": 180 },
+    "facing=west":  { "model": "jurassicreborn:block/trash_can", "y": 270 }
+  }
+}

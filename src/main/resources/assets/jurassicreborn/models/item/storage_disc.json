@@ -1,0 +1,920 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "jurassicreborn:item/storage_disc"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "custom_model_data": 1
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/achillobator"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 2
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/alligator_gar"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 3
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/allosaurus"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 4
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/alvarezsaurus"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 5
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/ankylodocus"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 6
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/ankylosaurus"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 7
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/apatosaurus"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 8
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/arsinoitherium"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 9
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/asteroceras"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 10
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/baryonyx"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 11
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/beelzebufo"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 12
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/blue"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 13
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/brachiosaurus"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 14
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/calymene"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 15
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/camarasaurus"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 16
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/cameroceras"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 17
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/carcharodontosaurus"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 18
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/carnotaurus"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 19
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/cearadactylus"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 20
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/ceratosaurus"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 21
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/charlie"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 22
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/chasmosaurus"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 23
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/chilesaurus"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 24
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/coelacanth"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 25
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/coelurus"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 26
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/compsognathus"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 27
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/corythosaurus"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 28
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/crassigyrinus"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 29
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/deinosuchus"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 30
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/deinotherium"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 31
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/delta"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 32
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/dilophosaurus"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 33
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/dimetrodon"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 34
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/dimorphodon"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 35
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/diplocaulus"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 36
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/diplodocus"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 37
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/dodo"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 38
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/dreadnoughtus"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 39
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/dunkleosteus"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 40
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/echo"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 41
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/edmontosaurus"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 42
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/elasmotherium"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 43
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/endoceras"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 44
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/gallimimus"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 45
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/giganotosaurus"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 46
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/guanlong"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 48
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/herrerasaurus"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 49
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/hyaenodon"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 50
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/hypsilophodon"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 51
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/iguanodon"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 52
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/indominus"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 53
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/indoraptor"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 54
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/kairuku"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 55
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/lambeosaurus"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 56
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/leaellynasaura"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 57
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/leptictidium"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 58
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/livyatan"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 59
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/ludodactylus"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 60
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/maiasaura"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 61
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/majungasaurus"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 62
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/mamenchisaurus"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 63
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/mammoth"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 64
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/mawsonia"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 65
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/megalodon"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 66
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/megapiranha"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 67
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/megatherium"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 68
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/metriacanthosaurus"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 69
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/microceratus"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 70
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/microraptor"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 71
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/moganopterus"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 72
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/mosasaurus"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 73
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/mussaurus"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 74
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/nigersaurus"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 75
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/ornithomimus"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 76
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/orthoceras"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 77
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/othnielia"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 78
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/oviraptor"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 79
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/pachycephalosaurus"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 80
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/paraceratherium"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 81
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/parapuzosia"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 82
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/parasaurolophus"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 83
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/patagotitan"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 84
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/perisphinctes"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 85
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/postosuchus"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 86
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/proceratosaurus"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 87
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/protoceratops"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 88
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/pteranodon"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 89
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/quetzalcoatlus"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 90
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/raphusrex"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 91
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/rugops"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 92
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/segisaurus"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 93
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/sinoceratops"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 94
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/smilodon"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 95
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/spinoraptor"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 96
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/spinosaurus"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 97
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/stegosaurus"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 98
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/styracosaurus"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 99
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/suchomimus"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 100
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/therizinosaurus"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 101
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/titanis"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 102
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/titanites"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 103
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/triceratops"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 104
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/troodon"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 105
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/tropeognathus"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 106
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/tylosaurus"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 107
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/tyrannosaurus"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 108
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/vectipelta"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 109
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/velociraptor"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 110
+      },
+      "model": "jurassicreborn:item/storage_disc/dinosaurs/zhenyuanopterus"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 1001
+      },
+      "model": "jurassicreborn:item/storage_disc/plants/ajuginucula_smithii"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 1002
+      },
+      "model": "jurassicreborn:item/storage_disc/plants/araucaria"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 1003
+      },
+      "model": "jurassicreborn:item/storage_disc/plants/aulopora"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 1004
+      },
+      "model": "jurassicreborn:item/storage_disc/plants/bennettitalean"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 1005
+      },
+      "model": "jurassicreborn:item/storage_disc/plants/bennettitalean_cycadeoidea"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 1006
+      },
+      "model": "jurassicreborn:item/storage_disc/plants/bristle_fern"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 1007
+      },
+      "model": "jurassicreborn:item/storage_disc/plants/calamites"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 1008
+      },
+      "model": "jurassicreborn:item/storage_disc/plants/cinnamon_fern"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 1009
+      },
+      "model": "jurassicreborn:item/storage_disc/plants/cladochonus"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 1010
+      },
+      "model": "jurassicreborn:item/storage_disc/plants/cry_pansy"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 1011
+      },
+      "model": "jurassicreborn:item/storage_disc/plants/cycad"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 1012
+      },
+      "model": "jurassicreborn:item/storage_disc/plants/cycad_zamites"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 1013
+      },
+      "model": "jurassicreborn:item/storage_disc/plants/dicksonia"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 1014
+      },
+      "model": "jurassicreborn:item/storage_disc/plants/dicroidium_zuberi"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 1015
+      },
+      "model": "jurassicreborn:item/storage_disc/plants/dictyophyllum"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 1016
+      },
+      "model": "jurassicreborn:item/storage_disc/plants/enallhelia"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 1017
+      },
+      "model": "jurassicreborn:item/storage_disc/plants/encephalartos"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 1018
+      },
+      "model": "jurassicreborn:item/storage_disc/plants/ginkgo"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 1019
+      },
+      "model": "jurassicreborn:item/storage_disc/plants/graminidites_bambusoides"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 1020
+      },
+      "model": "jurassicreborn:item/storage_disc/plants/hippurites_radiosus"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 1021
+      },
+      "model": "jurassicreborn:item/storage_disc/plants/ladinia_simplex"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 1022
+      },
+      "model": "jurassicreborn:item/storage_disc/plants/largestipule_leather_root"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 1023
+      },
+      "model": "jurassicreborn:item/storage_disc/plants/liriodendrites"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 1024
+      },
+      "model": "jurassicreborn:item/storage_disc/plants/lithostrotion"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 1025
+      },
+      "model": "jurassicreborn:item/storage_disc/plants/magnolia"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 1026
+      },
+      "model": "jurassicreborn:item/storage_disc/plants/orontium_mackii"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 1027
+      },
+      "model": "jurassicreborn:item/storage_disc/plants/phoenix"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 1028
+      },
+      "model": "jurassicreborn:item/storage_disc/plants/psaronius"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 1029
+      },
+      "model": "jurassicreborn:item/storage_disc/plants/raphaelia"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 1030
+      },
+      "model": "jurassicreborn:item/storage_disc/plants/rhacophyton"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 1031
+      },
+      "model": "jurassicreborn:item/storage_disc/plants/rhamnus_salicifolius"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 1032
+      },
+      "model": "jurassicreborn:item/storage_disc/plants/scaly_tree_fern"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 1033
+      },
+      "model": "jurassicreborn:item/storage_disc/plants/serenna_veriformans"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 1034
+      },
+      "model": "jurassicreborn:item/storage_disc/plants/small_chain_fern"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 1035
+      },
+      "model": "jurassicreborn:item/storage_disc/plants/small_fern"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 1036
+      },
+      "model": "jurassicreborn:item/storage_disc/plants/small_royal_fern"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 1037
+      },
+      "model": "jurassicreborn:item/storage_disc/plants/stylophyllopsis"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 1038
+      },
+      "model": "jurassicreborn:item/storage_disc/plants/tempskya"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 1039
+      },
+      "model": "jurassicreborn:item/storage_disc/plants/umaltolepis"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 1040
+      },
+      "model": "jurassicreborn:item/storage_disc/plants/wild_onion"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 1041
+      },
+      "model": "jurassicreborn:item/storage_disc/plants/wild_potato"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 1042
+      },
+      "model": "jurassicreborn:item/storage_disc/plants/woolly_stalked_begonia"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 1043
+      },
+      "model": "jurassicreborn:item/storage_disc/plants/small_cycad"
+    }
+  ]
+}

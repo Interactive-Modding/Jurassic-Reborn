@@ -1,0 +1,31 @@
+{
+  "variants": {
+    "bone_count=1": {
+      "model": "jurassicreborn:block/tylosaurus_front_flipper_fossil"
+    },
+    "bone_count=2": {
+      "model": "jurassicreborn:block/tylosaurus_hind_flipper_fossil"
+    },
+    "bone_count=3": {
+      "model": "jurassicreborn:block/tylosaurus_inner_teeth_fossil"
+    },
+    "bone_count=4": {
+      "model": "jurassicreborn:block/tylosaurus_ribcage_fossil"
+    },
+    "bone_count=5": {
+      "model": "jurassicreborn:block/tylosaurus_skull_fossil"
+    },
+    "bone_count=6": {
+      "model": "jurassicreborn:block/tylosaurus_spine_fossil"
+    },
+    "bone_count=7": {
+      "model": "jurassicreborn:block/tylosaurus_tail_fluke_fossil"
+    },
+    "bone_count=8": {
+      "model": "jurassicreborn:block/tylosaurus_tail_vertebrae_fossil"
+    },
+    "bone_count=9": {
+      "model": "jurassicreborn:block/tylosaurus_tooth_fossil"
+    }
+  }
+}

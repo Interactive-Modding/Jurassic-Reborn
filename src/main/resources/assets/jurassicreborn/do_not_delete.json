@@ -1,0 +1,24 @@
+{
+  "languages": [
+    {
+      "locale": "en_US",
+      "downloadURL": "https://raw.githubusercontent.com/Interactive-Modding/jurassicjurassicreborn/tree/master/src/main/resources/assets/jurassicreborn/lang/en_US.lang"
+      },
+      {
+      "locale": "es_MX",
+      "downloadURL": "https://raw.githubusercontent.com/Interactive-Modding/jurassicjurassicreborn/tree/master/src/main/resources/assets/jurassicreborn/lang/es_MX.lang"
+      },
+      {
+      "locale": "es_ES",
+      "downloadURL": "https://raw.githubusercontent.com/Interactive-Modding/jurassicjurassicreborn/tree/master/src/main/resources/assets/jurassicreborn/lang/es_ES.lang"
+      },
+      {
+      "locale": "pt_BR",
+      "downloadURL": "https://raw.githubusercontent.com/Interactive-Modding/jurassicjurassicreborn/tree/master/src/main/resources/assets/jurassicreborn/lang/pt_BR.lang"
+      },
+      {
+      "locale": "bg_BG",
+      "downloadURL": "https://raw.githubusercontent.com/Interactive-Modding/jurassicjurassicreborn/tree/master/src/main/resources/assets/jurassicreborn/lang/bg_BG.lang"
+    }
+  ]
+}

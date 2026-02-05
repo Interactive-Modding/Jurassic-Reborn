@@ -1,0 +1,3096 @@
+{
+  "troodons_and_raptors": {
+    "category": "record",
+    "sounds": [
+      {
+        "name": "jurassicreborn:music/troodons_and_raptors",
+        "stream": true
+      }
+    ]
+  },
+  "jurassicreborn_theme": {
+    "category": "record",
+    "sounds": [
+      {
+        "name": "jurassicreborn:music/jurassicreborn_theme",
+        "stream": true
+      }
+    ]
+  },
+  "dont_move_a_muscle": {
+    "category": "record",
+    "sounds": [
+      {
+        "name": "jurassicreborn:music/dont_move_a_muscle",
+        "stream": true
+      }
+    ]
+  },
+  "fire": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:empty"
+    ]
+  },
+  "empty": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:fire"
+    ]
+  },
+  "reload": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:reload"
+    ]
+ },
+  "pachycephalosaurus_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/pachycephalosaurus/pachycephalosaurus_living_1",
+      "jurassicreborn:dinosaurs/pachycephalosaurus/pachycephalosaurus_living_2"
+    ]
+  },
+  "pachycephalosaurus_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/pachycephalosaurus/pachycephalosaurus_death_1"
+    ]
+  },
+  "pachycephalosaurus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/pachycephalosaurus/pachycephalosaurus_hurt_1"
+    ]
+},
+    "pachycephalosaurus_threat":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/pachycephalosaurus/pachycephalosaurus_threat_1",
+            "jurassicreborn:dinosaurs/pachycephalosaurus/pachycephalosaurus_threat_2"
+        ]
+  },
+  "pachycephalosaurus_call": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/pachycephalosaurus/pachycephalosaurus_calling_1",
+      "jurassicreborn:dinosaurs/pachycephalosaurus/pachycephalosaurus_calling_2"
+    ]
+  },
+  "fence_shock": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:fence_shock_1",
+      "jurassicreborn:fence_shock_2",
+      "jurassicreborn:fence_shock_3",
+      "jurassicreborn:fence_shock_4"
+    ]
+ },
+  "dimorphodon_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/dimorphodon/dimorphodon_living_1",
+      "jurassicreborn:dinosaurs/dimorphodon/dimorphodon_living_2",
+      "jurassicreborn:dinosaurs/dimorphodon/dimorphodon_living_3"
+    ]
+ },
+  "dimorphodon_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/dimorphodon/dimorphodon_death"
+    ]
+  },
+    "dimorphodon_threat":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/dimorphodon/dimorphodon_threat"
+        ]
+ },
+  "dimorphodon_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/dimorphodon/dimorphodon_hurt"
+    ]
+},
+  "dimorphodon_call": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/dimorphodon/dimorphodon_calling"
+    ]
+ },
+  "dunkleosteus_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/dunkleosteus/dunkleosteus_living_1",
+      "jurassicreborn:dinosaurs/dunkleosteus/dunkleosteus_living_2"
+    ]
+ },
+  "dunkleosteus_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/dunkleosteus/dunkleosteus_death_1",
+      "jurassicreborn:dinosaurs/dunkleosteus/dunkleosteus_death_2"
+    ]
+  },
+    "dunkleosteus_threat":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/dunkleosteus/dunkleosteus_threat"
+        ]
+ },
+  "dunkleosteus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/dunkleosteus/dunkleosteus_hurt_1",
+      "jurassicreborn:dinosaurs/dunkleosteus/dunkleosteus_hurt_2"
+    ]
+},
+  "dunkleosteus_call": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/dunkleosteus/dunkleosteus_living_1"
+    ]
+},
+  "therizinosaurus_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/therizinosaurus/therizinosaurus_living_1",
+      "jurassicreborn:dinosaurs/therizinosaurus/therizinosaurus_living_2",
+      "jurassicreborn:dinosaurs/therizinosaurus/therizinosaurus_living_3"
+    ]
+  },
+  "therizinosaurus_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/therizinosaurus/therizinosaurus_death_1"
+    ]
+  },
+  "therizinosaurus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/therizinosaurus/therizinosaurus_hurt_1"
+    ]
+},
+  "therizinosaurus_roar": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/therizinosaurus/therizinosaurus_roar_1"
+    ]
+},
+    "therizinosaurus_threat":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/therizinosaurus/therizinosaurus_threat_1"
+        ]
+},
+  "diplodocus_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/diplodocus/diplodocus_living_1",
+      "jurassicreborn:dinosaurs/diplodocus/diplodocus_living_2",
+      "jurassicreborn:dinosaurs/diplodocus/diplodocus_living_3",
+      "jurassicreborn:dinosaurs/diplodocus/diplodocus_living_4",
+      "jurassicreborn:dinosaurs/diplodocus/diplodocus_living_5",
+      "jurassicreborn:dinosaurs/diplodocus/diplodocus_living_6",
+      "jurassicreborn:dinosaurs/diplodocus/diplodocus_living_7",
+      "jurassicreborn:dinosaurs/diplodocus/diplodocus_living_8",
+      "jurassicreborn:dinosaurs/diplodocus/diplodocus_living_9"
+    ]
+},
+  "dimetrodon_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/dimetrodon/dimetrodon_living_1"
+    ]
+  },
+  "dimetrodon_roar": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/dimetrodon/dimetrodon_roar_1"
+    ]
+  },
+  "diplodocus_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/diplodocus/diplodocus_death"
+    ]
+  },
+  "diplodocus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/diplodocus/diplodocus_hurt"
+    ]
+},
+  "camarasaurus_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/camarasaurus/camarasaurus_living_1",
+      "jurassicreborn:dinosaurs/camarasaurus/camarasaurus_living_2",
+      "jurassicreborn:dinosaurs/camarasaurus/camarasaurus_living_3",
+      "jurassicreborn:dinosaurs/camarasaurus/camarasaurus_living_4",
+      "jurassicreborn:dinosaurs/camarasaurus/camarasaurus_living_5",
+      "jurassicreborn:dinosaurs/camarasaurus/camarasaurus_living_6",
+      "jurassicreborn:dinosaurs/camarasaurus/camarasaurus_living_7"
+    ]
+  },
+  "camarasaurus_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/camarasaurus/camarasaurus_death"
+    ]
+  },
+  "camarasaurus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/camarasaurus/camarasaurus_hurt"
+    ]
+  },
+  "nigersaurus_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/nigersaurus/nigersaurus_living_1",
+      "jurassicreborn:dinosaurs/nigersaurus/nigersaurus_living_2",
+      "jurassicreborn:dinosaurs/nigersaurus/nigersaurus_living_3"
+    ]
+  },
+  "nigersaurus_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/nigersaurus/nigersaurus_death"
+    ]
+  },
+  "nigersaurus_attack": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/nigersaurus/nigersaurus_attacking"
+    ]
+  },
+  "nigersaurus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/nigersaurus/nigersaurus_hurt"
+    ]
+  },
+  "ankylodocus_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/ankylodocus/ankylodocus_living_1",
+      "jurassicreborn:dinosaurs/ankylodocus/ankylodocus_living_2",
+      "jurassicreborn:dinosaurs/ankylodocus/ankylodocus_living_3",
+      "jurassicreborn:dinosaurs/ankylodocus/ankylodocus_living_4",
+      "jurassicreborn:dinosaurs/ankylodocus/ankylodocus_living_5",
+      "jurassicreborn:dinosaurs/ankylodocus/ankylodocus_living_6",
+      "jurassicreborn:dinosaurs/ankylodocus/ankylodocus_living_7"
+    ]
+  },
+  "ankylodocus_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/ankylodocus/ankylodocus_death"
+    ]
+  },
+  "ankylodocus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/ankylodocus/ankylodocus_hurt"
+    ]
+ },
+  "protoceratops_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/protoceratops/protoceratops_living_1",
+      "jurassicreborn:dinosaurs/protoceratops/protoceratops_living_2",
+      "jurassicreborn:dinosaurs/protoceratops/protoceratops_living_3",
+      "jurassicreborn:dinosaurs/protoceratops/protoceratops_living_4"
+    ]
+ },
+  "protoceratops_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/protoceratops/protoceratops_death_1",
+      "jurassicreborn:dinosaurs/protoceratops/protoceratops_death_2"
+    ]
+ },
+  "protoceratops_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/protoceratops/protoceratops_hurt_1",
+      "jurassicreborn:dinosaurs/protoceratops/protoceratops_hurt_2"
+    ]
+  },
+    "protoceratops_threat":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/protoceratops/protoceratops_threat_1",
+            "jurassicreborn:dinosaurs/protoceratops/protoceratops_threat_2"
+        ]
+ },
+  "coelurus_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/coelurus/coelurus_living_1",
+      "jurassicreborn:dinosaurs/coelurus/coelurus_living_2",
+      "jurassicreborn:dinosaurs/coelurus/coelurus_living_3"
+    ]
+  },
+  "coelurus_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/coelurus/coelurus_death_1",
+      "jurassicreborn:dinosaurs/coelurus/coelurus_death_2"
+    ]
+  },
+  "coelurus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/coelurus/coelurus_hurt_1",
+      "jurassicreborn:dinosaurs/coelurus/coelurus_hurt_2"
+    ]
+},
+    "coelurus_threat":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/coelurus/coelurus_threat_1"
+        ]
+},
+  "paraceratherium_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/paraceratherium/paraceratherium_living_01",
+      "jurassicreborn:dinosaurs/paraceratherium/paraceratherium_living_02",
+      "jurassicreborn:dinosaurs/paraceratherium/paraceratherium_living_03"
+    ]
+  },
+  "paraceratherium_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/paraceratherium/paraceratherium_death"
+    ]
+  },
+  "paraceratherium_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/paraceratherium/paraceratherium_hurt_01",
+      "jurassicreborn:dinosaurs/paraceratherium/paraceratherium_hurt_02"
+    ]
+},
+    "paraceratherium_threat":{
+        "category": "hostile",
+        "sounds": [
+      "jurassicreborn:dinosaurs/paraceratherium/paraceratherium_threat_01",
+      "jurassicreborn:dinosaurs/paraceratherium/paraceratherium_threat_02"
+       ]
+},
+  "segisaurus_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/segisaurus/segisaurus_living_1",
+      "jurassicreborn:dinosaurs/segisaurus/segisaurus_living_2",
+      "jurassicreborn:dinosaurs/segisaurus/segisaurus_living_3"
+    ]
+  },
+  "segisaurus_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/segisaurus/segisaurus_death_1",
+      "jurassicreborn:dinosaurs/segisaurus/segisaurus_death_2"
+    ]
+  },
+  "segisaurus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/segisaurus/segisaurus_hurt_1"
+    ]
+},
+    "segisaurus_threat":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/segisaurus/segisaurus_threat_1"
+        ]
+ },
+  "quetzalcoatlus_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/quetzalcoatlus/quetzalcoatlus_living_1"
+    ]
+  },
+  "quetzalcoatlus_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/quetzalcoatlus/quetzalcoatlus_death_1"
+    ]
+  },
+  "quetzalcoatlus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/quetzalcoatlus/quetzalcoatlus_hurt_1"
+    ]
+},
+    "quetzalcoatlus_threat":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/quetzalcoatlus/quetzalcoatlus_threat_1"
+        ]
+  },
+  "triceratops_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/triceratops/triceratops_living_1",
+      "jurassicreborn:dinosaurs/triceratops/triceratops_living_2",
+      "jurassicreborn:dinosaurs/triceratops/triceratops_living_3"
+    ]
+  },
+  "triceratops_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/triceratops/triceratops_death_1"
+    ]
+  },
+  "triceratops_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/triceratops/triceratops_hurt_1"
+    ]
+  },
+  "stegosaurus_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/stegosaurus/stegosaurus_living_1",
+      "jurassicreborn:dinosaurs/stegosaurus/stegosaurus_living_2"
+    ]
+  },
+  "stegosaurus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/stegosaurus/stegosaurus_hurt_1",
+      "jurassicreborn:dinosaurs/stegosaurus/stegosaurus_hurt_2"
+    ]
+  },
+  "stegosaurus_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/stegosaurus/stegosaurus_death_1",
+      "jurassicreborn:dinosaurs/stegosaurus/stegosaurus_death_2"
+    ]
+
+  },
+  "cearadactylus_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/cearadactylus/cearadactylus_living_1",
+      "jurassicreborn:dinosaurs/cearadactylus/cearadactylus_living_2",
+      "jurassicreborn:dinosaurs/cearadactylus/cearadactylus_living_3",
+      "jurassicreborn:dinosaurs/cearadactylus/cearadactylus_living_4",
+      "jurassicreborn:dinosaurs/cearadactylus/cearadactylus_living_5"
+    ]
+  },
+  "cearadactylus_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/cearadactylus/cearadactylus_death_1",
+      "jurassicreborn:dinosaurs/cearadactylus/cearadactylus_death_2"
+    ]
+  },
+  "cearadactylus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/cearadactylus/cearadactylus_hurt_1",
+      "jurassicreborn:dinosaurs/cearadactylus/cearadactylus_hurt_2",
+      "jurassicreborn:dinosaurs/cearadactylus/cearadactylus_hurt_3"
+    ]
+},
+    "cearadactylus_threat":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/cearadactylus/cearadactylus_threat"
+        ]
+  },
+  "cearadactylus_call": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/cearadactylus/cearadactylus_calling"
+    ]
+ },
+  "oviraptor_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/oviraptor/oviraptor_living_1",
+      "jurassicreborn:dinosaurs/oviraptor/oviraptor_living_2"
+    ]
+  },
+  "oviraptor_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/oviraptor/oviraptor_death"
+    ]
+  },
+  "oviraptor_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/oviraptor/oviraptor_hurt"
+    ]
+},
+    "oviraptor_threat":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/oviraptor/oviraptor_threat"
+        ]
+  },
+  "oviraptor_call": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/oviraptor/oviraptor_calling"
+    ]
+  },
+  "dilophosaurus_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/dilophosaurus/dilophosaurus_living_1",
+      "jurassicreborn:dinosaurs/dilophosaurus/dilophosaurus_living_2",
+      "jurassicreborn:dinosaurs/dilophosaurus/dilophosaurus_living_3",
+      "jurassicreborn:dinosaurs/dilophosaurus/dilophosaurus_living_4",
+      "jurassicreborn:dinosaurs/dilophosaurus/dilophosaurus_living_5"
+    ]
+  },
+  "dilophosaurus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/dilophosaurus/dilophosaurus_hurt_1",
+      "jurassicreborn:dinosaurs/dilophosaurus/dilophosaurus_hurt_2"
+    ]
+  },
+  "dilophosaurus_spit": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/dilophosaurus/dilophosaurus_spit"
+    ]
+  },
+  "dilophosaurus_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/dilophosaurus/dilophosaurus_death_1"
+    ]
+  },
+  "carnotaurus_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/carnotaurus/carnotaurus_living_1"
+    ]
+  },
+  "carnotaurus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/carnotaurus/carnotaurus_hurt_1"
+    ]
+  },
+  "carnotaurus_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/carnotaurus/carnotaurus_death_1"
+    ]
+  },
+  "gallimimus_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/gallimimus/gallimimus_living_1",
+      "jurassicreborn:dinosaurs/gallimimus/gallimimus_living_2"
+    ]
+  },
+  "gallimimus_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/gallimimus/gallimimus_death_1",
+      "jurassicreborn:dinosaurs/gallimimus/gallimimus_death_2"
+    ]
+  },
+  "gallimimus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/gallimimus/gallimimus_hurt_1",
+      "jurassicreborn:dinosaurs/gallimimus/gallimimus_hurt_2"
+    ]
+ },
+  "ornithomimus_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/ornithomimus/ornithomimus_living_1",
+      "jurassicreborn:dinosaurs/ornithomimus/ornithomimus_living_2",
+      "jurassicreborn:dinosaurs/ornithomimus/ornithomimus_living_3",
+      "jurassicreborn:dinosaurs/ornithomimus/ornithomimus_living_4"
+    ]
+  },
+  "ornithomimus_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/ornithomimus/ornithomimus_death_1"
+    ]
+  },
+  "ornithomimus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/ornithomimus/ornithomimus_hurt_1",
+      "jurassicreborn:dinosaurs/ornithomimus/ornithomimus_hurt_2",
+      "jurassicreborn:dinosaurs/ornithomimus/ornithomimus_hurt_3"
+    ]
+  },
+  "microceratus_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/microceratus/microceratus_living_1",
+      "jurassicreborn:dinosaurs/microceratus/microceratus_living_2",
+      "jurassicreborn:dinosaurs/microceratus/microceratus_living_3",
+      "jurassicreborn:dinosaurs/microceratus/microceratus_living_4"
+    ]
+ },
+  "microceratus_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/microceratus/microceratus_death_1",
+      "jurassicreborn:dinosaurs/microceratus/microceratus_death_2"
+    ]
+ },
+  "microceratus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/microceratus/microceratus_hurt_1",
+      "jurassicreborn:dinosaurs/microceratus/microceratus_hurt_2"
+    ]
+  },
+    "microceratus_threat":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/microceratus/microceratus_threat"
+        ]
+  },
+  "tropeognathus_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/tropeognathus/tropeognathus_living_1",
+      "jurassicreborn:dinosaurs/tropeognathus/tropeognathus_living_2",
+      "jurassicreborn:dinosaurs/tropeognathus/tropeognathus_living_3"
+    ]
+ },
+  "tropeognathus_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/tropeognathus/tropeognathus_death_1"
+    ]
+ },
+  "tropeognathus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/tropeognathus/tropeognathus_hurt_1",
+      "jurassicreborn:dinosaurs/tropeognathus/tropeognathus_hurt_2"
+    ]
+ },
+  "tropeognathus_roar": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/tropeognathus/tropeognathus_roar_1"
+    ]
+  },
+    "tropeognathus_threat":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/tropeognathus/tropeognathus_threat_1"
+        ]
+  },
+  "zhenyuanopterus_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/zhenyuanopterus/zhenyuanopterus_living_1",
+      "jurassicreborn:dinosaurs/zhenyuanopterus/zhenyuanopterus_living_2",
+      "jurassicreborn:dinosaurs/zhenyuanopterus/zhenyuanopterus_living_3",
+      "jurassicreborn:dinosaurs/zhenyuanopterus/zhenyuanopterus_living_4"
+    ]
+ },
+  "zhenyuanopterus_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/zhenyuanopterus/zhenyuanopterus_death_1"
+    ]
+ },
+  "zhenyuanopterus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/zhenyuanopterus/zhenyuanopterus_hurt_1",
+      "jurassicreborn:dinosaurs/zhenyuanopterus/zhenyuanopterus_hurt_2"
+    ]
+ },
+  "zhenyuanopterus_roar": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/zhenyuanopterus/zhenyuanopterus_roar_1"
+    ]
+  },
+    "zhenyuanopterus_threat":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/zhenyuanopterus/zhenyuanopterus_threat_1"
+        ]
+  },
+  "megatherium_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/megatherium/megatherium_living_1",
+      "jurassicreborn:dinosaurs/megatherium/megatherium_living_2",
+      "jurassicreborn:dinosaurs/megatherium/megatherium_living_3",
+      "jurassicreborn:dinosaurs/megatherium/megatherium_living_4",
+      "jurassicreborn:dinosaurs/megatherium/megatherium_living_5"
+    ]
+ },
+  "megatherium_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/megatherium/megatherium_death"
+    ]
+ },
+  "megatherium_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/megatherium/megatherium_hurt_1",
+      "jurassicreborn:dinosaurs/megatherium/megatherium_hurt_2"
+    ]
+  },
+    "megatherium_threat":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/megatherium/megatherium_threat_1",
+            "jurassicreborn:dinosaurs/megatherium/megatherium_threat_2"
+        ]
+  },
+  "styracosaurus_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/styracosaurus/styracosaurus_living_1",
+      "jurassicreborn:dinosaurs/styracosaurus/styracosaurus_living_2",
+      "jurassicreborn:dinosaurs/styracosaurus/styracosaurus_living_3",
+      "jurassicreborn:dinosaurs/styracosaurus/styracosaurus_living_4",
+      "jurassicreborn:dinosaurs/styracosaurus/styracosaurus_living_5"
+    ]
+ },
+  "styracosaurus_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/styracosaurus/styracosaurus_death_1",
+      "jurassicreborn:dinosaurs/styracosaurus/styracosaurus_death_2",
+      "jurassicreborn:dinosaurs/styracosaurus/styracosaurus_death_3"
+    ]
+ },
+  "styracosaurus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/styracosaurus/styracosaurus_hurt_1",
+      "jurassicreborn:dinosaurs/styracosaurus/styracosaurus_hurt_2"
+    ]
+},
+  "styracosaurus_call": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/styracosaurus/styracosaurus_calling"
+    ]
+ },
+  "styracosaurus_roar": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/styracosaurus/styracosaurus_roar_1",
+      "jurassicreborn:dinosaurs/styracosaurus/styracosaurus_roar_2"
+    ]
+  },
+    "styracosaurus_threat":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/styracosaurus/styracosaurus_threat_1",
+            "jurassicreborn:dinosaurs/styracosaurus/styracosaurus_threat_2"
+        ]
+  },
+  "spinosaurus_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/spinosaurus/spinosaurus_living_1",
+      "jurassicreborn:dinosaurs/spinosaurus/spinosaurus_living_2",
+      "jurassicreborn:dinosaurs/spinosaurus/spinosaurus_living_3",
+      "jurassicreborn:dinosaurs/spinosaurus/spinosaurus_living_4"
+    ]
+ },
+  "spinosaurus_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/spinosaurus/spinosaurus_death"
+    ]
+ },
+  "spinosaurus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/spinosaurus/spinosaurus_hurt_1",
+      "jurassicreborn:dinosaurs/spinosaurus/spinosaurus_hurt_2",
+      "jurassicreborn:dinosaurs/spinosaurus/spinosaurus_hurt_3"
+    ]
+},
+  "spinosaurus_call": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/spinosaurus/spinosaurus_calling"
+    ]
+ },
+  "spinosaurus_roar": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/spinosaurus/spinosaurus_roar_1",
+      "jurassicreborn:dinosaurs/spinosaurus/spinosaurus_roar_2"
+    ]
+  },
+    "spinosaurus_threat":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/spinosaurus/spinosaurus_threat"
+        ]
+  },
+  "moganopterus_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/moganopterus/moganopterus_living_1",
+      "jurassicreborn:dinosaurs/moganopterus/moganopterus_living_2",
+      "jurassicreborn:dinosaurs/moganopterus/moganopterus_living_3"
+    ]
+ },
+  "moganopterus_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/moganopterus/moganopterus_death_1"
+    ]
+ },
+  "moganopterus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/moganopterus/moganopterus_hurt_1"
+    ]
+},
+  "moganopterus_call": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/moganopterus/moganopterus_calling_1"
+    ]
+  },
+    "moganopterus_threat":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/moganopterus/moganopterus_threat_1"
+        ]
+ },
+  "metriacanthosaurus_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/metriacanthosaurus/metriacanthosaurus_living_1",
+      "jurassicreborn:dinosaurs/metriacanthosaurus/metriacanthosaurus_living_2",
+      "jurassicreborn:dinosaurs/metriacanthosaurus/metriacanthosaurus_living_3",
+      "jurassicreborn:dinosaurs/metriacanthosaurus/metriacanthosaurus_living_4"
+    ]
+ },
+  "metriacanthosaurus_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/metriacanthosaurus/metriacanthosaurus_death_1",
+      "jurassicreborn:dinosaurs/metriacanthosaurus/metriacanthosaurus_death_2",
+      "jurassicreborn:dinosaurs/metriacanthosaurus/metriacanthosaurus_death_3"
+    ]
+ },
+  "metriacanthosaurus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/metriacanthosaurus/metriacanthosaurus_hurt_1",
+      "jurassicreborn:dinosaurs/metriacanthosaurus/metriacanthosaurus_hurt_2",
+      "jurassicreborn:dinosaurs/metriacanthosaurus/metriacanthosaurus_hurt_3"
+    ]
+},
+  "metriacanthosaurus_call": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/metriacanthosaurus/metriacanthosaurus_calling"
+    ]
+ },
+  "metriacanthosaurus_roar": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/metriacanthosaurus/metriacanthosaurus_roar_1",
+      "jurassicreborn:dinosaurs/metriacanthosaurus/metriacanthosaurus_roar_2"
+    ]
+  },
+    "metriacanthosaurus_threat":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/metriacanthosaurus/metriacanthosaurus_threat"
+        ]
+  },
+  "leaellynasaura_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/leaellynasaura/leaellynasaura_living_1",
+      "jurassicreborn:dinosaurs/leaellynasaura/leaellynasaura_living_2",
+      "jurassicreborn:dinosaurs/leaellynasaura/leaellynasaura_living_3",
+      "jurassicreborn:dinosaurs/leaellynasaura/leaellynasaura_living_4"
+    ]
+ },
+  "leaellynasaura_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/leaellynasaura/leaellynasaura_death_1",
+      "jurassicreborn:dinosaurs/leaellynasaura/leaellynasaura_death_2"
+    ]
+ },
+  "leaellynasaura_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/leaellynasaura/leaellynasaura_hurt_1",
+      "jurassicreborn:dinosaurs/leaellynasaura/leaellynasaura_hurt_2"
+        ]
+ },
+  "lambeosaurus_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/lambeosaurus/lambeosaurus_living_1",
+      "jurassicreborn:dinosaurs/lambeosaurus/lambeosaurus_living_2",
+      "jurassicreborn:dinosaurs/lambeosaurus/lambeosaurus_living_3",
+      "jurassicreborn:dinosaurs/lambeosaurus/lambeosaurus_living_4",
+      "jurassicreborn:dinosaurs/lambeosaurus/lambeosaurus_living_5"
+    ]
+ },
+  "lambeosaurus_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/lambeosaurus/lambeosaurus_death_1",
+      "jurassicreborn:dinosaurs/lambeosaurus/lambeosaurus_death_2",
+      "jurassicreborn:dinosaurs/lambeosaurus/lambeosaurus_death_3"
+    ]
+ },
+  "lambeosaurus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/lambeosaurus/lambeosaurus_hurt_1",
+      "jurassicreborn:dinosaurs/lambeosaurus/lambeosaurus_hurt_2",
+      "jurassicreborn:dinosaurs/lambeosaurus/lambeosaurus_hurt_3"
+    ]
+},
+  "lambeosaurus_call": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/lambeosaurus/lambeosaurus_calling"
+    ]
+  },
+    "lambeosaurus_threat":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/lambeosaurus/lambeosaurus_threat_1",
+            "jurassicreborn:dinosaurs/lambeosaurus/lambeosaurus_threat_2"
+        ]
+},
+  "leptictidium_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/leptictidium/leptictidium_living_1",
+      "jurassicreborn:dinosaurs/leptictidium/leptictidium_living_2",
+      "jurassicreborn:dinosaurs/leptictidium/leptictidium_living_3",
+      "jurassicreborn:dinosaurs/leptictidium/leptictidium_living_4"
+    ]
+ },
+  "leptictidium_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/leptictidium/leptictidium_death_1",
+      "jurassicreborn:dinosaurs/leptictidium/leptictidium_death_2"
+    ]
+ },
+  "leptictidium_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/leptictidium/leptictidium_hurt_1",
+      "jurassicreborn:dinosaurs/leptictidium/leptictidium_hurt_2"
+    ]
+ },
+  "ludodactylus_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/ludodactylus/ludodactylus_living_1",
+      "jurassicreborn:dinosaurs/ludodactylus/ludodactylus_living_2",
+      "jurassicreborn:dinosaurs/ludodactylus/ludodactylus_living_3"
+    ]
+ },
+  "ludodactylus_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/ludodactylus/ludodactylus_death"
+    ]
+ },
+  "ludodactylus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/ludodactylus/ludodactylus_hurt_1",
+      "jurassicreborn:dinosaurs/ludodactylus/ludodactylus_hurt_2"
+    ]
+},
+  "ludodactylus_call": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/ludodactylus/ludodactylus_calling"
+    ]
+  },
+    "ludodactylus_threat":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/ludodactylus/ludodactylus_threat_1",
+            "jurassicreborn:dinosaurs/ludodactylus/ludodactylus_threat_2"
+        ]
+  },
+  "herrerasaurus_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/herrerasaurus/herrerasaurus_living_1",
+      "jurassicreborn:dinosaurs/herrerasaurus/herrerasaurus_living_2",
+      "jurassicreborn:dinosaurs/herrerasaurus/herrerasaurus_living_3",
+      "jurassicreborn:dinosaurs/herrerasaurus/herrerasaurus_living_4",
+      "jurassicreborn:dinosaurs/herrerasaurus/herrerasaurus_living_5"
+    ]
+ },
+  "herrerasaurus_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/herrerasaurus/herrerasaurus_death"
+    ]
+ },
+  "herrerasaurus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/herrerasaurus/herrerasaurus_hurt_1",
+      "jurassicreborn:dinosaurs/herrerasaurus/herrerasaurus_hurt_2",
+      "jurassicreborn:dinosaurs/herrerasaurus/herrerasaurus_hurt_3"
+    ]
+},
+  "herrerasaurus_call": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/herrerasaurus/herrerasaurus_calling"
+    ]
+ },
+  "herrerasaurus_roar": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/herrerasaurus/herrerasaurus_roar_1",
+      "jurassicreborn:dinosaurs/herrerasaurus/herrerasaurus_roar_2",
+      "jurassicreborn:dinosaurs/herrerasaurus/herrerasaurus_roar_3"
+    ]
+  },
+    "herrerasaurus_threat":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/herrerasaurus/herrerasaurus_threat"
+        ]
+ },
+  "othnielia_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/othnielia/othnielia_living_1",
+      "jurassicreborn:dinosaurs/othnielia/othnielia_living_2"
+    ]
+  },
+  "othnielia_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/othnielia/othnielia_death_1"
+    ]
+  },
+  "othnielia_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/othnielia/othnielia_hurt_1"
+    ]
+ },
+  "hyaenodon_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/hyaenodon/hyaenodon_living_1",
+      "jurassicreborn:dinosaurs/hyaenodon/hyaenodon_living_2",
+      "jurassicreborn:dinosaurs/hyaenodon/hyaenodon_living_3"
+    ]
+ },
+  "hyaenodon_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/hyaenodon/hyaenodon_death_1",
+      "jurassicreborn:dinosaurs/hyaenodon/hyaenodon_death_2"
+    ]
+ },
+  "hyaenodon_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/hyaenodon/hyaenodon_hurt_1",
+      "jurassicreborn:dinosaurs/hyaenodon/hyaenodon_hurt_2"
+    ]
+},
+  "hyaenodon_call": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/hyaenodon/hyaenodon_calling"
+    ]
+  },
+    "hyaenodon_threat":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/hyaenodon/hyaenodon_threat"
+        ]
+ },
+  "giganotosaurus_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/giganotosaurus/giganotosaurus_living_1",
+      "jurassicreborn:dinosaurs/giganotosaurus/giganotosaurus_living_2",
+      "jurassicreborn:dinosaurs/giganotosaurus/giganotosaurus_living_3",
+      "jurassicreborn:dinosaurs/giganotosaurus/giganotosaurus_living_4",
+      "jurassicreborn:dinosaurs/giganotosaurus/giganotosaurus_living_5"
+    ]
+ },
+  "giganotosaurus_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/giganotosaurus/giganotosaurus_death"
+    ]
+ },
+  "giganotosaurus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/giganotosaurus/giganotosaurus_hurt_1",
+      "jurassicreborn:dinosaurs/giganotosaurus/giganotosaurus_hurt_2",
+      "jurassicreborn:dinosaurs/giganotosaurus/giganotosaurus_hurt_3"
+    ]
+},
+  "giganotosaurus_call": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/giganotosaurus/giganotosaurus_living_3"
+    ]
+ },
+  "giganotosaurus_roar": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/giganotosaurus/giganotosaurus_roar_1",
+      "jurassicreborn:dinosaurs/giganotosaurus/giganotosaurus_roar_2",
+      "jurassicreborn:dinosaurs/giganotosaurus/giganotosaurus_roar_3"
+    ]
+  },
+    "giganotosaurus_threat":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/giganotosaurus/giganotosaurus_threat"
+        ]
+  },
+  "edmontosaurus_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/edmontosaurus/edmontosaurus_living_1",
+      "jurassicreborn:dinosaurs/edmontosaurus/edmontosaurus_living_2",
+      "jurassicreborn:dinosaurs/edmontosaurus/edmontosaurus_living_3",
+      "jurassicreborn:dinosaurs/edmontosaurus/edmontosaurus_living_4"
+    ]
+ },
+  "edmontosaurus_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/edmontosaurus/edmontosaurus_death_1",
+      "jurassicreborn:dinosaurs/edmontosaurus/edmontosaurus_death_2",
+      "jurassicreborn:dinosaurs/edmontosaurus/edmontosaurus_death_3"
+    ]
+ },
+  "edmontosaurus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/edmontosaurus/edmontosaurus_hurt_1",
+      "jurassicreborn:dinosaurs/edmontosaurus/edmontosaurus_hurt_2"
+    ]
+},
+  "edmontosaurus_call": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/edmontosaurus/edmontosaurus_calling"
+    ]
+  },
+    "edmontosaurus_threat":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/edmontosaurus/edmontosaurus_threat"
+        ]
+    },
+  "maiasaura_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/maiasaura/maiasaura_living_1",
+      "jurassicreborn:dinosaurs/maiasaura/maiasaura_living_2",
+      "jurassicreborn:dinosaurs/maiasaura/maiasaura_living_3",
+      "jurassicreborn:dinosaurs/maiasaura/maiasaura_living_4"
+    ]
+  },
+  "maiasaura_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/maiasaura/maiasaura_death_1",
+      "jurassicreborn:dinosaurs/maiasaura/maiasaura_death_2",
+      "jurassicreborn:dinosaurs/maiasaura/maiasaura_death_3"
+    ]
+  },
+  "maiasaura_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/maiasaura/maiasaura_hurt_1",
+      "jurassicreborn:dinosaurs/maiasaura/maiasaura_hurt_2"
+    ]
+  },
+  "maiasaura_call": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/maiasaura/maiasaura_calling"
+    ]
+  },
+  "maiasaura_threat":{
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/maiasaura/maiasaura_threat"
+    ]
+  },
+  "kairuku_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/kairuku/kairuku_living_1",
+      "jurassicreborn:dinosaurs/kairuku/kairuku_living_2"
+    ]
+  },
+  "kairuku_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/kairuku/kairuku_death"
+    ]
+  },
+  "kairuku_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/kairuku/kairuku_injured"
+    ]
+  },
+  "kairuku_call": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/kairuku/kairuku_calling"
+    ]
+  },
+  "livyatan_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/livyatan/livyatan_living_1",
+      "jurassicreborn:dinosaurs/livyatan/livyatan_living_2"
+    ]
+  },
+  "livyatan_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/livyatan/livyatan_death"
+    ]
+  },
+  "livyatan_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/livyatan/livyatan_injured"
+    ]
+  },
+  "livyatan_call": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/livyatan/livyatan_calling"
+    ]
+ },
+  "compsognathus_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/compsognathus/compsognathus_living_1",
+      "jurassicreborn:dinosaurs/compsognathus/compsognathus_living_2",
+      "jurassicreborn:dinosaurs/compsognathus/compsognathus_living_3",
+      "jurassicreborn:dinosaurs/compsognathus/compsognathus_living_4",
+      "jurassicreborn:dinosaurs/compsognathus/compsognathus_living_5"
+    ]
+ },
+  "compsognathus_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/compsognathus/compsognathus_death"
+    ]
+  },
+    "compsognathus_threat":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/compsognathus/compsognathus_threat"
+        ]
+ },
+  "compsognathus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/compsognathus/compsognathus_hurt_1",
+      "jurassicreborn:dinosaurs/compsognathus/compsognathus_hurt_2",
+      "jurassicreborn:dinosaurs/compsognathus/compsognathus_hurt_3"
+    ]
+},
+  "compsognathus_call": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/compsognathus/compsognathus_call_1",
+      "jurassicreborn:dinosaurs/compsognathus/compsognathus_call_2"
+    ]
+  },
+  "spinosaurus_breathing": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/spinosaurus/spinosaurus_breathing"
+    ]
+},
+  "spinosaurus_attack": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/spinosaurus/spinosaurus_attack_1",
+      "jurassicreborn:dinosaurs/spinosaurus/spinosaurus_attack_2"
+    ]
+  },
+  "smilodon_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/smilodon/smilodon_living_1",
+      "jurassicreborn:dinosaurs/smilodon/smilodon_living_2",
+      "jurassicreborn:dinosaurs/smilodon/smilodon_living_3",
+      "jurassicreborn:dinosaurs/smilodon/smilodon_living_4",
+      "jurassicreborn:dinosaurs/smilodon/smilodon_living_5",
+      "jurassicreborn:dinosaurs/smilodon/smilodon_living_6"
+    ]
+ },
+  "smilodon_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/smilodon/smilodon_death_1"
+    ]
+ },
+  "smilodon_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/smilodon/smilodon_hurt_1",
+      "jurassicreborn:dinosaurs/smilodon/smilodon_hurt_2"
+    ]
+  },
+  "smilodon_breathing": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/smilodon/smilodon_breath_1"
+    ]
+},
+  "smilodon_attack": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/smilodon/smilodon_attack_1"
+    ]
+  },
+  "majungasaurus_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/majungasaurus/majungasaurus_living_1",
+      "jurassicreborn:dinosaurs/majungasaurus/majungasaurus_living_2",
+      "jurassicreborn:dinosaurs/majungasaurus/majungasaurus_living_3"
+    ]
+ },
+  "majungasaurus_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/majungasaurus/majungasaurus_death"
+    ]
+ },
+  "majungasaurus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/majungasaurus/majungasaurus_hurt"
+    ]
+},
+  "majungasaurus_call": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/majungasaurus/majungasaurus_calling"
+    ]
+ },
+  "majungasaurus_roar": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/majungasaurus/majungasaurus_roar"
+    ]
+ },
+  "majungasaurus_breathing": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/majungasaurus/majungasaurus_breathing"
+    ]
+  },
+    "majungasaurus_threat":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/majungasaurus/majungasaurus_threat"
+        ]
+  },
+  "baryonyx_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/baryonyx/baryonyx_living_1",
+      "jurassicreborn:dinosaurs/baryonyx/baryonyx_living_2",
+      "jurassicreborn:dinosaurs/baryonyx/baryonyx_living_3",
+      "jurassicreborn:dinosaurs/baryonyx/baryonyx_living_4",
+      "jurassicreborn:dinosaurs/baryonyx/baryonyx_living_5",
+      "jurassicreborn:dinosaurs/baryonyx/baryonyx_living_6"
+    ]
+ },
+  "baryonyx_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/baryonyx/baryonyx_death"
+    ]
+ },
+  "baryonyx_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/baryonyx/baryonyx_hurt_1",
+      "jurassicreborn:dinosaurs/baryonyx/baryonyx_hurt_2",
+      "jurassicreborn:dinosaurs/baryonyx/baryonyx_hurt_3"
+    ]
+},
+  "baryonyx_call": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/baryonyx/baryonyx_calling"
+    ]
+ },
+  "chasmosaurus_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/chasmosaurus/chasmosaurus_living_1",
+      "jurassicreborn:dinosaurs/chasmosaurus/chasmosaurus_living_2",
+      "jurassicreborn:dinosaurs/chasmosaurus/chasmosaurus_living_3",
+      "jurassicreborn:dinosaurs/chasmosaurus/chasmosaurus_living_4",
+      "jurassicreborn:dinosaurs/chasmosaurus/chasmosaurus_living_5"
+    ]
+ },
+  "chasmosaurus_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/chasmosaurus/chasmosaurus_death"
+    ]
+ },
+  "chasmosaurus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/chasmosaurus/chasmosaurus_hurt_1",
+      "jurassicreborn:dinosaurs/chasmosaurus/chasmosaurus_hurt_2",
+      "jurassicreborn:dinosaurs/chasmosaurus/chasmosaurus_hurt_3"
+    ]
+  },
+    "chasmosaurus_threat":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/chasmosaurus/chasmosaurus_threat"
+        ]
+ },
+  "chilesaurus_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/chilesaurus/chilesaurus_living_1",
+      "jurassicreborn:dinosaurs/chilesaurus/chilesaurus_living_2",
+      "jurassicreborn:dinosaurs/chilesaurus/chilesaurus_living_3"
+    ]
+ },
+  "chilesaurus_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/chilesaurus/chilesaurus_death_1"
+    ]
+ },
+  "chilesaurus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/chilesaurus/chilesaurus_hurt_1"
+    ]
+ },
+  "baryonyx_roar": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/baryonyx/baryonyx_roar_1",
+      "jurassicreborn:dinosaurs/baryonyx/baryonyx_roar_2"
+    ]
+  },
+    "baryonyx_threat":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/baryonyx/baryonyx_threat"
+        ]
+  },
+  "stomp": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:stomp_1",
+      "jurassicreborn:stomp_2",
+      "jurassicreborn:stomp_3",
+      "jurassicreborn:stomp_4"
+    ]
+ },
+  "corythosaurus_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/corythosaurus/corythosaurus_living_1",
+      "jurassicreborn:dinosaurs/corythosaurus/corythosaurus_living_2",
+      "jurassicreborn:dinosaurs/corythosaurus/corythosaurus_living_3",
+      "jurassicreborn:dinosaurs/corythosaurus/corythosaurus_living_4"
+    ]
+},
+  "corythosaurus_call": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/corythosaurus/corythosaurus_calling"
+    ]
+ },
+  "corythosaurus_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/corythosaurus/corythosaurus_death_1",
+      "jurassicreborn:dinosaurs/corythosaurus/corythosaurus_death_2"
+    ]
+ },
+  "corythosaurus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/corythosaurus/corythosaurus_hurt_1",
+      "jurassicreborn:dinosaurs/corythosaurus/corythosaurus_hurt_2"
+    ]
+  },
+    "corythosaurus_threat":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/corythosaurus/corythosaurus_threat"
+        ]
+},
+  "titanis_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/titanis/titanis_living_1",
+      "jurassicreborn:dinosaurs/titanis/titanis_living_2",
+      "jurassicreborn:dinosaurs/titanis/titanis_living_3",
+      "jurassicreborn:dinosaurs/titanis/titanis_living_4",
+      "jurassicreborn:dinosaurs/titanis/titanis_living_5",
+      "jurassicreborn:dinosaurs/titanis/titanis_living_6"
+    ]
+  },
+  "titanis_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/titanis/titanis_death_1"
+    ]
+  },
+  "titanis_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/titanis/titanis_hurt_1",
+      "jurassicreborn:dinosaurs/titanis/titanis_hurt_2"
+    ]
+  },
+  "titanis_threat": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/titanis/titanis_threat_1"
+    ]
+
+  },
+  "pteranodon_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/pteranodon/pteranodon_living_1"
+    ]
+  },
+  "pteranodon_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/pteranodon/pteranodon_hurt_1"
+    ]
+  },
+  "pteranodon_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/pteranodon/pteranodon_death_1"
+    ]
+  },
+  "pteranodon_call": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/pteranodon/pteranodon_call_1"
+    ]
+  },
+  "indominus_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/indominus/indominus_living_1"
+    ]
+  },
+  "indominus_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/indominus/indominus_death_1"
+    ]
+  },
+  "indominus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/indominus/indominus_hurt_1"
+    ]
+  },
+  "indominus_roar": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/indominus/indominus_roar"
+    ]
+  },
+  "indominus_breathing": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/indominus/indominus_breath"
+    ]
+  },
+  "ankylosaurus_call": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/ankylosaurus/ankylosaurus_calling"
+    ]
+  },
+ "ankylosaurus_attack": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/ankylosaurus/ankylosaurus_attack"
+    ]
+ },
+  "ankylosaurus_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/ankylosaurus/ankylosaurus_death_1"
+    ]
+  },
+  "ankylosaurus_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/ankylosaurus/ankylosaurus_living_1",
+      "jurassicreborn:dinosaurs/ankylosaurus/ankylosaurus_living_2",
+      "jurassicreborn:dinosaurs/ankylosaurus/ankylosaurus_living_3",
+      "jurassicreborn:dinosaurs/ankylosaurus/ankylosaurus_living_4"
+    ]
+  },
+   "ankylosaurus_threat":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/ankylosaurus/ankylosaurus_threat_1",
+            "jurassicreborn:dinosaurs/ankylosaurus/ankylosaurus_threat_2"
+        ]
+  },
+  "ankylosaurus_mate_call":{
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/ankylosaurus/ankylosaurus_mate_call"
+    ]
+  },
+  "ankylosaurus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/ankylosaurus/ankylosaurus_hurt_1",
+      "jurassicreborn:dinosaurs/ankylosaurus/ankylosaurus_hurt_2",
+      "jurassicreborn:dinosaurs/ankylosaurus/ankylosaurus_hurt_3"
+    ]
+  },
+  "vectipelta_call": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/vectipelta/vectipelta_calling"
+    ]
+  },
+ "vectipelta_attack": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/vectipelta/vectipelta_attack"
+    ]
+ },
+  "vectipelta_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/vectipelta/vectipelta_death_1"
+    ]
+  },
+  "vectipelta_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/vectipelta/vectipelta_living_1",
+      "jurassicreborn:dinosaurs/vectipelta/vectipelta_living_2",
+      "jurassicreborn:dinosaurs/vectipelta/vectipelta_living_3",
+      "jurassicreborn:dinosaurs/vectipelta/vectipelta_living_4"
+    ]
+  },
+   "vectipelta_threat":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/vectipelta/vectipelta_threat_1",
+            "jurassicreborn:dinosaurs/vectipelta/vectipelta_threat_2"
+        ]
+  },
+  "vectipelta_mate_call":{
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/vectipelta/vectipelta_mate_call"
+    ]
+  },
+  "vectipelta_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/vectipelta/vectipelta_hurt_1",
+      "jurassicreborn:dinosaurs/vectipelta/vectipelta_hurt_2",
+      "jurassicreborn:dinosaurs/vectipelta/vectipelta_hurt_3"
+    ]
+ },
+  "raphusrex_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/raphusrex/raphusrex_living_1",
+      "jurassicreborn:dinosaurs/raphusrex/raphusrex_living_2",
+      "jurassicreborn:dinosaurs/raphusrex/raphusrex_living_3",
+      "jurassicreborn:dinosaurs/raphusrex/raphusrex_living_4",
+      "jurassicreborn:dinosaurs/raphusrex/raphusrex_living_5",
+      "jurassicreborn:dinosaurs/raphusrex/raphusrex_living_6"
+    ]
+ },
+  "raphusrex_roar": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/raphusrex/raphusrex_roar_1",
+      "jurassicreborn:dinosaurs/raphusrex/raphusrex_roar_2",
+      "jurassicreborn:dinosaurs/raphusrex/raphusrex_roar_3",
+      "jurassicreborn:dinosaurs/raphusrex/raphusrex_roar_4",
+      "jurassicreborn:dinosaurs/raphusrex/raphusrex_roar_5",
+      "jurassicreborn:dinosaurs/raphusrex/raphusrex_roar_6"
+    ]
+  },
+  "raphusrex_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/raphusrex/raphusrex_death_1"
+    ]
+  },
+  "raphusrex_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/raphusrex/raphusrex_hurt_1"
+    ]
+  },
+  "raphusrex_breathing": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/raphusrex/raphusrex_breathing_1"
+    ]
+  },
+  "apatosaurus_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/apatosaurus/apatosaurus_living_1",
+      "jurassicreborn:dinosaurs/apatosaurus/apatosaurus_living_2",
+      "jurassicreborn:dinosaurs/apatosaurus/apatosaurus_living_3",
+      "jurassicreborn:dinosaurs/apatosaurus/apatosaurus_living_4",
+      "jurassicreborn:dinosaurs/apatosaurus/apatosaurus_living_5"
+    ]
+ },
+  "apatosaurus_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/apatosaurus/apatosaurus_death"
+    ]
+ },
+  "apatosaurus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/apatosaurus/apatosaurus_hurt_1",
+      "jurassicreborn:dinosaurs/apatosaurus/apatosaurus_hurt_2",
+      "jurassicreborn:dinosaurs/apatosaurus/apatosaurus_hurt_3"
+    ]
+ },
+  "apatosaurus_mate_call":{
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/apatosaurus/apatosaurus_mate_call"
+    ]
+},
+  "apatosaurus_call": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/apatosaurus/apatosaurus_living_4"
+    ]
+  },
+    "apatosaurus_threat":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/apatosaurus/apatosaurus_threat"
+        ]
+  },
+  "velociraptor_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/velociraptor/velociraptor_hurt_1",
+      "jurassicreborn:dinosaurs/velociraptor/velociraptor_hurt_2",
+      "jurassicreborn:dinosaurs/velociraptor/velociraptor_hurt_3"
+    ]
+  },
+  "velociraptor_breathing": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/velociraptor/velociraptor_breath_1"
+    ]
+  },
+  "velociraptor_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/velociraptor/velociraptor_living_1",
+      "jurassicreborn:dinosaurs/velociraptor/velociraptor_living_2",
+      "jurassicreborn:dinosaurs/velociraptor/velociraptor_living_3",
+      "jurassicreborn:dinosaurs/velociraptor/velociraptor_living_4",
+      "jurassicreborn:dinosaurs/velociraptor/velociraptor_living_5",
+      "jurassicreborn:dinosaurs/velociraptor/velociraptor_living_6"
+    ]
+  },
+  "velociraptor_call": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/velociraptor/velociraptor_bark_1",
+      "jurassicreborn:dinosaurs/velociraptor/velociraptor_bark_2",
+      "jurassicreborn:dinosaurs/velociraptor/velociraptor_bark_3"
+    ]
+  },
+  "velociraptor_attack": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/velociraptor/velociraptor_attack_1",
+      "jurassicreborn:dinosaurs/velociraptor/velociraptor_attack_2",
+      "jurassicreborn:dinosaurs/velociraptor/velociraptor_attack_3"
+    ]
+  },
+  "velociraptor_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/velociraptor/velociraptor_death_1"
+    ]
+  },
+  "tyrannosaurus_breathing": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/tyrannosaurus/tyrannosaurus_breath_1"
+    ]
+  },
+  "tyrannosaurus_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/tyrannosaurus/tyrannosaurus_death_1",
+      "jurassicreborn:dinosaurs/tyrannosaurus/tyrannosaurus_death_2"
+    ]
+  },
+  "tyrannosaurus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/tyrannosaurus/tyrannosaurus_hurt_1",
+      "jurassicreborn:dinosaurs/tyrannosaurus/tyrannosaurus_hurt_2"
+    ]
+  },
+  "tyrannosaurus_roar": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/tyrannosaurus/tyrannosaurus_roar_1",
+      "jurassicreborn:dinosaurs/tyrannosaurus/tyrannosaurus_roar_2",
+      "jurassicreborn:dinosaurs/tyrannosaurus/tyrannosaurus_roar_3"
+    ]
+  },
+  "tyrannosaurus_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/tyrannosaurus/tyrannosaurus_living_1",
+      "jurassicreborn:dinosaurs/tyrannosaurus/tyrannosaurus_living_2",
+      "jurassicreborn:dinosaurs/tyrannosaurus/tyrannosaurus_living_3",
+      "jurassicreborn:dinosaurs/tyrannosaurus/tyrannosaurus_living_4",
+      "jurassicreborn:dinosaurs/tyrannosaurus/tyrannosaurus_living_5",
+      "jurassicreborn:dinosaurs/tyrannosaurus/tyrannosaurus_living_6"
+    ]
+  },
+  "brachiosaurus_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/brachiosaurus/brachiosaurus_living_1",
+      "jurassicreborn:dinosaurs/brachiosaurus/brachiosaurus_living_2",
+      "jurassicreborn:dinosaurs/brachiosaurus/brachiosaurus_living_3",
+      "jurassicreborn:dinosaurs/brachiosaurus/brachiosaurus_living_4"
+    ]
+  },
+  "brachiosaurus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/brachiosaurus/brachiosaurus_hurt_1",
+      "jurassicreborn:dinosaurs/brachiosaurus/brachiosaurus_hurt_2"
+    ]
+  },
+  "brachiosaurus_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/brachiosaurus/brachiosaurus_death_1",
+      "jurassicreborn:dinosaurs/brachiosaurus/brachiosaurus_death_2"
+    ]
+  },
+  "dodo_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/dodo/dodo_death_1",
+      "jurassicreborn:dinosaurs/dodo/dodo_death_2"
+    ]
+  },
+  "dodo_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/dodo/dodo_hurt_1",
+      "jurassicreborn:dinosaurs/dodo/dodo_hurt_2"
+    ]
+  },
+  "dodo_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/dodo/dodo_living_1",
+      "jurassicreborn:dinosaurs/dodo/dodo_living_2",
+      "jurassicreborn:dinosaurs/dodo/dodo_living_3"
+    ]
+  },
+  "rugops_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/rugops/rugops_death_1",
+      "jurassicreborn:dinosaurs/rugops/rugops_death_2"
+    ]
+  },
+  "rugops_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/rugops/rugops_hurt_1",
+      "jurassicreborn:dinosaurs/rugops/rugops_hurt_2"
+    ]
+  },
+  "rugops_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/rugops/rugops_living_1",
+      "jurassicreborn:dinosaurs/rugops/rugops_living_2",
+      "jurassicreborn:dinosaurs/rugops/rugops_living_3",
+      "jurassicreborn:dinosaurs/rugops/rugops_living_4"
+    ]
+  },
+  "hypsilophodon_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/hypsilophodon/hypsilophodon_hurt_1",
+      "jurassicreborn:dinosaurs/hypsilophodon/hypsilophodon_hurt_2",
+      "jurassicreborn:dinosaurs/hypsilophodon/hypsilophodon_hurt_3"
+    ]
+  },
+  "hypsilophodon_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/hypsilophodon/hypsilophodon_living_1",
+      "jurassicreborn:dinosaurs/hypsilophodon/hypsilophodon_living_2",
+      "jurassicreborn:dinosaurs/hypsilophodon/hypsilophodon_living_3",
+      "jurassicreborn:dinosaurs/hypsilophodon/hypsilophodon_living_4"
+    ]
+  },
+  "parasaurolophus_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/parasaurolophus/parasaurolophus_living_1",
+      "jurassicreborn:dinosaurs/parasaurolophus/parasaurolophus_living_2"
+    ]
+  },
+  "parasaurolophus_call": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/parasaurolophus/parasaurolophus_call_1",
+      "jurassicreborn:dinosaurs/parasaurolophus/parasaurolophus_call_2"
+    ]
+  },
+  "parasaurolophus_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/parasaurolophus/parasaurolophus_death_1"
+    ]
+  },
+  "parasaurolophus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/parasaurolophus/parasaurolophus_hurt_1"
+    ]
+  },
+  "feeder": {
+    "category": "blocks",
+    "sounds": [
+      "jurassicreborn:feeder"
+    ]
+  },
+  "car_move": {
+    "category": "blocks",
+    "sounds": [
+      "jurassicreborn:car_move"
+    ]
+  },
+  "microraptor_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/microraptor/microraptor_hurt_1",
+      "jurassicreborn:dinosaurs/microraptor/microraptor_hurt_2",
+      "jurassicreborn:dinosaurs/microraptor/microraptor_hurt_3"
+    ]
+  },
+  "microraptor_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/microraptor/microraptor_living_1",
+      "jurassicreborn:dinosaurs/microraptor/microraptor_living_2",
+      "jurassicreborn:dinosaurs/microraptor/microraptor_living_3",
+      "jurassicreborn:dinosaurs/microraptor/microraptor_living_4",
+      "jurassicreborn:dinosaurs/microraptor/microraptor_living_5"
+    ]
+  },
+  "microraptor_attack": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/microraptor/microraptor_attack_1",
+      "jurassicreborn:dinosaurs/microraptor/microraptor_attack_2"
+    ]
+  },
+  "microraptor_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/microraptor/microraptor_death"
+    ]
+  },
+  "mussaurus_attack": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/mussaurus/mussaurus_attack_1",
+      "jurassicreborn:dinosaurs/mussaurus/mussaurus_attack_2"
+    ]
+  },
+  "mussaurus_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/mussaurus/mussaurus_death"
+    ]
+  },
+  "mussaurus_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/mussaurus/mussaurus_hurt_1",
+      "jurassicreborn:dinosaurs/mussaurus/mussaurus_hurt_2"
+    ]
+  },
+  "mussaurus_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/mussaurus/mussaurus_living_1",
+      "jurassicreborn:dinosaurs/mussaurus/mussaurus_living_2",
+      "jurassicreborn:dinosaurs/mussaurus/mussaurus_living_3"
+    ]
+  },
+  "mussaurus_mate_call": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/mussaurus/mussaurus_mate_call"
+    ]
+  },
+  "mosasaurus_living":{
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/mosasaurus/mosasaurus_living_1",
+      "jurassicreborn:dinosaurs/mosasaurus/mosasaurus_living_2",
+      "jurassicreborn:dinosaurs/mosasaurus/mosasaurus_living_4",
+      "jurassicreborn:dinosaurs/mosasaurus/mosasaurus_living_5"
+    ]
+  },
+  "indoraptor_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/indoraptor/indoraptor_living_1",
+      "jurassicreborn:dinosaurs/indoraptor/indoraptor_living_2",
+      "jurassicreborn:dinosaurs/indoraptor/indoraptor_living_3",
+      "jurassicreborn:dinosaurs/indoraptor/indoraptor_living_4",
+      "jurassicreborn:dinosaurs/indoraptor/indoraptor_living_5"
+    ]
+ },
+  "indoraptor_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/indoraptor/indoraptor_death_1",
+      "jurassicreborn:dinosaurs/indoraptor/indoraptor_death_2",
+      "jurassicreborn:dinosaurs/indoraptor/indoraptor_death_3"
+    ]
+ },
+  "indoraptor_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/indoraptor/indoraptor_hurt_1",
+      "jurassicreborn:dinosaurs/indoraptor/indoraptor_hurt_2",
+      "jurassicreborn:dinosaurs/indoraptor/indoraptor_hurt_3"
+    ]
+},
+  "indoraptor_call": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/indoraptor/indoraptor_calling"
+    ]
+ },
+  "indoraptor_roar": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/indoraptor/indoraptor_roar"
+    ]
+  },
+    "indoraptor_threat":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/indoraptor/indoraptor_threat"
+        ]
+  },
+  "indoraptor_breathing": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/indoraptor/indoraptor_breath_1",
+      "jurassicreborn:dinosaurs/indoraptor/indoraptor_breath_2",
+      "jurassicreborn:dinosaurs/indoraptor/indoraptor_breath_3",
+      "jurassicreborn:dinosaurs/indoraptor/indoraptor_breath_4"
+    ]
+  },
+  "indoraptor_mate_call": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/indoraptor/indoraptor_mate_call"
+    ]
+},
+  "indoraptor_attack": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/indoraptor/indoraptor_attack"
+    ]
+  },
+  "achillobator_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/achillobator/achillobator_hurt_1",
+      "jurassicreborn:dinosaurs/achillobator/achillobator_hurt_2",
+      "jurassicreborn:dinosaurs/achillobator/achillobator_hurt_3"
+    ]
+  },
+  "achillobator_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/achillobator/achillobator_living_1",
+      "jurassicreborn:dinosaurs/achillobator/achillobator_living_2",
+      "jurassicreborn:dinosaurs/achillobator/achillobator_living_3",
+      "jurassicreborn:dinosaurs/achillobator/achillobator_living_4",
+      "jurassicreborn:dinosaurs/achillobator/achillobator_living_5"
+    ]
+  },
+  "achillobator_call": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/achillobator/achillobator_bark_1",
+      "jurassicreborn:dinosaurs/achillobator/achillobator_bark_2",
+      "jurassicreborn:dinosaurs/achillobator/achillobator_bark_3"
+    ]
+  },
+  "achillobator_attack": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/achillobator/achillobator_attack_1",
+      "jurassicreborn:dinosaurs/achillobator/achillobator_attack_2"
+    ]
+  },
+ "achillobator_mate_call": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/achillobator/achillobator_mate_call"
+    ]
+  },
+  "achillobator_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/achillobator/achillobator_death"
+    ]
+  },
+  "mosasaurus_hurt":{
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/mosasaurus/mosasaurus_hurt_1",
+      "jurassicreborn:dinosaurs/mosasaurus/mosasaurus_hurt_2",
+      "jurassicreborn:dinosaurs/mosasaurus/mosasaurus_hurt_3"
+    ]
+  },
+  "mosasaurus_death":{
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/mosasaurus/mosasaurus_death"
+    ]
+  },
+  "mosasaurus_mate_call":{
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/mosasaurus/mosasaurus_mate_call"
+    ]
+  },
+  "mosasaurus_attack":{
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/mosasaurus/mosasaurus_attack_1",
+      "jurassicreborn:dinosaurs/mosasaurus/mosasaurus_attack_2",
+      "jurassicreborn:dinosaurs/mosasaurus/mosasaurus_attack_3",
+      "jurassicreborn:dinosaurs/mosasaurus/mosasaurus_attack_4",
+      "jurassicreborn:dinosaurs/mosasaurus/mosasaurus_attack_5"
+    ]
+  },
+  "mosasaurus_roar":{
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/mosasaurus/mosasaurus_roar_1",
+      "jurassicreborn:dinosaurs/mosasaurus/mosasaurus_roar_2"
+    ]
+  },
+  "allosaurus_death":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/allosaurus/allosaurus_death"
+        ]
+    },
+    "allosaurus_fight_female":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/allosaurus/allosaurus_fight_female"
+        ]
+    },
+    "allosaurus_hurt":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/allosaurus/allosaurus_hurt_1",
+            "jurassicreborn:dinosaurs/allosaurus/allosaurus_hurt_2",
+            "jurassicreborn:dinosaurs/allosaurus/allosaurus_hurt_3"
+        ]
+    },
+    "allosaurus_living":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/allosaurus/allosaurus_living_1",
+            "jurassicreborn:dinosaurs/allosaurus/allosaurus_living_2",
+            "jurassicreborn:dinosaurs/allosaurus/allosaurus_living_3",
+            "jurassicreborn:dinosaurs/allosaurus/allosaurus_living_4",
+            "jurassicreborn:dinosaurs/allosaurus/allosaurus_living_5"
+        ]
+    },
+    "allosaurus_mate_call":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/allosaurus/allosaurus_mate_call"
+        ]
+    },
+    "allosaurus_roar":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/allosaurus/allosaurus_roar_1",
+            "jurassicreborn:dinosaurs/allosaurus/allosaurus_roar_2",
+            "jurassicreborn:dinosaurs/allosaurus/allosaurus_roar_3"
+        ]
+    },
+    "allosaurus_threat":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/allosaurus/allosaurus_threat"
+        ]
+    },
+    "beelzebufo_croak":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/beelzebufo/beelzebufo_croak_1",
+            "jurassicreborn:dinosaurs/beelzebufo/beelzebufo_croak_2",
+            "jurassicreborn:dinosaurs/beelzebufo/beelzebufo_croak_3",
+            "jurassicreborn:dinosaurs/beelzebufo/beelzebufo_croak_4"
+        ]
+    },
+    "beelzebufo_hurt":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/beelzebufo/beelzebufo_hurt",
+            "jurassicreborn:dinosaurs/beelzebufo/beelzebufo_hurt_threat_1",
+            "jurassicreborn:dinosaurs/beelzebufo/beelzebufo_hurt_threat_2"
+        ]
+    },
+    "beelzebufo_hurt_threat":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/beelzebufo/beelzebufo_hurt_threat_1",
+            "jurassicreborn:dinosaurs/beelzebufo/beelzebufo_hurt_threat_2"
+        ]
+    },
+    "beelzebufo_long_distance_croak":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/beelzebufo/beelzebufo_long_distance_croak_1",
+            "jurassicreborn:dinosaurs/beelzebufo/beelzebufo_long_distance_croak_2",
+            "jurassicreborn:dinosaurs/beelzebufo/beelzebufo_long_distance_croak_3",
+            "jurassicreborn:dinosaurs/beelzebufo/beelzebufo_long_distance_croak_4"
+        ]
+    },
+    "beelzebufo_threat":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/beelzebufo/beelzebufo_threat_1",
+            "jurassicreborn:dinosaurs/beelzebufo/beelzebufo_threat_2",
+            "jurassicreborn:dinosaurs/beelzebufo/beelzebufo_threat_3"
+        ]
+    },
+    "carcharodontosaurus_growl":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/carcharodontosaurus/carcharodontosaurus_growl"
+        ]
+    },
+    "carcharodontosaurus_hiss":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/carcharodontosaurus/carcharodontosaurus_hiss_1",
+            "jurassicreborn:dinosaurs/carcharodontosaurus/carcharodontosaurus_hiss_2",
+            "jurassicreborn:dinosaurs/carcharodontosaurus/carcharodontosaurus_hiss_3"
+        ]
+    },
+    "carcharodontosaurus_hurt":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/carcharodontosaurus/carcharodontosaurus_hurt"
+        ]
+    },
+    "carcharodontosaurus_living":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/carcharodontosaurus/carcharodontosaurus_living_1",
+            "jurassicreborn:dinosaurs/carcharodontosaurus/carcharodontosaurus_living_2"
+        ]
+    },
+    "carcharodontosaurus_roar":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/carcharodontosaurus/carcharodontosaurus_roar",
+            "jurassicreborn:dinosaurs/carcharodontosaurus/carcharodontosaurus_roar_1",
+            "jurassicreborn:dinosaurs/carcharodontosaurus/carcharodontosaurus_roar_2"
+        ]
+ },
+  "ceratosaurus_breathing": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/ceratosaurus/ceratosaurus_breathing"
+    ]
+},
+  "ceratosaurus_call":{
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/ceratosaurus/ceratosaurus_calling"
+    ]
+ },
+    "ceratosaurus_mate_call":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/ceratosaurus/ceratosaurus_mate_call"
+        ]
+    },
+    "ceratosaurus_threat":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/ceratosaurus/ceratosaurus_threat_1",
+            "jurassicreborn:dinosaurs/ceratosaurus/ceratosaurus_threat_2"
+       ]
+ },
+    "ceratosaurus_hurt":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/ceratosaurus/ceratosaurus_hurt_1",
+            "jurassicreborn:dinosaurs/ceratosaurus/ceratosaurus_hurt_2"
+        ]
+  },
+    "ceratosaurus_roar":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/ceratosaurus/ceratosaurus_roar_1",
+            "jurassicreborn:dinosaurs/ceratosaurus/ceratosaurus_roar_2",
+            "jurassicreborn:dinosaurs/ceratosaurus/ceratosaurus_roar_3",
+            "jurassicreborn:dinosaurs/ceratosaurus/ceratosaurus_roar_4"
+        ]
+ },
+    "ceratosaurus_death":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/ceratosaurus/ceratosaurus_death_1",
+            "jurassicreborn:dinosaurs/ceratosaurus/ceratosaurus_death_2"
+        ]
+    },
+    "ceratosaurus_living":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/ceratosaurus/ceratosaurus_living_1",
+            "jurassicreborn:dinosaurs/ceratosaurus/ceratosaurus_living_2",
+            "jurassicreborn:dinosaurs/ceratosaurus/ceratosaurus_living_3"
+        ]
+ },
+  "alvarezsaurus_call":{
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/alvarezsaurus/alvarezsaurus_calling"
+    ]
+ },
+    "alvarezsaurus_mate_call":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/alvarezsaurus/alvarezsaurus_mate_call"
+        ]
+    },
+    "alvarezsaurus_threat":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/alvarezsaurus/alvarezsaurus_threat"
+       ]
+ },
+    "alvarezsaurus_hurt":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/alvarezsaurus/alvarezsaurus_hurt_1",
+            "jurassicreborn:dinosaurs/alvarezsaurus/alvarezsaurus_hurt_2",
+            "jurassicreborn:dinosaurs/alvarezsaurus/alvarezsaurus_hurt_3"
+        ]
+ },
+    "alvarezsaurus_death":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/alvarezsaurus/alvarezsaurus_death"
+        ]
+    },
+    "alvarezsaurus_living":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/alvarezsaurus/alvarezsaurus_living_1",
+            "jurassicreborn:dinosaurs/alvarezsaurus/alvarezsaurus_living_2",
+            "jurassicreborn:dinosaurs/alvarezsaurus/alvarezsaurus_living_3",
+            "jurassicreborn:dinosaurs/alvarezsaurus/alvarezsaurus_living_4",
+            "jurassicreborn:dinosaurs/alvarezsaurus/alvarezsaurus_living_5"
+        ]
+},
+  "troodon_call":{
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/troodon/troodon_calling"
+    ]
+ },
+    "troodon_mate_call":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/troodon/troodon_mate_call"
+        ]
+    },
+    "troodon_threat":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/troodon/troodon_threat"
+       ]
+ },
+    "troodon_hurt":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/troodon/troodon_hurt_1",
+            "jurassicreborn:dinosaurs/troodon/troodon_hurt_2",
+            "jurassicreborn:dinosaurs/troodon/troodon_hurt_3"
+        ]
+ },
+    "troodon_death":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/troodon/troodon_death"
+        ]
+    },
+    "troodon_living":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/troodon/troodon_living_1",
+            "jurassicreborn:dinosaurs/troodon/troodon_living_2",
+            "jurassicreborn:dinosaurs/troodon/troodon_living_3"
+        ]
+    },
+    "guanlong_death":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/guanlong/guanlong_death_1",
+            "jurassicreborn:dinosaurs/guanlong/guanlong_death_2"
+        ]
+    },
+    "guanlong_hurt":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/guanlong/guanlong_hurt_1",
+            "jurassicreborn:dinosaurs/guanlong/guanlong_hurt_2"
+        ]
+    },
+    "guanlong_living":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/guanlong/guanlong_living_1",
+            "jurassicreborn:dinosaurs/guanlong/guanlong_living_2",
+            "jurassicreborn:dinosaurs/guanlong/guanlong_living_3",
+            "jurassicreborn:dinosaurs/guanlong/guanlong_living_4"
+        ]
+    },
+    "proceratosaurus_attack":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/proceratosaurus/proceratosaurus_attack_1",
+            "jurassicreborn:dinosaurs/proceratosaurus/proceratosaurus_attack_2"
+        ]
+    },
+    "proceratosaurus_death":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/proceratosaurus/proceratosaurus_death"
+        ]
+    },
+    "proceratosaurus_hurt":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/proceratosaurus/proceratosaurus_hurt_1",
+            "jurassicreborn:dinosaurs/proceratosaurus/proceratosaurus_hurt_2",
+            "jurassicreborn:dinosaurs/proceratosaurus/proceratosaurus_hurt_3"
+        ]
+    },
+    "proceratosaurus_living":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/proceratosaurus/proceratosaurus_living_1",
+            "jurassicreborn:dinosaurs/proceratosaurus/proceratosaurus_living_2",
+            "jurassicreborn:dinosaurs/proceratosaurus/proceratosaurus_living_3",
+            "jurassicreborn:dinosaurs/proceratosaurus/proceratosaurus_living_4"
+        ]
+    },
+    "proceratosaurus_mate_call":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/proceratosaurus/proceratosaurus_mate_call_1",
+            "jurassicreborn:dinosaurs/proceratosaurus/proceratosaurus_mate_call_2"
+        ]
+    },
+    "proceratosaurus_threat":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/proceratosaurus/proceratosaurus_threat_1",
+            "jurassicreborn:dinosaurs/proceratosaurus/proceratosaurus_threat_2"
+        ]
+    },
+    "suchomimus_death":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/suchomimus/suchomimus_death"
+        ]
+    },
+    "suchomimus_hurt":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/suchomimus/suchomimus_hurt_1",
+            "jurassicreborn:dinosaurs/suchomimus/suchomimus_hurt_2"
+        ]
+    },
+    "suchomimus_living":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/suchomimus/suchomimus_living_1",
+            "jurassicreborn:dinosaurs/suchomimus/suchomimus_living_2",
+            "jurassicreborn:dinosaurs/suchomimus/suchomimus_living_3",
+            "jurassicreborn:dinosaurs/suchomimus/suchomimus_living_4"
+        ]
+    },
+    "suchomimus_mate_call":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/suchomimus/suchomimus_mate_call"
+        ]
+    },
+    "suchomimus_roar":{
+        "category": "hostile",
+        "sounds": [
+            "jurassicreborn:dinosaurs/suchomimus/suchomimus_roar"
+        ]
+    },
+  "mammoth_alarm_call":{
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/mammoth/mammoth_alarm_call"
+    ]
+  },
+  "mammoth_death":{
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/mammoth/mammoth_death"
+    ]
+  },
+  "mammoth_hurt":{
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/mammoth/mammoth_hurt_1",
+      "jurassicreborn:dinosaurs/mammoth/mammoth_hurt_2",
+      "jurassicreborn:dinosaurs/mammoth/mammoth_hurt_3"
+    ]
+  },
+  "mammoth_living":{
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/mammoth/mammoth_living_1",
+      "jurassicreborn:dinosaurs/mammoth/mammoth_living_2",
+      "jurassicreborn:dinosaurs/mammoth/mammoth_living_3",
+      "jurassicreborn:dinosaurs/mammoth/mammoth_living_4",
+      "jurassicreborn:dinosaurs/mammoth/mammoth_living_5",
+      "jurassicreborn:dinosaurs/mammoth/mammoth_living_6",
+      "jurassicreborn:dinosaurs/mammoth/mammoth_living_7",
+      "jurassicreborn:dinosaurs/mammoth/mammoth_living_8",
+      "jurassicreborn:dinosaurs/mammoth/mammoth_living_9",
+      "jurassicreborn:dinosaurs/mammoth/mammoth_living_10",
+      "jurassicreborn:dinosaurs/mammoth/mammoth_living_11",
+      "jurassicreborn:dinosaurs/mammoth/mammoth_living_12",
+      "jurassicreborn:dinosaurs/mammoth/mammoth_living_13",
+      "jurassicreborn:dinosaurs/mammoth/mammoth_living_14"
+    ]
+  },
+  "mammoth_mate_call":{
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/mammoth/mammoth_mate_call_1",
+      "jurassicreborn:dinosaurs/mammoth/mammoth_mate_call_2",
+      "jurassicreborn:dinosaurs/mammoth/mammoth_mate_call_3"
+    ]
+  },
+  "mammoth_threat":{
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/mammoth/mammoth_threat_1",
+      "jurassicreborn:dinosaurs/mammoth/mammoth_threat_2",
+      "jurassicreborn:dinosaurs/mammoth/mammoth_threat_3",
+      "jurassicreborn:dinosaurs/mammoth/mammoth_threat_4"
+    ]
+  },
+  "elasmotherium_death":{
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/elasmotherium/elasmotherium_death_1"
+    ]
+  },
+  "elasmotherium_hurt":{
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/elasmotherium/elasmotherium_hurt_1",
+      "jurassicreborn:dinosaurs/elasmotherium/elasmotherium_hurt_2"
+    ]
+  },
+  "elasmotherium_living":{
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/elasmotherium/elasmotherium_living_1",
+      "jurassicreborn:dinosaurs/elasmotherium/elasmotherium_living_2",
+      "jurassicreborn:dinosaurs/elasmotherium/elasmotherium_living_3",
+      "jurassicreborn:dinosaurs/elasmotherium/elasmotherium_living_4",
+      "jurassicreborn:dinosaurs/elasmotherium/elasmotherium_living_5",
+      "jurassicreborn:dinosaurs/elasmotherium/elasmotherium_living_6",
+      "jurassicreborn:dinosaurs/elasmotherium/elasmotherium_living_7"
+    ]
+  },
+  "elasmotherium_threat":{
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/elasmotherium/elasmotherium_threat_1"
+    ]
+    },
+  "deinotherium_alarm_call":{
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/deinotherium/deinotherium_alarm_call"
+    ]
+  },
+  "deinotherium_death":{
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/deinotherium/deinotherium_death"
+    ]
+  },
+  "deinotherium_hurt":{
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/deinotherium/deinotherium_hurt_1",
+      "jurassicreborn:dinosaurs/deinotherium/deinotherium_hurt_2",
+      "jurassicreborn:dinosaurs/deinotherium/deinotherium_hurt_3"
+    ]
+  },
+  "deinotherium_living":{
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/deinotherium/deinotherium_living_1",
+      "jurassicreborn:dinosaurs/deinotherium/deinotherium_living_2",
+      "jurassicreborn:dinosaurs/deinotherium/deinotherium_living_3",
+      "jurassicreborn:dinosaurs/deinotherium/deinotherium_living_4",
+      "jurassicreborn:dinosaurs/deinotherium/deinotherium_living_5",
+      "jurassicreborn:dinosaurs/deinotherium/deinotherium_living_6",
+      "jurassicreborn:dinosaurs/deinotherium/deinotherium_living_7",
+      "jurassicreborn:dinosaurs/deinotherium/deinotherium_living_8",
+      "jurassicreborn:dinosaurs/deinotherium/deinotherium_living_9",
+      "jurassicreborn:dinosaurs/deinotherium/deinotherium_living_10",
+      "jurassicreborn:dinosaurs/deinotherium/deinotherium_living_11",
+      "jurassicreborn:dinosaurs/deinotherium/deinotherium_living_12",
+      "jurassicreborn:dinosaurs/deinotherium/deinotherium_living_13",
+      "jurassicreborn:dinosaurs/deinotherium/deinotherium_living_14"
+    ]
+  },
+  "deinotherium_mate_call":{
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/deinotherium/deinotherium_mate_call_1",
+      "jurassicreborn:dinosaurs/deinotherium/deinotherium_mate_call_2",
+      "jurassicreborn:dinosaurs/deinotherium/deinotherium_mate_call_3"
+    ]
+  },
+  "deinotherium_threat":{
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/deinotherium/deinotherium_threat_1",
+      "jurassicreborn:dinosaurs/deinotherium/deinotherium_threat_2",
+      "jurassicreborn:dinosaurs/deinotherium/deinotherium_threat_3",
+      "jurassicreborn:dinosaurs/deinotherium/deinotherium_threat_4"
+    ]
+  },
+  "arsinoitherium_death":{
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/arsinoitherium/arsinoitherium_death_1"
+    ]
+  },
+  "arsinoitherium_hurt":{
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/arsinoitherium/arsinoitherium_hurt_1",
+      "jurassicreborn:dinosaurs/arsinoitherium/arsinoitherium_hurt_2"
+    ]
+  },
+  "arsinoitherium_living":{
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/arsinoitherium/arsinoitherium_living_1",
+      "jurassicreborn:dinosaurs/arsinoitherium/arsinoitherium_living_2",
+      "jurassicreborn:dinosaurs/arsinoitherium/arsinoitherium_living_3",
+      "jurassicreborn:dinosaurs/arsinoitherium/arsinoitherium_living_4",
+      "jurassicreborn:dinosaurs/arsinoitherium/arsinoitherium_living_5",
+      "jurassicreborn:dinosaurs/arsinoitherium/arsinoitherium_living_6",
+      "jurassicreborn:dinosaurs/arsinoitherium/arsinoitherium_living_7"
+    ]
+  },
+  "arsinoitherium_threat":{
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/arsinoitherium/arsinoitherium_threat_1"
+    ]
+  },
+  "postosuchus_attack":{
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/postosuchus/postosuchus_attack"
+    ]
+  },
+  "postosuchus_call":{
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/postosuchus/postosuchus_call_1",
+      "jurassicreborn:dinosaurs/postosuchus/postosuchus_call_2"
+    ]
+  },
+  "postosuchus_death":{
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/postosuchus/postosuchus_death_1",
+      "jurassicreborn:dinosaurs/postosuchus/postosuchus_death_2"
+    ]
+  },
+  "deinosuchus_attack":{
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/deinosuchus/deinosuchus_attack"
+    ]
+  },
+  "deinosuchus_death":{
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/deinosuchus/deinosuchus_death"
+    ]
+  },
+  "deinosuchus_living":{
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/deinosuchus/deinosuchus_living_1",
+      "jurassicreborn:dinosaurs/deinosuchus/deinosuchus_living_2"
+    ]
+  },
+  "deinosuchus_call":{
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/deinosuchus/deinosuchus_call"
+    ]
+  },
+  "deinosuchus_death_roll":{
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/deinosuchus/deinosuchus_death_roll"
+    ]
+  },
+  "deinosuchus_injured":{
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/deinosuchus/deinosuchus_injured"
+    ]
+  },
+  "goat_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:entity/goat/goat_death"
+    ]
+  },
+  "goat_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:entity/goat/goat_hurt_1",
+      "jurassicreborn:entity/goat/goat_hurt_2"
+    ]
+  },
+  "goat_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:entity/goat/goat_living_1",
+      "jurassicreborn:entity/goat/goat_living_2",
+      "jurassicreborn:entity/goat/goat_living_3",
+      "jurassicreborn:entity/goat/goat_living_4"
+    ]
+  },
+  "mamenchisaurus_death":{
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/mamenchisaurus/mamenchisaurus_death_1",
+      "jurassicreborn:dinosaurs/mamenchisaurus/mamenchisaurus_death_2"
+    ]
+  },
+  "mamenchisaurus_hurt":{
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/mamenchisaurus/mamenchisaurus_hurt_1",
+      "jurassicreborn:dinosaurs/mamenchisaurus/mamenchisaurus_hurt_2"
+    ]
+  },
+  "mamenchisaurus_call":{
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/mamenchisaurus/mamenchisaurus_calling"
+    ]
+  },
+  "mamenchisaurus_mate_call": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/mamenchisaurus/mamenchisaurus_mate_call"
+    ]
+  },
+  "mamenchisaurus_living":{
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/mamenchisaurus/mamenchisaurus_living_1",
+      "jurassicreborn:dinosaurs/mamenchisaurus/mamenchisaurus_living_2",
+      "jurassicreborn:dinosaurs/mamenchisaurus/mamenchisaurus_living_3",
+      "jurassicreborn:dinosaurs/mamenchisaurus/mamenchisaurus_living_4",
+      "jurassicreborn:dinosaurs/mamenchisaurus/mamenchisaurus_living_5",
+      "jurassicreborn:dinosaurs/mamenchisaurus/mamenchisaurus_living_6"
+    ]
+  },
+  "mamenchisaurus_threat":{
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/mamenchisaurus/mamenchisaurus_threat"
+    ]
+  },
+  "sinoceratops_death":{
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/sinoceratops/sinoceratops_death"
+    ]
+  },
+  "sinoceratops_hurt":{
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/sinoceratops/sinoceratops_hurt_1",
+      "jurassicreborn:dinosaurs/sinoceratops/sinoceratops_hurt_2"
+    ]
+  },
+  "sinoceratops_call":{
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/sinoceratops/sinoceratops_calling"
+    ]
+ },
+  "sinoceratops_mate_call": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/sinoceratops/sinoceratops_mate_call"
+    ]
+  },
+  "sinoceratops_living":{
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/sinoceratops/sinoceratops_living_1",
+      "jurassicreborn:dinosaurs/sinoceratops/sinoceratops_living_2",
+      "jurassicreborn:dinosaurs/sinoceratops/sinoceratops_living_3",
+      "jurassicreborn:dinosaurs/sinoceratops/sinoceratops_living_4"
+    ]
+  },
+  "sinoceratops_threat":{
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/sinoceratops/sinoceratops_threat"
+    ]
+  },
+  "dreadnoughtus_death":{
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/dreadnoughtus/dreadnoughtus_death"
+    ]
+  },
+  "dreadnoughtus_hurt":{
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/dreadnoughtus/dreadnoughtus_hurt_1",
+      "jurassicreborn:dinosaurs/dreadnoughtus/dreadnoughtus_hurt_2",
+      "jurassicreborn:dinosaurs/dreadnoughtus/dreadnoughtus_hurt_3"
+    ]
+  },
+  "dreadnoughtus_call":{
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/dreadnoughtus/dreadnoughtus_calling"
+    ]
+  },
+  "dreadnoughtus_mate_call": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/dreadnoughtus/dreadnoughtus_mate_call"
+    ]
+  },
+  "dreadnoughtus_living":{
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/dreadnoughtus/dreadnoughtus_living_1",
+      "jurassicreborn:dinosaurs/dreadnoughtus/dreadnoughtus_living_2",
+      "jurassicreborn:dinosaurs/dreadnoughtus/dreadnoughtus_living_3",
+      "jurassicreborn:dinosaurs/dreadnoughtus/dreadnoughtus_living_4",
+      "jurassicreborn:dinosaurs/dreadnoughtus/dreadnoughtus_living_5",
+      "jurassicreborn:dinosaurs/dreadnoughtus/dreadnoughtus_living_6"
+    ]
+  },
+  "dreadnoughtus_threat":{
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/dreadnoughtus/dreadnoughtus_threat"
+    ]
+  },
+  "patagotitan_death":{
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/patagotitan/patagotitan_death"
+    ]
+  },
+  "patagotitan_hurt":{
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/patagotitan/patagotitan_hurt_1",
+      "jurassicreborn:dinosaurs/patagotitan/patagotitan_hurt_2",
+      "jurassicreborn:dinosaurs/patagotitan/patagotitan_hurt_3"
+    ]
+  },
+  "patagotitan_call":{
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/patagotitan/patagotitan_calling"
+    ]
+  },
+  "patagotitan_mate_call": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/patagotitan/patagotitan_mate_call"
+    ]
+  },
+  "patagotitan_living":{
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/patagotitan/patagotitan_living_1",
+      "jurassicreborn:dinosaurs/patagotitan/patagotitan_living_2",
+      "jurassicreborn:dinosaurs/patagotitan/patagotitan_living_3",
+      "jurassicreborn:dinosaurs/patagotitan/patagotitan_living_4",
+      "jurassicreborn:dinosaurs/patagotitan/patagotitan_living_5",
+      "jurassicreborn:dinosaurs/patagotitan/patagotitan_living_6"
+    ]
+  },
+  "patagotitan_threat":{
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/patagotitan/patagotitan_threat"
+    ]
+ },
+  "spinoraptor_hurt": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/spinoraptor/spinoraptor_hurt_1",
+      "jurassicreborn:dinosaurs/spinoraptor/spinoraptor_hurt_2"
+    ]
+  },
+  "spinoraptor_living": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/spinoraptor/spinoraptor_living_1",
+      "jurassicreborn:dinosaurs/spinoraptor/spinoraptor_living_2",
+      "jurassicreborn:dinosaurs/spinoraptor/spinoraptor_living_3",
+      "jurassicreborn:dinosaurs/spinoraptor/spinoraptor_living_4",
+      "jurassicreborn:dinosaurs/spinoraptor/spinoraptor_living_5",
+      "jurassicreborn:dinosaurs/spinoraptor/spinoraptor_living_6",
+      "jurassicreborn:dinosaurs/spinoraptor/spinoraptor_living_7",
+      "jurassicreborn:dinosaurs/spinoraptor/spinoraptor_living_8"
+    ]
+  },
+  "spinoraptor_call": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/spinoraptor/spinoraptor_bark_1",
+      "jurassicreborn:dinosaurs/spinoraptor/spinoraptor_bark_2"
+    ]
+  },
+  "spinoraptor_breathing": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/spinoraptor/spinoraptor_breathing_1",
+      "jurassicreborn:dinosaurs/spinoraptor/spinoraptor_breathing_2",
+      "jurassicreborn:dinosaurs/spinoraptor/spinoraptor_breathing_3"
+    ]
+  },
+  "spinoraptor_death": {
+    "category": "hostile",
+    "sounds": [
+      "jurassicreborn:dinosaurs/spinoraptor/spinoraptor_death_1"
+    ]
+  }
+}

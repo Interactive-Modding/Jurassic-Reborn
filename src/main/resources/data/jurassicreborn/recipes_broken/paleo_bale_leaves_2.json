@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "jurassicreborn:paleo_bale_leaves",
+  "pattern": [
+    "AAA",
+    "AAA",
+    "AAA"
+  ],
+  "key": {
+    "A": {
+      "item": "jurassicreborn:phoenix_leaves",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "jurassicreborn:paleo_bale_leaves",
+    "data": 0
+  }
+}

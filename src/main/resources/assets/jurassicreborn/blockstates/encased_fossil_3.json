@@ -1,0 +1,52 @@
+{
+  "variants": {
+    "variant=0": {
+      "model": "jurassicreborn:block/encased_fossil_2"
+    },
+    "variant=1": {
+      "model": "jurassicreborn:block/encased_fossil_2"
+    },
+    "variant=2": {
+      "model": "jurassicreborn:block/encased_fossil_2"
+    },
+    "variant=3": {
+      "model": "jurassicreborn:block/encased_fossil_2"
+    },
+    "variant=4": {
+      "model": "jurassicreborn:block/encased_fossil_2"
+    },
+    "variant=5": {
+      "model": "jurassicreborn:block/encased_fossil_2"
+    },
+    "variant=6": {
+      "model": "jurassicreborn:block/encased_fossil_2"
+    },
+    "variant=7": {
+      "model": "jurassicreborn:block/encased_fossil_2"
+    },
+    "variant=8": {
+      "model": "jurassicreborn:block/encased_fossil_2"
+    },
+    "variant=9": {
+      "model": "jurassicreborn:block/encased_fossil_2"
+    },
+    "variant=10": {
+      "model": "jurassicreborn:block/encased_fossil_2"
+    },
+    "variant=11": {
+      "model": "jurassicreborn:block/encased_fossil_2"
+    },
+    "variant=12": {
+      "model": "jurassicreborn:block/encased_fossil_2"
+    },
+    "variant=13": {
+      "model": "jurassicreborn:block/encased_fossil_2"
+    },
+    "variant=14": {
+      "model": "jurassicreborn:block/encased_fossil_2"
+    },
+    "variant=15": {
+      "model": "jurassicreborn:block/encased_fossil_2"
+    }
+  }
+}

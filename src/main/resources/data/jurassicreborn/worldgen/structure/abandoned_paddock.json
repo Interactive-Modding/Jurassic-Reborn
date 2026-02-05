@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:jigsaw",
+  "start_pool": "jurassicreborn:abandoned_paddock/start_pool",
+  "size": 1,
+  "max_distance_from_center": 80,
+  "biomes": "#jurassicreborn:has_structure/abandoned_paddock",
+  "step": "surface_structures",
+  "start_height": {
+    "absolute": -3
+  },
+  "project_start_to_heightmap": "WORLD_SURFACE_WG",
+  "use_expansion_hack": false,
+  "spawn_overrides": {}
+}

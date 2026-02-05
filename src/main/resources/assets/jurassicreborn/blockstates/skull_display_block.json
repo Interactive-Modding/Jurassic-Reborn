@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "facing=north,waterlogged=false": { "model": "jurassicreborn:block/skull_display_block" },
+    "facing=north,waterlogged=true": { "model": "jurassicreborn:block/skull_display_block" },
+    "facing=south,waterlogged=false": { "model": "jurassicreborn:block/skull_display_block" },
+    "facing=south,waterlogged=true": { "model": "jurassicreborn:block/skull_display_block" },
+    "facing=west,waterlogged=false": { "model": "jurassicreborn:block/skull_display_block" },
+    "facing=west,waterlogged=true": { "model": "jurassicreborn:block/skull_display_block" },
+    "facing=east,waterlogged=false": { "model": "jurassicreborn:block/skull_display_block" },
+    "facing=east,waterlogged=true": { "model": "jurassicreborn:block/skull_display_block" },
+    "facing=up,waterlogged=false": { "model": "jurassicreborn:block/skull_display_block" },
+    "facing=up,waterlogged=true": { "model": "jurassicreborn:block/skull_display_block" },
+    "facing=down,waterlogged=false": { "model": "jurassicreborn:block/skull_display_block" },
+    "facing=down,waterlogged=true": { "model": "jurassicreborn:block/skull_display_block" }
+  }
+}

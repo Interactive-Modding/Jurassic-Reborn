@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_column",
+  "textures": {
+    "end": "jurassicreborn:block/paleo_bale/bennettitalean_top",
+    "side": "jurassicreborn:block/paleo_bale/bennettitalean_side"
+  }
+}

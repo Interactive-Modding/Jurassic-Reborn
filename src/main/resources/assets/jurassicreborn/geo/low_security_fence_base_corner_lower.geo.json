@@ -1,0 +1,180 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.unknown",
+				"texture_width": 128,
+				"texture_height": 128,
+				"visible_bounds_width": 4,
+				"visible_bounds_height": 3.5,
+				"visible_bounds_offset": [0, 1.25, 0]
+			},
+			"bones": [
+				{
+					"name": "root",
+					"pivot": [0, 24, 0]
+				},
+				{
+					"name": "Base",
+					"parent": "root",
+					"pivot": [0, 0, 0],
+					"cubes": [
+						{"origin": [-4, -0.1, -4], "size": [12, 11, 8], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "Slope1",
+					"parent": "Base",
+					"pivot": [0, 1, -7.1],
+					"rotation": [-15.65, 0, 0],
+					"cubes": [
+						{"origin": [4.5, 1.9, -7.1], "size": [3, 9, 4], "uv": [70, 25]}
+					]
+				},
+				{
+					"name": "Slopebase1",
+					"parent": "Slope1",
+					"pivot": [0, 0.7, -7.95],
+					"rotation": [15.65, 0, 0],
+					"cubes": [
+						{"origin": [3, -0.3, -7.95], "size": [5, 2, 4], "uv": [50, 15]}
+					]
+				},
+				{
+					"name": "Slope2",
+					"parent": "Base",
+					"pivot": [0, 1, 7.1],
+					"rotation": [15.65, 0, 0],
+					"cubes": [
+						{"origin": [-4.5, 1.9, 4.1], "size": [12, 9, 3], "uv": [56, 0]}
+					]
+				},
+				{
+					"name": "Slopebase2",
+					"parent": "Slope2",
+					"pivot": [0, 1, 6.95],
+					"rotation": [-15.65, 0, 0],
+					"cubes": [
+						{"origin": [-6, 0, 3.95], "size": [14, 2, 3], "uv": [71, 15]}
+					]
+				},
+				{
+					"name": "Baseunderslope1",
+					"parent": "Base",
+					"pivot": [0, 11.45, 0],
+					"cubes": [
+						{"origin": [-3.5, 10.45, -3.5], "size": [11, 1, 7], "uv": [0, 20]}
+					]
+				},
+				{
+					"name": "Baseunderslope2",
+					"parent": "Baseunderslope1",
+					"pivot": [0, 10.95, -3.5],
+					"cubes": [
+						{"origin": [-3.5, 10.45, -7.5], "size": [7, 1, 4], "uv": [90, 32]}
+					]
+				},
+				{
+					"name": "Basetop1",
+					"parent": "Base",
+					"pivot": [0, 11.9, 0],
+					"cubes": [
+						{"origin": [-2, 10.9, -2.5], "size": [10, 1, 5], "uv": [0, 30]}
+					]
+				},
+				{
+					"name": "Basetop2",
+					"parent": "Basetop1",
+					"pivot": [0, 11.89, -2],
+					"cubes": [
+						{"origin": [-2.5, 10.89, -8], "size": [5, 1, 10], "uv": [90, 0]}
+					]
+				},
+				{
+					"name": "Railingholder1",
+					"parent": "Base",
+					"pivot": [4, 7.5, 0],
+					"cubes": [
+						{"origin": [3, 3.9, -6], "size": [2, 4, 12], "uv": [0, 40]}
+					]
+				},
+				{
+					"name": "Railing1",
+					"parent": "Railingholder1",
+					"pivot": [4, 7.5, -5.6],
+					"cubes": [
+						{"origin": [5, 7, -6.1], "size": [3, 1, 1], "inflate": -0.001, "uv": [64, 29]}
+					]
+				},
+				{
+					"name": "Railing4",
+					"parent": "Railing1",
+					"pivot": [5.5, 8, -5],
+					"cubes": [
+						{"origin": [5, 7, -8], "size": [1, 1, 3], "uv": [64, 25]}
+					]
+				},
+				{
+					"name": "Railing2",
+					"parent": "Railingholder1",
+					"pivot": [4, 7.5, 5.6],
+					"cubes": [
+						{"origin": [-5, 7, 5.1], "size": [13, 1, 1], "uv": [0, 53]}
+					]
+				},
+				{
+					"name": "Railing3",
+					"parent": "Railing2",
+					"pivot": [-5.5, 7.49, 5.5],
+					"cubes": [
+						{"origin": [-6, 6.99, -7.9], "size": [1, 1, 14], "uv": [30, 45]}
+					]
+				},
+				{
+					"name": "Railingholder2",
+					"parent": "Railing3",
+					"pivot": [-4.9, 7.39, -4.5],
+					"cubes": [
+						{"origin": [-5.9, 3.89, -5.5], "size": [2, 4, 2], "uv": [64, 19]}
+					]
+				},
+				{
+					"name": "Slope3",
+					"parent": "Base",
+					"pivot": [-1.4, -0.7, -1.6],
+					"rotation": [0, 0, -15.65],
+					"cubes": [
+						{"origin": [-6.66776, -0.54488, -7.6], "size": [3, 9, 12], "pivot": [0, 0, 0], "rotation": [0, 0, 30], "uv": [0, 58]}
+					]
+				},
+				{
+					"name": "Slopebase3",
+					"parent": "Slope3",
+					"pivot": [-1.13, 0.05, -1.55],
+					"rotation": [0, 0, 15.65],
+					"cubes": [
+						{"origin": [-6.63, 0.05, -8], "size": [3, 2, 14], "uv": [55, 40]}
+					]
+				},
+				{
+					"name": "Base2",
+					"parent": "Base",
+					"pivot": [0, -0.1, -1],
+					"cubes": [
+						{"origin": [-4, -0.1, -8], "size": [8, 11, 4], "uv": [40, 24]}
+					]
+				},
+				{
+					"name": "Slope4",
+					"parent": "Base2",
+					"pivot": [7.2, 0.95, -4.5],
+					"rotation": [0, 0, 15.65],
+					"cubes": [
+						{"origin": [2.73605, 1.54686, -7.5], "size": [3, 9, 4], "pivot": [6, 3, -6], "rotation": [0, 0, -30], "uv": [70, 25]}
+					]
+				}
+			]
+		}
+	]
+}

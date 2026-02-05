@@ -1,7 +1,0 @@
-{
-  "parent": "block/door_bottom_rh",
-  "textures": {
-    "bottom": "rebornmod:blocks/door_psaronius_lower",
-    "top": "rebornmod:blocks/door_psaronius_upper"
-  }
-}

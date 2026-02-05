@@ -1,0 +1,18 @@
+{
+  "type": "jurassicreborn:fossil_ore",
+  "config": {
+    "discard_chance_on_air_exposure": 0,
+    "size": 6,
+    "targets": [
+      {
+        "state": {
+          "Name": "jurassicreborn:dimetrodon_fossil"
+        },
+        "target": {
+          "predicate_type": "minecraft:tag_match",
+          "tag": "minecraft:deepslate_ore_replaceables"
+        }
+      }
+    ]
+  }
+}

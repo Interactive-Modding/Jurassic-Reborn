@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "layer0": "jurassicreborn:block/skeleton_assembly",
+    "particle": "block/oak_planks"
+  },
+  "tabula": "jurassicreborn:models/block/skeleton_assembly"
+}

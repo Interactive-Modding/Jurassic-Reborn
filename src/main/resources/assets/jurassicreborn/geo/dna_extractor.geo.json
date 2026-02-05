@@ -1,0 +1,66 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.unknown",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 3,
+				"visible_bounds_height": 2.5,
+				"visible_bounds_offset": [0, 0.75, 0]
+			},
+			"bones": [
+				{
+					"name": "Base",
+					"pivot": [0, 0, 0],
+					"cubes": [
+						{"origin": [-8, 0, -6], "size": [16, 3, 12], "pivot": [0, 0, 0], "rotation": [0, 0, 0], "uv": [0, 0]},
+						{"origin": [-8, -0.1, -6.725], "size": [16, 3, 1], "pivot": [0, 1.4, -6.475], "rotation": [10, 0, 0], "uv": [0, 15]},
+						{"origin": [-8, 3, 1], "size": [16, 10, 5], "uv": [0, 19]}
+					]
+				},
+				{
+					"name": "SpecimenBoxBase",
+					"parent": "Base",
+					"pivot": [2, 3, -2.5],
+					"cubes": [
+						{"origin": [-0.5, 3, -5.55], "size": [8, 10, 6], "pivot": [6.5, 3, -4.55], "rotation": [-2.5, 0, 0], "uv": [0, 34]},
+						{"origin": [0, 3, 0], "size": [7, 9, 1], "pivot": [8, 3, 1], "rotation": [-2.5, 0, 0], "uv": [44, 0]},
+						{"origin": [1, 3, -5.5], "size": [5, 1, 5], "uv": [37, 15]}
+					]
+				},
+				{
+					"name": "Lid_front",
+					"parent": "SpecimenBoxBase",
+					"pivot": [0.5, 5, -5.625],
+					"cubes": [
+						{"origin": [-0.5, 10, -6.075], "size": [8, 3, 2], "pivot": [0.5, 11, -5.175], "rotation": [-25, 0, 0], "uv": [28, 47]},
+						{"origin": [-0.5, 6.525, -6.725], "size": [8, 4, 2], "pivot": [0.5, 6.525, -5.725], "rotation": [-5, 0, 0], "uv": [42, 21]},
+						{"origin": [-0.5, 3, -6.175], "size": [8, 4, 2], "pivot": [0.5, 5, -5.175], "rotation": [17.5, 0, 0], "uv": [28, 41]}
+					]
+				},
+				{
+					"name": "Control_Panel_Front",
+					"parent": "Base",
+					"pivot": [-5, 9.75, -5.075],
+					"cubes": [
+						{"origin": [-8, 3, -6], "size": [7, 7, 7], "uv": [35, 27]},
+						{"origin": [-8, 3.875, -6.5], "size": [7, 4, 1], "pivot": [-5, 5.69979, -5.95652], "rotation": [0, 0, 0], "uv": [0, 50]},
+						{"origin": [-8, 2.275, -6.05], "size": [7, 2, 1], "pivot": [-5, 3.275, -5.55], "rotation": [30, 0, 0], "uv": [47, 46]}
+					]
+				},
+				{
+					"name": "Control_Panel_Top",
+					"parent": "Control_Panel_Front",
+					"pivot": [-5, 9.75, -5.075],
+					"cubes": [
+						{"origin": [-8, 9.075, -5], "size": [7, 4, 6], "pivot": [-2, 9.075, 0], "rotation": [-5, 0, 0], "uv": [11, 52]},
+						{"origin": [-8, 11.925, -6.05], "size": [7, 2, 2], "pivot": [-7.5, 11.075, -6.125], "rotation": [-30, 0, 0], "uv": [36, 58]},
+						{"origin": [-8, 7.605, -6.059], "size": [7, 4, 2], "pivot": [-5, 9.75, -5.075], "rotation": [-12.5, 0, 0], "uv": [30, 52]}
+					]
+				}
+			]
+		}
+	]
+}

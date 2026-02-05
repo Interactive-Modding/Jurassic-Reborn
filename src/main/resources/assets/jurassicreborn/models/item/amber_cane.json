@@ -1,0 +1,6 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "jurassicreborn:item/amber_cane"
+  }
+}

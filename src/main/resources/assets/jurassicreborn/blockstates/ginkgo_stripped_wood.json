@@ -1,0 +1,15 @@
+{
+  "variants": {
+    "axis=y": {
+      "model": "jurassicreborn:block/ginkgo_stripped_wood"
+    },
+    "axis=z": {
+      "model": "jurassicreborn:block/ginkgo_stripped_wood",
+	  "x": 90
+    },
+    "axis=x": {
+      "model": "jurassicreborn:block/ginkgo_stripped_wood",
+      "x": 90, "y": 90
+    }
+  }
+}

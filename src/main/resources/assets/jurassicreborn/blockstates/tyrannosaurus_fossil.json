@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "bone_count=1": {
+      "model": "jurassicreborn:block/tyrannosaurus_arm_bones_fossil"
+    },
+    "bone_count=2": {
+      "model": "jurassicreborn:block/tyrannosaurus_foot_bones_fossil"
+    },
+    "bone_count=3": {
+      "model": "jurassicreborn:block/tyrannosaurus_leg_bones_fossil"
+    },
+    "bone_count=4": {
+      "model": "jurassicreborn:block/tyrannosaurus_neck_vertebrae_fossil"
+    },
+    "bone_count=5": {
+      "model": "jurassicreborn:block/tyrannosaurus_pelvis_fossil"
+    },
+    "bone_count=6": {
+      "model": "jurassicreborn:block/tyrannosaurus_ribcage_fossil"
+    },
+    "bone_count=7": {
+      "model": "jurassicreborn:block/tyrannosaurus_shoulder_fossil"
+    },
+    "bone_count=8": {
+      "model": "jurassicreborn:block/tyrannosaurus_skull_fossil"
+    },
+    "bone_count=9": {
+      "model": "jurassicreborn:block/tyrannosaurus_tail_vertebrae_fossil"
+    },
+    "bone_count=10": {
+      "model": "jurassicreborn:block/tyrannosaurus_tooth_fossil"
+    }
+  }
+}

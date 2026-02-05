@@ -1,0 +1,1377 @@
+{
+  "parent": "jurassicreborn:jurassicreborn/embryo_calcification_machine",
+  "criteria": {
+    "egg_achillobator": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_achillobator"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_alligator_gar": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:air"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_allosaurus": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_allosaurus"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_alvarezsaurus": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_alvarezsaurus"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_ankylodocus": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_ankylodocus"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_ankylosaurus": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_ankylosaurus"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_apatosaurus": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_apatosaurus"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_arsinoitherium": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:air"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_asteroceras": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:air"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_baryonyx": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_baryonyx"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_beelzebufo": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_beelzebufo"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_blue": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_blue"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_brachiosaurus": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_brachiosaurus"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_camarasaurus": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_camarasaurus"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_cameroceras": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:air"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_carcharodontosaurus": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_carcharodontosaurus"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_carnotaurus": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_carnotaurus"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_cearadactylus": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_cearadactylus"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_ceratosaurus": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_ceratosaurus"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_charlie": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_charlie"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_chasmosaurus": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_chasmosaurus"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_chilesaurus": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_chilesaurus"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_coelacanth": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:air"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_coelurus": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_coelurus"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_compsognathus": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_compsognathus"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_corythosaurus": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_corythosaurus"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_crassigyrinus": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:air"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_deinosuchus": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_deinosuchus"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_deinotherium": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:air"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_delta": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_delta"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_dilophosaurus": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_dilophosaurus"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_dimetrodon": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_dimetrodon"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_dimorphodon": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_dimorphodon"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_diplocaulus": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:air"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_diplodocus": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_diplodocus"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_dodo": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_dodo"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_dreadnoughtus": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_dreadnoughtus"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_dunkleosteus": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:air"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_echo": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_echo"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_edmontosaurus": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_edmontosaurus"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_elasmotherium": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:air"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_endoceras": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:air"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_gallimimus": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_gallimimus"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_giganotosaurus": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_giganotosaurus"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_guanlong": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_guanlong"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_herrerasaurus": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_herrerasaurus"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_hyaenodon": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:air"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_hypsilophodon": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_hypsilophodon"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_indominus": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_indominus"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_indoraptor": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_indoraptor"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_kairuku": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_kairuku"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_lambeosaurus": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_lambeosaurus"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_leaellynasaura": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_leaellynasaura"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_leptictidium": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:air"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_ludodactylus": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_ludodactylus"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_majungasaurus": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_majungasaurus"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_mamenchisaurus": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_mamenchisaurus"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_mammoth": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:air"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_mawsonia": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:air"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_megalodon": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:air"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_megapiranha": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:air"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_megatherium": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:air"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_metriacanthosaurus": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_metriacanthosaurus"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_microceratus": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_microceratus"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_microraptor": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_microraptor"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_moganopterus": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_moganopterus"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_mosasaurus": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:air"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_mussaurus": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_mussaurus"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_nigersaurus": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_nigersaurus"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_ornithomimus": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_ornithomimus"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_orthoceras": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:air"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_othnielia": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_othnielia"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_oviraptor": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_oviraptor"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_pachycephalosaurus": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_pachycephalosaurus"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_paraceratherium": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:air"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_parapuzosia": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:air"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_parasaurolophus": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_parasaurolophus"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_perisphinctes": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:air"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_postosuchus": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_postosuchus"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_proceratosaurus": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_proceratosaurus"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_protoceratops": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_protoceratops"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_pteranodon": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_pteranodon"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_quetzalcoatlus": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_quetzalcoatlus"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_raphusrex": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_raphusrex"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_rugops": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_rugops"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_segisaurus": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_segisaurus"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_sinoceratops": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_sinoceratops"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_smilodon": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:air"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_spinoraptor": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_spinoraptor"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_spinosaurus": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_spinosaurus"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_stegosaurus": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_stegosaurus"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_styracosaurus": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_styracosaurus"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_suchomimus": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_suchomimus"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_therizinosaurus": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_therizinosaurus"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_titanis": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_titanis"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_titanites": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:air"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_triceratops": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_triceratops"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_troodon": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_troodon"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_tropeognathus": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_tropeognathus"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_tylosaurus": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:air"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_tyrannosaurus": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_tyrannosaurus"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_vectipelta": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_vectipelta"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_velociraptor": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_velociraptor"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_zhenyuanopterus": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_zhenyuanopterus"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.jurassicreborn.dino_egg.description"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "item": "jurassicreborn:egg/egg_mamenchisaurus"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.jurassicreborn.dino_egg.title"
+    }
+  },
+  "requirements": [
+    [
+      "egg_achillobator",
+      "egg_alligator_gar",
+      "egg_allosaurus",
+      "egg_alvarezsaurus",
+      "egg_perisphinctes",
+      "egg_ankylodocus",
+      "egg_ankylosaurus",
+      "egg_apatosaurus",
+      "egg_arsinoitherium",
+      "egg_asteroceras",
+      "egg_cameroceras",
+      "egg_endoceras",
+      "egg_orthoceras",
+      "egg_megalodon",
+      "egg_deinosuchus",
+      "egg_kairuku",
+      "egg_nigersaurus",
+      "egg_baryonyx",
+      "egg_beelzebufo",
+      "egg_blue",
+      "egg_brachiosaurus",
+      "egg_camarasaurus",
+      "egg_carcharodontosaurus",
+      "egg_carnotaurus",
+      "egg_cearadactylus",
+      "egg_ceratosaurus",
+      "egg_charlie",
+      "egg_chasmosaurus",
+      "egg_chilesaurus",
+      "egg_coelacanth",
+      "egg_coelurus",
+      "egg_compsognathus",
+      "egg_corythosaurus",
+      "egg_crassigyrinus",
+      "egg_deinotherium",
+      "egg_delta",
+      "egg_dilophosaurus",
+      "egg_dimetrodon",
+      "egg_dimorphodon",
+      "egg_diplocaulus",
+      "egg_diplodocus",
+      "egg_dodo",
+      "egg_dreadnoughtus",
+      "egg_dunkleosteus",
+      "egg_echo",
+      "egg_edmontosaurus",
+      "egg_elasmotherium",
+      "egg_gallimimus",
+      "egg_giganotosaurus",
+      "egg_guanlong",
+      "egg_herrerasaurus",
+      "egg_hyaenodon",
+      "egg_hypsilophodon",
+      "egg_indominus",
+      "egg_indoraptor",
+      "egg_lambeosaurus",
+      "egg_leaellynasaura",
+      "egg_leptictidium",
+      "egg_ludodactylus",
+      "egg_majungasaurus",
+      "egg_mamenchisaurus",
+      "egg_mammoth",
+      "egg_mawsonia",
+      "egg_megapiranha",
+      "egg_megatherium",
+      "egg_metriacanthosaurus",
+      "egg_microceratus",
+      "egg_microraptor",
+      "egg_moganopterus",
+      "egg_mosasaurus",
+      "egg_mussaurus",
+      "egg_ornithomimus",
+      "egg_othnielia",
+      "egg_oviraptor",
+      "egg_pachycephalosaurus",
+      "egg_paraceratherium",
+      "egg_parapuzosia",
+      "egg_parasaurolophus",
+      "egg_postosuchus",
+      "egg_proceratosaurus",
+      "egg_protoceratops",
+      "egg_pteranodon",
+      "egg_quetzalcoatlus",
+      "egg_raphusrex",
+      "egg_rugops",
+      "egg_segisaurus",
+      "egg_sinoceratops",
+      "egg_smilodon",
+      "egg_spinoraptor",
+      "egg_spinosaurus",
+      "egg_stegosaurus",
+      "egg_styracosaurus",
+      "egg_suchomimus",
+      "egg_therizinosaurus",
+      "egg_titanis",
+      "egg_titanites",
+      "egg_triceratops",
+      "egg_troodon",
+      "egg_tropeognathus",
+      "egg_tylosaurus",
+      "egg_tyrannosaurus",
+      "egg_vectipelta",
+      "egg_velociraptor",
+      "egg_zhenyuanopterus"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

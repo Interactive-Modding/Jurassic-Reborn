@@ -1,0 +1,111 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "name": "common",
+      "rolls": { "type": "minecraft:uniform", "min": 2, "max": 3 },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:storage_disc",
+          "functions": [
+            { "function": "minecraft:set_count", "count": { "type": "minecraft:uniform", "min": 1, "max": 8 } }
+          ],
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:empty_test_tube",
+          "functions": [
+            { "function": "minecraft:set_count", "count": { "type": "minecraft:uniform", "min": 1, "max": 8 } }
+          ],
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:petri_dish",
+          "functions": [
+            { "function": "minecraft:set_count", "count": { "type": "minecraft:uniform", "min": 1, "max": 5 } }
+          ],
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:empty_syringe",
+          "functions": [
+            { "function": "minecraft:set_count", "count": { "type": "minecraft:uniform", "min": 1, "max": 7 } }
+          ],
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "name": "average",
+      "rolls": { "type": "minecraft:uniform", "min": 1, "max": 2 },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:liquid_agar",
+          "functions": [
+            { "function": "minecraft:set_count", "count": { "type": "minecraft:uniform", "min": 1, "max": 3 } }
+          ],
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna_base_material",
+          "functions": [
+            { "function": "minecraft:set_count", "count": { "type": "minecraft:uniform", "min": 1, "max": 2 } }
+          ],
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:plant_fossil",
+          "functions": [
+            { "function": "minecraft:set_count", "count": { "type": "minecraft:uniform", "min": 1, "max": 5 } }
+          ],
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "name": "rare",
+      "rolls": { "type": "minecraft:uniform", "min": 0, "max": 1 },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:amber_mosquito",
+          "functions": [
+            { "function": "minecraft:set_count", "count": { "type": "minecraft:uniform", "min": 1, "max": 2 } }
+          ],
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna_sequencer",
+          "conditions": [
+            { "condition": "minecraft:random_chance", "chance": 0.1 }
+          ],
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna_extractor",
+          "conditions": [
+            { "condition": "minecraft:random_chance", "chance": 0.1 }
+          ],
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:disc_reader",
+          "conditions": [
+            { "condition": "minecraft:random_chance", "chance": 0.5 }
+          ],
+          "weight": 1
+        }
+      ]
+    }
+  ]
+}

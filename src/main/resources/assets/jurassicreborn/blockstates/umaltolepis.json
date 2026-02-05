@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "jurassicreborn:block/umaltolepis_bottom"
+    },
+    "half=upper": {
+      "model": "jurassicreborn:block/umaltolepis_top"
+    }
+  }
+}

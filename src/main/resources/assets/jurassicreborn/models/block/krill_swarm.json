@@ -1,0 +1,6 @@
+{
+  "parent": "jurassicreborn:block/swarm",
+  "textures": {
+    "all": "jurassicreborn:block/krill_swarm"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "variants": {
+    "axis=y": {
+      "model": "jurassicreborn:block/araucaria_stripped_wood"
+    },
+    "axis=z": {
+      "model": "jurassicreborn:block/araucaria_stripped_wood",
+	  "x": 90
+    },
+    "axis=x": {
+      "model": "jurassicreborn:block/araucaria_stripped_wood",
+      "x": 90, "y": 90
+    }
+  }
+}

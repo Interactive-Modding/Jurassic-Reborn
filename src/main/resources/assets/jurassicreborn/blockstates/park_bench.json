@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "facing=north,part=left": { "model": "jurassicreborn:block/park_bench_other", "y": 270 },
+    "facing=north,part=right": { "model": "jurassicreborn:block/park_bench", "y": 270 },
+    "facing=south,part=right":  {"model": "jurassicreborn:block/park_bench", "y": 90},
+    "facing=south,part=left":  {"model": "jurassicreborn:block/park_bench_other", "y": 90},
+    "facing=west,part=right":  {"model": "jurassicreborn:block/park_bench", "y": 180},
+    "facing=west,part=left":  {"model": "jurassicreborn:block/park_bench_other", "y": 180},
+    "facing=east,part=right":  {"model": "jurassicreborn:block/park_bench", "y": 0},
+    "facing=east,part=left":  {"model": "jurassicreborn:block/park_bench_other", "y": 0}
+  }
+}

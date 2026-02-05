@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "category": "food",
+  "cookingtime": 200,
+  "experience": 0.35,
+  "ingredient": {
+    "item": "jurassicreborn:meat/meat_hyaenodon"
+  },
+  "result": "jurassicreborn:meat/steak_hyaenodon"
+}

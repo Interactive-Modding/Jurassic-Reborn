@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "bone_count=1": {
+      "model": "jurassicreborn:block/beelzebufo_leg_bones_fossil"
+    },
+    "bone_count=2": {
+      "model": "jurassicreborn:block/beelzebufo_skull_fossil"
+    },
+    "bone_count=3": {
+      "model": "jurassicreborn:block/beelzebufo_ribcage_fossil"
+    },
+    "bone_count=4": {
+      "model": "jurassicreborn:block/beelzebufo_teeth_fossil"
+    }
+  }
+}

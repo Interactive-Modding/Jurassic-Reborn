@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "jurassicreborn:block/tour_rail_diagonal_turn_left",
+    "layer1": "jurassicreborn:block/tour_rail_diagonal_turn_left_stripe",
+    "particle": "minecraft:block/iron_block"
+  }
+}

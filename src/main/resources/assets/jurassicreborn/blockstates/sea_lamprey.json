@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "jurassicreborn:block/sea_lamprey", "y": 180 },
+    "facing=east":  { "model": "jurassicreborn:block/sea_lamprey", "y": 270 },
+    "facing=south": { "model": "jurassicreborn:block/sea_lamprey" },
+    "facing=west":  { "model": "jurassicreborn:block/sea_lamprey", "y": 90 }
+  }
+}

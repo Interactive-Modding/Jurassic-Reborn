@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "jurassicreborn:paleo_bale_other",
+  "pattern": [
+    "AAA",
+    "AAA",
+    "AAA"
+  ],
+  "key": {
+    "A": {
+      "item": "jurassicreborn:ajuginucula_smithii",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "jurassicreborn:paleo_bale_other",
+    "data": 0
+  }
+}

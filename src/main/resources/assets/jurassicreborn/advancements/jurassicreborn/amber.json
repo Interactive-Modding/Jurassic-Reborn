@@ -1,0 +1,68 @@
+{
+    "display": {
+        "icon": {
+            "item": "jurassicreborn:amber"
+        },
+        "title": {
+            "translate": "advancements.reborn.amber.title"
+        },
+        "description": {
+            "translate": "advancements.reborn.amber.description"
+        },
+        "frame": "challenge",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "sea_lamprey": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "jurassicreborn:sea_lamprey"
+                    }
+                ]
+            }
+        },
+        "amber": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "jurassicreborn:amber_mosquito"
+                    }
+                ]
+            }
+        },
+        "frozen_leech": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "jurassicreborn:frozen_leech"
+                    }
+                ]
+            }
+        },
+        "amber_1": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "jurassicreborn:amber_aphid"
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+	    "sea_lamprey",
+	    "frozen_leech",
+            "amber",
+            "amber_1"
+        ]
+    ],
+    "parent": "jurassicreborn:reborn/dna_extractor"
+}

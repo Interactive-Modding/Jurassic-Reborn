@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "bone_count=1": {
+      "model": "jurassicreborn:block/stegosaurus_front_leg_bones_fossil"
+    },
+    "bone_count=2": {
+      "model": "jurassicreborn:block/stegosaurus_hind_leg_bones_fossil"
+    },
+    "bone_count=3": {
+      "model": "jurassicreborn:block/stegosaurus_neck_fossil"
+    },
+    "bone_count=4": {
+      "model": "jurassicreborn:block/stegosaurus_pelvis_fossil"
+    },
+    "bone_count=5": {
+      "model": "jurassicreborn:block/stegosaurus_ribcage_fossil"
+    },
+    "bone_count=6": {
+      "model": "jurassicreborn:block/stegosaurus_shoulder_fossil"
+    },
+    "bone_count=7": {
+      "model": "jurassicreborn:block/stegosaurus_skull_fossil"
+    },
+    "bone_count=8": {
+      "model": "jurassicreborn:block/stegosaurus_tail_fossil"
+    },
+    "bone_count=9": {
+      "model": "jurassicreborn:block/stegosaurus_thagomizer_fossil"
+    },
+    "bone_count=10": {
+      "model": "jurassicreborn:block/stegosaurus_tooth_fossil"
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+    "display": {
+        "icon": {
+            "item": "jurassicreborn:egg/egg_mamenchisaurus"
+        },
+        "title": {
+            "translate": "advancements.reborn.dino_egg.title"
+        },
+        "description": {
+            "translate": "advancements.reborn.dino_egg.description"
+        },
+        "frame": "challenge",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "dino_egg": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "jurassicreborn:egg/egg_mamenchisaurus"
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "dino_egg"
+        ]
+    ],
+    "parent": "jurassicreborn:reborn/embryo_calcification_machine"
+}

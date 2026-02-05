@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "jurassicreborn:block/petrified_araucaria_log_top",
+    "side": "jurassicreborn:block/petrified_araucaria_log"
+  }
+}

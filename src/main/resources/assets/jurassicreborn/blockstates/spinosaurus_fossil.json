@@ -1,0 +1,37 @@
+{
+  "variants": {
+    "bone_count=1": {
+      "model": "jurassicreborn:block/spinosaurus_skull_fossil"
+    },
+    "bone_count=2": {
+      "model": "jurassicreborn:block/spinosaurus_tooth_fossil"
+    },
+    "bone_count=3": {
+      "model": "jurassicreborn:block/spinosaurus_arm_bones_fossil"
+    },
+    "bone_count=4": {
+      "model": "jurassicreborn:block/spinosaurus_claw_fossil"
+    },
+    "bone_count=5": {
+      "model": "jurassicreborn:block/spinosaurus_foot_bones_fossil"
+    },
+    "bone_count=6": {
+      "model": "jurassicreborn:block/spinosaurus_leg_bones_fossil"
+    },
+    "bone_count=7": {
+      "model": "jurassicreborn:block/spinosaurus_neck_vertebrae_fossil"
+    },
+    "bone_count=8": {
+      "model": "jurassicreborn:block/spinosaurus_ribcage_fossil"
+    },
+    "bone_count=9": {
+      "model": "jurassicreborn:block/spinosaurus_shoulder_fossil"
+    },
+    "bone_count=10": {
+      "model": "jurassicreborn:block/spinosaurus_tail_vertebrae_fossil"
+    },
+    "bone_count=11": {
+      "model": "jurassicreborn:block/spinosaurus_pelvis_fossil"
+    }
+  }
+}

@@ -1,6 +1,0 @@
-{
-  "parent": "block/crop",
-  "textures": {
-    "crop": "rebornmod:blocks/plants/wild_potato/stage_5"
-  }
-}

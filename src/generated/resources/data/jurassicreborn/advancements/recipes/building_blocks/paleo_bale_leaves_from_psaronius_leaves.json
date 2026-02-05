@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_psaronius_leaves": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:psaronius_leaves"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "jurassicreborn:paleo_bale_leaves_from_psaronius_leaves"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_psaronius_leaves",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "jurassicreborn:paleo_bale_leaves_from_psaronius_leaves"
+    ]
+  },
+  "sends_telemetry_event": false
+}

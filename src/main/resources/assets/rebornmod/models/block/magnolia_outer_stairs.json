@@ -1,8 +1,0 @@
-{
-  "parent": "block/outer_stairs",
-  "textures": {
-    "bottom": "rebornmod:blocks/planks_magnolia",
-    "top": "rebornmod:blocks/planks_magnolia",
-    "side": "rebornmod:blocks/planks_magnolia"
-  }
-}

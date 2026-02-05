@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/button",
+  "textures": {
+    "texture": "jurassicreborn:block/phoenix_planks"
+  }
+}

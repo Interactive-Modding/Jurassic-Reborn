@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "bone_count=1": {
+      "model": "jurassicreborn:block/dunkleosteus_mouth_plates_fossil"
+    },
+    "bone_count=2": {
+      "model": "jurassicreborn:block/dunkleosteus_skull_fossil"
+    },
+    "bone_count=3": {
+      "model": "jurassicreborn:block/dunkleosteus_dorsal_fin_fossil"
+    },
+    "bone_count=4": {
+      "model": "jurassicreborn:block/dunkleosteus_spine_fossil"
+    }
+  }
+}

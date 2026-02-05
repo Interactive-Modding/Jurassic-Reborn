@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_largestipule_leather_root": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:largestipule_leather_root"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "jurassicreborn:paleo_bale_other_from_largestipule_leather_root"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_largestipule_leather_root",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "jurassicreborn:paleo_bale_other_from_largestipule_leather_root"
+    ]
+  },
+  "sends_telemetry_event": false
+}

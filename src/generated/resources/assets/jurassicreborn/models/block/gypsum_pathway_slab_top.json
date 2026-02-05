@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "jurassicreborn:block/gypsum_pathway",
+    "side": "jurassicreborn:block/gypsum_pathway",
+    "top": "jurassicreborn:block/gypsum_pathway"
+  }
+}

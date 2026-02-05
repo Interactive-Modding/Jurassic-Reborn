@@ -1,0 +1,121 @@
+{
+  "version": 0,
+  "poses": {
+    "IDLE": [
+      {
+        "pose": "megalodon_adult_idle",
+        "time": 20
+      }
+    ],
+    "ATTACKING": [
+      {
+        "pose": "megalodon_adult_attacking_1",
+        "time": 8
+      },
+      {
+        "pose": "megalodon_adult_attacking_2",
+        "time": 8
+      },
+      {
+        "pose": "megalodon_adult_attacking_3",
+        "time": 8
+      },
+      {
+        "pose": "megalodon_adult_attacking_4",
+        "time": 8
+      },
+      {
+        "pose": "megalodon_adult_idle",
+        "time": 8
+      }
+    ],
+    "EATING": [
+      {
+        "pose": "megalodon_adult_eating_1",
+        "time": 8
+      },
+      {
+        "pose": "megalodon_adult_eating_2",
+        "time": 8
+      },
+      {
+        "pose": "megalodon_adult_eating_3",
+        "time": 8
+      },
+      {
+        "pose": "megalodon_adult_eating_1",
+        "time": 8
+      },
+      {
+        "pose": "megalodon_adult_eating_2",
+        "time": 8
+      },
+      {
+        "pose": "megalodon_adult_eating_3",
+        "time": 8
+      },
+      {
+        "pose": "megalodon_adult_eating_4",
+        "time": 8
+      },
+      {
+        "pose": "megalodon_adult_idle",
+        "time": 8
+      }
+    ],
+    "SPEAK": [
+      {
+        "pose": "megalodon_adult_speak",
+        "time": 15
+      },
+      {
+        "pose": "megalodon_adult_idle",
+        "time": 8
+      }
+    ],
+    "CALLING": [
+      {
+        "pose": "megalodon_adult_calling",
+        "time": 15
+      },
+      {
+        "pose": "megalodon_adult_idle",
+        "time": 8
+      }
+    ],
+    "DYING": [
+      {
+        "pose": "megalodon_adult_death",
+        "time": 20
+      }
+    ],
+    "GIVING_BIRTH": [
+      {
+        "pose": "megalodon_adult_giving_birth",
+        "time": 10
+      },
+      {
+        "pose": "megalodon_adult_giving_birth",
+        "time": 10
+      },
+      {
+        "pose": "megalodon_adult_giving_birth",
+        "time": 10
+      },
+      {
+        "pose": "megalodon_adult_idle",
+        "time": 10
+      }
+    ],
+    "INJURED": [
+      {
+        "pose": "megalodon_adult_injured",
+        "time": 15
+      },
+      {
+        "pose": "megalodon_adult_idle",
+        "time": 10
+      }
+    ]
+  }
+}

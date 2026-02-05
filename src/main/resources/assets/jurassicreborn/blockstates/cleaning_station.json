@@ -1,0 +1,21 @@
+{
+  "variants": {
+
+    "facing=north": {
+      "model": "jurassicreborn:block/cleaning_station_south",
+      "y": 180
+    },
+    "facing=south": {
+      "model": "jurassicreborn:block/cleaning_station_south"
+    },
+    "facing=west": {
+      "model": "jurassicreborn:block/cleaning_station_south",
+      "y": 90
+    },
+    "facing=east": {
+      "model": "jurassicreborn:block/cleaning_station_south",
+      "y": 270
+    }
+
+  }
+}

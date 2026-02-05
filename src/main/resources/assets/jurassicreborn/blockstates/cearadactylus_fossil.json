@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "bone_count=1": {
+      "model": "jurassicreborn:block/cearadactylus_leg_bones_fossil"
+    },
+    "bone_count=2": {
+      "model": "jurassicreborn:block/cearadactylus_pelvis_fossil"
+    },
+    "bone_count=3": {
+      "model": "jurassicreborn:block/cearadactylus_skull_fossil"
+    },
+    "bone_count=4": {
+      "model": "jurassicreborn:block/cearadactylus_neck_vertebrae_fossil"
+    },
+    "bone_count=5": {
+      "model": "jurassicreborn:block/cearadactylus_tail_vertebrae_fossil"
+    },
+    "bone_count=6": {
+      "model": "jurassicreborn:block/cearadactylus_teeth_fossil"
+    },
+    "bone_count=7": {
+      "model": "jurassicreborn:block/cearadactylus_wing_bones_fossil"
+    },
+    "bone_count=8": {
+      "model": "jurassicreborn:block/cearadactylus_ribcage_fossil"
+    }
+  }
+}

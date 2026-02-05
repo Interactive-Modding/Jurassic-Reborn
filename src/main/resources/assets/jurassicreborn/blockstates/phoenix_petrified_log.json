@@ -1,0 +1,15 @@
+{
+  "variants": {
+    "axis=y": {
+      "model": "jurassicreborn:block/phoenix_log_petrified"
+    },
+    "axis=z": {
+      "model": "jurassicreborn:block/phoenix_log_petrified",
+	  "x": 90
+    },
+    "axis=x": {
+      "model": "jurassicreborn:block/phoenix_log_petrified",
+      "x": 90, "y": 90
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+	"version": 0,
+	"poses": {
+		"IDLE": [
+			{
+				"pose": "endoceras_skeleton_horizontal",
+				"time": 1
+			}
+		],
+		"VERTICAL": [
+			{
+				"pose": "endoceras_skeleton_vertical",
+				"time": 1
+			}
+		]
+	}
+}

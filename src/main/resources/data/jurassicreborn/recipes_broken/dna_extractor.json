@@ -1,0 +1,35 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "jurassicreborn:dna_extractor",
+  "pattern": [
+    "AAA",
+    "BCD",
+    "EAA"
+  ],
+  "key": {
+    "C": {
+      "item": "jurassicreborn:dna_analyzer",
+      "data": 0
+    },
+    "E": {
+      "item": "jurassicreborn:disc_reader",
+      "data": 0
+    },
+    "D": {
+      "item": "minecraft:glass_pane",
+      "data": 0
+    },
+    "B": {
+      "item": "jurassicreborn:computer_screen",
+      "data": 0
+    },
+    "A": {
+      "item": "minecraft:iron_ingot",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "jurassicreborn:dna_extractor",
+    "data": 0
+  }
+}

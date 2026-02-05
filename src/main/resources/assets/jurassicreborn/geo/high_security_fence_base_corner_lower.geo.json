@@ -1,0 +1,363 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.unknown",
+				"texture_width": 128,
+				"texture_height": 128,
+				"visible_bounds_width": 4,
+				"visible_bounds_height": 3.5,
+				"visible_bounds_offset": [0, 1.25, 0]
+			},
+			"bones": [
+				{
+					"name": "root",
+					"pivot": [0, 23.9, 0]
+				},
+				{
+					"name": "Base",
+					"parent": "root",
+					"pivot": [0, -0.1, 0],
+					"cubes": [
+						{"origin": [-4, -0.2, -4], "size": [12, 11, 8], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "Slope1",
+					"parent": "Base",
+					"pivot": [0, 0.9, -5.1],
+					"cubes": [
+						{"origin": [4.5, 1.8, -5.1], "size": [3, 9, 4], "uv": [41, 0]}
+					]
+				},
+				{
+					"name": "Slopebase1",
+					"parent": "Slope1",
+					"pivot": [0, 0.6, -7.95],
+					"cubes": [
+						{"origin": [3, -0.4, -7.95], "size": [5, 2, 4], "uv": [50, 15]}
+					]
+				},
+				{
+					"name": "Slope2",
+					"parent": "Base",
+					"pivot": [0, 0.9, 7.1],
+					"cubes": [
+						{"origin": [-4.5, 1.8, 2.1], "size": [12, 9, 3], "uv": [56, 0]}
+					]
+				},
+				{
+					"name": "Slopebase2",
+					"parent": "Slope2",
+					"pivot": [0, 0.9, 6.05],
+					"cubes": [
+						{"origin": [-6, -0.1, 3.05], "size": [14, 2, 3], "uv": [71, 15]}
+					]
+				},
+				{
+					"name": "Baseunderslope1",
+					"parent": "Base",
+					"pivot": [0, 11.35, 0],
+					"cubes": [
+						{"origin": [-3.5, 10.35, -3.5], "size": [11, 1, 7], "uv": [0, 20]}
+					]
+				},
+				{
+					"name": "Baseunderslope2",
+					"parent": "Baseunderslope1",
+					"pivot": [0, 10.85, -3.5],
+					"cubes": [
+						{"origin": [-3.5, 10.35, -7.5], "size": [7, 1, 4], "uv": [91, 32]}
+					]
+				},
+				{
+					"name": "Basetop1",
+					"parent": "Base",
+					"pivot": [0, 11.8, 0],
+					"cubes": [
+						{"origin": [-2, 10.8, -2.5], "size": [10, 1, 5], "uv": [0, 30]}
+					]
+				},
+				{
+					"name": "Basetop2",
+					"parent": "Basetop1",
+					"pivot": [0, 11.79, -2],
+					"cubes": [
+						{"origin": [-2.5, 10.79, -8], "size": [5, 1, 10], "uv": [90, 0]}
+					]
+				},
+				{
+					"name": "Slope3",
+					"parent": "Base",
+					"pivot": [0.6, 0.9, -1.6],
+					"cubes": [
+						{"origin": [-5.4, 1.9, -7.6], "size": [3, 9, 12], "uv": [0, 58]}
+					]
+				},
+				{
+					"name": "Slopebase3",
+					"parent": "Slope3",
+					"pivot": [-0.05, -0.1, -1.55],
+					"cubes": [
+						{"origin": [-6.05, -0.1, -8], "size": [3, 2, 14], "uv": [55, 40]}
+					]
+				},
+				{
+					"name": "Base2",
+					"parent": "Base",
+					"pivot": [0, -0.2, -1],
+					"cubes": [
+						{"origin": [-4, -0.2, -8], "size": [8, 11, 4], "uv": [40, 24]}
+					]
+				},
+				{
+					"name": "Slope4",
+					"parent": "Base2",
+					"pivot": [5.2, 0.85, -4.5],
+					"cubes": [
+						{"origin": [2.2, 1.75, -7.5], "size": [3, 9, 4], "uv": [70, 25]}
+					]
+				},
+				{
+					"name": "Railingholder",
+					"parent": "root",
+					"pivot": [6, 15.2, 7.8],
+					"rotation": [17.5, 0, 0],
+					"cubes": [
+						{"origin": [5, 11.7, 1.8], "size": [2, 4, 2], "uv": [10, 50]}
+					]
+				},
+				{
+					"name": "Railing1",
+					"parent": "Railingholder",
+					"pivot": [0, 14.9, 2.8],
+					"rotation": [-17.5, 0, 0],
+					"cubes": [
+						{"origin": [-3, 13.9, 2.3], "size": [11, 1, 1], "uv": [0, 54]}
+					]
+				},
+				{
+					"name": "Railingholder2",
+					"parent": "Railing1",
+					"pivot": [-0.8, 14.9, 3.8],
+					"rotation": [17.5, 0, 0],
+					"cubes": [
+						{"origin": [-1.8, 12.1, 1.8], "size": [2, 4, 2], "uv": [10, 50]}
+					]
+				},
+				{
+					"name": "Railingholder3",
+					"parent": "root",
+					"pivot": [-7.8, 15.2, 0.5],
+					"rotation": [17.5, -90, 0],
+					"cubes": [
+						{"origin": [-8.8, 11.7, -5.5], "size": [2, 4, 2], "uv": [10, 50]}
+					]
+				},
+				{
+					"name": "Railing2",
+					"parent": "Railingholder3",
+					"pivot": [-13.3, 14.9, -4.5],
+					"rotation": [-17.5, 0, 0],
+					"cubes": [
+						{"origin": [-16.3, 13.9, -5], "size": [11, 1, 1], "uv": [0, 54]}
+					]
+				},
+				{
+					"name": "Railingholder4",
+					"parent": "Railing2",
+					"pivot": [-14.3, 14.9, -3.5],
+					"rotation": [17.5, 0, 0],
+					"cubes": [
+						{"origin": [-15.3, 12.1, -5.5], "size": [2, 4, 2], "uv": [10, 50]}
+					]
+				},
+				{
+					"name": "Railingholder5",
+					"parent": "root",
+					"pivot": [6, 12.2, -3.4],
+					"rotation": [-17.5, 0, 0],
+					"cubes": [
+						{"origin": [5, 10.2, -4.4], "size": [2, 4, 2], "uv": [10, 50]}
+					]
+				},
+				{
+					"name": "Railing3",
+					"parent": "Railingholder5",
+					"pivot": [8, 13.2, -4],
+					"rotation": [17.5, 0, 0],
+					"cubes": [
+						{"origin": [3, 12.2, -4], "size": [5, 1, 1], "uv": [0, 54]}
+					]
+				},
+				{
+					"name": "Railingholder6",
+					"parent": "root",
+					"pivot": [3.4, 12.2, -6],
+					"rotation": [-17.5, -90, 0],
+					"cubes": [
+						{"origin": [2.4, 10.2, -7], "size": [2, 4, 2], "uv": [10, 50]}
+					]
+				},
+				{
+					"name": "Railing4",
+					"parent": "Railingholder6",
+					"pivot": [6.4, 13.2, -6.6],
+					"rotation": [17.5, 0, 0],
+					"cubes": [
+						{"origin": [1.4, 12.2, -6.6], "size": [5, 1, 1], "uv": [0, 54]}
+					]
+				},
+				{
+					"name": "Railingholder7",
+					"parent": "root",
+					"pivot": [-3, 15.2, 5],
+					"rotation": [63.5, 180, 0],
+					"cubes": [
+						{"origin": [-4, 11.7, -1], "size": [2, 4, 2], "uv": [10, 50]}
+					]
+				},
+				{
+					"name": "Railing5",
+					"parent": "Railingholder7",
+					"pivot": [-7, 14.9, 0.4],
+					"rotation": [-63.5, 0, 0],
+					"cubes": [
+						{"origin": [-14, 13.9, -0.1], "size": [15, 1, 1], "uv": [0, 36]}
+					]
+				},
+				{
+					"name": "Railingholder8",
+					"parent": "Railingholder7",
+					"pivot": [-12, 15.2, 11],
+					"cubes": [
+						{"origin": [-13, 11.7, -1], "size": [2, 4, 2], "uv": [10, 50]}
+					]
+				},
+				{
+					"name": "Test_Block",
+					"parent": "Railingholder7",
+					"pivot": [-3, 14.9, -0.1],
+					"rotation": [90, -36.52, 0],
+					"cubes": [
+						{"origin": [-3.5, 14.4, -0.6], "size": [1, 1, 1], "uv": [0, 62]}
+					]
+				},
+				{
+					"name": "WHYDOESTHISWORK",
+					"parent": "Test_Block",
+					"pivot": [-2.65, 15.25, -1.1],
+					"rotation": [0, -39.13, -53.6]
+				},
+				{
+					"name": "SAMEQUESTION",
+					"parent": "Test_Block",
+					"pivot": [-9.85, 9.95, -1.1],
+					"rotation": [0, -39.13, -53.6],
+					"cubes": [
+						{"origin": [-11.37443, 19.5385, -9.04266], "size": [9, 1, 1], "pivot": [-5.45726, 14.04122, -6.80956], "rotation": [-47.74292, 39.93496, -103.38588], "uv": [5, 52]},
+						{"origin": [-11.04575, 10.5473, -9.26686], "size": [9, 1, 1], "pivot": [-5.45726, 14.04122, -6.80956], "rotation": [-47.74292, 39.93496, -103.38588], "uv": [5, 52]},
+						{"origin": [-7.23581, 7.14763, -9.91137], "size": [9, 1, 1], "pivot": [-2.70684, 10.56685, -10.02566], "rotation": [-137.73119, 24.08903, -105.46298], "uv": [5, 52]},
+						{"origin": [-6.90713, -1.84357, -10.13557], "size": [9, 1, 1], "pivot": [-2.70684, 10.56685, -10.02566], "rotation": [-137.73119, 24.08903, -105.46298], "uv": [5, 52]}
+					]
+				},
+				{
+					"name": "Railingholder9",
+					"parent": "root",
+					"pivot": [-5.2, 15.2, -6],
+					"rotation": [63.5, 90, 0],
+					"cubes": [
+						{"origin": [-6.2, 11.7, -12], "size": [2, 4, 2], "uv": [10, 50]}
+					]
+				},
+				{
+					"name": "Railing6",
+					"parent": "Railingholder9",
+					"pivot": [-11.2, 14.9, -10.6],
+					"rotation": [-63.5, 0, 0],
+					"cubes": [
+						{"origin": [-18.2, 13.9, -11.1], "size": [15, 1, 1], "uv": [0, 36]}
+					]
+				},
+				{
+					"name": "Railingholder10",
+					"parent": "Railingholder9",
+					"pivot": [-14.2, 15.2, 0],
+					"cubes": [
+						{"origin": [-15.2, 11.7, -12], "size": [2, 4, 2], "uv": [10, 50]}
+					]
+				},
+				{
+					"name": "Test_Block2",
+					"parent": "Railingholder9",
+					"pivot": [-5.2, 14.9, -11.1],
+					"rotation": [90, -36.52, 0],
+					"cubes": [
+						{"origin": [-5.7, 14.4, -11.6], "size": [1, 1, 1], "uv": [0, 62]}
+					]
+				},
+				{
+					"name": "WHYDOESTHISWORK2",
+					"parent": "Test_Block2",
+					"pivot": [-4.85, 15.25, -12.1],
+					"rotation": [0, -39.13, -53.6]
+				},
+				{
+					"name": "SAMEQUESTION2",
+					"parent": "Test_Block2",
+					"pivot": [-12.05, 9.95, -12.1],
+					"rotation": [0, -39.13, -53.6]
+				},
+				{
+					"name": "Railingholder1",
+					"parent": "root",
+					"pivot": [4, 6.4, 0],
+					"cubes": [
+						{"origin": [3, 2.8, -6], "size": [2, 4, 12], "uv": [0, 40]}
+					]
+				},
+				{
+					"name": "Railing7",
+					"parent": "Railingholder1",
+					"pivot": [4, 6.4, -5.6],
+					"cubes": [
+						{"origin": [5, 5.9, -6.1], "size": [3, 1, 1], "uv": [20, 40]}
+					]
+				},
+				{
+					"name": "Railing8",
+					"parent": "Railing7",
+					"pivot": [5.5, 6.9, -5],
+					"cubes": [
+						{"origin": [5, 5.9, -8], "size": [1, 1, 3], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "Railing9",
+					"parent": "Railingholder1",
+					"pivot": [4, 6.4, 5.6],
+					"cubes": [
+						{"origin": [-5, 5.9, 5.1], "size": [13, 1, 1], "uv": [30, 40]}
+					]
+				},
+				{
+					"name": "Railing10",
+					"parent": "Railing9",
+					"pivot": [-5.5, 6.39, 5.5],
+					"cubes": [
+						{"origin": [-6, 5.89, -7.9], "size": [1, 1, 14], "uv": [30, 45]}
+					]
+				},
+				{
+					"name": "Railingholder11",
+					"parent": "Railing10",
+					"pivot": [-4.9, 6.29, -4.5],
+					"cubes": [
+						{"origin": [-5.9, 2.79, -5.5], "size": [2, 4, 2], "uv": [0, 40]}
+					]
+				}
+			]
+		}
+	]
+}

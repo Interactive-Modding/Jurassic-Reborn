@@ -1,0 +1,38 @@
+{
+  "parent": "jurassicreborn:jurassicreborn/encased_fossil",
+  "criteria": {
+    "cleaning_station": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:cleaning_station"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.jurassicreborn.cleaning_station.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "jurassicreborn:cleaning_station"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.jurassicreborn.cleaning_station.title"
+    }
+  },
+  "requirements": [
+    [
+      "cleaning_station"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

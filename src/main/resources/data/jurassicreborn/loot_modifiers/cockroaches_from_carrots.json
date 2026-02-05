@@ -1,0 +1,11 @@
+{
+  "type": "jurassicreborn:add_item",
+  "conditions": [
+    { "condition": "forge:loot_table_id",
+      "loot_table_id": "minecraft:blocks/carrots" }
+  ],
+  "item": "jurassicreborn:cockroaches",
+  "chance": 0.05,
+  "count": 1
+}
+

@@ -1,8 +1,0 @@
-{
-  "parent": "block/cube_all",
-  "textures": {
-    "layer0": "rebornmod:blocks/embryonic_machine",
-    "particle": "blocks/iron_block"
-  },
-  "tabula": "rebornmod:models/block/embryonic_machine_test_tubes"
-}

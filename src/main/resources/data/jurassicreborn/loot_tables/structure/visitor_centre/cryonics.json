@@ -1,0 +1,913 @@
+{
+  "pools": [
+    {
+      "name": "jr_items",
+      "rolls": {
+        "min": 7,
+        "max": 12
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_achillobator",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Achillobator\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_alligator_gar",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Alligator Gar\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_allosaurus",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Allosaurus\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_alvarezsaurus",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Alvarezsaurus\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_perisphinctes",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Perisphinctes\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_ankylosaurus",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Ankylosaurus\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_apatosaurus",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Apatosaurus\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_arsinoitherium",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Arsinoitherium\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_asteroceras",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Asteroceras\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_baryonyx",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Baryonyx\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_beelzebufo",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Beelzebufo\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_brachiosaurus",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Brachiosaurus\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_camarasaurus",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Camarasaurus\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_carcharodontosaurus",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Carcharodontosaurus\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_carnotaurus",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Carnotaurus\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_cearadactylus",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Cearadactylus\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_ceratosaurus",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Ceratosaurus\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_chasmosaurus",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Chasmosaurus\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_chilesaurus",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Chilesaurus\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_coelacanth",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Coelacanth\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_coelurus",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Coelurus\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_compsognathus",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Compsognathus\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_corythosaurus",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Corythosaurus\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_crassigyrinus",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Crassigyrinus\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_deinotherium",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Deinotherium\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_dilophosaurus",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Dilophosaurus\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_dimetrodon",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Dimetrodon\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_dimorphodon",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Dimorphodon\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_diplocaulus",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Diplocaulus\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_diplodocus",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Diplodocus\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_dodo",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Dodo\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_dreadnoughtus",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Dreadnoughtus\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_dunkleosteus",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Dunkleosteus\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_edmontosaurus",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Edmontosaurus\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_elasmotherium",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Elasmotherium\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_gallimimus",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Gallimimus\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_giganotosaurus",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Giganotosaurus\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_guanlong",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Guanlong\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_herrerasaurus",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Herrerasaurus\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_hyaenodon",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Hyaenodon\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_hypsilophodon",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Hypsilophodon\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_lambeosaurus",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Lambeosaurus\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_leaellynasaura",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Leaellynasaura\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_leptictidium",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Leptictidium\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_ludodactylus",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Ludodactylus\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_majungasaurus",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Majungasaurus\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_mamenchisaurus",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Mamenchisaurus\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_mammoth",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Mammoth\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_mawsonia",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Mawsonia\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_megapiranha",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Megapiranha\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_megatherium",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Megatherium\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_metriacanthosaurus",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Metriacanthosaurus\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_microceratus",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Microceratus\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_microraptor",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Microraptor\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_moganopterus",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Moganopterus\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_mosasaurus",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Mosasaurus\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_mussaurus",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Mussaurus\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_ornithomimus",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Ornithomimus\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_othnielia",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Othnielia\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_oviraptor",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Oviraptor\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_pachycephalosaurus",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Pachycephalosaurus\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_paraceratherium",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Paraceratherium\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_parapuzosia",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Parapuzosia\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_parasaurolophus",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Parasaurolophus\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_postosuchus",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Postosuchus\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_proceratosaurus",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Proceratosaurus\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_protoceratops",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Protoceratops\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_pteranodon",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Pteranodon\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_quetzalcoatlus",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Quetzalcoatlus\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_rugops",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Rugops\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_segisaurus",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Segisaurus\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_sinoceratops",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Sinoceratops\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_smilodon",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Smilodon\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_spinosaurus",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Spinosaurus\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_stegosaurus",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Stegosaurus\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_styracosaurus",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Styracosaurus\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_suchomimus",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Suchomimus\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_therizinosaurus",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Therizinosaurus\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_titanis",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Titanis\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_titanites",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Titanites\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_triceratops",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Triceratops\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_troodon",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Troodon\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_tropeognathus",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Tropeognathus\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_tylosaurus",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Tylosaurus\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_tyrannosaurus",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Tyrannosaurus\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_vectipelta",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Vectipelta\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_velociraptor",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Velociraptor\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_zhenyuanopterus",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Zhenyuanopterus\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_maiasaura",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Maiasaura\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:dna/dna_patagotitan",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{DNA:{Dinosaur:\"Patagotitan\",DNAQuality:100,Genetics:\"ACGTACGTACGTACGTACGTACGTACGTAC\"}}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

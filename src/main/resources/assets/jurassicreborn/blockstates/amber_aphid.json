@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "jurassicreborn:block/amber_aphid", "y": 180 },
+    "facing=east":  { "model": "jurassicreborn:block/amber_aphid", "y": 270 },
+    "facing=south": { "model": "jurassicreborn:block/amber_aphid" },
+    "facing=west":  { "model": "jurassicreborn:block/amber_aphid", "y": 90 }
+  }
+}

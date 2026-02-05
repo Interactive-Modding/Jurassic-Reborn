@@ -1,0 +1,24 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "jurassicreborn:block/incubator"
+  },
+  "variants": {
+    "facing=north": {
+      "model": "jurassicreborn:block/incubator",
+      "y": 0
+    },
+    "facing=south": {
+      "model": "jurassicreborn:block/incubator",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "jurassicreborn:block/incubator",
+      "y": 270
+    },
+    "facing=east": {
+      "model": "jurassicreborn:block/incubator",
+      "y": 90
+    }
+  }
+}

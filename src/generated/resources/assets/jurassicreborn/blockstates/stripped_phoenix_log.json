@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "jurassicreborn:block/stripped_phoenix_log_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "jurassicreborn:block/stripped_phoenix_log"
+    },
+    "axis=z": {
+      "model": "jurassicreborn:block/stripped_phoenix_log_horizontal",
+      "x": 90
+    }
+  }
+}

@@ -1,0 +1,151 @@
+{
+  "version": 0,
+  "poses": {
+    "IDLE": [
+      {
+        "pose": "livyatan_adult_idle",
+        "time": 20
+      }
+    ],
+    "SWIMMING": [
+      {
+        "pose": "livyatan_adult_swimming_1",
+        "time": 10
+      },
+      {
+        "pose": "livyatan_adult_swimming_2",
+        "time": 10
+      },
+      {
+        "pose": "livyatan_adult_swimming_4",
+        "time": 10
+      },
+      {
+        "pose": "livyatan_adult_swimming_5",
+        "time": 10
+      }
+    ],
+    "ATTACKING": [
+      {
+        "pose": "livyatan_adult_attacking_1",
+        "time": 8
+      },
+      {
+        "pose": "livyatan_adult_attacking_2",
+        "time": 8
+      },
+      {
+        "pose": "livyatan_adult_attacking_3",
+        "time": 8
+      },
+      {
+        "pose": "livyatan_adult_idle",
+        "time": 8
+      }
+    ],
+    "EATING": [
+      {
+        "pose": "livyatan_adult_eating_1",
+        "time": 8
+      },
+      {
+        "pose": "livyatan_adult_eating_2",
+        "time": 8
+      },
+      {
+        "pose": "livyatan_adult_eating_3",
+        "time": 8
+      },
+      {
+        "pose": "livyatan_adult_eating_1",
+        "time": 8
+      },
+      {
+        "pose": "livyatan_adult_eating_2",
+        "time": 8
+      },
+      {
+        "pose": "livyatan_adult_eating_3",
+        "time": 8
+      },
+      {
+        "pose": "livyatan_adult_idle",
+        "time": 8
+      }
+    ],
+    "ON_LAND": [
+      {
+        "pose": "livyatan_adult_on_land_1",
+        "time": 10
+      },
+      {
+        "pose": "livyatan_adult_on_land_2",
+        "time": 10
+      },
+      {
+        "pose": "livyatan_adult_on_land_3",
+        "time": 10
+      }
+    ],
+    "SPEAK": [
+      {
+        "pose": "livyatan_adult_speak",
+        "time": 15
+      },
+      {
+        "pose": "livyatan_adult_idle",
+        "time": 8
+      }
+    ],
+    "CALLING": [
+      {
+        "pose": "livyatan_adult_calling",
+        "time": 15
+      },
+      {
+        "pose": "livyatan_adult_idle",
+        "time": 8
+      }
+    ],
+    "SLEEPING": [
+      {
+        "pose": "livyatan_adult_sleeping",
+        "time": 45
+      }
+    ],
+    "DYING": [
+      {
+        "pose": "livyatan_adult_death",
+        "time": 20
+      }
+    ],
+    "GIVING_BIRTH": [
+      {
+        "pose": "livyatan_adult_giving_birth",
+        "time": 10
+      },
+      {
+        "pose": "livyatan_adult_giving_birth",
+        "time": 10
+      },
+      {
+        "pose": "livyatan_adult_giving_birth",
+        "time": 10
+      },
+      {
+        "pose": "livyatan_adult_idle",
+        "time": 10
+      }
+    ],
+    "INJURED": [
+      {
+        "pose": "livyatan_adult_injured",
+        "time": 15
+      },
+      {
+        "pose": "livyatan_adult_idle",
+        "time": 10
+      }
+    ]
+  }
+}

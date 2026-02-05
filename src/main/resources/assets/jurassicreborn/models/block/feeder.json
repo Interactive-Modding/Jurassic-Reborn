@@ -1,0 +1,249 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"layer0": "jurassicreborn:block/feeder",
+		"particle": "minecraft:block/iron_block"
+	},
+	"elements": [
+		{
+			"name": "Base",
+			"from": [0, 0, 0],
+			"to": [16, 3, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 1, 8]},
+			"faces": {
+				"north": {"uv": [4, 4, 8, 4.75], "texture": "#layer0"},
+				"east": {"uv": [0, 4, 4, 4.75], "texture": "#layer0"},
+				"south": {"uv": [12, 4, 16, 4.75], "texture": "#layer0"},
+				"west": {"uv": [8, 4, 12, 4.75], "texture": "#layer0"},
+				"up": {"uv": [8, 4, 4, 0], "texture": "#layer0"},
+				"down": {"uv": [12, 0, 8, 4], "texture": "#layer0"}
+			}
+		},
+		{
+			"name": "Pedestalmiddle",
+			"from": [1.5, 2.45, 1.5],
+			"to": [14.5, 4.45, 14.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8.5, 2.45, 7.5]},
+			"faces": {
+				"north": {"uv": [4.25, 4, 7.5, 4.5], "texture": "#layer0"},
+				"east": {"uv": [1, 4, 4.25, 4.5], "texture": "#layer0"},
+				"south": {"uv": [10.75, 4, 14, 4.5], "texture": "#layer0"},
+				"west": {"uv": [7.5, 4, 10.75, 4.5], "texture": "#layer0"},
+				"up": {"uv": [7.5, 4, 4.25, 0.75], "texture": "#layer0"},
+				"down": {"uv": [10.75, 0.75, 7.5, 4], "texture": "#layer0"}
+			}
+		},
+		{
+			"name": "Pedestalslope3",
+			"from": [1.5, 2, 13.5],
+			"to": [14.5, 4, 15.5],
+			"rotation": {"angle": 45, "axis": "x", "origin": [8.5, 3, 14.5]},
+			"faces": {
+				"north": {"uv": [8.25, 0.5, 11.5, 1], "rotation": 180, "texture": "#layer0"},
+				"east": {"uv": [4, 0.5, 4.5, 1], "rotation": 180, "texture": "#layer0"},
+				"south": {"uv": [4.5, 0.5, 7.75, 1], "rotation": 180, "texture": "#layer0"},
+				"west": {"uv": [7.75, 0.5, 8.25, 1], "rotation": 180, "texture": "#layer0"},
+				"up": {"uv": [11, 0, 7.75, 0.5], "texture": "#layer0"},
+				"down": {"uv": [7.75, 0.5, 4.5, 0], "texture": "#layer0"}
+			}
+		},
+		{
+			"name": "Pedestalslope2",
+			"from": [0.5, 2, 1.5],
+			"to": [2.5, 4, 14.5],
+			"rotation": {"angle": 45, "axis": "z", "origin": [1.5, 3, 7.5]},
+			"faces": {
+				"north": {"uv": [7.25, 3.25, 7.75, 3.75], "texture": "#layer0"},
+				"east": {"uv": [4, 3.25, 7.25, 3.75], "texture": "#layer0"},
+				"south": {"uv": [11, 3.25, 11.5, 3.75], "texture": "#layer0"},
+				"west": {"uv": [7.75, 3.25, 11, 3.75], "texture": "#layer0"},
+				"up": {"uv": [7.75, 3.25, 7.25, 0], "texture": "#layer0"},
+				"down": {"uv": [8.25, 0, 7.75, 3.25], "texture": "#layer0"}
+			}
+		},
+		{
+			"name": "Pedestalslope1",
+			"from": [13.5, 2, 1.5],
+			"to": [15.5, 4, 14.5],
+			"rotation": {"angle": -45, "axis": "z", "origin": [14.5, 3, 7.5]},
+			"faces": {
+				"north": {"uv": [7.25, 3.25, 7.75, 3.75], "rotation": 90, "texture": "#layer0"},
+				"east": {"uv": [8.25, 0, 7.75, 3.25], "rotation": 270, "texture": "#layer0"},
+				"south": {"uv": [11, 3.25, 11.5, 3.75], "rotation": 270, "texture": "#layer0"},
+				"west": {"uv": [7.75, 3.25, 7.25, 0], "rotation": 270, "texture": "#layer0"},
+				"up": {"uv": [4, 3.25, 7.25, 3.75], "rotation": 270, "texture": "#layer0"},
+				"down": {"uv": [7.75, 3.25, 11, 3.75], "rotation": 270, "texture": "#layer0"}
+			}
+		},
+		{
+			"name": "Pedestalslope4",
+			"from": [1.5, 2, 0.5],
+			"to": [14.5, 4, 2.5],
+			"rotation": {"angle": -45, "axis": "x", "origin": [8.5, 3, 1.5]},
+			"faces": {
+				"north": {"uv": [4.5, 0.5, 7.75, 1], "texture": "#layer0"},
+				"east": {"uv": [4, 0.5, 4.5, 1], "texture": "#layer0"},
+				"south": {"uv": [8.25, 0.5, 11.5, 1], "texture": "#layer0"},
+				"west": {"uv": [7.75, 0.5, 8.25, 1], "texture": "#layer0"},
+				"up": {"uv": [7.75, 0.5, 4.5, 0], "texture": "#layer0"},
+				"down": {"uv": [11, 0, 7.75, 0.5], "texture": "#layer0"}
+			}
+		},
+		{
+			"name": "Centralcolumn",
+			"from": [3, 2.45, 3],
+			"to": [13, 11.45, 13],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 4.45, 8]},
+			"faces": {
+				"north": {"uv": [2.5, 10.25, 5, 12.5], "texture": "#layer0"},
+				"east": {"uv": [0, 10.25, 2.5, 12.5], "texture": "#layer0"},
+				"south": {"uv": [7.5, 10.25, 10, 12.5], "texture": "#layer0"},
+				"west": {"uv": [5, 10.25, 7.5, 12.5], "texture": "#layer0"},
+				"up": {"uv": [5, 10.25, 2.5, 7.75], "texture": "#layer0"},
+				"down": {"uv": [7.5, 7.75, 5, 10.25], "texture": "#layer0"}
+			}
+		},
+		{
+			"name": "Columnsurround1",
+			"from": [2, 5.45, 2],
+			"to": [14, 6.45, 14],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 6.45, 8]},
+			"faces": {
+				"north": {"uv": [3, 15.5, 6, 15.75], "texture": "#layer0"},
+				"east": {"uv": [0, 15.5, 3, 15.75], "texture": "#layer0"},
+				"south": {"uv": [9, 15.5, 12, 15.75], "texture": "#layer0"},
+				"west": {"uv": [6, 15.5, 9, 15.75], "texture": "#layer0"},
+				"up": {"uv": [6, 15.5, 3, 12.5], "texture": "#layer0"},
+				"down": {"uv": [9, 12.5, 6, 15.5], "texture": "#layer0"}
+			}
+		},
+		{
+			"name": "Columnsurround3",
+			"from": [2, 9.45, 2],
+			"to": [14, 10.45, 14],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 10.45, 8]},
+			"faces": {
+				"north": {"uv": [3, 15.5, 6, 15.75], "texture": "#layer0"},
+				"east": {"uv": [0, 15.5, 3, 15.75], "texture": "#layer0"},
+				"south": {"uv": [9, 15.5, 12, 15.75], "texture": "#layer0"},
+				"west": {"uv": [6, 15.5, 9, 15.75], "texture": "#layer0"},
+				"up": {"uv": [6, 15.5, 3, 12.5], "texture": "#layer0"},
+				"down": {"uv": [9, 12.5, 6, 15.5], "texture": "#layer0"}
+			}
+		},
+		{
+			"name": "Columnsurround2",
+			"from": [2, 7.45, 2],
+			"to": [14, 8.45, 14],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8.45, 8]},
+			"faces": {
+				"north": {"uv": [3, 15.5, 6, 15.75], "texture": "#layer0"},
+				"east": {"uv": [0, 15.5, 3, 15.75], "texture": "#layer0"},
+				"south": {"uv": [9, 15.5, 12, 15.75], "texture": "#layer0"},
+				"west": {"uv": [6, 15.5, 9, 15.75], "texture": "#layer0"},
+				"up": {"uv": [6, 15.5, 3, 12.5], "texture": "#layer0"},
+				"down": {"uv": [9, 12.5, 6, 15.5], "texture": "#layer0"}
+			}
+		},
+		{
+			"name": "Opening",
+			"from": [3.5, 10.95, 3.5],
+			"to": [12.5, 13.95, 12.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8.5, 10.95, 7.5]},
+			"faces": {
+				"north": {"uv": [2.25, 7, 4.5, 7.75], "texture": "#layer0"},
+				"east": {"uv": [0, 7, 2.25, 7.75], "texture": "#layer0"},
+				"south": {"uv": [6.75, 7, 9, 7.75], "texture": "#layer0"},
+				"west": {"uv": [4.5, 7, 6.75, 7.75], "texture": "#layer0"},
+				"up": {"uv": [4.5, 7, 2.25, 4.75], "texture": "#layer0"},
+				"down": {"uv": [6.75, 4.75, 4.5, 7], "texture": "#layer0"}
+			}
+		},
+		{
+			"name": "Lid1",
+			"from": [4, 13.45, 4],
+			"to": [12, 14.45, 8],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 14.45, 4]},
+			"faces": {
+				"north": {"uv": [7.75, 5.75, 9.75, 6], "texture": "#layer0"},
+				"east": {"uv": [6.75, 5.75, 7.75, 6], "texture": "#layer0"},
+				"south": {"uv": [10.75, 5.75, 12.75, 6], "texture": "#layer0"},
+				"west": {"uv": [9.75, 5.75, 10.75, 6], "texture": "#layer0"},
+				"up": {"uv": [9.75, 5.75, 7.75, 4.75], "texture": "#layer0"},
+				"down": {"uv": [11.75, 4.75, 9.75, 5.75], "texture": "#layer0"}
+			}
+		},
+		{
+			"name": "Lid2",
+			"from": [4, 13.45, 8],
+			"to": [12, 14.45, 12],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 14.45, 12]},
+			"faces": {
+				"north": {"uv": [10, 7, 12, 7.25], "texture": "#layer0"},
+				"east": {"uv": [9, 7, 10, 7.25], "texture": "#layer0"},
+				"south": {"uv": [13, 7, 15, 7.25], "texture": "#layer0"},
+				"west": {"uv": [12, 7, 13, 7.25], "texture": "#layer0"},
+				"up": {"uv": [12, 7, 10, 6], "texture": "#layer0"},
+				"down": {"uv": [14, 6, 12, 7], "texture": "#layer0"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "Base",
+			"origin": [8, 1, 8],
+			"color": 0,
+			"children": [
+				0,
+				{
+					"name": "Pedestalmiddle",
+					"origin": [8.5, 1.45, 7.5],
+					"color": 0,
+					"children": [
+						1,
+						{
+							"name": "Pedestalslopes",
+							"origin": [8.5, 1.45, 7.5],
+							"color": 0,
+							"children": [2, 3, 4, 5]
+						},
+						{
+							"name": "Centralcolumn",
+							"origin": [8, 1.45, 8],
+							"color": 0,
+							"children": [
+								6,
+								{
+									"name": "Columnsurrounds",
+									"origin": [8, 3.45, 8],
+									"color": 0,
+									"children": [7, 8, 9]
+								},
+								{
+									"name": "Opening",
+									"origin": [8.5, 2.95, 7.5],
+									"color": 0,
+									"children": [
+										10,
+										{
+											"name": "Lid1",
+											"origin": [8.5, 2.45, 7.5],
+											"color": 0,
+											"children": [11]
+										},
+										{
+											"name": "Lid2",
+											"origin": [8.5, 2.45, 7.5],
+											"color": 0,
+											"children": [12]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}

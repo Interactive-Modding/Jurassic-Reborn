@@ -1,7 +1,0 @@
-{
-  "parent": "block/cube_column",
-  "textures": {
-    "end": "rebornmod:blocks/log_ginkgo_petrified_top",
-    "side": "rebornmod:blocks/log_ginkgo_petrified"
-  }
-}

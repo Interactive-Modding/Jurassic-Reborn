@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_cinnamon_fern": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:cinnamon_fern"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "jurassicreborn:paleo_bale_fern_from_cinnamon_fern"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_cinnamon_fern",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "jurassicreborn:paleo_bale_fern_from_cinnamon_fern"
+    ]
+  },
+  "sends_telemetry_event": false
+}

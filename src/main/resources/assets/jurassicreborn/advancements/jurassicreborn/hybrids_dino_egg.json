@@ -1,0 +1,123 @@
+{
+    "display": {
+        "icon": {
+            "item": "jurassicreborn:mr_dna_keychain"
+        },
+        "title": {
+            "translate": "advancements.reborn.hybrids_hatched_egg.title"
+        },
+        "description": {
+            "translate": "advancements.reborn.hybrids_hatched_egg.description"
+        },
+        "frame": "challenge",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "parent": "jurassicreborn:reborn/dna_combinator_hybridizer",
+    "criteria": {
+        "hatched_egg_0": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "jurassicreborn:hatched_egg/egg_ankylodocus"
+                    }
+                ]
+            }
+        },
+        "hatched_egg_1": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "jurassicreborn:hatched_egg/egg_spinoraptor"
+                    }
+                ]
+            }
+        },
+        "hatched_egg_2": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "jurassicreborn:hatched_egg/egg_raphusrex"
+                    }
+                ]
+            }
+        },
+        "hatched_egg_3": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "jurassicreborn:hatched_egg/egg_blue"
+                    }
+                ]
+            }
+        },
+        "hatched_egg_4": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "jurassicreborn:hatched_egg/egg_charlie"
+                    }
+                ]
+            }
+        },
+        "hatched_egg_6": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "jurassicreborn:hatched_egg/egg_delta"
+                    }
+                ]
+            }
+        },
+        "hatched_egg_7": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "jurassicreborn:hatched_egg/egg_indoraptor"
+                    }
+                ]
+            }
+        },
+        "hatched_egg_8": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "jurassicreborn:hatched_egg/egg_indoraptor"
+                    }
+                ]
+            }
+        },
+        "hatched_egg_5": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "jurassicreborn:hatched_egg/egg_echo"
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "hatched_egg_0",
+            "hatched_egg_1",
+            "hatched_egg_2",
+            "hatched_egg_3",
+            "hatched_egg_4",
+            "hatched_egg_6",
+            "hatched_egg_7",
+            "hatched_egg_8",
+            "hatched_egg_5"
+        ]
+    ]
+}

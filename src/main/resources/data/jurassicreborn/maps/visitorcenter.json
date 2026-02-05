@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:exploration_map",
+  "destination": "jurassicreborn:visitor_centre",
+  "decoration": "red_x",
+  "zoom": 2,
+  "search_radius": 50,
+  "skip_existing_chunks": false
+}

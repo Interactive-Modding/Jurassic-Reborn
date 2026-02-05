@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "A": {
+      "item": "minecraft:glass"
+    },
+    "B": {
+      "item": "minecraft:iron_ingot"
+    },
+    "C": {
+      "item": "minecraft:comparator"
+    },
+    "D": {
+      "item": "jurassicreborn:keyboard"
+    }
+  },
+  "pattern": [
+    "ABA",
+    "CCC",
+    "BDB"
+  ],
+  "result": {
+    "item": "jurassicreborn:incubator"
+  },
+  "show_notification": true
+}

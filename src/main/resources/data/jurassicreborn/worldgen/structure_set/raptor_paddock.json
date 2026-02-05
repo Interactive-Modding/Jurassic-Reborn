@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "jurassicreborn:raptor_paddock",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 1642131481,
+    "spacing": 32,
+    "separation": 8,
+    "type": "minecraft:random_spread"
+  }
+}

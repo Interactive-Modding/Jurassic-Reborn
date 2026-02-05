@@ -1,7 +1,0 @@
-{
-  "parent": "block/cube_all",
-  "textures": {
-    "all": "rebornmod:blocks/invisible",
-	"particle": "rebornmod:blocks/invisible"
-  }
-}

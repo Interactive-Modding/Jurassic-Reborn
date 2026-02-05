@@ -1,0 +1,27 @@
+{
+  "multipart": [
+    {
+      "when": { "active": false },
+      "apply": { "model": "jurassicreborn:block/low_security_fence_pole_inactive", "uvlock": true }
+    },
+    {
+      "when": { "active": true },
+      "apply": { "model": "jurassicreborn:block/low_security_fence_pole_active", "uvlock": true }
+    },
+    {
+      "when": { "active": true },
+      "apply": { "model": "jurassicreborn:block/low_security_fence_pole_lights", "uvlock": true }
+    },
+    { "when": { "north": "true" },
+      "apply": { "model": "jurassicreborn:block/low_security_fence_pole_wires", "y": 270, "uvlock": true } },
+
+    { "when": { "west": "true" },
+      "apply": { "model": "jurassicreborn:block/low_security_fence_pole_wires", "y": 180, "uvlock": true } },
+
+    { "when": { "south": "true" },
+      "apply": { "model": "jurassicreborn:block/low_security_fence_pole_wires", "y": 90,  "uvlock": true } },
+
+    { "when": { "east": "true" },
+      "apply": { "model": "jurassicreborn:block/low_security_fence_pole_wires", "uvlock": true } }
+  ]
+}

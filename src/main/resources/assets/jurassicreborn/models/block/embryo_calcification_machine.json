@@ -1,0 +1,297 @@
+{
+	"credit": "Made with Blockbench by Gamma_02",
+	"texture_size": [128, 128],
+	"textures": {
+		"layer0": "jurassicreborn:block/embryo_calcification_machine",
+		"particle": "minecraft:block/iron_block"
+	},
+	"elements": [
+		{
+			"name": "Egg Case",
+			"from": [1.5, 0, 4],
+			"to": [14.5, 7, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 0, 8]},
+			"faces": {
+				"north": {"uv": [3, 3, 6.25, 4.75], "texture": "#layer0"},
+				"east": {"uv": [0, 3, 3, 4.75], "texture": "#layer0"},
+				"south": {"uv": [6.25, 3, 9.25, 4.75], "texture": "#layer0"},
+				"west": {"uv": [9.25, 3, 12.5, 4.75], "texture": "#layer0"},
+				"up": {"uv": [6.25, 3, 3, 0], "texture": "#layer0"},
+				"down": {"uv": [9.5, 0, 6.25, 3], "texture": "#layer0"}
+			}
+		},
+		{
+			"name": "Egg Case Top",
+			"from": [0.5, 0, 5],
+			"to": [15.5, 8, 15],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 0, 8]},
+			"faces": {
+				"north": {"uv": [8.75, 7.25, 12.5, 9.125], "texture": "#layer0"},
+				"east": {"uv": [0, 7.25, 2.5, 9.25], "texture": "#layer0"},
+				"south": {"uv": [2.5, 7.25, 6.25, 9.25], "texture": "#layer0"},
+				"west": {"uv": [6.25, 7.25, 8.75, 9.25], "texture": "#layer0"},
+				"up": {"uv": [2.5, 4.75, 6.25, 7.25], "rotation": 180, "texture": "#layer0"},
+				"down": {"uv": [6.25, 4.75, 10, 7.25], "texture": "#layer0"}
+			}
+		},
+		{
+			"name": "Syringe Arm Controller Stick",
+			"from": [10, 7.5, 5.5],
+			"to": [11, 14.5, 6.5],
+			"rotation": {"angle": -45, "axis": "x", "origin": [10.5, 8, 6]},
+			"faces": {
+				"north": {"uv": [2, 0.25, 2.25, 2], "texture": "#layer0"},
+				"east": {"uv": [2.25, 0.25, 2.5, 2], "texture": "#layer0"},
+				"south": {"uv": [2.75, 0.25, 3, 2], "texture": "#layer0"},
+				"west": {"uv": [2.5, 0.25, 2.75, 2], "texture": "#layer0"},
+				"up": {"uv": [2.5, 0.25, 2.25, 0], "texture": "#layer0"},
+				"down": {"uv": [2.75, 0, 2.5, 0.25], "texture": "#layer0"}
+			}
+		},
+		{
+			"name": "Egg Cup Arm Controller Stick",
+			"from": [5, 7, 5.5],
+			"to": [6, 14, 6.5],
+			"rotation": {"angle": -45, "axis": "x", "origin": [5.5, 8, 6]},
+			"faces": {
+				"north": {"uv": [1, 0.25, 1.25, 2], "texture": "#layer0"},
+				"east": {"uv": [1.25, 0.25, 1.5, 2], "texture": "#layer0"},
+				"south": {"uv": [1.75, 0.25, 2, 2], "texture": "#layer0"},
+				"west": {"uv": [1.5, 0.25, 1.75, 2], "texture": "#layer0"},
+				"up": {"uv": [1.5, 0.25, 1.25, 0], "texture": "#layer0"},
+				"down": {"uv": [1.75, 0, 1.5, 0.25], "texture": "#layer0"}
+			}
+		},
+		{
+			"name": "Syringe Controller",
+			"from": [9.5, 12, -1],
+			"to": [11.5, 13, 2],
+			"rotation": {"angle": 0, "axis": "y", "origin": [11.5, 12, 2]},
+			"faces": {
+				"north": {"uv": [0.75, 5.5, 1.25, 5.75], "texture": "#layer0"},
+				"east": {"uv": [0, 5.5, 0.75, 5.75], "texture": "#layer0"},
+				"south": {"uv": [2, 5.5, 2.5, 5.75], "texture": "#layer0"},
+				"west": {"uv": [1.25, 5.5, 2, 5.75], "texture": "#layer0"},
+				"up": {"uv": [1.25, 5.5, 0.75, 4.75], "texture": "#layer0"},
+				"down": {"uv": [1.75, 4.75, 1.25, 5.5], "texture": "#layer0"}
+			}
+		},
+		{
+			"name": "Egg Cup Controller",
+			"from": [4.5, 12, -1],
+			"to": [6.5, 13, 2],
+			"rotation": {"angle": 0, "axis": "y", "origin": [6.5, 12, 2]},
+			"faces": {
+				"north": {"uv": [14, 5.75, 14.5, 6], "texture": "#layer0"},
+				"east": {"uv": [13.25, 5.75, 14, 6], "texture": "#layer0"},
+				"south": {"uv": [15.25, 5.75, 15.75, 6], "texture": "#layer0"},
+				"west": {"uv": [14.5, 5.75, 15.25, 6], "texture": "#layer0"},
+				"up": {"uv": [14.5, 5.75, 14, 5], "texture": "#layer0"},
+				"down": {"uv": [15, 5, 14.5, 5.75], "texture": "#layer0"}
+			}
+		},
+		{
+			"name": "Syringe Arm Base",
+			"from": [13, 7.25, 9],
+			"to": [14, 10.25, 10],
+			"rotation": {"angle": 22.5, "axis": "z", "origin": [13.5, 8, 9.5]},
+			"faces": {
+				"north": {"uv": [0, 0, 0.25, 0.75], "texture": "#layer0"},
+				"east": {"uv": [0, 0, 0.25, 0.75], "texture": "#layer0"},
+				"south": {"uv": [0, 0, 0.25, 0.75], "texture": "#layer0"},
+				"west": {"uv": [0, 0, 0.25, 0.75], "texture": "#layer0"},
+				"up": {"uv": [0, 0, 0.25, 0.25], "texture": "#layer0"},
+				"down": {"uv": [0, 0, 0.25, 0.25], "texture": "#layer0"}
+			}
+		},
+		{
+			"name": "Syringe Arm Middle",
+			"from": [11.95, 8.95, 9],
+			"to": [12.95, 13.95, 10],
+			"rotation": {"angle": -45, "axis": "z", "origin": [13, 9, 9.5]},
+			"faces": {
+				"north": {"uv": [12.5, 0.25, 12.75, 1.5], "texture": "#layer0"},
+				"east": {"uv": [12.75, 0.25, 13, 1.5], "texture": "#layer0"},
+				"south": {"uv": [13.25, 0.25, 13.5, 1.5], "texture": "#layer0"},
+				"west": {"uv": [13, 0.25, 13.25, 1.5], "texture": "#layer0"},
+				"up": {"uv": [12.75, 0, 13, 0.25], "texture": "#layer0"},
+				"down": {"uv": [13, 0, 13.25, 0.25], "texture": "#layer0"}
+			}
+		},
+		{
+			"name": "Syringe Arm Top",
+			"from": [15.6, 12.35, 9],
+			"to": [16.6, 18.35, 10],
+			"rotation": {"angle": 45, "axis": "z", "origin": [16.1, 12.35, 9.5]},
+			"faces": {
+				"north": {"uv": [13.5, 0.25, 13.75, 1.75], "texture": "#layer0"},
+				"east": {"uv": [13.75, 0.25, 14, 1.75], "texture": "#layer0"},
+				"south": {"uv": [14.25, 0.25, 14.5, 1.75], "texture": "#layer0"},
+				"west": {"uv": [14, 0.25, 14.25, 1.75], "texture": "#layer0"},
+				"up": {"uv": [13.75, 0, 14, 0.25], "texture": "#layer0"},
+				"down": {"uv": [14, 0, 14.25, 0.25], "texture": "#layer0"}
+			}
+		},
+		{
+			"name": "Syringe Holder Barrel",
+			"from": [10.75, 15.75, 8],
+			"to": [16.75, 18.75, 11],
+			"rotation": {"angle": 22.5, "axis": "z", "origin": [14.75, 15.75, 9]},
+			"faces": {
+				"north": {"uv": [9.5, 1.25, 10.25, 2.75], "rotation": 270, "texture": "#layer0"},
+				"east": {"uv": [10.25, 0.5, 11, 1.25], "texture": "#layer0"},
+				"south": {"uv": [11, 1.25, 11.75, 2.75], "rotation": 90, "texture": "#layer0"},
+				"west": {"uv": [11, 0.5, 11.75, 1.25], "texture": "#layer0"},
+				"up": {"uv": [10.25, 1.25, 11, 2.75], "rotation": 90, "texture": "#layer0"},
+				"down": {"uv": [11.75, 1.25, 12.5, 2.75], "rotation": 90, "texture": "#layer0"}
+			}
+		},
+		{
+			"name": "Syringe Holder Middle",
+			"from": [9.5, 13.5, 8.5],
+			"to": [11.5, 15.5, 10.5],
+			"rotation": {"angle": 22.5, "axis": "z", "origin": [8, 14, 8]},
+			"faces": {
+				"north": {"uv": [13, 2.25, 13.5, 2.75], "texture": "#layer0"},
+				"east": {"uv": [12.5, 2.25, 13, 2.75], "texture": "#layer0"},
+				"south": {"uv": [14, 2.25, 14.5, 2.75], "texture": "#layer0"},
+				"west": {"uv": [13.5, 2.25, 14, 2.75], "texture": "#layer0"},
+				"up": {"uv": [13.5, 2.25, 13, 1.75], "texture": "#layer0"},
+				"down": {"uv": [14, 1.75, 13.5, 2.25], "texture": "#layer0"}
+			}
+		},
+		{
+			"name": "Syringe",
+			"from": [8.25, 14, 9],
+			"to": [11.25, 15, 10],
+			"rotation": {"angle": 22.5, "axis": "z", "origin": [8, 14, 8]},
+			"faces": {
+				"north": {"uv": [14.75, 0.25, 15, 0.75], "texture": "#layer0"},
+				"east": {"uv": [14.5, 0.25, 14.75, 0.75], "texture": "#layer0"},
+				"south": {"uv": [15.25, 0.25, 15.5, 0.75], "texture": "#layer0"},
+				"west": {"uv": [15, 0.25, 15.25, 0.75], "texture": "#layer0"},
+				"up": {"uv": [15, 0.25, 14.75, 0], "texture": "#layer0"},
+				"down": {"uv": [15.25, 0, 15, 0.25], "texture": "#layer0"}
+			}
+		},
+		{
+			"name": "Needle",
+			"from": [7.25, 14.35, 9.35],
+			"to": [9, 14.65, 9.65],
+			"rotation": {"angle": 22.5, "axis": "z", "origin": [8, 14, 8]},
+			"faces": {
+				"north": {"uv": [0.5, 0.5, 0.625, 0.5], "texture": "#layer0"},
+				"east": {"uv": [0.5, 0.5, 0.5, 0.5], "texture": "#layer0"},
+				"south": {"uv": [0.625, 0.5, 0.75, 0.5], "texture": "#layer0"},
+				"west": {"uv": [0.625, 0.5, 0.625, 0.5], "texture": "#layer0"},
+				"up": {"uv": [0.625, 0.5, 0.5, 0.5], "texture": "#layer0"},
+				"down": {"uv": [0.75, 0.5, 0.625, 0.5], "texture": "#layer0"}
+			}
+		},
+		{
+			"name": "Egg Arm Base",
+			"from": [-3.25, 5.25, 9],
+			"to": [1.75, 6.25, 10],
+			"rotation": {"angle": -22.5, "axis": "z", "origin": [1.6, 5.85, 9.5]},
+			"faces": {
+				"north": {"uv": [9.75, 0.25, 11, 0.5], "texture": "#layer0"},
+				"east": {"uv": [9.5, 0.25, 9.75, 0.5], "texture": "#layer0"},
+				"south": {"uv": [11.25, 0.25, 12.5, 0.5], "texture": "#layer0"},
+				"west": {"uv": [11, 0.25, 11.25, 0.5], "texture": "#layer0"},
+				"up": {"uv": [11, 0.25, 9.75, 0], "texture": "#layer0"},
+				"down": {"uv": [12.25, 0, 11, 0.25], "texture": "#layer0"}
+			}
+		},
+		{
+			"name": "Egg Arm Middle",
+			"from": [-3.3, 7.275, 9],
+			"to": [-2.3, 14.275, 10],
+			"rotation": {"angle": -22.5, "axis": "z", "origin": [-2.9, 7.1, 9]},
+			"faces": {
+				"north": {"uv": [10.25, 5.25, 12, 5.5], "texture": "#layer0"},
+				"east": {"uv": [10, 5.25, 10.25, 5.5], "texture": "#layer0"},
+				"south": {"uv": [12.25, 5.25, 14, 5.5], "texture": "#layer0"},
+				"west": {"uv": [12, 5.25, 12.25, 5.5], "texture": "#layer0"},
+				"up": {"uv": [12, 5.25, 10.25, 5], "texture": "#layer0"},
+				"down": {"uv": [13.75, 5, 12, 5.25], "texture": "#layer0"}
+			}
+		},
+		{
+			"name": "Egg Arm Top",
+			"from": [-1.17224, 12.43202, 9],
+			"to": [5.82776, 13.43202, 10],
+			"rotation": {"angle": -22.5, "axis": "z", "origin": [0.6, 11.5, 9.5]},
+			"faces": {
+				"north": {"uv": [12.5, 4.75, 14, 5], "texture": "#layer0"},
+				"east": {"uv": [12.25, 4.75, 12.5, 5], "texture": "#layer0"},
+				"south": {"uv": [14.25, 4.75, 15.75, 5], "texture": "#layer0"},
+				"west": {"uv": [14, 4.75, 14.25, 5], "texture": "#layer0"},
+				"up": {"uv": [14, 4.75, 12.5, 4.5], "texture": "#layer0"},
+				"down": {"uv": [15.5, 4.5, 14, 4.75], "texture": "#layer0"}
+			}
+		},
+		{
+			"from": [4.75, 10.75, 8.5],
+			"to": [6.75, 12.75, 10.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8.75, -0.75, 8]},
+			"faces": {
+				"north": {"uv": [0.5, 2.5, 1, 3], "texture": "#layer0"},
+				"east": {"uv": [0, 2.5, 0.5, 3], "texture": "#layer0"},
+				"south": {"uv": [1.5, 2.5, 2, 3], "texture": "#layer0"},
+				"west": {"uv": [1, 2.5, 1.5, 3], "texture": "#layer0"},
+				"up": {"uv": [1, 2.5, 0.5, 2], "texture": "#layer0"},
+				"down": {"uv": [1.5, 2, 1, 2.5], "texture": "#layer0"}
+			}
+		},
+		{
+			"from": [4.25, 12, 8],
+			"to": [7.25, 13, 11],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8.75, -0.75, 8]},
+			"faces": {
+				"north": {"uv": [0.5, 2.5, 1, 3], "texture": "#layer0"},
+				"east": {"uv": [0, 2.5, 0.5, 3], "texture": "#layer0"},
+				"south": {"uv": [1.5, 2.5, 2, 3], "texture": "#layer0"},
+				"west": {"uv": [1, 2.5, 1.5, 3], "texture": "#layer0"},
+				"up": {"uv": [1, 2.5, 0.5, 2], "texture": "#layer0"},
+				"down": {"uv": [1.5, 2, 1, 2.5], "texture": "#layer0"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "Base",
+			"origin": [8, 0, 8],
+			"color": 0,
+			"children": [
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				{
+					"name": "Syringe",
+					"origin": [10.1, 10.85, 9.5],
+					"color": 0,
+					"children": [
+						6,
+						7,
+						8,
+						{
+							"name": "SyringeHolder",
+							"origin": [10.1, 10.85, 9.5],
+							"color": 0,
+							"children": [9, 10, 11, 12]
+						}
+					]
+				},
+				{
+					"name": "Egg",
+					"origin": [8.75, -0.75, 8],
+					"color": 0,
+					"children": [13, 14, 15, 16, 17]
+				}
+			]
+		}
+	]
+}

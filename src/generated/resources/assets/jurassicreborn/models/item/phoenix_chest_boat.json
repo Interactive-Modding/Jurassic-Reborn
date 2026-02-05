@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "jurassicreborn:item/phoenix_chest_boat"
+  }
+}

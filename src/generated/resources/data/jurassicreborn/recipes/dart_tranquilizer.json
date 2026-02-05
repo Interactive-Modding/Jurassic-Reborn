@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "jurassicreborn:dart_tranquilizer",
+  "key": {
+    "F": {
+      "item": "minecraft:flint"
+    },
+    "N": {
+      "tag": "forge:nuggets/iron"
+    }
+  },
+  "pattern": [
+    " F",
+    "N "
+  ],
+  "result": {
+    "count": 6,
+    "item": "jurassicreborn:dart_tranquilizer"
+  },
+  "show_notification": true
+}

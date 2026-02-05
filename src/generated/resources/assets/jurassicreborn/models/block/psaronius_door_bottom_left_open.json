@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_bottom_left_open",
+  "textures": {
+    "bottom": "jurassicreborn:block/psaronius_door_bottom",
+    "top": "jurassicreborn:block/psaronius_door_top"
+  }
+}

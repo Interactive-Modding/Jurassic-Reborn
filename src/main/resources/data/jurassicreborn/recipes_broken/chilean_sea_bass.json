@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "jurassicreborn:chilean_sea_bass",
+  "ingredients": [
+    {
+      "item": "minecraft:cooked_fish",
+      "data": 0
+    },
+    {
+      "item": "jurassicreborn:wild_onion",
+      "data": 0
+    },
+    {
+      "item": "minecraft:carrot",
+      "data": 0
+    },
+    {
+      "item": "jurassicreborn:ajuginucula_smithii_leaves",
+      "data": 0
+    }
+  ],
+  "result": {
+    "item": "jurassicreborn:chilean_sea_bass",
+    "data": 0
+  }
+}

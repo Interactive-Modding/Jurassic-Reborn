@@ -1,0 +1,8 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "jurassicreborn:item/rhamnus_salicifolius_seeds"
+  }
+}
+
+

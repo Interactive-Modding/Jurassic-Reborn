@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "jurassicreborn:block/reinforced_stone_tiles_slab"
+    },
+    "type=double": {
+      "model": "jurassicreborn:block/reinforced_stone_tiles"
+    },
+    "type=top": {
+      "model": "jurassicreborn:block/reinforced_stone_tiles_slab_top"
+    }
+  }
+}

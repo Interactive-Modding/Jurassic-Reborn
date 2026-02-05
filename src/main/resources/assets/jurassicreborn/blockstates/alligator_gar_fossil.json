@@ -1,0 +1,31 @@
+{
+  "variants": {
+    "bone_count=1": {
+      "model": "jurassicreborn:block/alligator_gar_anal_fin_fossil"
+    },
+    "bone_count=2": {
+      "model": "jurassicreborn:block/alligator_gar_dorsal_fin_fossil"
+    },
+    "bone_count=3": {
+      "model": "jurassicreborn:block/alligator_gar_pectoral_fin_bones_fossil"
+    },
+    "bone_count=4": {
+      "model": "jurassicreborn:block/alligator_gar_pelvic_fin_bones_fossil"
+    },
+    "bone_count=5": {
+      "model": "jurassicreborn:block/alligator_gar_scales_fossil"
+    },
+    "bone_count=6": {
+      "model": "jurassicreborn:block/alligator_gar_skull_fossil"
+    },
+    "bone_count=7": {
+      "model": "jurassicreborn:block/alligator_gar_spine_fossil"
+    },
+    "bone_count=8": {
+      "model": "jurassicreborn:block/alligator_gar_tail_fin_fossil"
+    },
+    "bone_count=9": {
+      "model": "jurassicreborn:block/alligator_gar_teeth_fossil"
+    }
+  }
+}

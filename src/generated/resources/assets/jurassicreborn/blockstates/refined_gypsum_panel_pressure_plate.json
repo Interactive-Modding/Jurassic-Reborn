@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+      "model": "jurassicreborn:block/refined_gypsum_panel_pressure_plate"
+    },
+    "powered=true": {
+      "model": "jurassicreborn:block/refined_gypsum_panel_pressure_plate_down"
+    }
+  }
+}

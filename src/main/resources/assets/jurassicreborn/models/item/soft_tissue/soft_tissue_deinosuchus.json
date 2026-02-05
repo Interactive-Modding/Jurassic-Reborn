@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "jurassicreborn:item/soft_tissue/soft_tissue_3",
+    "layer1": "jurassicreborn:item/overlay/deinosuchus"
+  }
+}

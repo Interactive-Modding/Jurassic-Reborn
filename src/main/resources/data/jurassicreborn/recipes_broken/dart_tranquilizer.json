@@ -1,0 +1,22 @@
+{
+  "type": "forge:ore_shaped",
+  "group": "jurassicreborn:dart_tranquilizer",
+  "pattern": [
+    " F",
+    "N "
+  ],
+  "key": {
+    "N": {
+      "type": "forge:ore_dict",
+      "ore": "nuggetIron"
+    },
+    "F": {
+      "item": "minecraft:flint",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "jurassicreborn:dart_tranquilizer",
+    "count": 6
+  }
+}

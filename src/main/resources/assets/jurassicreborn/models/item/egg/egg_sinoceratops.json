@@ -1,0 +1,7 @@
+{
+"parent": "item/generated",
+"textures": {
+"layer0": "jurassicreborn:item/egg/sinoceratops",
+"layer1": "jurassicreborn:item/overlay/sinoceratops"
+}
+}

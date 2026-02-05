@@ -1,0 +1,20 @@
+{
+  "replace": false,
+  "entries": [
+          "jurassicreborn:action_figures_from_desert_pyramid",
+          "jurassicreborn:crickets_from_grass",
+          "jurassicreborn:crickets_from_wheat",
+          "jurassicreborn:crickets_from_oak_leaves",
+          "jurassicreborn:crickets_from_hay_block",
+          "jurassicreborn:cockroaches_from_wheat",
+          "jurassicreborn:cockroaches_from_potatoes",
+          "jurassicreborn:cockroaches_from_carrots",
+          "jurassicreborn:cockroaches_from_hay_block",
+          "jurassicreborn:cockroaches_from_pumpkin",
+          "jurassicreborn:cockroaches_from_melon",
+          "jurassicreborn:mealworm_beetles_from_wheat",
+          "jurassicreborn:mealworm_beetles_from_potatoes",
+          "jurassicreborn:mealworm_beetles_from_carrots",
+          "jurassicreborn:mealworm_beetles_from_hay_block"
+  ]
+}

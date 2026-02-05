@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/button",
+  "textures": {
+    "texture": "jurassicreborn:block/gypsum_stone_panel"
+  }
+}

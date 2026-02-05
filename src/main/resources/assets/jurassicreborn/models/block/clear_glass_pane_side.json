@@ -1,0 +1,8 @@
+{
+  "parent": "jurassicreborn:block/clear_glass/pane_side_base",
+  "textures": {
+    "pane": "jurassicreborn:block/clear_glass/clear_glass",
+    "edge": "jurassicreborn:block/clear_glass/clear_glass_edge",
+    "particle": "jurassicreborn:block/clear_glass/clear_glass"
+  }
+}

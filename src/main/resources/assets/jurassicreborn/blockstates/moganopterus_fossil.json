@@ -1,0 +1,25 @@
+{
+  "variants": {
+    "bone_count=1": {
+      "model": "jurassicreborn:block/moganopterus_leg_bones_fossil"
+    },
+    "bone_count=2": {
+      "model": "jurassicreborn:block/moganopterus_pelvis_fossil"
+    },
+    "bone_count=3": {
+      "model": "jurassicreborn:block/moganopterus_ribcage_fossil"
+    },
+    "bone_count=4": {
+      "model": "jurassicreborn:block/moganopterus_skull_fossil"
+    },
+    "bone_count=5": {
+      "model": "jurassicreborn:block/moganopterus_tail_vertebrae_fossil"
+    },
+    "bone_count=6": {
+      "model": "jurassicreborn:block/moganopterus_teeth_fossil"
+    },
+    "bone_count=7": {
+      "model": "jurassicreborn:block/moganopterus_wing_bones_fossil"
+    }
+  }
+}

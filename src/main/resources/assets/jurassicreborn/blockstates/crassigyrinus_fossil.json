@@ -1,0 +1,25 @@
+{
+  "variants": {
+    "bone_count=1": {
+      "model": "jurassicreborn:block/crassigyrinus_skull_fossil"
+    },
+    "bone_count=2": {
+      "model": "jurassicreborn:block/crassigyrinus_teeth_fossil"
+    },
+    "bone_count=3": {
+      "model": "jurassicreborn:block/crassigyrinus_tail_vertebrae_fossil"
+    },
+    "bone_count=4": {
+      "model": "jurassicreborn:block/crassigyrinus_ribcage_fossil"
+    },
+    "bone_count=5": {
+      "model": "jurassicreborn:block/crassigyrinus_foot_bone_fossil"
+    },
+    "bone_count=6": {
+      "model": "jurassicreborn:block/crassigyrinus_hind_leg_bones_fossil"
+    },
+    "bone_count=7": {
+      "model": "jurassicreborn:block/crassigyrinus_front_leg_bones_fossil"
+    }
+  }
+}

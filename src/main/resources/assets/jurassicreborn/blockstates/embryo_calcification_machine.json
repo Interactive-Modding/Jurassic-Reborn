@@ -1,0 +1,40 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "jurassicreborn:block/embryo_calcification_machine"
+  },
+  "variants": {
+    "egg=false,facing=north": {
+      "model": "jurassicreborn:block/embryo_calcification_machine",
+      "y": 0
+    },
+    "egg=false,facing=south": {
+      "model": "jurassicreborn:block/embryo_calcification_machine",
+      "y": 180
+    },
+    "egg=false,facing=west": {
+      "model": "jurassicreborn:block/embryo_calcification_machine",
+      "y": 270
+    },
+    "egg=false,facing=east": {
+      "model": "jurassicreborn:block/embryo_calcification_machine",
+      "y": 90
+    },
+    "egg=true,facing=north": {
+      "model": "jurassicreborn:block/embryo_calcification_machine_egg",
+      "y": 0
+    },
+    "egg=true,facing=south": {
+      "model": "jurassicreborn:block/embryo_calcification_machine_egg",
+      "y": 180
+    },
+    "egg=true,facing=west": {
+      "model": "jurassicreborn:block/embryo_calcification_machine_egg",
+      "y": 270
+    },
+    "egg=true,facing=east": {
+      "model": "jurassicreborn:block/embryo_calcification_machine_egg",
+      "y": 90
+    }
+  }
+}

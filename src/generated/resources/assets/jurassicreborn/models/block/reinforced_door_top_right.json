@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_top_right",
+  "textures": {
+    "bottom": "jurassicreborn:block/reinforced_door_bottom",
+    "top": "jurassicreborn:block/reinforced_door_top"
+  }
+}

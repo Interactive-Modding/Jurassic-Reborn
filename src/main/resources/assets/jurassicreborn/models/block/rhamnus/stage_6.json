@@ -1,0 +1,6 @@
+{
+  "parent": "block/crop",
+  "textures": {
+    "crop": "jurassicreborn:block/plants/rhamnem/stage_6"
+  }
+}

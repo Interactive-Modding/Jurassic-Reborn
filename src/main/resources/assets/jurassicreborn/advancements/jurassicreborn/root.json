@@ -1,0 +1,28 @@
+{
+    "display": {
+        "icon": {
+            "item": "jurassicreborn:bones/mamenchisaurus_skull"
+        },
+        "title": {
+            "translate": "advancements.reborn.root.title"
+        },
+        "description": {
+            "translate": "advancements.reborn.root.description"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false,
+        "background": "jurassicreborn:textures/blocks/gypsum_bricks.png"
+    },
+    "criteria": {
+        "tick": {
+            "trigger": "minecraft:tick"
+        }
+    },
+    "requirements": [
+        [
+            "tick"
+        ]
+    ]
+}

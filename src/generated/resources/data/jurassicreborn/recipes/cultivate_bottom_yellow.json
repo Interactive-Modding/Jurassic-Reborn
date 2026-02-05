@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "jurassicreborn:cultivate_bottom",
+  "key": {
+    "A": {
+      "item": "minecraft:yellow_stained_glass_pane"
+    },
+    "B": {
+      "item": "minecraft:iron_ingot"
+    },
+    "C": {
+      "item": "minecraft:comparator"
+    }
+  },
+  "pattern": [
+    "ABA",
+    "A A",
+    "BCB"
+  ],
+  "result": {
+    "item": "jurassicreborn:cultivate/cultivate_bottom_yellow"
+  },
+  "show_notification": true
+}

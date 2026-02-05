@@ -1,0 +1,38 @@
+{
+  "parent": "jurassicreborn:jurassicreborn/cleaning_station",
+  "criteria": {
+    "fossil_grinder": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:fossil_grinder"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.jurassicreborn.fossil_grinder.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "jurassicreborn:fossil_grinder"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.jurassicreborn.fossil_grinder.title"
+    }
+  },
+  "requirements": [
+    [
+      "fossil_grinder"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

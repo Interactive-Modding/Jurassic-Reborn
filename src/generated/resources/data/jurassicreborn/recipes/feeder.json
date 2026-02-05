@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "jurassicreborn:feeder",
+  "key": {
+    "A": {
+      "item": "minecraft:iron_trapdoor"
+    },
+    "B": {
+      "item": "minecraft:dispenser"
+    },
+    "C": {
+      "item": "minecraft:iron_ingot"
+    },
+    "D": {
+      "item": "minecraft:chest"
+    },
+    "E": {
+      "item": "minecraft:cobblestone"
+    }
+  },
+  "pattern": [
+    "ABA",
+    "CDC",
+    "EEE"
+  ],
+  "result": {
+    "item": "jurassicreborn:feeder"
+  },
+  "show_notification": true
+}

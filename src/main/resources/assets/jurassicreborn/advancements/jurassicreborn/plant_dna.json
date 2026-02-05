@@ -1,0 +1,35 @@
+{
+    "display": {
+        "icon": {
+            "item": "jurassicreborn:mr_dna_keychain"
+        },
+        "title": {
+            "translate": "advancements.reborn.plant_dna.title"
+        },
+        "description": {
+            "translate": "advancements.reborn.plant_dna.description"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "plant_dna": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "jurassicreborn:plant_dna"
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "plant_dna"
+        ]
+    ],
+    "parent": "jurassicreborn:reborn/plant_fossils"
+}

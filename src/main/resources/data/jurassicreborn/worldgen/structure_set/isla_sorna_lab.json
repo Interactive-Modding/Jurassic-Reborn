@@ -1,0 +1,15 @@
+{
+  "structures": [
+    {
+      "structure": "jurassicreborn:isla_sorna_lab",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "spread_type": "triangular",
+    "salt": 114213647,
+    "spacing": 400,
+    "separation": 100,
+    "type": "minecraft:random_spread"
+  }
+}

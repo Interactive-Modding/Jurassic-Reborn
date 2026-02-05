@@ -1,0 +1,116 @@
+{
+	"format_version": "1.9.0",
+	"credit": "Made with Blockbench",
+	"parent": "minecraft:block/block",
+	"ambientocclusion": false,
+	"render_type": "minecraft:cutout",
+	"texture_size": [128, 128],
+	"textures": {
+		"0": "jurassicreborn:block/bench_finall",
+		"particle": "jurassicreborn:block/bench_finall"
+	},
+	"elements": [
+		{
+			"name": "Back_Leg",
+			"from": [1, 0, 0],
+			"to": [1, 8, 0],
+			"rotation": {"angle": 0, "axis": "y", "origin": [1, 0, -9]},
+			"faces": {
+                                "north": {"uv": [4.25, 1.125, 4.5, 2.125], "texture": "#0"},
+                                "east": {"uv": [4, 1.125, 4.25, 2.125], "texture": "#0"},
+                                "south": {"uv": [4.75, 1.125, 5, 2.125], "texture": "#0"},
+                                "west": {"uv": [4.5, 1.125, 4.75, 2.125], "texture": "#0"},
+                                "up": {"uv": [4.5, 1.125, 4.25, 0.875], "texture": "#0"},
+                                "down": {"uv": [4.75, 0.875, 4.5, 1.125], "texture": "#0"}
+			}
+		},
+		{
+			"name": "plank_1",
+			"from": [2.5, 8, 0],
+			"to": [3.5, 8, 1],
+			"rotation": {"angle": 0, "axis": "y", "origin": [3.5, 7, 19]},
+			"faces": {
+                                "north": {"uv": [10.75, 3.5, 11, 3.625], "texture": "#0"},
+                                "east": {"uv": [7.25, 3.5, 10.75, 3.625], "texture": "#0"},
+                                "south": {"uv": [14.5, 3.5, 14.75, 3.625], "texture": "#0"},
+                                "west": {"uv": [11, 3.5, 14.5, 3.625], "texture": "#0"},
+                                "up": {"uv": [11, 3.5, 10.75, 0], "texture": "#0"},
+                                "down": {"uv": [11.25, 0, 11, 3.5], "texture": "#0"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [0, -90, 0],
+			"translation": [-1, 0.75, 1.5],
+			"scale": [0.15, 0.15, 0.16]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [0, 89, 0],
+			"translation": [1.5, 0, 1.75],
+			"scale": [0.15, 0.15, 0.15]
+		},
+		"firstperson_righthand": {
+			"translation": [0, 1.75, 3],
+			"scale": [0.15, 0.15, 0.15]
+		},
+		"firstperson_lefthand": {
+			"translation": [0, 0.75, 2.75],
+			"scale": [0.15, 0.15, 0.15]
+		},
+		"ground": {
+			"translation": [0, 0.25, 0],
+			"scale": [0.15, 0.15, 0.15]
+		},
+		"gui": {
+			"rotation": [0, -90, 0],
+			"translation": [-2.25, -1.5, 0],
+			"scale": [0.35, 0.35, 0.35]
+		},
+		"fixed": {
+			"rotation": [0, 90, 0],
+			"translation": [3.75, -2.25, -7],
+			"scale": [0.5, 0.5, 0.5]
+		}
+	},
+	"groups": [
+		{
+			"name": "Bench",
+			"origin": [7, 0, 7],
+			"color": 0,
+			"children": [
+				{
+					"name": "Supports",
+					"origin": [7, 0, 7],
+					"color": 0,
+					"children": [
+						{
+							"name": "Right",
+							"origin": [7, 0, 7],
+							"color": 0,
+							"children": []
+						},
+						{
+							"name": "Middle",
+							"origin": [-7, 18, -3],
+							"color": 0,
+							"children": []
+						},
+						{
+							"name": "Left",
+							"origin": [7, 0, -23],
+							"color": 0,
+							"children": [0]
+						}
+					]
+				},
+				{
+					"name": "planks",
+					"origin": [2.5, 7.5, -3],
+					"color": 0,
+					"children": [1]
+				}
+			]
+		}
+	]
+}

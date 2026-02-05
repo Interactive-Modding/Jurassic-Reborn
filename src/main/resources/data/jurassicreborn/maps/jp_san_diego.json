@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:exploration_map",
+  "destination": "jurassicreborn:jp_san_diego",
+  "decoration": "red_x",
+  "zoom": 2,
+  "search_radius": 50,
+  "skip_existing_chunks": false
+}

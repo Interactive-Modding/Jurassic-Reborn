@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "jurassicreborn:gypsum_cobblestone_pathway"
+    }
+  },
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "result": {
+    "count": 6,
+    "item": "jurassicreborn:gypsum_cobblestone_pathway_wall"
+  },
+  "show_notification": true
+}

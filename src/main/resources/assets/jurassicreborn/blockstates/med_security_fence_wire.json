@@ -1,0 +1,36 @@
+{
+  "multipart": [
+    {
+      "when": {"north": "true", "up": "down"},
+      "apply": {"model": "jurassicreborn:block/med_security_fence_wire", "y": 270}
+    },
+    {
+      "when": {"east": "true", "up": "down"},
+      "apply": {"model": "jurassicreborn:block/med_security_fence_wire"}
+    },
+    {
+      "when": {"south": "true", "up": "down"},
+      "apply": {"model": "jurassicreborn:block/med_security_fence_wire", "y": 90}
+    },
+    {
+      "when": {"west": "true", "up": "down"},
+      "apply": {"model": "jurassicreborn:block/med_security_fence_wire", "y": 180}
+    },
+    {
+      "when": {"up": "north"},
+      "apply": {"model": "jurassicreborn:block/med_security_fence_wire_diagonal", "y": 270}
+    },
+    {
+      "when": {"up": "east"},
+      "apply": {"model": "jurassicreborn:block/med_security_fence_wire_diagonal"}
+    },
+    {
+      "when": {"up": "south"},
+      "apply": {"model": "jurassicreborn:block/med_security_fence_wire_diagonal", "y": 90}
+    },
+    {
+      "when": {"up": "west"},
+      "apply": {"model": "jurassicreborn:block/med_security_fence_wire_diagonal", "y": 180}
+    }
+  ]
+}

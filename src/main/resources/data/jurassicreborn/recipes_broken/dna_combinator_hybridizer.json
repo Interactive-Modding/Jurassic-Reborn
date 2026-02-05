@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "jurassicreborn:dna_combinator_hybridizer",
+  "pattern": [
+    "ABA",
+    "CDC",
+    "   "
+  ],
+  "key": {
+    "C": {
+      "item": "minecraft:iron_ingot",
+      "data": 0
+    },
+    "A": {
+      "item": "jurassicreborn:computer_screen",
+      "data": 0
+    },
+    "B": {
+      "item": "jurassicreborn:basic_circuit",
+      "data": 0
+    },
+    "D": {
+      "item": "jurassicreborn:disc_reader",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "jurassicreborn:dna_combinator_hybridizer",
+    "data": 0
+  }
+}

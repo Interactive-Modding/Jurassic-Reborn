@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "jurassicreborn:block/calamites_slab"
+    },
+    "type=double": {
+      "model": "jurassicreborn:block/calamites_planks"
+    },
+    "type=top": {
+      "model": "jurassicreborn:block/calamites_slab_top"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "jurassicreborn:oiled_potato_strips",
+  "ingredients": [
+    {
+      "item": "minecraft:potato"
+    },
+    {
+      "item": "minecraft:potato"
+    },
+    {
+      "item": "jurassicreborn:ajuginucula_smithii_oil"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "item": "jurassicreborn:oiled_potato_strips"
+  }
+}

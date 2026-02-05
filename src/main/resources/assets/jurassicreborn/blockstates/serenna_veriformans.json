@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "jurassicreborn:block/serenna_veriformans_bottom"
+    },
+    "half=upper": {
+      "model": "jurassicreborn:block/serenna_veriformans_top"
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "jurassicreborn:ice_fossil_digsite",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 136478,
+    "spacing": 32,
+    "separation": 8,
+    "type": "minecraft:random_spread"
+  }
+}

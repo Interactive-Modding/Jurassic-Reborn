@@ -1,0 +1,31 @@
+{
+  "variants": {
+    "bone_count=1": {
+      "model": "jurassicreborn:block/mawsonia_anal_fin_fossil"
+    },
+    "bone_count=2": {
+      "model": "jurassicreborn:block/mawsonia_caudal_fin_fossil"
+    },
+    "bone_count=3": {
+      "model": "jurassicreborn:block/mawsonia_first_dorsal_fin_fossil"
+    },
+    "bone_count=4": {
+      "model": "jurassicreborn:block/mawsonia_pectoral_fin_bones_fossil"
+    },
+    "bone_count=5": {
+      "model": "jurassicreborn:block/mawsonia_pelvic_fin_bones_fossil"
+    },
+    "bone_count=6": {
+      "model": "jurassicreborn:block/mawsonia_second_dorsal_fin_fossil"
+    },
+    "bone_count=7": {
+      "model": "jurassicreborn:block/mawsonia_skull_fossil"
+    },
+    "bone_count=8": {
+      "model": "jurassicreborn:block/mawsonia_spine_fossil"
+    },
+    "bone_count=9": {
+      "model": "jurassicreborn:block/mawsonia_teeth_fossil"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "jurassicreborn:block/rhamnus/stage_0"
+    },
+    "age=1": {
+      "model": "jurassicreborn:block/rhamnus/stage_1"
+    },
+    "age=2": {
+      "model": "jurassicreborn:block/rhamnus/stage_2"
+    },
+    "age=3": {
+      "model": "jurassicreborn:block/rhamnus/stage_3"
+    },
+    "age=4": {
+      "model": "jurassicreborn:block/rhamnus/stage_4"
+    },
+    "age=5": {
+      "model": "jurassicreborn:block/rhamnus/stage_5"
+    },
+    "age=6": {
+      "model": "jurassicreborn:block/rhamnus/stage_6"
+    },
+    "age=7": {
+      "model": "jurassicreborn:block/rhamnus/stage_7"
+    }
+  }
+}

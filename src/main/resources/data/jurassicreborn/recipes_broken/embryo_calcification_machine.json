@@ -1,0 +1,39 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "jurassicreborn:embryo_calcification_machine",
+  "pattern": [
+    "ABC",
+    "DED",
+    "DFD"
+  ],
+  "key": {
+    "F": {
+      "item": "minecraft:iron_block",
+      "data": 0
+    },
+    "B": {
+      "item": "minecraft:bowl",
+      "data": 0
+    },
+    "A": {
+      "item": "minecraft:iron_ingot",
+      "data": 0
+    },
+    "E": {
+      "item": "jurassicreborn:basic_circuit",
+      "data": 0
+    },
+    "C": {
+      "item": "jurassicreborn:keyboard",
+      "data": 0
+    },
+    "D": {
+      "item": "jurassicreborn:iron_rod",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "jurassicreborn:embryo_calcification_machine",
+    "data": 0
+  }
+}

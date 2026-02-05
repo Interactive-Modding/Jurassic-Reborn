@@ -1,0 +1,94 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.incubator.active": {
+			"loop": true,
+			"bones": {
+				"Lid": {
+					"rotation": {
+						"vector": [0, 0, -120]
+					}
+				}
+			}
+		},
+		"animation.incubator.transitionToActive": {
+			"loop": "hold_on_last_frame",
+			"animation_length": 1.54167,
+			"bones": {
+				"Lid": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, -120]
+						},
+						"1.5": {
+							"vector": [0, 0, 0],
+							"easing": "easeInCirc"
+						}
+					}
+				}
+			}
+		},
+		"animation.model.transition_active": {
+			"loop": "hold_on_last_frame",
+			"animation_length": 1.54167,
+			"bones": {
+				"Lid": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"1.5": {
+							"vector": [0, 0, -120],
+							"easing": "easeInSine"
+						}
+					}
+				}
+			}
+		},
+		"animation.incubator.transition_inactive": {
+			"loop": "hold_on_last_frame",
+			"animation_length": 1.54167,
+			"bones": {
+				"Lid": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, -120]
+						},
+						"1.5": {
+							"vector": [0, 0, 0],
+							"easing": "easeInCirc"
+						}
+					}
+				}
+			}
+		},
+		"animation.incubator.inactive": {
+			"loop": true,
+			"bones": {
+				"Lid": {
+					"rotation": {
+						"vector": [0, 0, 0]
+					}
+				}
+			}
+		},
+		"animation.incubator.transition_active": {
+			"loop": "hold_on_last_frame",
+			"animation_length": 1.54167,
+			"bones": {
+				"Lid": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"1.5": {
+							"vector": [0, 0, -120],
+							"easing": "easeInSine"
+						}
+					}
+				}
+			}
+		}
+	},
+	"geckolib_format_version": 2
+}

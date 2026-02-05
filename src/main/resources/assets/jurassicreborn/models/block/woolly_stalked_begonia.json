@@ -1,0 +1,6 @@
+{
+  "parent": "block/cross",
+  "textures": {
+    "cross": "jurassicreborn:block/plants/woolly_stalked_begonia"
+  }
+}

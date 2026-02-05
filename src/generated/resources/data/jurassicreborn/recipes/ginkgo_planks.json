@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    [
+      {
+        "item": "jurassicreborn:ginkgo_log"
+      },
+      {
+        "item": "jurassicreborn:stripped_ginkgo_log"
+      },
+      {
+        "item": "jurassicreborn:ginkgo_wood"
+      },
+      {
+        "item": "jurassicreborn:stripped_ginkgo_wood"
+      }
+    ]
+  ],
+  "result": {
+    "count": 4,
+    "item": "jurassicreborn:ginkgo_planks"
+  }
+}

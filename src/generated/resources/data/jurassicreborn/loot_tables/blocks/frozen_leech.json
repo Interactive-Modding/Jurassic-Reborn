@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:frozen_leech"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "jurassicreborn:blocks/frozen_leech"
+}

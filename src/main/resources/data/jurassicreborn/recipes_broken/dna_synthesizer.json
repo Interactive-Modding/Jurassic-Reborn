@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "jurassicreborn:dna_synthesizer",
+  "pattern": [
+    "AAB",
+    "ACD",
+    "AAC"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:iron_ingot",
+      "data": 0
+    },
+    "C": {
+      "item": "jurassicreborn:advanced_circuit",
+      "data": 0
+    },
+    "D": {
+      "item": "jurassicreborn:disc_reader",
+      "data": 0
+    },
+    "B": {
+      "item": "jurassicreborn:computer_screen",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "jurassicreborn:dna_synthesizer",
+    "data": 0
+  }
+}

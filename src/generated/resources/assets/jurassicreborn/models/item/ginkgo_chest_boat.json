@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "jurassicreborn:item/ginkgo_chest_boat"
+  }
+}

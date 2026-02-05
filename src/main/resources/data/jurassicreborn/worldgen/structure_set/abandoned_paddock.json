@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "jurassicreborn:abandoned_paddock",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 642136474,
+    "spacing": 32,
+    "separation": 8,
+    "type": "minecraft:random_spread"
+  }
+}

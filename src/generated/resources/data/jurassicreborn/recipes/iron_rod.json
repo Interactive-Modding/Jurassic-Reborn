@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "I": {
+      "tag": "forge:ingots/iron"
+    },
+    "S": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "pattern": [
+    "ISI",
+    "ISI",
+    "ISI"
+  ],
+  "result": {
+    "count": 4,
+    "item": "jurassicreborn:iron_rod"
+  },
+  "show_notification": true
+}

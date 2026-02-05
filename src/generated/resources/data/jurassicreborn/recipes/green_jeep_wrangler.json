@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:light_gray_dye"
+    },
+    "B": {
+      "item": "minecraft:green_dye"
+    },
+    "C": {
+      "item": "jurassicreborn:car_tire"
+    },
+    "D": {
+      "item": "jurassicreborn:unfinished_car"
+    }
+  },
+  "pattern": [
+    "ABA",
+    "CDB",
+    "ABA"
+  ],
+  "result": {
+    "item": "jurassicreborn:green_jeep_wrangler"
+  },
+  "show_notification": true
+}

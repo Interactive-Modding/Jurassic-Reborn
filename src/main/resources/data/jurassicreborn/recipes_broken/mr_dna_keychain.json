@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "jurassicreborn:mr_dna_keychain",
+  "pattern": [
+    "A",
+    "B"
+  ],
+  "key": {
+    "B": {
+      "item": "minecraft:iron_ingot",
+      "data": 0
+    },
+    "A": {
+      "item": "jurassicreborn:dna_base_material",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "jurassicreborn:mr_dna_keychain",
+    "data": 0
+  }
+}

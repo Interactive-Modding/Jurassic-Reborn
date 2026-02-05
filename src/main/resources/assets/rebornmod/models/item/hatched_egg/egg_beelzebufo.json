@@ -1,7 +1,0 @@
-{
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "rebornmod:items/hatched_egg/beelzebufo",
-    "layer1": "rebornmod:items/overlay/beelzebufo"
-  }
-}

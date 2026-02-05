@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "jurassicreborn:block/gypsum_tiles_slab"
+    },
+    "type=double": {
+      "model": "jurassicreborn:block/gypsum_tiles"
+    },
+    "type=top": {
+      "model": "jurassicreborn:block/gypsum_tiles_slab_top"
+    }
+  }
+}

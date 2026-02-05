@@ -1,0 +1,292 @@
+{
+  "variants": {
+    "variant=0": [
+      {
+        "model": "jurassicreborn:block/fossil_block_0",
+        "weight": 1
+      },
+      {
+        "model": "jurassicreborn:block/fossil_block_1",
+        "weight": 1
+      },
+      {
+        "model": "jurassicreborn:block/fossil_block_2",
+        "weight": 1
+      },
+      {
+        "model": "jurassicreborn:block/fossil_block_3",
+        "weight": 1
+      }
+    ],
+    "variant=1": [
+      {
+        "model": "jurassicreborn:block/fossil_block_0",
+        "weight": 1
+      },
+      {
+        "model": "jurassicreborn:block/fossil_block_1",
+        "weight": 1
+      },
+      {
+        "model": "jurassicreborn:block/fossil_block_2",
+        "weight": 1
+      },
+      {
+        "model": "jurassicreborn:block/fossil_block_3",
+        "weight": 1
+      }
+    ],
+    "variant=2": [
+      {
+        "model": "jurassicreborn:block/fossil_block_0",
+        "weight": 1
+      },
+      {
+        "model": "jurassicreborn:block/fossil_block_1",
+        "weight": 1
+      },
+      {
+        "model": "jurassicreborn:block/fossil_block_2",
+        "weight": 1
+      },
+      {
+        "model": "jurassicreborn:block/fossil_block_3",
+        "weight": 1
+      }
+    ],
+    "variant=3": [
+      {
+        "model": "jurassicreborn:block/fossil_block_0",
+        "weight": 1
+      },
+      {
+        "model": "jurassicreborn:block/fossil_block_1",
+        "weight": 1
+      },
+      {
+        "model": "jurassicreborn:block/fossil_block_2",
+        "weight": 1
+      },
+      {
+        "model": "jurassicreborn:block/fossil_block_3",
+        "weight": 1
+      }
+    ],
+    "variant=4": [
+      {
+        "model": "jurassicreborn:block/fossil_block_0",
+        "weight": 1
+      },
+      {
+        "model": "jurassicreborn:block/fossil_block_1",
+        "weight": 1
+      },
+      {
+        "model": "jurassicreborn:block/fossil_block_2",
+        "weight": 1
+      },
+      {
+        "model": "jurassicreborn:block/fossil_block_3",
+        "weight": 1
+      }
+    ],
+    "variant=5": [
+      {
+        "model": "jurassicreborn:block/fossil_block_0",
+        "weight": 1
+      },
+      {
+        "model": "jurassicreborn:block/fossil_block_1",
+        "weight": 1
+      },
+      {
+        "model": "jurassicreborn:block/fossil_block_2",
+        "weight": 1
+      },
+      {
+        "model": "jurassicreborn:block/fossil_block_3",
+        "weight": 1
+      }
+    ],
+    "variant=6": [
+      {
+        "model": "jurassicreborn:block/fossil_block_0",
+        "weight": 1
+      },
+      {
+        "model": "jurassicreborn:block/fossil_block_1",
+        "weight": 1
+      },
+      {
+        "model": "jurassicreborn:block/fossil_block_2",
+        "weight": 1
+      },
+      {
+        "model": "jurassicreborn:block/fossil_block_3",
+        "weight": 1
+      }
+    ],
+    "variant=7": [
+      {
+        "model": "jurassicreborn:block/fossil_block_0",
+        "weight": 1
+      },
+      {
+        "model": "jurassicreborn:block/fossil_block_1",
+        "weight": 1
+      },
+      {
+        "model": "jurassicreborn:block/fossil_block_2",
+        "weight": 1
+      },
+      {
+        "model": "jurassicreborn:block/fossil_block_3",
+        "weight": 1
+      }
+    ],
+    "variant=8": [
+      {
+        "model": "jurassicreborn:block/fossil_block_0",
+        "weight": 1
+      },
+      {
+        "model": "jurassicreborn:block/fossil_block_1",
+        "weight": 1
+      },
+      {
+        "model": "jurassicreborn:block/fossil_block_2",
+        "weight": 1
+      },
+      {
+        "model": "jurassicreborn:block/fossil_block_3",
+        "weight": 1
+      }
+    ],
+    "variant=9": [
+      {
+        "model": "jurassicreborn:block/fossil_block_0",
+        "weight": 1
+      },
+      {
+        "model": "jurassicreborn:block/fossil_block_1",
+        "weight": 1
+      },
+      {
+        "model": "jurassicreborn:block/fossil_block_2",
+        "weight": 1
+      },
+      {
+        "model": "jurassicreborn:block/fossil_block_3",
+        "weight": 1
+      }
+    ],
+    "variant=10": [
+      {
+        "model": "jurassicreborn:block/fossil_block_0",
+        "weight": 1
+      },
+      {
+        "model": "jurassicreborn:block/fossil_block_1",
+        "weight": 1
+      },
+      {
+        "model": "jurassicreborn:block/fossil_block_2",
+        "weight": 1
+      },
+      {
+        "model": "jurassicreborn:block/fossil_block_3",
+        "weight": 1
+      }
+    ],
+    "variant=11": [
+      {
+        "model": "jurassicreborn:block/fossil_block_0",
+        "weight": 1
+      },
+      {
+        "model": "jurassicreborn:block/fossil_block_1",
+        "weight": 1
+      },
+      {
+        "model": "jurassicreborn:block/fossil_block_2",
+        "weight": 1
+      },
+      {
+        "model": "jurassicreborn:block/fossil_block_3",
+        "weight": 1
+      }
+    ],
+    "variant=12": [
+      {
+        "model": "jurassicreborn:block/fossil_block_0",
+        "weight": 1
+      },
+      {
+        "model": "jurassicreborn:block/fossil_block_1",
+        "weight": 1
+      },
+      {
+        "model": "jurassicreborn:block/fossil_block_2",
+        "weight": 1
+      },
+      {
+        "model": "jurassicreborn:block/fossil_block_3",
+        "weight": 1
+      }
+    ],
+    "variant=13": [
+      {
+        "model": "jurassicreborn:block/fossil_block_0",
+        "weight": 1
+      },
+      {
+        "model": "jurassicreborn:block/fossil_block_1",
+        "weight": 1
+      },
+      {
+        "model": "jurassicreborn:block/fossil_block_2",
+        "weight": 1
+      },
+      {
+        "model": "jurassicreborn:block/fossil_block_3",
+        "weight": 1
+      }
+    ],
+    "variant=14": [
+      {
+        "model": "jurassicreborn:block/fossil_block_0",
+        "weight": 1
+      },
+      {
+        "model": "jurassicreborn:block/fossil_block_1",
+        "weight": 1
+      },
+      {
+        "model": "jurassicreborn:block/fossil_block_2",
+        "weight": 1
+      },
+      {
+        "model": "jurassicreborn:block/fossil_block_3",
+        "weight": 1
+      }
+    ],
+    "variant=15": [
+      {
+        "model": "jurassicreborn:block/fossil_block_0",
+        "weight": 1
+      },
+      {
+        "model": "jurassicreborn:block/fossil_block_1",
+        "weight": 1
+      },
+      {
+        "model": "jurassicreborn:block/fossil_block_2",
+        "weight": 1
+      },
+      {
+        "model": "jurassicreborn:block/fossil_block_3",
+        "weight": 1
+      }
+    ]
+  }
+}

@@ -1,6 +1,0 @@
-{
-  "parent": "block/cross",
-  "textures": {
-    "cross": "rebornmod:blocks/plants/woolly_stalked_begonia"
-  }
-}

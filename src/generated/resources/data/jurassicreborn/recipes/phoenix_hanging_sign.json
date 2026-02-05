@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "jurassicreborn:hanging_sign",
+  "key": {
+    "C": {
+      "item": "minecraft:chain"
+    },
+    "S": [
+      {
+        "item": "jurassicreborn:stripped_phoenix_log"
+      },
+      {
+        "item": "jurassicreborn:stripped_phoenix_wood"
+      }
+    ]
+  },
+  "pattern": [
+    "SSS",
+    "C C",
+    "SSS"
+  ],
+  "result": {
+    "count": 6,
+    "item": "jurassicreborn:phoenix_hanging_sign"
+  },
+  "show_notification": true
+}

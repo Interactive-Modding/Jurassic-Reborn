@@ -1,0 +1,29 @@
+{
+	"version": 0,
+	"poses": {
+		"IDLE": [
+			{
+				"pose": "echo_skeleton_idle",
+				"time": 1
+			}
+		],
+		"CALLING": [
+			{
+				"pose": "echo_skeleton_calling",
+				"time": 1
+			}
+		],
+		"LOOKING_RIGHT": [
+			{
+				"pose": "echo_skeleton_look_right",
+				"time": 1
+			}
+		],
+		"LOOKING_LEFT": [
+			{
+				"pose": "echo_skeleton_look_left",
+				"time": 1
+			}
+		]
+	}
+}

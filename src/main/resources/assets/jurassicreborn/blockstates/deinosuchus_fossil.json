@@ -1,0 +1,14 @@
+{
+  "variants": {
+    "bone_count=1": { "model": "jurassicreborn:block/deinosuchus_arm_bones_fossil" },
+    "bone_count=2": { "model": "jurassicreborn:block/deinosuchus_leg_bones_fossil" },
+    "bone_count=3": { "model": "jurassicreborn:block/deinosuchus_femur_fossil" },
+    "bone_count=4": { "model": "jurassicreborn:block/deinosuchus_neck_vertebrae_fossil" },
+    "bone_count=5": { "model": "jurassicreborn:block/deinosuchus_ribcage_fossil" },
+    "bone_count=6": { "model": "jurassicreborn:block/deinosuchus_shoulder_blade_fossil" },
+    "bone_count=7": { "model": "jurassicreborn:block/deinosuchus_skull_fossil" },
+    "bone_count=8": { "model": "jurassicreborn:block/deinosuchus_teeth_fossil" },
+    "bone_count=9": { "model": "jurassicreborn:block/deinosuchus_pelvis_fossil" },
+    "bone_count=10": { "model": "jurassicreborn:block/deinosuchus_tail_vertebrae_fossil" }
+  }
+}

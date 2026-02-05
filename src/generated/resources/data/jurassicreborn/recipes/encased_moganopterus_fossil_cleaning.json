@@ -1,0 +1,11 @@
+{
+  "type": "jurassicreborn:cleaning_recipe_serializer",
+  "count": 1,
+  "input": {
+    "item": "jurassicreborn:encased_moganopterus_fossil"
+  },
+  "output": {
+    "count": 1,
+    "item": "jurassicreborn:bones/moganopterus_skull"
+  }
+}

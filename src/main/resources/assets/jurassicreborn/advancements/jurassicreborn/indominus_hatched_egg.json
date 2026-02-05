@@ -1,0 +1,35 @@
+{
+    "display": {
+        "icon": {
+            "item": "jurassicreborn:hatched_egg/egg_indominus"
+        },
+        "title": {
+            "translate": "advancements.reborn.indominus_hatched_egg.title"
+        },
+        "description": {
+            "translate": "advancements.reborn.indominus_hatched_egg.description"
+        },
+        "frame": "challenge",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "hatched_egg": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "jurassicreborn:hatched_egg/egg_indominus"
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "hatched_egg"
+        ]
+    ],
+    "parent": "jurassicreborn:reborn/dna_combinator_hybridizer"
+}

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "jurassicreborn:block/cycad_zamites_bottom"
+    },
+    "half=upper": {
+      "model": "jurassicreborn:block/cycad_zamites_top"
+    }
+  }
+}

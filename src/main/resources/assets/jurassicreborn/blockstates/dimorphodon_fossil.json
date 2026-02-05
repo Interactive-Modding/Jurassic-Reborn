@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "bone_count=1": {
+      "model": "jurassicreborn:block/dimorphodon_leg_bones_fossil"
+    },
+    "bone_count=2": {
+      "model": "jurassicreborn:block/dimorphodon_neck_fossil"
+    },
+    "bone_count=3": {
+      "model": "jurassicreborn:block/dimorphodon_ribs_and_spine_fossil"
+    },
+    "bone_count=4": {
+      "model": "jurassicreborn:block/dimorphodon_shoulder_blade_fossil"
+    },
+    "bone_count=5": {
+      "model": "jurassicreborn:block/dimorphodon_skull_fossil"
+    },
+    "bone_count=6": {
+      "model": "jurassicreborn:block/dimorphodon_tail_vertebrae_fossil"
+    },
+    "bone_count=7": {
+      "model": "jurassicreborn:block/dimorphodon_teeth_fossil"
+    },
+    "bone_count=8": {
+      "model": "jurassicreborn:block/dimorphodon_wing_bones_fossil"
+    }
+  }
+}

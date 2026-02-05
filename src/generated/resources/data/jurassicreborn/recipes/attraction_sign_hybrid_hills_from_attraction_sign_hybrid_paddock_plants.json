@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "jurassicreborn:attraction_sign",
+  "ingredients": [
+    {
+      "item": "jurassicreborn:attraction_sign_hybrid_paddock_plants"
+    }
+  ],
+  "result": {
+    "item": "jurassicreborn:attraction_sign_hybrid_hills"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_meat/meat_leaellynasaura": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:meat/meat_leaellynasaura"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "jurassicreborn:meat/steak_leaellynasaura_from_smoking"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_meat/meat_leaellynasaura",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "jurassicreborn:meat/steak_leaellynasaura_from_smoking"
+    ]
+  },
+  "sends_telemetry_event": false
+}

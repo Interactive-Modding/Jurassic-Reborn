@@ -1,0 +1,9 @@
+{
+  "variants": {
+    "variant=0": { "model": "jurassicreborn:block/deepslate_plant_overlay_1" },
+    "variant=1": { "model": "jurassicreborn:block/deepslate_plant_overlay_2" },
+    "variant=2": { "model": "jurassicreborn:block/deepslate_plant_overlay_3" },
+    "variant=3": { "model": "jurassicreborn:block/deepslate_plant_overlay_4" },
+    "variant=4": { "model": "jurassicreborn:block/deepslate_plant_overlay_5" }
+  }
+}

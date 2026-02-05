@@ -1,0 +1,6 @@
+{
+  "parent": "block/cross",
+  "textures": {
+    "cross": "jurassicreborn:block/plants/scaly_tree_fern_top"
+  }
+}

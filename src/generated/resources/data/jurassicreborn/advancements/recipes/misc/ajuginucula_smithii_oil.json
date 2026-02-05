@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_ajuginucula_smithii_leaves": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:ajuginucula_smithii_leaves"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "jurassicreborn:ajuginucula_smithii_oil"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_ajuginucula_smithii_leaves",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "jurassicreborn:ajuginucula_smithii_oil"
+    ]
+  },
+  "sends_telemetry_event": false
+}

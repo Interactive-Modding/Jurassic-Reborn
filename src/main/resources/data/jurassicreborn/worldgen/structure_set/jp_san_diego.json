@@ -1,0 +1,15 @@
+{
+  "structures": [
+    {
+      "structure": "jurassicreborn:jp_san_diego",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "spread_type": "triangular",
+    "salt": 85421364,
+    "spacing": 80,
+    "separation": 20,
+    "type": "minecraft:random_spread"
+  }
+}

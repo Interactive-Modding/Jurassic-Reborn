@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "jurassicreborn:block/refined_gypsum_panel",
+    "side": "jurassicreborn:block/refined_gypsum_panel",
+    "top": "jurassicreborn:block/refined_gypsum_panel"
+  }
+}
