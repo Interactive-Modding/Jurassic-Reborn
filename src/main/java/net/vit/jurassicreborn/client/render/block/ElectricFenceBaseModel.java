@@ -6,9 +6,9 @@ import net.vit.jurassicreborn.JurassicReborn;
 import net.vit.jurassicreborn.client.model.ElectricFenceModels;
 import net.vit.jurassicreborn.common.blocks.entities.fence.ElectricFenceBaseBlock;
 import net.vit.jurassicreborn.common.blocks.entities.fence.ElectricFenceBaseBlockEntity;
-import software.bernie.geckolib.model.GeoModel;
+import software.bernie.geckolib3.model.AnimatedGeoModel;
 
-public class ElectricFenceBaseModel extends GeoModel<ElectricFenceBaseBlockEntity> {
+public class ElectricFenceBaseModel extends AnimatedGeoModel<ElectricFenceBaseBlockEntity> {
 
 
     @Override

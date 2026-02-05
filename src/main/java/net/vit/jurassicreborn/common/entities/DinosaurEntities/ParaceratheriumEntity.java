@@ -6,7 +6,6 @@ import net.vit.jurassicreborn.client.sounds.SoundHandler;
 import net.vit.jurassicreborn.client.render.entity.animation.EntityAnimation;
 import net.vit.jurassicreborn.common.entities.DinosaurEntity;
 import net.vit.jurassicreborn.common.entities.Dinosaurs.DinosaurHandler;
-import net.vit.jurassicreborn.common.entities.IHasVariants;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -19,7 +18,7 @@ import net.minecraft.world.entity.EntityType;
 import java.util.Locale;
 
 
-public class ParaceratheriumEntity extends DinosaurEntity implements IHasVariants {
+public class ParaceratheriumEntity extends DinosaurEntity {
     private static final EntityDataAccessor<Integer> VARIANT= SynchedEntityData.defineId(ParaceratheriumEntity.class, EntityDataSerializers.INT);
 
     public ParaceratheriumEntity(EntityType<ParaceratheriumEntity> type, Level world) {
@@ -84,3 +83,4 @@ public class ParaceratheriumEntity extends DinosaurEntity implements IHasVariant
         return isMale()?new ResourceLocation(JurassicReborn.MODID, texture + "_male_" + "adult" + "_" + variant + ".png"):new ResourceLocation(JurassicReborn.MODID, texture + "_female_" + "adult" + "_" + variant +".png");
     }
 }
+

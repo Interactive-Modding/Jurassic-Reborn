@@ -2,7 +2,6 @@ package net.vit.jurassicreborn.common;
 
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.fml.event.config.ModConfigEvent;
-import net.vit.jurassicreborn.common.worldgen.DinosaurNaturalSpawns;
 import org.apache.commons.lang3.tuple.Pair;
 
 import java.util.List;
@@ -19,9 +18,6 @@ public final class RebornConfig {
     public static boolean allowCarcass = true;
     public static boolean enableVehicleTilting = true;
     public static boolean attackOnlyWhenHungry = false;
-
-    /** Enable natural spawning for dinosaurs based on their configured biomes. */
-    public static boolean spawnDinosaursNaturally = false;
 
     /** Enable natural spawning for crabs. */
     public static boolean spawnCrabs = true;
@@ -60,13 +56,11 @@ public final class RebornConfig {
         allowCarcass = COMMON.allowCarcass.get();
         enableVehicleTilting = COMMON.enableVehicleTilting.get();
         attackOnlyWhenHungry = COMMON.attackOnlyWhenHungry.get();
-        spawnDinosaursNaturally = COMMON.spawnDinosaursNaturally.get();
         spawnCrabs = COMMON.spawnCrabs.get();
         spawnSharks = COMMON.spawnSharks.get();
         spawnGoats = COMMON.spawnGoats.get();
         List<? extends String> blacklist = COMMON.entityBlacklist.get();
         ENTITY_BLACKLIST.blacklist = blacklist.toArray(new String[0]);
-        DinosaurNaturalSpawns.invalidate();
     }
 
     /** Holds the list of entity IDs that cages should refuse to capture. */
@@ -78,7 +72,6 @@ public final class RebornConfig {
         final ForgeConfigSpec.BooleanValue allowCarcass;
         final ForgeConfigSpec.BooleanValue enableVehicleTilting;
         final ForgeConfigSpec.BooleanValue attackOnlyWhenHungry;
-        final ForgeConfigSpec.BooleanValue spawnDinosaursNaturally;
         final ForgeConfigSpec.BooleanValue spawnCrabs;
         final ForgeConfigSpec.BooleanValue spawnSharks;
         final ForgeConfigSpec.BooleanValue spawnGoats;
@@ -92,10 +85,6 @@ public final class RebornConfig {
                     .define("enableVehicleTilting", true);
             attackOnlyWhenHungry = builder.comment("If true, carnivores will only attack when hungry.")
                     .define("attackOnlyWhenHungry", false);
-            spawnDinosaursNaturally = builder.comment(
-                            "Enable natural spawning for dinosaurs that declare spawn biomes.",
-                            "This is experimental and uses the per-dinosaur spawn settings.")
-                    .define("spawnDinosaursNaturally", false);
             spawnCrabs = builder.comment("Enable natural spawning for crabs.")
                     .define("spawnCrabs", true);
             spawnSharks = builder.comment("Enable natural spawning for sharks.")

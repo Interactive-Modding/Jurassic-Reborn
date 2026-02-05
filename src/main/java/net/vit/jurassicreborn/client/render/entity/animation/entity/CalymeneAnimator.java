@@ -5,7 +5,6 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.vit.jurassicreborn.client.model.AnimatableModel;
 import net.vit.jurassicreborn.client.render.entity.animation.EntityAnimator;
-
 import net.vit.jurassicreborn.common.entities.DinosaurEntities.CalymeneEntity;
 
 @OnlyIn(Dist.CLIENT)

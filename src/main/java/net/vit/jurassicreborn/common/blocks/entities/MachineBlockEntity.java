@@ -215,7 +215,6 @@ public abstract class MachineBlockEntity extends BlockEntity implements Nameable
     }
 
 
-
     /**
      * This method should return weather or not the machine block entity should process the inputs given in the {@code ItemStack... inputs} param.
      * The way I've thought about this is that this method should be given an ordered list of item stacks with all inputs in an order

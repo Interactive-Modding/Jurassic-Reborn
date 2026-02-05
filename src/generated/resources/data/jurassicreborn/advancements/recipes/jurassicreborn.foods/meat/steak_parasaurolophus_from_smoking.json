@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_meat/meat_parasaurolophus": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:meat/meat_parasaurolophus"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "jurassicreborn:meat/steak_parasaurolophus_from_smoking"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_meat/meat_parasaurolophus",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "jurassicreborn:meat/steak_parasaurolophus_from_smoking"
+    ]
+  }
+}

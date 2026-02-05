@@ -1,13 +1,12 @@
 package net.vit.jurassicreborn.common.jei.dnahybridizer;
 
+import com.mojang.blaze3d.vertex.PoseStack;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
-import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
-import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
@@ -43,8 +42,7 @@ public class DNAHybridizerCategory implements IRecipeCategory<DNAHybridizerRecip
         recipe.setRecipe(builder, focuses);
     }
 
-    @Override
-    public void draw(DNAHybridizerRecipeExtension recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics graphics, double mouseX, double mouseY) {
+    public void draw(DNAHybridizerRecipeExtension recipe, PoseStack poseStack, double mouseX, double mouseY) {
         // nothing extra
     }
 }

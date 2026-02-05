@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "key": {
     "A": {
       "item": "minecraft:glass"
@@ -13,6 +12,5 @@
   "result": {
     "count": 8,
     "item": "jurassicreborn:empty_test_tube"
-  },
-  "show_notification": true
+  }
 }

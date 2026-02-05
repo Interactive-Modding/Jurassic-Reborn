@@ -18,7 +18,7 @@ public class JsonOutputGenerator {
 
         Path path = Path.of(FileUtils.getUserDirectoryPath(), "json_output.txt");
 
-        System.out.println("JSON PATH: " + path.toString());
+//        System.out.println("JSON PATH: " + path.toString());
 
 
         try {

@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "key": {
     "P": {
       "item": "minecraft:pink_wool"
@@ -19,6 +18,5 @@
   ],
   "result": {
     "item": "jurassicreborn:pregnancy_test"
-  },
-  "show_notification": true
+  }
 }

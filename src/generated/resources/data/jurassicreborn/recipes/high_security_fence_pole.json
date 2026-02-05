@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "building",
   "key": {
     "A": {
       "item": "minecraft:redstone"
@@ -17,6 +16,5 @@
   "result": {
     "count": 2,
     "item": "jurassicreborn:high_security_fence_pole"
-  },
-  "show_notification": true
+  }
 }

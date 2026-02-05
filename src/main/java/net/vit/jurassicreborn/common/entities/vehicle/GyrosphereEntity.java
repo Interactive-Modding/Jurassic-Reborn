@@ -18,7 +18,7 @@ public class GyrosphereEntity extends VehicleEntity {
 
     @Override
     protected void dropFromLootTable ( boolean causedByPlayer){
-        if (!level().isClientSide) spawnAtLocation(ModItems.GYROSPHERE.get());
+        if (!level.isClientSide) spawnAtLocation(ModItems.GYROSPHERE.get());
     }
 
     @Override

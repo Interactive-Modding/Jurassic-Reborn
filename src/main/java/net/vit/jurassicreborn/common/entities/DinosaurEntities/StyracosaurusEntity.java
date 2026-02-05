@@ -6,7 +6,6 @@ import net.vit.jurassicreborn.client.sounds.SoundHandler;
 import net.vit.jurassicreborn.client.render.entity.animation.EntityAnimation;
 import net.vit.jurassicreborn.common.entities.DinosaurEntity;
 import net.vit.jurassicreborn.common.entities.Dinosaurs.DinosaurHandler;
-import net.vit.jurassicreborn.common.entities.IHasVariants;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -20,7 +19,7 @@ import net.minecraft.world.entity.EntityType;
 
 import java.util.Locale;
 
-public class StyracosaurusEntity extends DinosaurEntity implements IHasVariants {
+public class StyracosaurusEntity extends DinosaurEntity {
     private static final EntityDataAccessor<Integer> VARIANT= SynchedEntityData.defineId(StyracosaurusEntity.class, EntityDataSerializers.INT);
 
 
@@ -71,7 +70,7 @@ public class StyracosaurusEntity extends DinosaurEntity implements IHasVariants 
 //                }
 //            }
 //        }
-        for(Entity e : this.level().getEntitiesOfClass(StyracosaurusEntity.class, this.getBoundingBox().inflate(distance2*distance2))){
+        for(Entity e : this.level.getEntitiesOfClass(StyracosaurusEntity.class, this.getBoundingBox().inflate(distance2*distance2))){
             if(e.distanceTo(this) < distance2 * distance2){
                 entityFound2 = e;
                 break;
@@ -133,3 +132,4 @@ public class StyracosaurusEntity extends DinosaurEntity implements IHasVariants 
         return isMale()?new ResourceLocation(JurassicReborn.MODID, texture + "_male_" + "adult" + "_" + variant + ".png"):new ResourceLocation(JurassicReborn.MODID, texture + "_female_" + "adult" + "_" + variant +".png");
     }
 }
+

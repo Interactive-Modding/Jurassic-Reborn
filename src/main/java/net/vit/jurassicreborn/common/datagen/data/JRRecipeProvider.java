@@ -2,22 +2,17 @@ package net.vit.jurassicreborn.common.datagen.data;
 
 import net.minecraft.core.Registry;
 import net.minecraft.data.BlockFamily;
-
-import net.minecraft.data.PackOutput;
+import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.*;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
-
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.flag.FeatureFlags;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.crafting.PartialNBTIngredient;
 import net.minecraftforge.registries.RegistryObject;
@@ -29,19 +24,16 @@ import net.vit.jurassicreborn.common.datagen.CleaningRecipeBuilder;
 import net.vit.jurassicreborn.common.datagen.ModBlockFamilies;
 import net.vit.jurassicreborn.common.entities.Dinosaurs.Dinosaur;
 import net.vit.jurassicreborn.common.entities.item.AttractionSignEntity;
-import net.vit.jurassicreborn.common.blocks.wood.WoodBlocks;
-import net.vit.jurassicreborn.common.datagen.ModBlockFamilies;
 import net.vit.jurassicreborn.common.items.ModItems;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.stream.Stream;
 
 public class JRRecipeProvider extends RecipeProvider {
-    public JRRecipeProvider(PackOutput output) {
-        super(output);
+    public JRRecipeProvider(DataGenerator pGenerator) {
+        super(pGenerator);
     }
 
 
@@ -56,53 +48,44 @@ public class JRRecipeProvider extends RecipeProvider {
 
 
     @Override
-    protected void buildRecipes(Consumer<FinishedRecipe> consumer) {
-        ModBlockFamilies.getAllFamilies()
-                .filter(family -> family.shouldGenerateRecipe(FeatureFlags.REGISTRY.allFlags()))
-                .forEach(family -> generateRecipes(consumer, family.getFamily()));
-        shapeless(WoodBlocks.ARAUCARIA_PLANKS.get(), 4)
+    protected void buildCraftingRecipes(Consumer<FinishedRecipe> consumer) {
+        ModBlockFamilies.getAllFamilies().filter(BlockFamily::shouldGenerateRecipe).forEach(family -> generateRecipes(consumer, family));
+        ShapelessRecipeBuilder.shapeless(WoodBlocks.ARAUCARIA_PLANKS.get(), 4)
                 .requires(Ingredient.of(WoodBlocks.ARAUCARIA_LOG.get(), WoodBlocks.STRIPPED_ARAUCARIA_LOG.get(), WoodBlocks.ARAUCARIA_WOOD.get(), WoodBlocks.STRIPPED_ARAUCARIA_WOOD.get()))
                 .unlockedBy(getHasName(WoodBlocks.ARAUCARIA_LOG.get()), has(WoodBlocks.ARAUCARIA_LOG.get()))
                 .save(consumer);
 
-        shapeless(WoodBlocks.CALAMITES_PLANKS.get(), 4)
+        ShapelessRecipeBuilder.shapeless(WoodBlocks.CALAMITES_PLANKS.get(), 4)
                 .requires(Ingredient.of(WoodBlocks.CALAMITES_LOG.get(), WoodBlocks.STRIPPED_CALAMITES_LOG.get(), WoodBlocks.CALAMITES_WOOD.get(), WoodBlocks.STRIPPED_CALAMITES_WOOD.get()))
                 .unlockedBy(getHasName(WoodBlocks.CALAMITES_LOG.get()), has(WoodBlocks.CALAMITES_LOG.get()))
                 .save(consumer);
 
-        shapeless(WoodBlocks.GINKGO_PLANKS.get(), 4)
+        ShapelessRecipeBuilder.shapeless(WoodBlocks.GINKGO_PLANKS.get(), 4)
                 .requires(Ingredient.of(WoodBlocks.GINKGO_LOG.get(), WoodBlocks.STRIPPED_GINKGO_LOG.get(), WoodBlocks.GINKGO_WOOD.get(), WoodBlocks.STRIPPED_GINKGO_WOOD.get()))
                 .unlockedBy(getHasName(WoodBlocks.GINKGO_LOG.get()), has(WoodBlocks.GINKGO_LOG.get()))
                 .save(consumer);
 
-        shapeless(WoodBlocks.PHOENIX_PLANKS.get(), 4)
+        ShapelessRecipeBuilder.shapeless(WoodBlocks.PHOENIX_PLANKS.get(), 4)
                 .requires(Ingredient.of(WoodBlocks.PHOENIX_LOG.get(), WoodBlocks.STRIPPED_PHOENIX_LOG.get(), WoodBlocks.PHOENIX_WOOD.get(), WoodBlocks.STRIPPED_PHOENIX_WOOD.get()))
                 .unlockedBy(getHasName(WoodBlocks.PHOENIX_LOG.get()), has(WoodBlocks.PHOENIX_LOG.get()))
                 .save(consumer);
 
-        shapeless(WoodBlocks.PSARONIUS_PLANKS.get(), 4)
+        ShapelessRecipeBuilder.shapeless(WoodBlocks.PSARONIUS_PLANKS.get(), 4)
                 .requires(Ingredient.of(WoodBlocks.PSARONIUS_LOG.get(), WoodBlocks.STRIPPED_PSARONIUS_LOG.get(), WoodBlocks.PSARONIUS_WOOD.get(), WoodBlocks.STRIPPED_PSARONIUS_WOOD.get()))
                 .unlockedBy(getHasName(WoodBlocks.PSARONIUS_LOG.get()), has(WoodBlocks.PSARONIUS_LOG.get()))
                 .save(consumer);
 
-        shapeless(WoodBlocks.MAGNOLIA_PLANKS.get(), 4)
+        ShapelessRecipeBuilder.shapeless(WoodBlocks.MAGNOLIA_PLANKS.get(), 4)
                 .requires(Ingredient.of(WoodBlocks.MAGNOLIA_LOG.get(), WoodBlocks.STRIPPED_MAGNOLIA_LOG.get(), WoodBlocks.MAGNOLIA_WOOD.get(), WoodBlocks.STRIPPED_MAGNOLIA_WOOD.get()))
                 .unlockedBy(getHasName(WoodBlocks.MAGNOLIA_LOG.get()), has(WoodBlocks.MAGNOLIA_LOG.get()))
                 .save(consumer);
-
-        hangingSignRecipe(consumer, WoodBlocks.ARAUCARIA_HANGING_SIGN.get(), WoodBlocks.STRIPPED_ARAUCARIA_LOG.get(), WoodBlocks.STRIPPED_ARAUCARIA_WOOD.get());
-        hangingSignRecipe(consumer, WoodBlocks.CALAMITES_HANGING_SIGN.get(), WoodBlocks.STRIPPED_CALAMITES_LOG.get(), WoodBlocks.STRIPPED_CALAMITES_WOOD.get());
-        hangingSignRecipe(consumer, WoodBlocks.GINKGO_HANGING_SIGN.get(), WoodBlocks.STRIPPED_GINKGO_LOG.get(), WoodBlocks.STRIPPED_GINKGO_WOOD.get());
-        hangingSignRecipe(consumer, WoodBlocks.MAGNOLIA_HANGING_SIGN.get(), WoodBlocks.STRIPPED_MAGNOLIA_LOG.get(), WoodBlocks.STRIPPED_MAGNOLIA_WOOD.get());
-        hangingSignRecipe(consumer, WoodBlocks.PHOENIX_HANGING_SIGN.get(), WoodBlocks.STRIPPED_PHOENIX_LOG.get(), WoodBlocks.STRIPPED_PHOENIX_WOOD.get());
-        hangingSignRecipe(consumer, WoodBlocks.PSARONIUS_HANGING_SIGN.get(), WoodBlocks.STRIPPED_PSARONIUS_LOG.get(), WoodBlocks.STRIPPED_PSARONIUS_WOOD.get());
 
         BOAT_RECIPES.forEach(data -> {
             ItemLike planks = data.planksItem();
             ItemLike boat = item(data.boatId());
             ItemLike chestBoat = item(data.chestBoatId());
 
-            shaped(boat)
+            ShapedRecipeBuilder.shaped(boat)
                     .group("boat")
                     .pattern("P P")
                     .pattern("PPP")
@@ -110,7 +93,7 @@ public class JRRecipeProvider extends RecipeProvider {
                     .unlockedBy("has_planks", has(planks))
                     .save(consumer);
 
-            shapeless(chestBoat)
+            ShapelessRecipeBuilder.shapeless(chestBoat)
                     .group("chest_boat")
                     .requires(boat)
                     .requires(Items.CHEST)
@@ -150,7 +133,7 @@ public class JRRecipeProvider extends RecipeProvider {
         baleRecipe(consumer, ModBlocks.RHAMNUS_SALICIFOLIUS.get(), ModBlocks.PALEO_BALE_OTHER.get(), "paleo_bale_other", 1);
         baleRecipe(consumer, ModBlocks.WOOLLY_STALKED_BEGONIA.get(), ModBlocks.PALEO_BALE_OTHER.get(), "paleo_bale_other", 1);
 
-        shaped(ModItems.IRON_BLADES.get())
+        ShapedRecipeBuilder.shaped(ModItems.IRON_BLADES.get())
                 .pattern("I I")
                 .pattern(" S ")
                 .pattern("I I")
@@ -159,7 +142,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(Items.IRON_INGOT),has(Tags.Items.INGOTS_IRON))
                 .save(consumer);
 
-        shaped(ModItems.IRON_ROD.get(),4)
+        ShapedRecipeBuilder.shaped(ModItems.IRON_ROD.get(),4)
                 .pattern("ISI")
                 .pattern("ISI")
                 .pattern("ISI")
@@ -167,15 +150,8 @@ public class JRRecipeProvider extends RecipeProvider {
                 .define('I',Tags.Items.INGOTS_IRON)
                 .unlockedBy(getHasName(Items.IRON_INGOT),has(Tags.Items.INGOTS_IRON))
                 .save(consumer);
-        shaped(ModBlocks.PEAT.get())
-                .pattern("ABA")
-                .pattern("ACA")
-                .define('A', Items.DIRT)
-                .define('B',Items.WATER_BUCKET)
-                .define('C',Items.DEAD_BUSH)
-                .unlockedBy(getHasName(Items.DIRT),has(Items.DIRT))
-                .save(consumer);
-        shaped(ModItems.KEYBOARD.get())
+
+        ShapedRecipeBuilder.shaped(ModItems.KEYBOARD.get())
                 .pattern("AAA")
                 .pattern("AAA")
                 .pattern("BCD")
@@ -185,7 +161,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .define('D',ModItems.BASIC_CIRCUIT.get())
                 .unlockedBy(getHasName(ModItems.BASIC_CIRCUIT.get()),has(ModItems.BASIC_CIRCUIT.get()))
                 .save(consumer);
-        shaped(ModBlocks.FEEDER.get())
+        ShapedRecipeBuilder.shaped(ModBlocks.FEEDER.get())
                 .group(JurassicReborn.MODID + ":feeder")
                 .pattern("ABA")
                 .pattern("CDC")
@@ -197,7 +173,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .define('E', Blocks.COBBLESTONE)
                 .unlockedBy(getHasName(Items.CHEST), has(Items.CHEST))
                 .save(consumer);
-        shaped(ModItems.BLUEPRINT.get())
+        ShapedRecipeBuilder.shaped(ModItems.BLUEPRINT.get())
                 .group(JurassicReborn.MODID + ":blueprint")
                 .pattern("ABA")
                 .pattern("BCB")
@@ -207,27 +183,27 @@ public class JRRecipeProvider extends RecipeProvider {
                 .define('C', Items.PAINTING)
                 .unlockedBy(getHasName(Items.PAINTING), has(Items.PAINTING))
                 .save(consumer);
-        shaped(ModBlocks.GYPSUM_COBBLESTONE.get())
+        ShapedRecipeBuilder.shaped(ModBlocks.GYPSUM_COBBLESTONE.get())
                 .pattern("AA")
                 .pattern("AA")
                 .define('A', ModItems.GYPSUM_POWDER.get())
                 .unlockedBy(getHasName(ModItems.GYPSUM_POWDER.get()), has(ModItems.GYPSUM_POWDER.get()))
                 .save(consumer);
 
-        shaped(ModBlocks.GYPSUM_COBBLESTONE_PATHWAY.get(),4)
+        ShapedRecipeBuilder.shaped(ModBlocks.GYPSUM_COBBLESTONE_PATHWAY.get(),4)
                 .pattern("AA")
                 .pattern("AA")
                 .define('A', ModBlocks.GYPSUM_COBBLESTONE.get())
                 .unlockedBy(getHasName(ModBlocks.GYPSUM_COBBLESTONE.get()), has(ModBlocks.GYPSUM_COBBLESTONE.get()))
                 .save(consumer);
 
-        shaped(ModBlocks.GYPSUM_PATHWAY.get(),5)
+        ShapedRecipeBuilder.shaped(ModBlocks.GYPSUM_PATHWAY.get(),5)
                 .pattern("A A")
                 .pattern("AAA")
                 .define('A', ModBlocks.GYPSUM_STONE.get())
                 .unlockedBy(getHasName(ModBlocks.GYPSUM_STONE.get()), has(ModBlocks.GYPSUM_STONE.get()))
                 .save(consumer);
-        shaped(ModItems.CAGE.get())
+        ShapedRecipeBuilder.shaped(ModItems.CAGE.get())
                 .group(JurassicReborn.MODID + ":cage")
                 .pattern("BAB")
                 .pattern("ACA")
@@ -238,7 +214,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(ModItems.IRON_ROD.get()), has(ModItems.IRON_ROD.get()))
                 .save(consumer);
 
-        shaped(ModItems.AQUATIC_CAGE.get())
+        ShapedRecipeBuilder.shaped(ModItems.AQUATIC_CAGE.get())
                 .group(JurassicReborn.MODID + ":aquatic_cage")
                 .pattern("BAB")
                 .pattern("ACA")
@@ -248,21 +224,21 @@ public class JRRecipeProvider extends RecipeProvider {
                 .define('C', Items.LEAD)
                 .unlockedBy(getHasName(Items.LEAD), has(Items.LEAD))
                 .save(consumer);
-        shaped(ModBlocks.GYPSUM_MIXED_PATH.get(),4)
+        ShapedRecipeBuilder.shaped(ModBlocks.GYPSUM_MIXED_PATH.get(),4)
                 .pattern("AA")
                 .pattern("AA")
                 .define('A', ModBlocks.GYPSUM_PATHWAY.get())
                 .unlockedBy(getHasName(ModBlocks.GYPSUM_PATHWAY.get()), has(ModBlocks.GYPSUM_PATHWAY.get()))
                 .save(consumer);
 
-        shaped(ModBlocks.GYPSUM_TILES.get(),4)
+        ShapedRecipeBuilder.shaped(ModBlocks.GYPSUM_TILES.get(),4)
                 .pattern("AA")
                 .pattern("AA")
                 .define('A', ModBlocks.GYPSUM_MIXED_PATH.get())
                 .unlockedBy(getHasName(ModBlocks.GYPSUM_MIXED_PATH.get()), has(ModBlocks.GYPSUM_MIXED_PATH.get()))
                 .save(consumer);
 
-        shaped(ModBlocks.GYPSUM_STONE_PANEL.get(),9)
+        ShapedRecipeBuilder.shaped(ModBlocks.GYPSUM_STONE_PANEL.get(),9)
                 .pattern("AAA")
                 .pattern("AAA")
                 .pattern("AAA")
@@ -270,7 +246,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(ModBlocks.GYPSUM_STONE.get()), has(ModBlocks.GYPSUM_STONE.get()))
                 .save(consumer);
 
-        shaped(ModBlocks.REFINED_GYPSUM_PANEL.get(),9)
+        ShapedRecipeBuilder.shaped(ModBlocks.REFINED_GYPSUM_PANEL.get(),9)
                 .pattern("AAA")
                 .pattern("AAA")
                 .pattern("AAA")
@@ -278,7 +254,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(ModBlocks.GYPSUM_PATHWAY.get()), has(ModBlocks.GYPSUM_PATHWAY.get()))
                 .save(consumer);
 
-        shaped(ModItems.GYROSPHERE.get())
+        ShapedRecipeBuilder.shaped(ModItems.GYROSPHERE.get())
                 .group(JurassicReborn.MODID + ":gyrosphere")
                 .pattern("AAA")
                 .pattern("ADA")
@@ -289,13 +265,13 @@ public class JRRecipeProvider extends RecipeProvider {
                 .define('D', ModItems.GYROSPHERE_INTERIOR.get())
                 .unlockedBy(getHasName(ModItems.GYROSPHERE_INTERIOR.get()), has(ModItems.GYROSPHERE_INTERIOR.get()))
                 .save(consumer);
-        shapeless(Items.BROWN_DYE, 2)
+        ShapelessRecipeBuilder.shapeless(Items.BROWN_DYE, 2)
                 .group("minecraft:dye")
                 .requires(ModItems.RHAMNUS_BERRIES.get(), 4)
                 .unlockedBy(getHasName(ModItems.RHAMNUS_BERRIES.get()), has(ModItems.RHAMNUS_BERRIES.get()))
                 .save(consumer);
         //Reinforced brick block recipes
-        shaped(ModBlocks.REINFORCED_BRICKS.get(),8)
+        ShapedRecipeBuilder.shaped(ModBlocks.REINFORCED_BRICKS.get(),8)
                 .pattern("SSS")
                 .pattern("SIS")
                 .pattern("SSS")
@@ -304,7 +280,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(Items.IRON_INGOT),has(Tags.Items.INGOTS_IRON))
                 .save(consumer);
 
-        shaped(ModBlocks.REINFORCED_STONE.get(),8)
+        ShapedRecipeBuilder.shaped(ModBlocks.REINFORCED_STONE.get(),8)
                 .pattern("SSS")
                 .pattern("SIS")
                 .pattern("SSS")
@@ -312,7 +288,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .define('I',Tags.Items.INGOTS_IRON)
                 .unlockedBy(getHasName(Items.IRON_INGOT),has(Tags.Items.INGOTS_IRON))
                 .save(consumer);
-        shaped(ModBlocks.AMBER_BLOCK.get(),1)
+        ShapedRecipeBuilder.shaped(ModBlocks.AMBER_BLOCK.get(),1)
                 .pattern("SSS")
                 .pattern("SSS")
                 .pattern("SSS")
@@ -320,14 +296,14 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(ModItems.AMBER.get()),has(ModItems.AMBER.get()))
                 .save(consumer);
 
-        shaped(ModBlocks.REINFORCED_BRICKS.get(),4)
+        ShapedRecipeBuilder.shaped(ModBlocks.REINFORCED_BRICKS.get(),4)
                 .pattern("SS")
                 .pattern("SS")
                 .define('S', ModBlocks.REINFORCED_STONE.get())
                 .unlockedBy(getHasName(ModBlocks.REINFORCED_STONE.get()),has(ModBlocks.REINFORCED_STONE.get()))
                 .save(consumer, JurassicReborn.resource("reinforced_bricks_alt"));
 //
-//       shaped(ModBlocks.REINFORCED_BRICK_STAIRS.get(),4)
+//        ShapedRecipeBuilder.shaped(ModBlocks.REINFORCED_BRICK_STAIRS.get(),4)
 //                .pattern("A  ")
 //                .pattern("AA ")
 //                .pattern("AAA")
@@ -335,30 +311,30 @@ public class JRRecipeProvider extends RecipeProvider {
 //                .unlockedBy(getHasName(ModBlocks.REINFORCED_BRICKS.get()), has(ModBlocks.REINFORCED_BRICKS.get()))
 //                .save(consumer);
 //
-//       shaped(ModBlocks.REINFORCED_BRICK_SLAB.get(),6)
+//        ShapedRecipeBuilder.shaped(ModBlocks.REINFORCED_BRICK_SLAB.get(),6)
 //                .pattern("AAA")
 //                .define('A', ModBlocks.REINFORCED_BRICKS.get())
 //                .unlockedBy(getHasName(ModBlocks.REINFORCED_BRICKS.get()), has(ModBlocks.REINFORCED_BRICKS.get()))
 //                .save(consumer);
 //
-//       shaped(ModBlocks.REINFORCED_BRICK_WALL.get(),6)
+//        ShapedRecipeBuilder.shaped(ModBlocks.REINFORCED_BRICK_WALL.get(),6)
 //                .pattern("AAA")
 //                .pattern("AAA")
 //                .define('A', ModBlocks.REINFORCED_BRICKS.get())
 //                .unlockedBy(getHasName(ModBlocks.REINFORCED_BRICKS.get()), has(ModBlocks.REINFORCED_BRICKS.get()))
 //                .save(consumer);
 //
-//       shaped(ModBlocks.REINFORCED_BRICK_PRESSURE_PLATE.get())
+//        ShapedRecipeBuilder.shaped(ModBlocks.REINFORCED_BRICK_PRESSURE_PLATE.get())
 //                .pattern("AA")
 //                .define('A', ModBlocks.REINFORCED_BRICKS.get())
 //                .unlockedBy(getHasName(ModBlocks.REINFORCED_BRICKS.get()), has(ModBlocks.REINFORCED_BRICKS.get()))
 //                .save(consumer);
 //
-//        shapeless(ModBlocks.REINFORCED_BRICK_BUTTON.get())
+//        ShapelessRecipeBuilder.shapeless(ModBlocks.REINFORCED_BRICK_BUTTON.get())
 //                .requires(ModBlocks.REINFORCED_BRICKS.get())
 //                .unlockedBy(getHasName(ModBlocks.REINFORCED_BRICKS.get()), has(ModBlocks.REINFORCED_BRICKS.get()))
 //                .save(consumer);
-        shaped(ModItems.HELICOPTER.get())
+        ShapedRecipeBuilder.shaped(ModItems.HELICOPTER.get())
                 .pattern("ABC")
                 .pattern("DEF")
                 .pattern("ADA")
@@ -371,7 +347,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(ModItems.ENGINE_SYSTEM.get()), has(ModItems.ENGINE_SYSTEM.get()))
                 .save(consumer);
 
-        shaped(ModItems.JEEP_WRANGLER.get())
+        ShapedRecipeBuilder.shaped(ModItems.JEEP_WRANGLER.get())
                 .pattern("ABA")
                 .pattern("CDB")
                 .pattern("ABA")
@@ -381,15 +357,15 @@ public class JRRecipeProvider extends RecipeProvider {
                 .define('D', ModItems.UNFINISHED_CAR.get())
                 .unlockedBy(getHasName(ModItems.UNFINISHED_CAR.get()), has(ModItems.UNFINISHED_CAR.get()))
                 .save(consumer);
-        shaped(ModBlocks.REINFORCED_STONE_PATHWAY.get(),6)
+        ShapedRecipeBuilder.shaped(ModBlocks.REINFORCED_STONE_PATHWAY.get(),5)
                 .pattern("   ")
-                .pattern("AAA")
+                .pattern("A A")
                 .pattern("AAA")
                 .define('A', ModBlocks.REINFORCED_STONE.get())
                 .unlockedBy(getHasName(ModBlocks.REINFORCED_STONE.get()), has(ModBlocks.REINFORCED_STONE.get()))
                 .save(consumer);
 
-        shaped(ModBlocks.REINFORCED_STONE_TILES.get(),4)
+        ShapedRecipeBuilder.shaped(ModBlocks.REINFORCED_STONE_TILES.get(),4)
                 .pattern("   ")
                 .pattern(" AA")
                 .pattern(" AA")
@@ -397,14 +373,14 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(ModBlocks.REINFORCED_STONE_PATHWAY.get()), has(ModBlocks.REINFORCED_STONE_PATHWAY.get()))
                 .save(consumer);
 
-        shaped(ModBlocks.REINFORCED_STONE_PANEL.get(),9)
+        ShapedRecipeBuilder.shaped(ModBlocks.REINFORCED_STONE_PANEL.get(),9)
                 .pattern("AAA")
                 .pattern("AAA")
                 .pattern("AAA")
                 .define('A', ModBlocks.REINFORCED_STONE.get())
                 .unlockedBy(getHasName(ModBlocks.REINFORCED_STONE.get()), has(ModBlocks.REINFORCED_STONE.get()))
                 .save(consumer);
-        shaped(ModBlocks.PEAT_MOSS.get(),1)
+        ShapedRecipeBuilder.shaped(ModBlocks.PEAT_MOSS.get(),1)
                 .pattern("BBB")
                 .pattern("BAB")
                 .pattern("BBB")
@@ -413,7 +389,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(ModBlocks.PEAT.get()), has(ModBlocks.PEAT.get()))
                 .save(consumer);
 
-        shaped(ModBlocks.REINFORCED_DOOR.get(),3)
+        ShapedRecipeBuilder.shaped(ModBlocks.REINFORCED_DOOR.get(),3)
                 .group(JurassicReborn.MODID + ":reinforced_door")
                 .pattern("AA")
                 .pattern("AA")
@@ -422,7 +398,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(ModBlocks.REINFORCED_STONE.get()), has(ModBlocks.REINFORCED_STONE.get()))
                 .save(consumer);
 
-        shaped(ModBlocks.SECURITY_DOOR.get(),3)
+        ShapedRecipeBuilder.shaped(ModBlocks.SECURITY_DOOR.get(),3)
                 .group(JurassicReborn.MODID + ":security_door")
                 .pattern("AA")
                 .pattern("AB")
@@ -450,7 +426,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 case RED -> Blocks.RED_STAINED_GLASS_PANE;
                 case BLACK -> Blocks.BLACK_STAINED_GLASS_PANE;
             };
-            shaped(ModItems.CULTIVATORS.get(color).get())
+            ShapedRecipeBuilder.shaped(ModItems.CULTIVATORS.get(color).get())
                     .group(JurassicReborn.MODID + ":cultivate_bottom")
                     .pattern("ABA")
                     .pattern("A A")
@@ -461,25 +437,25 @@ public class JRRecipeProvider extends RecipeProvider {
                     .unlockedBy(getHasName(Items.COMPARATOR), has(Items.COMPARATOR))
                     .save(consumer, JurassicReborn.resource("cultivate_bottom_" + color.getName()));
         }
-        shapeless(ModBlocks.TOUR_RAIL_SLOW.get())
+        ShapelessRecipeBuilder.shapeless(ModBlocks.TOUR_RAIL_SLOW.get())
                 .group(JurassicReborn.MODID + ":tour_rails_loop")
                 .requires(ModBlocks.TOUR_RAIL.get())
                 .unlockedBy(getHasName(ModBlocks.TOUR_RAIL.get()), has(ModBlocks.TOUR_RAIL.get()))
                 .save(consumer);
 
-        shapeless(ModBlocks.TOUR_RAIL_MEDIUM.get())
+        ShapelessRecipeBuilder.shapeless(ModBlocks.TOUR_RAIL_MEDIUM.get())
                 .group(JurassicReborn.MODID + ":tour_rails_loop")
                 .requires(ModBlocks.TOUR_RAIL_SLOW.get())
                 .unlockedBy(getHasName(ModBlocks.TOUR_RAIL_SLOW.get()), has(ModBlocks.TOUR_RAIL_SLOW.get()))
                 .save(consumer);
 
-        shapeless(ModBlocks.TOUR_RAIL_FAST.get())
+        ShapelessRecipeBuilder.shapeless(ModBlocks.TOUR_RAIL_FAST.get())
                 .group(JurassicReborn.MODID + ":tour_rails_loop")
                 .requires(ModBlocks.TOUR_RAIL_MEDIUM.get())
                 .unlockedBy(getHasName(ModBlocks.TOUR_RAIL_MEDIUM.get()), has(ModBlocks.TOUR_RAIL_MEDIUM.get()))
                 .save(consumer);
 
-        shapeless(ModBlocks.TOUR_RAIL.get())
+        ShapelessRecipeBuilder.shapeless(ModBlocks.TOUR_RAIL.get())
                 .group(JurassicReborn.MODID + ":tour_rails_loop")
                 .requires(ModBlocks.TOUR_RAIL_FAST.get())
                 .unlockedBy(getHasName(ModBlocks.TOUR_RAIL_FAST.get()), has(ModBlocks.TOUR_RAIL_FAST.get()))
@@ -491,84 +467,84 @@ public class JRRecipeProvider extends RecipeProvider {
 
         Ingredient waterPotion = PartialNBTIngredient.of(Items.POTION, waterTag);
 
-        smelting(waterPotion, ModItems.DNA_NUCLEOTIDES.get(), 0.35F, 200)
+        SimpleCookingRecipeBuilder.smelting(waterPotion, ModItems.DNA_NUCLEOTIDES.get(), 0.35F, 200)
                 .unlockedBy(getHasName(Items.POTION), has(Items.POTION))
                 .save(consumer);
 
-        blasting(waterPotion, ModItems.DNA_NUCLEOTIDES.get(), 0.35F, 100)
+        SimpleCookingRecipeBuilder.blasting(waterPotion, ModItems.DNA_NUCLEOTIDES.get(), 0.35F, 100)
                 .unlockedBy(getHasName(Items.POTION), has(Items.POTION))
                 .save(consumer, JurassicReborn.resource(getItemName(ModItems.DNA_NUCLEOTIDES.get()) + "_from_blasting"));
 
-        campfireCooking(waterPotion, ModItems.DNA_NUCLEOTIDES.get(), 0.35F, 600)
+        SimpleCookingRecipeBuilder.campfireCooking(waterPotion, ModItems.DNA_NUCLEOTIDES.get(), 0.35F, 600)
                 .unlockedBy(getHasName(Items.POTION), has(Items.POTION))
                 .save(consumer, JurassicReborn.resource(getItemName(ModItems.DNA_NUCLEOTIDES.get()) + "_from_campfire"));
 
-        smelting(Ingredient.of(ModBlocks.GRACILARIA.get()), ModItems.LIQUID_AGAR.get(), 0.35F, 200)
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModBlocks.GRACILARIA.get()), ModItems.LIQUID_AGAR.get(), 0.35F, 200)
                 .unlockedBy(getHasName(ModBlocks.GRACILARIA.get()), has(ModBlocks.GRACILARIA.get()))
                 .save(consumer);
-        blasting(Ingredient.of(ModBlocks.GRACILARIA.get()), ModItems.LIQUID_AGAR.get(), 0.35F, 100)
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModBlocks.GRACILARIA.get()), ModItems.LIQUID_AGAR.get(), 0.35F, 100)
                 .unlockedBy(getHasName(ModBlocks.GRACILARIA.get()), has(ModBlocks.GRACILARIA.get()))
                 .save(consumer, JurassicReborn.resource(getItemName(ModItems.LIQUID_AGAR.get()) + "_from_blasting"));
-        campfireCooking(Ingredient.of(ModBlocks.GRACILARIA.get()), ModItems.LIQUID_AGAR.get(), 0.35F, 600)
+        SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(ModBlocks.GRACILARIA.get()), ModItems.LIQUID_AGAR.get(), 0.35F, 600)
                 .unlockedBy(getHasName(ModBlocks.GRACILARIA.get()), has(ModBlocks.GRACILARIA.get()))
                 .save(consumer, JurassicReborn.resource(getItemName(ModItems.LIQUID_AGAR.get()) + "_from_campfire_cooking"));
-        smoking(Ingredient.of(ModBlocks.GRACILARIA.get()), ModItems.LIQUID_AGAR.get(), 0.35F, 100)
+        SimpleCookingRecipeBuilder.smoking(Ingredient.of(ModBlocks.GRACILARIA.get()), ModItems.LIQUID_AGAR.get(), 0.35F, 100)
                 .unlockedBy(getHasName(ModBlocks.GRACILARIA.get()), has(ModBlocks.GRACILARIA.get()))
                 .save(consumer, JurassicReborn.resource(getItemName(ModItems.LIQUID_AGAR.get()) + "_from_smoking"));
 
-        smelting(Ingredient.of(ModItems.SHARK_MEAT_RAW.get()), ModItems.SHARK_MEAT_COOKED.get(), 0.35F, 200)
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.SHARK_MEAT_RAW.get()), ModItems.SHARK_MEAT_COOKED.get(), 0.35F, 200)
                 .unlockedBy(getHasName(ModItems.SHARK_MEAT_RAW.get()), has(ModItems.SHARK_MEAT_RAW.get()))
                 .save(consumer);
-        blasting(Ingredient.of(ModItems.SHARK_MEAT_RAW.get()), ModItems.SHARK_MEAT_COOKED.get(), 0.35F, 100)
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModItems.SHARK_MEAT_RAW.get()), ModItems.SHARK_MEAT_COOKED.get(), 0.35F, 100)
                 .unlockedBy(getHasName(ModItems.SHARK_MEAT_RAW.get()), has(ModItems.SHARK_MEAT_RAW.get()))
                 .save(consumer, JurassicReborn.resource(getItemName(ModItems.SHARK_MEAT_COOKED.get()) + "_from_blasting"));
-        campfireCooking(Ingredient.of(ModItems.SHARK_MEAT_RAW.get()), ModItems.SHARK_MEAT_COOKED.get(), 0.35F, 600)
+        SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(ModItems.SHARK_MEAT_RAW.get()), ModItems.SHARK_MEAT_COOKED.get(), 0.35F, 600)
                 .unlockedBy(getHasName(ModItems.SHARK_MEAT_RAW.get()), has(ModItems.SHARK_MEAT_RAW.get()))
                 .save(consumer, JurassicReborn.resource(getItemName(ModItems.SHARK_MEAT_COOKED.get()) + "_from_campfire_cooking"));
-        smoking(Ingredient.of(ModItems.SHARK_MEAT_RAW.get()), ModItems.SHARK_MEAT_COOKED.get(), 0.35F, 100)
+        SimpleCookingRecipeBuilder.smoking(Ingredient.of(ModItems.SHARK_MEAT_RAW.get()), ModItems.SHARK_MEAT_COOKED.get(), 0.35F, 100)
                 .unlockedBy(getHasName(ModItems.SHARK_MEAT_RAW.get()), has(ModItems.SHARK_MEAT_RAW.get()))
                 .save(consumer, JurassicReborn.resource(getItemName(ModItems.SHARK_MEAT_COOKED.get()) + "_from_smoking"));
-        smelting(Ingredient.of(ModItems.CRAB_MEAT_RAW.get()), ModItems.CRAB_MEAT_COOKED.get(), 0.35F, 200)
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.CRAB_MEAT_RAW.get()), ModItems.CRAB_MEAT_COOKED.get(), 0.35F, 200)
                 .unlockedBy(getHasName(ModItems.CRAB_MEAT_RAW.get()), has(ModItems.CRAB_MEAT_RAW.get()))
                 .save(consumer);
-        blasting(Ingredient.of(ModItems.CRAB_MEAT_RAW.get()), ModItems.CRAB_MEAT_COOKED.get(), 0.35F, 100)
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModItems.CRAB_MEAT_RAW.get()), ModItems.CRAB_MEAT_COOKED.get(), 0.35F, 100)
                 .unlockedBy(getHasName(ModItems.CRAB_MEAT_RAW.get()), has(ModItems.CRAB_MEAT_RAW.get()))
                 .save(consumer, JurassicReborn.resource(getItemName(ModItems.CRAB_MEAT_COOKED.get()) + "_from_blasting"));
-        campfireCooking(Ingredient.of(ModItems.CRAB_MEAT_RAW.get()), ModItems.CRAB_MEAT_COOKED.get(), 0.35F, 600)
+        SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(ModItems.CRAB_MEAT_RAW.get()), ModItems.CRAB_MEAT_COOKED.get(), 0.35F, 600)
                 .unlockedBy(getHasName(ModItems.CRAB_MEAT_RAW.get()), has(ModItems.CRAB_MEAT_RAW.get()))
                 .save(consumer, JurassicReborn.resource(getItemName(ModItems.CRAB_MEAT_COOKED.get()) + "_from_campfire_cooking"));
-        smoking(Ingredient.of(ModItems.CRAB_MEAT_RAW.get()), ModItems.CRAB_MEAT_COOKED.get(), 0.35F, 100)
+        SimpleCookingRecipeBuilder.smoking(Ingredient.of(ModItems.CRAB_MEAT_RAW.get()), ModItems.CRAB_MEAT_COOKED.get(), 0.35F, 100)
                 .unlockedBy(getHasName(ModItems.CRAB_MEAT_RAW.get()), has(ModItems.CRAB_MEAT_RAW.get()))
                 .save(consumer, JurassicReborn.resource(getItemName(ModItems.CRAB_MEAT_COOKED.get()) + "_from_smoking"));
-        smelting(Ingredient.of(ModItems.GOAT_RAW.get()), ModItems.GOAT_COOKED.get(), 0.35F, 200)
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.GOAT_RAW.get()), ModItems.GOAT_COOKED.get(), 0.35F, 200)
                 .unlockedBy(getHasName(ModItems.GOAT_RAW.get()), has(ModItems.GOAT_RAW.get()))
                 .save(consumer);
-        blasting(Ingredient.of(ModItems.GOAT_RAW.get()), ModItems.GOAT_COOKED.get(), 0.35F, 100)
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModItems.GOAT_RAW.get()), ModItems.GOAT_COOKED.get(), 0.35F, 100)
                 .unlockedBy(getHasName(ModItems.GOAT_RAW.get()), has(ModItems.GOAT_RAW.get()))
                 .save(consumer, JurassicReborn.resource(getItemName(ModItems.GOAT_COOKED.get()) + "_from_blasting"));
-        campfireCooking(Ingredient.of(ModItems.GOAT_RAW.get()), ModItems.GOAT_COOKED.get(), 0.35F, 600)
+        SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(ModItems.GOAT_RAW.get()), ModItems.GOAT_COOKED.get(), 0.35F, 600)
                 .unlockedBy(getHasName(ModItems.GOAT_RAW.get()), has(ModItems.GOAT_RAW.get()))
                 .save(consumer, JurassicReborn.resource(getItemName(ModItems.GOAT_COOKED.get()) + "_from_campfire_cooking"));
-        smoking(Ingredient.of(ModItems.GOAT_RAW.get()), ModItems.GOAT_COOKED.get(), 0.35F, 100)
+        SimpleCookingRecipeBuilder.smoking(Ingredient.of(ModItems.GOAT_RAW.get()), ModItems.GOAT_COOKED.get(), 0.35F, 100)
                 .unlockedBy(getHasName(ModItems.GOAT_RAW.get()), has(ModItems.GOAT_RAW.get()))
                 .save(consumer, JurassicReborn.resource(getItemName(ModItems.GOAT_COOKED.get()) + "_from_smoking"));
         ModItems.MEATS.forEach((dino, meat) -> {
             ItemLike steak = ModItems.STEAKS.get(dino).get();
-            smoking(Ingredient.of(meat.get()), steak, 0.35F, 100)
+            SimpleCookingRecipeBuilder.smoking(Ingredient.of(meat.get()), steak, 0.35F, 100)
                     .unlockedBy(getHasName(meat.get()), has(meat.get()))
                     .save(consumer, JurassicReborn.resource(getItemName(steak) + "_from_smoking"));
-            smelting(Ingredient.of(meat.get()), steak, 0.35F, 200)
+            SimpleCookingRecipeBuilder.smelting(Ingredient.of(meat.get()), steak, 0.35F, 200)
                     .unlockedBy(getHasName(meat.get()), has(meat.get()))
                     .save(consumer, JurassicReborn.resource(getItemName(steak) + "_from_smelting"));
-            blasting(Ingredient.of(meat.get()), steak, 0.35F, 100)
+            SimpleCookingRecipeBuilder.blasting(Ingredient.of(meat.get()), steak, 0.35F, 100)
                     .unlockedBy(getHasName(meat.get()), has(meat.get()))
                     .save(consumer, JurassicReborn.resource(getItemName(steak) + "_from_blasting"));
-            campfireCooking(Ingredient.of(meat.get()), steak, 0.35F, 600)
+            SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(meat.get()), steak, 0.35F, 600)
                     .unlockedBy(getHasName(meat.get()), has(meat.get()))
                     .save(consumer, JurassicReborn.resource(getItemName(steak) + "_from_campfire_cooking"));
         });
 
-        shaped(ModItems.BLACK_JEEP_WRANGLER.get())
+        ShapedRecipeBuilder.shaped(ModItems.BLACK_JEEP_WRANGLER.get())
                 .pattern("ABA")
                 .pattern("CDB")
                 .pattern("ABA")
@@ -579,7 +555,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(ModItems.UNFINISHED_CAR.get()), has(ModItems.UNFINISHED_CAR.get()))
                 .save(consumer);
 
-        shaped(ModItems.BLUE_JEEP_WRANGLER.get())
+        ShapedRecipeBuilder.shaped(ModItems.BLUE_JEEP_WRANGLER.get())
                 .pattern("ABA")
                 .pattern("CDB")
                 .pattern("ABA")
@@ -590,7 +566,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(ModItems.UNFINISHED_CAR.get()), has(ModItems.UNFINISHED_CAR.get()))
                 .save(consumer);
 
-        shaped(ModItems.GREEN_JEEP_WRANGLER.get())
+        ShapedRecipeBuilder.shaped(ModItems.GREEN_JEEP_WRANGLER.get())
                 .pattern("ABA")
                 .pattern("CDB")
                 .pattern("ABA")
@@ -601,7 +577,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(ModItems.UNFINISHED_CAR.get()), has(ModItems.UNFINISHED_CAR.get()))
                 .save(consumer);
 
-        shaped(ModItems.LIME_JEEP_WRANGLER.get())
+        ShapedRecipeBuilder.shaped(ModItems.LIME_JEEP_WRANGLER.get())
                 .pattern("ABA")
                 .pattern("CDB")
                 .pattern("ABA")
@@ -612,7 +588,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(ModItems.UNFINISHED_CAR.get()), has(ModItems.UNFINISHED_CAR.get()))
                 .save(consumer);
 
-        shaped(ModItems.PINK_JEEP_WRANGLER.get())
+        ShapedRecipeBuilder.shaped(ModItems.PINK_JEEP_WRANGLER.get())
                 .pattern("ABA")
                 .pattern("CDB")
                 .pattern("ABA")
@@ -623,7 +599,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(ModItems.UNFINISHED_CAR.get()), has(ModItems.UNFINISHED_CAR.get()))
                 .save(consumer);
 
-        shaped(ModItems.PURPLE_JEEP_WRANGLER.get())
+        ShapedRecipeBuilder.shaped(ModItems.PURPLE_JEEP_WRANGLER.get())
                 .pattern("ABA")
                 .pattern("CDB")
                 .pattern("ABA")
@@ -634,7 +610,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(ModItems.UNFINISHED_CAR.get()), has(ModItems.UNFINISHED_CAR.get()))
                 .save(consumer);
 
-        shaped(ModItems.SORNA_JEEP_WRANGLER.get())
+        ShapedRecipeBuilder.shaped(ModItems.SORNA_JEEP_WRANGLER.get())
                 .pattern("ABA")
                 .pattern("CDB")
                 .pattern("ABA")
@@ -645,7 +621,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(ModItems.UNFINISHED_CAR.get()), has(ModItems.UNFINISHED_CAR.get()))
                 .save(consumer);
 
-        shaped(ModItems.GLOCK.get())
+        ShapedRecipeBuilder.shaped(ModItems.GLOCK.get())
                 .pattern("CCC")
                 .pattern(" EA")
                 .define('A', Items.STRING)
@@ -654,7 +630,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(Items.REDSTONE), has(Items.REDSTONE))
                 .save(consumer);
 
-        shaped(ModItems.REMINGTON.get())
+        ShapedRecipeBuilder.shaped(ModItems.REMINGTON.get())
                 .pattern("EAC")
                 .pattern("CDC")
                 .pattern("  C")
@@ -665,7 +641,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(Items.REDSTONE), has(Items.REDSTONE))
                 .save(consumer);
 
-        shaped(ModItems.SPAS12.get())
+        ShapedRecipeBuilder.shaped(ModItems.SPAS12.get())
                 .pattern("  A")
                 .pattern("CDC")
                 .pattern("ECC")
@@ -676,7 +652,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(Items.REDSTONE), has(Items.REDSTONE))
                 .save(consumer);
 
-        shaped(ModItems.UTS15.get())
+        ShapedRecipeBuilder.shaped(ModItems.UTS15.get())
                 .pattern(" AE")
                 .pattern("CCC")
                 .pattern("DDC")
@@ -687,7 +663,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(Items.REDSTONE), has(Items.REDSTONE))
                 .save(consumer);
 
-        shaped(ModItems.BULLET.get())
+        ShapedRecipeBuilder.shaped(ModItems.BULLET.get())
                 .group(JurassicReborn.MODID + ":bullet")
                 .pattern("AAE")
                 .pattern(" EC")
@@ -700,7 +676,7 @@ public class JRRecipeProvider extends RecipeProvider {
 
 
 
-        shaped(ModBlocks.BUG_CRATE.get())
+        ShapedRecipeBuilder.shaped(ModBlocks.BUG_CRATE.get())
                 .pattern("AAA")
                 .pattern("BCB")
                 .pattern("DDD")
@@ -711,7 +687,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(Blocks.STONE_SLAB),has(Blocks.STONE_SLAB))
                 .save(consumer);
 
-        shaped(ModBlocks.EMBRYONIC_MACHINE.get())
+        ShapedRecipeBuilder.shaped(ModBlocks.EMBRYONIC_MACHINE.get())
                 .pattern("ABC")
                 .pattern("ADC")
                 .pattern("EEC")
@@ -723,14 +699,14 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(Blocks.PISTON),has(Blocks.PISTON))
                 .save(consumer);
 
-        shaped(ModItems.EMPTY_TEST_TUBE.get(),8)
+        ShapedRecipeBuilder.shaped(ModItems.EMPTY_TEST_TUBE.get(),8)
                 .pattern("A")
                 .pattern("A")
                 .define('A',Blocks.GLASS)
                 .unlockedBy(getHasName(Blocks.GLASS),has(Blocks.GLASS))
                 .save(consumer);
 
-        shaped(ModItems.FORD_EXPLORER.get())
+        ShapedRecipeBuilder.shaped(ModItems.FORD_EXPLORER.get())
                 .pattern("GWG")
                 .pattern("LCR")
                 .pattern("YYY")
@@ -742,19 +718,19 @@ public class JRRecipeProvider extends RecipeProvider {
                 .define('Y',Items.YELLOW_DYE)
                 .unlockedBy(getHasName(ModItems.UNFINISHED_CAR.get()),has(ModItems.UNFINISHED_CAR.get()))
                 .save(consumer);
-        shaped(ModItems.MONORAIL.get())
+        ShapedRecipeBuilder.shaped(ModItems.MONORAIL.get())
                 .group(JurassicReborn.MODID + ":ford_explorer")
                 .pattern("RWG")
                 .pattern("GCR")
                 .pattern("YYY")
                 .define('R', Items.LAPIS_LAZULI)
-                .define('W', Items.GLASS_PANE)
+                .define('W', Items.GLASS_PANE)          
                 .define('G', Items.LIGHT_BLUE_DYE)
                 .define('C', ModItems.UNFINISHED_CAR.get())
                 .define('Y', Items.IRON_BLOCK)
                 .unlockedBy("has_unfinished_car", has(ModItems.UNFINISHED_CAR.get()))
                 .save(consumer);
-        shaped(ModItems.FORD_EXPLORER_SNOW.get())
+        ShapedRecipeBuilder.shaped(ModItems.FORD_EXPLORER_SNOW.get())
                 .pattern("RWY")
                 .pattern("RCR")
                 .pattern("YYY")
@@ -764,7 +740,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .define('Y',Items.LIGHT_GRAY_DYE)
                 .unlockedBy(getHasName(ModItems.UNFINISHED_CAR.get()),has(ModItems.UNFINISHED_CAR.get()))
                 .save(consumer);
-        shaped(ModBlocks.PARK_BENCH.get())
+        ShapedRecipeBuilder.shaped(ModBlocks.PARK_BENCH.get())
                 .group(JurassicReborn.MODID + ":park_bench")
                 .pattern("PPP")
                 .pattern("DPD")
@@ -773,7 +749,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .define('D', Blocks.POLISHED_DEEPSLATE)
                 .unlockedBy(getHasName(Blocks.POLISHED_DEEPSLATE), has(Blocks.POLISHED_DEEPSLATE))
                 .save(consumer);
-        shaped(ModBlocks.TRASH_CAN.get())
+        ShapedRecipeBuilder.shaped(ModBlocks.TRASH_CAN.get())
                 .group(JurassicReborn.MODID + ":trash_can")
                 .pattern("PPP")
                 .pattern("DDD")
@@ -782,7 +758,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .define('D', Blocks.GREEN_CONCRETE)
                 .unlockedBy(getHasName(Blocks.GREEN_CONCRETE), has(Blocks.GREEN_CONCRETE))
                 .save(consumer);
-        shaped(ModBlocks.FOSSIL_GRINDER.get())
+        ShapedRecipeBuilder.shaped(ModBlocks.FOSSIL_GRINDER.get())
                 .pattern("WRL")
                 .pattern("WYW")
                 .pattern("LLL")
@@ -792,7 +768,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .define('Y',ModItems.IRON_BLADES.get())
                 .unlockedBy(getHasName(ModItems.IRON_BLADES.get()),has(ModItems.IRON_BLADES.get()))
                 .save(consumer);
-        shaped(ModItems.PADDOCK_SIGN.get())
+        ShapedRecipeBuilder.shaped(ModItems.PADDOCK_SIGN.get())
                 .group(JurassicReborn.MODID + ":paddock_sign")
                 .pattern("AAA")
                 .pattern("BBB")
@@ -806,7 +782,7 @@ public class JRRecipeProvider extends RecipeProvider {
         for (int i = 0; i < types.length; i++) {
             RegistryObject<Item> sign = ModItems.ATTRACTION_SIGNS.get(types[i]);
             if (i == 0) {
-                shaped(sign.get())
+                ShapedRecipeBuilder.shaped(sign.get())
                         .group(JurassicReborn.MODID + ":attraction_sign")
                         .pattern("AAA")
                         .pattern("BBB")
@@ -817,7 +793,7 @@ public class JRRecipeProvider extends RecipeProvider {
                         .save(consumer);
             } else {
                 RegistryObject<Item> prev = ModItems.ATTRACTION_SIGNS.get(types[i - 1]);
-                shapeless(sign.get())
+                ShapelessRecipeBuilder.shapeless(sign.get())
                         .group(JurassicReborn.MODID + ":attraction_sign")
                         .requires(prev.get())
                         .unlockedBy(getHasName(prev.get()), has(prev.get()))
@@ -826,20 +802,20 @@ public class JRRecipeProvider extends RecipeProvider {
         }
         RegistryObject<Item> first = ModItems.ATTRACTION_SIGNS.get(types[0]);
         RegistryObject<Item> last = ModItems.ATTRACTION_SIGNS.get(types[types.length - 1]);
-        shapeless(first.get())
+        ShapelessRecipeBuilder.shapeless(first.get())
                 .group(JurassicReborn.MODID + ":attraction_sign")
                 .requires(last.get())
                 .unlockedBy(getHasName(last.get()), has(last.get()))
                 .save(consumer, JurassicReborn.MODID + ":" + first.getId().getPath() + "_from_" + last.getId().getPath());
 
-        shapeless(ModItems.BASIC_CIRCUIT.get(), 2)
+        ShapelessRecipeBuilder.shapeless(ModItems.BASIC_CIRCUIT.get(), 2)
                 .requires(Ingredient.of(Tags.Items.NUGGETS_IRON), 4)
                 .requires(Items.GOLD_NUGGET, 4)
                 .requires(Items.REDSTONE)
                 .unlockedBy(getHasName(Items.REDSTONE), has(Items.REDSTONE))
                 .save(consumer);
 
-        shapeless(ModItems.ADVANCED_CIRCUIT.get())
+        ShapelessRecipeBuilder.shapeless(ModItems.ADVANCED_CIRCUIT.get())
                 .requires(ModItems.BASIC_CIRCUIT.get(), 2)
                 .requires(Tags.Items.NUGGETS_IRON)
                 .requires(Items.GOLD_NUGGET)
@@ -847,7 +823,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(ModItems.BASIC_CIRCUIT.get()), has(ModItems.BASIC_CIRCUIT.get()))
                 .save(consumer);
 
-        shaped(ModItems.LASER.get())
+        ShapedRecipeBuilder.shaped(ModItems.LASER.get())
                 .group(JurassicReborn.MODID + ":laser")
                 .pattern("ABA")
                 .pattern("ACA")
@@ -859,7 +835,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(ModItems.BASIC_CIRCUIT.get()), has(ModItems.BASIC_CIRCUIT.get()))
                 .save(consumer);
 
-        shaped(ModItems.DISC_DRIVE.get())
+        ShapedRecipeBuilder.shaped(ModItems.DISC_DRIVE.get())
                 .group(JurassicReborn.MODID + ":disc_reader")
                 .pattern("ABC")
                 .pattern("D  ")
@@ -872,7 +848,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(ModItems.ADVANCED_CIRCUIT.get()), has(ModItems.ADVANCED_CIRCUIT.get()))
                 .save(consumer);
 
-        shaped(ModItems.COMPUTER_SCREEN.get())
+        ShapedRecipeBuilder.shaped(ModItems.COMPUTER_SCREEN.get())
                 .pattern("ABA")
                 .pattern("CDE")
                 .pattern("FGA")
@@ -886,7 +862,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(ModItems.BASIC_CIRCUIT.get()), has(ModItems.BASIC_CIRCUIT.get()))
                 .save(consumer);
 
-        shaped(ModItems.STORAGE_DISC.get())
+        ShapedRecipeBuilder.shaped(ModItems.STORAGE_DISC.get())
                 .group(JurassicReborn.MODID + ":storage_disc")
                 .pattern(" A ")
                 .pattern("ABA")
@@ -896,7 +872,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(ModItems.BASIC_CIRCUIT.get()), has(ModItems.BASIC_CIRCUIT.get()))
                 .save(consumer);
 
-        shaped(ModItems.CAR_CHASSIS.get())
+        ShapedRecipeBuilder.shaped(ModItems.CAR_CHASSIS.get())
                 .pattern("AAA")
                 .pattern("A A")
                 .pattern("AAA")
@@ -904,7 +880,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT))
                 .save(consumer);
 
-        shaped(ModItems.CAR_SEATS.get())
+        ShapedRecipeBuilder.shaped(ModItems.CAR_SEATS.get())
                 .pattern("ABA")
                 .pattern("ACA")
                 .pattern("DDD")
@@ -915,7 +891,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(Items.SADDLE), has(Items.SADDLE))
                 .save(consumer);
 
-        shaped(ModItems.CAR_TIRE.get(),2)
+        ShapedRecipeBuilder.shaped(ModItems.CAR_TIRE.get(),2)
                 .pattern("ABA")
                 .pattern("BCB")
                 .pattern("ABA")
@@ -925,7 +901,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(Items.PISTON), has(Items.PISTON))
                 .save(consumer);
 
-        shaped(ModItems.CAR_WINDSCREEN.get())
+        ShapedRecipeBuilder.shaped(ModItems.CAR_WINDSCREEN.get())
                 .pattern(" A ")
                 .pattern("ABA")
                 .pattern(" A ")
@@ -934,7 +910,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(Items.GLASS_PANE), has(Items.GLASS_PANE))
                 .save(consumer);
 
-        shaped(ModItems.ENGINE_SYSTEM.get())
+        ShapedRecipeBuilder.shaped(ModItems.ENGINE_SYSTEM.get())
                 .pattern("ABC")
                 .pattern("DEF")
                 .pattern("AGH")
@@ -949,7 +925,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(Items.IRON_BARS), has(Items.IRON_BARS))
                 .save(consumer);
 
-        shaped(ModItems.UNFINISHED_CAR.get())
+        ShapedRecipeBuilder.shaped(ModItems.UNFINISHED_CAR.get())
                 .pattern("ABC")
                 .pattern("DEF")
                 .pattern("DDD")
@@ -962,7 +938,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(ModItems.CAR_CHASSIS.get()), has(ModItems.CAR_CHASSIS.get()))
                 .save(consumer);
 
-        shaped(ModItems.PLASTER_AND_BANDAGE.get(),9)
+        ShapedRecipeBuilder.shaped(ModItems.PLASTER_AND_BANDAGE.get(),9)
                 .pattern("ABA")
                 .pattern("BCB")
                 .pattern("ABA")
@@ -972,26 +948,26 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(ModItems.GYPSUM_POWDER.get()), has(ModItems.GYPSUM_POWDER.get()))
                 .save(consumer);
 
-        shaped(ModItems.PETRI_DISH.get(),4)
+        ShapedRecipeBuilder.shaped(ModItems.PETRI_DISH.get(),4)
                 .pattern("A A")
                 .pattern("AAA")
                 .define('A', Items.GLASS_PANE)
                 .unlockedBy(getHasName(Items.GLASS_PANE), has(Items.GLASS_PANE))
                 .save(consumer);
 
-        shapeless(ModItems.PETRI_DISH_AGAR.get(),4)
+        ShapelessRecipeBuilder.shapeless(ModItems.PETRI_DISH_AGAR.get(),4)
                 .requires(ModItems.PETRI_DISH.get(),4)
                 .requires(ModItems.LIQUID_AGAR.get())
                 .unlockedBy(getHasName(ModItems.LIQUID_AGAR.get()), has(ModItems.LIQUID_AGAR.get()))
                 .save(consumer);
 
-        shapeless(ModItems.PLANT_CELLS_PETRI_DISH.get())
+        ShapelessRecipeBuilder.shapeless(ModItems.PLANT_CELLS_PETRI_DISH.get())
                 .requires(ModItems.PLANT_CELLS.get())
                 .requires(ModItems.PETRI_DISH_AGAR.get())
                 .unlockedBy(getHasName(ModItems.PLANT_CELLS.get()), has(ModItems.PLANT_CELLS.get()))
                 .save(consumer);
 
-        shaped(ModItems.PALEO_PAD.get())
+        ShapedRecipeBuilder.shaped(ModItems.PALEO_PAD.get())
                 .pattern("BDB")
                 .pattern("ACA")
                 .pattern("BDB")
@@ -1002,7 +978,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(ModItems.BASIC_CIRCUIT.get()), has(ModItems.BASIC_CIRCUIT.get()))
                 .save(consumer);
 
-        shaped(ModBlocks.GYPSUM_STONE.get())
+        ShapedRecipeBuilder.shaped(ModBlocks.GYPSUM_STONE.get())
                 .pattern("AAA")
                 .pattern("AAA")
                 .pattern("AAA")
@@ -1011,14 +987,14 @@ public class JRRecipeProvider extends RecipeProvider {
                 .save(consumer);
 
         //Gypsum Brick block recipe
-        shaped(ModBlocks.GYPSUM_BRICKS.get(),4)
+        ShapedRecipeBuilder.shaped(ModBlocks.GYPSUM_BRICKS.get(),4)
                 .pattern("AA")
                 .pattern("AA")
                 .define('A', ModBlocks.GYPSUM_STONE.get())
                 .unlockedBy(getHasName(ModBlocks.GYPSUM_STONE.get()), has(ModBlocks.GYPSUM_STONE.get()))
                 .save(consumer);
 //
-//       shaped(ModBlocks.GYPSUM_BRICK_STAIRS.get(),4)
+//        ShapedRecipeBuilder.shaped(ModBlocks.GYPSUM_BRICK_STAIRS.get(),4)
 //                .pattern("A  ")
 //                .pattern("AA ")
 //                .pattern("AAA")
@@ -1026,31 +1002,31 @@ public class JRRecipeProvider extends RecipeProvider {
 //                .unlockedBy(getHasName(ModBlocks.GYPSUM_BRICKS.get()), has(ModBlocks.GYPSUM_BRICKS.get()))
 //                .save(consumer);
 //
-//       shaped(ModBlocks.GYPSUM_BRICK_SLAB.get(),6)
+//        ShapedRecipeBuilder.shaped(ModBlocks.GYPSUM_BRICK_SLAB.get(),6)
 //                .pattern("AAA")
 //                .define('A', ModBlocks.GYPSUM_BRICKS.get())
 //                .unlockedBy(getHasName(ModBlocks.GYPSUM_BRICKS.get()), has(ModBlocks.GYPSUM_BRICKS.get()))
 //                .save(consumer);
 //
-//       shaped(ModBlocks.GYPSUM_BRICK_WALL.get(),6)
+//        ShapedRecipeBuilder.shaped(ModBlocks.GYPSUM_BRICK_WALL.get(),6)
 //                .pattern("AAA")
 //                .pattern("AAA")
 //                .define('A', ModBlocks.GYPSUM_BRICKS.get())
 //                .unlockedBy(getHasName(ModBlocks.GYPSUM_BRICKS.get()), has(ModBlocks.GYPSUM_BRICKS.get()))
 //                .save(consumer);
 //
-//       shaped(ModBlocks.GYPSUM_BRICK_PRESSURE_PLATE.get())
+//        ShapedRecipeBuilder.shaped(ModBlocks.GYPSUM_BRICK_PRESSURE_PLATE.get())
 //                .pattern("AA")
 //                .define('A', ModBlocks.GYPSUM_BRICKS.get())
 //                .unlockedBy(getHasName(ModBlocks.GYPSUM_BRICKS.get()), has(ModBlocks.GYPSUM_BRICKS.get()))
 //                .save(consumer);
 //
-//        shapeless(ModBlocks.GYPSUM_BRICK_BUTTON.get())
+//        ShapelessRecipeBuilder.shapeless(ModBlocks.GYPSUM_BRICK_BUTTON.get())
 //                .requires(ModBlocks.GYPSUM_BRICKS.get())
 //                .unlockedBy(getHasName(ModBlocks.GYPSUM_BRICKS.get()), has(ModBlocks.GYPSUM_BRICKS.get()))
 //                .save(consumer);
 
-        shaped(ModItems.FINE_NET.get())
+        ShapedRecipeBuilder.shaped(ModItems.FINE_NET.get())
                 .group(JurassicReborn.MODID + ":fine_net")
                 .pattern("ABC")
                 .pattern(" BB")
@@ -1061,7 +1037,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(Items.STRING), has(Items.STRING))
                 .save(consumer);
 
-        shaped(ModBlocks.LOW_SECURITY_FENCE_BASE.get(),6)
+        ShapedRecipeBuilder.shaped(ModBlocks.LOW_SECURITY_FENCE_BASE.get(),6)
                 .pattern("ABA")
                 .pattern("CCC")
                 .pattern(" D ")
@@ -1072,7 +1048,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(Items.REDSTONE), has(Items.REDSTONE))
                 .save(consumer);
 
-        shaped(ModBlocks.LOW_SECURITY_FENCE_WIRE.get(),16)
+        ShapedRecipeBuilder.shaped(ModBlocks.LOW_SECURITY_FENCE_WIRE.get(),16)
                 .pattern("AAA")
                 .pattern(" B ")
                 .pattern("AAA")
@@ -1081,7 +1057,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(Items.REDSTONE), has(Items.REDSTONE))
                 .save(consumer);
 
-        shaped(ModBlocks.LOW_SECURITY_FENCE_POLE.get(),2)
+        ShapedRecipeBuilder.shaped(ModBlocks.LOW_SECURITY_FENCE_POLE.get(),2)
                 .pattern("A")
                 .pattern("B")
                 .pattern("B")
@@ -1090,7 +1066,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(Items.REDSTONE), has(Items.REDSTONE))
                 .save(consumer);
 
-        shaped(ModBlocks.CLEANING_STATION.get())
+        ShapedRecipeBuilder.shaped(ModBlocks.CLEANING_STATION.get())
                 .pattern("AAA")
                 .pattern("BCB")
                 .pattern("DED")
@@ -1102,7 +1078,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(Items.BUCKET), has(Items.BUCKET))
                 .save(consumer);
 
-        shaped(ModBlocks.SKELETON_ASSEMBLY.get())
+        ShapedRecipeBuilder.shaped(ModBlocks.SKELETON_ASSEMBLY.get())
                 .pattern("ABB")
                 .pattern("CDC")
                 .pattern("EFE")
@@ -1115,7 +1091,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(ModBlocks.LOW_SECURITY_FENCE_WIRE.get()), has(ModBlocks.LOW_SECURITY_FENCE_WIRE.get()))
                 .save(consumer);
 
-        shaped(ModBlocks.TOUR_RAIL.get(),16)
+        ShapedRecipeBuilder.shaped(ModBlocks.TOUR_RAIL.get(),16)
                 .group(JurassicReborn.MODID + ":tour_rail")
                 .pattern("BRB")
                 .pattern("TRT")
@@ -1126,7 +1102,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(Items.RAIL), has(Items.RAIL))
                 .save(consumer);
 
-        shaped(ModItems.MURAL.get())
+        ShapedRecipeBuilder.shaped(ModItems.MURAL.get())
                 .group(JurassicReborn.MODID + ":mural")
                 .pattern("ABA")
                 .pattern("BCB")
@@ -1137,7 +1113,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(Items.PAINTING), has(Items.PAINTING))
                 .save(consumer);
 
-        shaped(ModItems.FIELD_GUIDE.get())
+        ShapedRecipeBuilder.shaped(ModItems.FIELD_GUIDE.get())
                 .pattern("ABA")
                 .pattern("CCC")
                 .pattern("ABA")
@@ -1147,7 +1123,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(Items.PAPER), has(Items.PAPER))
                 .save(consumer);
 
-        shaped(ModItems.EMPTY_SYRINGE.get())
+        ShapedRecipeBuilder.shaped(ModItems.EMPTY_SYRINGE.get())
                 .pattern(" A ")
                 .pattern(" B ")
                 .pattern("AAA")
@@ -1156,7 +1132,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(ModItems.EMPTY_TEST_TUBE.get()), has(ModItems.EMPTY_TEST_TUBE.get()))
                 .save(consumer);
 
-        shaped(ModItems.PREGNANCY_TEST.get())
+        ShapedRecipeBuilder.shaped(ModItems.PREGNANCY_TEST.get())
                 .pattern("P  ")
                 .pattern(" R ")
                 .pattern("  W")
@@ -1166,7 +1142,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(Items.PINK_WOOL), has(Items.PINK_WOOL))
                 .save(consumer);
 
-        shaped(ModItems.DART_GUN.get())
+        ShapedRecipeBuilder.shaped(ModItems.DART_GUN.get())
                 .group(JurassicReborn.MODID + ":dart_gun")
                 .pattern("AAA")
                 .pattern("CCC")
@@ -1177,7 +1153,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT))
                 .save(consumer);
 
-        shaped(ModItems.DART_TRANQUILIZER.get(),6)
+        ShapedRecipeBuilder.shaped(ModItems.DART_TRANQUILIZER.get(),6)
                 .group(JurassicReborn.MODID + ":dart_tranquilizer")
                 .pattern(" F")
                 .pattern("N ")
@@ -1186,7 +1162,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(Items.FLINT), has(Items.FLINT))
                 .save(consumer);
 
-        shaped(ModItems.TRACKER_DART.get(),6)
+        ShapedRecipeBuilder.shaped(ModItems.TRACKER_DART.get(),6)
                 .group(JurassicReborn.MODID + ":tracking_dart")
                 .pattern(" F")
                 .pattern("N ")
@@ -1195,19 +1171,19 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(Items.COMPASS), has(Items.COMPASS))
                 .save(consumer);
 
-        shapeless(ModItems.DART_POISON_CYCASIN.get())
+        ShapelessRecipeBuilder.shapeless(ModItems.DART_POISON_CYCASIN.get())
                 .requires(ModItems.DART_TRANQUILIZER.get())
                 .requires(Items.SPIDER_EYE)
                 .unlockedBy(getHasName(ModItems.DART_TRANQUILIZER.get()), has(ModItems.DART_TRANQUILIZER.get()))
                 .save(consumer, JurassicReborn.resource("dart_poison"));
 
-        shapeless(ModItems.DART_POISON_EXECUTIONER_CONCOCTION.get())
+        ShapelessRecipeBuilder.shapeless(ModItems.DART_POISON_EXECUTIONER_CONCOCTION.get())
                 .requires(ModItems.DART_POISON_CYCASIN.get())
                 .requires(Items.SPIDER_EYE)
                 .unlockedBy(getHasName(ModItems.DART_POISON_CYCASIN.get()), has(ModItems.DART_POISON_CYCASIN.get()))
                 .save(consumer, JurassicReborn.resource("dart_lethal"));
 
-        shaped(ModItems.DNA_ANALYZER.get())
+        ShapedRecipeBuilder.shaped(ModItems.DNA_ANALYZER.get())
                 .pattern("ABA")
                 .pattern("CDA")
                 .pattern("AAA")
@@ -1218,7 +1194,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(ModItems.ADVANCED_CIRCUIT.get()), has(ModItems.ADVANCED_CIRCUIT.get()))
                 .save(consumer);
 
-        shaped(ModBlocks.DNA_EXTRACTOR.get())
+        ShapedRecipeBuilder.shaped(ModBlocks.DNA_EXTRACTOR.get())
                 .pattern("AAA")
                 .pattern("BCD")
                 .pattern("EAA")
@@ -1230,7 +1206,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(ModItems.DNA_ANALYZER.get()), has(ModItems.DNA_ANALYZER.get()))
                 .save(consumer);
 
-        shaped(ModBlocks.DNA_SEQUENCER.get())
+        ShapedRecipeBuilder.shaped(ModBlocks.DNA_SEQUENCER.get())
                 .pattern("ABA")
                 .pattern("CBA")
                 .pattern("DBE")
@@ -1241,7 +1217,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .define('E', ModItems.KEYBOARD.get())
                 .unlockedBy(getHasName(ModItems.DNA_ANALYZER.get()), has(ModItems.DNA_ANALYZER.get()))
                 .save(consumer);
-        shaped(ModItems.GYROSPHERE_SEATS.get())
+        ShapedRecipeBuilder.shaped(ModItems.GYROSPHERE_SEATS.get())
                 .group(JurassicReborn.MODID + ":gyrosphere_seats")
                 .pattern("ABA")
                 .pattern("ACA")
@@ -1253,7 +1229,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(Items.SADDLE), has(Items.SADDLE))
                 .save(consumer);
 
-        shaped(ModItems.GYROSPHERE_HOOP.get())
+        ShapedRecipeBuilder.shaped(ModItems.GYROSPHERE_HOOP.get())
                 .group(JurassicReborn.MODID + ":gyrosphere_hoop")
                 .pattern("AAA")
                 .pattern("A A")
@@ -1262,7 +1238,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(ModItems.IRON_ROD.get()), has(ModItems.IRON_ROD.get()))
                 .save(consumer);
 
-        shaped(ModItems.GYROSPHERE_INTERIOR.get())
+        ShapedRecipeBuilder.shaped(ModItems.GYROSPHERE_INTERIOR.get())
                 .group(JurassicReborn.MODID + ":gyrosphere_interior")
                 .pattern("CCC")
                 .pattern("BAB")
@@ -1272,7 +1248,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .define('C', Items.IRON_INGOT)
                 .unlockedBy(getHasName(ModItems.GYROSPHERE_SEATS.get()), has(ModItems.GYROSPHERE_SEATS.get()))
                 .save(consumer);
-        shaped(ModBlocks.MED_SECURITY_FENCE_BASE.get(),6)
+        ShapedRecipeBuilder.shaped(ModBlocks.MED_SECURITY_FENCE_BASE.get(),6)
                 .pattern("ABA")
                 .pattern("CCC")
                 .pattern("BDB")
@@ -1283,7 +1259,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(Items.REDSTONE), has(Items.REDSTONE))
                 .save(consumer);
 
-        shaped(ModBlocks.MED_SECURITY_FENCE_WIRE.get(),6)
+        ShapedRecipeBuilder.shaped(ModBlocks.MED_SECURITY_FENCE_WIRE.get(),6)
                 .pattern("AAA")
                 .pattern(" B ")
                 .pattern("AAA")
@@ -1292,7 +1268,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(ModBlocks.LOW_SECURITY_FENCE_WIRE.get()), has(ModBlocks.LOW_SECURITY_FENCE_WIRE.get()))
                 .save(consumer);
 
-        shaped(ModBlocks.MED_SECURITY_FENCE_POLE.get(),2)
+        ShapedRecipeBuilder.shaped(ModBlocks.MED_SECURITY_FENCE_POLE.get(),2)
                 .pattern("AA")
                 .pattern("BB")
                 .pattern("BB")
@@ -1301,7 +1277,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(Items.REDSTONE), has(Items.REDSTONE))
                 .save(consumer);
 
-        shaped(ModBlocks.HIGH_SECURITY_FENCE_BASE.get(),6)
+        ShapedRecipeBuilder.shaped(ModBlocks.HIGH_SECURITY_FENCE_BASE.get(),6)
                 .pattern("BBB")
                 .pattern("CCC")
                 .pattern("BBB")
@@ -1310,7 +1286,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(ModBlocks.MED_SECURITY_FENCE_BASE.get()), has(ModBlocks.MED_SECURITY_FENCE_BASE.get()))
                 .save(consumer);
 
-        shaped(ModBlocks.HIGH_SECURITY_FENCE_WIRE.get(),6)
+        ShapedRecipeBuilder.shaped(ModBlocks.HIGH_SECURITY_FENCE_WIRE.get(),6)
                 .pattern("AAA")
                 .pattern(" B ")
                 .pattern("AAA")
@@ -1319,7 +1295,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(ModBlocks.MED_SECURITY_FENCE_WIRE.get()), has(ModBlocks.MED_SECURITY_FENCE_WIRE.get()))
                 .save(consumer);
 
-        shaped(ModBlocks.HIGH_SECURITY_FENCE_POLE.get(),2)
+        ShapedRecipeBuilder.shaped(ModBlocks.HIGH_SECURITY_FENCE_POLE.get(),2)
                 .pattern("AAA")
                 .pattern("BBB")
                 .pattern("BBB")
@@ -1328,7 +1304,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(Items.REDSTONE), has(Items.REDSTONE))
                 .save(consumer);
 
-        shaped(ModBlocks.DNA_SYNTHESIZER.get())
+        ShapedRecipeBuilder.shaped(ModBlocks.DNA_SYNTHESIZER.get())
                 .pattern("AAB")
                 .pattern("ACD")
                 .pattern("AAC")
@@ -1339,7 +1315,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(ModItems.ADVANCED_CIRCUIT.get()), has(ModItems.ADVANCED_CIRCUIT.get()))
                 .save(consumer);
 
-        shaped(ModBlocks.DNA_COMBINER_HYBRIDIZER.get())
+        ShapedRecipeBuilder.shaped(ModBlocks.DNA_COMBINER_HYBRIDIZER.get())
                 .pattern("ABA")
                 .pattern("CDC")
                 .define('A', ModItems.COMPUTER_SCREEN.get())
@@ -1349,7 +1325,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(ModItems.BASIC_CIRCUIT.get()), has(ModItems.BASIC_CIRCUIT.get()))
                 .save(consumer);
 
-        shaped(ModBlocks.INCUBATOR.get())
+        ShapedRecipeBuilder.shaped(ModBlocks.INCUBATOR.get())
                 .pattern("ABA")
                 .pattern("CCC")
                 .pattern("BDB")
@@ -1360,7 +1336,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(ModItems.KEYBOARD.get()), has(ModItems.KEYBOARD.get()))
                 .save(consumer);
 
-        shaped(ModBlocks.EMBRYO_CALCIFICATION_MACHINE.get())
+        ShapedRecipeBuilder.shaped(ModBlocks.EMBRYO_CALCIFICATION_MACHINE.get())
                 .pattern("ABC")
                 .pattern("DED")
                 .pattern("DFD")
@@ -1373,7 +1349,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(ModItems.IRON_ROD.get()), has(ModItems.IRON_ROD.get()))
                 .save(consumer);
 
-        shaped(ModBlocks.CLEAR_GLASS.get(),8)
+        ShapedRecipeBuilder.shaped(ModBlocks.CLEAR_GLASS.get(),8)
                 .group(JurassicReborn.MODID + ":clear_glass")
                 .pattern("AAA")
                 .pattern("ABA")
@@ -1382,14 +1358,14 @@ public class JRRecipeProvider extends RecipeProvider {
                 .define('B', Items.IRON_INGOT)
                 .unlockedBy(getHasName(Blocks.GLASS), has(Blocks.GLASS))
                 .save(consumer);
-        shaped(ModBlocks.CLEAR_GLASS_PANE.get(),16)
+        ShapedRecipeBuilder.shaped(ModBlocks.CLEAR_GLASS_PANE.get(),16)
                 .group(JurassicReborn.MODID + ":clear_glass_pane")
                 .pattern("AAA")
                 .pattern("AAA")
                 .define('A', ModBlocks.CLEAR_GLASS.get())
                 .unlockedBy(getHasName(ModBlocks.CLEAR_GLASS.get()), has(ModBlocks.CLEAR_GLASS.get()))
                 .save(consumer);
-        shaped(ModItems.AMBER_CANE.get())
+        ShapedRecipeBuilder.shaped(ModItems.AMBER_CANE.get())
                 .group(JurassicReborn.MODID + ":amber_cane")
                 .pattern("A")
                 .pattern("B")
@@ -1399,7 +1375,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(ModItems.MOSQUITO_AMBER.get()), has(ModItems.MOSQUITO_AMBER.get()))
                 .save(consumer);
 
-        shaped(ModItems.AMBER_KEYCHAIN.get())
+        ShapedRecipeBuilder.shaped(ModItems.AMBER_KEYCHAIN.get())
                 .group(JurassicReborn.MODID + ":amber_keychain")
                 .pattern("A")
                 .pattern("B")
@@ -1407,7 +1383,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .define('B', Items.IRON_INGOT)
                 .unlockedBy(getHasName(ModItems.MOSQUITO_AMBER.get()), has(ModItems.MOSQUITO_AMBER.get()))
                 .save(consumer);
-        shaped(ModBlocks.HOLOGRAM_BLOCK.get(),1)
+        ShapedRecipeBuilder.shaped(ModBlocks.HOLOGRAM_BLOCK.get(),1)
                 .pattern("AAA")
                 .pattern("BBB")
                 .pattern("CBC")
@@ -1417,7 +1393,7 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(ModItems.ADVANCED_CIRCUIT.get()), has(ModItems.ADVANCED_CIRCUIT.get()))
                 .save(consumer);
 
-        shaped(ModItems.MR_DNA_KEYCHAIN.get())
+        ShapedRecipeBuilder.shaped(ModItems.MR_DNA_KEYCHAIN.get())
                 .group(JurassicReborn.MODID + ":mr_dna_keychain")
                 .pattern("A")
                 .pattern("B")
@@ -1426,28 +1402,28 @@ public class JRRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(ModItems.DNA_NUCLEOTIDES.get()), has(ModItems.DNA_NUCLEOTIDES.get()))
                 .save(consumer);
 
-        shapeless(ModItems.AJUGINUCULA_SMITHII_OIL.get())
+        ShapelessRecipeBuilder.shapeless(ModItems.AJUGINUCULA_SMITHII_OIL.get())
                 .group(JurassicReborn.MODID + ":ajuginucula_smithii_oil")
                 .requires(ModItems.AJUGINUCULA_SMITHII_LEAVES.get(), 4)
                 .requires(Items.GLASS_BOTTLE)
                 .unlockedBy(getHasName(ModItems.AJUGINUCULA_SMITHII_LEAVES.get()), has(ModItems.AJUGINUCULA_SMITHII_LEAVES.get()))
                 .save(consumer);
 
-        shapeless(ModItems.OILED_POTATO_STRIPS.get())
+        ShapelessRecipeBuilder.shapeless(ModItems.OILED_POTATO_STRIPS.get())
                 .group(JurassicReborn.MODID + ":oiled_potato_strips")
                 .requires(ModItems.WILD_POTATO.get(), 4)
                 .requires(ModItems.AJUGINUCULA_SMITHII_OIL.get())
                 .unlockedBy(getHasName(ModItems.WILD_POTATO.get()), has(ModItems.WILD_POTATO.get()))
                 .save(consumer);
 
-        shapeless(ModItems.OILED_POTATO_STRIPS.get(), 4)
+        ShapelessRecipeBuilder.shapeless(ModItems.OILED_POTATO_STRIPS.get(), 4)
                 .group(JurassicReborn.MODID + ":oiled_potato_strips")
                 .requires(Items.POTATO, 2)
                 .requires(ModItems.AJUGINUCULA_SMITHII_OIL.get())
                 .unlockedBy(getHasName(Items.POTATO), has(Items.POTATO))
                 .save(consumer, JurassicReborn.resource("oiled_potato_strips_alt"));
 
-        shapeless(ModItems.CHILEAN_SEA_BASS.get())
+        ShapelessRecipeBuilder.shapeless(ModItems.CHILEAN_SEA_BASS.get())
                 .group(JurassicReborn.MODID + ":chilean_sea_bass")
                 .requires(Items.COOKED_COD)
                 .requires(ModItems.WILD_ONION.get())
@@ -1461,7 +1437,7 @@ public class JRRecipeProvider extends RecipeProvider {
                                 Items.COOKED_MUTTON, Items.COOKED_PORKCHOP, Items.COOKED_RABBIT),
                         Arrays.stream(dinoSteaks))
                 .toArray(ItemLike[]::new);
-        shapeless(ModItems.GROWTH_SERUM.get())
+        ShapelessRecipeBuilder.shapeless(ModItems.GROWTH_SERUM.get())
                 .group(JurassicReborn.MODID + ":growth_serum")
                 .requires(Items.GOLDEN_CARROT)
                 .requires(ModItems.EMPTY_SYRINGE.get())
@@ -1471,75 +1447,17 @@ public class JRRecipeProvider extends RecipeProvider {
                 .save(consumer);
 
         for (Dinosaur dinosaur : Dinosaur.DINOS) {
-            if (dinosaur != Dinosaur.EMPTY) {
-                String s = "bones/" + dinosaur.getName().toLowerCase().replace(" ", "_") + "_skull";
+            if (dinosaur!= Dinosaur.EMPTY) {
+                String s = "bones/" + dinosaur.getName().toLowerCase().replaceAll(" ", "_") + "_skull";
                 ItemLike fossil = ModBlocks.getEncasedBlockFor(dinosaur);
-
                 if (fossil != null) {
-                    ResourceLocation skullId = JurassicReborn.resource(s);
-
-                    // Registry.ITEM -> ForgeRegistries.ITEMS
-                    Item bone = ForgeRegistries.ITEMS.getValue(skullId);
-                    if (bone == null || bone == Items.AIR) {
-                        JurassicReborn.getLogger().warn("Missing skull item {} for {}", skullId, dinosaur.getName());
-                        continue;
-                    }
-
-                    ResourceLocation fossilItemId = Objects.requireNonNull(
-                            ForgeRegistries.ITEMS.getKey(fossil.asItem()),
-                            "Unregistered item for fossil block: " + fossil
-                    );
-
-                    CleaningRecipeBuilder.cleaning(fossil, bone)
-                            .save(consumer, JurassicReborn.resource(fossilItemId.getPath() + "_cleaning"));
+                    Item bone = Registry.ITEM.get(JurassicReborn.resource(s));
+                    CleaningRecipeBuilder.cleaning(fossil, bone).save(consumer, JurassicReborn.resource(Registry.ITEM.getKey(fossil.asItem()).getPath() + "_cleaning"));
                 } else {
-                    JurassicReborn.getLogger().warn("No encased fossil block for {}", dinosaur.getName());
+                    JurassicReborn.getLogger().warn("No skull for {}", dinosaur.getName());
                 }
             }
         }
-    }
-
-    private static RecipeCategory defaultCategory(ItemLike itemLike) {
-        Item item = itemLike.asItem();
-        if (item instanceof BlockItem) {
-            return RecipeCategory.BUILDING_BLOCKS;
-        }
-        if (item.isEdible()) {
-            return RecipeCategory.FOOD;
-        }
-        return RecipeCategory.MISC;
-    }
-
-    private static ShapedRecipeBuilder shaped(ItemLike result) {
-        return ShapedRecipeBuilder.shaped(defaultCategory(result), result);
-    }
-
-    private static ShapedRecipeBuilder shaped(ItemLike result, int count) {
-        return ShapedRecipeBuilder.shaped(defaultCategory(result), result, count);
-    }
-
-    private static ShapelessRecipeBuilder shapeless(ItemLike result) {
-        return ShapelessRecipeBuilder.shapeless(defaultCategory(result), result);
-    }
-
-    private static ShapelessRecipeBuilder shapeless(ItemLike result, int count) {
-        return ShapelessRecipeBuilder.shapeless(defaultCategory(result), result, count);
-    }
-
-    private static SimpleCookingRecipeBuilder smelting(Ingredient ingredient, ItemLike result, float experience, int cookingTime) {
-        return SimpleCookingRecipeBuilder.smelting(ingredient, defaultCategory(result), result, experience, cookingTime);
-    }
-
-    private static SimpleCookingRecipeBuilder blasting(Ingredient ingredient, ItemLike result, float experience, int cookingTime) {
-        return SimpleCookingRecipeBuilder.blasting(ingredient, defaultCategory(result), result, experience, cookingTime);
-    }
-
-    private static SimpleCookingRecipeBuilder smoking(Ingredient ingredient, ItemLike result, float experience, int cookingTime) {
-        return SimpleCookingRecipeBuilder.smoking(ingredient, defaultCategory(result), result, experience, cookingTime);
-    }
-
-    private static SimpleCookingRecipeBuilder campfireCooking(Ingredient ingredient, ItemLike result, float experience, int cookingTime) {
-        return SimpleCookingRecipeBuilder.campfireCooking(ingredient, defaultCategory(result), result, experience, cookingTime);
     }
 
     private static ItemLike item(String path) {
@@ -1563,21 +1481,9 @@ public class JRRecipeProvider extends RecipeProvider {
             return woodName + "_chest_boat";
         }
     }
-    private void hangingSignRecipe(Consumer<FinishedRecipe> consumer, ItemLike hangingSign, ItemLike strippedLog, ItemLike strippedWood) {
-        shaped(hangingSign, 6)
-                .group(JurassicReborn.MODID + ":hanging_sign")
-                .pattern("SSS")
-                .pattern("C C")
-                .pattern("SSS")
-                .define('S', Ingredient.of(strippedLog, strippedWood))
-                .define('C', Items.CHAIN)
-                .unlockedBy(getHasName(strippedLog), has(strippedLog))
-                .unlockedBy(getHasName(Items.CHAIN), has(Items.CHAIN))
-                .save(consumer);
-    }
 
     private void baleRecipe(Consumer<FinishedRecipe> consumer, ItemLike ingredient, ItemLike result, String group, int count) {
-        shaped(result, count)
+        ShapedRecipeBuilder.shaped(result, count)
                 .group(JurassicReborn.MODID + ":" + group)
                 .pattern("AAA")
                 .pattern("AAA")

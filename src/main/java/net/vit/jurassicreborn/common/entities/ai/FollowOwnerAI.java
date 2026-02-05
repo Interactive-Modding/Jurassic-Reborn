@@ -37,7 +37,7 @@ public class FollowOwnerAI extends Goal {
         UUID id = dino.getOwner();
         if (id == null) return false;
 
-        owner = dino.level().getPlayerByUUID(id);
+        owner = dino.level.getPlayerByUUID(id);
         if (owner == null || !owner.isAlive()) return false;
 
         // begin only if we’re a bit away
@@ -110,15 +110,15 @@ public class FollowOwnerAI extends Goal {
     private boolean isTeleportFriendly(BlockPos pos) {
         // need solid-ish ground, no fluid at feet, and 2-block headroom
         BlockPos below = pos.below();
-        BlockState ground = dino.level().getBlockState(below);
+        BlockState ground = dino.level.getBlockState(below);
 
-        if (!ground.getCollisionShape(dino.level(), below).isEmpty()) {
-            if (dino.level().getFluidState(pos).is(FluidTags.WATER) || dino.level().getFluidState(pos).is(FluidTags.LAVA)) {
+        if (!ground.getCollisionShape(dino.level, below).isEmpty()) {
+            if (dino.level.getFluidState(pos).is(FluidTags.WATER) || dino.level.getFluidState(pos).is(FluidTags.LAVA)) {
                 return false;
             }
             // headroom: ensure two blocks above are passable/air
             AABB head = new AABB(pos).expandTowards(0, 2, 0);
-            return dino.level().noCollision(dino, head);
+            return dino.level.noCollision(dino, head);
         }
         return false;
     }

@@ -27,7 +27,7 @@ import org.jetbrains.annotations.NotNull;
 public class ActionFigureBlockEntity extends BlockEntity {
 
 
-    protected boolean suppressUpdates = false;
+    public boolean suppressUpdates = false;
 
     private Dinosaur dinosaur = DinosaurHandler.VELOCIRAPTOR;
     private DinosaurEntity entity;
@@ -465,7 +465,7 @@ public class ActionFigureBlockEntity extends BlockEntity {
 //
 //        @Override
 //        public DinosaurEntity create(Level world) {
-//            Entity entity = EntityType.by(this.data).orElse(EntityType.AXOLOTL/*literally does not matter in this case*/).create(world);
+//            Entity entity = EntityType.by(this.data).orElse(EntityType.AXOLOTL/*...*/).create(world);
 //            if (entity instanceof DinosaurEntity) {
 //                return (DinosaurEntity) entity;
 //            }

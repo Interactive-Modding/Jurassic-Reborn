@@ -2,11 +2,13 @@ package net.vit.jurassicreborn.common.items;
 
 import com.google.gson.Gson;
 import net.minecraft.client.Minecraft;
+import net.minecraft.core.NonNullList;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -26,7 +28,7 @@ public class JournalItem extends Item {
     private final JournalType type;
 
     public JournalItem(JournalType type) {
-        super(new Item.Properties().stacksTo(1));
+        super(new Item.Properties().stacksTo(1).tab(TabHandler.ITEMS));
         this.type = type;
     }
 
@@ -47,6 +49,13 @@ public class JournalItem extends Item {
     @OnlyIn(Dist.CLIENT)
     public void appendHoverText(ItemStack stack, @Nullable Level world, List<Component> tooltip, TooltipFlag flag) {
         tooltip.add(Component.translatable("journal." + type.getIdentifier().getPath() + ".name"));
+    }
+
+    @Override
+    public void fillItemCategory(CreativeModeTab group, NonNullList<ItemStack> items) {
+        if (allowedIn(group)) {
+            items.add(new ItemStack(this));
+        }
     }
 
     public enum JournalType {

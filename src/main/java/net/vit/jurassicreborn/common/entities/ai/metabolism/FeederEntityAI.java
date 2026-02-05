@@ -38,7 +38,7 @@ public class FeederEntityAI extends Goal {
     @Override
     public boolean canUse() {
         if (dino == null || dino.isRemoved() || dino.isCarcass() || dino.isMovementBlocked()) return false;
-        if (!dino.level().getGameRules().getBoolean(GameRuleHandler.DINO_METABOLISM)) return false;
+        if (!dino.level.getGameRules().getBoolean(GameRuleHandler.DINO_METABOLISM)) return false;
         int intervalMask = dino.isMarineCreature() ? 7 : 15;
         if ((dino.tickCount & intervalMask) != 0) return false;
         if (!dino.getMetabolism().isHungry()) return false;
@@ -46,7 +46,7 @@ public class FeederEntityAI extends Goal {
         BlockPos found = dino.getClosestFeeder();
         if (found == null) return false;
 
-        Level level = dino.level();
+        Level level = dino.level;
         if (level == null || !level.hasChunkAt(found)) return false;
 
         BlockState state = level.getBlockState(found);
@@ -99,7 +99,7 @@ public class FeederEntityAI extends Goal {
         if (waitingForFood && foodWaitTicks < 120) return true;
         if (targetFoodItem != null && !targetFoodItem.isRemoved()) return true;
 
-        BlockState state = dino.level().getBlockState(feederPos);
+        BlockState state = dino.level.getBlockState(feederPos);
         if (state.getBlock() != ModBlocks.FEEDER.get()) return false;
 
         this.feederTarget = computeTarget(feederPos, state);
@@ -148,7 +148,7 @@ public class FeederEntityAI extends Goal {
         }
 
         // Priority 3: Navigate to feeder
-        BlockState state = dino.level().getBlockState(feederPos);
+        BlockState state = dino.level.getBlockState(feederPos);
         if (state.getBlock() != ModBlocks.FEEDER.get()) {
             stop();
             return;
@@ -173,13 +173,13 @@ public class FeederEntityAI extends Goal {
         }
 
         // Check if we reached the feeder
-        if (!dino.level().isClientSide) {
+        if (!dino.level.isClientSide) {
             Vec3 target = (this.feederTarget != null) ? this.feederTarget : Vec3.atCenterOf(feederPos);
             double dist = dino.position().distanceTo(target);
             double reach = Math.max(2.0D, dino.getBbWidth() * 3.0D);
 
             if (dist <= reach) {
-                BlockEntity be = dino.level().getBlockEntity(feederPos);
+                BlockEntity be = dino.level.getBlockEntity(feederPos);
                 if (be instanceof FeederBlockEntity feeder) {
                     // Check if feeder is already feeding this dino
                     DinosaurEntity currentFeeding = feeder.getFeeding();
@@ -215,12 +215,12 @@ public class FeederEntityAI extends Goal {
     }
 
     private ItemEntity scanForNearbyFood() {
-        if (dino.level().isClientSide || feederPos == null) return null;
+        if (dino.level.isClientSide || feederPos == null) return null;
 
         // Larger search area for marine creatures
         double searchRadius = dino.isMarineCreature() ? 8.0D : 5.0D;
         AABB searchBox = new AABB(feederPos).inflate(searchRadius);
-        List<ItemEntity> items = dino.level().getEntitiesOfClass(ItemEntity.class, searchBox);
+        List<ItemEntity> items = dino.level.getEntitiesOfClass(ItemEntity.class, searchBox);
 
         ItemEntity closest = null;
         double closestDist = Double.MAX_VALUE;
@@ -244,7 +244,7 @@ public class FeederEntityAI extends Goal {
     }
 
     private boolean tryEatSpecificItem(ItemEntity itemEntity) {
-        if (dino.level().isClientSide || itemEntity == null || itemEntity.isRemoved()) return false;
+        if (dino.level.isClientSide || itemEntity == null || itemEntity.isRemoved()) return false;
 
         double distToItem = dino.position().distanceTo(itemEntity.position());
         double eatReach = Math.max(2.0D, dino.getBbWidth() * 2.0D);

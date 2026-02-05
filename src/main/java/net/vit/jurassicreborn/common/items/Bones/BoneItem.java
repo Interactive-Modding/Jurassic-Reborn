@@ -3,6 +3,8 @@ package net.vit.jurassicreborn.common.items.Bones;
 import net.vit.jurassicreborn.common.entities.Dinosaurs.Bone;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.network.chat.contents.LiteralContents;
+import net.minecraft.network.chat.contents.TranslatableContents;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
@@ -20,9 +22,11 @@ public class BoneItem extends Item {
 
     @Override
     public @NotNull Component getName(@NotNull ItemStack pStack) {
-        MutableComponent template = Component.translatable("item." + this.shape + "name");
-        String replaced = template.getString().replace("{dino}", this.groupOwner.getOwner().getName());
-        return Component.literal(replaced);
+        TranslatableContents translatedDinoless = new TranslatableContents("item." + this.shape.toString() + "name");
+
+        LiteralContents translated = new LiteralContents(MutableComponent.create(translatedDinoless).getString().replaceAll("\\{dino}", this.groupOwner.getOwner().getName()));
+
+        return MutableComponent.create(translated);
     }
 
     public Bone getShape(){

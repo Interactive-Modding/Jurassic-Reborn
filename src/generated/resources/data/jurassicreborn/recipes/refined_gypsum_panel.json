@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "building",
   "key": {
     "A": {
       "item": "jurassicreborn:gypsum_pathway"
@@ -14,6 +13,5 @@
   "result": {
     "count": 9,
     "item": "jurassicreborn:refined_gypsum_panel"
-  },
-  "show_notification": true
+  }
 }

@@ -90,9 +90,13 @@ public class MamenchisaurusAnimator extends EntityAnimator<MamenchisaurusEntity>
 
         model.chainWave(neckParts, globalSpeed * 0.25F, globalHeight * 0.25F, -4, ticks, 0.025F);
 
-        model.chainSwing(tailParts, idleSpeed, 0.17F, -2, ticks, 1.0F);
-        if (f1 > 0.12F) {
-            model.chainSwing(tailParts, 0.55F, 0.12F, -2, f, f1);
+        if (entity.isSleeping()) {
+            model.chainSwing(tailParts, 0.15F, 0.015F, -2, ticks, 1.0F);
+        } else {
+            model.chainSwing(tailParts, idleSpeed, 0.17F, -2, ticks, 1.0F);
+            if (f1 > 0.12F) {
+                model.chainSwing(tailParts, 0.55F, 0.12F, -2, f, f1);
+            }
         }
         entity.tailBuffer.applyChainSwingBuffer(tailParts);
     }

@@ -10,6 +10,6 @@ public class BlockPosUtil {
     }
 
     public static BlockPos vecToBlockPos(Vec3 vec){
-        return BlockPos.containing(vec);
+        return new BlockPos(vec.x, vec.y, vec.z);
     }
 }

@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_meat/meat_camarasaurus": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:meat/meat_camarasaurus"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "jurassicreborn:meat/steak_camarasaurus_from_smelting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_meat/meat_camarasaurus",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "jurassicreborn:meat/steak_camarasaurus_from_smelting"
+    ]
+  }
+}

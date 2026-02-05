@@ -1,7 +1,7 @@
 package net.vit.jurassicreborn.common.entities.DinosaurEntities;
 
 import com.github.alexthe666.citadel.animation.Animation;
-import org.joml.Vector3f;
+import com.mojang.math.Vector3f;
 import net.minecraft.world.entity.GlowSquid;
 import net.minecraft.world.entity.animal.*;
 import net.minecraft.world.entity.animal.axolotl.Axolotl;

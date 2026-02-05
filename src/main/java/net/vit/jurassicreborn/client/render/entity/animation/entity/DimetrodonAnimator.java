@@ -47,7 +47,6 @@ public class DimetrodonAnimator extends EntityAnimator<DimetrodonEntity> {
             model.faceTarget(rotationYaw, rotationPitch, 0.5F, head);
             model.bob(head, idleSpeed, 0.03F, false, ticks, 1.0F);
 
-
         entity.tailBuffer.applyChainSwingBuffer(tail);
     }
 }

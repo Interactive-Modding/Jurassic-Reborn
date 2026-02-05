@@ -2,15 +2,16 @@ package net.vit.jurassicreborn.common.jei.cultivate;
 
 import com.google.common.collect.Lists;
 import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.blaze3d.vertex.PoseStack;
 import mezz.jei.api.gui.drawable.IDrawable;
-import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiComponent;
+import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
@@ -24,7 +25,7 @@ import net.vit.jurassicreborn.common.items.ModItems;
 import java.util.List;
 import java.util.function.IntSupplier;
 
-/** JEI category for the cultivator. */
+/*...*/
 public class CultivatorRecipeCategory implements IRecipeCategory<CultivatorRecipeExtension> {
     public static final RecipeType<CultivatorRecipeExtension> TYPE =
             RecipeType.create(JurassicReborn.MODID, "cultivator", CultivatorRecipeExtension.class);
@@ -65,12 +66,11 @@ public class CultivatorRecipeCategory implements IRecipeCategory<CultivatorRecip
         );
     }
 
-    @Override
-    public void draw(CultivatorRecipeExtension recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
+    public void draw(CultivatorRecipeExtension recipe, PoseStack poseStack, double mouseX, double mouseY) {
+        RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-        for (NutrientBar bar : nutrientBars) {
-            bar.render(guiGraphics);
-        }
+        RenderSystem.setShaderTexture(0, TEX);
+        for (NutrientBar bar : nutrientBars) bar.render(poseStack);
     }
 
     private static class NutrientBar {
@@ -80,19 +80,16 @@ public class CultivatorRecipeCategory implements IRecipeCategory<CultivatorRecip
             this.supplier = supplier;
             this.id = id;
         }
-        void render(GuiGraphics guiGraphics) {
+        void render(PoseStack poseStack) {
             int value = supplier.getAsInt();
             // Example: Drawing a portion of the bar texture
-            guiGraphics.blit(
-                    TEX,
-                    9,
-                    30 + id * 16,
-                    0,
-                    91 + id * 9,
-                    value * 150 / CultivatorBlockEntity.MAX_NUTRIENTS,
-                    9,
-                    256,
-                    256
+            GuiComponent.blit(
+                    poseStack,
+                    9, 30 + id * 16, // x, y on screen
+                    0, 91 + id * 9,  // u, v in texture
+                    value * 150 / CultivatorBlockEntity.MAX_NUTRIENTS, // width of bar (portion filled)
+                    9,               // height of bar
+                    256, 256
             );
         }
     }

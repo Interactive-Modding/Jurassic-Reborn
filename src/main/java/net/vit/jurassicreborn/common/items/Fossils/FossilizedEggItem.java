@@ -10,6 +10,7 @@ import com.mojang.datafixers.util.Pair;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.vit.jurassicreborn.common.items.TabHandler;
 import net.vit.jurassicreborn.common.util.api.GrindableItem;
 
 import java.util.List;
@@ -20,7 +21,7 @@ import net.vit.jurassicreborn.common.items.ModItems;
 public class FossilizedEggItem extends Item implements GrindableItem {
 
     public FossilizedEggItem() {
-        super(new Item.Properties());
+        super(new Item.Properties().tab(TabHandler.FOSSILS));
     }
 
 

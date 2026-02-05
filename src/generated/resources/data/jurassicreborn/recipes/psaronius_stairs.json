@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "building",
   "group": "wooden_stairs",
   "key": {
     "#": {
@@ -15,6 +14,5 @@
   "result": {
     "count": 4,
     "item": "jurassicreborn:psaronius_stairs"
-  },
-  "show_notification": true
+  }
 }

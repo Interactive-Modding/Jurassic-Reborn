@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "building",
   "key": {
     "A": {
       "tag": "forge:nuggets/iron"
@@ -27,6 +26,5 @@
   ],
   "result": {
     "item": "jurassicreborn:bug_crate"
-  },
-  "show_notification": true
+  }
 }

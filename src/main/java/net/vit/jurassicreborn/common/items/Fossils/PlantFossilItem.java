@@ -9,6 +9,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.vit.jurassicreborn.common.items.TabHandler;
 import net.vit.jurassicreborn.common.plants.Plant;
 import net.vit.jurassicreborn.common.plants.PlantHandler;
 import net.vit.jurassicreborn.common.util.api.GrindableItem;
@@ -20,7 +21,7 @@ import java.util.Random;
 public class PlantFossilItem extends Item implements GrindableItem {
 
     public PlantFossilItem() {
-        super(new Properties());
+        super(new Properties().tab(TabHandler.FOSSILS));
     }
 
     @Override

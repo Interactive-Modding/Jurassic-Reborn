@@ -1,11 +1,11 @@
-
+// AddItemModifier.java
 package net.vit.jurassicreborn.common.worldgen.loot;
 
 import com.google.common.base.Suppliers;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import net.minecraft.core.registries.Registries;
+import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -32,7 +32,7 @@ public class AddItemModifier extends LootModifier {
                                     .optionalFieldOf("item")
                                     .forGetter(m -> Optional.ofNullable(m.item)))
                             .and(ResourceLocation.CODEC
-                                    .xmap(id -> TagKey.create(Registries.ITEM, id),
+                                    .xmap(id -> TagKey.create(Registry.ITEM_REGISTRY, id),
                                             TagKey::location)
                                     .optionalFieldOf("tag")
                                     .forGetter(m -> Optional.ofNullable(m.tag)))
@@ -77,10 +77,10 @@ public class AddItemModifier extends LootModifier {
     protected @NotNull ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> generated,
                                                           LootContext ctx) {
 
-        if (ctx.getRandom().nextFloat() > chance)
+        if (ctx.getRandom().nextFloat() > chance)           // roll the dice
             return generated;
 
-
+        // Pick the actual item
         Item toAdd = this.item;
         if (toAdd == null && tag != null) {
             List<Item> pool = ForgeRegistries.ITEMS.tags().getTag(tag).stream().toList();

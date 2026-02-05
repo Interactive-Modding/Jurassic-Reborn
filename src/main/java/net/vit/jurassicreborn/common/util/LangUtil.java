@@ -22,7 +22,6 @@ public class LangUtil {
     public static final String LORE = "lore.%s";
     public static final String GENDER_CHANGE = "%s.genderchange";
 
-
     public static final TranslateKey GUI = new TranslateKey("gui.%s.name");
     public static final TranslateKey STATUS = new TranslateKey("status.%s.name");
     public static final TranslateKey STAND_CHANGE = new TranslateKey("%s.standchange.name");
@@ -69,7 +68,6 @@ public class LangUtil {
     public static String getGenderMode(int gender) {
         return getGender(gender).getString();
     }
-
 
     public static String getGUIKey(String key) {
         return "gui." + JurassicReborn.MODID + "." + key;

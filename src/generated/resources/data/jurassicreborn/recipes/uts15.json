@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "key": {
     "A": {
       "item": "minecraft:string"
@@ -22,6 +21,5 @@
   ],
   "result": {
     "item": "jurassicreborn:uts15"
-  },
-  "show_notification": true
+  }
 }

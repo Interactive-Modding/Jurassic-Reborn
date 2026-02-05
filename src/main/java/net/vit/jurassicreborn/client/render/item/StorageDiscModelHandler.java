@@ -14,8 +14,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.vit.jurassicreborn.JurassicReborn;
 import net.vit.jurassicreborn.common.items.genetics.StorageDiscModelData;
 
-import java.util.Map;
-
 @Mod.EventBusSubscriber(modid = JurassicReborn.MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public final class StorageDiscModelHandler {
     private StorageDiscModelHandler() {}
@@ -31,48 +29,32 @@ public final class StorageDiscModelHandler {
     }
 
     @SubscribeEvent
-    public static void onModifyBakingResult(ModelEvent.ModifyBakingResult event) {
-        injectStorageDiscModel(event.getModels());
-    }
-
-
-    @SubscribeEvent
     public static void onBakingCompleted(ModelEvent.BakingCompleted event) {
-        injectStorageDiscModel(event.getModels());
-    }
+        ModelResourceLocation storageDisc = new ModelResourceLocation(
+                new ResourceLocation(JurassicReborn.MODID, "storage_disc"),
+                "inventory"
+        );
 
-    private static void injectStorageDiscModel(Map<?, BakedModel> models) {
-        ResourceLocation storageDiscLoc = new ResourceLocation(JurassicReborn.MODID, "storage_disc");
-        ModelResourceLocation storageDiscModelLoc = new ModelResourceLocation(storageDiscLoc, "inventory");
+        // This map is mutable in the relevant 1.19.x Forge builds
+        var models = event.getModels();
 
-        BakedModel baseModel = (BakedModel) models.get(storageDiscModelLoc);
-        if (baseModel == null || baseModel instanceof StorageDiscBakedModel)
-            baseModel = (BakedModel) models.get(storageDiscLoc);
-
-        if (baseModel == null || baseModel instanceof StorageDiscBakedModel) return;
+        BakedModel baseModel = models.get(storageDisc);
+        if (baseModel == null) return;
 
         Int2ObjectMap<ResourceLocation> modelLocations = StorageDiscModelData.getModels();
+        ObjectIterator<Int2ObjectMap.Entry<ResourceLocation>> it = modelLocations.int2ObjectEntrySet().iterator();
         Int2ObjectMap<BakedModel> bakedVariants = new Int2ObjectArrayMap<>();
 
-        for (Int2ObjectMap.Entry<ResourceLocation> entry : modelLocations.int2ObjectEntrySet()) {
+        while (it.hasNext()) {
+            Int2ObjectMap.Entry<ResourceLocation> entry = it.next();
             ModelResourceLocation loc = new ModelResourceLocation(entry.getValue(), "inventory");
-            BakedModel variant = (BakedModel) models.get(loc);
-            if (variant == null) variant = (BakedModel) models.get(entry.getValue());
-            if (variant != null) bakedVariants.put(entry.getIntKey(), variant);
+            BakedModel variant = models.get(loc);
+            if (variant != null) {
+                bakedVariants.put(entry.getIntKey(), variant);
+            }
         }
 
         StorageDiscBakedModel wrapped = new StorageDiscBakedModel(baseModel, bakedVariants);
-        try {
-            // Try both possible key types
-            if (models.containsKey(storageDiscModelLoc))
-                ((Map<ModelResourceLocation, BakedModel>) models).put(storageDiscModelLoc, wrapped);
-            else
-                ((Map<ResourceLocation, BakedModel>) models).put(storageDiscLoc, wrapped);
-        } catch (UnsupportedOperationException e) {
-            JurassicReborn.getLogger().warn(
-                    "Skipping storage disc model injection because baked model map is immutable ({}).",
-                    models.getClass().getName(), e
-            );
-        }
+        models.put(storageDisc, wrapped);
     }
 }

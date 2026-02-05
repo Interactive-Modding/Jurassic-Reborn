@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "group": "jurassicreborn:mr_dna_keychain",
   "key": {
     "A": {
@@ -16,6 +15,5 @@
   ],
   "result": {
     "item": "jurassicreborn:mr_dna_keychain"
-  },
-  "show_notification": true
+  }
 }

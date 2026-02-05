@@ -1248,6 +1248,30 @@
         ]
       },
       "trigger": "minecraft:inventory_changed"
+    },
+    "egg_maiasaura": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_maiasaura"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "egg_patagotitan": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:egg/egg_patagotitan"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
     }
   },
   "display": {
@@ -1370,8 +1394,9 @@
       "egg_tyrannosaurus",
       "egg_vectipelta",
       "egg_velociraptor",
-      "egg_zhenyuanopterus"
+      "egg_zhenyuanopterus",
+      "egg_maiasaura",
+      "egg_patagotitan"
     ]
-  ],
-  "sends_telemetry_event": true
+  ]
 }

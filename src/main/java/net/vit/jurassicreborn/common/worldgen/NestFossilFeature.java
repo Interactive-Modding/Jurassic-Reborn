@@ -78,7 +78,7 @@ public class NestFossilFeature extends Feature<NoneFeatureConfiguration> {
                 BlockPos p = pos.offset(dx, 0, dz);
                 BlockState ground = level.getBlockState(p);
 
-                if (!ground.isAir() && ground.getFluidState().isEmpty()) {
+                if (!ground.isAir() && !ground.getMaterial().isLiquid()) {
                     BlockState replace = null;
 
                     if (rand.nextFloat() < 0.8F) {                // 80 % chance to replace
@@ -105,7 +105,7 @@ public class NestFossilFeature extends Feature<NoneFeatureConfiguration> {
             BlockPos p = pos.offset(rand.nextInt(size), 0, rand.nextInt(size));
             BlockState ground = level.getBlockState(p);
 
-            if (!ground.isAir() && ground.getFluidState().isEmpty()) {
+            if (!ground.isAir() && !ground.getMaterial().isLiquid()) {
                 level.setBlock(p, nest, 2);
             }
         }

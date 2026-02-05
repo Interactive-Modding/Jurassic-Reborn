@@ -227,7 +227,7 @@ public class FossilGrinderBlockEntity extends MachineBlockEntity implements Menu
         ItemStack previous = getItem(slot);
         if (previous.isEmpty()) {
             setItem(slot, stack);
-        } else if (ItemStack.isSameItemSameTags(previous, stack) && ItemStack.isSameItemSameTags(previous, stack)) {
+        } else if (ItemStack.isSame(previous, stack) && ItemStack.isSame(previous, stack)) {
             previous.setCount(previous.getCount() + stack.getCount());
         }
     }
@@ -244,7 +244,7 @@ public class FossilGrinderBlockEntity extends MachineBlockEntity implements Menu
     public int getOutputSlot(ItemStack output) {
         for (int slot : OUTPUTS) {
             ItemStack stack = getItem(slot);
-            if (stack.isEmpty() || ((ItemStack.isSameItemSameTags(stack, output) && stack.getCount() + output.getCount() <= stack.getMaxStackSize()) && stack.getItem() == output.getItem() && stack.getDamageValue() == output.getDamageValue())) {
+            if (stack.isEmpty() || ((ItemStack.isSame(stack, output) && stack.getCount() + output.getCount() <= stack.getMaxStackSize()) && stack.getItem() == output.getItem() && stack.getDamageValue() == output.getDamageValue())) {
                 return slot;
             }
         }

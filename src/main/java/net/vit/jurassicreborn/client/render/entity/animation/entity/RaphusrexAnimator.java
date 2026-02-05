@@ -49,7 +49,6 @@ public class RaphusrexAnimator extends EntityAnimator<RaphusrexEntity> {
         };
 
 
-
         // --- tuning ---
         float idleSpeed  = 0.12F;  // frequency
         float idleDegree = 0.08F;  // amplitude

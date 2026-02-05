@@ -6,8 +6,6 @@ import net.vit.jurassicreborn.common.blocks.SkullDisplayBlock;
 import net.vit.jurassicreborn.common.blocks.ancientplants.*;
 import net.vit.jurassicreborn.common.blocks.ancientplants.DoublePlantBlock;
 import net.vit.jurassicreborn.common.blocks.ancientplants.moss.PeatBlock;
-import net.vit.jurassicreborn.common.blocks.entities.cultivator.CultivatorBottomBlock;
-import net.vit.jurassicreborn.common.blocks.entities.cultivator.CultivatorTopBlock;
 import net.vit.jurassicreborn.common.blocks.entities.trashcan.TrashCanBlock;
 import net.vit.jurassicreborn.common.blocks.fossil.FossilBlock;
 import net.vit.jurassicreborn.common.blocks.parkBlocks.ParkBenchBlock;
@@ -58,27 +56,15 @@ public class ModItems {
 
     public static final DeferredRegister<Item> MOD_ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, JurassicReborn.MODID);
 
-    private static <T extends Item> RegistryObject<T> register(String name, RegistryObject<CreativeModeTab> tab, Supplier<T> supplier) {
-        RegistryObject<T> obj = MOD_ITEMS.register(name, supplier);
-        TabHandler.addToTab(tab.getId(), obj);
-        return obj;
-    }
+    public static RegistryObject<Item> PLASTER_AND_BANDAGE = MOD_ITEMS.register("plaster_and_bandage", () -> new PlasterAndBandageItem(new Item.Properties().tab(TabHandler.ITEMS)));
 
-    public static RegistryObject<Item> PLASTER_AND_BANDAGE = register("plaster_and_bandage", TabHandler.ITEMS, () -> new PlasterAndBandageItem(new Item.Properties()));
-
-    public static RegistryObject<Item> AMBER = register("amber", TabHandler.ITEMS, () -> new Item(new Item.Properties()));
-    public static RegistryObject<BlockItem> MOSQUITO_AMBER = register("amber_mosquito", TabHandler.ITEMS, () -> new BlockItem(ModBlocks.AMBER_MOSQUITO.get(), new Item.Properties()));
-    public static RegistryObject<BlockItem> APHID_AMBER = register("amber_aphid", TabHandler.ITEMS, () -> new BlockItem(ModBlocks.AMBER_APHID.get(), new Item.Properties()));
-    public static final RegistryObject<BlockItem> FROZEN_LEECH_ITEM = register("frozen_leech", TabHandler.ITEMS, () -> new BlockItem(ModBlocks.FROZEN_LEECH.get(), new Item.Properties()));
-    public static RegistryObject<BlockItem> SEA_LAMPREY = register("sea_lamprey", TabHandler.ITEMS, () -> new BlockItem(ModBlocks.SEA_LAMPREY.get(), new Item.Properties()));
-    public static final RegistryObject<EncasedFaunaFossilBlockItem> ENCASED_FAUNA_FOSSIL = register("encased_fauna_fossil", TabHandler.FOSSILS,
-            () -> new EncasedFaunaFossilBlockItem(ModBlocks.ENCASED_FAUNA_FOSSIL.get(), Dinosaur.EMPTY, new Item.Properties()));
-    public static final RegistryObject<BlockItem> FLORA_FOSSIL = register("flora_fossil", TabHandler.FOSSILS,
-            () -> new BlockItem(ModBlocks.FLORA_FOSSIL.get(), new Item.Properties()));
-    public static final RegistryObject<BlockItem> DEEPSLATE_FLORA_FOSSIL = register("deepslate_flora_fossil", TabHandler.FOSSILS,
-            () -> new BlockItem(ModBlocks.DEEPSLATE_FLORA_FOSSIL.get(), new Item.Properties()));
-    public static final RegistryObject<CageItem> CAGE = register("cage", TabHandler.ITEMS, CageItem::new);
-    public static final RegistryObject<AquaticCageItem> AQUATIC_CAGE = register("aquatic_cage", TabHandler.ITEMS, AquaticCageItem::new);
+    public static RegistryObject<Item> AMBER = MOD_ITEMS.register("amber", () -> new Item(new Item.Properties().tab(TabHandler.ITEMS)));
+    public static RegistryObject<BlockItem> MOSQUITO_AMBER = MOD_ITEMS.register("amber_mosquito", () -> new BlockItem(ModBlocks.AMBER_MOSQUITO.get(), new Item.Properties().tab(TabHandler.ITEMS)));
+    public static RegistryObject<BlockItem> APHID_AMBER = MOD_ITEMS.register("amber_aphid", () -> new BlockItem(ModBlocks.AMBER_APHID.get(), new Item.Properties().tab(TabHandler.ITEMS)));
+    public static final RegistryObject<BlockItem> FROZEN_LEECH_ITEM = MOD_ITEMS.register("frozen_leech", () -> new BlockItem(ModBlocks.FROZEN_LEECH.get(), new Item.Properties().tab(TabHandler.ITEMS)));
+    public static RegistryObject<BlockItem> SEA_LAMPREY = MOD_ITEMS.register("sea_lamprey", () -> new BlockItem(ModBlocks.SEA_LAMPREY.get(), new Item.Properties().tab(TabHandler.ITEMS)));
+    public static final RegistryObject<CageItem> CAGE = MOD_ITEMS.register("cage", CageItem::new);
+    public static final RegistryObject<AquaticCageItem> AQUATIC_CAGE = MOD_ITEMS.register("aquatic_cage", AquaticCageItem::new);
 //    public static RegistryObject<Item> DEFAULT_BONE = modItems.register("missing_bone", () -> new Item(new Item.Properties()));
     //FOODS
     public static final FoodProperties SHARK_MEAT_RAW_PROP = new FoodProperties.Builder().meat().nutrition(5).saturationMod(0.6F).build();
@@ -102,26 +88,26 @@ public class ModItems {
     public static final FoodProperties WEST_INDIAN_LILAC_BERRIES_PROPERTIES = new FoodProperties.Builder().nutrition(1).saturationMod(0.1f).effect(() -> new MobEffectInstance(MobEffects.POISON, 1400, 1), 1.0f).build();
     public static final FoodProperties AJUGINUCULA_SMITHII_LEAVES_PROPERTIES = new FoodProperties.Builder().nutrition(1).saturationMod(0.5f).build();
 
-    public static final RegistryObject<Item> SHARK_MEAT_RAW = register("raw_shark_meat", TabHandler.FOODS, () -> new Item(new Item.Properties().food(SHARK_MEAT_RAW_PROP)));
-    public static final RegistryObject<Item> SHARK_MEAT_COOKED = register("cooked_shark_meat", TabHandler.FOODS, () -> new Item(new Item.Properties().food(SHARK_MEAT_COOKED_PROP)));
-    public static final RegistryObject<Item> CRAB_MEAT_RAW = register("raw_crab_meat", TabHandler.FOODS, () -> new Item(new Item.Properties().food(CRAB_MEAT_RAW_PROP)));
-    public static final RegistryObject<Item> CRAB_MEAT_COOKED = register("cooked_crab_meat", TabHandler.FOODS, () -> new Item(new Item.Properties().food(CRAB_MEAT_COOKED_PROP)));
-    public static final RegistryObject<Item> CHILEAN_SEA_BASS = register("chilean_sea_bass", TabHandler.FOODS, () -> new Item(new Item.Properties().food(CHILEAN_SEA_BASS_PROPERTIES)));
-    public static final RegistryObject<Item> OILED_POTATO_STRIPS = register("oiled_potato_strips", TabHandler.FOODS, () -> new Item(new Item.Properties().food(OILED_POTATO_STRIPS_PROPERTIES)));
-    public static final RegistryObject<Item> FUN_FRIES = register("fun_fries", TabHandler.FOODS, () -> new Item(new Item.Properties().food(FUN_FRIES_PROPERTIES)));
-    public static final RegistryObject<Item> WILD_POTATO = register("wild_potato", TabHandler.FOODS, () -> new Item(new Item.Properties().food(WILD_POTATO_PROPERTIES)));
-    public static final RegistryObject<Item> WILD_POTATO_COOKED = register("wild_potato_cooked", TabHandler.FOODS, () -> new Item(new Item.Properties().food(WILD_POTATO_COOKED_PROPERTIES)));
-    public static final RegistryObject<Item> RHAMNUS_BERRIES = register("rhamnus_salicifolius_berries", TabHandler.FOODS, () -> new Item(new Item.Properties().food(RHAMNUS_BERRIES_PROPERTIES)));
-    public static final RegistryObject<Item> WEST_INDIAN_LILAC_BERRIES = register("west_indian_lilac_berries", TabHandler.FOODS, () -> new Item(new Item.Properties().food(WEST_INDIAN_LILAC_BERRIES_PROPERTIES)));
-    public static final RegistryObject<Item> PHOENIX_FRUIT = register("phoenix_fruit", TabHandler.FOODS, () -> new Item(new Item.Properties().food(PHOENIX_FRUIT_PROPERTIES)));
+    public static final RegistryObject<Item> SHARK_MEAT_RAW = MOD_ITEMS.register("raw_shark_meat", () -> new Item(new Item.Properties().tab(TabHandler.FOODS).food(SHARK_MEAT_RAW_PROP)));
+    public static final RegistryObject<Item> SHARK_MEAT_COOKED = MOD_ITEMS.register("cooked_shark_meat", () -> new Item(new Item.Properties().tab(TabHandler.FOODS).food(SHARK_MEAT_COOKED_PROP)));
+    public static final RegistryObject<Item> CRAB_MEAT_RAW = MOD_ITEMS.register("raw_crab_meat", () -> new Item(new Item.Properties().tab(TabHandler.FOODS).food(CRAB_MEAT_RAW_PROP)));
+    public static final RegistryObject<Item> CRAB_MEAT_COOKED = MOD_ITEMS.register("cooked_crab_meat", () -> new Item(new Item.Properties().tab(TabHandler.FOODS).food(CRAB_MEAT_COOKED_PROP)));
+    public static final RegistryObject<Item> CHILEAN_SEA_BASS = MOD_ITEMS.register("chilean_sea_bass", () -> new Item(new Item.Properties().tab(TabHandler.FOODS).food(CHILEAN_SEA_BASS_PROPERTIES)));
+    public static final RegistryObject<Item> OILED_POTATO_STRIPS = MOD_ITEMS.register("oiled_potato_strips", () -> new Item(new Item.Properties().tab(TabHandler.FOODS).food(OILED_POTATO_STRIPS_PROPERTIES)));
+    public static final RegistryObject<Item> FUN_FRIES = MOD_ITEMS.register("fun_fries", () -> new Item(new Item.Properties().tab(TabHandler.FOODS).food(FUN_FRIES_PROPERTIES)));
+    public static final RegistryObject<Item> WILD_POTATO = MOD_ITEMS.register("wild_potato", () -> new Item(new Item.Properties().tab(TabHandler.FOODS).food(WILD_POTATO_PROPERTIES)));
+    public static final RegistryObject<Item> WILD_POTATO_COOKED = MOD_ITEMS.register("wild_potato_cooked", () -> new Item(new Item.Properties().tab(TabHandler.FOODS).food(WILD_POTATO_COOKED_PROPERTIES)));
+    public static final RegistryObject<Item> RHAMNUS_BERRIES = MOD_ITEMS.register("rhamnus_salicifolius_berries", () -> new Item(new Item.Properties().tab(TabHandler.FOODS).food(RHAMNUS_BERRIES_PROPERTIES)));
+    public static final RegistryObject<Item> WEST_INDIAN_LILAC_BERRIES = MOD_ITEMS.register("west_indian_lilac_berries", () -> new Item(new Item.Properties().tab(TabHandler.FOODS).food(WEST_INDIAN_LILAC_BERRIES_PROPERTIES)));
+    public static final RegistryObject<Item> PHOENIX_FRUIT = MOD_ITEMS.register("phoenix_fruit", () -> new Item(new Item.Properties().tab(TabHandler.FOODS).food(PHOENIX_FRUIT_PROPERTIES)));
     public static final RegistryObject<ItemNameBlockItem> AJUGINUCULA_SMITHII_SEEDS = MOD_ITEMS.register("ajuginucula_smithii_seeds", () -> new ItemNameBlockItem(ModBlocks.AJUGINUCULA_SMITHII.get(), new Item.Properties()));
-    public static final RegistryObject<Item> AJUGINUCULA_SMITHII_LEAVES = register("ajuginucula_smithii_leaves", TabHandler.PLANTS, () -> new Item(new Item.Properties().food(AJUGINUCULA_SMITHII_LEAVES_PROPERTIES)));
-    public static final RegistryObject<Item> AJUGINUCULA_SMITHII_OIL = register("ajuginucula_smithii_oil", TabHandler.PLANTS, () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> AJUGINUCULA_SMITHII_LEAVES = MOD_ITEMS.register("ajuginucula_smithii_leaves", () -> new Item(new Item.Properties().tab(TabHandler.PLANTS).food(AJUGINUCULA_SMITHII_LEAVES_PROPERTIES)));
+    public static final RegistryObject<Item> AJUGINUCULA_SMITHII_OIL = MOD_ITEMS.register("ajuginucula_smithii_oil", () -> new Item(new Item.Properties().tab(TabHandler.PLANTS)));
 
 
-    public static final RegistryObject<Item> GOAT_RAW = register("goat_raw", TabHandler.FOODS, () -> new Item(new Item.Properties().food(GOAT_RAW_PROP)));
-    public static final RegistryObject<Item> GOAT_COOKED = register("goat_cooked", TabHandler.FOODS, () -> new Item(new Item.Properties().food(GOAT_COOKED_PROP)));
-    public static final RegistryObject<BugItem> CRICKETS = register("crickets", TabHandler.ITEMS, () ->
+    public static final RegistryObject<Item> GOAT_RAW = MOD_ITEMS.register("goat_raw", () -> new Item(new Item.Properties().tab(TabHandler.FOODS).food(GOAT_RAW_PROP)));
+    public static final RegistryObject<Item> GOAT_COOKED = MOD_ITEMS.register("goat_cooked", () -> new Item(new Item.Properties().tab(TabHandler.FOODS).food(GOAT_COOKED_PROP)));
+    public static final RegistryObject<BugItem> CRICKETS = MOD_ITEMS.register("crickets", () ->
             new BugItem(stack -> {
                 Item item = stack.getItem();
                 Block block = Block.byItem(item);
@@ -133,7 +119,7 @@ public class ModItems {
                 return 0;
             }));
 
-    public static final RegistryObject<BugItem> COCKROACHES = register("cockroaches", TabHandler.ITEMS,
+    public static final RegistryObject<BugItem> COCKROACHES = MOD_ITEMS.register("cockroaches",
             () -> new BugItem(stack -> {
                 Item item = stack.getItem();
                 Block block = Block.byItem(item);
@@ -151,7 +137,7 @@ public class ModItems {
                 return 0;
             }));
 
-    public static final RegistryObject<BugItem> MEALWORM_BEETLES = register("mealworm_beetles", TabHandler.ITEMS,
+    public static final RegistryObject<BugItem> MEALWORM_BEETLES = MOD_ITEMS.register("mealworm_beetles",
             () -> new BugItem(stack -> {
                 Item item = stack.getItem();
                 Block block = Block.byItem(item);
@@ -163,112 +149,100 @@ public class ModItems {
                 else if (block == Blocks.HAY_BLOCK) return 16;
                 return 0;
             }));
-    public static final RegistryObject<Item> JOURNAL_CHEF_ALEJANDRO = register("journal_chef_alejandro", TabHandler.ITEMS, () -> new JournalItem(JournalItem.JournalType.CHEF_ALEJANDRO));
-    public static final RegistryObject<Item> JOURNAL_DENNIS_NEDRY = register("journal_dennis_nedry", TabHandler.ITEMS, () -> new JournalItem(JournalItem.JournalType.DENNIS_NEDRY));
-    public static final RegistryObject<Item> JOURNAL_DR_GERRY_HARDING = register("journal_dr_gerry_harding", TabHandler.ITEMS, () -> new JournalItem(JournalItem.JournalType.DR_GERRY_HARDING));
-    public static final RegistryObject<Item> JOURNAL_DR_HENRY_WU = register("journal_dr_henry_wu", TabHandler.ITEMS, () -> new JournalItem(JournalItem.JournalType.DR_HENRY_WU));
-    public static final RegistryObject<Item> JOURNAL_DR_LAURA_SORKIN = register("journal_dr_laura_sorkin", TabHandler.ITEMS, () -> new JournalItem(JournalItem.JournalType.DR_LAURA_SORKIN));
-    public static final RegistryObject<Item> JOURNAL_ED_REGIS = register("journal_ed_regis", TabHandler.ITEMS, () -> new JournalItem(JournalItem.JournalType.ED_REGIS));
-    public static final RegistryObject<Item> JOURNAL_JOHN_HAMMOND = register("journal_john_hammond", TabHandler.ITEMS, () -> new JournalItem(JournalItem.JournalType.JOHN_HAMMOND));
-    public static final RegistryObject<Item> JOURNAL_RAY_ARNOLD = register("journal_ray_arnold", TabHandler.ITEMS, () -> new JournalItem(JournalItem.JournalType.RAY_ARNOLD));
-    public static final RegistryObject<Item> JOURNAL_ROBERT_MULDOON = register("journal_robert_muldoon", TabHandler.ITEMS, () -> new JournalItem(JournalItem.JournalType.ROBERT_MULDOON));
-    public static final RegistryObject<SwarmItem> PLANKTON = register("plankton", TabHandler.ITEMS,  () -> new SwarmItem(ModBlocks.PLANKTON_SWARM.get(), new Item.Properties()));
-    public static final RegistryObject<SwarmItem> KRILL = register("krill", TabHandler.ITEMS,  () -> new SwarmItem(ModBlocks.KRILL_SWARM.get(), new Item.Properties()));
-    public static final RegistryObject<Item> FIELD_GUIDE = register("field_guide", TabHandler.ITEMS,  () -> new FieldGuideItem(new Item.Properties()));
-    public static final RegistryObject<RecordItem> JURASSICREBORN_THEME_DISC = register("disc_jurassicreborn_theme", TabHandler.ITEMS,  () -> new RecordItem(101/*dont ask*/, () -> SoundHandler.JURASSICREBORN_THEME, new Item.Properties().rarity(Rarity.RARE), 4740));
-    public static final RegistryObject<RecordItem> TROODONS_AND_RAPTORS_DISC = register("disc_troodons_and_raptors", TabHandler.ITEMS,  () -> new RecordItem(102, () -> SoundHandler.TROODONS_AND_RAPTORS, new Item.Properties().rarity(Rarity.RARE), 1760));
-    public static final RegistryObject<RecordItem> DONT_MOVE_A_MUSCLE_DISC = register("disc_dont_move_a_muscle", TabHandler.ITEMS,  () -> new RecordItem(103, () -> SoundHandler.DONT_MOVE_A_MUSCLE, new Item.Properties().rarity(Rarity.RARE), 2040));
-    public static final RegistryObject<Item> PALEO_PAD = register("paleo_pad", TabHandler.ITEMS, PaleoPadItem::new);
-    public static final RegistryObject<StorageDiscItem> STORAGE_DISC = register("storage_disc", TabHandler.ITEMS,  () -> new StorageDiscItem(new Item.Properties()));
-    public static RegistryObject<BlockItem> GYPSUM_BRICKS = register("gypsum_bricks", TabHandler.ITEMS, () -> new BlockItem(ModBlocks.GYPSUM_BRICKS.get(), new Item.Properties()));
-    public static final RegistryObject<BlockItem> HOLOGRAM_BLOCK = register("hologram_block", TabHandler.DECORATIONS,  () -> new BlockItem(ModBlocks.HOLOGRAM_BLOCK.get(), new Item.Properties()));
-    public static final RegistryObject<Item> EMPTY_TEST_TUBE = register("empty_test_tube", TabHandler.ITEMS,  () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> DNA_NUCLEOTIDES = register("dna_base_material", TabHandler.ITEMS,  () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> JOURNAL_CHEF_ALEJANDRO = MOD_ITEMS.register("journal_chef_alejandro", () -> new JournalItem(JournalItem.JournalType.CHEF_ALEJANDRO));
+    public static final RegistryObject<Item> JOURNAL_DENNIS_NEDRY = MOD_ITEMS.register("journal_dennis_nedry", () -> new JournalItem(JournalItem.JournalType.DENNIS_NEDRY));
+    public static final RegistryObject<Item> JOURNAL_DR_GERRY_HARDING = MOD_ITEMS.register("journal_dr_gerry_harding", () -> new JournalItem(JournalItem.JournalType.DR_GERRY_HARDING));
+    public static final RegistryObject<Item> JOURNAL_DR_HENRY_WU = MOD_ITEMS.register("journal_dr_henry_wu", () -> new JournalItem(JournalItem.JournalType.DR_HENRY_WU));
+    public static final RegistryObject<Item> JOURNAL_DR_LAURA_SORKIN = MOD_ITEMS.register("journal_dr_laura_sorkin", () -> new JournalItem(JournalItem.JournalType.DR_LAURA_SORKIN));
+    public static final RegistryObject<Item> JOURNAL_ED_REGIS = MOD_ITEMS.register("journal_ed_regis", () -> new JournalItem(JournalItem.JournalType.ED_REGIS));
+    public static final RegistryObject<Item> JOURNAL_JOHN_HAMMOND = MOD_ITEMS.register("journal_john_hammond", () -> new JournalItem(JournalItem.JournalType.JOHN_HAMMOND));
+    public static final RegistryObject<Item> JOURNAL_RAY_ARNOLD = MOD_ITEMS.register("journal_ray_arnold", () -> new JournalItem(JournalItem.JournalType.RAY_ARNOLD));
+    public static final RegistryObject<Item> JOURNAL_ROBERT_MULDOON = MOD_ITEMS.register("journal_robert_muldoon", () -> new JournalItem(JournalItem.JournalType.ROBERT_MULDOON));
+    public static final RegistryObject<SwarmItem> PLANKTON = MOD_ITEMS.register("plankton", () -> new SwarmItem(ModBlocks.PLANKTON_SWARM.get(), new Item.Properties().tab(TabHandler.ITEMS)));
+    public static final RegistryObject<SwarmItem> KRILL = MOD_ITEMS.register("krill", () -> new SwarmItem(ModBlocks.KRILL_SWARM.get(), new Item.Properties().tab(TabHandler.ITEMS)));
+    public static final RegistryObject<Item> FIELD_GUIDE = MOD_ITEMS.register("field_guide", () -> new FieldGuideItem(new Item.Properties().tab(TabHandler.ITEMS)));
+    public static final RegistryObject<RecordItem> JURASSICREBORN_THEME_DISC = MOD_ITEMS.register("disc_jurassicreborn_theme", () -> new RecordItem(101/*dont ask*/, () -> SoundHandler.JURASSICREBORN_THEME, new Item.Properties().tab(TabHandler.ITEMS).rarity(Rarity.RARE), 4740));
+    public static final RegistryObject<RecordItem> TROODONS_AND_RAPTORS_DISC = MOD_ITEMS.register("disc_troodons_and_raptors", () -> new RecordItem(102, () -> SoundHandler.TROODONS_AND_RAPTORS, new Item.Properties().tab(TabHandler.ITEMS).rarity(Rarity.RARE), 1760));
+    public static final RegistryObject<RecordItem> DONT_MOVE_A_MUSCLE_DISC = MOD_ITEMS.register("disc_dont_move_a_muscle", () -> new RecordItem(103, () -> SoundHandler.DONT_MOVE_A_MUSCLE, new Item.Properties().tab(TabHandler.ITEMS).rarity(Rarity.RARE), 2040));
+    public static final RegistryObject<Item> PALEO_PAD = MOD_ITEMS.register("paleo_pad", () -> new PaleoPadItem());
+    public static final RegistryObject<StorageDiscItem> STORAGE_DISC = MOD_ITEMS.register("storage_disc", () -> new StorageDiscItem(new Item.Properties().tab(TabHandler.ITEMS)));
+    public static final RegistryObject<BlockItem> GYPSUM_BRICKS = registerBlockItem("gypsum_bricks", ModBlocks.GYPSUM_BRICKS);
+    public static final RegistryObject<BlockItem> HOLOGRAM_BLOCK = MOD_ITEMS.register("hologram_block", () -> new BlockItem(ModBlocks.HOLOGRAM_BLOCK.get(), new Item.Properties().tab(TabHandler.DECORATIONS)));
+    public static final RegistryObject<Item> EMPTY_TEST_TUBE = MOD_ITEMS.register("empty_test_tube", () -> new Item(new Item.Properties().tab(TabHandler.ITEMS)));
+    public static final RegistryObject<Item> DNA_NUCLEOTIDES = MOD_ITEMS.register("dna_base_material", () -> new Item(new Item.Properties().tab(TabHandler.ITEMS)));
     public static final RegistryObject<FaunaFossilBlockItem> FAUNA_FOSSIL_BLOCK = MOD_ITEMS.register("fauna_fossil_block_item", () -> new FaunaFossilBlockItem(ModBlocks.FAUNA_FOSSIL.get(), new Item.Properties()));
 
-    public static final RegistryObject<IncubatorEnvironmentItem> PEAT_MOSS_BLOCK = register("peat_moss", TabHandler.BLOCKS,  () -> new IncubatorEnvironmentItem(ModBlocks.PEAT_MOSS.get(), new Item.Properties()));
+    public static final RegistryObject<IncubatorEnvironmentItem> PEAT_MOSS_BLOCK = MOD_ITEMS.register("peat_moss", () -> new IncubatorEnvironmentItem(ModBlocks.PEAT_MOSS.get(), new Item.Properties().tab(TabHandler.BLOCKS)));
 
     //PLANTS
-    public static final RegistryObject<PlantCallusItem> PLANT_CALLUS = register("plant_callus", TabHandler.PLANTS,  () -> new PlantCallusItem(new Item.Properties()));
-    public static final RegistryObject<Item> LIQUID_AGAR = register("liquid_agar", TabHandler.PLANTS,  () -> new Item(new Item.Properties()));
+    public static final RegistryObject<PlantCallusItem> PLANT_CALLUS = MOD_ITEMS.register("plant_callus", () -> new PlantCallusItem(new Item.Properties().tab(TabHandler.PLANTS)));
+    public static final RegistryObject<Item> LIQUID_AGAR = MOD_ITEMS.register("liquid_agar", () -> new Item(new Item.Properties().tab(TabHandler.PLANTS)));
     public static final RegistryObject<ItemNameBlockItem> WILD_ONION = MOD_ITEMS.register("wild_onion", () -> new ItemNameBlockItem(ModBlocks.WILD_ONION.get(), new Item.Properties().food(WILD_ONION_PROPERTIES)));
     public static final RegistryObject<ItemNameBlockItem> WILD_POTATO_SEEDS = MOD_ITEMS.register("wild_potato_seeds", () -> new ItemNameBlockItem(ModBlocks.WILD_POTATO_PLANT.get(), new Item.Properties()));
     public static final RegistryObject<ItemNameBlockItem> RHAMNUS_SEEDS = MOD_ITEMS.register("rhamnus_salicifolius_seeds", () -> new ItemNameBlockItem(ModBlocks.RHAMNUS_SALICIFOLIUS.get(), new Item.Properties()));
-    public static final RegistryObject<BlockItem> ARAUCARIA_SAPLING = register("araucaria_sapling", TabHandler.PLANTS,
-            () -> new BlockItem(ModBlocks.ARAUCARIA_SAPLING.get(), new Item.Properties()));
-    public static final RegistryObject<BlockItem> CALAMITES_SAPLING = register("calamites_sapling", TabHandler.PLANTS,
-            () -> new BlockItem(ModBlocks.CALAMITES_SAPLING.get(), new Item.Properties()));
-    public static final RegistryObject<BlockItem> GINKGO_SAPLING = register("ginkgo_sapling", TabHandler.PLANTS,
-            () -> new BlockItem(ModBlocks.GINKGO_SAPLING.get(), new Item.Properties()));
-    public static final RegistryObject<BlockItem> MAGNOLIA_SAPLING = register("magnolia_sapling", TabHandler.PLANTS,
-            () -> new BlockItem(ModBlocks.MAGNOLIA_SAPLING.get(), new Item.Properties()));
-    public static final RegistryObject<BlockItem> PHOENIX_SAPLING = register("phoenix_sapling", TabHandler.PLANTS,
-            () -> new BlockItem(ModBlocks.PHOENIX_SAPLING.get(), new Item.Properties()));
-    public static final RegistryObject<BlockItem> PSARONIUS_SAPLING = register("psaronius_sapling", TabHandler.PLANTS,
-            () -> new BlockItem(ModBlocks.PSARONIUS_SAPLING.get(), new Item.Properties()));
 
     // Make sure DartGun, Dart, PotionDart, TrackerDart extend Item (and use RegistryObject!)
-    public static final RegistryObject<Item> DART_GUN = register("dart_gun", TabHandler.ITEMS, DartGun::new);
-    public static final RegistryObject<Item> DART_TRANQUILIZER = register("dart_tranquilizer", TabHandler.ITEMS, () -> new Dart((entity, stack) -> entity.tranquilize(2000), 0xFFFFFF));
-    public static final RegistryObject<Item> DART_POISON_CYCASIN = register("dart_poison_cycasin", TabHandler.ITEMS, () -> new Dart((entity, stack) -> entity.addEffect(new MobEffectInstance(MobEffects.POISON, 2000)), 0xE2E1B8));
-    public static final RegistryObject<Item> DART_POISON_EXECUTIONER_CONCOCTION = register("dart_poison_executioner_concoction", TabHandler.ITEMS, () -> new Dart((entity, stack) -> entity.setDeathIn(200), 0x000000));
-    public static final RegistryObject<Item> DART_TIPPED_POTION = register("dart_tipped_potion", TabHandler.ITEMS, PotionDart::new);
-    public static final RegistryObject<Item> TRACKER_DART = register("tracker_dart", TabHandler.ITEMS, TrackerDart::new);
-    public static final RegistryObject<Item> FINE_NET = register("fine_net", TabHandler.ITEMS, FineNetItem::new);
+    public static final RegistryObject<Item> DART_GUN = MOD_ITEMS.register("dart_gun", DartGun::new);
+    public static final RegistryObject<Item> DART_TRANQUILIZER = MOD_ITEMS.register("dart_tranquilizer", () -> new Dart((entity, stack) -> entity.tranquilize(2000), 0xFFFFFF));
+    public static final RegistryObject<Item> DART_POISON_CYCASIN = MOD_ITEMS.register("dart_poison_cycasin", () -> new Dart((entity, stack) -> entity.addEffect(new MobEffectInstance(MobEffects.POISON, 2000)), 0xE2E1B8));
+    public static final RegistryObject<Item> DART_POISON_EXECUTIONER_CONCOCTION = MOD_ITEMS.register("dart_poison_executioner_concoction", () -> new Dart((entity, stack) -> entity.setDeathIn(200), 0x000000));
+    public static final RegistryObject<Item> DART_TIPPED_POTION = MOD_ITEMS.register("dart_tipped_potion", PotionDart::new);
+    public static final RegistryObject<Item> TRACKER_DART = MOD_ITEMS.register("tracker_dart", TrackerDart::new);
+    public static final RegistryObject<Item> FINE_NET = MOD_ITEMS.register("fine_net", FineNetItem::new);
 
-    public static final RegistryObject<Item> BULLET = register("bullet", TabHandler.ITEMS, Bullet::new);
-    public static final RegistryObject<Item> GLOCK = register("glock", TabHandler.ITEMS, Glock::new);
-    public static final RegistryObject<Item> REMINGTON = register("remington", TabHandler.ITEMS, Remington::new);
-    public static final RegistryObject<Item> SPAS12 = register("spas_12", TabHandler.ITEMS, SPAS12::new);
-    public static final RegistryObject<Item> UTS15 = register("uts15", TabHandler.ITEMS, UTS15::new);
+        public static final RegistryObject<Item> BULLET = MOD_ITEMS.register("bullet", Bullet::new);
+        public static final RegistryObject<Item> GLOCK = MOD_ITEMS.register("glock", Glock::new);
+        public static final RegistryObject<Item> REMINGTON = MOD_ITEMS.register("remington", Remington::new);
+        public static final RegistryObject<Item> SPAS12 = MOD_ITEMS.register("spas_12", SPAS12::new);
+        public static final RegistryObject<Item> UTS15 = MOD_ITEMS.register("uts15", UTS15::new);
 
 
     //ITEMS
     public static final Map<AttractionSignEntity.AttractionSignType, RegistryObject<Item>> ATTRACTION_SIGNS = registerAttractionSigns();
-    public static final RegistryObject<Item> PADDOCK_SIGN = register("paddock_sign", TabHandler.DECORATIONS,  () -> new PaddockSignItem(new Item.Properties().stacksTo(1)));
-    public static final RegistryObject<Item> BLUEPRINT = register("blueprint", TabHandler.DECORATIONS,  () -> new BlueprintItem(new Item.Properties().stacksTo(1)));
-    public static final RegistryObject<Item> GOAT_SPAWN_EGG = register("goat_spawn_egg", TabHandler.SPAWN_EGGS,  () -> new ForgeSpawnEggItem(ModEntities.GOAT, 0xEFEDE7, 0x7B3E20, new Item.Properties()));
-    public static final RegistryObject<Item> CRAB_SPAWN_EGG = register("crab_spawn_egg", TabHandler.SPAWN_EGGS,  () -> new ForgeSpawnEggItem(ModEntities.CRAB, 0xEFEDE7, 0x7B3E20, new Item.Properties()));
-    public static final RegistryObject<Item> SHARK_SPAWN_EGG = register("shark_spawn_egg", TabHandler.SPAWN_EGGS,  () -> new ForgeSpawnEggItem(ModEntities.SHARK, 0x808080, 0x404040, new Item.Properties()));
-    public static final RegistryObject<Item> MURAL = register("mural", TabHandler.DECORATIONS,  () -> new MuralItem(new Item.Properties()));
-    public static final RegistryObject<Item> GYROSPHERE_INTERIOR = register("gyrosphere_interior", TabHandler.ITEMS,  () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> GYROSPHERE_SEATS = register("gyrosphere_seats", TabHandler.ITEMS,  () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> GYROSPHERE_HOOP = register("gyrosphere_hoop", TabHandler.ITEMS,  () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> PETRI_DISH = register("petri_dish", TabHandler.ITEMS,  () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> PETRI_DISH_AGAR = register("petri_dish_agar", TabHandler.ITEMS,  () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> PLANT_CELLS = register("plant_cells", TabHandler.ITEMS,  () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> PLANT_CELLS_PETRI_DISH = register("plant_cells_petri_dish", TabHandler.ITEMS,  () -> new Item(new Item.Properties()));
-    public static final RegistryObject<EmptySyringeItem> EMPTY_SYRINGE = register("empty_syringe", TabHandler.ITEMS,  () -> new EmptySyringeItem(new Item.Properties()));
-    public static final RegistryObject<Item> TWIG_FOSSIL = register("twig_fossil", TabHandler.FOSSILS, PlantFossilItem::new);
-    public static final RegistryObject<Item> PLANT_FOSSIL = register("plant_fossil", TabHandler.FOSSILS, PlantFossilItem::new);
-    public static final RegistryObject<Item> PLANT_FOSSIL_0 = register("plant_fossil_0", TabHandler.FOSSILS, PlantFossilItem::new);
-    public static final RegistryObject<Item> PLANT_FOSSIL_1 = register("plant_fossil_1", TabHandler.FOSSILS, PlantFossilItem::new);
-    public static final RegistryObject<Item> PLANT_FOSSIL_2 = register("plant_fossil_2", TabHandler.FOSSILS, PlantFossilItem::new);
-    public static final RegistryObject<Item> PLANT_FOSSIL_3 = register("plant_fossil_3", TabHandler.FOSSILS, PlantFossilItem::new);
-    public static final RegistryObject<Item> IRON_BLADES = register("iron_blades", TabHandler.ITEMS,  () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> IRON_ROD = register("iron_rod", TabHandler.ITEMS,  () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> PADDOCK_SIGN = MOD_ITEMS.register("paddock_sign", () -> new PaddockSignItem(new Item.Properties().stacksTo(1).tab(TabHandler.DECORATIONS)));
+    public static final RegistryObject<Item> BLUEPRINT = MOD_ITEMS.register("blueprint", () -> new BlueprintItem(new Item.Properties().stacksTo(1).tab(TabHandler.DECORATIONS)));
+    public static final RegistryObject<Item> GOAT_SPAWN_EGG = MOD_ITEMS.register("goat_spawn_egg", () -> new ForgeSpawnEggItem(ModEntities.GOAT, 0xEFEDE7, 0x7B3E20, new Item.Properties().tab(TabHandler.SPAWN_EGGS)));
+    public static final RegistryObject<Item> CRAB_SPAWN_EGG = MOD_ITEMS.register("crab_spawn_egg", () -> new ForgeSpawnEggItem(ModEntities.CRAB, 0xEFEDE7, 0x7B3E20, new Item.Properties().tab(TabHandler.SPAWN_EGGS)));
+    public static final RegistryObject<Item> SHARK_SPAWN_EGG = MOD_ITEMS.register("shark_spawn_egg", () -> new ForgeSpawnEggItem(ModEntities.SHARK, 0x808080, 0x404040, new Item.Properties().tab(TabHandler.SPAWN_EGGS)));
+    public static final RegistryObject<Item> MURAL = MOD_ITEMS.register("mural", () -> new MuralItem(new Item.Properties().tab(TabHandler.DECORATIONS)));
+    public static final RegistryObject<Item> GYROSPHERE_INTERIOR = MOD_ITEMS.register("gyrosphere_interior", () -> new Item(new Item.Properties().tab(TabHandler.ITEMS)));
+    public static final RegistryObject<Item> GYROSPHERE_SEATS = MOD_ITEMS.register("gyrosphere_seats", () -> new Item(new Item.Properties().tab(TabHandler.ITEMS)));
+    public static final RegistryObject<Item> GYROSPHERE_HOOP = MOD_ITEMS.register("gyrosphere_hoop", () -> new Item(new Item.Properties().tab(TabHandler.ITEMS)));
+    public static final RegistryObject<Item> PETRI_DISH = MOD_ITEMS.register("petri_dish", () -> new Item(new Item.Properties().tab(TabHandler.ITEMS)));
+    public static final RegistryObject<Item> PETRI_DISH_AGAR = MOD_ITEMS.register("petri_dish_agar", () -> new Item(new Item.Properties().tab(TabHandler.ITEMS)));
+    public static final RegistryObject<Item> PLANT_CELLS = MOD_ITEMS.register("plant_cells", () -> new Item(new Item.Properties().tab(TabHandler.ITEMS)));
+    public static final RegistryObject<Item> PLANT_CELLS_PETRI_DISH = MOD_ITEMS.register("plant_cells_petri_dish", () -> new Item(new Item.Properties().tab(TabHandler.ITEMS)));
+    public static final RegistryObject<EmptySyringeItem> EMPTY_SYRINGE = MOD_ITEMS.register("empty_syringe", () -> new EmptySyringeItem(new Item.Properties().tab(TabHandler.ITEMS)));
+    public static final RegistryObject<Item> TWIG_FOSSIL = MOD_ITEMS.register("twig_fossil", PlantFossilItem::new);
+    public static final RegistryObject<Item> PLANT_FOSSIL = MOD_ITEMS.register("plant_fossil", PlantFossilItem::new);
+    public static final RegistryObject<Item> PLANT_FOSSIL_0 = MOD_ITEMS.register("plant_fossil_0", PlantFossilItem::new);
+    public static final RegistryObject<Item> PLANT_FOSSIL_1 = MOD_ITEMS.register("plant_fossil_1", PlantFossilItem::new);
+    public static final RegistryObject<Item> PLANT_FOSSIL_2 = MOD_ITEMS.register("plant_fossil_2", PlantFossilItem::new);
+    public static final RegistryObject<Item> PLANT_FOSSIL_3 = MOD_ITEMS.register("plant_fossil_3", PlantFossilItem::new);
+    public static final RegistryObject<Item> IRON_BLADES = MOD_ITEMS.register("iron_blades", () -> new Item(new Item.Properties().tab(TabHandler.ITEMS)));
+    public static final RegistryObject<Item> IRON_ROD = MOD_ITEMS.register("iron_rod", () -> new Item(new Item.Properties().tab(TabHandler.ITEMS)));
 
-    public static final RegistryObject<Item> DISC_DRIVE = register("disc_reader", TabHandler.ITEMS,  () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> COMPUTER_SCREEN = register("computer_screen", TabHandler.ITEMS,  () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> KEYBOARD = register("keyboard", TabHandler.ITEMS,  () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> LASER = register("laser", TabHandler.ITEMS,  () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> BASIC_CIRCUIT = register("basic_circuit", TabHandler.ITEMS,  () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> ADVANCED_CIRCUIT = register("advanced_circuit", TabHandler.ITEMS,  () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> DISC_DRIVE = MOD_ITEMS.register("disc_reader", () -> new Item(new Item.Properties().tab(TabHandler.ITEMS)));
+    public static final RegistryObject<Item> COMPUTER_SCREEN = MOD_ITEMS.register("computer_screen", () -> new Item(new Item.Properties().tab(TabHandler.ITEMS)));
+    public static final RegistryObject<Item> KEYBOARD = MOD_ITEMS.register("keyboard", () -> new Item(new Item.Properties().tab(TabHandler.ITEMS)));
+    public static final RegistryObject<Item> LASER = MOD_ITEMS.register("laser", () -> new Item(new Item.Properties().tab(TabHandler.ITEMS)));
+    public static final RegistryObject<Item> BASIC_CIRCUIT = MOD_ITEMS.register("basic_circuit", () -> new Item(new Item.Properties().tab(TabHandler.ITEMS)));
+    public static final RegistryObject<Item> ADVANCED_CIRCUIT = MOD_ITEMS.register("advanced_circuit", () -> new Item(new Item.Properties().tab(TabHandler.ITEMS)));
 
-    public static final RegistryObject<Item> GYPSUM_POWDER = register("gypsum_powder", TabHandler.ITEMS,  () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> DNA_ANALYZER = register("dna_analyzer", TabHandler.ITEMS,  () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> LUNCH_BOX = register("lunch_box", TabHandler.ITEMS,  () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> STAMP_SET = register("stamp_set", TabHandler.ITEMS,  () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> GYPSUM_POWDER = MOD_ITEMS.register("gypsum_powder", () -> new Item(new Item.Properties().tab(TabHandler.ITEMS)));
+    public static final RegistryObject<Item> DNA_ANALYZER = MOD_ITEMS.register("dna_analyzer", () -> new Item(new Item.Properties().tab(TabHandler.ITEMS)));
+    public static final RegistryObject<Item> LUNCH_BOX = MOD_ITEMS.register("lunch_box", () -> new Item(new Item.Properties().tab(TabHandler.ITEMS)));
+    public static final RegistryObject<Item> STAMP_SET = MOD_ITEMS.register("stamp_set", () -> new Item(new Item.Properties().tab(TabHandler.ITEMS)));
 
-    public static final RegistryObject<Item> CAR_CHASSIS = register("car_chassis", TabHandler.ITEMS,  () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> ENGINE_SYSTEM = register("engine_system", TabHandler.ITEMS,  () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> CAR_SEATS = register("car_seats", TabHandler.ITEMS,  () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> CAR_TIRE = register("car_tire", TabHandler.ITEMS,  () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> CAR_WINDSCREEN = register("car_windscreen", TabHandler.ITEMS,  () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> UNFINISHED_CAR = register("unfinished_car", TabHandler.ITEMS,  () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> CAR_CHASSIS = MOD_ITEMS.register("car_chassis", () -> new Item(new Item.Properties().tab(TabHandler.ITEMS)));
+    public static final RegistryObject<Item> ENGINE_SYSTEM = MOD_ITEMS.register("engine_system", () -> new Item(new Item.Properties().tab(TabHandler.ITEMS)));
+    public static final RegistryObject<Item> CAR_SEATS = MOD_ITEMS.register("car_seats", () -> new Item(new Item.Properties().tab(TabHandler.ITEMS)));
+    public static final RegistryObject<Item> CAR_TIRE = MOD_ITEMS.register("car_tire", () -> new Item(new Item.Properties().tab(TabHandler.ITEMS)));
+    public static final RegistryObject<Item> CAR_WINDSCREEN = MOD_ITEMS.register("car_windscreen", () -> new Item(new Item.Properties().tab(TabHandler.ITEMS)));
+    public static final RegistryObject<Item> UNFINISHED_CAR = MOD_ITEMS.register("unfinished_car", () -> new Item(new Item.Properties().tab(TabHandler.ITEMS)));
 
-    public static final RegistryObject<UseOnEntityItem> GROWTH_SERUM = register("growth_serum", TabHandler.ITEMS, () -> new UseOnEntityItem(new Item.Properties(), (interaction) -> {
-        if(interaction.getPlayer().level().isClientSide)
+    public static final RegistryObject<UseOnEntityItem> GROWTH_SERUM = MOD_ITEMS.register("growth_serum", () -> new UseOnEntityItem(new Item.Properties().tab(TabHandler.ITEMS), (interaction) -> {
+        if(interaction.getPlayer().getLevel().isClientSide)
             return InteractionResult.PASS;
         if (interaction.getTarget() instanceof DinosaurEntity dinosaur) {
             if (!dinosaur.isCarcass()) {
@@ -282,12 +256,12 @@ public class ModItems {
         }
         return InteractionResult.FAIL;
     }));
-    public static final RegistryObject<Item> BREEDING_WAND = register("breeding_wand", TabHandler.ITEMS, () -> new UseOnEntityItem(new Item.Properties(), interaction -> {
-        if(interaction.getPlayer().level().isClientSide)
+    public static final RegistryObject<Item> BREEDING_WAND = MOD_ITEMS.register("breeding_wand", () -> new UseOnEntityItem(new Item.Properties().tab(TabHandler.ITEMS), interaction -> {
+        if(interaction.getPlayer().getLevel().isClientSide)
             return InteractionResult.PASS;
         ItemStack stack = interaction.getPlayer().getItemInHand(interaction.getHand());
         CompoundTag nbt = stack.getOrCreateTagElement("wand_info");
-        Entity entity = interaction.getPlayer().level().getEntity(nbt.getInt("dino_id"));
+        Entity entity = interaction.getPlayer().getLevel().getEntity(nbt.getInt("dino_id"));
         if (interaction.getTarget() instanceof DinosaurEntity) {
             if (nbt.contains("dino_id", 99)) {
                 if (entity instanceof DinosaurEntity && ((DinosaurEntity) entity).isMale() != ((DinosaurEntity) interaction.getTarget()).isMale() && !((DinosaurEntity) interaction.getTarget()).getDinosaur().isHybrid) {
@@ -305,8 +279,8 @@ public class ModItems {
     }));
 
     //CREATIVE
-    public static final RegistryObject<Item> BIRTHING_WAND = register("birthing_wand", TabHandler.ITEMS, () -> new UseOnEntityItem(new Item.Properties(), interaction -> {
-        if(interaction.getPlayer().level().isClientSide)
+    public static final RegistryObject<Item> BIRTHING_WAND = MOD_ITEMS.register("birthing_wand", () -> new UseOnEntityItem(new Item.Properties().tab(TabHandler.ITEMS), interaction -> {
+        if(interaction.getPlayer().getLevel().isClientSide)
             return InteractionResult.PASS;
         if(interaction.getTarget() instanceof DinosaurEntity) {
             DinosaurEntity dino = ((DinosaurEntity)interaction.getTarget());
@@ -324,8 +298,8 @@ public class ModItems {
         }
         return InteractionResult.FAIL;
     }));
-    public static final RegistryObject<Item> PREGNANCY_TEST = register("pregnancy_test", TabHandler.ITEMS, () -> new UseOnEntityItem(new Item.Properties(), (interaction) -> {
-        if(interaction.getPlayer().level().isClientSide){
+    public static final RegistryObject<Item> PREGNANCY_TEST = MOD_ITEMS.register("pregnancy_test", () -> new UseOnEntityItem(new Item.Properties().tab(TabHandler.ITEMS), (interaction) -> {
+        if(interaction.getPlayer().getLevel().isClientSide){
             return InteractionResult.PASS;
         }
         if(interaction.getTarget() instanceof DinosaurEntity) {//why was this the only one to have a remote check and even then it did it wrong
@@ -336,58 +310,19 @@ public class ModItems {
         return InteractionResult.FAIL;
     }));
 
-
-    public static final RegistryObject<Item> FORD_EXPLORER =
-            register("ford_explorer", TabHandler.ITEMS,
-                    () -> new VehicleSpawnItem(ModEntities.FORD_EXPLORER, new Item.Properties().stacksTo(1)));
-
-    public static final RegistryObject<Item> FORD_EXPLORER_SNOW =
-            register("ford_explorer_snow", TabHandler.ITEMS,
-                    () -> new VehicleSpawnItem(ModEntities.FORD_EXPLORER_SNOW, new Item.Properties().stacksTo(1)));
-
-    public static final RegistryObject<Item> MONORAIL =
-            register("monorail", TabHandler.ITEMS,
-                    () -> new VehicleSpawnItem(ModEntities.MONORAIL, new Item.Properties().stacksTo(1)));
-
-    public static final RegistryObject<Item> JEEP_WRANGLER =
-            register("jeep_wrangler", TabHandler.ITEMS,
-                    () -> new VehicleSpawnItem(ModEntities.JEEP_WRANGLER, new Item.Properties().stacksTo(1)));
-
-    public static final RegistryObject<Item> BLACK_JEEP_WRANGLER =
-            register("black_jeep_wrangler", TabHandler.ITEMS,
-                    () -> new VehicleSpawnItem(ModEntities.BLACK_JEEP_WRANGLER, new Item.Properties().stacksTo(1)));
-
-    public static final RegistryObject<Item> BLUE_JEEP_WRANGLER =
-            register("blue_jeep_wrangler", TabHandler.ITEMS,
-                    () -> new VehicleSpawnItem(ModEntities.BLUE_JEEP_WRANGLER, new Item.Properties().stacksTo(1)));
-
-    public static final RegistryObject<Item> GREEN_JEEP_WRANGLER =
-            register("green_jeep_wrangler", TabHandler.ITEMS,
-                    () -> new VehicleSpawnItem(ModEntities.GREEN_JEEP_WRANGLER, new Item.Properties().stacksTo(1)));
-
-    public static final RegistryObject<Item> LIME_JEEP_WRANGLER =
-            register("lime_jeep_wrangler", TabHandler.ITEMS,
-                    () -> new VehicleSpawnItem(ModEntities.LIME_JEEP_WRANGLER, new Item.Properties().stacksTo(1)));
-
-    public static final RegistryObject<Item> PINK_JEEP_WRANGLER =
-            register("pink_jeep_wrangler", TabHandler.ITEMS,
-                    () -> new VehicleSpawnItem(ModEntities.PINK_JEEP_WRANGLER, new Item.Properties().stacksTo(1)));
-
-    public static final RegistryObject<Item> PURPLE_JEEP_WRANGLER =
-            register("purple_jeep_wrangler", TabHandler.ITEMS,
-                    () -> new VehicleSpawnItem(ModEntities.PURPLE_JEEP_WRANGLER, new Item.Properties().stacksTo(1)));
-
-    public static final RegistryObject<Item> SORNA_JEEP_WRANGLER =
-            register("sorna_jeep_wrangler", TabHandler.ITEMS,
-                    () -> new VehicleSpawnItem(ModEntities.SORNA_JEEP_WRANGLER, new Item.Properties().stacksTo(1)));
-
-    public static final RegistryObject<Item> GYROSPHERE =
-            register("gyrosphere", TabHandler.ITEMS,
-                    () -> new VehicleSpawnItem(ModEntities.GYROSPHERE, new Item.Properties().stacksTo(1)));
-
-    public static final RegistryObject<Item> HELICOPTER =
-            register("helicopter", TabHandler.ITEMS,
-                    () -> new VehicleSpawnItem(ModEntities.HELICOPTER, new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> FORD_EXPLORER = MOD_ITEMS.register("ford_explorer", () -> new VehicleSpawnItem(ModEntities.FORD_EXPLORER.get(), new Item.Properties().stacksTo(1).tab(TabHandler.ITEMS)));
+    public static final RegistryObject<Item> FORD_EXPLORER_SNOW = MOD_ITEMS.register("ford_explorer_snow", () -> new VehicleSpawnItem(ModEntities.FORD_EXPLORER_SNOW.get(), new Item.Properties().stacksTo(1).tab(TabHandler.ITEMS)));
+    public static final RegistryObject<Item> MONORAIL = MOD_ITEMS.register("monorail", () -> new VehicleSpawnItem(ModEntities.MONORAIL.get(), new Item.Properties().stacksTo(1).tab(TabHandler.ITEMS)));
+    public static final RegistryObject<Item> JEEP_WRANGLER = MOD_ITEMS.register("jeep_wrangler", () -> new VehicleSpawnItem(ModEntities.JEEP_WRANGLER.get(), new Item.Properties().stacksTo(1).tab(TabHandler.ITEMS)));
+    public static final RegistryObject<Item> BLACK_JEEP_WRANGLER = MOD_ITEMS.register("black_jeep_wrangler", () -> new VehicleSpawnItem(ModEntities.BLACK_JEEP_WRANGLER.get(), new Item.Properties().stacksTo(1).tab(TabHandler.ITEMS)));
+    public static final RegistryObject<Item> BLUE_JEEP_WRANGLER = MOD_ITEMS.register("blue_jeep_wrangler", () -> new VehicleSpawnItem(ModEntities.BLUE_JEEP_WRANGLER.get(), new Item.Properties().stacksTo(1).tab(TabHandler.ITEMS)));
+    public static final RegistryObject<Item> GREEN_JEEP_WRANGLER = MOD_ITEMS.register("green_jeep_wrangler", () -> new VehicleSpawnItem(ModEntities.GREEN_JEEP_WRANGLER.get(), new Item.Properties().stacksTo(1).tab(TabHandler.ITEMS)));
+    public static final RegistryObject<Item> LIME_JEEP_WRANGLER = MOD_ITEMS.register("lime_jeep_wrangler", () -> new VehicleSpawnItem(ModEntities.LIME_JEEP_WRANGLER.get(), new Item.Properties().stacksTo(1).tab(TabHandler.ITEMS)));
+    public static final RegistryObject<Item> PINK_JEEP_WRANGLER = MOD_ITEMS.register("pink_jeep_wrangler", () -> new VehicleSpawnItem(ModEntities.PINK_JEEP_WRANGLER.get(), new Item.Properties().stacksTo(1).tab(TabHandler.ITEMS)));
+    public static final RegistryObject<Item> PURPLE_JEEP_WRANGLER = MOD_ITEMS.register("purple_jeep_wrangler", () -> new VehicleSpawnItem(ModEntities.PURPLE_JEEP_WRANGLER.get(), new Item.Properties().stacksTo(1).tab(TabHandler.ITEMS)));
+    public static final RegistryObject<Item> SORNA_JEEP_WRANGLER = MOD_ITEMS.register("sorna_jeep_wrangler", () -> new VehicleSpawnItem(ModEntities.SORNA_JEEP_WRANGLER.get(), new Item.Properties().stacksTo(1).tab(TabHandler.ITEMS)));
+    public static final RegistryObject<Item> GYROSPHERE = MOD_ITEMS.register("gyrosphere", () -> new VehicleSpawnItem(ModEntities.GYROSPHERE.get(), new Item.Properties().stacksTo(1).tab(TabHandler.ITEMS)));
+    public static final RegistryObject<Item> HELICOPTER = MOD_ITEMS.register("helicopter", () -> new VehicleSpawnItem(ModEntities.HELICOPTER.get(), new Item.Properties().stacksTo(1).tab(TabHandler.ITEMS)));
 
     //WOOD BOATS
     public static final RegistryObject<Item> ARAUCARIA_BOAT = registerBoat("araucaria_boat", ModBoatType.ARAUCARIA, false);
@@ -404,9 +339,9 @@ public class ModItems {
     public static final RegistryObject<Item> PSARONIUS_CHEST_BOAT = registerBoat("psaronius_chest_boat", ModBoatType.PSARONIUS, true);
 
     //DECORATIONS
-    public static final RegistryObject<Item> AMBER_KEYCHAIN = register("amber_keychain", TabHandler.DECORATIONS,  () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> AMBER_CANE = register("amber_cane", TabHandler.DECORATIONS,  () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> MR_DNA_KEYCHAIN = register("mr_dna_keychain", TabHandler.DECORATIONS,  () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> AMBER_KEYCHAIN = MOD_ITEMS.register("amber_keychain", () -> new Item(new Item.Properties().tab(TabHandler.DECORATIONS)));
+    public static final RegistryObject<Item> AMBER_CANE = MOD_ITEMS.register("amber_cane", () -> new Item(new Item.Properties().tab(TabHandler.DECORATIONS)));
+    public static final RegistryObject<Item> MR_DNA_KEYCHAIN = MOD_ITEMS.register("mr_dna_keychain", () -> new Item(new Item.Properties().tab(TabHandler.DECORATIONS)));
 
 
     public static final ArrayList<RegistryObject<BlockItem>> modBlocks = new ArrayList<>();
@@ -433,24 +368,18 @@ public class ModItems {
     }
 
     //BLOCK ITEMS
-    public static final RegistryObject<SignItem> ARAUCARIA_SIGN = register("araucaria_sign", TabHandler.BLOCKS, () -> new SignItem(
-            new Item.Properties().stacksTo(16), WoodBlocks.ARAUCARIA_SIGN.get(),WoodBlocks.ARAUCARIA_WALL_SIGN.get()));
-    public static final RegistryObject<SignItem> CALAMITES_SIGN = register("calamites_sign", TabHandler.BLOCKS, () -> new SignItem(
-            new Item.Properties().stacksTo(16), WoodBlocks.CALAMITES_SIGN.get(),WoodBlocks.CALAMITES_WALL_SIGN.get()));
-    public static final RegistryObject<SignItem> GINKGO_SIGN = register("ginkgo_sign", TabHandler.BLOCKS, () -> new SignItem(
-            new Item.Properties().stacksTo(16), WoodBlocks.GINKGO_SIGN.get(),WoodBlocks.GINKGO_WALL_SIGN.get()));
-    public static final RegistryObject<SignItem> MAGNOLIA_SIGN = register("magnolia_sign", TabHandler.BLOCKS, () -> new SignItem(
-            new Item.Properties().stacksTo(16), WoodBlocks.MAGNOLIA_SIGN.get(),WoodBlocks.MAGNOLIA_SIGN.get()));
-    public static final RegistryObject<SignItem> PHOENIX_SIGN = register("phoenix_sign", TabHandler.BLOCKS, () -> new SignItem(
-            new Item.Properties().stacksTo(16), WoodBlocks.PHOENIX_SIGN.get(),WoodBlocks.PHOENIX_SIGN.get()));
-    public static final RegistryObject<SignItem> PSARONIUS_SIGN = register("psaronius_sign", TabHandler.BLOCKS, () -> new SignItem(
-            new Item.Properties().stacksTo(16), WoodBlocks.PSARONIUS_SIGN.get(),WoodBlocks.PSARONIUS_WALL_SIGN.get()));
-    public static final RegistryObject<HangingSignItem> ARAUCARIA_HANGING_SIGN = register("araucaria_hanging_sign", TabHandler.BLOCKS, () -> new HangingSignItem(WoodBlocks.ARAUCARIA_HANGING_SIGN.get(), WoodBlocks.ARAUCARIA_WALL_HANGING_SIGN.get(), new Item.Properties().stacksTo(16)));
-    public static final RegistryObject<HangingSignItem> CALAMITES_HANGING_SIGN = register("calamites_hanging_sign", TabHandler.BLOCKS, () -> new HangingSignItem(WoodBlocks.CALAMITES_HANGING_SIGN.get(), WoodBlocks.CALAMITES_WALL_HANGING_SIGN.get(), new Item.Properties().stacksTo(16)));
-    public static final RegistryObject<HangingSignItem> GINKGO_HANGING_SIGN = register("ginkgo_hanging_sign", TabHandler.BLOCKS, () -> new HangingSignItem(WoodBlocks.GINKGO_HANGING_SIGN.get(), WoodBlocks.GINKGO_WALL_HANGING_SIGN.get(), new Item.Properties().stacksTo(16)));
-    public static final RegistryObject<HangingSignItem> MAGNOLIA_HANGING_SIGN = register("magnolia_hanging_sign", TabHandler.BLOCKS, () -> new HangingSignItem(WoodBlocks.MAGNOLIA_HANGING_SIGN.get(), WoodBlocks.MAGNOLIA_WALL_HANGING_SIGN.get(), new Item.Properties().stacksTo(16)));
-    public static final RegistryObject<HangingSignItem> PHOENIX_HANGING_SIGN = register("phoenix_hanging_sign", TabHandler.BLOCKS, () -> new HangingSignItem(WoodBlocks.PHOENIX_HANGING_SIGN.get(), WoodBlocks.PHOENIX_WALL_HANGING_SIGN.get(), new Item.Properties().stacksTo(16)));
-    public static final RegistryObject<HangingSignItem> PSARONIUS_HANGING_SIGN = register("psaronius_hanging_sign", TabHandler.BLOCKS, () -> new HangingSignItem(WoodBlocks.PSARONIUS_HANGING_SIGN.get(), WoodBlocks.PSARONIUS_WALL_HANGING_SIGN.get(), new Item.Properties().stacksTo(16)));
+    public static final RegistryObject<SignItem> ARAUCARIA_SIGN = MOD_ITEMS.register("araucaria_sign",() -> new SignItem(
+            new Item.Properties().stacksTo(16).tab(TabHandler.BLOCKS), WoodBlocks.ARAUCARIA_SIGN.get(),WoodBlocks.ARAUCARIA_WALL_SIGN.get()));
+    public static final RegistryObject<SignItem> CALAMITES_SIGN = MOD_ITEMS.register("calamites_sign",() -> new SignItem(
+            new Item.Properties().stacksTo(16).tab(TabHandler.BLOCKS), WoodBlocks.CALAMITES_SIGN.get(),WoodBlocks.CALAMITES_WALL_SIGN.get()));
+    public static final RegistryObject<SignItem> GINKGO_SIGN = MOD_ITEMS.register("ginkgo_sign",() -> new SignItem(
+            new Item.Properties().stacksTo(16).tab(TabHandler.BLOCKS), WoodBlocks.GINKGO_SIGN.get(),WoodBlocks.GINKGO_WALL_SIGN.get()));
+    public static final RegistryObject<SignItem> MAGNOLIA_SIGN = MOD_ITEMS.register("magnolia_sign",() -> new SignItem(
+            new Item.Properties().stacksTo(16).tab(TabHandler.BLOCKS), WoodBlocks.MAGNOLIA_SIGN.get(),WoodBlocks.MAGNOLIA_SIGN.get()));
+    public static final RegistryObject<SignItem> PHOENIX_SIGN = MOD_ITEMS.register("phoenix_sign",() -> new SignItem(
+            new Item.Properties().stacksTo(16).tab(TabHandler.BLOCKS), WoodBlocks.PHOENIX_SIGN.get(),WoodBlocks.PHOENIX_SIGN.get()));
+    public static final RegistryObject<SignItem> PSARONIUS_SIGN = MOD_ITEMS.register("psaronius_sign",() -> new SignItem(
+            new Item.Properties().stacksTo(16).tab(TabHandler.BLOCKS), WoodBlocks.PSARONIUS_SIGN.get(),WoodBlocks.PSARONIUS_WALL_SIGN.get()));
     public static HashMap<Dinosaur, LinkedHashMap<String, RegistryObject<Item>>> BONES = new HashMap<>();
     public static HashMap<Dinosaur, LinkedHashMap<String, RegistryObject<Item>>> FRESH_BONES = new HashMap<>();
     public static ArrayList<RegistryObject<Item>> ALL_BONES = new ArrayList<>();
@@ -478,8 +407,7 @@ public class ModItems {
 
 
     public static void register(IEventBus bus) {
-        PlantHandler.init();
-        DinosaurHandler.doDinosInit();
+
 
         for(RegistryObject<Block>/*auto*/ a : ModBlocks.MOD_BLOCKS.getEntries()){
             ResourceLocation location = a.getId();
@@ -533,28 +461,18 @@ public class ModItems {
 
                 RegistryObject<DinosaurEggItem> egg = MOD_ITEMS.register("egg/egg_" + formattedName, () -> new DinosaurEggItem(new Item.Properties(), a));
                 dinoEggs.put(a, egg);
-                TabHandler.addToTab(TabHandler.DNA.getId(), () -> {
-                    ItemStack stack = egg.get().getDefaultInstance();
-                    stack.getOrCreateTag().putBoolean("isCreative", true);
-                    return stack;
-                });
 
             }
 
             RegistryObject<HatchedEggItem> hatchedEgg = MOD_ITEMS.register("hatched_egg/egg_" + formattedName, () -> new HatchedEggItem(new Item.Properties(), a));
-            TabHandler.addToTab(TabHandler.DNA.getId(), () -> {
-                ItemStack stack = hatchedEgg.get().getDefaultInstance();
-                stack.getOrCreateTag().putBoolean("isCreative", true);
-                return stack;
-            });
-            RegistryObject<DNAItem> dinoDna = register("dna/dna_" + formattedName, TabHandler.DNA, () -> new DNAItem(new Item.Properties(), a));
-            RegistryObject<SoftTissueItem> softTissue = register("soft_tissue/soft_tissue_" + formattedName, TabHandler.DNA, () -> new SoftTissueItem(new Item.Properties(), a));
-            RegistryObject<SyringeItem> dinoSyringe = register("syringe/syringe_" + formattedName, TabHandler.DNA, () -> new SyringeItem(new Item.Properties(), a));
-            RegistryObject<ActionFigureItem> actionFigure = register("action_figure/action_figure_" + formattedName, TabHandler.DECORATIONS, () -> new ActionFigureItem(new Item.Properties(), a, false, true));
-            RegistryObject<FreshSkeletonItem> freshSkeleton = register("skeleton/fresh/skeleton_fresh_" + formattedName, TabHandler.DECORATIONS, () -> new FreshSkeletonItem(new Item.Properties(), a));
+            RegistryObject<DNAItem> dinoDna = MOD_ITEMS.register("dna/dna_" + formattedName, () -> new DNAItem(new Item.Properties(), a));
+            RegistryObject<SoftTissueItem> softTissue = MOD_ITEMS.register("soft_tissue/soft_tissue_" + formattedName, () -> new SoftTissueItem(new Item.Properties().tab(TabHandler.DNA), a));
+            RegistryObject<SyringeItem> dinoSyringe = MOD_ITEMS.register("syringe/syringe_" + formattedName, () -> new SyringeItem(new Item.Properties().tab(TabHandler.DNA), a));
+            RegistryObject<ActionFigureItem> actionFigure = MOD_ITEMS.register("action_figure/action_figure_" + formattedName, () -> new ActionFigureItem(new Item.Properties().tab(TabHandler.DECORATIONS), a, false, true));
+            RegistryObject<FreshSkeletonItem> freshSkeleton = MOD_ITEMS.register("skeleton/fresh/skeleton_fresh_" + formattedName, () -> new FreshSkeletonItem(new Item.Properties().tab(TabHandler.DECORATIONS), a));
 
             if (!a.isHybrid()) {
-                RegistryObject<FossilSkeletonItem> fossilSkeleton = register("skeleton/fossil/skeleton_fossil_" + formattedName, TabHandler.DECORATIONS, () -> new FossilSkeletonItem(new Item.Properties(), a));
+                RegistryObject<FossilSkeletonItem> fossilSkeleton = MOD_ITEMS.register("skeleton/fossil/skeleton_fossil_" + formattedName, () -> new FossilSkeletonItem(new Item.Properties().tab(TabHandler.DECORATIONS), a));
                 ModItems.FOSSIL_SKELETONS.put(a, fossilSkeleton);
             }
 
@@ -582,25 +500,18 @@ public class ModItems {
             String formattedPlantName = name.toLowerCase(Locale.ROOT).replaceAll(" ", "_");
 
             String dnaPath = "dna/plants/dna_" + formattedPlantName;
-            PLANT_DNAS.put(p, register(dnaPath, TabHandler.DNA, () -> new PlantDNAItem(p, new Item.Properties())));
+            PLANT_DNAS.put(p, MOD_ITEMS.register(dnaPath, () -> new PlantDNAItem(p, new Item.Properties())));
 
             String softTissuePath = "soft_tissue/plants/soft_tissue_" + formattedPlantName;
-            register(softTissuePath,
-                    TabHandler.DNA,
-                    () -> new PlantSoftTissueItem(new Item.Properties(), p));
-
-            TabHandler.addToTab(TabHandler.PLANTS.getId(), () -> {
-                ItemStack stack = ModItems.PLANT_CALLUS.get().getPlantInstance(p, 100);
-                stack.getOrCreateTag().putBoolean("isCreative", true);
-                return stack;
-            });
+            MOD_ITEMS.register(softTissuePath,
+                    () -> new PlantSoftTissueItem(new Item.Properties().tab(TabHandler.DNA), p));
         }
 
         for(DyeColor d : DyeColor.values()){
             String name = "cultivate/cultivate_bottom_" + d.getName();
             System.out.println(name);
 
-            CULTIVATORS.put(d, register(name, TabHandler.BLOCKS, () -> new CultivatorItem(new Item.Properties(), d)));
+            CULTIVATORS.put(d, MOD_ITEMS.register(name, () -> new CultivatorItem(new Item.Properties().tab(TabHandler.BLOCKS), d)));
         }
 
         MOD_ITEMS.register(bus);
@@ -613,22 +524,16 @@ public class ModItems {
     }
 
     private static boolean hasNoItem(ResourceLocation location) {
-        return location.getPath().equals("display_block")
-                || location.getPath().equals("gypsum_bricks")
+        return location.getPath().equals("display_block") || location.getPath().equals("gypsum_bricks")
                 || location.getPath().equals("hologram_block")
                 || location.getPath().equals("peat_moss")
                 || location.getPath().equals("krill_swarm")
-                || location.getPath().equals("encased_fauna_fossil")
-                || location.getPath().startsWith("potted_")
-                || location.getPath().equals("fauna_fossil")
-                || location.getPath().equals("flora_fossil")
-                || location.getPath().equals("deepslate_flora_fossil")
                 || location.getPath().equals("plankton_swarm")
-                || location.getPath().endsWith("_sapling")
-                || location.getPath().startsWith("cultivator_")
-                || MOD_ITEMS.getEntries().stream().anyMatch(obj -> obj.getId().equals(location));
+                || location.getPath().startsWith("potted_")
+                || location.getPath().equals("cultivator_bottom") || location.getPath().equals("cultivator_tob")
+                || location.getPath().equals("cultivate_bottom") || location.getPath().equals("cultivate_top")
+                || MOD_ITEMS.getEntries().contains(location);
     }
-
 
 
     @Nullable
@@ -640,14 +545,14 @@ public class ModItems {
             return null;
         }
         String id = "spawn_egg/" + formattedName + "_spawn_egg";
-        RegistryObject<DinosaurSpawnEggItem> spawnEgg = MOD_ITEMS.register(id, () -> new DinosaurSpawnEggItem(dinosaur, entityType));
-        TabHandler.addToTab(TabHandler.SPAWN_EGGS.getId(), spawnEgg);
-        return spawnEgg;
+        return MOD_ITEMS.register(id, () -> new DinosaurSpawnEggItem(dinosaur, entityType));
     }
 
     @Nullable
-    public static RegistryObject<Item> registerSingleBone(String boneName, RegistryObject<CreativeModeTab> tab, Supplier<Item> sup, Dinosaur dino, boolean fresh){
-
+    public static RegistryObject<Item> registerSingleBone(String boneName, Supplier<Item> sup, Dinosaur dino, boolean fresh){
+        if(dino == DinosaurHandler.BLUE || dino == DinosaurHandler.CHARLIE || dino == DinosaurHandler.DELTA || dino == DinosaurHandler.ECHO){
+            return null;
+        }
         String formattedDinoName = dino.getName().toLowerCase(Locale.ROOT).replaceAll(" ", "_");
         String id = "/" + formattedDinoName + "_" + boneName;
         if(fresh){
@@ -662,7 +567,7 @@ public class ModItems {
             if(USED_IDS.contains(id))
                 return null;
             USED_IDS.add(id);
-            RegistryObject<Item> item = register(id, tab, sup);
+            RegistryObject<Item> item = MOD_ITEMS.register(id, sup);
             ALL_BONES.add(item);
             return item;
         }catch(IllegalArgumentException e){
@@ -681,7 +586,7 @@ public class ModItems {
 
         LinkedHashMap<String, RegistryObject<Item>> DINO_BONES = new LinkedHashMap<>();
         for(String s : dinosaur.getBones()){
-            RegistryObject<Item> item = registerSingleBone(s, TabHandler.FOSSILS, () -> new FossilItem(new Item.Properties(), s, false, dinosaur), dinosaur, false);
+            RegistryObject<Item> item = registerSingleBone(s, () -> new FossilItem(new Item.Properties().tab(TabHandler.FOSSILS), s, false, dinosaur), dinosaur, false);
             if(item != null)
                 DINO_BONES.put(s, item);
         }
@@ -695,7 +600,7 @@ public class ModItems {
             return;
         }
         for(String s : dino.getBones()){
-            RegistryObject<Item> item = registerSingleBone(s, TabHandler.FOSSILS, () -> new FossilItem(new Item.Properties(), s, true, dino), dino, true);
+            RegistryObject<Item> item = registerSingleBone(s, () -> new FossilItem(new Item.Properties().tab(TabHandler.FOSSILS), s, true, dino), dino, true);
             if(item != null)
                 fresh_bones.put(s, item);
         }
@@ -705,12 +610,12 @@ public class ModItems {
 
 
     public static RegistryObject<Item> registerSingleRawMeat(Supplier<Item> sup, Dinosaur dino){
-        return register("meat/meat_" + dino.getName().toLowerCase(Locale.ROOT).replaceAll(" ", "_"), TabHandler.FOODS, sup);
+        return MOD_ITEMS.register("meat/meat_" + dino.getName().toLowerCase(Locale.ROOT).replaceAll(" ", "_"), sup);
 
     }
 
     public static RegistryObject<Item> registerSingleSteak(Supplier<Item> sup, Dinosaur dino){
-        return register("meat/steak_" + dino.getName().toLowerCase(Locale.ROOT).replaceAll(" ", "_"), TabHandler.FOODS, sup);
+        return MOD_ITEMS.register("meat/steak_" + dino.getName().toLowerCase(Locale.ROOT).replaceAll(" ", "_"), sup);
     }
 
     public static void registerMeatsForDino(Dinosaur dino){
@@ -725,8 +630,8 @@ public class ModItems {
         for(MobEffectInstance i : rawEffects){
             rawProperties.effect(() -> i, 0.9f);
         }
-        RegistryObject<Item> rawMeat = registerSingleRawMeat(() -> new DinosaurMeatItem(new Item.Properties().food(rawProperties.build()), false, dino), dino);
-        RegistryObject<Item> steak = registerSingleSteak(() -> new DinosaurMeatItem(new Item.Properties().food(cookedProperties.build()), true, dino), dino);
+        RegistryObject<Item> rawMeat = registerSingleRawMeat(() -> new DinosaurMeatItem(new Item.Properties().food(rawProperties.build()).tab(TabHandler.FOODS), false, dino), dino);
+        RegistryObject<Item> steak = registerSingleSteak(() -> new DinosaurMeatItem(new Item.Properties().food(cookedProperties.build()).tab(TabHandler.FOODS), true, dino), dino);
         MEATS.put(dino, rawMeat);
         STEAKS.put(dino, steak);
         ALL_MEATS.add(rawMeat);
@@ -734,21 +639,13 @@ public class ModItems {
     }
 
     public static RegistryObject<BlockItem> registerBlockItem(String name, Supplier<Block> blockSupplier) {
-        return MOD_ITEMS.register(name, () -> {
-            Block block = blockSupplier.get();
-            BlockItem item = new BlockItem(block, new Item.Properties());
-            ResourceLocation tabId = determineTab(block);
-            if (tabId != null) {
-                TabHandler.addToTab(tabId, () -> new ItemStack(item));
-            }
-            return item;
-        });
+        return MOD_ITEMS.register(name, () -> new BlockItem(blockSupplier.get(),
+                new Item.Properties().tab(determineTab(blockSupplier.get()))));
     }
 
-
     private static RegistryObject<Item> registerBoat(String name, ModBoatType type, boolean hasChest) {
-        RegistryObject<Item> registryObject = register(name, TabHandler.ITEMS, () -> new JurassicBoatItem(hasChest, type,
-                new Item.Properties().stacksTo(1)));
+        RegistryObject<Item> registryObject = MOD_ITEMS.register(name, () -> new JurassicBoatItem(hasChest, type,
+                new Item.Properties().stacksTo(1).tab(TabHandler.ITEMS)));
         if (hasChest) {
             type.setChestBoatItem(() -> registryObject.get());
         } else {
@@ -757,7 +654,7 @@ public class ModItems {
         return registryObject;
     }
 
-    private static ResourceLocation determineTab(Block block) {
+    private static CreativeModeTab determineTab(Block block) {
         if (block instanceof AncientPlantBlock
                 || block instanceof AncientCoralBlock
                 || block instanceof WestIndianLilacBlock
@@ -769,18 +666,17 @@ public class ModItems {
                 || block instanceof MossBlock
                 || block instanceof BaseCoralPlantBlock
                 || block instanceof AncientCrop) {
-            return TabHandler.PLANTS.getId();
+            return TabHandler.PLANTS;
         } else if (block instanceof FossilBlock) {
-            return TabHandler.FOSSILS.getId();
+            return TabHandler.FOSSILS;
         } else if (block instanceof ParkBenchBlock || block instanceof TrashCanBlock) {
-            return TabHandler.DECORATIONS.getId();
-        } else if (block instanceof SkullDisplayBlock || block instanceof CultivatorTopBlock || block instanceof CultivatorBottomBlock) {
+                return TabHandler.DECORATIONS;
+        } else if (block instanceof SkullDisplayBlock) {
             return null;
         } else {
-            return TabHandler.BLOCKS.getId();
+            return TabHandler.BLOCKS;
         }
     }
-
 
 
     private static Map<AttractionSignEntity.AttractionSignType, RegistryObject<Item>> registerAttractionSigns() {
@@ -789,10 +685,9 @@ public class ModItems {
             String name = "attraction_sign_" + type.name().toLowerCase(Locale.ROOT);
             map.put(
                     type,
-                    register(
+                    MOD_ITEMS.register(
                             name,
-                            TabHandler.DECORATIONS,
-                            () -> new AttractionSignItem(type, new Item.Properties().stacksTo(1))
+                            () -> new AttractionSignItem(type, new Item.Properties().stacksTo(1).tab(TabHandler.DECORATIONS))
                     )
             );
         }

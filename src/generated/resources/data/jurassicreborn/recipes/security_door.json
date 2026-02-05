@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "building",
   "group": "jurassicreborn:security_door",
   "key": {
     "A": {
@@ -18,6 +17,5 @@
   "result": {
     "count": 3,
     "item": "jurassicreborn:security_door"
-  },
-  "show_notification": true
+  }
 }

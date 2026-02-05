@@ -23,20 +23,21 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
-import software.bernie.geckolib.animatable.GeoBlockEntity;
-import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
-import software.bernie.geckolib.core.animation.AnimatableManager;
-import software.bernie.geckolib.core.animation.AnimationController;
-import software.bernie.geckolib.core.animation.AnimationState;
-import software.bernie.geckolib.core.animation.RawAnimation;
-import software.bernie.geckolib.core.object.PlayState;
-import software.bernie.geckolib.util.GeckoLibUtil;
+import software.bernie.geckolib3.core.IAnimatable;
+import software.bernie.geckolib3.core.PlayState;
+import software.bernie.geckolib3.core.builder.AnimationBuilder;
+import software.bernie.geckolib3.core.builder.ILoopType;
+import software.bernie.geckolib3.core.controller.AnimationController;
+import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
+import software.bernie.geckolib3.core.manager.AnimationData;
+import software.bernie.geckolib3.core.manager.AnimationFactory;
+import software.bernie.geckolib3.util.GeckoLibUtil;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
 
-public class IncubatorBlockEntity extends MachineBlockEntity implements TemperatureControl, GeoBlockEntity, MenuProvider, ItemHandlerBlockEntity {
+public class IncubatorBlockEntity extends MachineBlockEntity implements TemperatureControl, IAnimatable, MenuProvider, ItemHandlerBlockEntity {
 
 
     public static final int[] INPUTS = new int[] { 0, 1, 2, 3, 4 };
@@ -262,43 +263,45 @@ public class IncubatorBlockEntity extends MachineBlockEntity implements Temperat
     }
 
     //model stuff
-    private static final RawAnimation INACTIVE = RawAnimation.begin().thenLoop("animation.incubator.inactive");
-    private static final RawAnimation ACTIVE = RawAnimation.begin().thenLoop("animation.incubator.active");
-    private static final RawAnimation TRANSITION_ACTIVE = RawAnimation.begin()
-            .thenPlay("animation.incubator.transition_active")
-            .thenLoop("animation.incubator.active");
-    private static final RawAnimation TRANSITION_INACTIVE = RawAnimation.begin()
-            .thenPlay("animation.incubator.transition_inactive")
-            .thenLoop("animation.incubator.inactive");
+    protected static final AnimationBuilder INACTIVE = new AnimationBuilder().addAnimation("animation.incubator.inactive");
 
-    private final AnimatableInstanceCache animationCache = GeckoLibUtil.createInstanceCache(this);
-    private boolean lastMenuState = false;
+    protected static final AnimationBuilder TRANSITION_ACTIVE = new AnimationBuilder().addAnimation("animation.incubator.transition_active");
+    protected static final AnimationBuilder TRANSITION_ACTIVE_LOOP = new AnimationBuilder().addAnimation("animation.incubator.transition_active", ILoopType.EDefaultLoopTypes.LOOP);
+
+    protected static final AnimationBuilder ACTIVE = new AnimationBuilder().addAnimation("animation.incubator.active");
+    protected static final AnimationBuilder TRANSITION_INACTIVE = new AnimationBuilder().addAnimation("animation.incubator.transition_inactive");
+    private final AnimationFactory factory = GeckoLibUtil.createFactory(this);
 
     @Override
-    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
-        controllers.add(new AnimationController<>(this, "controller", 16, this::controller));
+    public void registerControllers(AnimationData animationData) {
+        animationData.addAnimationController(new AnimationController<>(this, "controller", 16, this::controller));
     }
 
-    private PlayState controller(AnimationState<IncubatorBlockEntity> state) {
-        AnimationController<IncubatorBlockEntity> controller = state.getController();
+    protected <E extends IncubatorBlockEntity> PlayState controller(final AnimationEvent<E> event){
+//        event.getController().setAnimation(INACTIVE);
+        AnimationController<?> controller = event.getController();
 
-        if (controller.getCurrentAnimation() == null) {
+        if(controller.getCurrentAnimation() == null){
             controller.setAnimation(INACTIVE);
-            lastMenuState = menuOpen;
             return PlayState.CONTINUE;
         }
 
-        if (menuOpen != lastMenuState) {
-            controller.setAnimation(menuOpen ? TRANSITION_ACTIVE : TRANSITION_INACTIVE);
-            lastMenuState = menuOpen;
-            return PlayState.CONTINUE;
-        }
 
-        if (menuOpen) {
-            controller.setAnimation(ACTIVE);
-        } else {
-            controller.setAnimation(INACTIVE);
+
+        if(this.menuOpen && controller.getCurrentAnimation().animationName.equals("animation.incubator.inactive")){
+
+            controller.setAnimation(TRANSITION_ACTIVE.addAnimation("animation.incubator.active"));
+
         }
+        else if(!this.menuOpen && controller.getCurrentAnimation().animationName.equals("animation.incubator.active")){
+
+            controller.setAnimation(TRANSITION_INACTIVE.addAnimation("animation.incubator.inactive"));
+
+        }
+        else if(!this.menuOpen)
+            controller.setAnimation(INACTIVE);
+
+
 
         return PlayState.CONTINUE;
     }
@@ -306,8 +309,8 @@ public class IncubatorBlockEntity extends MachineBlockEntity implements Temperat
 
 
     @Override
-    public AnimatableInstanceCache getAnimatableInstanceCache() {
-        return this.animationCache;
+    public AnimationFactory getFactory() {
+        return this.factory;
     }
 
 

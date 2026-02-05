@@ -1,7 +1,7 @@
 package net.vit.jurassicreborn.client.screens;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import net.minecraft.client.gui.GuiGraphics;
+import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -18,9 +18,9 @@ public class BugCrateScreen extends AbstractContainerScreen<BugCrateMenu> {
     }
 
     @Override
-    protected void renderBg(GuiGraphics graphics, float partialTicks, int mouseX, int mouseY) {
+    protected void renderBg(PoseStack poseStack, float partialTicks, int mouseX, int mouseY) {
         RenderSystem.setShaderTexture(0, TEXTURE);
-        graphics.blit(TEXTURE, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight);
+        this.blit(poseStack, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight);
 
         // --- Draw progress arrow (if using one) ---
         int progress = this.menu.getProgress();
@@ -28,22 +28,22 @@ public class BugCrateScreen extends AbstractContainerScreen<BugCrateMenu> {
         if (max > 0 && progress > 0) {
             int arrowPixels = (int)(24.0F * progress / max);
             // (x, y, u, v, width, height)
-            graphics.blit(TEXTURE, this.leftPos + 76, this.topPos + 36, 176, 0, arrowPixels, 17);
+            this.blit(poseStack, this.leftPos + 76, this.topPos + 36, 176, 0, arrowPixels, 17);
         }
     }
 
     @Override
-    protected void renderLabels(GuiGraphics graphics, int mouseX, int mouseY) {
+    protected void renderLabels(PoseStack poseStack, int mouseX, int mouseY) {
         // Title
-        graphics.drawString(this.font, this.title, 8, 6, 0x404040, false);
+        this.font.draw(poseStack, this.title, 8, 6, 0x404040);
         // Player Inventory label
-        graphics.drawString(this.font, this.playerInventoryTitle, 8, this.imageHeight - 94, 0x404040, false);
+        this.font.draw(poseStack, this.playerInventoryTitle, 8, this.imageHeight - 94, 0x404040);
     }
 
     @Override
-    public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTicks) {
-        this.renderBackground(graphics);
-        super.render(graphics, mouseX, mouseY, partialTicks);
-        this.renderTooltip(graphics, mouseX, mouseY);
+    public void render(PoseStack poseStack, int mouseX, int mouseY, float partialTicks) {
+        this.renderBackground(poseStack);
+        super.render(poseStack, mouseX, mouseY, partialTicks);
+        this.renderTooltip(poseStack, mouseX, mouseY);
     }
 }

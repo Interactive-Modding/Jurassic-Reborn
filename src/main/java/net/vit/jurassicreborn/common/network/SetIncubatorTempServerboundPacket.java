@@ -2,7 +2,7 @@ package net.vit.jurassicreborn.common.network;
 
 import net.vit.jurassicreborn.common.util.block.TemperatureControl;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.registries.Registries;
+import net.minecraft.core.Registry;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
@@ -40,7 +40,7 @@ public class SetIncubatorTempServerboundPacket{
             return;
         }
 
-        ServerLevel dim = player.serverLevel();
+        ServerLevel dim = player.getLevel();
 
         if(dim.isClientSide){
             return;
@@ -86,7 +86,7 @@ public class SetIncubatorTempServerboundPacket{
         var pos = buffer.readBlockPos();
         int slotIndex = buffer.readInt();
         int temp = buffer.readInt();
-        ResourceKey<Level> dim = buffer.readResourceKey(Registries.DIMENSION);
+        ResourceKey<Level> dim = buffer.readResourceKey(Registry.DIMENSION_REGISTRY);
 
         return new SetIncubatorTempServerboundPacket(pos, slotIndex, temp, dim);
 

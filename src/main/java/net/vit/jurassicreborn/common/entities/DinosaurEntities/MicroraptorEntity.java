@@ -1,14 +1,12 @@
 package net.vit.jurassicreborn.common.entities.DinosaurEntities;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
-import net.minecraft.world.entity.Entity.MoveFunction;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.Goal;
@@ -23,7 +21,6 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-
 import net.vit.jurassicreborn.client.sounds.SoundHandler;
 import net.vit.jurassicreborn.common.entities.DinosaurEntities.*;
 import net.vit.jurassicreborn.common.entities.DinosaurEntity;
@@ -36,7 +33,6 @@ import net.vit.jurassicreborn.common.entities.ai.LeapingMeleeEntityAI;
 import net.vit.jurassicreborn.common.entities.ai.RaptorClimbTreeAI;
 import net.vit.jurassicreborn.common.entities.ai.RaptorLeapEntityAI;
 import net.vit.jurassicreborn.common.RebornConfig;
-
 // import net.vit.jurassicreborn.network.MicroraptorDismountMessage;
 import com.github.alexthe666.citadel.animation.Animation;
 import net.minecraft.client.Minecraft;
@@ -69,7 +65,7 @@ public class MicroraptorEntity extends DinosaurEntity {
 
     @Override
     public boolean hurt(DamageSource source, float amount) {
-        return !source.is(DamageTypes.FLY_INTO_WALL) && super.hurt(source, amount);
+        return source != DamageSource.FLY_INTO_WALL && super.hurt(source, amount);
     }
 
     @Override
@@ -80,9 +76,9 @@ public class MicroraptorEntity extends DinosaurEntity {
         boolean climbing = curAni == EntityAnimation.CLIMBING.get() || curAni == EntityAnimation.START_CLIMBING.get();
 
         if (climbing) {
-            BlockPos trunk = BlockPos.containing(this.getX(), this.getBoundingBox().minY, this.getZ());
+            BlockPos trunk = new BlockPos(this.getX(), this.getBoundingBox().minY, this.getZ());
             for (net.minecraft.core.Direction dir : net.minecraft.core.Direction.Plane.HORIZONTAL) {
-                if (!level().isEmptyBlock(trunk.relative(dir)) && this.level().getBlockState(trunk.relative(dir)).isRedstoneConductor(level(), trunk.relative(dir))) {
+                if (!level.isEmptyBlock(trunk.relative(dir)) && this.level.getBlockState(trunk.relative(dir)).isRedstoneConductor(level, trunk.relative(dir))) {
                     float yaw = dir.toYRot();
                     this.setYHeadRot(yaw);
                     this.setYRot(yaw);
@@ -115,7 +111,7 @@ public class MicroraptorEntity extends DinosaurEntity {
     public void aiStep() {
         super.aiStep();
 
-        if (this.level().isClientSide) {
+        if (this.level.isClientSide) {
             this.updateClientControls();
         }
 
@@ -125,7 +121,7 @@ public class MicroraptorEntity extends DinosaurEntity {
         boolean climbing = curAni == EntityAnimation.CLIMBING.get() || curAni == EntityAnimation.START_CLIMBING.get();
         boolean leaping  = curAni == EntityAnimation.LEAP.get();
 
-        if (this.onGround() || this.isInWater() || this.isInLava() || this.isSwimming()) {
+        if (this.isOnGround() || this.isInWater() || this.isInLava() || this.isSwimming()) {
             this.flyTime = 0;
             if (gliding || landing) {
                 this.setAnimation(EntityAnimation.IDLE.get());
@@ -139,7 +135,7 @@ public class MicroraptorEntity extends DinosaurEntity {
                         if (!climbing) {
                             this.setAnimation(EntityAnimation.GLIDING.get());
                         }
-                    } else if (!this.level().isEmptyBlock(this.blockPosition().below())) {
+                    } else if (!this.level.isEmptyBlock(this.blockPosition().below())) {
                         this.setAnimation(EntityAnimation.LEAP_LAND.get());
                     }
                 }
@@ -153,7 +149,7 @@ public class MicroraptorEntity extends DinosaurEntity {
             this.groundHeight = 0;
             BlockPos pos = this.blockPosition();
             while (this.groundHeight <= 10) {
-                if (this.level().getBlockState(pos).isFaceSturdy(this.level(), pos, net.minecraft.core.Direction.UP)) {
+                if (this.level.getBlockState(pos).isFaceSturdy(this.level, pos, net.minecraft.core.Direction.UP)) {
                     break;
                 }
                 pos = pos.below();
@@ -161,7 +157,7 @@ public class MicroraptorEntity extends DinosaurEntity {
             }
         }
 
-        if (!this.level().isClientSide) {
+        if (!this.level.isClientSide) {
             this.getLookControl().tick();
         }
     }
@@ -184,7 +180,7 @@ public class MicroraptorEntity extends DinosaurEntity {
     public InteractionResult mobInteract(Player player, InteractionHand hand) {
         if (player.isShiftKeyDown() && hand == InteractionHand.MAIN_HAND) {
             if (this.isOwner(player) && this.order == Order.SIT && player.getPassengers().size() < 2) {
-                return this.startRiding(player, true) ? InteractionResult.sidedSuccess(this.level().isClientSide) : InteractionResult.PASS;
+                return this.startRiding(player, true) ? InteractionResult.sidedSuccess(this.level.isClientSide) : InteractionResult.PASS;
             }
         }
         return super.mobInteract(player, hand);
@@ -197,7 +193,6 @@ public class MicroraptorEntity extends DinosaurEntity {
         }
         return super.getItemBySlot(slot);
     }
-
 
     public Goal getAttackAI() {
         return new RaptorLeapEntityAI(this);
@@ -234,8 +229,8 @@ public class MicroraptorEntity extends DinosaurEntity {
     }
 
     @Override
-    protected void positionRider(Entity passenger, MoveFunction moveFunction) {
-        super.positionRider(passenger, moveFunction);
+    public void positionRider(Entity passenger) {
+        super.positionRider(passenger);
         Entity riding = this.getVehicle();
         if (!this.isPassenger() || !(riding instanceof Player player)) return;
 
@@ -290,7 +285,7 @@ public class MicroraptorEntity extends DinosaurEntity {
         BlockPos min = new BlockPos(Mth.floor(this.getX() - radiusXZ), Mth.floor(this.getY()), Mth.floor(this.getZ() - radiusXZ));
         BlockPos max = new BlockPos(Mth.ceil(this.getX() + radiusXZ),  Mth.ceil(this.getY()),  Mth.ceil(this.getZ() + radiusXZ));
         for (BlockPos pos : BlockPos.betweenClosed(min, max)) {
-            if (level().getBlockState(pos).getFluidState().isEmpty()) {
+            if (!level.getBlockState(pos).getMaterial().isLiquid()) {
                 return false;
             }
         }

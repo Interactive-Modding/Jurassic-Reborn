@@ -3,9 +3,8 @@ package net.vit.jurassicreborn.client.render.entity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.datafixers.util.Pair;
-import com.mojang.math.Axis;
+import com.mojang.math.Vector3f;
 import net.minecraft.client.model.BoatModel;
-import net.minecraft.client.model.ChestBoatModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -54,7 +53,8 @@ public class JurassicBoatRenderer<T extends net.minecraft.world.entity.vehicle.B
                 : JurassicBoatModelLayers.createBoatModelName(type);
         ModelPart part = context.bakeLayer(layer);
 
-        return hasChest ? new ChestBoatModel(part) : new BoatModel(part);
+        // 1.19.2 BoatModel requires (ModelPart, boolean)
+        return new BoatModel(part, hasChest);
     }
 
     @Override
@@ -62,21 +62,21 @@ public class JurassicBoatRenderer<T extends net.minecraft.world.entity.vehicle.B
         poseStack.pushPose();
 
         poseStack.translate(0.0D, 0.375D, 0.0D);
-        poseStack.mulPose(Axis.YP.rotationDegrees(180.0F - yaw));
+        poseStack.mulPose(Vector3f.YP.rotationDegrees(180.0F - yaw));
 
         float hurtTime = boat.getHurtTime() - partialTicks;
         float damage = boat.getDamage() - partialTicks;
         if (damage < 0.0F) damage = 0.0F;
         if (hurtTime > 0.0F) {
-            poseStack.mulPose(Axis.XP.rotationDegrees(Mth.sin(hurtTime) * hurtTime * damage / 10.0F * boat.getHurtDir()));
+            poseStack.mulPose(Vector3f.XP.rotationDegrees(Mth.sin(hurtTime) * hurtTime * damage / 10.0F * boat.getHurtDir()));
         }
 
         float bubbleAngle = boat.getBubbleAngle(partialTicks);
         if (!Mth.equal(bubbleAngle, 0.0F)) {
-            poseStack.mulPose(Axis.XP.rotationDegrees(bubbleAngle));
+            poseStack.mulPose(Vector3f.XP.rotationDegrees(bubbleAngle));
         }
         if (hasChest || boat instanceof JurassicChestBoat) {
-            poseStack.mulPose(Axis.YP.rotationDegrees(180.0F));
+            poseStack.mulPose(Vector3f.YP.rotationDegrees(180.0F));
         }
         ModBoatType variant = resolveVariant(boat);
         Pair<ResourceLocation, BoatModel> pair = boatResources.get(variant);
@@ -90,7 +90,7 @@ public class JurassicBoatRenderer<T extends net.minecraft.world.entity.vehicle.B
         ResourceLocation texture = pair.getFirst();
         BoatModel model = pair.getSecond();
 
-        poseStack.mulPose(Axis.YP.rotationDegrees(90.0F));
+        poseStack.mulPose(Vector3f.YP.rotationDegrees(90.0F));
         poseStack.scale(-1.0F, -1.0F, 1.0F);
 
         model.setupAnim(boat, partialTicks, 0.0F, -0.1F, 0.0F, 0.0F);

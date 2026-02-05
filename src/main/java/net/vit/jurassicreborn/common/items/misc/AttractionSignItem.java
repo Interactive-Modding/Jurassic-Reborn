@@ -1,5 +1,6 @@
 package net.vit.jurassicreborn.common.items.misc;
 
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
@@ -53,7 +54,7 @@ public class AttractionSignItem extends Item {
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level world, List<Component> tooltip, TooltipFlag flag) {
-        tooltip.add(Component.literal("Note: Hitbox is 1x1 block!"));
+        tooltip.add(Component.literal("Note: Hitbox is 1x1 block!").withStyle(ChatFormatting.GRAY));
         // or for vanilla color:
         // tooltip.add(Component.translatable("tooltip.jurassicreborn.sign_hitbox_small"));
         super.appendHoverText(stack, world, tooltip, flag);

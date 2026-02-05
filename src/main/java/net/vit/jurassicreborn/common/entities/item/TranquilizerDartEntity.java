@@ -3,7 +3,6 @@ package net.vit.jurassicreborn.common.entities.item;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -32,8 +31,7 @@ public class TranquilizerDartEntity extends ThrowableItemProjectile {
     @Override
     public void tick() {
         super.tick();
-        Level level = this.level();
-        if (!this.level().isClientSide && level instanceof ServerLevel server) {
+        if (!this.level.isClientSide && this.level instanceof ServerLevel server) {
             server.sendParticles(ParticleTypes.SMOKE, this.getX(), this.getY(), this.getZ(), 1, 0.0, 0.0, 0.0, 0.0);
         }
     }
@@ -46,7 +44,7 @@ public class TranquilizerDartEntity extends ThrowableItemProjectile {
     @Override
     protected void onHitEntity(EntityHitResult result) {
         super.onHitEntity(result);
-        if (!level().isClientSide && result.getEntity() instanceof DinosaurEntity dino && this.getItem().getItem() instanceof Dart dartItem) {
+        if (!level.isClientSide && result.getEntity() instanceof DinosaurEntity dino && this.getItem().getItem() instanceof Dart dartItem) {
             dartItem.getConsumer().accept(dino, this.getItem());
             discard();
         }
@@ -70,7 +68,7 @@ public class TranquilizerDartEntity extends ThrowableItemProjectile {
     }
 
     @Override
-    public Packet<ClientGamePacketListener> getAddEntityPacket() {
+    public Packet<?> getAddEntityPacket() {
         return NetworkHooks.getEntitySpawningPacket(this);
     }
 }

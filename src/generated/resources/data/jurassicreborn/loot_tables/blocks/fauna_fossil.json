@@ -11,11 +11,10 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "jurassicreborn:fauna_fossil_block_item"
+          "name": "jurassicreborn:fauna_fossil"
         }
       ],
       "rolls": 1.0
     }
-  ],
-  "random_sequence": "jurassicreborn:blocks/fauna_fossil"
+  ]
 }

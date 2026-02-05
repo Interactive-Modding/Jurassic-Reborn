@@ -4,7 +4,8 @@ import com.github.alexthe666.citadel.client.model.TabulaModel;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.math.Axis;
+import com.mojang.math.Quaternion;
+import com.mojang.math.Vector3f;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderer;
@@ -24,7 +25,6 @@ public abstract class HelicopterRenderer<E extends HelicopterEntity> extends Ent
     protected final ResourceLocation texture;
     protected final ResourceLocation positionLights;
 
-
     private static final ResourceLocation[] DESTROY_STAGES =
             java.util.stream.IntStream.range(0, 10)
                     .mapToObj(i -> new ResourceLocation("textures/block/destroy_stage_" + i + ".png"))
@@ -42,12 +42,10 @@ public abstract class HelicopterRenderer<E extends HelicopterEntity> extends Ent
         this.texture = new ResourceLocation(JurassicReborn.MODID, "textures/entities/" + helicopterName + "/" + helicopterName + ".png");
         this.positionLights = new ResourceLocation(JurassicReborn.MODID, "textures/entities/" + helicopterName + "/" + helicopterName + "_position_lights.png");
 
-
         try {
             var container = TabulaModelHelper.loadTabulaModel(
                     new ResourceLocation(JurassicReborn.MODID, "models/entities/" + helicopterName + "/" + helicopterName)
             );
-
             this.baseModel = new TabulaModel(container, animator);
             this.destroyModel = new TabulaModel(new TabulaModelUV(container, 16, 16), animator);
         } catch (Exception e) {
@@ -62,9 +60,9 @@ public abstract class HelicopterRenderer<E extends HelicopterEntity> extends Ent
         poseStack.translate(0, 1.25F, 0);
 
         // Quaternion-based rotation (replace Axis)
-        poseStack.mulPose(Axis.YP.rotationDegrees(180.0F - entityYaw));
-        poseStack.mulPose(Axis.XP.rotationDegrees(entity.pitch(partialTicks)));
-        poseStack.mulPose(Axis.ZP.rotationDegrees(entity.roll(partialTicks)));
+        poseStack.mulPose(new Quaternion(Vector3f.YP, 180.0F - entityYaw, true));
+        poseStack.mulPose(new Quaternion(Vector3f.XP, entity.pitch(partialTicks), true));
+        poseStack.mulPose(new Quaternion(Vector3f.ZP, entity.roll(partialTicks), true));
         poseStack.scale(-1, -1, 1);
 
         // Render the main model
@@ -99,10 +97,10 @@ public abstract class HelicopterRenderer<E extends HelicopterEntity> extends Ent
     protected void renderPositionLamp(E entity, PoseStack poseStack, MultiBufferSource buffer, int packedLight, float partialTicks) {
         // Lamp blinks when occupied or running
         if (entity.getControllingPassenger() != null || entity.getCurrentEngineSpeed() > 1) {
-            if (entity.level().getGameTime() - this.passedRenderTicks > entity.getPositionLightFrequency() * 2) {
-                this.passedRenderTicks = (int) entity.level().getGameTime();
+            if (entity.level.getGameTime() - this.passedRenderTicks > entity.getPositionLightFrequency() * 2) {
+                this.passedRenderTicks = (int) entity.level.getGameTime();
             }
-            if (entity.level().getGameTime() - this.passedRenderTicks <= entity.getPositionLightFrequency()) {
+            if (entity.level.getGameTime() - this.passedRenderTicks <= entity.getPositionLightFrequency()) {
                 VertexConsumer consumer = buffer.getBuffer(RenderType.entityTranslucent(positionLights));
                 baseModel.renderToBuffer(poseStack, consumer, packedLight, OverlayTexture.NO_OVERLAY,
                         1.0F, 1.0F, 1.0F, 0.7F);

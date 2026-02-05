@@ -1,8 +1,9 @@
 package net.vit.jurassicreborn.common.datagen.data;
 
-import net.minecraft.data.PackOutput;
-import net.minecraft.data.loot.LootTableProvider;
-import net.minecraft.data.loot.LootTableProvider.SubProviderEntry;
+import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.util.Pair;
+import net.minecraft.data.DataGenerator;
+import net.minecraft.data.loot.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.ValidationContext;
@@ -13,14 +14,22 @@ import net.vit.jurassicreborn.common.datagen.JREntityLoot;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
+import java.util.function.Supplier;
 
 public class JRLootTableProvider extends LootTableProvider {
-    public JRLootTableProvider(PackOutput output) {
-        super(output, Set.of(), List.of(
-                new SubProviderEntry(JREntityLoot::new, LootContextParamSets.ENTITY),
-                new SubProviderEntry(JRBlockLoot::new, LootContextParamSets.BLOCK)
-        ));
+    private final List<Pair<Supplier<Consumer<BiConsumer<ResourceLocation, LootTable.Builder>>>, LootContextParamSet>> subProviders = ImmutableList.of(
+            Pair.of(JREntityLoot::new, LootContextParamSets.ENTITY),
+            Pair.of(JRBlockLoot::new, LootContextParamSets.BLOCK));
+
+    public JRLootTableProvider(DataGenerator pGenerator) {
+        super(pGenerator);
+    }
+
+    @Override
+    protected List<Pair<Supplier<Consumer<BiConsumer<ResourceLocation, LootTable.Builder>>>, LootContextParamSet>> getTables() {
+        return this.subProviders;
     }
 
     @Override

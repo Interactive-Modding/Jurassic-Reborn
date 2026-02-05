@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "building",
   "key": {
     "#": {
       "item": "jurassicreborn:refined_gypsum_panel"
@@ -14,6 +13,5 @@
   "result": {
     "count": 4,
     "item": "jurassicreborn:refined_gypsum_panel_stairs"
-  },
-  "show_notification": true
+  }
 }

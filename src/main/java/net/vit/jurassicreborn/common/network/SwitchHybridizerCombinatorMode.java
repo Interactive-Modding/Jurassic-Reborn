@@ -3,7 +3,7 @@ package net.vit.jurassicreborn.common.network;
 import net.vit.jurassicreborn.common.blocks.ModBlocks;
 import net.vit.jurassicreborn.common.blocks.entities.DNABlocks.DNACombinatorHybridizer.DNACombinatorHybridizerBlock;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.registries.Registries;
+import net.minecraft.core.Registry;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
@@ -35,7 +35,7 @@ public class SwitchHybridizerCombinatorMode {
     public static SwitchHybridizerCombinatorMode read(FriendlyByteBuf buf){
         var mode = buf.readBoolean();
         var pos = buf.readBlockPos();
-        var dim = buf.readResourceKey(Registries.DIMENSION);
+        var dim = buf.readResourceKey(Registry.DIMENSION_REGISTRY);
         return new SwitchHybridizerCombinatorMode(mode, pos, dim);
     }
 

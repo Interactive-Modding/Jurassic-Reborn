@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_meat/meat_ankylodocus": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:meat/meat_ankylodocus"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "jurassicreborn:meat/steak_ankylodocus_from_smelting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_meat/meat_ankylodocus",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "jurassicreborn:meat/steak_ankylodocus_from_smelting"
+    ]
+  }
+}

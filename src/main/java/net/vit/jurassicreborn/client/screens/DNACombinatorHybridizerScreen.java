@@ -1,12 +1,12 @@
 package net.vit.jurassicreborn.client.screens;
 
 import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.blaze3d.vertex.PoseStack;
 import net.vit.jurassicreborn.JurassicReborn;
 import net.vit.jurassicreborn.common.blocks.entities.DNABlocks.DNACombinatorHybridizer.DNACombinatorHybridizerBlockEntity;
 import net.vit.jurassicreborn.common.blocks.entities.DNABlocks.DNACombinatorHybridizer.DNACombinatorHybridizerMenu;
 import net.vit.jurassicreborn.common.network.Network;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.GameRenderer;
@@ -68,15 +68,15 @@ public class DNACombinatorHybridizerScreen extends AbstractContainerScreen<DNACo
 
 
 
-        this.switchModeButton = this.addRenderableWidget(Button.builder(Component.literal("<->"), (w) -> {
+        this.switchModeButton = this.addRenderableWidget(new Button(xSize+128, ySize+64, 30, 12, Component.literal("<->"), (w) ->{
             BlockPos entityPos = new BlockPos(menu.getField(3), menu.getField(4), menu.getField(5));
 
             boolean mode = !this.menu.getMode();
             this.menu.updateSlots(!mode);
             this.menu.setMode(mode);
 
-            Network.switchHybridizerCombinerMode(mode, entityPos, playerInventory.player.level().dimension());
-        }).bounds(xSize + 128, ySize + 64, 30, 12).build());
+            Network.switchHybridizerCombinerMode(mode, entityPos, playerInventory.player.getLevel().dimension());
+        }));
     }
 
 //    @Override
@@ -94,16 +94,16 @@ public class DNACombinatorHybridizerScreen extends AbstractContainerScreen<DNACo
 
 
     @Override
-    public void render(@NotNull GuiGraphics graphics, int mouseX, int mouseY, float partialTick) {
+    public void render(@NotNull PoseStack pPoseStack, int mouseX, int mouseY, float pPartialTick) {
         boolean isHybridizer = this.menu.getMode();
         this.menu.updateSlots(!isHybridizer);
         this.title = Component.translatable(isHybridizer ? "container.dna_hybridizer" : "container.dna_combinator");
-        this.renderBackground(graphics);
-        super.render(graphics, mouseX, mouseY, partialTick);
+        this.renderBackground(pPoseStack);
+        super.render(pPoseStack, mouseX, mouseY, pPartialTick);
 //        this.renderLabels(pPoseStack, mouseX, mouseY);
 
 
-        this.renderTooltip(graphics, mouseX, mouseY);
+        this.renderTooltip(pPoseStack, mouseX, mouseY);
 
     }
 
@@ -115,7 +115,7 @@ public class DNACombinatorHybridizerScreen extends AbstractContainerScreen<DNACo
 //    }
 
     @Override
-    protected void renderBg(@NotNull GuiGraphics graphics, float partialTick, int mouseX, int mouseY) {
+    protected void renderBg(@NotNull PoseStack pPoseStack, float pPartialTick, int pMouseX, int pMouseY) {
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
         boolean isHybridizer = this.menu.getMode();
@@ -130,22 +130,23 @@ public class DNACombinatorHybridizerScreen extends AbstractContainerScreen<DNACo
 
         int centerX = (this.width - xSize) / 2;
         int centerY = (this.height - ySize) / 2;
-        graphics.blit(isHybridizer ? hybridizerTexture : combinatorTexture, xSize, ySize, 0, 0, 176, 166);
+        this.blit(pPoseStack, xSize, ySize, 0, 0, 176, 166);
 
         int progress = this.getProgress(isHybridizer ? 27 : 24);
 
 
         if (isHybridizer) {
-            graphics.blit(hybridizerTexture, this.leftPos + 86, this.topPos + 25, 176, 0, 4, progress);
+            this.blit(pPoseStack, this.leftPos + 86, this.topPos + 25, 176, 0, 4, progress);
         } else {
 
             if(progress >= 2)
-                graphics.blit(combinatorTexture, this.leftPos + 93, this.topPos + 31, 176, 1, 8, progress-1);
+                this.blit(pPoseStack, this.leftPos + 93, this.topPos + 31, 176, 1, 8, progress-1);
 
             if(progress >= 1)
-                graphics.blit(combinatorTexture, this.leftPos + 93, this.topPos + 30, 176, 1, 8, progress == 1 ? 1 : 2);
+                this.blit(pPoseStack, this.leftPos + 93, this.topPos + 30, 176, 1, 8, progress == 1 ? 1 : 2);
         }
 
+        this.switchModeButton.renderButton(pPoseStack, pMouseX, pMouseY, pPartialTick);
     }
 
     private int getProgress(int scale) {

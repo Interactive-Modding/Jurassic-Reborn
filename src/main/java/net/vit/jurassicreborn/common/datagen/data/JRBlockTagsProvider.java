@@ -1,71 +1,63 @@
 package net.vit.jurassicreborn.common.datagen.data;
 
-import net.minecraft.core.HolderLookup;
 import net.minecraft.data.BlockFamily;
-import net.minecraft.data.PackOutput;
+import net.minecraft.data.DataGenerator;
+import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.world.level.block.Block;
-import net.minecraftforge.common.data.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.vit.jurassicreborn.JurassicReborn;
 import net.vit.jurassicreborn.common.blocks.ModBlocks;
 import net.vit.jurassicreborn.common.blocks.wood.WoodBlocks;
 import net.vit.jurassicreborn.common.datagen.ModBlockFamilies;
-
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Objects;
-import java.util.concurrent.CompletableFuture;
 
 public class JRBlockTagsProvider extends BlockTagsProvider {
-
-    public JRBlockTagsProvider(PackOutput output,
-                               CompletableFuture<HolderLookup.Provider> lookupProvider,
-                               @Nullable ExistingFileHelper existingFileHelper) {
-        super(output, lookupProvider, JurassicReborn.MODID, existingFileHelper);
+    public JRBlockTagsProvider(DataGenerator pGenerator, @Nullable ExistingFileHelper existingFileHelper) {
+        super(pGenerator, JurassicReborn.MODID, existingFileHelper);
     }
 
     @Override
-    protected void addTags(HolderLookup.Provider provider) {
-        // Families → generic tags by variant
+    protected void addTags() {
         ModBlockFamilies.getAllFamilies()
                 .map(family -> family.get(BlockFamily.Variant.TRAPDOOR))
                 .filter(Objects::nonNull)
-                .forEach(b -> tag(BlockTags.WOODEN_TRAPDOORS).add(b));
+                .forEach(block -> tag(BlockTags.WOODEN_TRAPDOORS).add(block));
 
         ModBlockFamilies.getAllFamilies()
                 .map(family -> family.get(BlockFamily.Variant.BUTTON))
                 .filter(Objects::nonNull)
-                .forEach(b -> tag(BlockTags.BUTTONS).add(b));
+                .forEach(block -> tag(BlockTags.BUTTONS).add(block));
 
         ModBlockFamilies.getAllFamilies()
                 .map(family -> family.get(BlockFamily.Variant.PRESSURE_PLATE))
                 .filter(Objects::nonNull)
-                .forEach(b -> tag(BlockTags.PRESSURE_PLATES).add(b));
+                .forEach(block -> tag(BlockTags.PRESSURE_PLATES).add(block));
 
         ModBlockFamilies.getAllFamilies()
                 .map(family -> family.get(BlockFamily.Variant.SLAB))
                 .filter(Objects::nonNull)
-                .forEach(b -> tag(BlockTags.SLABS).add(b));
+                .forEach(block -> tag(BlockTags.SLABS).add(block));
 
         ModBlockFamilies.getAllFamilies()
                 .map(family -> family.get(BlockFamily.Variant.STAIRS))
                 .filter(Objects::nonNull)
-                .forEach(b -> tag(BlockTags.STAIRS).add(b));
+                .forEach(block -> tag(BlockTags.STAIRS).add(block));
 
         ModBlockFamilies.getAllFamilies()
                 .map(family -> family.get(BlockFamily.Variant.WALL))
                 .filter(Objects::nonNull)
-                .forEach(b -> tag(BlockTags.WALLS).add(b));
+                .forEach(block -> tag(BlockTags.WALLS).add(block));
 
         ModBlockFamilies.getAllFamilies()
                 .map(family -> family.get(BlockFamily.Variant.DOOR))
                 .filter(Objects::nonNull)
-                .forEach(b -> tag(BlockTags.DOORS).add(b));
+                .forEach(block -> tag(BlockTags.DOORS).add(block));
+        ModBlockFamilies.getAllFamilies().forEach(blockFamily -> {
+            tag(BlockTags.WOODEN_TRAPDOORS).add(blockFamily.get(BlockFamily.Variant.TRAPDOOR));
+        });
 
-        // (Removed duplicate extra loop that added TRAPDOORs again)
-
-        // Explicit wooden/stone/etc. sets
         tag(BlockTags.BUTTONS).add(
                 WoodBlocks.ARAUCARIA_BUTTON.get(),
                 WoodBlocks.MAGNOLIA_BUTTON.get(),
@@ -174,15 +166,9 @@ public class JRBlockTagsProvider extends BlockTagsProvider {
                 ModBlocks.REINFORCED_STONE_PATHWAY_WALL.get(),
                 ModBlocks.REINFORCED_STONE_PANEL_WALL.get()
         );
-
         tag(BlockTags.DOORS).add(
                 ModBlocks.REINFORCED_DOOR.get(),
                 ModBlocks.SECURITY_DOOR.get()
         );
-    }
-
-    @Override
-    public String getName() {
-        return "Jurassic Reborn Block Tags";
     }
 }

@@ -29,7 +29,7 @@ public class UpdateVehicleControlMessage {
     public static void handle(UpdateVehicleControlMessage msg, Supplier<NetworkEvent.Context> ctx) {
         ctx.get().enqueueWork(() -> {
             ServerPlayer player = ctx.get().getSender();
-            Entity e = player.level().getEntity(msg.entityId);
+            Entity e = player.level.getEntity(msg.entityId);
             if (e instanceof VehicleEntity car && car.getControllingPassenger() == player) {
                 car.setControlState(msg.state);
             }

@@ -49,10 +49,10 @@ public class KairukuDinosaur extends Dinosaur {
         this.setImprintable(true);
         this.setBreeding(false, 1, 2, 24, false, true);
         String[][] recipe = {
-                {"skull", "neck_vertebrae", ""},
-                {"arm_bones","ribcage","shoulder"},
-                {"","leg_bones","tail_vertebrae"},
-                {"","foot_bones", ""}
+                {"skull", "neck_vertebrae", "",""},
+                {"arm_bones","ribcage","shoulder", ""},
+                {"","leg_bones","tail_vertebrae", ""},
+                {"","foot_bones", "", ""}
         };
         this.setRecipe(recipe);
 
@@ -63,8 +63,7 @@ public class KairukuDinosaur extends Dinosaur {
         TagKey<Biome>[] tags = (new TagKey[]{
                 BiomeTags.IS_OCEAN,
                 BiomeTags.IS_BEACH,
-                BiomeTags.HAS_IGLOO,
-
+                BiomeTags.IS_RIVER,
                 // BiomeTags.IS_SNOWY
         });
 

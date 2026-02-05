@@ -1,11 +1,10 @@
 package net.vit.jurassicreborn.client.screens;
 
 import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.blaze3d.vertex.PoseStack;
 import net.vit.jurassicreborn.JurassicReborn;
 import net.vit.jurassicreborn.common.blocks.entities.DNABlocks.DNASequencer.DNASequencerMenu;
-import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
-import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -22,29 +21,28 @@ public class DNASequencerScreen extends AbstractContainerScreen<DNASequencerMenu
     }
 
     @Override
-    public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
-        this.renderBackground(guiGraphics);
-        super.render(guiGraphics, mouseX, mouseY, partialTick);
-        this.renderTooltip(guiGraphics, mouseX, mouseY);
+    public void render(PoseStack pPoseStack, int pMouseX, int pMouseY, float pPartialTick) {
+        super.render(pPoseStack, pMouseX, pMouseY, pPartialTick);
+        this.renderTooltip(pPoseStack, pMouseX, pMouseY);
     }
 
     @Override
-    protected void renderBg(GuiGraphics guiGraphics, float partialTick, int mouseX, int mouseY) {
+    protected void renderBg(PoseStack pPoseStack, float pPartialTick, int pMouseX, int pMouseY) {
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
         RenderSystem.setShaderTexture(0, TEXTURE);
 
         int x = this.leftPos;
         int y = this.topPos;
-        guiGraphics.blit(TEXTURE, x, y, 0, 0, 176, 166);
+        this.blit(pPoseStack, x, y, 0, 0, 176, 166);
 
         for (int i = 0; i < 3; i++) {
 
-            renderProgressBar(guiGraphics, i, x, y);
+            renderProgressBar(i, x, y, pPoseStack);
         }
     }
 
-    protected void renderProgressBar(GuiGraphics guiGraphics, int index, int x, int y){
-        guiGraphics.blit(TEXTURE, x + 87, y + 21 + index * 20, 176, 0, Mth.ceil(this.menu.getField(index) * 0.011), 6);
+    protected void renderProgressBar(int index, int x, int y, PoseStack poseStack){
+        this.blit(poseStack, x + 87, y + 21 + index * 20, 176, 0, Mth.ceil(this.menu.getField(index) * 0.011), 6);
     }
 }

@@ -68,7 +68,6 @@ public class FixedChainBuffer {
         }
     }
 
-
     public void calculateChainSwingBuffer(float maxAngle, int bufferTime, float angleDec, LivingEntity entity) {
         calculateChainSwingBuffer(maxAngle, bufferTime, angleDec, 1.0F, entity);
     }

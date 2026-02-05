@@ -7,7 +7,6 @@ import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.commands.arguments.ResourceLocationArgument;
 import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
@@ -52,7 +51,7 @@ public class AnimationCommand {
             return 0;
         }
 
-        EntityType<?> type = BuiltInRegistries.ENTITY_TYPE.getOptional(dinoId)
+        EntityType<?> type = Registry.ENTITY_TYPE.getOptional(dinoId)
                 .orElse(null);
 
         if (type == null) {
@@ -81,9 +80,8 @@ public class AnimationCommand {
             return 0;
         }
 
-        final int totalPlayed = played;
         ctx.getSource().sendSuccess(
-                () -> Component.literal("Played " + animKey + " on " + totalPlayed + " " + dinoId), true);
+                Component.literal("Played " + animKey + " on " + played + " " + dinoId), true);
         return played;
     }
 }

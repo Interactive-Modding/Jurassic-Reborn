@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "group": "wooden_fence",
   "key": {
     "#": {
@@ -17,6 +16,5 @@
   "result": {
     "count": 3,
     "item": "jurassicreborn:phoenix_fence"
-  },
-  "show_notification": true
+  }
 }

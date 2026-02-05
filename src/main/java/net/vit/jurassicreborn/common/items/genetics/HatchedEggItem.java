@@ -3,15 +3,18 @@ package net.vit.jurassicreborn.common.items.genetics;
 import net.vit.jurassicreborn.common.entities.DinosaurEntity;
 import net.vit.jurassicreborn.common.entities.Dinosaurs.Dinosaur;
 import net.vit.jurassicreborn.common.items.ModItems;
+import net.vit.jurassicreborn.common.items.TabHandler;
 import net.vit.jurassicreborn.common.util.LangUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
@@ -44,11 +47,27 @@ public class HatchedEggItem extends DNAContainerItem {
         if (nbt.contains("Gender")) {
             return nbt.getBoolean("Gender");
         }
-        boolean gender = (player != null ? player.level().random.nextBoolean()
+        boolean gender = (player != null ? player.level.random.nextBoolean()
                 : ((stack.hashCode() & 1) == 0));
         nbt.putBoolean("Gender", gender);
         stack.setTag(nbt);
         return gender;
+    }
+
+    @Override
+    public void fillItemCategory(CreativeModeTab pCategory, NonNullList<ItemStack> pItems) {
+        if (pCategory == TabHandler.DNA || pCategory == CreativeModeTab.TAB_SEARCH) {
+            if (pItems.stream().anyMatch((stack) -> stack.is(this))) return;
+
+            var eggItem = ModItems.hatchedDinoEggs.get(dino);
+            if (eggItem != null) {
+                ItemStack defaultDNAItem = eggItem.get().getDefaultInstance();
+                defaultDNAItem.getOrCreateTag().putBoolean("isCreative", true);
+                pItems.add(defaultDNAItem);
+            }
+        } else {
+            super.fillItemCategory(pCategory, pItems);
+        }
     }
 
     @Override

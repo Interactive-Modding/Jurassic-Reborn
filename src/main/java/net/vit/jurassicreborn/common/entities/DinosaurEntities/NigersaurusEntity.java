@@ -14,11 +14,10 @@ import net.vit.jurassicreborn.client.render.entity.animation.EntityAnimation;
 import net.vit.jurassicreborn.client.sounds.SoundHandler;
 import net.vit.jurassicreborn.common.entities.DinosaurEntity;
 import net.vit.jurassicreborn.common.entities.Dinosaurs.DinosaurHandler;
-import net.vit.jurassicreborn.common.entities.IHasVariants;
 
 import java.util.Locale;
 
-public class NigersaurusEntity extends DinosaurEntity implements IHasVariants {
+public class NigersaurusEntity extends DinosaurEntity {
     private static final EntityDataAccessor<Integer> VARIANT= SynchedEntityData.defineId(NigersaurusEntity.class, EntityDataSerializers.INT);
 
     public NigersaurusEntity(EntityType<NigersaurusEntity> type, Level world) {
@@ -89,3 +88,4 @@ public class NigersaurusEntity extends DinosaurEntity implements IHasVariants {
         return isMale()?new ResourceLocation(JurassicReborn.MODID, texture + "_male_" + "adult" + "_" + variant + ".png"):new ResourceLocation(JurassicReborn.MODID, texture + "_female_" + "adult" + "_" + variant +".png");
     }
 }
+

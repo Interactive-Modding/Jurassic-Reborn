@@ -1,10 +1,10 @@
 package net.vit.jurassicreborn.common.util.block;
 
 import net.minecraft.resources.ResourceLocation;
-import software.bernie.geckolib.core.animatable.GeoAnimatable;
-import software.bernie.geckolib.model.GeoModel;
+import software.bernie.geckolib3.core.IAnimatable;
+import software.bernie.geckolib3.model.AnimatedGeoModel;
 
-public class ModdedModel<I extends GeoAnimatable> extends GeoModel<I> {
+public class ModdedModel<I extends IAnimatable> extends AnimatedGeoModel<I> {
 
     private ResourceLocation animationLocation;
     private ResourceLocation modelLocation;

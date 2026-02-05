@@ -33,6 +33,5 @@
     [
       "plant_dna"
     ]
-  ],
-  "sends_telemetry_event": true
+  ]
 }

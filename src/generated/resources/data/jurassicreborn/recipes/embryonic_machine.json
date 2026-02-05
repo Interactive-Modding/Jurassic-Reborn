@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "building",
   "key": {
     "A": {
       "tag": "forge:nuggets/iron"
@@ -25,6 +24,5 @@
   ],
   "result": {
     "item": "jurassicreborn:embryonic_machine"
-  },
-  "show_notification": true
+  }
 }

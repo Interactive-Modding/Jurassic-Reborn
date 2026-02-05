@@ -8,10 +8,10 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.tags.FluidTags;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.level.material.Material;
 
 public class PeatBlock extends Block {
     public static IntegerProperty MOISTURE = IntegerProperty.create("moisture", 0, 7);
@@ -62,7 +62,7 @@ public class PeatBlock extends Block {
 
     private boolean hasWater(Level world, BlockPos pos) {
         for (BlockPos nearPos : BlockPos.betweenClosed(-4, 0, -4, 4, 1, 4)) {
-            if (world.getBlockState(nearPos).getFluidState().is(FluidTags.WATER)) {
+            if (world.getBlockState(nearPos).getMaterial() == Material.WATER) {
                 return true;
             }
         }

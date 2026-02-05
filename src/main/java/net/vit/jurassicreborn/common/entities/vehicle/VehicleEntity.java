@@ -40,10 +40,8 @@ import net.vit.jurassicreborn.common.network.CarEntityPlayRecord;
 import net.vit.jurassicreborn.common.network.Network;
 import org.jetbrains.annotations.Nullable;
 import net.minecraft.world.phys.Vec2;
-import org.joml.Vector4f;
-
+import com.mojang.math.Vector4f;
 import java.util.List;
-
 
 public abstract class VehicleEntity extends Entity {
     // Synched data
@@ -95,7 +93,6 @@ public abstract class VehicleEntity extends Entity {
 
     public List<CarWheel> allWheels = Lists.newArrayList(backLeftWheel, frontLeftWheel, backRightWheel, frontRightWheel);
 
-
     @OnlyIn(Dist.CLIENT)
     public CarLoopSound engineSound;
     private static final Item[] STATIONS = new Item[] {
@@ -128,7 +125,7 @@ public abstract class VehicleEntity extends Entity {
     public VehicleEntity(EntityType<? extends VehicleEntity> type, Level world) {
         super(type, world);
         this.setBoundingBox(new AABB(this.getX(), this.getY(), this.getZ(), this.getX() + 3.0F, this.getY() + 2.5F, this.getZ() + 3.0F));
-        this.setMaxUpStep(1.5F);
+        this.maxUpStep = 1.5F;
         if (world.isClientSide) {
             this.steerAmount = new InterpValue(this, 0.1D);
         }
@@ -146,7 +143,7 @@ public abstract class VehicleEntity extends Entity {
      * the loot table implementation. Ensures we only ever drop a single vehicle item.
      */
     protected void dropRecordedItemOrLoot(boolean causedByPlayer) {
-        if (this.level().isClientSide) return;
+        if (this.level.isClientSide) return;
 
         ItemStack record = this.getItem();
         if (!record.isEmpty()) {
@@ -207,13 +204,12 @@ public abstract class VehicleEntity extends Entity {
 
     @Nullable
     @Override
-    public LivingEntity getControllingPassenger() {
+    public Entity getControllingPassenger() {
         String id = getIfExists(0, false);
         if (id.equals("")) return null;
         try {
             int entityId = Integer.parseInt(id);
-            Entity entity = level().getEntity(entityId);
-            return entity instanceof LivingEntity living ? living : null;
+            return level.getEntity(entityId);
         } catch (Exception ignored) {}
         return null;
     }
@@ -224,7 +220,7 @@ public abstract class VehicleEntity extends Entity {
         if (id.equals("")) return null;
         try {
             int entityId = Integer.parseInt(id);
-            return level().getEntity(entityId);
+            return level.getEntity(entityId);
         } catch (Exception ignored) {}
         return null;
     }
@@ -241,7 +237,7 @@ public abstract class VehicleEntity extends Entity {
         String string = this.entityData.get(WATCHER_SEATS).getString(str(seatID));
         if (!string.equals("")) {
             Entity entity = null;
-            try { entity = level().getEntity(Integer.parseInt(string)); } catch (Exception ignored) {}
+            try { entity = level.getEntity(Integer.parseInt(string)); } catch (Exception ignored) {}
             if (!(entity != null && entity.getVehicle() == this)) {
                 if (reset) setSeat(str(seatID), "");
                 return "";
@@ -277,7 +273,7 @@ public abstract class VehicleEntity extends Entity {
     // Gravity/damage/fall
     @Override
     public boolean causeFallDamage(float fallDistance, float damageMultiplier, DamageSource source) {
-        if (!level().isClientSide) {
+        if (!level.isClientSide) {
             float damage = Mth.ceil((fallDistance - 3F) * damageMultiplier);
             if (damage > 0) {
                 this.setHealth(this.getHealth() - (damage * 1.25F));
@@ -288,7 +284,7 @@ public abstract class VehicleEntity extends Entity {
     }
 
     protected double calculateWheelHeight(double distance, boolean rotate90) {
-        final Level lvl = this.level();                 // new naming in 1.19
+        final Level lvl = this.level;                 // new naming in 1.19
         float localYaw = this.yRotO + (this.getYRot() - this.yRotO);   // prevRotationYaw → yRotO
         double bestY = this.getY() - 4;               // start below vehicle, will climb up
 
@@ -347,7 +343,7 @@ public abstract class VehicleEntity extends Entity {
     @Override
     public void tick() {
         super.tick();
-        if (level().isClientSide && !noiseInstance) {
+        if (level.isClientSide && !noiseInstance) {
             noiseInstance = true;
             startSound();
         }
@@ -368,9 +364,9 @@ public abstract class VehicleEntity extends Entity {
 
         // Speed estimation
         if (previousPosition == null) previousPosition = this.position();
-        estimatedSpeed = previousPosition.distanceTo(this.position()) / (level().getGameTime() - prevWorldTime + 1);
+        estimatedSpeed = previousPosition.distanceTo(this.position()) / (level.getGameTime() - prevWorldTime + 1);
         previousPosition = this.position();
-        prevWorldTime = level().getGameTime();
+        prevWorldTime = level.getGameTime();
 
         // Wheels and particles
         for (int i = 0; i < 4; i++) {
@@ -397,7 +393,7 @@ public abstract class VehicleEntity extends Entity {
         if (this.getPassengers().isEmpty() || !(this.getPassengers().get(0) instanceof Player)) {
             this.setControlState((byte) 0);
         }
-        if (level().isClientSide) {
+        if (level.isClientSide) {
             handleControl();
         }
         // Client input -- needs to be hooked with KeyMappings, use events not direct MovementInput in 1.19.2
@@ -406,7 +402,7 @@ public abstract class VehicleEntity extends Entity {
         this.applyMovement();
         this.move(MoverType.SELF, getDeltaMovement());
         updateWheelSpin();
-        if (level().isClientSide) {
+        if (level.isClientSide) {
             updateSeatAnimations();
         }
         clientAnimate();
@@ -466,18 +462,18 @@ public abstract class VehicleEntity extends Entity {
     private boolean didDieOnce = false;
 
     private void handleDeath(@Nullable Entity killer) {
-        if (this.level().isClientSide || this.didDieOnce || this.isRemoved()) return;
+        if (this.level.isClientSide || this.didDieOnce || this.isRemoved()) return;
         this.didDieOnce = true;
 
         boolean causedByPlayer = killer instanceof Player;
-        if (this.level().getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)) {
+        if (this.level.getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)) {
             this.dropRecordedItemOrLoot(causedByPlayer);
         }
         this.discard();
     }
 
     private void checkAndHandleDeath() {
-        if (!this.level().isClientSide && this.getHealth() <= 0f) {
+        if (!this.level.isClientSide && this.getHealth() <= 0f) {
             handleDeath(null);
         }
     }
@@ -499,7 +495,7 @@ public abstract class VehicleEntity extends Entity {
     }
     /** call this at the very end of tick(), after move() */
     private void clientAnimate() {
-        if (!level().isClientSide) return;          // server never touches visuals
+        if (!level.isClientSide) return;          // server never touches visuals
 
         /* -------- wheel spin -------- */
 
@@ -511,7 +507,7 @@ public abstract class VehicleEntity extends Entity {
 
 
     @Override
-    protected void positionRider(Entity passenger, MoveFunction moveFunction) {
+    public void positionRider(Entity passenger) {
         if (!this.hasPassenger(passenger)) return;
 
         int seatId = getSeatForEntity(passenger);
@@ -530,7 +526,7 @@ public abstract class VehicleEntity extends Entity {
             pz = seatPos.z;
         }
 
-        moveFunction.accept(passenger, px, py, pz);
+        passenger.setPos(px, py, pz);
 
         // keep orientation in sync with the vehicle’s steering
         passenger.setYRot(passenger.getYRot() + rotationDelta);
@@ -545,7 +541,7 @@ public abstract class VehicleEntity extends Entity {
         // Ensure the rider is positioned at the vehicle's latest location
         // before the association is broken, otherwise the player can
         // momentarily snap back to a previous tick when dismounting.
-        this.positionRider(passenger, Entity::setPos);
+        positionRider(passenger);
 
         // When the vehicle stops being locally controlled and becomes a
         // regular server-driven entity, its previous position still points
@@ -569,8 +565,8 @@ public abstract class VehicleEntity extends Entity {
         // back to it. Without this, the server-correct position may only be
         // reached after many ticks, making the car appear several blocks
         // behind the dismount point.
-        if (!this.level().isClientSide) {
-            ((ServerLevel) this.level()).getChunkSource().broadcast(this, new ClientboundTeleportEntityPacket(this));
+        if (!this.level.isClientSide) {
+            ((ServerLevel) this.level).getChunkSource().broadcast(this, new ClientboundTeleportEntityPacket(this));
         }
 
         // Determine seat before dismounting so we can clear the slot
@@ -584,7 +580,7 @@ public abstract class VehicleEntity extends Entity {
     @Override
     public boolean hurt(DamageSource source, float amount) {
         if (this.isInvulnerableTo(source)) return false;
-        if (!this.level().isClientSide) {
+        if (!this.level.isClientSide) {
             if (source.getEntity() instanceof Player) {
                 amount *= 10f;
                 this.healAmount += amount;
@@ -610,7 +606,7 @@ public abstract class VehicleEntity extends Entity {
         this.entityData.set(RECORD_ITEM, ItemStack.of(compound.getCompound("RecordItem")));
     }
     private void advanceInterpolations() {
-        if (!level().isClientSide) return;
+        if (!level.isClientSide) return;
 
         if (steerAmount != null) steerAmount.tick(); // steering wheel
         for (Seat s : seats) s.getInterpValue().tick();  // every door/seat
@@ -683,7 +679,7 @@ public abstract class VehicleEntity extends Entity {
 
 
     public void cycleStation() {
-        if (level().isClientSide) return;
+        if (level.isClientSide) return;
         ItemStack current = getItem();
         int idx = -1;
         for (int i = 0; i < STATIONS.length; i++) {
@@ -695,7 +691,7 @@ public abstract class VehicleEntity extends Entity {
         int next = (idx + 1) % STATIONS.length;
         ItemStack record = new ItemStack(STATIONS[next]);
         this.entityData.set(RECORD_ITEM, record);
-        Network.sendToAllNear(level(), blockPosition(), new CarEntityPlayRecord(getId(), record));
+        Network.sendToAllNear(level, blockPosition(), new CarEntityPlayRecord(getId(), record));
     }
     // --- WHEELS, PARTICLES ---
     /**
@@ -709,7 +705,7 @@ public abstract class VehicleEntity extends Entity {
         double xRot = Math.sin(Math.toRadians(localYaw)) * relPos.y - Math.cos(Math.toRadians(localYaw)) * relPos.x;
         double zRot = -Math.cos(Math.toRadians(localYaw)) * relPos.y - Math.sin(Math.toRadians(localYaw)) * relPos.x;
         Vec3 vec = new Vec3(getX() + xRot, this.getY(), getZ() + zRot);
-        int groundY = level().getHeight(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+        int groundY = level.getHeight(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 Mth.floor(vec.x), Mth.floor(vec.z)) - 1;
         Vec3 groundPos = new Vec3(vec.x, groundY, vec.z);
         wheel.setCurrentWheelPos(groundPos);
@@ -721,26 +717,27 @@ public abstract class VehicleEntity extends Entity {
      * use matching positions, fixing misaligned tracks.
      */
     protected void spawnWheelParticles() {
-        if (!level().isClientSide) return;
+        if (!level.isClientSide) return;
 
         for (CarWheel wheel : allWheels) {
             CarWheel opposite = wheel.getOppositeWheel();
             if (opposite == null) continue;
 
             Vec3 groundPos = wheel.getCurrentWheelPos();
-            BlockPos pos = BlockPos.containing(groundPos.x, groundPos.y, groundPos.z);
-            BlockState ground = level().getBlockState(pos);
-            boolean allowed = (ground.is(net.minecraft.tags.BlockTags.DIRT)
-                    || ground.is(net.minecraft.tags.BlockTags.SAND))
-                    && ground.isFaceSturdy(level(), pos, Direction.UP)
-                    && !level().getBlockState(pos.above()).getFluidState().is(net.minecraft.tags.FluidTags.WATER);
+            BlockPos pos = new BlockPos(groundPos.x, groundPos.y, groundPos.z);
+            BlockState ground = level.getBlockState(pos);
+            boolean allowed = (ground.getMaterial() == net.minecraft.world.level.material.Material.GRASS
+                    || ground.getMaterial() == net.minecraft.world.level.material.Material.DIRT
+                    || ground.getMaterial() == net.minecraft.world.level.material.Material.SAND)
+                    && ground.isFaceSturdy(level, pos, Direction.UP)
+                    && level.getBlockState(pos.above()).getMaterial() != net.minecraft.world.level.material.Material.WATER;
             if (!allowed) continue;
 
             Vec3 opp = opposite.getCurrentWheelPos();
-            int oppGroundY = level().getHeight(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+            int oppGroundY = level.getHeight(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                     Mth.floor(opp.x), Mth.floor(opp.z)) - 1;
             Vec3 oppGroundPos = new Vec3(opp.x, oppGroundY, opp.z);
-            wheelDataList[wheel.getID()].add(new WheelParticleData(groundPos, oppGroundPos, level().getGameTime()));
+            wheelDataList[wheel.getID()].add(new WheelParticleData(groundPos, oppGroundPos, level.getGameTime()));
         }
     }
     // --------- Inner classes ---------
@@ -821,7 +818,7 @@ public abstract class VehicleEntity extends Entity {
     public InteractionResult interact(Player player, InteractionHand hand) {
         if (hand != InteractionHand.MAIN_HAND) return InteractionResult.PASS;
 
-        if (!level().isClientSide) {
+        if (!level.isClientSide) {
             // If the player is already riding this vehicle, do nothing
             if (player.getVehicle() == this) return InteractionResult.CONSUME;
 
@@ -838,7 +835,7 @@ public abstract class VehicleEntity extends Entity {
             }
         }
 
-        return InteractionResult.sidedSuccess(level().isClientSide);
+        return InteractionResult.sidedSuccess(level.isClientSide);
     }
 
 

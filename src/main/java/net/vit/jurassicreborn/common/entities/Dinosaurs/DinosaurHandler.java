@@ -15,9 +15,16 @@ public class DinosaurHandler {
     public static boolean inited = false;
     public static String getName(int id) {
         Dinosaur d = getById(id);
-        return d != EMPTY
-                ? d.getName().toLowerCase(Locale.ROOT)
-                : "empty";
+        if (d == EMPTY) {
+            return "empty";
+        }
+
+        String sanitized = d.getName()
+                .toLowerCase(Locale.ROOT)
+                .replaceAll("[^a-z0-9/._-]+", "_")
+                .replaceAll("^_+|_+$", "");
+
+        return sanitized.isEmpty() ? "empty" : sanitized;
     }
 
     public static List<Integer> getRegisteredIds() {

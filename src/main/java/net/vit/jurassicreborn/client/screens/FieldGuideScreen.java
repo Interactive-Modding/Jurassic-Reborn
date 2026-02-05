@@ -2,13 +2,13 @@ package net.vit.jurassicreborn.client.screens;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
+import com.mojang.math.Vector3f;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.components.Button;
+import net.minecraft.client.gui.components.Widget;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
-import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FormattedCharSequence;
@@ -53,12 +53,12 @@ public class FieldGuideScreen extends Screen {
     }
 
     @Override
-    public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
-        this.renderBackground(guiGraphics);
+    public void render(PoseStack poseStack, int mouseX, int mouseY, float partialTicks) {
+        this.renderBackground(poseStack);
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderTexture(0, BOOK_TEXTURE);
-        guiGraphics.blit(BOOK_TEXTURE, leftPos(), topPos(), 0, 0, imageWidth, imageHeight);
-        super.render(guiGraphics, mouseX, mouseY, partialTicks);
+        blit(poseStack, leftPos(), topPos(), 0, 0, imageWidth, imageHeight);
+        super.render(poseStack, mouseX, mouseY, partialTicks);
 
         if (currentIndex >= 0 && currentIndex < dinosaurs.size()) {
             Dinosaur dino = dinosaurs.get(currentIndex);
@@ -68,30 +68,30 @@ public class FieldGuideScreen extends Screen {
 
             List<FormattedCharSequence> nameLines = font.split(Component.literal((currentIndex + 1) + ". " + dino.getName()), wrapWidth);
             for (int i = 0; i < nameLines.size(); i++) {
-                guiGraphics.drawString(font, nameLines.get(i), xLeft, y + i * 10, 0x3E3E3E, false);
+                font.draw(poseStack, nameLines.get(i), xLeft, y + i * 10, 0x3E3E3E);
             }
-            guiGraphics.drawString(font, "Scientific Name:", xLeft, y + 30, 0x3E3E3E, false);
+            font.draw(poseStack, "Scientific Name:", xLeft, y + 30, 0x3E3E3E);
 
             List<FormattedCharSequence> sciLines = font.split(Component.literal(dino.getScientificName()), wrapWidth);
             for (int i = 0; i < sciLines.size(); i++) {
-                guiGraphics.drawString(font, sciLines.get(i), xLeft + 5, y + 40 + i * 10, 0x555555, false);
+                font.draw(poseStack, sciLines.get(i), xLeft + 5, y + 40 + i * 10, 0x555555);
             }
 
             int offsetY = y + 15 + sciLines.size() * 10 + 5;
 
             List<FormattedCharSequence> periodLines = font.split(Component.literal("Period: " + dino.getPeriod()), wrapWidth);
             for (int i = 0; i < periodLines.size(); i++) {
-                guiGraphics.drawString(font, periodLines.get(i), xLeft, offsetY + 30 + i * 10, 0x3E3E3E, false);
+                font.draw(poseStack, periodLines.get(i), xLeft, offsetY + 30 + i * 10, 0x3E3E3E);
             }
 
             List<FormattedCharSequence> familyLines = font.split(Component.literal("Family: " + dino.getFamily()), wrapWidth);
             for (int i = 0; i < familyLines.size(); i++) {
-                guiGraphics.drawString(font, familyLines.get(i), xLeft, offsetY + 50 + i * 10, 0x3E3E3E, false);
+                font.draw(poseStack, familyLines.get(i), xLeft, offsetY + 50 + i * 10, 0x3E3E3E);
             }
 
             List<FormattedCharSequence> locationLines = font.split(Component.literal("Location: " + dino.getLocation()), wrapWidth);
             for (int i = 0; i < locationLines.size(); i++) {
-                guiGraphics.drawString(font, locationLines.get(i), xLeft, offsetY + 80 + i * 10, 0x3E3E3E, false);
+                font.draw(poseStack, locationLines.get(i), xLeft, offsetY + 80 + i * 10, 0x3E3E3E);
             }
 
             String diet = "Unknown";
@@ -101,7 +101,7 @@ public class FieldGuideScreen extends Screen {
                     diet = type.name().charAt(0) + type.name().substring(1).toLowerCase();
                 }
             }
-            guiGraphics.drawString(font, "Diet: " + diet, xLeft, offsetY + 100, 0x3E3E3E, false);
+            font.draw(poseStack, "Diet: " + diet, xLeft, offsetY + 100, 0x3E3E3E);
 
             int skeletonX = leftPos() + imageWidth - 72;
             int skeletonY = topPos() + imageHeight  - 55;
@@ -109,7 +109,6 @@ public class FieldGuideScreen extends Screen {
             if (dino == DinosaurHandler.CAMARASAURUS ||
                     dino == DinosaurHandler.NIGERSAURUS ||
                     dino == DinosaurHandler.MAMENCHISAURUS ||
-                    dino == DinosaurHandler.PATAGOTITAN ||
                     dino == DinosaurHandler.BRACHIOSAURUS ||
                     dino == DinosaurHandler.ANKYLODOCUS ||
                     dino == DinosaurHandler.DREADNOUGHTUS ||
@@ -123,9 +122,7 @@ public class FieldGuideScreen extends Screen {
                     dino == DinosaurHandler.LAMBEOSAURUS ||
                     dino == DinosaurHandler.EDMONTOSAURUS ||
                     dino == DinosaurHandler.CORYTHOSAURUS ||
-                    dino == DinosaurHandler.LIVYATAN ||
                     dino == DinosaurHandler.INDOMINUS ||
-                    dino == DinosaurHandler.DEINOSUCHUS ||
                     dino == DinosaurHandler.DIPLODOCUS) {
                 skeletonScale = 5;
             }
@@ -155,8 +152,7 @@ public class FieldGuideScreen extends Screen {
                     dino == DinosaurHandler.OVIRAPTOR) {
                 skeletonScale = 30;
             }
-            if (dino == DinosaurHandler.COMPSOGNATHUS||
-                    dino == DinosaurHandler.CALYMENE ) {
+            if (dino == DinosaurHandler.COMPSOGNATHUS ) {
                 skeletonScale = 70;
             }
             if (dino == DinosaurHandler.ALLOSAURUS ||
@@ -179,7 +175,7 @@ public class FieldGuideScreen extends Screen {
             if (dino == DinosaurHandler.SPINORAPTOR ) {
                 skeletonScale = 12;
             }
-            renderSkeletonModel(guiGraphics.pose(), skeletonX, skeletonY, skeletonScale, dino);
+            renderSkeletonModel(poseStack, skeletonX, skeletonY, skeletonScale, dino);
         }
     }
 
@@ -217,9 +213,9 @@ public class FieldGuideScreen extends Screen {
         stack.pushPose();
         stack.translate(x, y, 100);
         stack.scale(-scale, scale, scale);
-        stack.mulPose(Axis.ZP.rotationDegrees(180f));
-        stack.mulPose(Axis.YP.rotationDegrees(-135f));
-        stack.mulPose(Axis.XP.rotationDegrees(-10f));
+        stack.mulPose(Vector3f.ZP.rotationDegrees(180f));
+        stack.mulPose(Vector3f.YP.rotationDegrees(-135f));
+        stack.mulPose(Vector3f.XP.rotationDegrees(-10f));
         dispatcher.setRenderShadow(false);
         RenderSystem.runAsFancy(() -> dispatcher.render(entity, 0.0, 0.0, 0.0, 0.0F, 1.0F, stack, mc.renderBuffers().bufferSource(), 15728880));
         dispatcher.setRenderShadow(true);
@@ -244,16 +240,16 @@ public class FieldGuideScreen extends Screen {
         private final boolean isForward;
 
         public ArrowButton(int x, int y, boolean isForward, OnPress onPress) {
-            super(x, y, 23, 13, Component.empty(), onPress, DEFAULT_NARRATION);
+            super(x, y, 23, 13, Component.empty(), onPress);
             this.isForward = isForward;
         }
         @Override
-        public void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
+        public void renderButton(PoseStack poseStack, int mouseX, int mouseY, float partialTicks) {
             if (this.visible) {
                 RenderSystem.setShaderTexture(0, WIDGETS_TEXTURE);
                 int u = this.isHovered ? 23 : 0;
                 int v = this.isForward ? 194 : 207;
-                guiGraphics.blit(WIDGETS_TEXTURE, this.getX(), this.getY(), u, v, this.width, this.height);
+                blit(poseStack, this.x, this.y, u, v, this.width, this.height);
             }
         }
     }

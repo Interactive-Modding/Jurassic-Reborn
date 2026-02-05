@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "building",
   "group": "wooden_slab",
   "key": {
     "#": {
@@ -13,6 +12,5 @@
   "result": {
     "count": 6,
     "item": "jurassicreborn:calamites_slab"
-  },
-  "show_notification": true
+  }
 }

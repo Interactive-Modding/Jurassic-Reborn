@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "group": "boat",
   "key": {
     "P": {
@@ -13,6 +12,5 @@
   ],
   "result": {
     "item": "jurassicreborn:magnolia_boat"
-  },
-  "show_notification": true
+  }
 }

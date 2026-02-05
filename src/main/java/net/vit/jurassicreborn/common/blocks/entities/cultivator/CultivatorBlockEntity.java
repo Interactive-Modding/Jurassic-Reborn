@@ -172,7 +172,6 @@ public class CultivatorBlockEntity extends MachineBlockEntity implements MenuPro
             return false;
         }
 
-
         return this.lipids     >= dino.getLipids()
                 && this.minerals   >= dino.getMinerals()
                 && this.proximates >= dino.getProximates()

@@ -17,7 +17,7 @@ import net.vit.jurassicreborn.common.items.ModItems;
 
 public class BlueprintPaintingEntity extends Painting {
 
-    /* no-arg ctor for EntityType */
+    /*...*/
     public BlueprintPaintingEntity(EntityType<? extends Painting> type, Level level) {
         super(type, level);
     }
@@ -26,7 +26,7 @@ public class BlueprintPaintingEntity extends Painting {
     public void setBlueprintTexture(ResourceLocation rl) { this.tex = rl; }
     public ResourceLocation getBlueprintTexture()        { return tex; }
 
-    /* convenience ctor used by the item */
+    /*...*/
     public BlueprintPaintingEntity(Level level, BlockPos pos,
                              Direction dir, Holder<PaintingVariant> variant) {
         super(level, pos, dir, variant);
@@ -37,11 +37,10 @@ public class BlueprintPaintingEntity extends Painting {
         this.setDirection(this.getDirection());
     }
 
-    /* drop correct item */
+    /*...*/
     @Override
     public void dropItem(net.minecraft.world.entity.Entity breaker) {
-        Level world = level();
-        if (!world.getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)) return;
+        if (!level.getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)) return;
         if (breaker instanceof Player p && p.getAbilities().instabuild)     return;
         spawnAtLocation(ModItems.BLUEPRINT.get());
     }
@@ -52,9 +51,8 @@ public class BlueprintPaintingEntity extends Painting {
     @Override
     public boolean survives() {
         // 1. Nothing may be inside the hit-box
-        Level world = level();
         if (!com.google.common.collect.Iterables.isEmpty(
-                world.getCollisions(this, getBoundingBox())))
+                level.getCollisions(this, getBoundingBox())))
             return false;
 
         // 2. Check wall solidity behind the whole mural
@@ -72,18 +70,18 @@ public class BlueprintPaintingEntity extends Painting {
         for (int x = 0; x < w; x++) {
             for (int y = 0; y < h; y++) {
                 BlockPos check = origin.relative(right, x).below(y);
-                if (!world.getBlockState(check)
-                        .isFaceSturdy(world, check, dir))
+                if (!level.getBlockState(check)
+                        .isFaceSturdy(level, check, dir))
                     return false;
             }
         }
 
         // 3. no overlap with other blueprint murals
-        return world.getEntities(this, getBoundingBox(),
+        return level.getEntities(this, getBoundingBox(),
                 e -> e instanceof BlueprintPaintingEntity).isEmpty();
     }
 
-    /* middle-click result */
+    /*...*/
     @Override
     public ItemStack getPickedResult(HitResult hit) {
         return new ItemStack(ModItems.BLUEPRINT.get());

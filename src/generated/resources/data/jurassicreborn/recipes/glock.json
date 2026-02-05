@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "key": {
     "A": {
       "item": "minecraft:string"
@@ -18,6 +17,5 @@
   ],
   "result": {
     "item": "jurassicreborn:glock"
-  },
-  "show_notification": true
+  }
 }

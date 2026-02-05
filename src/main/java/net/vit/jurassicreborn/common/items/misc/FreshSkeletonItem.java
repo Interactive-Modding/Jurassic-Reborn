@@ -3,12 +3,14 @@ package net.vit.jurassicreborn.common.items.misc;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -53,10 +55,6 @@ public class FreshSkeletonItem extends Item {
     public FreshSkeletonItem(Properties properties, Dinosaur dino) {
         super(properties);
         this.dino = dino;
-    }
-    @Override
-    public String getDescriptionId(ItemStack stack) {
-        return "item.jurassicreborn.skeleton.fresh.dynamic";
     }
 
     @Override
@@ -174,18 +172,8 @@ public class FreshSkeletonItem extends Item {
 
     @Override
     public @NotNull Component getName(@NotNull ItemStack stack) {
-        Dinosaur dino = this.getDinosaur(stack);
-
-        if (dino == Dinosaur.EMPTY) {
-            return Component.translatable("item.jurassicreborn.skeleton.fresh");
-        }
-
-        return Component.translatable(
-                "item.jurassicreborn.skeleton.fresh.dynamic",
-                dino.getTranslatedName()
-        );
+        return LangUtil.replaceWithDinoName(this.getDinosaur(stack), "item.JurassicReborn.skeleton.fresh");
     }
-
 
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag) {
@@ -297,4 +285,14 @@ public class FreshSkeletonItem extends Item {
         return null;
     }
 
+    @Override
+    public void fillItemCategory(CreativeModeTab category, NonNullList<ItemStack> items) {
+        if (this.allowedIn(category)) {
+            ItemStack defaultStack = this.getDefaultInstance();
+            CompoundTag tag = defaultStack.getOrCreateTag();
+            tag.putString("Gender", "random");
+            defaultStack.setTag(tag);
+            items.add(defaultStack);
+        }
+    }
 }

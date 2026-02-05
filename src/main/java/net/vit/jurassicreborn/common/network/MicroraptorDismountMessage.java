@@ -41,12 +41,12 @@ public class MicroraptorDismountMessage {
         ctx.enqueueWork(() -> {
             ServerPlayer serverPlayer = ctx.getSender();
             if (serverPlayer != null) {
-                Entity entity = serverPlayer.level().getEntity(msg.entityId);
+                Entity entity = serverPlayer.level.getEntity(msg.entityId);
                 if (entity instanceof MicroraptorEntity microraptor && microraptor.isOwner(serverPlayer)) {
                     microraptor.stopRiding();
 
                     // use the public sendToAllNear helper instead of channel
-                    Network.sendToAllNear(serverPlayer.level(), microraptor.blockPosition(), 64.0d, msg);
+                    Network.sendToAllNear(serverPlayer.level, microraptor.blockPosition(), 64.0d, msg);
                 }
             } else {
                 DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> Client.handle(msg));

@@ -41,7 +41,6 @@ public class ParasaurolophusAnimator extends EntityAnimator<ParasaurolophusEntit
         AdvancedModelBox tail6 = model.getCube("Tail6");
         AdvancedModelBox tail7 = model.getCube("Tail7");                               // tail chain
 
-
         AdvancedModelBox[] torso = new AdvancedModelBox[]{ body1, body2, body3 };
         AdvancedModelBox[] neck  = new AdvancedModelBox[]{ head, neck13, neck12, neck11, neck10, neck9, neck8, neck7, neck6, neck5, neck4, neck3, neck2, neck1 };
         AdvancedModelBox[] tail  = new AdvancedModelBox[]{ tail7, tail6, tail5, tail4, tail3, tail2, tail1 };

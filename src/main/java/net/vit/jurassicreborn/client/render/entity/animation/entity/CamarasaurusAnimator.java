@@ -12,7 +12,6 @@ public class CamarasaurusAnimator extends EntityAnimator<CamarasaurusEntity> {
                                      float limbSwing, float limbSwingAmount, float ticks,
                                      float rotationYaw, float rotationPitch, float scale) {
 
-
         AdvancedModelBox hips  = model.getCube("hips");
         AdvancedModelBox body  = model.getCube("body");
         AdvancedModelBox head  = model.getCube("head");

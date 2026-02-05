@@ -1,8 +1,8 @@
 package net.vit.jurassicreborn.client.screens;
 
 import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
@@ -37,22 +37,20 @@ public class FeederScreen extends AbstractContainerScreen<FeederMenu> {
 
     /* ── draw loop ─────────────────────────────────────────────────────── */
     @Override
-    public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partial) {
-        this.renderBackground(guiGraphics);
-        super.render(guiGraphics, mouseX, mouseY, partial);
-        this.renderTooltip(guiGraphics, mouseX, mouseY);
+    public void render(PoseStack pose, int mouseX, int mouseY, float partial) {
+        super.render(pose, mouseX, mouseY, partial);
+        this.renderTooltip(pose, mouseX, mouseY);
     }
 
     @Override
-    protected void renderBg(GuiGraphics guiGraphics, float partial,
+    protected void renderBg(PoseStack pose, float partial,
                             int mouseX, int mouseY) {
 
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderTexture(0, TEXTURE);
         RenderSystem.setShaderColor(1F, 1F, 1F, 1F);
-        guiGraphics.blit(TEXTURE, this.leftPos, this.topPos,
+        this.blit(pose, this.leftPos, this.topPos,
                 0, 0, this.imageWidth, this.imageHeight);
-
 
            ContainerData (menu.getData().get(idx))  */
     }

@@ -28,10 +28,10 @@ import java.util.Set;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 
-/** Forge 1.19.2 rewrite of the old ElectricFencePoleBlock. */
+/*...*/
 public class ElectricFencePoleBlock extends BaseEntityBlock implements SimpleWaterloggedBlock {
 
-    /* ------------------------- block-state properties ------------------------- */
+    /*...*/
     public static final BooleanProperty NORTH   = BooleanProperty.create("north");
     public static final BooleanProperty SOUTH   = BooleanProperty.create("south");
     public static final BooleanProperty WEST    = BooleanProperty.create("west");
@@ -39,12 +39,12 @@ public class ElectricFencePoleBlock extends BaseEntityBlock implements SimpleWat
     public static final BooleanProperty ACTIVE  = BooleanProperty.create("active");
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
-    /* Post shape: 0.3425 – 0.6575 → (5.48, 10.52) on the 0-16 grid. */
+    /*...*/
     private static final VoxelShape POST_SHAPE =
             Block.box(5.48, 0.0, 5.48, 10.52, 16.0, 10.52);
 
     private final FenceType type;
-    /* ------------------------------------------------------------------------- */
+    /*...*/
     public ElectricFencePoleBlock(FenceType type, BlockBehaviour.Properties props) {
         super(props.noOcclusion().strength(3.0F));
         this.type = type;
@@ -58,7 +58,7 @@ public class ElectricFencePoleBlock extends BaseEntityBlock implements SimpleWat
                 .setValue(WATERLOGGED, false));
     }
 
-    /* ------------------------------ shapes ----------------------------------- */
+    /*...*/
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter level,
                                BlockPos pos, CollisionContext ctx) {
@@ -71,7 +71,7 @@ public class ElectricFencePoleBlock extends BaseEntityBlock implements SimpleWat
         return POST_SHAPE;
     }
 
-    /* --------------------------- render & BE ---------------------------------- */
+    /*...*/
     @Override
     public RenderShape getRenderShape(BlockState state) {
         return RenderShape.MODEL;
@@ -83,7 +83,7 @@ public class ElectricFencePoleBlock extends BaseEntityBlock implements SimpleWat
         return new ElectricFencePoleBlockEntity(pos, state);
     }
 
-    /* ------------------------- state definition ------------------------------ */
+    /*...*/
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> b) {
         b.add(ACTIVE, NORTH, SOUTH, EAST, WEST, WATERLOGGED);
@@ -94,7 +94,7 @@ public class ElectricFencePoleBlock extends BaseEntityBlock implements SimpleWat
         return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
     }
 
-    /* --------------------------- placement ----------------------------------- */
+    /*...*/
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext ctx) {
         Level level = ctx.getLevel();
@@ -178,8 +178,8 @@ public class ElectricFencePoleBlock extends BaseEntityBlock implements SimpleWat
         }
     }
 
-    /* --------------------------- redstone helpers ---------------------------- */
-    /* ----------------------------- connectivity ------------------------------ */
+    /*...*/
+    /*...*/
     private boolean canConnect(LevelAccessor world, BlockPos pos,
                                Direction dir) {
         BlockState st = world.getBlockState(pos);
@@ -197,7 +197,7 @@ public class ElectricFencePoleBlock extends BaseEntityBlock implements SimpleWat
                         .getOpposite() == dir;
     }
 
-    /* --------------------- recurse & power connected wires ------------------- */
+    /*...*/
     void updateConnectedWires(Level level, BlockPos pos) {
         updateConnectedWires(level, pos, hasPoweredBase(level, pos));
     }
@@ -283,7 +283,7 @@ public class ElectricFencePoleBlock extends BaseEntityBlock implements SimpleWat
         }
     }
 
-    /* ------------------------------- misc ------------------------------------ */
+    /*...*/
     public FenceType getType() {
         return type;
     }

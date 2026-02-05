@@ -1,8 +1,8 @@
 package net.vit.jurassicreborn.client.screens;
 
+import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -52,23 +52,27 @@ public class HologramSelectScreen extends Screen {
         int cx = this.width / 2;
         int cy = this.height / 2;
 
-        this.addRenderableWidget(Button.builder(Component.literal("<"), btn -> {
+        // Previous dinosaur button
+        this.addRenderableWidget(new Button(cx - 60, cy, 20, 20, Component.literal("<"), btn -> {
             currentIndex = (currentIndex - 1 + dinoIds.size()) % dinoIds.size();
             applySelectionLocally();
-        }).bounds(cx - 60, cy, 20, 20).build());
+        }));
 
-        this.addRenderableWidget(Button.builder(Component.literal(">"), btn -> {
+        // Next dinosaur button
+        this.addRenderableWidget(new Button(cx + 40, cy, 20, 20, Component.literal(">"), btn -> {
             currentIndex = (currentIndex + 1) % dinoIds.size();
             applySelectionLocally();
-        }).bounds(cx + 40, cy, 20, 20).build());
+        }));
 
-        this.poseButton = this.addRenderableWidget(Button.builder(Component.literal(getPoseName()), btn -> {
+        // Pose selection button
+        this.poseButton = this.addRenderableWidget(new Button(cx - 50, cy + 40, 100, 20, Component.literal(getPoseName()), btn -> {
             poseIndex = (poseIndex + 1) % EntityAnimation.values().length;
             btn.setMessage(Component.literal(getPoseName()));
             applySelectionLocally();
-        }).bounds(cx - 50, cy + 40, 100, 20).build());
+        }));
 
-        this.rotateButton = this.addRenderableWidget(Button.builder(Component.literal(getRotateLabel()), btn -> {
+        // Rotation toggle button
+        this.rotateButton = this.addRenderableWidget(new Button(cx - 50, cy + 70, 100, 20, Component.literal(getRotateLabel()), btn -> {
             rotating = !rotating;
             if (!rotating) {
                 rotation = HologramBlockEntity.snapRotation(rotation);
@@ -76,34 +80,42 @@ public class HologramSelectScreen extends Screen {
             btn.setMessage(Component.literal(getRotateLabel()));
             updateAngleButtonState();
             applySelectionLocally();
-        }).bounds(cx - 50, cy + 70, 100, 20).build());
+        }));
 
-        this.angleButton = this.addRenderableWidget(Button.builder(Component.literal(getAngleLabel()), btn -> {
+        // Angle adjustment button
+        this.angleButton = this.addRenderableWidget(new Button(cx - 50, cy + 100, 100, 20, Component.literal(getAngleLabel()), btn -> {
             rotation = HologramBlockEntity.snapRotation(rotation + HologramBlockEntity.ROTATION_STEP_DEGREES);
             btn.setMessage(Component.literal(getAngleLabel()));
             applySelectionLocally();
-        }).bounds(cx - 50, cy + 100, 100, 20).build());
+        }));
         updateAngleButtonState();
 
-        this.addRenderableWidget(Button.builder(Component.literal("Confirm"), btn -> {
+        // Confirm button - sends packet to server
+        this.addRenderableWidget(new Button(cx - 50, cy + 130, 100, 20, Component.literal("Confirm"), btn -> {
             int selectedId = dinoIds.get(currentIndex);
-            applySelectionLocally();
+
+            System.out.println("[HologramGUI] Sending packet to SERVER: dino=" + selectedId +
+                    ", pose=" + poseIndex + ", rotating=" + rotating + ", rotation=" + rotation);
+
+            // Send packet to server to save changes
             Network.sendToServer(new SetHologramDinosaurPacket(blockPos, selectedId, poseIndex, rotating, rotation));
+
+            // Close the screen
             this.minecraft.setScreen(null);
-        }).bounds(cx - 50, cy + 130, 100, 20).build());
+        }));
     }
 
     @Override
-    public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
-        this.renderBackground(guiGraphics);
-        guiGraphics.drawCenteredString(this.font, this.title, width / 2, height / 2 - 50, 0xFFFFFF);
+    public void render(PoseStack ms, int mouseX, int mouseY, float partialTicks) {
+        this.renderBackground(ms);
+        drawCenteredString(ms, this.font, this.title, width / 2, height / 2 - 50, 0xFFFFFF);
 
         int id = dinoIds.get(currentIndex);
         Dinosaur dino = DinosaurHandler.getById(id);
         String name = dino.getName();
-        guiGraphics.drawCenteredString(this.font, Component.literal(name), width / 2, height / 2 + 10, 0xFFFF00);
+        drawCenteredString(ms, this.font, Component.literal(name), width / 2, height / 2 + 10, 0xFFFF00);
 
-        super.render(guiGraphics, mouseX, mouseY, partialTicks);
+        super.render(ms, mouseX, mouseY, partialTicks);
     }
 
     @Override
@@ -132,19 +144,37 @@ public class HologramSelectScreen extends Screen {
         }
     }
 
+    /**
+     * Applies the current selection to the client-side block entity for immediate visual feedback
+     * This does NOT save - only clicking "Confirm" saves via the server packet
+     *
+     * IMPORTANT: We suppress updates here so this doesn't trigger saves on the client
+     */
     private void applySelectionLocally() {
         if (this.minecraft == null || this.minecraft.level == null || this.dinoIds == null || this.dinoIds.isEmpty()) {
             return;
         }
+
         BlockEntity be = this.minecraft.level.getBlockEntity(this.blockPos);
         if (!(be instanceof HologramBlockEntity hologram)) {
             return;
         }
 
         int selectedId = this.dinoIds.get(Math.floorMod(this.currentIndex, this.dinoIds.size()));
-        hologram.setDinosaurById(selectedId);
-        hologram.setPoseIndex(this.poseIndex);
-        hologram.setRotating(this.rotating);
-        hologram.setRot(this.rotation);
+
+        // Suppress updates to prevent client from trying to save
+        hologram.suppressUpdates = true;
+        try {
+            // Apply changes locally for immediate visual feedback only
+            hologram.setDinosaurById(selectedId);
+            hologram.setPoseIndex(this.poseIndex);
+            hologram.setRotating(this.rotating);
+            hologram.setRot(this.rotation);
+
+            System.out.println("[HologramGUI] LOCAL preview: dino=" + selectedId +
+                    ", pose=" + poseIndex + ", rotating=" + rotating + ", rotation=" + rotation);
+        } finally {
+            hologram.suppressUpdates = false;
+        }
     }
 }

@@ -1,6 +1,7 @@
 package net.vit.jurassicreborn.common.entities.EntityUtils;
 
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.damagesource.DamageSource;
 import net.vit.jurassicreborn.client.render.entity.animation.EntityAnimation;
 import net.vit.jurassicreborn.common.entities.DinosaurEntity;
 
@@ -30,15 +31,11 @@ public class MetabolismContainer {
     public void update() {
         if (!this.dinosaur.isDeadOrDying()
                 && !this.dinosaur.isCarcass()
-                && this.dinosaur.level().getGameRules().getBoolean(
+                && this.dinosaur.level.getGameRules().getBoolean(
                 net.vit.jurassicreborn.common.util.GameRuleHandler.DINO_METABOLISM)) {
 
-            // Sleeping dinosaurs shouldn’t lose hunger or thirst.  Let digestion
-            // keep working, but pause the passive drain until they wake up.
-            if (!this.dinosaur.isSleeping()) {
-                decreaseEnergy(1);
-                decreaseWater(1);
-            }
+            decreaseEnergy(1);
+            decreaseWater(1);
 
             if (this.dinosaur.isInWaterRainOrBubble()) {
                 if (isThirsty()) {
@@ -71,14 +68,14 @@ public class MetabolismContainer {
     public void decreaseEnergy(int amount) {
         setEnergy(this.energy - Math.max(0, amount));
         if (isStarving() && this.dinosaur.tickCount % 40 == 0) {
-            this.dinosaur.hurt(this.dinosaur.damageSources().starve(), 1.0F);
+            this.dinosaur.hurt(DamageSource.STARVE, 1.0F);
         }
     }
 
     public void decreaseWater(int amount) {
         setWater(this.water - Math.max(0, amount));
         if (isDehydrated() && this.dinosaur.tickCount % 40 == 0) {
-            this.dinosaur.hurt(this.dinosaur.damageSources().starve(), 1.0F);
+            this.dinosaur.hurt(DamageSource.STARVE, 1.0F);
         }
     }
 

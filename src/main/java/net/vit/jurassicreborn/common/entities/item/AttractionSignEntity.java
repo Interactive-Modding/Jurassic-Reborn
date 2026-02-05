@@ -6,7 +6,6 @@ import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
@@ -82,7 +81,7 @@ public class AttractionSignEntity extends HangingEntity implements IEntityAdditi
     }
 
     @Override
-    public Packet<ClientGamePacketListener> getAddEntityPacket() {
+    public Packet<?> getAddEntityPacket() {
         return NetworkHooks.getEntitySpawningPacket(this);
     }
 
@@ -91,8 +90,8 @@ public class AttractionSignEntity extends HangingEntity implements IEntityAdditi
 
     @Override
     public void dropItem(@Nullable Entity broke) {
-        if (!level().isClientSide()
-                && level().getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)
+        if (!level.isClientSide()
+                && level.getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)
                 && !(broke instanceof Player p && p.getAbilities().instabuild)) {
             ItemStack stack = new ItemStack(ModItems.ATTRACTION_SIGNS.get(this.type).get());
             spawnAtLocation(stack, 0f);
@@ -106,8 +105,8 @@ public class AttractionSignEntity extends HangingEntity implements IEntityAdditi
 
     @Override
     public boolean survives() {
-        if (!level().noCollision(this)) return false;
-        return level().getEntitiesOfClass(
+        if (!level.noCollision(this)) return false;
+        return level.getEntitiesOfClass(
                 AttractionSignEntity.class,
                 getBoundingBox(),
                 e -> e != this

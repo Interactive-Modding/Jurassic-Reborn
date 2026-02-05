@@ -168,7 +168,6 @@ public final class StorageDiscModelData {
         MODEL_IDS.put("wild_onion", 1040);
         MODEL_IDS.put("wild_potato", 1041);
         MODEL_IDS.put("woolly_stalked_begonia", 1042);
-        MODEL_IDS.put("small_cycad", 1043);
 
         // MODELS: IMPORTANT CHANGE → no "item/" prefix in path.
         // Minecraft will look in: assets/jurassicreborn/models/item/<path>.json
@@ -325,7 +324,6 @@ public final class StorageDiscModelData {
         MODELS.put(1040, new ResourceLocation("jurassicreborn", "storage_disc/plants/wild_onion"));
         MODELS.put(1041, new ResourceLocation("jurassicreborn", "storage_disc/plants/wild_potato"));
         MODELS.put(1042, new ResourceLocation("jurassicreborn", "storage_disc/plants/woolly_stalked_begonia"));
-        MODELS.put(1043, new ResourceLocation("jurassicreborn", "storage_disc/plants/small_cycad"));
     }
 
     private StorageDiscModelData() {}

@@ -32,7 +32,7 @@ public class MoveUnderwaterEntityAI extends Goal {
         // lower idle chance so we don't drift upward between targets
         if (mob.getRandom().nextFloat() < 0.15F) return false;
 
-        Vec3 target = pickUnderwaterTarget(mob.level(), mob.blockPosition(), mob.getRandom());
+        Vec3 target = pickUnderwaterTarget(mob.level, mob.blockPosition(), mob.getRandom());
         if (target == null) return false;
 
         this.x = target.x;
@@ -125,7 +125,7 @@ public class MoveUnderwaterEntityAI extends Goal {
 
     /** True if feet are in water and the block below is solid (sitting on the bottom). */
     private boolean isBottomedOut(SwimmingDinosaurEntity e) {
-        Level lvl = e.level();
+        Level lvl = e.level;
         BlockPos feet = e.blockPosition();
         if (!lvl.hasChunkAt(feet) || !isWater(lvl, feet)) return false;
         BlockPos below = feet.below();

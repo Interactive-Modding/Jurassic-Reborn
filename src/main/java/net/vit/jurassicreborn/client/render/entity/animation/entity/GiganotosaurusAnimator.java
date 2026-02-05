@@ -28,6 +28,7 @@ public class GiganotosaurusAnimator extends EntityAnimator<GiganotosaurusEntity>
         AdvancedModelBox[] torso = new AdvancedModelBox[] {body1};
         AdvancedModelBox[] neckChain = new AdvancedModelBox[] {neck1};
         AdvancedModelBox[] tailChain = new AdvancedModelBox[] {tail8, tail7, tail6, tail5, tail4, tail3, tail2, tail1};
+
         // ===== Idle tuning =====
         float idleSpeed  = 0.1F;
         float idleDeg    = 0.1F;

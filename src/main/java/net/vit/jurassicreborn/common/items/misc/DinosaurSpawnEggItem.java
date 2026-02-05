@@ -24,6 +24,7 @@ import net.vit.jurassicreborn.JurassicReborn;
 import net.vit.jurassicreborn.common.entities.DinosaurEntity;
 import net.vit.jurassicreborn.common.entities.Dinosaurs.Dinosaur;
 import net.vit.jurassicreborn.common.genetics.GeneticsHelper;
+import net.vit.jurassicreborn.common.items.TabHandler;
 import net.vit.jurassicreborn.common.util.LangUtil;
 
 import java.util.List;
@@ -41,7 +42,7 @@ public class DinosaurSpawnEggItem extends Item {
 
     public DinosaurSpawnEggItem(Dinosaur dinosaur,
                                 Supplier<? extends EntityType<? extends DinosaurEntity>> entityTypeSupplier) {
-        super(new Item.Properties());
+        super(new Item.Properties().tab(TabHandler.SPAWN_EGGS));
         this.dinosaur = dinosaur;
         this.entityTypeSupplier = entityTypeSupplier;
     }
@@ -90,7 +91,7 @@ public class DinosaurSpawnEggItem extends Item {
         }
 
         if (be instanceof SpawnerBlockEntity spawner) {
-            spawner.getSpawner().setEntityId(resolvedType, world, world.getRandom(), pos);
+            spawner.getSpawner().setEntityId(resolvedType);
             spawner.setChanged();
             if (player != null && !player.isCreative()) {
                 stack.shrink(1);

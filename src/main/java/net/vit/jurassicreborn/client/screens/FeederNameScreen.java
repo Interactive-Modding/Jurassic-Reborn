@@ -1,9 +1,9 @@
 package net.vit.jurassicreborn.client.screens;
 
+import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.vit.jurassicreborn.client.JurassicClient;
@@ -25,9 +25,14 @@ public class FeederNameScreen extends Screen {
         this.nameField = new EditBox(this.font, this.width / 2 - 100, this.height / 2 - 10, 200, 20, Component.literal("Feeder Name"));
         this.addRenderableWidget(this.nameField);
 
-        this.addRenderableWidget(Button.builder(Component.literal("Done"), b -> finish())
-                .bounds(this.width / 2 - 40, this.height / 2 + 20, 80, 20)
-                .build());
+        this.addRenderableWidget(new Button(
+                this.width / 2 - 40, // x position
+                this.height / 2 + 20, // y position
+                80, // width
+                20, // height
+                Component.literal("Done"), // button text
+                b -> finish() // onPress action
+        ));
 
         this.setInitialFocus(this.nameField);
     }
@@ -41,10 +46,10 @@ public class FeederNameScreen extends Screen {
     }
 
     @Override
-    public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
-        this.renderBackground(guiGraphics);
-        super.render(guiGraphics, mouseX, mouseY, partialTicks);
-        this.nameField.render(guiGraphics, mouseX, mouseY, partialTicks);
+    public void render(PoseStack poseStack, int mouseX, int mouseY, float partialTicks) {
+        this.renderBackground(poseStack);
+        super.render(poseStack, mouseX, mouseY, partialTicks);
+        this.nameField.render(poseStack, mouseX, mouseY, partialTicks);
     }
 
     @Override

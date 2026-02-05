@@ -11,7 +11,7 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.decoration.Painting;
 import net.vit.jurassicreborn.common.entities.item.BlueprintPaintingEntity;
-import com.mojang.math.Axis;
+import com.mojang.math.Vector3f;
 
 public class BlueprintRenderer extends PaintingRenderer {
 
@@ -30,7 +30,7 @@ public class BlueprintRenderer extends PaintingRenderer {
         float h   = hPx / 16f;
 
         pose.pushPose();
-        pose.mulPose(Axis.YP.rotationDegrees(180.0F - yaw));
+        pose.mulPose(Vector3f.YP.rotationDegrees(180.0F - yaw));
         pose.translate(-w / 2.0F, -h / 2.0F, 0.0F);
 
         VertexConsumer vc = buf.getBuffer(RenderType.entityCutout(tex));

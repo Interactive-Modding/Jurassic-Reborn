@@ -25,6 +25,7 @@ import net.vit.jurassicreborn.common.items.Food.FoodHelper;
 import net.vit.jurassicreborn.common.paleopad.AppHandler;
 import net.vit.jurassicreborn.common.util.GameRuleHandler;
 import net.vit.jurassicreborn.common.util.particles.ModParticles;
+import net.vit.jurassicreborn.common.worldgen.ConfiguredFeatureRegistries;
 import net.vit.jurassicreborn.common.blocks.ModBlocks;
 import net.vit.jurassicreborn.common.blocks.entities.ModBlockEntities;
 import net.vit.jurassicreborn.common.blocks.entities.ModMenuTypes;
@@ -33,16 +34,14 @@ import net.vit.jurassicreborn.common.blocks.wood.WoodBlocks;
 import net.vit.jurassicreborn.common.datagen.JRDatagen;
 import net.vit.jurassicreborn.common.entities.Dinosaurs.DinosaurHandler;
 import net.vit.jurassicreborn.common.items.ModItems;
-import net.vit.jurassicreborn.common.items.TabHandler;
 import net.vit.jurassicreborn.common.network.Network;
 import net.vit.jurassicreborn.common.plants.PlantHandler;
-import net.vit.jurassicreborn.common.recipes.cleaner.CleaningRecipe;
 import net.vit.jurassicreborn.common.recipes.PotionDartRecipe;
+import net.vit.jurassicreborn.common.recipes.cleaner.CleaningRecipe;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.SpawnPlacements;
-import net.minecraft.world.entity.Mob;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FlowerPotBlock;
@@ -59,7 +58,6 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegisterEvent;
-import net.vit.jurassicreborn.common.worldgen.DinosaurNaturalSpawns;
 import net.vit.jurassicreborn.common.worldgen.ModFeatures;
 import net.vit.jurassicreborn.common.worldgen.loot.ModLootModifiers;
 import net.vit.jurassicreborn.common.worldgen.villager.ModVillagers;
@@ -67,8 +65,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
-import net.vit.jurassicreborn.common.entities.Dinosaurs.Dinosaur;
-import net.vit.jurassicreborn.common.entities.DinosaurEntity;
 
 @Mod(JurassicReborn.MODID)
 public class JurassicReborn {
@@ -96,17 +92,18 @@ public class JurassicReborn {
         }
         SoundHandler.registrer.register(modEventBus);
 
+        WoodBlocks.register();
         ModParticles.init(modEventBus);
         ModBlocks.register(modEventBus);
-        ModBlockEntities.BLOCK_ENTITY_TYPES.register(modEventBus);
-        ModMenuTypes.MENU_TYPES.register(modEventBus);
-        WoodBlocks.register();
+        DinosaurHandler.doDinosInit();
+        PlantHandler.init();
         ModItems.register(modEventBus);
-        ModEntities.init(modEventBus);
         ModVillagers.register(modEventBus);
-        TabHandler.TABS.register(modEventBus);
+        ModEntities.init(modEventBus);
 
         ModFeatures.FEATURES.register(modEventBus);
+        ModBlockEntities.BLOCK_ENTITY_TYPES.register(modEventBus);
+        ModMenuTypes.MENU_TYPES.register(modEventBus);
         CommonRegistries.BIOME_MODIFIER_SERIALIZERS.register(modEventBus);
         CommonRegistries.init();
 
@@ -138,10 +135,10 @@ public class JurassicReborn {
     }
 
     public void setup(final FMLCommonSetupEvent event) {
+        ConfiguredFeatureRegistries.init();
         CultivatorBlockEntity.FoodNutrients.register();
 
         event.enqueueWork(() -> {
-            DinosaurNaturalSpawns.invalidate();
             FlowerPotBlock flowerPot = (FlowerPotBlock) Blocks.FLOWER_POT;
             flowerPot.addPlant(ModBlocks.ARAUCARIA_SAPLING.getId(), ModBlocks.POTTED_ARAUCARIA_SAPLING);
             flowerPot.addPlant(ModBlocks.GINKGO_SAPLING.getId(), ModBlocks.POTTED_GINKGO_SAPLING);
@@ -150,49 +147,22 @@ public class JurassicReborn {
             flowerPot.addPlant(ModBlocks.PSARONIUS_SAPLING.getId(), ModBlocks.POTTED_PSARONIUS_SAPLING);
             flowerPot.addPlant(ModBlocks.MAGNOLIA_SAPLING.getId(), ModBlocks.POTTED_MAGNOLIA_SAPLING);
             if (RebornConfig.spawnCrabs) {
-                registerSpawnPlacementIfAbsent(
-                        ModEntities.CRAB.get(),
+                SpawnPlacements.register(ModEntities.CRAB.get(),
                         SpawnPlacements.Type.ON_GROUND,
                         Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                        CrabEntity::checkCrabSpawnRules
-                );
+                        CrabEntity::checkCrabSpawnRules);
             }
             if (RebornConfig.spawnSharks) {
-                registerSpawnPlacementIfAbsent(
-                        ModEntities.SHARK.get(),
+                SpawnPlacements.register(ModEntities.SHARK.get(),
                         SpawnPlacements.Type.IN_WATER,
                         Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                        SharkEntity::checkSharkSpawnRules
-                );
+                        SharkEntity::checkSharkSpawnRules);
             }
             if (RebornConfig.spawnGoats) {
-                registerSpawnPlacementIfAbsent(
-                        ModEntities.GOAT.get(),
+                SpawnPlacements.register(ModEntities.GOAT.get(),
                         SpawnPlacements.Type.ON_GROUND,
                         Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                        GoatEntity::checkGoatSpawnRules
-                );
-            }
-
-            if (RebornConfig.spawnDinosaursNaturally) {
-                for (Dinosaur dinosaur : Dinosaur.DINOS) {
-                    if (dinosaur == Dinosaur.EMPTY) {
-                        continue;
-                    }
-
-                    ModEntities.getTypeForDinosaur(dinosaur).ifPresent(type -> {
-                        SpawnPlacements.Type placement = dinosaur.isMarineCreature()
-                                ? SpawnPlacements.Type.IN_WATER
-                                : SpawnPlacements.Type.ON_GROUND;
-
-                        registerSpawnPlacementIfAbsent(
-                                (EntityType<? extends Mob>) type,
-                                placement,
-                                Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                                DinosaurEntity::canSpawnNaturally
-                        );
-                    });
-                }
+                        GoatEntity::checkGoatSpawnRules);
             }
 
         });
@@ -236,19 +206,6 @@ public class JurassicReborn {
     public static ArrayList<String> erroredIdentifiers = new ArrayList<>();
 
     public static void checkCubeId(String id) {
-    }
-
-    private static <T extends Mob> void registerSpawnPlacementIfAbsent(
-            EntityType<T> entityType,
-            SpawnPlacements.Type placementType,
-            Heightmap.Types heightmap,
-            SpawnPlacements.SpawnPredicate<T> predicate
-    ) {
-        if (SpawnPlacements.getPlacementType(entityType) != null) {
-            return;
-        }
-
-        SpawnPlacements.register(entityType, placementType, heightmap, predicate);
     }
 
     public void serverTickEvent(TickEvent.ServerTickEvent evt){

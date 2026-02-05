@@ -171,7 +171,7 @@ public class Network {
         );
     }
 
-    /** Convenience overload: fixed 64-block radius. */
+    /*...*/
     public static void sendToAllNear(Level level, BlockPos pos, Object msg) {
         sendToAllNear(level, pos, 64.0d, msg);
     }

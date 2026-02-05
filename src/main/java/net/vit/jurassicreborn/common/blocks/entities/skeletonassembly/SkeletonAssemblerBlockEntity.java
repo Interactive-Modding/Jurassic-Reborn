@@ -18,12 +18,14 @@ import net.vit.jurassicreborn.common.blocks.entities.ModBlockEntities;
 import net.vit.jurassicreborn.common.blocks.inventory.ItemHandlerBlockEntity;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib.animatable.GeoBlockEntity;
-import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
-import software.bernie.geckolib.core.animation.AnimatableManager;
-import software.bernie.geckolib.core.animation.AnimationController;
-import software.bernie.geckolib.core.animation.RawAnimation;
-import software.bernie.geckolib.util.GeckoLibUtil;
+import software.bernie.geckolib3.core.IAnimatable;
+import software.bernie.geckolib3.core.PlayState;
+import software.bernie.geckolib3.core.builder.AnimationBuilder;
+import software.bernie.geckolib3.core.controller.AnimationController;
+import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
+import software.bernie.geckolib3.core.manager.AnimationData;
+import software.bernie.geckolib3.core.manager.AnimationFactory;
+import software.bernie.geckolib3.util.GeckoLibUtil;
 
 import java.util.List;
 
@@ -31,16 +33,15 @@ import static net.vit.jurassicreborn.common.network.Network.id;
 
 public class SkeletonAssemblerBlockEntity
         extends MachineBlockEntity
-        implements MenuProvider, ItemHandlerBlockEntity, GeoBlockEntity {
+        implements MenuProvider, ItemHandlerBlockEntity, IAnimatable {
 
     /* ---------------- inventory layout ---------------- */
     public static final int GRID_W = 5, GRID_H = 5;
     /** Number of fossil slots (0-24). */
     private static final int GRID_SLOTS = GRID_W * GRID_H;   // 25
     /** Index of the output slot inside the item handler. */
-    public static final int RESULT_SLOT = GRID_SLOTS;        // 25
-    private static final RawAnimation IDLE_ANIMATION = RawAnimation.begin().thenLoop("animation.model.idle");
-    private final AnimatableInstanceCache animationCache = GeckoLibUtil.createInstanceCache(this);
+    public static final int RESULT_SLOT = GRID_SLOTS;        // 25    private final AnimationFactory factory = GeckoLibUtil.createFactory(this);
+    private final AnimationFactory factory = GeckoLibUtil.createFactory(this);
     private final SkeletonAssemblerItemHandler items =
             new SkeletonAssemblerItemHandler();
 
@@ -180,13 +181,19 @@ public class SkeletonAssemblerBlockEntity
     }
 
     @Override
-    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
-        controllers.add(new AnimationController<>(this, "controller", 0,
-                state -> state.setAndContinue(IDLE_ANIMATION)));
+    public void registerControllers(AnimationData animationData) {
+        animationData.addAnimationController(
+                new AnimationController<>(this, "controller", 0, this::controller)
+        );
     }
 
     @Override
-    public AnimatableInstanceCache getAnimatableInstanceCache() {
-        return animationCache;
+    public AnimationFactory getFactory() {
+        return factory;
+    }
+
+    private <E extends IAnimatable> PlayState controller(AnimationEvent<E> event) {
+        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.model.idle"));
+        return PlayState.CONTINUE;
     }
 }

@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "building",
   "group": "jurassicreborn:tour_rail",
   "key": {
     "B": {
@@ -21,6 +20,5 @@
   "result": {
     "count": 16,
     "item": "jurassicreborn:tour_rail"
-  },
-  "show_notification": true
+  }
 }

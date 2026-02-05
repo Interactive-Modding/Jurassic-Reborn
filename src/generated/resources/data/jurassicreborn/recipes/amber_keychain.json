@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "group": "jurassicreborn:amber_keychain",
   "key": {
     "A": {
@@ -16,6 +15,5 @@
   ],
   "result": {
     "item": "jurassicreborn:amber_keychain"
-  },
-  "show_notification": true
+  }
 }

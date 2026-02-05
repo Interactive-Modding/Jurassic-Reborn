@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "building",
   "key": {
     "A": {
       "item": "minecraft:glass"
@@ -22,6 +21,5 @@
   ],
   "result": {
     "item": "jurassicreborn:incubator"
-  },
-  "show_notification": true
+  }
 }

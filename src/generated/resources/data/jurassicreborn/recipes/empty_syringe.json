@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "key": {
     "A": {
       "tag": "forge:nuggets/iron"
@@ -16,6 +15,5 @@
   ],
   "result": {
     "item": "jurassicreborn:empty_syringe"
-  },
-  "show_notification": true
+  }
 }

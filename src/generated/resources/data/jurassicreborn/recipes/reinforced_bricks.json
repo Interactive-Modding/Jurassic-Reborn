@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "building",
   "key": {
     "I": {
       "tag": "forge:ingots/iron"
@@ -17,6 +16,5 @@
   "result": {
     "count": 8,
     "item": "jurassicreborn:reinforced_bricks"
-  },
-  "show_notification": true
+  }
 }

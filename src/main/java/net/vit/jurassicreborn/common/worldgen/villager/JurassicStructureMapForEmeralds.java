@@ -3,7 +3,7 @@ package net.vit.jurassicreborn.common.worldgen.villager;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
-import net.minecraft.core.registries.Registries;
+import net.minecraft.core.Registry;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
@@ -55,13 +55,14 @@ public class JurassicStructureMapForEmeralds implements VillagerTrades.ItemListi
 
     @Override
     public MerchantOffer getOffer(Entity trader, RandomSource random) {
-        if (!(trader.level() instanceof ServerLevel serverLevel)) {
+        if (!(trader.level instanceof ServerLevel serverLevel)) {
             return null;
         }
 
-        var registry = serverLevel.registryAccess().registryOrThrow(Registries.STRUCTURE);
+        // 1.19.2: use Registry.STRUCTURE_REGISTRY (not Registries.STRUCTURE)
+        Registry<Structure> registry = serverLevel.registryAccess().registryOrThrow(Registry.STRUCTURE_REGISTRY);
 
-        Optional<Holder.Reference<Structure>> structureHolder = registry.getHolder(this.structureKey);
+        Optional<Holder<Structure>> structureHolder = registry.getHolder(this.structureKey);
         if (structureHolder.isEmpty()) {
             return null;
         }

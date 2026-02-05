@@ -45,15 +45,15 @@ public class MagnoliaTreeGenerator extends Feature<NoneFeatureConfiguration> {
         BlockState log = trunk.get();
         BlockState leaves = this.leaves.get();
 
-
+        // Build main trunk (short and stocky)
         for (int y = 0; y <= trunkHeight; y++) {
             this.setBlockState(level, origin.above(y), log);
         }
 
-
+        // Track all branch endpoints for foliage
         List<BlockPos> branchTips = new ArrayList<>();
 
-
+        // Create major spreading branches from low on the trunk
         int branchStartHeight = 4;
         for (Direction dir : Direction.Plane.HORIZONTAL) {
             int branchY = branchStartHeight + random.nextInt(2);
@@ -61,7 +61,7 @@ public class MagnoliaTreeGenerator extends Feature<NoneFeatureConfiguration> {
             branchTips.addAll(tips);
         }
 
-
+        // Add additional branches at mid-height for fuller canopy
         for (int i = 0; i < 3; i++) {
             Direction dir = Direction.Plane.HORIZONTAL.getRandomDirection(random);
             int branchY = trunkHeight - 1 + random.nextInt(2);
@@ -69,19 +69,19 @@ public class MagnoliaTreeGenerator extends Feature<NoneFeatureConfiguration> {
             branchTips.addAll(tips);
         }
 
-
+        // Create top branches
         for (int i = 0; i < 3; i++) {
             Direction dir = Direction.Plane.HORIZONTAL.getRandomDirection(random);
             List<BlockPos> tips = this.createUpwardBranch(level, origin.above(trunkHeight), dir, random, log);
             branchTips.addAll(tips);
         }
 
-
+        // Add dense foliage clusters at all branch tips
         for (BlockPos tip : branchTips) {
             this.addFoliageCluster(level, tip, random, leaves, 2 + random.nextInt(2));
         }
 
-
+        // Fill in with additional scattered foliage for density
         this.addScatteredCanopy(level, origin.above(trunkHeight - 1), random, leaves);
 
         return true;
@@ -92,19 +92,19 @@ public class MagnoliaTreeGenerator extends Feature<NoneFeatureConfiguration> {
         List<BlockPos> tips = new ArrayList<>();
         BlockPos current = start;
 
-
+        // Main branch extends outward and slightly up
         for (int i = 0; i < length; i++) {
             current = current.relative(dir);
             BlockState horizontalLog = log.setValue(RotatedPillarBlock.AXIS, dir.getAxis());
             this.setBlockState(level, current, horizontalLog);
 
-
+            // Gradually angle upward
             if (i > 0 && i % 2 == 0) {
                 current = current.above();
                 this.setBlockState(level, current, log);
             }
 
-
+            // Add sub-branches for more complexity
             if (i >= 2 && random.nextFloat() < 0.5) {
                 Direction subDir = random.nextBoolean() ? dir.getClockWise() : dir.getCounterClockWise();
                 BlockPos subBranch = this.createSubBranch(level, current, subDir, random, log, 2);
@@ -157,7 +157,7 @@ public class MagnoliaTreeGenerator extends Feature<NoneFeatureConfiguration> {
                 for (int z = -radius; z <= radius; z++) {
                     double distance = Math.sqrt(x * x + y * y + z * z);
 
-
+                    // Dense clusters with some randomness for natural shape
                     if (distance <= radius + random.nextDouble() * 0.6) {
                         BlockPos leafPos = center.offset(x, y, z);
                         if (!level.getBlockState(leafPos).is(trunk.get().getBlock())) {
@@ -170,7 +170,7 @@ public class MagnoliaTreeGenerator extends Feature<NoneFeatureConfiguration> {
     }
 
     private void addScatteredCanopy(WorldGenLevel level, BlockPos center, RandomSource random, BlockState leaves) {
-
+        // Create a wide, rounded canopy that fills the space between branches
         for (int y = -2; y <= 3; y++) {
             int radius = 5 - Math.abs(y - 1);
 
@@ -178,14 +178,14 @@ public class MagnoliaTreeGenerator extends Feature<NoneFeatureConfiguration> {
                 for (int z = -radius; z <= radius; z++) {
                     double distance = Math.sqrt(x * x + z * z);
 
-
+                    // Scatter leaves with decreasing probability as distance increases
                     double probability = 1.0 - (distance / (radius + 1)) * 0.7;
 
                     if (distance <= radius && random.nextDouble() < probability) {
                         BlockPos leafPos = center.offset(x, y, z);
                         BlockState currentState = level.getBlockState(leafPos);
 
-
+                        // Only place if it's air (don't overwrite branches or existing leaves)
                         if (currentState.isAir()) {
                             this.setBlockState(level, leafPos, leaves);
                         }
@@ -199,27 +199,15 @@ public class MagnoliaTreeGenerator extends Feature<NoneFeatureConfiguration> {
         WorldGenLevel level = context.level();
         BlockPos origin = context.origin();
 
+        BlockPos.MutableBlockPos min = origin.mutable();
+        min.move(-8, 0, -8);
+        BlockPos.MutableBlockPos max = origin.mutable();
+        max.move(8, height + 2, 8);
 
-        for (int y = 0; y <= height; y++) {
-            if (!TreePlaceUtil.validTreePos(level, origin.above(y))) {
-                return false;
-            }
-        }
-
-
-        int canopyRadius = 7;
-        int minY = origin.getY() + 3;
-        int maxY = origin.getY() + height;
-
-        for (int y = minY; y <= maxY; y++) {
-            for (int x = -canopyRadius; x <= canopyRadius; x++) {
-                for (int z = -canopyRadius; z <= canopyRadius; z++) {
-                    if (x * x + z * z > canopyRadius * canopyRadius) {
-                        continue;
-                    }
-
-                    BlockPos checkPos = origin.offset(x, y - origin.getY(), z);
-                    if (!TreePlaceUtil.validTreePos(level, checkPos)) {
+        for (int x = min.getX(); x <= max.getX(); x++) {
+            for (int y = min.getY(); y <= max.getY(); y++) {
+                for (int z = min.getZ(); z <= max.getZ(); z++) {
+                    if (!TreePlaceUtil.validTreePos(level, new BlockPos(x, y, z))) {
                         return false;
                     }
                 }

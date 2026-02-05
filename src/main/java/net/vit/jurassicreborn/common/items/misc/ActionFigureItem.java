@@ -3,13 +3,16 @@ package net.vit.jurassicreborn.common.items.misc;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -64,10 +67,6 @@ public class ActionFigureItem extends Item {
         tag.putBoolean(TAG_FOSSILE, !this.fresh);
         stack.setTag(tag);
         return stack;
-    }
-    @Override
-    public String getDescriptionId(ItemStack stack) {
-        return "item.jurassicreborn.action_figure.dynamic";
     }
 
 
@@ -173,18 +172,13 @@ public class ActionFigureItem extends Item {
     }
 
     @Override
-    public @NotNull Component getName(@NotNull ItemStack stack) {
-        Dinosaur dino = this.getDinosaur(stack);
+    public @NotNull Component getName(@NotNull ItemStack pStack) {
+        if(this.isSkeleton(pStack))
+            return LangUtil.replaceWithDinoName(this.getDinosaur(pStack), "item.JurassicReborn.skeleton." + (this.isFresh(pStack) ? "fresh" : "fossil"));
 
-        if (dino == Dinosaur.EMPTY) {
-            return Component.translatable("item.jurassicreborn.action_figure");
-        }
-
-        return Component.translatable(
-                "item.jurassicreborn.action_figure.dynamic",
-                dino.getTranslatedName()
-        );
+        return LangUtil.replaceWithDinoName(this.getDinosaur(pStack), "item.JurassicReborn.action_figure");
     }
+
     @Override
     public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
         if(this.isSkeleton)
@@ -256,10 +250,17 @@ public class ActionFigureItem extends Item {
             return InteractionResult.FAIL;
         }
 
+        boolean hasVariantTag = stack.hasTag() && stack.getTag().contains("Variant", Tag.TAG_BYTE);
+        byte variant = hasVariantTag ? stack.getTag().getByte("Variant") : (byte) -1;
+
         afbe.setDinosaur(this.getDinosaur(stack),
                 gender > 0 ? gender == 1 : world.getRandom().nextBoolean(),
                 this.isSkeleton(stack),
                 this.isFossile(stack));
+
+        if (hasVariantTag) {
+            afbe.setVariant(variant);
+        }
 
         afbe.setRot(180 - (int) Objects.requireNonNull(context.getPlayer()).getYHeadRot());
 
@@ -289,6 +290,18 @@ public class ActionFigureItem extends Item {
         }
 
         return null;
+    }
+
+    @Override
+    public void fillItemCategory(CreativeModeTab tab, NonNullList<ItemStack> items) {
+        if (this.allowedIn(tab)) {
+            ItemStack stack = new ItemStack(this);
+            CompoundTag tag = new CompoundTag();
+            tag.putString("Gender", "random"); // or "male" or "female"
+            tag.putBoolean("IsFossile", !this.fresh); // explicit for EVERY item
+            stack.setTag(tag);
+            items.add(stack);
+        }
     }
 
 }

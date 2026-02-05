@@ -1,11 +1,13 @@
 package net.vit.jurassicreborn.common.items.guns;
 
 import net.vit.jurassicreborn.client.sounds.SoundHandler;
+import net.vit.jurassicreborn.common.items.TabHandler;
 import net.vit.jurassicreborn.common.items.guns.Gun;
 
 public class UTS15 extends Gun {
     public UTS15() {
         super(
+                TabHandler.ITEMS,
                 1,                       // shots per trigger pull
                 SoundHandler.FIRE,
                 SoundHandler.EMPTY,

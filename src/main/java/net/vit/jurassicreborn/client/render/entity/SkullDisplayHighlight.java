@@ -2,7 +2,6 @@ package net.vit.jurassicreborn.client.render.entity;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Camera;
-import com.mojang.math.Axis;
 import net.minecraft.client.renderer.LevelRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
@@ -28,7 +27,7 @@ public class SkullDisplayHighlight {
 
         BlockHitResult bhr = (BlockHitResult) target;
         BlockPos pos = bhr.getBlockPos();
-        BlockState state = event.getCamera().getEntity().level().getBlockState(pos);
+        BlockState state = event.getCamera().getEntity().level.getBlockState(pos);
         if (!(state.getBlock() instanceof SkullDisplayBlock)) return;
 
         Camera camera = event.getCamera();
@@ -41,12 +40,12 @@ public class SkullDisplayHighlight {
         double camZ = camera.getPosition().z();
         pose.translate(pos.getX() + 0.5 - camX, pos.getY() - camY, pos.getZ() + 0.5 - camZ);
 
-        SkullDisplayBlockEntity tile = (SkullDisplayBlockEntity) camera.getEntity().level().getBlockEntity(pos);
+        SkullDisplayBlockEntity tile = (SkullDisplayBlockEntity) camera.getEntity().level.getBlockEntity(pos);
         if (tile != null && tile.hasData()) {
-            pose.mulPose(Axis.YP.rotationDegrees(tile.getAngle()));
+            pose.mulPose(com.mojang.math.Vector3f.YP.rotationDegrees(tile.getAngle()));
         }
         pose.translate(-0.5, 0.0, -0.5);
-        AABB box = state.getShape(camera.getEntity().level(), pos).bounds().inflate(0.002);
+        AABB box = state.getShape(camera.getEntity().level, pos).bounds().inflate(0.002);
         LevelRenderer.renderLineBox(pose, buffers.getBuffer(RenderType.lines()), box, 0.0F, 0.0F, 0.0F, 0.4F);
         pose.popPose();
         event.setCanceled(true);

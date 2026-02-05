@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "building",
   "key": {
     "#": {
       "item": "jurassicreborn:reinforced_stone_tiles"
@@ -14,6 +13,5 @@
   "result": {
     "count": 4,
     "item": "jurassicreborn:reinforced_stone_tiles_stairs"
-  },
-  "show_notification": true
+  }
 }

@@ -3,7 +3,6 @@ package net.vit.jurassicreborn.common.datagen.data;
 import net.minecraft.advancements.*;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.data.advancements.AdvancementSubProvider;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
@@ -16,7 +15,7 @@ import java.util.function.Consumer;
 
 import static net.vit.jurassicreborn.JurassicReborn.MODID;
 
-public class JRAdvancements implements AdvancementSubProvider {
+public class JRAdvancements implements java.util.function.Consumer<java.util.function.Consumer<net.minecraft.advancements.Advancement>> {
 
     private static ItemLike item(String id) {
         Item it = ForgeRegistries.ITEMS.getValue(new ResourceLocation(id));
@@ -33,7 +32,7 @@ public class JRAdvancements implements AdvancementSubProvider {
     }
 
     @Override
-    public void generate(HolderLookup.Provider registries, java.util.function.Consumer<net.minecraft.advancements.Advancement> consumer) {
+    public void accept(java.util.function.Consumer<net.minecraft.advancements.Advancement> consumer) {
 // root
         Advancement root = Advancement.Builder.advancement()
                 .display(item("jurassicreborn:bones/mamenchisaurus_skull"),

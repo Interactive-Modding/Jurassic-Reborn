@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "building",
   "group": "jurassicreborn:cultivate_bottom",
   "key": {
     "A": {
@@ -20,6 +19,5 @@
   ],
   "result": {
     "item": "jurassicreborn:cultivate/cultivate_bottom_black"
-  },
-  "show_notification": true
+  }
 }

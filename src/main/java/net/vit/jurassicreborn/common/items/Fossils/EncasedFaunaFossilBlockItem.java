@@ -2,8 +2,10 @@ package net.vit.jurassicreborn.common.items.Fossils;
 
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.core.NonNullList;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.Block;
 import net.vit.jurassicreborn.common.util.FossilUtil;
@@ -56,7 +58,6 @@ public class EncasedFaunaFossilBlockItem extends FossilBlockItem implements Clea
         if (boneMap == null || bones == null || bones.length == 0) return ItemStack.EMPTY;
         // Choose a random bone name from the array
         String boneKey = bones.length > 1 ? bones[random.nextInt(bones.length)] : bones[0];
-
         Item bone = ((net.minecraftforge.registries.RegistryObject<Item>) boneMap.get(boneKey)).get();
         return new ItemStack(bone, 1);
     }
@@ -81,4 +82,13 @@ public class EncasedFaunaFossilBlockItem extends FossilBlockItem implements Clea
     }
 
 
+    @Override
+    public void fillItemCategory(CreativeModeTab tab, NonNullList<ItemStack> items) {
+        if (this.allowedIn(tab)) {
+            ItemStack stack = new ItemStack(this);
+            // Initialize the item's NBT with the default dinosaur.
+            FossilUtil.setDino(stack, defaultDino);
+            items.add(stack);
+        }
+    }
 }

@@ -16,6 +16,7 @@ import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.vit.jurassicreborn.common.entities.item.CageEntity;
+import net.vit.jurassicreborn.common.items.TabHandler;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -26,7 +27,7 @@ import java.util.List;
 public class CageItem extends Item {
 
     public CageItem() {
-        super(new Item.Properties().stacksTo(1));
+        super(new Item.Properties().stacksTo(1).tab(TabHandler.ITEMS));
     }
 
     @Override

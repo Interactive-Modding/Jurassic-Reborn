@@ -5,7 +5,7 @@ import com.github.alexthe666.citadel.client.model.container.TabulaModelContainer
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.math.Axis;
+import com.mojang.math.Vector3f;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderer;
@@ -22,7 +22,7 @@ import net.vit.jurassicreborn.common.util.MathUtils;
 import org.jetbrains.annotations.Nullable;
 
 import net.minecraft.world.phys.Vec2;
-import org.joml.Vector4f;
+import com.mojang.math.Vector4f;
 
 import java.util.stream.IntStream;
 
@@ -90,7 +90,7 @@ public abstract class CarRenderer<E extends VehicleEntity> extends EntityRendere
         // ---------- root transform ----------
         pose.pushPose();
         pose.translate(0, 1.25F, 0);
-        pose.mulPose(Axis.YP.rotationDegrees(180 - entityYaw));
+        pose.mulPose(Vector3f.YP.rotationDegrees(180 - entityYaw));
 
         applySuspensionPitchRoll(car, partialTicks, pose);
 
@@ -146,12 +146,12 @@ public abstract class CarRenderer<E extends VehicleEntity> extends EntityRendere
                 new Vec3(front, 0, d.w()), new Vec3(back, 0, d.w()), new Vec3(back, 0, d.y()));
         pitch = Mth.clamp(pitch, -45f, 45f);
         if (RebornConfig.enableVehicleTilting)
-            pose.mulPose(Axis.XP.rotationDegrees(back > front ? -pitch : pitch));        // roll
+            pose.mulPose(Vector3f.XP.rotationDegrees(back > front ? -pitch : pitch));        // roll
         float roll = (float) MathUtils.cosineFromPoints(
                 new Vec3(right, 0, d.z()), new Vec3(left, 0, d.z()), new Vec3(left, 0, d.x()));
         roll = Mth.clamp(roll, -45f, 45f);
         if (RebornConfig.enableVehicleTilting)
-            pose.mulPose(Axis.ZP.rotationDegrees(left > right ? -roll : roll));
+            pose.mulPose(Vector3f.ZP.rotationDegrees(left > right ? -roll : roll));
         pose.translate(0, -rot.x, -rot.y);
 
         car.pitch = RebornConfig.enableVehicleTilting ? (back > front ? -pitch : pitch) : 0;

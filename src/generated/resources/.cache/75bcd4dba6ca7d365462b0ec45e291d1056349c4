@@ -1,0 +1,8 @@
+// 1.19.2	2025-11-20T15:34:21.47587	Tags for minecraft:block
+fe66e3482a952c8c17800c837108bd8085a59ec5 data/minecraft/tags/blocks/buttons.json
+b7dc872430f37d6d17103cbf8b0bc86860095c76 data/minecraft/tags/blocks/doors.json
+13b728317bf5c190dff34eb8e8bf6c89127c609f data/minecraft/tags/blocks/pressure_plates.json
+760051be2253312c1f444a18ffce752170cc52bd data/minecraft/tags/blocks/slabs.json
+38cc4a3dbb62170f8c667954a3ca9aebe30d39f3 data/minecraft/tags/blocks/stairs.json
+0c94470e24afa723bdb90fc6d202fbced22d640c data/minecraft/tags/blocks/walls.json
+27b98d05185616f2635ac3cfb72013ab277da725 data/minecraft/tags/blocks/wooden_trapdoors.json

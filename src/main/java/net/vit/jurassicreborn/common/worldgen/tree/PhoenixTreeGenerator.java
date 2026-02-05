@@ -12,6 +12,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
+import net.minecraft.world.level.material.Material;
 
 public class PhoenixTreeGenerator extends Feature<NoneFeatureConfiguration> {
     public PhoenixTreeGenerator(Codec<NoneFeatureConfiguration> p_65786_) {

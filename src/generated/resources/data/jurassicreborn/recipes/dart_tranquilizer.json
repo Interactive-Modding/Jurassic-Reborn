@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "group": "jurassicreborn:dart_tranquilizer",
   "key": {
     "F": {
@@ -17,6 +16,5 @@
   "result": {
     "count": 6,
     "item": "jurassicreborn:dart_tranquilizer"
-  },
-  "show_notification": true
+  }
 }

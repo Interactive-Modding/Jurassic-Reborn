@@ -1,6 +1,6 @@
 package net.vit.jurassicreborn.common.worldgen.structure;
 
-import net.minecraft.core.registries.Registries;
+import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.levelgen.structure.Structure;
 import net.vit.jurassicreborn.JurassicReborn;
@@ -17,6 +17,6 @@ public final class ModStructureKeys {
     private ModStructureKeys() {}
 
     private static ResourceKey<Structure> key(String name) {
-        return ResourceKey.create(Registries.STRUCTURE, JurassicReborn.resource(name));
+        return ResourceKey.create(Registry.STRUCTURE_REGISTRY, JurassicReborn.resource(name));
     }
 }

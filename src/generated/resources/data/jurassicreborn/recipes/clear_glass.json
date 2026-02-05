@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "building",
   "group": "jurassicreborn:clear_glass",
   "key": {
     "A": {
@@ -18,6 +17,5 @@
   "result": {
     "count": 8,
     "item": "jurassicreborn:clear_glass"
-  },
-  "show_notification": true
+  }
 }

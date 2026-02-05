@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "jurassicreborn:oiled_potato_strips"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_wild_potato": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:wild_potato"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_wild_potato",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "jurassicreborn:oiled_potato_strips"
+    ]
+  }
+}

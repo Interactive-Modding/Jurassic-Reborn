@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "group": "jurassicreborn:gyrosphere_hoop",
   "key": {
     "A": {
@@ -14,6 +13,5 @@
   ],
   "result": {
     "item": "jurassicreborn:gyrosphere_hoop"
-  },
-  "show_notification": true
+  }
 }

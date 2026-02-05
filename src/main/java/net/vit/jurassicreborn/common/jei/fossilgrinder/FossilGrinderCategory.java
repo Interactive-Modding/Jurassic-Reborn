@@ -1,15 +1,14 @@
 package net.vit.jurassicreborn.common.jei.fossilgrinder;
 
+import com.mojang.blaze3d.vertex.PoseStack;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
 import mezz.jei.api.gui.drawable.IDrawableStatic;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
-import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
-import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
@@ -47,8 +46,7 @@ public class FossilGrinderCategory implements IRecipeCategory<FossilGrinderRecip
         recipe.setRecipe(builder, focuses);
     }
 
-    @Override
-    public void draw(FossilGrinderRecipeExtension recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics graphics, double mouseX, double mouseY) {
-        arrow.draw(graphics, 61, 14);
+    public void draw(FossilGrinderRecipeExtension recipe, PoseStack gfx, double mouseX, double mouseY) {
+        arrow.draw(gfx, 61, 14);
     }
 }

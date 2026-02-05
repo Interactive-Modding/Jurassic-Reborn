@@ -148,9 +148,9 @@ public class JurassicClient {
 
     // CLIENT-ONLY helper; call during client tick of the projectile or on impact
     public static void spawnVenomParticles(VenomEntity entity) {
-        if (!entity.level().isClientSide) return;
+        if (!entity.level.isClientSide) return;
 
-        var level = entity.level();
+        var level = entity.level;
         var rand  = level.getRandom();
         double size = 0.35D;
 
@@ -190,6 +190,7 @@ public class JurassicClient {
     @SuppressWarnings("removal")
     public static void clientSetup(final FMLClientSetupEvent evt){
         evt.enqueueWork(() -> {
+            MenuScreens.register(ModMenuTypes.CULTIVATOR.get(), CultivatorScreen::new);
 
             // BlockEntityRenderer for the **bottom** block entity type
             BlockEntityRenderers.register(
@@ -215,10 +216,11 @@ public class JurassicClient {
                 BlockColors blockColors = mc.getBlockColors();
                 ItemColors itemColors = mc.getItemColors();
 
-                Block magnoliaLeaves = WoodBlocks.MAGNOLIA_LEAVES.isPresent() ? WoodBlocks.MAGNOLIA_LEAVES.get() : null;
-
                 for (Block block : ancientLeavesBlocks) {
-                    if (block == magnoliaLeaves) {
+
+                    boolean isMagnolia = Registry.BLOCK.getKey(block).getPath().contains("magnolia");
+
+                    if (isMagnolia) {
                         blockColors.register((state, access, pos, tintIndex) -> 0xFFFFFF, block);
                         itemColors.register((stack, tintIndex) -> 0xFFC0CB, block);
                     } else {
@@ -287,6 +289,8 @@ public class JurassicClient {
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.DICTYOPHYLLUM.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.WEST_INDIAN_LILAC.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.SERENNA_VERIFORMANS.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.KRILL_SWARM.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.PLANKTON_SWARM.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.LADINIA_SIMPLEX.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.ORONTIUM_MACKII.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.UMALTOLEPIS.get(), RenderType.cutout());
@@ -306,8 +310,6 @@ public class JurassicClient {
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.SMALL_ROYAL_FERN.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.SMALL_CHAIN_FERN.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.SMALL_CYCAD.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.KRILL_SWARM.get(), RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.PLANKTON_SWARM.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.CYCADEOIDEA.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.CRY_PANSY.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.SCALY_TREE_FERN.get(), RenderType.cutout());

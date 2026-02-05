@@ -13,5 +13,5 @@ public class ModPlacements {
     public static Holder<PlacedFeature> PLACED_LARGE_PETRIFIED_TREE;
     public static Holder<PlacedFeature> PLACED_SMALL_PETRIFIED_TREE;
     public static Holder<PlacedFeature> NEST_FOSSIL_PLACEMENT;
-//    public static Holder<PlacedFeature> PEAT_DISK_PLACEMENT;
+    public static Holder<PlacedFeature> PEAT_DISK_PLACEMENT;
 }

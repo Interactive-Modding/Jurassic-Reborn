@@ -32,9 +32,9 @@ public record BiomeModification(HolderSet<Biome> biomes, Holder<PlacedFeature> f
                 builder.getGenerationSettings().addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ModPlacements.FLORA_FOSSIL_PLACEMENT);
                 builder.getGenerationSettings().addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ModPlacements.NEST_FOSSIL_PLACEMENT);
                 builder.getGenerationSettings().addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ModPlacements.AMBER_ORE_PLACEMENT);
-//                if (biome.is(Tags.Biomes.IS_SWAMP)) {
-//                    builder.getGenerationSettings().addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ModPlacements.PEAT_DISK_PLACEMENT);
-//                }
+                if (biome.is(Tags.Biomes.IS_SWAMP)) {
+                    builder.getGenerationSettings().addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ModPlacements.PEAT_DISK_PLACEMENT);
+                }
                 if (!biome.is(Tags.Biomes.IS_VOID)) {
                     builder.getGenerationSettings().addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ModPlacements.PLACED_LARGE_PETRIFIED_TREE);
                     builder.getGenerationSettings().addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PLACED_SMALL_PETRIFIED_TREE);
@@ -45,7 +45,6 @@ public record BiomeModification(HolderSet<Biome> biomes, Holder<PlacedFeature> f
                             MobCategory.WATER_CREATURE,
                             new MobSpawnSettings.SpawnerData(ModEntities.CRAB.get(), 8, 2, 4)
                     );
-                    logSpawnAddition("Crab", biome, MobCategory.WATER_CREATURE, 8, 2, 4);
                 }
 
                 if (RebornConfig.spawnSharks && biome.is(BiomeTags.IS_OCEAN)) {
@@ -53,7 +52,6 @@ public record BiomeModification(HolderSet<Biome> biomes, Holder<PlacedFeature> f
                             MobCategory.WATER_CREATURE,
                             new MobSpawnSettings.SpawnerData(ModEntities.SHARK.get(), 2, 1, 2)
                     );
-                    logSpawnAddition("Shark", biome, MobCategory.WATER_CREATURE, 2, 1, 2);
                 }
 
                 if (RebornConfig.spawnGoats &&
@@ -62,7 +60,6 @@ public record BiomeModification(HolderSet<Biome> biomes, Holder<PlacedFeature> f
                             MobCategory.CREATURE,
                             new MobSpawnSettings.SpawnerData(ModEntities.GOAT.get(), 6, 2, 4)
                     );
-                    logSpawnAddition("Goat", biome, MobCategory.CREATURE, 6, 2, 4);
                 }
 
 
@@ -74,17 +71,4 @@ public record BiomeModification(HolderSet<Biome> biomes, Holder<PlacedFeature> f
     {
         return BIOME_MODIFIER_CODEC.get();
     }
-
-    private static void logSpawnAddition(String name, Holder<Biome> biome, MobCategory category, int weight, int min, int max) {
-//        JurassicReborn.getLogger().info(
-//                "Registering natural spawn for {} in biome {} (category={}, weight={}, groupSize={}–{})",
-//                name,
-//                biome.unwrapKey().map(Object::toString).orElse("<unknown>"),
-//                category.getName(),
-//                weight,
-//                min,
-//                max
-//        );
-    }
-
 }

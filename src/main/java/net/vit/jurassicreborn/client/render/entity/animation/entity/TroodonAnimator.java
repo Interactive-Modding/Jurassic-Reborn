@@ -13,8 +13,8 @@ public class TroodonAnimator extends EntityAnimator<TroodonEntity> {
     @Override
     protected void performAnimations(AnimatableModel model,
                                      TroodonEntity entity,
-                                     float limbSwing,
-                                     float limbSwingAmount,
+                                     float limbSwing,          // f
+                                     float limbSwingAmount,    // f1
                                      float ticks,
                                      float rotationYaw,
                                      float rotationPitch,
@@ -44,47 +44,61 @@ public class TroodonAnimator extends EntityAnimator<TroodonEntity> {
         AdvancedModelBox ankleR = model.getCube("Ankle2");
         AdvancedModelBox footR  = model.getCube("Foot2");
 
-        AdvancedModelBox tail2 = model.getCube("Tail2");
-        AdvancedModelBox tail3 = model.getCube("Tail3");
-        AdvancedModelBox tail4 = model.getCube("Tail4");
-        AdvancedModelBox tail5 = model.getCube("Tail5");
-        AdvancedModelBox tail6 = model.getCube("Tail6");
-        AdvancedModelBox tail7 = model.getCube("Tail7");
+        AdvancedModelBox tail2  = model.getCube("Tail2");
+        AdvancedModelBox tail3  = model.getCube("Tail3");
+        AdvancedModelBox tail4  = model.getCube("Tail4");
+        AdvancedModelBox tail5  = model.getCube("Tail5");
+        AdvancedModelBox tail6  = model.getCube("Tail6");
+        AdvancedModelBox tail7  = model.getCube("Tail7");
 
-        // chains
-        AdvancedModelBox[] neckChain = new AdvancedModelBox[]{head, neck5, neck4, neck3, neck2, neck1};
-        AdvancedModelBox[] tailChain = new AdvancedModelBox[]{tail7, tail6, tail5, tail4, tail3, tail2};
-        AdvancedModelBox[] rightArm  = new AdvancedModelBox[]{upperArmR};
-        AdvancedModelBox[] leftArm   = new AdvancedModelBox[]{upperArmL};
+        // --- chains for helpers ---
+        AdvancedModelBox[] neckChain = new AdvancedModelBox[] { head, neck5, neck4, neck3, neck2, neck1 };
+        AdvancedModelBox[] tailChain = new AdvancedModelBox[] { tail7, tail6, tail5, tail4, tail3, tail2 };
+        AdvancedModelBox[] rightArm  = new AdvancedModelBox[] { upperArmR };
+        AdvancedModelBox[] leftArm   = new AdvancedModelBox[]  { upperArmL  };
 
-        // speeds
-        float walkSpeed = 0.38F;
+        // --- tuning ---
+        final float PI = (float)Math.PI;
+
+        float walkSpeed = 0.38F;                 // slower loop (frequency)
+        float walkAmp   = 1.0F;                  // base amplitude
+        float move      = limbSwingAmount;
+
+        // subtle idle when standing
         float idleSpeed = 0.10F;
-        float move = limbSwingAmount;
+        float idleAmp   = 0.05F;
 
-        boolean isMoving = move > 0.08F;
+        // tiny stride increase only when sprinting
+        if (entity != null && entity.isSprinting()) {
+            walkSpeed *= 1.15F;
+        }
 
-        if (isMoving) {
+        // --- base body motion (slight bob synced to stride) ---
+        if (chest != null) {
             model.bob(chest, walkSpeed * 0.5F, 0.25F * move, false, limbSwing, move);
-            model.bob(rear,  walkSpeed * 0.5F, 0.20F * move, true,  limbSwing, move);
-        } else {
-            model.bob(chest, idleSpeed, 0.10F, false, ticks, 1.0F);
+        }
+        if (rear != null) {
+            model.bob(rear, walkSpeed * 0.5F, 0.20F * move, true, limbSwing, move);
         }
 
-        model.chainWave(neckChain, idleSpeed, 0.03F, 2, ticks, 1.0F);
+        // --- head/neck: gentle stabilization + idle breathing ---
+        model.chainWave(neckChain, idleSpeed, 0.02F, 2, ticks, 1.0F);
+        // keep head a bit steadier while walking
+        model.chainWave(neckChain, walkSpeed * 0.5F, -0.03F * move, 2, limbSwing, move);
 
-        if (isMoving) {
-            model.chainWave(neckChain, walkSpeed * 0.4F, -0.03F * move, 2, limbSwing, move);
-        }
-
+        // --- arms: relaxed counter-swing ---
         model.chainSwing(leftArm,  walkSpeed * 0.75F, 0.15F * move, 0, limbSwing, move);
-        model.chainSwing(rightArm, walkSpeed * 0.75F, 0.15F * move, (float)Math.PI, limbSwing, move);
+        model.chainSwing(rightArm, walkSpeed * 0.75F, 0.15F * move, PI, limbSwing, move);
 
-        if (isMoving) {
-            model.chainSwing(tailChain, walkSpeed * 0.55F, 0.35F * move, 2, limbSwing, move);
-            model.chainWave (tailChain, walkSpeed * 0.40F, 0.18F * move, 2, limbSwing, move);
-        } else {
-            model.chainWave(tailChain, idleSpeed * 0.65F, 0.12F, 2, ticks, 1.0F);
+        // --- tail: follow-through & balance (slower than legs) ---
+        model.chainSwing(tailChain, walkSpeed * 0.45F, -0.18F * walkAmp * move, 2, limbSwing, move);
+        model.chainWave (tailChain, walkSpeed * 0.35F,  0.09F * walkAmp * move, 2, limbSwing, move);
+        
+        // --- tiny idle breathing when standing still ---
+        if (move < 0.05F) {
+            if (chest != null) model.bob(chest, idleSpeed, 0.10F, false, ticks, 1.0F);
+            model.chainWave(neckChain, idleSpeed, 0.03F, 2, ticks, 1.0F);
+            model.chainWave(tailChain, idleSpeed, 0.04F, 2, ticks, 1.0F);
         }
     }
 }

@@ -18,7 +18,7 @@ public class GreenJeepWranglerEntity extends VehicleEntity {
 
         @Override
         protected void dropFromLootTable ( boolean causedByPlayer){
-            if (!level().isClientSide) spawnAtLocation(ModItems.GREEN_JEEP_WRANGLER.get());
+            if (!level.isClientSide) spawnAtLocation(ModItems.GREEN_JEEP_WRANGLER.get());
         }
 
     @Override

@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "building",
   "key": {
     "A": {
       "item": "minecraft:iron_ingot"
@@ -17,6 +16,5 @@
   "result": {
     "count": 16,
     "item": "jurassicreborn:low_security_fence_wire"
-  },
-  "show_notification": true
+  }
 }

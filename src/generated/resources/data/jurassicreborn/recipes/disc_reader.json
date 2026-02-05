@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "group": "jurassicreborn:disc_reader",
   "key": {
     "A": {
@@ -26,6 +25,5 @@
   ],
   "result": {
     "item": "jurassicreborn:disc_reader"
-  },
-  "show_notification": true
+  }
 }

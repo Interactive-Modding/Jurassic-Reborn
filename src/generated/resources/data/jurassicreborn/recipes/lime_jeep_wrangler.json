@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "key": {
     "A": {
       "item": "minecraft:light_gray_dye"
@@ -22,6 +21,5 @@
   ],
   "result": {
     "item": "jurassicreborn:lime_jeep_wrangler"
-  },
-  "show_notification": true
+  }
 }

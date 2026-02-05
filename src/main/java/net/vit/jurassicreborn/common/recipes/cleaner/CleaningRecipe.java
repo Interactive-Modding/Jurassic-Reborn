@@ -8,7 +8,6 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
-import net.minecraft.core.RegistryAccess;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.crafting.CraftingHelper;
 import net.vit.jurassicreborn.JurassicReborn;
@@ -43,7 +42,7 @@ public class CleaningRecipe implements Recipe<FluidAndItemRecipeWrapper> {
 
     @Override
     @Nonnull
-    public ItemStack assemble(FluidAndItemRecipeWrapper pContainer, RegistryAccess registryAccess) {
+    public ItemStack assemble(FluidAndItemRecipeWrapper pContainer) {
 //        pContainer.getItem(0).setCount(pContainer.getItem(0).getCount() - this.input.getCount());
 //
 //        Collection<ArrayList<RegistryObject<BoneItem>>> tempList = DynamicBoneRegistry.BoneMap.values();
@@ -55,7 +54,7 @@ public class CleaningRecipe implements Recipe<FluidAndItemRecipeWrapper> {
 //        Collections.shuffle(listt.get(0));
 //
 //        return listt.get(0).get(0).get().getDefaultInstance();
-        return this.output.copy();
+        return this.output;
     }
 
     @Override
@@ -64,8 +63,8 @@ public class CleaningRecipe implements Recipe<FluidAndItemRecipeWrapper> {
     }
 
     @Override
-    public ItemStack getResultItem(RegistryAccess registryAccess) {
-        return this.output.copy();
+    public ItemStack getResultItem() {
+        return ItemStack.EMPTY;
     }
 
     @Override
@@ -91,7 +90,7 @@ public class CleaningRecipe implements Recipe<FluidAndItemRecipeWrapper> {
 
         @Override
         public CleaningRecipe fromJson(ResourceLocation pRecipeId, JsonObject pSerializedRecipe) {
-            Ingredient input = CraftingHelper.getIngredient(pSerializedRecipe.get("input"), false);
+            Ingredient input = CraftingHelper.getIngredient(pSerializedRecipe.getAsJsonObject("input"));
             ItemStack output = CraftingHelper.getItemStack(pSerializedRecipe.getAsJsonObject("output"), false);
 
             return new CleaningRecipe(pRecipeId, input, output);

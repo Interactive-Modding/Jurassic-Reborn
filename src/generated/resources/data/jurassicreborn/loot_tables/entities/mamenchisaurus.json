@@ -1,4 +1,3 @@
 {
-  "type": "minecraft:entity",
-  "random_sequence": "jurassicreborn:entities/mamenchisaurus"
+  "type": "minecraft:entity"
 }

@@ -1,5 +1,4 @@
 package net.vit.jurassicreborn.client.render;
-import net.minecraft.client.model.ChestBoatModel;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.entity.PaintingRenderer;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
@@ -115,12 +114,12 @@ public class RenderingHandler{
             // Plain boat layer (no chest)
             event.registerLayerDefinition(
                     JurassicBoatModelLayers.createBoatModelName(type),
-                    () -> BoatModel.createBodyModel()
+                    () -> BoatModel.createBodyModel(false)
             );
             // Chest-boat layer (with chest)
             event.registerLayerDefinition(
                     JurassicBoatModelLayers.createChestBoatModelName(type),
-                    () -> ChestBoatModel.createBodyModel()
+                    () -> BoatModel.createBodyModel(true)
             );
         }
     }

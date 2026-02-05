@@ -14,7 +14,6 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.Entity.MoveFunction;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.GameRules;
@@ -23,7 +22,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.tags.FluidTags;
+import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
@@ -134,7 +133,7 @@ public abstract class HelicopterEntity extends VehicleEntity {
     public InteractionResult interact(Player player, InteractionHand hand) {
         if (hand != InteractionHand.MAIN_HAND) return InteractionResult.PASS;
 
-        if (!level().isClientSide) {
+        if (!level.isClientSide) {
             if (player.getVehicle() == this) return InteractionResult.CONSUME;
 
             int seat = getSeatForEntity(player);
@@ -147,7 +146,7 @@ public abstract class HelicopterEntity extends VehicleEntity {
                 player.startRiding(this, true);
             }
         }
-        return InteractionResult.sidedSuccess(level().isClientSide);
+        return InteractionResult.sidedSuccess(level.isClientSide);
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -174,14 +173,14 @@ public abstract class HelicopterEntity extends VehicleEntity {
     }
 
     public void fall(float distance, float damageMultiplier) {
-        if (!level().isClientSide && !isFlying) {
+        if (!level.isClientSide && !isFlying) {
             float damage = Mth.ceil((distance - 3F) * damageMultiplier);
             if (damage > 0) {
                 this.setHealth(this.getHealth() - (float)(damage * 1.25F));
                 this.checkAndHandleDeath();
             }
         }
-        if (this.level().isClientSide && !isFlying) {
+        if (this.level.isClientSide && !isFlying) {
             float damage = Mth.ceil((distance - 3F) * damageMultiplier);
             if (damage > 0) {
                 float tmp = this.getHealth() - (float) (damage * 1.25F);
@@ -193,18 +192,18 @@ public abstract class HelicopterEntity extends VehicleEntity {
     @Override
     protected void removePassenger(Entity passenger) {
         super.removePassenger(passenger);
-        if (this.level().isClientSide) resetThirdPersonViewDistance();
+        if (this.level.isClientSide) resetThirdPersonViewDistance();
     }
 
     @Override
     public void tick() {
-        if (this.level().isClientSide) this.isFlying = this.isNoGravity();
+        if (this.level.isClientSide) this.isFlying = this.isNoGravity();
         super.tick();
 
         if (!this.isInWater()) {
             final float dist = this.getDistanceToGround();
 
-            if (this.level().isClientSide) {
+            if (this.level.isClientSide) {
                 for (int i = 0; i < this.seats.length; i++) {
                     final Entity e = this.getEntityInSeat(i);
                     if (e != null) e.fallDistance = 0;
@@ -262,16 +261,21 @@ public abstract class HelicopterEntity extends VehicleEntity {
                     if (!this.isFlying && this.getCurrentEngineSpeed() >= this.engineSpeed * TAKEOFF_THRESHOLD_RATIO) {
                         this.setFlying();
                     }
-                } else if (this.downward() && this.isFlying) {
+                } else if (this.downward()) {
                     this.shouldFallDamage = false;
-                    this.changeCurrentEngineSpeed(-this.computeThrottleUpDown());
+                    float throttleChange = this.computeThrottleUpDown();
+                    if (this.isFlying) {
+                        this.changeCurrentEngineSpeed(-throttleChange);
+                    } else {
+                        this.restoreGravityForPassengers();
+                        if (this.getCurrentEngineSpeed() > 0) {
+                            float reduction = Math.min(throttleChange, this.getCurrentEngineSpeed());
+                            this.changeCurrentEngineSpeed(-reduction);
+                        }
+                    }
                 } else {
                     if (!this.isFlying) {
-                        this.setNoGravity(false);
-                        for (int i = 0; i < this.seats.length; i++) {
-                            Entity e = this.getEntityInSeat(i);
-                            if (e != null) e.setNoGravity(false);
-                        }
+                        this.restoreGravityForPassengers();
                         if (this.simpleControle && this.getCurrentEngineSpeed() > 0) {
                             this.changeCurrentEngineSpeed(-1);
                         }
@@ -284,11 +288,11 @@ public abstract class HelicopterEntity extends VehicleEntity {
             }
 
             // Landing logic
-            if (this.onGround()) {
+            if (this.onGround) {
                 boolean wasFlying = this.isFlying;
                 this.isFlying = false;
                 if (wasFlying && this.shouldCrashOnLanding()) {
-                    if (!this.level().isClientSide) {
+                    if (!this.level.isClientSide) {
                         this.setHealth(0);
                         this.checkAndHandleDeath(); // unified drop+discard
                     } else {
@@ -302,7 +306,7 @@ public abstract class HelicopterEntity extends VehicleEntity {
             }
 
             // Landing gear animation
-            if (this.level().isClientSide) {
+            if (this.level.isClientSide) {
                 if (!this.shouldGearLift) this.gearLift += 0.02f; else this.gearLift -= 0.02f;
                 this.shouldGearLift = !(dist < 10);
                 if (this.gearLift < -0.5f) this.gearLift = -0.5f;
@@ -312,7 +316,7 @@ public abstract class HelicopterEntity extends VehicleEntity {
             if (this.getControllingPassenger() == null) this.setNoGravity(false);
 
             // Fall damage when landing hard (server-side)
-            if (this.onGround() && this.shouldFallDamage) {
+            if (this.onGround && this.shouldFallDamage) {
                 this.damageAmount = (float) this.prevInAirPos.y - (float) this.getPositionVector().y;
                 this.setHealth(this.getHealth() - (float) Math.floor((double) (this.damageAmount / 3)));
                 this.shouldFallDamage = false;
@@ -326,7 +330,7 @@ public abstract class HelicopterEntity extends VehicleEntity {
             if (this.getCurrentEngineSpeed() >= 1 && !this.isRotorAreaFree()) {
                 this.setHealth(this.getHealth() - (this.getCurrentEngineSpeed() / this.engineSpeed * 2f));
                 if (this.getHealth() <= 0f) {
-                    if (!this.level().isClientSide) {
+                    if (!this.level.isClientSide) {
                         this.checkAndHandleDeath();
                     } else {
                         this.playHelicopterExplosion();
@@ -341,7 +345,7 @@ public abstract class HelicopterEntity extends VehicleEntity {
         }
 
         // Client-side effects
-        if (this.level().isClientSide) {
+        if (this.level.isClientSide) {
             this.spawnHoveringParticle();
             this.spawnEngineRunningParticle();
             this.spawnCrashingParticle();
@@ -352,6 +356,13 @@ public abstract class HelicopterEntity extends VehicleEntity {
         this.checkAndHandleDeath(); // final safety net
     }
 
+    private void restoreGravityForPassengers() {
+        this.setNoGravity(false);
+        for (int i = 0; i < this.seats.length; i++) {
+            Entity e = this.getEntityInSeat(i);
+            if (e != null) e.setNoGravity(false);
+        }
+    }
     @Override
     protected void applyMovement() {
         float moveAmount;
@@ -453,16 +464,16 @@ public abstract class HelicopterEntity extends VehicleEntity {
 
     // Unified, idempotent death handlers
     private void handleDeath() {
-        if (this.level().isClientSide || this.didDieOnce || this.isRemoved()) return;
+        if (this.level.isClientSide || this.didDieOnce || this.isRemoved()) return;
         this.didDieOnce = true;
-        if (this.level().getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)) {
+        if (this.level.getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)) {
             this.dropItems();
         }
         this.discard();
     }
 
     private void checkAndHandleDeath() {
-        if (!this.level().isClientSide && this.getHealth() <= 0f) {
+        if (!this.level.isClientSide && this.getHealth() <= 0f) {
             handleDeath();
         }
     }
@@ -532,7 +543,7 @@ public abstract class HelicopterEntity extends VehicleEntity {
     public Direction getAdjustedHorizontalFacing() { return Direction.fromYRot(this.getYRot()); }
 
     @Override
-    protected void positionRider(Entity passenger, MoveFunction moveFunction) {
+    public void positionRider(Entity passenger) {
         if (this.hasPassenger(passenger)) {
             Seat seat = null;
             if (getSeatForEntity(passenger) != -1) seat = this.seats[getSeatForEntity(passenger)];
@@ -544,7 +555,7 @@ public abstract class HelicopterEntity extends VehicleEntity {
                 Vec3 seatPos = seat.getPos(this);
                 pos = new Vec3d(seatPos.x, seatPos.y, seatPos.z);
             }
-            moveFunction.accept(passenger, pos.x, pos.y + this.interpRotationPitch.getCurrent() / 75D, pos.z);
+            passenger.setPos(pos.x, pos.y + this.interpRotationPitch.getCurrent() / 75D, pos.z);
             passenger.setYRot(passenger.getYRot() + this.rotationDelta);
             passenger.setYHeadRot(passenger.getYHeadRot() + this.rotationDelta);
             if (passenger instanceof LivingEntity living) {
@@ -554,10 +565,10 @@ public abstract class HelicopterEntity extends VehicleEntity {
     }
 
     private void playHelicopterExplosion() {
-        this.level().addParticle(ParticleTypes.EXPLOSION, this.getX(), this.getY(), this.getZ(), 0.1, 0.1, 0.1);
-        this.level().playSound(null, this.getX(), this.getY(), this.getZ(),
+        this.level.addParticle(ParticleTypes.EXPLOSION, this.getX(), this.getY(), this.getZ(), 0.1, 0.1, 0.1);
+        this.level.playSound(null, this.getX(), this.getY(), this.getZ(),
                 SoundEvents.GENERIC_EXPLODE, SoundSource.NEUTRAL, 4.0F,
-                (1.0F + (this.level().random.nextFloat() - this.level().random.nextFloat()) * 0.2F) * 0.7F);
+                (1.0F + (this.level.random.nextFloat() - this.level.random.nextFloat()) * 0.2F) * 0.7F);
     }
 
     private float computeMaxMovementRotation(float dist) {
@@ -567,7 +578,6 @@ public abstract class HelicopterEntity extends VehicleEntity {
     }
 
     public float getDistanceToGround() {
-        Level level = this.level();
         boolean found = false;
         float dist = -1;
         mb.set(this.blockPosition());
@@ -583,7 +593,6 @@ public abstract class HelicopterEntity extends VehicleEntity {
     }
 
     protected BlockState getGroundBlock() {
-        Level level = this.level();
         boolean found = false;
         BlockState groundBlock = null;
         mb.set(this.blockPosition());
@@ -592,7 +601,7 @@ public abstract class HelicopterEntity extends VehicleEntity {
                 mb.move(0, -1, 0);
             } else {
                 found = true;
-                groundBlock = this.level().getBlockState(mb);
+                groundBlock = this.level.getBlockState(mb);
             }
         }
         return groundBlock;
@@ -619,18 +628,17 @@ public abstract class HelicopterEntity extends VehicleEntity {
     private void resetThirdPersonViewDistance() { RenderingHandler.INSTANCE.resetThirdPersonViewDistance(); }
 
     public void setDead() {
-        if (this.level().isClientSide) this.playHelicopterExplosion();
+        if (this.level.isClientSide) this.playHelicopterExplosion();
         super.discard();
     }
 
     public float getCollisionBorderSize() { return 2.25f; }
 
     private boolean isRotorAreaFree() {
-        Level level = this.level();
         boolean isFree = true;
         for (int x = -this.rotorLength; x < this.rotorLength && isFree; x++) {
             for (int z = -this.rotorLength; z < this.rotorLength && isFree; z++) {
-                if (!level.getBlockState(BlockPos.containing(this.getX() + x, this.getY() + this.physicalHeight, this.getZ() + z)).isAir()) {
+                if (!level.getBlockState(new BlockPos(this.getX() + x, this.getY() + this.physicalHeight, this.getZ() + z)).isAir()) {
                     isFree = false;
                 }
             }
@@ -658,7 +666,7 @@ public abstract class HelicopterEntity extends VehicleEntity {
     protected void blastItems() {
         float dist = this.getDistanceToGround();
         if (dist >= 0) {
-            List<Entity> items = this.level().getEntitiesOfClass(Entity.class,
+            List<Entity> items = this.level.getEntitiesOfClass(Entity.class,
                     new AABB(this.getX() - this.rotorLength * 2, this.getY() - dist - 1, this.getZ() - this.rotorLength * 2,
                             this.getX() + this.rotorLength * 2, this.getY() + 1, this.getZ() + this.rotorLength * 2));
             for (Entity item : items) {
@@ -689,19 +697,19 @@ public abstract class HelicopterEntity extends VehicleEntity {
                     float y = (float) (this.getY() - dist);
                     float z = (float) ((Math.sin(Math.toRadians(i)) * (this.rotorLength / 1.8f)) * ((Math.random() * 0.2) + 1));
                     if (groundBlock.getBlock().equals(Blocks.WATER)) {
-                        this.level().addParticle(
+                        this.level.addParticle(
                                 ModParticles.WASHING_DROPLET.get(),
                                 this.getX() + x, y + 0.5f, this.getZ() + z,
                                 x / 5, 0.001f, z / 5
                         );
-                        this.level().addParticle(ParticleTypes.BUBBLE, this.getX() + x, y + 0.5f, this.getZ() + z, x / 5, 0.001f, z / 5);
-                    } else if (!groundBlock.getFluidState().is(FluidTags.LAVA)) {
-                        if (this.isBlockDusty(groundBlock.getBlock()) && Math.random() < (this.level().isRaining() ? 0.1 : 0.4)) {
-                            this.level().addParticle(new BlockParticleOption(ParticleTypes.BLOCK, groundBlock),
+                        this.level.addParticle(ParticleTypes.BUBBLE, this.getX() + x, y + 0.5f, this.getZ() + z, x / 5, 0.001f, z / 5);
+                    } else if (!groundBlock.getMaterial().equals(Material.LAVA)) {
+                        if (this.isBlockDusty(groundBlock.getBlock()) && Math.random() < (this.level.isRaining() ? 0.1 : 0.4)) {
+                            this.level.addParticle(new BlockParticleOption(ParticleTypes.BLOCK, groundBlock),
                                     this.getX() + x, y + 0.1, this.getZ() + z,
-                                    x / 5, 0.001f + Math.random() * (this.level().isRaining() ? 0 : 0.5), z / 5);
+                                    x / 5, 0.001f + Math.random() * (this.level.isRaining() ? 0 : 0.5), z / 5);
                         }
-                        this.level().addParticle(
+                        this.level.addParticle(
                                 ModParticles.HELICOPTER_GROUND.get(),
                                 this.getX() + x, y, this.getZ() + z,
                                 x / 5, 0.001f, z / 5
@@ -719,7 +727,7 @@ public abstract class HelicopterEntity extends VehicleEntity {
         float[] directionBack2 = this.computeEngineExhaustParticleDirection(-15);
         for (int i = 0; i < 5; i++) {
             if (Math.random() < this.getCurrentEngineSpeed() / this.engineSpeed) {
-                this.level().addParticle(
+                this.level.addParticle(
                         ModParticles.HELICOPTER_ENGINE.get(),
                         this.getX() + offsetBack[0] + Math.random() * 0.3,
                         this.getY() + offsetBack[2] + Math.random() * 0.3,
@@ -728,7 +736,7 @@ public abstract class HelicopterEntity extends VehicleEntity {
                         0.001f,
                         directionBack1[2] * (this.getCurrentEngineSpeed() * 3 / this.engineSpeed)
                 );
-                this.level().addParticle(
+                this.level.addParticle(
                         ModParticles.HELICOPTER_ENGINE.get(),
                         this.getX() + offsetBack[1] + Math.random() * 0.3,
                         this.getY() + offsetBack[3] + Math.random() * 0.3,
@@ -749,28 +757,28 @@ public abstract class HelicopterEntity extends VehicleEntity {
             float[] directionFront1 = this.computeEngineFrontSmokeParticleDirection(-20);
             float[] directionFront2 = this.computeEngineFrontSmokeParticleDirection(20);
             float[] directionBack   = this.computeEngineExhaustParticleDirection(0);
-            this.level().addParticle(ParticleTypes.LARGE_SMOKE, this.getX() + offsetBack[0],  this.getY() + offsetBack[2],  this.getZ() - offsetBack[4],  directionBack[0],   directionBack[1],   directionBack[2]);
-            this.level().addParticle(ParticleTypes.LARGE_SMOKE, this.getX() + offsetBack[1],  this.getY() + offsetBack[3],  this.getZ() - offsetBack[5],  directionBack[0],   directionBack[1],   directionBack[2]);
+            this.level.addParticle(ParticleTypes.LARGE_SMOKE, this.getX() + offsetBack[0],  this.getY() + offsetBack[2],  this.getZ() - offsetBack[4],  directionBack[0],   directionBack[1],   directionBack[2]);
+            this.level.addParticle(ParticleTypes.LARGE_SMOKE, this.getX() + offsetBack[1],  this.getY() + offsetBack[3],  this.getZ() - offsetBack[5],  directionBack[0],   directionBack[1],   directionBack[2]);
 
-            if (this.isInWater() && ((int) this.level().getChunk(this.blockPosition()).getHeight(Heightmap.Types.MOTION_BLOCKING, this.blockPosition().getX(), this.blockPosition().getZ()) - this.getY()) > 2) {
+            if (this.isInWater() && ((int) this.level.getChunk(this.blockPosition()).getHeight(Heightmap.Types.MOTION_BLOCKING, this.blockPosition().getX(), this.blockPosition().getZ()) - this.getY()) > 2) {
                 if (Math.random() < (1 - (this.getHealth() * 2 - MAX_HEALTH) / MAX_HEALTH)) {
-                    this.level().addParticle(ParticleTypes.BUBBLE, this.getX() + offsetBack[0],  this.getY() + offsetBack[2],  this.getZ() - offsetBack[4], 0, 0, 0);
-                    this.level().addParticle(ParticleTypes.BUBBLE, this.getX() + offsetBack[1],  this.getY() + offsetBack[3],  this.getZ() - offsetBack[5], 0, 0, 0);
+                    this.level.addParticle(ParticleTypes.BUBBLE, this.getX() + offsetBack[0],  this.getY() + offsetBack[2],  this.getZ() - offsetBack[4], 0, 0, 0);
+                    this.level.addParticle(ParticleTypes.BUBBLE, this.getX() + offsetBack[1],  this.getY() + offsetBack[3],  this.getZ() - offsetBack[5], 0, 0, 0);
                 }
 
                 if (Math.random() < (1.0f - (this.getCurrentEngineSpeed() * 1.6f / (float) (this.engineSpeed)))) {
-                    this.level().addParticle(ParticleTypes.SMOKE, this.getX() + offsetFront[0], this.getY() + offsetFront[2], this.getZ() - offsetFront[4], directionFront1[0] * 0.5, directionFront1[1] * 0.5, directionFront1[2] * 0.5);
-                    this.level().addParticle(ParticleTypes.SMOKE, this.getX() + offsetFront[1], this.getY() + offsetFront[3], this.getZ() - offsetFront[5], directionFront2[0] * 0.5, directionFront2[1] * 0.5, directionFront2[2] * 0.5);
+                    this.level.addParticle(ParticleTypes.SMOKE, this.getX() + offsetFront[0], this.getY() + offsetFront[2], this.getZ() - offsetFront[4], directionFront1[0] * 0.5, directionFront1[1] * 0.5, directionFront1[2] * 0.5);
+                    this.level.addParticle(ParticleTypes.SMOKE, this.getX() + offsetFront[1], this.getY() + offsetFront[3], this.getZ() - offsetFront[5], directionFront2[0] * 0.5, directionFront2[1] * 0.5, directionFront2[2] * 0.5);
                 }
             } else {
                 if (Math.random() < (1 - (this.getHealth() * 2 - MAX_HEALTH) / MAX_HEALTH)) {
-                    this.level().addParticle(ParticleTypes.FLAME, this.getX() + offsetBack[0],  this.getY() + offsetBack[2],  this.getZ() - offsetBack[4],  directionBack[0],   directionBack[1],   directionBack[2]);
-                    this.level().addParticle(ParticleTypes.FLAME, this.getX() + offsetBack[1],  this.getY() + offsetBack[3],  this.getZ() - offsetBack[5],  directionBack[0],   directionBack[1],   directionBack[2]);
+                    this.level.addParticle(ParticleTypes.FLAME, this.getX() + offsetBack[0],  this.getY() + offsetBack[2],  this.getZ() - offsetBack[4],  directionBack[0],   directionBack[1],   directionBack[2]);
+                    this.level.addParticle(ParticleTypes.FLAME, this.getX() + offsetBack[1],  this.getY() + offsetBack[3],  this.getZ() - offsetBack[5],  directionBack[0],   directionBack[1],   directionBack[2]);
                 }
 
                 if (Math.random() < (1.0f - (this.getCurrentEngineSpeed() * 1.6f / (float) (this.engineSpeed)))) {
-                    this.level().addParticle(ParticleTypes.LARGE_SMOKE, this.getX() + offsetFront[0], this.getY() + offsetFront[2], this.getZ() - offsetFront[4], directionFront1[0], directionFront1[1], directionFront1[2]);
-                    this.level().addParticle(ParticleTypes.LARGE_SMOKE, this.getX() + offsetFront[1], this.getY() + offsetFront[3], this.getZ() - offsetFront[5], directionFront2[0], directionFront2[1], directionFront2[2]);
+                    this.level.addParticle(ParticleTypes.LARGE_SMOKE, this.getX() + offsetFront[0], this.getY() + offsetFront[2], this.getZ() - offsetFront[4], directionFront1[0], directionFront1[1], directionFront1[2]);
+                    this.level.addParticle(ParticleTypes.LARGE_SMOKE, this.getX() + offsetFront[1], this.getY() + offsetFront[3], this.getZ() - offsetFront[5], directionFront2[0], directionFront2[1], directionFront2[2]);
                 }
             }
         }
@@ -832,8 +840,8 @@ public abstract class HelicopterEntity extends VehicleEntity {
     protected void playWarningSound() {
         if (this.getControllingPassenger() == Minecraft.getInstance().player) {
             if (this.getHealth() / this.MAX_HEALTH < 0.3 && this.warningDelay <= 0) {
-                this.level().playSound(Minecraft.getInstance().player, Minecraft.getInstance().player.blockPosition(),
-                        SoundEvent.createVariableRangeEvent(this.warningSoundResource), SoundSource.BLOCKS,
+                this.level.playSound(Minecraft.getInstance().player, Minecraft.getInstance().player.blockPosition(),
+                        new SoundEvent(this.warningSoundResource), SoundSource.BLOCKS,
                         (float) 0.1 * (1 - (this.getHealth() / this.MAX_HEALTH)), 1);
                 this.warningDelay = 17;
             } else if (this.getHealth() / this.MAX_HEALTH < 0.3) {

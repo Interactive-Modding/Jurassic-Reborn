@@ -69,7 +69,7 @@ public class OpenPaleoPadEntityMessage {
         static void handle(OpenPaleoPadEntityMessage message) {
             LocalPlayer player = net.minecraft.client.Minecraft.getInstance().player;
             if (player == null) return;
-            Entity entity = player.level().getEntity(message.entityId);
+            Entity entity = player.level.getEntity(message.entityId);
             if (entity instanceof DinosaurEntity dinosaur) {
                 JurassicClient.openPaleoDinosaurPad(dinosaur, message.guideInfo);
             }

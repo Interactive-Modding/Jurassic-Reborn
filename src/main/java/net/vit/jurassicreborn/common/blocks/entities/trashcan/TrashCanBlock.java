@@ -17,7 +17,6 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -25,6 +24,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -40,7 +40,7 @@ public class TrashCanBlock extends Block {
     private static final VoxelShape SHAPE = loadShape();
 
     public TrashCanBlock() {
-        super(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).strength(3.0F).noOcclusion().sound(net.minecraft.world.level.block.SoundType.METAL).requiresCorrectToolForDrops());
+        super(BlockBehaviour.Properties.of(Material.METAL).strength(3.0F).noOcclusion().sound(net.minecraft.world.level.block.SoundType.METAL).requiresCorrectToolForDrops());
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
     }
 

@@ -9,6 +9,7 @@ import net.vit.jurassicreborn.common.items.misc.SkeletonPoseHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -16,6 +17,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -54,10 +56,7 @@ public class FossilSkeletonItem extends Item {
         super(properties);
         this.dino = dino;
     }
-    @Override
-    public String getDescriptionId(ItemStack stack) {
-        return "item.jurassicreborn.skeleton.fossil.dynamic";
-    }
+
     @Override
     public ItemStack getDefaultInstance() {
         ItemStack stack = super.getDefaultInstance();
@@ -173,16 +172,7 @@ public class FossilSkeletonItem extends Item {
 
     @Override
     public @NotNull Component getName(@NotNull ItemStack stack) {
-        Dinosaur dino = this.getDinosaur(stack);
-
-        if (dino == Dinosaur.EMPTY) {
-            return Component.translatable("item.jurassicreborn.skeleton.fossil");
-        }
-
-        return Component.translatable(
-                "item.jurassicreborn.skeleton.fossil.dynamic",
-                dino.getTranslatedName()
-        );
+        return LangUtil.replaceWithDinoName(this.getDinosaur(stack), "item.JurassicReborn.skeleton.fossil");
     }
 
     @Override
@@ -295,4 +285,14 @@ public class FossilSkeletonItem extends Item {
         return null;
     }
 
+    @Override
+    public void fillItemCategory(CreativeModeTab category, NonNullList<ItemStack> items) {
+        if (this.allowedIn(category)) {
+            ItemStack defaultStack = this.getDefaultInstance();
+            CompoundTag tag = defaultStack.getOrCreateTag();
+            tag.putString("Gender", "random");
+            defaultStack.setTag(tag);
+            items.add(defaultStack);
+        }
+    }
 }

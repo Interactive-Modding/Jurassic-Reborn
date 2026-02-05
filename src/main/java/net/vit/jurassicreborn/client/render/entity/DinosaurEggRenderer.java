@@ -8,7 +8,6 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
 import net.vit.jurassicreborn.JurassicReborn;
 import net.vit.jurassicreborn.common.entities.DinosaurEggEntity;
 import net.vit.jurassicreborn.common.entities.Dinosaurs.Dinosaur;
@@ -41,7 +40,7 @@ public class DinosaurEggRenderer extends EntityRenderer<DinosaurEggEntity> {
     @Override
     public void render(DinosaurEggEntity egg, float yaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int light) {
         poseStack.pushPose();
-        poseStack.mulPose(Axis.YP.rotationDegrees(180.0F - yaw));
+        poseStack.mulPose(com.mojang.math.Vector3f.YP.rotationDegrees(180.0F - yaw));
         // Tabula egg models are centered around y=24 which causes them to float
         // above the ground when rendered at the entity position. Offset the
         // model downwards to align it with the hitbox.

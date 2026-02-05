@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "key": {
     "A": {
       "item": "jurassicreborn:car_seats"
@@ -28,6 +27,5 @@
   ],
   "result": {
     "item": "jurassicreborn:unfinished_car"
-  },
-  "show_notification": true
+  }
 }

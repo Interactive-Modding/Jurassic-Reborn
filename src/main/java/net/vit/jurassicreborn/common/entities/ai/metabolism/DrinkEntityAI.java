@@ -32,7 +32,7 @@ public class DrinkEntityAI extends Goal {
         MetabolismContainer meta = dino.getMetabolism();
         if (!meta.isThirsty()) return false;
         if (!dino.getNavigation().isDone()) return false;
-        Level level = dino.level();
+        Level level = dino.level;
         BlockPos origin = dino.blockPosition();
         if (((dino.tickCount + dino.getId()) & 7) != 0) return false;
         if (cachedShore == null
@@ -88,7 +88,7 @@ public class DrinkEntityAI extends Goal {
             dino.yRotO = dino.getYRot();
             dino.yBodyRotO = dino.yBodyRot;
             dino.yHeadRotO = dino.getYHeadRot();
-            if (!dino.level().isClientSide) {
+            if (!dino.level.isClientSide) {
                 if (drinkCooldown-- <= 0) {
                     dino.setAnimation(EntityAnimation.DRINKING.get());
                     MetabolismContainer meta = dino.getMetabolism();

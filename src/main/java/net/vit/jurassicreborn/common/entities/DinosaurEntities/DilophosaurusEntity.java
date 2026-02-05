@@ -60,7 +60,7 @@ public class DilophosaurusEntity extends DinosaurEntity implements RangedAttackM
     @Override
     public void performRangedAttack(LivingEntity target, float power) {
         if (target instanceof Player p && p.isCreative()) return;
-        if (this.level().isClientSide) return;
+        if (this.level.isClientSide) return;
 
         final double baseX = this.getX();
         final double baseY = this.getEyeY() - 0.12D;
@@ -81,7 +81,7 @@ public class DilophosaurusEntity extends DinosaurEntity implements RangedAttackM
         final double horiz = Math.sqrt(dx*dx + dz*dz);
         final double dy = (target.getEyeY() - spawnY) + (horiz * 0.12D);
 
-        final VenomEntity venom = new VenomEntity(ModEntities.VENOM.get(), this.level(), this);
+        final VenomEntity venom = new VenomEntity(ModEntities.VENOM.get(), this.level, this);
         venom.setOwner(this);
         venom.setPos(spawnX, spawnY, spawnZ);
 
@@ -91,9 +91,9 @@ public class DilophosaurusEntity extends DinosaurEntity implements RangedAttackM
         venom.shoot(dx, dy, dz, velocity, inaccuracy);
         venom.setNoGravity(false);
 
-        this.level().addFreshEntity(venom);
+        this.level.addFreshEntity(venom);
 
-        if (this.level() instanceof ServerLevel sl) {
+        if (this.level instanceof ServerLevel sl) {
             sl.sendParticles(
                     ParticleTypes.ITEM_SLIME,
                     spawnX, spawnY, spawnZ,
@@ -111,7 +111,7 @@ public class DilophosaurusEntity extends DinosaurEntity implements RangedAttackM
     @Override
     public void tick() {
         super.tick();
-        if (!this.level().isClientSide) {
+        if (!this.level.isClientSide) {
             final LivingEntity current = this.getTarget();
             if (current != null && current.isAlive() && this.targetCooldown < 50) {
                 this.targetCooldown = 50 + this.getRandom().nextInt(30);
@@ -135,7 +135,7 @@ public class DilophosaurusEntity extends DinosaurEntity implements RangedAttackM
 
     public boolean hasTarget() {
         if (this.isCarcass() || this.isSleeping()) return false;
-        if (this.level().isClientSide) {
+        if (this.level.isClientSide) {
             return this.entityData.get(WATCHER_HAS_TARGET);
         } else {
             final LivingEntity t = this.getTarget();

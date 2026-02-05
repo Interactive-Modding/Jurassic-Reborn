@@ -48,7 +48,7 @@ public class Family {
             this.home = BlockPosUtil.vecToBlockPos(entity.position());
         }
 
-        Level world = entity.level();
+        Level world = entity.level;
         double centerX = 0.0;
         double centerZ = 0.0;
 

@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "building",
   "group": "jurassicreborn:paleo_bale_other",
   "key": {
     "A": {
@@ -15,6 +14,5 @@
   "result": {
     "count": 2,
     "item": "jurassicreborn:paleo_bale_other"
-  },
-  "show_notification": true
+  }
 }

@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "building",
   "key": {
     "A": {
       "item": "jurassicreborn:gypsum_stone"
@@ -14,6 +13,5 @@
   "result": {
     "count": 9,
     "item": "jurassicreborn:gypsum_stone_panel"
-  },
-  "show_notification": true
+  }
 }

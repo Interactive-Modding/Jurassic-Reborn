@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "building",
   "key": {
     "A": {
       "item": "minecraft:lapis_lazuli"
@@ -28,6 +27,5 @@
   ],
   "result": {
     "item": "jurassicreborn:skeleton_assembly"
-  },
-  "show_notification": true
+  }
 }

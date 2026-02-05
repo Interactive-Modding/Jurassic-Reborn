@@ -7,12 +7,14 @@ import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import net.vit.jurassicreborn.common.entities.item.BulletEntity;
 import net.vit.jurassicreborn.common.items.ModItems;
+import net.vit.jurassicreborn.common.items.TabHandler;
 
 public class Gun extends Item {
     private final int amountPerShot;
@@ -30,6 +32,7 @@ public class Gun extends Item {
     private static final String NBT_BULLET_KEY = "LoadedBullet";
 
     public Gun(
+            CreativeModeTab group,
             int amountPerShot,
             SoundEvent emptySound,
             SoundEvent fireSound,
@@ -42,7 +45,7 @@ public class Gun extends Item {
             float pitchOffset,
             int damage
     ) {
-        super(new Item.Properties().stacksTo(1));
+        super(new Item.Properties().stacksTo(1).tab(group != null ? group : TabHandler.ITEMS));
         this.amountPerShot = amountPerShot;
         this.emptySound = emptySound;
         this.fireSound = fireSound;

@@ -59,7 +59,7 @@ public class CrabEntity extends Animal implements Animatable, IEntityAdditionalS
 
     public CrabEntity(EntityType<? extends Animal> p_27557_, Level p_27558_) {
         super(p_27557_, p_27558_);
-        this.setMaxUpStep(1.0f);
+        this.maxUpStep = 1.0f;
         this.animationTick = 0;
         this.setAnimation(EntityAnimation.IDLE.get());
     }
@@ -122,7 +122,7 @@ public class CrabEntity extends Animal implements Animatable, IEntityAdditionalS
                 this.animationTick = this.animationLength - 1;
             }
         }
-        if (!this.level().isClientSide) {
+        if (!this.level.isClientSide) {
             this.entityData.set(CRAB_IS_RUNNING, this.getSpeed() > this.getAttributeValue(Attributes.MOVEMENT_SPEED));
         }
     }

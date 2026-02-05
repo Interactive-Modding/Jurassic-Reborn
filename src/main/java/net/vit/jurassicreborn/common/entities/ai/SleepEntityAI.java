@@ -32,15 +32,17 @@ public class SleepEntityAI extends Goal {
 
     @Override
     public boolean canUse() {
-        Level level = dino.level();
+        Level level = dino.level;
+
         if (dino.getMetabolism().isHungry()) {
             return false;
         }
+
         boolean marine = dino.getDinosaur().isMarineCreature();
         if (!dino.isAlive() || dino.isSleeping() || !dino.shouldSleep() || dino.getStayAwakeTime() > 0) {
             return false;
         }
-        if (dino instanceof FlyingDinosaurEntity flying && !flying.onGround()) {
+        if (dino instanceof FlyingDinosaurEntity flying && !flying.isOnGround()) {
             flying.shouldLand = true;
             return false;
         }
@@ -101,7 +103,8 @@ public class SleepEntityAI extends Goal {
                 x + halfWidth, y + dino.getBbHeight(),
                 z + halfWidth
         );
-        return dino.level().noCollision(dino, box);
+        // use entity-aware collision test so we don’t clip into blocks/ents
+        return dino.level.noCollision(dino, box);
     }
 
     /* --------------------------------------------------------------------- */

@@ -1272,6 +1272,30 @@
         ]
       },
       "trigger": "minecraft:inventory_changed"
+    },
+    "encased_maiasaura_fossil": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:encased_maiasaura_fossil"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "encased_patagotitan_fossil": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:encased_patagotitan_fossil"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
     }
   },
   "display": {
@@ -1396,8 +1420,9 @@
       "encased_tyrannosaurus_fossil",
       "encased_vectipelta_fossil",
       "encased_velociraptor_fossil",
-      "encased_zhenyuanopterus_fossil"
+      "encased_zhenyuanopterus_fossil",
+      "encased_maiasaura_fossil",
+      "encased_patagotitan_fossil"
     ]
-  ],
-  "sends_telemetry_event": true
+  ]
 }

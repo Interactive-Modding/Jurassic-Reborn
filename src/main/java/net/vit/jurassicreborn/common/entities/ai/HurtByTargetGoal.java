@@ -38,7 +38,7 @@ public class HurtByTargetGoal extends TargetGoal {
 
         // Honor universal anger (don’t retaliate against players when enabled)
         if (attacker.getType() == EntityType.PLAYER &&
-                this.mob.level().getGameRules().getBoolean(GameRules.RULE_UNIVERSAL_ANGER)) {
+                this.mob.level.getGameRules().getBoolean(GameRules.RULE_UNIVERSAL_ANGER)) {
             return false;
         }
 
@@ -74,7 +74,7 @@ public class HurtByTargetGoal extends TargetGoal {
         double follow = this.getFollowDistance();
         AABB box = AABB.unitCubeFromLowerCorner(this.mob.position()).inflate(follow, ALERT_RANGE_Y, follow);
 
-        List<? extends Mob> allies = this.mob.level().getEntitiesOfClass(
+        List<? extends Mob> allies = this.mob.level.getEntitiesOfClass(
                 this.mob.getClass(), box, EntitySelector.NO_SPECTATORS);
 
         LivingEntity aggressor = this.mob.getLastHurtByMob();

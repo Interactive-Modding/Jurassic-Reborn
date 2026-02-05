@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "group": "jurassicreborn:tracking_dart",
   "key": {
     "F": {
@@ -17,6 +16,5 @@
   "result": {
     "count": 6,
     "item": "jurassicreborn:tracker_dart"
-  },
-  "show_notification": true
+  }
 }

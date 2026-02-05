@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "building",
   "key": {
     "A": {
       "item": "jurassicreborn:computer_screen"
@@ -21,6 +20,5 @@
   ],
   "result": {
     "item": "jurassicreborn:dna_combinator_hybridizer"
-  },
-  "show_notification": true
+  }
 }

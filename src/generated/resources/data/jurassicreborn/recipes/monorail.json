@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "group": "jurassicreborn:ford_explorer",
   "key": {
     "C": {
@@ -26,6 +25,5 @@
   ],
   "result": {
     "item": "jurassicreborn:monorail"
-  },
-  "show_notification": true
+  }
 }
