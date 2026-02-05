@@ -3,7 +3,7 @@ package net.vit.jurassicreborn.common.blocks.fossil;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
-import net.minecraft.util.RandomSource;
+import java.util.Random;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -63,7 +63,7 @@ public class EncasedFaunaFossilBlock extends Block implements EncasedFossil, Ent
     }
 
     @Override
-    public ItemStack getCleanedItem(ItemStack stack, RandomSource random) {
+    public ItemStack getCleanedItem(ItemStack stack, Random random) {
         Dinosaur dino = readDino(stack);
         String[] bones = dino.getBones();
         LinkedHashMap<String, ?> boneMap = ModItems.BONES.get(dino);

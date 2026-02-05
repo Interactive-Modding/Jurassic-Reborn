@@ -4,7 +4,7 @@ import net.minecraft.client.color.item.ItemColors;
 import net.minecraft.client.color.block.BlockColors;
 import net.minecraft.world.item.BlockItem;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.RegisterColorHandlersEvent;
+import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.vit.jurassicreborn.JurassicReborn;
@@ -15,7 +15,7 @@ import net.vit.jurassicreborn.common.blocks.parkBlocks.TourRailBlock;
 public class TourRailColorHandler {
 
     @SubscribeEvent
-    public static void onBlockColors(RegisterColorHandlersEvent.Block event) {
+    public static void onBlockColors(ColorHandlerEvent.Block event) {
         BlockColors colors = event.getBlockColors();
         colors.register((state, level, pos, tint) -> {
                     if (state.getBlock() instanceof TourRailBlock block && tint == 1) {
@@ -30,7 +30,7 @@ public class TourRailColorHandler {
     }
 
     @SubscribeEvent
-    public static void onItemColors(RegisterColorHandlersEvent.Item event) {
+    public static void onItemColors(ColorHandlerEvent.Item event) {
         ItemColors colors = event.getItemColors();
         colors.register((stack, tint) -> {
                     if (stack.getItem() instanceof BlockItem blockItem && blockItem.getBlock() instanceof TourRailBlock block && tint == 1) {

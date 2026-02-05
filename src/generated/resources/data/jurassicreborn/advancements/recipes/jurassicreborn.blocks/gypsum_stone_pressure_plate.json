@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "jurassicreborn:gypsum_stone_pressure_plate"
+    ]
+  },
+  "criteria": {
+    "has_gypsum_stone": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:gypsum_stone"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "jurassicreborn:gypsum_stone_pressure_plate"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_gypsum_stone",
+      "has_the_recipe"
+    ]
+  ]
+}

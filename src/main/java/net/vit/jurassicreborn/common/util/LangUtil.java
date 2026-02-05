@@ -5,7 +5,10 @@ import net.vit.jurassicreborn.JurassicReborn;
 import net.vit.jurassicreborn.common.entities.Dinosaurs.Dinosaur;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.network.chat.TextComponent;
 import net.vit.jurassicreborn.common.entities.item.AttractionSignEntity;
 import net.vit.jurassicreborn.common.items.misc.AttractionSignItem;
 
@@ -22,18 +25,17 @@ public class LangUtil {
     public static final String LORE = "lore.%s";
     public static final String GENDER_CHANGE = "%s.genderchange";
 
-
     public static final TranslateKey GUI = new TranslateKey("gui.%s.name");
     public static final TranslateKey STATUS = new TranslateKey("status.%s.name");
     public static final TranslateKey STAND_CHANGE = new TranslateKey("%s.standchange.name");
 
 
     public static MutableComponent getDinoName(Dinosaur dino){
-        return Component.translatable(getEntityKey(dino.getName().replace(" ", "_").toLowerCase(Locale.ENGLISH)));
+        return new TranslatableComponent(getEntityKey(dino.getName().replace(" ", "_").toLowerCase(Locale.ENGLISH)));
     }
 
     public static MutableComponent replaceInKey(Supplier<String> replacement, String replaceTarget, String key){
-        return Component.literal(Component.translatable(key).getString().replace(replaceTarget, replacement.get()) );
+        return new TextComponent(new TranslatableComponent(key).getString().replace(replaceTarget, replacement.get()) );
     }
 
     public static Component replaceWithDinosaurName(Dinosaur name, String key){
@@ -52,24 +54,23 @@ public class LangUtil {
     }
 
     public static Component getFormattedQuality(int quality){
-        return quality == -1 ? Component.literal("??").withStyle(ChatFormatting.OBFUSCATED) : Component.literal(Integer.toString(quality));
+        return quality == -1 ? new TextComponent("??").withStyle(ChatFormatting.OBFUSCATED) : new TextComponent(Integer.toString(quality));
     }
     public static String getDinoInfo(Dinosaur dinosaur) {
         String key = "info." + dinosaur.getName().replace(" ", "_").toLowerCase(Locale.ENGLISH) + ".name";
-        return net.minecraft.network.chat.Component.translatable(key).getString();
+        return new TranslatableComponent(key).getString();
     }
 // Add these to LangUtil
 
     // 1. Direct string translation for simple keys
     public static String translate(String key) {
-        return Component.translatable(key).getString();
+        return new TranslatableComponent(key).getString();
     }
 
     // 2. Helper for gender mode as String (legacy-style)
     public static String getGenderMode(int gender) {
         return getGender(gender).getString();
     }
-
 
     public static String getGUIKey(String key) {
         return "gui." + JurassicReborn.MODID + "." + key;
@@ -80,7 +81,7 @@ public class LangUtil {
 
 
     public static Component getFormattedGenetics(String genetics) {
-        return genetics.isEmpty() ? Component.literal("???").withStyle(ChatFormatting.OBFUSCATED) : Component.literal(genetics);
+        return genetics.isEmpty() ? new TextComponent("???").withStyle(ChatFormatting.OBFUSCATED) : new TextComponent(genetics);
     }
 
     public static MutableComponent getGender(int gender){
@@ -93,7 +94,7 @@ public class LangUtil {
             genderKey = "female";
         }
 
-        return Component.translatable("gender." + genderKey);
+        return new TranslatableComponent("gender." + genderKey);
 
     }
     public static class TranslateKey {

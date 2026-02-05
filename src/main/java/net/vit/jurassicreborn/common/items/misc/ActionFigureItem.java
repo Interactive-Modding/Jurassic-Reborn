@@ -3,13 +3,17 @@ package net.vit.jurassicreborn.common.items.misc;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -30,7 +34,7 @@ import net.vit.jurassicreborn.common.entities.Dinosaurs.Dinosaur;
 import net.vit.jurassicreborn.common.util.LangUtil;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.client.extensions.common.IClientItemExtensions;
+import net.minecraftforge.client.IItemRenderProperties;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -65,20 +69,16 @@ public class ActionFigureItem extends Item {
         stack.setTag(tag);
         return stack;
     }
-    @Override
-    public String getDescriptionId(ItemStack stack) {
-        return "item.jurassicreborn.action_figure.dynamic";
-    }
 
 
 
     @Override
     @OnlyIn(Dist.CLIENT)
-    public void initializeClient(@NotNull Consumer<IClientItemExtensions> consumer) {
+    public void initializeClient(@NotNull Consumer<IItemRenderProperties> consumer) {
         super.initializeClient(consumer);
-        IClientItemExtensions prop = new IClientItemExtensions() {
+        IItemRenderProperties prop = new IItemRenderProperties() {
             @Override
-            public BlockEntityWithoutLevelRenderer getCustomRenderer() {
+            public BlockEntityWithoutLevelRenderer getItemStackRenderer() {
                 return JurassicClient.displayBlockRendererWithoutLevel;
             }
         };
@@ -173,24 +173,19 @@ public class ActionFigureItem extends Item {
     }
 
     @Override
-    public @NotNull Component getName(@NotNull ItemStack stack) {
-        Dinosaur dino = this.getDinosaur(stack);
+    public @NotNull Component getName(@NotNull ItemStack pStack) {
+        if(this.isSkeleton(pStack))
+            return LangUtil.replaceWithDinoName(this.getDinosaur(pStack), "item.JurassicReborn.skeleton." + (this.isFresh(pStack) ? "fresh" : "fossil"));
 
-        if (dino == Dinosaur.EMPTY) {
-            return Component.translatable("item.jurassicreborn.action_figure");
-        }
-
-        return Component.translatable(
-                "item.jurassicreborn.action_figure.dynamic",
-                dino.getTranslatedName()
-        );
+        return LangUtil.replaceWithDinoName(this.getDinosaur(pStack), "item.JurassicReborn.action_figure");
     }
+
     @Override
     public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
         if(this.isSkeleton)
             return;
 
-        pTooltipComponents.add(Component.translatable("lore.change_gender").withStyle(ChatFormatting.BLUE));
+        pTooltipComponents.add(new TranslatableComponent("lore.change_gender").withStyle(ChatFormatting.BLUE));
     }
 
     @Override
@@ -208,7 +203,7 @@ public class ActionFigureItem extends Item {
         int gender = this.changeGender(stack);
 
         if(pLevel.isClientSide)
-            pPlayer.displayClientMessage(Component.translatable("actionfigure.genderchange", LangUtil.getGender(gender).getString()), false);
+            pPlayer.displayClientMessage(new TranslatableComponent("actionfigure.genderchange", LangUtil.getGender(gender).getString()), false);
 
         return new InteractionResultHolder<>(InteractionResult.SUCCESS, stack);
 
@@ -256,10 +251,17 @@ public class ActionFigureItem extends Item {
             return InteractionResult.FAIL;
         }
 
+        boolean hasVariantTag = stack.hasTag() && stack.getTag().contains("Variant", Tag.TAG_BYTE);
+        byte variant = hasVariantTag ? stack.getTag().getByte("Variant") : (byte) -1;
+
         afbe.setDinosaur(this.getDinosaur(stack),
                 gender > 0 ? gender == 1 : world.getRandom().nextBoolean(),
                 this.isSkeleton(stack),
                 this.isFossile(stack));
+
+        if (hasVariantTag) {
+            afbe.setVariant(variant);
+        }
 
         afbe.setRot(180 - (int) Objects.requireNonNull(context.getPlayer()).getYHeadRot());
 
@@ -289,6 +291,18 @@ public class ActionFigureItem extends Item {
         }
 
         return null;
+    }
+
+    @Override
+    public void fillItemCategory(CreativeModeTab tab, NonNullList<ItemStack> items) {
+        if (tab == this.getItemCategory() || tab == CreativeModeTab.TAB_SEARCH) {
+            ItemStack stack = new ItemStack(this);
+            CompoundTag tag = new CompoundTag();
+            tag.putString("Gender", "random"); // or "male" or "female"
+            tag.putBoolean("IsFossile", !this.fresh); // explicit for EVERY item
+            stack.setTag(tag);
+            items.add(stack);
+        }
     }
 
 }

@@ -7,7 +7,8 @@ import net.vit.jurassicreborn.common.genetics.StorageTypeRegistry;
 import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.util.RandomSource;
+import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.network.chat.TextComponent;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -15,6 +16,7 @@ import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.Random;
 
 public class DNAContainerItem extends Item {
 
@@ -61,7 +63,7 @@ public class DNAContainerItem extends Item {
         return quality;
     }
 
-    public static String getGeneticCode(RandomSource player, ItemStack stack) {
+    public static String getGeneticCode(Random player, ItemStack stack) {
         CompoundTag nbt = stack.getOrCreateTag();
 
         String genetics = GeneticsHelper.randomGenetics(player);
@@ -98,7 +100,7 @@ public class DNAContainerItem extends Item {
             if (tag.contains("DNA"))
                 StorageTypeRegistry.getStorageType(tag.getCompound("DNA").getString("StorageId")).load(tag).addInformation(pStack, lore);
             else {
-                lore.add(Component.translatable("cage.empty").withStyle(ChatFormatting.DARK_RED));
+                lore.add(new TranslatableComponent("cage.empty").withStyle(ChatFormatting.DARK_RED));
             }
         }else {
             ChatFormatting colour;
@@ -110,9 +112,9 @@ public class DNAContainerItem extends Item {
 
             int quality = getDNAQuality(fromCreativeMenu, pStack);
 
-            RandomSource rand = RandomSource.create();
+            Random rand = new Random();
             if (pLevel != null)
-                rand = pLevel.getRandom();
+                rand = pLevel.random;
 
             if (quality > 75) {
                 colour = ChatFormatting.GREEN;
@@ -123,9 +125,9 @@ public class DNAContainerItem extends Item {
             } else {
                 colour = ChatFormatting.RED;
             }
-            lore.add(Component.literal(Component.translatable("lore.dna_quality").getString().formatted(Integer.toString(quality), "%")).withStyle(colour));
+            lore.add(new TextComponent(new TranslatableComponent("lore.dna_quality").getString().formatted(Integer.toString(quality), "%")).withStyle(colour));
             if (hasGeneticCode(pStack))
-                lore.add(Component.literal(Component.translatable("lore.genetic_code").getString().formatted(getGeneticCode(rand, pStack))).withStyle(ChatFormatting.BLUE));
+                lore.add(new TextComponent(new TranslatableComponent("lore.genetic_code").getString().formatted(getGeneticCode(rand, pStack))).withStyle(ChatFormatting.BLUE));
         }
     }
 

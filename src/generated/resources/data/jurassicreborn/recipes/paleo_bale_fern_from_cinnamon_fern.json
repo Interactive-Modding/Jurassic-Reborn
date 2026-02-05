@@ -1,19 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "building",
   "group": "jurassicreborn:paleo_bale_fern",
-  "key": {
-    "A": {
-      "item": "jurassicreborn:cinnamon_fern"
-    }
-  },
   "pattern": [
     "AAA",
     "AAA",
     "AAA"
   ],
+  "key": {
+    "A": {
+      "item": "jurassicreborn:cinnamon_fern"
+    }
+  },
   "result": {
     "item": "jurassicreborn:paleo_bale_fern"
-  },
-  "show_notification": true
+  }
 }

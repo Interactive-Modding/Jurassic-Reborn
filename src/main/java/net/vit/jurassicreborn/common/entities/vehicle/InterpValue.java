@@ -71,7 +71,7 @@ public class InterpValue implements INBTSerializable<CompoundTag> {
         this.tick();
     }
     @SubscribeEvent
-    public static void onLevelTick(TickEvent.LevelTickEvent event) {
+    public static void onLevelTick(TickEvent.WorldTickEvent event) {
         if (event.phase != TickEvent.Phase.END) return;   // run once each tick
 
         synchronized (VALUES) {

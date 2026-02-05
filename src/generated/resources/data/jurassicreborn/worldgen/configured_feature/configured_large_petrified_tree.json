@@ -1,7 +1,0 @@
-{
-  "type": "jurassicreborn:petrified_tree_generation",
-  "config": {
-    "chance": 0.1,
-    "size": 15
-  }
-}

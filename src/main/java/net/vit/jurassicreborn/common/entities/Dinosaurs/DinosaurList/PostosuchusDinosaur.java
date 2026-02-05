@@ -50,7 +50,7 @@ public class PostosuchusDinosaur extends Dinosaur {
         this.enableSkeleton();
 
         ArrayList<ResourceKey<Biome>> biomeList = new ArrayList<>();
-        TagKey<Biome>[] tags = (new TagKey[]{ BiomeTags.IS_RIVER, Tags.Biomes.IS_SWAMP, BiomeTags.IS_SAVANNA, BiomeTags.IS_BEACH});
+        TagKey<Biome>[] tags = (new TagKey[]{ BiomeTags.IS_RIVER, Tags.Biomes.IS_SWAMP, BiomeTags.HAS_VILLAGE_SAVANNA, BiomeTags.IS_BEACH});
         ArrayList<Biome> allBiomes = new ArrayList<>(ForgeRegistries.BIOMES.getValues());
 
         biomeList = new ArrayList<>(allBiomes.stream().filter((biome ->{

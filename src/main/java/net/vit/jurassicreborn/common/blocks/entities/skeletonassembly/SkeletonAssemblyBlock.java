@@ -11,7 +11,6 @@ import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -23,6 +22,7 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.items.IItemHandlerModifiable;
 import net.minecraftforge.network.NetworkHooks;
@@ -40,7 +40,7 @@ public class SkeletonAssemblyBlock extends BaseEntityBlock {
 
     public SkeletonAssemblyBlock() {
         super(BlockBehaviour.Properties
-                .copy(Blocks.OAK_PLANKS)
+                .of(Material.WOOD)
                 .strength(2.0F)
                 .sound(SoundType.METAL)
                 .noOcclusion());                       // not full cube
@@ -67,7 +67,7 @@ public class SkeletonAssemblyBlock extends BaseEntityBlock {
         if (!level.isClientSide) {
             BlockEntity be = level.getBlockEntity(menuPos);
             if (be instanceof MenuProvider provider && player instanceof ServerPlayer sp) {
-                NetworkHooks.openScreen(sp, provider, menuPos);
+                NetworkHooks.openGui(sp, provider, menuPos);
             }
         }
         return InteractionResult.sidedSuccess(level.isClientSide);

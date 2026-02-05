@@ -7,8 +7,6 @@ import net.minecraft.world.entity.GlowSquid;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.animal.*;
 import net.minecraft.world.entity.animal.axolotl.Axolotl;
-import net.minecraft.world.entity.animal.frog.Frog;
-import net.minecraft.world.entity.animal.frog.Tadpole;
 import net.minecraft.world.entity.animal.goat.Goat;
 import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.entity.player.Player;
@@ -24,7 +22,7 @@ public class LivyatanEntity extends SwimmingDinosaurEntity
     public LivyatanEntity(Level world, EntityType<LivyatanEntity> type)
     {
         super(world, type, DinosaurHandler.LIVYATAN);
-        this.target(CoelacanthEntity.class,OrthocerasEntity.class,CamerocerasEntity.class, EndocerasEntity.class,MawsoniaEntity.class, CrassigyrinusEntity.class, AsterocerasEntity.class, ParapuzosiaEntity.class, TitanisEntity.class, AlligatorGarEntity.class, MegapiranhaEntity.class, Squid.class, Cod.class, Dolphin.class, Salmon.class, TropicalFish.class, Turtle.class, Axolotl.class, GlowSquid.class, Frog.class, Tadpole.class,  Player.class, Animal.class, Villager.class, Mob.class, Goat.class);
+        this.target(CoelacanthEntity.class,OrthocerasEntity.class,CamerocerasEntity.class, EndocerasEntity.class,MawsoniaEntity.class, CrassigyrinusEntity.class, AsterocerasEntity.class, ParapuzosiaEntity.class, TitanisEntity.class, AlligatorGarEntity.class, MegapiranhaEntity.class, Squid.class, Cod.class, Dolphin.class, Salmon.class, TropicalFish.class, Turtle.class, Axolotl.class, GlowSquid.class,    Player.class, Animal.class, Villager.class, Mob.class, Goat.class);
 //        this.addTask(0, new WaterLeapAI/*WaterYeetAI*/(this, 12, 1.2F));
     }
     public SoundEvent getSoundForAnimation(Animation animation) {

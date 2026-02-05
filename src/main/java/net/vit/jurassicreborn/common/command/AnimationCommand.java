@@ -7,8 +7,8 @@ import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.commands.arguments.ResourceLocationArgument;
 import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TextComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -48,15 +48,15 @@ public class AnimationCommand {
         try {
             anim = EntityAnimation.valueOf(animKey.toUpperCase(Locale.ROOT));
         } catch (IllegalArgumentException ex) {
-            ctx.getSource().sendFailure(Component.literal("Unknown animation: " + animKey));
+            ctx.getSource().sendFailure(new TextComponent("Unknown animation: " + animKey));
             return 0;
         }
 
-        EntityType<?> type = BuiltInRegistries.ENTITY_TYPE.getOptional(dinoId)
+        EntityType<?> type = Registry.ENTITY_TYPE.getOptional(dinoId)
                 .orElse(null);
 
         if (type == null) {
-            ctx.getSource().sendFailure(Component.literal("Unknown dinosaur id: " + dinoId));
+            ctx.getSource().sendFailure(new TextComponent("Unknown dinosaur id: " + dinoId));
             return 0;
         }
 
@@ -77,13 +77,12 @@ public class AnimationCommand {
         }
 
         if (played == 0) {
-            ctx.getSource().sendFailure(Component.literal("No living " + dinoId + " found"));
+            ctx.getSource().sendFailure(new TextComponent("No living " + dinoId + " found"));
             return 0;
         }
 
-        final int totalPlayed = played;
         ctx.getSource().sendSuccess(
-                () -> Component.literal("Played " + animKey + " on " + totalPlayed + " " + dinoId), true);
+                new TextComponent("Played " + animKey + " on " + played + " " + dinoId), true);
         return played;
     }
 }

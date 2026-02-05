@@ -7,13 +7,10 @@
     "minecraft:frozen_peaks",
     "minecraft:stony_peaks"
   ],
-  "spawners": [
-    {
-      "type": "jurassicreborn:goat",
-      "weight": 12,
-      "minCount": 1,
-      "maxCount": 5
-    }
-  ]
+  "spawners": {
+    "type": "jurassicreborn:goat",
+    "weight": 12,
+    "minCount": 1,
+    "maxCount": 5
+  }
 }
-

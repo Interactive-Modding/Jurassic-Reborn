@@ -34,7 +34,7 @@ public class AssistOwnerAI extends Goal {
         UUID id = dino.getOwner();
         if (id == null) return false;
 
-        owner = dino.level().getPlayerByUUID(id);
+        owner = dino.level.getPlayerByUUID(id);
         if (owner == null || owner.isSpectator()) return false;
 
         // prefer defending owner over helping attack, choose the most recent event

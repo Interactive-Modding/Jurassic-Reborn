@@ -1,13 +1,13 @@
 {
   "variants": {
+    "type=top": {
+      "model": "jurassicreborn:block/reinforced_stone_pathway_slab_top"
+    },
     "type=bottom": {
       "model": "jurassicreborn:block/reinforced_stone_pathway_slab"
     },
     "type=double": {
       "model": "jurassicreborn:block/reinforced_stone_pathway"
-    },
-    "type=top": {
-      "model": "jurassicreborn:block/reinforced_stone_pathway_slab_top"
     }
   }
 }

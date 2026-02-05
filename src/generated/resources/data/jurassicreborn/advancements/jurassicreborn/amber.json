@@ -1,43 +1,23 @@
 {
   "parent": "jurassicreborn:jurassicreborn/dna_extractor",
+  "display": {
+    "icon": {
+      "item": "jurassicreborn:amber_mosquito"
+    },
+    "title": {
+      "translate": "advancements.jurassicreborn.amber.title"
+    },
+    "description": {
+      "translate": "advancements.jurassicreborn.amber.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
   "criteria": {
-    "amber": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:amber_mosquito"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "amber_1": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:amber_aphid"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "frozen_leech": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:frozen_leech"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
     "sea_lamprey": {
+      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
@@ -46,23 +26,43 @@
             ]
           }
         ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    }
-  },
-  "display": {
-    "announce_to_chat": true,
-    "description": {
-      "translate": "advancements.jurassicreborn.amber.description"
+      }
     },
-    "frame": "challenge",
-    "hidden": false,
-    "icon": {
-      "item": "jurassicreborn:amber_mosquito"
+    "amber": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:amber_mosquito"
+            ]
+          }
+        ]
+      }
     },
-    "show_toast": true,
-    "title": {
-      "translate": "advancements.jurassicreborn.amber.title"
+    "frozen_leech": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:frozen_leech"
+            ]
+          }
+        ]
+      }
+    },
+    "amber_1": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:amber_aphid"
+            ]
+          }
+        ]
+      }
     }
   },
   "requirements": [
@@ -72,6 +72,5 @@
       "frozen_leech",
       "amber_1"
     ]
-  ],
-  "sends_telemetry_event": true
+  ]
 }

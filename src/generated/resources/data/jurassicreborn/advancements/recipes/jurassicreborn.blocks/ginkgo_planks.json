@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "jurassicreborn:ginkgo_planks"
+    ]
+  },
+  "criteria": {
+    "has_ginkgo_log": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:ginkgo_log"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "jurassicreborn:ginkgo_planks"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_ginkgo_log",
+      "has_the_recipe"
+    ]
+  ]
+}

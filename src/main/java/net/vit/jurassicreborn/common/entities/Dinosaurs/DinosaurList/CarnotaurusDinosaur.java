@@ -56,7 +56,7 @@ public class CarnotaurusDinosaur extends Dinosaur
 //        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.PLAINS));
 //        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.FOREST));
 
-        TagKey<Biome>[] tags = (new TagKey[]{Tags.Biomes.IS_PLAINS, BiomeTags.IS_FOREST, BiomeTags.IS_SAVANNA});
+        TagKey<Biome>[] tags = (new TagKey[]{Tags.Biomes.IS_PLAINS, BiomeTags.IS_FOREST, BiomeTags.HAS_VILLAGE_SAVANNA});
         ArrayList<Biome> allBiomes = new ArrayList<>(ForgeRegistries.BIOMES.getValues());
 
         biomeList = new ArrayList<>(allBiomes.stream().filter((biome ->{

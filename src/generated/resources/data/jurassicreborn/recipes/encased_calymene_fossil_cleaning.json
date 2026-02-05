@@ -1,0 +1,11 @@
+{
+  "type": "jurassicreborn:cleaning",
+  "input": {
+    "item": "jurassicreborn:encased_calymene_fossil"
+  },
+  "output": {
+    "item": "minecraft:air",
+    "count": 1
+  },
+  "count": 1
+}

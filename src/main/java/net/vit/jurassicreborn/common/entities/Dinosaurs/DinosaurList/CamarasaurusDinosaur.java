@@ -52,7 +52,7 @@ public class CamarasaurusDinosaur extends Dinosaur
         this.setRecipe(recipe);
         this.enableSkeleton();
         ArrayList<ResourceKey<Biome>> biomeList = new ArrayList();
-        TagKey<Biome>[] tags = (new TagKey[]{Tags.Biomes.IS_PLAINS, BiomeTags.IS_SAVANNA});
+        TagKey<Biome>[] tags = (new TagKey[]{Tags.Biomes.IS_PLAINS, BiomeTags.HAS_VILLAGE_SAVANNA});
         ArrayList<Biome> allBiomes = new ArrayList<>(ForgeRegistries.BIOMES.getValues());
 
         biomeList = new ArrayList<>(allBiomes.stream().filter((biome ->{

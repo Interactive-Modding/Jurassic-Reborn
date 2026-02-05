@@ -4,6 +4,7 @@ import com.mojang.brigadier.CommandDispatcher;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TextComponent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.GameRules;
 import net.vit.jurassicreborn.common.util.GameRuleHandler;
@@ -24,7 +25,7 @@ public class DoDinoBreedingCommand {
         ServerLevel level = source.getLevel();
         GameRules.BooleanValue rule = level.getGameRules().getRule(GameRuleHandler.DINO_BREEDING);
         rule.set(value, level.getServer());
-        source.sendSuccess(() -> Component.literal(value ? "Dinosaur breeding enabled" : "Dinosaur breeding disabled"), true);
+        source.sendSuccess(new TextComponent(value ? "Dinosaur breeding enabled" : "Dinosaur breeding disabled"), true);
         return 1;
     }
 
@@ -33,7 +34,7 @@ public class DoDinoBreedingCommand {
         GameRules.BooleanValue rule = level.getGameRules().getRule(GameRuleHandler.DINO_BREEDING);
         boolean value = !rule.get();
         rule.set(value, level.getServer());
-        source.sendSuccess(() -> Component.literal(value ? "Dinosaur breeding enabled" : "Dinosaur breeding disabled"), true);
+        source.sendSuccess(new TextComponent(value ? "Dinosaur breeding enabled" : "Dinosaur breeding disabled"), true);
         return 1;
     }
 }

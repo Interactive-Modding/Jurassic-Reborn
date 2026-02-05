@@ -8,7 +8,6 @@ import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
@@ -23,7 +22,6 @@ public class SkullDisplayBlockEntity extends BlockEntity {
     private int dinosaur = -1;
     private boolean isFossilized;
     private boolean hasStand;
-    private ItemStack displayedStack = ItemStack.EMPTY;
     public float[] modelScale = {1.0F, 1.0F, 1.0F};
     @OnlyIn(Dist.CLIENT)
     public TabulaModel model;
@@ -41,7 +39,10 @@ public class SkullDisplayBlockEntity extends BlockEntity {
         this.dinosaur = dinosaurID;
         this.isFossilized = fossilized;
         this.hasStand = stand;
-        this.markUpdated();
+        setChanged();
+        if (this.level != null && !this.level.isClientSide) {
+            this.level.sendBlockUpdated(this.worldPosition, this.getBlockState(), this.getBlockState(), 3);
+        }
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -55,15 +56,6 @@ public class SkullDisplayBlockEntity extends BlockEntity {
 
     public boolean hasStand() {
         return this.hasStand;
-    }
-
-    public void setDisplayedStack(ItemStack stack) {
-        this.displayedStack = stack.copy();
-        this.markUpdated();
-    }
-
-    public ItemStack getDisplayedStack() {
-        return this.displayedStack;
     }
 
     public Dinosaur getDinosaur() {
@@ -85,9 +77,6 @@ public class SkullDisplayBlockEntity extends BlockEntity {
         tag.putBoolean("isFossilized", this.isFossilized);
         tag.putShort("angle", this.angle);
         tag.putBoolean("type", this.hasStand);
-        if (!this.displayedStack.isEmpty()) {
-            tag.put("displayedStack", this.displayedStack.save(new CompoundTag()));
-        }
     }
 
     @Override
@@ -97,11 +86,6 @@ public class SkullDisplayBlockEntity extends BlockEntity {
         this.isFossilized = tag.getBoolean("isFossilized");
         this.angle = tag.getShort("angle");
         this.hasStand = tag.getBoolean("type");
-        if (tag.contains("displayedStack")) {
-            this.displayedStack = ItemStack.of(tag.getCompound("displayedStack"));
-        } else {
-            this.displayedStack = ItemStack.EMPTY;
-        }
     }
 
     @Override
@@ -117,13 +101,6 @@ public class SkullDisplayBlockEntity extends BlockEntity {
     @Override
     public @NotNull CompoundTag getUpdateTag() {
         return this.saveWithoutMetadata();
-    }
-
-    private void markUpdated() {
-        setChanged();
-        if (this.level != null && !this.level.isClientSide) {
-            this.level.sendBlockUpdated(this.worldPosition, this.getBlockState(), this.getBlockState(), 3);
-        }
     }
 
     @OnlyIn(Dist.CLIENT)

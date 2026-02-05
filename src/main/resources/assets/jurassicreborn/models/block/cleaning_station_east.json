@@ -1,7 +1,6 @@
 {
 	"credit": "Cleaning station - Alien, created using Tabula 7.1.0, Updated by Vitiate using Blockbench",
 	"parent": "minecraft:block/block",
-	"render_type": "minecraft:cutout",
 	"ambientocclusion": false,
 	"textures": {
 		"layer0": "jurassicreborn:block/cleaning_station",

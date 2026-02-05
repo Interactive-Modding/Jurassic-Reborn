@@ -5,7 +5,7 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.vit.jurassicreborn.common.items.misc.SwarmItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
+import java.util.Random;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -16,7 +16,7 @@ import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.storage.loot.LootParams;
+import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -76,8 +76,10 @@ public class SwarmBlock extends Block {
     }
 
     @Override
-    public List<ItemStack> getDrops(BlockState state, LootParams.Builder builder) {
-        return this.getAddationalDrops(state, super.getDrops(state, builder)); //that was easy, might cause a bug - gamma_02
+    public List<ItemStack> getDrops(BlockState pState, LootContext.Builder pBuilder) {
+
+        return this.getAddationalDrops(pState, super.getDrops(pState, pBuilder));//that was easy, might cause a bug - gamma_02
+//        return super.getDrops(pState, pBuilder);
     }
 
     public List<ItemStack> getAddationalDrops(BlockState state, List<ItemStack> originalDrops) {
@@ -86,7 +88,7 @@ public class SwarmBlock extends Block {
     }
 
     @Override
-    public void randomTick(BlockState state, ServerLevel world, BlockPos pos, RandomSource rand) {
+    public void randomTick(BlockState state, ServerLevel world, BlockPos pos, Random rand) {
         super.randomTick(state, world, pos, rand);
         this.checkForDrop(world, pos, state);
         if (rand.nextInt(10) == 0) {

@@ -1,18 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "building",
-  "key": {
-    "S": {
-      "item": "jurassicreborn:amber"
-    }
-  },
   "pattern": [
     "SSS",
     "SSS",
     "SSS"
   ],
+  "key": {
+    "S": {
+      "item": "jurassicreborn:amber"
+    }
+  },
   "result": {
     "item": "jurassicreborn:amber_block"
-  },
-  "show_notification": true
+  }
 }

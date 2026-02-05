@@ -13,7 +13,4 @@ public final class JurassicBoatModelLayers {
         return new ModelLayerLocation(new ResourceLocation(JurassicReborn.MODID, "boat/" + type.getSerializedName()), "main");
     }
 
-    public static ModelLayerLocation createChestBoatModelName(ModBoatType type) {
-        return new ModelLayerLocation(new ResourceLocation(JurassicReborn.MODID, "chest_boat/" + type.getSerializedName()), "main");
-    }
 }

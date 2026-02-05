@@ -22,7 +22,6 @@ public enum ModBoatType implements StringRepresentable {
 
     private final String name;
     private Supplier<Item> boatItem = () -> Items.OAK_BOAT;
-    private Supplier<Item> chestBoatItem = () -> Items.OAK_CHEST_BOAT;
     ModBoatType(String name) {
         this.name = name;
     }
@@ -36,12 +35,8 @@ public enum ModBoatType implements StringRepresentable {
         this.boatItem = boatItem;
     }
 
-    public void setChestBoatItem(Supplier<Item> chestBoatItem) {
-        this.chestBoatItem = chestBoatItem;
-    }
-
-    public Item getBoatItem(boolean hasChest) {
-        return (hasChest ? this.chestBoatItem : this.boatItem).get();
+    public Item getBoatItem() {
+        return this.boatItem.get();
     }
 
     public static ModBoatType byId(int id) {

@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/cube_column_horizontal",
   "textures": {
-    "end": "jurassicreborn:block/petrified_magnolia_log_top",
-    "side": "jurassicreborn:block/petrified_magnolia_log"
+    "side": "jurassicreborn:block/petrified_magnolia_log",
+    "end": "jurassicreborn:block/petrified_magnolia_log_top"
   }
 }

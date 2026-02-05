@@ -1,10 +1,9 @@
 {
   "type": "minecraft:blasting",
-  "category": "misc",
-  "cookingtime": 100,
-  "experience": 0.35,
   "ingredient": {
     "item": "jurassicreborn:meat/meat_sinoceratops"
   },
-  "result": "jurassicreborn:meat/steak_sinoceratops"
+  "result": "jurassicreborn:meat/steak_sinoceratops",
+  "experience": 0.35,
+  "cookingtime": 100
 }

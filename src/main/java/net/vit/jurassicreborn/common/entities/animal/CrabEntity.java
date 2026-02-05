@@ -39,7 +39,7 @@ import net.minecraftforge.entity.IEntityAdditionalSpawnData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.tags.FluidTags;
-import net.minecraft.util.RandomSource;
+import java.util.Random;
 import net.vit.jurassicreborn.common.RebornConfig;
 import net.minecraft.world.level.block.Blocks;
 import org.jetbrains.annotations.Nullable;
@@ -59,7 +59,7 @@ public class CrabEntity extends Animal implements Animatable, IEntityAdditionalS
 
     public CrabEntity(EntityType<? extends Animal> p_27557_, Level p_27558_) {
         super(p_27557_, p_27558_);
-        this.setMaxUpStep(1.0f);
+        this.maxUpStep = 1.0f;
         this.animationTick = 0;
         this.setAnimation(EntityAnimation.IDLE.get());
     }
@@ -122,7 +122,7 @@ public class CrabEntity extends Animal implements Animatable, IEntityAdditionalS
                 this.animationTick = this.animationLength - 1;
             }
         }
-        if (!this.level().isClientSide) {
+        if (!this.level.isClientSide) {
             this.entityData.set(CRAB_IS_RUNNING, this.getSpeed() > this.getAttributeValue(Attributes.MOVEMENT_SPEED));
         }
     }
@@ -291,7 +291,7 @@ public class CrabEntity extends Animal implements Animatable, IEntityAdditionalS
     public SpawnGroupData finalizeSpawn(ServerLevelAccessor pLevel, DifficultyInstance pDifficulty, MobSpawnType pReason, @javax.annotation.Nullable SpawnGroupData pSpawnData, @javax.annotation.Nullable CompoundTag pDataTag) {
         return super.finalizeSpawn(pLevel, pDifficulty, pReason, pSpawnData, pDataTag);
     }
-    public static boolean checkCrabSpawnRules(EntityType<CrabEntity> type, LevelAccessor pLevel, MobSpawnType reason, BlockPos pPos, RandomSource random) {
+    public static boolean checkCrabSpawnRules(EntityType<CrabEntity> type, LevelAccessor pLevel, MobSpawnType reason, BlockPos pPos, Random random) {
         return RebornConfig.spawnCrabs && pPos.getY() < pLevel.getSeaLevel() + 4 && isBrightEnoughToSpawn(pLevel, pPos);
     }
 

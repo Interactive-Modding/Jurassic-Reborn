@@ -1,13 +1,13 @@
 {
   "variants": {
+    "type=top": {
+      "model": "jurassicreborn:block/araucaria_slab_top"
+    },
     "type=bottom": {
       "model": "jurassicreborn:block/araucaria_slab"
     },
     "type=double": {
       "model": "jurassicreborn:block/araucaria_planks"
-    },
-    "type=top": {
-      "model": "jurassicreborn:block/araucaria_slab_top"
     }
   }
 }

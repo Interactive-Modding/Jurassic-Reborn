@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "jurassicreborn:paleo_bale_other_from_ajuginucula_smithii"
+    ]
+  },
+  "criteria": {
+    "has_ajuginucula_smithii": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:ajuginucula_smithii"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "jurassicreborn:paleo_bale_other_from_ajuginucula_smithii"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_ajuginucula_smithii",
+      "has_the_recipe"
+    ]
+  ]
+}

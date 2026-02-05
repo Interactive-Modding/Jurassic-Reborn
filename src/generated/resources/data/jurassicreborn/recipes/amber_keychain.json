@@ -1,7 +1,10 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "group": "jurassicreborn:amber_keychain",
+  "pattern": [
+    "A",
+    "B"
+  ],
   "key": {
     "A": {
       "item": "jurassicreborn:amber_mosquito"
@@ -10,12 +13,7 @@
       "item": "minecraft:iron_ingot"
     }
   },
-  "pattern": [
-    "A",
-    "B"
-  ],
   "result": {
     "item": "jurassicreborn:amber_keychain"
-  },
-  "show_notification": true
+  }
 }

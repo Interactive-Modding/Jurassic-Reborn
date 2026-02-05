@@ -1,5 +1,4 @@
 {
-  "render_type": "minecraft:translucent",
   "textures": {
     "particle": "jurassicreborn:block/cultivate_top",
     "0": "jurassicreborn:block/cultivate_top",

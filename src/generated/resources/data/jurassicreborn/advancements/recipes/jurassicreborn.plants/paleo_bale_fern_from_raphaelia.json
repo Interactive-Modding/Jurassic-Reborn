@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "jurassicreborn:paleo_bale_fern_from_raphaelia"
+    ]
+  },
+  "criteria": {
+    "has_raphaelia": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:raphaelia"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "jurassicreborn:paleo_bale_fern_from_raphaelia"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_raphaelia",
+      "has_the_recipe"
+    ]
+  ]
+}

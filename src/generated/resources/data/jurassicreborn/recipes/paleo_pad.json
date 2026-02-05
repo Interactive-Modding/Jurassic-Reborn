@@ -1,6 +1,10 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
+  "pattern": [
+    "BDB",
+    "ACA",
+    "BDB"
+  ],
   "key": {
     "A": {
       "item": "jurassicreborn:basic_circuit"
@@ -15,13 +19,7 @@
       "item": "minecraft:diamond"
     }
   },
-  "pattern": [
-    "BDB",
-    "ACA",
-    "BDB"
-  ],
   "result": {
     "item": "jurassicreborn:paleo_pad"
-  },
-  "show_notification": true
+  }
 }

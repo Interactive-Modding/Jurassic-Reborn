@@ -1,13 +1,13 @@
 {
   "variants": {
+    "type=top": {
+      "model": "jurassicreborn:block/reinforced_brick_slab_top"
+    },
     "type=bottom": {
       "model": "jurassicreborn:block/reinforced_brick_slab"
     },
     "type=double": {
       "model": "jurassicreborn:block/reinforced_bricks"
-    },
-    "type=top": {
-      "model": "jurassicreborn:block/reinforced_brick_slab_top"
     }
   }
 }

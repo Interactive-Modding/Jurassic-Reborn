@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "jurassicreborn:dna_extractor"
+    ]
+  },
+  "criteria": {
+    "has_dna_analyzer": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna_analyzer"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "jurassicreborn:dna_extractor"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_dna_analyzer",
+      "has_the_recipe"
+    ]
+  ]
+}

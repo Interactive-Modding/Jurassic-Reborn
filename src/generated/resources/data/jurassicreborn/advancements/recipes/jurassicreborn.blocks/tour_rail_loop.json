@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "jurassicreborn:tour_rail_loop"
+    ]
+  },
+  "criteria": {
+    "has_tour_rail_fast": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:tour_rail_fast"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "jurassicreborn:tour_rail_loop"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_tour_rail_fast",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -1,5 +1,6 @@
 package net.vit.jurassicreborn.common.blocks.parkBlocks;
 
+import net.minecraft.world.level.block.Block;
 import net.vit.jurassicreborn.common.blocks.entities.ModBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -10,16 +11,18 @@ import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
-import software.bernie.geckolib.animatable.GeoBlockEntity;
-import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
-import software.bernie.geckolib.core.animation.AnimatableManager;
-import software.bernie.geckolib.core.animation.AnimationController;
-import software.bernie.geckolib.core.animation.RawAnimation;
-import software.bernie.geckolib.util.GeckoLibUtil;
+import software.bernie.geckolib3.core.IAnimatable;
+import software.bernie.geckolib3.core.PlayState;
+import software.bernie.geckolib3.core.builder.AnimationBuilder;
+import software.bernie.geckolib3.core.controller.AnimationController;
+import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
+import software.bernie.geckolib3.core.manager.AnimationData;
+import software.bernie.geckolib3.core.manager.AnimationFactory;
+import software.bernie.geckolib3.util.GeckoLibUtil;
 
 import java.util.Objects;
 
-public class TourRailBlockEntity extends BlockEntity implements GeoBlockEntity {
+public class TourRailBlockEntity extends BlockEntity implements IAnimatable {
     private TourRailBlock.EnumRailDirection direction;
 
     public TourRailBlockEntity(BlockPos pos, BlockState state) {
@@ -78,21 +81,25 @@ public class TourRailBlockEntity extends BlockEntity implements GeoBlockEntity {
         checkNonNull();
         setChanged();
         if(level != null && !level.isClientSide) {
-            level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), 3);
+            level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), Block.UPDATE_CLIENTS);
         }
     }
 
-    private static final RawAnimation IDLE_ANIMATION = RawAnimation.begin().thenLoop("animation.model.idle");
-    private final AnimatableInstanceCache animationCache = GeckoLibUtil.createInstanceCache(this);
+    private final AnimationFactory animFactory = GeckoLibUtil.createFactory(this);
 
     @Override
-    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
-        controllers.add(new AnimationController<>(this, "controller", 16,
-                state -> state.setAndContinue(IDLE_ANIMATION)));
+    public void registerControllers(AnimationData animationData) {
+        animationData.addAnimationController(new AnimationController<>(this, "controller", 16, this::controller));
+    }
+
+    private final AnimationBuilder ANIMATION = new AnimationBuilder().addAnimation("animation.model.idle");//this is the default animation on all of the models--thus, switching them around shouldn't cause issues
+    protected <E extends TourRailBlockEntity> PlayState controller(final AnimationEvent<E> event){
+        event.getController().setAnimation(ANIMATION);
+        return PlayState.CONTINUE;
     }
 
     @Override
-    public AnimatableInstanceCache getAnimatableInstanceCache() {
-        return animationCache;
+    public AnimationFactory getFactory() {
+        return animFactory;
     }
 }

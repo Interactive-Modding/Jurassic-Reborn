@@ -3,6 +3,7 @@ package net.vit.jurassicreborn.common.items.misc;
 import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.Entity;
@@ -16,6 +17,7 @@ import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.vit.jurassicreborn.common.entities.item.CageEntity;
+import net.vit.jurassicreborn.common.items.TabHandler;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -26,7 +28,7 @@ import java.util.List;
 public class CageItem extends Item {
 
     public CageItem() {
-        super(new Item.Properties().stacksTo(1));
+        super(new Item.Properties().stacksTo(1).tab(TabHandler.ITEMS));
     }
 
     @Override
@@ -73,12 +75,12 @@ public class CageItem extends Item {
     public void appendHoverText(ItemStack stack, @Nullable Level world, List<Component> tooltip, TooltipFlag flag) {
         if (stack.hasTag()) {
             if (stack.getTag().contains("name")) {
-                tooltip.add(Component.translatable("tooltip.cage.stored").append(stack.getTag().getString("name")).withStyle(ChatFormatting.GREEN));
+                tooltip.add(new TranslatableComponent("tooltip.cage.stored").append(stack.getTag().getString("name")).withStyle(ChatFormatting.GREEN));
             } else if (stack.getTag().contains("EntityTag") && stack.getTag().getCompound("EntityTag").contains("id")) {
-                tooltip.add(Component.translatable("tooltip.cage.stored").append(stack.getTag().getCompound("EntityTag").getString("id")).withStyle(ChatFormatting.RED));
+                tooltip.add(new TranslatableComponent("tooltip.cage.stored").append(stack.getTag().getCompound("EntityTag").getString("id")).withStyle(ChatFormatting.RED));
             }
         } else {
-            tooltip.add(Component.translatable("tooltip.cage.stored").append(Component.translatable("cage.empty")).withStyle(ChatFormatting.RED));
+            tooltip.add(new TranslatableComponent("tooltip.cage.stored").append(new TranslatableComponent("cage.empty")).withStyle(ChatFormatting.RED));
         }
     }
 }

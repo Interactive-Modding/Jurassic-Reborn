@@ -1,17 +1,15 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "building",
+  "pattern": [
+    "###"
+  ],
   "key": {
     "#": {
       "item": "jurassicreborn:gypsum_stone"
     }
   },
-  "pattern": [
-    "###"
-  ],
   "result": {
-    "count": 6,
-    "item": "jurassicreborn:gypsum_stone_slab"
-  },
-  "show_notification": true
+    "item": "jurassicreborn:gypsum_stone_slab",
+    "count": 6
+  }
 }

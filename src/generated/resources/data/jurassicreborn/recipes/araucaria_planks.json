@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shapeless",
-  "category": "building",
   "ingredients": [
     [
       {
@@ -18,7 +17,7 @@
     ]
   ],
   "result": {
-    "count": 4,
-    "item": "jurassicreborn:araucaria_planks"
+    "item": "jurassicreborn:araucaria_planks",
+    "count": 4
   }
 }

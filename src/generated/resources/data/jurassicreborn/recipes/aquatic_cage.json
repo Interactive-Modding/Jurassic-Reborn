@@ -1,7 +1,11 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "group": "jurassicreborn:aquatic_cage",
+  "pattern": [
+    "BAB",
+    "ACA",
+    "BAB"
+  ],
   "key": {
     "A": {
       "item": "minecraft:string"
@@ -13,13 +17,7 @@
       "item": "minecraft:lead"
     }
   },
-  "pattern": [
-    "BAB",
-    "ACA",
-    "BAB"
-  ],
   "result": {
     "item": "jurassicreborn:aquatic_cage"
-  },
-  "show_notification": true
+  }
 }

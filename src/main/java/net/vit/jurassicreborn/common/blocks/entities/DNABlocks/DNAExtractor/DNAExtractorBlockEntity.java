@@ -1,5 +1,6 @@
 package net.vit.jurassicreborn.common.blocks.entities.DNABlocks.DNAExtractor;
 
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.items.IItemHandlerModifiable;
@@ -24,7 +25,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.util.RandomSource;
+import java.util.Random;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
@@ -34,14 +35,14 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.vit.jurassicreborn.common.util.api.DinosaurItem;
 import org.jetbrains.annotations.NotNull;
-import software.bernie.geckolib.animatable.GeoBlockEntity;
-import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
-import software.bernie.geckolib.core.animation.AnimatableManager;
-import software.bernie.geckolib.core.animation.AnimationController;
-import software.bernie.geckolib.core.animation.AnimationState;
-import software.bernie.geckolib.core.animation.RawAnimation;
-import software.bernie.geckolib.core.object.PlayState;
-import software.bernie.geckolib.util.GeckoLibUtil;
+import software.bernie.geckolib3.core.IAnimatable;
+import software.bernie.geckolib3.core.PlayState;
+import software.bernie.geckolib3.core.builder.AnimationBuilder;
+import software.bernie.geckolib3.core.controller.AnimationController;
+import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
+import software.bernie.geckolib3.core.manager.AnimationData;
+import software.bernie.geckolib3.core.manager.AnimationFactory;
+import software.bernie.geckolib3.util.GeckoLibUtil;
 
 import java.util.List;
 import java.util.Locale;
@@ -49,7 +50,7 @@ import java.util.Objects;
 
 import static net.vit.jurassicreborn.common.blocks.entities.ModBlockEntities.DNA_EXTRACTOR_BLOCK_ENTITY;
 
-public class DNAExtractorBlockEntity extends MachineBlockEntity implements MenuProvider,ItemHandlerBlockEntity, GeoBlockEntity {
+public class DNAExtractorBlockEntity extends MachineBlockEntity implements MenuProvider,ItemHandlerBlockEntity, IAnimatable {
 
     public static final int SLOTS = 6;
     public static final int[] INPUTS = new int[]{0, 1};
@@ -100,7 +101,7 @@ public class DNAExtractorBlockEntity extends MachineBlockEntity implements MenuP
 
     @Override
     protected @NotNull Component getDefaultName() {
-        return Component.translatable("block.jurassicreborn.dna_extractor");
+        return new TranslatableComponent("block.jurassicreborn.dna_extractor");
     }
 
     @Override
@@ -146,7 +147,7 @@ public class DNAExtractorBlockEntity extends MachineBlockEntity implements MenuP
             pBlockEntity.extractionTime = 0;
         }
     }
-    private static DinoDNA readDNAFromItem(ItemStack src, Dinosaur fallbackDino, RandomSource rand) {
+    private static DinoDNA readDNAFromItem(ItemStack src, Dinosaur fallbackDino, Random rand) {
         CompoundTag in = src.getTag();
         if (in != null) {
             DinoDNA existing = DinoDNA.readFromNBT(in); // reads canonical "DNA" subtag if present
@@ -163,7 +164,7 @@ public class DNAExtractorBlockEntity extends MachineBlockEntity implements MenuP
 
     @Override
     public @NotNull List<ItemStack> processItem(ItemStack... input) {
-        RandomSource rand = Objects.requireNonNull(this.level).getRandom();
+        Random rand = Objects.requireNonNull(this.level).getRandom();
         ItemStack src = input[0];
         Item item = src.getItem();
 
@@ -239,24 +240,26 @@ public class DNAExtractorBlockEntity extends MachineBlockEntity implements MenuP
     }
 
 
-    private static final RawAnimation IDLE = RawAnimation.begin().thenLoop("animation.dna_extractor.idle");
-    private final AnimatableInstanceCache animationCache = GeckoLibUtil.createInstanceCache(this);
+    //model stuff
+    protected static final AnimationBuilder IDLE = new AnimationBuilder().addAnimation("animation.dna_extractor.idle");
+    private final AnimationFactory factory = GeckoLibUtil.createFactory(this);
 
     @Override
-    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
-        controllers.add(new AnimationController<>(this, "idle", 0, this::idleController));
+    public void registerControllers(AnimationData animationData) {
+        animationData.addAnimationController(new AnimationController<>(this, "idle", 0, this::idleController));
     }
 
-    private PlayState idleController(AnimationState<DNAExtractorBlockEntity> state){
-        return state.setAndContinue(IDLE);
+    protected <E extends DNAExtractorBlockEntity> PlayState idleController(final AnimationEvent<E> event){
+        event.getController().setAnimation(IDLE);
 
-
+        return PlayState.STOP;
     }
 
     @Override
-    public AnimatableInstanceCache getAnimatableInstanceCache() {
-        return this.animationCache;
+    public AnimationFactory getFactory() {
+        return this.factory;
     }
+
     @Override
     public Tag getMachineData() {
         CompoundTag data = new CompoundTag();

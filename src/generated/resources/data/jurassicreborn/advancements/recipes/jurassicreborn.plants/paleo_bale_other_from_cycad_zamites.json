@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "jurassicreborn:paleo_bale_other_from_cycad_zamites"
+    ]
+  },
+  "criteria": {
+    "has_cycad_zamites": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:cycad_zamites"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "jurassicreborn:paleo_bale_other_from_cycad_zamites"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_cycad_zamites",
+      "has_the_recipe"
+    ]
+  ]
+}

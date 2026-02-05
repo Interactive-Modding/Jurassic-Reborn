@@ -3,8 +3,6 @@ package net.vit.jurassicreborn.common.entities.EntityUtils;
 import net.vit.jurassicreborn.common.entities.DinosaurEntity;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.util.RandomSource;
-
 import java.util.Random;
 
 public class DinosaurAttributes {
@@ -50,7 +48,7 @@ public class DinosaurAttributes {
     }
 
     public static DinosaurAttributes combine(DinosaurEntity entity, DinosaurAttributes attributes1, DinosaurAttributes attributes2) {
-        RandomSource random = entity.getRandom();
+        Random random = entity.getRandom();
         float scale = DinosaurAttributes.random(random, attributes1.scaleModifier, attributes2.scaleModifier);
         if (random.nextInt(3) == 0) {
             scale = DinosaurAttributes.random(random, MINIMUM_SCALE, MAXIMUM_SCALE);
@@ -72,7 +70,7 @@ public class DinosaurAttributes {
     }
 
     public static DinosaurAttributes create(DinosaurEntity entity) {
-        RandomSource random = entity.getRandom();
+        Random random = entity.getRandom();
         float scale = DinosaurAttributes.random(random, MINIMUM_SCALE, MAXIMUM_SCALE);
         float scaleStat = (2.0F + scale) / 3.0F;
         float damage = DinosaurAttributes.random(random, MINIMUM_DAMAGE, MAXIMUM_DAMAGE) * scaleStat;
@@ -98,12 +96,6 @@ public class DinosaurAttributes {
     }
 
     private static float random(Random random, float v1, float v2) {
-        float minimum = Math.min(v1, v2);
-        float maximum = Math.max(v1, v2);
-        float range = maximum - minimum;
-        return (float) (random.nextDouble() * range + minimum);
-    }
-    private static float random(RandomSource random, float v1, float v2) {
         float minimum = Math.min(v1, v2);
         float maximum = Math.max(v1, v2);
         float range = maximum - minimum;

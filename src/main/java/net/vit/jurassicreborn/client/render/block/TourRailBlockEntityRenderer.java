@@ -1,8 +1,8 @@
 package net.vit.jurassicreborn.client.render.block;
 
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.math.Axis;
+import com.mojang.math.Vector3f;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
@@ -14,147 +14,75 @@ import net.vit.jurassicreborn.JurassicReborn;
 import net.vit.jurassicreborn.common.blocks.parkBlocks.TourRailBlock;
 import net.vit.jurassicreborn.common.blocks.parkBlocks.TourRailBlockEntity;
 import net.vit.jurassicreborn.common.blocks.parkBlocks.TourRailModel;
-import software.bernie.geckolib.cache.object.BakedGeoModel;
-import software.bernie.geckolib.renderer.GeoBlockRenderer;
-import software.bernie.geckolib.renderer.GeoRenderer;
-import software.bernie.geckolib.renderer.layer.GeoRenderLayer;
+import software.bernie.geckolib3.core.util.Color;
+import software.bernie.geckolib3.geo.render.built.GeoModel;
+import software.bernie.geckolib3.renderers.geo.GeoBlockRenderer;
+import software.bernie.geckolib3.util.EModelRenderCycle;
 
 public class TourRailBlockEntityRenderer extends GeoBlockRenderer<TourRailBlockEntity> {
-
-    public TourRailBlockEntityRenderer(BlockEntityRendererProvider.Context context) {
-        super(new TourRailModel());
-        this.addRenderLayer(new StripeLayer(this));
+    public TourRailBlockEntityRenderer(BlockEntityRendererProvider.Context rendererProvider) {
+        super(rendererProvider, new TourRailModel());
     }
 
-    // Base texture based on rail direction/model name
-    @Override
-    public ResourceLocation getTextureLocation(TourRailBlockEntity tile) {
+    public ResourceLocation getTextureResource(TourRailBlockEntity tile) {
         return JurassicReborn.resource("textures/block/" + tile.getDirection().modelName + ".png");
     }
 
-    // Stripe alpha mask
+    /** the overlay-only stripe texture (alpha mask) */
     public ResourceLocation getStripeTexture(TourRailBlockEntity tile) {
         return JurassicReborn.resource("textures/block/" + tile.getDirection().modelName + "_stripe.png");
     }
-
-    /**
-     * Centering/rotation call still happens inside GeoBlockRenderer#actuallyRender,
-     * but yaw is now handled by our rotateBlock override below.
-     */
     @Override
-    public void preRender(PoseStack poseStack,
-                          TourRailBlockEntity animatable,
-                          BakedGeoModel model,
-                          MultiBufferSource bufferSource,
-                          VertexConsumer buffer,
-                          boolean isReRender,
-                          float partialTick,
-                          int packedLight,
-                          int packedOverlay,
-                          float red,
-                          float green,
-                          float blue,
-                          float alpha) {
+    public void render(TourRailBlockEntity tile, float partialTick, PoseStack poseStack,
+                       MultiBufferSource bufferSource, int packedLight) {
+        var railDir = tile.getDirection();
+        GeoModel model = modelProvider.getModel(modelProvider.getModelLocation(tile));
+        modelProvider.setLivingAnimations(tile, getInstanceId(tile));
 
-        // Let GeckoLib do its usual bookkeeping
-        super.preRender(poseStack, animatable, model, bufferSource, buffer,
-                isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
+        // 1) push
+        poseStack.pushPose();
 
-        var railDir = animatable.getDirection();
-
-        // Slope-only scale/offset so stripe geometry lines up
+        // 2) apply slope-only scale/offset so stripe geometry lines up
         if (railDir.isAscending()) {
-            float sx = 1.0F;
-            float sz = 1.0F;
+            Vector3f scale = switch (railDir.getFacing()) {
+                case EAST, WEST  -> new Vector3f(0.7f, 1f,   1f);
+                case SOUTH, NORTH-> new Vector3f(1f,   1f, 0.7f);
+                default          -> new Vector3f(1f,   1f,   1f);
+            };
+            poseStack.scale(scale.x(), scale.y(), scale.z());
 
+            double corr = 0.15, neg = 0.125;
             switch (railDir.getFacing()) {
-                case EAST, WEST -> sx = 0.7F;
-                case NORTH, SOUTH -> sz = 0.7F;
-                default -> { }
-            }
-
-            poseStack.scale(sx, 1.0F, sz);
-
-            double corr = 0.15;
-            double neg = 0.125;
-
-            switch (railDir.getFacing()) {
-                case WEST -> poseStack.translate(corr + neg, 0.0, 0.0);
-                case NORTH -> poseStack.translate(0.0, 0.0, corr + neg);
-                case EAST -> poseStack.translate(corr, 0.0, 0.0);
-                case SOUTH -> poseStack.translate(0.0, 0.0, corr);
-                default -> { }
+                case WEST -> poseStack.translate(corr + neg, 0, 0);
+                case NORTH-> poseStack.translate(0, 0, corr + neg);
+                case EAST -> poseStack.translate(corr,     0, 0);
+                case SOUTH-> poseStack.translate(0, 0, corr);
+                default   -> {}
             }
         }
 
-        // tiny lift to avoid z-fighting with the block
-        poseStack.translate(0.0, 0.01, 0.0);
-    }
+        // 3) center & rotate
+        poseStack.translate(0, 0.01, 0);
+        poseStack.translate(0.5, 0, 0.5);
+        poseStack.mulPose(Vector3f.YP.rotationDegrees((float) railDir.rotation));
 
-    /**
-     * **MAIN FIX**:
-     * Ignore the passed-in facing for yaw and just use EnumRailDirection.rotation.
-     *   poseStack.mulPose(Vector3f.YP.rotationDegrees(railDir.rotation));
-     */
-    @Override
-    protected void rotateBlock(Direction facing, PoseStack poseStack) {
-        if (this.animatable != null) {
-            int rot = this.animatable.getDirection().rotation;
-            poseStack.mulPose(Axis.YP.rotationDegrees(rot));
-        } else {
-            // Fallback if somehow called without an animatable
-            super.rotateBlock(facing, poseStack);
-        }
-    }
+        // 4) BASE PASS: plain rail
+        RenderSystem.setShaderTexture(0, getTextureResource(tile));
+        RenderType baseType = getRenderType(tile, partialTick, poseStack, bufferSource, null, packedLight, getTextureResource(tile));
+        this.render(model, tile, partialTick, baseType, poseStack, bufferSource, null, packedLight, OverlayTexture.NO_OVERLAY, 1f, 1f, 1f, 1f);
 
-    /**
-     * Stripe overlay layer – draws the stripe texture tinted by the rail speed color.
-     */
-    private static class StripeLayer extends GeoRenderLayer<TourRailBlockEntity> {
+        // 5) STRIPE PASS: **always** draw the stripe mask, tinted by speedColor
+        BlockState state = tile.getBlockState();
+        int rgb = ((TourRailBlock)state.getBlock()).getSpeedType().getColor();
+        float r = (rgb >> 16 & 0xFF) / 255f;
+        float g = (rgb >>  8 & 0xFF) / 255f;
+        float b = (rgb       & 0xFF) / 255f;
 
-        public StripeLayer(GeoRenderer<TourRailBlockEntity> renderer) {
-            super(renderer);
-        }
+        RenderSystem.setShaderTexture(0, getStripeTexture(tile));
+        RenderType stripeType = getRenderType(tile, partialTick, poseStack, bufferSource, null, packedLight, getStripeTexture(tile));
+        this.render(model, tile, partialTick, stripeType, poseStack, bufferSource, null, packedLight, OverlayTexture.NO_OVERLAY, r, g, b, 1f);
 
-        @Override
-        public void render(PoseStack poseStack,
-                           TourRailBlockEntity animatable,
-                           BakedGeoModel bakedModel,
-                           RenderType baseRenderType,
-                           MultiBufferSource bufferSource,
-                           VertexConsumer buffer,
-                           float partialTick,
-                           int packedLight,
-                           int packedOverlay) {
-
-            BlockState state = animatable.getBlockState();
-            if (!(state.getBlock() instanceof TourRailBlock railBlock)) {
-                return;
-            }
-
-            int rgb = railBlock.getSpeedType().getColor();
-            float r = (rgb >> 16 & 0xFF) / 255.0F;
-            float g = (rgb >> 8  & 0xFF) / 255.0F;
-            float b = (rgb       & 0xFF) / 255.0F;
-
-            ResourceLocation stripeTex =
-                    JurassicReborn.resource("textures/block/" + animatable.getDirection().modelName + "_stripe.png");
-
-            RenderType stripeType = RenderType.entityCutoutNoCull(stripeTex);
-            VertexConsumer stripeBuffer = bufferSource.getBuffer(stripeType);
-
-            this.getRenderer().reRender(
-                    bakedModel,
-                    poseStack,
-                    bufferSource,
-                    animatable,
-                    stripeType,
-                    stripeBuffer,
-                    partialTick,
-                    packedLight,
-                    OverlayTexture.NO_OVERLAY,
-                    r, g, b, 1.0F
-            );
-        }
+        // 6) pop
+        poseStack.popPose();
     }
 }

@@ -5,7 +5,6 @@ import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -23,14 +22,24 @@ import net.vit.jurassicreborn.common.entities.ModEntities;
 import net.vit.jurassicreborn.common.items.ModItems;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Locale;
+import java.util.regex.Pattern;
+
 public class PaddockSignEntity extends HangingEntity implements IEntityAdditionalSpawnData {
+    private static final Pattern INVALID_TEXTURE_PATH_CHARS = Pattern.compile("[^a-z0-9/._-]");
+
     private int dinosaur;
+
     public ResourceLocation getTextureLocation(PaddockSignEntity sign) {
         String name = DinosaurHandler.getName(sign.getDinosaur());
-        String textureName = name.replace(' ', '_');
-        // this will look for assets/jurassicreborn/textures/paddock/<name>_sign.png
+        String sanitizedName = sanitizeTextureName(name);
         return new ResourceLocation(JurassicReborn.MODID,
-                "textures/paddock/" + textureName + ".png");
+                "textures/paddock/" + sanitizedName + ".png");
+    }
+
+    private static String sanitizeTextureName(String name) {
+        String lower = name == null ? "empty" : name.toLowerCase(Locale.ROOT);
+        return INVALID_TEXTURE_PATH_CHARS.matcher(lower).replaceAll("_");
     }
     // Normal (type + world) constructor
     public PaddockSignEntity(EntityType<? extends PaddockSignEntity> type, Level world) {
@@ -97,12 +106,11 @@ public class PaddockSignEntity extends HangingEntity implements IEntityAdditiona
         // read & set the hanging pos
         BlockPos p = BlockPos.of(buffer.readLong());
         this.pos = p;                   // super.pos
-
         this.setDirection(Direction.from2DDataValue(buffer.readUnsignedByte()));
     }
 
     @Override
-    public Packet<ClientGamePacketListener> getAddEntityPacket() {
+    public Packet<?> getAddEntityPacket() {
         // Forge will package up writeSpawnData() for us
         return NetworkHooks.getEntitySpawningPacket(this);
     }
@@ -117,13 +125,12 @@ public class PaddockSignEntity extends HangingEntity implements IEntityAdditiona
 
     @Override
     public void dropItem(@Nullable Entity brokenEntity) {
-        if (!level().isClientSide()
-                && level().getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)) {
+        if (!level.isClientSide()
+                && level.getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)) {
 
             if (brokenEntity instanceof Player p && p.getAbilities().instabuild) {
                 return;
             }
-
 
             ItemStack stack = new ItemStack(ModItems.PADDOCK_SIGN.get());
             stack.getOrCreateTag().putInt("Dinosaur", this.dinosaur);

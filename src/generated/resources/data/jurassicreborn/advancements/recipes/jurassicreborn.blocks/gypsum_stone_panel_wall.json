@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "jurassicreborn:gypsum_stone_panel_wall"
+    ]
+  },
+  "criteria": {
+    "has_gypsum_stone_panel": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:gypsum_stone_panel"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "jurassicreborn:gypsum_stone_panel_wall"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_gypsum_stone_panel",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -1,6 +1,10 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
+  "pattern": [
+    "  A",
+    "CDC",
+    "ECC"
+  ],
   "key": {
     "A": {
       "item": "minecraft:string"
@@ -15,13 +19,7 @@
       "item": "minecraft:redstone"
     }
   },
-  "pattern": [
-    "  A",
-    "CDC",
-    "ECC"
-  ],
   "result": {
     "item": "jurassicreborn:spas_12"
-  },
-  "show_notification": true
+  }
 }

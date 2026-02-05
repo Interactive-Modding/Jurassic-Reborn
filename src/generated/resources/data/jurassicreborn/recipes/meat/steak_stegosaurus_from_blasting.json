@@ -1,10 +1,9 @@
 {
   "type": "minecraft:blasting",
-  "category": "misc",
-  "cookingtime": 100,
-  "experience": 0.35,
   "ingredient": {
     "item": "jurassicreborn:meat/meat_stegosaurus"
   },
-  "result": "jurassicreborn:meat/steak_stegosaurus"
+  "result": "jurassicreborn:meat/steak_stegosaurus",
+  "experience": 0.35,
+  "cookingtime": 100
 }

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:village",
+  "config": {
+    "start_pool": "jurassicreborn:ice_fossil_digsite/start_pool",
+    "size": 1,
+    "max_distance_from_center": 80
+  },
+  "biomes": "#jurassicreborn:has_structure/ice_fossil_digsite",
+  "step": "surface_structures",
+  "start_height": {
+    "absolute": -11
+  },
+  "project_start_to_heightmap": "WORLD_SURFACE_WG",
+  "use_expansion_hack": false,
+  "spawn_overrides": {}
+}

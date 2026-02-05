@@ -8,14 +8,12 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.ChestBlockEntity;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
-import net.minecraft.world.level.StructureManager;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
 import net.vit.jurassicreborn.JurassicReborn;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 /**
  * Places the visitor centre structure.
@@ -36,28 +34,28 @@ public class VisitorCentreGenerator extends StructureGenerator {
         LOOT_TABLES.put("DiningHall", new ResourceLocation(JurassicReborn.MODID, "structure/visitor_centre/dining_hall"));
     }
 
-    public VisitorCentreGenerator(RandomSource rand) {
+    public VisitorCentreGenerator(Random rand) {
         super(rand, 85, 35, 105);
     }
 
     @Override
-    protected void generateStructure(ServerLevel level, RandomSource random, BlockPos position) {
-        StructureTemplateManager manager = level.getStructureManager();
+    protected void generateStructure(ServerLevel level, Random random, BlockPos position) {
+        StructureTemplate template = loadTemplate(level, STRUCTURE);
+        if (template == null) {
+            return;
+        }
         StructurePlaceSettings settings = new StructurePlaceSettings();
         settings.setRotation(this.rotation);
         settings.setMirror(this.mirror);
         settings.setRandom(random);
-        StructureTemplate template = manager.getOrCreate(STRUCTURE);
         template.placeInWorld(level, position, position, settings, random, 4);
         List<StructureTemplate.StructureBlockInfo> dataBlocks = template.filterBlocks(position, settings, Blocks.STRUCTURE_BLOCK);
         for (StructureTemplate.StructureBlockInfo info : dataBlocks) {
-            if (info.nbt() == null) continue;
-            String type = info.nbt().getString("metadata");
+            String type = info.nbt.getString("metadata");
             ResourceLocation loot = LOOT_TABLES.get(type);
             if (loot != null) {
-                BlockPos infoPos = info.pos();
-                level.setBlock(infoPos, Blocks.AIR.defaultBlockState(), 3);
-                BlockEntity tile = level.getBlockEntity(infoPos.below());
+                level.setBlock(info.pos, Blocks.AIR.defaultBlockState(), 3);
+                BlockEntity tile = level.getBlockEntity(info.pos.below());
                 if (tile instanceof ChestBlockEntity chest) {
                     chest.setLootTable(loot, random.nextLong());
                 }

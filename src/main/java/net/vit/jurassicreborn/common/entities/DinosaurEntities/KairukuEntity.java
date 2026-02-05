@@ -5,8 +5,6 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.GlowSquid;
 import net.minecraft.world.entity.animal.*;
 import net.minecraft.world.entity.animal.axolotl.Axolotl;
-import net.minecraft.world.entity.animal.frog.Frog;
-import net.minecraft.world.entity.animal.frog.Tadpole;
 import net.vit.jurassicreborn.client.render.entity.animation.EntityAnimation;
 import net.vit.jurassicreborn.client.sounds.SoundHandler;
 import net.vit.jurassicreborn.common.entities.AmphibianDinosaurEntity;
@@ -21,7 +19,7 @@ public class KairukuEntity extends PenguinDinosaurEntity {
     public KairukuEntity (Level world, EntityType<KairukuEntity> type)
     {
         super(world, type, DinosaurHandler.KAIRUKU);
-        this.target(Squid.class, Cod.class, Dolphin.class, Salmon.class, TropicalFish.class, Axolotl.class, GlowSquid.class, Frog.class, Tadpole.class);
+        this.target(Squid.class, Cod.class, Dolphin.class, Salmon.class, TropicalFish.class, Axolotl.class, GlowSquid.class);
     }
     public SoundEvent getSoundForAnimation(Animation animation) {
         switch (EntityAnimation.getAnimation(animation)) {

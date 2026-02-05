@@ -31,6 +31,7 @@ public class ModVillagerEvents {
             ItemStack fauna = new ItemStack(ModBlocks.FAUNA_FOSSIL.get());
             trades.get(1).add((trader, rand) -> new MerchantOffer(new ItemStack(Items.EMERALD, 2), fauna,10,8,0.02F));
             trades.get(1).add((trader, rand) -> new MerchantOffer(new ItemStack(Items.PAPER), new ItemStack(ModItems.AMBER.get(), 3), 10, 8, 0.02F));
+            trades.get(1).add((trader, rand) -> new MerchantOffer(new ItemStack(Items.PAPER), new ItemStack(ModItems.PLASTER_AND_BANDAGE.get(), 4), 100, 8, 0.02F));
             trades.get(1).add((trader, rand) -> new MerchantOffer(new ItemStack(Items.EMERALD), new ItemStack(ModItems.PLANT_FOSSIL.get(), 3), 10, 8, 0.02F));
             trades.get(1).add((trader, rand) -> new MerchantOffer(new ItemStack(Items.EMERALD), new ItemStack(ModItems.PLANT_FOSSIL_0.get(), 3), 10, 8, 0.02F));
             trades.get(1).add((trader, rand) -> new MerchantOffer(new ItemStack(Items.EMERALD), new ItemStack(ModItems.PLANT_FOSSIL_1.get(), 3), 10, 8, 0.02F));

@@ -4,17 +4,17 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib.animatable.GeoBlockEntity;
-import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
-import software.bernie.geckolib.core.animation.AnimatableManager;
-import software.bernie.geckolib.core.animation.AnimationController;
-import software.bernie.geckolib.core.animation.RawAnimation;
-import software.bernie.geckolib.util.GeckoLibUtil;
+import software.bernie.geckolib3.core.IAnimatable;
+import software.bernie.geckolib3.core.PlayState;
+import software.bernie.geckolib3.core.builder.AnimationBuilder;
+import software.bernie.geckolib3.core.controller.AnimationController;
+import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
+import software.bernie.geckolib3.core.manager.AnimationData;
+import software.bernie.geckolib3.core.manager.AnimationFactory;
 import net.vit.jurassicreborn.common.blocks.entities.ModBlockEntities;
 
-public class ElectricFenceBaseBlockEntity extends BlockEntity implements GeoBlockEntity {
-    private static final RawAnimation IDLE_ANIMATION = RawAnimation.begin().thenLoop("idle");
-    private final AnimatableInstanceCache animationCache = GeckoLibUtil.createInstanceCache(this);
+public class ElectricFenceBaseBlockEntity extends BlockEntity implements IAnimatable {
+    private final AnimationFactory factory = new AnimationFactory(this);
 
     public ElectricFenceBaseBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.BASE_FENCE_BLOCK_ENTITY.get(), pos, state);
@@ -22,9 +22,10 @@ public class ElectricFenceBaseBlockEntity extends BlockEntity implements GeoBloc
 
     // ─── GeckoLib boilerplate ─────────────────────────────────────────────
     @Override
-    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
-        controllers.add(new AnimationController<>(this, "idleController", 0,
-                state -> state.setAndContinue(IDLE_ANIMATION)));
+    public void registerControllers(AnimationData data) {
+        data.addAnimationController(
+                new AnimationController<>(this, "idleController", 0, this::predicate)
+        );
     }
     @Override
     public void onLoad() {
@@ -38,8 +39,13 @@ public class ElectricFenceBaseBlockEntity extends BlockEntity implements GeoBloc
     }
 
 
+    private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
+        event.getController().setAnimation(new AnimationBuilder().addAnimation("idle", true));
+        return PlayState.CONTINUE;
+    }
+
     @Override
-    public AnimatableInstanceCache getAnimatableInstanceCache() {
-        return animationCache;
+    public AnimationFactory getFactory() {
+        return factory;
     }
 }

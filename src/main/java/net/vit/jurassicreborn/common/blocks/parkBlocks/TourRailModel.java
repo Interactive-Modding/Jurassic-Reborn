@@ -1,36 +1,30 @@
 package net.vit.jurassicreborn.common.blocks.parkBlocks;
 
-import net.minecraft.resources.ResourceLocation;
 import net.vit.jurassicreborn.JurassicReborn;
-import software.bernie.geckolib.model.GeoModel;
+import net.minecraft.resources.ResourceLocation;
+import software.bernie.geckolib3.model.AnimatedGeoModel;
 
-public class TourRailModel extends GeoModel<TourRailBlockEntity> {
-
-    @Override
-    public ResourceLocation getModelResource(TourRailBlockEntity entity) {
-        return JurassicReborn.resource(
-                "geo/" + entity.getDirection().modelName + ".geo.json"
-        );
+public class TourRailModel extends AnimatedGeoModel<TourRailBlockEntity> {
+    public TourRailModel() {
     }
 
     @Override
-    public ResourceLocation getTextureResource(TourRailBlockEntity entity) {
-        return JurassicReborn.resource(
-                "textures/block/" + entity.getDirection().modelName + ".png"
-        );
-    }
-
-    // Optional: custom stripe texture
-    public ResourceLocation getStripeTexture(TourRailBlockEntity entity) {
-        return JurassicReborn.resource(
-                "textures/block/" + entity.getDirection().modelName + "_stripe.png"
-        );
+    public ResourceLocation getModelLocation(TourRailBlockEntity tourRailBlockEntity) {
+        return JurassicReborn.resource("geo/" + tourRailBlockEntity.getDirection().modelName + ".geo.json");
     }
 
     @Override
-    public ResourceLocation getAnimationResource(TourRailBlockEntity entity) {
-        return JurassicReborn.resource(
-                "animations/" + entity.getDirection().modelName + ".animation.json"
-        );
+    public ResourceLocation getTextureLocation(TourRailBlockEntity tile) {
+        return JurassicReborn.resource("textures/block/" + tile.getDirection().modelName + ".png");
+    }
+
+    /** the overlay-only stripe texture (alpha mask) */
+    public ResourceLocation getStripeTexture(TourRailBlockEntity tile) {
+        return JurassicReborn.resource("textures/block/" + tile.getDirection().modelName + "_stripe.png");
+    }
+
+    @Override
+    public ResourceLocation getAnimationFileLocation(TourRailBlockEntity tourRailBlockEntity) {
+        return JurassicReborn.resource("animations/" + tourRailBlockEntity.getDirection().modelName + ".animation.json");
     }
 }

@@ -1,6 +1,10 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "building",
+  "pattern": [
+    "AAA",
+    "BBB",
+    "CBC"
+  ],
   "key": {
     "A": {
       "item": "minecraft:glass_pane"
@@ -12,13 +16,7 @@
       "item": "jurassicreborn:advanced_circuit"
     }
   },
-  "pattern": [
-    "AAA",
-    "BBB",
-    "CBC"
-  ],
   "result": {
     "item": "jurassicreborn:hologram_block"
-  },
-  "show_notification": true
+  }
 }

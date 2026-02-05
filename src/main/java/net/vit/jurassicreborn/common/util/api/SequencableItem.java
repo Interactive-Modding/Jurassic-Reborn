@@ -1,6 +1,6 @@
 package net.vit.jurassicreborn.common.util.api;
 
-import net.minecraft.util.RandomSource;
+import java.util.Random;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -29,11 +29,11 @@ public interface SequencableItem extends RebornIngredientItem {
         return getSequencableItem(stack) != null;
     }
 
-    static int randomQuality(RandomSource rand) {
+    static int randomQuality(Random rand) {
         return (rand.nextInt(20) + 1) * 5;
     }
 
     boolean isSequencable(ItemStack stack);
 
-    ItemStack getSequenceOutput(ItemStack stack, RandomSource random);
+    ItemStack getSequenceOutput(ItemStack stack, Random random);
 }

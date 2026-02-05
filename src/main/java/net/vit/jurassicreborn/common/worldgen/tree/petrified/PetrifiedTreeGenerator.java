@@ -8,7 +8,7 @@ import net.vit.jurassicreborn.common.blocks.wood.WoodBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
+import java.util.Random;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.state.BlockState;
@@ -29,9 +29,9 @@ public class PetrifiedTreeGenerator extends Feature<PetrifiedTreeConfig> {
 
     @Override
     public boolean place(FeaturePlaceContext<PetrifiedTreeConfig> context) {
-        RandomSource random = context.random();
+        Random random = context.random();
         float chance = random.nextFloat();
-
+        // Only attempt placement if the random roll is below the configured chance
         if (context.config().chance >= chance) {
             WorldGenLevel world = context.level();
 
@@ -48,7 +48,7 @@ public class PetrifiedTreeGenerator extends Feature<PetrifiedTreeConfig> {
             int oceanFloorY = world.getHeight(Heightmap.Types.OCEAN_FLOOR_WG, randPosX, randPosZ);
 
             int minY = 5;
-            int maxY = Math.max(minY, surfaceY - 5);
+            int maxY = Math.max(minY, surfaceY - 5); // Prevents going above surface
             int randPosY = random.nextInt(maxY - minY + 1) + minY;
 
             BlockPos targetPos = new BlockPos(randPosX, randPosY, randPosZ);
@@ -70,7 +70,7 @@ public class PetrifiedTreeGenerator extends Feature<PetrifiedTreeConfig> {
 
     }
 
-    private void generatePetrifiedTree(WorldGenLevel world,int x, int y, int z, RandomSource rand, PetrifiedTreeConfig config) {
+    private void generatePetrifiedTree(WorldGenLevel world,int x, int y, int z, Random rand, PetrifiedTreeConfig config) {
         Predicate<BlockState> predicate = (state) ->  Feature.isReplaceable(BlockTags.FEATURES_CANNOT_REPLACE).test(state) || state.isAir();
         float rotX = (float) (rand.nextDouble() * 360.0F);
         float rotY = (float) (rand.nextDouble() * 360.0F) - 180.0F;

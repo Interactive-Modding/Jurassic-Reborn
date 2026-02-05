@@ -2,7 +2,9 @@ package net.vit.jurassicreborn.client.render.entity;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.math.Axis;
+import com.mojang.math.Matrix3f;
+import com.mojang.math.Matrix4f;
+import com.mojang.math.Vector3f;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderer;
@@ -10,8 +12,6 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.vit.jurassicreborn.common.entities.item.PaddockSignEntity;
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
 
 public class PaddockSignRenderer extends EntityRenderer<PaddockSignEntity> {
 
@@ -32,7 +32,7 @@ public class PaddockSignRenderer extends EntityRenderer<PaddockSignEntity> {
         float h = sign.getHeight() / 16f;
 
         pose.pushPose();
-        pose.mulPose(Axis.YP.rotationDegrees(180F - yaw));
+        pose.mulPose(Vector3f.YP.rotationDegrees(180F - yaw));
         pose.translate(-w/2F, -h/2F, 0);
 
         VertexConsumer vb = buf.getBuffer(RenderType.entityCutoutNoCull(tex));
@@ -43,7 +43,6 @@ public class PaddockSignRenderer extends EntityRenderer<PaddockSignEntity> {
         float s = 0.01f;
         pose.pushPose();
         pose.translate(0, 0, -s);
-
         float zStart   = 0.03f;   // first slice: almost flush to the wall
         float zEnd     = 0.000f;
         int   slices   = 30;

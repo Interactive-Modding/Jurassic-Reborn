@@ -1,7 +1,23 @@
 {
   "parent": "jurassicreborn:jurassicreborn/dna_synthesizer",
+  "display": {
+    "icon": {
+      "item": "jurassicreborn:mr_dna_keychain"
+    },
+    "title": {
+      "translate": "advancements.jurassicreborn.dna.title"
+    },
+    "description": {
+      "translate": "advancements.jurassicreborn.dna.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
   "criteria": {
     "dna_achillobator": {
+      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
@@ -10,10 +26,10 @@
             ]
           }
         ]
-      },
-      "trigger": "minecraft:inventory_changed"
+      }
     },
     "dna_alligator_gar": {
+      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
@@ -22,10 +38,10 @@
             ]
           }
         ]
-      },
-      "trigger": "minecraft:inventory_changed"
+      }
     },
     "dna_allosaurus": {
+      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
@@ -34,10 +50,10 @@
             ]
           }
         ]
-      },
-      "trigger": "minecraft:inventory_changed"
+      }
     },
     "dna_alvarezsaurus": {
+      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
@@ -46,886 +62,10 @@
             ]
           }
         ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_ankylodocus": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_ankylodocus"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_ankylosaurus": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_ankylosaurus"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_apatosaurus": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_apatosaurus"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_arsinoitherium": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_arsinoitherium"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_asteroceras": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_asteroceras"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_baryonyx": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_baryonyx"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_beelzebufo": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_beelzebufo"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_blue": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_blue"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_brachiosaurus": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_brachiosaurus"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_camarasaurus": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_camarasaurus"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_cameroceras": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_cameroceras"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_carcharodontosaurus": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_carcharodontosaurus"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_carnotaurus": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_carnotaurus"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_cearadactylus": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_cearadactylus"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_ceratosaurus": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_ceratosaurus"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_charlie": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_charlie"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_chasmosaurus": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_chasmosaurus"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_chilesaurus": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_chilesaurus"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_coelacanth": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_coelacanth"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_coelurus": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_coelurus"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_compsognathus": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_compsognathus"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_corythosaurus": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_corythosaurus"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_crassigyrinus": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_crassigyrinus"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_deinosuchus": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_deinosuchus"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_deinotherium": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_deinotherium"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_delta": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_delta"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_dilophosaurus": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_dilophosaurus"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_dimetrodon": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_dimetrodon"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_dimorphodon": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_dimorphodon"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_diplocaulus": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_diplocaulus"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_diplodocus": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_diplodocus"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_dodo": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_dodo"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_dreadnoughtus": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_dreadnoughtus"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_dunkleosteus": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_dunkleosteus"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_echo": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_echo"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_edmontosaurus": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_edmontosaurus"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_elasmotherium": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_elasmotherium"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_endoceras": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_endoceras"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_gallimimus": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_gallimimus"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_giganotosaurus": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_giganotosaurus"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_guanlong": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_guanlong"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_herrerasaurus": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_herrerasaurus"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_hyaenodon": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_hyaenodon"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_hypsilophodon": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_hypsilophodon"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_indominus": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_indominus"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_indoraptor": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_indoraptor"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_kairuku": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_kairuku"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_lambeosaurus": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_lambeosaurus"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_leaellynasaura": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_leaellynasaura"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_leptictidium": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_leptictidium"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_ludodactylus": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_ludodactylus"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_majungasaurus": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_majungasaurus"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_mamenchisaurus": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_mamenchisaurus"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_mammoth": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_mammoth"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_mawsonia": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_mawsonia"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_megalodon": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_megalodon"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_megapiranha": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_megapiranha"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_megatherium": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_megatherium"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_metriacanthosaurus": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_metriacanthosaurus"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_microceratus": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_microceratus"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_microraptor": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_microraptor"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_moganopterus": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_moganopterus"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_mosasaurus": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_mosasaurus"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_mussaurus": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_mussaurus"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_nigersaurus": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_nigersaurus"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_ornithomimus": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_ornithomimus"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_orthoceras": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_orthoceras"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_othnielia": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_othnielia"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_oviraptor": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_oviraptor"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_pachycephalosaurus": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_pachycephalosaurus"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_paraceratherium": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_paraceratherium"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_parapuzosia": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_parapuzosia"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "dna_parasaurolophus": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:dna/dna_parasaurolophus"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
+      }
     },
     "dna_perisphinctes": {
+      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
@@ -934,10 +74,886 @@
             ]
           }
         ]
-      },
-      "trigger": "minecraft:inventory_changed"
+      }
+    },
+    "dna_ankylodocus": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_ankylodocus"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_ankylosaurus": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_ankylosaurus"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_apatosaurus": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_apatosaurus"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_arsinoitherium": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_arsinoitherium"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_asteroceras": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_asteroceras"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_cameroceras": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_cameroceras"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_endoceras": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_endoceras"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_orthoceras": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_orthoceras"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_megalodon": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_megalodon"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_nigersaurus": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_nigersaurus"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_kairuku": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_kairuku"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_deinosuchus": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_deinosuchus"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_baryonyx": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_baryonyx"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_beelzebufo": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_beelzebufo"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_blue": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_blue"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_brachiosaurus": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_brachiosaurus"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_camarasaurus": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_camarasaurus"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_carcharodontosaurus": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_carcharodontosaurus"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_carnotaurus": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_carnotaurus"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_cearadactylus": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_cearadactylus"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_ceratosaurus": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_ceratosaurus"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_charlie": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_charlie"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_chasmosaurus": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_chasmosaurus"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_chilesaurus": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_chilesaurus"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_coelacanth": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_coelacanth"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_coelurus": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_coelurus"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_compsognathus": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_compsognathus"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_corythosaurus": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_corythosaurus"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_crassigyrinus": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_crassigyrinus"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_deinotherium": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_deinotherium"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_delta": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_delta"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_dilophosaurus": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_dilophosaurus"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_dimetrodon": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_dimetrodon"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_dimorphodon": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_dimorphodon"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_diplocaulus": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_diplocaulus"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_diplodocus": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_diplodocus"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_dodo": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_dodo"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_dreadnoughtus": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_dreadnoughtus"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_dunkleosteus": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_dunkleosteus"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_echo": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_echo"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_edmontosaurus": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_edmontosaurus"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_elasmotherium": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_elasmotherium"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_gallimimus": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_gallimimus"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_giganotosaurus": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_giganotosaurus"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_guanlong": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_guanlong"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_herrerasaurus": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_herrerasaurus"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_hyaenodon": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_hyaenodon"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_hypsilophodon": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_hypsilophodon"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_indominus": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_indominus"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_indoraptor": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_indoraptor"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_lambeosaurus": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_lambeosaurus"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_leaellynasaura": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_leaellynasaura"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_leptictidium": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_leptictidium"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_ludodactylus": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_ludodactylus"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_majungasaurus": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_majungasaurus"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_mamenchisaurus": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_mamenchisaurus"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_mammoth": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_mammoth"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_mawsonia": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_mawsonia"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_megapiranha": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_megapiranha"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_megatherium": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_megatherium"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_metriacanthosaurus": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_metriacanthosaurus"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_microceratus": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_microceratus"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_microraptor": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_microraptor"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_moganopterus": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_moganopterus"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_mosasaurus": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_mosasaurus"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_mussaurus": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_mussaurus"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_ornithomimus": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_ornithomimus"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_othnielia": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_othnielia"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_oviraptor": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_oviraptor"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_pachycephalosaurus": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_pachycephalosaurus"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_paraceratherium": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_paraceratherium"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_parapuzosia": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_parapuzosia"
+            ]
+          }
+        ]
+      }
+    },
+    "dna_parasaurolophus": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_parasaurolophus"
+            ]
+          }
+        ]
+      }
     },
     "dna_postosuchus": {
+      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
@@ -946,10 +962,10 @@
             ]
           }
         ]
-      },
-      "trigger": "minecraft:inventory_changed"
+      }
     },
     "dna_proceratosaurus": {
+      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
@@ -958,10 +974,10 @@
             ]
           }
         ]
-      },
-      "trigger": "minecraft:inventory_changed"
+      }
     },
     "dna_protoceratops": {
+      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
@@ -970,10 +986,10 @@
             ]
           }
         ]
-      },
-      "trigger": "minecraft:inventory_changed"
+      }
     },
     "dna_pteranodon": {
+      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
@@ -982,10 +998,10 @@
             ]
           }
         ]
-      },
-      "trigger": "minecraft:inventory_changed"
+      }
     },
     "dna_quetzalcoatlus": {
+      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
@@ -994,10 +1010,10 @@
             ]
           }
         ]
-      },
-      "trigger": "minecraft:inventory_changed"
+      }
     },
     "dna_raphusrex": {
+      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
@@ -1006,10 +1022,10 @@
             ]
           }
         ]
-      },
-      "trigger": "minecraft:inventory_changed"
+      }
     },
     "dna_rugops": {
+      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
@@ -1018,10 +1034,10 @@
             ]
           }
         ]
-      },
-      "trigger": "minecraft:inventory_changed"
+      }
     },
     "dna_segisaurus": {
+      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
@@ -1030,10 +1046,10 @@
             ]
           }
         ]
-      },
-      "trigger": "minecraft:inventory_changed"
+      }
     },
     "dna_sinoceratops": {
+      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
@@ -1042,10 +1058,10 @@
             ]
           }
         ]
-      },
-      "trigger": "minecraft:inventory_changed"
+      }
     },
     "dna_smilodon": {
+      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
@@ -1054,10 +1070,10 @@
             ]
           }
         ]
-      },
-      "trigger": "minecraft:inventory_changed"
+      }
     },
     "dna_spinoraptor": {
+      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
@@ -1066,10 +1082,10 @@
             ]
           }
         ]
-      },
-      "trigger": "minecraft:inventory_changed"
+      }
     },
     "dna_spinosaurus": {
+      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
@@ -1078,10 +1094,10 @@
             ]
           }
         ]
-      },
-      "trigger": "minecraft:inventory_changed"
+      }
     },
     "dna_stegosaurus": {
+      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
@@ -1090,10 +1106,10 @@
             ]
           }
         ]
-      },
-      "trigger": "minecraft:inventory_changed"
+      }
     },
     "dna_styracosaurus": {
+      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
@@ -1102,10 +1118,10 @@
             ]
           }
         ]
-      },
-      "trigger": "minecraft:inventory_changed"
+      }
     },
     "dna_suchomimus": {
+      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
@@ -1114,10 +1130,10 @@
             ]
           }
         ]
-      },
-      "trigger": "minecraft:inventory_changed"
+      }
     },
     "dna_therizinosaurus": {
+      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
@@ -1126,10 +1142,10 @@
             ]
           }
         ]
-      },
-      "trigger": "minecraft:inventory_changed"
+      }
     },
     "dna_titanis": {
+      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
@@ -1138,10 +1154,10 @@
             ]
           }
         ]
-      },
-      "trigger": "minecraft:inventory_changed"
+      }
     },
     "dna_titanites": {
+      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
@@ -1150,10 +1166,10 @@
             ]
           }
         ]
-      },
-      "trigger": "minecraft:inventory_changed"
+      }
     },
     "dna_triceratops": {
+      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
@@ -1162,10 +1178,10 @@
             ]
           }
         ]
-      },
-      "trigger": "minecraft:inventory_changed"
+      }
     },
     "dna_troodon": {
+      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
@@ -1174,10 +1190,10 @@
             ]
           }
         ]
-      },
-      "trigger": "minecraft:inventory_changed"
+      }
     },
     "dna_tropeognathus": {
+      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
@@ -1186,10 +1202,10 @@
             ]
           }
         ]
-      },
-      "trigger": "minecraft:inventory_changed"
+      }
     },
     "dna_tylosaurus": {
+      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
@@ -1198,10 +1214,10 @@
             ]
           }
         ]
-      },
-      "trigger": "minecraft:inventory_changed"
+      }
     },
     "dna_tyrannosaurus": {
+      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
@@ -1210,10 +1226,10 @@
             ]
           }
         ]
-      },
-      "trigger": "minecraft:inventory_changed"
+      }
     },
     "dna_vectipelta": {
+      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
@@ -1222,10 +1238,10 @@
             ]
           }
         ]
-      },
-      "trigger": "minecraft:inventory_changed"
+      }
     },
     "dna_velociraptor": {
+      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
@@ -1234,10 +1250,10 @@
             ]
           }
         ]
-      },
-      "trigger": "minecraft:inventory_changed"
+      }
     },
     "dna_zhenyuanopterus": {
+      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
@@ -1246,23 +1262,7 @@
             ]
           }
         ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    }
-  },
-  "display": {
-    "announce_to_chat": true,
-    "description": {
-      "translate": "advancements.jurassicreborn.dna.description"
-    },
-    "frame": "challenge",
-    "hidden": false,
-    "icon": {
-      "item": "jurassicreborn:mr_dna_keychain"
-    },
-    "show_toast": true,
-    "title": {
-      "translate": "advancements.jurassicreborn.dna.title"
+      }
     }
   },
   "requirements": [
@@ -1372,6 +1372,5 @@
       "dna_velociraptor",
       "dna_zhenyuanopterus"
     ]
-  ],
-  "sends_telemetry_event": true
+  ]
 }

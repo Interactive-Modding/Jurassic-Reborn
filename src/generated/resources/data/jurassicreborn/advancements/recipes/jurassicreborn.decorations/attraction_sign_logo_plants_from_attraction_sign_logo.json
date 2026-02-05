@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "jurassicreborn:attraction_sign_logo_plants_from_attraction_sign_logo"
+    ]
+  },
+  "criteria": {
+    "has_attraction_sign_logo": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:attraction_sign_logo"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "jurassicreborn:attraction_sign_logo_plants_from_attraction_sign_logo"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_attraction_sign_logo",
+      "has_the_recipe"
+    ]
+  ]
+}

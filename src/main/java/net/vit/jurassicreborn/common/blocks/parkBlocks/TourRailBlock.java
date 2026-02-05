@@ -33,7 +33,6 @@ import static net.minecraft.core.Direction.*;
 public class TourRailBlock extends Block implements EntityBlock {
 
     public static EnumProperty<EnumRailDirection> SHAPE = EnumProperty.create("shape", EnumRailDirection.class);
-
     private static final ThreadLocal<Set<BlockPos>> UPDATING_RAILS = ThreadLocal.withInitial(HashSet::new);
 
     public static final VoxelShape FLAT = Block.box(0.0D, 0.0D, 0.0D, 16D - 0.0001, 2.0D, 16.0D);
@@ -90,6 +89,7 @@ public class TourRailBlock extends Block implements EntityBlock {
 
     @Override
     public void onPlace(BlockState pState, Level pLevel, BlockPos pPos, BlockState pOldState, boolean pIsMoving) {
+        // Prevent recursion
         if (pLevel.isClientSide) return;
         Set<BlockPos> updating = UPDATING_RAILS.get();
         if (updating.contains(pPos)) return;
@@ -102,6 +102,7 @@ public class TourRailBlock extends Block implements EntityBlock {
             updating.remove(pPos);
         }
     }
+
 
     @Override
     public BlockState getStateAtViewpoint(BlockState state, BlockGetter level, BlockPos pos, Vec3 viewpoint) {

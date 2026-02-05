@@ -7,7 +7,6 @@ import net.vit.jurassicreborn.client.render.entity.animation.EntityAnimation;
 import net.vit.jurassicreborn.common.entities.AmphibianDinosaurEntity;
 import net.vit.jurassicreborn.common.entities.DinosaurEntity;
 import net.vit.jurassicreborn.common.entities.Dinosaurs.DinosaurHandler;
-import net.vit.jurassicreborn.common.entities.IHasVariants;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -22,7 +21,7 @@ import net.minecraft.world.entity.EntityType;
 
 import java.util.Locale;
 
-public class BaryonyxEntity extends AmphibianDinosaurEntity implements IHasVariants {
+public class BaryonyxEntity extends AmphibianDinosaurEntity {
 
     private static final EntityDataAccessor<Integer> VARIANT= SynchedEntityData.defineId(BaryonyxEntity.class, EntityDataSerializers.INT);
 
@@ -97,3 +96,4 @@ public class BaryonyxEntity extends AmphibianDinosaurEntity implements IHasVaria
         return isMale()?new ResourceLocation(JurassicReborn.MODID, texture + "_male_" + "adult" + "_" + variant + ".png"):new ResourceLocation(JurassicReborn.MODID, texture + "_female_" + "adult" + "_" + variant +".png");
     }
 }
+

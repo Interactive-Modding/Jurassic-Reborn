@@ -17,12 +17,13 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.fluids.capability.IFluidHandler;
+import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.IItemHandlerModifiable;
 import net.minecraftforge.items.ItemStackHandler;
+import net.minecraftforge.items.CapabilityItemHandler;
 import net.vit.jurassicreborn.common.blocks.inventory.FluidHandlerBlockEntity;
 import net.vit.jurassicreborn.common.blocks.inventory.ItemHandlerBlockEntity;
 import net.vit.jurassicreborn.common.blocks.inventory.SerializableSingleFluidTank;
@@ -100,7 +101,7 @@ public abstract class MachineBlockEntity extends BlockEntity implements Nameable
 
     @Override
     public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
-        if (cap == ForgeCapabilities.ITEM_HANDLER && this instanceof ItemHandlerBlockEntity) {
+        if (cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && this instanceof ItemHandlerBlockEntity) {
             if (side != null) {
                 LazyOptional<IItemHandler> sidedHandler = sidedItemHandlerCapabilities.get(side);
                 if (sidedHandler != null) {
@@ -119,7 +120,7 @@ public abstract class MachineBlockEntity extends BlockEntity implements Nameable
             return itemHandlerCapability.cast();
         }
 
-        if (cap == ForgeCapabilities.FLUID_HANDLER && this instanceof FluidHandlerBlockEntity) {
+        if (cap == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY && this instanceof FluidHandlerBlockEntity) {
             if (!fluidHandlerCapability.isPresent()) {
                 updateCapabilities();
             }
@@ -213,7 +214,6 @@ public abstract class MachineBlockEntity extends BlockEntity implements Nameable
 
 
     }
-
 
 
     /**

@@ -1,20 +1,18 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "redstone",
   "group": "wooden_door",
-  "key": {
-    "#": {
-      "item": "jurassicreborn:calamites_planks"
-    }
-  },
   "pattern": [
     "##",
     "##",
     "##"
   ],
-  "result": {
-    "count": 3,
-    "item": "jurassicreborn:calamites_door"
+  "key": {
+    "#": {
+      "item": "jurassicreborn:calamites_planks"
+    }
   },
-  "show_notification": true
+  "result": {
+    "item": "jurassicreborn:calamites_door",
+    "count": 3
+  }
 }

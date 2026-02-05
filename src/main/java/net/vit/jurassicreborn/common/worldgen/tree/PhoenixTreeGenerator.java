@@ -5,13 +5,14 @@ import net.vit.jurassicreborn.common.blocks.ModWoodTypes;
 import net.vit.jurassicreborn.common.blocks.wood.AncientLeavesBlock;
 import net.vit.jurassicreborn.common.blocks.wood.WoodBlocks;
 import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
+import java.util.Random;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
+import net.minecraft.world.level.material.Material;
 
 public class PhoenixTreeGenerator extends Feature<NoneFeatureConfiguration> {
     public PhoenixTreeGenerator(Codec<NoneFeatureConfiguration> p_65786_) {
@@ -25,7 +26,7 @@ public class PhoenixTreeGenerator extends Feature<NoneFeatureConfiguration> {
         BlockState leaves = WoodBlocks.PHOENIX_LEAVES.get().defaultBlockState().setValue(AncientLeavesBlock.DISTANCE, 1);
         
         WorldGenLevel world = ctx.level();
-        RandomSource rand = ctx.random();
+        Random rand = ctx.random();
         BlockPos position = ctx.origin();
 
 

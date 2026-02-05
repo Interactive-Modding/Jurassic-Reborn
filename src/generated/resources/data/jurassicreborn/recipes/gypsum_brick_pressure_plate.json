@@ -1,16 +1,14 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "redstone",
+  "pattern": [
+    "##"
+  ],
   "key": {
     "#": {
       "item": "jurassicreborn:gypsum_bricks"
     }
   },
-  "pattern": [
-    "##"
-  ],
   "result": {
     "item": "jurassicreborn:gypsum_brick_pressure_plate"
-  },
-  "show_notification": true
+  }
 }

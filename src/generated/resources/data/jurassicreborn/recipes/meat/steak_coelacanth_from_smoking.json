@@ -1,10 +1,9 @@
 {
   "type": "minecraft:smoking",
-  "category": "food",
-  "cookingtime": 100,
-  "experience": 0.35,
   "ingredient": {
     "item": "jurassicreborn:meat/meat_coelacanth"
   },
-  "result": "jurassicreborn:meat/steak_coelacanth"
+  "result": "jurassicreborn:meat/steak_coelacanth",
+  "experience": 0.35,
+  "cookingtime": 100
 }

@@ -1,19 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "building",
-  "key": {
-    "#": {
-      "item": "jurassicreborn:gypsum_cobblestone"
-    }
-  },
   "pattern": [
     "#  ",
     "## ",
     "###"
   ],
-  "result": {
-    "count": 4,
-    "item": "jurassicreborn:gypsum_cobblestone_stairs"
+  "key": {
+    "#": {
+      "item": "jurassicreborn:gypsum_cobblestone"
+    }
   },
-  "show_notification": true
+  "result": {
+    "item": "jurassicreborn:gypsum_cobblestone_stairs",
+    "count": 4
+  }
 }

@@ -1,6 +1,10 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "building",
+  "pattern": [
+    "ABA",
+    "CCC",
+    " D "
+  ],
   "key": {
     "A": {
       "tag": "forge:nuggets/iron"
@@ -15,14 +19,8 @@
       "item": "minecraft:redstone"
     }
   },
-  "pattern": [
-    "ABA",
-    "CCC",
-    " D "
-  ],
   "result": {
-    "count": 6,
-    "item": "jurassicreborn:low_security_fence_base"
-  },
-  "show_notification": true
+    "item": "jurassicreborn:low_security_fence_base",
+    "count": 6
+  }
 }

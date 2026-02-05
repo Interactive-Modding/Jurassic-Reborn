@@ -1,7 +1,7 @@
 package net.vit.jurassicreborn.client.screens.paleopad;
 
+import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
@@ -27,7 +27,7 @@ public class FeederTrackerGuiApp extends GuiApp {
     }
 
     @Override
-    public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, Screen screen, float partialTicks) {
+    public void render(PoseStack poseStack, int mouseX, int mouseY, Screen screen, float partialTicks) {
         int left = screen.width / 2 - 115;
         int top = 65;
 
@@ -48,7 +48,7 @@ public class FeederTrackerGuiApp extends GuiApp {
             } else {
                 label = f.name + " - (Out of range!)";
             }
-            ((PaleoPadScreen) screen).drawScaledText(guiGraphics, label, left + 10, y, 0.9F, color);
+            ((PaleoPadScreen) screen).drawScaledText(poseStack, label, left + 10, y, 0.9F, color);
             y += 12;
         }
 
@@ -56,13 +56,13 @@ public class FeederTrackerGuiApp extends GuiApp {
         int trackX = left + 190;
         int trackY = top + 20;
         int trackHeight = visible * 12;
-        ((PaleoPadScreen) screen).drawScaledRect(guiGraphics, trackX, trackY, 4, trackHeight, 1.0F, 0xFF303030);
+        ((PaleoPadScreen) screen).drawScaledRect(poseStack, trackX, trackY, 4, trackHeight, 1.0F, 0xFF303030);
         int total = list.size();
         if (total > visible) {
             int knobHeight = Math.max(8, trackHeight * visible / total);
             int maxScroll = total - visible;
             int knobY = trackY + (trackHeight - knobHeight) * scroll / maxScroll;
-            ((PaleoPadScreen) screen).drawScaledRect(guiGraphics, trackX, knobY, 4, knobHeight, 1.0F, 0xFF808080);
+            ((PaleoPadScreen) screen).drawScaledRect(poseStack, trackX, knobY, 4, knobHeight, 1.0F, 0xFF808080);
         }
     }
 

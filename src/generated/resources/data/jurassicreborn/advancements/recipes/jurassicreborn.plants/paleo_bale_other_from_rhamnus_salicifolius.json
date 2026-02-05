@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "jurassicreborn:paleo_bale_other_from_rhamnus_salicifolius"
+    ]
+  },
+  "criteria": {
+    "has_rhamnus_salicifolius": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:rhamnus_salicifolius"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "jurassicreborn:paleo_bale_other_from_rhamnus_salicifolius"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_rhamnus_salicifolius",
+      "has_the_recipe"
+    ]
+  ]
+}

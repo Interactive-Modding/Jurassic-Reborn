@@ -1,19 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "group": "jurassicreborn:gyrosphere_hoop",
-  "key": {
-    "A": {
-      "item": "jurassicreborn:iron_rod"
-    }
-  },
   "pattern": [
     "AAA",
     "A A",
     "AAA"
   ],
+  "key": {
+    "A": {
+      "item": "jurassicreborn:iron_rod"
+    }
+  },
   "result": {
     "item": "jurassicreborn:gyrosphere_hoop"
-  },
-  "show_notification": true
+  }
 }

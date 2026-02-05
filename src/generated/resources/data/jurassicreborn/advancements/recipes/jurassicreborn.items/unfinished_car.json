@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "jurassicreborn:unfinished_car"
+    ]
+  },
+  "criteria": {
+    "has_car_chassis": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:car_chassis"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "jurassicreborn:unfinished_car"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_car_chassis",
+      "has_the_recipe"
+    ]
+  ]
+}

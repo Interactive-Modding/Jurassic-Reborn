@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "jurassicreborn:attraction_sign_carnivore_paddock_plants_from_attraction_sign_carnivore_paddock"
+    ]
+  },
+  "criteria": {
+    "has_attraction_sign_carnivore_paddock": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:attraction_sign_carnivore_paddock"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "jurassicreborn:attraction_sign_carnivore_paddock_plants_from_attraction_sign_carnivore_paddock"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_attraction_sign_carnivore_paddock",
+      "has_the_recipe"
+    ]
+  ]
+}

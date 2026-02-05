@@ -1,10 +1,9 @@
 {
   "type": "minecraft:blasting",
-  "category": "misc",
-  "cookingtime": 100,
-  "experience": 0.35,
   "ingredient": {
     "item": "jurassicreborn:meat/meat_vectipelta"
   },
-  "result": "jurassicreborn:meat/steak_vectipelta"
+  "result": "jurassicreborn:meat/steak_vectipelta",
+  "experience": 0.35,
+  "cookingtime": 100
 }

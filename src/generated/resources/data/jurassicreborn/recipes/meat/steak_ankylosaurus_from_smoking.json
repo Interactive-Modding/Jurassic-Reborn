@@ -1,10 +1,9 @@
 {
   "type": "minecraft:smoking",
-  "category": "food",
-  "cookingtime": 100,
-  "experience": 0.35,
   "ingredient": {
     "item": "jurassicreborn:meat/meat_ankylosaurus"
   },
-  "result": "jurassicreborn:meat/steak_ankylosaurus"
+  "result": "jurassicreborn:meat/steak_ankylosaurus",
+  "experience": 0.35,
+  "cookingtime": 100
 }

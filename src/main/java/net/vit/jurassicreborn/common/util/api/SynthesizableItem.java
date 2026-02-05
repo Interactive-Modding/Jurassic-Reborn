@@ -1,6 +1,6 @@
 package net.vit.jurassicreborn.common.util.api;
 
-import net.minecraft.util.RandomSource;
+import java.util.Random;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -31,5 +31,5 @@ public interface SynthesizableItem extends RebornIngredientItem {
 
     boolean isSynthesizable(ItemStack stack);
 
-    ItemStack getSynthesizedItem(ItemStack stack, RandomSource random);
+    ItemStack getSynthesizedItem(ItemStack stack, Random random);
 }

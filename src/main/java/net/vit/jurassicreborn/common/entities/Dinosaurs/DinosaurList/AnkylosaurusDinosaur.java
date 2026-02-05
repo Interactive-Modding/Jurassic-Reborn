@@ -55,7 +55,7 @@ public class AnkylosaurusDinosaur extends Dinosaur
         this.enableSkeleton();
         ArrayList<ResourceKey<Biome>> biomeList = new ArrayList<ResourceKey<Biome>>();
 
-        TagKey<Biome>[] tags = (new TagKey[]{ Tags.Biomes.IS_PLAINS, BiomeTags.IS_SAVANNA, BiomeTags.IS_FOREST});
+        TagKey<Biome>[] tags = (new TagKey[]{ Tags.Biomes.IS_PLAINS, BiomeTags.HAS_VILLAGE_SAVANNA, BiomeTags.IS_FOREST});
         ArrayList<Biome> allBiomes = new ArrayList<>(ForgeRegistries.BIOMES.getValues());
 
         biomeList = new ArrayList<>(allBiomes.stream().filter((biome ->{

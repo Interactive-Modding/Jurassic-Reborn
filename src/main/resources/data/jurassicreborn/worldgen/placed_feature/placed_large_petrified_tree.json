@@ -1,0 +1,15 @@
+{
+"feature": "jurassicreborn:configured_large_petrified_tree",
+"placement": [
+{ "type": "minecraft:in_square" },
+{
+"type": "minecraft:height_range",
+"height": {
+"type": "minecraft:uniform",
+"max_inclusive": { "absolute": 64 },
+"min_inclusive": { "absolute": -64 }
+}
+},
+{ "type": "minecraft:biome" }
+]
+}

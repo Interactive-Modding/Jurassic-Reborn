@@ -534,7 +534,7 @@ public class SoundHandler {
 
     public static SoundEvent create(String soundName) {
         ResourceLocation soundLoc = new ResourceLocation(JurassicReborn.MODID, soundName);
-        SoundEvent sound = SoundEvent.createVariableRangeEvent(soundLoc);
+        SoundEvent sound = new SoundEvent(soundLoc);
 //        RegistryHandler.registerSound(sound, soundName);
         sounds.add(sound);
         toRegister.add(registrer.register(soundName, () -> sound));

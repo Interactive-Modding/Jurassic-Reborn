@@ -1,7 +1,11 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "group": "jurassicreborn:fine_net",
+  "pattern": [
+    "ABC",
+    " BB",
+    "B A"
+  ],
   "key": {
     "A": {
       "item": "minecraft:string"
@@ -13,13 +17,7 @@
       "item": "minecraft:white_wool"
     }
   },
-  "pattern": [
-    "ABC",
-    " BB",
-    "B A"
-  ],
   "result": {
     "item": "jurassicreborn:fine_net"
-  },
-  "show_notification": true
+  }
 }

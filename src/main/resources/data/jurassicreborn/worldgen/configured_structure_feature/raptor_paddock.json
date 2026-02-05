@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:village",
+  "config": {
+    "start_pool": "jurassicreborn:raptor_paddock/start_pool",
+    "size": 1,
+    "max_distance_from_center": 80
+  },
+  "biomes": "#jurassicreborn:has_structure/raptor_paddock",
+  "step": "surface_structures",
+  "start_height": {
+    "absolute": -1
+  },
+  "project_start_to_heightmap": "WORLD_SURFACE_WG",
+  "use_expansion_hack": false,
+  "spawn_overrides": {}
+}

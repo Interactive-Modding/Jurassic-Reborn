@@ -1,7 +1,11 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "group": "jurassicreborn:laser",
+  "pattern": [
+    "ABA",
+    "ACA",
+    "ADA"
+  ],
   "key": {
     "A": {
       "tag": "forge:nuggets/iron"
@@ -16,13 +20,7 @@
       "item": "minecraft:redstone"
     }
   },
-  "pattern": [
-    "ABA",
-    "ACA",
-    "ADA"
-  ],
   "result": {
     "item": "jurassicreborn:laser"
-  },
-  "show_notification": true
+  }
 }

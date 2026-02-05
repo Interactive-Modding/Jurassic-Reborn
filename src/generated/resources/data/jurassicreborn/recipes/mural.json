@@ -1,7 +1,11 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "group": "jurassicreborn:mural",
+  "pattern": [
+    "ABA",
+    "BCB",
+    "ABA"
+  ],
   "key": {
     "A": {
       "item": "minecraft:iron_ingot"
@@ -13,13 +17,7 @@
       "item": "minecraft:painting"
     }
   },
-  "pattern": [
-    "ABA",
-    "BCB",
-    "ABA"
-  ],
   "result": {
     "item": "jurassicreborn:mural"
-  },
-  "show_notification": true
+  }
 }

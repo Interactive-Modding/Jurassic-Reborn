@@ -1,13 +1,9 @@
 package net.vit.jurassicreborn.common.entities;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.LevelAccessor;
-import org.joml.Vector3f;
+
 import com.github.alexthe666.citadel.animation.Animation;
 import com.github.alexthe666.citadel.animation.AnimationHandler;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
-import net.minecraft.util.AbortableIterationConsumer;
+import com.mojang.math.Vector3f;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.entity.ai.control.BodyRotationControl;
 import net.minecraft.world.entity.ai.control.SmoothSwimmingMoveControl;
 import net.minecraft.world.entity.ai.goal.*;
@@ -25,6 +21,7 @@ import net.vit.jurassicreborn.common.RebornConfig;
 import net.vit.jurassicreborn.common.blocks.entities.feeder.FeederBlockEntity;
 import net.vit.jurassicreborn.common.blocks.entities.grinder.FossilGrinderBlockEntity;
 import net.vit.jurassicreborn.common.entities.DinosaurEntities.*;
+import net.vit.jurassicreborn.common.entities.Dinosaurs.DinosaurHandler;
 import net.vit.jurassicreborn.common.entities.EntityUtils.*;
 import net.vit.jurassicreborn.common.entities.EntityUtils.ai.*;
 import net.vit.jurassicreborn.common.entities.Dinosaurs.Dinosaur;
@@ -51,6 +48,7 @@ import net.vit.jurassicreborn.common.util.GameRuleHandler;
 import net.vit.jurassicreborn.common.util.ItemsUtil;
 import net.minecraft.ChatFormatting;
 import net.minecraft.MethodsReturnNonnullByDefault;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
@@ -58,22 +56,20 @@ import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Mth;
+import net.minecraft.Util;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.tags.DamageTypeTags;
-import net.minecraft.world.entity.Mob;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
@@ -88,6 +84,8 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.GameRules;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.entity.EntityTypeTest;
@@ -104,6 +102,7 @@ import net.vit.jurassicreborn.common.util.api.DinosaurItem;
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.*;
+import java.util.function.Consumer;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
@@ -121,7 +120,6 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
     private static final EntityDataAccessor<Boolean> WATCHER_IS_RUNNING = SynchedEntityData.defineId(DinosaurEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Boolean> WATCHER_WAS_FED = SynchedEntityData.defineId(DinosaurEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Boolean> WATCHER_WAS_MOVED = SynchedEntityData.defineId(DinosaurEntity.class, EntityDataSerializers.BOOLEAN);
-    private static final EntityDataAccessor<Integer> WATCHER_VARIANT = SynchedEntityData.defineId(DinosaurEntity.class, EntityDataSerializers.INT);
 
     public HashMap<Animation, Byte> variants = new HashMap<>();
     private InventoryDinosaur inventory;
@@ -149,7 +147,6 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
     private String genetics;
     public boolean tranqed;
     private boolean goalsRegistered;
-
 
 
     private boolean deserializing;
@@ -217,17 +214,6 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
             try { out.add(UUID.fromString(s)); } catch (Exception ignored) {}
         }
         return out;
-    }
-
-    public static boolean canSpawnNaturally(EntityType<? extends Mob> type,
-                                            LevelAccessor level,
-                                            MobSpawnType reason,
-                                            BlockPos pos,
-                                            RandomSource random) {
-        if (reason == MobSpawnType.NATURAL && !RebornConfig.spawnDinosaursNaturally) {
-            return false;
-        }
-        return Mob.checkMobSpawnRules(type, level, reason, pos, random);
     }
 
     public void addTracker(UUID uuid) {
@@ -390,8 +376,8 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
         this.jumpControl = new DinosaurJumpHelper(this);
 
         // Client-only helpers
-        this.legSolver = level().isClientSide ? this.createLegSolver() : null;
-        if (level().isClientSide) this.initClient();
+        this.legSolver = level.isClientSide ? this.createLegSolver() : null;
+        if (level.isClientSide) this.initClient();
 
         // Genetics/defaults
         if (this.genetics == null || this.genetics.isEmpty()) {
@@ -425,15 +411,14 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
 
 
     private void eatEggs() {
-        if(!level().isClientSide) {
+        if(!level.isClientSide) {
             List<Entity> eggs = new ArrayList<>();
-            ((ServerLevel) level()).getEntities().get(
-                    EntityTypeTest.forClass(DinosaurEggEntity.class),
-                    entity -> {
-                        eggs.add(entity);
-                        return AbortableIterationConsumer.Continuation.CONTINUE;
-                    }
-            );
+            ((ServerLevel) level).getEntities().get(EntityTypeTest.forClass(DinosaurEggEntity.class), new Consumer<DinosaurEggEntity>() {
+                @Override
+                public void accept(DinosaurEggEntity entity) {
+                    eggs.add(entity);
+                }
+            });
             for (Entity egg : eggs)
                 if (egg instanceof DinosaurEggEntity) {
                     if ((egg.getEyePosition().distanceTo(this.position())) < 0.5) {
@@ -480,7 +465,7 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
     }
 
     private boolean hasPredators() {
-        for (LivingEntity predator : this.level().getEntitiesOfClass(LivingEntity.class, new AABB(this.getX() - 10F, this.getY() - 5F, this.getZ() - 10F, this.getX() + 10F, this.getY() + 5F, this.getZ() + 10F), e -> e != DinosaurEntity.this)) {
+        for (LivingEntity predator : this.level.getEntitiesOfClass(LivingEntity.class, new AABB(this.getX() - 10F, this.getY() - 5F, this.getZ() - 10F, this.getX() + 10F, this.getY() + 5F, this.getZ() + 10F), e -> e != DinosaurEntity.this)) {
             boolean hasDinosaurPredator = false;
 
             if (predator instanceof DinosaurEntity) {
@@ -507,7 +492,7 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
     public int getDinosaurTime() {
         SleepTime sleepTime = this.dinosaur.getSleepTime();
 
-        long time = (this.level().getDayTime() % 24000) - sleepTime.getWakeUpTime();
+        long time = (this.level.getDayTime() % 24000) - sleepTime.getWakeUpTime();
         if (time < 0) {
             time += 24000;
         }
@@ -536,7 +521,7 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
             this.owner = player.getUUID();
 
             if (!this.owner.equals(prevOwner)) {
-                if (!this.level().isClientSide) {
+                if (!this.level.isClientSide) {
                     this.entityData.set(WATCHER_OWNER_IDENTIFIER, this.owner.toString());
                 }
 
@@ -548,11 +533,11 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
                         break;
                     }
                 }
-                String msg = Component.translatable("message.tame").getString().replace("{dinosaur}", dinosaur.getName());
+                String msg = new TranslatableComponent("message.tame").getString().replace("{dinosaur}", dinosaur.getName());
                 if (!hasVowel) {
                     msg = msg.replace("an", "a");
                 }
-                player.sendSystemMessage(Component.literal(msg));
+                player.sendMessage(new TextComponent(msg), Util.NIL_UUID);
             }
         }
     }
@@ -577,7 +562,7 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
 
         float damage = (float) this.getAttributeValue(Attributes.ATTACK_DAMAGE);
 
-        if (entity.hurt(this.damageSources().mobAttack(this), damage)) {
+        if (entity.hurt(new DinosaurDamageSource("mob", this), damage)) {
             if (entity instanceof DinosaurEntity && ((DinosaurEntity) entity).isCarcass()) {
                 DinosaurEntity dinosaur = (DinosaurEntity) entity;
                 if (dinosaur.herd != null && this.herd != null && dinosaur.herd.fleeing && dinosaur.herd.enemies.contains(this)) {
@@ -627,7 +612,7 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
 
     @Override
     public boolean hurt(DamageSource damageSource, float amount) {
-        boolean canHarmInCreative = damageSource.is(DamageTypeTags.BYPASSES_INVULNERABILITY);
+        boolean canHarmInCreative = damageSource.isBypassInvul();
         Entity attacker = damageSource.getEntity();
 
         if (!this.isCarcass()) {
@@ -642,17 +627,17 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
                 if (attacker instanceof DinosaurEntity) {
                     this.getRelationship(attacker, true).onAttacked(amount);
                 }
-                if (!this.level().isClientSide && !RebornConfig.allowCarcass && !canHarmInCreative) {
+                if (!this.level.isClientSide && !RebornConfig.allowCarcass && !canHarmInCreative) {
                     this.setAnimation(EntityAnimation.DYING.get());
                 }
                 return super.hurt(damageSource, amount);
             } else {
-                if (this.getAnimation() == EntityAnimation.RESTING.get() && !this.level().isClientSide) {
+                if (this.getAnimation() == EntityAnimation.RESTING.get() && !this.level.isClientSide) {
                     this.setAnimation(EntityAnimation.IDLE.get());
                     this.isSittingNaturally = false;
                 }
 
-                if (!this.level().isClientSide) {
+                if (!this.level.isClientSide) {
                     if (!((float)this.invulnerableTime > (float)this.invulnerableDuration / 2.0F))
                         this.setAnimation(EntityAnimation.INJURED.get());
                 }
@@ -667,9 +652,9 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
 
                 return super.hurt(damageSource, amount);
             }
-        } else if (!this.level().isClientSide) {
-            if (!damageSource.is(DamageTypeTags.IS_DROWNING)) {
-                if (this.carcassHealth >= 0 && this.level().getGameRules().getBoolean(GameRules.RULE_DOMOBLOOT)) {
+        } else if (!this.level.isClientSide) {
+            if (damageSource != DamageSource.DROWN) {
+                if (this.carcassHealth >= 0 && this.level.getGameRules().getBoolean(GameRules.RULE_DOMOBLOOT)) {
                     this.dropMeat(attacker);
                 }
                 this.carcassHealth--;
@@ -741,7 +726,7 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
         if (stack.getCount() != 0 && stack.getItem() != null) {
             Random rand = new Random();
 
-            ItemEntity item = new ItemEntity(this.level(), this.getX() + ((rand.nextFloat() * this.getBbWidth()) - this.getBbWidth() / 2), this.getY() + (double) offsetY, this.getZ() + ((rand.nextFloat() * this.getBbWidth()) - this.getBbWidth() / 2), stack);
+            ItemEntity item = new ItemEntity(this.level, this.getX() + ((rand.nextFloat() * this.getBbWidth()) - this.getBbWidth() / 2), this.getY() + (double) offsetY, this.getZ() + ((rand.nextFloat() * this.getBbWidth()) - this.getBbWidth() / 2), stack);
             item.setDefaultPickUpDelay();
 
             if (this.shouldDropExperience()) {
@@ -750,7 +735,7 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
                     thingie.add(item);
                 }
             } else {
-                this.level().addFreshEntity(item);
+                this.level.addFreshEntity(item);
             }
 
             return item;
@@ -824,60 +809,8 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
         this.entityData.define(WATCHER_IS_RUNNING, false);
         this.entityData.define(WATCHER_WAS_FED, false);
         this.entityData.define(WATCHER_WAS_MOVED, this.wasMoved);
-        this.entityData.define(WATCHER_VARIANT, 0);
-
-    }
-    public int getVariant() {
-        return this.entityData.get(WATCHER_VARIANT);
     }
 
-    public void setVariant(int variant) {
-        this.entityData.set(WATCHER_VARIANT, variant);
-    }
-    @Override
-    public void onSyncedDataUpdated(EntityDataAccessor<?> key) {
-        super.onSyncedDataUpdated(key);
-
-        if (!this.level().isClientSide) {
-            return;
-        }
-
-        if (WATCHER_WAS_MOVED.equals(key)) {
-            this.wasMoved = this.entityData.get(WATCHER_WAS_MOVED);
-        } else if (WATCHER_AGE.equals(key)) {
-            this.dinosaurAge = this.entityData.get(WATCHER_AGE);
-            this.updateAttributes();
-            this.refreshDimensions();
-        } else if (WATCHER_IS_SLEEPING.equals(key)) {
-            this.isSleeping = this.entityData.get(WATCHER_IS_SLEEPING);
-        } else if (WATCHER_IS_CARCASS.equals(key)) {
-            this.isCarcass = this.entityData.get(WATCHER_IS_CARCASS);
-            if (this.isCarcass) {
-                this.setAnimationSilently(EntityAnimation.DYING.get());
-            }
-            this.refreshDimensions();
-        } else if (WATCHER_CURRENT_ORDER.equals(key)) {
-            this.order = Order.values()[this.entityData.get(WATCHER_CURRENT_ORDER)];
-            if (this.order == Order.SIT) {
-                this.isSittingNaturally = false;
-                if (!this.isSleeping && this.getAnimation() != EntityAnimation.RESTING.get()) {
-                    this.setAnimationSilently(EntityAnimation.RESTING.get());
-                }
-            } else if (!this.isSleeping
-                    && !this.isSittingNaturally
-                    && this.getAnimation() == EntityAnimation.RESTING.get()) {
-                this.setAnimationSilently(EntityAnimation.IDLE.get());
-            }
-        } else if (WATCHER_OWNER_IDENTIFIER.equals(key)) {
-            String ownerStr = this.entityData.get(WATCHER_OWNER_IDENTIFIER);
-            if (!ownerStr.isEmpty() && (this.owner == null || !ownerStr.equals(this.owner.toString()))) {
-                this.owner = UUID.fromString(ownerStr);
-            } else if (ownerStr.isEmpty()) {
-                this.owner = null;
-            }
-        }
-    }
-    
 //    @Override todo: modernize attributes
 //    protected void applyEntityAttributes() {
 //        super.applyEntityAttributes();
@@ -956,7 +889,7 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
             base = Math.min(1.2F, Math.max(base, 1.0F)); // 1.0–1.2 feels good
         }
 
-        this.setMaxUpStep(base);
+        this.maxUpStep = base;
     }
 
 
@@ -1006,13 +939,7 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
 
         return Mth.clamp(scaledVolume, 0.15F, 1.75F);
     }
-    @Override
-    public void playSound(@Nullable SoundEvent sound, float volume, float pitch) {
-        if (sound == null) {
-            return;
-        }
-        super.playSound(sound, volume, pitch);
-    }
+
     public String getGenetics() {
         return this.genetics;
     }
@@ -1037,30 +964,6 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
         }
     }
     @Override
-    protected void updateWalkAnimation(float partialTicks) {
-        float amount;
-
-        if (this.isClimbing()) {
-            // Vertical distance for climbing animation
-            double dy = (this.getY() - this.yOld) * 4.0F;
-            if (dy > 1.0F) dy = 1.0F;
-            amount = (float) dy;
-        } else {
-            // Normal walking animation based on X/Z movement
-            double dx = this.getX() - this.xo;
-            double dz = this.getZ() - this.zo;
-
-            float dist = Mth.sqrt((float) (dx * dx + dz * dz)) * 4.0F;
-            if (dist > 1.0F) dist = 1.0F;
-
-            amount = dist;
-        }
-
-        // Apply movement → animation
-        this.walkAnimation.update(amount, 0.4F);
-    }
-
-    @Override
     public void aiStep() {
         super.aiStep();
 
@@ -1076,7 +979,7 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
             }
         }
 
-        if(!this.level().getGameRules().getBoolean(net.vit.jurassicreborn.common.util.GameRuleHandler.DINO_METABOLISM)) {
+        if(!this.level.getGameRules().getBoolean(net.vit.jurassicreborn.common.util.GameRuleHandler.DINO_METABOLISM)) {
             if(this.getMetabolism().getEnergy() < this.getMetabolism().getMaxEnergy()) {
                 this.getMetabolism().setEnergy(this.getMetabolism().getMaxEnergy());
             }
@@ -1092,7 +995,7 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
         } else {
             this.blocked = false;
         }
-        if (!this.level().isClientSide && this instanceof TyrannosaurusEntity) {  //TODO : ADD OTHER LARGE CARNIVORES
+        if (!this.level.isClientSide && this instanceof TyrannosaurusEntity) {  //TODO : ADD OTHER LARGE CARNIVORES
             if (this.moveTicks > 0) {
                 this.moveTicks--;
                 double yaw = Math.toRadians(this.getYRot() - 90);
@@ -1116,7 +1019,7 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
             this.breedCooldown--;
         }
 
-        if (!this.level().isClientSide
+        if (!this.level.isClientSide
                 && (dinosaur.getDiet().canEat(this, FoodType.MEAT) || dinosaur.getDiet().canEat(this, FoodType.FISH))
                 && (!RebornConfig.attackOnlyWhenHungry || this.getMetabolism().isHungry())
                 && (this.getTarget() == null || !this.getTarget().isAlive())) {
@@ -1128,7 +1031,7 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
                 LivingEntity best = null;
                 double bestDist2 = Double.MAX_VALUE;
 
-                List<LivingEntity> nearby = this.level().getEntitiesOfClass(LivingEntity.class, this.getBoundingBox().inflate(12.0D), this::canEatEntity);
+                List<LivingEntity> nearby = this.level.getEntitiesOfClass(LivingEntity.class, this.getBoundingBox().inflate(12.0D), this::canEatEntity);
                 for (LivingEntity cand : nearby) {
                     if (!this.attackTargets.stream().anyMatch(clazz -> clazz.isAssignableFrom(cand.getClass()))) continue;
                     if (!this.hasLineOfSight(cand)) continue;
@@ -1151,7 +1054,7 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
             }
         }
 
-        if (!this.isMale() && !this.level().isClientSide && !this.dinosaur.isHybrid) {
+        if (!this.isMale() && !this.level.isClientSide && !this.dinosaur.isHybrid) {
             if (this.isPregnant()) {
                 if (--this.pregnantTime <= 0) {
                     this.navigation.stop();
@@ -1175,14 +1078,13 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
                             this.family.addChild(entity.getUUID());
                         }
                     } else {
-                        entity = new DinosaurEggEntity(ModEntities.DINOSAUR_EGG.get(), this.level(), child, this);
+                        entity = new DinosaurEggEntity(ModEntities.DINOSAUR_EGG.get(), this.level, child, this);
                     }
                     entity.setPos(this.getX() + (this.random.nextFloat() - 0.5F), this.getY(), this.getZ() + (this.random.nextFloat() - 0.5F));
-                    this.level().addFreshEntity(entity);
+                    this.level.addFreshEntity(entity);
                 }
             }
         }
-
 
 
 
@@ -1204,7 +1106,7 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
                                 if (reg == null) {
                                     continue;
                                 }
-                                DinosaurEntity child = (DinosaurEntity) reg.get().create(this.level());
+                                DinosaurEntity child = (DinosaurEntity) reg.get().create(this.level);
                                 if (child == null) {
                                     continue;
                                 }
@@ -1238,6 +1140,16 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
             this.inLava = this.isInLava();
         }
 
+        if (this.isClimbing()) {
+            this.animationSpeedOld = this.animationSpeed;
+            double deltaY = (this.getY() - this.yOld) * 4.0F;
+            if (deltaY > 1.0F) {
+                deltaY = 1.0F;
+            }
+            this.animationSpeed += (deltaY - this.animationSpeed) * 0.4F;
+            this.animationPosition += this.animationSpeed;
+        }
+
         if (!this.isCarcass) {
             if (this.firstTick) {
                 this.updateAttributes();
@@ -1245,9 +1157,9 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
 
             this.updateGrowth();
 
-            if (!this.level().isClientSide) {
+            if (!this.level.isClientSide) {
                 if (this.metabolism.isHungry()) {
-                    List<ItemEntity> entitiesWithinAABB = this.level().getEntitiesOfClass(ItemEntity.class, this.getBoundingBox().inflate(1.0));
+                    List<ItemEntity> entitiesWithinAABB = this.level.getEntitiesOfClass(ItemEntity.class, this.getBoundingBox().inflate(1.0));
                     for (ItemEntity itemEntity : entitiesWithinAABB) {
                         Item item = itemEntity.getItem().getItem();
                         if (FoodHelper.isEdible(this, dinosaur.getDiet(), item)) {
@@ -1272,10 +1184,7 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
             }
 
             if (this.tickCount % 62 == 0) {
-                SoundEvent breathingSound = this.getBreathingSound();
-                if (breathingSound != null) {
-                    this.playSound(breathingSound, this.getSoundVolume(), this.getVoicePitch());
-                }
+                this.playSound(this.getBreathingSound(), this.getSoundVolume(), this.getVoicePitch());
             }
 
             if (!dinosaur.isMarineCreature() && !(this instanceof AmphibianDinosaurEntity) && !(this instanceof PenguinDinosaurEntity)) {
@@ -1287,10 +1196,10 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
                 this.herd = new Herd(this);
             }
 
-            if (!this.level().isClientSide) {
+            if (!this.level.isClientSide) {
                 if (this.order == Order.WANDER) {
                     if (this.herd.state == Herd.State.IDLE && this.getAttackTarget() == null && !this.metabolism.isThirsty() && !this.metabolism.isHungry() && this.getNavigation().isDone()) {
-                        if (!this.isSleeping && !this.shouldSleep() && this.onGround() && !this.isInWater()
+                        if (!this.isSleeping && !this.shouldSleep() && this.onGround && !this.isInWater()
                                 && this.getAnimation() == EntityAnimation.IDLE.get() && this.random.nextInt(800) == 0) {
                             this.setAnimation(EntityAnimation.RESTING.get());
                             this.isSittingNaturally = true;
@@ -1372,7 +1281,7 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
             }
         }
 
-        if (!this.level().isClientSide) {
+        if (!this.level.isClientSide) {
 //            this.lookHelper.onUpdateLook();
         }
 
@@ -1380,13 +1289,13 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
             eatEggs();
         }
 
-        if(!this.level().isClientSide && this.tickCount % 20 == 0)
+        if(!this.level.isClientSide && this.tickCount % 20 == 0)
             this.entityData.set(WATCHER_WAS_FED, false);
     }
 
     private void updateGrowth() {
-        if (!this.dead && this.tickCount % 8 == 0 && !this.level().isClientSide) {
-            if (/*GameRuleHandler.DINO_GROWTH.getBoolean(this.level()) todo: gamerules*/true) {
+        if (!this.dead && this.tickCount % 8 == 0 && !this.level.isClientSide) {
+            if (/*GameRuleHandler.DINO_GROWTH.getBoolean(this.level) todo: gamerules*/true) {
                 this.dinosaurAge += Math.min(this.growthSpeedOffset, 960) + 1;
                 this.metabolism.decreaseEnergy((int) ((Math.min(this.growthSpeedOffset, 960) + 1) * 0.1));
             }
@@ -1406,13 +1315,13 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
         super.tick();
 
         // --- client anim system step (Citadel) ---
-        if (level().isClientSide) {
+        if (level.isClientSide) {
             AnimationHandler.INSTANCE.updateAnimations(this);
         }
 
         // --- fed particles (client) ---
-        if (this.level().isClientSide && this.entityData.get(WATCHER_WAS_FED)) {
-            this.level().addParticle(
+        if (this.level.isClientSide && this.entityData.get(WATCHER_WAS_FED)) {
+            this.level.addParticle(
                     ParticleTypes.HAPPY_VILLAGER,
                     this.getX() + (double)(this.random.nextFloat() * this.getBbWidth() * 2.0F) - (double)this.getBbWidth(),
                     this.getY() + 0.5D + (double)(this.random.nextFloat() * this.getBbHeight()),
@@ -1434,10 +1343,10 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
         }
 
         // --- simple server-side animation transitions (physics-driven) ---
-        if (!this.level().isClientSide) {
+        if (!this.level.isClientSide) {
             if (this.animation == EntityAnimation.LEAP.get() && this.getDeltaMovement().y < 0) {
                 this.setAnimation(EntityAnimation.LEAP_LAND.get());
-            } else if (this.animation == EntityAnimation.LEAP_LAND.get() && (this.onGround() || this.isSwimming())) {
+            } else if (this.animation == EntityAnimation.LEAP_LAND.get() && (this.onGround || this.isSwimming())) {
                 this.setAnimation(EntityAnimation.IDLE.get());
             }
         }
@@ -1464,7 +1373,7 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
         }
 
         // --- sync watchers (server) / pull watchers (client) ---
-        if (!this.level().isClientSide) {
+        if (!this.level.isClientSide) {
             this.entityData.set(WATCHER_WAS_MOVED, this.wasMoved);
             this.entityData.set(WATCHER_AGE, this.dinosaurAge);
             this.entityData.set(WATCHER_IS_SLEEPING, this.isSleeping);
@@ -1518,19 +1427,16 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
             this.setAnimation(EntityAnimation.IDLE.get());
         }
 
-        if (!this.level().isClientSide) {
+        if (!this.level.isClientSide) {
             if (this.isCarcass) {
                 if (this.getAnimation() != EntityAnimation.DYING.get()) {
                     this.setAnimation(EntityAnimation.DYING.get());
                 }
                 if (this.tickCount % 1000 == 0) {
-                    this.hurt(this.damageSources().generic(), 1.0F);
+                    this.hurt(DamageSource.GENERIC, 1.0F);
                 }
             } else {
                 if (this.isSleeping) {
-                    if (this.metabolism.isHungry() || this.metabolism.isThirsty()) {
-                        this.disturbSleep();
-                    }
                     if (this.tickCount % 20 == 0 && this.stayAwakeTime <= 0 && this.hasPredators()) {
                         this.disturbSleep();
                     }
@@ -1632,7 +1538,7 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
 
     public void setAge(int age) {
         this.dinosaurAge = age;
-        if (!this.level().isClientSide) {
+        if (!this.level.isClientSide) {
             this.entityData.set(WATCHER_AGE, this.dinosaurAge);
         }
     }
@@ -1644,7 +1550,7 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
     @Override
     protected void dropCustomDeathLoot(DamageSource pSource, int pLooting, boolean pRecentlyHit) {
 
-        if (pSource.is(DamageTypeTags.BYPASSES_INVULNERABILITY) && pSource.is(DamageTypeTags.BYPASSES_ARMOR)) {
+        if(pSource.isBypassInvul() && pSource.isBypassArmor()){
             return;
         }
         this.dropMeat(pSource.getEntity());
@@ -1668,14 +1574,14 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
 
         // 3) Spawn the item
         ItemEntity item = new ItemEntity(
-                this.level(),
+                this.level,
                 this.getX() + ((this.random.nextFloat() * this.getBbWidth()) - this.getBbWidth() / 2),
                 this.getY(),
                 this.getZ() + ((this.random.nextFloat() * this.getBbWidth()) - this.getBbWidth() / 2),
                 stack
         );
         item.setDefaultPickUpDelay();
-        this.level().addFreshEntity(item);
+        this.level.addFreshEntity(item);
     }
 
     @Override
@@ -1684,30 +1590,30 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
     }
 
     public void setCarcass(boolean carcass) {
-        if (!this.level().isClientSide && carcass != this.isCarcass && !this.wasMoved) {
+        if (!this.level.isClientSide && carcass != this.isCarcass && !this.wasMoved) {
             this.moveTicks = 18;
         }
         this.isCarcass = carcass;
 
-        if (!this.level().isClientSide) {
+        if (!this.level.isClientSide) {
             this.entityData.set(WATCHER_IS_CARCASS, this.isCarcass);
         }
         if (carcass && RebornConfig.allowCarcass) {
             this.setAnimation(EntityAnimation.DYING.get());
             this.carcassHealth = Mth.clamp(Math.max(1, (int) Math.sqrt(this.getBbWidth() * this.getBbHeight())), 0, 8);
             this.tickCount = 0;
-            this.inventory.dropItems(this.level(), this.random);
+            this.inventory.dropItems(this.level, this.random);
         } else if (carcass) {
             this.setAnimation(EntityAnimation.DYING.get());
             this.carcassHealth = 0;
-            this.inventory.dropItems(this.level(), this.random);
+            this.inventory.dropItems(this.level, this.random);
         }
     }
 
     @Override
     public InteractionResult mobInteract(Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
-        boolean isClient = this.level().isClientSide;
+        boolean isClient = this.level.isClientSide;
 
         if (player.isCrouching() && hand == InteractionHand.MAIN_HAND) {
             if (this.isOwner(player)) {
@@ -1716,15 +1622,17 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
                     // player.openMenu(this.inventory);
                 } else {
                     if (isClient) {
-                        player.sendSystemMessage(
-                                Component.translatable("message.too_young").withStyle(ChatFormatting.RED)
+                        player.sendMessage(
+                                new TranslatableComponent("message.too_young").withStyle(ChatFormatting.RED),
+                                Util.NIL_UUID
                         );
                     }
                 }
             } else {
                 if (isClient) {
-                    player.sendSystemMessage(
-                            Component.translatable("message.not_owned.name").withStyle(ChatFormatting.RED)
+                    player.sendMessage(
+                            new TranslatableComponent("message.not_owned.name").withStyle(ChatFormatting.RED),
+                            Util.NIL_UUID
                     );
                 }
             }
@@ -1733,12 +1641,13 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
                 if (this.isOwner(player)) {
                     JurassicClient.openOrderMenu(this);
                 } else {
-                    player.sendSystemMessage(
-                            Component.translatable("message.not_owned.name").withStyle(ChatFormatting.RED)
+                    player.sendMessage(
+                            new TranslatableComponent("message.not_owned.name").withStyle(ChatFormatting.RED),
+                            Util.NIL_UUID
                     );
                 }
             } else if (!stack.isEmpty() && (this.metabolism.isThirsty() || this.metabolism.isHungry())) {
-                if (!this.level().isClientSide) {
+                if (!this.level.isClientSide) {
                     Item item = stack.getItem();
                     boolean fed = false;
                     if (item == Items.POTION) {
@@ -1826,6 +1735,15 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
         }
 
     }
+    @Override
+    public int getAnimationTick() {
+        return this.animationTick;
+    }
+
+    @Override
+    public void setAnimationTick(int tick) {
+        this.animationTick = tick;
+    }
 
     private void setAnimationSilently(Animation newAnimation) {
         if (this.isSleeping()) {
@@ -1843,16 +1761,6 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
             this.animationLength = (int) this.dinosaur.getPoseHandler().getAnimationLength(newAnimation, this.getGrowthStage());
         }
     }
-    @Override
-    public int getAnimationTick() {
-        return this.animationTick;
-    }
-
-    @Override
-    public void setAnimationTick(int tick) {
-        this.animationTick = tick;
-    }
-
     public boolean isBusy() {
         if (!this.isAlive()) return true;
         if (this.isCarcass() || this.isSleeping()) return true;
@@ -1928,7 +1836,7 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
     }
 
     public void breed(DinosaurEntity partner) {
-        if (!this.level().getGameRules().getRule(GameRuleHandler.DINO_BREEDING).get()) {
+        if (!this.level.getGameRules().getRule(GameRuleHandler.DINO_BREEDING).get()) {
             return;
         }
         this.breeding = partner;
@@ -1936,7 +1844,7 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
 
     @Override
     public boolean isSwimming() {
-        return (this.isInWater() || this.inLava()) && !this.onGround();
+        return (this.isInWater() || this.inLava()) && !this.onGround;
     }
 
 
@@ -1958,7 +1866,7 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
         nbt.putInt("BreedCooldown", this.breedCooldown);
         nbt.putInt("PregnantTime", this.pregnantTime);
         nbt.putBoolean("WasMoved", this.wasMoved);
-        nbt.putInt("Variant", this.getVariant());
+
         this.metabolism.writeToNBT(nbt);
 
         if (this.owner != null) {
@@ -2010,9 +1918,6 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
         this.deserializing = true;
         if(nbt.contains("Trackers")) this.entityData.set(TRACKER_UUIDS, nbt.getString("Trackers"));
         super.readAdditionalSaveData(nbt);
-        if (nbt.contains("Variant")) {
-            this.setVariant(nbt.getInt("Variant"));
-        }
         this.wasMoved = nbt.getBoolean("WasMoved");
         this.setAge(nbt.getInt("DinosaurAge"));
         this.setCarcass(nbt.getBoolean("IsCarcass"));
@@ -2024,17 +1929,6 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
         this.setSleeping(nbt.getBoolean("IsSleeping"));
         this.carcassHealth = nbt.getInt("CarcassHealth");
         this.order = Order.values()[nbt.getByte("Order")];
-        this.entityData.set(WATCHER_CURRENT_ORDER, (byte) this.order.ordinal());
-        if (this.order == Order.SIT) {
-            this.isSittingNaturally = false;
-            if (!this.isSleeping) {
-                this.setAnimation(EntityAnimation.RESTING.get());
-            }
-            if (!this.level().isClientSide) {
-                this.getNavigation().stop();
-                this.setDeltaMovement(0, this.getDeltaMovement().y, 0);
-            }
-        }
         this.breedCooldown = nbt.getInt("BreedCooldown");
         this.pregnantTime = nbt.getInt("PregnantTime");
         this.metabolism.readFromNBT(nbt);
@@ -2045,6 +1939,17 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
             this.owner = UUID.fromString(ownerUUID);
         }
 
+        this.entityData.set(WATCHER_CURRENT_ORDER, (byte) this.order.ordinal());
+        if (this.order == Order.SIT) {
+            this.isSittingNaturally = false;
+            if (!this.isSleeping) {
+                this.setAnimation(EntityAnimation.RESTING.get());
+            }
+            if (!this.level.isClientSide) {
+                this.getNavigation().stop();
+                this.setDeltaMovement(0, this.getDeltaMovement().y, 0);
+            }
+        }
         if (nbt.contains("Family")) {
             CompoundTag familyTag = nbt.getCompound("Family");
             this.family = Family.readFromNBT(familyTag);
@@ -2068,7 +1973,7 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
             ListTag children = nbt.getList("Children", Tag.TAG_COMPOUND);
             for (int i = 0; i < children.size(); i++) {
                 CompoundTag childTag = children.getCompound(i);
-                Entity entity = EntityType.loadEntityRecursive(childTag, level(), (entity1) -> {
+                Entity entity = EntityType.loadEntityRecursive(childTag, level, (entity1) -> {
                     return entity1;
                 });
                 if (entity instanceof DinosaurEntity) {
@@ -2089,7 +1994,7 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
 
     // Have to override this so that the IEntityAdditionalSpawnData methods work
     @Override
-    public Packet<ClientGamePacketListener> getAddEntityPacket() {
+    public Packet<?> getAddEntityPacket() {
         return NetworkHooks.getEntitySpawningPacket(this);
     }
 
@@ -2101,12 +2006,6 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
         buffer.writeBoolean(this.isMale);
         buffer.writeInt(this.growthSpeedOffset);
         this.attributes.write(buffer);
-        if (this instanceof IHasVariants variantHolder) {
-            buffer.writeBoolean(true);
-            buffer.writeInt(variantHolder.getVariant());
-        } else {
-            buffer.writeBoolean(false);
-        }
     }
 
     @Override
@@ -2117,12 +2016,7 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
         this.isMale = additionalData.readBoolean();
         this.growthSpeedOffset = additionalData.readInt();
         this.attributes = DinosaurAttributes.from(additionalData);
-        boolean hasVariant = additionalData.readBoolean();
-        if (hasVariant && this instanceof IHasVariants variantHolder) {
-            variantHolder.setVariant(additionalData.readInt());
-        } else if (hasVariant) {
-            additionalData.readInt();
-        }
+
         if (this.isCarcass) {
             this.setAnimation(EntityAnimation.DYING.get());
         } else {
@@ -2150,7 +2044,7 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
 
     public void setSleeping(boolean sleeping) {
         this.isSleeping = sleeping;
-        if (!this.level().isClientSide) {
+        if (!this.level.isClientSide) {
             this.entityData.set(WATCHER_IS_SLEEPING, this.isSleeping);
         }
     }
@@ -2181,7 +2075,7 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
         return "DinosaurEntity{ " +
                 this.dinosaur.getName() +
                 ", id=" + this.getId() +
-                ", remote=" + this.level().isClientSide +
+                ", remote=" + this.getLevel().isClientSide +
                 ", isDead=" + this.isDeadOrDying() +
                 ", isCarcass=" + this.isCarcass +
                 ", isSleeping=" + this.isSleeping +
@@ -2307,7 +2201,7 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
 
         this.order = order;
         this.entityData.set(WATCHER_CURRENT_ORDER, (byte) order.ordinal());
-        if (!this.level().isClientSide) {
+        if (!this.level.isClientSide) {
             if (order == Order.SIT) {
                 this.isSittingNaturally = false;
                 this.getNavigation().stop();
@@ -2322,14 +2216,13 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
                 this.setAnimation(EntityAnimation.IDLE.get());
             }
         }
-
     }
 
 //    public void setOrder(Order order) { todo: networking
 //
-//        if (this.level().isClientSide) {
+//        if (this.level.isClientSide) {
 //            if (this.owner != null) {
-//                Player player = this.level().getPlayerEntityByUUID(this.owner);
+//                Player player = this.level.getPlayerEntityByUUID(this.owner);
 //
 //                if (player != null) {
 //                    TextComponentString change = new TextComponentString(LangUtils.translate(LangUtils.SET_ORDER).replace("{order}", LangUtils.translate(LangUtils.ORDER_VALUE.get(order.name().toLowerCase(Locale.ENGLISH)))));
@@ -2363,7 +2256,6 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
         if (this.getDNAQuality() <= 0) {
             this.setDNAQuality(100);
         }
-
         this.setMale(this.random.nextBoolean());
 
         this.refreshDimensions();
@@ -2428,8 +2320,8 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
 
     @Override
     public boolean checkSpawnObstruction(LevelReader pLevel) {
-        if(!level().isClientSide())
-            return super.checkSpawnObstruction(pLevel) && this.level().dimensionType().equals(getServer().overworld().dimensionType());
+        if(!pLevel.isClientSide())
+            return super.checkSpawnObstruction(pLevel) && this.level.dimensionType().equals(getServer().overworld().dimensionType());
         return false;
     }
 
@@ -2471,7 +2363,7 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
                 && (this.inWater() || this.inLava());
 
         if (needsShoreSearch) {
-            BlockPos shore = AIUtils.findShore(this.level(), this.blockPosition());
+            BlockPos shore = AIUtils.findShore(this.level, this.blockPosition());
             boolean pathFound = false;
             if (shore != null) {
                 double speed = 1.2D + Math.max(0.0F, 1.0F - height) * 0.6D;
@@ -2487,9 +2379,9 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
             Path path = this.getNavigation().getPath();
             if (path != null) {
                 AABB detectionBox = this.getBoundingBox().inflate(0.5D, 0.5D, 0.5D);
-                if (!this.level().noCollision(detectionBox)) { // If it collides with something
+                if (!this.level.noCollision(detectionBox)) { // If it collides with something
                     // There is no getCollisionBoxes() in 1.19.2, but we can approximate by checking collision shapes
-                    for (VoxelShape shape : this.level().getBlockCollisions(this, detectionBox)) {
+                    for (VoxelShape shape : this.level.getBlockCollisions(this, detectionBox)) {
                         AABB box = shape.bounds();
                         if (box.maxY > this.getBoundingBox().minY) {
                             this.setJumping(true); // JumpHelper is replaced by setJumping in LivingEntity
@@ -2504,7 +2396,7 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
 
 
     public void target(Class<? extends LivingEntity>... entities){
-        if(this.taskHelper == null) {//don't want to initialize it twice
+        if(this.taskHelper == null) {
             this.taskHelper = new TaskHelper(this.getClass());
         }
         this.attackTargets.addAll(Arrays.asList(entities));
@@ -2513,9 +2405,6 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
     }
 
     public static boolean entityPredicate(LivingEntity input, Class<? extends LivingEntity> ... entities){
-        // Use isAssignableFrom rather than == to match subclasses.  This allows
-        // specifying a base class (e.g. Animal.class) and having all derived
-        // classes match as well.
         return Arrays.stream(entities).anyMatch((clazz) -> clazz.isAssignableFrom(input.getClass()));
     }
 
@@ -2545,9 +2434,8 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
         if (!dinosaur.isMarineCreature() && !(this instanceof AmphibianDinosaurEntity) && !(this instanceof PenguinDinosaurEntity)) {
             this.goalSelector.addGoal(0, new AdvancedSwimEntityAI(this));
         }
-
-        this.goalSelector.addGoal(0, new EscapeWireEntityAI(this));
         this.goalSelector.addGoal(0, new FeederEntityAI(this));
+        this.goalSelector.addGoal(0, new EscapeWireEntityAI(this));
         this.goalSelector.addGoal(1, new PanicGoal(this, 1.25D));
         this.goalSelector.addGoal(1, new RespondToAttackEntityAI(this));
         this.goalSelector.addGoal(1, new TemptNonAdultEntityAI(this, 0.6D));
@@ -2589,7 +2477,6 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
             this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Player.class, true));
         }
 
-
         if (this.taskHelper != null) {
             this.taskHelper.setSelectorsAndRegisterGoals(this.goalSelector, this.targetSelector);
         }
@@ -2600,7 +2487,7 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
     private static final int FEEDER_VERTICAL = 8;
 
     public BlockPos getClosestFeeder() {
-        Level lvl = this.level();
+        Level lvl = this.level;
         if (lvl == null || lvl.isClientSide) {
             return this.closestFeeder;
         }
@@ -2673,7 +2560,7 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
 
 
     private boolean isFeederUsable(BlockPos pos) {
-        Level lvl = this.level();
+        Level lvl = this.level;
         if (lvl == null || pos == null || !lvl.hasChunkAt(pos)) {
             return false;
         }

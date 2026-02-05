@@ -30,7 +30,7 @@ public class TaskHelper {
 
     Object2IntArrayMap<Goal> goalPriorityMap = new Object2IntArrayMap<>();
 
-    public TaskHelper(GoalSelector Eselector , GoalSelector Tselector, Class<? extends Entity> entityClass){
+    public TaskHelper(GoalSelector Eselector, GoalSelector Tselector, Class<? extends Entity> entityClass){
         this.goalSelector = Eselector;
         this.targetSelector = Tselector;
         this.entityClass = entityClass;

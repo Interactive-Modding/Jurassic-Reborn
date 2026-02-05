@@ -33,7 +33,7 @@ public class CageEntity {
     public static void captureEntity(LivingEntity entity, ItemStack stack) {
         if (entity != null && !(entity instanceof Player || entity instanceof EnderDragon || entity instanceof WitherBoss || entity instanceof SwimmingDinosaurEntity || entity instanceof ElderGuardian)) {
             if (!stack.hasTag()) {
-                ResourceLocation id = ForgeRegistries.ENTITY_TYPES.getKey(entity.getType());
+                ResourceLocation id = ForgeRegistries.ENTITIES.getKey(entity.getType());
                 if (id != null && !ID_BLACKLIST.contains(id.toString())) {
                     CompoundTag entityTag = new CompoundTag();
                     entity.saveWithoutId(entityTag);

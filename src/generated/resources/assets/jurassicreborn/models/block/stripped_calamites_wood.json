@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/cube_column",
   "textures": {
-    "end": "jurassicreborn:block/stripped_calamites_log",
-    "side": "jurassicreborn:block/stripped_calamites_log"
+    "side": "jurassicreborn:block/stripped_calamites_log",
+    "end": "jurassicreborn:block/stripped_calamites_log"
   }
 }

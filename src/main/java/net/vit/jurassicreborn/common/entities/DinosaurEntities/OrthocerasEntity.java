@@ -3,8 +3,6 @@ package net.vit.jurassicreborn.common.entities.DinosaurEntities;
 import net.minecraft.world.entity.GlowSquid;
 import net.minecraft.world.entity.animal.*;
 import net.minecraft.world.entity.animal.axolotl.Axolotl;
-import net.minecraft.world.entity.animal.frog.Frog;
-import net.minecraft.world.entity.animal.frog.Tadpole;
 import net.vit.jurassicreborn.common.entities.Dinosaurs.DinosaurHandler;
 import net.vit.jurassicreborn.common.entities.SwimmingDinosaurEntity;
 import net.minecraft.world.level.Level;
@@ -16,7 +14,7 @@ public class OrthocerasEntity extends SwimmingDinosaurEntity {
     public OrthocerasEntity (Level world, EntityType<OrthocerasEntity> type)
     {
         super(world, type, DinosaurHandler.ORTHOCERAS);
-        this.target(Squid.class, Cod.class, Salmon.class, TropicalFish.class,  Axolotl.class, GlowSquid.class, Frog.class, Tadpole.class);
+        this.target(Squid.class, Cod.class, Salmon.class, TropicalFish.class,  Axolotl.class, GlowSquid.class);
     }
 
     @Override

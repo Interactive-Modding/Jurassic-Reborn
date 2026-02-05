@@ -2,7 +2,7 @@ package net.vit.jurassicreborn.common.entities.ai.navigation;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.FluidTags;
-import net.minecraft.util.RandomSource;
+import java.util.Random;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
@@ -32,7 +32,7 @@ public class MoveUnderwaterEntityAI extends Goal {
         // lower idle chance so we don't drift upward between targets
         if (mob.getRandom().nextFloat() < 0.15F) return false;
 
-        Vec3 target = pickUnderwaterTarget(mob.level(), mob.blockPosition(), mob.getRandom());
+        Vec3 target = pickUnderwaterTarget(mob.level, mob.blockPosition(), mob.getRandom());
         if (target == null) return false;
 
         this.x = target.x;
@@ -56,7 +56,7 @@ public class MoveUnderwaterEntityAI extends Goal {
     }
 
     /** Pick a water target inside a depth band (not too close to surface or floor). */
-    private Vec3 pickUnderwaterTarget(Level level, BlockPos origin, RandomSource rnd) {
+    private Vec3 pickUnderwaterTarget(Level level, BlockPos origin, Random rnd) {
         if (level == null) return null;
         final int minYWorld = level.getMinBuildHeight() + 1;
         final int maxYWorld = level.getMaxBuildHeight() - 2;
@@ -125,7 +125,7 @@ public class MoveUnderwaterEntityAI extends Goal {
 
     /** True if feet are in water and the block below is solid (sitting on the bottom). */
     private boolean isBottomedOut(SwimmingDinosaurEntity e) {
-        Level lvl = e.level();
+        Level lvl = e.level;
         BlockPos feet = e.blockPosition();
         if (!lvl.hasChunkAt(feet) || !isWater(lvl, feet)) return false;
         BlockPos below = feet.below();

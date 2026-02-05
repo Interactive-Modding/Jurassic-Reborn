@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "jurassicreborn:helicopter"
+    ]
+  },
+  "criteria": {
+    "has_engine_system": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:engine_system"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "jurassicreborn:helicopter"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_engine_system",
+      "has_the_recipe"
+    ]
+  ]
+}

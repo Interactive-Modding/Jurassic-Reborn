@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "jurassicreborn:dart_lethal"
+    ]
+  },
+  "criteria": {
+    "has_dart_poison_cycasin": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dart_poison_cycasin"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "jurassicreborn:dart_lethal"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_dart_poison_cycasin",
+      "has_the_recipe"
+    ]
+  ]
+}

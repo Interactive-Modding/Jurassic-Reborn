@@ -1,7 +1,6 @@
 package net.vit.jurassicreborn.client.sounds;
 
 import net.minecraft.client.resources.sounds.AbstractTickableSoundInstance;
-import net.minecraft.client.resources.sounds.SoundInstance;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
@@ -20,7 +19,7 @@ public class CarLoopSound extends AbstractTickableSoundInstance {
                         SoundEvent event,
                         SoundSource category,
                         Predicate<VehicleEntity> keepPlaying) {
-        super(event, category, SoundInstance.createUnseededRandom());
+        super(event, category);
         this.car = car;
         this.keepPlaying = keepPlaying;
         this.looping = true;

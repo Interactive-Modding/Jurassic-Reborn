@@ -32,9 +32,15 @@ public class SkeletonAssemblyCategory implements IRecipeCategory<SkeletonAssembl
     }
 
     @Override public RecipeType<SkeletonAssemblyRecipeExtension> getRecipeType() { return TYPE; }
+    @Override public ResourceLocation getUid()               { return TYPE.getUid(); }
     @Override public Component getTitle()            { return title; }
     @Override public IDrawable getBackground()        { return bg; }
     @Override public IDrawable getIcon()              { return null; }
+
+    @Override
+    public Class<? extends SkeletonAssemblyRecipeExtension> getRecipeClass() {
+        return SkeletonAssemblyRecipeExtension.class;
+    }
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder,

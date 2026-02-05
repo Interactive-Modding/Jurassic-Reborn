@@ -1,13 +1,13 @@
 {
   "variants": {
+    "type=top": {
+      "model": "jurassicreborn:block/phoenix_slab_top"
+    },
     "type=bottom": {
       "model": "jurassicreborn:block/phoenix_slab"
     },
     "type=double": {
       "model": "jurassicreborn:block/phoenix_planks"
-    },
-    "type=top": {
-      "model": "jurassicreborn:block/phoenix_slab_top"
     }
   }
 }

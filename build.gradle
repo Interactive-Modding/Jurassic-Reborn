@@ -1,12 +1,18 @@
 buildscript {
     repositories {
+
+        // These repositories are only for Gradle plugins, put any other repositories in the repository block further below
         maven { url = 'https://maven.minecraftforge.net' }
+        maven { url = 'https://files.minecraftforge.net/maven' }
         maven { url = 'https://repo.spongepowered.org/repository/maven-public/' }
-        maven { url = 'https://maven.parchmentmc.org' }
+        maven { url = 'https://maven.parchmentmc.org' } // Add this line
+
+
         mavenCentral()
+
     }
     dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+' 
+        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
         classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
         classpath 'org.parchmentmc:librarian:1.+'
     }
@@ -14,6 +20,7 @@ buildscript {
 
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'org.spongepowered.mixin'
+
 apply plugin: 'org.parchmentmc.librarian.forgegradle'
 
 group = 'net.vit'
@@ -25,115 +32,241 @@ java {
 }
 
 minecraft {
-    mappings channel: 'parchment', version: parchment_version
+    // The mappings can be changed at any time and must be in the following format.
+    // Channel:   Version:
+    // snapshot   YYYYMMDD   Snapshot are built nightly.
+    // stable     #          Stables are built at the discretion of the MCP team.
+    // official   MCVersion  Official field/method names from Mojang mapping files
+    //
+    // You must be aware of the Mojang license when using the 'official' mappings.
+    // See more information here: https://github.com/MinecraftForge/MCPConfig/blob/master/Mojang.md
+    //
+    // Use non-default mappings at your own risk. They may not always work.
+    // Simply re-run your setup task after changing the mappings to update your workspace.
+//    mappings channel: 'official', version: '1.18.2' //<- decided to use Parchment instead
+    mappings channel: 'parchment', version: '2022.11.06-1.18.2'
 
     accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 
+
+
+    // accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
+
+    // Default run configurations.
+    // These can be tweaked, removed, or duplicated as needed.
     runs {
         client {
             workingDirectory project.file('run')
+
+            // Recommended logging data for a userdev environment
+            // The markers can be added/removed as needed separated by commas.
+            // "SCAN": For mods scan.
+            // "REGISTRIES": For firing of registry events.
+            // "REGISTRYDUMP": For getting the contents of all registries.
             property 'forge.logging.markers', 'REGISTRIES'
+
+            // Recommended logging level for the console
+            // You can set various levels here.
+            // Please read: https://stackoverflow.com/questions/2031163/when-to-use-the-different-log-levels
             property 'forge.logging.console.level', 'debug'
+
             property 'forge.enabledGameTestNamespaces', 'jurassicreborn'
-            mods { jurassicreborn { source sourceSets.main } }
+
+            mods {
+                jurassicreborn {
+                    source sourceSets.main
+                }
+            }
         }
+
         server {
             workingDirectory project.file('run')
+
+            // Recommended logging data for a userdev environment
+            // The markers can be added/removed as needed separated by commas.
+            // "SCAN": For mods scan.
+            // "REGISTRIES": For firing of registry events.
+            // "REGISTRYDUMP": For getting the contents of all registries.
             property 'forge.logging.markers', 'REGISTRIES'
+
+            // Recommended logging level for the console
+            // You can set various levels here.
+            // Please read: https://stackoverflow.com/questions/2031163/when-to-use-the-different-log-levels
             property 'forge.logging.console.level', 'debug'
+
             property 'forge.enabledGameTestNamespaces', 'jurassicreborn'
-            mods { jurassicreborn { source sourceSets.main } }
+
+            mods {
+                jurassicreborn {
+                    source sourceSets.main
+                }
+            }
         }
+
         gameTestServer {
             workingDirectory project.file('run')
+
+            // Recommended logging data for a userdev environment
+            // The markers can be added/remove as needed separated by commas.
+            // "SCAN": For mods scan.
+            // "REGISTRIES": For firing of registry events.
+            // "REGISTRYDUMP": For getting the contents of all registries.
             property 'forge.logging.markers', 'REGISTRIES'
+
+            // Recommended logging level for the console
+            // You can set various levels here.
+            // Please read: https://stackoverflow.com/questions/2031163/when-to-use-the-different-log-levels
             property 'forge.logging.console.level', 'debug'
+
+            // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
             property 'forge.enabledGameTestNamespaces', 'jurassicreborn'
-            mods { jurassicreborn { source sourceSets.main } }
+
+            mods {
+                jurassicreborn {
+                    source sourceSets.main
+                }
+            }
         }
+
         data {
             workingDirectory project.file('run')
+
+            // Recommended logging data for a userdev environment
+            // The markers can be added/removed as needed separated by commas.
+            // "SCAN": For mods scan.
+            // "REGISTRIES": For firing of registry events.
+            // "REGISTRYDUMP": For getting the contents of all registries.
             property 'forge.logging.markers', 'REGISTRIES'
+
+            // Recommended logging level for the console
+            // You can set various levels here.
+            // Please read: https://stackoverflow.com/questions/2031163/when-to-use-the-different-log-levels
             property 'forge.logging.console.level', 'debug'
+
+            // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
             args '--mod', 'jurassicreborn', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
-            mods { jurassicreborn { source sourceSets.main } }
+
+            mods {
+                jurassicreborn {
+                    source sourceSets.main
+                }
+            }
         }
     }
 }
 
 mixin {
     add sourceSets.main, "jurassicreborn.refmap.json"
+
     config "jurassicreborn.mixins.json"
 }
 
+// Include resources generated by data generators.
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
-    mavenCentral()
-    maven { url = "https://maven.minecraftforge.net" }
+    // Put repositories for dependencies here
+    // ForgeGradle automatically adds the Forge maven and Maven Central for you
+
+    // If you have mod jar dependencies in ./libs, you can declare them as a repository like so:
+    // flatDir {
+    //     dir 'libs'
+    // }
     maven { url = "https://jitpack.io" }
-    maven { url = "https://repo.spongepowered.org/repository/maven-public/" }
-    maven { url = "https://maven.parchmentmc.org" }
-    // JEI lives here for 1.19.4
-    maven { url = "https://maven.blamejared.com" }
+    maven { url = 'https://files.minecraftforge.net/maven' }
     maven {
-        name = "Progwml6's maven"
+        name = "Progwml6 maven"
         url = "https://dvs1.progwml6.com/files/maven/"
     }
     maven {
-        name = "Jared's maven"
-        url = "https://maven.blamejared.com/"
-    }
-    maven {
+        // location of a maven mirror for JEI files, as a fallback
         name = "ModMaven"
         url = "https://modmaven.dev"
     }
     maven {
-        name = "ModMaven"
-        url = "https://modmaven.dev"
+        name = "CurseForge"
+        url = "https://minecraft.curseforge.com/api/maven/"
+        content {
+            includeGroup "curse.maven"
+        }
     }
     maven {
         name = "CurseMaven"
         url = "https://www.cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
     }
     maven {
         name = 'GeckoLib'
-        url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
-        content {
-            includeGroupByRegex("software\\.bernie.*")
-            includeGroup("com.eliotlash.mclib")
-        }
+        url = 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
     }
 }
 
+
+
 dependencies {
+    // Specify the version of Minecraft to use. If this is any group other than 'net.minecraft' it is assumed
+    // that the dep is a ForgeGradle 'patcher' dependency, and its patches will be applied.
+    // The userdev artifact is a special name and will get all sorts of transformations applied to it.
     minecraft "net.minecraftforge:forge:${forge_version}"
 
+    /* ---- remain­ing deps unchanged ­… -------------------------------- */
+    // Real mod deobf dependency examples - these get remapped to your current mappings
+    // compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api") // Adds JEI API as a compile dependency
+    // runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}") // Adds the full JEI mod as a runtime dependency
+    // implementation fg.deobf("com.tterrag.registrate:Registrate:MC${mc_version}-${registrate_version}") // Adds registrate as a dependency
+
+    // Examples using mod jars from ./libs
+    // implementation fg.deobf("blank:coolmod-${mc_version}:${coolmod_version}")
+
+    // For more info...
+    // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
+    // http://www.gradle.org/docs/current/userguide/dependency_management.html
+
     implementation(annotationProcessor("com.github.bawnorton.mixinsquared:mixinsquared-common:0.0.2"))
-    implementation(jarJar("com.github.bawnorton.mixinsquared:mixinsquared-forge:0.0.2")) { jarJar.ranged(it, "[0.0.2,)") }
+    implementation(jarJar("com.github.bawnorton.mixinsquared:mixinsquared-forge:0.0.2")) {
+        jarJar.ranged(it, "[0.0.2,)")
+    }
+
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 
-    // GeckoLib
-    implementation fg.deobf("software.bernie.geckolib:geckolib-forge-${geckolib_mc}:${geckolib_version}")
-    implementation("com.eliotlash.mclib:mclib:20")
 
-    // Citadel (Curse 1.19.4 build)
-    implementation fg.deobf("curse.maven:citadel-${citadel_curse_id}:6702068")  // <-- was 4715346
+    //Citadel
+//    compileOnly "curse.maven:citadel4-331936:${citadel_version}"
+//    runtimeOnly "curse.maven:citadel4-331936:${citadel_version}"
+    compileOnly fg.deobf("curse.maven:citadel-331936:${citadel_version}")
+    runtimeOnly fg.deobf("curse.maven:citadel-331936:${citadel_version}")
 
-    // JEI (1.19.4)
-    implementation fg.deobf("mezz.jei:jei-${mc_version}-forge:${jei_version}")
+    compileOnly(fg.deobf("mezz.jei:jei-${mc_version}-common-api:${jei_version}"))
+    compileOnly(fg.deobf("mezz.jei:jei-${mc_version}-forge-api:${jei_version}"))
+    // at runtime, use the full JEI jar for Forge
+    runtimeOnly(fg.deobf("mezz.jei:jei-${mc_version}-forge:${jei_version}"))
+    //GeckoLib
+    implementation fg.deobf("software.bernie.geckolib:geckolib-forge-${geckolib_version}")
+
     implementation "org.joml:joml:${joml_version}"
+
+    //VecMathImpl
     implementation "javax.vecmath:vecmath:${vecmath_version}"
+
+    //performance mods
+    //implementation fg.deobf("curse.maven:krypton-reforged-549394:4606519")
+//    implementation fg.deobf("curse.maven:radon-596879:3822783")
+//    implementation fg.deobf("curse.maven:saturn-670986:4800861") clogs up the log
+
 }
 
-
+// Example for how to get properties into the manifest for reading at runtime.
 jar {
     manifest {
         attributes([
-                "Specification-Title": "jurassicreborn",
-                "Specification-Version": "1",
-                "Implementation-Title": project.name,
-                "Implementation-Version": project.jar.archiveVersion,
+                "Specification-Title"     : "jurassicreborn",
+                //"Specification-Vendor": "jurassicreborn authors",
+                "Specification-Version"   : "1", // We are version 1 of ourselves
+                "Implementation-Title"    : project.name,
+                "Implementation-Version"  : project.jar.archiveVersion,
+                //"Implementation-Vendor": "jurassicreborn authors",
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }

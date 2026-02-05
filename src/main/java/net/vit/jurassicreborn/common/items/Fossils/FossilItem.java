@@ -28,6 +28,8 @@ import net.vit.jurassicreborn.common.util.api.GrindableItem;
 import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.network.chat.TextComponent;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -242,12 +244,12 @@ public class FossilItem extends Item implements GrindableItem {
                 colour = ChatFormatting.RED;
             }
 
-            pTooltipComponents.add(Component.literal(Component.translatable(LangUtil.LORE.formatted("dna_quality")).getString().replace("%1$s", LangUtil.getFormattedQuality(quality).getString())).withStyle(colour));
-            pTooltipComponents.add(LangUtil.replaceInKey(() -> LangUtil.getFormattedGenetics(nbt.getString("Genetics")).getString(), "%1$s", Component.translatable(LangUtil.LORE.formatted("genetic_code")).getString()).withStyle(ChatFormatting.BLUE));
+            pTooltipComponents.add(new TextComponent(new TranslatableComponent(LangUtil.LORE.formatted("dna_quality")).getString().replace("%1$s", LangUtil.getFormattedQuality(quality).getString())).withStyle(colour));
+            pTooltipComponents.add(LangUtil.replaceInKey(() -> LangUtil.getFormattedGenetics(nbt.getString("Genetics")).getString(), "%1$s", new TranslatableComponent(LangUtil.LORE.formatted("genetic_code")).getString()).withStyle(ChatFormatting.BLUE));
         }
         if (this.type.equals("skull") && SKULL_DISPLAY_DINOS.contains(this.dino)) {
-            pTooltipComponents.add(Component.literal(Component.translatable("pose.name").getString() + ": " + LangUtil.getStandType(getHasStand(stack))).withStyle(ChatFormatting.GOLD));
-            pTooltipComponents.add(Component.translatable("lore.change_variant.name").withStyle(ChatFormatting.WHITE));
+            pTooltipComponents.add(new TextComponent(new TranslatableComponent("pose.name").getString() + ": " + LangUtil.getStandType(getHasStand(stack))).withStyle(ChatFormatting.GOLD));
+            pTooltipComponents.add(new TranslatableComponent("lore.change_variant.name").withStyle(ChatFormatting.WHITE));
         }
         super.appendHoverText(stack, pLevel, pTooltipComponents, pIsAdvanced);
     }
@@ -341,7 +343,7 @@ public class FossilItem extends Item implements GrindableItem {
             boolean newVal = changeStandType(stack);
             if (level.isClientSide && newVal != oldVal) {
                 String msg = LangUtil.translate(LangUtil.STAND_CHANGE.get("type")).replace("{mode}", LangUtil.getStandType(newVal));
-                player.displayClientMessage(Component.literal(msg).withStyle(ChatFormatting.YELLOW), true);
+                player.displayClientMessage(new TextComponent(msg).withStyle(ChatFormatting.YELLOW), true);
             }
             return InteractionResultHolder.sidedSuccess(stack, level.isClientSide);
         }
@@ -392,9 +394,6 @@ public class FossilItem extends Item implements GrindableItem {
         BlockEntity be = level.getBlockEntity(pos);
         if (be instanceof SkullDisplayBlockEntity tile) {
             tile.setModel(DinosaurHandler.getId(this.dino), !this.isFresh(), getHasStand(stack));
-            ItemStack placedStack = stack.copy();
-            placedStack.setCount(1);
-            tile.setDisplayedStack(placedStack);
             Direction face = context.getClickedFace();
             if (face.getAxis() == Direction.Axis.Y && context.getPlayer() != null) {
                 tile.setAngle(angleToPlayer(pos, context.getPlayer().getX(), context.getPlayer().getZ()));
@@ -403,6 +402,7 @@ public class FossilItem extends Item implements GrindableItem {
             } else if (face.getAxis() == Direction.Axis.Z) {
                 tile.setAngle((short) (180 + face.toYRot()));
             }
+            tile.setChanged();
         }
 
         level.updateNeighborsAt(pos, block);

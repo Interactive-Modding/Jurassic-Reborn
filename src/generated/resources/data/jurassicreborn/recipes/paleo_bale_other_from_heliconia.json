@@ -1,20 +1,18 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "building",
   "group": "jurassicreborn:paleo_bale_other",
-  "key": {
-    "A": {
-      "item": "jurassicreborn:heliconia"
-    }
-  },
   "pattern": [
     "AAA",
     "AAA",
     "AAA"
   ],
-  "result": {
-    "count": 2,
-    "item": "jurassicreborn:paleo_bale_other"
+  "key": {
+    "A": {
+      "item": "jurassicreborn:heliconia"
+    }
   },
-  "show_notification": true
+  "result": {
+    "item": "jurassicreborn:paleo_bale_other",
+    "count": 2
+  }
 }

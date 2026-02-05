@@ -1,7 +1,11 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "building",
   "group": "jurassicreborn:clear_glass",
+  "pattern": [
+    "AAA",
+    "ABA",
+    "AAA"
+  ],
   "key": {
     "A": {
       "item": "minecraft:glass"
@@ -10,14 +14,8 @@
       "item": "minecraft:iron_ingot"
     }
   },
-  "pattern": [
-    "AAA",
-    "ABA",
-    "AAA"
-  ],
   "result": {
-    "count": 8,
-    "item": "jurassicreborn:clear_glass"
-  },
-  "show_notification": true
+    "item": "jurassicreborn:clear_glass",
+    "count": 8
+  }
 }

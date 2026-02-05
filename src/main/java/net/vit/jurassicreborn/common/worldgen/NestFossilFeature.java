@@ -5,7 +5,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.tags.BiomeTags;
-import net.minecraft.util.RandomSource;
+import java.util.Random;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Blocks;
@@ -29,7 +29,7 @@ public class NestFossilFeature extends Feature<NoneFeatureConfiguration> {
     @Override
     public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> context) {
         WorldGenLevel level  = context.level();
-        RandomSource   rand  = context.random();
+        Random   rand  = context.random();
         BlockPos       origin = context.origin();
 
         /* ---------- biome-based spawn chance ---------- */
@@ -78,7 +78,7 @@ public class NestFossilFeature extends Feature<NoneFeatureConfiguration> {
                 BlockPos p = pos.offset(dx, 0, dz);
                 BlockState ground = level.getBlockState(p);
 
-                if (!ground.isAir() && ground.getFluidState().isEmpty()) {
+                if (!ground.isAir() && !ground.getMaterial().isLiquid()) {
                     BlockState replace = null;
 
                     if (rand.nextFloat() < 0.8F) {                // 80 % chance to replace
@@ -105,7 +105,7 @@ public class NestFossilFeature extends Feature<NoneFeatureConfiguration> {
             BlockPos p = pos.offset(rand.nextInt(size), 0, rand.nextInt(size));
             BlockState ground = level.getBlockState(p);
 
-            if (!ground.isAir() && ground.getFluidState().isEmpty()) {
+            if (!ground.isAir() && !ground.getMaterial().isLiquid()) {
                 level.setBlock(p, nest, 2);
             }
         }

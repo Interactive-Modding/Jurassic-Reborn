@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "jurassicreborn:dna_synthesizer"
+    ]
+  },
+  "criteria": {
+    "has_advanced_circuit": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:advanced_circuit"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "jurassicreborn:dna_synthesizer"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_advanced_circuit",
+      "has_the_recipe"
+    ]
+  ]
+}

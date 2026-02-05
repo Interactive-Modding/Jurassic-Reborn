@@ -1,14 +1,14 @@
 package net.vit.jurassicreborn.client.render.block;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
+import com.mojang.math.Vector3f;
 import net.vit.jurassicreborn.common.blocks.ModBlocks;
 import net.vit.jurassicreborn.common.blocks.entities.DNABlocks.DNASequencer.DNASequencerBlock;
 import net.vit.jurassicreborn.common.blocks.entities.DNABlocks.DNASequencer.DNASequencerBlockEntity;
 import net.vit.jurassicreborn.common.network.Network;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.world.item.ItemDisplayContext;
+import net.minecraft.client.renderer.block.model.ItemTransforms;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.core.Direction;
@@ -79,7 +79,7 @@ public class DNASequencerRenderer implements BlockEntityRenderer<DNASequencerBlo
 
             pPoseStack.scale(scale, scale, scale);//scale pose stack
 
-            pPoseStack.mulPose(Axis.XP.rotation(Mth.PI / 2));//make the item model face up
+            pPoseStack.mulPose(Vector3f.XP.rotation(Mth.PI / 2));//make the item model face up
 
 
             ItemStack currentInput = slots.removeLast();//get the right item from the deque
@@ -87,7 +87,7 @@ public class DNASequencerRenderer implements BlockEntityRenderer<DNASequencerBlo
             ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();//get the item renderer
 
 
-            itemRenderer.renderStatic(currentInput, ItemDisplayContext.NONE, pPackedLight, pPackedOverlay, pPoseStack, pBufferSource, blockEntity.getLevel(), 0);//render the item
+            itemRenderer.renderStatic(currentInput, ItemTransforms.TransformType.NONE, pPackedLight, pPackedOverlay, pPoseStack, pBufferSource, 0);//render the item
 
 
             pPoseStack.popPose();//render? something? the item

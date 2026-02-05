@@ -1,20 +1,18 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "building",
   "group": "wooden_stairs",
-  "key": {
-    "#": {
-      "item": "jurassicreborn:magnolia_planks"
-    }
-  },
   "pattern": [
     "#  ",
     "## ",
     "###"
   ],
-  "result": {
-    "count": 4,
-    "item": "jurassicreborn:magnolia_stairs"
+  "key": {
+    "#": {
+      "item": "jurassicreborn:magnolia_planks"
+    }
   },
-  "show_notification": true
+  "result": {
+    "item": "jurassicreborn:magnolia_stairs",
+    "count": 4
+  }
 }

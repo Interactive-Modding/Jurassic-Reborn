@@ -1,10 +1,9 @@
 {
   "type": "minecraft:smelting",
-  "category": "food",
-  "cookingtime": 200,
-  "experience": 0.35,
   "ingredient": {
     "item": "jurassicreborn:meat/meat_diplodocus"
   },
-  "result": "jurassicreborn:meat/steak_diplodocus"
+  "result": "jurassicreborn:meat/steak_diplodocus",
+  "experience": 0.35,
+  "cookingtime": 200
 }

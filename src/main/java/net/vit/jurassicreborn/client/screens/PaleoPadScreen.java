@@ -7,8 +7,9 @@ import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.client.gui.GuiGraphics;
 import net.vit.jurassicreborn.JurassicReborn;
 import net.vit.jurassicreborn.client.screens.paleopad.GuiApp;
 import net.vit.jurassicreborn.client.screens.paleopad.GuiAppRegistry;
@@ -28,7 +29,7 @@ public class PaleoPadScreen extends Screen {
     }
 
     public PaleoPadScreen(App initialApp) {
-        super(Component.literal("PaleoPad"));
+        super(new TextComponent("PaleoPad"));
         this.initialApp = initialApp;
     }
     @Override
@@ -59,12 +60,11 @@ public class PaleoPadScreen extends Screen {
             PlayerData.get(minecraft.player).closeApp(focus.getApp());
         }
     }
-    public void drawScaledRect(GuiGraphics guiGraphics, int x, int y, int w, int h, float scale, int color) {
-        PoseStack poseStack = guiGraphics.pose();
+    public void drawScaledRect(PoseStack poseStack, int x, int y, int w, int h, float scale, int color) {
         poseStack.pushPose();
         poseStack.translate(x, y, 0);
         poseStack.scale(scale, scale, 1.0F);
-        guiGraphics.fill(0, 0, w, h, color);
+        Screen.fill(poseStack, 0, 0, w, h, color); // Static import! Use Screen.fill
         poseStack.popPose();
     }
     @Override
@@ -105,15 +105,15 @@ public class PaleoPadScreen extends Screen {
     }
 
     @Override
-    public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
-        renderBackground(guiGraphics);
+    public void render(PoseStack poseStack, int mouseX, int mouseY, float partialTicks) {
+        renderBackground(poseStack);
 
         Minecraft mc = Minecraft.getInstance();
         Font font = mc.font;
 
         // Draw background
         RenderSystem.setShaderTexture(0, TEXTURE);
-        guiGraphics.blit(TEXTURE, width / 2 - 128, 40, 0, 0, 256, 256, 256, 256);
+        blit(poseStack, width / 2 - 128, 40, 0, 0, 256, 256, 256, 256);
 
         List<App> apps = AppHandler.INSTANCE.getApps();
 
@@ -125,7 +125,7 @@ public class PaleoPadScreen extends Screen {
         String hoursStr = String.format("%02d", hours);
         String minutesStr = String.format("%02d", minutes);
 
-        drawCenteredScaledText(guiGraphics, hoursStr + ":" + minutesStr, width / 2, 50, 1.0F, 0xFFFFFF);
+        drawCenteredScaledText(poseStack, hoursStr + ":" + minutesStr, width / 2, 50, 1.0F, 0xFFFFFF);
 
         // Draw separator (simulate scaled line)
 
@@ -139,42 +139,39 @@ public class PaleoPadScreen extends Screen {
                 GuiApp gui = GuiAppRegistry.getGui(app);
 
                 RenderSystem.setShaderTexture(0, gui.getTexture(this));
-                guiGraphics.blit(gui.getTexture(this), x + 5 + width / 2 - 115, y + 5 + 65, 0, 0, 32, 32, 32, 32);
+                blit(poseStack, x + 5 + width / 2 - 115, y + 5 + 65, 0, 0, 32, 32, 32, 32);
 
-                drawCenteredScaledText(guiGraphics, app.getName(), x + 22 + width / 2 - 115, y + 39 + 65, 0.7F, 0xFFFFFF);
+                drawCenteredScaledText(poseStack, app.getName(), x + 22 + width / 2 - 115, y + 39 + 65, 0.7F, 0xFFFFFF);
             }
-            drawScaledText(guiGraphics, Component.translatable("paleopad.os.name").getString(), width / 2 - 115 + 2, 65 - 10, 1.0F, 0xFFFFFF);
+            drawScaledText(poseStack, new TranslatableComponent("paleopad.os.name").getString(), width / 2 - 115 + 2, 65 - 10, 1.0F, 0xFFFFFF);
         } else {
             if (focus.getApp().getName() != null) {
-                drawScaledText(guiGraphics, focus.getApp().getName(), width / 2 - 115 + 2, 65 - 10, 1.0F, 0xFFFFFF);
-                focus.render(guiGraphics, mouseX, mouseY, this, partialTicks);
+                drawScaledText(poseStack, focus.getApp().getName(), width / 2 - 115 + 2, 65 - 10, 1.0F, 0xFFFFFF);
+                focus.render(poseStack, mouseX, mouseY, this, partialTicks);
             } else {
                 focus = null;
             }
         }
 
-        super.render(guiGraphics, mouseX, mouseY, partialTicks);
+        super.render(poseStack, mouseX, mouseY, partialTicks);
     }
 
     // ----------- Helper Methods ---------------
 
-    public void drawCenteredScaledText(GuiGraphics guiGraphics, String text, int x, int y, float scale, int color) {
-        PoseStack poseStack = guiGraphics.pose();
+    public void drawCenteredScaledText(PoseStack poseStack, String text, int x, int y, float scale, int color) {
         poseStack.pushPose();
         poseStack.translate(x, y, 0);
         poseStack.scale(scale, scale, 1.0F);
         int width = Minecraft.getInstance().font.width(text);
-        int drawX = Math.round(-width / 2F);
-        guiGraphics.drawString(Minecraft.getInstance().font, text, drawX, 0, color, false);
+        Minecraft.getInstance().font.draw(poseStack, text, -width / 2F, 0, color);
         poseStack.popPose();
     }
 
-    public void drawScaledText(GuiGraphics guiGraphics, String text, int x, int y, float scale, int color) {
-        PoseStack poseStack = guiGraphics.pose();
+    public void drawScaledText(PoseStack poseStack, String text, int x, int y, float scale, int color) {
         poseStack.pushPose();
         poseStack.translate(x, y, 0);
         poseStack.scale(scale, scale, 1.0F);
-        guiGraphics.drawString(Minecraft.getInstance().font, text, 0, 0, color, false);
+        Minecraft.getInstance().font.draw(poseStack, text, 0, 0, color);
         poseStack.popPose();
     }
 

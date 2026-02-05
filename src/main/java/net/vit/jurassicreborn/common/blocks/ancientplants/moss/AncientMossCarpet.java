@@ -3,7 +3,7 @@ package net.vit.jurassicreborn.common.blocks.ancientplants.moss;
 import net.vit.jurassicreborn.common.blocks.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
+import java.util.Random;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
@@ -27,7 +27,7 @@ public class AncientMossCarpet extends Block {
     }
 
     @Override
-    public void randomTick(BlockState state, ServerLevel world, BlockPos pos, RandomSource rand) {
+    public void randomTick(BlockState state, ServerLevel world, BlockPos pos, Random rand) {
         if (world.getBlockState(pos.below()).getBlock() instanceof PeatBlock) {
             if (rand.nextInt(8) <= 3) {
                 int allowedInArea = DENSITY_PER_AREA;

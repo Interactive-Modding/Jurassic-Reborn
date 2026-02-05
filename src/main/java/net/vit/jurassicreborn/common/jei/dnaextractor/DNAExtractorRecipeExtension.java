@@ -7,7 +7,6 @@ import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.category.extensions.IRecipeCategoryExtension;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.util.RandomSource;
 import net.vit.jurassicreborn.common.entities.Dinosaurs.Dinosaur;
 import net.vit.jurassicreborn.common.entities.Dinosaurs.DinosaurHandler;
 import net.vit.jurassicreborn.common.genetics.DinoDNA;
@@ -20,6 +19,7 @@ import net.vit.jurassicreborn.common.plants.PlantHandler;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /** JEI recipe extension for the DNA Extractor. */
 public class DNAExtractorRecipeExtension implements IRecipeCategoryExtension {
@@ -46,7 +46,7 @@ public class DNAExtractorRecipeExtension implements IRecipeCategoryExtension {
 
     private void computeOutputs() {
         outputs.clear();
-        RandomSource rand = RandomSource.create();
+        Random rand = new Random();
         if (input.is(ModItems.MOSQUITO_AMBER.get()) || input.is(ModItems.SEA_LAMPREY.get())) {
             if (input.getDamageValue() == 0) {
                 List<Dinosaur> dinos = input.is(ModItems.MOSQUITO_AMBER.get())

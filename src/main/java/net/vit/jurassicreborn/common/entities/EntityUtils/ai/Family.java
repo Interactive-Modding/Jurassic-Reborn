@@ -5,7 +5,6 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.levelgen.Heightmap;
@@ -48,7 +47,7 @@ public class Family {
             this.home = BlockPosUtil.vecToBlockPos(entity.position());
         }
 
-        Level world = entity.level();
+        Level world = entity.level;
         double centerX = 0.0;
         double centerZ = 0.0;
 
@@ -105,7 +104,7 @@ public class Family {
         }
 
         double centerDistance = entity.distanceToSqr(centerX, entity.getY(), centerZ);
-        RandomSource random = entity.getRandom();
+        var random = entity.getRandom();
 
         // Occasionally encourage the group to drift toward the family center
         if (random.nextDouble() * centerDistance > 128) {

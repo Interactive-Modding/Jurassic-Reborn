@@ -1,7 +1,11 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "group": "wooden_sign",
+  "pattern": [
+    "###",
+    "###",
+    " X "
+  ],
   "key": {
     "#": {
       "item": "jurassicreborn:ginkgo_planks"
@@ -10,14 +14,8 @@
       "item": "minecraft:stick"
     }
   },
-  "pattern": [
-    "###",
-    "###",
-    " X "
-  ],
   "result": {
-    "count": 3,
-    "item": "jurassicreborn:ginkgo_sign"
-  },
-  "show_notification": true
+    "item": "jurassicreborn:ginkgo_sign",
+    "count": 3
+  }
 }

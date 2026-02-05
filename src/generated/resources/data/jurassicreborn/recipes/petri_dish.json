@@ -1,18 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
+  "pattern": [
+    "A A",
+    "AAA"
+  ],
   "key": {
     "A": {
       "item": "minecraft:glass_pane"
     }
   },
-  "pattern": [
-    "A A",
-    "AAA"
-  ],
   "result": {
-    "count": 4,
-    "item": "jurassicreborn:petri_dish"
-  },
-  "show_notification": true
+    "item": "jurassicreborn:petri_dish",
+    "count": 4
+  }
 }

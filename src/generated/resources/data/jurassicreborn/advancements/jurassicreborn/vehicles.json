@@ -1,91 +1,23 @@
 {
   "parent": "jurassicreborn:jurassicreborn/root",
+  "display": {
+    "icon": {
+      "item": "jurassicreborn:jeep_wrangler"
+    },
+    "title": {
+      "translate": "advancements.jurassicreborn.jeep_wrangler.title"
+    },
+    "description": {
+      "translate": "advancements.jurassicreborn.jeep_wrangler.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
   "criteria": {
-    "black_jeep_wrangler": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:black_jeep_wrangler"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "blue_jeep_wrangler": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:blue_jeep_wrangler"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "ford_explorer": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:ford_explorer"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "ford_explorer_snow": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:ford_explorer_snow"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "green_jeep_wrangler": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:green_jeep_wrangler"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "gyrosphere": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:gyrosphere"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "helicopter": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:helicopter"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
     "jeep_wrangler": {
+      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
@@ -94,10 +26,46 @@
             ]
           }
         ]
-      },
-      "trigger": "minecraft:inventory_changed"
+      }
+    },
+    "black_jeep_wrangler": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:black_jeep_wrangler"
+            ]
+          }
+        ]
+      }
+    },
+    "blue_jeep_wrangler": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:blue_jeep_wrangler"
+            ]
+          }
+        ]
+      }
+    },
+    "green_jeep_wrangler": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:green_jeep_wrangler"
+            ]
+          }
+        ]
+      }
     },
     "lime_jeep_wrangler": {
+      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
@@ -106,22 +74,10 @@
             ]
           }
         ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "monorail": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "jurassicreborn:monorail"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
+      }
     },
     "pink_jeep_wrangler": {
+      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
@@ -130,10 +86,10 @@
             ]
           }
         ]
-      },
-      "trigger": "minecraft:inventory_changed"
+      }
     },
     "purple_jeep_wrangler": {
+      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
@@ -142,10 +98,10 @@
             ]
           }
         ]
-      },
-      "trigger": "minecraft:inventory_changed"
+      }
     },
     "sorna_jeep_wrangler": {
+      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
@@ -154,23 +110,67 @@
             ]
           }
         ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    }
-  },
-  "display": {
-    "announce_to_chat": true,
-    "description": {
-      "translate": "advancements.jurassicreborn.jeep_wrangler.description"
+      }
     },
-    "frame": "task",
-    "hidden": true,
-    "icon": {
-      "item": "jurassicreborn:jeep_wrangler"
+    "ford_explorer": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:ford_explorer"
+            ]
+          }
+        ]
+      }
     },
-    "show_toast": true,
-    "title": {
-      "translate": "advancements.jurassicreborn.jeep_wrangler.title"
+    "ford_explorer_snow": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:ford_explorer_snow"
+            ]
+          }
+        ]
+      }
+    },
+    "helicopter": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:helicopter"
+            ]
+          }
+        ]
+      }
+    },
+    "monorail": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:monorail"
+            ]
+          }
+        ]
+      }
+    },
+    "gyrosphere": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:gyrosphere"
+            ]
+          }
+        ]
+      }
     }
   },
   "requirements": [
@@ -189,6 +189,5 @@
       "monorail",
       "gyrosphere"
     ]
-  ],
-  "sends_telemetry_event": true
+  ]
 }

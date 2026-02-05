@@ -3,9 +3,8 @@ package net.vit.jurassicreborn.common.worldgen.structure;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
-
 import java.util.*;
+import java.util.Random;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
@@ -19,7 +18,7 @@ public enum StructureGenerationHandler {
     private static final Map<Biome, List<GeneratorEntry>> GENERATORS = new HashMap<>();
     private static final List<GeneratorEntry> UNIVERSAL_GENERATORS = new ArrayList<>();
 
-    public void generate(ServerLevel level, RandomSource random, BlockPos pos, Biome biome, StructureUtils.StructureData data) {
+    public void generate(ServerLevel level, Random random, BlockPos pos, Biome biome, StructureUtils.StructureData data) {
         boolean universalGenerated = false;
         for (GeneratorEntry entry : UNIVERSAL_GENERATORS) {
             if (entry.predicate.test(level, pos, random) && entry.configPredicate.test(data)) {
@@ -38,11 +37,11 @@ public enum StructureGenerationHandler {
         }
     }
 
-    public static void registerGenerator(Function<RandomSource, StructureGenerator> generatorFunction, Predicate<StructureUtils.StructureData> configPredicate, int weight, Biome... validBiomes) {
+    public static void registerGenerator(Function<Random, StructureGenerator> generatorFunction, Predicate<StructureUtils.StructureData> configPredicate, int weight, Biome... validBiomes) {
         registerGenerator(generatorFunction, configPredicate, (level, pos, random) -> random.nextInt(weight) == 0, validBiomes);
     }
 
-    public static void registerGenerator(Function<RandomSource, StructureGenerator> generatorFunction, Predicate<StructureUtils.StructureData> configPredicate, StructurePredicate predicate, Biome... validBiomes) {
+    public static void registerGenerator(Function<Random, StructureGenerator> generatorFunction, Predicate<StructureUtils.StructureData> configPredicate, StructurePredicate predicate, Biome... validBiomes) {
         GeneratorEntry entry = new GeneratorEntry(generatorFunction, configPredicate, predicate);
         if (validBiomes.length == 0) {
             UNIVERSAL_GENERATORS.add(entry);
@@ -54,11 +53,11 @@ public enum StructureGenerationHandler {
     }
 
     private static class GeneratorEntry {
-        private final Function<RandomSource, StructureGenerator> generatorFunction;
+        private final Function<Random, StructureGenerator> generatorFunction;
         private final Predicate<StructureUtils.StructureData> configPredicate;
         private final StructurePredicate predicate;
 
-        GeneratorEntry(Function<RandomSource, StructureGenerator> generatorFunction, Predicate<StructureUtils.StructureData> configPredicate, StructurePredicate predicate) {
+        GeneratorEntry(Function<Random, StructureGenerator> generatorFunction, Predicate<StructureUtils.StructureData> configPredicate, StructurePredicate predicate) {
             this.generatorFunction = generatorFunction;
             this.configPredicate = configPredicate;
             this.predicate = predicate;
@@ -67,6 +66,6 @@ public enum StructureGenerationHandler {
 
     @FunctionalInterface
     public interface StructurePredicate {
-        boolean test(ServerLevel level, BlockPos pos, RandomSource random);
+        boolean test(ServerLevel level, BlockPos pos, Random random);
     }
 }

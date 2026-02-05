@@ -1,7 +1,23 @@
 {
   "parent": "jurassicreborn:jurassicreborn/incubator",
+  "display": {
+    "icon": {
+      "item": "jurassicreborn:hatched_egg/egg_mamenchisaurus"
+    },
+    "title": {
+      "translate": "advancements.jurassicreborn.mamenchisaurus_hatched_egg.title"
+    },
+    "description": {
+      "translate": "advancements.jurassicreborn.mamenchisaurus_hatched_egg.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
   "criteria": {
     "hatched_egg": {
+      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
@@ -10,29 +26,12 @@
             ]
           }
         ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    }
-  },
-  "display": {
-    "announce_to_chat": true,
-    "description": {
-      "translate": "advancements.jurassicreborn.mamenchisaurus_hatched_egg.description"
-    },
-    "frame": "task",
-    "hidden": false,
-    "icon": {
-      "item": "jurassicreborn:hatched_egg/egg_mamenchisaurus"
-    },
-    "show_toast": true,
-    "title": {
-      "translate": "advancements.jurassicreborn.mamenchisaurus_hatched_egg.title"
+      }
     }
   },
   "requirements": [
     [
       "hatched_egg"
     ]
-  ],
-  "sends_telemetry_event": true
+  ]
 }

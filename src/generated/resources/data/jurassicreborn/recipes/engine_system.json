@@ -1,6 +1,10 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
+  "pattern": [
+    "ABC",
+    "DEF",
+    "AGH"
+  ],
   "key": {
     "A": {
       "item": "minecraft:iron_bars"
@@ -27,13 +31,7 @@
       "item": "minecraft:piston"
     }
   },
-  "pattern": [
-    "ABC",
-    "DEF",
-    "AGH"
-  ],
   "result": {
     "item": "jurassicreborn:engine_system"
-  },
-  "show_notification": true
+  }
 }

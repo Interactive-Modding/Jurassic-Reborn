@@ -6,13 +6,13 @@ import net.vit.jurassicreborn.JurassicReborn;
 import net.vit.jurassicreborn.client.model.ElectricFenceModels;
 import net.vit.jurassicreborn.common.blocks.entities.fence.ElectricFenceBaseBlock;
 import net.vit.jurassicreborn.common.blocks.entities.fence.ElectricFenceBaseBlockEntity;
-import software.bernie.geckolib.model.GeoModel;
+import software.bernie.geckolib3.model.AnimatedGeoModel;
 
-public class ElectricFenceBaseModel extends GeoModel<ElectricFenceBaseBlockEntity> {
+public class ElectricFenceBaseModel extends AnimatedGeoModel<ElectricFenceBaseBlockEntity> {
 
 
     @Override
-    public ResourceLocation getModelResource(ElectricFenceBaseBlockEntity be) {
+    public ResourceLocation getModelLocation(ElectricFenceBaseBlockEntity be) {
         var st      = be.getBlockState();
         var block   = (ElectricFenceBaseBlock) st.getBlock();
         var variant = ElectricFenceModels.resolve(st, block.getType());
@@ -22,7 +22,7 @@ public class ElectricFenceBaseModel extends GeoModel<ElectricFenceBaseBlockEntit
 
 
     @Override
-    public ResourceLocation getTextureResource(ElectricFenceBaseBlockEntity be) {
+    public ResourceLocation getTextureLocation(ElectricFenceBaseBlockEntity be) {
         var st      = be.getBlockState();
         var block   = (ElectricFenceBaseBlock) st.getBlock();
         var variant = ElectricFenceModels.resolve(st, block.getType());
@@ -31,7 +31,7 @@ public class ElectricFenceBaseModel extends GeoModel<ElectricFenceBaseBlockEntit
                 + variant.modelPath() + ".png");
 
         var rm   = Minecraft.getInstance().getResourceManager();
-        boolean exists = rm.getResource(tex).isPresent();
+        boolean exists = rm.hasResource(tex);
 
         if (!exists) {
             tex = JurassicReborn.resource("textures/block/" +
@@ -41,7 +41,7 @@ public class ElectricFenceBaseModel extends GeoModel<ElectricFenceBaseBlockEntit
     }
 
     @Override
-    public ResourceLocation getAnimationResource(ElectricFenceBaseBlockEntity be) {
+    public ResourceLocation getAnimationFileLocation(ElectricFenceBaseBlockEntity be) {
         return JurassicReborn.resource("animations/empty.animation.json");
     }
 }

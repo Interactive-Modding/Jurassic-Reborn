@@ -1,7 +1,6 @@
 {
 	"credit": "DNA_Sequencer - gamma_02, ported from Tabula using Blockbench",
 	"parent": "minecraft:block/block",
-	"render_type": "minecraft:translucent",
 	"ambientocclusion": false,
 	"textures": {
 		"layer0": "jurassicreborn:block/dna_sequencer",

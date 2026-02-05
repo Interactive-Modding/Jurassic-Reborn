@@ -37,7 +37,6 @@ public class StyracosaurusAnimator extends EntityAnimator<StyracosaurusEntity> {
         AdvancedModelBox tail6 = model.getCube("tail 6");
         AdvancedModelBox tail7 = model.getCube("tail 7");                 // :contentReference[oaicite:6]{index=6}
 
-
         AdvancedModelBox frillConn   = model.getCube("frill connection");
         AdvancedModelBox frillTopR   = model.getCube("frill top right");
         AdvancedModelBox frillBotR   = model.getCube("frill bottom right");

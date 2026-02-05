@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "jurassicreborn:phoenix_planks"
+    ]
+  },
+  "criteria": {
+    "has_phoenix_log": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:phoenix_log"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "jurassicreborn:phoenix_planks"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_phoenix_log",
+      "has_the_recipe"
+    ]
+  ]
+}

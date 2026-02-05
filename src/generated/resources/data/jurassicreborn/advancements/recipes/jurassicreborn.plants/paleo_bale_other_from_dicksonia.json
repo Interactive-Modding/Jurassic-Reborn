@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "jurassicreborn:paleo_bale_other_from_dicksonia"
+    ]
+  },
+  "criteria": {
+    "has_dicksonia": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dicksonia"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "jurassicreborn:paleo_bale_other_from_dicksonia"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_dicksonia",
+      "has_the_recipe"
+    ]
+  ]
+}

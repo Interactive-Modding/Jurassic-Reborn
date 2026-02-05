@@ -6,6 +6,8 @@ import net.vit.jurassicreborn.common.util.LangUtil;
 import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.network.chat.TextComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 
@@ -50,7 +52,7 @@ public class PlantDNA extends DNA{
     }
 
     public void addInformation(ItemStack stack, List<Component> tooltip) {
-        tooltip.add( Component.literal(Component.translatable("lore.plant").getString().replace("{plant}", PlantHandler.getPlantById(this.plant).getName())).withStyle(ChatFormatting.DARK_AQUA));
+        tooltip.add( new TextComponent(new TranslatableComponent("lore.plant").getString().replace("{plant}", PlantHandler.getPlantById(this.plant).getName())).withStyle(ChatFormatting.DARK_AQUA));
 
         ChatFormatting formatting;
 
@@ -66,9 +68,9 @@ public class PlantDNA extends DNA{
             formatting = ChatFormatting.RED;
         }
 
-        String qualityString = Component.translatable("lore.dna_quality").getString();
+        String qualityString = new TranslatableComponent("lore.dna_quality").getString();
         Component quality = LangUtil.getFormattedQuality(this.quality);
-        tooltip.add(Component.literal(qualityString.formatted(quality.getString(), "%")).withStyle(formatting));
+        tooltip.add(new TextComponent(qualityString.formatted(quality.getString(), "%")).withStyle(formatting));
     }
 
     public Plant getRealPlant(){

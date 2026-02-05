@@ -12,6 +12,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.vit.jurassicreborn.common.entities.item.TrackingDartEntity;
 import net.vit.jurassicreborn.common.entities.item.TranquilizerDartEntity;
+import net.vit.jurassicreborn.common.items.TabHandler;
 
 /**
  * Shoots either a TranquilizerDartEntity or a TrackingDartEntity
@@ -20,7 +21,7 @@ import net.vit.jurassicreborn.common.entities.item.TranquilizerDartEntity;
 public class DartGun extends Item {
 
     public DartGun() {
-        super(new Item.Properties().stacksTo(1));
+        super(new Item.Properties().stacksTo(1).tab(TabHandler.ITEMS));
     }
 
     @Override

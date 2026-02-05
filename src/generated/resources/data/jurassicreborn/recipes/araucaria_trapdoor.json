@@ -1,19 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "redstone",
   "group": "wooden_trapdoor",
+  "pattern": [
+    "###",
+    "###"
+  ],
   "key": {
     "#": {
       "item": "jurassicreborn:araucaria_planks"
     }
   },
-  "pattern": [
-    "###",
-    "###"
-  ],
   "result": {
-    "count": 2,
-    "item": "jurassicreborn:araucaria_trapdoor"
-  },
-  "show_notification": true
+    "item": "jurassicreborn:araucaria_trapdoor",
+    "count": 2
+  }
 }

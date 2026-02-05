@@ -54,7 +54,7 @@ public class LambeosaurusDinosaur extends Dinosaur
         this.setRecipe(recipe);
         this.enableSkeleton();
         ArrayList<ResourceKey<Biome>> biomeList = new ArrayList<>();
-        TagKey<Biome>[] tags = (new TagKey[]{BiomeTags.IS_SAVANNA, Tags.Biomes.IS_PLAINS, BiomeTags.IS_BADLANDS, Tags.Biomes.IS_SANDY});
+        TagKey<Biome>[] tags = (new TagKey[]{BiomeTags.HAS_VILLAGE_SAVANNA, Tags.Biomes.IS_PLAINS, BiomeTags.IS_BADLANDS, Tags.Biomes.IS_SANDY});
         ArrayList<Biome> allBiomes = new ArrayList<>(ForgeRegistries.BIOMES.getValues());
 
         biomeList = new ArrayList<>(allBiomes.stream().filter((biome ->{

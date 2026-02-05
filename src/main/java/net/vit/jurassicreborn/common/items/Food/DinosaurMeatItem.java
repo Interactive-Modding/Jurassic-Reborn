@@ -3,6 +3,7 @@ package net.vit.jurassicreborn.common.items.Food;
 import net.vit.jurassicreborn.common.entities.Dinosaurs.Dinosaur;
 import net.vit.jurassicreborn.common.util.LangUtil;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
@@ -19,10 +20,10 @@ public class DinosaurMeatItem extends Item {
     @Override
     public @NotNull Component getName(@NotNull ItemStack stack) {
 
-        String key = Component.translatable("item.jurassicreborn.dinosaur_meat").getString();
+        String key = new TranslatableComponent("item.jurassicreborn.dinosaur_meat").getString();
 
         if(cooked){
-            key = Component.translatable("item.jurassicreborn.dinosaur_steak").getString();
+            key = new TranslatableComponent("item.jurassicreborn.dinosaur_steak").getString();
         }
 
         return LangUtil.replaceWithDinoName(dino, key);

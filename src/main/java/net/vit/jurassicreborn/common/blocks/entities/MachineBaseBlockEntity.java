@@ -8,6 +8,7 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.Connection;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
@@ -21,10 +22,10 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.wrapper.SidedInvWrapper;
+import net.minecraftforge.items.CapabilityItemHandler;
 import org.jetbrains.annotations.Nullable;
 
 public abstract class MachineBaseBlockEntity<A extends MachineBaseBlockEntity> extends RandomizableContainerBlockEntity implements Syncable, BlockEntityTicker<A>, WorldlyContainer {
@@ -135,7 +136,7 @@ public abstract class MachineBaseBlockEntity<A extends MachineBaseBlockEntity> e
     public void setItem(int index, ItemStack stack) {
         NonNullList<ItemStack> slots = this.getSlots();
 
-        boolean stacksEqual = !stack.isEmpty() && stack.is(slots.get(index).getItem()) && ItemStack.isSameItemSameTags(stack, slots.get(index));
+        boolean stacksEqual = !stack.isEmpty() && stack.is(slots.get(index).getItem()) && ItemStack.isSame(stack, slots.get(index));
         slots.set(index, stack);
 
         if (!stack.isEmpty() && stack.getCount() > this.getInventoryStackLimit()) {
@@ -338,7 +339,7 @@ public abstract class MachineBaseBlockEntity<A extends MachineBaseBlockEntity> e
         int[] outputs = this.getOutputs();
         for (int slot : outputs) {
             ItemStack stack = slots.get(slot);
-            if (stack.isEmpty() || ((ItemStack.isSameItemSameTags(stack, output) && stack.getCount() + output.getCount() <= stack.getMaxStackSize()) && stack.getItem() == output.getItem() && stack.getDamageValue() == output.getDamageValue())) {
+            if (stack.isEmpty() || ((ItemStack.isSame(stack, output) && stack.getCount() + output.getCount() <= stack.getMaxStackSize()) && stack.getItem() == output.getItem() && stack.getDamageValue() == output.getDamageValue())) {
                 return slot;
             }
         }
@@ -395,7 +396,7 @@ public abstract class MachineBaseBlockEntity<A extends MachineBaseBlockEntity> e
         ItemStack previous = slots.get(slot);
         if (previous.isEmpty()) {
             slots.set(slot, stack);
-        } else if (ItemStack.isSameItemSameTags(previous, stack) && ItemStack.isSameItemSameTags(previous, stack)) {
+        } else if (ItemStack.isSame(previous, stack) && ItemStack.isSame(previous, stack)) {
             previous.setCount(previous.getCount() + stack.getCount());
         }
     }
@@ -466,8 +467,7 @@ public abstract class MachineBaseBlockEntity<A extends MachineBaseBlockEntity> e
     @Override
     public Component getDefaultName() {
 
-
-        return Component.translatable("jurassicreborn:machine_base_block");
+        return new TranslatableComponent("jurassicreborn:machine_base_block");
     }
 
 
@@ -495,7 +495,7 @@ public abstract class MachineBaseBlockEntity<A extends MachineBaseBlockEntity> e
     @Override
     public <T> LazyOptional<T> getCapability(Capability<T> capability, @Nullable Direction facing)
     {
-        if (facing != null && capability == ForgeCapabilities.ITEM_HANDLER)
+        if (facing != null && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
             if (facing == Direction.DOWN) {
                 return LazyOptional.of(() -> (T) (handlerBottom == null ? handlerBottom = new SidedInvWrapper(this, Direction.DOWN) : handlerBottom));
             }

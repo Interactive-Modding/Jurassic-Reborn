@@ -1,19 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "building",
   "group": "jurassicreborn:paleo_bale_cycadeoidea",
-  "key": {
-    "A": {
-      "item": "jurassicreborn:bennettitalean_cycadeoidea"
-    }
-  },
   "pattern": [
     "AAA",
     "AAA",
     "AAA"
   ],
+  "key": {
+    "A": {
+      "item": "jurassicreborn:bennettitalean_cycadeoidea"
+    }
+  },
   "result": {
     "item": "jurassicreborn:paleo_bale_cycadeoidea"
-  },
-  "show_notification": true
+  }
 }

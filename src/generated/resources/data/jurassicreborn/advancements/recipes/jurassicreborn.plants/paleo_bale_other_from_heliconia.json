@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "jurassicreborn:paleo_bale_other_from_heliconia"
+    ]
+  },
+  "criteria": {
+    "has_heliconia": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:heliconia"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "jurassicreborn:paleo_bale_other_from_heliconia"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_heliconia",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "type": "minecraft:jigsaw",
+  "type": "minecraft:village",
   "start_pool": "jurassicreborn:ice_fossil_digsite/start_pool",
   "size": 1,
   "max_distance_from_center": 80,

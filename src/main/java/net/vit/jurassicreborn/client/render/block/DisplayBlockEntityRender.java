@@ -1,7 +1,7 @@
 package net.vit.jurassicreborn.client.render.block;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
+import com.mojang.math.Vector3f;
 import net.vit.jurassicreborn.client.render.entity.animation.EntityAnimation;
 import net.vit.jurassicreborn.common.blocks.entities.ActionFigureBlockEntity;
 import net.vit.jurassicreborn.common.entities.DinosaurEntity;
@@ -46,7 +46,7 @@ public class DisplayBlockEntityRender implements BlockEntityRenderer<ActionFigur
         }
         pPoseStack.scale(scale, scale, scale);
 
-        pPoseStack.mulPose(Axis.YP.rotationDegrees(pBlockEntity.getRot()));
+        pPoseStack.mulPose(Vector3f.YP.rotationDegrees(pBlockEntity.getRot()));
 
 
 

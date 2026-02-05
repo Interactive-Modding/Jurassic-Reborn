@@ -1,5 +1,7 @@
 package net.vit.jurassicreborn.common.items.misc;
 
+import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraftforge.client.IItemRenderProperties;
 import net.vit.jurassicreborn.client.JurassicClient;
 import net.vit.jurassicreborn.common.blocks.ModBlocks;
 import net.vit.jurassicreborn.common.blocks.entities.ActionFigureBlockEntity;
@@ -9,6 +11,7 @@ import net.vit.jurassicreborn.common.items.misc.SkeletonPoseHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -16,6 +19,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -31,7 +35,6 @@ import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.client.extensions.common.IClientItemExtensions;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -39,6 +42,8 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Properties;
 import java.util.function.Consumer;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Proxy;
 
 /**
  * Item representing a fossilized dinosaur skeleton display figure.
@@ -54,10 +59,7 @@ public class FossilSkeletonItem extends Item {
         super(properties);
         this.dino = dino;
     }
-    @Override
-    public String getDescriptionId(ItemStack stack) {
-        return "item.jurassicreborn.skeleton.fossil.dynamic";
-    }
+
     @Override
     public ItemStack getDefaultInstance() {
         ItemStack stack = super.getDefaultInstance();
@@ -70,11 +72,11 @@ public class FossilSkeletonItem extends Item {
 
     @Override
     @OnlyIn(Dist.CLIENT)
-    public void initializeClient(@NotNull Consumer<IClientItemExtensions> consumer) {
+    public void initializeClient(@NotNull Consumer<IItemRenderProperties> consumer) {
         super.initializeClient(consumer);
-        IClientItemExtensions prop = new IClientItemExtensions() {
+        IItemRenderProperties prop = new IItemRenderProperties() {
             @Override
-            public BlockEntityWithoutLevelRenderer getCustomRenderer() {
+            public BlockEntityWithoutLevelRenderer getItemStackRenderer() {
                 return JurassicClient.displayBlockRendererWithoutLevel;
             }
         };
@@ -173,21 +175,12 @@ public class FossilSkeletonItem extends Item {
 
     @Override
     public @NotNull Component getName(@NotNull ItemStack stack) {
-        Dinosaur dino = this.getDinosaur(stack);
-
-        if (dino == Dinosaur.EMPTY) {
-            return Component.translatable("item.jurassicreborn.skeleton.fossil");
-        }
-
-        return Component.translatable(
-                "item.jurassicreborn.skeleton.fossil.dynamic",
-                dino.getTranslatedName()
-        );
+        return LangUtil.replaceWithDinoName(this.getDinosaur(stack), "item.JurassicReborn.skeleton.fossil");
     }
 
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag) {
-        tooltip.add(Component.translatable("lore.change_pose").withStyle(ChatFormatting.BLUE));
+        tooltip.add(new TranslatableComponent("lore.change_pose").withStyle(ChatFormatting.BLUE));
     }
 
     @Override
@@ -202,7 +195,7 @@ public class FossilSkeletonItem extends Item {
         if (level.isClientSide) {
             List<String> poses = SkeletonPoseHelper.getPoseNames(this.getDinosaur(stack));
             String name = poses.get(pose);
-            player.displayClientMessage(Component.translatable("skeleton.posechange", name), false);
+            player.displayClientMessage(new TranslatableComponent("skeleton.posechange", name), false);
         }
 
         return new InteractionResultHolder<>(InteractionResult.SUCCESS, stack);
@@ -295,4 +288,14 @@ public class FossilSkeletonItem extends Item {
         return null;
     }
 
+    @Override
+    public void fillItemCategory(CreativeModeTab category, NonNullList<ItemStack> items) {
+        if (category == this.getItemCategory() || category == CreativeModeTab.TAB_SEARCH) {
+            ItemStack defaultStack = this.getDefaultInstance();
+            CompoundTag tag = defaultStack.getOrCreateTag();
+            tag.putString("Gender", "random");
+            defaultStack.setTag(tag);
+            items.add(defaultStack);
+        }
+    }
 }

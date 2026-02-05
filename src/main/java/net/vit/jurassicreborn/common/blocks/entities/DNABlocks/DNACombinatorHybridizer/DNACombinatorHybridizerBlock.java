@@ -78,7 +78,7 @@ public class DNACombinatorHybridizerBlock extends BaseMachineBlock {
         if (!pLevel.isClientSide) {
             BlockEntity be = pLevel.getBlockEntity(pPos);
             if (be instanceof MenuProvider provider && pPlayer instanceof ServerPlayer sp) {
-                NetworkHooks.openScreen(sp, provider, pPos);
+                NetworkHooks.openGui(sp, provider, pPos);
             }
         }
         return InteractionResult.sidedSuccess(pLevel.isClientSide);

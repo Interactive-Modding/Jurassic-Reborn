@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "jurassicreborn:cooked_crab_meat"
+    ]
+  },
+  "criteria": {
+    "has_raw_crab_meat": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:raw_crab_meat"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "jurassicreborn:cooked_crab_meat"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_raw_crab_meat",
+      "has_the_recipe"
+    ]
+  ]
+}

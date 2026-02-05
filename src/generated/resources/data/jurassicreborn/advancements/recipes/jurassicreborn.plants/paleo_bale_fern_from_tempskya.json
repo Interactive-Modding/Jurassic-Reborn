@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "jurassicreborn:paleo_bale_fern_from_tempskya"
+    ]
+  },
+  "criteria": {
+    "has_tempskya": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:tempskya"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "jurassicreborn:paleo_bale_fern_from_tempskya"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_tempskya",
+      "has_the_recipe"
+    ]
+  ]
+}

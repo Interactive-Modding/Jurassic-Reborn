@@ -1,19 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "redstone",
   "group": "wooden_trapdoor",
+  "pattern": [
+    "###",
+    "###"
+  ],
   "key": {
     "#": {
       "item": "jurassicreborn:phoenix_planks"
     }
   },
-  "pattern": [
-    "###",
-    "###"
-  ],
   "result": {
-    "count": 2,
-    "item": "jurassicreborn:phoenix_trapdoor"
-  },
-  "show_notification": true
+    "item": "jurassicreborn:phoenix_trapdoor",
+    "count": 2
+  }
 }

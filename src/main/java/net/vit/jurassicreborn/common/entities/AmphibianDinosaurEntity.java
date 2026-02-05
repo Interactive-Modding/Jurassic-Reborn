@@ -3,7 +3,7 @@ package net.vit.jurassicreborn.common.entities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.control.LookControl;
 import net.minecraft.world.entity.ai.control.SmoothSwimmingLookControl;
@@ -15,6 +15,7 @@ import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.ai.navigation.WaterBoundPathNavigation;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.RandomSource;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.phys.Vec3;
 import net.vit.jurassicreborn.common.entities.Dinosaurs.Dinosaur;
@@ -23,6 +24,7 @@ import net.vit.jurassicreborn.common.entities.ai.navigation.DinosaurPathNavigate
 import org.jetbrains.annotations.Nullable;
 
 import java.util.EnumSet;
+import java.util.Random;
 
 /**
  * Amphibian that swaps between land and water navigation.
@@ -59,7 +61,6 @@ public abstract class AmphibianDinosaurEntity extends DinosaurEntity {
         this.waterLookControl = new SmoothSwimmingLookControl(this, 10);
         this.navigationSwimmer = new WaterBoundPathNavigation(this, world);
 
-
         this.landMoveControl = new DinosaurMoveHelper(this);
         this.landLookControl = new LookControl(this);
         this.navigationLand  = new DinosaurPathNavigate(this, world);
@@ -77,7 +78,7 @@ public abstract class AmphibianDinosaurEntity extends DinosaurEntity {
         this.setPathfindingMalus(BlockPathTypes.WATER_BORDER, 0.0F);
 
         // Help clambering out of banks
-        this.setMaxUpStep(1.5F);
+        this.maxUpStep = 1.5F;
 
         // Goals
         this.goalSelector.addGoal(5,  new MoveUnderwaterGoal());
@@ -97,7 +98,7 @@ public abstract class AmphibianDinosaurEntity extends DinosaurEntity {
         if (mediumSwitchCooldown > 0) mediumSwitchCooldown--;
         if (landCheckCooldown > 0) landCheckCooldown--;
 
-        if (!this.level().isClientSide && this.isAlive()) {
+        if (!this.level.isClientSide && this.isAlive()) {
             final boolean inWaterNow = this.isInWater();
 
             if (inWaterNow) {
@@ -142,8 +143,7 @@ public abstract class AmphibianDinosaurEntity extends DinosaurEntity {
                 this.setAirSupply(air);
                 if (air <= -20) {
                     this.setAirSupply(0);
-                    // 1.20.1 damage source
-                    this.hurt(this.damageSources().drown(), 2.0F);
+                    this.hurt(DamageSource.DROWN, 2.0F);
                 }
 
                 getInWater = air < 40;
@@ -177,7 +177,7 @@ public abstract class AmphibianDinosaurEntity extends DinosaurEntity {
         float forward  = (float) vec.z;
         boolean noInput = strafe == 0 && vertical == 0 && forward == 0;
 
-        if (!this.level().isClientSide && this.isInWater() && !this.isCarcass()) {
+        if (!this.level.isClientSide && this.isInWater() && !this.isCarcass()) {
             this.moveRelative(0.15F, new Vec3(strafe, vertical, forward));
             this.move(MoverType.SELF, this.getDeltaMovement());
             Vec3 movement = this.getDeltaMovement().multiply(0.8, 0.8, 0.8);
@@ -205,14 +205,10 @@ public abstract class AmphibianDinosaurEntity extends DinosaurEntity {
 
             BlockPos pos = origin.offset(dx, dy, dz);
 
-            BlockState ground = mob.level().getBlockState(pos);
-            // "solid" ground in 1.20.1
-            if (ground.blocksMotion()) {
+            if (mob.level.getBlockState(pos).getMaterial().isSolid()) {
                 BlockPos above = pos.above();
-                BlockState aboveState = mob.level().getBlockState(above);
-
-                // Water directly above or adjacent
-                if (!aboveState.getFluidState().isEmpty() || hasAdjacentWater(mob, pos)) {
+                if (mob.level.getBlockState(above).getMaterial().isLiquid() ||
+                        hasAdjacentWater(mob, pos)) {
                     return Vec3.atBottomCenterOf(above);
                 }
             }
@@ -222,8 +218,7 @@ public abstract class AmphibianDinosaurEntity extends DinosaurEntity {
 
     private boolean hasAdjacentWater(Mob mob, BlockPos pos) {
         for (Direction dir : Direction.Plane.HORIZONTAL) {
-            BlockState adj = mob.level().getBlockState(pos.relative(dir));
-            if (!adj.getFluidState().isEmpty()) {
+            if (mob.level.getBlockState(pos.relative(dir)).getMaterial().isLiquid()) {
                 return true;
             }
         }
@@ -263,7 +258,7 @@ public abstract class AmphibianDinosaurEntity extends DinosaurEntity {
                 }
                 failedToFindLand = false;
             } else {
-                RandomSource rng = AmphibianDinosaurEntity.this.getRandom();
+                Random rng = AmphibianDinosaurEntity.this.getRandom();
                 if (rng.nextFloat() < 0.50F && AmphibianDinosaurEntity.this.isBusy()) return false;
 
                 // Find underwater position (not surface)
@@ -347,14 +342,12 @@ public abstract class AmphibianDinosaurEntity extends DinosaurEntity {
                 BlockPos pos = mobPos.offset(dx, dy, dz);
 
                 // Check if this position is underwater
-                BlockState state = mob.level().getBlockState(pos);
-                if (state.getFluidState().isEmpty()) continue;
+                if (!mob.level.getBlockState(pos).getMaterial().isLiquid()) continue;
 
                 // Make sure there's water above (we're not at surface)
                 boolean isDeep = false;
                 for (int up = 1; up <= 2; up++) {
-                    BlockState aboveState = mob.level().getBlockState(pos.above(up));
-                    if (!aboveState.getFluidState().isEmpty()) {
+                    if (mob.level.getBlockState(pos.above(up)).getMaterial().isLiquid()) {
                         isDeep = true;
                         break;
                     }
@@ -372,8 +365,7 @@ public abstract class AmphibianDinosaurEntity extends DinosaurEntity {
                 int dz = mob.getRandom().nextInt(hr * 2 + 1) - hr;
 
                 BlockPos pos = mobPos.offset(dx, dy, dz);
-                BlockState state = mob.level().getBlockState(pos);
-                if (!state.getFluidState().isEmpty()) {
+                if (mob.level.getBlockState(pos).getMaterial().isLiquid()) {
                     return Vec3.atCenterOf(pos);
                 }
             }
@@ -392,17 +384,14 @@ public abstract class AmphibianDinosaurEntity extends DinosaurEntity {
 
                 BlockPos pos = origin.offset(dx, dy, dz);
 
-                BlockState ground = mob.level().getBlockState(pos);
-                // Solid ground
-                if (ground.blocksMotion()) {
+                // Check if this is solid ground with water above or adjacent
+                if (mob.level.getBlockState(pos).getMaterial().isSolid()) {
                     BlockPos above = pos.above();
-                    BlockState aboveState = mob.level().getBlockState(above);
-                    BlockState aboveAboveState = mob.level().getBlockState(above.above());
-
                     // Must have passable space above and be adjacent to water
-                    if (!aboveState.blocksMotion() && !aboveAboveState.blocksMotion()) {
+                    if (!mob.level.getBlockState(above).getMaterial().isSolid() &&
+                            !mob.level.getBlockState(above.above()).getMaterial().isSolid()) {
 
-                        if (!aboveState.getFluidState().isEmpty() ||
+                        if (mob.level.getBlockState(above).getMaterial().isLiquid() ||
                                 hasAdjacentWater(mob, pos)) {
                             return Vec3.atBottomCenterOf(above);
                         }
@@ -414,8 +403,7 @@ public abstract class AmphibianDinosaurEntity extends DinosaurEntity {
 
         private boolean hasAdjacentWater(Mob mob, BlockPos pos) {
             for (Direction dir : Direction.Plane.HORIZONTAL) {
-                BlockState adj = mob.level().getBlockState(pos.relative(dir));
-                if (!adj.getFluidState().isEmpty()) {
+                if (mob.level.getBlockState(pos.relative(dir)).getMaterial().isLiquid()) {
                     return true;
                 }
             }

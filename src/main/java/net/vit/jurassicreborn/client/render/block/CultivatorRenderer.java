@@ -1,7 +1,7 @@
 package net.vit.jurassicreborn.client.render.block;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
+import com.mojang.math.Vector3f;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
@@ -23,10 +23,10 @@ public class CultivatorRenderer implements BlockEntityRenderer<CultivatorBlockEn
 
         pose.pushPose();
         pose.translate(0.5, 1.0, 0.5);
-        pose.mulPose(Axis.XN.rotationDegrees(90F));
-        org.joml.Vector3f rot = entity.getDinosaurCultivatorRotation();
-        pose.mulPose(Axis.YP.rotationDegrees(rot.y()));
-        pose.mulPose(Axis.ZP.rotationDegrees(rot.z()));
+        pose.mulPose(Vector3f.XN.rotationDegrees(90F));
+        Vector3f rot = entity.getDinosaurCultivatorRotation();
+        pose.mulPose(Vector3f.YP.rotationDegrees(rot.y()));
+        pose.mulPose(Vector3f.ZP.rotationDegrees(rot.z()));
         pose.scale(progress, progress, progress);
         pose.scale(0.04f, 0.04f, 0.04f);
 

@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "jurassicreborn:attraction_sign_sauropod_valley_plants_from_attraction_sign_sauropod_valley"
+    ]
+  },
+  "criteria": {
+    "has_attraction_sign_sauropod_valley": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:attraction_sign_sauropod_valley"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "jurassicreborn:attraction_sign_sauropod_valley_plants_from_attraction_sign_sauropod_valley"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_attraction_sign_sauropod_valley",
+      "has_the_recipe"
+    ]
+  ]
+}

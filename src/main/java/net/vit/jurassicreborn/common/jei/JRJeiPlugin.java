@@ -14,7 +14,6 @@ import net.vit.jurassicreborn.JurassicReborn;
 import net.vit.jurassicreborn.common.blocks.ModBlocks;
 import net.vit.jurassicreborn.common.blocks.entities.DNABlocks.DNASequencer.DNASequencerMenu;
 import net.vit.jurassicreborn.common.blocks.entities.DNABlocks.DNASynthesizer.DNASynthesizerMenu;
-import net.vit.jurassicreborn.common.blocks.entities.ModMenuTypes;
 import net.vit.jurassicreborn.common.blocks.entities.cleaner.CleanerMenu;
 import net.vit.jurassicreborn.common.blocks.entities.cultivator.CultivatorMenu;
 import net.vit.jurassicreborn.common.blocks.entities.grinder.FossilGrinderMenu;
@@ -232,7 +231,6 @@ public class JRJeiPlugin implements IModPlugin {
     public void registerRecipeTransferHandlers(IRecipeTransferRegistration registration) {
         registration.addRecipeTransferHandler(
                 SkeletonAssemblerMenu.class,
-                ModMenuTypes.SKELETON_ASSEMBLER.get(),
                 SkeletonAssemblyCategory.TYPE,
                 /* recipeSlotStart */ 1,
                 /* recipeSlotCount */ SkeletonAssemblerBlockEntity.GRID_W * SkeletonAssemblerBlockEntity.GRID_H,
@@ -242,7 +240,6 @@ public class JRJeiPlugin implements IModPlugin {
 
         registration.addRecipeTransferHandler(
                 CleanerMenu.class,
-                ModMenuTypes.CLEANER.get(),
                 CleaningStationCategory.TYPE,
                 /* recipeSlotStart */ 0,
                 /* recipeSlotCount */ 2,
@@ -252,7 +249,6 @@ public class JRJeiPlugin implements IModPlugin {
 
         registration.addRecipeTransferHandler(
                 FossilGrinderMenu.class,
-                ModMenuTypes.FOSSIL_GRINDER.get(),
                 FossilGrinderCategory.TYPE,
                 /* recipeSlotStart */ 0,
                 /* recipeSlotCount */ 6,
@@ -261,7 +257,6 @@ public class JRJeiPlugin implements IModPlugin {
         );
         registration.addRecipeTransferHandler(
                 DNASequencerMenu.class,
-                ModMenuTypes.DNA_SEQUENCER.get(),
                 DNASequencerCategory.TYPE,
                 /* recipeSlotStart */ 0,
                 /* recipeSlotCount */ 6,
@@ -271,7 +266,6 @@ public class JRJeiPlugin implements IModPlugin {
 
         registration.addRecipeTransferHandler(
                 DNASynthesizerMenu.class,
-                ModMenuTypes.DNA_SYNTHESIZER.get(),
                 DNASynthesizerCategory.TYPE,
                 /* recipeSlotStart */ 0,
                 /* recipeSlotCount */ 3,
@@ -280,7 +274,6 @@ public class JRJeiPlugin implements IModPlugin {
         );
         registration.addRecipeTransferHandler(
                 CultivatorMenu.class,
-                ModMenuTypes.CULTIVATOR.get(),
                 CultivatorRecipeCategory.TYPE,
                 /* recipeSlotStart */ 0,
                 /* recipeSlotCount */ 4,
@@ -289,7 +282,6 @@ public class JRJeiPlugin implements IModPlugin {
         );
         registration.addRecipeTransferHandler(
                 IncubatorMenu.class,
-                ModMenuTypes.INCUBATOR.get(),
                 IncubatorRecipeCategory.TYPE,
                 /* recipeSlotStart */ 0,
                 /* recipeSlotCount */ 6,
@@ -299,7 +291,6 @@ public class JRJeiPlugin implements IModPlugin {
 
         registration.addRecipeTransferHandler(
                 DNACombinatorHybridizerMenu.class,
-                ModMenuTypes.COMBINATOR.get(),
                 DNACombinatorCategory.TYPE,
                 /* recipeSlotStart */ 8,
                 /* recipeSlotCount */ 2,
@@ -308,7 +299,6 @@ public class JRJeiPlugin implements IModPlugin {
         );
         registration.addRecipeTransferHandler(
                 DNACombinatorHybridizerMenu.class,
-                ModMenuTypes.COMBINATOR.get(),
                 DNAHybridizerCategory.TYPE,
                 /* recipeSlotStart */ 0,
                 /* recipeSlotCount */ 8,
@@ -317,7 +307,6 @@ public class JRJeiPlugin implements IModPlugin {
         );
         registration.addRecipeTransferHandler(
                 BugCrateMenu.class,
-                ModMenuTypes.BUG_CRATE.get(),
                 BugCrateCategory.TYPE,
                 /* recipeSlotStart */ 0,
                 /* recipeSlotCount */ 6,

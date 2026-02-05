@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#jurassicreborn:has_peat_disk",
+  "features": ["jurassicreborn:placed_peat_disk"],
+  "step": "top_layer_modification"
+}

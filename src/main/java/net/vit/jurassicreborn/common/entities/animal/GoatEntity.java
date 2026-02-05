@@ -43,7 +43,7 @@ import net.minecraftforge.entity.IEntityAdditionalSpawnData;
 import javax.annotation.Nullable;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
+import java.util.Random;
 import net.vit.jurassicreborn.common.RebornConfig;
 
 public class GoatEntity extends Animal implements Animatable, IEntityAdditionalSpawnData {
@@ -65,7 +65,7 @@ public class GoatEntity extends Animal implements Animatable, IEntityAdditionalS
 
     public GoatEntity(EntityType<? extends GoatEntity> type, Level level) {
         super(type, level);
-        this.setMaxUpStep(1.0F);
+        this.maxUpStep = 1.0F;
         this.animationTick = 0;
         this.setAnimation(EntityAnimation.IDLE.get());
     }
@@ -123,7 +123,7 @@ public class GoatEntity extends Animal implements Animatable, IEntityAdditionalS
     }
 
     @Override public boolean isClimbing() { return false; }
-    @Override public boolean isSwimming() { return (this.isInWater() || this.isInLava()) && !this.onGround(); }
+    @Override public boolean isSwimming() { return (this.isInWater() || this.isInLava()) && !this.onGround; }
     @Override public boolean isRunning() { return this.entityData.get(WATCHER_IS_RUNNING); }
     @Override public boolean isMarineCreature() { return false; }
     @Override public boolean shouldUseInertia() { return true; }
@@ -194,7 +194,7 @@ public class GoatEntity extends Animal implements Animatable, IEntityAdditionalS
             }
         }
 
-        if (!this.level().isClientSide) {
+        if (!this.level.isClientSide) {
             this.entityData.set(WATCHER_IS_RUNNING, this.getSpeed() > this.getAttributeValue(Attributes.MOVEMENT_SPEED));
         }
     }
@@ -341,7 +341,7 @@ public class GoatEntity extends Animal implements Animatable, IEntityAdditionalS
         return false;
     }
 
-    public static boolean checkGoatSpawnRules(EntityType<GoatEntity> type, LevelAccessor level, MobSpawnType reason, BlockPos pos, RandomSource random) {
+    public static boolean checkGoatSpawnRules(EntityType<GoatEntity> type, LevelAccessor level, MobSpawnType reason, BlockPos pos, Random random) {
         return RebornConfig.spawnGoats && Animal.checkAnimalSpawnRules(type, level, reason, pos, random);
     }
 

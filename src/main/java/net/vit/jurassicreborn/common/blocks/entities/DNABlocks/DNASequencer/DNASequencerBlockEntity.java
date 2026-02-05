@@ -18,7 +18,7 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.util.RandomSource;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
@@ -31,6 +31,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.util.Random;
 
 public class DNASequencerBlockEntity extends MachineBlockEntity implements MenuProvider,ItemHandlerBlockEntity {
 
@@ -102,7 +103,7 @@ public class DNASequencerBlockEntity extends MachineBlockEntity implements MenuP
 
     @Override
     protected @NotNull Component getDefaultName() {
-        return Component.translatable("block.jurassicreborn.dna_sequencer");
+        return new TranslatableComponent("block.jurassicreborn.dna_sequencer");
     }
 
     @Override
@@ -121,7 +122,7 @@ public class DNASequencerBlockEntity extends MachineBlockEntity implements MenuP
         ItemStack tissue = inputs[0];
         ItemStack disc = inputs[1];
 
-        RandomSource rand = Objects.requireNonNull(this.level).getRandom();
+        Random rand = Objects.requireNonNull(this.level).getRandom();
 
 //        this.mergeStack(process + 6, SequencableItem.getSequencableItem(sequencableStack).getSequenceOutput(sequencableStack, rand));
         outputs.add(SequencableItem.getSequencableItem(tissue).getSequenceOutput( tissue, rand ));

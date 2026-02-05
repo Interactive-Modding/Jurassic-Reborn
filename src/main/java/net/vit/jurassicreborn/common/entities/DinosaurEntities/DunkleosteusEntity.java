@@ -4,8 +4,6 @@ import com.github.alexthe666.citadel.animation.Animation;
 import net.minecraft.world.entity.GlowSquid;
 import net.minecraft.world.entity.animal.*;
 import net.minecraft.world.entity.animal.axolotl.Axolotl;
-import net.minecraft.world.entity.animal.frog.Frog;
-import net.minecraft.world.entity.animal.frog.Tadpole;
 import net.vit.jurassicreborn.client.render.entity.animation.EntityAnimation;
 import net.vit.jurassicreborn.client.sounds.SoundHandler;
 import net.vit.jurassicreborn.common.entities.Dinosaurs.DinosaurHandler;
@@ -21,7 +19,7 @@ public class DunkleosteusEntity extends SwimmingDinosaurEntity
     public DunkleosteusEntity(Level world, EntityType<DunkleosteusEntity> type)
     {
         super(world, type, DinosaurHandler.DUNKLEOSTEUS);
-        this.target(AlligatorGarEntity.class, MawsoniaEntity.class, EndocerasEntity.class, CamerocerasEntity.class, Squid.class, Cod.class, Dolphin.class, Salmon.class, TropicalFish.class, Turtle.class, Axolotl.class, GlowSquid.class, Frog.class, Tadpole.class,  BeelzebufoEntity.class, CrassigyrinusEntity.class, DiplocaulusEntity.class, Player.class
+        this.target(AlligatorGarEntity.class, MawsoniaEntity.class, EndocerasEntity.class, CamerocerasEntity.class, Squid.class, Cod.class, Dolphin.class, Salmon.class, TropicalFish.class, Turtle.class, Axolotl.class, GlowSquid.class,    BeelzebufoEntity.class, CrassigyrinusEntity.class, DiplocaulusEntity.class, Player.class
 , MegapiranhaEntity.class, Villager.class, Animal.class, Mob.class);
     }
     @Override

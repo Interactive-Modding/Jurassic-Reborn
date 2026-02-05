@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "jurassicreborn:incubator"
+    ]
+  },
+  "criteria": {
+    "has_keyboard": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:keyboard"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "jurassicreborn:incubator"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_keyboard",
+      "has_the_recipe"
+    ]
+  ]
+}

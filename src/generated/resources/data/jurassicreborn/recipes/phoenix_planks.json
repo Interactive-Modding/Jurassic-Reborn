@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shapeless",
-  "category": "building",
   "ingredients": [
     [
       {
@@ -18,7 +17,7 @@
     ]
   ],
   "result": {
-    "count": 4,
-    "item": "jurassicreborn:phoenix_planks"
+    "item": "jurassicreborn:phoenix_planks",
+    "count": 4
   }
 }

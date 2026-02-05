@@ -27,7 +27,7 @@ public class ProtectInfantAI<T extends DinosaurEntity> extends Goal {
     @Override
     public boolean canUse() {
         // Server-only; require a capable adult
-        if (adult.level().isClientSide)             return false;
+        if (adult.level.isClientSide)             return false;
         if (adult.getAgePercentage() <= 75)       return false;
         if (adult.isCarcass() || adult.isSleeping()) return false;
 
@@ -38,7 +38,7 @@ public class ProtectInfantAI<T extends DinosaurEntity> extends Goal {
         LivingEntity current = adult.getTarget();
         if (current != null && current.isAlive()) return false;
 
-        List<? extends T> nearby = adult.level().getEntitiesOfClass(
+        List<? extends T> nearby = adult.level.getEntitiesOfClass(
                 dinoClass,
                 adult.getBoundingBox().inflate(RANGE_XZ, RANGE_Y, RANGE_XZ),
                 d -> d != adult

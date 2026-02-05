@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "jurassicreborn:liquid_agar_from_campfire_cooking"
+    ]
+  },
+  "criteria": {
+    "has_gracilaria": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:gracilaria"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "jurassicreborn:liquid_agar_from_campfire_cooking"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_gracilaria",
+      "has_the_recipe"
+    ]
+  ]
+}

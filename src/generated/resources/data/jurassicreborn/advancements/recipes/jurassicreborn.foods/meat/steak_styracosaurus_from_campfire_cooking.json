@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "jurassicreborn:meat/steak_styracosaurus_from_campfire_cooking"
+    ]
+  },
+  "criteria": {
+    "has_meat/meat_styracosaurus": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:meat/meat_styracosaurus"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "jurassicreborn:meat/steak_styracosaurus_from_campfire_cooking"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_meat/meat_styracosaurus",
+      "has_the_recipe"
+    ]
+  ]
+}

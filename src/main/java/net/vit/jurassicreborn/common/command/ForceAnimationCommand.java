@@ -7,6 +7,7 @@ import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.commands.arguments.ResourceLocationArgument;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TextComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.vit.jurassicreborn.client.render.entity.animation.EntityAnimation;
@@ -36,7 +37,7 @@ public class ForceAnimationCommand {
     private static Entity getSourceEntity(CommandContext<CommandSourceStack> ctx) {
         Entity entity = ctx.getSource().getEntity();
         if (entity == null) {
-            ctx.getSource().sendFailure(Component.literal("No entity was provided"));
+            ctx.getSource().sendFailure(new TextComponent("No entity was provided"));
         }
         return entity;
     }
@@ -53,7 +54,7 @@ public class ForceAnimationCommand {
         try {
             anim = EntityAnimation.valueOf(animKey.toUpperCase(Locale.ROOT));
         } catch (IllegalArgumentException ex) {
-            ctx.getSource().sendFailure(Component.literal("Unknown animation: " + animKey));
+            ctx.getSource().sendFailure(new TextComponent("Unknown animation: " + animKey));
             return 0;
         }
 
@@ -66,12 +67,11 @@ public class ForceAnimationCommand {
         }
 
         if (played == 0) {
-            ctx.getSource().sendFailure(Component.literal("No animatable entities found"));
+            ctx.getSource().sendFailure(new TextComponent("No animatable entities found"));
             return 0;
         }
 
-        Component message = Component.literal("Played " + animKey + " on " + played + " entities");
-        ctx.getSource().sendSuccess(() -> message, true);
+        ctx.getSource().sendSuccess(new TextComponent("Played " + animKey + " on " + played + " entities"), true);
         return played;
     }
 }

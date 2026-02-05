@@ -1,7 +1,11 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "group": "jurassicreborn:paddock_sign",
+  "pattern": [
+    "AAA",
+    "BBB",
+    "AAA"
+  ],
   "key": {
     "A": {
       "tag": "forge:nuggets/iron"
@@ -10,13 +14,7 @@
       "tag": "minecraft:signs"
     }
   },
-  "pattern": [
-    "AAA",
-    "BBB",
-    "AAA"
-  ],
   "result": {
     "item": "jurassicreborn:paddock_sign"
-  },
-  "show_notification": true
+  }
 }

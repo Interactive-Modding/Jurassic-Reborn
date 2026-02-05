@@ -31,7 +31,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class ModBlockEntities<T extends BlockEntity> {
 
-    public static DeferredRegister<BlockEntityType<?>> BLOCK_ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, JurassicReborn.MODID);
+    public static DeferredRegister<BlockEntityType<?>> BLOCK_ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITIES, JurassicReborn.MODID);
 
     public static RegistryObject<BlockEntityType<CleanerBlockEntity>> CLEANING_STATION = BLOCK_ENTITY_TYPES.register("cleaning_station", () -> BlockEntityType.Builder.of(CleanerBlockEntity::new, ModBlocks.CLEANING_STATION.get()).build(null));
     public static RegistryObject<BlockEntityType<EncasedFaunaFossilBlockEntity>> ENCASED_FAUNA_FOSSIL =

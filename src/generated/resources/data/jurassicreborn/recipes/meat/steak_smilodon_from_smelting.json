@@ -1,10 +1,9 @@
 {
   "type": "minecraft:smelting",
-  "category": "food",
-  "cookingtime": 200,
-  "experience": 0.35,
   "ingredient": {
     "item": "jurassicreborn:meat/meat_smilodon"
   },
-  "result": "jurassicreborn:meat/steak_smilodon"
+  "result": "jurassicreborn:meat/steak_smilodon",
+  "experience": 0.35,
+  "cookingtime": 200
 }

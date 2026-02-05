@@ -5,13 +5,14 @@ import net.vit.jurassicreborn.common.blocks.ModWoodTypes;
 import net.vit.jurassicreborn.common.blocks.wood.AncientLeavesBlock;
 import net.vit.jurassicreborn.common.blocks.wood.WoodBlocks;
 import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
+import java.util.Random;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
+import net.minecraft.world.level.material.Material;
 
 public class PsaroniusTreeGenerator extends Feature<NoneFeatureConfiguration> {
 
@@ -25,7 +26,7 @@ public class PsaroniusTreeGenerator extends Feature<NoneFeatureConfiguration> {
         BlockState leaves = WoodBlocks.PSARONIUS_LEAVES.get().defaultBlockState().setValue(AncientLeavesBlock.DISTANCE, 1);
 
         WorldGenLevel world = context.level();
-        RandomSource rand = context.random();
+        Random rand = context.random();
         BlockPos position = context.origin();
 
 

@@ -1,7 +1,5 @@
 package net.vit.jurassicreborn.client.render;
-import net.minecraft.client.model.ChestBoatModel;
 import net.minecraft.client.renderer.entity.EntityRenderers;
-import net.minecraft.client.renderer.entity.PaintingRenderer;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.vit.jurassicreborn.JurassicReborn;
 import net.vit.jurassicreborn.client.render.block.*;
@@ -65,8 +63,8 @@ public class RenderingHandler{
         event.registerEntityRenderer(ModEntities.TRANQUILIZER_DART.get(), ThrownItemRenderer::new);
         event.registerEntityRenderer(ModEntities.PARK_BENCH_SEAT_LEFT.get(),  BenchSeatRenderer::new);
         event.registerEntityRenderer(ModEntities.PARK_BENCH_SEAT_RIGHT.get(), BenchSeatRenderer::new);
-        EntityRenderers.register(ModEntities.BLUEPRINT_PAINTING.get(), BlueprintRenderer::new);
-        EntityRenderers.register(ModEntities.MURAL_PAINTING.get(), ctx -> new PaintingRenderer(ctx));
+        EntityRenderers.register(ModEntities.BLUEPRINT.get(), BlueprintRenderer::new);
+        EntityRenderers.register(ModEntities.MURAL.get(), MuralRenderer::new);
         EntityRenderers.register(ModEntities.PADDOCK_SIGN.get(),  PaddockSignRenderer::new);
         EntityRenderers.register(ModEntities.ATTRACTION_SIGN.get(), AttractionSignRenderer::new);
         EntityRenderers.register(ModEntities.FORD_EXPLORER.get(), FordExplorerRenderer::new);
@@ -82,8 +80,7 @@ public class RenderingHandler{
         EntityRenderers.register(ModEntities.PURPLE_JEEP_WRANGLER.get(), PurpleJeepWranglerRenderer::new);
         EntityRenderers.register(ModEntities.SORNA_JEEP_WRANGLER.get(), SornaJeepWranglerRenderer::new);
         EntityRenderers.register(ModEntities.HELICOPTER.get(), HeliRenderer::new);
-        EntityRenderers.register(ModEntities.JURASSIC_BOAT.get(), ctx -> new JurassicBoatRenderer<>(ctx, false));
-        EntityRenderers.register(ModEntities.JURASSIC_CHEST_BOAT.get(), ctx -> new JurassicBoatRenderer<>(ctx, true));
+        EntityRenderers.register(ModEntities.JURASSIC_BOAT.get(), JurassicBoatRenderer::new);
 
 
         event.registerEntityRenderer(ModEntities.CRAB.get(), CrabEntityRenderer::new);
@@ -115,12 +112,7 @@ public class RenderingHandler{
             // Plain boat layer (no chest)
             event.registerLayerDefinition(
                     JurassicBoatModelLayers.createBoatModelName(type),
-                    () -> BoatModel.createBodyModel()
-            );
-            // Chest-boat layer (with chest)
-            event.registerLayerDefinition(
-                    JurassicBoatModelLayers.createChestBoatModelName(type),
-                    () -> ChestBoatModel.createBodyModel()
+                    BoatModel::createBodyModel
             );
         }
     }

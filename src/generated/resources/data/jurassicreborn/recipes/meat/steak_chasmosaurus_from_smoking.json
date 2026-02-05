@@ -1,10 +1,9 @@
 {
   "type": "minecraft:smoking",
-  "category": "food",
-  "cookingtime": 100,
-  "experience": 0.35,
   "ingredient": {
     "item": "jurassicreborn:meat/meat_chasmosaurus"
   },
-  "result": "jurassicreborn:meat/steak_chasmosaurus"
+  "result": "jurassicreborn:meat/steak_chasmosaurus",
+  "experience": 0.35,
+  "cookingtime": 100
 }

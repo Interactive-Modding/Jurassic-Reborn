@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "jurassicreborn:reinforced_stone_tiles"
+    ]
+  },
+  "criteria": {
+    "has_reinforced_stone_pathway": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:reinforced_stone_pathway"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "jurassicreborn:reinforced_stone_tiles"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_reinforced_stone_pathway",
+      "has_the_recipe"
+    ]
+  ]
+}

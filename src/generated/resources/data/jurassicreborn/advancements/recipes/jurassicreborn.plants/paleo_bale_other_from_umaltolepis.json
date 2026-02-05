@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "jurassicreborn:paleo_bale_other_from_umaltolepis"
+    ]
+  },
+  "criteria": {
+    "has_umaltolepis": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:umaltolepis"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "jurassicreborn:paleo_bale_other_from_umaltolepis"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_umaltolepis",
+      "has_the_recipe"
+    ]
+  ]
+}

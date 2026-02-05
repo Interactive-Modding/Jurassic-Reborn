@@ -1,11 +1,11 @@
 {
-  "type": "jurassicreborn:cleaning_recipe_serializer",
-  "count": 1,
+  "type": "jurassicreborn:cleaning",
   "input": {
     "item": "jurassicreborn:encased_microraptor_fossil"
   },
   "output": {
-    "count": 1,
-    "item": "jurassicreborn:bones/microraptor_skull"
-  }
+    "item": "jurassicreborn:bones/microraptor_skull",
+    "count": 1
+  },
+  "count": 1
 }

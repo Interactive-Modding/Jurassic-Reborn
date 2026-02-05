@@ -1,11 +1,11 @@
 {
-  "type": "jurassicreborn:cleaning_recipe_serializer",
-  "count": 1,
+  "type": "jurassicreborn:cleaning",
   "input": {
     "item": "jurassicreborn:encased_postosuchus_fossil"
   },
   "output": {
-    "count": 1,
-    "item": "jurassicreborn:bones/postosuchus_skull"
-  }
+    "item": "jurassicreborn:bones/postosuchus_skull",
+    "count": 1
+  },
+  "count": 1
 }

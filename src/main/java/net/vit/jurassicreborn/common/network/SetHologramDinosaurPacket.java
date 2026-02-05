@@ -48,7 +48,7 @@ public class SetHologramDinosaurPacket {
         ctx.get().enqueueWork(() -> {
             ServerPlayer player = ctx.get().getSender();
             if (player == null) return;
-            Level level = player.level();
+            Level level = player.level;
             if (!(level instanceof ServerLevel serverLevel)) return;
             BlockEntity be = level.getBlockEntity(pkt.pos);
             if (!(be instanceof HologramBlockEntity hologram)) return;

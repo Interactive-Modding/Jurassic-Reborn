@@ -1,20 +1,18 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "redstone",
   "group": "wooden_door",
-  "key": {
-    "#": {
-      "item": "jurassicreborn:phoenix_planks"
-    }
-  },
   "pattern": [
     "##",
     "##",
     "##"
   ],
-  "result": {
-    "count": 3,
-    "item": "jurassicreborn:phoenix_door"
+  "key": {
+    "#": {
+      "item": "jurassicreborn:phoenix_planks"
+    }
   },
-  "show_notification": true
+  "result": {
+    "item": "jurassicreborn:phoenix_door",
+    "count": 3
+  }
 }

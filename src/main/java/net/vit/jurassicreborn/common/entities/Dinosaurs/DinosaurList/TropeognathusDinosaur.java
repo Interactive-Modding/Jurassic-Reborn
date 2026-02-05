@@ -60,7 +60,7 @@ public class TropeognathusDinosaur extends Dinosaur
 //        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.PLAINS));
 //        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.FOREST));
 //        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.MESA));
-        TagKey<Biome>[] tags = (new TagKey[]{Tags.Biomes.IS_PLAINS, BiomeTags.IS_FOREST, BiomeTags.IS_SAVANNA, BiomeTags.IS_MOUNTAIN, BiomeTags.IS_BADLANDS, BiomeTags.IS_JUNGLE});
+        TagKey<Biome>[] tags = (new TagKey[]{Tags.Biomes.IS_PLAINS, BiomeTags.IS_FOREST, BiomeTags.HAS_VILLAGE_SAVANNA, BiomeTags.IS_MOUNTAIN, BiomeTags.IS_BADLANDS, BiomeTags.IS_JUNGLE});
         ArrayList<Biome> allBiomes = new ArrayList<>(ForgeRegistries.BIOMES.getValues());
 
         biomeList = new ArrayList<>(allBiomes.stream().filter((biome ->{

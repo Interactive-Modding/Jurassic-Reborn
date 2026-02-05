@@ -1,7 +1,11 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "building",
   "group": "jurassicreborn:feeder",
+  "pattern": [
+    "ABA",
+    "CDC",
+    "EEE"
+  ],
   "key": {
     "A": {
       "item": "minecraft:iron_trapdoor"
@@ -19,13 +23,7 @@
       "item": "minecraft:cobblestone"
     }
   },
-  "pattern": [
-    "ABA",
-    "CDC",
-    "EEE"
-  ],
   "result": {
     "item": "jurassicreborn:feeder"
-  },
-  "show_notification": true
+  }
 }

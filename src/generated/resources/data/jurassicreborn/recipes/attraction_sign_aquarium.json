@@ -1,7 +1,11 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "group": "jurassicreborn:attraction_sign",
+  "pattern": [
+    "AAA",
+    "BBB",
+    "AAA"
+  ],
   "key": {
     "A": {
       "tag": "forge:ingots/iron"
@@ -10,13 +14,7 @@
       "tag": "minecraft:signs"
     }
   },
-  "pattern": [
-    "AAA",
-    "BBB",
-    "AAA"
-  ],
   "result": {
     "item": "jurassicreborn:attraction_sign_aquarium"
-  },
-  "show_notification": true
+  }
 }

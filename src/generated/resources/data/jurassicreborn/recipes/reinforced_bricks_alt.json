@@ -1,18 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "building",
+  "pattern": [
+    "SS",
+    "SS"
+  ],
   "key": {
     "S": {
       "item": "jurassicreborn:reinforced_stone"
     }
   },
-  "pattern": [
-    "SS",
-    "SS"
-  ],
   "result": {
-    "count": 4,
-    "item": "jurassicreborn:reinforced_bricks"
-  },
-  "show_notification": true
+    "item": "jurassicreborn:reinforced_bricks",
+    "count": 4
+  }
 }

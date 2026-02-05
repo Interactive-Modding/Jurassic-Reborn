@@ -10,7 +10,7 @@ import net.vit.jurassicreborn.common.genetics.PlantDNA;
 import net.vit.jurassicreborn.common.items.ModItems;
 import net.vit.jurassicreborn.common.plants.Plant;
 import net.vit.jurassicreborn.common.plants.PlantHandler;
-import net.minecraft.util.RandomSource;
+import java.util.Random;
 
 /** Represents a single recipe input for the embryonic machine. */
 public interface EmbryoInput {
@@ -28,7 +28,7 @@ public interface EmbryoInput {
         @Override public boolean isValid() { return this.dinosaur.shouldRegister(); }
         @Override public int getMetadata() { return DinosaurHandler.getId(this.dinosaur); }
         @Override public CompoundTag getTag() {
-            DinoDNA dna = new DinoDNA(this.dinosaur, 100, GeneticsHelper.randomGenetics(RandomSource.create()));
+            DinoDNA dna = new DinoDNA(this.dinosaur, 100, GeneticsHelper.randomGenetics(new Random()));
             CompoundTag tag = new CompoundTag();
             dna.writeToNBT(tag);
             return tag;

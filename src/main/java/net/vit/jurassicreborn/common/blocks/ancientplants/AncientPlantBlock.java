@@ -3,9 +3,8 @@ package net.vit.jurassicreborn.common.blocks.ancientplants;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.FluidTags;
-import net.minecraft.util.RandomSource;
+import java.util.Random;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.BushBlock;
@@ -43,7 +42,7 @@ public class AncientPlantBlock extends BushBlock {
     }
 
     @Override
-    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, Random random) {
         if (!level.getGameRules().getBoolean(GameRuleHandler.ANCIENT_PLANT_SPREAD)) return;
         if (!this.isNearWater(level, pos)) return;
         if (random.nextInt(8) != 0) return; // 1-in-8
@@ -105,7 +104,7 @@ public class AncientPlantBlock extends BushBlock {
     protected boolean canPlace(BlockState down, BlockState here, BlockPos pos, LevelReader level) {
         // must have solid top face beneath, target must be replaceable AND not water
         return down.isFaceSturdy(level, pos.below(), Direction.UP)
-                && (here.isAir() || here.is(BlockTags.REPLACEABLE) || here.is(BlockTags.REPLACEABLE_BY_TREES))
+                && (here.isAir() || here.getMaterial().isReplaceable())
                 && !level.getFluidState(pos).is(FluidTags.WATER);
     }
 
@@ -122,7 +121,6 @@ public class AncientPlantBlock extends BushBlock {
                 soil.is(Blocks.SAND) ||
                 soil.is(Blocks.RED_SAND) ||
                 soil.is(Blocks.GRAVEL) ||
-                soil.is(Blocks.CLAY) ||
-                soil.is(Blocks.MUD);
+                soil.is(Blocks.CLAY);
     }
 }

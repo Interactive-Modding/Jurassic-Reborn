@@ -1,14 +1,12 @@
 package net.vit.jurassicreborn.common.datagen;
 
-import net.minecraft.core.Direction;
-import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.Registry;
 import net.minecraft.data.BlockFamily;
-import net.minecraft.data.PackOutput;
+import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.world.level.block.*;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
-import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.vit.jurassicreborn.JurassicReborn;
@@ -19,8 +17,8 @@ import net.vit.jurassicreborn.common.entities.Dinosaurs.Dinosaur;
 import static net.minecraftforge.client.model.generators.ModelProvider.BLOCK_FOLDER;
 
 public class JRBlockstateProvider extends BlockStateProvider {
-    public JRBlockstateProvider(PackOutput output, ExistingFileHelper exFileHelper) {
-        super(output, JurassicReborn.MODID, exFileHelper);
+    public JRBlockstateProvider(DataGenerator gen,ExistingFileHelper exFileHelper) {
+        super(gen, JurassicReborn.MODID, exFileHelper);
     }
 
     protected static final ExistingFileHelper.ResourceType TEXTURE = new ExistingFileHelper.ResourceType(PackType.CLIENT_RESOURCES, ".png", "textures");
@@ -37,7 +35,7 @@ public class JRBlockstateProvider extends BlockStateProvider {
         ModBlockFamilies.getAllFamilies().forEach(family -> {
             Block baseBlock = family.getBaseBlock();
             simpleBlock(baseBlock);
-            ResourceLocation location = BuiltInRegistries.BLOCK.getKey(baseBlock);
+            ResourceLocation location = Registry.BLOCK.getKey(baseBlock);
             ResourceLocation baseTexture = modLoc("block/" + location.getPath());
 
             Block sign = family.get(BlockFamily.Variant.SIGN);
@@ -46,15 +44,9 @@ public class JRBlockstateProvider extends BlockStateProvider {
                 signBlock((StandingSignBlock) sign, (WallSignBlock) wallSign, baseTexture);
             }
 
-            Block hangingSign = family.getHangingSign();
-            Block wallHangingSign = family.getWallHangingSign();
-            if (hangingSign instanceof CeilingHangingSignBlock ceiling && wallHangingSign instanceof WallHangingSignBlock wallHanging) {
-                hangingSignBlock(ceiling, wallHanging, baseTexture);
-            }
-
             TrapDoorBlock trapdoor = (TrapDoorBlock) family.get(BlockFamily.Variant.TRAPDOOR);
             if (trapdoor != null) {
-                ResourceLocation trapLoc = BuiltInRegistries.BLOCK.getKey(trapdoor);
+                ResourceLocation trapLoc = Registry.BLOCK.getKey(trapdoor);
                 trapdoorBlock(trapdoor, modLoc("block/" + trapLoc.getPath()), false);
             }
 
@@ -153,7 +145,7 @@ public class JRBlockstateProvider extends BlockStateProvider {
             if (dinosaur!= Dinosaur.EMPTY) {
                 Block fossil = ModBlocks.getEncasedBlockFor(dinosaur);
                 if (fossil != null) {
-                    ResourceLocation fossilName = BuiltInRegistries.BLOCK.getKey(fossil);
+                    ResourceLocation fossilName = Registry.BLOCK.getKey(fossil);
 
                  //   if (models().existingFileHelper.exists(modLoc("block/"+fossilName.getPath()), TEXTURE)) {
                  //       simpleBlock(fossil);
@@ -169,7 +161,7 @@ public class JRBlockstateProvider extends BlockStateProvider {
     }
 
     public void simpleDoorBlock(DoorBlock door){
-        ResourceLocation doorLoc = BuiltInRegistries.BLOCK.getKey(door);
+        ResourceLocation doorLoc = Registry.BLOCK.getKey(door);
         ResourceLocation top = modLoc("block/"+doorLoc.getPath()+"_top");
         ResourceLocation bottom = modLoc("block/"+doorLoc.getPath()+"_bottom");
         doorBlock(door,bottom,top);
@@ -204,32 +196,6 @@ public class JRBlockstateProvider extends BlockStateProvider {
     }
 
     protected String name(Block block) {
-        return BuiltInRegistries.BLOCK.getKey(block).getPath();
-    }
-
-    private void hangingSignBlock(CeilingHangingSignBlock hangingSign, WallHangingSignBlock wallHangingSign, ResourceLocation texture) {
-        String ceilingName = name(hangingSign);
-        ModelFile ceiling = models().withExistingParent(ceilingName, mcLoc("block/hanging_sign"))
-                .texture("texture", texture)
-                .renderType("minecraft:cutout");
-        ModelFile ceilingAttached = models().withExistingParent(ceilingName + "_attached", mcLoc("block/hanging_sign_attached"))
-                .texture("texture", texture)
-                .renderType("minecraft:cutout");
-
-        getVariantBuilder(hangingSign).forAllStates(state -> {
-            int rot = state.getValue(CeilingHangingSignBlock.ROTATION);
-            boolean attached = state.getValue(CeilingHangingSignBlock.ATTACHED);
-            int yRot = (int) (rot * 22.5F) % 360;
-
-            return ConfiguredModel.builder()
-                    .modelFile(attached ? ceilingAttached : ceiling)
-                    .rotationY(yRot)
-                    .build();
-        });
-
-        ModelFile wall = models().withExistingParent(name(wallHangingSign), mcLoc("block/wall_hanging_sign"))
-                .texture("texture", texture)
-                .renderType("minecraft:cutout");
-        horizontalBlock(wallHangingSign, wall, 90);
+        return Registry.BLOCK.getKey(block).getPath();
     }
 }

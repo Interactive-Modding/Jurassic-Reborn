@@ -1,6 +1,6 @@
 package net.vit.jurassicreborn.common.genetics;
 
-import net.minecraft.util.RandomSource;
+import net.minecraft.world.level.levelgen.RandomSource;
 
 import java.util.Random;
 

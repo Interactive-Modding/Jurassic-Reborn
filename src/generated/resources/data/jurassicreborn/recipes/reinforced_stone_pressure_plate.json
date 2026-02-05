@@ -1,16 +1,14 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "redstone",
+  "pattern": [
+    "##"
+  ],
   "key": {
     "#": {
       "item": "jurassicreborn:reinforced_stone"
     }
   },
-  "pattern": [
-    "##"
-  ],
   "result": {
     "item": "jurassicreborn:reinforced_stone_pressure_plate"
-  },
-  "show_notification": true
+  }
 }

@@ -1,19 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "building",
-  "key": {
-    "A": {
-      "item": "jurassicreborn:reinforced_stone"
-    }
-  },
   "pattern": [
     "AAA",
     "AAA",
     "AAA"
   ],
-  "result": {
-    "count": 9,
-    "item": "jurassicreborn:reinforced_stone_panel"
+  "key": {
+    "A": {
+      "item": "jurassicreborn:reinforced_stone"
+    }
   },
-  "show_notification": true
+  "result": {
+    "item": "jurassicreborn:reinforced_stone_panel",
+    "count": 9
+  }
 }

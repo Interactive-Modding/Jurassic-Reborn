@@ -3,10 +3,10 @@ package net.vit.jurassicreborn.common.worldgen.villager;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
-import net.minecraft.core.registries.Registries;
+import net.minecraft.core.Registry;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraft.world.item.ItemStack;
@@ -14,11 +14,14 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.MapItem;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.structure.Structure;
+import net.minecraft.world.level.levelgen.feature.ConfiguredStructureFeature;
 import net.minecraft.world.level.saveddata.maps.MapDecoration;
 import net.minecraft.world.level.saveddata.maps.MapItemSavedData;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.Optional;
+import java.util.Random;
 
 /**
  * Custom cartographer trade that mirrors the vanilla treasure map behaviour but targets JR structures.
@@ -27,20 +30,20 @@ public class JurassicStructureMapForEmeralds implements VillagerTrades.ItemListi
     private static final float PRICE_MULTIPLIER = 0.2F;
 
     private final int emeraldCost;
-    private final net.minecraft.resources.ResourceKey<Structure> structureKey;
+    private final net.minecraft.resources.ResourceKey<ConfiguredStructureFeature<?, ?>> structureKey;
     private final MapDecoration.Type markerType;
     private final int maxUses;
     private final int villagerXp;
     private final String translationKey;
 
     public JurassicStructureMapForEmeralds(int emeraldCost,
-                                           net.minecraft.resources.ResourceKey<Structure> structureKey,
+                                           net.minecraft.resources.ResourceKey<ConfiguredStructureFeature<?, ?>> structureKey,
                                            String translationKey) {
         this(emeraldCost, structureKey, MapDecoration.Type.RED_X, 12, 5, translationKey);
     }
 
     public JurassicStructureMapForEmeralds(int emeraldCost,
-                                           net.minecraft.resources.ResourceKey<Structure> structureKey,
+                                           net.minecraft.resources.ResourceKey<ConfiguredStructureFeature<?, ?>> structureKey,
                                            MapDecoration.Type markerType,
                                            int maxUses,
                                            int villagerXp,
@@ -54,22 +57,22 @@ public class JurassicStructureMapForEmeralds implements VillagerTrades.ItemListi
     }
 
     @Override
-    public MerchantOffer getOffer(Entity trader, RandomSource random) {
-        if (!(trader.level() instanceof ServerLevel serverLevel)) {
+    public MerchantOffer getOffer(Entity trader, Random random) {
+        if (!(trader.level instanceof ServerLevel serverLevel)) {
             return null;
         }
 
-        var registry = serverLevel.registryAccess().registryOrThrow(Registries.STRUCTURE);
+        Registry<ConfiguredStructureFeature<?, ?>> registry = serverLevel.registryAccess().registryOrThrow(Registry.CONFIGURED_STRUCTURE_FEATURE_REGISTRY);
 
-        Optional<Holder.Reference<Structure>> structureHolder = registry.getHolder(this.structureKey);
+        Optional<Holder<ConfiguredStructureFeature<?, ?>>> structureHolder = registry.getHolder(this.structureKey);
         if (structureHolder.isEmpty()) {
             return null;
         }
 
-        HolderSet<Structure> structures = HolderSet.direct(structureHolder.get());
+        HolderSet<ConfiguredStructureFeature<?, ?>> structures = HolderSet.direct(structureHolder.get());
         ChunkGenerator generator = serverLevel.getChunkSource().getGenerator();
 
-        Optional<com.mojang.datafixers.util.Pair<BlockPos, Holder<Structure>>> result = Optional.ofNullable(generator.findNearestMapStructure(serverLevel, structures, trader.blockPosition(), 100, true));
+        Optional<com.mojang.datafixers.util.Pair<BlockPos, Holder<ConfiguredStructureFeature<?, ?>>>> result = findNearestStructure(generator, serverLevel, structures, trader.blockPosition());
 
         if (result.isEmpty()) {
             return null;
@@ -80,7 +83,7 @@ public class JurassicStructureMapForEmeralds implements VillagerTrades.ItemListi
         ItemStack map = MapItem.create(serverLevel, structurePos.getX(), structurePos.getZ(), (byte) 2, true, true);
         MapItem.renderBiomePreviewMap(serverLevel, map);
         MapItemSavedData.addTargetDecoration(map, structurePos, "+", this.markerType);
-        map.setHoverName(Component.translatable(this.translationKey));
+        map.setHoverName(new TranslatableComponent(this.translationKey));
 
         return new MerchantOffer(
                 new ItemStack(Items.EMERALD, this.emeraldCost),
@@ -90,6 +93,32 @@ public class JurassicStructureMapForEmeralds implements VillagerTrades.ItemListi
                 this.villagerXp,
                 PRICE_MULTIPLIER
         );
+}
+
+    @SuppressWarnings("unchecked")
+    private Optional<com.mojang.datafixers.util.Pair<BlockPos, Holder<ConfiguredStructureFeature<?, ?>>>> findNearestStructure(ChunkGenerator generator,
+                                                                                                                             ServerLevel level,
+                                                                                                                             HolderSet<ConfiguredStructureFeature<?, ?>> structures,
+                                                                                                                             BlockPos origin) {
+        try {
+            Method method = generator.getClass().getMethod("findNearestMapStructure", ServerLevel.class, HolderSet.class, BlockPos.class, int.class, boolean.class);
+            Object result = method.invoke(generator, level, structures, origin, 100, true);
+            return Optional.ofNullable((com.mojang.datafixers.util.Pair<BlockPos, Holder<ConfiguredStructureFeature<?, ?>>>) result);
+        } catch (NoSuchMethodException ignored) {
+        } catch (IllegalAccessException | InvocationTargetException exception) {
+            exception.printStackTrace();
+            return Optional.empty();
+        }
+
+        try {
+            Method method = generator.getClass().getMethod("findNearestMapStructure", ServerLevel.class, HolderSet.class, BlockPos.class, int.class, boolean.class, long.class);
+            Object result = method.invoke(generator, level, structures, origin, 100, true, level.getSeed());
+            return Optional.ofNullable((com.mojang.datafixers.util.Pair<BlockPos, Holder<ConfiguredStructureFeature<?, ?>>>) result);
+        } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException exception) {
+            exception.printStackTrace();
+        }
+
+        return Optional.empty();
     }
 }
 

@@ -3,8 +3,9 @@ package net.vit.jurassicreborn.client.input;
 
 import com.mojang.blaze3d.platform.InputConstants;
 import net.minecraft.client.KeyMapping;
-import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
+import net.minecraftforge.client.ClientRegistry;
 import net.minecraftforge.client.settings.KeyConflictContext;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import org.lwjgl.glfw.GLFW;
 
 public class DinosaurKeyHandler {
@@ -16,7 +17,7 @@ public class DinosaurKeyHandler {
             "key.categories.jurassicreborn"
     );
 
-    public static void register(RegisterKeyMappingsEvent event) {
-        event.register(MICRORAPTOR_DISMOUNT);
+    public static void register(final FMLClientSetupEvent event) {
+        event.enqueueWork(() -> ClientRegistry.registerKeyBinding(MICRORAPTOR_DISMOUNT));
     }
 }

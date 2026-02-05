@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "jurassicreborn:attraction_sign_hyaenodon_lair_from_attraction_sign_herbivore_paddock_plants"
+    ]
+  },
+  "criteria": {
+    "has_attraction_sign_herbivore_paddock_plants": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:attraction_sign_herbivore_paddock_plants"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "jurassicreborn:attraction_sign_hyaenodon_lair_from_attraction_sign_herbivore_paddock_plants"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_attraction_sign_herbivore_paddock_plants",
+      "has_the_recipe"
+    ]
+  ]
+}

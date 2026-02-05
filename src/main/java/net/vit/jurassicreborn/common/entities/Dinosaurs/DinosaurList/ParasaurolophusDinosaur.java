@@ -53,7 +53,7 @@ public class ParasaurolophusDinosaur extends Dinosaur {
         this.setRecipe(recipe);
 
         ArrayList<ResourceKey<Biome>> biomeList = new ArrayList<>();
-        TagKey<Biome>[] tags = (new TagKey[]{ Tags.Biomes.IS_PLAINS, Tags.Biomes.IS_SANDY, BiomeTags.IS_BADLANDS, BiomeTags.IS_SAVANNA});
+        TagKey<Biome>[] tags = (new TagKey[]{ Tags.Biomes.IS_PLAINS, Tags.Biomes.IS_SANDY, BiomeTags.IS_BADLANDS, BiomeTags.HAS_VILLAGE_SAVANNA});
         ArrayList<Biome> allBiomes = new ArrayList<>(ForgeRegistries.BIOMES.getValues());
 
         biomeList = new ArrayList<>(allBiomes.stream().filter((biome ->{

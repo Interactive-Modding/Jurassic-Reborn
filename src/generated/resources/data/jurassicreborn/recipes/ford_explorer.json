@@ -1,9 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
+  "pattern": [
+    "GWG",
+    "LCR",
+    "YYY"
+  ],
   "key": {
-    "C": {
-      "item": "jurassicreborn:unfinished_car"
+    "R": {
+      "item": "minecraft:green_dye"
+    },
+    "W": {
+      "item": "minecraft:glass_pane"
     },
     "G": {
       "item": "minecraft:red_dye"
@@ -11,23 +18,14 @@
     "L": {
       "item": "minecraft:lime_dye"
     },
-    "R": {
-      "item": "minecraft:green_dye"
-    },
-    "W": {
-      "item": "minecraft:glass_pane"
+    "C": {
+      "item": "jurassicreborn:unfinished_car"
     },
     "Y": {
       "item": "minecraft:yellow_dye"
     }
   },
-  "pattern": [
-    "GWG",
-    "LCR",
-    "YYY"
-  ],
   "result": {
     "item": "jurassicreborn:ford_explorer"
-  },
-  "show_notification": true
+  }
 }

@@ -2,7 +2,7 @@ package net.vit.jurassicreborn.common.entities;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
+import java.util.Random;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MoverType;
@@ -42,12 +42,13 @@ public abstract class FlyingDinosaurEntity extends DinosaurEntity {
     private int takeoffSmoothTicks;
     private Vec3 takeoffTargetVelocity = Vec3.ZERO;
 
+
     // --- Flight tuning ---
-    private static final double FLIGHT_ACCEL = 0.05;
-    private static final double MAX_FLIGHT_SPEED = 0.55;
-    private static final double MAX_ASCENT = 0.45;
-    private static final double MAX_DESCENT = -0.45;
-    private static final double ARRIVE_SLOW_RADIUS = 4.0;
+    private static final double FLIGHT_ACCEL = 0.05;       // gentler accel
+    private static final double MAX_FLIGHT_SPEED = 0.55;   // overall speed cap
+    private static final double MAX_ASCENT = 0.45;         // climb cap
+    private static final double MAX_DESCENT = -0.45;       // drop cap
+    private static final double ARRIVE_SLOW_RADIUS = 4.0;  // start braking here
 
     public FlyingDinosaurEntity(Level world, EntityType type, Dinosaur dino) {
         super(world, type, dino);
@@ -70,15 +71,6 @@ public abstract class FlyingDinosaurEntity extends DinosaurEntity {
         this.doTarget();
     }
 
-    @Override
-    protected void updateWalkAnimation(float partialTicks) {
-        // Prevent double animation updates during flight
-        if (!this.isTouchingGround()) {
-            return;  // Flight animation handled by updateCustomFlightAnimation()
-        }
-        super.updateWalkAnimation(partialTicks);
-    }
-
     protected void doTarget() {
         this.target(LeptictidiumEntity.class, HypsilophodonEntity.class,
                 MicroraptorEntity.class, MicroceratusEntity.class, CompsognathusEntity.class);
@@ -86,7 +78,7 @@ public abstract class FlyingDinosaurEntity extends DinosaurEntity {
 
     @Override
     public void tick() {
-        if (!this.onGround() && this.getAnimation() == EntityAnimation.SLEEPING.get()) {
+        if (!this.isOnGround() && this.getAnimation() == EntityAnimation.SLEEPING.get()) {
             this.setDeltaMovement(this.getDeltaMovement().add(0.0D, -0.2D, 0.0D));
         }
 
@@ -156,9 +148,10 @@ public abstract class FlyingDinosaurEntity extends DinosaurEntity {
         if (this.isDeadOrDying() || this.isCarcass() || this.isInWater()) return true;
         if (this.takingOff) return false;
         AABB box = this.getBoundingBox().inflate(0.24D);
-        boolean anyCollision = !this.level().noCollision(this, box);
-        return anyCollision || this.onGround();
+        boolean anyCollision = !this.level.noCollision(this, box);
+        return anyCollision || this.isOnGround();
     }
+
 
     public void startTakeOff() {
         if (!this.takingOff) {
@@ -185,80 +178,77 @@ public abstract class FlyingDinosaurEntity extends DinosaurEntity {
         double dZ = (loc.z - this.getZ()) / distance;
 
         AABB box = this.getBoundingBox();
-        for (double i = 1.0; i < distance; i += 0.75) {
+        for (double i = 1.0; i < distance; i += 0.75) { // denser sampling
             box = box.move(dX, dY, dZ);
-            if (!this.level().noCollision(this, box)) return false;
+            if (!this.level.noCollision(this, box)) return false;
         }
         return true;
     }
 
-    protected void updateCustomFlightAnimation() {
-        double dx = this.getX() - this.xo;
-        double dz = this.getZ() - this.zo;
-        float dist = Mth.sqrt((float) (dx * dx + dz * dz)) * 4.0F;
-
-        if (dist > 1.0F) dist = 1.0F;
-
-        this.walkAnimation.update(dist, 0.4F);
-    }
-
     @Override
-    public void travel(Vec3 travelVec) {
-        if (this.tranqed || this.isTouchingGround()) {
-            super.travel(travelVec);
+    public void travel(Vec3 travelVector) {
+        if (!this.tranqed && !this.isTouchingGround()) {
+            if (this.isInWater()) {
+                this.moveRelative(0.02F, travelVector);
+                this.move(MoverType.SELF, this.getDeltaMovement());
+                this.setDeltaMovement(this.getDeltaMovement().scale(0.800000011920929D));
+                return;
+            } else if (this.isInLava()) {
+                this.moveRelative(0.02F, travelVector);
+                this.move(MoverType.SELF, this.getDeltaMovement());
+                this.setDeltaMovement(this.getDeltaMovement().scale(0.5D));
+                return;
+            } else {
+                float friction = 0.91F;
+                if (this.isOnGround()) {
+                    BlockPos below = new BlockPos(Mth.floor(this.getX()), Mth.floor(this.getBoundingBox().minY - 1.0D), Mth.floor(this.getZ()));
+                    friction = this.level.getBlockState(below).getFriction(this.level, below, this) * 0.91F;
+                }
+
+                float f3 = 0.16277136F / (friction * friction * friction);
+                this.moveRelative(this.isOnGround() ? (f3 * 0.1F) : 0.02F, travelVector);
+
+                friction = 0.91F;
+                if (this.isOnGround()) {
+                    BlockPos below = new BlockPos(Mth.floor(this.getX()), Mth.floor(this.getBoundingBox().minY - 1.0D), Mth.floor(this.getZ()));
+                    friction = this.level.getBlockState(below).getFriction(this.level, below, this) * 0.91F;
+                }
+
+                this.move(MoverType.SELF, this.getDeltaMovement());
+                // global speed cap even after physics
+                Vec3 v = this.getDeltaMovement();
+                double spd = v.length();
+                if (spd > MAX_FLIGHT_SPEED) v = v.scale(MAX_FLIGHT_SPEED / spd);
+                this.setDeltaMovement(v.scale(friction));
+            }
+
+            this.animationSpeedOld = this.animationSpeed;
+            double dx = this.getX() - this.xo;
+            double dz = this.getZ() - this.zo;
+            float dist = Mth.sqrt((float) (dx * dx + dz * dz)) * 4.0F;
+            if (dist > 1.0F) dist = 1.0F;
+            this.animationSpeed += (dist - this.animationSpeed) * 0.4F;
+            this.animationPosition += this.animationSpeed;
             return;
         }
 
-        if (this.isInWater()) {
-            this.moveRelative(0.02F, travelVec);
-            this.move(MoverType.SELF, this.getDeltaMovement());
-            this.setDeltaMovement(this.getDeltaMovement().scale(0.8D));
-        }
-        else if (this.isInLava()) {
-            this.moveRelative(0.02F, travelVec);
-            this.move(MoverType.SELF, this.getDeltaMovement());
-            this.setDeltaMovement(this.getDeltaMovement().scale(0.5D));
-        }
-        else {
-            float friction = 0.91F;
-
-            if (this.onGround()) {
-                BlockPos below = new BlockPos(
-                        Mth.floor(this.getX()),
-                        Mth.floor(this.getBoundingBox().minY - 1.0D),
-                        Mth.floor(this.getZ())
-                );
-                friction = this.level().getBlockState(below).getFriction(this.level(), below, this) * 0.91F;
-            }
-
-            float accel = this.onGround() ? (0.16277136F / (friction * friction * friction)) * 0.1F : 0.02F;
-            this.moveRelative(accel, travelVec);
-
-            friction = 0.91F;
-            if (this.onGround()) {
-                BlockPos below = new BlockPos(
-                        Mth.floor(this.getX()),
-                        Mth.floor(this.getBoundingBox().minY - 1.0D),
-                        Mth.floor(this.getZ())
-                );
-                friction = this.level().getBlockState(below).getFriction(this.level(), below, this) * 0.91F;
-            }
-
-            this.move(MoverType.SELF, this.getDeltaMovement());
-
-            Vec3 v = this.getDeltaMovement();
-            double speed = v.length();
-            if (speed > MAX_FLIGHT_SPEED) {
-                v = v.scale(MAX_FLIGHT_SPEED / speed);
-            }
-
-            this.setDeltaMovement(v.scale(friction));
-        }
-
-        updateCustomFlightAnimation();
+        super.travel(travelVector);
     }
 
-    // ---- AI CLASSES BELOW (unchanged) ----
+    // --- helpers ---
+    private static double angleBetweenDeg(Vec3 a, Vec3 b, Vec3 origin) {
+        Vec3 va = a.subtract(origin).normalize();
+        Vec3 vb = b.subtract(origin).normalize();
+        double dot = Mth.clamp(va.dot(vb), -1.0D, 1.0D);
+        return Math.toDegrees(Math.acos(dot));
+    }
+
+    private boolean isOverWater() {
+        BlockPos posBelow = this.blockPosition().below();
+        return this.level.getBlockState(posBelow).is(Blocks.WATER);
+    }
+
+    // ---------- AI: Start Flying ----------
     class AIStartFlying extends Goal {
         private final FlyingDinosaurEntity dino = FlyingDinosaurEntity.this;
 
@@ -279,21 +269,26 @@ public abstract class FlyingDinosaurEntity extends DinosaurEntity {
             this.dino.setAnimation(EntityAnimation.FLYING.get());
             this.dino.shouldLand = false;
             this.dino.idleFlightTicks = 0;
-            RandomSource r = this.dino.getRandom();
+            Random r = this.dino.getRandom();
             double x = this.dino.getX() + r.nextFloat();
             double y = this.dino.getY() + (r.nextFloat() * 5.0F);
             double z = this.dino.getZ() + r.nextFloat();
-            this.dino.getMoveControl().setWantedPosition(x, y, z, 1.2D);
+            this.dino.getMoveControl().setWantedPosition(x, y, z, 1.2D); // initial hop slower
         }
     }
 
+    // ---------- AI: Random Fly ----------
     class AIRandomFly extends Goal {
         private final FlyingDinosaurEntity dino = FlyingDinosaurEntity.this;
 
         @Override public boolean canUse() {
-            if (dino.onGround()) return false;
+            if (dino.isOnGround()) return false;
             MoveControl ctl = dino.getMoveControl();
             if (!ctl.hasWanted()) return true;
+
+
+
+
 
             double dx = ctl.getWantedX() - dino.getX();
             double dy = ctl.getWantedY() - dino.getY();
@@ -311,16 +306,31 @@ public abstract class FlyingDinosaurEntity extends DinosaurEntity {
                 if (dino.isCourseTraversable(pos)) {
                     dino.setAnimation(EntityAnimation.FLYING.get());
                     dino.getMoveControl().setWantedPosition(dx, dy, dz, 1.0D);
+
+
+
+
+
+
+
+
+
+
+
+
+
                     return;
                 }
             }
             dino.shouldLand = true;
+
+
+
+
         }
     }
-    private boolean isOverWater() {
-        BlockPos posBelow = this.blockPosition().below();
-        return this.level().getBlockState(posBelow).is(Blocks.WATER);
-    }
+
+    // ---------- AI: Choose to Land ----------
     class AIFlyLand extends Goal {
         private final FlyingDinosaurEntity dino = FlyingDinosaurEntity.this;
 
@@ -341,7 +351,7 @@ public abstract class FlyingDinosaurEntity extends DinosaurEntity {
                 double d = dx * dx + dy * dy + dz * dz;
                 if (d < 1.0D || d > 3600.0D) {
                     BlockPos posBelow = this.dino.blockPosition().below();
-                    return this.dino.level().getBlockState(posBelow).isAir() && this.dino.getRandom().nextFloat() < 0.01F;
+                    return this.dino.level.getBlockState(posBelow).isAir() && this.dino.getRandom().nextFloat() < 0.01F;
                 }
             }
             return false;
@@ -351,17 +361,17 @@ public abstract class FlyingDinosaurEntity extends DinosaurEntity {
 
         @Override
         public void start() {
-            RandomSource random = this.dino.getRandom();
+            Random random = this.dino.getRandom();
             double dstX = this.dino.getX() + ((random.nextFloat() * 2.0F - 1.0F) * 16.0F);
             double dstZ = this.dino.getZ() + ((random.nextFloat() * 2.0F - 1.0F) * 16.0F);
-            int topY = this.dino.level().getHeight(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+            int topY = this.dino.level.getHeight(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                     Mth.floor(dstX), Mth.floor(dstZ));
             double dstY = (double) topY;
 
             BlockPos.MutableBlockPos probe = new BlockPos.MutableBlockPos(
                     Mth.floor(dstX), Mth.floor(dstY - 1.0D), Mth.floor(dstZ)
             );
-            Level level = this.dino.level();
+            Level level = this.dino.level;
             while (probe.getY() > level.getMinBuildHeight() && level.getBlockState(probe).isAir()) {
                 probe.move(0, -1, 0);
             }
@@ -376,12 +386,12 @@ public abstract class FlyingDinosaurEntity extends DinosaurEntity {
         }
     }
 
+    // ---------- MoveControl for flight ----------
     class FlyingMoveHelper extends DinosaurMoveHelper {
         private final FlyingDinosaurEntity parent = FlyingDinosaurEntity.this;
+        private int timer;
 
-        public FlyingMoveHelper() {
-            super(FlyingDinosaurEntity.this);
-        }
+        public FlyingMoveHelper() { super(FlyingDinosaurEntity.this); }
 
         @Override
         public void tick() {
@@ -404,6 +414,7 @@ public abstract class FlyingDinosaurEntity extends DinosaurEntity {
                 double d = Math.sqrt(d2);
                 double nx = dx / d, ny = dy / d, nz = dz / d;
 
+                // arrival-style accel/braking
                 double accel = FLIGHT_ACCEL;
                 if (d < ARRIVE_SLOW_RADIUS) accel *= (d / ARRIVE_SLOW_RADIUS);
 
@@ -413,18 +424,22 @@ public abstract class FlyingDinosaurEntity extends DinosaurEntity {
                         nz * accel * this.speedModifier
                 );
 
-                if (vel.y > MAX_ASCENT) vel = new Vec3(vel.x, MAX_ASCENT, vel.z);
+                // vertical clamp
+                if (vel.y > MAX_ASCENT)  vel = new Vec3(vel.x, MAX_ASCENT, vel.z);
                 if (vel.y < MAX_DESCENT) vel = new Vec3(vel.x, MAX_DESCENT, vel.z);
 
+                // speed cap
                 double spd = vel.length();
                 if (spd > MAX_FLIGHT_SPEED) vel = vel.scale(MAX_FLIGHT_SPEED / spd);
 
+                // obstacle probe; if blocked, abandon this target
                 if (!this.isNotColliding(this.wantedX, this.wantedY, this.wantedZ, d)) {
                     this.operation = MoveControl.Operation.WAIT;
                 } else {
                     this.parent.setDeltaMovement(vel);
                 }
 
+                // soft brake near target to avoid orbit/jitter
                 if (d2 < 0.6) {
                     this.parent.setDeltaMovement(this.parent.getDeltaMovement().scale(0.6));
                     if (d2 < 0.05) this.operation = MoveControl.Operation.WAIT;
@@ -440,12 +455,13 @@ public abstract class FlyingDinosaurEntity extends DinosaurEntity {
 
             for (double i = 1.0; i < distance; i += 0.75) {
                 bounds = bounds.move(d0, d1, d2);
-                if (!this.parent.level().noCollision(this.parent, bounds)) return false;
+                if (!this.parent.level.noCollision(this.parent, bounds)) return false;
             }
             return true;
         }
     }
 
+    // ---------- Look-around ----------
     class AILookAround extends Goal {
         private final FlyingDinosaurEntity dino = FlyingDinosaurEntity.this;
 
@@ -455,6 +471,7 @@ public abstract class FlyingDinosaurEntity extends DinosaurEntity {
 
         @Override
         public void tick() {
+            // Avoid south-lock when velocity ~ 0
             Vec3 vel = this.dino.getDeltaMovement();
             boolean moving = vel.lengthSqr() > 1.0e-4;
 
@@ -490,6 +507,7 @@ public abstract class FlyingDinosaurEntity extends DinosaurEntity {
         }
     }
 
+    // ---------- Wander only when grounded ----------
     class AIWander extends DinosaurWanderEntityAI {
         private final FlyingDinosaurEntity dino = FlyingDinosaurEntity.this;
 

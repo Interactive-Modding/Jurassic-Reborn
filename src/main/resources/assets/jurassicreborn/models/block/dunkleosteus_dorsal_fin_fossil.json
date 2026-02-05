@@ -1,6 +1,5 @@
 {
   "parent": "block/block",
-  "render_type": "cutout",
   "textures": {
     "particle": "block/deepslate",
     "layer0": "minecraft:block/deepslate",

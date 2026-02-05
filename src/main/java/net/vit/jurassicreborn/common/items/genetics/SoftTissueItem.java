@@ -11,7 +11,7 @@ import net.vit.jurassicreborn.common.util.api.DinosaurItem;
 import net.vit.jurassicreborn.common.util.api.SequencableItem;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.util.RandomSource;
+import java.util.Random;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
@@ -68,7 +68,7 @@ public class SoftTissueItem extends Item implements SequencableItem, DinosaurIte
     }
 
     @Override
-    public ItemStack getSequenceOutput(ItemStack stack, RandomSource random) {
+    public ItemStack getSequenceOutput(ItemStack stack, Random random) {
         CompoundTag tag = stack.getTag();
         DinoDNA dna = tag != null ? DinoDNA.readFromNBT(tag) : null;
 
@@ -88,7 +88,7 @@ public class SoftTissueItem extends Item implements SequencableItem, DinosaurIte
 //        super.fillItemCategory(pCategory, pItems);
 //    }
 
-    private void initDnaCompound(ItemStack stack, RandomSource random, CompoundTag nbt) {
+    private void initDnaCompound(ItemStack stack, Random random, CompoundTag nbt) {
         int quality = Math.abs((SequencableItem.randomQuality(random))/2);
         DinoDNA dna = new DinoDNA(getDinosaur(stack), quality, GeneticsHelper.randomGenetics(random));
         dna.writeToNBT(nbt);

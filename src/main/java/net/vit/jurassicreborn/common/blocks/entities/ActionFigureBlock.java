@@ -10,7 +10,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
+import java.util.Random;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.ItemStack;
@@ -33,7 +33,7 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.level.storage.loot.LootParams;
+import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
@@ -124,20 +124,21 @@ public class ActionFigureBlock extends Block implements EntityBlock, SimpleWater
     }
 
     @Override
-    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, Random random) {
         super.randomTick(state, level, pos, random);
         this.checkAndDropBlock(level, pos, state);
     }
 
     private void checkAndDropBlock(Level world, BlockPos pos, BlockState state) {
         if (!canBlockStay(world, pos)) {
-            LootParams.Builder lootBuilder = new LootParams.Builder((ServerLevel) world)
+            List drops = getDrops(state, new LootContext.Builder((ServerLevel) world)
                     .withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(pos))
                     .withOptionalParameter(LootContextParams.TOOL, ItemStack.EMPTY)
-                    .withOptionalParameter(LootContextParams.BLOCK_ENTITY, world.getBlockEntity(pos));
+                    .withOptionalParameter(LootContextParams.THIS_ENTITY, null)
+                    .withOptionalParameter(LootContextParams.BLOCK_ENTITY, world.getBlockEntity(pos)));
 
-            for (ItemStack drop : getDrops(state, lootBuilder)) {
-                Block.popResource(world, pos, drop);
+            for (Object drop : drops) {
+                Block.popResource(world, pos, (ItemStack) drop);
             }
 
             world.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
@@ -145,7 +146,7 @@ public class ActionFigureBlock extends Block implements EntityBlock, SimpleWater
     }
 
     private static boolean canBlockStay(LevelReader world, BlockPos pos) {
-        return world.getBlockState(pos.below()).isSolid();
+        return world.getBlockState(pos.below()).getMaterial().isSolid();
     }
 
     @Override
@@ -196,15 +197,15 @@ public class ActionFigureBlock extends Block implements EntityBlock, SimpleWater
         nbt.putString("Dinosaur", dino.getName());
         nbt.putByte("Variant", tile.getVariant());
 
-
         stack.setTag(nbt);
         return stack;
     }
 
     @Override
-    public List<ItemStack> getDrops(BlockState state, LootParams.Builder builder) {
-        List<ItemStack> drops = new ArrayList<>(1);
-        BlockEntity blockEntity = builder.getOptionalParameter(LootContextParams.BLOCK_ENTITY);
+    public List getDrops(BlockState state, LootContext.Builder builder) {
+        List drops = new ArrayList<>(1);
+        BlockPos pos = new BlockPos(builder.getParameter(LootContextParams.ORIGIN));
+        BlockEntity blockEntity = builder.getLevel().getBlockEntity(pos);
 
         if (blockEntity instanceof ActionFigureBlockEntity tile) {
             Dinosaur dino = tile.getEntity().getDinosaur();
@@ -222,6 +223,15 @@ public class ActionFigureBlock extends Block implements EntityBlock, SimpleWater
     @Override
     public RenderShape getRenderShape(BlockState state) {
         return RenderShape.ENTITYBLOCK_ANIMATED;
+    }
+
+    @Override
+    public void playerDestroy(Level level, Player player, BlockPos pos, BlockState state, @Nullable BlockEntity blockEntity, ItemStack stack) {
+        if (blockEntity instanceof ActionFigureBlockEntity) {
+            ItemStack itemStack = getItemFromTile((ActionFigureBlockEntity) blockEntity);
+            Block.popResource(level, pos, itemStack);
+        }
+        super.playerDestroy(level, player, pos, state, blockEntity, stack);
     }
 
     @Nullable

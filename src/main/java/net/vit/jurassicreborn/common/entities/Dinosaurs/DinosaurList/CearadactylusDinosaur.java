@@ -57,7 +57,7 @@ public class CearadactylusDinosaur extends Dinosaur
 //        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.PLAINS));
 //        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.FOREST));
 //        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.MESA));
-        TagKey<Biome>[] tags = (new TagKey[]{BiomeTags.IS_SAVANNA, BiomeTags.IS_JUNGLE, BiomeTags.IS_MOUNTAIN, Tags.Biomes.IS_PLAINS, BiomeTags.IS_FOREST, BiomeTags.IS_BADLANDS});
+        TagKey<Biome>[] tags = (new TagKey[]{BiomeTags.HAS_VILLAGE_SAVANNA, BiomeTags.IS_JUNGLE, BiomeTags.IS_MOUNTAIN, Tags.Biomes.IS_PLAINS, BiomeTags.IS_FOREST, BiomeTags.IS_BADLANDS});
         ArrayList<Biome> allBiomes = new ArrayList<>(ForgeRegistries.BIOMES.getValues());
 
         biomeList = new ArrayList<>(allBiomes.stream().filter((biome ->{

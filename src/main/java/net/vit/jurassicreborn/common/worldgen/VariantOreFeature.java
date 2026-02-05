@@ -4,7 +4,6 @@ import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.SectionPos;
 import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.chunk.BulkSectionAccess;
@@ -17,6 +16,7 @@ import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguratio
 import java.util.ArrayList;
 import java.util.BitSet;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.IntStream;
 
 public class VariantOreFeature extends Feature<OreConfiguration> {
@@ -28,12 +28,12 @@ public class VariantOreFeature extends Feature<OreConfiguration> {
 
     @Override
     public boolean place(FeaturePlaceContext<OreConfiguration> ctx) {
-        RandomSource rand = ctx.random();
+        Random rand = ctx.random();
         BlockPos origin = ctx.origin();
         WorldGenLevel level = ctx.level();
         OreConfiguration original = ctx.config();
 
-
+        // === expand into ALL variant states for each target ===
         var firstState = original.targetStates.get(0).state;
         var prop = firstState.getBlock()
                 .getStateDefinition()
@@ -52,7 +52,7 @@ public class VariantOreFeature extends Feature<OreConfiguration> {
                 variants.add(OreConfiguration.target(test, fossil.setValue(variantProp, i)));
             }
         }
-
+        // build a new config with those variants
         OreConfiguration config = new OreConfiguration(
                 variants,
                 original.size,
@@ -67,23 +67,23 @@ public class VariantOreFeature extends Feature<OreConfiguration> {
         double dy1 = origin.getY() + rand.nextInt(3) - 1;
         double dy2 = origin.getY() + rand.nextInt(3) - 1;
 
-
+        // --- Y BAND ENFORCEMENT: ---
         int centerY = origin.getY();
-        int spreadY = 2;
+        int spreadY = 2; // Only generate fossils from (origin.getY() - 2) to (origin.getY() + 2)
         int minY = Math.max(centerY - spreadY, level.getMinBuildHeight());
         int maxY = Math.min(centerY + spreadY, level.getMaxBuildHeight());
         int minX = origin.getX() - Mth.ceil(config.size / 8.0F) - 1;
         int minZ = origin.getZ() - Mth.ceil(config.size / 8.0F) - 1;
         int width  = 2 * (Mth.ceil(config.size / 8.0F) + 1);
 
-
+        // Only generate in this Y range!
         return doPlace(level, rand, config,
                 dx1, dx2, dz1, dz2, dy1, dy2,
                 minX, minY, maxY, minZ, width);
     }
 
     private boolean doPlace(WorldGenLevel level,
-                            RandomSource rand,
+                            Random rand,
                             OreConfiguration config,
                             double dx1, double dx2,
                             double dz1, double dz2,
@@ -99,7 +99,7 @@ public class VariantOreFeature extends Feature<OreConfiguration> {
         int size = config.size;
         double[] coords = new double[size * 4];
 
-
+        // carve shape (identical to vanilla)
         for (int i = 0; i < size; ++i) {
             float f = (float)i / size;
             coords[i*4 + 0] = Mth.lerp(f, dx1, dx2);
@@ -122,7 +122,7 @@ public class VariantOreFeature extends Feature<OreConfiguration> {
             }
         }
 
-
+        // placement
         try (var access = new BulkSectionAccess(level)) {
             for (int i = 0; i < size; ++i) {
                 double r = coords[i*4+3];
@@ -140,7 +140,7 @@ public class VariantOreFeature extends Feature<OreConfiguration> {
                     double dx = ((double)x + .5 - cx) / r;
                     if (dx*dx < 1) {
                         for (int y = y0; y <= y1; y++) {
-                            if (y < minY || y > maxY) continue;
+                            if (y < minY || y > maxY) continue; // Clamp Y!
                             double dy = ((double)y + .5 - cy) / r;
                             if (dx*dx + dy*dy < 1) {
                                 for (int z = z0; z <= z1; z++) {
@@ -165,7 +165,7 @@ public class VariantOreFeature extends Feature<OreConfiguration> {
                                                         list.set(j, list.get(k));
                                                         list.set(k, tmp);
                                                     }
-
+                                                    // try in that order
                                                     for (var target : list) {
                                                         if (OreFeature.canPlaceOre(
                                                                 curr,

@@ -5,6 +5,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TextComponent;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.WorldlyContainer;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -53,7 +54,7 @@ public class BugCrateBlockEntity extends RandomizableContainerBlockEntity implem
 
     @Override
     protected Component getDefaultName() {
-        return Component.literal("Bug Crate");
+        return new TextComponent("Bug Crate");
     }
 
     @Override
@@ -172,7 +173,7 @@ public class BugCrateBlockEntity extends RandomizableContainerBlockEntity implem
         int stackSlot = -1;
         for (int i = OUTPUT_SLOT_START; i <= OUTPUT_SLOT_END; i++) {
             ItemStack existing = getItem(i);
-            if (!existing.isEmpty() && existing.getItem() == target && ItemStack.isSameItemSameTags(existing, bugInSlot)) {
+            if (!existing.isEmpty() && existing.getItem() == target && ItemStack.tagMatches(existing, bugInSlot)) {
                 stackSlot = i;
                 break;
             }

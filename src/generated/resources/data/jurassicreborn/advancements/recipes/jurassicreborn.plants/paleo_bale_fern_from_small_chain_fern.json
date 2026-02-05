@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "jurassicreborn:paleo_bale_fern_from_small_chain_fern"
+    ]
+  },
+  "criteria": {
+    "has_small_chain_fern": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:small_chain_fern"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "jurassicreborn:paleo_bale_fern_from_small_chain_fern"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_small_chain_fern",
+      "has_the_recipe"
+    ]
+  ]
+}

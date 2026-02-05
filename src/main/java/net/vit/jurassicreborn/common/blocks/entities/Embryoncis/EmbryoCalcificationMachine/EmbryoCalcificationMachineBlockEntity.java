@@ -20,6 +20,7 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
@@ -105,7 +106,7 @@ public class EmbryoCalcificationMachineBlockEntity extends MachineBlockEntity im
 
     @Override
     protected @NotNull Component getDefaultName() {
-        return Component.translatable("container.embryo_calcification_machine");
+        return new TranslatableComponent("container.embryo_calcification_machine");
     }
 
     @Override

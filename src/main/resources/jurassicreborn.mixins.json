@@ -10,6 +10,7 @@
     "accessors.NonNullListAccessor"
   ],
   "client": [
+    "CreativeModeInventoryScreenMixin",
     "DisplayBlockMixin",
     "LivingEntityRendererMixin",
     "EntityRenderDispatcherMixin"

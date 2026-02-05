@@ -1,7 +1,9 @@
 package net.vit.jurassicreborn.client.render.entity;
 
 import com.mojang.blaze3d.vertex.*;
-import com.mojang.math.Axis;
+import com.mojang.math.Matrix3f;
+import com.mojang.math.Matrix4f;
+import com.mojang.math.Vector3f;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderer;
@@ -9,8 +11,6 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.vit.jurassicreborn.common.entities.item.AttractionSignEntity;
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
 
 public class AttractionSignRenderer extends EntityRenderer<AttractionSignEntity> {
 
@@ -30,7 +30,7 @@ public class AttractionSignRenderer extends EntityRenderer<AttractionSignEntity>
         float h = sign.getHeight() / 2f;
         float z = -0.04f;
         ms.pushPose();
-        ms.mulPose(Axis.YP.rotationDegrees(180f - yaw));
+        ms.mulPose(Vector3f.YP.rotationDegrees(180f - yaw));
         ms.translate(-w/2f, -h/2f, 0f);
 
         // Main face (the ONLY visible solid part)

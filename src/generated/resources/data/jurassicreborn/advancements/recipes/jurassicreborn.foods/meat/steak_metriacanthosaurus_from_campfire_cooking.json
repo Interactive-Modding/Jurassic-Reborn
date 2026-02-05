@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "jurassicreborn:meat/steak_metriacanthosaurus_from_campfire_cooking"
+    ]
+  },
+  "criteria": {
+    "has_meat/meat_metriacanthosaurus": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:meat/meat_metriacanthosaurus"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "jurassicreborn:meat/steak_metriacanthosaurus_from_campfire_cooking"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_meat/meat_metriacanthosaurus",
+      "has_the_recipe"
+    ]
+  ]
+}

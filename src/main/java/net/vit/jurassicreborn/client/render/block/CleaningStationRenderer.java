@@ -1,13 +1,13 @@
 package net.vit.jurassicreborn.client.render.block;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
+import com.mojang.math.Vector3f;
 import net.vit.jurassicreborn.common.blocks.ModBlocks;
 import net.vit.jurassicreborn.common.blocks.entities.cleaner.CleanerBlock;
 import net.vit.jurassicreborn.common.blocks.entities.cleaner.CleanerBlockEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.world.item.ItemDisplayContext;
+import net.minecraft.client.renderer.block.model.ItemTransforms;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.core.Direction;
@@ -104,7 +104,7 @@ public class CleaningStationRenderer implements BlockEntityRenderer<CleanerBlock
         float scale = 0.5F;
         pPoseStack.pushPose();
         pPoseStack.translate(0.5D, 0.375D, 0.5D);
-        pPoseStack.mulPose(Axis.YP.rotationDegrees(-rotation));
+        pPoseStack.mulPose(Vector3f.YP.rotationDegrees(-rotation));
 //        pPoseStack.translate(-0.5D, -0.5D, -0.5D);
         pPoseStack.scale(scale, scale, scale);
 
@@ -117,7 +117,7 @@ public class CleaningStationRenderer implements BlockEntityRenderer<CleanerBlock
 
         //            BakedModel bakedmodel = itemRenderer.getModel(cleanable, level, null, 0/*this shouldn't matter, just don't use a compass in the cleaner lol*/);
 
-        itemRenderer.renderStatic(cleanable, ItemDisplayContext.GROUND, pPackedLight, pPackedOverlay, pPoseStack, pBufferSource, blockEntity.getLevel(), 0);
+        itemRenderer.renderStatic(cleanable, ItemTransforms.TransformType.GROUND, pPackedLight, pPackedOverlay, pPoseStack, pBufferSource, 0);
 
 //        BlockRenderDispatcher blockRender = mc.getBlockRenderer();
 

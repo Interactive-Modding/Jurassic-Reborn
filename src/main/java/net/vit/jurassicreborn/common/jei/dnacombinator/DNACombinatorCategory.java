@@ -1,14 +1,14 @@
 package net.vit.jurassicreborn.common.jei.dnacombinator;
 
+import com.mojang.blaze3d.vertex.PoseStack;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
-import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
-import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.vit.jurassicreborn.JurassicReborn;
@@ -29,22 +29,28 @@ public class DNACombinatorCategory implements IRecipeCategory<DNACombinatorRecip
 
     public DNACombinatorCategory(IGuiHelper gui) {
         this.bg = gui.createDrawable(TEX, 0, 0, 176, 80);
-        this.title = Component.translatable("container.dna_combinator");
+        this.title = new TranslatableComponent("container.dna_combinator");
         this.icon = gui.createDrawableItemStack(new ItemStack(ModBlocks.DNA_COMBINER_HYBRIDIZER.get()));
     }
 
     @Override public RecipeType<DNACombinatorRecipeExtension> getRecipeType() { return TYPE; }
+    @Override public ResourceLocation getUid()               { return TYPE.getUid(); }
     @Override public Component getTitle()              { return title; }
     @Override public IDrawable getBackground()          { return bg; }
     @Override public IDrawable getIcon()                { return icon; }
+
+    @Override
+    @SuppressWarnings("removal")
+    public Class<? extends DNACombinatorRecipeExtension> getRecipeClass() {
+        return DNACombinatorRecipeExtension.class;
+    }
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, DNACombinatorRecipeExtension recipe, IFocusGroup focuses) {
         recipe.setRecipe(builder, focuses);
     }
 
-    @Override
-    public void draw(DNACombinatorRecipeExtension recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics graphics, double mouseX, double mouseY) {
+    public void draw(DNACombinatorRecipeExtension recipe, PoseStack poseStack, double mouseX, double mouseY) {
         // no extra rendering
     }
 }

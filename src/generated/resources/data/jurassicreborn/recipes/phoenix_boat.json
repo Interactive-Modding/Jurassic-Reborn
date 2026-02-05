@@ -1,18 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "group": "boat",
+  "pattern": [
+    "P P",
+    "PPP"
+  ],
   "key": {
     "P": {
       "item": "jurassicreborn:phoenix_planks"
     }
   },
-  "pattern": [
-    "P P",
-    "PPP"
-  ],
   "result": {
     "item": "jurassicreborn:phoenix_boat"
-  },
-  "show_notification": true
+  }
 }

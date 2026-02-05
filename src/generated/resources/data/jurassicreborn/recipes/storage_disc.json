@@ -1,7 +1,11 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "group": "jurassicreborn:storage_disc",
+  "pattern": [
+    " A ",
+    "ABA",
+    " A "
+  ],
   "key": {
     "A": {
       "tag": "forge:nuggets/iron"
@@ -10,13 +14,7 @@
       "item": "jurassicreborn:basic_circuit"
     }
   },
-  "pattern": [
-    " A ",
-    "ABA",
-    " A "
-  ],
   "result": {
     "item": "jurassicreborn:storage_disc"
-  },
-  "show_notification": true
+  }
 }

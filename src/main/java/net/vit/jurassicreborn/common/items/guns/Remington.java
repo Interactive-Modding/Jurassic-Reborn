@@ -1,10 +1,12 @@
 package net.vit.jurassicreborn.common.items.guns;
 
 import net.vit.jurassicreborn.client.sounds.SoundHandler;
+import net.vit.jurassicreborn.common.items.TabHandler;
 
 public class Remington extends Gun {
     public Remington() {
         super(
+                TabHandler.ITEMS,
                 1,
                 SoundHandler.FIRE,
                 SoundHandler.EMPTY,

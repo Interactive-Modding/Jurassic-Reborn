@@ -8,7 +8,7 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
+import java.util.Random;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.GlowSquid;
@@ -17,21 +17,18 @@ import net.minecraft.world.entity.MoverType;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.animal.*;
 import net.minecraft.world.entity.animal.axolotl.Axolotl;
-import net.minecraft.world.entity.animal.frog.Frog;
-import net.minecraft.world.entity.animal.frog.Tadpole;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.phys.Vec3;
 import net.vit.jurassicreborn.JurassicReborn;
 import net.vit.jurassicreborn.common.entities.Dinosaurs.DinosaurHandler;
-import net.vit.jurassicreborn.common.entities.IHasVariants;
 import net.vit.jurassicreborn.common.entities.SwimmingDinosaurEntity;
 
 import java.util.EnumSet;
 import java.util.Locale;
 
-public class CalymeneEntity extends SwimmingDinosaurEntity implements IHasVariants {
+public class CalymeneEntity extends SwimmingDinosaurEntity {
     private static final EntityDataAccessor<Integer> VARIANT =
             SynchedEntityData.defineId(CalymeneEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Boolean> ROLLED =
@@ -56,11 +53,11 @@ public class CalymeneEntity extends SwimmingDinosaurEntity implements IHasVarian
     public CalymeneEntity(Level world, EntityType<CalymeneEntity> type) {
         super(world, type, DinosaurHandler.CALYMENE);
         this.target(AlvarezsaurusEntity.class, BeelzebufoEntity.class, Squid.class, Cod.class, Dolphin.class,
-                Salmon.class, TropicalFish.class, Turtle.class, Axolotl.class, GlowSquid.class, Frog.class,
-                Tadpole.class, CompsognathusEntity.class, LeptictidiumEntity.class);
+                Salmon.class, TropicalFish.class, Turtle.class, Axolotl.class, GlowSquid.class, 
+                 CompsognathusEntity.class, LeptictidiumEntity.class);
 
         this.setVariant(this.getRandom().nextInt(4));
-        this.setMaxUpStep(MAX_STEP_UP);
+        this.maxUpStep = MAX_STEP_UP; // <-- field assignment (not a call)
         this.goalSelector.addGoal(0, new BottomCrawlGoal(this, 1.05D, 8, 6));
     }
 
@@ -101,7 +98,7 @@ public class CalymeneEntity extends SwimmingDinosaurEntity implements IHasVarian
     public void setRolled(boolean v){ this.entityData.set(ROLLED, v); }
 
     public boolean isPanicking() { return panicTicks > 0 || this.getTarget() != null; }
-    private void startSwimBurst(RandomSource r) {
+    private void startSwimBurst(Random r) {
         this.swimBurstTicks = SWIM_BURST_MIN + r.nextInt(SWIM_BURST_VAR + 1);
     }
 
@@ -116,7 +113,7 @@ public class CalymeneEntity extends SwimmingDinosaurEntity implements IHasVarian
     @Override
     public boolean hurt(DamageSource source, float amount) {
         boolean res = super.hurt(source, amount);
-        if (!this.level().isClientSide && this.isInWater() && !this.isCarcass()) {
+        if (!this.level.isClientSide && this.isInWater() && !this.isCarcass()) {
             // Start/extend panic, maybe roll, and kick off a swim burst
             this.panicTicks = Math.max(this.panicTicks, 80 + this.getRandom().nextInt(80)); // 4–8s panic
             if (this.getHealth() / this.getMaxHealth() < 0.35F || this.getRandom().nextFloat() < 0.20F) {
@@ -138,7 +135,7 @@ public class CalymeneEntity extends SwimmingDinosaurEntity implements IHasVarian
         if (this.swimBurstTicks > 0) this.swimBurstTicks--;
 
         // Gentle bottom correction (server-side), only when not actively bursting
-        if (!this.level().isClientSide && this.isInWater() && !this.isCarcass() && this.swimBurstTicks == 0) {
+        if (!this.level.isClientSide && this.isInWater() && !this.isCarcass() && this.swimBurstTicks == 0) {
             double floorY = findSeafloorY(this.getX(), this.getY(), this.getZ());
             if (!Double.isNaN(floorY)) {
                 final double targetY = floorY + FLOOR_CLEARANCE;
@@ -213,7 +210,7 @@ public class CalymeneEntity extends SwimmingDinosaurEntity implements IHasVarian
      *
      */
     private double findSeafloorY(double x, double y, double z) {
-        final Level lvl = this.level();
+        final Level lvl = this.level;
         BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos(Mth.floor(x), Mth.floor(y), Mth.floor(z));
         final int minY = lvl.getMinBuildHeight();
         final int maxScan = 24; // scan up to 24 blocks down
@@ -288,7 +285,7 @@ public class CalymeneEntity extends SwimmingDinosaurEntity implements IHasVarian
         @Override
         public void start() {
             cooldown = 20 + mob.getRandom().nextInt(20);
-            RandomSource r = mob.getRandom();
+            Random r = mob.getRandom();
             BlockPos origin = mob.blockPosition();
             for (int i = 0; i < tries; i++) {
                 int dx = Mth.nextInt(r, -radius, radius);

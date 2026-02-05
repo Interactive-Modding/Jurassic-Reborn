@@ -9,8 +9,9 @@ import net.vit.jurassicreborn.common.util.api.SynthesizableItem;
 import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.RandomSource;
+import java.util.Random;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -32,10 +33,10 @@ public class StorageDiscItem extends Item implements SynthesizableItem {
 
         CompoundTag tag = stack.getTag();
         if(tag == null) {
-            toolTip.add(Component.translatable("cage.empty").withStyle(ChatFormatting.DARK_RED));
+            toolTip.add(new TranslatableComponent("cage.empty").withStyle(ChatFormatting.DARK_RED));
             return;
         }else if(!tag.contains("DNA")){
-            toolTip.add(Component.translatable("cage.empty").withStyle(ChatFormatting.DARK_RED));
+            toolTip.add(new TranslatableComponent("cage.empty").withStyle(ChatFormatting.DARK_RED));
             return;
         }
 
@@ -59,7 +60,7 @@ public class StorageDiscItem extends Item implements SynthesizableItem {
     }
 
     @Override
-    public ItemStack getSynthesizedItem(ItemStack stack, RandomSource random) {
+    public ItemStack getSynthesizedItem(ItemStack stack, Random random) {
         CompoundTag tag = stack.getTag();
         StorageType type = StorageTypeRegistry.getStorageType(tag.getCompound("DNA").getString("StorageId"));
         DNA dna = type.load(tag);
@@ -117,7 +118,7 @@ public class StorageDiscItem extends Item implements SynthesizableItem {
 
     @Override
     public boolean onEntityItemUpdate(ItemStack stack, ItemEntity entity) {
-        if (!entity.level().isClientSide) {
+        if (!entity.level.isClientSide) {
             applyCustomModelData(stack);
         }
         return super.onEntityItemUpdate(stack, entity);

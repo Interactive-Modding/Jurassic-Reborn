@@ -4,13 +4,14 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
+import java.util.Random;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.Heightmap;
+import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.pathfinder.Path;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.HitResult;
@@ -50,7 +51,7 @@ public class RaptorClimbTreeAI extends Goal {
     public RaptorClimbTreeAI(MicroraptorEntity entity, double speed) {
         this.entity = entity;
         this.movementSpeed = speed;
-        this.level = entity.level();
+        this.level = entity.level;
         this.setFlags(EnumSet.noneOf(Flag.class));
     }
 
@@ -61,7 +62,7 @@ public class RaptorClimbTreeAI extends Goal {
 
         BlockPos.MutableBlockPos base = new BlockPos.MutableBlockPos()
                 .set(this.entity.getX(), this.entity.getY(), this.entity.getZ());
-        RandomSource random = this.entity.getRandom();
+        Random random = this.entity.getRandom();
 
         for (int i = 0; i < 20; ++i) {
             BlockPos target = base.offset(random.nextInt(14) - 7, -5, random.nextInt(14) - 7);
@@ -210,7 +211,7 @@ public class RaptorClimbTreeAI extends Goal {
 
             // trunk under feet turned to air: glide or hop away
             if (!this.gliding && this.level.isEmptyBlock(currentTrunk)) {
-                RandomSource random = this.entity.getRandom();
+                Random random = this.entity.getRandom();
                 if (random.nextFloat() < 0.3f) {
                     Vec3 push = new Vec3(-this.approachSide.getStepX() * 0.1F, 0.22F, -this.approachSide.getStepZ() * 0.1F);
                     this.entity.setDeltaMovement(this.entity.getDeltaMovement().add(push));
@@ -300,7 +301,7 @@ public class RaptorClimbTreeAI extends Goal {
 
             // bumped head into leaves: step onto canopy
             if (this.entity.verticalCollision && !this.gliding) {
-                BlockPos top = BlockPos.containing(
+                BlockPos top = new BlockPos(
                         this.entity.getX(),
                         this.entity.getBoundingBox().maxY + 0.1,
                         this.entity.getZ()
@@ -359,13 +360,13 @@ public class RaptorClimbTreeAI extends Goal {
         return false;
     }
 
-    private Vec3 findGlideTarget(RandomSource random, boolean preferLeaves) {
+    private Vec3 findGlideTarget(Random random, boolean preferLeaves) {
         for (int i = 0; i < 100; i++) {
             double x = (random.nextFloat() - 0.5) * 45.0;
             double z = (random.nextFloat() - 0.5) * 45.0;
 
             Vec3 base = this.entity.position().add(x, 0.0, z);
-            BlockPos p = BlockPos.containing(base.x, this.entity.getY(), base.z);
+            BlockPos p = new BlockPos(base.x, this.entity.getY(), base.z);
 
             int y = level.getHeight(
                     preferLeaves ? Heightmap.Types.MOTION_BLOCKING_NO_LEAVES : Heightmap.Types.MOTION_BLOCKING,
@@ -373,7 +374,7 @@ public class RaptorClimbTreeAI extends Goal {
             );
             Vec3 candidate = new Vec3(Mth.floor(base.x) + 0.5, y + 0.5, Mth.floor(base.z) + 0.5);
 
-            BlockState s = level.getBlockState(BlockPos.containing(candidate));
+            BlockState s = level.getBlockState(new BlockPos(candidate));
             boolean ok = this.entity.position().distanceTo(candidate) > 20.0 &&
                     (preferLeaves ? isLeaves(s) : !isLiquid(s));
 
@@ -383,7 +384,8 @@ public class RaptorClimbTreeAI extends Goal {
     }
 
     private static boolean isLiquid(BlockState s) {
-        return !s.getFluidState().isEmpty();
+        Material m = s.getMaterial();
+        return m.isLiquid();
     }
 
     @Override

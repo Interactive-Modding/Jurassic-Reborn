@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "jurassicreborn:attraction_sign_safari_tour_plants_from_attraction_sign_safari_tour"
+    ]
+  },
+  "criteria": {
+    "has_attraction_sign_safari_tour": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:attraction_sign_safari_tour"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "jurassicreborn:attraction_sign_safari_tour_plants_from_attraction_sign_safari_tour"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_attraction_sign_safari_tour",
+      "has_the_recipe"
+    ]
+  ]
+}

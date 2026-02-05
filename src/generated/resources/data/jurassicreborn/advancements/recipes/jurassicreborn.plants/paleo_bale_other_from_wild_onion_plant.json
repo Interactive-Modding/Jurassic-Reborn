@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "jurassicreborn:paleo_bale_other_from_wild_onion_plant"
+    ]
+  },
+  "criteria": {
+    "has_wild_onion_plant": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:wild_onion_plant"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "jurassicreborn:paleo_bale_other_from_wild_onion_plant"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_wild_onion_plant",
+      "has_the_recipe"
+    ]
+  ]
+}

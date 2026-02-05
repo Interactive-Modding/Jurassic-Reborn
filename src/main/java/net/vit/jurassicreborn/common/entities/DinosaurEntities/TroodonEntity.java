@@ -5,6 +5,7 @@ import net.vit.jurassicreborn.client.sounds.SoundHandler;
 import net.vit.jurassicreborn.client.render.entity.animation.EntityAnimation;
 import net.vit.jurassicreborn.common.entities.DinosaurEntity;
 import net.vit.jurassicreborn.common.entities.Dinosaurs.DinosaurHandler;
+import net.vit.jurassicreborn.common.entities.EntityUtils.DinosaurDamageSource;
 import net.vit.jurassicreborn.common.entities.ai.HurtByTargetGoal;
 import net.vit.jurassicreborn.common.entities.ai.LeapingMeleeEntityAI;
 import net.vit.jurassicreborn.common.entities.ai.RaptorLeapEntityAI;
@@ -57,7 +58,7 @@ public class TroodonEntity extends DinosaurEntity
 
     public boolean doHurtTarget(Entity entity){
         float damage = (float) this.getAttributeValue(Attributes.ATTACK_DAMAGE);
-        if (entity.hurt(this.damageSources().mobAttack(this), damage)) {
+        if (entity.hurt(new DinosaurDamageSource("mob", this), damage)) {
             if (entity instanceof LivingEntity) {
                 int i = random.nextInt(3);
                 if(i == 0) {

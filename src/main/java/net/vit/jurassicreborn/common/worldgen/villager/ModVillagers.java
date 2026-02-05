@@ -19,24 +19,24 @@ public class ModVillagers {
     public static final DeferredRegister<PoiType> POI_TYPES =
             DeferredRegister.create(ForgeRegistries.POI_TYPES, JurassicReborn.MODID);
     public static final DeferredRegister<VillagerProfession> VILLAGER_PROFESSIONS =
-            DeferredRegister.create(ForgeRegistries.VILLAGER_PROFESSIONS, JurassicReborn.MODID);
+            DeferredRegister.create(ForgeRegistries.PROFESSIONS, JurassicReborn.MODID);
 
     public static final RegistryObject<PoiType> CLEANING_STATION_POI = POI_TYPES.register("cleaning_station_poi",
-            () -> new PoiType(ImmutableSet.copyOf(ModBlocks.CLEANING_STATION.get().getStateDefinition().getPossibleStates()),
+            () -> new PoiType("cleaning_station_poi", ImmutableSet.copyOf(ModBlocks.CLEANING_STATION.get().getStateDefinition().getPossibleStates()),
                     1, 1));
 
     public static final RegistryObject<VillagerProfession> PALEONTOLOGIST = VILLAGER_PROFESSIONS.register("paleontologist",
-            () -> new VillagerProfession("paleontologist", x -> x.get() == CLEANING_STATION_POI.get(),
-                    x -> x.get() == CLEANING_STATION_POI.get(), ImmutableSet.of(), ImmutableSet.of(),
+            () -> new VillagerProfession("paleontologist", CLEANING_STATION_POI.get(),
+                    ImmutableSet.of(), ImmutableSet.of(),
                     SoundEvents.VILLAGER_WORK_MASON));
 
     public static final RegistryObject<PoiType> DNA_SEQUENCER_POI = POI_TYPES.register("dna_sequencer_poi",
-            () -> new PoiType(ImmutableSet.copyOf(ModBlocks.DNA_SEQUENCER.get().getStateDefinition().getPossibleStates()),
+            () -> new PoiType("dna_sequencer_poi", ImmutableSet.copyOf(ModBlocks.DNA_SEQUENCER.get().getStateDefinition().getPossibleStates()),
                     1, 1));
 
     public static final RegistryObject<VillagerProfession> GENETICIST = VILLAGER_PROFESSIONS.register("geneticist",
-            () -> new VillagerProfession("geneticist", x -> x.get() == DNA_SEQUENCER_POI.get(),
-                    x -> x.get() == DNA_SEQUENCER_POI.get(), ImmutableSet.of(), ImmutableSet.of(),
+            () -> new VillagerProfession("geneticist", DNA_SEQUENCER_POI.get(),
+                    ImmutableSet.of(), ImmutableSet.of(),
                     SoundEvents.VILLAGER_WORK_LIBRARIAN));
 
     public static void registerPOIs() {

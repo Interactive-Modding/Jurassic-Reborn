@@ -1,11 +1,11 @@
 {
-  "type": "jurassicreborn:cleaning_recipe_serializer",
-  "count": 1,
+  "type": "jurassicreborn:cleaning",
   "input": {
     "item": "jurassicreborn:encased_alligator_gar_fossil"
   },
   "output": {
-    "count": 1,
-    "item": "jurassicreborn:bones/alligator_gar_skull"
-  }
+    "item": "jurassicreborn:bones/alligator_gar_skull",
+    "count": 1
+  },
+  "count": 1
 }

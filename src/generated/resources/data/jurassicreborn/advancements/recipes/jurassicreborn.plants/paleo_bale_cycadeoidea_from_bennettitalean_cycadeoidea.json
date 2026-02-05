@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "jurassicreborn:paleo_bale_cycadeoidea_from_bennettitalean_cycadeoidea"
+    ]
+  },
+  "criteria": {
+    "has_bennettitalean_cycadeoidea": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:bennettitalean_cycadeoidea"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "jurassicreborn:paleo_bale_cycadeoidea_from_bennettitalean_cycadeoidea"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_bennettitalean_cycadeoidea",
+      "has_the_recipe"
+    ]
+  ]
+}

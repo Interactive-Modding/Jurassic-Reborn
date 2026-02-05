@@ -66,6 +66,6 @@ public class JurassicBoat extends Boat {
 
     @Override
     public Item getDropItem() {
-        return this.getJurassicVariant().getBoatItem(false);
+        return this.getJurassicVariant().getBoatItem();
     }
 }

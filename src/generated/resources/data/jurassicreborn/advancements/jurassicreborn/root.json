@@ -1,6 +1,23 @@
 {
+  "display": {
+    "icon": {
+      "item": "jurassicreborn:bones/mamenchisaurus_skull"
+    },
+    "title": {
+      "translate": "advancements.jurassicreborn.root.title"
+    },
+    "description": {
+      "translate": "advancements.jurassicreborn.root.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false,
+    "background": "jurassicreborn:textures/block/gypsum_bricks.png"
+  },
   "criteria": {
     "requirement": {
+      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
@@ -9,30 +26,12 @@
             ]
           }
         ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    }
-  },
-  "display": {
-    "announce_to_chat": true,
-    "background": "jurassicreborn:textures/block/gypsum_bricks.png",
-    "description": {
-      "translate": "advancements.jurassicreborn.root.description"
-    },
-    "frame": "task",
-    "hidden": false,
-    "icon": {
-      "item": "jurassicreborn:bones/mamenchisaurus_skull"
-    },
-    "show_toast": true,
-    "title": {
-      "translate": "advancements.jurassicreborn.root.title"
+      }
     }
   },
   "requirements": [
     [
       "requirement"
     ]
-  ],
-  "sends_telemetry_event": true
+  ]
 }

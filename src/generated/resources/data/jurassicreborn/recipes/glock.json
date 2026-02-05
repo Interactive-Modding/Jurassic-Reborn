@@ -1,6 +1,9 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
+  "pattern": [
+    "CCC",
+    " EA"
+  ],
   "key": {
     "A": {
       "item": "minecraft:string"
@@ -12,12 +15,7 @@
       "item": "minecraft:redstone"
     }
   },
-  "pattern": [
-    "CCC",
-    " EA"
-  ],
   "result": {
     "item": "jurassicreborn:glock"
-  },
-  "show_notification": true
+  }
 }

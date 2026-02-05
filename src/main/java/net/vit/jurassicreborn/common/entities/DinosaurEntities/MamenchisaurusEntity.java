@@ -37,7 +37,6 @@ public class MamenchisaurusEntity extends DinosaurEntity {
         double distance2 = 18.0D;
         Entity entityFound2 = null;
         double d4 = -1.0D;
-
 //            if (currE instanceof MamenchisaurusEntity) {
 //                double d5 = currE.getDistanceSq(this.getX(), this.posY, this.posZ);
 //                if ((d5 < distance2 * distance2) && (d4 == -1.0D || d5 < d4)) {
@@ -46,7 +45,7 @@ public class MamenchisaurusEntity extends DinosaurEntity {
 //                }
 //            }
 //        }
-        for(Entity e : this.level().getEntitiesOfClass(MamenchisaurusEntity.class, this.getBoundingBox().inflate(distance2*distance2))){
+        for(Entity e : this.level.getEntitiesOfClass(MamenchisaurusEntity.class, this.getBoundingBox().inflate(distance2*distance2))){
             if(e.distanceTo(this) < distance2 * distance2){
                 entityFound2 = e;
                 break;

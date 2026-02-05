@@ -1,5 +1,6 @@
 package net.vit.jurassicreborn.common.blocks.entities.cleaner;
 
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.MenuProvider;
 import net.minecraftforge.items.IItemHandlerModifiable;
 import net.vit.jurassicreborn.common.blocks.entities.MachineBlockEntity;
@@ -16,7 +17,6 @@ import net.vit.jurassicreborn.common.util.api.CleanableItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
-import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -103,9 +103,7 @@ public class CleanerBlockEntity extends MachineBlockEntity implements MenuProvid
 
         if(instance.progress >= 200) {
             if (instance.currentRecipe != null) {
-                instance.addItem(instance.currentRecipe.assemble(
-                        new FluidAndItemRecipeWrapper(instance.machineItemStackHandler, instance.tank),
-                        world.registryAccess()));
+                instance.addItem(instance.currentRecipe.assemble(new FluidAndItemRecipeWrapper(instance.machineItemStackHandler,instance.tank)));
                 instance.currentRecipe = null;
                 input.shrink(1);
             } else if (cleanable != null) {
@@ -188,7 +186,7 @@ public class CleanerBlockEntity extends MachineBlockEntity implements MenuProvid
 
     @Override
     protected Component getDefaultName() {
-        return Component.translatable("block.JurassicReborn.cleaner_block_name");
+        return new TranslatableComponent("block.JurassicReborn.cleaner_block_name");
     }
 
     @Override

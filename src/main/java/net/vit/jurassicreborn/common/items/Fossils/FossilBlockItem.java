@@ -4,6 +4,8 @@ import net.vit.jurassicreborn.common.entities.Dinosaurs.Dinosaur;
 import net.vit.jurassicreborn.common.util.LangUtil;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.network.chat.TextComponent;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
@@ -22,7 +24,7 @@ public abstract class FossilBlockItem extends BlockItem {
     @Override
     public Component getName(ItemStack pStack) {
         Dinosaur dinosaur = this.getDino(pStack);
-        return Component.literal(Component.translatable("block.jurassicreborn.fossil_block").getString().replace("{dinosaur}", LangUtil.getDinoName(dinosaur).getString()) );
+        return new TextComponent(new TranslatableComponent("block.jurassicreborn.fossil_block").getString().replace("{dinosaur}", LangUtil.getDinoName(dinosaur).getString()) );
     }
 
     public static Dinosaur getDino(ItemStack pStack){

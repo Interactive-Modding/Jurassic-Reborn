@@ -1,22 +1,20 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "building",
-  "key": {
-    "I": {
-      "tag": "forge:ingots/iron"
-    },
-    "S": {
-      "item": "minecraft:stone_bricks"
-    }
-  },
   "pattern": [
     "SSS",
     "SIS",
     "SSS"
   ],
-  "result": {
-    "count": 8,
-    "item": "jurassicreborn:reinforced_bricks"
+  "key": {
+    "S": {
+      "item": "minecraft:stone_bricks"
+    },
+    "I": {
+      "tag": "forge:ingots/iron"
+    }
   },
-  "show_notification": true
+  "result": {
+    "item": "jurassicreborn:reinforced_bricks",
+    "count": 8
+  }
 }

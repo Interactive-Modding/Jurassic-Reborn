@@ -1,10 +1,9 @@
 {
   "type": "minecraft:blasting",
-  "category": "misc",
-  "cookingtime": 100,
-  "experience": 0.35,
   "ingredient": {
     "item": "jurassicreborn:meat/meat_cameroceras"
   },
-  "result": "jurassicreborn:meat/steak_cameroceras"
+  "result": "jurassicreborn:meat/steak_cameroceras",
+  "experience": 0.35,
+  "cookingtime": 100
 }

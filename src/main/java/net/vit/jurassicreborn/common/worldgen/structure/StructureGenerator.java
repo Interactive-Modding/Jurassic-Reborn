@@ -5,11 +5,16 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.Rotation;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.util.RandomSource;
+import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
+import net.minecraft.resources.ResourceLocation;
+
+import java.util.Random;
+import java.lang.reflect.Method;
+import javax.annotation.Nullable;
 
 /**
  * Basic structure generator ported for 1.19.2.
@@ -22,7 +27,7 @@ public abstract class StructureGenerator {
     protected final int sizeY;
     protected final int sizeZ;
 
-    protected StructureGenerator(RandomSource rand, int sizeX, int sizeY, int sizeZ) {
+    protected StructureGenerator(Random rand, int sizeX, int sizeY, int sizeZ) {
         this.horizontalPos = -1;
         this.sizeX = sizeX;
         this.sizeY = sizeY;
@@ -82,7 +87,8 @@ public abstract class StructureGenerator {
         while (current.getY() > level.getMinBuildHeight()) {
             BlockPos below = current.below();
             BlockState state = level.getBlockState(below);
-            if (state.is(BlockTags.DIRT) || state.is(BlockTags.SAND) || state.is(BlockTags.BASE_STONE_OVERWORLD) || !state.getFluidState().isEmpty()) {
+            Material material = state.getMaterial();
+            if (material == Material.DIRT || material == Material.SAND || material == Material.GRASS || material == Material.STONE || material.isLiquid()) {
                 break;
             }
             current = below;
@@ -90,7 +96,7 @@ public abstract class StructureGenerator {
         return current;
     }
 
-    public boolean generate(ServerLevel level, RandomSource random, BlockPos position) {
+    public boolean generate(ServerLevel level, Random random, BlockPos position) {
         BlockPos levelPos = getLevelPosition();
         BlockPos placePos = levelPos == null ? this.placeOnGround(level, position, this.getOffsetY()) : this.getGround(level, position).subtract(this.transformPos(levelPos, this.mirror, this.rotation));
         if (placePos != null) {
@@ -125,17 +131,10 @@ public abstract class StructureGenerator {
                     do {
                         level.setBlock(setPos, this.getFillerState(), 2);
                         setPos = setPos.below();
-                    } while (isReplaceable(level.getBlockState(setPos)));
+                    } while (level.getBlockState(setPos).getMaterial().isReplaceable());
                 }
             }
         }
-    }
-
-    private static boolean isReplaceable(BlockState state) {
-        return state.isAir()
-                || !state.getFluidState().isEmpty()
-                || state.is(BlockTags.REPLACEABLE)
-                || state.is(BlockTags.REPLACEABLE_BY_TREES);
     }
 
     protected boolean canSpawnOnHills() {
@@ -169,7 +168,7 @@ public abstract class StructureGenerator {
         }
     }
 
-    protected abstract void generateStructure(ServerLevel level, RandomSource random, BlockPos position);
+    protected abstract void generateStructure(ServerLevel level, Random random, BlockPos position);
 
     public int getOffsetY() {
         return -1;
@@ -181,5 +180,16 @@ public abstract class StructureGenerator {
 
     public BlockState getFillerState() {
         return Blocks.DIRT.defaultBlockState();
+    }
+
+    @Nullable
+    protected StructureTemplate loadTemplate(ServerLevel level, ResourceLocation id) {
+        try {
+            Object manager = level.getStructureManager();
+            Method method = manager.getClass().getMethod("getOrCreate", ResourceLocation.class);
+            return (StructureTemplate) method.invoke(manager, id);
+        } catch (ReflectiveOperationException e) {
+            return null;
+        }
     }
 }

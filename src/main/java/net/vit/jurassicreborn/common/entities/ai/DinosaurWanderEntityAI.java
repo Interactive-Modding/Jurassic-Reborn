@@ -44,10 +44,10 @@ public class DinosaurWanderEntityAI extends Goal {
 
                 // Make sure the 2 blocks above the ground spot are air (headroom).
                 // (Using betweenClosed avoids stream allocations.)
-                BlockPos base = BlockPos.containing(vec.x, vec.y, vec.z);
+                BlockPos base = new BlockPos(vec.x, vec.y, vec.z);
                 boolean spaceClear = true;
                 for (BlockPos pos : BlockPos.betweenClosed(base.above(), base.above(2))) {
-                    if (!this.entity.level().getBlockState(pos).isAir()) {
+                    if (!this.entity.level.getBlockState(pos).isAir()) {
                         spaceClear = false;
                         break;
                     }
@@ -87,14 +87,14 @@ public class DinosaurWanderEntityAI extends Goal {
             Vec3 pos = LandRandomPos.getPos(this.entity, this.walkradius + 5, this.walkradius);
             if (pos == null) continue;
 
-            BlockPos bp = BlockPos.containing(pos.x, pos.y, pos.z);
+            BlockPos bp = new BlockPos(pos.x, pos.y, pos.z);
             // Reject positions where either the target block or the block below contains water/lava
-            if (this.entity.level().getFluidState(bp).isEmpty()
-                    && this.entity.level().getFluidState(bp.below()).isEmpty()
-                    && !this.entity.level().getFluidState(bp).is(FluidTags.WATER)
-                    && !this.entity.level().getFluidState(bp.below()).is(FluidTags.WATER)
-                    && !this.entity.level().getFluidState(bp).is(FluidTags.LAVA)
-                    && !this.entity.level().getFluidState(bp.below()).is(FluidTags.LAVA)) {
+            if (this.entity.level.getFluidState(bp).isEmpty()
+                    && this.entity.level.getFluidState(bp.below()).isEmpty()
+                    && !this.entity.level.getFluidState(bp).is(FluidTags.WATER)
+                    && !this.entity.level.getFluidState(bp.below()).is(FluidTags.WATER)
+                    && !this.entity.level.getFluidState(bp).is(FluidTags.LAVA)
+                    && !this.entity.level.getFluidState(bp.below()).is(FluidTags.LAVA)) {
                 return pos;
             }
         }

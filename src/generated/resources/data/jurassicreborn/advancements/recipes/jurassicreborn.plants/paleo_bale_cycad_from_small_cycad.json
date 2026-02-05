@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "jurassicreborn:paleo_bale_cycad_from_small_cycad"
+    ]
+  },
+  "criteria": {
+    "has_small_cycad": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:small_cycad"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "jurassicreborn:paleo_bale_cycad_from_small_cycad"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_small_cycad",
+      "has_the_recipe"
+    ]
+  ]
+}

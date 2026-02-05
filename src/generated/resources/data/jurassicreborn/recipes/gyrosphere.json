@@ -1,7 +1,11 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "group": "jurassicreborn:gyrosphere",
+  "pattern": [
+    "AAA",
+    "ADA",
+    "BCB"
+  ],
   "key": {
     "A": {
       "item": "minecraft:glass_pane"
@@ -16,13 +20,7 @@
       "item": "jurassicreborn:gyrosphere_interior"
     }
   },
-  "pattern": [
-    "AAA",
-    "ADA",
-    "BCB"
-  ],
   "result": {
     "item": "jurassicreborn:gyrosphere"
-  },
-  "show_notification": true
+  }
 }

@@ -53,7 +53,7 @@ public class CearadactylusAnimator extends EntityAnimator<CearadactylusEntity> {
         float globalHeight = 1F;
         float frontOffset = -0.35f;
 
-        if (entity.onGround() && !entity.isCarcass()) {
+        if (entity.isOnGround() && !entity.isCarcass()) {
             // --- grounded locomotion ---
             model.bob(body1, 1 * globalSpeed, 1 * globalHeight, false, f, f1);
             model.bob(leftThigh, 1 * globalSpeed, 1 * globalHeight, false, f, f1);

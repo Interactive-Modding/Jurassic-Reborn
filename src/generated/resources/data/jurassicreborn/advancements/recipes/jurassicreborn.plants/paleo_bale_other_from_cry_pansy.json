@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "jurassicreborn:paleo_bale_other_from_cry_pansy"
+    ]
+  },
+  "criteria": {
+    "has_cry_pansy": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:cry_pansy"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "jurassicreborn:paleo_bale_other_from_cry_pansy"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_cry_pansy",
+      "has_the_recipe"
+    ]
+  ]
+}

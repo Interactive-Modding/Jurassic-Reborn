@@ -1,8 +1,8 @@
 package net.vit.jurassicreborn.common.worldgen.structure;
 
-import net.minecraft.core.registries.Registries;
+import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.levelgen.structure.Structure;
+import net.minecraft.world.level.levelgen.feature.ConfiguredStructureFeature;
 import net.vit.jurassicreborn.JurassicReborn;
 
 /**
@@ -10,13 +10,13 @@ import net.vit.jurassicreborn.JurassicReborn;
  * such as villager trades.
  */
 public final class ModStructureKeys {
-    public static final ResourceKey<Structure> JP_SAN_DIEGO = key("jp_san_diego");
-    public static final ResourceKey<Structure> ISLA_SORNA_LAB = key("isla_sorna_lab");
-    public static final ResourceKey<Structure> VISITOR_CENTRE = key("visitor_centre");
+    public static final ResourceKey<ConfiguredStructureFeature<?, ?>> JP_SAN_DIEGO = key("jp_san_diego");
+    public static final ResourceKey<ConfiguredStructureFeature<?, ?>> ISLA_SORNA_LAB = key("isla_sorna_lab");
+    public static final ResourceKey<ConfiguredStructureFeature<?, ?>> VISITOR_CENTRE = key("visitor_centre");
 
     private ModStructureKeys() {}
 
-    private static ResourceKey<Structure> key(String name) {
-        return ResourceKey.create(Registries.STRUCTURE, JurassicReborn.resource(name));
+    private static ResourceKey<ConfiguredStructureFeature<?, ?>> key(String name) {
+        return ResourceKey.create(Registry.CONFIGURED_STRUCTURE_FEATURE_REGISTRY, JurassicReborn.resource(name));
     }
 }

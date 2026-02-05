@@ -1,15 +1,14 @@
 package net.vit.jurassicreborn.common.jei.embryoniccalcification;
 
+import com.mojang.blaze3d.vertex.PoseStack;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
 import mezz.jei.api.gui.drawable.IDrawableStatic;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
-import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
-import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
@@ -39,17 +38,23 @@ public class CalcificationRecipeCategory implements IRecipeCategory<Calcificatio
     }
 
     @Override public RecipeType<CalcificationRecipeExtension> getRecipeType() { return TYPE; }
+    @Override public ResourceLocation getUid()               { return TYPE.getUid(); }
     @Override public Component getTitle()              { return title; }
     @Override public IDrawable getBackground()          { return bg; }
     @Override public IDrawable getIcon()                { return icon; }
+
+    @Override
+    @SuppressWarnings("removal")
+    public Class<? extends CalcificationRecipeExtension> getRecipeClass() {
+        return CalcificationRecipeExtension.class;
+    }
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, CalcificationRecipeExtension recipe, IFocusGroup focuses) {
         recipe.setRecipe(builder, focuses);
     }
 
-    @Override
-    public void draw(CalcificationRecipeExtension recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics graphics, double mouseX, double mouseY) {
-        arrow.draw(graphics, 34, 19);
+    public void draw(CalcificationRecipeExtension recipe, PoseStack gfx, double mouseX, double mouseY) {
+        arrow.draw(gfx, 34, 19);
     }
 }

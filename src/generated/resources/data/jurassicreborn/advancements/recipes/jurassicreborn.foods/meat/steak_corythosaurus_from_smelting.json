@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "jurassicreborn:meat/steak_corythosaurus_from_smelting"
+    ]
+  },
+  "criteria": {
+    "has_meat/meat_corythosaurus": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:meat/meat_corythosaurus"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "jurassicreborn:meat/steak_corythosaurus_from_smelting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_meat/meat_corythosaurus",
+      "has_the_recipe"
+    ]
+  ]
+}

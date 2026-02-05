@@ -17,7 +17,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -65,7 +64,7 @@ public class IndominusEntity extends DinosaurEntity
 
         this.stepCount -= this.zza * 9.5;
 
-        if (level().isClientSide)
+        if (level.isClientSide)
         {
             isCamouflaging = this.entityData.get(DATA_WATCHER_IS_CAMOUFLAGING);
             changeSkinColor();
@@ -91,18 +90,17 @@ public class IndominusEntity extends DinosaurEntity
     public void changeSkinColor()
     {
         BlockPos pos = new BlockPos(this.getOnPos()).relative(Direction.DOWN);
-        BlockState state = this.level().getBlockState(pos);
+        BlockState state = this.level.getBlockState(pos);
 
         int color;
 
         if (isCamouflaging())
         {
-            color = Minecraft.getInstance().getBlockColors().getColor(state, level(), pos, 0); /*TODO*/ // uh oh... - gamma_02
+            color = Minecraft.getInstance().getBlockColors().getColor(state, level, pos, 0); /*TODO*/ // uh oh... - gamma_02
 
             if (color == 0xFFFFFF)
             {
-                MapColor mapColor = state.getMapColor(level(), pos);
-                color = mapColor != null ? mapColor.col : MapColor.NONE.col;
+                color = state.getMapColor(level, pos).col;
             }
         }
         else

@@ -1,8 +1,6 @@
 package net.vit.jurassicreborn.common.blocks;
 
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.level.block.*;
-import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.vit.jurassicreborn.common.blocks.ancientplants.DoublePlantBlock;
 import net.vit.jurassicreborn.common.blocks.entities.skeletonassembly.SkeletonAssemblyBlock;
 import net.vit.jurassicreborn.common.blocks.fossil.EncasedFaunaFossilBlock;
@@ -39,6 +37,8 @@ import net.vit.jurassicreborn.common.entities.Dinosaurs.Dinosaur;
 import net.vit.jurassicreborn.common.entities.Dinosaurs.DinosaurHandler;
 import net.vit.jurassicreborn.common.items.ModItems;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -55,61 +55,75 @@ public class ModBlocks {
     public static DeferredRegister<Block> MOD_BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, "jurassicreborn");
 
     public static final RegistryObject<SaplingBlock> ARAUCARIA_SAPLING = MOD_BLOCKS.register("araucaria_sapling",
-            () -> new SaplingBlock(new TreeGrower(() -> JRTreeFeatures.AraucariaTree), BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
+            () -> new SaplingBlock(new TreeGrower(() -> JRTreeFeatures.AraucariaTree), BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
 
     public static final RegistryObject<SaplingBlock> GINKGO_SAPLING = MOD_BLOCKS.register("ginkgo_sapling",
-            () -> new SaplingBlock(new TreeGrower(() -> JRTreeFeatures.GinkgoTree), BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
+            () -> new SaplingBlock(new TreeGrower(() -> JRTreeFeatures.GinkgoTree), BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
 
 
     public static final RegistryObject<SaplingBlock> CALAMITES_SAPLING = MOD_BLOCKS.register("calamites_sapling",
-            () -> new SaplingBlock(new TreeGrower(() -> JRTreeFeatures.CalamitesTreeFeature), BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
+            () -> new SaplingBlock(new TreeGrower(() -> JRTreeFeatures.CalamitesTreeFeature), BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
 
 
     public static final RegistryObject<SaplingBlock> PHOENIX_SAPLING = MOD_BLOCKS.register("phoenix_sapling", () ->
-            new SaplingBlock(new TreeGrower(() -> JRTreeFeatures.PhoenixTreeFeature), BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
+            new SaplingBlock(new TreeGrower(() -> JRTreeFeatures.PhoenixTreeFeature), BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
 
     public static final RegistryObject<SaplingBlock> PSARONIUS_SAPLING = MOD_BLOCKS.register("psaronius_sapling",
-            () -> new SaplingBlock(new TreeGrower(() -> JRTreeFeatures.PsaroniusTree), BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
+            () -> new SaplingBlock(new TreeGrower(() -> JRTreeFeatures.PsaroniusTree), BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
 
 
     public static final RegistryObject<SaplingBlock> MAGNOLIA_SAPLING = MOD_BLOCKS.register("magnolia_sapling",
-            () -> new SaplingBlock(new TreeGrower(() -> JRTreeFeatures.MagnoliaTreeFeature), BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
+            () -> new SaplingBlock(new TreeGrower(() -> JRTreeFeatures.MagnoliaTreeFeature), BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
 
 
-    public static RegistryObject<FloraFossil> FLORA_FOSSIL = MOD_BLOCKS.register("flora_fossil", () -> new FloraFossil(BlockBehaviour.Properties.copy(Blocks.STONE).strength(2.0f).requiresCorrectToolForDrops()));
-    public static RegistryObject<FloraFossil> DEEPSLATE_FLORA_FOSSIL = MOD_BLOCKS.register("deepslate_flora_fossil", () -> new FloraFossil(BlockBehaviour.Properties.copy(Blocks.STONE).strength(2.0f).requiresCorrectToolForDrops()));
-    public static RegistryObject<FaunaFossil> FAUNA_FOSSIL = MOD_BLOCKS.register("fauna_fossil", () -> new FaunaFossil(BlockBehaviour.Properties.copy(Blocks.STONE)));
+    public static RegistryObject<FloraFossil> FLORA_FOSSIL = MOD_BLOCKS.register("flora_fossil", () -> new FloraFossil(BlockBehaviour.Properties.of(Material.STONE).strength(2.0f).requiresCorrectToolForDrops()));
+    public static RegistryObject<FloraFossil> DEEPSLATE_FLORA_FOSSIL = MOD_BLOCKS.register("deepslate_flora_fossil", () -> new FloraFossil(BlockBehaviour.Properties.of(Material.STONE).strength(2.0f).requiresCorrectToolForDrops()));
+    public static RegistryObject<FaunaFossil> FAUNA_FOSSIL = MOD_BLOCKS.register("fauna_fossil", () -> new FaunaFossil(BlockBehaviour.Properties.of(Material.STONE)));
 
-    public static RegistryObject<Block> ENCASED_FAUNA_FOSSIL = MOD_BLOCKS.register("encased_fauna_fossil", () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).requiresCorrectToolForDrops().strength(5.0F, 0.0F), Dinosaur.EMPTY));
-    public static RegistryObject<Block> AMBER_ORE = MOD_BLOCKS.register("amber_ore", () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE).strength(2.0f)));
-    public static RegistryObject<Block> AMBER_BLOCK = MOD_BLOCKS.register("amber_block", () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE).strength(3.0f).sound(SoundType.STONE).requiresCorrectToolForDrops().noOcclusion()));
-    public static RegistryObject<Block> AMBER_MOSQUITO = MOD_BLOCKS.register("amber_mosquito", () -> new AmberMosquitoBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(0.5f).sound(SoundType.STONE).noOcclusion()));
-    public static RegistryObject<Block> AMBER_APHID = MOD_BLOCKS.register("amber_aphid", () -> new AmberAphidBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(0.5f).sound(SoundType.STONE).noOcclusion()));
-    public static RegistryObject<Block> SEA_LAMPREY = MOD_BLOCKS.register("sea_lamprey", () -> new SeaLampreyBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(0.5f).sound(SoundType.STONE).noOcclusion()));
-    public static RegistryObject<Block> FROZEN_LEECH = MOD_BLOCKS.register("frozen_leech", () -> new SeaLampreyBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(0.5f).sound(SoundType.STONE).noOcclusion()));
-    public static RegistryObject<Block> ICE_SHARD_ORE = MOD_BLOCKS.register("ice_shard_ore", () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE).strength(2.0f).requiresCorrectToolForDrops()));
+    public static RegistryObject<Block> ENCASED_FAUNA_FOSSIL = MOD_BLOCKS.register("encased_fauna_fossil", () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(5.0F, 0.0F), Dinosaur.EMPTY));
+    public static RegistryObject<Block> AMBER_ORE = MOD_BLOCKS.register("amber_ore", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).strength(2.0f)));
+    public static RegistryObject<Block> AMBER_BLOCK = MOD_BLOCKS.register("amber_block", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).strength(3.0f).sound(SoundType.STONE).requiresCorrectToolForDrops().noOcclusion()));
+    public static RegistryObject<Block> AMBER_MOSQUITO = MOD_BLOCKS.register("amber_mosquito", () -> new AmberMosquitoBlock(BlockBehaviour.Properties.of(Material.STONE).strength(0.5f).sound(SoundType.STONE).noOcclusion()));
+    public static RegistryObject<Block> AMBER_APHID = MOD_BLOCKS.register("amber_aphid", () -> new AmberAphidBlock(BlockBehaviour.Properties.of(Material.STONE).strength(0.5f).sound(SoundType.STONE).noOcclusion()));
+    public static RegistryObject<Block> SEA_LAMPREY = MOD_BLOCKS.register("sea_lamprey", () -> new SeaLampreyBlock(BlockBehaviour.Properties.of(Material.STONE).strength(0.5f).sound(SoundType.STONE).noOcclusion()));
+    public static RegistryObject<Block> FROZEN_LEECH = MOD_BLOCKS.register("frozen_leech", () -> new SeaLampreyBlock(BlockBehaviour.Properties.of(Material.STONE).strength(0.5f).sound(SoundType.STONE).noOcclusion()));
+    public static RegistryObject<Block> ICE_SHARD_ORE = MOD_BLOCKS.register("ice_shard_ore", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).strength(2.0f).requiresCorrectToolForDrops()));
 
-    public static RegistryObject<Block> DEEPSLATE_AMBER_ORE = MOD_BLOCKS.register("deepslate_amber_ore", () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE).strength(2.0f).requiresCorrectToolForDrops()));
+    public static RegistryObject<Block> DEEPSLATE_AMBER_ORE = MOD_BLOCKS.register("deepslate_amber_ore", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).strength(2.0f).requiresCorrectToolForDrops()));
 
-    public static RegistryObject<Block> DEEPSLATE_ICE_SHARD_ORE = MOD_BLOCKS.register("deepslate_ice_shard_ore", () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE).strength(2.0f).requiresCorrectToolForDrops()));
+    public static RegistryObject<Block> DEEPSLATE_ICE_SHARD_ORE = MOD_BLOCKS.register("deepslate_ice_shard_ore", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).strength(2.0f).requiresCorrectToolForDrops()));
 
-    public static RegistryObject<CleanerBlock> CLEANING_STATION = MOD_BLOCKS.register("cleaning_station", () -> new CleanerBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(2.0f).requiresCorrectToolForDrops()));
+    public static RegistryObject<CleanerBlock> CLEANING_STATION = MOD_BLOCKS.register("cleaning_station", () -> new CleanerBlock(BlockBehaviour.Properties.of(Material.STONE).strength(2.0f).requiresCorrectToolForDrops()));
 
     public static RegistryObject<FossilGrinderBlock> FOSSIL_GRINDER = MOD_BLOCKS.register("fossil_grinder", () -> new FossilGrinderBlock(defaultMachine().strength(2.0f).requiresCorrectToolForDrops()));
 
     public static RegistryObject<DNASequencerBlock> DNA_SEQUENCER = MOD_BLOCKS.register("dna_sequencer", () -> new DNASequencerBlock(defaultMachine().strength(2.0f).requiresCorrectToolForDrops()));
 
     public static RegistryObject<DNASynthesizerBlock> DNA_SYNTHESIZER = MOD_BLOCKS.register("dna_synthesizer", () -> new DNASynthesizerBlock(defaultMachine().strength(2.0f).requiresCorrectToolForDrops()));
-    public static RegistryObject<EmbryoCalcificationMachineBlock> EMBRYO_CALCIFICATION_MACHINE = MOD_BLOCKS.register("embryo_calcification_machine", () -> new EmbryoCalcificationMachineBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(2.0f).requiresCorrectToolForDrops()));
+    public static RegistryObject<EmbryoCalcificationMachineBlock> EMBRYO_CALCIFICATION_MACHINE = MOD_BLOCKS.register("embryo_calcification_machine", () -> new EmbryoCalcificationMachineBlock(BlockBehaviour.Properties.of(Material.STONE).strength(2.0f).requiresCorrectToolForDrops()));
 
 
     public static RegistryObject<EmbryonicMachineBlock> EMBRYONIC_MACHINE = MOD_BLOCKS.register("embryonic_machine", () -> new EmbryonicMachineBlock(defaultMachine().strength(2.0f).requiresCorrectToolForDrops()));
 
-    public static RegistryObject<IncubatorBlock> INCUBATOR = MOD_BLOCKS.register("incubator", () -> new IncubatorBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).strength(2.0f).requiresCorrectToolForDrops()));//hehe
+    public static RegistryObject<IncubatorBlock> INCUBATOR = MOD_BLOCKS.register("incubator", () -> new IncubatorBlock(BlockBehaviour.Properties.of(Material.METAL).strength(2.0f).requiresCorrectToolForDrops()));//hehe
 
     public static RegistryObject<DNAExtractorBlock> DNA_EXTRACTOR = MOD_BLOCKS.register("dna_extractor", () -> new DNAExtractorBlock(defaultMachine().strength(2.0f).requiresCorrectToolForDrops()));
 
     public static RegistryObject<DNACombinatorHybridizerBlock> DNA_COMBINER_HYBRIDIZER = MOD_BLOCKS.register("dna_combinator_hybridizer", () -> new DNACombinatorHybridizerBlock(defaultMachine().strength(2.0f).requiresCorrectToolForDrops()));
+
+    public static RegistryObject<GypsumStoneBlock> GYPSUM_STONE = MOD_BLOCKS.register("gypsum_stone", () -> new GypsumStoneBlock());
+    public static final RegistryObject<Block> GYPSUM_STONE_STAIRS = MOD_BLOCKS.register("gypsum_stone_stairs", () -> new StairBlock(() -> GYPSUM_STONE.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.STONE_STAIRS)));
+    public static final RegistryObject<Block> GYPSUM_STONE_SLAB = MOD_BLOCKS.register("gypsum_stone_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.STONE_SLAB)));
+    public static final RegistryObject<Block> GYPSUM_STONE_PRESSURE_PLATE = MOD_BLOCKS.register("gypsum_stone_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, BlockBehaviour.Properties.copy(Blocks.STONE_PRESSURE_PLATE)));
+    public static final RegistryObject<Block> GYPSUM_STONE_BUTTON = MOD_BLOCKS.register("gypsum_stone_button", () -> new StoneButtonBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BUTTON)));
+    public static final RegistryObject<Block> GYPSUM_STONE_WALL = MOD_BLOCKS.register("gypsum_stone_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICK_WALL)));
+
+    public static RegistryObject<Block> GYPSUM_COBBLESTONE = MOD_BLOCKS.register("gypsum_cobblestone", () -> new Block(defaultStone()));
+    public static final RegistryObject<Block> GYPSUM_COBBLESTONE_STAIRS = MOD_BLOCKS.register("gypsum_cobblestone_stairs", () -> new StairBlock(() -> GYPSUM_COBBLESTONE.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.STONE_STAIRS)));
+    public static final RegistryObject<Block> GYPSUM_COBBLESTONE_SLAB = MOD_BLOCKS.register("gypsum_cobblestone_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.STONE_SLAB)));
+    public static final RegistryObject<Block> GYPSUM_COBBLESTONE_PRESSURE_PLATE = MOD_BLOCKS.register("gypsum_cobblestone_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, BlockBehaviour.Properties.copy(Blocks.STONE_PRESSURE_PLATE)));
+    public static final RegistryObject<Block> GYPSUM_COBBLESTONE_BUTTON = MOD_BLOCKS.register("gypsum_cobblestone_button", () -> new StoneButtonBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BUTTON)));
+    public static final RegistryObject<Block> GYPSUM_COBBLESTONE_WALL = MOD_BLOCKS.register("gypsum_cobblestone_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICK_WALL)));
     private static final Supplier<FlowerPotBlock> DEFAULT_FLOWER_POT = () -> (FlowerPotBlock) Blocks.FLOWER_POT;
 
     public static final RegistryObject<FlowerPotBlock> POTTED_ARAUCARIA_SAPLING = registerPottedSapling("araucaria",
@@ -129,171 +143,157 @@ public class ModBlocks {
 
     public static final RegistryObject<FlowerPotBlock> POTTED_MAGNOLIA_SAPLING = registerPottedSapling("magnolia",
             MAGNOLIA_SAPLING);
-    public static RegistryObject<GypsumStoneBlock> GYPSUM_STONE = MOD_BLOCKS.register("gypsum_stone", () -> new GypsumStoneBlock());
-    public static final RegistryObject<Block> GYPSUM_STONE_STAIRS = MOD_BLOCKS.register("gypsum_stone_stairs", () -> new StairBlock(() -> GYPSUM_STONE.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.STONE_STAIRS)));
-    public static final RegistryObject<Block> GYPSUM_STONE_SLAB = MOD_BLOCKS.register("gypsum_stone_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.STONE_SLAB)));
-    public static final RegistryObject<Block> GYPSUM_STONE_PRESSURE_PLATE = MOD_BLOCKS.register("gypsum_stone_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, BlockBehaviour.Properties.copy(Blocks.STONE_PRESSURE_PLATE), BlockSetType.STONE));
-    public static final RegistryObject<Block> GYPSUM_STONE_BUTTON = MOD_BLOCKS.register("gypsum_stone_button", () -> new ModStoneButtonBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BUTTON)));
-    public static final RegistryObject<Block> GYPSUM_STONE_WALL = MOD_BLOCKS.register("gypsum_stone_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICK_WALL)));
-
-    public static RegistryObject<Block> GYPSUM_COBBLESTONE = MOD_BLOCKS.register("gypsum_cobblestone", () -> new Block(defaultStone()));
-    public static final RegistryObject<Block> GYPSUM_COBBLESTONE_STAIRS = MOD_BLOCKS.register("gypsum_cobblestone_stairs", () -> new StairBlock(() -> GYPSUM_COBBLESTONE.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.STONE_STAIRS)));
-    public static final RegistryObject<Block> GYPSUM_COBBLESTONE_SLAB = MOD_BLOCKS.register("gypsum_cobblestone_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.STONE_SLAB)));
-    public static final RegistryObject<Block> GYPSUM_COBBLESTONE_PRESSURE_PLATE = MOD_BLOCKS.register("gypsum_cobblestone_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, BlockBehaviour.Properties.copy(Blocks.STONE_PRESSURE_PLATE), BlockSetType.STONE));
-    public static final RegistryObject<Block> GYPSUM_COBBLESTONE_BUTTON = MOD_BLOCKS.register("gypsum_cobblestone_button", () -> new ModStoneButtonBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BUTTON)));
-    public static final RegistryObject<Block> GYPSUM_COBBLESTONE_WALL = MOD_BLOCKS.register("gypsum_cobblestone_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICK_WALL)));
-
     public static RegistryObject<Block> GYPSUM_BRICKS = MOD_BLOCKS.register("gypsum_bricks", () -> new Block(defaultStone().strength(2.0f).requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> GYPSUM_BRICK_STAIRS = MOD_BLOCKS.register("gypsum_brick_stairs", () -> new StairBlock(() -> GYPSUM_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.STONE_STAIRS)));
     public static final RegistryObject<Block> GYPSUM_BRICK_SLAB = MOD_BLOCKS.register("gypsum_brick_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.STONE_SLAB)));
-    public static final RegistryObject<Block> GYPSUM_BRICK_PRESSURE_PLATE = MOD_BLOCKS.register("gypsum_brick_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, BlockBehaviour.Properties.copy(Blocks.STONE_PRESSURE_PLATE), BlockSetType.STONE));
-    public static final RegistryObject<Block> GYPSUM_BRICK_BUTTON = MOD_BLOCKS.register("gypsum_brick_button", () -> new ModStoneButtonBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BUTTON)));
+    public static final RegistryObject<Block> GYPSUM_BRICK_PRESSURE_PLATE = MOD_BLOCKS.register("gypsum_brick_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, BlockBehaviour.Properties.copy(Blocks.STONE_PRESSURE_PLATE)));
+    public static final RegistryObject<Block> GYPSUM_BRICK_BUTTON = MOD_BLOCKS.register("gypsum_brick_button", () -> new StoneButtonBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BUTTON)));
     public static final RegistryObject<Block> GYPSUM_BRICK_WALL = MOD_BLOCKS.register("gypsum_brick_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICK_WALL)));
 
-    public static final RegistryObject<Block> REINFORCED_STONE = MOD_BLOCKS.register("reinforced_stone", () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE).strength(2.0f).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> REINFORCED_STONE = MOD_BLOCKS.register("reinforced_stone", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).strength(2.0f).requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> REINFORCED_STONE_STAIRS = MOD_BLOCKS.register("reinforced_stone_stairs", () -> new StairBlock(() -> REINFORCED_STONE.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.STONE_STAIRS)));
     public static final RegistryObject<Block> REINFORCED_STONE_SLAB = MOD_BLOCKS.register("reinforced_stone_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.STONE_SLAB)));
-    public static final RegistryObject<Block> REINFORCED_STONE_PRESSURE_PLATE = MOD_BLOCKS.register("reinforced_stone_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, BlockBehaviour.Properties.copy(Blocks.STONE_PRESSURE_PLATE), BlockSetType.STONE));
-    public static final RegistryObject<Block> REINFORCED_STONE_BUTTON = MOD_BLOCKS.register("reinforced_stone_button", () -> new ModStoneButtonBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BUTTON)));
+    public static final RegistryObject<Block> REINFORCED_STONE_PRESSURE_PLATE = MOD_BLOCKS.register("reinforced_stone_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, BlockBehaviour.Properties.copy(Blocks.STONE_PRESSURE_PLATE)));
+    public static final RegistryObject<Block> REINFORCED_STONE_BUTTON = MOD_BLOCKS.register("reinforced_stone_button", () -> new StoneButtonBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BUTTON)));
     public static final RegistryObject<Block> REINFORCED_STONE_WALL = MOD_BLOCKS.register("reinforced_stone_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICK_WALL)));
-    public static final RegistryObject<Block> REINFORCED_BRICKS = MOD_BLOCKS.register("reinforced_bricks", () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE).strength(2.0f).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> REINFORCED_BRICKS = MOD_BLOCKS.register("reinforced_bricks", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).strength(2.0f).requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> REINFORCED_BRICK_STAIRS = MOD_BLOCKS.register("reinforced_brick_stairs", () -> new StairBlock(() -> REINFORCED_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.STONE_STAIRS)));
     public static final RegistryObject<Block> REINFORCED_BRICK_SLAB = MOD_BLOCKS.register("reinforced_brick_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.STONE_SLAB)));
-    public static final RegistryObject<Block> REINFORCED_BRICK_PRESSURE_PLATE = MOD_BLOCKS.register("reinforced_brick_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, BlockBehaviour.Properties.copy(Blocks.STONE_PRESSURE_PLATE), BlockSetType.STONE));
-    public static final RegistryObject<Block> REINFORCED_BRICK_BUTTON = MOD_BLOCKS.register("reinforced_brick_button", () -> new ModStoneButtonBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BUTTON)));
+    public static final RegistryObject<Block> REINFORCED_BRICK_PRESSURE_PLATE = MOD_BLOCKS.register("reinforced_brick_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, BlockBehaviour.Properties.copy(Blocks.STONE_PRESSURE_PLATE)));
+    public static final RegistryObject<Block> REINFORCED_BRICK_BUTTON = MOD_BLOCKS.register("reinforced_brick_button", () -> new StoneButtonBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BUTTON)));
     public static final RegistryObject<Block> REINFORCED_BRICK_WALL = MOD_BLOCKS.register("reinforced_brick_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICK_WALL)));
     public static final RegistryObject<Block> GYPSUM_COBBLESTONE_PATHWAY = MOD_BLOCKS.register("gypsum_cobblestone_pathway", () ->
-            new Block(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5F).requiresCorrectToolForDrops()));
+            new Block(BlockBehaviour.Properties.of(Material.STONE).strength(1.5F).requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> GYPSUM_COBBLESTONE_PATHWAY_STAIRS = MOD_BLOCKS.register("gypsum_cobblestone_pathway_stairs", () -> new StairBlock(() -> GYPSUM_COBBLESTONE_PATHWAY.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.STONE_STAIRS)));
     public static final RegistryObject<Block> GYPSUM_COBBLESTONE_PATHWAY_SLAB = MOD_BLOCKS.register("gypsum_cobblestone_pathway_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.STONE_SLAB)));
-    public static final RegistryObject<Block> GYPSUM_COBBLESTONE_PATHWAY_PRESSURE_PLATE = MOD_BLOCKS.register("gypsum_cobblestone_pathway_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, BlockBehaviour.Properties.copy(Blocks.STONE_PRESSURE_PLATE), BlockSetType.STONE));
-    public static final RegistryObject<Block> GYPSUM_COBBLESTONE_PATHWAY_BUTTON = MOD_BLOCKS.register("gypsum_cobblestone_pathway_button", () -> new ModStoneButtonBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BUTTON)));
+    public static final RegistryObject<Block> GYPSUM_COBBLESTONE_PATHWAY_PRESSURE_PLATE = MOD_BLOCKS.register("gypsum_cobblestone_pathway_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, BlockBehaviour.Properties.copy(Blocks.STONE_PRESSURE_PLATE)));
+    public static final RegistryObject<Block> GYPSUM_COBBLESTONE_PATHWAY_BUTTON = MOD_BLOCKS.register("gypsum_cobblestone_pathway_button", () -> new StoneButtonBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BUTTON)));
     public static final RegistryObject<Block> GYPSUM_COBBLESTONE_PATHWAY_WALL = MOD_BLOCKS.register("gypsum_cobblestone_pathway_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICK_WALL)));
-    public static RegistryObject<SkullDisplayBlock> SKULL_DISPLAY = MOD_BLOCKS.register("skull_display", () -> new SkullDisplayBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(0.0F).noOcclusion().sound(SoundType.STONE).noLootTable()));
+    public static RegistryObject<SkullDisplayBlock> SKULL_DISPLAY = MOD_BLOCKS.register("skull_display", () -> new SkullDisplayBlock(BlockBehaviour.Properties.of(Material.STONE).strength(0.0F).noOcclusion().sound(SoundType.STONE)));
     public static final RegistryObject<TrashCanBlock> TRASH_CAN = MOD_BLOCKS.register("trash_can", TrashCanBlock::new);
     public static final RegistryObject<Block> GYPSUM_PATHWAY = MOD_BLOCKS.register("gypsum_pathway", () ->
-            new Block(BlockBehaviour.Properties.copy(Blocks.STONE).strength(2.0F).requiresCorrectToolForDrops()));
+            new Block(BlockBehaviour.Properties.of(Material.STONE).strength(2.0F).requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> GYPSUM_PATHWAY_STAIRS = MOD_BLOCKS.register("gypsum_pathway_stairs", () -> new StairBlock(() -> GYPSUM_PATHWAY.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.STONE_STAIRS)));
     public static final RegistryObject<Block> GYPSUM_PATHWAY_SLAB = MOD_BLOCKS.register("gypsum_pathway_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.STONE_SLAB)));
-    public static final RegistryObject<Block> GYPSUM_PATHWAY_PRESSURE_PLATE = MOD_BLOCKS.register("gypsum_pathway_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, BlockBehaviour.Properties.copy(Blocks.STONE_PRESSURE_PLATE), BlockSetType.STONE));
-    public static final RegistryObject<Block> GYPSUM_PATHWAY_BUTTON = MOD_BLOCKS.register("gypsum_pathway_button", () -> new ModStoneButtonBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BUTTON)));
+    public static final RegistryObject<Block> GYPSUM_PATHWAY_PRESSURE_PLATE = MOD_BLOCKS.register("gypsum_pathway_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, BlockBehaviour.Properties.copy(Blocks.STONE_PRESSURE_PLATE)));
+    public static final RegistryObject<Block> GYPSUM_PATHWAY_BUTTON = MOD_BLOCKS.register("gypsum_pathway_button", () -> new StoneButtonBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BUTTON)));
     public static final RegistryObject<Block> GYPSUM_PATHWAY_WALL = MOD_BLOCKS.register("gypsum_pathway_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICK_WALL)));
 
     public static final RegistryObject<Block> GYPSUM_MIXED_PATH = MOD_BLOCKS.register("gypsum_mixed_path", () ->
-            new Block(BlockBehaviour.Properties.copy(Blocks.STONE).strength(2.0F).requiresCorrectToolForDrops()));
+            new Block(BlockBehaviour.Properties.of(Material.STONE).strength(2.0F).requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> GYPSUM_MIXED_PATH_STAIRS = MOD_BLOCKS.register("gypsum_mixed_path_stairs", () -> new StairBlock(() -> GYPSUM_MIXED_PATH.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.STONE_STAIRS)));
     public static final RegistryObject<Block> GYPSUM_MIXED_PATH_SLAB = MOD_BLOCKS.register("gypsum_mixed_path_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.STONE_SLAB)));
-    public static final RegistryObject<Block> GYPSUM_MIXED_PATH_PRESSURE_PLATE = MOD_BLOCKS.register("gypsum_mixed_path_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, BlockBehaviour.Properties.copy(Blocks.STONE_PRESSURE_PLATE), BlockSetType.STONE));
-    public static final RegistryObject<Block> GYPSUM_MIXED_PATH_BUTTON = MOD_BLOCKS.register("gypsum_mixed_path_button", () -> new ModStoneButtonBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BUTTON)));
+    public static final RegistryObject<Block> GYPSUM_MIXED_PATH_PRESSURE_PLATE = MOD_BLOCKS.register("gypsum_mixed_path_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, BlockBehaviour.Properties.copy(Blocks.STONE_PRESSURE_PLATE)));
+    public static final RegistryObject<Block> GYPSUM_MIXED_PATH_BUTTON = MOD_BLOCKS.register("gypsum_mixed_path_button", () -> new StoneButtonBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BUTTON)));
     public static final RegistryObject<Block> GYPSUM_MIXED_PATH_WALL = MOD_BLOCKS.register("gypsum_mixed_path_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICK_WALL)));
 
     public static final RegistryObject<Block> GYPSUM_TILES = MOD_BLOCKS.register("gypsum_tiles", () ->
-            new Block(BlockBehaviour.Properties.copy(Blocks.STONE).strength(2.0F).requiresCorrectToolForDrops()));
+            new Block(BlockBehaviour.Properties.of(Material.STONE).strength(2.0F).requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> GYPSUM_TILES_STAIRS = MOD_BLOCKS.register("gypsum_tiles_stairs", () -> new StairBlock(() -> GYPSUM_TILES.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.STONE_STAIRS)));
     public static final RegistryObject<Block> GYPSUM_TILES_SLAB = MOD_BLOCKS.register("gypsum_tiles_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.STONE_SLAB)));
-    public static final RegistryObject<Block> GYPSUM_TILES_PRESSURE_PLATE = MOD_BLOCKS.register("gypsum_tiles_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, BlockBehaviour.Properties.copy(Blocks.STONE_PRESSURE_PLATE), BlockSetType.STONE));
-    public static final RegistryObject<Block> GYPSUM_TILES_BUTTON = MOD_BLOCKS.register("gypsum_tiles_button", () -> new ModStoneButtonBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BUTTON)));
+    public static final RegistryObject<Block> GYPSUM_TILES_PRESSURE_PLATE = MOD_BLOCKS.register("gypsum_tiles_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, BlockBehaviour.Properties.copy(Blocks.STONE_PRESSURE_PLATE)));
+    public static final RegistryObject<Block> GYPSUM_TILES_BUTTON = MOD_BLOCKS.register("gypsum_tiles_button", () -> new StoneButtonBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BUTTON)));
     public static final RegistryObject<Block> GYPSUM_TILES_WALL = MOD_BLOCKS.register("gypsum_tiles_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICK_WALL)));
 
     public static final RegistryObject<Block> REFINED_GYPSUM_PANEL = MOD_BLOCKS.register("refined_gypsum_panel", () ->
-            new Block(BlockBehaviour.Properties.copy(Blocks.STONE).strength(2.0F).requiresCorrectToolForDrops()));
+            new Block(BlockBehaviour.Properties.of(Material.STONE).strength(2.0F).requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> REFINED_GYPSUM_PANEL_STAIRS = MOD_BLOCKS.register("refined_gypsum_panel_stairs", () -> new StairBlock(() -> REFINED_GYPSUM_PANEL.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.STONE_STAIRS)));
     public static final RegistryObject<Block> REFINED_GYPSUM_PANEL_SLAB = MOD_BLOCKS.register("refined_gypsum_panel_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.STONE_SLAB)));
-    public static final RegistryObject<Block> REFINED_GYPSUM_PANEL_PRESSURE_PLATE = MOD_BLOCKS.register("refined_gypsum_panel_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, BlockBehaviour.Properties.copy(Blocks.STONE_PRESSURE_PLATE), BlockSetType.STONE));
-    public static final RegistryObject<Block> REFINED_GYPSUM_PANEL_BUTTON = MOD_BLOCKS.register("refined_gypsum_panel_button", () -> new ModStoneButtonBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BUTTON)));
+    public static final RegistryObject<Block> REFINED_GYPSUM_PANEL_PRESSURE_PLATE = MOD_BLOCKS.register("refined_gypsum_panel_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, BlockBehaviour.Properties.copy(Blocks.STONE_PRESSURE_PLATE)));
+    public static final RegistryObject<Block> REFINED_GYPSUM_PANEL_BUTTON = MOD_BLOCKS.register("refined_gypsum_panel_button", () -> new StoneButtonBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BUTTON)));
     public static final RegistryObject<Block> REFINED_GYPSUM_PANEL_WALL = MOD_BLOCKS.register("refined_gypsum_panel_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICK_WALL)));
 
     public static final RegistryObject<Block> GYPSUM_STONE_PANEL = MOD_BLOCKS.register("gypsum_stone_panel", () ->
-            new Block(BlockBehaviour.Properties.copy(Blocks.STONE).strength(2.0F).requiresCorrectToolForDrops()));
+            new Block(BlockBehaviour.Properties.of(Material.STONE).strength(2.0F).requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> GYPSUM_STONE_PANEL_STAIRS = MOD_BLOCKS.register("gypsum_stone_panel_stairs", () -> new StairBlock(() -> GYPSUM_STONE_PANEL.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.STONE_STAIRS)));
     public static final RegistryObject<Block> GYPSUM_STONE_PANEL_SLAB = MOD_BLOCKS.register("gypsum_stone_panel_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.STONE_SLAB)));
-    public static final RegistryObject<Block> GYPSUM_STONE_PANEL_PRESSURE_PLATE = MOD_BLOCKS.register("gypsum_stone_panel_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, BlockBehaviour.Properties.copy(Blocks.STONE_PRESSURE_PLATE), BlockSetType.STONE));
-    public static final RegistryObject<Block> GYPSUM_STONE_PANEL_BUTTON = MOD_BLOCKS.register("gypsum_stone_panel_button", () -> new ModStoneButtonBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BUTTON)));
+    public static final RegistryObject<Block> GYPSUM_STONE_PANEL_PRESSURE_PLATE = MOD_BLOCKS.register("gypsum_stone_panel_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, BlockBehaviour.Properties.copy(Blocks.STONE_PRESSURE_PLATE)));
+    public static final RegistryObject<Block> GYPSUM_STONE_PANEL_BUTTON = MOD_BLOCKS.register("gypsum_stone_panel_button", () -> new StoneButtonBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BUTTON)));
     public static final RegistryObject<Block> GYPSUM_STONE_PANEL_WALL = MOD_BLOCKS.register("gypsum_stone_panel_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICK_WALL)));
 
     // REINFORCED
     public static final RegistryObject<Block> REINFORCED_STONE_TILES = MOD_BLOCKS.register("reinforced_stone_tiles", () ->
-            new Block(BlockBehaviour.Properties.copy(Blocks.STONE).strength(2.0F).requiresCorrectToolForDrops()));
+            new Block(BlockBehaviour.Properties.of(Material.STONE).strength(2.0F).requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> REINFORCED_STONE_TILES_STAIRS = MOD_BLOCKS.register("reinforced_stone_tiles_stairs", () -> new StairBlock(() -> REINFORCED_STONE_TILES.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.STONE_STAIRS)));
     public static final RegistryObject<Block> REINFORCED_STONE_TILES_SLAB = MOD_BLOCKS.register("reinforced_stone_tiles_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.STONE_SLAB)));
-    public static final RegistryObject<Block> REINFORCED_STONE_TILES_PRESSURE_PLATE = MOD_BLOCKS.register("reinforced_stone_tiles_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, BlockBehaviour.Properties.copy(Blocks.STONE_PRESSURE_PLATE), BlockSetType.STONE));
-    public static final RegistryObject<Block> REINFORCED_STONE_TILES_BUTTON = MOD_BLOCKS.register("reinforced_stone_tiles_button", () -> new ModStoneButtonBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BUTTON)));
+    public static final RegistryObject<Block> REINFORCED_STONE_TILES_PRESSURE_PLATE = MOD_BLOCKS.register("reinforced_stone_tiles_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, BlockBehaviour.Properties.copy(Blocks.STONE_PRESSURE_PLATE)));
+    public static final RegistryObject<Block> REINFORCED_STONE_TILES_BUTTON = MOD_BLOCKS.register("reinforced_stone_tiles_button", () -> new StoneButtonBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BUTTON)));
     public static final RegistryObject<Block> REINFORCED_STONE_TILES_WALL = MOD_BLOCKS.register("reinforced_stone_tiles_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICK_WALL)));
 
     public static final RegistryObject<Block> REINFORCED_STONE_PATHWAY = MOD_BLOCKS.register("reinforced_stone_pathway", () ->
-            new Block(BlockBehaviour.Properties.copy(Blocks.STONE).strength(2.0F).requiresCorrectToolForDrops()));
+            new Block(BlockBehaviour.Properties.of(Material.STONE).strength(2.0F).requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> REINFORCED_STONE_PATHWAY_STAIRS = MOD_BLOCKS.register("reinforced_stone_pathway_stairs", () -> new StairBlock(() -> REINFORCED_STONE_PATHWAY.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.STONE_STAIRS)));
     public static final RegistryObject<Block> REINFORCED_STONE_PATHWAY_SLAB = MOD_BLOCKS.register("reinforced_stone_pathway_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.STONE_SLAB)));
-    public static final RegistryObject<Block> REINFORCED_STONE_PATHWAY_PRESSURE_PLATE = MOD_BLOCKS.register("reinforced_stone_pathway_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, BlockBehaviour.Properties.copy(Blocks.STONE_PRESSURE_PLATE), BlockSetType.STONE));
-    public static final RegistryObject<Block> REINFORCED_STONE_PATHWAY_BUTTON = MOD_BLOCKS.register("reinforced_stone_pathway_button", () -> new ModStoneButtonBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BUTTON)));
+    public static final RegistryObject<Block> REINFORCED_STONE_PATHWAY_PRESSURE_PLATE = MOD_BLOCKS.register("reinforced_stone_pathway_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, BlockBehaviour.Properties.copy(Blocks.STONE_PRESSURE_PLATE)));
+    public static final RegistryObject<Block> REINFORCED_STONE_PATHWAY_BUTTON = MOD_BLOCKS.register("reinforced_stone_pathway_button", () -> new StoneButtonBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BUTTON)));
     public static final RegistryObject<Block> REINFORCED_STONE_PATHWAY_WALL = MOD_BLOCKS.register("reinforced_stone_pathway_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICK_WALL)));
 
     public static final RegistryObject<Block> REINFORCED_STONE_PANEL = MOD_BLOCKS.register("reinforced_stone_panel", () ->
-            new Block(BlockBehaviour.Properties.copy(Blocks.STONE).strength(2.0F).requiresCorrectToolForDrops()));
+            new Block(BlockBehaviour.Properties.of(Material.STONE).strength(2.0F).requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> REINFORCED_STONE_PANEL_STAIRS = MOD_BLOCKS.register("reinforced_stone_panel_stairs", () -> new StairBlock(() -> REINFORCED_STONE_PANEL.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.STONE_STAIRS)));
     public static final RegistryObject<Block> REINFORCED_STONE_PANEL_SLAB = MOD_BLOCKS.register("reinforced_stone_panel_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.STONE_SLAB)));
-    public static final RegistryObject<Block> REINFORCED_STONE_PANEL_PRESSURE_PLATE = MOD_BLOCKS.register("reinforced_stone_panel_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, BlockBehaviour.Properties.copy(Blocks.STONE_PRESSURE_PLATE), BlockSetType.STONE));
-    public static final RegistryObject<Block> REINFORCED_STONE_PANEL_BUTTON = MOD_BLOCKS.register("reinforced_stone_panel_button", () -> new ModStoneButtonBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BUTTON)));
+    public static final RegistryObject<Block> REINFORCED_STONE_PANEL_PRESSURE_PLATE = MOD_BLOCKS.register("reinforced_stone_panel_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, BlockBehaviour.Properties.copy(Blocks.STONE_PRESSURE_PLATE)));
+    public static final RegistryObject<Block> REINFORCED_STONE_PANEL_BUTTON = MOD_BLOCKS.register("reinforced_stone_panel_button", () -> new StoneButtonBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BUTTON)));
     public static final RegistryObject<Block> REINFORCED_STONE_PANEL_WALL = MOD_BLOCKS.register("reinforced_stone_panel_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(Blocks.STONE_BRICK_WALL)));
 
-    public static final RegistryObject<DoorBlock> REINFORCED_DOOR = MOD_BLOCKS.register("reinforced_door", () -> new DoorBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
+    public static final RegistryObject<DoorBlock> REINFORCED_DOOR = MOD_BLOCKS.register("reinforced_door", () -> new DoorBlock(BlockBehaviour.Properties.of(Material.METAL)
             .strength(3.0F, 5.0F)
             .requiresCorrectToolForDrops()
             .sound(SoundType.STONE)
-            .noOcclusion(), BlockSetType.IRON));
-    public static final RegistryObject<DoorBlock> SECURITY_DOOR = MOD_BLOCKS.register("security_door", () -> new DoorBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
+            .noOcclusion()));
+    public static final RegistryObject<DoorBlock> SECURITY_DOOR = MOD_BLOCKS.register("security_door", () -> new DoorBlock(BlockBehaviour.Properties.of(Material.METAL)
             .strength(3.0F, 5.0F)
             .requiresCorrectToolForDrops()
             .sound(SoundType.STONE)
-            .noOcclusion(), BlockSetType.IRON));
+            .noOcclusion()));
 
     public static RegistryObject<CultivatorTopBlock> CULTIVATE_TOP = MOD_BLOCKS.register("cultivate_top", () -> new CultivatorTopBlock(defaultMachine().noOcclusion()));
 
     public static RegistryObject<CultivatorBottomBlock> CULTIVATE_BOTTOM = MOD_BLOCKS.register("cultivate_bottom", () -> new CultivatorBottomBlock(defaultMachine().noOcclusion()));
-    public static RegistryObject<ClearGlassBlock> CLEAR_GLASS = MOD_BLOCKS.register("clear_glass", () -> new ClearGlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS).strength(0.2F).noOcclusion()));
-    public static final RegistryObject<ClearGlassPaneBlock> CLEAR_GLASS_PANE = MOD_BLOCKS.register("clear_glass_pane", () -> new ClearGlassPaneBlock(BlockBehaviour.Properties.copy(Blocks.GLASS).strength(0.3F).sound(SoundType.GLASS).noOcclusion()));
+    public static RegistryObject<ClearGlassBlock> CLEAR_GLASS = MOD_BLOCKS.register("clear_glass", () -> new ClearGlassBlock(BlockBehaviour.Properties.of(Material.GLASS).strength(0.2F).noOcclusion()));
+    public static final RegistryObject<ClearGlassPaneBlock> CLEAR_GLASS_PANE = MOD_BLOCKS.register("clear_glass_pane", () -> new ClearGlassPaneBlock(BlockBehaviour.Properties.of(Material.GLASS).strength(0.3F).sound(SoundType.GLASS).noOcclusion()));
 
-    public static RegistryObject<FossilizedTrackwayBlock> FOSSILIZED_TRACKWAY_RAPTOR = MOD_BLOCKS.register("fossilized_trackway_raptor", () -> new FossilizedTrackwayBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5F).requiresCorrectToolForDrops()));
-    public static RegistryObject<FossilizedTrackwayBlock> FOSSILIZED_TRACKWAY_BIPED_SMALL = MOD_BLOCKS.register("fossilized_trackway_biped_small", () -> new FossilizedTrackwayBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5F).requiresCorrectToolForDrops()));
-    public static RegistryObject<FossilizedTrackwayBlock> FOSSILIZED_TRACKWAY_BIPED_MEDIUM = MOD_BLOCKS.register("fossilized_trackway_biped_medium", () -> new FossilizedTrackwayBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5F).requiresCorrectToolForDrops()));
+    public static RegistryObject<FossilizedTrackwayBlock> FOSSILIZED_TRACKWAY_RAPTOR = MOD_BLOCKS.register("fossilized_trackway_raptor", () -> new FossilizedTrackwayBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5F).requiresCorrectToolForDrops()));
+    public static RegistryObject<FossilizedTrackwayBlock> FOSSILIZED_TRACKWAY_BIPED_SMALL = MOD_BLOCKS.register("fossilized_trackway_biped_small", () -> new FossilizedTrackwayBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5F).requiresCorrectToolForDrops()));
+    public static RegistryObject<FossilizedTrackwayBlock> FOSSILIZED_TRACKWAY_BIPED_MEDIUM = MOD_BLOCKS.register("fossilized_trackway_biped_medium", () -> new FossilizedTrackwayBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5F).requiresCorrectToolForDrops()));
 
-    public static RegistryObject<NestFossilBlock> NEST_FOSSIL = MOD_BLOCKS.register("nest_fossil", () -> new NestFossilBlock (BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5F).requiresCorrectToolForDrops()));
+    public static RegistryObject<NestFossilBlock> NEST_FOSSIL = MOD_BLOCKS.register("nest_fossil", () -> new NestFossilBlock (BlockBehaviour.Properties.of(Material.STONE).strength(1.5F).requiresCorrectToolForDrops()));
 //    public static RegistryObject<NestFossilBlock> ENCASED_NEST_FOSSIL = modBlocks.register("encased_nest_fossil", () -> new NestFossilBlock(true, defaultMachine()));
 
     //plants
-    public static RegistryObject<DoublePlantBlock> DICKSONIA = MOD_BLOCKS.register("dicksonia", () -> new DoublePlantBlock(BlockBehaviour.Properties.copy(Blocks.TALL_GRASS).noCollission().sound(SoundType.GRASS)));
-    public static RegistryObject<DoublePlantBlock> DICROIDIUM_ZUBERI = MOD_BLOCKS.register("dicroidium_zuberi", () -> new DoublePlantBlock( BlockBehaviour.Properties.copy(Blocks.TALL_GRASS).noCollission().sound(SoundType.GRASS)));
-    public static RegistryObject<AncientCrop> AJUGINUCULA_SMITHII = MOD_BLOCKS.register("ajuginucula_smithii", () -> new SevenStageAncientCrop(BlockBehaviour.Properties.copy(Blocks.TALL_GRASS).noCollission().sound(SoundType.GRASS)));
-    public static RegistryObject<AncientCrop> WILD_ONION = MOD_BLOCKS.register("wild_onion_plant", () -> new AncientCrop(BlockBehaviour.Properties.copy(Blocks.TALL_GRASS).noCollission().sound(SoundType.GRASS)));
-    public static RegistryObject<GracilariaBlock> GRACILARIA = MOD_BLOCKS.register("gracilaria", () -> new GracilariaBlock(BlockBehaviour.Properties.copy(Blocks.SEAGRASS).noCollission().sound(SoundType.WET_GRASS)));
-    public static RegistryObject<SmallPlantBlock> DICTYOPHYLLUM = MOD_BLOCKS.register("dictyophyllum", () -> new SmallPlantBlock(BlockBehaviour.Properties.copy(Blocks.TALL_GRASS).noCollission().sound(SoundType.GRASS)));
+    public static RegistryObject<DoublePlantBlock> DICKSONIA = MOD_BLOCKS.register("dicksonia", () -> new DoublePlantBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().sound(SoundType.GRASS)));
+    public static RegistryObject<DoublePlantBlock> DICROIDIUM_ZUBERI = MOD_BLOCKS.register("dicroidium_zuberi", () -> new DoublePlantBlock( BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().sound(SoundType.GRASS)));
+    public static RegistryObject<AncientCrop> AJUGINUCULA_SMITHII = MOD_BLOCKS.register("ajuginucula_smithii", () -> new SevenStageAncientCrop(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().sound(SoundType.GRASS)));
+    public static RegistryObject<AncientCrop> WILD_ONION = MOD_BLOCKS.register("wild_onion_plant", () -> new AncientCrop(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().sound(SoundType.GRASS)));
+    public static RegistryObject<GracilariaBlock> GRACILARIA = MOD_BLOCKS.register("gracilaria", () -> new GracilariaBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_WATER_PLANT).noCollission().sound(SoundType.WET_GRASS)));
+    public static RegistryObject<SmallPlantBlock> DICTYOPHYLLUM = MOD_BLOCKS.register("dictyophyllum", () -> new SmallPlantBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().sound(SoundType.GRASS)));
     public static RegistryObject<WestIndianLilacBlock> WEST_INDIAN_LILAC = MOD_BLOCKS.register("west_indian_lilac", () ->new WestIndianLilacBlock());
-    public static RegistryObject<DoublePlantBlock> SERENNA_VERIFORMANS = MOD_BLOCKS.register("serenna_veriformans", () -> new DoublePlantBlock(BlockBehaviour.Properties.copy(Blocks.TALL_GRASS).noCollission().sound(SoundType.GRASS)));
-    public static RegistryObject<SmallPlantBlock> LADINIA_SIMPLEX = MOD_BLOCKS.register("ladinia_simplex", () -> new SmallPlantBlock(BlockBehaviour.Properties.copy(Blocks.TALL_GRASS).noCollission().sound(SoundType.GRASS)));
-    public static RegistryObject<SmallPlantBlock> ORONTIUM_MACKII = MOD_BLOCKS.register("orontium_mackii", () -> new SmallPlantBlock(BlockBehaviour.Properties.copy(Blocks.TALL_GRASS).noCollission().sound(SoundType.GRASS)));
-    public static RegistryObject<DoublePlantBlock> UMALTOLEPIS = MOD_BLOCKS.register("umaltolepis", () -> new DoublePlantBlock(BlockBehaviour.Properties.copy(Blocks.TALL_GRASS).noCollission().sound(SoundType.GRASS)));
-    public static RegistryObject<DoublePlantBlock> LIRIODENDRITES = MOD_BLOCKS.register("liriodendrites", () -> new DoublePlantBlock(BlockBehaviour.Properties.copy(Blocks.TALL_GRASS).noCollission().sound(SoundType.GRASS)));
-    public static RegistryObject<SmallPlantBlock> RAPHAELIA = MOD_BLOCKS.register("raphaelia", () -> new SmallPlantBlock(BlockBehaviour.Properties.copy(Blocks.TALL_GRASS).noCollission().sound(SoundType.GRASS)));
-    public static RegistryObject<DoublePlantBlock> ENCEPHALARTOS = MOD_BLOCKS.register("encephalartos", () -> new DoublePlantBlock(BlockBehaviour.Properties.copy(Blocks.TALL_GRASS).noCollission().sound(SoundType.GRASS)));
-    public static RegistryObject<AncientCrop> WILD_POTATO_PLANT = MOD_BLOCKS.register("wild_potato_plant", () -> new AncientCrop(BlockBehaviour.Properties.copy(Blocks.TALL_GRASS).noCollission().sound(SoundType.GRASS)));
-    public static RegistryObject<AncientCrop> RHAMNUS_SALICIFOLIUS = MOD_BLOCKS.register("rhamnus_salicifolius", () -> new SevenStageAncientCrop(BlockBehaviour.Properties.copy(Blocks.TALL_GRASS).noCollission().sound(SoundType.GRASS)));
-    public static RegistryObject<SmallPlantBlock> CINNAMON_FERN = MOD_BLOCKS.register("cinnamon_fern",  () -> new SmallPlantBlock(BlockBehaviour.Properties.copy(Blocks.TALL_GRASS).noCollission().sound(SoundType.GRASS)));;
-    public static RegistryObject<SmallPlantBlock> BRISTLE_FERN = MOD_BLOCKS.register("bristle_fern",  () -> new SmallPlantBlock(BlockBehaviour.Properties.copy(Blocks.TALL_GRASS).noCollission().sound(SoundType.GRASS)));;
-    public static RegistryObject<DoublePlantBlock> TEMPSKYA = MOD_BLOCKS.register("tempskya", () -> new DoublePlantBlock(BlockBehaviour.Properties.copy(Blocks.TALL_GRASS).noCollission().sound(SoundType.GRASS)));
-    public static RegistryObject<SmallPlantBlock> WOOLLY_STALKED_BEGONIA = MOD_BLOCKS.register("woolly_stalked_begonia",  () -> new SmallPlantBlock(BlockBehaviour.Properties.copy(Blocks.TALL_GRASS).noCollission().sound(SoundType.GRASS)));;
-    public static RegistryObject<SmallPlantBlock> LARGESTIPULE_LEATHER_ROOT = MOD_BLOCKS.register("largestipule_leather_root",  () -> new SmallPlantBlock(BlockBehaviour.Properties.copy(Blocks.TALL_GRASS).noCollission().sound(SoundType.GRASS)));;
-    public static RegistryObject<DoublePlantBlock> RHACOPHYTON = MOD_BLOCKS.register("rhacophyton", () -> new DoublePlantBlock(BlockBehaviour.Properties.copy(Blocks.TALL_GRASS).noCollission().sound(SoundType.GRASS)));;
-    public static RegistryObject<DoublePlantBlock> GRAMINIDITES_BAMBUSOIDES = MOD_BLOCKS.register("graminidites_bambusoides", () -> new DoublePlantBlock(BlockBehaviour.Properties.copy(Blocks.TALL_GRASS).noCollission().sound(SoundType.GRASS)));
+    public static RegistryObject<DoublePlantBlock> SERENNA_VERIFORMANS = MOD_BLOCKS.register("serenna_veriformans", () -> new DoublePlantBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().sound(SoundType.GRASS)));
+    public static RegistryObject<SmallPlantBlock> LADINIA_SIMPLEX = MOD_BLOCKS.register("ladinia_simplex", () -> new SmallPlantBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().sound(SoundType.GRASS)));
+    public static RegistryObject<SmallPlantBlock> ORONTIUM_MACKII = MOD_BLOCKS.register("orontium_mackii", () -> new SmallPlantBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().sound(SoundType.GRASS)));
+    public static RegistryObject<DoublePlantBlock> UMALTOLEPIS = MOD_BLOCKS.register("umaltolepis", () -> new DoublePlantBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().sound(SoundType.GRASS)));
+    public static RegistryObject<DoublePlantBlock> LIRIODENDRITES = MOD_BLOCKS.register("liriodendrites", () -> new DoublePlantBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().sound(SoundType.GRASS)));
+    public static RegistryObject<SmallPlantBlock> RAPHAELIA = MOD_BLOCKS.register("raphaelia", () -> new SmallPlantBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().sound(SoundType.GRASS)));
+    public static RegistryObject<DoublePlantBlock> ENCEPHALARTOS = MOD_BLOCKS.register("encephalartos", () -> new DoublePlantBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().sound(SoundType.GRASS)));
+    public static RegistryObject<AncientCrop> WILD_POTATO_PLANT = MOD_BLOCKS.register("wild_potato_plant", () -> new AncientCrop(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().sound(SoundType.GRASS)));
+    public static RegistryObject<AncientCrop> RHAMNUS_SALICIFOLIUS = MOD_BLOCKS.register("rhamnus_salicifolius", () -> new SevenStageAncientCrop(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().sound(SoundType.GRASS)));
+    public static RegistryObject<SmallPlantBlock> CINNAMON_FERN = MOD_BLOCKS.register("cinnamon_fern",  () -> new SmallPlantBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().sound(SoundType.GRASS)));;
+    public static RegistryObject<SmallPlantBlock> BRISTLE_FERN = MOD_BLOCKS.register("bristle_fern",  () -> new SmallPlantBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().sound(SoundType.GRASS)));;
+    public static RegistryObject<DoublePlantBlock> TEMPSKYA = MOD_BLOCKS.register("tempskya", () -> new DoublePlantBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().sound(SoundType.GRASS)));
+    public static RegistryObject<SmallPlantBlock> WOOLLY_STALKED_BEGONIA = MOD_BLOCKS.register("woolly_stalked_begonia",  () -> new SmallPlantBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().sound(SoundType.GRASS)));;
+    public static RegistryObject<SmallPlantBlock> LARGESTIPULE_LEATHER_ROOT = MOD_BLOCKS.register("largestipule_leather_root",  () -> new SmallPlantBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().sound(SoundType.GRASS)));;
+    public static RegistryObject<DoublePlantBlock> RHACOPHYTON = MOD_BLOCKS.register("rhacophyton", () -> new DoublePlantBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().sound(SoundType.GRASS)));;
+    public static RegistryObject<DoublePlantBlock> GRAMINIDITES_BAMBUSOIDES = MOD_BLOCKS.register("graminidites_bambusoides", () -> new DoublePlantBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().sound(SoundType.GRASS)));
     public static RegistryObject<HeliconiaBlock> HELICONIA = MOD_BLOCKS.register("heliconia", HeliconiaBlock::new);
     public static RegistryObject<PeatBlock> PEAT = MOD_BLOCKS.register("peat", () -> new PeatBlock(defaultMoss().randomTicks()));
     public static RegistryObject<Block> PEAT_MOSS = MOD_BLOCKS.register("peat_moss", () -> new Block(defaultMoss().randomTicks()));
-    public static RegistryObject<SmallPlantBlock> SMALL_ROYAL_FERN = MOD_BLOCKS.register("small_royal_fern",  () -> new SmallPlantBlock(BlockBehaviour.Properties.copy(Blocks.TALL_GRASS).noCollission().sound(SoundType.GRASS)));;
-    public static RegistryObject<SmallPlantBlock> SMALL_CHAIN_FERN = MOD_BLOCKS.register("small_chain_fern",  () -> new SmallPlantBlock(BlockBehaviour.Properties.copy(Blocks.TALL_GRASS).noCollission().sound(SoundType.GRASS)));;
-    public static RegistryObject<SmallPlantBlock> SMALL_CYCAD = MOD_BLOCKS.register("small_cycad",  () -> new SmallPlantBlock(BlockBehaviour.Properties.copy(Blocks.TALL_GRASS).noCollission().sound(SoundType.GRASS)));;
-    public static RegistryObject<SmallPlantBlock> CYCADEOIDEA = MOD_BLOCKS.register("bennettitalean_cycadeoidea",  () -> new SmallPlantBlock(BlockBehaviour.Properties.copy(Blocks.TALL_GRASS).noCollission().sound(SoundType.GRASS)));;
-    public static RegistryObject<SmallPlantBlock> CRY_PANSY = MOD_BLOCKS.register("cry_pansy",  () -> new SmallPlantBlock(BlockBehaviour.Properties.copy(Blocks.TALL_GRASS).noCollission().sound(SoundType.GRASS)));;
-    public static RegistryObject<DoublePlantBlock> SCALY_TREE_FERN = MOD_BLOCKS.register("scaly_tree_fern", () -> new DoublePlantBlock(BlockBehaviour.Properties.copy(Blocks.TALL_GRASS).noCollission().sound(SoundType.GRASS)));
-    public static RegistryObject<DoublePlantBlock> ZAMITES = MOD_BLOCKS.register("cycad_zamites", () -> new DoublePlantBlock(BlockBehaviour.Properties.copy(Blocks.TALL_GRASS).noCollission().sound(SoundType.GRASS)));
+    public static RegistryObject<SmallPlantBlock> SMALL_ROYAL_FERN = MOD_BLOCKS.register("small_royal_fern",  () -> new SmallPlantBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().sound(SoundType.GRASS)));;
+    public static RegistryObject<SmallPlantBlock> SMALL_CHAIN_FERN = MOD_BLOCKS.register("small_chain_fern",  () -> new SmallPlantBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().sound(SoundType.GRASS)));;
+    public static RegistryObject<SmallPlantBlock> SMALL_CYCAD = MOD_BLOCKS.register("small_cycad",  () -> new SmallPlantBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().sound(SoundType.GRASS)));;
+    public static RegistryObject<SmallPlantBlock> CYCADEOIDEA = MOD_BLOCKS.register("bennettitalean_cycadeoidea",  () -> new SmallPlantBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().sound(SoundType.GRASS)));;
+    public static RegistryObject<SmallPlantBlock> CRY_PANSY = MOD_BLOCKS.register("cry_pansy",  () -> new SmallPlantBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().sound(SoundType.GRASS)));;
+    public static RegistryObject<DoublePlantBlock> SCALY_TREE_FERN = MOD_BLOCKS.register("scaly_tree_fern", () -> new DoublePlantBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().sound(SoundType.GRASS)));
+    public static RegistryObject<DoublePlantBlock> ZAMITES = MOD_BLOCKS.register("cycad_zamites", () -> new DoublePlantBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().sound(SoundType.GRASS)));
     // Dead Coral Blocks
     public static final RegistryObject<BaseCoralPlantBlock> DEAD_ENALLHELIA =
             MOD_BLOCKS.register("dead_enallhelia", () -> new BaseCoralPlantBlock(defaultDeadCoral()));
@@ -321,20 +321,20 @@ public class ModBlocks {
     public static RegistryObject<AncientCoralBlock> HIPPURITES_RADIOSUS = MOD_BLOCKS.register("hippurites_radiosus", () -> new AncientCoralBlock(DEAD_HIPPURITES_RADIOSUS.get(), defaultAncientCoral()));
     public static RegistryObject<FeederBlock> FEEDER = MOD_BLOCKS.register("feeder", () -> new FeederBlock(defaultMachine()));
     public static RegistryObject<BugCrate> BUG_CRATE = MOD_BLOCKS.register("bug_crate", BugCrate::new);
-    public static RegistryObject<Block> PARK_BENCH = MOD_BLOCKS.register("park_bench", () -> new ParkBenchBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).noOcclusion().strength(1.5F).sound(SoundType.WOOD)));
+    public static RegistryObject<Block> PARK_BENCH = MOD_BLOCKS.register("park_bench", () -> new ParkBenchBlock(BlockBehaviour.Properties.of(Material.WOOD).noOcclusion().strength(1.5F).sound(SoundType.WOOD)));
     public static RegistryObject<SkeletonAssemblyBlock> SKELETON_ASSEMBLY = MOD_BLOCKS.register("skeleton_assembly", SkeletonAssemblyBlock::new);
 
-    public static RegistryObject<SwarmBlock> KRILL_SWARM = MOD_BLOCKS.register("krill_swarm", () -> new SwarmBlock(ModItems.KRILL, BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING).noCollission().instabreak().randomTicks()));
-    public static RegistryObject<SwarmBlock> PLANKTON_SWARM = MOD_BLOCKS.register("plankton_swarm", () -> new SwarmBlock(ModItems.PLANKTON, BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING).noCollission().instabreak().randomTicks()));
-    public static RegistryObject<TourRailBlock> TOUR_RAIL = MOD_BLOCKS.register("tour_rail", () -> new TourRailBlock(BlockBehaviour.Properties.copy(Blocks.POWERED_RAIL).requiresCorrectToolForDrops().strength(1), TourRailBlock.SpeedType.NONE));
-    public static RegistryObject<TourRailBlock> TOUR_RAIL_SLOW = MOD_BLOCKS.register("tour_rail_slow", () -> new TourRailBlock(BlockBehaviour.Properties.copy(Blocks.POWERED_RAIL).requiresCorrectToolForDrops().strength(1), TourRailBlock.SpeedType.SLOW));
-    public static RegistryObject<TourRailBlock> TOUR_RAIL_MEDIUM = MOD_BLOCKS.register("tour_rail_medium", () -> new TourRailBlock(BlockBehaviour.Properties.copy(Blocks.POWERED_RAIL).requiresCorrectToolForDrops().strength(1), TourRailBlock.SpeedType.MEDIUM));
-    public static RegistryObject<TourRailBlock> TOUR_RAIL_FAST = MOD_BLOCKS.register("tour_rail_fast", () -> new TourRailBlock(BlockBehaviour.Properties.copy(Blocks.POWERED_RAIL).requiresCorrectToolForDrops().strength(1), TourRailBlock.SpeedType.FAST));
-    public static RegistryObject<PaleoBaleBlock> PALEO_BALE_CYCADEOIDEA = MOD_BLOCKS.register("paleo_bale_cycadeoidea", () -> new PaleoBaleBlock(PaleoBaleBlock.Variant.CYCADEOIDEA, BlockBehaviour.Properties.copy(Blocks.HAY_BLOCK).sound(SoundType.GRASS)));
-    public static RegistryObject<PaleoBaleBlock> PALEO_BALE_CYCAD = MOD_BLOCKS.register("paleo_bale_cycad", () -> new PaleoBaleBlock(PaleoBaleBlock.Variant.CYCAD, BlockBehaviour.Properties.copy(Blocks.HAY_BLOCK).sound(SoundType.GRASS)));
-    public static RegistryObject<PaleoBaleBlock> PALEO_BALE_FERN = MOD_BLOCKS.register("paleo_bale_fern", () -> new PaleoBaleBlock(PaleoBaleBlock.Variant.FERN, BlockBehaviour.Properties.copy(Blocks.HAY_BLOCK).sound(SoundType.GRASS)));
-    public static RegistryObject<PaleoBaleBlock> PALEO_BALE_LEAVES = MOD_BLOCKS.register("paleo_bale_leaves", () -> new PaleoBaleBlock(PaleoBaleBlock.Variant.LEAVES, BlockBehaviour.Properties.copy(Blocks.HAY_BLOCK).sound(SoundType.GRASS)));
-    public static RegistryObject<PaleoBaleBlock> PALEO_BALE_OTHER = MOD_BLOCKS.register("paleo_bale_other", () -> new PaleoBaleBlock(PaleoBaleBlock.Variant.OTHER, BlockBehaviour.Properties.copy(Blocks.HAY_BLOCK).sound(SoundType.GRASS)));
+    public static RegistryObject<SwarmBlock> KRILL_SWARM = MOD_BLOCKS.register("krill_swarm", () -> new SwarmBlock(ModItems.KRILL, BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().randomTicks()));
+    public static RegistryObject<SwarmBlock> PLANKTON_SWARM = MOD_BLOCKS.register("plankton_swarm", () -> new SwarmBlock(ModItems.PLANKTON, BlockBehaviour.Properties.of(Material.PLANT).noCollission().instabreak().randomTicks()));
+    public static RegistryObject<TourRailBlock> TOUR_RAIL = MOD_BLOCKS.register("tour_rail", () -> new TourRailBlock(BlockBehaviour.Properties.of(Material.HEAVY_METAL).requiresCorrectToolForDrops().strength(1), TourRailBlock.SpeedType.NONE));
+    public static RegistryObject<TourRailBlock> TOUR_RAIL_SLOW = MOD_BLOCKS.register("tour_rail_slow", () -> new TourRailBlock(BlockBehaviour.Properties.of(Material.HEAVY_METAL).requiresCorrectToolForDrops().strength(1), TourRailBlock.SpeedType.SLOW));
+    public static RegistryObject<TourRailBlock> TOUR_RAIL_MEDIUM = MOD_BLOCKS.register("tour_rail_medium", () -> new TourRailBlock(BlockBehaviour.Properties.of(Material.HEAVY_METAL).requiresCorrectToolForDrops().strength(1), TourRailBlock.SpeedType.MEDIUM));
+    public static RegistryObject<TourRailBlock> TOUR_RAIL_FAST = MOD_BLOCKS.register("tour_rail_fast", () -> new TourRailBlock(BlockBehaviour.Properties.of(Material.HEAVY_METAL).requiresCorrectToolForDrops().strength(1), TourRailBlock.SpeedType.FAST));
+    public static RegistryObject<PaleoBaleBlock> PALEO_BALE_CYCADEOIDEA = MOD_BLOCKS.register("paleo_bale_cycadeoidea", () -> new PaleoBaleBlock(PaleoBaleBlock.Variant.CYCADEOIDEA, BlockBehaviour.Properties.of(Material.GRASS).sound(SoundType.GRASS)));
+    public static RegistryObject<PaleoBaleBlock> PALEO_BALE_CYCAD = MOD_BLOCKS.register("paleo_bale_cycad", () -> new PaleoBaleBlock(PaleoBaleBlock.Variant.CYCAD, BlockBehaviour.Properties.of(Material.GRASS).sound(SoundType.GRASS)));
+    public static RegistryObject<PaleoBaleBlock> PALEO_BALE_FERN = MOD_BLOCKS.register("paleo_bale_fern", () -> new PaleoBaleBlock(PaleoBaleBlock.Variant.FERN, BlockBehaviour.Properties.of(Material.GRASS).sound(SoundType.GRASS)));
+    public static RegistryObject<PaleoBaleBlock> PALEO_BALE_LEAVES = MOD_BLOCKS.register("paleo_bale_leaves", () -> new PaleoBaleBlock(PaleoBaleBlock.Variant.LEAVES, BlockBehaviour.Properties.of(Material.GRASS).sound(SoundType.GRASS)));
+    public static RegistryObject<PaleoBaleBlock> PALEO_BALE_OTHER = MOD_BLOCKS.register("paleo_bale_other", () -> new PaleoBaleBlock(PaleoBaleBlock.Variant.OTHER, BlockBehaviour.Properties.of(Material.GRASS).sound(SoundType.GRASS)));
     public static RegistryObject<ElectricFenceBaseBlock> LOW_SECURITY_FENCE_BASE = MOD_BLOCKS.register("low_security_fence_base", () -> new ElectricFenceBaseBlock(FenceType.LOW));
     public static RegistryObject<ElectricFenceBaseBlock> MED_SECURITY_FENCE_BASE = MOD_BLOCKS.register("med_security_fence_base", () -> new ElectricFenceBaseBlock(FenceType.MED));
     public static RegistryObject<ElectricFenceBaseBlock> HIGH_SECURITY_FENCE_BASE = MOD_BLOCKS.register("high_security_fence_base", () -> new ElectricFenceBaseBlock(FenceType.HIGH));
@@ -347,8 +347,8 @@ public class ModBlocks {
     public static RegistryObject<ElectricFencePoleBlock> MED_SECURITY_FENCE_POLE = MOD_BLOCKS.register("med_security_fence_pole", () -> new ElectricFencePoleBlock(FenceType.MED, defaultMachine()));
     public static RegistryObject<ElectricFencePoleBlock> HIGH_SECURITY_FENCE_POLE = MOD_BLOCKS.register("high_security_fence_pole", () -> new ElectricFencePoleBlock(FenceType.HIGH, defaultMachine()));
 
-    public static RegistryObject<ActionFigureBlock> DISPLAY_BLOCK = MOD_BLOCKS.register("display_block", () -> new ActionFigureBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).strength(0.0F, 0.0F).randomTicks().sound(SoundType.WOOD)));
-    public static RegistryObject<HologramBlock> HOLOGRAM_BLOCK = MOD_BLOCKS.register("hologram_block", () -> new HologramBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion().strength(1.0F).sound(SoundType.METAL)));
+    public static RegistryObject<ActionFigureBlock> DISPLAY_BLOCK = MOD_BLOCKS.register("display_block", () -> new ActionFigureBlock(BlockBehaviour.Properties.of(Material.WOOD).strength(0.0F, 0.0F).randomTicks().sound(SoundType.WOOD)));
+    public static RegistryObject<HologramBlock> HOLOGRAM_BLOCK = MOD_BLOCKS.register("hologram_block", () -> new HologramBlock(BlockBehaviour.Properties.of(Material.METAL).noOcclusion().strength(1.0F).sound(SoundType.METAL)));
     public static void register(IEventBus bus){
         MOD_BLOCKS.register(bus);
         //today I learned that DeferredRegister#getEntries() is a method
@@ -573,619 +573,619 @@ public class ModBlocks {
 
 
     public static BlockBehaviour.Properties defaultMachine(){
-        return BlockBehaviour.Properties.copy(Blocks.STONE).strength(2.0F);
+        return BlockBehaviour.Properties.of(Material.STONE).strength(2.0F);
     }
 
     public static BlockBehaviour.Properties defaultStone(){
-        return BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).explosionResistance(1.5f).requiresCorrectToolForDrops();
+        return BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).explosionResistance(1.5f).requiresCorrectToolForDrops();
     }
 
     public static BlockBehaviour.Properties defaultPlant(){
-        return BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING).instabreak().randomTicks().sound(SoundType.GRASS);
+        return BlockBehaviour.Properties.of(Material.PLANT).instabreak().randomTicks().sound(SoundType.GRASS);
     }
 
     public static BlockBehaviour.Properties defaultMoss() {
-        return BlockBehaviour.Properties.copy(Blocks.MOSS_BLOCK).strength(0.1F).sound(SoundType.MOSS);
+        return BlockBehaviour.Properties.of(Material.MOSS, MaterialColor.COLOR_GREEN).strength(0.1F).sound(SoundType.MOSS);
     }
 
     public static BlockBehaviour.Properties defaultAncientCoral() {
-        return BlockBehaviour.Properties.copy(Blocks.SEAGRASS).noCollission().instabreak().sound(SoundType.WET_GRASS);
+        return BlockBehaviour.Properties.of(Material.WATER_PLANT, MaterialColor.COLOR_BLUE).noCollission().instabreak().sound(SoundType.WET_GRASS);
     }
     public static BlockBehaviour.Properties defaultDeadCoral(){
-        return BlockBehaviour.Properties.copy(Blocks.STONE).requiresCorrectToolForDrops().noCollission().instabreak();
+        return BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_GRAY).requiresCorrectToolForDrops().noCollission().instabreak();
     }
 
     public static final RegistryObject<Block> ACHILLOBATOR_FOSSIL = MOD_BLOCKS.register("achillobator_fossil",
-            () -> new AchillobatorFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new AchillobatorFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_ACHILLOBATOR_FOSSIL = MOD_BLOCKS.register("encased_achillobator_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), ACHILLOBATOR));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), ACHILLOBATOR));
 
     public static final RegistryObject<Block> ALLIGATOR_GAR_FOSSIL = MOD_BLOCKS.register("alligator_gar_fossil",
-            () -> new AlligatorGarFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new AlligatorGarFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_ALLIGATOR_GAR_FOSSIL = MOD_BLOCKS.register("encased_alligator_gar_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.ALLIGATOR_GAR));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.ALLIGATOR_GAR));
 
     public static final RegistryObject<Block> ALLOSAURUS_FOSSIL = MOD_BLOCKS.register("allosaurus_fossil",
-            () -> new AllosaurusFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new AllosaurusFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_ALLOSAURUS_FOSSIL = MOD_BLOCKS.register("encased_allosaurus_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.ALLOSAURUS));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.ALLOSAURUS));
 
     public static final RegistryObject<Block> ALVAREZSAURUS_FOSSIL = MOD_BLOCKS.register("alvarezsaurus_fossil",
-            () -> new AlvarezsaurusFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new AlvarezsaurusFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_ALVAREZSAURUS_FOSSIL = MOD_BLOCKS.register("encased_alvarezsaurus_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.ALVAREZSAURUS));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.ALVAREZSAURUS));
 
     public static final RegistryObject<Block> ANKYLOSAURUS_FOSSIL = MOD_BLOCKS.register("ankylosaurus_fossil",
-            () -> new AnkylosaurusFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new AnkylosaurusFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_ANKYLOSAURUS_FOSSIL = MOD_BLOCKS.register("encased_ankylosaurus_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.ANKYLOSAURUS));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.ANKYLOSAURUS));
 
     public static final RegistryObject<Block> APATOSAURUS_FOSSIL = MOD_BLOCKS.register("apatosaurus_fossil",
-            () -> new ApatosaurusFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new ApatosaurusFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> NIGERSAURUS_FOSSIL = MOD_BLOCKS.register("nigersaurus_fossil",
-            () -> new NigersaurusFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new NigersaurusFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_NIGERSAURUS_FOSSIL = MOD_BLOCKS.register("encased_nigersaurus_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.NIGERSAURUS));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.NIGERSAURUS));
 
 
     public static final RegistryObject<Block> ENCASED_APATOSAURUS_FOSSIL = MOD_BLOCKS.register("encased_apatosaurus_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.APATOSAURUS));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.APATOSAURUS));
 
     public static final RegistryObject<Block> ARSINOITHERIUM_FOSSIL = MOD_BLOCKS.register("arsinoitherium_fossil",
-            () -> new ArsinoitheriumFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new ArsinoitheriumFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_ARSINOITHERIUM_FOSSIL = MOD_BLOCKS.register("encased_arsinoitherium_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.ARSINOITHERIUM));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.ARSINOITHERIUM));
 
     public static final RegistryObject<Block> ASTEROCERAS_FOSSIL = MOD_BLOCKS.register("asteroceras_fossil",
-            () -> new AsterocerasFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new AsterocerasFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_ASTEROCERAS_FOSSIL = MOD_BLOCKS.register("encased_asteroceras_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.ASTEROCERAS));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.ASTEROCERAS));
 
     public static final RegistryObject<Block> BARYONYX_FOSSIL = MOD_BLOCKS.register("baryonyx_fossil",
-            () -> new BaryonyxFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new BaryonyxFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_BARYONYX_FOSSIL = MOD_BLOCKS.register("encased_baryonyx_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.BARYONYX));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.BARYONYX));
 
     public static final RegistryObject<Block> BEELZEBUFO_FOSSIL = MOD_BLOCKS.register("beelzebufo_fossil",
-            () -> new BeelzebufoFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new BeelzebufoFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_BEELZEBUFO_FOSSIL = MOD_BLOCKS.register("encased_beelzebufo_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.BEELZEBUFO));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.BEELZEBUFO));
 
     public static final RegistryObject<Block> CALYMENE_FOSSIL = MOD_BLOCKS.register("calymene_fossil",
-            () -> new CalymeneFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE)));
+            () -> new CalymeneFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE)));
 
     public static final RegistryObject<Block> ENCASED_CALYMENE_FOSSIL = MOD_BLOCKS.register("encased_calymene_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.CALYMENE));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.CALYMENE));
 
     public static final RegistryObject<Block> BRACHIOSAURUS_FOSSIL = MOD_BLOCKS.register("brachiosaurus_fossil",
-            () -> new BrachiosaurusFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new BrachiosaurusFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_BRACHIOSAURUS_FOSSIL = MOD_BLOCKS.register("encased_brachiosaurus_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.BRACHIOSAURUS));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.BRACHIOSAURUS));
 
     public static final RegistryObject<Block> CAMARASAURUS_FOSSIL = MOD_BLOCKS.register("camarasaurus_fossil",
-            () -> new CamarasaurusFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new CamarasaurusFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_CAMARASAURUS_FOSSIL = MOD_BLOCKS.register("encased_camarasaurus_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.CAMARASAURUS));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.CAMARASAURUS));
 
     public static final RegistryObject<Block> CARCHARODONTOSAURUS_FOSSIL = MOD_BLOCKS.register("carcharodontosaurus_fossil",
-            () -> new CarcharodontosaurusFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new CarcharodontosaurusFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_CARCHARODONTOSAURUS_FOSSIL = MOD_BLOCKS.register("encased_carcharodontosaurus_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.CARCHARODONTOSAURUS));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.CARCHARODONTOSAURUS));
 
     public static final RegistryObject<Block> CARNOTAURUS_FOSSIL = MOD_BLOCKS.register("carnotaurus_fossil",
-            () -> new CarnotaurusFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new CarnotaurusFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_CARNOTAURUS_FOSSIL = MOD_BLOCKS.register("encased_carnotaurus_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.CARNOTAURUS));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.CARNOTAURUS));
 
     public static final RegistryObject<Block> CEARADACTYLUS_FOSSIL = MOD_BLOCKS.register("cearadactylus_fossil",
-            () -> new CearadactylusFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new CearadactylusFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_CEARADACTYLUS_FOSSIL = MOD_BLOCKS.register("encased_cearadactylus_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.CEARADACTYLUS));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.CEARADACTYLUS));
 
     public static final RegistryObject<Block> CERATOSAURUS_FOSSIL = MOD_BLOCKS.register("ceratosaurus_fossil",
-            () -> new CeratosaurusFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new CeratosaurusFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_CERATOSAURUS_FOSSIL = MOD_BLOCKS.register("encased_ceratosaurus_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.CERATOSAURUS));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.CERATOSAURUS));
 
     public static final RegistryObject<Block> CHASMOSAURUS_FOSSIL = MOD_BLOCKS.register("chasmosaurus_fossil",
-            () -> new ChasmosaurusFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new ChasmosaurusFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_CHASMOSAURUS_FOSSIL = MOD_BLOCKS.register("encased_chasmosaurus_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.CHASMOSAURUS));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.CHASMOSAURUS));
 
     public static final RegistryObject<Block> CHILESAURUS_FOSSIL = MOD_BLOCKS.register("chilesaurus_fossil",
-            () -> new ChilesaurusFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new ChilesaurusFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_CHILESAURUS_FOSSIL = MOD_BLOCKS.register("encased_chilesaurus_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.CHILESAURUS));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.CHILESAURUS));
 
     public static final RegistryObject<Block> COELACANTH_FOSSIL = MOD_BLOCKS.register("coelacanth_fossil",
-            () -> new CoelacanthFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new CoelacanthFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_COELACANTH_FOSSIL = MOD_BLOCKS.register("encased_coelacanth_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.COELACANTH));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.COELACANTH));
 
     public static final RegistryObject<Block> COELURUS_FOSSIL = MOD_BLOCKS.register("coelurus_fossil",
-            () -> new CoelurusFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new CoelurusFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_COELURUS_FOSSIL = MOD_BLOCKS.register("encased_coelurus_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.COELURUS));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.COELURUS));
 
     public static final RegistryObject<Block> COMPSOGNATHUS_FOSSIL = MOD_BLOCKS.register("compsognathus_fossil",
-            () -> new CompsognathusFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new CompsognathusFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_COMPSOGNATHUS_FOSSIL = MOD_BLOCKS.register("encased_compsognathus_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.COMPSOGNATHUS));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.COMPSOGNATHUS));
 
     public static final RegistryObject<Block> CORYTHOSAURUS_FOSSIL = MOD_BLOCKS.register("corythosaurus_fossil",
-            () -> new CorythosaurusFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new CorythosaurusFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_CORYTHOSAURUS_FOSSIL = MOD_BLOCKS.register("encased_corythosaurus_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.CORYTHOSAURUS));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.CORYTHOSAURUS));
 
     public static final RegistryObject<Block> CRASSIGYRINUS_FOSSIL = MOD_BLOCKS.register("crassigyrinus_fossil",
-            () -> new CrassigyrinusFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new CrassigyrinusFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_CRASSIGYRINUS_FOSSIL = MOD_BLOCKS.register("encased_crassigyrinus_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.CRASSIGYRINUS));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.CRASSIGYRINUS));
 
     public static final RegistryObject<Block> DEINOTHERIUM_FOSSIL = MOD_BLOCKS.register("deinotherium_fossil",
-            () -> new DeinotheriumFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new DeinotheriumFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_DEINOTHERIUM_FOSSIL = MOD_BLOCKS.register("encased_deinotherium_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.DEINOTHERIUM));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.DEINOTHERIUM));
 
     public static final RegistryObject<Block> DILOPHOSAURUS_FOSSIL = MOD_BLOCKS.register("dilophosaurus_fossil",
-            () -> new DilophosaurusFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new DilophosaurusFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_DILOPHOSAURUS_FOSSIL = MOD_BLOCKS.register("encased_dilophosaurus_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.DILOPHOSAURUS));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.DILOPHOSAURUS));
 
     public static final RegistryObject<Block> DIMETRODON_FOSSIL = MOD_BLOCKS.register("dimetrodon_fossil",
-            () -> new DimetrodonFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE)));
+            () -> new DimetrodonFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE)));
 
     public static final RegistryObject<Block> ENCASED_DIMETRODON_FOSSIL = MOD_BLOCKS.register("encased_dimetrodon_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.DIMETRODON));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.DIMETRODON));
 
     public static final RegistryObject<Block> DIMORPHODON_FOSSIL = MOD_BLOCKS.register("dimorphodon_fossil",
-            () -> new DimorphodonFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new DimorphodonFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_DIMORPHODON_FOSSIL = MOD_BLOCKS.register("encased_dimorphodon_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.DIMORPHODON));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.DIMORPHODON));
 
     public static final RegistryObject<Block> DIPLOCAULUS_FOSSIL = MOD_BLOCKS.register("diplocaulus_fossil",
-            () -> new DiplocaulusFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE)));
+            () -> new DiplocaulusFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE)));
 
     public static final RegistryObject<Block> ENCASED_DIPLOCAULUS_FOSSIL = MOD_BLOCKS.register("encased_diplocaulus_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.DIPLOCAULUS));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.DIPLOCAULUS));
 
     public static final RegistryObject<Block> DIPLODOCUS_FOSSIL = MOD_BLOCKS.register("diplodocus_fossil",
-            () -> new DiplodocusFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new DiplodocusFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_DIPLODOCUS_FOSSIL = MOD_BLOCKS.register("encased_diplodocus_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.DIPLODOCUS));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.DIPLODOCUS));
 
     public static final RegistryObject<Block> DODO_FOSSIL = MOD_BLOCKS.register("dodo_fossil",
-            () -> new DodoFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new DodoFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_DODO_FOSSIL = MOD_BLOCKS.register("encased_dodo_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.DODO));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.DODO));
 
     public static final RegistryObject<Block> DREADNOUGHTUS_FOSSIL = MOD_BLOCKS.register("dreadnoughtus_fossil",
-            () -> new DreadnoughtusFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new DreadnoughtusFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_DREADNOUGHTUS_FOSSIL = MOD_BLOCKS.register("encased_dreadnoughtus_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.DREADNOUGHTUS));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.DREADNOUGHTUS));
 
     public static final RegistryObject<Block> DUNKLEOSTEUS_FOSSIL = MOD_BLOCKS.register("dunkleosteus_fossil",
-            () -> new DunkleosteusFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE)));
+            () -> new DunkleosteusFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE)));
 
     public static final RegistryObject<Block> ENCASED_DUNKLEOSTEUS_FOSSIL = MOD_BLOCKS.register("encased_dunkleosteus_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.DUNKLEOSTEUS));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.DUNKLEOSTEUS));
 
     public static final RegistryObject<Block> EDMONTOSAURUS_FOSSIL = MOD_BLOCKS.register("edmontosaurus_fossil",
-            () -> new EdmontosaurusFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new EdmontosaurusFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_EDMONTOSAURUS_FOSSIL = MOD_BLOCKS.register("encased_edmontosaurus_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.EDMONTOSAURUS));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.EDMONTOSAURUS));
 
     public static final RegistryObject<Block> ELASMOTHERIUM_FOSSIL = MOD_BLOCKS.register("elasmotherium_fossil",
-            () -> new ElasmotheriumFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new ElasmotheriumFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_ELASMOTHERIUM_FOSSIL = MOD_BLOCKS.register("encased_elasmotherium_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.ELASMOTHERIUM));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.ELASMOTHERIUM));
 
     public static final RegistryObject<Block> GALLIMIMUS_FOSSIL = MOD_BLOCKS.register("gallimimus_fossil",
-            () -> new GallimimusFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new GallimimusFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_GALLIMIMUS_FOSSIL = MOD_BLOCKS.register("encased_gallimimus_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.GALLIMIMUS));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.GALLIMIMUS));
 
     public static final RegistryObject<Block> GIGANOTOSAURUS_FOSSIL = MOD_BLOCKS.register("giganotosaurus_fossil",
-            () -> new GiganotosaurusFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new GiganotosaurusFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_GIGANOTOSAURUS_FOSSIL = MOD_BLOCKS.register("encased_giganotosaurus_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.GIGANOTOSAURUS));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.GIGANOTOSAURUS));
 
     public static final RegistryObject<Block> GUANLONG_FOSSIL = MOD_BLOCKS.register("guanlong_fossil",
-            () -> new GuanlongFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new GuanlongFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_GUANLONG_FOSSIL = MOD_BLOCKS.register("encased_guanlong_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.GUANLONG));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.GUANLONG));
 
     public static final RegistryObject<Block> HERRERASAURUS_FOSSIL = MOD_BLOCKS.register("herrerasaurus_fossil",
-            () -> new HerrerasaurusFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new HerrerasaurusFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_HERRERASAURUS_FOSSIL = MOD_BLOCKS.register("encased_herrerasaurus_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.HERRERASAURUS));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.HERRERASAURUS));
 
     public static final RegistryObject<Block> HYAENODON_FOSSIL = MOD_BLOCKS.register("hyaenodon_fossil",
-            () -> new HyaenodonFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new HyaenodonFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_HYAENODON_FOSSIL = MOD_BLOCKS.register("encased_hyaenodon_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.HYAENODON));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.HYAENODON));
 
     public static final RegistryObject<Block> HYPSILOPHODON_FOSSIL = MOD_BLOCKS.register("hypsilophodon_fossil",
-            () -> new HypsilophodonFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new HypsilophodonFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_HYPSILOPHODON_FOSSIL = MOD_BLOCKS.register("encased_hypsilophodon_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.HYPSILOPHODON));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.HYPSILOPHODON));
 
     public static final RegistryObject<Block> LAMBEOSAURUS_FOSSIL = MOD_BLOCKS.register("lambeosaurus_fossil",
-            () -> new LambeosaurusFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new LambeosaurusFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_LAMBEOSAURUS_FOSSIL = MOD_BLOCKS.register("encased_lambeosaurus_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.LAMBEOSAURUS));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.LAMBEOSAURUS));
 
     public static final RegistryObject<Block> LEAELLYNASAURA_FOSSIL = MOD_BLOCKS.register("leaellynasaura_fossil",
-            () -> new LeaellynasauraFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new LeaellynasauraFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_LEAELLYNASAURA_FOSSIL = MOD_BLOCKS.register("encased_leaellynasaura_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.LEAELLYNASAURA));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.LEAELLYNASAURA));
 
     public static final RegistryObject<Block> LEPTICTIDIUM_FOSSIL = MOD_BLOCKS.register("leptictidium_fossil",
-            () -> new LeptictidiumFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new LeptictidiumFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_LEPTICTIDIUM_FOSSIL = MOD_BLOCKS.register("encased_leptictidium_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.LEPTICTIDIUM));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.LEPTICTIDIUM));
 
     public static final RegistryObject<Block> LIVYATAN_FOSSIL = MOD_BLOCKS.register("livyatan_fossil",
-            () -> new LivyatanFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new LivyatanFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_LIVYATAN_FOSSIL = MOD_BLOCKS.register("encased_livyatan_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.LIVYATAN));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.LIVYATAN));
 
     public static final RegistryObject<Block> MEGALODON_FOSSIL = MOD_BLOCKS.register("megalodon_fossil",
-            () -> new MegalodonFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new MegalodonFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_MEGALODON_FOSSIL = MOD_BLOCKS.register("encased_megalodon_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.MEGALODON));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.MEGALODON));
 
     public static final RegistryObject<Block> LUDODACTYLUS_FOSSIL = MOD_BLOCKS.register("ludodactylus_fossil",
-            () -> new LudodactylusFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new LudodactylusFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_LUDODACTYLUS_FOSSIL = MOD_BLOCKS.register("encased_ludodactylus_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.LUDODACTYLUS));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.LUDODACTYLUS));
 
     public static final RegistryObject<Block> MAJUNGASAURUS_FOSSIL = MOD_BLOCKS.register("majungasaurus_fossil",
-            () -> new MajungasaurusFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new MajungasaurusFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_MAJUNGASAURUS_FOSSIL = MOD_BLOCKS.register("encased_majungasaurus_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.MAJUNGASAURUS));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.MAJUNGASAURUS));
 
     public static final RegistryObject<Block> MAMENCHISAURUS_FOSSIL = MOD_BLOCKS.register("mamenchisaurus_fossil",
-            () -> new MamenchisaurusFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new MamenchisaurusFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_MAMENCHISAURUS_FOSSIL = MOD_BLOCKS.register("encased_mamenchisaurus_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.MAMENCHISAURUS));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.MAMENCHISAURUS));
 
     public static final RegistryObject<Block> MAMMOTH_FOSSIL = MOD_BLOCKS.register("mammoth_fossil",
-            () -> new MammothFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new MammothFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_MAMMOTH_FOSSIL = MOD_BLOCKS.register("encased_mammoth_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.MAMMOTH));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.MAMMOTH));
 
     public static final RegistryObject<Block> MAWSONIA_FOSSIL = MOD_BLOCKS.register("mawsonia_fossil",
-            () -> new MawsoniaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new MawsoniaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_MAWSONIA_FOSSIL = MOD_BLOCKS.register("encased_mawsonia_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.MAWSONIA));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.MAWSONIA));
 
     public static final RegistryObject<Block> MEGAPIRANHA_FOSSIL = MOD_BLOCKS.register("megapiranha_fossil",
-            () -> new MegapiranhaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new MegapiranhaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_MEGAPIRANHA_FOSSIL = MOD_BLOCKS.register("encased_megapiranha_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.MEGAPIRANHA));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.MEGAPIRANHA));
 
     public static final RegistryObject<Block> MEGATHERIUM_FOSSIL = MOD_BLOCKS.register("megatherium_fossil",
-            () -> new MegatheriumFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new MegatheriumFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_MEGATHERIUM_FOSSIL = MOD_BLOCKS.register("encased_megatherium_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.MEGATHERIUM));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.MEGATHERIUM));
 
     public static final RegistryObject<Block> METRIACANTHOSAURUS_FOSSIL = MOD_BLOCKS.register("metriacanthosaurus_fossil",
-            () -> new MetriacanthosaurusFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new MetriacanthosaurusFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_METRIACANTHOSAURUS_FOSSIL = MOD_BLOCKS.register("encased_metriacanthosaurus_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.METRIACANTHOSAURUS));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.METRIACANTHOSAURUS));
 
     public static final RegistryObject<Block> MICROCERATUS_FOSSIL = MOD_BLOCKS.register("microceratus_fossil",
-            () -> new MicroceratusFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new MicroceratusFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_MICROCERATUS_FOSSIL = MOD_BLOCKS.register("encased_microceratus_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.MICROCERATUS));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.MICROCERATUS));
 
     public static final RegistryObject<Block> MICRORAPTOR_FOSSIL = MOD_BLOCKS.register("microraptor_fossil",
-            () -> new MicroraptorFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new MicroraptorFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_MICRORAPTOR_FOSSIL = MOD_BLOCKS.register("encased_microraptor_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.MICRORAPTOR));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.MICRORAPTOR));
 
     public static final RegistryObject<Block> MOGANOPTERUS_FOSSIL = MOD_BLOCKS.register("moganopterus_fossil",
-            () -> new MoganopterusFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new MoganopterusFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_MOGANOPTERUS_FOSSIL = MOD_BLOCKS.register("encased_moganopterus_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.MOGANOPTERUS));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.MOGANOPTERUS));
 
     public static final RegistryObject<Block> MOSASAURUS_FOSSIL = MOD_BLOCKS.register("mosasaurus_fossil",
-            () -> new MosasaurusFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new MosasaurusFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_MOSASAURUS_FOSSIL = MOD_BLOCKS.register("encased_mosasaurus_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.MOSASAURUS));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.MOSASAURUS));
 
     public static final RegistryObject<Block> MUSSAURUS_FOSSIL = MOD_BLOCKS.register("mussaurus_fossil",
-            () -> new MussaurusFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new MussaurusFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_MUSSAURUS_FOSSIL = MOD_BLOCKS.register("encased_mussaurus_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.MUSSAURUS));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.MUSSAURUS));
 
     public static final RegistryObject<Block> ORNITHOMIMUS_FOSSIL = MOD_BLOCKS.register("ornithomimus_fossil",
-            () -> new OrnithomimusFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new OrnithomimusFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_ORNITHOMIMUS_FOSSIL = MOD_BLOCKS.register("encased_ornithomimus_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.ORNITHOMIMUS));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.ORNITHOMIMUS));
 
     public static final RegistryObject<Block> OTHNIELIA_FOSSIL = MOD_BLOCKS.register("othnielia_fossil",
-            () -> new OthnieliaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new OthnieliaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_OTHNIELIA_FOSSIL = MOD_BLOCKS.register("encased_othnielia_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.OTHNIELIA));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.OTHNIELIA));
 
     public static final RegistryObject<Block> OVIRAPTOR_FOSSIL = MOD_BLOCKS.register("oviraptor_fossil",
-            () -> new OviraptorFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new OviraptorFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_OVIRAPTOR_FOSSIL = MOD_BLOCKS.register("encased_oviraptor_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.OVIRAPTOR));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.OVIRAPTOR));
 
     public static final RegistryObject<Block> PACHYCEPHALOSAURUS_FOSSIL = MOD_BLOCKS.register("pachycephalosaurus_fossil",
-            () -> new PachycephalosaurusFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new PachycephalosaurusFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_PACHYCEPHALOSAURUS_FOSSIL = MOD_BLOCKS.register("encased_pachycephalosaurus_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.PACHYCEPHALOSAURUS));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.PACHYCEPHALOSAURUS));
 
     public static final RegistryObject<Block> PARACERATHERIUM_FOSSIL = MOD_BLOCKS.register("paraceratherium_fossil",
-            () -> new ParaceratheriumFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new ParaceratheriumFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_PARACERATHERIUM_FOSSIL = MOD_BLOCKS.register("encased_paraceratherium_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.PARACERATHERIUM));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.PARACERATHERIUM));
 
     public static final RegistryObject<Block> PARAPUZOSIA_FOSSIL = MOD_BLOCKS.register("parapuzosia_fossil",
-            () -> new ParapuzosiaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new ParapuzosiaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_PARAPUZOSIA_FOSSIL = MOD_BLOCKS.register("encased_parapuzosia_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.PARAPUZOSIA));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.PARAPUZOSIA));
 
     public static final RegistryObject<Block> CAMEROCERAS_FOSSIL = MOD_BLOCKS.register("cameroceras_fossil",
-            () -> new CamerocerasFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE)));
+            () -> new CamerocerasFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE)));
 
     public static final RegistryObject<Block> ENCASED_CAMEROCERAS_FOSSIL = MOD_BLOCKS.register("encased_cameroceras_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.CAMEROCERAS));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.CAMEROCERAS));
 
     public static final RegistryObject<Block> ORTHOCERAS_FOSSIL = MOD_BLOCKS.register("orthoceras_fossil",
-            () -> new OrthocerasFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE)));
+            () -> new OrthocerasFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE)));
 
     public static final RegistryObject<Block> ENCASED_ORTHOCERAS_FOSSIL = MOD_BLOCKS.register("encased_orthoceras_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.ORTHOCERAS));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.ORTHOCERAS));
 
     public static final RegistryObject<Block> ENDOCERAS_FOSSIL = MOD_BLOCKS.register("endoceras_fossil",
-            () -> new EndocerasFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE)));
+            () -> new EndocerasFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.DEEPSLATE)));
 
     public static final RegistryObject<Block> ENCASED_ENDOCERAS_FOSSIL = MOD_BLOCKS.register("encased_endoceras_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.ENDOCERAS));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.ENDOCERAS));
 
     public static final RegistryObject<Block> PARASAUROLOPHUS_FOSSIL = MOD_BLOCKS.register("parasaurolophus_fossil",
-            () -> new ParasaurolophusFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new ParasaurolophusFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_PARASAUROLOPHUS_FOSSIL = MOD_BLOCKS.register("encased_parasaurolophus_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.PARASAUROLOPHUS));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.PARASAUROLOPHUS));
 
     public static final RegistryObject<Block> PERISPHINCTES_FOSSIL = MOD_BLOCKS.register("perisphinctes_fossil",
-            () -> new PerisphinctesFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new PerisphinctesFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_PERISPHINCTES_FOSSIL = MOD_BLOCKS.register("encased_perisphinctes_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.PERISPHINCTES));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.PERISPHINCTES));
 
     public static final RegistryObject<Block> POSTOSUCHUS_FOSSIL = MOD_BLOCKS.register("postosuchus_fossil",
-            () -> new PostosuchusFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new PostosuchusFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_POSTOSUCHUS_FOSSIL = MOD_BLOCKS.register("encased_postosuchus_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.POSTOSUCHUS));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.POSTOSUCHUS));
 
     public static final RegistryObject<Block> PROCERATOSAURUS_FOSSIL = MOD_BLOCKS.register("proceratosaurus_fossil",
-            () -> new ProceratosaurusFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new ProceratosaurusFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_PROCERATOSAURUS_FOSSIL = MOD_BLOCKS.register("encased_proceratosaurus_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.PROCERATOSAURUS));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.PROCERATOSAURUS));
 
     public static final RegistryObject<Block> PROTOCERATOPS_FOSSIL = MOD_BLOCKS.register("protoceratops_fossil",
-            () -> new ProtoceratopsFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new ProtoceratopsFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_PROTOCERATOPS_FOSSIL = MOD_BLOCKS.register("encased_protoceratops_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.PROTOCERATOPS));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.PROTOCERATOPS));
 
     public static final RegistryObject<Block> PTERANODON_FOSSIL = MOD_BLOCKS.register("pteranodon_fossil",
-            () -> new PteranodonFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new PteranodonFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_PTERANODON_FOSSIL = MOD_BLOCKS.register("encased_pteranodon_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.PTERANODON));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.PTERANODON));
 
     public static final RegistryObject<Block> QUETZAL_FOSSIL = MOD_BLOCKS.register("quetzal_fossil",
-            () -> new QuetzalcoatlusFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new QuetzalcoatlusFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_QUETZAL_FOSSIL = MOD_BLOCKS.register("encased_quetzal_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.QUETZAL));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.QUETZAL));
 
     public static final RegistryObject<Block> RUGOPS_FOSSIL = MOD_BLOCKS.register("rugops_fossil",
-            () -> new RugopsFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new RugopsFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_RUGOPS_FOSSIL = MOD_BLOCKS.register("encased_rugops_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.RUGOPS));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.RUGOPS));
 
     public static final RegistryObject<Block> SEGISAURUS_FOSSIL = MOD_BLOCKS.register("segisaurus_fossil",
-            () -> new SegisaurusFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new SegisaurusFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_SEGISAURUS_FOSSIL = MOD_BLOCKS.register("encased_segisaurus_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.SEGISAURUS));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.SEGISAURUS));
 
     public static final RegistryObject<Block> SINOCERATOPS_FOSSIL = MOD_BLOCKS.register("sinoceratops_fossil",
-            () -> new SinoceratopsFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new SinoceratopsFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_SINOCERATOPS_FOSSIL = MOD_BLOCKS.register("encased_sinoceratops_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.SINOCERATOPS));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.SINOCERATOPS));
 
     public static final RegistryObject<Block> SMILODON_FOSSIL = MOD_BLOCKS.register("smilodon_fossil",
-            () -> new SmilodonFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new SmilodonFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_SMILODON_FOSSIL = MOD_BLOCKS.register("encased_smilodon_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.SMILODON));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.SMILODON));
 
     public static final RegistryObject<Block> SPINOSAURUS_FOSSIL = MOD_BLOCKS.register("spinosaurus_fossil",
-            () -> new SpinosaurusFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new SpinosaurusFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_SPINOSAURUS_FOSSIL = MOD_BLOCKS.register("encased_spinosaurus_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.SPINOSAURUS));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.SPINOSAURUS));
 
     public static final RegistryObject<Block> STEGOSAURUS_FOSSIL = MOD_BLOCKS.register("stegosaurus_fossil",
-            () -> new StegosaurusFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new StegosaurusFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_STEGOSAURUS_FOSSIL = MOD_BLOCKS.register("encased_stegosaurus_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.STEGOSAURUS));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.STEGOSAURUS));
 
     public static final RegistryObject<Block> STYRACOSAURUS_FOSSIL = MOD_BLOCKS.register("styracosaurus_fossil",
-            () -> new StyracosaurusFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new StyracosaurusFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_STYRACOSAURUS_FOSSIL = MOD_BLOCKS.register("encased_styracosaurus_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.STYRACOSAURUS));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.STYRACOSAURUS));
 
     public static final RegistryObject<Block> SUCHOMIMUS_FOSSIL = MOD_BLOCKS.register("suchomimus_fossil",
-            () -> new SuchomimusFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new SuchomimusFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_SUCHOMIMUS_FOSSIL = MOD_BLOCKS.register("encased_suchomimus_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.SUCHOMIMUS));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.SUCHOMIMUS));
 
     public static final RegistryObject<Block> THERIZINOSAURUS_FOSSIL = MOD_BLOCKS.register("therizinosaurus_fossil",
-            () -> new TherizinosaurusFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new TherizinosaurusFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_THERIZINOSAURUS_FOSSIL = MOD_BLOCKS.register("encased_therizinosaurus_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.THERIZINOSAURUS));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.THERIZINOSAURUS));
 
     public static final RegistryObject<Block> TITANIS_FOSSIL = MOD_BLOCKS.register("titanis_fossil",
-            () -> new TitanisFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new TitanisFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_TITANIS_FOSSIL = MOD_BLOCKS.register("encased_titanis_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.TITANIS));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.TITANIS));
 
     public static final RegistryObject<Block> TITANITES_FOSSIL = MOD_BLOCKS.register("titanites_fossil",
-            () -> new TitanitesFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new TitanitesFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_TITANITES_FOSSIL = MOD_BLOCKS.register("encased_titanites_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.TITANITES));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.TITANITES));
 
     public static final RegistryObject<Block> TRICERATOPS_FOSSIL = MOD_BLOCKS.register("triceratops_fossil",
-            () -> new TriceratopsFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new TriceratopsFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_TRICERATOPS_FOSSIL = MOD_BLOCKS.register("encased_triceratops_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.TRICERATOPS));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.TRICERATOPS));
 
     public static final RegistryObject<Block> TROODON_FOSSIL = MOD_BLOCKS.register("troodon_fossil",
-            () -> new TroodonFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new TroodonFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_TROODON_FOSSIL = MOD_BLOCKS.register("encased_troodon_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.TROODON));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.TROODON));
 
     public static final RegistryObject<Block> TROPEOGNATHUS_FOSSIL = MOD_BLOCKS.register("tropeognathus_fossil",
-            () -> new TropeognathusFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new TropeognathusFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_TROPEOGNATHUS_FOSSIL = MOD_BLOCKS.register("encased_tropeognathus_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.TROPEOGNATHUS));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.TROPEOGNATHUS));
 
     public static final RegistryObject<Block> TYLOSAURUS_FOSSIL = MOD_BLOCKS.register("tylosaurus_fossil",
-            () -> new TylosaurusFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new TylosaurusFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_TYLOSAURUS_FOSSIL = MOD_BLOCKS.register("encased_tylosaurus_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.TYLOSAURUS));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.TYLOSAURUS));
 
     public static final RegistryObject<Block> TYRANNOSAURUS_FOSSIL = MOD_BLOCKS.register("tyrannosaurus_fossil",
-            () -> new TyrannosaurusFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new TyrannosaurusFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_TYRANNOSAURUS_FOSSIL = MOD_BLOCKS.register("encased_tyrannosaurus_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.TYRANNOSAURUS));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.TYRANNOSAURUS));
 
     public static final RegistryObject<Block> VECTIPELTA_FOSSIL = MOD_BLOCKS.register("vectipelta_fossil",
-            () -> new VectipeltaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new VectipeltaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_VECTIPELTA_FOSSIL = MOD_BLOCKS.register("encased_vectipelta_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.VECTIPELTA));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.VECTIPELTA));
 
     public static final RegistryObject<Block> VELOCIRAPTOR_FOSSIL = MOD_BLOCKS.register("velociraptor_fossil",
-            () -> new VelociraptorFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new VelociraptorFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_VELOCIRAPTOR_FOSSIL = MOD_BLOCKS.register("encased_velociraptor_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.VELOCIRAPTOR));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.VELOCIRAPTOR));
 
     public static final RegistryObject<Block> ZHENYUANOPTERUS_FOSSIL = MOD_BLOCKS.register("zhenyuanopterus_fossil",
-            () -> new ZhenyuanopterusFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new ZhenyuanopterusFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_ZHENYUANOPTERUS_FOSSIL = MOD_BLOCKS.register("encased_zhenyuanopterus_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.ZHENYUANOPTERUS));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.ZHENYUANOPTERUS));
 
     public static final RegistryObject<Block> DEINOSUCHUS_FOSSIL = MOD_BLOCKS.register("deinosuchus_fossil",
-            () -> new DeinosuchusFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new DeinosuchusFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_DEINOSUCHUS_FOSSIL = MOD_BLOCKS.register("encased_deinosuchus_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.DEINOSUCHUS));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.DEINOSUCHUS));
 
     public static final RegistryObject<Block> KAIRUKU_FOSSIL = MOD_BLOCKS.register("kairuku_fossil",
-            () -> new KairukuFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new KairukuFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_KAIRUKU_FOSSIL = MOD_BLOCKS.register("encased_kairuku_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.KAIRUKU));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.KAIRUKU));
     public static final RegistryObject<Block> PATAGOTITAN_FOSSIL = MOD_BLOCKS.register("patagotitan_fossil",
-            () -> new PatagotitanFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new PatagotitanFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_PATAGOTITAN_FOSSIL = MOD_BLOCKS.register("encased_patagotitan_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.PATAGOTITAN));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.PATAGOTITAN));
 
     public static final RegistryObject<Block> MAIASAURA_FOSSIL = MOD_BLOCKS.register("maiasaura_fossil",
-            () -> new MaiasauraFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+            () -> new MaiasauraFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ENCASED_MAIASAURA_FOSSIL = MOD_BLOCKS.register("encased_maiasaura_fossil",
-            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.MAIASAURA));
+            () -> new EncasedFaunaFossilBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1.5f).requiresCorrectToolForDrops().sound(SoundType.STONE), DinosaurHandler.MAIASAURA));
 }

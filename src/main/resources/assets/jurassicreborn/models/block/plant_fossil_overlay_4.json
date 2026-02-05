@@ -1,7 +1,6 @@
 
 {
   "parent": "block/block",
-  "render_type": "cutout",
   "textures": {
     "particle": "block/stone",
     "layer0": "minecraft:block/stone",

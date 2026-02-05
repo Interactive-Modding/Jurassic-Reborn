@@ -1,18 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "group": "boat",
+  "pattern": [
+    "P P",
+    "PPP"
+  ],
   "key": {
     "P": {
       "item": "jurassicreborn:araucaria_planks"
     }
   },
-  "pattern": [
-    "P P",
-    "PPP"
-  ],
   "result": {
     "item": "jurassicreborn:araucaria_boat"
-  },
-  "show_notification": true
+  }
 }

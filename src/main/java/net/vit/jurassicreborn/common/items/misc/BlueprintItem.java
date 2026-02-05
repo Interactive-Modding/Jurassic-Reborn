@@ -3,161 +3,114 @@ package net.vit.jurassicreborn.common.items.misc;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.TagKey;
-import net.minecraft.util.RandomSource;
+import net.minecraft.network.chat.TextComponent;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.entity.decoration.Painting;
-import net.minecraft.world.entity.decoration.PaintingVariant;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.tags.ITagManager;
-import net.vit.jurassicreborn.JurassicReborn;
-import net.vit.jurassicreborn.common.entities.item.BlueprintPaintingEntity;
+import net.vit.jurassicreborn.common.entities.item.BlueprintEntity;
+import net.vit.jurassicreborn.common.entities.ModEntities;
 
 import javax.annotation.Nullable;
 import java.util.List;
-import java.util.Objects;
+import java.util.Locale;
 
 public class BlueprintItem extends Item {
+    public static final String NBT_TYPE = "BlueprintType";
 
-    /* tag key with all allowed variants */
-    public static final TagKey<PaintingVariant> BLUEPRINT_VARIANTS_TAG =
-            TagKey.create(ForgeRegistries.Keys.PAINTING_VARIANTS,
-                    new ResourceLocation(JurassicReborn.MODID, "blueprint_variants"));
+    public BlueprintItem(Properties props) {
+        super(props);
+    }
 
-    /* NBT key that stores the chosen variant id */
-    private static final String NBT_VARIANT = "VariantId";
+    public static void setType(ItemStack stack, BlueprintEntity.Type type) {
+        stack.getOrCreateTag().putString(NBT_TYPE, type.name());
+    }
 
-    public BlueprintItem(Properties props) { super(props); }
-
-    /* ─────────────────────────────
-       Right-click on block (place)
-       ───────────────────────────── */
     @Override
     public InteractionResult useOn(UseOnContext ctx) {
         Direction face = ctx.getClickedFace();
-        if (!face.getAxis().isHorizontal()) return InteractionResult.PASS;
-
-        Holder<PaintingVariant> variant = getStoredVariant(ctx.getItemInHand(), ctx.getLevel());
-        if (variant == null) return InteractionResult.PASS;
-
-        Level    level = ctx.getLevel();
-        BlockPos pos   = ctx.getClickedPos().relative(face);
-
-        BlueprintPaintingEntity painting =
-                new BlueprintPaintingEntity(level, pos, face, variant);
-
-        if (painting.survives()) {
-            if (!level.isClientSide) {
-                painting.setBlueprintTexture(textureFor(variant));   // helper below
-                level.addFreshEntity(painting);
-                painting.playPlacementSound();
-                if (!ctx.getPlayer().isCreative()) ctx.getItemInHand().shrink(1);
-            }
-            return InteractionResult.sidedSuccess(level.isClientSide);
+        if (!face.getAxis().isHorizontal()) {
+            return InteractionResult.PASS;
         }
-        return InteractionResult.CONSUME;
+
+        Level level = ctx.getLevel();
+        ItemStack stack = ctx.getItemInHand();
+        BlueprintEntity.Type type = getStoredType(stack);
+
+        // Hang ON the clicked face, like paintings
+        BlockPos anchor = ctx.getClickedPos().relative(face);
+
+        BlueprintEntity entity = new BlueprintEntity(
+                ModEntities.BLUEPRINT.get(),
+                level,
+                anchor,
+                face,
+                type
+        );
+
+        if (!entity.survives()) {
+            return InteractionResult.FAIL;
+        }
+
+        if (!level.isClientSide) {
+            level.addFreshEntity(entity);
+            entity.playPlacementSound();
+            Player player = ctx.getPlayer();
+            if (player == null || !player.getAbilities().instabuild) {
+                stack.shrink(1);
+            }
+        }
+
+        return InteractionResult.sidedSuccess(level.isClientSide);
     }
 
-    /* ─────────────────────────────
-       Right-click in the air (cycle)
-       ───────────────────────────── */
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
-
-        // pull every variant *object* in the tag
-        List<PaintingVariant> list = ForgeRegistries.PAINTING_VARIANTS.tags()
-                .getTag(BLUEPRINT_VARIANTS_TAG).stream().toList();
-        if (list.isEmpty()) return InteractionResultHolder.pass(stack);
-
-        /* find current index */
-        ResourceLocation curId = getStoredId(stack);
-        int idx = 0;
-        if (curId != null) {
-            for (int i = 0; i < list.size(); i++)
-                if (ForgeRegistries.PAINTING_VARIANTS.getKey(list.get(i)).equals(curId))
-                { idx = i; break; }
+        BlueprintEntity.Type[] values = BlueprintEntity.Type.values();
+        if (values.length == 0) {
+            return InteractionResultHolder.pass(stack);
         }
 
-        PaintingVariant nextPv = list.get((idx + 1) % list.size());
+        BlueprintEntity.Type current = getStoredType(stack);
+        int nextIndex = (current.ordinal() + 1) % values.length;
+        BlueprintEntity.Type next = values[nextIndex];
+        setType(stack, next);
 
-        /* write NBT */
-        stack.getOrCreateTag()
-                .putString(NBT_VARIANT, ForgeRegistries.PAINTING_VARIANTS.getKey(nextPv).toString());
-
-        if (level.isClientSide)
-            player.displayClientMessage(Component.literal(
-                            "Blueprint set to: " + ForgeRegistries.PAINTING_VARIANTS.getKey(nextPv).getPath()),
-                    true);
+        if (level.isClientSide) {
+            player.displayClientMessage(new TextComponent("Blueprint set to: " + displayName(next)), true);
+        }
 
         player.swing(hand);
         return InteractionResultHolder.success(stack);
     }
+            @Override
+            public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> lines, TooltipFlag flag) {
+                BlueprintEntity.Type type = getStoredType(stack);
+                lines.add(new TextComponent("Design: " + displayName(type)).withStyle(ChatFormatting.AQUA));
+                lines.add(new TextComponent("Right-click in the air to change design").withStyle(ChatFormatting.GRAY));
+                lines.add(new TextComponent("Note: Hitbox is 1x1 block!").withStyle(ChatFormatting.GRAY));
+            }
 
-    /* ─────────────────────────────
-       Tooltip
-       ───────────────────────────── */
-    @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level level,
-                                List<Component> lines, TooltipFlag flag) {
-        ResourceLocation id = getStoredId(stack);
-        if (id != null)
-            lines.add(Component.literal("Design: " + id.getPath()).withStyle(ChatFormatting.AQUA));
-
-        lines.add(Component.literal("Right-click in the air to change design")
-                .withStyle(ChatFormatting.GRAY));
-    }
-
-    /* ─────────────────────────────
-       Helpers
-       ───────────────────────────── */
-
-    /** variant currently stored in stack; if none, pick first in tag and save */
-    private Holder<PaintingVariant> getStoredVariant(ItemStack stack, Level level) {
-        ResourceLocation id = getStoredId(stack);
-
-        if (id != null) {
-            PaintingVariant pv = ForgeRegistries.PAINTING_VARIANTS.getValue(id);
-            if (pv != null) return ForgeRegistries.PAINTING_VARIANTS.getHolder(pv).orElse(null);
+    private BlueprintEntity.Type getStoredType(ItemStack stack) {
+        if (stack.hasTag() && stack.getTag().contains(NBT_TYPE)) {
+            try {
+                return BlueprintEntity.Type.valueOf(stack.getTag().getString(NBT_TYPE));
+            } catch (IllegalArgumentException ignored) {}
         }
-
-        // no NBT yet → initialize
-        List<Holder<PaintingVariant>> list = getVariantList();
-        if (list.isEmpty()) return null;
-
-        stack.getOrCreateTag().putString(NBT_VARIANT,
-                ForgeRegistries.PAINTING_VARIANTS.getKey(list.get(0).value()).toString());
-        return list.get(0);
+        BlueprintEntity.Type fallback = BlueprintEntity.Type.TYRANNOSAURUS;
+        setType(stack, fallback);
+        return fallback;
     }
 
-    private @Nullable ResourceLocation getStoredId(ItemStack stack) {
-        if (!stack.hasTag() || !stack.getTag().contains(NBT_VARIANT)) return null;
-        return new ResourceLocation(stack.getTag().getString(NBT_VARIANT));
-    }
-
-    private List<Holder<PaintingVariant>> getVariantList() {
-        return ForgeRegistries.PAINTING_VARIANTS.tags()
-                .getTag(BLUEPRINT_VARIANTS_TAG).stream()
-                .map(pv -> ForgeRegistries.PAINTING_VARIANTS.getHolder(pv).orElse(null))
-                .filter(Objects::nonNull)
-                .toList();
-    }
-
-    /** build texture path for renderer helper */
-    private static ResourceLocation textureFor(Holder<PaintingVariant> var) {
-        ResourceLocation id = ForgeRegistries.PAINTING_VARIANTS.getKey(var.value());
-        return new ResourceLocation(JurassicReborn.MODID,
-                "textures/painting/" + id.getPath() + ".png");
+    private static String displayName(BlueprintEntity.Type type) {
+        String lower = type.name().toLowerCase(Locale.ROOT).replace('_', ' ');
+        return Character.toUpperCase(lower.charAt(0)) + lower.substring(1);
     }
 }

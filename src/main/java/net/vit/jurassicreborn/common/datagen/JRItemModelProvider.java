@@ -1,8 +1,8 @@
 package net.vit.jurassicreborn.common.datagen;
 
-import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.Registry;
 import net.minecraft.data.BlockFamily;
-import net.minecraft.data.PackOutput;
+import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
@@ -16,8 +16,8 @@ import net.vit.jurassicreborn.common.entities.Dinosaurs.DinosaurHandler;
 import net.vit.jurassicreborn.common.items.ModItems;
 
 public class JRItemModelProvider extends ItemModelProvider {
-    public JRItemModelProvider(PackOutput output, ExistingFileHelper existingFileHelper) {
-        super(output, JurassicReborn.MODID, existingFileHelper);
+    public JRItemModelProvider(DataGenerator generator, ExistingFileHelper existingFileHelper) {
+        super(generator, JurassicReborn.MODID, existingFileHelper);
     }
 
     @Override
@@ -41,7 +41,7 @@ public class JRItemModelProvider extends ItemModelProvider {
 
             TrapDoorBlock trapDoor = (TrapDoorBlock) family.get(BlockFamily.Variant.TRAPDOOR);
             if (trapDoor != null) {
-                ResourceLocation trapDoorName = BuiltInRegistries.ITEM.getKey(trapDoor.asItem());
+                ResourceLocation trapDoorName = Registry.ITEM.getKey(trapDoor.asItem());
                 String modelName = "block/" + trapDoorName.getPath() + "_bottom";
                 simpleBlockItem(trapDoor.asItem(), modLoc(modelName));
             }
@@ -147,53 +147,47 @@ public class JRItemModelProvider extends ItemModelProvider {
 
 
         boatItem(ModItems.ARAUCARIA_BOAT.get());
-        boatItem(ModItems.ARAUCARIA_CHEST_BOAT.get());
         boatItem(ModItems.CALAMITES_BOAT.get());
-        boatItem(ModItems.CALAMITES_CHEST_BOAT.get());
         boatItem(ModItems.GINKGO_BOAT.get());
-        boatItem(ModItems.GINKGO_CHEST_BOAT.get());
         boatItem(ModItems.MAGNOLIA_BOAT.get());
-        boatItem(ModItems.MAGNOLIA_CHEST_BOAT.get());
         boatItem(ModItems.PHOENIX_BOAT.get());
-        boatItem(ModItems.PHOENIX_CHEST_BOAT.get());
         boatItem(ModItems.PSARONIUS_BOAT.get());
-        boatItem(ModItems.PSARONIUS_CHEST_BOAT.get());
 
         generatedItem(ModBlocks.REINFORCED_DOOR.get().asItem());
         generatedItem(ModBlocks.SECURITY_DOOR.get().asItem());
     }
 
     protected void simpleBlockItem(Item item, ResourceLocation loc) {
-        String s = BuiltInRegistries.ITEM.getKey(item).toString();
+        String s = Registry.ITEM.getKey(item).toString();
         getBuilder(s)
                 .parent(getExistingFile(loc));
     }
 
     protected String name(Item item) {
-        return BuiltInRegistries.ITEM.getKey(item).getPath();
+        return Registry.ITEM.getKey(item).getPath();
     }
 
     protected void simpleBlockItem(Item item) {
-        simpleBlockItem(item,modLoc("block/" + BuiltInRegistries.ITEM.getKey(item).getPath()));
+        simpleBlockItem(item,modLoc("block/" + Registry.ITEM.getKey(item).getPath()));
     }
 
 
     private void generatedItem(Item item ,ResourceLocation texture) {
-        String path = BuiltInRegistries.ITEM.getKey(item).getPath();
+        String path = Registry.ITEM.getKey(item).getPath();
         singleTexture(path, mcLoc("item/generated"),
                 "layer0", texture);
     }
 
     private void generatedItem(Item item) {
-        generatedItem(item,modLoc("item/"+BuiltInRegistries.ITEM.getKey(item).getPath()));
+        generatedItem(item,modLoc("item/"+Registry.ITEM.getKey(item).getPath()));
     }
 
     private void generatedItemBlockTexture(Item item) {
-        generatedItem(item,modLoc("block/"+BuiltInRegistries.ITEM.getKey(item).getPath()));
+        generatedItem(item,modLoc("block/"+Registry.ITEM.getKey(item).getPath()));
     }
 
     private void boatItem(Item item) {
-        String path = BuiltInRegistries.ITEM.getKey(item).getPath();
+        String path = Registry.ITEM.getKey(item).getPath();
         singleTexture(path, mcLoc("item/generated"), "layer0", modLoc("item/" + path));
     }
 

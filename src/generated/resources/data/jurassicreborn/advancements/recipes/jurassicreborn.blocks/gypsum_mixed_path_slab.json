@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "jurassicreborn:gypsum_mixed_path_slab"
+    ]
+  },
+  "criteria": {
+    "has_gypsum_mixed_path": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:gypsum_mixed_path"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "jurassicreborn:gypsum_mixed_path_slab"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_gypsum_mixed_path",
+      "has_the_recipe"
+    ]
+  ]
+}

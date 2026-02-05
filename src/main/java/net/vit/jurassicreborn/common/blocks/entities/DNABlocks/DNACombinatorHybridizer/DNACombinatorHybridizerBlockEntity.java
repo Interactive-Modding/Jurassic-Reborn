@@ -1,5 +1,6 @@
 package net.vit.jurassicreborn.common.blocks.entities.DNABlocks.DNACombinatorHybridizer;
 
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.items.IItemHandlerModifiable;
@@ -287,7 +288,7 @@ public class DNACombinatorHybridizerBlockEntity extends MachineBlockEntity imple
         ItemStack previous = getItem(slot);
         if (previous.isEmpty()) {
             setItem(slot, stack);
-        } else if (ItemStack.isSameItemSameTags(previous, stack) && ItemStack.isSameItemSameTags(previous, stack)) {
+        } else if (ItemStack.isSame(previous, stack) && ItemStack.isSame(previous, stack)) {
             previous.setCount(previous.getCount() + stack.getCount());
         }
     }
@@ -369,12 +370,12 @@ public class DNACombinatorHybridizerBlockEntity extends MachineBlockEntity imple
 
     @Override
     public @NotNull Component getDisplayName() {
-        return this.hasCustomName() ? this.getName() : Component.translatable(this.getMode() ? "container.dna_hybridizer" : "container.dna_combinator");
+        return this.hasCustomName() ? this.getName() : new TranslatableComponent(this.getMode() ? "container.dna_hybridizer" : "container.dna_combinator");
     }
 
     @Override
     protected @NotNull Component getDefaultName() {
-        return Component.translatable(this.getMode() ? "container.dna_hybridizer" : "container.dna_combinator");
+        return new TranslatableComponent(this.getMode() ? "container.dna_hybridizer" : "container.dna_combinator");
     }
 
     @Override
@@ -387,7 +388,7 @@ public class DNACombinatorHybridizerBlockEntity extends MachineBlockEntity imple
         for (int slot : outputs) {
             ItemStack stack = getItem(slot);
             //if the slot is empty or contains a stack that can combine with ours, return the slot
-            if (stack.isEmpty() || ((ItemStack.isSameItemSameTags(stack, output) && stack.getCount() + output.getCount() <= stack.getMaxStackSize()))) {
+            if (stack.isEmpty() || ((ItemStack.isSame(stack, output) && stack.getCount() + output.getCount() <= stack.getMaxStackSize()))) {
                 return slot;
             }
         }

@@ -1,10 +1,12 @@
 package net.vit.jurassicreborn.common.items.guns;
 
 import net.vit.jurassicreborn.client.sounds.SoundHandler;
+import net.vit.jurassicreborn.common.items.TabHandler;
 
 public class Glock extends Gun {
     public Glock() {
         super(
+                TabHandler.ITEMS,
                 1,                         // amountPerShot
                 SoundHandler.FIRE,
                 SoundHandler.EMPTY,

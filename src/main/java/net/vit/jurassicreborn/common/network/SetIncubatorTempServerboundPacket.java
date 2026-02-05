@@ -1,15 +1,16 @@
 package net.vit.jurassicreborn.common.network;
 
-import net.vit.jurassicreborn.common.util.block.TemperatureControl;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.registries.Registries;
+import net.minecraft.core.Registry;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.network.NetworkEvent;
+import net.vit.jurassicreborn.common.util.block.TemperatureControl;
 
 import java.util.function.Supplier;
 
@@ -29,46 +30,34 @@ public class SetIncubatorTempServerboundPacket{
     }
 
     public static void handle(SetIncubatorTempServerboundPacket packet, Supplier<NetworkEvent.Context> ctx) {
-        if(Thread.currentThread() != ctx.get().getSender().getServer().getRunningThread())//stupid hackery trying to fix the dumb block entity fetching bug
-            handleOnRenderThread(packet, ctx);
-    }
-
-    public static void handleOnRenderThread(SetIncubatorTempServerboundPacket packet, Supplier<NetworkEvent.Context> ctx) {
         NetworkEvent.Context context = ctx.get();
-        ServerPlayer player = context.getSender();
-        if (player == null) {
-            return;
-        }
+        context.enqueueWork(() -> {
+            ServerPlayer player = context.getSender();
+            if (player == null) {
+                return;
+            }
 
-        ServerLevel dim = player.serverLevel();
+            ServerLevel level = player.getServer().getLevel(packet.dimension);
+            if (level == null || level.isClientSide) {
+                return;
+            }
 
-        if(dim.isClientSide){
-            return;
-        }
+            BlockEntity blockEntity = level.getBlockEntity(packet.pos);
+            if (blockEntity == null) {
+                blockEntity = level.getChunkAt(packet.pos).getBlockEntity(packet.pos);
+            }
 
-        //this should pretty much always work unless the block entity was removed before this code could be run but the
-        //      threading should make that pretty much impossible.
-        //HOWEVER, I was encountering a stupid weird error where the world was returning null for no damn reason
-        BlockEntity e = dim.getBlockEntity(packet.pos);
+            if (blockEntity instanceof TemperatureControl temperatureControl
+                    && packet.slotIndex < temperatureControl.getTemperatureCount()) {
+                temperatureControl.setTemperature(packet.slotIndex, packet.temp);
 
-        //and then I added this and it worked.
-        //my sanity is quickly leaving my body.
+                blockEntity.setChanged();
+                level.sendBlockUpdated(packet.pos, blockEntity.getBlockState(), blockEntity.getBlockState(), 3);
+            }
+        });
 
-        // - gamma
-
-        if (e == null) {
-            e = dim.getChunkAt(packet.pos).getBlockEntity(packet.pos);
-        }
-
-
-        if(e instanceof TemperatureControl temperatureControl && dim.dimension().equals(packet.dimension)
-                && packet.slotIndex < temperatureControl.getTemperatureCount()) {
-            temperatureControl.setTemperature(packet.slotIndex, packet.temp);
-        }
-
-
+        context.setPacketHandled(true);
     }
-
 
 
 
@@ -79,14 +68,15 @@ public class SetIncubatorTempServerboundPacket{
         buffer.writeBlockPos(pos);
         buffer.writeInt(slotIndex);
         buffer.writeInt(temp);
-        buffer.writeResourceKey(dimension);
+        buffer.writeResourceLocation(dimension.location());
     }
 
     public static SetIncubatorTempServerboundPacket read(FriendlyByteBuf buffer){
         var pos = buffer.readBlockPos();
         int slotIndex = buffer.readInt();
         int temp = buffer.readInt();
-        ResourceKey<Level> dim = buffer.readResourceKey(Registries.DIMENSION);
+        ResourceLocation dimId = buffer.readResourceLocation();
+        ResourceKey<Level> dim = ResourceKey.create(Registry.DIMENSION_REGISTRY, dimId);
 
         return new SetIncubatorTempServerboundPacket(pos, slotIndex, temp, dim);
 

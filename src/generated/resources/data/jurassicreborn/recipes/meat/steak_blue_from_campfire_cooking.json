@@ -1,10 +1,9 @@
 {
   "type": "minecraft:campfire_cooking",
-  "category": "food",
-  "cookingtime": 600,
-  "experience": 0.35,
   "ingredient": {
     "item": "jurassicreborn:meat/meat_blue"
   },
-  "result": "jurassicreborn:meat/steak_blue"
+  "result": "jurassicreborn:meat/steak_blue",
+  "experience": 0.35,
+  "cookingtime": 600
 }

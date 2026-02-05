@@ -1,10 +1,9 @@
 {
   "type": "minecraft:campfire_cooking",
-  "category": "food",
-  "cookingtime": 600,
-  "experience": 0.35,
   "ingredient": {
     "item": "jurassicreborn:raw_shark_meat"
   },
-  "result": "jurassicreborn:cooked_shark_meat"
+  "result": "jurassicreborn:cooked_shark_meat",
+  "experience": 0.35,
+  "cookingtime": 600
 }

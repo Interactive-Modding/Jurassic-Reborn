@@ -1,10 +1,9 @@
 {
   "type": "minecraft:smelting",
-  "category": "food",
-  "cookingtime": 200,
-  "experience": 0.35,
   "ingredient": {
     "item": "jurassicreborn:meat/meat_lambeosaurus"
   },
-  "result": "jurassicreborn:meat/steak_lambeosaurus"
+  "result": "jurassicreborn:meat/steak_lambeosaurus",
+  "experience": 0.35,
+  "cookingtime": 200
 }

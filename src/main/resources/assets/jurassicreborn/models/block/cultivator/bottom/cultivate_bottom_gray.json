@@ -1,6 +1,5 @@
 {
   "__comment": "Model generated using MrCrayfish's Model Creator (http://mrcrayfish.com/modelcreator/)",
-  "render_type": "minecraft:translucent",
   "textures": {
     "particle": "jurassicreborn:block/cultivate_top",
     "0": "jurassicreborn:block/cultivate_top",

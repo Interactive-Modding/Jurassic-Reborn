@@ -1,7 +1,23 @@
 {
   "parent": "jurassicreborn:jurassicreborn/fossil_grinder",
+  "display": {
+    "icon": {
+      "item": "jurassicreborn:dna_sequencer"
+    },
+    "title": {
+      "translate": "advancements.jurassicreborn.dna_sequencer.title"
+    },
+    "description": {
+      "translate": "advancements.jurassicreborn.dna_sequencer.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
   "criteria": {
     "dna_sequencer": {
+      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
@@ -10,29 +26,12 @@
             ]
           }
         ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    }
-  },
-  "display": {
-    "announce_to_chat": true,
-    "description": {
-      "translate": "advancements.jurassicreborn.dna_sequencer.description"
-    },
-    "frame": "task",
-    "hidden": false,
-    "icon": {
-      "item": "jurassicreborn:dna_sequencer"
-    },
-    "show_toast": true,
-    "title": {
-      "translate": "advancements.jurassicreborn.dna_sequencer.title"
+      }
     }
   },
   "requirements": [
     [
       "dna_sequencer"
     ]
-  ],
-  "sends_telemetry_event": true
+  ]
 }

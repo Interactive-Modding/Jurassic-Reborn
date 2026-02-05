@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "jurassicreborn:empty_syringe"
+    ]
+  },
+  "criteria": {
+    "has_empty_test_tube": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:empty_test_tube"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "jurassicreborn:empty_syringe"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_empty_test_tube",
+      "has_the_recipe"
+    ]
+  ]
+}

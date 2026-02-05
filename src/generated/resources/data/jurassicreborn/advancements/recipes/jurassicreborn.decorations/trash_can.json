@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "jurassicreborn:trash_can"
+    ]
+  },
+  "criteria": {
+    "has_green_concrete": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:green_concrete"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "jurassicreborn:trash_can"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_green_concrete",
+      "has_the_recipe"
+    ]
+  ]
+}

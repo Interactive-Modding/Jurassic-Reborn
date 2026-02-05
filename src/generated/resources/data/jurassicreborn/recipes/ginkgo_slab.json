@@ -1,18 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "building",
   "group": "wooden_slab",
+  "pattern": [
+    "###"
+  ],
   "key": {
     "#": {
       "item": "jurassicreborn:ginkgo_planks"
     }
   },
-  "pattern": [
-    "###"
-  ],
   "result": {
-    "count": 6,
-    "item": "jurassicreborn:ginkgo_slab"
-  },
-  "show_notification": true
+    "item": "jurassicreborn:ginkgo_slab",
+    "count": 6
+  }
 }

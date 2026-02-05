@@ -1,8 +1,8 @@
 {
   "parent": "minecraft:block/slab_top",
   "textures": {
-    "bottom": "jurassicreborn:block/reinforced_bricks",
     "side": "jurassicreborn:block/reinforced_bricks",
+    "bottom": "jurassicreborn:block/reinforced_bricks",
     "top": "jurassicreborn:block/reinforced_bricks"
   }
 }

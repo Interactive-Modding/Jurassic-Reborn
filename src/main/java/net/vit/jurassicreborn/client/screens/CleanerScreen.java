@@ -2,8 +2,11 @@ package net.vit.jurassicreborn.client.screens;
 
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import net.minecraft.client.gui.GuiGraphics;
+import com.mojang.blaze3d.vertex.PoseStack;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
+import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
@@ -36,7 +39,11 @@ public class CleanerScreen extends AbstractContainerScreen<CleanerMenu> {
     }
 
     public CleanerScreen(CleanerMenu menu, Inventory inv, Component title, BlockEntity entity){
-        this(menu, inv, title);
+        super(menu, inv, title);
+        this.itemRenderer = Minecraft.getInstance().getItemRenderer();
+        this.minecraft = Minecraft.getInstance();
+        this.itemRenderer = minecraft.getItemRenderer();
+        this.font = minecraft.font;
 
         if(entity instanceof CleanerBlockEntity e)
             menu.setInstance(e);
@@ -44,34 +51,43 @@ public class CleanerScreen extends AbstractContainerScreen<CleanerMenu> {
     }
 
     @Override
-    public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
-        super.render(guiGraphics, mouseX, mouseY, partialTick);
-        this.renderTooltip(guiGraphics, mouseX, mouseY);
+    public void render(PoseStack pPoseStack, int pMouseX, int pMouseY, float pPartialTick) {
+        super.render(pPoseStack, pMouseX, pMouseY, pPartialTick);
+        this.renderTooltip(pPoseStack, pMouseX, pMouseY);
     }
 
     @Override
-    protected void renderBg(@NotNull GuiGraphics guiGraphics, float partialTick, int mouseX, int mouseY) {
+    protected void renderBg(@NotNull PoseStack pPoseStack, float pPartialTick, int pMouseX, int pMouseY) {
+
+        RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+        RenderSystem.setShaderTexture(0, TEXTURE);
         int i = this.leftPos;
         int j = this.topPos;
-        guiGraphics.blit(TEXTURE, i, j, 0, 0, 175, 165);
+        this.blit(pPoseStack, i, j, 0, 0, 175, 165);
 
 //        boolean isInstanceNull = menu.isInstanceNull();
 
         //render progress bar
         if(this.menu.isCleaning()){
             int progress = menu.getProgress();
-            guiGraphics.blit(TEXTURE, i + 79, j + 34, progressBarXOffset, progressBarYOffset, progress + 1, 16/*or 17 if it doesn't work thats why*/);
+            RenderSystem.setShader(GameRenderer::getPositionTexShader);
+            RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+            RenderSystem.setShaderTexture(0, TEXTURE);
+            this.blit(pPoseStack, i+79, j+34, progressBarXOffset, progressBarYOffset,   progress + 1, 16/*or 17 if it doesn't work thats why*/);
         }
 
         int fluidX = i + 47;
         int fluidY = j + 19;
-        guiGraphics.fill(fluidX, fluidY, fluidX + fluidBarWidth, fluidY + fluidBarHeight, 0xFF686868);
+        GuiComponent.fill(pPoseStack, fluidX, fluidY, fluidX + fluidBarWidth, fluidY + fluidBarHeight, 0xFF686868);
 
         int fluidHeight = Math.min(fluidBarHeight, menu.getAmountOfFluid() / 20);
         //render fluid amount
         if(fluidHeight > 0){
-            guiGraphics.blit(TEXTURE, fluidX, fluidY + fluidBarHeight - fluidHeight, fluidBarXOffset, fluidBarYOffset + ( fluidBarHeight - fluidHeight ), fluidBarWidth, fluidHeight);
+            RenderSystem.setShader(GameRenderer::getPositionTexShader);
+            RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+            RenderSystem.setShaderTexture(0, TEXTURE);
+            this.blit(pPoseStack, fluidX, fluidY + fluidBarHeight - fluidHeight, fluidBarXOffset, fluidBarYOffset + ( fluidBarHeight - fluidHeight ), fluidBarWidth, fluidHeight);
         }
 
     }

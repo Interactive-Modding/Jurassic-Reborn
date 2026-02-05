@@ -1,19 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "building",
   "group": "jurassicreborn:paleo_bale_cycad",
-  "key": {
-    "A": {
-      "item": "jurassicreborn:small_cycad"
-    }
-  },
   "pattern": [
     "AAA",
     "AAA",
     "AAA"
   ],
+  "key": {
+    "A": {
+      "item": "jurassicreborn:small_cycad"
+    }
+  },
   "result": {
     "item": "jurassicreborn:paleo_bale_cycad"
-  },
-  "show_notification": true
+  }
 }

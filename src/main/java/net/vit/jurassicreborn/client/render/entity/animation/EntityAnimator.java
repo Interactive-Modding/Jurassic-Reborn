@@ -80,15 +80,10 @@ public abstract class EntityAnimator<ENTITY extends LivingEntity & Animatable>
             if (n != null) n.setScale(j, j, j);
             if (t != null) t.setScale(j, j, j);
 
-
-
             if (n != null) n.setShouldScaleChildren(false);
             if (t != null) t.setShouldScaleChildren(false);
         }
-        if (entity.isSleeping() || entity.isCarcass()) {
-            rotationYaw = 0.0F;
-            rotationPitch = 0.0F;
-        }
+
         /* Hook for per-species / per-entity custom animation code. */
         this.performAnimations((AnimatableModel) model, entity,
                 limbSwing, limbSwingAmount, ticks,

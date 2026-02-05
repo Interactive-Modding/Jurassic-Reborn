@@ -9,13 +9,13 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.FoliageColor;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.vit.jurassicreborn.JurassicReborn;
 import net.vit.jurassicreborn.client.input.VehicleKeyHandler;
@@ -34,6 +34,7 @@ import net.vit.jurassicreborn.common.blocks.entities.feeder.FeederMenu;
 import net.vit.jurassicreborn.common.blocks.entities.skeletonassembly.SkeletonAssemblerMenu;
 import net.vit.jurassicreborn.common.blocks.entities.trashcan.TrashCanMenu;
 import net.vit.jurassicreborn.common.blocks.wood.AncientLeavesBlock;
+import net.vit.jurassicreborn.common.blocks.fossil.FossilBlock;
 import net.vit.jurassicreborn.client.render.RenderingHandler;
 import net.vit.jurassicreborn.client.render.block.DisplayBlockRendererWithoutLevel;
 import net.vit.jurassicreborn.client.sounds.SoundHandler;
@@ -148,9 +149,9 @@ public class JurassicClient {
 
     // CLIENT-ONLY helper; call during client tick of the projectile or on impact
     public static void spawnVenomParticles(VenomEntity entity) {
-        if (!entity.level().isClientSide) return;
+        if (!entity.level.isClientSide) return;
 
-        var level = entity.level();
+        var level = entity.level;
         var rand  = level.getRandom();
         double size = 0.35D;
 
@@ -190,6 +191,7 @@ public class JurassicClient {
     @SuppressWarnings("removal")
     public static void clientSetup(final FMLClientSetupEvent evt){
         evt.enqueueWork(() -> {
+            MenuScreens.register(ModMenuTypes.CULTIVATOR.get(), CultivatorScreen::new);
 
             // BlockEntityRenderer for the **bottom** block entity type
             BlockEntityRenderers.register(
@@ -215,10 +217,11 @@ public class JurassicClient {
                 BlockColors blockColors = mc.getBlockColors();
                 ItemColors itemColors = mc.getItemColors();
 
-                Block magnoliaLeaves = WoodBlocks.MAGNOLIA_LEAVES.isPresent() ? WoodBlocks.MAGNOLIA_LEAVES.get() : null;
-
                 for (Block block : ancientLeavesBlocks) {
-                    if (block == magnoliaLeaves) {
+
+                    boolean isMagnolia = Registry.BLOCK.getKey(block).getPath().contains("magnolia");
+
+                    if (isMagnolia) {
                         blockColors.register((state, access, pos, tintIndex) -> 0xFFFFFF, block);
                         itemColors.register((stack, tintIndex) -> 0xFFC0CB, block);
                     } else {
@@ -287,6 +290,8 @@ public class JurassicClient {
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.DICTYOPHYLLUM.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.WEST_INDIAN_LILAC.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.SERENNA_VERIFORMANS.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.KRILL_SWARM.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.PLANKTON_SWARM.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.LADINIA_SIMPLEX.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.ORONTIUM_MACKII.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.UMALTOLEPIS.get(), RenderType.cutout());
@@ -294,6 +299,12 @@ public class JurassicClient {
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.RAPHAELIA.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.ENCEPHALARTOS.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.WILD_POTATO_PLANT.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.POTTED_ARAUCARIA_SAPLING.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.POTTED_CALAMITES_SAPLING.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.POTTED_GINKGO_SAPLING.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.POTTED_PHOENIX_SAPLING.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.POTTED_MAGNOLIA_SAPLING.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.POTTED_PSARONIUS_SAPLING.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.RHAMNUS_SALICIFOLIUS.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.CINNAMON_FERN.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.BRISTLE_FERN.get(), RenderType.cutout());
@@ -306,8 +317,6 @@ public class JurassicClient {
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.SMALL_ROYAL_FERN.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.SMALL_CHAIN_FERN.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.SMALL_CYCAD.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.KRILL_SWARM.get(), RenderType.translucent());
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.PLANKTON_SWARM.get(), RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.CYCADEOIDEA.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.CRY_PANSY.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.SCALY_TREE_FERN.get(), RenderType.cutout());
@@ -358,6 +367,21 @@ public class JurassicClient {
         ItemBlockRenderTypes.setRenderLayer(WoodBlocks.PHOENIX_LEAVES.get(),RenderType.cutoutMipped());
         ItemBlockRenderTypes.setRenderLayer(WoodBlocks.PSARONIUS_LEAVES.get(),RenderType.cutoutMipped());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.LOW_SECURITY_FENCE_POLE.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.CLEANING_STATION.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.CULTIVATE_TOP.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.CULTIVATE_BOTTOM.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.DEEPSLATE_AMBER_ORE.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.DEEPSLATE_ICE_SHARD_ORE.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.DNA_SEQUENCER.get(), RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.PARK_BENCH.get(), RenderType.cutout());
+
+        ForgeRegistries.BLOCKS.getValues().stream()
+                .filter(block -> block instanceof FossilBlock)
+                .filter(block -> {
+                    ResourceLocation key = ForgeRegistries.BLOCKS.getKey(block);
+                    return key != null && JurassicReborn.MODID.equals(key.getNamespace());
+                })
+                .forEach(block -> ItemBlockRenderTypes.setRenderLayer(block, RenderType.cutout()));
 
         FMLJavaModLoadingContext.get().getModEventBus().register(RenderingHandler.class);
 

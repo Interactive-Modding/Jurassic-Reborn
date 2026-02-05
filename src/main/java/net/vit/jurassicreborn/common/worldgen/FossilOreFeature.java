@@ -4,7 +4,6 @@ import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.SectionPos;
 import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.chunk.BulkSectionAccess;
@@ -17,6 +16,7 @@ import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguratio
 import java.util.ArrayList;
 import java.util.BitSet;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.IntStream;
 
 public class FossilOreFeature extends Feature<OreConfiguration> {
@@ -28,7 +28,7 @@ public class FossilOreFeature extends Feature<OreConfiguration> {
 
     @Override
     public boolean place(FeaturePlaceContext<OreConfiguration> ctx) {
-        RandomSource rand = ctx.random();
+        Random rand = ctx.random();
         BlockPos origin = ctx.origin();
         WorldGenLevel level = ctx.level();
         OreConfiguration original = ctx.config();
@@ -80,7 +80,7 @@ public class FossilOreFeature extends Feature<OreConfiguration> {
     }
 
     private boolean doPlace(WorldGenLevel level,
-                            RandomSource rand,
+                            Random rand,
                             OreConfiguration config,
                             double dx1, double dx2,
                             double dz1, double dz2,

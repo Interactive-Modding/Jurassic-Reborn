@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "jurassicreborn:attraction_sign_triceratops_territorium_from_attraction_sign_safari_plants"
+    ]
+  },
+  "criteria": {
+    "has_attraction_sign_safari_plants": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:attraction_sign_safari_plants"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "jurassicreborn:attraction_sign_triceratops_territorium_from_attraction_sign_safari_plants"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_attraction_sign_safari_plants",
+      "has_the_recipe"
+    ]
+  ]
+}

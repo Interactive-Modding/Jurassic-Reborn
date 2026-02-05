@@ -86,7 +86,7 @@ public class WaterLeapAI extends Goal {
         } else if (this.animation == EntityAnimation.LEAP && this.entity.getDeltaMovement().y < 0) {
             this.animation = EntityAnimation.LEAP_LAND;
             this.launched  = true;
-        } else if (this.animation == EntityAnimation.LEAP_LAND && (this.entity.onGround() || this.entity.isSwimming())) {
+        } else if (this.animation == EntityAnimation.LEAP_LAND && (this.entity.isOnGround() || this.entity.isSwimming())) {
             this.animation = EntityAnimation.IDLE;
         }
 
@@ -109,7 +109,7 @@ public class WaterLeapAI extends Goal {
         // pick jumpHeight based on first free layer we find.
         for (int y = 1; y <= 4; y++) {
             BlockPos check = pos.offset(xOffset * multiplier, y, zOffset * multiplier);
-            BlockState state = this.entity.level().getBlockState(check);
+            BlockState state = this.entity.level.getBlockState(check);
             if (state.isAir()) {
                 // Slight scaling so higher clearances let us yeet a bit more
                 this.jumpHeight = yeetHeight + ((y / 2.0f) - 0.5f);

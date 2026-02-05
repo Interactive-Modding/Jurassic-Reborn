@@ -20,6 +20,7 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.level.material.Material;
 
 import javax.annotation.Nullable;
 
@@ -31,7 +32,7 @@ public class DoublePlantBlock extends AncientPlantBlock {
         this.registerDefaultState(this.stateDefinition.any().setValue(HALF, DoubleBlockHalf.LOWER));
     }
     public DoublePlantBlock(){
-        super(BlockBehaviour.Properties.copy(Blocks.TALL_GRASS));
+        super(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).dynamicShape());
         this.registerDefaultState(this.stateDefinition.any().setValue(HALF, DoubleBlockHalf.LOWER));
     }
 
@@ -40,6 +41,7 @@ public class DoublePlantBlock extends AncientPlantBlock {
     public boolean isRandomlyTicking(BlockState state) {
         return state.getValue(HALF) == DoubleBlockHalf.LOWER && super.isRandomlyTicking(state);
     }
+
     @Override
     protected void spread(ServerLevel level, BlockPos pos) {
         if (pos.getY() >= level.getMaxBuildHeight() - 1) {
@@ -48,15 +50,12 @@ public class DoublePlantBlock extends AncientPlantBlock {
 
         BlockPos upperPos = pos.above();
         BlockState upperState = level.getBlockState(upperPos);
-
-        if (!upperState.isAir() && !upperState.canBeReplaced()) {
+        if (!upperState.isAir() && !upperState.getMaterial().isReplaceable()) {
             return;
         }
 
         placeAt(level, this.defaultBlockState(), pos, 3);
     }
-
-
 
     /**
      * Update the provided state given the provided neighbor direction and neighbor state, returning a new state.

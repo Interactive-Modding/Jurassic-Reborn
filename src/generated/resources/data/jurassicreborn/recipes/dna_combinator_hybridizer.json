@@ -1,6 +1,9 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "building",
+  "pattern": [
+    "ABA",
+    "CDC"
+  ],
   "key": {
     "A": {
       "item": "jurassicreborn:computer_screen"
@@ -15,12 +18,7 @@
       "item": "jurassicreborn:disc_reader"
     }
   },
-  "pattern": [
-    "ABA",
-    "CDC"
-  ],
   "result": {
     "item": "jurassicreborn:dna_combinator_hybridizer"
-  },
-  "show_notification": true
+  }
 }

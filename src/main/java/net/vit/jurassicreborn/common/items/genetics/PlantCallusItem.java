@@ -3,14 +3,17 @@ package net.vit.jurassicreborn.common.items.genetics;
 import net.vit.jurassicreborn.common.blocks.ancientplants.AncientCrop;
 import net.vit.jurassicreborn.common.genetics.PlantDNA;
 import net.vit.jurassicreborn.common.items.ModItems;
+import net.vit.jurassicreborn.common.items.TabHandler;
 import net.vit.jurassicreborn.common.plants.Plant;
 import net.vit.jurassicreborn.common.plants.PlantHandler;
 import net.vit.jurassicreborn.common.util.LangUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.UseOnContext;
@@ -80,6 +83,21 @@ public class PlantCallusItem extends Item {
         }
 
         return PlantHandler.getPlantById(dna.getPlant());
+    }
+
+    @Override
+    public void fillItemCategory(CreativeModeTab pCategory, NonNullList<ItemStack> pItems) {
+        if(pCategory != TabHandler.PLANTS && pCategory != CreativeModeTab.TAB_SEARCH)
+            return;
+
+        for(Plant p : PlantHandler.getPrehistoricPlantsAndTrees()){
+            PlantDNA dna = new PlantDNA(p.getId(), 100);
+            CompoundTag plantData = new CompoundTag();
+            dna.writeToNBT(plantData);
+            ItemStack plant = ModItems.PLANT_CALLUS.get().getDefaultInstance();
+            plant.setTag(plantData);
+            pItems.add(plant);
+        }
     }
 
     @Override

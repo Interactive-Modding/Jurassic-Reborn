@@ -3,7 +3,7 @@ package net.vit.jurassicreborn.common.util.api;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.block.Block;
 import net.vit.jurassicreborn.common.items.misc.RebornIngredientItem;
-import net.minecraft.util.RandomSource;
+import java.util.Random;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
@@ -34,6 +34,6 @@ public interface CleanableItem extends RebornIngredientItem {
 
     boolean isCleanable(ItemStack stack);
 
-    ItemStack getCleanedItem(ItemStack stack, RandomSource random);
+    ItemStack getCleanedItem(ItemStack stack, Random random);
 
 }

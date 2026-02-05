@@ -3,7 +3,7 @@ package net.vit.jurassicreborn.common.blocks.entities.fence;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.util.RandomSource;
+import java.util.Random;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -209,7 +209,7 @@ public class ElectricFenceBaseBlock extends BaseEntityBlock implements SimpleWat
     public void playerDestroy(Level level, Player player, BlockPos pos, BlockState state,
                               @Nullable BlockEntity blockEntity, ItemStack stack) {
         if (!level.isClientSide) {
-            RandomSource rand = level.random;
+            Random rand = level.random;
             for (int i = 0; i < 8; i++) {
                 double dx = pos.getX() + 0.5 + (rand.nextDouble() - 0.5);
                 double dy = pos.getY() + 0.5 + (rand.nextDouble() - 0.5);

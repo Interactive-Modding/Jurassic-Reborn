@@ -3,15 +3,15 @@ package net.vit.jurassicreborn.common.blocks.ancientplants.moss;
 import net.vit.jurassicreborn.common.blocks.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
+import java.util.Random;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.tags.FluidTags;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.level.material.Material;
 
 public class PeatBlock extends Block {
     public static IntegerProperty MOISTURE = IntegerProperty.create("moisture", 0, 7);
@@ -25,7 +25,7 @@ public class PeatBlock extends Block {
 
 
     @Override
-    public void randomTick(BlockState state, ServerLevel world, BlockPos pos, RandomSource rand) {
+    public void randomTick(BlockState state, ServerLevel world, BlockPos pos, Random rand) {
         int moisture = state.getValue(MOISTURE);
 
         if (!this.hasWater(world, pos) && !world.isRainingAt(pos.above()) && !(world.getBiome(pos).is(Biomes.SWAMP))) {
@@ -62,7 +62,7 @@ public class PeatBlock extends Block {
 
     private boolean hasWater(Level world, BlockPos pos) {
         for (BlockPos nearPos : BlockPos.betweenClosed(-4, 0, -4, 4, 1, 4)) {
-            if (world.getBlockState(nearPos).getFluidState().is(FluidTags.WATER)) {
+            if (world.getBlockState(nearPos).getMaterial() == Material.WATER) {
                 return true;
             }
         }

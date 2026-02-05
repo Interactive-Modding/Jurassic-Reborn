@@ -9,6 +9,7 @@ import net.vit.jurassicreborn.common.entities.DinosaurEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.sensing.Sensing;
@@ -133,8 +134,8 @@ public class ElectricFenceWireBlock extends BaseEntityBlock implements SimpleWat
     }
 
     @Override
-    public BlockPathTypes getBlockPathType(BlockState state, BlockGetter level,
-                                           BlockPos pos, @Nullable Mob mob) {
+    public BlockPathTypes getAiPathNodeType(BlockState state, BlockGetter level,
+                                            BlockPos pos, @Nullable Mob mob) {
         return BlockPathTypes.DAMAGE_OTHER;
     }
 
@@ -269,9 +270,9 @@ public class ElectricFenceWireBlock extends BaseEntityBlock implements SimpleWat
 
         // apply damage by fence strength
         switch (type) {
-            case LOW  -> entity.hurt(entity.damageSources().lightningBolt(), 1.0F);
-            case MED  -> entity.hurt(entity.damageSources().lightningBolt(), 2.0F);
-            case HIGH -> entity.hurt(entity.damageSources().lightningBolt(), 3.0F);
+            case LOW  -> entity.hurt(DamageSource.LIGHTNING_BOLT, 1.0F);
+            case MED  -> entity.hurt(DamageSource.LIGHTNING_BOLT, 2.0F);
+            case HIGH -> entity.hurt(DamageSource.LIGHTNING_BOLT, 3.0F);
         }
 
         // extra dino side-effects
@@ -293,7 +294,6 @@ public class ElectricFenceWireBlock extends BaseEntityBlock implements SimpleWat
     public FenceType getType() { return type; }
 
     /* Always allow tall entities to collide with the hit-box above head height */
-    @Override
     public boolean collisionExtendsVertically(BlockState s, BlockGetter l, BlockPos p, Entity e) {
         return true;
     }

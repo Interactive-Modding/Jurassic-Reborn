@@ -1,7 +1,11 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "group": "jurassicreborn:amber_cane",
+  "pattern": [
+    "A",
+    "B",
+    "B"
+  ],
   "key": {
     "A": {
       "item": "jurassicreborn:amber_mosquito"
@@ -10,13 +14,7 @@
       "item": "minecraft:stick"
     }
   },
-  "pattern": [
-    "A",
-    "B",
-    "B"
-  ],
   "result": {
     "item": "jurassicreborn:amber_cane"
-  },
-  "show_notification": true
+  }
 }

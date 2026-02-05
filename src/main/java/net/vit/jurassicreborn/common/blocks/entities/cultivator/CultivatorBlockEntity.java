@@ -5,8 +5,9 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.Connection;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
-import net.minecraft.util.RandomSource;
+import java.util.Random;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -20,7 +21,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.FluidType;
+import net.minecraftforge.fluids.FluidAttributes;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.items.IItemHandlerModifiable;
 import net.vit.jurassicreborn.common.blocks.entities.MachineBlockEntity;
@@ -162,7 +163,7 @@ public class CultivatorBlockEntity extends MachineBlockEntity implements MenuPro
             return false;
         }
         // need at least one bucket of water
-        if (this.tank.getFluidAmount() < FluidType.BUCKET_VOLUME) {
+        if (this.tank.getFluidAmount() < FluidAttributes.BUCKET_VOLUME) {
             return false;
         }
 
@@ -171,7 +172,6 @@ public class CultivatorBlockEntity extends MachineBlockEntity implements MenuPro
         if (dino == null) {
             return false;
         }
-
 
         return this.lipids     >= dino.getLipids()
                 && this.minerals   >= dino.getMinerals()
@@ -206,11 +206,11 @@ public class CultivatorBlockEntity extends MachineBlockEntity implements MenuPro
         minerals   -= dino.getMinerals();
         vitamins   -= dino.getVitamins();
         proximates -= dino.getProximates();
-        tank.getFluid().shrink(FluidType.BUCKET_VOLUME); // consume 1000 mB
+        tank.getFluid().shrink(FluidAttributes.BUCKET_VOLUME); // consume 1000 mB
         pushSync();
     }
 
-    @Override protected @NotNull Component getDefaultName() { return Component.translatable("container.cultivator"); }
+    @Override protected @NotNull Component getDefaultName() { return new TranslatableComponent("container.cultivator"); }
     @Override public Component getDisplayName() { return super.getDisplayName(); }
     @Override public @NotNull AbstractContainerMenu createMenu(int id, @NotNull Inventory inv, Player player) { return new CultivatorMenu(id, machineItemStackHandler, this.cultivatorBlockData, inv); }
 
@@ -257,7 +257,7 @@ public class CultivatorBlockEntity extends MachineBlockEntity implements MenuPro
                 && be.getItem(2).getItem() == Items.WATER_BUCKET
                 && (be.getItem(3).getCount() < be.getItem(3).getMaxStackSize() || be.getItem(3).isEmpty())) {
 
-            int filled = be.tank.fill(new FluidStack(Fluids.WATER, FluidType.BUCKET_VOLUME), IFluidHandler.FluidAction.EXECUTE);
+            int filled = be.tank.fill(new FluidStack(Fluids.WATER, FluidAttributes.BUCKET_VOLUME), IFluidHandler.FluidAction.EXECUTE);
             if (filled > 0) {
                 ItemStack bucket = be.getItem(2);
                 bucket.shrink(1);
@@ -280,7 +280,7 @@ public class CultivatorBlockEntity extends MachineBlockEntity implements MenuPro
         if (foodStack.getItem() instanceof MilkBucketItem) setItem(1, new ItemStack(Items.BUCKET));
         else foodStack.shrink(1);
 
-        RandomSource random = this.level.getRandom();
+        Random random = this.level.getRandom();
         if (proximates < MAX_NUTRIENTS) proximates = Math.min((int)(proximates + (800 + random.nextInt(201)) * nutrients.getProximate()), MAX_NUTRIENTS);
         if (minerals   < MAX_NUTRIENTS) minerals   = Math.min((int)(minerals   + (900 + random.nextInt(101)) * nutrients.getMinerals()),   MAX_NUTRIENTS);
         if (vitamins   < MAX_NUTRIENTS) vitamins   = Math.min((int)(vitamins   + (900 + random.nextInt(101)) * nutrients.getVitamins()),   MAX_NUTRIENTS);

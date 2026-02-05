@@ -1,6 +1,5 @@
 package net.vit.jurassicreborn.common.items.misc;
 
-import com.github.alexthe666.citadel.repack.jaad.Play;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;

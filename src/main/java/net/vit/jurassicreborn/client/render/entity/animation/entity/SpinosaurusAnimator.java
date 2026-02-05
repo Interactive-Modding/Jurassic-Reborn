@@ -38,7 +38,6 @@ public class SpinosaurusAnimator extends EntityAnimator<SpinosaurusEntity> {
                                      float limbSwing, float limbSwingAmount, float ticks,
                                      float rotationYaw, float rotationPitch, float scale) {
 
-
         AdvancedModelBox hips   = model.getCube("bodyhips");
         AdvancedModelBox body   = model.getCube("body");
         AdvancedModelBox chest  = model.getCube("chest");     // optional in some exports
@@ -121,7 +120,6 @@ public class SpinosaurusAnimator extends EntityAnimator<SpinosaurusEntity> {
             wave (model, swimSpeed * 0.6F, -swimDeg * 0.05F, 2, ticks, phase, neckChain);
 
             if (hips != null) hips.rotateAngleZ += (float)Math.sin(ticks * swimSpeed) * (swimDeg * 0.10F);
-
 
             if (leftArm  != null)  leftArm .rotateAngleX += (float)Math.sin(ticks * 0.2F) * 0.05F;
             if (rightArm != null)  rightArm.rotateAngleX += (float)Math.cos(ticks * 0.2F) * 0.05F;

@@ -1,0 +1,15 @@
+{
+  "feature": "jurassicreborn:configured_nest_fossil",
+  "placement": [
+    { "type": "minecraft:in_square" },
+    {
+      "type": "minecraft:height_range",
+      "height": {
+        "type": "minecraft:uniform",
+        "max_inclusive": { "absolute": 50 },
+        "min_inclusive": { "absolute": 30 }
+      }
+    },
+    { "type": "minecraft:biome" }
+  ]
+}

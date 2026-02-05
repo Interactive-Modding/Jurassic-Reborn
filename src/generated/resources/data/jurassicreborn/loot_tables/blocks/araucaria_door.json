@@ -2,19 +2,15 @@
   "type": "minecraft:block",
   "pools": [
     {
+      "rolls": 1.0,
       "bonus_rolls": 0.0,
-      "conditions": [
-        {
-          "condition": "minecraft:survives_explosion"
-        }
-      ],
       "entries": [
         {
           "type": "minecraft:item",
           "conditions": [
             {
-              "block": "jurassicreborn:araucaria_door",
               "condition": "minecraft:block_state_property",
+              "block": "jurassicreborn:araucaria_door",
               "properties": {
                 "half": "lower"
               }
@@ -23,8 +19,11 @@
           "name": "jurassicreborn:araucaria_door"
         }
       ],
-      "rolls": 1.0
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ]
     }
-  ],
-  "random_sequence": "jurassicreborn:blocks/araucaria_door"
+  ]
 }

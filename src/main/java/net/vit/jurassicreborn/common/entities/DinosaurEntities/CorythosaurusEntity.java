@@ -11,14 +11,13 @@ import net.vit.jurassicreborn.client.sounds.SoundHandler;
 import net.vit.jurassicreborn.client.render.entity.animation.EntityAnimation;
 import net.vit.jurassicreborn.common.entities.DinosaurEntity;
 import net.vit.jurassicreborn.common.entities.Dinosaurs.DinosaurHandler;
-import net.vit.jurassicreborn.common.entities.IHasVariants;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.EntityType;
 
 import java.util.Locale;
 
-public class CorythosaurusEntity extends DinosaurEntity implements IHasVariants
+public class CorythosaurusEntity extends DinosaurEntity
 {
     private static final EntityDataAccessor<Integer> VARIANT = SynchedEntityData.defineId(CorythosaurusEntity.class, EntityDataSerializers.INT);
 
@@ -89,3 +88,4 @@ public class CorythosaurusEntity extends DinosaurEntity implements IHasVariants
         return isMale()?new ResourceLocation(JurassicReborn.MODID, texture + "_male_" + "adult" + "_" + variant + ".png"):new ResourceLocation(JurassicReborn.MODID, texture + "_female_" + "adult" + "_" + variant +".png");
     }
 }
+

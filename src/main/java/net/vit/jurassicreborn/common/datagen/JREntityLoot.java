@@ -1,25 +1,17 @@
 package net.vit.jurassicreborn.common.datagen;
 
-import net.minecraft.data.loot.EntityLootSubProvider;
+import net.vit.jurassicreborn.common.entities.ModEntities;
+import net.minecraft.data.loot.EntityLoot;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.flag.FeatureFlagSet;
-import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraftforge.registries.RegistryObject;
-import net.vit.jurassicreborn.common.entities.ModEntities;
 
-import java.util.stream.Stream;
+import java.util.stream.Collectors;
 
-public class JREntityLoot extends EntityLootSubProvider {
+public class JREntityLoot extends EntityLoot {
 
-    // 1.19.2 requires a FeatureFlagSet; VANILLA_SET enables vanilla features
-    public JREntityLoot() {
-        super(FeatureFlags.VANILLA_SET);
-    }
-
-    // In 1.19.2 this method is called 'generate', not 'addTables'
     @Override
-    public void generate() {
+    protected void addTables() {
         add(ModEntities.CRAB.get(), LootTable.lootTable());
         add(ModEntities.SHARK.get(), LootTable.lootTable());
         add(ModEntities.GOAT.get(), LootTable.lootTable());
@@ -134,8 +126,9 @@ public class JREntityLoot extends EntityLootSubProvider {
         add(ModEntities.ENDOCERAS_ENTITY_TYPE.get(), LootTable.lootTable());
     }
 
+
     @Override
-    protected Stream<EntityType<?>> getKnownEntityTypes() {
-        return ModEntities.MOD_ENTITY_TYPES.getEntries().stream().map(RegistryObject::get);
+    protected Iterable<EntityType<?>> getKnownEntities() {
+        return ModEntities.MOD_ENTITY_TYPES.getEntries().stream().map(RegistryObject::get).collect(Collectors.toList());
     }
 }

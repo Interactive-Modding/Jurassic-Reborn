@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "jurassicreborn:paleo_bale_other_from_graminidites_bambusoides"
+    ]
+  },
+  "criteria": {
+    "has_graminidites_bambusoides": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:graminidites_bambusoides"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "jurassicreborn:paleo_bale_other_from_graminidites_bambusoides"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_graminidites_bambusoides",
+      "has_the_recipe"
+    ]
+  ]
+}

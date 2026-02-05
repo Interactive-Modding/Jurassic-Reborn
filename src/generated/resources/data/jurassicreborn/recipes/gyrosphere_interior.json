@@ -1,7 +1,11 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "group": "jurassicreborn:gyrosphere_interior",
+  "pattern": [
+    "CCC",
+    "BAB",
+    "CCC"
+  ],
   "key": {
     "A": {
       "item": "jurassicreborn:gyrosphere_seats"
@@ -13,13 +17,7 @@
       "item": "minecraft:iron_ingot"
     }
   },
-  "pattern": [
-    "CCC",
-    "BAB",
-    "CCC"
-  ],
   "result": {
     "item": "jurassicreborn:gyrosphere_interior"
-  },
-  "show_notification": true
+  }
 }

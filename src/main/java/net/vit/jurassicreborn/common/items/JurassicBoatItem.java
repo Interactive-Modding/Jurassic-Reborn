@@ -1,9 +1,8 @@
 package net.vit.jurassicreborn.common.items;
 
-import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.core.BlockPos;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -19,18 +18,15 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.vit.jurassicreborn.common.entities.vehicle.boat.JurassicBoat;
-import net.vit.jurassicreborn.common.entities.vehicle.boat.JurassicChestBoat;
 import net.vit.jurassicreborn.common.entities.vehicle.boat.ModBoatType;
 
 import java.util.List;
 
 public class JurassicBoatItem extends Item {
-    private final boolean hasChest;
     private final ModBoatType type;
 
-    public JurassicBoatItem(boolean hasChest, ModBoatType type, Properties properties) {
+    public JurassicBoatItem(ModBoatType type, Properties properties) {
         super(properties);
-        this.hasChest = hasChest;
         this.type = type;
     }
 
@@ -70,7 +66,7 @@ public class JurassicBoatItem extends Item {
 
         if (!level.isClientSide) {
             level.addFreshEntity(boat);
-            level.gameEvent(player, GameEvent.ENTITY_PLACE, hitResult.getLocation());
+            level.gameEvent(player, GameEvent.ENTITY_PLACE, new BlockPos(hitResult.getLocation()));
             if (!player.getAbilities().instabuild) {
                 itemStack.shrink(1);
             }
@@ -86,14 +82,8 @@ public class JurassicBoatItem extends Item {
         double x = hitResult.getLocation().x;
         double y = hitResult.getLocation().y;
         double z = hitResult.getLocation().z;
-        if (this.hasChest) {
-            JurassicChestBoat boat = new JurassicChestBoat(level, x, y, z);
-            boat.setVariant(this.type);
-            return boat;
-        } else {
-            JurassicBoat boat = new JurassicBoat(level, x, y, z);
-            boat.setVariant(this.type);
-            return boat;
-        }
+        JurassicBoat boat = new JurassicBoat(level, x, y, z);
+        boat.setVariant(this.type);
+        return boat;
     }
 }

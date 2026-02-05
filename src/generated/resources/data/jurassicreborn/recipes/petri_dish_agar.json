@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shapeless",
-  "category": "misc",
   "ingredients": [
     {
       "item": "jurassicreborn:petri_dish"
@@ -19,7 +18,7 @@
     }
   ],
   "result": {
-    "count": 4,
-    "item": "jurassicreborn:petri_dish_agar"
+    "item": "jurassicreborn:petri_dish_agar",
+    "count": 4
   }
 }

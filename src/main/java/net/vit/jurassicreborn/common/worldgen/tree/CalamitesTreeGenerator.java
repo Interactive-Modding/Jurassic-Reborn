@@ -6,7 +6,7 @@ import net.vit.jurassicreborn.common.blocks.wood.AncientLeavesBlock;
 import net.vit.jurassicreborn.common.blocks.wood.WoodBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
+import java.util.Random;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
@@ -24,7 +24,7 @@ public class CalamitesTreeGenerator extends Feature<NoneFeatureConfiguration> {
         BlockState log = WoodBlocks.CALAMITES_LOG.get().defaultBlockState();
         BlockState leaves = WoodBlocks.CALAMITES_LEAVES.get().defaultBlockState().setValue(AncientLeavesBlock.DISTANCE, 1);
         WorldGenLevel world = context.level();
-        RandomSource rand = context.random();
+        Random rand = context.random();
         BlockPos position = context.origin();
 
 
@@ -114,11 +114,11 @@ public class CalamitesTreeGenerator extends Feature<NoneFeatureConfiguration> {
 
         max.move(3, height, 3);
 
-
-
-
-
-
+//        for(int y = pContext.origin().getY(); y < branchHeight; y++){
+//            if(!TreePlaceUtil.validTreePos(pContext.level(), pContext.origin().above(y))){
+//                return false;
+//            }
+//        }
 
 
         for (int x = min.getX(); x < max.getX(); x++) {

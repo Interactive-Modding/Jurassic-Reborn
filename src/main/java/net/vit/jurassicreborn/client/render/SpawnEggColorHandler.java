@@ -4,7 +4,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.color.item.ItemColors;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.RegisterColorHandlersEvent;
+import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.vit.jurassicreborn.JurassicReborn;
@@ -23,7 +23,7 @@ import java.util.Collection;
 public class SpawnEggColorHandler {
 
     @SubscribeEvent
-    public static void onItemColors(RegisterColorHandlersEvent.Item event) {
+    public static void onItemColors(ColorHandlerEvent.Item event) {
         ItemColors colors = event.getItemColors();
         Collection<RegistryObject<DinosaurSpawnEggItem>> eggs = ModItems.DINO_SPAWN_EGGS.values();
         for (RegistryObject<DinosaurSpawnEggItem> egg : eggs) {

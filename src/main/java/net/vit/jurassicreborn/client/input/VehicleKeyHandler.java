@@ -3,8 +3,9 @@ package net.vit.jurassicreborn.client.input;
 
 import com.mojang.blaze3d.platform.InputConstants;
 import net.minecraft.client.KeyMapping;
-import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
+import net.minecraftforge.client.ClientRegistry;
 import net.minecraftforge.client.settings.KeyConflictContext;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import org.lwjgl.glfw.GLFW;
 
 public class VehicleKeyHandler {
@@ -88,16 +89,18 @@ public class VehicleKeyHandler {
             "key.categories.jurassicreborn"
     );
 
-    public static void register(RegisterKeyMappingsEvent event) {
-        event.register(SWITCH_SEAT);
-        event.register(NEXT_STATION);
-        event.register(HELICOPTER_UP);
-        event.register(HELICOPTER_DOWN);
-        event.register(HELICOPTER_AUTOPILOT);
-        event.register(HELICOPTER_LOCK);
-        event.register(HELICOPTER_ROTATE_LEFT);
-        event.register(HELICOPTER_ROTATE_RIGHT);
-        event.register(HELICOPTER_THIRD_PERSON_VIEW_ZOOM_OUT);
-        event.register(HELICOPTER_THIRD_PERSON_VIEW_ZOOM_IN);
+    public static void register(final FMLClientSetupEvent event) {
+        event.enqueueWork(() -> {
+            ClientRegistry.registerKeyBinding(SWITCH_SEAT);
+            ClientRegistry.registerKeyBinding(NEXT_STATION);
+            ClientRegistry.registerKeyBinding(HELICOPTER_UP);
+            ClientRegistry.registerKeyBinding(HELICOPTER_DOWN);
+            ClientRegistry.registerKeyBinding(HELICOPTER_AUTOPILOT);
+            ClientRegistry.registerKeyBinding(HELICOPTER_LOCK);
+            ClientRegistry.registerKeyBinding(HELICOPTER_ROTATE_LEFT);
+            ClientRegistry.registerKeyBinding(HELICOPTER_ROTATE_RIGHT);
+            ClientRegistry.registerKeyBinding(HELICOPTER_THIRD_PERSON_VIEW_ZOOM_OUT);
+            ClientRegistry.registerKeyBinding(HELICOPTER_THIRD_PERSON_VIEW_ZOOM_IN);
+        });
     }
 }

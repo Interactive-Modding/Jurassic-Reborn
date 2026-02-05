@@ -1,29 +1,32 @@
 package net.vit.jurassicreborn.common.datagen;
 
 import net.minecraft.data.DataGenerator;
-import net.minecraft.data.PackOutput;
+import net.minecraft.data.advancements.AdvancementProvider;
+import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.data.event.GatherDataEvent;
+import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 import net.vit.jurassicreborn.common.datagen.data.*;
-import net.vit.jurassicreborn.common.plants.PlantHandler;
-import net.vit.jurassicreborn.common.worldgen.JRWorldgenProvider;
+
+import java.util.List;
 
 public class JRDatagen {
 
     public static void gather(GatherDataEvent event) {
-        DataGenerator gen = event.getGenerator();
-        PackOutput out = gen.getPackOutput();
-        var lookup = event.getLookupProvider();
-        ExistingFileHelper efh = event.getExistingFileHelper();
-        PlantHandler.init();
-        gen.addProvider(event.includeServer(), new JRWorldgenProvider(out, lookup));
-        gen.addProvider(event.includeServer(), new JRLootTableProvider(out));
-        gen.addProvider(event.includeServer(), new JRRecipeProvider(out));
-        gen.addProvider(event.includeClient(), new JRBlockstateProvider(out, efh));
-        gen.addProvider(event.includeClient(), new JRItemModelProvider(out, efh));
-        var blockTagsProvider = new JRBlockTagsProvider(out, lookup, efh);
-        gen.addProvider(event.includeServer(), blockTagsProvider);
-        gen.addProvider(event.includeServer(), new JRItemTagsProvider(out, lookup, blockTagsProvider, efh));
-        gen.addProvider(event.includeServer(), new AdvancementHolder(out, lookup));
+        DataGenerator generator = event.getGenerator();
+        ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
+
+        if (event.includeServer()) {
+            generator.addProvider(new JRLootTableProvider(generator));
+            generator.addProvider(new JRRecipeProvider(generator));
+            BlockTagsProvider blockTagsProvider = new JRBlockTagsProvider(generator, existingFileHelper);
+            generator.addProvider(blockTagsProvider);
+            generator.addProvider(new JRItemTagsProvider(generator, blockTagsProvider, existingFileHelper));
+            generator.addProvider(new AdvancementHolder(generator, existingFileHelper));
+        }
+
+        if (event.includeClient()) {
+            generator.addProvider(new JRBlockstateProvider(generator, existingFileHelper));
+            generator.addProvider(new JRItemModelProvider(generator, existingFileHelper));
+        }
     }
 }

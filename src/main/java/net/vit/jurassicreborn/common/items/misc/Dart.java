@@ -1,6 +1,7 @@
 package net.vit.jurassicreborn.common.items.misc;
 
 import net.vit.jurassicreborn.common.entities.DinosaurEntity;
+import net.vit.jurassicreborn.common.items.TabHandler;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
@@ -11,7 +12,7 @@ public class Dart extends Item {
     private final int dartColor;
 
     public Dart(BiConsumer<DinosaurEntity, ItemStack> consumer, int dartColor) {
-        super(new Item.Properties());
+        super(new Item.Properties().tab(TabHandler.ITEMS));
         this.consumer = consumer;
         this.dartColor = dartColor;
     }

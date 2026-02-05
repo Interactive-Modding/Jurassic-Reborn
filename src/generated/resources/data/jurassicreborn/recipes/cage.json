@@ -1,7 +1,11 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "group": "jurassicreborn:cage",
+  "pattern": [
+    "BAB",
+    "ACA",
+    "BAB"
+  ],
   "key": {
     "A": {
       "item": "jurassicreborn:iron_rod"
@@ -13,13 +17,7 @@
       "item": "minecraft:lead"
     }
   },
-  "pattern": [
-    "BAB",
-    "ACA",
-    "BAB"
-  ],
   "result": {
     "item": "jurassicreborn:cage"
-  },
-  "show_notification": true
+  }
 }

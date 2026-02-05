@@ -1,19 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "building",
-  "key": {
-    "#": {
-      "item": "jurassicreborn:gypsum_stone_panel"
-    }
-  },
   "pattern": [
     "#  ",
     "## ",
     "###"
   ],
-  "result": {
-    "count": 4,
-    "item": "jurassicreborn:gypsum_stone_panel_stairs"
+  "key": {
+    "#": {
+      "item": "jurassicreborn:gypsum_stone_panel"
+    }
   },
-  "show_notification": true
+  "result": {
+    "item": "jurassicreborn:gypsum_stone_panel_stairs",
+    "count": 4
+  }
 }

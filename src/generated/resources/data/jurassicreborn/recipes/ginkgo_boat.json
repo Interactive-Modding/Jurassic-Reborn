@@ -1,18 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "group": "boat",
+  "pattern": [
+    "P P",
+    "PPP"
+  ],
   "key": {
     "P": {
       "item": "jurassicreborn:ginkgo_planks"
     }
   },
-  "pattern": [
-    "P P",
-    "PPP"
-  ],
   "result": {
     "item": "jurassicreborn:ginkgo_boat"
-  },
-  "show_notification": true
+  }
 }

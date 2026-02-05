@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "jurassicreborn:fossil_grinder"
+    ]
+  },
+  "criteria": {
+    "has_iron_blades": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:iron_blades"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "jurassicreborn:fossil_grinder"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_iron_blades",
+      "has_the_recipe"
+    ]
+  ]
+}

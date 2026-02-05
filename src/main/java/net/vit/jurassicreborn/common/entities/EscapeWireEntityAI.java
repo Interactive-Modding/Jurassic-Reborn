@@ -1,7 +1,7 @@
 package net.vit.jurassicreborn.common.entities;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
+import java.util.Random;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
@@ -38,12 +38,12 @@ public class EscapeWireEntityAI extends Goal {
 
     @Override
     public boolean canUse() {
-        return !dino.level().isClientSide && dino.wireTicks > 0 && !dino.isPassenger() && dino.isAlive();
+        return !dino.level.isClientSide && dino.wireTicks > 0 && !dino.isPassenger() && dino.isAlive();
     }
 
     @Override
     public boolean canContinueToUse() {
-        if (dino.level().isClientSide) return false;
+        if (dino.level.isClientSide) return false;
         if (dino.tickCount - startedAtTick > HARD_TIMEOUT_TICKS) return false;
         return target != null && !dino.getNavigation().isDone();
     }
@@ -102,8 +102,8 @@ public class EscapeWireEntityAI extends Goal {
     /* ----------------------------- helpers ----------------------------- */
 
     private BlockPos findSafeSpot() {
-        final Level level = dino.level();
-        final RandomSource rng  = dino.getRandom();
+        final Level level = dino.level;
+        final Random rng  = dino.getRandom();
         BlockPos origin   = dino.blockPosition();
 
         for (int radius = START_RADIUS; radius <= MAX_RADIUS; radius += RADIUS_STEP) {

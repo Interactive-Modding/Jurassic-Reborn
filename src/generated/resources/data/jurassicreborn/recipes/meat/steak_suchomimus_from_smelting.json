@@ -1,10 +1,9 @@
 {
   "type": "minecraft:smelting",
-  "category": "food",
-  "cookingtime": 200,
-  "experience": 0.35,
   "ingredient": {
     "item": "jurassicreborn:meat/meat_suchomimus"
   },
-  "result": "jurassicreborn:meat/steak_suchomimus"
+  "result": "jurassicreborn:meat/steak_suchomimus",
+  "experience": 0.35,
+  "cookingtime": 200
 }

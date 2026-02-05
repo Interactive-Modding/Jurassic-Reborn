@@ -4,10 +4,10 @@ import com.google.gson.JsonObject;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.CriterionTriggerInstance;
 import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
@@ -59,7 +59,9 @@ public class CleaningRecipeBuilder implements RecipeBuilder {
     public void save(Consumer<FinishedRecipe> pFinishedRecipeConsumer, ResourceLocation pRecipeId) {
        // this.ensureValid(pRecipeId);
       //  this.advancement.parent(ROOT_RECIPE_ADVANCEMENT).addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(pRecipeId)).rewards(AdvancementRewards.Builder.recipe(pRecipeId)).requirements(RequirementsStrategy.OR);
-        ResourceLocation advancementId = new ResourceLocation(pRecipeId.getNamespace(), "recipes/misc/" + pRecipeId.getPath());
+        CreativeModeTab category = this.result.getItemCategory();
+        String folder = category != null ? category.getRecipeFolderName() : "misc";
+        ResourceLocation advancementId = new ResourceLocation(pRecipeId.getNamespace(), "recipes/" + folder + "/" + pRecipeId.getPath());
         pFinishedRecipeConsumer.accept(new CleaningRecipeBuilder.Result(pRecipeId, this.type, this.group == null ? "" : this.group, this.ingredient, this.result, this.count, this.advancement, advancementId));
     }
 
@@ -99,7 +101,7 @@ public class CleaningRecipeBuilder implements RecipeBuilder {
 
             JsonObject resultObject = new JsonObject();
 
-            resultObject.addProperty("item", BuiltInRegistries.ITEM.getKey(this.result).toString());
+            resultObject.addProperty("item", Registry.ITEM.getKey(this.result).toString());
             resultObject.addProperty("count",count);
 
             pJson.add("output",resultObject);

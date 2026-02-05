@@ -3,9 +3,10 @@ package net.vit.jurassicreborn.common.network;
 import net.vit.jurassicreborn.common.blocks.ModBlocks;
 import net.vit.jurassicreborn.common.blocks.entities.DNABlocks.DNACombinatorHybridizer.DNACombinatorHybridizerBlock;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.core.Registry;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.network.NetworkEvent;
@@ -29,13 +30,14 @@ public class SwitchHybridizerCombinatorMode {
     public void write(FriendlyByteBuf buf){
         buf.writeBoolean(this.mode);
         buf.writeBlockPos(this.pos);
-        buf.writeResourceKey(this.dimension);
+        buf.writeResourceLocation(this.dimension.location());
     }
 
     public static SwitchHybridizerCombinatorMode read(FriendlyByteBuf buf){
         var mode = buf.readBoolean();
         var pos = buf.readBlockPos();
-        var dim = buf.readResourceKey(Registries.DIMENSION);
+        var dimId = buf.readResourceLocation();
+        var dim = ResourceKey.create(Registry.DIMENSION_REGISTRY, dimId);
         return new SwitchHybridizerCombinatorMode(mode, pos, dim);
     }
 

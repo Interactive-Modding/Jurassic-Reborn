@@ -3,7 +3,6 @@
     "credit": "Made with Blockbench",
     "parent": "minecraft:block/block",
     "ambientocclusion": false,
-    "render_type": "minecraft:translucent",
     "texture_size": [64, 64],
     "textures": {
         "0": "jurassicreborn:block/sea_lamprey",

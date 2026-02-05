@@ -1,6 +1,7 @@
 package net.vit.jurassicreborn.client.model;
 
-import org.joml.Vector3f;
+import com.mojang.math.Vector3f;
+import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.state.BlockState;
 import net.vit.jurassicreborn.common.blocks.entities.fence.ElectricFenceBaseBlock;
 import net.vit.jurassicreborn.common.blocks.entities.fence.FenceType;
@@ -61,7 +62,7 @@ public final class ElectricFenceModels {
 
     /** Convenience helper for PoseStack.mulPose. */
     public static Vector3f rotationVec(int deg) {
-        return new Vector3f(0f, 1f, 0f);
+        return Vector3f.YP;
     }
 
     private ElectricFenceModels() {}

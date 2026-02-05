@@ -1,7 +1,11 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "group": "jurassicreborn:dart_gun",
+  "pattern": [
+    "AAA",
+    "CCC",
+    " EC"
+  ],
   "key": {
     "A": {
       "item": "minecraft:string"
@@ -13,13 +17,7 @@
       "item": "minecraft:redstone"
     }
   },
-  "pattern": [
-    "AAA",
-    "CCC",
-    " EC"
-  ],
   "result": {
     "item": "jurassicreborn:dart_gun"
-  },
-  "show_notification": true
+  }
 }

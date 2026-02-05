@@ -16,6 +16,7 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
@@ -89,7 +90,7 @@ public class DNASynthesizerBlockEntity extends MachineBlockEntity implements Ite
 
     @Override
     protected @NotNull Component getDefaultName() {
-        return Component.translatable("block.jurassicreborn.dna_synthesizer");
+        return new TranslatableComponent("block.jurassicreborn.dna_synthesizer");
     }
 
     @Override

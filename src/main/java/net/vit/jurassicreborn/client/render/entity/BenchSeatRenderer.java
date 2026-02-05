@@ -12,7 +12,6 @@ public class BenchSeatRenderer<T extends ParkBenchSeatBaseEntity> extends Entity
 
     public BenchSeatRenderer(EntityRendererProvider.Context context) {
         super(context);
-
         this.shadowRadius = 0.0F;
     }
 

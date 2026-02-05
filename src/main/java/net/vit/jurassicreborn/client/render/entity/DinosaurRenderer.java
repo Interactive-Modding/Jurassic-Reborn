@@ -117,7 +117,7 @@ public class DinosaurRenderer extends LivingEntityRenderer<DinosaurEntity, Basic
                 stack.scale(scale, scale, scale * -1);
                 break;
             case "Vitiate":
-                int color = Color.HSBtoRGB((entity.level().getGameTime() % 1000) / 100f, 1f, 1f);
+                int color = Color.HSBtoRGB((entity.level.getGameTime() % 1000) / 100f, 1f, 1f);
                 this.tint = new Color((color & 0xFF) / 255f, ((color >> 8) & 0xFF) / 255f, ((color >> 16) & 0xFF) / 255f, 1f/*can tweak this later*/);
                 break;
             case "Zth":
@@ -297,7 +297,6 @@ public class DinosaurRenderer extends LivingEntityRenderer<DinosaurEntity, Basic
 //        public void render(DinosaurEntity entity, float limbSwing, float limbSwingAmount, float partialTicks, float age, float yaw, float pitch, float scale) {
 //            if (!entity.isInvisible()) {
 //                if (entity.areEyelidsClosed()) {
-
 //                    if (texture != null) {
 //                        ITextureObject textureObject = Minecraft.getMinecraft().getTextureManager().getTexture(texture);
 //                        if (textureObject != TextureUtil.MISSING_TEXTURE) {

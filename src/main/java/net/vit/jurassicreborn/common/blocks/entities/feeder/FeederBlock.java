@@ -121,7 +121,7 @@ public class FeederBlock extends BaseEntityBlock implements SimpleWaterloggedBlo
         if (!level.isClientSide) {
             BlockEntity be = level.getBlockEntity(pos);
             if (be instanceof MenuProvider provider && player instanceof ServerPlayer sp) {
-                NetworkHooks.openScreen(sp, provider, pos);
+                NetworkHooks.openGui(sp, provider, pos);
             }
         }
         return InteractionResult.sidedSuccess(level.isClientSide);

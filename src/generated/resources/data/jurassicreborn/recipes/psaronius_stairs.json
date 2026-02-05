@@ -1,20 +1,18 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "building",
   "group": "wooden_stairs",
-  "key": {
-    "#": {
-      "item": "jurassicreborn:psaronius_planks"
-    }
-  },
   "pattern": [
     "#  ",
     "## ",
     "###"
   ],
-  "result": {
-    "count": 4,
-    "item": "jurassicreborn:psaronius_stairs"
+  "key": {
+    "#": {
+      "item": "jurassicreborn:psaronius_planks"
+    }
   },
-  "show_notification": true
+  "result": {
+    "item": "jurassicreborn:psaronius_stairs",
+    "count": 4
+  }
 }

@@ -1,13 +1,13 @@
 {
   "variants": {
+    "type=top": {
+      "model": "jurassicreborn:block/psaronius_slab_top"
+    },
     "type=bottom": {
       "model": "jurassicreborn:block/psaronius_slab"
     },
     "type=double": {
       "model": "jurassicreborn:block/psaronius_planks"
-    },
-    "type=top": {
-      "model": "jurassicreborn:block/psaronius_slab_top"
     }
   }
 }

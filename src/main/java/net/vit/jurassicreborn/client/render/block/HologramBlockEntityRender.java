@@ -4,7 +4,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.Tesselator;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.math.Axis;
+import com.mojang.math.Vector3f;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -62,7 +62,7 @@ public class HologramBlockEntityRender implements BlockEntityRenderer<HologramBl
         poseStack.pushPose();
         poseStack.translate(0.5, 0, 0.5);
         poseStack.scale(1.0f, 1.0f, 1.0f);
-        poseStack.mulPose(Axis.YP.rotationDegrees(blockEntity.getRot()));
+        poseStack.mulPose(Vector3f.YP.rotationDegrees(blockEntity.getRot()));
 
         EntityAnimation anim = blockEntity.getPoseAnimation();
         if (entity.getAnimation() != anim.get()) {

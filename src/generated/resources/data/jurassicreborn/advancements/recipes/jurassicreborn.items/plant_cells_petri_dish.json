@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "jurassicreborn:plant_cells_petri_dish"
+    ]
+  },
+  "criteria": {
+    "has_plant_cells": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:plant_cells"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "jurassicreborn:plant_cells_petri_dish"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_plant_cells",
+      "has_the_recipe"
+    ]
+  ]
+}

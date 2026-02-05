@@ -4,7 +4,6 @@ import com.mojang.datafixers.util.Pair;
 import net.vit.jurassicreborn.JurassicReborn;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.levelgen.structure.pools.SinglePoolElement;
@@ -21,7 +20,7 @@ import java.util.List;
 @Mod.EventBusSubscriber(modid = JurassicReborn.MODID)
 public class VillageAddition {
     private static final ResourceKey<StructureProcessorList> EMPTY_PROCESSOR_LIST_KEY = ResourceKey.create(
-            Registries.PROCESSOR_LIST, new ResourceLocation("minecraft", "empty"));
+            Registry.PROCESSOR_LIST_REGISTRY, new ResourceLocation("minecraft", "empty"));
 
     /** Add a single NBT piece into a target village pool with a given weight. */
     private static void addBuildingToPool(Registry<StructureTemplatePool> templatePoolRegistry,
@@ -54,9 +53,9 @@ public class VillageAddition {
     @SubscribeEvent
     public static void addNewVillageBuilding(final ServerAboutToStartEvent event) {
         Registry<StructureTemplatePool> templatePoolRegistry =
-                event.getServer().registryAccess().registry(Registries.TEMPLATE_POOL).orElseThrow();
+                event.getServer().registryAccess().registry(Registry.TEMPLATE_POOL_REGISTRY).orElseThrow();
         Registry<StructureProcessorList> processorListRegistry =
-                event.getServer().registryAccess().registry(Registries.PROCESSOR_LIST).orElseThrow();
+                event.getServer().registryAccess().registry(Registry.PROCESSOR_LIST_REGISTRY).orElseThrow();
 
         // Paths in data: data/jurassicreborn/structures/<name>.nbt
 

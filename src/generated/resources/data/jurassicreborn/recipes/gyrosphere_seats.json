@@ -1,7 +1,11 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "group": "jurassicreborn:gyrosphere_seats",
+  "pattern": [
+    "ABA",
+    "ACA",
+    "DDD"
+  ],
   "key": {
     "A": {
       "item": "minecraft:leather"
@@ -16,13 +20,7 @@
       "item": "minecraft:iron_ingot"
     }
   },
-  "pattern": [
-    "ABA",
-    "ACA",
-    "DDD"
-  ],
   "result": {
     "item": "jurassicreborn:gyrosphere_seats"
-  },
-  "show_notification": true
+  }
 }

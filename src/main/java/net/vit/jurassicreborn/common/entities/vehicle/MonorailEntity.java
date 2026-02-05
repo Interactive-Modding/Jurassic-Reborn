@@ -16,6 +16,7 @@ package net.vit.jurassicreborn.common.entities.vehicle;
  *      can be spawned over network.
  */
 
+import com.mojang.math.Vector4f;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -35,7 +36,6 @@ import net.minecraft.world.phys.Vec3;
 import net.vit.jurassicreborn.common.blocks.parkBlocks.TourRailBlock;
 import net.vit.jurassicreborn.common.items.ModItems;
 import net.vit.jurassicreborn.common.network.*;
-import org.joml.Vector4f;
 
 import javax.annotation.Nonnull;
 import java.util.Arrays;
@@ -72,12 +72,11 @@ public class MonorailEntity extends VehicleEntity {
         super.tick();
 
         BlockPos start = blockPosition();
-        if (!level().isClientSide) handleRailDetection();
+        if (!level.isClientSide) handleRailDetection();
 
         if (entityData.get(ON_RAILS)) {
             minecart.tick();
             Vector4f v = wheeldata.carVector;
-
             this.backValue .setTarget(calculateWheelHeight(v.y(), false));
             this.frontValue.setTarget(calculateWheelHeight(v.w(), false));
             this.leftValue .setTarget(getY());
@@ -118,7 +117,6 @@ public class MonorailEntity extends VehicleEntity {
     /*  RAIL DETECTION                                                       */
     /* --------------------------------------------------------------------- */
     private void handleRailDetection() {
-        Level level = this.level();
         BlockPos rail = blockPosition();
         boolean isRail = level.getBlockState(rail).getBlock() instanceof TourRailBlock;
         if (!isRail) {
@@ -155,7 +153,6 @@ public class MonorailEntity extends VehicleEntity {
             if (isRail) minecart.isInReverse = lastDirBackwards;
             entityData.set(ON_RAILS, isRail);
             this.refreshDimensions();
-
 
             Network.sendToAllNear(level, blockPosition(), new MonorailChangeStateMessage(getId(), isRail));
         }
@@ -199,7 +196,7 @@ public class MonorailEntity extends VehicleEntity {
 
     @Override
     protected void dropFromLootTable(boolean causedByPlayer) {
-        if (!level().isClientSide) spawnAtLocation(ModItems.FORD_EXPLORER_SNOW.get());
+        if (!level.isClientSide) spawnAtLocation(ModItems.FORD_EXPLORER_SNOW.get());
     }
     /* --------------------------------------------------------------------- */
     /*  SAVE / LOAD                                                          */
@@ -300,7 +297,7 @@ public class MonorailEntity extends VehicleEntity {
 
             moveAlongTrack();
 
-            if (!level().isClientSide) {
+            if (!level.isClientSide) {
                 doBlockCollisions();
                 setXRot(0);
                 updateInWaterStateAndDoFluidPushing();
@@ -308,7 +305,6 @@ public class MonorailEntity extends VehicleEntity {
         }
 
         private void moveAlongTrack() {
-            Level level = MonorailEntity.this.level();
             fallDistance = 0.0F;
             Vec3 vecStart = getRailPos();
             if (vecStart == null) return;
@@ -346,7 +342,7 @@ public class MonorailEntity extends VehicleEntity {
             } else {
                 prevKeyDown = false;
             }
-            if (!level().isClientSide) d5 *= dirMul;
+            if (!level.isClientSide) d5 *= dirMul;
 
             double motionX = d5 * d1 / d3;
             double motionZ = d5 * d2 / d3;
@@ -429,7 +425,6 @@ public class MonorailEntity extends VehicleEntity {
         }
 
         private Vec3 getRailPos() {
-            Level level = MonorailEntity.this.level();
             net.minecraft.world.level.block.state.BlockState state = level.getBlockState(railTracks);
             if (!(state.getBlock() instanceof TourRailBlock)) return null;
 
@@ -474,7 +469,6 @@ public class MonorailEntity extends VehicleEntity {
         }
 
         private Speed getSpeedType() {
-            Level level = MonorailEntity.this.level();
             return ((TourRailBlock) level.getBlockState(railTracks).getBlock()).getSpeedType().getSpeed(getSpeed());
         }
 
@@ -487,11 +481,9 @@ public class MonorailEntity extends VehicleEntity {
 
     @Override
     public boolean causeFallDamage(float distance, float damageMultiplier, DamageSource source) {
-
         return false;
     }
     /* --------------------------------------------------------------------- */
-
     /* --------------------------------------------------------------------- */
     public double calculateWheelHeight(double raw, boolean front) { return getDimensions(Pose.STANDING).height / 2.0; }
 }

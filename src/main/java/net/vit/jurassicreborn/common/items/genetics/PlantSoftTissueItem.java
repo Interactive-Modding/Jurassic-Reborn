@@ -4,7 +4,8 @@ import com.google.common.collect.Lists;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.util.RandomSource;
+import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.world.level.levelgen.RandomSource;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.vit.jurassicreborn.common.genetics.PlantDNA;
@@ -14,6 +15,7 @@ import net.vit.jurassicreborn.common.plants.PlantHandler;
 import net.vit.jurassicreborn.common.util.api.SequencableItem;
 
 import java.util.List;
+import java.util.Random;
 
 public class PlantSoftTissueItem extends Item implements SequencableItem {
     private final PlantDNA defaultDNA;
@@ -26,7 +28,7 @@ public class PlantSoftTissueItem extends Item implements SequencableItem {
     @Override
     public Component getName(ItemStack stack) {
         String plantName = PlantHandler.getPlantById(defaultDNA.getPlant()).getName();
-        return Component.translatable("item.jurassicreborn.plant_soft_tissue", plantName);
+        return new TranslatableComponent("item.jurassicreborn.plant_soft_tissue", plantName);
     }
 
     @Override
@@ -51,7 +53,7 @@ public class PlantSoftTissueItem extends Item implements SequencableItem {
     }
 
     @Override
-    public ItemStack getSequenceOutput(ItemStack stack, RandomSource random) {
+    public ItemStack getSequenceOutput(ItemStack stack, Random random) {
         CompoundTag nbt = stack.getTag();
 
         if (nbt == null || !nbt.contains("DNA") || !nbt.getCompound("DNA").contains("Plant")) {
@@ -65,7 +67,7 @@ public class PlantSoftTissueItem extends Item implements SequencableItem {
         return output;
     }
 
-    private void initDnaCompound(RandomSource random, CompoundTag outTag) {
+    private void initDnaCompound(Random random, CompoundTag outTag) {
         int quality = Math.abs(SequencableItem.randomQuality(random)) / 2;
         PlantDNA dna = new PlantDNA(defaultDNA.getPlant(), quality);
         dna.writeToNBT(outTag);

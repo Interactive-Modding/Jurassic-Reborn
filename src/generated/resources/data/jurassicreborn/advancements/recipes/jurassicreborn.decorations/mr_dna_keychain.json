@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "jurassicreborn:mr_dna_keychain"
+    ]
+  },
+  "criteria": {
+    "has_dna_base_material": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna_base_material"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "jurassicreborn:mr_dna_keychain"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_dna_base_material",
+      "has_the_recipe"
+    ]
+  ]
+}

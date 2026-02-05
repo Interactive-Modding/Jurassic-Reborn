@@ -31,7 +31,7 @@ public class ChangeStationMessage {
         ctx.get().enqueueWork(() -> {
             ServerPlayer player = ctx.get().getSender();
             if (player == null) return;
-            Entity e = player.level().getEntity(msg.entityId);
+            Entity e = player.level.getEntity(msg.entityId);
             if (e instanceof VehicleEntity) {
                 VehicleEntity car = (VehicleEntity) e;
                 if (player.getVehicle() == car) {

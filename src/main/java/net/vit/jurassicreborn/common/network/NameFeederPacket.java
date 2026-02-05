@@ -3,6 +3,7 @@ package net.vit.jurassicreborn.common.network;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TextComponent;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -34,10 +35,10 @@ public class NameFeederPacket {
         ctx.get().enqueueWork(() -> {
             ServerPlayer player = ctx.get().getSender();
             if (player != null) {
-                Level level = player.level();
+                Level level = player.level;
                 BlockEntity be = level.getBlockEntity(pkt.pos);
                 if (be instanceof FeederBlockEntity feeder) {
-                    Component nameComp = Component.literal(pkt.name);
+                    Component nameComp = new TextComponent(pkt.name);
                     feeder.setCustomName(nameComp);
                     FeederTrackerApp.addFeeder(player, pkt.pos, nameComp);
                 }

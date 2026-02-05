@@ -1,14 +1,13 @@
 package net.vit.jurassicreborn.client.screens;
 
 import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.blaze3d.vertex.PoseStack;
 import net.vit.jurassicreborn.JurassicReborn;
 import net.vit.jurassicreborn.common.blocks.entities.incubator.IncubatorBlockEntity;
 import net.vit.jurassicreborn.common.blocks.entities.incubator.IncubatorMenu;
 import net.vit.jurassicreborn.common.network.Network;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
-import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -93,20 +92,19 @@ public class IncubatorScreen extends AbstractContainerScreen<IncubatorMenu> {
     }
 
     @Override
-    public void render(GuiGraphics guiGraphics, int pMouseX, int pMouseY, float pPartialTick) {
-        this.renderBackground(guiGraphics);
-        super.render(guiGraphics, pMouseX, pMouseY, pPartialTick);
-        this.renderTooltip(guiGraphics, pMouseX, pMouseY);
+    public void render(PoseStack pPoseStack, int pMouseX, int pMouseY, float pPartialTick) {
+        super.render(pPoseStack, pMouseX, pMouseY, pPartialTick);
+        this.renderTooltip(pPoseStack, pMouseX, pMouseY);
     }
 
     @Override
-    protected void renderBg(GuiGraphics guiGraphics, float pPartialTick, int pMouseX, int pMouseY) {
+    protected void renderBg(PoseStack pPoseStack, float pPartialTick, int pMouseX, int pMouseY) {
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
         RenderSystem.setShaderTexture(0, TEXTURE);
 
 
-        guiGraphics.blit(TEXTURE, this.leftPos, this.topPos, 0, 0, this.getXSize(), this.getYSize());
+        this.blit(pPoseStack, this.leftPos, this.topPos, 0, 0, this.getXSize(), this.getYSize());
 
 
         for (int i = 0; i < 5; i++) {
@@ -141,11 +139,11 @@ public class IncubatorScreen extends AbstractContainerScreen<IncubatorMenu> {
             x++;
             y += 24;
 
-            guiGraphics.blit(TEXTURE, this.leftPos + x, this.topPos + y, 176, 5, progress, 5);
+            this.blit(pPoseStack, this.leftPos + x, this.topPos + y, 176, 5, progress, 5);
 
             int temp = this.getTemperature(i, 20);
 
-            guiGraphics.blit(TEXTURE, this.leftPos + x + temp - 3, this.topPos + y - 6, 176, 0, 3, 5);
+            this.blit(pPoseStack, this.leftPos + x + temp - 3, this.topPos + y - 6, 176, 0, 3, 5);
         }
     }
 

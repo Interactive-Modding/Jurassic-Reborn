@@ -1,18 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
-  "key": {
-    "A": {
-      "item": "minecraft:iron_ingot"
-    }
-  },
   "pattern": [
     "AAA",
     "A A",
     "AAA"
   ],
+  "key": {
+    "A": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
   "result": {
     "item": "jurassicreborn:car_chassis"
-  },
-  "show_notification": true
+  }
 }

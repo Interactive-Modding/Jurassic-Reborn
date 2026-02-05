@@ -1,10 +1,9 @@
 {
   "type": "minecraft:blasting",
-  "category": "misc",
-  "cookingtime": 100,
-  "experience": 0.35,
   "ingredient": {
     "item": "jurassicreborn:meat/meat_maiasaura"
   },
-  "result": "jurassicreborn:meat/steak_maiasaura"
+  "result": "jurassicreborn:meat/steak_maiasaura",
+  "experience": 0.35,
+  "cookingtime": 100
 }

@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "jurassicreborn:attraction_sign_triceratops_territorium_plants_from_attraction_sign_triceratops_territorium"
+    ]
+  },
+  "criteria": {
+    "has_attraction_sign_triceratops_territorium": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:attraction_sign_triceratops_territorium"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "jurassicreborn:attraction_sign_triceratops_territorium_plants_from_attraction_sign_triceratops_territorium"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_attraction_sign_triceratops_territorium",
+      "has_the_recipe"
+    ]
+  ]
+}

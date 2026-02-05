@@ -1,6 +1,10 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "building",
+  "pattern": [
+    "AAA",
+    "BCD",
+    "EAA"
+  ],
   "key": {
     "A": {
       "item": "minecraft:iron_ingot"
@@ -18,13 +22,7 @@
       "item": "jurassicreborn:disc_reader"
     }
   },
-  "pattern": [
-    "AAA",
-    "BCD",
-    "EAA"
-  ],
   "result": {
     "item": "jurassicreborn:dna_extractor"
-  },
-  "show_notification": true
+  }
 }

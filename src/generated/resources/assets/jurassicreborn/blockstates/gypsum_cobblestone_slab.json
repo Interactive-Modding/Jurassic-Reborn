@@ -1,13 +1,13 @@
 {
   "variants": {
+    "type=top": {
+      "model": "jurassicreborn:block/gypsum_cobblestone_slab_top"
+    },
     "type=bottom": {
       "model": "jurassicreborn:block/gypsum_cobblestone_slab"
     },
     "type=double": {
       "model": "jurassicreborn:block/gypsum_cobblestone"
-    },
-    "type=top": {
-      "model": "jurassicreborn:block/gypsum_cobblestone_slab_top"
     }
   }
 }

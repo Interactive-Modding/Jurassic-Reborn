@@ -1,27 +1,25 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
+  "pattern": [
+    "RWY",
+    "RCR",
+    "YYY"
+  ],
   "key": {
-    "C": {
-      "item": "jurassicreborn:unfinished_car"
-    },
     "R": {
       "item": "minecraft:brown_dye"
     },
     "W": {
       "item": "minecraft:glass_pane"
     },
+    "C": {
+      "item": "jurassicreborn:unfinished_car"
+    },
     "Y": {
       "item": "minecraft:light_gray_dye"
     }
   },
-  "pattern": [
-    "RWY",
-    "RCR",
-    "YYY"
-  ],
   "result": {
     "item": "jurassicreborn:ford_explorer_snow"
-  },
-  "show_notification": true
+  }
 }

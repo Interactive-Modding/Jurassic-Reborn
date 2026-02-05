@@ -1,6 +1,5 @@
 {
   "parent": "block/cube_all",
-  "render_type": "minecraft:translucent",
   "textures": {
     "layer0": "jurassicreborn:block/cleaning_station",
     "particle": "minecraft:block/iron_block"

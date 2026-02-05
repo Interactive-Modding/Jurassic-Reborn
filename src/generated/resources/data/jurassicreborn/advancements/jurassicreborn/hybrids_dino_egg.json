@@ -1,7 +1,23 @@
 {
   "parent": "jurassicreborn:jurassicreborn/dna_combinator_hybridizer",
+  "display": {
+    "icon": {
+      "item": "jurassicreborn:mr_dna_keychain"
+    },
+    "title": {
+      "translate": "advancements.jurassicreborn.hybrids_dino_egg.title"
+    },
+    "description": {
+      "translate": "advancements.jurassicreborn.hybrids_dino_egg.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
   "criteria": {
     "hatched_egg_0": {
+      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
@@ -10,10 +26,10 @@
             ]
           }
         ]
-      },
-      "trigger": "minecraft:inventory_changed"
+      }
     },
     "hatched_egg_1": {
+      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
@@ -22,10 +38,10 @@
             ]
           }
         ]
-      },
-      "trigger": "minecraft:inventory_changed"
+      }
     },
     "hatched_egg_2": {
+      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
@@ -34,10 +50,10 @@
             ]
           }
         ]
-      },
-      "trigger": "minecraft:inventory_changed"
+      }
     },
     "hatched_egg_3": {
+      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
@@ -46,10 +62,10 @@
             ]
           }
         ]
-      },
-      "trigger": "minecraft:inventory_changed"
+      }
     },
     "hatched_egg_4": {
+      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
@@ -58,10 +74,10 @@
             ]
           }
         ]
-      },
-      "trigger": "minecraft:inventory_changed"
+      }
     },
     "hatched_egg_5": {
+      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
@@ -70,10 +86,10 @@
             ]
           }
         ]
-      },
-      "trigger": "minecraft:inventory_changed"
+      }
     },
     "hatched_egg_6": {
+      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
@@ -82,10 +98,10 @@
             ]
           }
         ]
-      },
-      "trigger": "minecraft:inventory_changed"
+      }
     },
     "hatched_egg_7": {
+      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
@@ -94,10 +110,10 @@
             ]
           }
         ]
-      },
-      "trigger": "minecraft:inventory_changed"
+      }
     },
     "hatched_egg_8": {
+      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
@@ -106,23 +122,7 @@
             ]
           }
         ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    }
-  },
-  "display": {
-    "announce_to_chat": true,
-    "description": {
-      "translate": "advancements.jurassicreborn.hybrids_dino_egg.description"
-    },
-    "frame": "challenge",
-    "hidden": false,
-    "icon": {
-      "item": "jurassicreborn:mr_dna_keychain"
-    },
-    "show_toast": true,
-    "title": {
-      "translate": "advancements.jurassicreborn.hybrids_dino_egg.title"
+      }
     }
   },
   "requirements": [
@@ -137,6 +137,5 @@
       "hatched_egg_7",
       "hatched_egg_8"
     ]
-  ],
-  "sends_telemetry_event": true
+  ]
 }

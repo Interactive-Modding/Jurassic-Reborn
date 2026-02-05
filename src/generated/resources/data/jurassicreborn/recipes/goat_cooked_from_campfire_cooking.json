@@ -1,10 +1,9 @@
 {
   "type": "minecraft:campfire_cooking",
-  "category": "food",
-  "cookingtime": 600,
-  "experience": 0.35,
   "ingredient": {
     "item": "jurassicreborn:goat_raw"
   },
-  "result": "jurassicreborn:goat_cooked"
+  "result": "jurassicreborn:goat_cooked",
+  "experience": 0.35,
+  "cookingtime": 600
 }

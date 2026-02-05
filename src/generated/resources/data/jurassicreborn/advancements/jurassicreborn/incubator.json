@@ -1,7 +1,23 @@
 {
   "parent": "jurassicreborn:jurassicreborn/dino_egg",
+  "display": {
+    "icon": {
+      "item": "jurassicreborn:incubator"
+    },
+    "title": {
+      "translate": "advancements.jurassicreborn.incubator.title"
+    },
+    "description": {
+      "translate": "advancements.jurassicreborn.incubator.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
   "criteria": {
     "incubator": {
+      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
@@ -10,29 +26,12 @@
             ]
           }
         ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    }
-  },
-  "display": {
-    "announce_to_chat": true,
-    "description": {
-      "translate": "advancements.jurassicreborn.incubator.description"
-    },
-    "frame": "task",
-    "hidden": false,
-    "icon": {
-      "item": "jurassicreborn:incubator"
-    },
-    "show_toast": true,
-    "title": {
-      "translate": "advancements.jurassicreborn.incubator.title"
+      }
     }
   },
   "requirements": [
     [
       "incubator"
     ]
-  ],
-  "sends_telemetry_event": true
+  ]
 }

@@ -3,7 +3,6 @@
 	"credit": "Made with Blockbench",
 	"parent": "minecraft:block/block",
 	"ambientocclusion": false,
-	"render_type": "minecraft:cutout",
 	"texture_size": [128, 128],
 	"textures": {
 		"0": "jurassicreborn:block/bench_finall",

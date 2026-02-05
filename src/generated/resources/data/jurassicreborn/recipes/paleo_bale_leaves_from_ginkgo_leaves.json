@@ -1,19 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "building",
   "group": "jurassicreborn:paleo_bale_leaves",
-  "key": {
-    "A": {
-      "item": "jurassicreborn:ginkgo_leaves"
-    }
-  },
   "pattern": [
     "AAA",
     "AAA",
     "AAA"
   ],
+  "key": {
+    "A": {
+      "item": "jurassicreborn:ginkgo_leaves"
+    }
+  },
   "result": {
     "item": "jurassicreborn:paleo_bale_leaves"
-  },
-  "show_notification": true
+  }
 }

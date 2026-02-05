@@ -103,7 +103,7 @@ public class TroodonRenderer extends DinosaurRenderer {
             if (minecraft == null) {
                 return false;
             }
-            return minecraft.getResourceManager().getResource(location).isPresent();
+            return minecraft.getResourceManager().hasResource(location);
         }
     }
 }

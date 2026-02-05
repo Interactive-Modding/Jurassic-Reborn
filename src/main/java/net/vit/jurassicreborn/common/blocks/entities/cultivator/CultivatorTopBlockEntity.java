@@ -18,6 +18,7 @@ import net.vit.jurassicreborn.common.blocks.inventory.SerializableSingleFluidTan
 import net.vit.jurassicreborn.common.util.block.TemperatureControl;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -47,7 +48,7 @@ public class CultivatorTopBlockEntity extends MachineBlockEntity implements Menu
     @Override public void setTemperature(int i,int v){ ensureBottomEntity(); if (bottomEntity!=null) bottomEntity.setTemperature(i,v); }
     @Override public int getTemperature(int i){ ensureBottomEntity(); return bottomEntity!=null? bottomEntity.getTemperature(i):0; }
     @Override public int getTemperatureCount(){ ensureBottomEntity(); return bottomEntity!=null? bottomEntity.getTemperatureCount():0; }
-    @Override protected Component getDefaultName(){ ensureBottomEntity(); return bottomEntity!=null? bottomEntity.getDefaultName(): Component.translatable("container.cultivator"); }
-    @Override public Component getDisplayName(){ ensureBottomEntity(); return bottomEntity!=null? bottomEntity.getDisplayName(): Component.translatable("container.cultivator"); }
+    @Override protected Component getDefaultName(){ ensureBottomEntity(); return bottomEntity!=null? bottomEntity.getDefaultName(): new TranslatableComponent("container.cultivator"); }
+    @Override public Component getDisplayName(){ ensureBottomEntity(); return bottomEntity!=null? bottomEntity.getDisplayName(): new TranslatableComponent("container.cultivator"); }
     @Override public AbstractContainerMenu createMenu(int id, Inventory inv, Player player){ ensureBottomEntity(); return bottomEntity!=null? bottomEntity.createMenu(id, inv, player): null; }
 }

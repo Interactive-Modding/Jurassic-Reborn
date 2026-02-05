@@ -1,6 +1,10 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "building",
+  "pattern": [
+    "AAA",
+    "BBB",
+    "BBB"
+  ],
   "key": {
     "A": {
       "item": "minecraft:redstone"
@@ -9,14 +13,8 @@
       "item": "minecraft:iron_ingot"
     }
   },
-  "pattern": [
-    "AAA",
-    "BBB",
-    "BBB"
-  ],
   "result": {
-    "count": 2,
-    "item": "jurassicreborn:high_security_fence_pole"
-  },
-  "show_notification": true
+    "item": "jurassicreborn:high_security_fence_pole",
+    "count": 2
+  }
 }

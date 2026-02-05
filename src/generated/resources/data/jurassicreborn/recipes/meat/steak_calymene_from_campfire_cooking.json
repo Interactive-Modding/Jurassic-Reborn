@@ -1,10 +1,9 @@
 {
   "type": "minecraft:campfire_cooking",
-  "category": "food",
-  "cookingtime": 600,
-  "experience": 0.35,
   "ingredient": {
     "item": "jurassicreborn:meat/meat_calymene"
   },
-  "result": "jurassicreborn:meat/steak_calymene"
+  "result": "jurassicreborn:meat/steak_calymene",
+  "experience": 0.35,
+  "cookingtime": 600
 }

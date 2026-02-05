@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "jurassicreborn:psaronius_planks"
+    ]
+  },
+  "criteria": {
+    "has_psaronius_log": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:psaronius_log"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "jurassicreborn:psaronius_planks"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_psaronius_log",
+      "has_the_recipe"
+    ]
+  ]
+}

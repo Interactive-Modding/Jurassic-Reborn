@@ -4,7 +4,7 @@ import net.vit.jurassicreborn.common.blocks.ModBlocks;
 import net.vit.jurassicreborn.common.entities.Dinosaurs.Dinosaur;
 import net.vit.jurassicreborn.common.util.TimePeriod;
 import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
+import java.util.Random;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.EntityBlock;
@@ -46,7 +46,7 @@ public class FaunaFossil extends Block implements FossilBlock, EntityBlock {
 //        return super.use(state, level, pos, player, hand, result);
 //    }
 
-    public static void setDinosaurFromPos(BlockPos pPos, Level pLevel, RandomSource pRandom){
+    public static void setDinosaurFromPos(BlockPos pPos, Level pLevel, Random pRandom){
         TimePeriod posPeriod = TimePeriod.byYValue(pPos.getY());
         BlockEntity fossilEntity = pLevel.getBlockEntity(pPos);
 
@@ -64,7 +64,7 @@ public class FaunaFossil extends Block implements FossilBlock, EntityBlock {
             return;
         }
 
-        int randomDino = pRandom.nextIntBetweenInclusive(0, dinoList.size()-1);
+        int randomDino = pRandom.nextInt(dinoList.size());
 
         Dinosaur dino = dinoList.get(randomDino);
 

@@ -1,7 +1,11 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "building",
   "group": "jurassicreborn:security_door",
+  "pattern": [
+    "AA",
+    "AB",
+    "AA"
+  ],
   "key": {
     "A": {
       "item": "jurassicreborn:reinforced_stone"
@@ -10,14 +14,8 @@
       "item": "minecraft:glass_pane"
     }
   },
-  "pattern": [
-    "AA",
-    "AB",
-    "AA"
-  ],
   "result": {
-    "count": 3,
-    "item": "jurassicreborn:security_door"
-  },
-  "show_notification": true
+    "item": "jurassicreborn:security_door",
+    "count": 3
+  }
 }

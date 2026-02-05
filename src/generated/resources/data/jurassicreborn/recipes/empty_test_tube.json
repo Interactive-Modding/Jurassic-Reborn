@@ -1,18 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
+  "pattern": [
+    "A",
+    "A"
+  ],
   "key": {
     "A": {
       "item": "minecraft:glass"
     }
   },
-  "pattern": [
-    "A",
-    "A"
-  ],
   "result": {
-    "count": 8,
-    "item": "jurassicreborn:empty_test_tube"
-  },
-  "show_notification": true
+    "item": "jurassicreborn:empty_test_tube",
+    "count": 8
+  }
 }

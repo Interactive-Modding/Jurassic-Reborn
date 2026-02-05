@@ -1,19 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "building",
-  "key": {
-    "#": {
-      "item": "jurassicreborn:gypsum_pathway"
-    }
-  },
   "pattern": [
     "#  ",
     "## ",
     "###"
   ],
-  "result": {
-    "count": 4,
-    "item": "jurassicreborn:gypsum_pathway_stairs"
+  "key": {
+    "#": {
+      "item": "jurassicreborn:gypsum_pathway"
+    }
   },
-  "show_notification": true
+  "result": {
+    "item": "jurassicreborn:gypsum_pathway_stairs",
+    "count": 4
+  }
 }

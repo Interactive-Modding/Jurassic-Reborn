@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "jurassicreborn:cooked_shark_meat_from_blasting"
+    ]
+  },
+  "criteria": {
+    "has_raw_shark_meat": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:raw_shark_meat"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "jurassicreborn:cooked_shark_meat_from_blasting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_raw_shark_meat",
+      "has_the_recipe"
+    ]
+  ]
+}

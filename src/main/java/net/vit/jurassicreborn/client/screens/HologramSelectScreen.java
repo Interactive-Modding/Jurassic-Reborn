@@ -1,10 +1,11 @@
 package net.vit.jurassicreborn.client.screens;
 
+import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TextComponent;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.vit.jurassicreborn.client.render.entity.animation.EntityAnimation;
 import net.vit.jurassicreborn.common.entities.Dinosaurs.Dinosaur;
@@ -29,7 +30,7 @@ public class HologramSelectScreen extends Screen {
     private Button angleButton;
 
     public HologramSelectScreen(BlockPos pos, int currentId, int pose, boolean rotating, int rotation) {
-        super(Component.literal("Select Dinosaur"));
+        super(new TextComponent("Select Dinosaur"));
         this.blockPos = pos;
         this.currentIndex = currentId;
         this.poseIndex = pose;
@@ -52,58 +53,70 @@ public class HologramSelectScreen extends Screen {
         int cx = this.width / 2;
         int cy = this.height / 2;
 
-        this.addRenderableWidget(Button.builder(Component.literal("<"), btn -> {
+        // Previous dinosaur button
+        this.addRenderableWidget(new Button(cx - 60, cy, 20, 20, new TextComponent("<"), btn -> {
             currentIndex = (currentIndex - 1 + dinoIds.size()) % dinoIds.size();
             applySelectionLocally();
-        }).bounds(cx - 60, cy, 20, 20).build());
+        }));
 
-        this.addRenderableWidget(Button.builder(Component.literal(">"), btn -> {
+        // Next dinosaur button
+        this.addRenderableWidget(new Button(cx + 40, cy, 20, 20, new TextComponent(">"), btn -> {
             currentIndex = (currentIndex + 1) % dinoIds.size();
             applySelectionLocally();
-        }).bounds(cx + 40, cy, 20, 20).build());
+        }));
 
-        this.poseButton = this.addRenderableWidget(Button.builder(Component.literal(getPoseName()), btn -> {
+        // Pose selection button
+        this.poseButton = this.addRenderableWidget(new Button(cx - 50, cy + 40, 100, 20, new TextComponent(getPoseName()), btn -> {
             poseIndex = (poseIndex + 1) % EntityAnimation.values().length;
-            btn.setMessage(Component.literal(getPoseName()));
+            btn.setMessage(new TextComponent(getPoseName()));
             applySelectionLocally();
-        }).bounds(cx - 50, cy + 40, 100, 20).build());
+        }));
 
-        this.rotateButton = this.addRenderableWidget(Button.builder(Component.literal(getRotateLabel()), btn -> {
+        // Rotation toggle button
+        this.rotateButton = this.addRenderableWidget(new Button(cx - 50, cy + 70, 100, 20, new TextComponent(getRotateLabel()), btn -> {
             rotating = !rotating;
             if (!rotating) {
                 rotation = HologramBlockEntity.snapRotation(rotation);
             }
-            btn.setMessage(Component.literal(getRotateLabel()));
+            btn.setMessage(new TextComponent(getRotateLabel()));
             updateAngleButtonState();
             applySelectionLocally();
-        }).bounds(cx - 50, cy + 70, 100, 20).build());
+        }));
 
-        this.angleButton = this.addRenderableWidget(Button.builder(Component.literal(getAngleLabel()), btn -> {
+        // Angle adjustment button
+        this.angleButton = this.addRenderableWidget(new Button(cx - 50, cy + 100, 100, 20, new TextComponent(getAngleLabel()), btn -> {
             rotation = HologramBlockEntity.snapRotation(rotation + HologramBlockEntity.ROTATION_STEP_DEGREES);
-            btn.setMessage(Component.literal(getAngleLabel()));
+            btn.setMessage(new TextComponent(getAngleLabel()));
             applySelectionLocally();
-        }).bounds(cx - 50, cy + 100, 100, 20).build());
+        }));
         updateAngleButtonState();
 
-        this.addRenderableWidget(Button.builder(Component.literal("Confirm"), btn -> {
+        // Confirm button - sends packet to server
+        this.addRenderableWidget(new Button(cx - 50, cy + 130, 100, 20, new TextComponent("Confirm"), btn -> {
             int selectedId = dinoIds.get(currentIndex);
-            applySelectionLocally();
+
+            // Send packet to server to save changes
             Network.sendToServer(new SetHologramDinosaurPacket(blockPos, selectedId, poseIndex, rotating, rotation));
+
+            // Apply locally one final time
+            applySelectionLocally();
+
+            // Close the screen
             this.minecraft.setScreen(null);
-        }).bounds(cx - 50, cy + 130, 100, 20).build());
+        }));
     }
 
     @Override
-    public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
-        this.renderBackground(guiGraphics);
-        guiGraphics.drawCenteredString(this.font, this.title, width / 2, height / 2 - 50, 0xFFFFFF);
+    public void render(PoseStack ms, int mouseX, int mouseY, float partialTicks) {
+        this.renderBackground(ms);
+        drawCenteredString(ms, this.font, this.title, width / 2, height / 2 - 50, 0xFFFFFF);
 
         int id = dinoIds.get(currentIndex);
         Dinosaur dino = DinosaurHandler.getById(id);
         String name = dino.getName();
-        guiGraphics.drawCenteredString(this.font, Component.literal(name), width / 2, height / 2 + 10, 0xFFFF00);
+        drawCenteredString(ms, this.font, new TextComponent(name), width / 2, height / 2 + 10, 0xFFFF00);
 
-        super.render(guiGraphics, mouseX, mouseY, partialTicks);
+        super.render(ms, mouseX, mouseY, partialTicks);
     }
 
     @Override
@@ -128,20 +141,27 @@ public class HologramSelectScreen extends Screen {
         if (this.angleButton != null) {
             this.angleButton.visible = !rotating;
             this.angleButton.active = !rotating;
-            this.angleButton.setMessage(Component.literal(getAngleLabel()));
+            this.angleButton.setMessage(new TextComponent(getAngleLabel()));
         }
     }
 
+    /**
+     * Applies the current selection to the client-side block entity for immediate visual feedback
+     * This does NOT save - only the server packet saves the data
+     */
     private void applySelectionLocally() {
         if (this.minecraft == null || this.minecraft.level == null || this.dinoIds == null || this.dinoIds.isEmpty()) {
             return;
         }
+
         BlockEntity be = this.minecraft.level.getBlockEntity(this.blockPos);
         if (!(be instanceof HologramBlockEntity hologram)) {
             return;
         }
 
         int selectedId = this.dinoIds.get(Math.floorMod(this.currentIndex, this.dinoIds.size()));
+
+        // Apply changes locally for immediate visual feedback
         hologram.setDinosaurById(selectedId);
         hologram.setPoseIndex(this.poseIndex);
         hologram.setRotating(this.rotating);

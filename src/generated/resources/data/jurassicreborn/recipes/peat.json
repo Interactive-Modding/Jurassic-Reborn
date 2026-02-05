@@ -1,6 +1,9 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "building",
+  "pattern": [
+    "ABA",
+    "ACA"
+  ],
   "key": {
     "A": {
       "item": "minecraft:dirt"
@@ -12,12 +15,7 @@
       "item": "minecraft:dead_bush"
     }
   },
-  "pattern": [
-    "ABA",
-    "ACA"
-  ],
   "result": {
     "item": "jurassicreborn:peat"
-  },
-  "show_notification": true
+  }
 }

@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "jurassicreborn:growth_serum"
+    ]
+  },
+  "criteria": {
+    "has_empty_syringe": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:empty_syringe"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "jurassicreborn:growth_serum"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_empty_syringe",
+      "has_the_recipe"
+    ]
+  ]
+}
