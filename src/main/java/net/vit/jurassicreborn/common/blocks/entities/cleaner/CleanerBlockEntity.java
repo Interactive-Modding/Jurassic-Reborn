@@ -17,7 +17,8 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.network.chat.contents.TranslatableContents;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -103,9 +104,7 @@ public class CleanerBlockEntity extends MachineBlockEntity implements MenuProvid
 
         if(instance.progress >= 200) {
             if (instance.currentRecipe != null) {
-                instance.addItem(instance.currentRecipe.assemble(
-                        new FluidAndItemRecipeWrapper(instance.machineItemStackHandler, instance.tank),
-                        world.registryAccess()));
+                instance.addItem(instance.currentRecipe.assemble(new FluidAndItemRecipeWrapper(instance.machineItemStackHandler,instance.tank)));
                 instance.currentRecipe = null;
                 input.shrink(1);
             } else if (cleanable != null) {
@@ -188,7 +187,7 @@ public class CleanerBlockEntity extends MachineBlockEntity implements MenuProvid
 
     @Override
     protected Component getDefaultName() {
-        return Component.translatable("block.JurassicReborn.cleaner_block_name");
+        return MutableComponent.create(new TranslatableContents("block.JurassicReborn.cleaner_block_name"));
     }
 
     @Override

@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:pregnancy_test"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

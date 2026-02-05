@@ -66,7 +66,7 @@ public class LegSolver {
         }
 
         private float settle(Entity entity, double x, double y, double z, float height) {
-            Level level = entity.level();
+            Level level = entity.level;
 
             int ix = Mth.floor(x);
             int iy = Mth.floor(y + 1.0E-3D);
@@ -82,7 +82,7 @@ public class LegSolver {
                 dist -= 1 - (float) fracY;
             }
 
-            boolean onGround = entity.onGround();
+            boolean onGround = entity.isOnGround();
             if (onGround && height <= dist) {
                 return height == dist ? height : Math.min(height + this.getFallSpeed(), dist);
             } else if (height > 0) {

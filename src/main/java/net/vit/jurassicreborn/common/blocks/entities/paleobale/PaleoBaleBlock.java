@@ -4,6 +4,7 @@ import net.vit.jurassicreborn.common.blocks.ModBlocks;
 import net.vit.jurassicreborn.common.blocks.wood.WoodBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.StringRepresentable;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
@@ -27,7 +28,7 @@ public class PaleoBaleBlock extends RotatedPillarBlock {
 
     @Override
     public void fallOn(Level world, BlockState blockState, BlockPos pos, Entity pEntity, float fallDistance) {
-        pEntity.causeFallDamage(fallDistance, 0.2F, pEntity.damageSources().fall());
+        pEntity.causeFallDamage(fallDistance, 0.2F, DamageSource.FALL);
     }
 
     public enum Variant implements StringRepresentable {

@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:dart_gun"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

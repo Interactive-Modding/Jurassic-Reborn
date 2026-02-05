@@ -45,13 +45,11 @@ public class JPSanDiegoGenerator extends StructureGenerator {
         template.placeInWorld(level, position, position, settings, random, 4);
         List<StructureTemplate.StructureBlockInfo> dataBlocks = template.filterBlocks(position, settings, Blocks.STRUCTURE_BLOCK);
         for (StructureTemplate.StructureBlockInfo info : dataBlocks) {
-            if (info.nbt() == null) continue;
-            String type = info.nbt().getString("metadata");
+            String type = info.nbt.getString("metadata");
             ResourceLocation lootTable = LOOT_TABLES.get(type);
             if (lootTable != null) {
-                BlockPos infoPos = info.pos();
-                level.setBlock(infoPos, Blocks.AIR.defaultBlockState(), 3);
-                BlockEntity tile = level.getBlockEntity(infoPos.below());
+                level.setBlock(info.pos, Blocks.AIR.defaultBlockState(), 3);
+                BlockEntity tile = level.getBlockEntity(info.pos.below());
                 if (tile instanceof ChestBlockEntity chest) {
                     chest.setLootTable(lootTable, random.nextLong());
                 }

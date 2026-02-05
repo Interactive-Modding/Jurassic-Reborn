@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:petri_dish_agar"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

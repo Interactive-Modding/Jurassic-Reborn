@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:paleo_bale_other_from_cry_pansy"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

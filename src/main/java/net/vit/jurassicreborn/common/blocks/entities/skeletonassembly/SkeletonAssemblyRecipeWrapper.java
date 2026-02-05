@@ -62,7 +62,6 @@
 //                        true));
 //    }
 //
-
 //    // public List<Component> getTooltipStrings(double mouseX, double mouseY) { … }
 //    // public void drawInfo(GuiGraphics gfx, int width, int height, int mouseX, int mouseY) { … }
 //}

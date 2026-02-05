@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:attraction_sign_hyaenodon_lair_plants_from_attraction_sign_hyaenodon_lair"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

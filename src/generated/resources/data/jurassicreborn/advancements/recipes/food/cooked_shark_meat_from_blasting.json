@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:cooked_shark_meat_from_blasting"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

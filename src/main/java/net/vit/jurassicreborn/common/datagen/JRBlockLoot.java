@@ -94,7 +94,7 @@ public class JRBlockLoot extends BlockLootSubProvider {
         dropSelf(ModBlocks.SEA_LAMPREY.get());
         dropSelf(ModBlocks.FROZEN_LEECH.get());
 
-        add(ModBlocks.CULTIVATE_BOTTOM.get(), noDrop());
+        dropOther(ModBlocks.CULTIVATE_BOTTOM.get(), ModItems.CULTIVATORS.get(DyeColor.BLACK).get());
         add(ModBlocks.CULTIVATE_TOP.get(), noDrop());
 
         for (Dinosaur dino : Dinosaur.DINOS) {
@@ -291,9 +291,6 @@ public class JRBlockLoot extends BlockLootSubProvider {
 
             Block sign = family.get(BlockFamily.Variant.SIGN);
             if (sign != null) dropSelf(sign);
-
-            Block hangingSign = family.getHangingSign();
-            if (hangingSign != null) dropSelf(hangingSign);
 
             Block door = family.get(BlockFamily.Variant.DOOR);
             if (door != null) add(door, block1 -> createDoorTable(block1));

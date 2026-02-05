@@ -48,7 +48,7 @@ public class PaddockSignPlacePacket {
         ctx.get().enqueueWork(() -> {
             ServerPlayer sender = ctx.get().getSender();
             if (sender == null) return;
-            Level world = sender.level();
+            Level world = sender.level;
             BlockPos spawnPos = pkt.pos.relative(pkt.face);
 
             if (world.isClientSide) return;

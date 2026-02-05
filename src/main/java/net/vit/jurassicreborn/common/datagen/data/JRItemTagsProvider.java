@@ -18,15 +18,15 @@ public class JRItemTagsProvider extends ItemTagsProvider {
                               CompletableFuture<HolderLookup.Provider> lookupProvider,
                               BlockTagsProvider blockTagsProvider,
                               @Nullable ExistingFileHelper existingFileHelper) {
-        // Forge ItemTagsProvider now requires the block tags lookup future.
-        super(output, lookupProvider, blockTagsProvider.contentsGetter(), JurassicReborn.MODID, existingFileHelper);
+        // Forge ItemTagsProvider accepts BlockTagsProvider directly
+        super(output, lookupProvider, blockTagsProvider, JurassicReborn.MODID, existingFileHelper);
     }
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
         copy(BlockTags.WOODEN_TRAPDOORS, ItemTags.WOODEN_TRAPDOORS);
         copy(BlockTags.BUTTONS, ItemTags.BUTTONS);
-        copy(BlockTags.PRESSURE_PLATES, ItemTags.WOODEN_PRESSURE_PLATES);
+        copy(BlockTags.WOODEN_PRESSURE_PLATES, ItemTags.WOODEN_PRESSURE_PLATES);
         copy(BlockTags.SLABS, ItemTags.SLABS);
         copy(BlockTags.STAIRS, ItemTags.STAIRS);
         copy(BlockTags.WALLS, ItemTags.WALLS);

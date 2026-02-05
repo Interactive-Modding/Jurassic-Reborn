@@ -41,7 +41,7 @@ public class TrackingDartEntity extends ThrowableItemProjectile {
     protected void onHitEntity(EntityHitResult result) {
                 super.onHitEntity(result);
 
-                        if (!level().isClientSide && result.getEntity() instanceof DinosaurEntity dino) {
+                        if (!level.isClientSide && result.getEntity() instanceof DinosaurEntity dino) {
                         // pull the thrower’s UUID right out of the projectile
                                 if (this.getOwner() instanceof ServerPlayer thrower) {
                                 dino.addTracker(thrower.getUUID());
@@ -54,8 +54,7 @@ public class TrackingDartEntity extends ThrowableItemProjectile {
     @Override
     public void tick() {
         super.tick();
-        Level level = this.level();
-        if (!this.level().isClientSide && level instanceof ServerLevel server) {
+        if (!this.level.isClientSide && this.level instanceof ServerLevel server) {
             server.sendParticles(ParticleTypes.SMOKE, this.getX(), this.getY(), this.getZ(), 1, 0.0, 0.0, 0.0, 0.0);
         }
     }

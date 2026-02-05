@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:attraction_sign_aquarium"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

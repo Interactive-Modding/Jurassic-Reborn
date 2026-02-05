@@ -22,7 +22,7 @@ public class FleeAI extends Goal {
     @Override
     public boolean canUse() {
         // Server-side only
-        if (dinosaur.level().isClientSide) return false;
+        if (dinosaur.level.isClientSide) return false;
 
         // Run every 5 ticks; also skip if unable to act
         if ((dinosaur.tickCount % 5) != 0) return false;
@@ -32,7 +32,7 @@ public class FleeAI extends Goal {
 
         // Search a tall column around the dino
         AABB searchBox = dinosaur.getBoundingBox().inflate(10.0, 40.0, 10.0);
-        List<DinosaurEntity> nearby = dinosaur.level().getEntitiesOfClass(DinosaurEntity.class, searchBox);
+        List<DinosaurEntity> nearby = dinosaur.level.getEntitiesOfClass(DinosaurEntity.class, searchBox);
 
         for (DinosaurEntity other : nearby) {
             if (other == dinosaur || other.isCarcass()) continue;

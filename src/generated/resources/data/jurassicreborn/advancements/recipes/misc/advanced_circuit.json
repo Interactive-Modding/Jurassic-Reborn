@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:advanced_circuit"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

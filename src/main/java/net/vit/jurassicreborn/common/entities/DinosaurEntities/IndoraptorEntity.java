@@ -6,7 +6,6 @@ import net.vit.jurassicreborn.client.sounds.SoundHandler;
 import net.vit.jurassicreborn.client.render.entity.animation.EntityAnimation;
 import net.vit.jurassicreborn.common.entities.DinosaurEntity;
 import net.vit.jurassicreborn.common.entities.Dinosaurs.DinosaurHandler;
-import net.vit.jurassicreborn.common.entities.IHasVariants;
 import net.vit.jurassicreborn.common.entities.ai.HurtByTargetGoal;
 import net.vit.jurassicreborn.common.entities.ai.LeapingMeleeEntityAI;
 import net.vit.jurassicreborn.common.entities.ai.RaptorLeapEntityAI;
@@ -27,7 +26,7 @@ import net.minecraft.world.entity.EntityType;
 
 import java.util.Locale;
 
-public class IndoraptorEntity extends DinosaurEntity implements IHasVariants {
+public class IndoraptorEntity extends DinosaurEntity {
     private static final EntityDataAccessor<Integer> VARIANT = SynchedEntityData.defineId(IndoraptorEntity.class, EntityDataSerializers.INT);
     private static final Class[] targets = {LivingEntity.class, Player.class
 };
@@ -127,4 +126,5 @@ public class IndoraptorEntity extends DinosaurEntity implements IHasVariants {
         return isMale()?new ResourceLocation(JurassicReborn.MODID, texture + "_male_" + "adult" + "_" + variant + ".png"):new ResourceLocation(JurassicReborn.MODID, texture + "_female_" + "adult" + "_" + variant +".png");
     }
 }
+
 

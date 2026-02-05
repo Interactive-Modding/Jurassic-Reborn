@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:empty_test_tube"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

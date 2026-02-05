@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:plant_cells_petri_dish"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

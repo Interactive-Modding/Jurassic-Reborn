@@ -117,7 +117,7 @@ public class StorageDiscItem extends Item implements SynthesizableItem {
 
     @Override
     public boolean onEntityItemUpdate(ItemStack stack, ItemEntity entity) {
-        if (!entity.level().isClientSide) {
+        if (!entity.level.isClientSide) {
             applyCustomModelData(stack);
         }
         return super.onEntityItemUpdate(stack, entity);

@@ -33,6 +33,5 @@
     [
       "cleaning_station"
     ]
-  ],
-  "sends_telemetry_event": true
+  ]
 }

@@ -33,7 +33,6 @@ public class SuchomimusAnimator extends EntityAnimator<SuchomimusEntity> {
                                      float limbSwing, float limbSwingAmount, float ticks,
                                      float rotationYaw, float rotationPitch, float scale) {
 
-
         AdvancedModelBox tail1 = parModel.getCube("Tail Base");
         AdvancedModelBox tail2 = parModel.getCube("Tail 2");
         AdvancedModelBox tail3 = parModel.getCube("Tail 3");
@@ -92,7 +91,6 @@ public class SuchomimusAnimator extends EntityAnimator<SuchomimusEntity> {
         AdvancedModelBox[] neckChain = nn(neck1, neck2, neck3, neck4, neck5, neck6, neck7, neck8, neck9, head);
         AdvancedModelBox[] tailChain = nn(t10, t9, t8, t7, tail5, tail4, tail3, tail2, tail1);
 
-
         if (entity == null || !entity.isUnderWater()) {
             parModel.chainWave(tail, globalSpeed * 0.5F, globalDegree * 0.05F, 1, limbSwing, limbSwingAmount);
 
@@ -137,7 +135,6 @@ public class SuchomimusAnimator extends EntityAnimator<SuchomimusEntity> {
         if (handR != null) handR.rotateAngleX += (float)Math.cos(ticks * 0.2F) * 0.05F;
 
         // keep faceTarget disabled during swim (to mirror Spino final)
-
 
         if (entity != null) {
             if (tailChain.length > 0) entity.tailBuffer.applyChainSwingBuffer(tailChain);

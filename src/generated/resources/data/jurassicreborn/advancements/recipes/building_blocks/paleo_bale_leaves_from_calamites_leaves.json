@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:paleo_bale_leaves_from_calamites_leaves"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

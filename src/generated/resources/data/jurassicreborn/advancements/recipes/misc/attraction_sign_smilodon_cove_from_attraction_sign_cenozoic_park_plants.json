@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:attraction_sign_smilodon_cove_from_attraction_sign_cenozoic_park_plants"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

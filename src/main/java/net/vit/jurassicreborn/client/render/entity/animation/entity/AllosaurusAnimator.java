@@ -60,7 +60,6 @@ public class AllosaurusAnimator extends EntityAnimator<AllosaurusEntity> {
         float degree = 0.80F;
 
         // --- action/keyframe weight ---
-
         float actionW = clamp01(entity.getAttackAnim(ticks)); // 0..1 while attacking/playing keyframe
         // When actions play, suppress idle/walk (leave 20% so it’s never dead still)
         float idleW   = 0.20F + 0.80F * (1.0F - actionW);

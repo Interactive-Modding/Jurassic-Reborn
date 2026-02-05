@@ -172,7 +172,7 @@ public class BugCrateBlockEntity extends RandomizableContainerBlockEntity implem
         int stackSlot = -1;
         for (int i = OUTPUT_SLOT_START; i <= OUTPUT_SLOT_END; i++) {
             ItemStack existing = getItem(i);
-            if (!existing.isEmpty() && existing.getItem() == target && ItemStack.isSameItemSameTags(existing, bugInSlot)) {
+            if (!existing.isEmpty() && existing.getItem() == target && ItemStack.tagMatches(existing, bugInSlot)) {
                 stackSlot = i;
                 break;
             }

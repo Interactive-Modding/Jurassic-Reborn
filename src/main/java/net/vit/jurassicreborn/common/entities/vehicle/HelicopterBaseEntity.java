@@ -18,7 +18,7 @@ public class HelicopterBaseEntity extends HelicopterEntity {
 
     @Override
     protected void dropFromLootTable(boolean causedByPlayer) {
-        if (!level().isClientSide) spawnAtLocation(ModItems.HELICOPTER.get());
+        if (!level.isClientSide) spawnAtLocation(ModItems.HELICOPTER.get());
     }
 
     @Override

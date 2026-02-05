@@ -6,7 +6,6 @@ import net.vit.jurassicreborn.client.sounds.SoundHandler;
 import net.vit.jurassicreborn.client.render.entity.animation.EntityAnimation;
 import net.vit.jurassicreborn.common.entities.DinosaurEntity;
 import net.vit.jurassicreborn.common.entities.Dinosaurs.DinosaurHandler;
-import net.vit.jurassicreborn.common.entities.IHasVariants;
 import net.vit.jurassicreborn.common.entities.ai.LeapingMeleeEntityAI;
 import net.vit.jurassicreborn.common.entities.ai.RaptorLeapEntityAI;
 import net.minecraft.world.entity.animal.goat.Goat;
@@ -26,7 +25,7 @@ import net.minecraft.world.entity.EntityType;
 
 import java.util.Locale;
 
-public class CompsognathusEntity extends DinosaurEntity implements IHasVariants {
+public class CompsognathusEntity extends DinosaurEntity {
     private static final EntityDataAccessor<Integer> VARIANT = SynchedEntityData.defineId(CompsognathusEntity.class, EntityDataSerializers.INT);
 
     public CompsognathusEntity(Level world, EntityType<CompsognathusEntity> type) {
@@ -135,3 +134,5 @@ public class CompsognathusEntity extends DinosaurEntity implements IHasVariants 
         return isMale()?new ResourceLocation(JurassicReborn.MODID, texture + "_male_" + "adult" + "_" + variant + ".png"):new ResourceLocation(JurassicReborn.MODID, texture + "_female_" + "adult" + "_" + variant +".png");
     }
 }
+
+

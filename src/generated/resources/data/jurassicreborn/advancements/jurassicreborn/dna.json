@@ -1248,6 +1248,30 @@
         ]
       },
       "trigger": "minecraft:inventory_changed"
+    },
+    "dna_maiasaura": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_maiasaura"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "dna_patagotitan": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "jurassicreborn:dna/dna_patagotitan"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
     }
   },
   "display": {
@@ -1370,8 +1394,9 @@
       "dna_tyrannosaurus",
       "dna_vectipelta",
       "dna_velociraptor",
-      "dna_zhenyuanopterus"
+      "dna_zhenyuanopterus",
+      "dna_maiasaura",
+      "dna_patagotitan"
     ]
-  ],
-  "sends_telemetry_event": true
+  ]
 }

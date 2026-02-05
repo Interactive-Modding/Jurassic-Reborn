@@ -56,7 +56,6 @@ public class EncasedFaunaFossilBlockItem extends FossilBlockItem implements Clea
         if (boneMap == null || bones == null || bones.length == 0) return ItemStack.EMPTY;
         // Choose a random bone name from the array
         String boneKey = bones.length > 1 ? bones[random.nextInt(bones.length)] : bones[0];
-
         Item bone = ((net.minecraftforge.registries.RegistryObject<Item>) boneMap.get(boneKey)).get();
         return new ItemStack(bone, 1);
     }

@@ -31,7 +31,7 @@ public class DefendOwnerAI extends Goal {
         UUID id = dino.getOwner();
         if (id == null) return false;
 
-        owner = dino.level().getPlayerByUUID(id);
+        owner = dino.level.getPlayerByUUID(id);
         if (owner == null || owner.isSpectator()) return false;
 
         LivingEntity hurtBy = owner.getLastHurtByMob();

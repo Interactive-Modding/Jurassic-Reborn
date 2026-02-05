@@ -5,7 +5,6 @@ import com.github.alexthe666.citadel.animation.AnimationHandler;
 import com.google.common.collect.Lists;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.animal.*;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.vit.jurassicreborn.client.render.entity.animation.EntityAnimation;
@@ -22,6 +21,7 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -64,7 +64,7 @@ public class SharkEntity extends Animal implements Animatable, IEntityAdditional
 
     public SharkEntity(EntityType<SharkEntity> sharkEntityEntityType, Level world){
         super(sharkEntityEntityType, world);
-        this.setMaxUpStep(1.0f);
+        this.maxUpStep = 1.0f;
         this.animationTick = 0;
         this.setPathfindingMalus(BlockPathTypes.WATER, 0);
         this.moveControl = new SmoothSwimmingMoveControl(this, 85, 10, 0.02F, 0.1F, true);
@@ -141,7 +141,7 @@ public class SharkEntity extends Animal implements Animatable, IEntityAdditional
             i += EnchantmentHelper.getKnockbackBonus(this);
         }
 
-        boolean flag = entityIn.hurt(this.damageSources().mobAttack(this), f);
+        boolean flag = entityIn.hurt(DamageSource.mobAttack(this), f);
 
         if (flag)
         {
@@ -172,7 +172,7 @@ public class SharkEntity extends Animal implements Animatable, IEntityAdditional
                     if (this.random.nextFloat() < f1)
                     {
                         entityplayer.getCooldowns().addCooldown(itemstack1.getItem(), 100);
-                        this.level().broadcastEntityEvent(entityplayer, (byte)30);
+                        this.level.broadcastEntityEvent(entityplayer, (byte)30);
                     }
                 }
             }

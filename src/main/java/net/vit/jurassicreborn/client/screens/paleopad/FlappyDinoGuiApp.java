@@ -1,10 +1,11 @@
 package net.vit.jurassicreborn.client.screens.paleopad;
 
 import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.vit.jurassicreborn.JurassicReborn;
 import net.vit.jurassicreborn.client.screens.PaleoPadScreen;
@@ -46,73 +47,79 @@ public class FlappyDinoGuiApp extends GuiApp {
     }
 
     @Override
-    public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, Screen screen, float partialTicks) {
-        renderButtons(guiGraphics, mouseX, mouseY, partialTicks);
+    public void render(PoseStack poseStack, int mouseX, int mouseY, Screen screen, float partialTicks) {
+        renderButtons(poseStack, mouseX, mouseY, partialTicks);
 
         int left = screen.width / 2 - 115;
         int top = 65;
 
-        RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-        guiGraphics.blit(BACKGROUND, left, top, 0, 0, 229, 150, 229, 150);
+        RenderSystem.setShaderTexture(0, BACKGROUND);
+        GuiComponent.blit(poseStack, left, top, 0, 0, 229, 150, 229, 150);
 
         if (mainScreen) {
-            guiGraphics.blit(LOGO, left + 5, top + 5, 0, 0, 128, 64, 128, 64);
+            RenderSystem.setShaderTexture(0, LOGO);
+            GuiComponent.blit(poseStack, left + 5, top + 5, 0, 0, 128, 64, 128, 64);
 
-            guiGraphics.blit(PTERANODON, left + 145, top + 15, 0, 0, 128, 64, 128, 64);
+            RenderSystem.setShaderTexture(0, PTERANODON);
+            GuiComponent.blit(poseStack, left + 145, top + 15, 0, 0, 128, 64, 128, 64);
 
-            guiGraphics.blit(character, left + 10, top + 80, 0, 0, 32, 32, 32, 32);
-            ((PaleoPadScreen) screen).drawScaledText(guiGraphics, "Character", left + 10, top + 75, 0.6F, 0xFFFFFF);
-            ((PaleoPadScreen) screen).drawScaledText(guiGraphics, CHAR_NAMES[charIndex], left + 45, top + 90, 0.7F, 0xFFFFFF);
-            ((PaleoPadScreen) screen).drawScaledText(guiGraphics, "Click to change", left + 10, top + 115, 0.6F, 0xFFFFFF);
+            RenderSystem.setShaderTexture(0, character);
+            GuiComponent.blit(poseStack, left + 10, top + 80, 0, 0, 32, 32, 32, 32);
+            ((PaleoPadScreen) screen).drawScaledText(poseStack, "Character", left + 10, top + 75, 0.6F, 0xFFFFFF);
+            ((PaleoPadScreen) screen).drawScaledText(poseStack, CHAR_NAMES[charIndex], left + 45, top + 90, 0.7F, 0xFFFFFF);
+            ((PaleoPadScreen) screen).drawScaledText(poseStack, "Click to change", left + 10, top + 115, 0.6F, 0xFFFFFF);
 
             FlappyDinoApp fApp = (FlappyDinoApp) app;
-            ((PaleoPadScreen) screen).drawScaledText(guiGraphics, "High Scores", left + 145, top + 80, 0.6F, 0xFFFFFF);
+            ((PaleoPadScreen) screen).drawScaledText(poseStack, "High Scores", left + 145, top + 80, 0.6F, 0xFFFFFF);
             int yOff = top + 90;
             int i = 1;
             for (int s : fApp.getScores()) {
-                ((PaleoPadScreen) screen).drawScaledText(guiGraphics, i + ". " + s, left + 145, yOff, 0.6F, 0xFFFFFF);
+                ((PaleoPadScreen) screen).drawScaledText(poseStack, i + ". " + s, left + 145, yOff, 0.6F, 0xFFFFFF);
                 yOff += 10;
                 if (i++ >= 5) break;
             }
 
-            ((PaleoPadScreen) screen).drawScaledRect(guiGraphics, left + 90, top + 100, 50, 20, 1.0F, 0x545454);
-            ((PaleoPadScreen) screen).drawScaledRect(guiGraphics, left + 91, top + 101, 48, 18, 1.0F, 0x747474);
-            ((PaleoPadScreen) screen).drawScaledText(guiGraphics, "Play", left + 105, top + 107, 1.0F, 0xFFFFFF);
+            ((PaleoPadScreen) screen).drawScaledRect(poseStack, left + 90, top + 100, 50, 20, 1.0F, 0x545454);
+            ((PaleoPadScreen) screen).drawScaledRect(poseStack, left + 91, top + 101, 48, 18, 1.0F, 0x747474);
+            ((PaleoPadScreen) screen).drawScaledText(poseStack, "Play", left + 105, top + 107, 1.0F, 0xFFFFFF);
         } else {
-            guiGraphics.blit(character, left + 5, top + (150 - y), 0, 0, 32, 32, 32, 32);
+            RenderSystem.setShaderTexture(0, character);
+            GuiComponent.blit(poseStack, left + 5, top + (150 - y), 0, 0, 32, 32, 32, 32);
 
+            RenderSystem.setShaderTexture(0, PILLAR_BOTTOM);
             for (Map.Entry<Integer, Integer> entry : pillars.entrySet()) {
                 int drawX = entry.getKey() - this.x;
                 if (drawX > 0 && drawX < 200) {
                     for (int height = 0; height < entry.getValue(); height++) {
-                        guiGraphics.blit(PILLAR_BOTTOM, left + drawX, top + 130 - (height * 20), 0, 12, 32, 20, 32, 32);
+                        GuiComponent.blit(poseStack, left + drawX, top + 130 - (height * 20), 0, 12, 32, 20, 32, 32);
                     }
-                    guiGraphics.blit(PILLAR_BOTTOM, left + drawX, top + 139 - (entry.getValue() * 20), 0, 0, 32, 12, 32, 32);
+                    GuiComponent.blit(poseStack, left + drawX, top + 139 - (entry.getValue() * 20), 0, 0, 32, 12, 32, 32);
                 }
             }
 
+            RenderSystem.setShaderTexture(0, PILLAR_TOP);
             for (Map.Entry<Integer, Integer> entry : pillars.entrySet()) {
                 int drawX = entry.getKey() - this.x;
                 if (drawX > 0 && drawX < 200) {
                     int totalHeight = 4 - entry.getValue();
                     for (int height = 0; height < totalHeight; height++) {
-                        guiGraphics.blit(PILLAR_TOP, left + drawX, top + (height * 20), 0, 0, 32, 20, 32, 32);
+                        GuiComponent.blit(poseStack, left + drawX, top + (height * 20), 0, 0, 32, 20, 32, 32);
                     }
-                    guiGraphics.blit(PILLAR_TOP, left + drawX, top + (totalHeight * 20), 0, 20, 32, 12, 32, 32);
+                    GuiComponent.blit(poseStack, left + drawX, top + (totalHeight * 20), 0, 20, 32, 12, 32, 32);
 
                     if (Minecraft.getInstance().getEntityRenderDispatcher().shouldRenderHitBoxes()) {
                         int topHeight = top + ((4 - entry.getValue()) * 20) + 11;
                         int bottomHeight = top + (150 - (entry.getValue() * 20)) - 11;
                         int actualY = top + 150 - y;
 
-                        ((PaleoPadScreen) screen).drawScaledRect(guiGraphics, left + drawX + 1, topHeight, 30, 1, 1.0F, 0xFFFFFF);
-                        ((PaleoPadScreen) screen).drawScaledRect(guiGraphics, left + drawX + 1, bottomHeight, 30, 1, 1.0F, 0xFFFF00);
-                        ((PaleoPadScreen) screen).drawScaledRect(guiGraphics, left + 6, actualY + 5, 30, 1, 1.0F, 0xFF0000);
-                        ((PaleoPadScreen) screen).drawScaledRect(guiGraphics, left + 6, actualY + 23, 30, 1, 1.0F, 0xFF00FF);
+                        ((PaleoPadScreen) screen).drawScaledRect(poseStack, left + drawX + 1, topHeight, 30, 1, 1.0F, 0xFFFFFF);
+                        ((PaleoPadScreen) screen).drawScaledRect(poseStack, left + drawX + 1, bottomHeight, 30, 1, 1.0F, 0xFFFF00);
+                        ((PaleoPadScreen) screen).drawScaledRect(poseStack, left + 6, actualY + 5, 30, 1, 1.0F, 0xFF0000);
+                        ((PaleoPadScreen) screen).drawScaledRect(poseStack, left + 6, actualY + 23, 30, 1, 1.0F, 0xFF00FF);
                     }
                 }
             }
-            ((PaleoPadScreen) screen).drawScaledText(guiGraphics, String.valueOf(score), left + 5, top + 5, 1.0F, 0xFFFFFF);
+            ((PaleoPadScreen) screen).drawScaledText(poseStack, String.valueOf(score), left + 5, top + 5, 1.0F, 0xFFFFFF);
         }
     }
 

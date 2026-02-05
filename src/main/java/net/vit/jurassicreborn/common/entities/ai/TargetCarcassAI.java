@@ -39,7 +39,7 @@ public class TargetCarcassAI extends Goal {
 
         // Search nearby for the closest carcass
         AABB search = dino.getBoundingBox().inflate(16.0);
-        List<DinosaurEntity> inRange = dino.level().getEntitiesOfClass(DinosaurEntity.class, search);
+        List<DinosaurEntity> inRange = dino.level.getEntitiesOfClass(DinosaurEntity.class, search);
 
         double bestDistSq = Double.MAX_VALUE;
         DinosaurEntity best = null;

@@ -26,8 +26,6 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.LootParams;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
@@ -55,22 +53,6 @@ public class SkullDisplayBlock extends Block implements EntityBlock, SimpleWater
     public SkullDisplayBlock(Properties properties) {
         super(properties);
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.UP).setValue(BlockStateProperties.WATERLOGGED, false));
-    }
-    @Override
-    public void onRemove(BlockState state, Level level, BlockPos pos,
-                         BlockState newState, boolean isMoving) {
-
-        if (!state.is(newState.getBlock())) {
-            BlockEntity be = level.getBlockEntity(pos);
-            if (be instanceof SkullDisplayBlockEntity tile) {
-                ItemStack drop = getItemFromTile(tile);
-                if (!drop.isEmpty()) {
-                    Block.popResource(level, pos, drop);
-                }
-            }
-        }
-
-        super.onRemove(state, level, pos, newState, isMoving);
     }
 
     @Nullable
@@ -127,25 +109,18 @@ public class SkullDisplayBlock extends Block implements EntityBlock, SimpleWater
         this.checkAndDropBlock(level, pos, state);
     }
 
-    private void checkAndDropBlock(Level level, BlockPos pos, BlockState state) {
-        if (!(level instanceof ServerLevel)) return;
-
-        if (!canBlockStay(level, pos, state)) {
-
-            BlockEntity be = level.getBlockEntity(pos);
-            if (be instanceof SkullDisplayBlockEntity tile) {
-                ItemStack drop = getItemFromTile(tile);
-                if (!drop.isEmpty()) {
-                    Block.popResource(level, pos, drop);
-                }
+    private void checkAndDropBlock(Level world, BlockPos pos, BlockState state) {
+        if (!canBlockStay(world, pos, state)) {
+            List<ItemStack> drops = getDrops(state, new LootContext.Builder((ServerLevel) world)
+                    .withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(pos))
+                    .withOptionalParameter(LootContextParams.TOOL, ItemStack.EMPTY)
+                    .withOptionalParameter(LootContextParams.BLOCK_ENTITY, world.getBlockEntity(pos)));
+            for (ItemStack drop : drops) {
+                Block.popResource(world, pos, drop);
             }
-
-            level.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
+            world.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
         }
     }
-
-
-
 
     private static boolean canBlockStay(LevelReader world, BlockPos pos, BlockState state) {
         Direction facing = state.getValue(FACING);
@@ -199,20 +174,17 @@ public class SkullDisplayBlock extends Block implements EntityBlock, SimpleWater
     }
 
     @Override
-    public List<ItemStack> getDrops(BlockState state, LootParams.Builder builder) {
+    public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
         List<ItemStack> drops = new ArrayList<>(1);
-
-        BlockEntity be = builder.getOptionalParameter(LootContextParams.BLOCK_ENTITY);
-        if (be instanceof SkullDisplayBlockEntity tile) {
-            ItemStack stack = getItemFromTile(tile);
-            if (!stack.isEmpty()) {
-                drops.add(stack);
+        BlockEntity blockEntity = builder.getOptionalParameter(LootContextParams.BLOCK_ENTITY);
+        if (blockEntity instanceof SkullDisplayBlockEntity tile) {
+            ItemStack item = getItemFromTile(tile);
+            if (!item.isEmpty()) {
+                drops.add(item);
             }
         }
-
         return drops;
     }
-
 
     private static Direction mirror(Direction facing) {
         return switch (facing) {

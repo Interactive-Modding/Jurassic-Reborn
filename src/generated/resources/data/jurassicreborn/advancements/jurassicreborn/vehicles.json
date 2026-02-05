@@ -189,6 +189,5 @@
       "monorail",
       "gyrosphere"
     ]
-  ],
-  "sends_telemetry_event": true
+  ]
 }

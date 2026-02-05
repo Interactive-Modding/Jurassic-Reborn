@@ -23,7 +23,7 @@ public class CallAnimationAI extends Goal {
         if (dino.isBusy() || dino.getRandom().nextInt(350) >= 2) return false;
 
         AABB box = dino.getBoundingBox().inflate(50.0D, 10.0D, 50.0D);
-        List<Entity> list = dino.level().getEntities(dino, box);
+        List<Entity> list = dino.level.getEntities(dino, box);
         return list.stream().anyMatch(e -> e.getClass() == dino.getClass());
     }
 

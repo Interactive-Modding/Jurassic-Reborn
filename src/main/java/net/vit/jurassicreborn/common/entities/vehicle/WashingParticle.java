@@ -74,7 +74,7 @@ public class WashingParticle extends TextureSheetParticle {
     }
 
     /* --------------------------------------------------------------------- */
-
+    
     /* --------------------------------------------------------------------- */
 
     public static class Provider implements ParticleProvider<SimpleParticleType> {

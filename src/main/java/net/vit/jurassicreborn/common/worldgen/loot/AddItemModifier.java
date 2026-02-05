@@ -1,4 +1,4 @@
-
+// AddItemModifier.java
 package net.vit.jurassicreborn.common.worldgen.loot;
 
 import com.google.common.base.Suppliers;
@@ -77,10 +77,10 @@ public class AddItemModifier extends LootModifier {
     protected @NotNull ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> generated,
                                                           LootContext ctx) {
 
-        if (ctx.getRandom().nextFloat() > chance)
+        if (ctx.getRandom().nextFloat() > chance)           // roll the dice
             return generated;
 
-
+        // Pick the actual item
         Item toAdd = this.item;
         if (toAdd == null && tag != null) {
             List<Item> pool = ForgeRegistries.ITEMS.tags().getTag(tag).stream().toList();

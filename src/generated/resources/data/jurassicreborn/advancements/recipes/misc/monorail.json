@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:monorail"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

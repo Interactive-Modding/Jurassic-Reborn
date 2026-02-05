@@ -1,7 +1,7 @@
 package net.vit.jurassicreborn.client.screens.paleopad;
 
+import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.resources.ResourceLocation;
@@ -37,14 +37,14 @@ public abstract class GuiApp {
     /**
      * Render the App. Implementations should draw to the screen and call renderButtons if needed.
      */
-    public abstract void render(GuiGraphics guiGraphics, int mouseX, int mouseY, Screen screen, float partialTicks);
+    public abstract void render(PoseStack poseStack, int mouseX, int mouseY, Screen screen, float partialTicks);
 
     /**
      * Render all buttons for this App (optional helper).
      */
-    protected void renderButtons(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
+    protected void renderButtons(PoseStack poseStack, int mouseX, int mouseY, float partialTicks) {
         for (Button button : buttons) {
-            button.render(guiGraphics, mouseX, mouseY, partialTicks);
+            button.render(poseStack, mouseX, mouseY, partialTicks);
         }
     }
 

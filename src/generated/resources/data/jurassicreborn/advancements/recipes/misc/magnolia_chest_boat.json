@@ -43,6 +43,5 @@
     "recipes": [
       "jurassicreborn:magnolia_chest_boat"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

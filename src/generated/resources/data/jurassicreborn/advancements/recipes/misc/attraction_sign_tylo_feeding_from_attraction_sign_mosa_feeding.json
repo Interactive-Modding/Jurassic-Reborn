@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:attraction_sign_tylo_feeding_from_attraction_sign_mosa_feeding"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

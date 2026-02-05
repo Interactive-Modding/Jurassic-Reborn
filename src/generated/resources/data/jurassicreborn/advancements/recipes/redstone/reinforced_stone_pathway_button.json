@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:reinforced_stone_pathway_button"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

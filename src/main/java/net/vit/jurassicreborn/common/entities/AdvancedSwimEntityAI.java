@@ -26,7 +26,7 @@ public class AdvancedSwimEntityAI extends Goal {
         Vec3 candidate = DefaultRandomPos.getPos(dino, 8, 3);
         if (candidate == null) return false;
 
-        BlockPos pos = BlockPos.containing(candidate.x, candidate.y, candidate.z);
+        BlockPos pos = new BlockPos(candidate.x, candidate.y, candidate.z);
         // Require water at target AND surrounding cells (keeps us submerged and not inside air pockets)
         if (isWater(pos) && isFullySurroundedByWater(pos)) {
             this.x = candidate.x;
@@ -50,7 +50,7 @@ public class AdvancedSwimEntityAI extends Goal {
     /* ------------------------------- helpers ------------------------------- */
 
     private boolean isWater(BlockPos p) {
-        return dino.level().getFluidState(p).is(FluidTags.WATER);
+        return dino.level.getFluidState(p).is(FluidTags.WATER);
     }
 
     /** Check all 6 neighbors (up/down + 4 sides) are water so we don't aim for edges or surface. */

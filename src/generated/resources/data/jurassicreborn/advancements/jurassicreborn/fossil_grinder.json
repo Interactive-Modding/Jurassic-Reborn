@@ -33,6 +33,5 @@
     [
       "fossil_grinder"
     ]
-  ],
-  "sends_telemetry_event": true
+  ]
 }

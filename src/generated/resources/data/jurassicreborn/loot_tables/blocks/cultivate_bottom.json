@@ -1,4 +1,20 @@
 {
   "type": "minecraft:block",
-  "random_sequence": "jurassicreborn:blocks/cultivate_bottom"
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "jurassicreborn:cultivate/cultivate_bottom_black"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ]
 }

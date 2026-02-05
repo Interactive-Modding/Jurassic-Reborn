@@ -32,7 +32,7 @@ public class FordExplorerSnowChangeStateMessage {
         ctx.get().enqueueWork(() -> {
             Level level = ctx.get().getDirection().getReceptionSide().isClient()
                     ? DistExecutor.unsafeCallWhenOn(Dist.CLIENT, () -> Client::getLevel)
-                    : ctx.get().getSender().level();
+                    : ctx.get().getSender().level;
             if (level == null) return;
 
             Entity e = level.getEntity(msg.entityId);

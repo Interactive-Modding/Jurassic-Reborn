@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:attraction_sign_prehistoric_river_from_attraction_sign_coelacanth_pond_coral"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

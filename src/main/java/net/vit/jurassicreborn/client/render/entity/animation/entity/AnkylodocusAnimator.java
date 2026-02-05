@@ -33,7 +33,6 @@ public class AnkylodocusAnimator extends EntityAnimator<AnkylodocusEntity> {
         AdvancedModelBox neck9  = model.getCube("neck9");
         AdvancedModelBox neck10 = model.getCube("neck10");
 
-
         AdvancedModelBox bottomjaw = model.getCube("bottom jaw");
         AdvancedModelBox jawflap   = model.getCube("jaw flap");
 
@@ -92,7 +91,6 @@ public class AnkylodocusAnimator extends EntityAnimator<AnkylodocusEntity> {
         // jaw micro-motion so the head doesn’t feel dead
         if (bottomjaw != null) bottomjaw.rotateAngleX += (float)Math.sin(ticks * 0.05F) * 0.03F;
         if (jawflap   != null) jawflap.rotateAngleX   += (float)Math.sin(ticks * 0.05F + 0.6F) * 0.02F;
-
 
         entity.tailBuffer.applyChainSwingBuffer(tailChain);
     }

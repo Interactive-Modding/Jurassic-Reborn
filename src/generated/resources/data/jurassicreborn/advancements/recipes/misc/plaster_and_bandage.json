@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:plaster_and_bandage"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

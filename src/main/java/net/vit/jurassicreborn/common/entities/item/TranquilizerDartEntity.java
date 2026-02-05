@@ -32,8 +32,7 @@ public class TranquilizerDartEntity extends ThrowableItemProjectile {
     @Override
     public void tick() {
         super.tick();
-        Level level = this.level();
-        if (!this.level().isClientSide && level instanceof ServerLevel server) {
+        if (!this.level.isClientSide && this.level instanceof ServerLevel server) {
             server.sendParticles(ParticleTypes.SMOKE, this.getX(), this.getY(), this.getZ(), 1, 0.0, 0.0, 0.0, 0.0);
         }
     }
@@ -46,7 +45,7 @@ public class TranquilizerDartEntity extends ThrowableItemProjectile {
     @Override
     protected void onHitEntity(EntityHitResult result) {
         super.onHitEntity(result);
-        if (!level().isClientSide && result.getEntity() instanceof DinosaurEntity dino && this.getItem().getItem() instanceof Dart dartItem) {
+        if (!level.isClientSide && result.getEntity() instanceof DinosaurEntity dino && this.getItem().getItem() instanceof Dart dartItem) {
             dartItem.getConsumer().accept(dino, this.getItem());
             discard();
         }

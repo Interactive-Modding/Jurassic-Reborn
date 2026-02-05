@@ -4,6 +4,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.*;
+import net.minecraft.world.level.material.Material;
 import net.vit.jurassicreborn.common.blocks.ModBlocks;
 import net.vit.jurassicreborn.common.blocks.ModWoodTypes;
 import net.vit.jurassicreborn.common.blocks.WoodButtonBlock;
@@ -26,15 +27,13 @@ public class WoodBlocks {
     public static final RegistryObject<Block> GINKGO_BUTTON = ModBlocks.MOD_BLOCKS.register("ginkgo_button", () -> new WoodButtonBlock(BlockBehaviour.Properties.copy(Blocks.OAK_BUTTON)));
     public static final RegistryObject<Block> GINKGO_FENCE = ModBlocks.MOD_BLOCKS.register("ginkgo_fence", () -> new FenceBlock(BlockBehaviour.Properties.copy(Blocks.OAK_FENCE)));
     public static final RegistryObject<Block> GINKGO_FENCE_GATE = ModBlocks.MOD_BLOCKS.register("ginkgo_fence_gate", () -> new FenceGateBlock(BlockBehaviour.Properties.copy(Blocks.OAK_FENCE_GATE), SoundEvents.FENCE_GATE_OPEN, SoundEvents.FENCE_GATE_CLOSE));
-    public static final RegistryObject<Block> GINKGO_PRESSURE_PLATE = ModBlocks.MOD_BLOCKS.register("ginkgo_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, BlockBehaviour.Properties.copy(Blocks.OAK_PRESSURE_PLATE), BlockSetType.OAK));
+    public static final RegistryObject<Block> GINKGO_PRESSURE_PLATE = ModBlocks.MOD_BLOCKS.register("ginkgo_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, BlockBehaviour.Properties.copy(Blocks.OAK_PRESSURE_PLATE), SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_ON, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_OFF));
     public static final RegistryObject<Block> GINKGO_SIGN = ModBlocks.MOD_BLOCKS.register("ginkgo_sign", () -> new StandingSignBlock(sign(), ModWoodTypes.ginkgo));
     public static final RegistryObject<Block> GINKGO_WALL_SIGN = ModBlocks.MOD_BLOCKS.register("ginkgo_wall_sign", () -> new WallSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_SIGN).lootFrom(GINKGO_SIGN), ModWoodTypes.ginkgo));
-    public static final RegistryObject<Block> GINKGO_HANGING_SIGN = ModBlocks.MOD_BLOCKS.register("ginkgo_hanging_sign", () -> new CeilingHangingSignBlock(hangingSign(), ModWoodTypes.ginkgo));
-    public static final RegistryObject<Block> GINKGO_WALL_HANGING_SIGN = ModBlocks.MOD_BLOCKS.register("ginkgo_wall_hanging_sign", () -> new WallHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_HANGING_SIGN).lootFrom(GINKGO_HANGING_SIGN), ModWoodTypes.ginkgo));
     public static final RegistryObject<Block> GINKGO_SLAB = ModBlocks.MOD_BLOCKS.register("ginkgo_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SLAB)));
     public static final RegistryObject<Block> GINKGO_STAIRS = ModBlocks.MOD_BLOCKS.register("ginkgo_stairs", () -> new StairBlock(() -> GINKGO_PLANKS.get().defaultBlockState(),BlockBehaviour.Properties.copy(Blocks.OAK_STAIRS)));
-    public static final RegistryObject<Block> GINKGO_DOOR = ModBlocks.MOD_BLOCKS.register("ginkgo_door", () -> new DoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_DOOR), BlockSetType.OAK));
-    public static final RegistryObject<Block> GINKGO_TRAPDOOR = ModBlocks.MOD_BLOCKS.register("ginkgo_trapdoor", () -> new TrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_TRAPDOOR), BlockSetType.OAK));
+    public static final RegistryObject<Block> GINKGO_DOOR = ModBlocks.MOD_BLOCKS.register("ginkgo_door", () -> new DoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_DOOR), SoundEvents.WOODEN_DOOR_CLOSE, SoundEvents.WOODEN_DOOR_OPEN));
+    public static final RegistryObject<Block> GINKGO_TRAPDOOR = ModBlocks.MOD_BLOCKS.register("ginkgo_trapdoor", () -> new TrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_TRAPDOOR), SoundEvents.WOODEN_TRAPDOOR_CLOSE, SoundEvents.WOODEN_TRAPDOOR_OPEN));
 
 
     //tree family
@@ -49,15 +48,13 @@ public class WoodBlocks {
     public static final RegistryObject<Block> CALAMITES_BUTTON = ModBlocks.MOD_BLOCKS.register("calamites_button", () -> new WoodButtonBlock(BlockBehaviour.Properties.copy(Blocks.OAK_BUTTON)));
     public static final RegistryObject<Block> CALAMITES_FENCE = ModBlocks.MOD_BLOCKS.register("calamites_fence", () -> new FenceBlock(BlockBehaviour.Properties.copy(Blocks.OAK_FENCE)));
     public static final RegistryObject<Block> CALAMITES_FENCE_GATE = ModBlocks.MOD_BLOCKS.register("calamites_fence_gate", () -> new FenceGateBlock(BlockBehaviour.Properties.copy(Blocks.OAK_FENCE_GATE), SoundEvents.FENCE_GATE_OPEN, SoundEvents.FENCE_GATE_CLOSE));
-    public static final RegistryObject<Block> CALAMITES_PRESSURE_PLATE = ModBlocks.MOD_BLOCKS.register("calamites_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, BlockBehaviour.Properties.copy(Blocks.OAK_PRESSURE_PLATE), BlockSetType.OAK));
+    public static final RegistryObject<Block> CALAMITES_PRESSURE_PLATE = ModBlocks.MOD_BLOCKS.register("calamites_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, BlockBehaviour.Properties.copy(Blocks.OAK_PRESSURE_PLATE), SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_ON, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_OFF));
     public static final RegistryObject<Block> CALAMITES_SIGN = ModBlocks.MOD_BLOCKS.register("calamites_sign", () -> new StandingSignBlock(sign(), ModWoodTypes.calamites));
     public static final RegistryObject<Block> CALAMITES_WALL_SIGN = ModBlocks.MOD_BLOCKS.register("calamites_wall_sign", () -> new WallSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_SIGN).lootFrom(CALAMITES_SIGN), ModWoodTypes.calamites));
-    public static final RegistryObject<Block> CALAMITES_HANGING_SIGN = ModBlocks.MOD_BLOCKS.register("calamites_hanging_sign", () -> new CeilingHangingSignBlock(hangingSign(), ModWoodTypes.calamites));
-    public static final RegistryObject<Block> CALAMITES_WALL_HANGING_SIGN = ModBlocks.MOD_BLOCKS.register("calamites_wall_hanging_sign", () -> new WallHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_HANGING_SIGN).lootFrom(CALAMITES_HANGING_SIGN), ModWoodTypes.calamites));
     public static final RegistryObject<Block> CALAMITES_SLAB = ModBlocks.MOD_BLOCKS.register("calamites_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SLAB)));
     public static final RegistryObject<Block> CALAMITES_STAIRS = ModBlocks.MOD_BLOCKS.register("calamites_stairs", () -> new StairBlock(() -> CALAMITES_PLANKS.get().defaultBlockState(),BlockBehaviour.Properties.copy(Blocks.OAK_STAIRS)));
-    public static final RegistryObject<Block> CALAMITES_DOOR = ModBlocks.MOD_BLOCKS.register("calamites_door", () -> new DoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_DOOR), BlockSetType.OAK));
-    public static final RegistryObject<Block> CALAMITES_TRAPDOOR = ModBlocks.MOD_BLOCKS.register("calamites_trapdoor", () -> new TrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_TRAPDOOR), BlockSetType.OAK));
+    public static final RegistryObject<Block> CALAMITES_DOOR = ModBlocks.MOD_BLOCKS.register("calamites_door", () -> new DoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_DOOR), SoundEvents.WOODEN_DOOR_CLOSE, SoundEvents.WOODEN_DOOR_OPEN));
+    public static final RegistryObject<Block> CALAMITES_TRAPDOOR = ModBlocks.MOD_BLOCKS.register("calamites_trapdoor", () -> new TrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_TRAPDOOR), SoundEvents.WOODEN_TRAPDOOR_CLOSE, SoundEvents.WOODEN_TRAPDOOR_OPEN));
 
     //tree family
     public static final RegistryObject<RotatedPillarBlock> ARAUCARIA_LOG = ModBlocks.MOD_BLOCKS.register("araucaria_log",() -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LOG)));
@@ -71,15 +68,13 @@ public class WoodBlocks {
     public static final RegistryObject<Block> ARAUCARIA_BUTTON = ModBlocks.MOD_BLOCKS.register("araucaria_button", () -> new WoodButtonBlock(BlockBehaviour.Properties.copy(Blocks.OAK_BUTTON)));
     public static final RegistryObject<Block> ARAUCARIA_FENCE = ModBlocks.MOD_BLOCKS.register("araucaria_fence", () -> new FenceBlock(BlockBehaviour.Properties.copy(Blocks.OAK_FENCE)));
     public static final RegistryObject<Block> ARAUCARIA_FENCE_GATE = ModBlocks.MOD_BLOCKS.register("araucaria_fence_gate", () -> new FenceGateBlock(BlockBehaviour.Properties.copy(Blocks.OAK_FENCE_GATE), SoundEvents.FENCE_GATE_OPEN, SoundEvents.FENCE_GATE_CLOSE));
-    public static final RegistryObject<Block> ARAUCARIA_PRESSURE_PLATE = ModBlocks.MOD_BLOCKS.register("araucaria_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, BlockBehaviour.Properties.copy(Blocks.OAK_PRESSURE_PLATE), BlockSetType.OAK));
+    public static final RegistryObject<Block> ARAUCARIA_PRESSURE_PLATE = ModBlocks.MOD_BLOCKS.register("araucaria_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, BlockBehaviour.Properties.copy(Blocks.OAK_PRESSURE_PLATE), SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_ON, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_OFF));
     public static final RegistryObject<Block> ARAUCARIA_SIGN = ModBlocks.MOD_BLOCKS.register("araucaria_sign", () -> new StandingSignBlock(sign(), ModWoodTypes.araucaria));
     public static final RegistryObject<Block> ARAUCARIA_WALL_SIGN = ModBlocks.MOD_BLOCKS.register("araucaria_wall_sign", () -> new WallSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_SIGN).lootFrom(ARAUCARIA_SIGN), ModWoodTypes.araucaria));
-    public static final RegistryObject<Block> ARAUCARIA_HANGING_SIGN = ModBlocks.MOD_BLOCKS.register("araucaria_hanging_sign", () -> new CeilingHangingSignBlock(hangingSign(), ModWoodTypes.araucaria));
-    public static final RegistryObject<Block> ARAUCARIA_WALL_HANGING_SIGN = ModBlocks.MOD_BLOCKS.register("araucaria_wall_hanging_sign", () -> new WallHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_HANGING_SIGN).lootFrom(ARAUCARIA_HANGING_SIGN), ModWoodTypes.araucaria));
     public static final RegistryObject<Block> ARAUCARIA_SLAB = ModBlocks.MOD_BLOCKS.register("araucaria_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SLAB)));
     public static final RegistryObject<Block> ARAUCARIA_STAIRS = ModBlocks.MOD_BLOCKS.register("araucaria_stairs", () -> new StairBlock(() -> ARAUCARIA_PLANKS.get().defaultBlockState(),BlockBehaviour.Properties.copy(Blocks.OAK_STAIRS)));
-    public static final RegistryObject<Block> ARAUCARIA_DOOR = ModBlocks.MOD_BLOCKS.register("araucaria_door", () -> new DoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_DOOR), BlockSetType.OAK));
-    public static final RegistryObject<Block> ARAUCARIA_TRAPDOOR = ModBlocks.MOD_BLOCKS.register("araucaria_trapdoor", () -> new TrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_TRAPDOOR), BlockSetType.OAK));
+    public static final RegistryObject<Block> ARAUCARIA_DOOR = ModBlocks.MOD_BLOCKS.register("araucaria_door", () -> new DoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_DOOR), SoundEvents.WOODEN_DOOR_CLOSE, SoundEvents.WOODEN_DOOR_OPEN));
+    public static final RegistryObject<Block> ARAUCARIA_TRAPDOOR = ModBlocks.MOD_BLOCKS.register("araucaria_trapdoor", () -> new TrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_TRAPDOOR), SoundEvents.WOODEN_TRAPDOOR_CLOSE, SoundEvents.WOODEN_TRAPDOOR_OPEN));
 
     //tree family
     public static final RegistryObject<RotatedPillarBlock> PHOENIX_LOG = ModBlocks.MOD_BLOCKS.register("phoenix_log",() -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LOG)));
@@ -93,15 +88,13 @@ public class WoodBlocks {
     public static final RegistryObject<Block> PHOENIX_BUTTON = ModBlocks.MOD_BLOCKS.register("phoenix_button", () -> new WoodButtonBlock(BlockBehaviour.Properties.copy(Blocks.OAK_BUTTON)));
     public static final RegistryObject<Block> PHOENIX_FENCE = ModBlocks.MOD_BLOCKS.register("phoenix_fence", () -> new FenceBlock(BlockBehaviour.Properties.copy(Blocks.OAK_FENCE)));
     public static final RegistryObject<Block> PHOENIX_FENCE_GATE = ModBlocks.MOD_BLOCKS.register("phoenix_fence_gate", () -> new FenceGateBlock(BlockBehaviour.Properties.copy(Blocks.OAK_FENCE_GATE), SoundEvents.FENCE_GATE_OPEN, SoundEvents.FENCE_GATE_CLOSE));
-    public static final RegistryObject<Block> PHOENIX_PRESSURE_PLATE = ModBlocks.MOD_BLOCKS.register("phoenix_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, BlockBehaviour.Properties.copy(Blocks.OAK_PRESSURE_PLATE), BlockSetType.OAK));
+    public static final RegistryObject<Block> PHOENIX_PRESSURE_PLATE = ModBlocks.MOD_BLOCKS.register("phoenix_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, BlockBehaviour.Properties.copy(Blocks.OAK_PRESSURE_PLATE), SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_ON, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_OFF));
     public static final RegistryObject<Block> PHOENIX_SIGN = ModBlocks.MOD_BLOCKS.register("phoenix_sign", () -> new StandingSignBlock(sign(), ModWoodTypes.phoenix));
     public static final RegistryObject<Block> PHOENIX_WALL_SIGN = ModBlocks.MOD_BLOCKS.register("phoenix_wall_sign", () -> new WallSignBlock(sign().lootFrom(PHOENIX_SIGN), ModWoodTypes.phoenix));
-    public static final RegistryObject<Block> PHOENIX_HANGING_SIGN = ModBlocks.MOD_BLOCKS.register("phoenix_hanging_sign", () -> new CeilingHangingSignBlock(hangingSign(), ModWoodTypes.phoenix));
-    public static final RegistryObject<Block> PHOENIX_WALL_HANGING_SIGN = ModBlocks.MOD_BLOCKS.register("phoenix_wall_hanging_sign", () -> new WallHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_HANGING_SIGN).lootFrom(PHOENIX_HANGING_SIGN), ModWoodTypes.phoenix));
     public static final RegistryObject<Block> PHOENIX_SLAB = ModBlocks.MOD_BLOCKS.register("phoenix_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SLAB)));
     public static final RegistryObject<Block> PHOENIX_STAIRS = ModBlocks.MOD_BLOCKS.register("phoenix_stairs", () -> new StairBlock(() -> PHOENIX_PLANKS.get().defaultBlockState(),BlockBehaviour.Properties.copy(Blocks.OAK_STAIRS)));
-    public static final RegistryObject<Block> PHOENIX_DOOR = ModBlocks.MOD_BLOCKS.register("phoenix_door", () -> new DoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_DOOR), BlockSetType.OAK));
-    public static final RegistryObject<Block> PHOENIX_TRAPDOOR = ModBlocks.MOD_BLOCKS.register("phoenix_trapdoor", () -> new TrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_TRAPDOOR), BlockSetType.OAK));
+    public static final RegistryObject<Block> PHOENIX_DOOR = ModBlocks.MOD_BLOCKS.register("phoenix_door", () -> new DoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_DOOR), SoundEvents.WOODEN_DOOR_CLOSE, SoundEvents.WOODEN_DOOR_OPEN));
+    public static final RegistryObject<Block> PHOENIX_TRAPDOOR = ModBlocks.MOD_BLOCKS.register("phoenix_trapdoor", () -> new TrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_TRAPDOOR), SoundEvents.WOODEN_TRAPDOOR_CLOSE, SoundEvents.WOODEN_TRAPDOOR_OPEN));
 
 
     //tree family
@@ -116,15 +109,13 @@ public class WoodBlocks {
     public static final RegistryObject<Block> PSARONIUS_BUTTON = ModBlocks.MOD_BLOCKS.register("psaronius_button", () -> new WoodButtonBlock(BlockBehaviour.Properties.copy(Blocks.OAK_BUTTON)));
     public static final RegistryObject<Block> PSARONIUS_FENCE = ModBlocks.MOD_BLOCKS.register("psaronius_fence", () -> new FenceBlock(BlockBehaviour.Properties.copy(Blocks.OAK_FENCE)));
     public static final RegistryObject<Block> PSARONIUS_FENCE_GATE = ModBlocks.MOD_BLOCKS.register("psaronius_fence_gate", () -> new FenceGateBlock(BlockBehaviour.Properties.copy(Blocks.OAK_FENCE_GATE), SoundEvents.FENCE_GATE_OPEN, SoundEvents.FENCE_GATE_CLOSE));
-    public static final RegistryObject<Block> PSARONIUS_PRESSURE_PLATE = ModBlocks.MOD_BLOCKS.register("psaronius_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, BlockBehaviour.Properties.copy(Blocks.OAK_PRESSURE_PLATE), BlockSetType.OAK));
+    public static final RegistryObject<Block> PSARONIUS_PRESSURE_PLATE = ModBlocks.MOD_BLOCKS.register("psaronius_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, BlockBehaviour.Properties.copy(Blocks.OAK_PRESSURE_PLATE), SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_ON, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_OFF));
     public static final RegistryObject<Block> PSARONIUS_SIGN = ModBlocks.MOD_BLOCKS.register("psaronius_sign", () -> new StandingSignBlock(sign(), ModWoodTypes.psaronius));
     public static final RegistryObject<Block> PSARONIUS_WALL_SIGN = ModBlocks.MOD_BLOCKS.register("psaronius_wall_sign", () -> new WallSignBlock(sign().lootFrom(PSARONIUS_SIGN), ModWoodTypes.psaronius));
-    public static final RegistryObject<Block> PSARONIUS_HANGING_SIGN = ModBlocks.MOD_BLOCKS.register("psaronius_hanging_sign", () -> new CeilingHangingSignBlock(hangingSign(), ModWoodTypes.psaronius));
-    public static final RegistryObject<Block> PSARONIUS_WALL_HANGING_SIGN = ModBlocks.MOD_BLOCKS.register("psaronius_wall_hanging_sign", () -> new WallHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_HANGING_SIGN).lootFrom(PSARONIUS_HANGING_SIGN), ModWoodTypes.psaronius));
     public static final RegistryObject<Block> PSARONIUS_SLAB = ModBlocks.MOD_BLOCKS.register("psaronius_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SLAB)));
     public static final RegistryObject<Block> PSARONIUS_STAIRS = ModBlocks.MOD_BLOCKS.register("psaronius_stairs", () -> new StairBlock(() -> PSARONIUS_PLANKS.get().defaultBlockState(),BlockBehaviour.Properties.copy(Blocks.OAK_STAIRS)));
-    public static final RegistryObject<Block> PSARONIUS_DOOR = ModBlocks.MOD_BLOCKS.register("psaronius_door", () -> new DoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_DOOR), BlockSetType.OAK));
-    public static final RegistryObject<Block> PSARONIUS_TRAPDOOR = ModBlocks.MOD_BLOCKS.register("psaronius_trapdoor", () -> new TrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_TRAPDOOR), BlockSetType.OAK));
+    public static final RegistryObject<Block> PSARONIUS_DOOR = ModBlocks.MOD_BLOCKS.register("psaronius_door", () -> new DoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_DOOR), SoundEvents.WOODEN_DOOR_CLOSE, SoundEvents.WOODEN_DOOR_OPEN));
+    public static final RegistryObject<Block> PSARONIUS_TRAPDOOR = ModBlocks.MOD_BLOCKS.register("psaronius_trapdoor", () -> new TrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_TRAPDOOR), SoundEvents.WOODEN_TRAPDOOR_CLOSE, SoundEvents.WOODEN_TRAPDOOR_OPEN));
 
 
     //tree family
@@ -139,15 +130,13 @@ public class WoodBlocks {
     public static final RegistryObject<Block> MAGNOLIA_BUTTON = ModBlocks.MOD_BLOCKS.register("magnolia_button", () -> new WoodButtonBlock(BlockBehaviour.Properties.copy(Blocks.OAK_BUTTON)));
     public static final RegistryObject<Block> MAGNOLIA_FENCE = ModBlocks.MOD_BLOCKS.register("magnolia_fence", () -> new FenceBlock(BlockBehaviour.Properties.copy(Blocks.OAK_FENCE)));
     public static final RegistryObject<Block> MAGNOLIA_FENCE_GATE = ModBlocks.MOD_BLOCKS.register("magnolia_fence_gate", () -> new FenceGateBlock(BlockBehaviour.Properties.copy(Blocks.OAK_FENCE_GATE), SoundEvents.FENCE_GATE_OPEN, SoundEvents.FENCE_GATE_CLOSE));
-    public static final RegistryObject<Block> MAGNOLIA_PRESSURE_PLATE = ModBlocks.MOD_BLOCKS.register("magnolia_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, BlockBehaviour.Properties.copy(Blocks.OAK_PRESSURE_PLATE), BlockSetType.OAK));
+    public static final RegistryObject<Block> MAGNOLIA_PRESSURE_PLATE = ModBlocks.MOD_BLOCKS.register("magnolia_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, BlockBehaviour.Properties.copy(Blocks.OAK_PRESSURE_PLATE), SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_ON, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_OFF));
     public static final RegistryObject<Block> MAGNOLIA_SIGN = ModBlocks.MOD_BLOCKS.register("magnolia_sign", () -> new StandingSignBlock(sign(), ModWoodTypes.magnolia));
     public static final RegistryObject<Block> MAGNOLIA_WALL_SIGN = ModBlocks.MOD_BLOCKS.register("magnolia_wall_sign", () -> new WallSignBlock(sign().lootFrom(MAGNOLIA_SIGN), ModWoodTypes.magnolia));
-    public static final RegistryObject<Block> MAGNOLIA_HANGING_SIGN = ModBlocks.MOD_BLOCKS.register("magnolia_hanging_sign", () -> new CeilingHangingSignBlock(hangingSign(), ModWoodTypes.magnolia));
-    public static final RegistryObject<Block> MAGNOLIA_WALL_HANGING_SIGN = ModBlocks.MOD_BLOCKS.register("magnolia_wall_hanging_sign", () -> new WallHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_HANGING_SIGN).lootFrom(MAGNOLIA_HANGING_SIGN), ModWoodTypes.magnolia));
     public static final RegistryObject<Block> MAGNOLIA_SLAB = ModBlocks.MOD_BLOCKS.register("magnolia_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SLAB)));
     public static final RegistryObject<Block> MAGNOLIA_STAIRS = ModBlocks.MOD_BLOCKS.register("magnolia_stairs", () -> new StairBlock(() -> MAGNOLIA_PLANKS.get().defaultBlockState(),BlockBehaviour.Properties.copy(Blocks.OAK_STAIRS)));
-    public static final RegistryObject<Block> MAGNOLIA_DOOR = ModBlocks.MOD_BLOCKS.register("magnolia_door", () -> new DoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_DOOR), BlockSetType.OAK));
-    public static final RegistryObject<Block> MAGNOLIA_TRAPDOOR = ModBlocks.MOD_BLOCKS.register("magnolia_trapdoor", () -> new TrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_TRAPDOOR), BlockSetType.OAK));
+    public static final RegistryObject<Block> MAGNOLIA_DOOR = ModBlocks.MOD_BLOCKS.register("magnolia_door", () -> new DoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_DOOR), SoundEvents.WOODEN_DOOR_CLOSE, SoundEvents.WOODEN_DOOR_OPEN));
+    public static final RegistryObject<Block> MAGNOLIA_TRAPDOOR = ModBlocks.MOD_BLOCKS.register("magnolia_trapdoor", () -> new TrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_TRAPDOOR), SoundEvents.WOODEN_TRAPDOOR_CLOSE, SoundEvents.WOODEN_TRAPDOOR_OPEN));
 
     public static final RegistryObject<PetrifiedLogBlock> PETRIFIED_ARAUCARIA_LOG = ModBlocks.MOD_BLOCKS.register("petrified_araucaria_log", () -> new PetrifiedLogBlock(PlantHandler.ARAUCARIA, BlockBehaviour.Properties.copy(Blocks.OAK_LOG)));
     public static final RegistryObject<PetrifiedLogBlock> PETRIFIED_CALAMITES_LOG = ModBlocks.MOD_BLOCKS.register("petrified_calamites_log", () -> new PetrifiedLogBlock(PlantHandler.CALAMITES, BlockBehaviour.Properties.copy(Blocks.OAK_LOG)));
@@ -156,11 +145,7 @@ public class WoodBlocks {
     public static final RegistryObject<PetrifiedLogBlock> PETRIFIED_PSARONIUS_LOG = ModBlocks.MOD_BLOCKS.register("petrified_psaronius_log", () -> new PetrifiedLogBlock(PlantHandler.PSARONIUS, BlockBehaviour.Properties.copy(Blocks.OAK_LOG)));
     public static final RegistryObject<PetrifiedLogBlock> PETRIFIED_PHOENIX_LOG = ModBlocks.MOD_BLOCKS.register("petrified_phoenix_log", () -> new PetrifiedLogBlock(PlantHandler.PHOENIX, BlockBehaviour.Properties.copy(Blocks.OAK_LOG)));
     public static BlockBehaviour.Properties sign() {
-        return BlockBehaviour.Properties.copy(Blocks.OAK_SIGN).noCollission().strength(1.0F).sound(SoundType.WOOD);
-    }
-
-    public static BlockBehaviour.Properties hangingSign() {
-        return BlockBehaviour.Properties.copy(Blocks.OAK_HANGING_SIGN).noCollission().strength(1.0F).sound(SoundType.WOOD);
+        return BlockBehaviour.Properties.of(Material.WOOD).noCollission().strength(1.0F).sound(SoundType.WOOD);
     }
 
     public static void register() {
@@ -173,12 +158,6 @@ public class WoodBlocks {
 
     public static List<Block> getSigns() {
         return ModBlocks.MOD_BLOCKS.getEntries().stream().map(RegistryObject::get).filter(block -> block instanceof SignBlock).toList();
-    }
-
-    public static List<Block> getHangingSigns() {
-        return ModBlocks.MOD_BLOCKS.getEntries().stream().map(RegistryObject::get)
-                .filter(block -> block instanceof CeilingHangingSignBlock || block instanceof WallHangingSignBlock)
-                .toList();
     }
 
     public static BushBlock getSaplingForType(WoodType type) {

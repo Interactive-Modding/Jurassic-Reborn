@@ -2,6 +2,7 @@ package net.vit.jurassicreborn.common.entities;
 
 import net.minecraft.world.entity.ai.control.SmoothSwimmingMoveControl;
 import net.vit.jurassicreborn.common.entities.Dinosaurs.Dinosaur;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MoverType;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -32,7 +33,7 @@ public abstract class SwimmingDinosaurEntity extends DinosaurEntity {
             this.setAirSupply(air);
             if (this.getAirSupply() == -20) {
                 this.setAirSupply(0);
-                this.hurt(this.damageSources().drown(), 2.0F);
+                this.hurt(DamageSource.DROWN, 2.0F);
             }
         } else {
             this.setAirSupply(300);
@@ -45,7 +46,7 @@ public abstract class SwimmingDinosaurEntity extends DinosaurEntity {
         float vertical = (float) vec.y;
         float forward = (float) vec.z;
         boolean noInput = strafe == 0 && vertical == 0 && forward == 0;
-        if (!this.level().isClientSide && this.isInWater() && !this.isCarcass()) {
+        if (!this.level.isClientSide && this.isInWater() && !this.isCarcass()) {
             this.moveRelative(0.1F, new Vec3(strafe, vertical, forward));
             this.move(MoverType.SELF, this.getDeltaMovement());
             Vec3 movement = this.getDeltaMovement().multiply(0.7, 0.7, 0.7);
@@ -71,7 +72,7 @@ public abstract class SwimmingDinosaurEntity extends DinosaurEntity {
             double dx = this.random.nextGaussian() * 0.02D;
             double dy = this.random.nextGaussian() * 0.02D;
             double dz = this.random.nextGaussian() * 0.02D;
-            this.level().addParticle(ParticleTypes.SQUID_INK, this.getX() + x * 0.1D + (this.random.nextDouble() - 0.5D) * 0.6D, this.getY() + y * 0.1D + (this.random.nextDouble() - 0.5D) * 0.6D, this.getZ() + z * 0.1D + (this.random.nextDouble() - 0.5D) * 0.6D, dx, dy, dz);
+            this.level.addParticle(ParticleTypes.SQUID_INK, this.getX() + x * 0.1D + (this.random.nextDouble() - 0.5D) * 0.6D, this.getY() + y * 0.1D + (this.random.nextDouble() - 0.5D) * 0.6D, this.getZ() + z * 0.1D + (this.random.nextDouble() - 0.5D) * 0.6D, dx, dy, dz);
         }
     }
 

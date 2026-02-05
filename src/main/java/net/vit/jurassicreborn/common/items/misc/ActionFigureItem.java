@@ -65,10 +65,6 @@ public class ActionFigureItem extends Item {
         stack.setTag(tag);
         return stack;
     }
-    @Override
-    public String getDescriptionId(ItemStack stack) {
-        return "item.jurassicreborn.action_figure.dynamic";
-    }
 
 
 
@@ -173,18 +169,13 @@ public class ActionFigureItem extends Item {
     }
 
     @Override
-    public @NotNull Component getName(@NotNull ItemStack stack) {
-        Dinosaur dino = this.getDinosaur(stack);
+    public @NotNull Component getName(@NotNull ItemStack pStack) {
+        if(this.isSkeleton(pStack))
+            return LangUtil.replaceWithDinoName(this.getDinosaur(pStack), "item.JurassicReborn.skeleton." + (this.isFresh(pStack) ? "fresh" : "fossil"));
 
-        if (dino == Dinosaur.EMPTY) {
-            return Component.translatable("item.jurassicreborn.action_figure");
-        }
-
-        return Component.translatable(
-                "item.jurassicreborn.action_figure.dynamic",
-                dino.getTranslatedName()
-        );
+        return LangUtil.replaceWithDinoName(this.getDinosaur(pStack), "item.JurassicReborn.action_figure");
     }
+
     @Override
     public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
         if(this.isSkeleton)

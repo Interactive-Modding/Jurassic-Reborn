@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:gypsum_mixed_path_slab"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

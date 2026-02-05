@@ -34,12 +34,10 @@ public class AbandonedPaddockGenerator extends StructureGenerator {
         List<StructureTemplate.StructureBlockInfo> dataBlocks = template.filterBlocks(position, settings, Blocks.STRUCTURE_BLOCK);
         template.placeInWorld(level, position, position, settings, random, 4);
         for (StructureTemplate.StructureBlockInfo info : dataBlocks) {
-            if (info.nbt() == null) continue;
-            String type = info.nbt().getString("metadata");
+            String type = info.nbt.getString("metadata"); // Use 'nbt' as a field, not method!
             if ("Chest".equals(type)) {
-                BlockPos infoPos = info.pos();
-                level.setBlock(infoPos, Blocks.AIR.defaultBlockState(), 3);
-                BlockEntity tile = level.getBlockEntity(infoPos.below());
+                level.setBlock(info.pos, Blocks.AIR.defaultBlockState(), 3);
+                BlockEntity tile = level.getBlockEntity(info.pos.below());
                 if (tile instanceof ChestBlockEntity chest) {
                     chest.setLootTable(BuiltInLootTables.VILLAGE_WEAPONSMITH, random.nextLong());
                 }

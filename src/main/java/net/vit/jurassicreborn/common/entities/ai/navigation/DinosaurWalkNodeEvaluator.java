@@ -36,8 +36,8 @@ public class DinosaurWalkNodeEvaluator extends WalkNodeEvaluator {
     public void prepare(PathNavigationRegion region, Mob mob) {
         super.prepare(region, mob);
         this.cache = new Long2ObjectOpenHashMap<>();
-        mob.setPathfindingMalus(BlockPathTypes.DAMAGE_OTHER, 16.0F);
-        mob.setPathfindingMalus(BlockPathTypes.DANGER_OTHER, 8.0F);
+        mob.setPathfindingMalus(BlockPathTypes.DAMAGE_CACTUS, 16.0F);
+        mob.setPathfindingMalus(BlockPathTypes.DANGER_CACTUS, 8.0F);
         mob.setPathfindingMalus(BlockPathTypes.DAMAGE_FIRE, 16.0F);
         mob.setPathfindingMalus(BlockPathTypes.DANGER_FIRE, 8.0F);
         Dinosaur d = safeDino();
@@ -82,12 +82,12 @@ public class DinosaurWalkNodeEvaluator extends WalkNodeEvaluator {
             }
 
             if (below == BlockPathTypes.DAMAGE_FIRE)   type = BlockPathTypes.DAMAGE_FIRE;
-            if (below == BlockPathTypes.DAMAGE_OTHER) type = BlockPathTypes.DAMAGE_OTHER;
+            if (below == BlockPathTypes.DAMAGE_CACTUS) type = BlockPathTypes.DAMAGE_CACTUS;
             if (below == BlockPathTypes.WATER)         type = BlockPathTypes.WATER;
 
             BlockPathTypes adj = checkAdjacentDanger(level, x, y, z);
             if (adj != null) {
-                if (adj == BlockPathTypes.DAMAGE_OTHER || adj == BlockPathTypes.DAMAGE_FIRE) {
+                if (adj == BlockPathTypes.DAMAGE_CACTUS || adj == BlockPathTypes.DAMAGE_FIRE) {
                     putCache(key, adj);
                     return adj;
                 }
@@ -141,7 +141,7 @@ public class DinosaurWalkNodeEvaluator extends WalkNodeEvaluator {
             return BlockPathTypes.TRAPDOOR;
         }
         if (state.is(Blocks.FIRE) || state.is(Blocks.MAGMA_BLOCK)) return BlockPathTypes.DAMAGE_FIRE;
-        if (state.is(Blocks.CACTUS)) return BlockPathTypes.DAMAGE_OTHER;
+        if (state.is(Blocks.CACTUS)) return BlockPathTypes.DAMAGE_CACTUS;
 
         if (state.getBlock() instanceof ElectricFenceBaseBlock base) {
             return fenceDanger(level, pos, base.getType(), false);
@@ -154,13 +154,13 @@ public class DinosaurWalkNodeEvaluator extends WalkNodeEvaluator {
             if (be instanceof ElectricFenceWireBlockEntity wire && wire.isPowered()) {
                 return BlockPathTypes.BLOCKED;
             }
-            return BlockPathTypes.DANGER_OTHER;
+            return BlockPathTypes.DANGER_CACTUS;
         }
         return null;
     }
 
     private BlockPathTypes fenceDanger(BlockGetter level, BlockPos pos, FenceType type, boolean powered) {
-        return isFencePowered(level, pos, type, powered) ? BlockPathTypes.BLOCKED : BlockPathTypes.DANGER_OTHER;
+        return isFencePowered(level, pos, type, powered) ? BlockPathTypes.BLOCKED : BlockPathTypes.DANGER_CACTUS;
     }
 
     private boolean isFencePowered(BlockGetter level, BlockPos pos, FenceType type, boolean powered) {
@@ -209,8 +209,8 @@ public class DinosaurWalkNodeEvaluator extends WalkNodeEvaluator {
 
     private BlockPathTypes dangerFrom(BlockGetter level, BlockPos pos) {
         BlockPathTypes t = classifyBlock(level, pos, level.getBlockState(pos));
-        if (t == BlockPathTypes.DAMAGE_OTHER
-                || t == BlockPathTypes.DANGER_OTHER
+        if (t == BlockPathTypes.DAMAGE_CACTUS
+                || t == BlockPathTypes.DANGER_CACTUS
                 || t == BlockPathTypes.DAMAGE_FIRE
                 || t == BlockPathTypes.DANGER_FIRE) {
             return t;

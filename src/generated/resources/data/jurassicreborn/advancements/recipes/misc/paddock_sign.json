@@ -28,6 +28,5 @@
     "recipes": [
       "jurassicreborn:paddock_sign"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

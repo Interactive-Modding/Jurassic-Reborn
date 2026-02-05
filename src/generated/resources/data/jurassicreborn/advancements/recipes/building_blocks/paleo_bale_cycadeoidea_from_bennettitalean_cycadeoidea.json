@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:paleo_bale_cycadeoidea_from_bennettitalean_cycadeoidea"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

@@ -55,7 +55,7 @@ public class JurassicStructureMapForEmeralds implements VillagerTrades.ItemListi
 
     @Override
     public MerchantOffer getOffer(Entity trader, RandomSource random) {
-        if (!(trader.level() instanceof ServerLevel serverLevel)) {
+        if (!(trader.level instanceof ServerLevel serverLevel)) {
             return null;
         }
 

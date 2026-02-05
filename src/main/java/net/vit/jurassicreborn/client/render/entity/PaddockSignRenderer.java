@@ -43,7 +43,6 @@ public class PaddockSignRenderer extends EntityRenderer<PaddockSignEntity> {
         float s = 0.01f;
         pose.pushPose();
         pose.translate(0, 0, -s);
-
         float zStart   = 0.03f;   // first slice: almost flush to the wall
         float zEnd     = 0.000f;
         int   slices   = 30;

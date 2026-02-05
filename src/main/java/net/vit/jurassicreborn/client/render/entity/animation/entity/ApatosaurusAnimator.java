@@ -16,8 +16,6 @@ public class ApatosaurusAnimator extends EntityAnimator<ApatosaurusEntity> {
                                      float ticks, float rotationYaw,
                                      float rotationPitch, float scale) {
 
-
-
         AdvancedModelBox body   = model.getCube("body");
         AdvancedModelBox neck1  = model.getCube("neck1");
         AdvancedModelBox neck2  = model.getCube("neck2");
@@ -36,13 +34,10 @@ public class ApatosaurusAnimator extends EntityAnimator<ApatosaurusEntity> {
         AdvancedModelBox topLegLeft  = model.getCube("toplegleft");
         AdvancedModelBox topLegRight = model.getCube("toplegright");
 
-
         // --- Create arrays for chain-based animations. ---
-
         AdvancedModelBox[] tailArray = {
                 tail9, tail8, tail7, tail6, tail5, tail4, tail3, tail2, tail1
         };
-
 
         AdvancedModelBox[] neckArray = {
                 neck4, neck3, neck2, neck1
@@ -64,13 +59,10 @@ public class ApatosaurusAnimator extends EntityAnimator<ApatosaurusEntity> {
             model.walk(topLegRight, 0.5F, 0.3F, true,   0.0F, 0.0F, limbSwing, limbSwingAmount);
         }
 
-
         // bob(part, speed, degree, ignoreFacing, ticks, distance)
         if (body != null) {
             model.bob(body, 0.5F, 2.0F, false, limbSwing, limbSwingAmount);
         }
-
-
 
         // entity.tailBuffer.applyChainSwingBuffer(tailArray);
     }

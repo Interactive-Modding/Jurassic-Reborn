@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:green_jeep_wrangler"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

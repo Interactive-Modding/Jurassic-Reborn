@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:dart_poison"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:gypsum_pathway"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

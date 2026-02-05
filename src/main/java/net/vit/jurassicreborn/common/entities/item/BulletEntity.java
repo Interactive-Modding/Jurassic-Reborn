@@ -18,6 +18,7 @@ import net.minecraftforge.network.NetworkHooks;
 import net.vit.jurassicreborn.common.entities.ModEntities;
 import net.vit.jurassicreborn.common.items.ModItems;
 import net.vit.jurassicreborn.common.items.guns.Bullet;
+import net.vit.jurassicreborn.common.util.ai.DamageSources;
 
 public class BulletEntity extends AbstractArrow implements IEntityAdditionalSpawnData {
     private ItemStack ammoStack = ItemStack.EMPTY;
@@ -38,7 +39,7 @@ public class BulletEntity extends AbstractArrow implements IEntityAdditionalSpaw
         // We no longer call setItem(...). Instead, override getItem() below.
     }
 
-
+    
     public void setDamage(int dmg) {
         this.damage = dmg;
     }
@@ -53,11 +54,11 @@ public class BulletEntity extends AbstractArrow implements IEntityAdditionalSpaw
     @Override
     protected void onHitEntity(EntityHitResult result) {
         super.onHitEntity(result);
-        if (!this.level().isClientSide) {
+        if (!this.level.isClientSide) {
             if (result.getEntity() instanceof LivingEntity target &&
                     this.ammoStack.getItem() instanceof Bullet) {
 
-                DamageSource src = this.damageSources().arrow(this, this.getOwner());
+                DamageSource src = DamageSources.BULLET;
                 target.hurt(src, this.damage);
             }
             this.discard(); // remove from world
@@ -67,7 +68,7 @@ public class BulletEntity extends AbstractArrow implements IEntityAdditionalSpaw
     @Override
     protected void onHit(HitResult result) {
         super.onHit(result);
-        if (!this.level().isClientSide) {
+        if (!this.level.isClientSide) {
             this.discard();
         }
     }
@@ -76,8 +77,7 @@ public class BulletEntity extends AbstractArrow implements IEntityAdditionalSpaw
     public void tick() {
         super.tick();
 
-        Level level = this.level();
-        if (!this.level().isClientSide && level instanceof ServerLevel serverLevel) {
+        if (!this.level.isClientSide && this.level instanceof ServerLevel serverLevel) {
             serverLevel.sendParticles(
                     ParticleTypes.SMOKE,
                     this.getX(),

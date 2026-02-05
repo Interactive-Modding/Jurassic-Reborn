@@ -1,8 +1,8 @@
 package net.vit.jurassicreborn.client.screens;
 
+import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
@@ -37,8 +37,11 @@ public class SelectDinosaurScreen extends Screen {
 
     @Override
     protected void init() {
-        DinosaurHandler.doDinosInit();
-        this.dinoIds = DinosaurHandler.getRegisteredIds();
+        // build a list of all IDs except the EMPTY placeholder
+        int total = DinosaurHandler.count(); // includes EMPTY at id 0
+        this.dinoIds = IntStream.range(1, total)  // skip 0 (EMPTY)
+                .boxed()
+                .collect(Collectors.toList());
 
         this.page = 0;
 
@@ -86,18 +89,18 @@ public class SelectDinosaurScreen extends Screen {
     }
 
     @Override
-    public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float ptt) {
-        this.renderBackground(guiGraphics);
+    public void render(PoseStack ms, int mouseX, int mouseY, float ptt) {
+        this.renderBackground(ms);
 
         int gridHeight = ROWS * 20;
         int startY = (this.height - gridHeight) / 2;
 
-        guiGraphics.drawCenteredString(this.font, this.title, width / 2, startY - 20, 0xFFFFFF);
+        drawCenteredString(ms, this.font, this.title, width / 2, startY - 20, 0xFFFFFF);
 
         int totalPages = (dinoIds.size() + PER_PAGE - 1) / PER_PAGE;
-        guiGraphics.drawCenteredString(this.font, Component.literal((page + 1) + "/" + totalPages), width / 2, startY + gridHeight + 10, 0xFFFFFF);
+        drawCenteredString(ms, this.font, Component.literal((page + 1) + "/" + totalPages), width / 2, startY + gridHeight + 10, 0xFFFFFF);
 
-        super.render(guiGraphics, mouseX, mouseY, ptt);
+        super.render(ms, mouseX, mouseY, ptt);
     }
 
     @Override

@@ -81,9 +81,8 @@ public class AnimationCommand {
             return 0;
         }
 
-        final int totalPlayed = played;
         ctx.getSource().sendSuccess(
-                () -> Component.literal("Played " + animKey + " on " + totalPlayed + " " + dinoId), true);
+                Component.literal("Played " + animKey + " on " + played + " " + dinoId), true);
         return played;
     }
 }

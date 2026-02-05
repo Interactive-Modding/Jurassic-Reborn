@@ -64,7 +64,7 @@ public class PotionDartRecipe extends CustomRecipe {
     }
 
     @Override
-    public ItemStack assemble(CraftingContainer craftingContainer, RegistryAccess registryAccess) {
+    public ItemStack assemble(CraftingContainer craftingContainer) {
         ItemStack potion = ItemStack.EMPTY;
         int dartCount = 0;
 
@@ -90,8 +90,7 @@ public class PotionDartRecipe extends CustomRecipe {
             result.getOrCreateTag().putInt("CustomPotionColor", tag.getInt("CustomPotionColor"));
         }
 
-        return result;
-    }
+        return result;    }
 
 
     // --- Utility checks ------------------------------------------------------
@@ -112,7 +111,6 @@ public class PotionDartRecipe extends CustomRecipe {
         return width * height >= 2;
     }
 
-    @Override
     public ItemStack getResultItem(RegistryAccess registryAccess) {
         return new ItemStack(ModItems.DART_TIPPED_POTION.get());
     }

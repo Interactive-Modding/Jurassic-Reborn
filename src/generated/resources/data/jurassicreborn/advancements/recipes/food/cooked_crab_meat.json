@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:cooked_crab_meat"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

@@ -51,7 +51,7 @@ public class DinosaurMoveHelper extends MoveControl {
                 // if the next tile isn't walkable, bias to forward only
                 if (nodeEvaluator != null) {
                     BlockPathTypes type = nodeEvaluator.getBlockPathType(
-                            this.mob.level(),
+                            this.mob.level,
                             Mth.floor(this.mob.getX() + (double) mx),
                             this.mob.getBlockY(),
                             Mth.floor(this.mob.getZ() + (double) mz)
@@ -99,7 +99,7 @@ public class DinosaurMoveHelper extends MoveControl {
             case JUMPING -> {
                 // keep speed while in vanilla jumping state
                 this.mob.setSpeed((float) (this.speedModifier * baseSpeed));
-                if (this.mob.onGround()) {
+                if (this.mob.isOnGround()) {
                     this.operation = Operation.WAIT;
                 }
             }
@@ -112,7 +112,7 @@ public class DinosaurMoveHelper extends MoveControl {
         }
     }
 
-
+    
     private boolean isWalkableRelative(float relX, float relZ) {
         PathNavigation nav = this.mob.getNavigation();
         if (nav == null) return true;
@@ -124,6 +124,6 @@ public class DinosaurMoveHelper extends MoveControl {
                 this.mob.getBlockY(),
                 Mth.floor(this.mob.getZ() + (double) relZ)
         );
-        return eval.getBlockPathType(this.mob.level(), probe.getX(), probe.getY(), probe.getZ()) == BlockPathTypes.WALKABLE;
+        return eval.getBlockPathType(this.mob.level, probe.getX(), probe.getY(), probe.getZ()) == BlockPathTypes.WALKABLE;
     }
 }

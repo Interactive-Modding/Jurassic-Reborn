@@ -33,6 +33,5 @@
     [
       "dna_sequencer"
     ]
-  ],
-  "sends_telemetry_event": true
+  ]
 }

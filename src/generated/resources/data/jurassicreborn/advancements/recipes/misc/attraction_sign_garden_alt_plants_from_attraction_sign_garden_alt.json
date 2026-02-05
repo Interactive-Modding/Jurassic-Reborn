@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:attraction_sign_garden_alt_plants_from_attraction_sign_garden_alt"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

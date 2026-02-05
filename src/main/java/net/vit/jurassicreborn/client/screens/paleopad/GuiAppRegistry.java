@@ -14,7 +14,6 @@ public class GuiAppRegistry {
     }
 
     public static void register() {
-
         registerApp(new FlappyDinoGuiApp(AppHandler.INSTANCE.flappy_dino));
         registerApp(new MinimapGuiApp(AppHandler.INSTANCE.minimap));
         registerApp(new FeederTrackerGuiApp(AppHandler.INSTANCE.feederTracker));

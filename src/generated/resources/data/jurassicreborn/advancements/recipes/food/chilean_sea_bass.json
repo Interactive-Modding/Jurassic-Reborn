@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:chilean_sea_bass"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

@@ -54,10 +54,6 @@ public class FreshSkeletonItem extends Item {
         super(properties);
         this.dino = dino;
     }
-    @Override
-    public String getDescriptionId(ItemStack stack) {
-        return "item.jurassicreborn.skeleton.fresh.dynamic";
-    }
 
     @Override
     public ItemStack getDefaultInstance() {
@@ -174,18 +170,8 @@ public class FreshSkeletonItem extends Item {
 
     @Override
     public @NotNull Component getName(@NotNull ItemStack stack) {
-        Dinosaur dino = this.getDinosaur(stack);
-
-        if (dino == Dinosaur.EMPTY) {
-            return Component.translatable("item.jurassicreborn.skeleton.fresh");
-        }
-
-        return Component.translatable(
-                "item.jurassicreborn.skeleton.fresh.dynamic",
-                dino.getTranslatedName()
-        );
+        return LangUtil.replaceWithDinoName(this.getDinosaur(stack), "item.JurassicReborn.skeleton.fresh");
     }
-
 
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag) {

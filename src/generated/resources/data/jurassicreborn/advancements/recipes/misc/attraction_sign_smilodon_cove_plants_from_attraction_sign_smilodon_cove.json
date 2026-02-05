@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:attraction_sign_smilodon_cove_plants_from_attraction_sign_smilodon_cove"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

@@ -148,9 +148,9 @@ public class JurassicClient {
 
     // CLIENT-ONLY helper; call during client tick of the projectile or on impact
     public static void spawnVenomParticles(VenomEntity entity) {
-        if (!entity.level().isClientSide) return;
+        if (!entity.level.isClientSide) return;
 
-        var level = entity.level();
+        var level = entity.level;
         var rand  = level.getRandom();
         double size = 0.35D;
 
@@ -190,6 +190,7 @@ public class JurassicClient {
     @SuppressWarnings("removal")
     public static void clientSetup(final FMLClientSetupEvent evt){
         evt.enqueueWork(() -> {
+            MenuScreens.register(ModMenuTypes.CULTIVATOR.get(), CultivatorScreen::new);
 
             // BlockEntityRenderer for the **bottom** block entity type
             BlockEntityRenderers.register(

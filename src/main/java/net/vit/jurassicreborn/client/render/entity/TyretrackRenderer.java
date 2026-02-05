@@ -15,9 +15,8 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LightLayer;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.FluidTags;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RenderLevelStageEvent;
@@ -34,6 +33,10 @@ import java.util.List;
 
 @Mod.EventBusSubscriber(modid = JurassicReborn.MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public final class TyretrackRenderer {
+    public static final List<Material> ALLOWED_MATERIALS = List.of(
+            Material.GRASS, Material.DIRT, Material.SAND
+    );
+
     public static final ResourceLocation TYRE_TRACKS =
             new ResourceLocation(JurassicReborn.MODID, "textures/misc/tyre-tracks.png");
 
@@ -92,8 +95,8 @@ public final class TyretrackRenderer {
             Vec3 svOpp = a.getOppositePosition();
             Vec3 evOpp = b.getOppositePosition();
 
-            BlockPos sPos = BlockPos.containing(sv.x, sv.y, sv.z);
-            BlockPos ePos = BlockPos.containing(ev.x, ev.y, ev.z);
+            BlockPos sPos = new BlockPos(sv);
+            BlockPos ePos = new BlockPos(ev);
 
             if (sv.y != ev.y || !isAccepted(level, sPos) || !isAccepted(level, ePos)) continue;
 
@@ -154,9 +157,9 @@ public final class TyretrackRenderer {
 
     private static boolean isAccepted(Level level, BlockPos pos) {
         BlockState ground = level.getBlockState(pos);
-        return (ground.is(BlockTags.DIRT) || ground.is(BlockTags.SAND)) &&
+        return ALLOWED_MATERIALS.contains(ground.getMaterial()) &&
                 ground.isFaceSturdy(level, pos, Direction.UP) &&
-                !level.getBlockState(pos.above()).getFluidState().is(FluidTags.WATER);
+                level.getBlockState(pos.above()).getMaterial() != Material.WATER;
     }
 
     @SubscribeEvent
@@ -171,7 +174,7 @@ public final class TyretrackRenderer {
     }
 
     public static void uploadList(VehicleEntity v) {
-        if (!v.level().isClientSide) return;
+        if (!v.level.isClientSide) return;
         for (List<WheelParticleData> l : v.wheelDataList) DEAD_CARS_LISTS.add(0, l);
     }
 }

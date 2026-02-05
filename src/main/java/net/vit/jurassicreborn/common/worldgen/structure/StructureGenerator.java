@@ -5,9 +5,9 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.Rotation;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.util.RandomSource;
 
@@ -82,7 +82,8 @@ public abstract class StructureGenerator {
         while (current.getY() > level.getMinBuildHeight()) {
             BlockPos below = current.below();
             BlockState state = level.getBlockState(below);
-            if (state.is(BlockTags.DIRT) || state.is(BlockTags.SAND) || state.is(BlockTags.BASE_STONE_OVERWORLD) || !state.getFluidState().isEmpty()) {
+            Material material = state.getMaterial();
+            if (material == Material.DIRT || material == Material.SAND || material == Material.GRASS || material == Material.STONE || material.isLiquid()) {
                 break;
             }
             current = below;
@@ -125,17 +126,10 @@ public abstract class StructureGenerator {
                     do {
                         level.setBlock(setPos, this.getFillerState(), 2);
                         setPos = setPos.below();
-                    } while (isReplaceable(level.getBlockState(setPos)));
+                    } while (level.getBlockState(setPos).getMaterial().isReplaceable());
                 }
             }
         }
-    }
-
-    private static boolean isReplaceable(BlockState state) {
-        return state.isAir()
-                || !state.getFluidState().isEmpty()
-                || state.is(BlockTags.REPLACEABLE)
-                || state.is(BlockTags.REPLACEABLE_BY_TREES);
     }
 
     protected boolean canSpawnOnHills() {

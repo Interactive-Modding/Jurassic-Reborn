@@ -7,7 +7,7 @@ import net.vit.jurassicreborn.common.blocks.entities.cleaner.CleanerBlock;
 import net.vit.jurassicreborn.common.blocks.entities.cleaner.CleanerBlockEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.world.item.ItemDisplayContext;
+import net.minecraft.client.renderer.block.model.ItemTransforms;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.core.Direction;
@@ -117,7 +117,7 @@ public class CleaningStationRenderer implements BlockEntityRenderer<CleanerBlock
 
         //            BakedModel bakedmodel = itemRenderer.getModel(cleanable, level, null, 0/*this shouldn't matter, just don't use a compass in the cleaner lol*/);
 
-        itemRenderer.renderStatic(cleanable, ItemDisplayContext.GROUND, pPackedLight, pPackedOverlay, pPoseStack, pBufferSource, blockEntity.getLevel(), 0);
+        itemRenderer.renderStatic(cleanable, ItemTransforms.TransformType.GROUND, pPackedLight, pPackedOverlay, pPoseStack, pBufferSource, 0);
 
 //        BlockRenderDispatcher blockRender = mc.getBlockRenderer();
 

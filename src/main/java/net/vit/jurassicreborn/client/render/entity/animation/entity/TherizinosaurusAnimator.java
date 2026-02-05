@@ -14,7 +14,6 @@ public class TherizinosaurusAnimator extends EntityAnimator<TherizinosaurusEntit
     protected void performAnimations(AnimatableModel model, TherizinosaurusEntity entity,
                                      float f, float f1, float ticks, float rotationYaw, float rotationPitch, float scale) {
 
-
         AdvancedModelBox body  = model.getCube("Body");
         AdvancedModelBox neck1 = model.getCube("Neck1");
         AdvancedModelBox neck2 = model.getCube("Neck2");
@@ -31,11 +30,9 @@ public class TherizinosaurusAnimator extends EntityAnimator<TherizinosaurusEntit
         AdvancedModelBox tail5 = model.getCube("Tail5");
         AdvancedModelBox tail6 = model.getCube("Tail6");
 
-
         AdvancedModelBox[] tail      = new AdvancedModelBox[]{ tail6, tail5, tail4, tail3, tail2, tail1 };
         AdvancedModelBox[] bodyParts = new AdvancedModelBox[]{ body, neck1, head };
         AdvancedModelBox[] headChain = new AdvancedModelBox[]{ neck1, neck2, neck3, neck4, neck5, neck6 };
-
 
         entity.tailBuffer.applyChainSwingBuffer(tail);
 
@@ -59,7 +56,6 @@ public class TherizinosaurusAnimator extends EntityAnimator<TherizinosaurusEntit
 
         // look where we’re facing (distributes across neck to head)
         model.faceTarget(rotationYaw, rotationPitch, 1.0F, neck1, neck2, neck3, neck4, neck5, neck6, head);
-
 
         entity.tailBuffer.applyChainSwingBuffer(tail);
     }

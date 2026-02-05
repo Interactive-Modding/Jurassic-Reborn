@@ -5,14 +5,14 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.Material;
 
 
 public class GypsumStoneBlock extends Block {
     public GypsumStoneBlock() {
-        super(BlockBehaviour.Properties.copy(Blocks.STONE)
+        super(BlockBehaviour.Properties.of(Material.STONE)
                 .strength(2.0F, 2.0F)
                 .requiresCorrectToolForDrops()); // Requires correct tool for drops
     }

@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:mr_dna_keychain"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

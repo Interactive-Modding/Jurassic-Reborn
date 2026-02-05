@@ -33,9 +33,9 @@ public class MateEntityAI extends Goal {
     @Override
     public boolean canUse() {
         // server-side only
-        if (self.level().isClientSide) return false;
+        if (self.level.isClientSide) return false;
 
-        if (!self.level().getGameRules().getRule(GameRuleHandler.DINO_BREEDING).get()) return false;
+        if (!self.level.getGameRules().getRule(GameRuleHandler.DINO_BREEDING).get()) return false;
 
         // basic preconditions
         if (self.isBusy() || self.isCarcass() || self.isSleeping()) return false;
@@ -59,7 +59,7 @@ public class MateEntityAI extends Goal {
 
         // NOTE: method returns List<? extends DinosaurEntity>, so keep wildcard
         List<? extends DinosaurEntity> list =
-                self.level().getEntitiesOfClass(cls, box, candidate::test);
+                self.level.getEntitiesOfClass(cls, box, candidate::test);
 
         partner = list.stream()
                 .min(Comparator.comparingDouble(self::distanceToSqr))
@@ -70,7 +70,7 @@ public class MateEntityAI extends Goal {
 
     @Override
     public boolean canContinueToUse() {
-        if (self.level().isClientSide) return false;
+        if (self.level.isClientSide) return false;
         if (partner == null || !partner.isAlive() || partner.isCarcass() || partner.isSleeping()) return false;
         if (self.isBusy() || self.isCarcass() || self.isSleeping()) return false;
         if (life >= MAX_TICKS) return false;
@@ -110,7 +110,6 @@ public class MateEntityAI extends Goal {
             self.setAnimation(EntityAnimation.MATING.get());
             self.getMetabolism().decreaseEnergy(1000);
             self.getNavigation().stop();
-
 
             stop();
         }

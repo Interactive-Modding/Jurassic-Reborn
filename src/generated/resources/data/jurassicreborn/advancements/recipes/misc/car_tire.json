@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:car_tire"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

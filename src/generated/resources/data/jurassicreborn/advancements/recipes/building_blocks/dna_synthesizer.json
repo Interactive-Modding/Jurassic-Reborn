@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:dna_synthesizer"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

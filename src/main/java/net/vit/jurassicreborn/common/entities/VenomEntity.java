@@ -48,7 +48,7 @@ public class VenomEntity extends Projectile {
     @Override
     public void tick() {
         super.tick();
-        if (!level().isClientSide && this.tickCount > MAX_LIFETIME) {
+        if (!level.isClientSide && this.tickCount > MAX_LIFETIME) {
             this.discard();
             return;
         }
@@ -57,10 +57,10 @@ public class VenomEntity extends Projectile {
         Vec3 motion = this.getDeltaMovement();
         Vec3 end = start.add(motion);
 
-        HitResult blockHit = level().clip(new ClipContext(start, end, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, this));
+        HitResult blockHit = level.clip(new ClipContext(start, end, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, this));
         double speed = motion.length();
         AABB aabb = this.getBoundingBox().expandTowards(motion).inflate(0.35D + speed * 0.75D);
-        EntityHitResult entityHit = ProjectileUtil.getEntityHitResult(level(), this, start, end, aabb, this::canHitEntity);
+        EntityHitResult entityHit = ProjectileUtil.getEntityHitResult(level, this, start, end, aabb, this::canHitEntity);
 
         HitResult chosen = null;
         if (entityHit != null) chosen = entityHit;
@@ -83,7 +83,7 @@ public class VenomEntity extends Projectile {
         motion = motion.scale(DRAG);
         this.setDeltaMovement(motion);
 
-        if (level().isClientSide) {
+        if (level.isClientSide) {
             JurassicClient.spawnVenomParticles(this);
         }
 
@@ -118,7 +118,7 @@ public class VenomEntity extends Projectile {
     @Override
     protected void onHit(HitResult hit) {
         super.onHit(hit);
-        if (!this.level().isClientSide) this.discard();
+        if (!this.level.isClientSide) this.discard();
     }
 
     @Override
@@ -131,14 +131,12 @@ public class VenomEntity extends Projectile {
             if (victim instanceof DilophosaurusEntity && victim != dilo.getTarget()) return;
         }
         if (victim instanceof LivingEntity living) {
-            DamageSource src = shooter instanceof LivingEntity le
-                    ? this.level().damageSources().indirectMagic(this, le)
-                    : this.level().damageSources().thrown(this, shooter);
+            DamageSource src = DamageSource.indirectMobAttack(this, shooter instanceof LivingEntity le ? le : null);
             living.hurt(src, 4.0F);
             living.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 20 * 15, 0, false, true));
             living.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 20 * 15, 0, false, true));
         }
-        if (!this.level().isClientSide) this.discard();
+        if (!this.level.isClientSide) this.discard();
     }
 
     @Override

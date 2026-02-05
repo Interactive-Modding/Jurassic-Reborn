@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:calamites_button"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

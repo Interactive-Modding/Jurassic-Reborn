@@ -72,12 +72,11 @@ public class FordExplorerEntity extends VehicleEntity {
         super.tick();
 
         BlockPos start = blockPosition();
-        if (!level().isClientSide) handleRailDetection();
+        if (!level.isClientSide) handleRailDetection();
 
         if (entityData.get(ON_RAILS)) {
             minecart.tick();
             Vector4f v = wheeldata.carVector;
-
             this.backValue .setTarget(calculateWheelHeight(v.y(), false));
             this.frontValue.setTarget(calculateWheelHeight(v.w(), false));
             this.leftValue .setTarget(getY());
@@ -119,31 +118,31 @@ public class FordExplorerEntity extends VehicleEntity {
     /* --------------------------------------------------------------------- */
     private void handleRailDetection() {
         BlockPos rail = blockPosition();
-        boolean isRail = level().getBlockState(rail).getBlock() instanceof TourRailBlock;
+        boolean isRail = level.getBlockState(rail).getBlock() instanceof TourRailBlock;
         if (!isRail) {
             rail = rail.below();
-            isRail = level().getBlockState(rail).getBlock() instanceof TourRailBlock;
+            isRail = level.getBlockState(rail).getBlock() instanceof TourRailBlock;
         }
         if (!isRail) {
             BlockPos below = rail.below();
-            if (level().getBlockState(below).getBlock() instanceof TourRailBlock &&
+            if (level.getBlockState(below).getBlock() instanceof TourRailBlock &&
                     Arrays.asList(TourRailBlock.EnumRailDirection.ASCENDING_EAST,
                                     TourRailBlock.EnumRailDirection.ASCENDING_NORTH,
                                     TourRailBlock.EnumRailDirection.ASCENDING_SOUTH,
                                     TourRailBlock.EnumRailDirection.ASCENDING_WEST)
-                            .contains(TourRailBlock.getRailDirection(level(), below))) {
+                            .contains(TourRailBlock.getRailDirection(level, below))) {
                 rail = below;
                 isRail = true;
             }
         }
         if (!isRail) {
             BlockPos above = rail.above();
-            if (level().getBlockState(above).getBlock() instanceof TourRailBlock &&
+            if (level.getBlockState(above).getBlock() instanceof TourRailBlock &&
                     Arrays.asList(TourRailBlock.EnumRailDirection.ASCENDING_EAST,
                                     TourRailBlock.EnumRailDirection.ASCENDING_NORTH,
                                     TourRailBlock.EnumRailDirection.ASCENDING_SOUTH,
                                     TourRailBlock.EnumRailDirection.ASCENDING_WEST)
-                            .contains(TourRailBlock.getRailDirection(level(), above))) {
+                            .contains(TourRailBlock.getRailDirection(level, above))) {
                 rail = above;
                 isRail = true;
             }
@@ -155,13 +154,12 @@ public class FordExplorerEntity extends VehicleEntity {
             entityData.set(ON_RAILS, isRail);
             this.refreshDimensions();
 
-
-            Network.sendToAllNear(level(), blockPosition(), new FordExplorerChangeStateMessage(getId(), isRail));
+            Network.sendToAllNear(level, blockPosition(), new FordExplorerChangeStateMessage(getId(), isRail));
         }
 
         railTracks = isRail ? rail : INACTIVE;
         if (!railTracks.equals(prevRailTracks)) {
-            Network.sendToAllNear(level(), blockPosition(), new FordExplorerUpdatePositionStateMessage(getId(), rail));
+            Network.sendToAllNear(level, blockPosition(), new FordExplorerUpdatePositionStateMessage(getId(), rail));
         }
         prevRailTracks = railTracks;
     }
@@ -198,7 +196,7 @@ public class FordExplorerEntity extends VehicleEntity {
 
     @Override
     protected void dropFromLootTable(boolean causedByPlayer) {
-        if (!level().isClientSide) spawnAtLocation(ModItems.FORD_EXPLORER_SNOW.get());
+        if (!level.isClientSide) spawnAtLocation(ModItems.FORD_EXPLORER_SNOW.get());
     }
     /* --------------------------------------------------------------------- */
     /*  SAVE / LOAD                                                          */
@@ -299,7 +297,7 @@ public class FordExplorerEntity extends VehicleEntity {
 
             moveAlongTrack();
 
-            if (!level().isClientSide) {
+            if (!level.isClientSide) {
                 doBlockCollisions();
                 setXRot(0);
                 updateInWaterStateAndDoFluidPushing();
@@ -312,7 +310,7 @@ public class FordExplorerEntity extends VehicleEntity {
             if (vecStart == null) return;
             setPos(vecStart.x, vecStart.y, vecStart.z);
             double slope = 0.0078125D;
-            TourRailBlock.EnumRailDirection dir = TourRailBlock.getRailDirection(level(), railTracks);
+            TourRailBlock.EnumRailDirection dir = TourRailBlock.getRailDirection(level, railTracks);
             Direction facing = getFacingDir();
 
             switch (dir) {
@@ -344,7 +342,7 @@ public class FordExplorerEntity extends VehicleEntity {
             } else {
                 prevKeyDown = false;
             }
-            if (!level().isClientSide) d5 *= dirMul;
+            if (!level.isClientSide) d5 *= dirMul;
 
             double motionX = d5 * d1 / d3;
             double motionZ = d5 * d2 / d3;
@@ -427,10 +425,10 @@ public class FordExplorerEntity extends VehicleEntity {
         }
 
         private Vec3 getRailPos() {
-            net.minecraft.world.level.block.state.BlockState state = level().getBlockState(railTracks);
+            net.minecraft.world.level.block.state.BlockState state = level.getBlockState(railTracks);
             if (!(state.getBlock() instanceof TourRailBlock)) return null;
 
-            TourRailBlock.EnumRailDirection dir = TourRailBlock.getRailDirection(level(), railTracks);
+            TourRailBlock.EnumRailDirection dir = TourRailBlock.getRailDirection(level, railTracks);
             Direction facing = getFacingDir();
 
             double startX = railTracks.getX() + 0.5D + dir.getForwardX(facing) * 0.5D;
@@ -471,7 +469,7 @@ public class FordExplorerEntity extends VehicleEntity {
         }
 
         private Speed getSpeedType() {
-            return ((TourRailBlock) level().getBlockState(railTracks).getBlock()).getSpeedType().getSpeed(getSpeed());
+            return ((TourRailBlock) level.getBlockState(railTracks).getBlock()).getSpeedType().getSpeed(getSpeed());
         }
 
         private Direction getFacingDir() {
@@ -483,11 +481,10 @@ public class FordExplorerEntity extends VehicleEntity {
 
     @Override
     public boolean causeFallDamage(float distance, float damageMultiplier, DamageSource source) {
-
         return false;
     }
     /* --------------------------------------------------------------------- */
-
+    
     /* --------------------------------------------------------------------- */
     public double calculateWheelHeight(double raw, boolean front) { return getDimensions(Pose.STANDING).height / 2.0; }
 }

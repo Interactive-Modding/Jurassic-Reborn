@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:attraction_sign_gyrosphere_station_plants_from_attraction_sign_gyrosphere_station"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

@@ -176,6 +176,5 @@
       "petrified_magnolia_log",
       "petrified_phoenix_log"
     ]
-  ],
-  "sends_telemetry_event": true
+  ]
 }

@@ -54,7 +54,7 @@ public class SkeletonAssemblerMenu extends AbstractContainerMenu {
                                  BlockPos pos) {
 
         super(ModMenuTypes.SKELETON_ASSEMBLER.get(), id);
-        this.access = ContainerLevelAccess.create(playerInv.player.level(), pos);
+        this.access = ContainerLevelAccess.create(playerInv.player.level, pos);
 
         /* handler provides both grid and result slot */
         this.grid   = (Container) handler;

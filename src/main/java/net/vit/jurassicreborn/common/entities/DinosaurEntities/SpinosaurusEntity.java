@@ -29,7 +29,7 @@ public class SpinosaurusEntity extends AmphibianDinosaurEntity {
     public void tick()
     {
         super.tick();
-        if (this.onGround() && !this.isInWater()) {
+        if (this.onGround && !this.isInWater()) {
 
             if (this.zza > 0 && this.stepCount <= 0) {
                 this.playSound(SoundHandler.STOMP, (float) interpolate(0.1F, 1.0F), this.getVoicePitch());

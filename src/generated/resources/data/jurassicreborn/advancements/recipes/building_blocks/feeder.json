@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:feeder"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

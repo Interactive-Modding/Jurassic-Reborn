@@ -16,7 +16,7 @@ import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.storage.loot.LootParams;
+import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
@@ -30,7 +30,6 @@ import net.vit.jurassicreborn.client.screens.HologramSelectScreen;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class HologramBlock extends Block implements EntityBlock {
@@ -92,29 +91,61 @@ public class HologramBlock extends Block implements EntityBlock {
     @Override
     public void setPlacedBy(Level level, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
         super.setPlacedBy(level, pos, state, placer, stack);
+
+        System.out.println("[Hologram] setPlacedBy called - isClient=" + level.isClientSide);
+        System.out.println("[Hologram] Stack has tag: " + stack.hasTag());
+        if (stack.hasTag()) {
+            System.out.println("[Hologram] Stack full tag: " + stack.getTag());
+        }
+
         if (level.isClientSide) {
             return;
         }
 
         BlockEntity be = level.getBlockEntity(pos);
         if (!(be instanceof HologramBlockEntity hologram)) {
+            System.out.println("[Hologram] BlockEntity is not HologramBlockEntity!");
             return;
         }
 
-        CompoundTag tag = stack.getTagElement("BlockEntityTag");
-        if (tag != null) {
-            hologram.applySettingsFromTag(tag, true);
+        CompoundTag blockEntityTag = stack.getTagElement("BlockEntityTag");
+        if (blockEntityTag != null && !blockEntityTag.isEmpty()) {
+            System.out.println("[Hologram] Found BlockEntityTag: " + blockEntityTag);
+
+            // Use the entity's normalizer + sync
+            hologram.applySettingsFromTag(blockEntityTag, /*sync*/ true);
+
+            System.out.println("[Hologram] Applied BlockEntityTag - dino=" + hologram.getDinoIndex() +
+                    ", pose=" + hologram.getPoseIndex() +
+                    ", rotating=" + hologram.isRotating() +
+                    ", rotation=" + hologram.getRot());
+        } else {
+            System.out.println("[Hologram] No BlockEntityTag found - using defaults");
         }
     }
 
     private ItemStack createItemStack(HologramBlockEntity hologram) {
         ItemStack stack = new ItemStack(this);
-        CompoundTag blockEntityTag = new CompoundTag();
+
+        // Create the BlockEntityTag with hologram-specific data
+        CompoundTag blockEntityTag = stack.getOrCreateTagElement("BlockEntityTag");
         blockEntityTag.putInt(HologramBlockEntity.TAG_DINO_INDEX, hologram.getDinoIndex());
         blockEntityTag.putInt(HologramBlockEntity.TAG_POSE_INDEX, hologram.getPoseIndex());
         blockEntityTag.putBoolean(HologramBlockEntity.TAG_ROTATING, hologram.isRotating());
         blockEntityTag.putInt(HologramBlockEntity.TAG_ROTATION, hologram.getRot());
-        stack.addTagElement("BlockEntityTag", blockEntityTag);
+
+        // Also save the base ActionFigure data
+        CompoundTag fullTag = new CompoundTag();
+        hologram.saveAdditional(fullTag);
+
+        // Merge the full tag into BlockEntityTag
+        for (String key : fullTag.getAllKeys()) {
+            if (!blockEntityTag.contains(key)) {
+                blockEntityTag.put(key, fullTag.get(key));
+            }
+        }
+
+        System.out.println("Created item stack with NBT: " + blockEntityTag);
         return stack;
     }
 
@@ -122,21 +153,23 @@ public class HologramBlock extends Block implements EntityBlock {
     public ItemStack getCloneItemStack(BlockState state, HitResult target, BlockGetter level, BlockPos pos, Player player) {
         BlockEntity be = level.getBlockEntity(pos);
         if (be instanceof HologramBlockEntity hologram) {
-            return createItemStack(hologram);
+            ItemStack stack = createItemStack(hologram);
+            System.out.println("Middle-click: Created stack with NBT");
+            return stack;
         }
+        System.out.println("Middle-click: No hologram found, returning default");
         return super.getCloneItemStack(state, target, level, pos, player);
     }
 
     @Override
-    public List<ItemStack> getDrops(BlockState state, LootParams.Builder builder) {
-        List<ItemStack> drops = new ArrayList<>();
+    public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
         BlockEntity be = builder.getOptionalParameter(LootContextParams.BLOCK_ENTITY);
         if (be instanceof HologramBlockEntity hologram) {
-            drops.add(createItemStack(hologram));
-        } else {
-            drops.add(new ItemStack(this));
+            System.out.println("Block broken: Created drop with NBT (code path)");
+            return List.of(createItemStack(hologram));
         }
-        return drops;
+        System.out.println("Block broken: No hologram found, returning default (code path)");
+        return super.getDrops(state, builder);
     }
 
     @Nullable

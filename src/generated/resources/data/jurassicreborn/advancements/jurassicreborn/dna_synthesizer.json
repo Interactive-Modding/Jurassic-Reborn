@@ -33,6 +33,5 @@
     [
       "dna_synthesizer"
     ]
-  ],
-  "sends_telemetry_event": true
+  ]
 }

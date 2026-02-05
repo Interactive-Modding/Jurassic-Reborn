@@ -1,12 +1,13 @@
 package net.vit.jurassicreborn.common.blocks;
 
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.level.block.ButtonBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.properties.BlockSetType;
 
 public class WoodButtonBlock extends ButtonBlock {
 
     public WoodButtonBlock(BlockBehaviour.Properties properties) {
-        super(properties, BlockSetType.OAK, 30, true);
+        // Parameters: (properties, pressDuration, arrowsCanPress, pressSound, releaseSound)
+        super(properties, 30, true, SoundEvents.WOODEN_BUTTON_CLICK_ON, SoundEvents.WOODEN_BUTTON_CLICK_OFF);
     }
 }

@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:low_security_fence_base"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

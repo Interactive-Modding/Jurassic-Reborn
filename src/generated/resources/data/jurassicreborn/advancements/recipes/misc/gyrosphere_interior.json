@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:gyrosphere_interior"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

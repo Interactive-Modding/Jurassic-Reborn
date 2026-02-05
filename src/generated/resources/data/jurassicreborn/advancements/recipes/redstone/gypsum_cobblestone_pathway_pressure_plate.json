@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:gypsum_cobblestone_pathway_pressure_plate"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

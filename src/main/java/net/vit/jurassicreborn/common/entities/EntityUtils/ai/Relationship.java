@@ -82,7 +82,7 @@ public class Relationship {
     }
 
     public DinosaurEntity get(DinosaurEntity owner) {
-        if (!owner.level().isClientSide && owner.level() instanceof ServerLevel sl) {
+        if (!owner.level.isClientSide && owner.level instanceof ServerLevel sl) {
             var e = sl.getEntity(this.entity);
             if (e instanceof DinosaurEntity d) return d;
         }

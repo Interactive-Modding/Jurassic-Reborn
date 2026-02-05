@@ -30,6 +30,5 @@
     "recipes": [
       "jurassicreborn:cage"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

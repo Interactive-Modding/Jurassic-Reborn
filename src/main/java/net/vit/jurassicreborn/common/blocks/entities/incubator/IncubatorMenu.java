@@ -97,8 +97,8 @@ public class IncubatorMenu extends AbstractContainerMenu {
     @Override
     public void removed(Player player) {
         super.removed(player);
-        if(!player.level().isClientSide){
-            BlockEntity blockEntity = player.level().getBlockEntity(this.getBlockPos());
+        if(!player.level.isClientSide){
+            BlockEntity blockEntity = player.level.getBlockEntity(this.getBlockPos());
             if(blockEntity instanceof IncubatorBlockEntity incubator){
                 incubator.setMenuOpen(false);
             }

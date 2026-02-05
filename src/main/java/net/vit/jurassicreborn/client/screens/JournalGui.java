@@ -3,7 +3,6 @@ package net.vit.jurassicreborn.client.screens;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
@@ -109,35 +108,35 @@ public class JournalGui extends Screen {
     }
 
     @Override
-    public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
-        this.renderBackground(guiGraphics);
+    public void render(PoseStack pose, int mouseX, int mouseY, float partialTicks) {
+        this.renderBackground(pose);
         int x = (this.width - SIZE_X) / 2;
         int y = (this.height - SIZE_Y) / 2;
 
-        guiGraphics.blit(BACKGROUND, x, y, 0, 0, SIZE_X, SIZE_Y);
+        RenderSystem.setShaderTexture(0, BACKGROUND);
+        blit(pose, x, y, 0, 0, SIZE_X, SIZE_Y);
 
-        drawPage(guiGraphics, page * 2, x + 18, y + 16);
-        drawPage(guiGraphics, page * 2 + 1, x + 145, y + 16);
+        drawPage(pose, page * 2, x + 18, y + 16);
+        drawPage(pose, page * 2 + 1, x + 145, y + 16);
 
-        super.render(guiGraphics, mouseX, mouseY, partialTicks);
+        super.render(pose, mouseX, mouseY, partialTicks);
     }
 
-    private void drawPage(GuiGraphics guiGraphics, int index, int ox, int oy) {
+    private void drawPage(PoseStack pose, int index, int ox, int oy) {
         if (index >= 0 && index < pages.length) {
             int yOff = 0;
             int lh = (int)(this.font.lineHeight * FONT_SCALE + 2);
             for (String line : pages[index]) {
-                drawScaledString(guiGraphics, line, ox, oy + yOff, FONT_SCALE, 0x000000);
+                drawScaledString(pose, line, ox, oy + yOff, FONT_SCALE, 0x000000);
                 yOff += lh;
             }
         }
     }
 
-    private void drawScaledString(GuiGraphics guiGraphics, String text, float x, float y, float scale, int color) {
-        PoseStack pose = guiGraphics.pose();
+    private void drawScaledString(PoseStack pose, String text, float x, float y, float scale, int color) {
         pose.pushPose();
         pose.scale(scale, scale, 1.0F);
-        guiGraphics.drawString(this.font, text, Mth.floor(x / scale), Mth.floor(y / scale), color, false);
+        this.font.draw(pose, text, x / scale, y / scale, color);
         pose.popPose();
     }
 
@@ -189,12 +188,13 @@ public class JournalGui extends Screen {
         }
 
         @Override
-        public void renderWidget(GuiGraphics guiGraphics, int mx, int my, float pt) {
+        public void renderButton(PoseStack pose, int mx, int my, float pt) {
             if (visible) {
+                RenderSystem.setShaderTexture(0, WIDGETS);
                 boolean hover = isMouseOver(mx, my);
                 int u = hover ? 23 : 0;
                 int v = isForward ? 194 : 207;
-                guiGraphics.blit(WIDGETS, this.getX(), this.getY(), u, v, this.width, this.height);
+                blit(pose, this.getX(), this.getY(), u, v, this.width, this.height);
             }
         }
     }
