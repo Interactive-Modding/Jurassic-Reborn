@@ -12,11 +12,16 @@ import net.vit.jurassicreborn.common.entities.DinosaurEntity;
 import net.vit.jurassicreborn.common.legacy.tabula.TabulaModelHelper;
 import net.vit.jurassicreborn.common.util.LangUtil;
 import net.vit.jurassicreborn.common.util.TimePeriod;
+import net.minecraft.core.Holder;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.level.biome.Biome;
+import net.neoforged.neoforge.server.ServerLifecycleHooks;
 import org.jetbrains.annotations.NotNull;
 
 import javax.vecmath.Matrix4d;
@@ -281,16 +286,16 @@ public abstract class Dinosaur implements Comparable<Dinosaur> {
             if (!this.doesSupportGrowthStage(growthStage)) {
                 growthStageName = GrowthStage.ADULT.name().toLowerCase(Locale.ENGLISH);
             }
-            this.maleTextures.put(growthStage, new ResourceLocation(JurassicReborn.MODID, baseTextures + formattedName + "_male_" + growthStageName + ".png"));
-            this.femaleTextures.put(growthStage, new ResourceLocation(JurassicReborn.MODID, baseTextures + formattedName + "_female_" + growthStageName + ".png"));
-            this.eyelidTextures.put(new GrowthStageGenderContainer(growthStage, true), new ResourceLocation(JurassicReborn.MODID, baseTextures + formattedName + "_male_" + growthStageName + "_eyelid.png"));
-            this.eyelidTextures.put(new GrowthStageGenderContainer(growthStage, false), new ResourceLocation(JurassicReborn.MODID, baseTextures + formattedName + "_female_" + growthStageName + "_eyelid.png"));
+            this.maleTextures.put(growthStage, ResourceLocation.parse(JurassicReborn.MODID + ":" + baseTextures + formattedName + "_male_" + growthStageName + ".png"));
+            this.femaleTextures.put(growthStage, ResourceLocation.parse(JurassicReborn.MODID + ":" + baseTextures + formattedName + "_female_" + growthStageName + ".png"));
+            this.eyelidTextures.put(new GrowthStageGenderContainer(growthStage, true), ResourceLocation.parse(JurassicReborn.MODID + ":" + baseTextures + formattedName + "_male_" + growthStageName + "_eyelid.png"));
+            this.eyelidTextures.put(new GrowthStageGenderContainer(growthStage, false), ResourceLocation.parse(JurassicReborn.MODID + ":" + baseTextures + formattedName + "_female_" + growthStageName + "_eyelid.png"));
 
 
             List<ResourceLocation> overlaysForGrowthStage = new ArrayList<>();
 
             for (int i = 1; i <= this.getOverlayCount(); i++) {
-                overlaysForGrowthStage.add(new ResourceLocation(JurassicReborn.MODID, baseTextures + formattedName + "_overlay_" + growthStageName + "_" + i + ".png"));
+                overlaysForGrowthStage.add(ResourceLocation.parse(JurassicReborn.MODID + ":" + baseTextures + formattedName + "_overlay_" + growthStageName + "_" + i + ".png"));
             }
 
             this.overlays.put(growthStage, overlaysForGrowthStage);
@@ -866,6 +871,20 @@ public abstract class Dinosaur implements Comparable<Dinosaur> {
             }
         }
         this.spawnBiomes = spawnBiomes;
+    }
+
+    protected static List<ResourceKey<Biome>> biomeKeysForTags(TagKey<Biome>[] tags) {
+        HolderLookup.Provider provider = ServerLifecycleHooks.getCurrentServer() != null
+                ? ServerLifecycleHooks.getCurrentServer().registryAccess()
+                : null;
+        if (provider == null) {
+            return List.of();
+        }
+        return provider.lookupOrThrow(Registries.BIOME)
+                .listElements()
+                .filter(holder -> Arrays.stream(tags).anyMatch(holder::is))
+                .map(holder -> holder.unwrapKey().orElseThrow())
+                .toList();
     }
 
     public int getSpawnChance() {

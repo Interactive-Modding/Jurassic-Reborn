@@ -1,5 +1,6 @@
 package net.vit.jurassicreborn.common.blocks.entities.fence;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.BlockPos.MutableBlockPos;
 import net.minecraft.core.Direction;
@@ -15,11 +16,12 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.chunk.ChunkAccess;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.vit.jurassicreborn.common.blocks.ModBlocks;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.HashSet;
@@ -30,6 +32,22 @@ import net.minecraft.world.level.material.Fluids;
 
 /** Forge 1.19.2 rewrite of the old ElectricFencePoleBlock. */
 public class ElectricFencePoleBlock extends BaseEntityBlock implements SimpleWaterloggedBlock {
+
+    public static final MapCodec<ElectricFencePoleBlock> LOW_CODEC =
+            MapCodec.unit(() -> ModBlocks.LOW_SECURITY_FENCE_POLE.get());
+    public static final MapCodec<ElectricFencePoleBlock> MED_CODEC =
+            MapCodec.unit(() -> ModBlocks.MED_SECURITY_FENCE_POLE.get());
+    public static final MapCodec<ElectricFencePoleBlock> HIGH_CODEC =
+            MapCodec.unit(() -> ModBlocks.HIGH_SECURITY_FENCE_POLE.get());
+
+    @Override
+    protected MapCodec<? extends BaseEntityBlock> codec() {
+        return switch (type) {
+            case LOW -> LOW_CODEC;
+            case MED -> MED_CODEC;
+            case HIGH -> HIGH_CODEC;
+        };
+    }
 
     /* ------------------------- block-state properties ------------------------- */
     public static final BooleanProperty NORTH   = BooleanProperty.create("north");
@@ -74,7 +92,7 @@ public class ElectricFencePoleBlock extends BaseEntityBlock implements SimpleWat
     /* --------------------------- render & BE ---------------------------------- */
     @Override
     public RenderShape getRenderShape(BlockState state) {
-        return RenderShape.MODEL;
+        return RenderShape.MODEL;          // change to ENTITYBLOCK_ANIMATED if you use a BER
     }
 
     @Nullable

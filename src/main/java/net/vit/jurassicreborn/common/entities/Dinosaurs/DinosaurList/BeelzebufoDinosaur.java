@@ -2,6 +2,7 @@ package net.vit.jurassicreborn.common.entities.Dinosaurs.DinosaurList;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 import net.vit.jurassicreborn.common.entities.DinosaurEntities.BeelzebufoEntity;
 import net.vit.jurassicreborn.common.entities.Dinosaurs.Dinosaur;
@@ -13,8 +14,7 @@ import net.minecraft.world.level.biome.Biome;
 
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.tags.TagKey;
-import net.minecraftforge.common.Tags;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.neoforge.common.Tags;
 
 public class BeelzebufoDinosaur extends Dinosaur {
     public static final double SPEED = 0.4F;
@@ -52,22 +52,9 @@ public class BeelzebufoDinosaur extends Dinosaur {
                 { "leg_bones"}};
         this.setRecipe(recipe);
         this.enableSkeleton();
-        ArrayList<ResourceKey<Biome>> biomeList = new ArrayList<ResourceKey<Biome>>();
         TagKey<Biome>[] tags = (new TagKey[]{Tags.Biomes.IS_SANDY, BiomeTags.IS_BEACH, BiomeTags.IS_RIVER, Tags.Biomes.IS_SNOWY});
-        ArrayList<Biome> allBiomes = new ArrayList<>(ForgeRegistries.BIOMES.getValues());
-
-        biomeList = new ArrayList<>(allBiomes.stream().filter((biome ->{
-            boolean accept = false;
-            
-            for(var tag : tags){
-                if(ForgeRegistries.BIOMES.tags().getTag(tag).contains(biome)){
-                    accept = true;
-                }
-            }
-            return accept;
-            
-        })).map((biome) -> ForgeRegistries.BIOMES.getResourceKey(biome).get()).toList());
-        this.setSpawn(1, biomeList);
+//      List<ResourceKey<Biome>> biomeList = biomeKeysForTags(tags);
+//       this.setSpawn(1, biomeList);
 this.init();
     }
 }

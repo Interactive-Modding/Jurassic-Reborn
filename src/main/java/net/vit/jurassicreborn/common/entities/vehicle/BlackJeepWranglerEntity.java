@@ -1,9 +1,6 @@
 package net.vit.jurassicreborn.common.entities.vehicle;
 
 
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
-import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.Level;
 import net.vit.jurassicreborn.common.items.ModItems;
@@ -28,10 +25,10 @@ public class BlackJeepWranglerEntity extends VehicleEntity {
 
     @Override
         protected Seat[] createSeats () {
-            Seat frontLeft = new Seat(0.563F, 0.45F, 0.0F, 0.5F, 0.25F);
-            Seat frontRight = new Seat(-0.563F, 0.45F, 0.0F, 0.5F, 0.25F);
-            Seat backLeft = new Seat(0.5F, 0.7F, -2.2F, 0.4F, 0.25F);
-            Seat backRight = new Seat(-0.5F, 0.7F, -2.2F, 0.4F, 0.25F);
+            Seat frontLeft = new Seat(0.563F, -0.15F, 0.0F, 0.5F, 0.25F);
+            Seat frontRight = new Seat(-0.563F, -0.15F, 0.0F, 0.5F, 0.25F);
+            Seat backLeft = new Seat(0.5F, 0.18F, -2.2F, 0.4F, 0.25F);
+            Seat backRight = new Seat(-0.5F, 0.18F, -2.2F, 0.4F, 0.25F);
             return new Seat[]{frontLeft, frontRight, backLeft, backRight};
         }
 
@@ -44,7 +41,5 @@ public class BlackJeepWranglerEntity extends VehicleEntity {
     public void dropItems() {
     }
 
-    @Override public Packet<ClientGamePacketListener> getAddEntityPacket() {
-        return new ClientboundAddEntityPacket(this);
-    }
+
 }

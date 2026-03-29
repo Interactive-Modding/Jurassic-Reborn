@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_low_security_fence_wire": {
+      "conditions": {
+        "items": [
+          {
+            "items": "jurassicreborn:low_security_fence_wire"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "jurassicreborn:skeleton_assembly"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_low_security_fence_wire"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "jurassicreborn:skeleton_assembly"
+    ]
+  }
+}

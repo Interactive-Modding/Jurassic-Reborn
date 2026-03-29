@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_gypsum_pathway": {
+      "conditions": {
+        "items": [
+          {
+            "items": "jurassicreborn:gypsum_pathway"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "jurassicreborn:refined_gypsum_panel"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_gypsum_pathway"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "jurassicreborn:refined_gypsum_panel"
+    ]
+  }
+}

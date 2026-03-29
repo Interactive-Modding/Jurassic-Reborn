@@ -7,13 +7,13 @@ import net.vit.jurassicreborn.common.entities.EntityUtils.Diet;
 import net.vit.jurassicreborn.common.util.TimePeriod;
 import net.minecraft.resources.ResourceKey;
 import java.util.ArrayList;
+import java.util.List;
 
 import net.minecraft.world.level.biome.Biome;
 
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.tags.TagKey;
-import net.minecraftforge.common.Tags;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.neoforge.common.Tags;
 
 public class AlvarezsaurusDinosaur extends Dinosaur {
     public static final double SPEED = 0.4F;
@@ -52,21 +52,7 @@ public class AlvarezsaurusDinosaur extends Dinosaur {
                 {"", "foot_bones", "", "", ""}};
         this.setRecipe(recipe);
         this.enableSkeleton();
-        ArrayList<ResourceKey<Biome>> biomeList = new ArrayList<>();
-        TagKey<Biome>[] tags = (new TagKey[]{ Tags.Biomes.IS_SANDY, Tags.Biomes.IS_DRY, BiomeTags.IS_SAVANNA});
-        ArrayList<Biome> allBiomes = new ArrayList<>(ForgeRegistries.BIOMES.getValues());
-
-        biomeList = new ArrayList<>(allBiomes.stream().filter((biome ->{
-            boolean accept = false;
-            
-            for(var tag : tags){
-                if(ForgeRegistries.BIOMES.tags().getTag(tag).contains(biome)){
-                    accept = true;
-                }
-            }
-            return accept;
-            
-        })).map((biome) -> ForgeRegistries.BIOMES.getResourceKey(biome).get()).toList());
+//        List<ResourceKey<Biome>> biomeList = biomeKeysForTags(tags);
 
     }
 }

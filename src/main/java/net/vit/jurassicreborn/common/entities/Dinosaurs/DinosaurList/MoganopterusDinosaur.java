@@ -10,10 +10,10 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.biome.Biome;
-import net.minecraftforge.common.Tags;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.neoforge.common.Tags;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MoganopterusDinosaur extends Dinosaur
 {
@@ -50,26 +50,11 @@ public class MoganopterusDinosaur extends Dinosaur
                 {"", "leg_bones", "wing_bones", "", ""}};
         this.setRecipe(recipe);
         this.enableSkeleton();
-        ArrayList<ResourceKey<Biome>> biomeList = new ArrayList<>();
-
-        TagKey<Biome>[] tags = (new TagKey[]{Tags.Biomes.IS_PLAINS, BiomeTags.IS_FOREST, BiomeTags.IS_SAVANNA, BiomeTags.IS_MOUNTAIN, BiomeTags.IS_BADLANDS, BiomeTags.IS_JUNGLE});
-        ArrayList<Biome> allBiomes = new ArrayList<>(ForgeRegistries.BIOMES.getValues());
-
-        biomeList = new ArrayList<>(allBiomes.stream().filter((biome ->{
-            boolean accept = false;
-            
-            for(var tag : tags){
-                if(ForgeRegistries.BIOMES.tags().getTag(tag).contains(biome)){
-                    accept = true;
-                }
-            }
-            return accept;
-            
-        })).map((biome) -> ForgeRegistries.BIOMES.getResourceKey(biome).get()).toList());
-
-
-
-        this.setSpawn(1, biomeList);
+//        List<ResourceKey<Biome>> biomeList = biomeKeysForTags(tags);
+//
+//
+//
+//        this.setSpawn(1, biomeList);
 this.init();
     }
 }

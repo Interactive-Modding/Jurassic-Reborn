@@ -3,8 +3,8 @@ package net.vit.jurassicreborn.common.blocks.entities;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import net.vit.jurassicreborn.client.render.entity.animation.EntityAnimation;
 import net.vit.jurassicreborn.common.entities.DinosaurEntity;
 import net.vit.jurassicreborn.common.entities.Dinosaurs.DinosaurHandler;
@@ -13,6 +13,7 @@ import net.vit.jurassicreborn.common.entities.IHasVariants;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.network.Connection;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
@@ -23,6 +24,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public class ActionFigureBlockEntity extends BlockEntity {
 
@@ -80,10 +82,10 @@ public class ActionFigureBlockEntity extends BlockEntity {
 
     }
     @Override
-    public @NotNull CompoundTag getUpdateTag() {
-        // send all persistent data to the client when the chunk is loaded
-        return this.saveWithoutMetadata();
+    public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
+        return this.saveWithoutMetadata(registries);
     }
+
     public void setDinosaur(Dinosaur dino, boolean gender, boolean isSkeleton, boolean isFossile, CompoundTag entityTag){
         this.dinosaur = dino;
 
@@ -117,7 +119,9 @@ public class ActionFigureBlockEntity extends BlockEntity {
     public void checkAndLoadEntity(){
         if (this.entity != null)
                         return;
-
+        if (this.level == null || !this.level.isClientSide) {
+            return;
+        }
         loadEntityType();
 
         if(this.entity == null && this.entityType != null) {
@@ -164,8 +168,8 @@ public class ActionFigureBlockEntity extends BlockEntity {
 
 
     @Override
-    public void load(CompoundTag nbt) {
-        super.load(nbt);
+    protected void loadAdditional(CompoundTag nbt, HolderLookup.Provider provider) {
+        super.loadAdditional(nbt, provider);
 
         String dinoName = nbt.getString("Dinosaur");
 
@@ -176,7 +180,7 @@ public class ActionFigureBlockEntity extends BlockEntity {
         boolean isSkeleton = nbt.getBoolean("IsSkeleton");
 
 
-        if (!nbt.contains("IsFossile")) nbt.putBoolean("IsFossile", false);
+        if (!nbt.contains("IsFossile")) nbt.putBoolean("IsFossile", false); // or your intended default
         this.isFossile = nbt.getBoolean("IsFossile");
 
         this.dinosaur   = dinosaur;
@@ -199,23 +203,21 @@ public class ActionFigureBlockEntity extends BlockEntity {
     }
 
     @Override
-    public void saveAdditional(@NotNull CompoundTag nbt) {
+    protected void saveAdditional(@NotNull CompoundTag nbt, HolderLookup.Provider provider) {
+        super.saveAdditional(nbt, provider);
         if (this.entity != null) {
             this.syncVariantFromEntity();
-            CompoundTag tag = this.entity.serializeNBT();
-                        tag.remove("UUID");  // prevent duplicate-UUID clones
-                        nbt.put("DinosaurTag", tag);
+            CompoundTag tag = new CompoundTag();this.entity.saveWithoutId(tag);nbt.put("DinosaurTag", tag);
         }
 
         nbt.putString("Dinosaur", this.dinosaur.getName());
-
-
         nbt.putInt("Rotation", this.rotation);
         nbt.putBoolean("IsMale", this.isMale);
         nbt.putBoolean("IsSkeleton", this.isSkeleton);
         nbt.putByte("Variant", this.variant);
         nbt.putBoolean("IsFossile", this.isFossile);
     }
+
 
 //    @Override
 //    public CompoundTag serializeNBT() {
@@ -241,21 +243,13 @@ public class ActionFigureBlockEntity extends BlockEntity {
 
 
     @Override
-    public Packet<ClientGamePacketListener> getUpdatePacket() {
-
-        return ClientboundBlockEntityDataPacket.create(this, BlockEntity::saveWithoutMetadata);
+    public @Nullable ClientboundBlockEntityDataPacket getUpdatePacket() {
+        return ClientboundBlockEntityDataPacket.create(this);
     }
 
-    @Override
-    public void onDataPacket(Connection net, ClientboundBlockEntityDataPacket pkt) {
-        CompoundTag data = pkt.getTag();
 
-        this.load(data);
-        this.checkAndLoadEntity();
-    }
 
     @OnlyIn(Dist.CLIENT)
-    @Override
     public @NotNull AABB getRenderBoundingBox() {
         if (this.isSkeleton) {
             // ensure the display entity exists so the bounding box is correct
@@ -270,7 +264,9 @@ public class ActionFigureBlockEntity extends BlockEntity {
             }
         }
 
-        return super.getRenderBoundingBox();
+        BlockPos pos = this.worldPosition;
+        return new AABB(pos.getX(), pos.getY(), pos.getZ(),
+                pos.getX() + 1, pos.getY() + 1, pos.getZ() + 1);
     }
     public boolean isMale() {
         return this.isMale;
@@ -315,8 +311,11 @@ public class ActionFigureBlockEntity extends BlockEntity {
     }
 
     public DinosaurEntity getEntity() {
-        if(this.entity == null){
-            this.entity = this.createEntity();
+        if (this.level == null || !this.level.isClientSide) {
+            return null;
+        }
+        if (this.entity == null) {
+            this.checkAndLoadEntity();
         }
         return this.entity;
     }
@@ -418,7 +417,7 @@ public class ActionFigureBlockEntity extends BlockEntity {
 //
 //        @Override
 //        public void deserialize(CompoundTag compound) {
-//            this.dinosaurId = ForgeRegistries.ENTITY_TYPES.getValue(new ResourceLocation(compound.getString("DinosaurId")));
+//            this.dinosaurId = ForgeRegistries.ENTITY_TYPES.getValue(ResourceLocation.parse(compound.getString("DinosaurId")));
 //        }
 //
 //        @Override
@@ -493,6 +492,9 @@ public class ActionFigureBlockEntity extends BlockEntity {
 
     }
 
+    public Dinosaur getDinosaur() {
+        return this.dinosaur;
+    }
     public DinosaurEntity peekEntity(){
         return this.entity;
     }

@@ -2,7 +2,7 @@ package net.vit.jurassicreborn.common.blocks.entities.cleaner;
 
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
-import net.minecraftforge.items.SlotItemHandler;
+import net.neoforged.neoforge.items.SlotItemHandler;
 import net.vit.jurassicreborn.common.blocks.entities.MachineItemStackHandler;
 import net.vit.jurassicreborn.common.blocks.entities.ModMenuTypes;
 import net.vit.jurassicreborn.common.blocks.inventory.CleanerItemHandler;

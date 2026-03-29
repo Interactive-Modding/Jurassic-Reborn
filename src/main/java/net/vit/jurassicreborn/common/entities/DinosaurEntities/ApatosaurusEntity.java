@@ -25,29 +25,11 @@ public class ApatosaurusEntity extends DinosaurEntity {
 
         this.addTask(1, new net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal(this));
 
-
-    }
-    @Override
-    public SpawnGroupData finalizeSpawn(
-            net.minecraft.world.level.ServerLevelAccessor level,
-            net.minecraft.world.DifficultyInstance difficulty,
-            net.minecraft.world.entity.MobSpawnType reason,
-            SpawnGroupData spawnData,
-            net.minecraft.nbt.CompoundTag dataTag
-    ) {
-        SpawnGroupData data = super.finalizeSpawn(level, difficulty, reason, spawnData, dataTag);
-
         this.setVariant(this.getRandom().nextInt(3));
-
-        return data;
     }
     @Override
     protected LegSolverQuadruped createLegSolver() {
-        return this.legSolver = new LegSolverQuadruped(
-                2.5F, 2.0F,
-                1.0F, 1.0F,
-                1.0F
-        );
+        return this.legSolver = new LegSolverQuadruped(2.5F, 2.0F, 1.0F, 1.0F, 1.0F);
     }
 
     @Override
@@ -85,25 +67,17 @@ public class ApatosaurusEntity extends DinosaurEntity {
 
     /* -------------------- TEXTURES -------------------- */
 
-    public ResourceLocation getTexture() {
-        return switch (this.getVariant()) {
-            default -> texture("jw");
-            case 1  -> texture("steppe");
-            case 2  -> texture("taiga");
-        };
+    public ResourceLocation getTexture(){
+        switch(getVariant()){
+            case 0: default: return texture("jw");
+            case 1: return texture("steppe");
+            case 2: return texture("taiga");
+        }
     }
-
-    private ResourceLocation texture(String variant) {
-        String name = this.dinosaur.getName()
-                .toLowerCase(Locale.ENGLISH)
-                .replace(" ", "_");
-
-        String base = "textures/entities/" + name + "/" + name;
-        String sex  = this.isMale() ? "male" : "female";
-
-        return new ResourceLocation(
-                JurassicReborn.MODID,
-                base + "_" + sex + "_adult_" + variant + ".png"
-        );
+    private ResourceLocation texture(String variant){
+        String formattedName = this.dinosaur.getName().toLowerCase(Locale.ENGLISH).replaceAll(" ", "_");
+        String baseTextures = "textures/entities/" + formattedName + "/";
+        String texture = baseTextures + formattedName;
+        return isMale()?ResourceLocation.parse(JurassicReborn.MODID + ":" + texture + "_male_" + "adult" + "_" + variant + ".png"):ResourceLocation.parse(JurassicReborn.MODID + ":" + texture + "_female_" + "adult" + "_" + variant +".png");
     }
 }

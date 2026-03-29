@@ -3,7 +3,7 @@ package net.vit.jurassicreborn.common.blocks.entities.grinder;
 import com.google.common.primitives.Ints;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.items.IItemHandlerModifiable;
+import net.neoforged.neoforge.items.IItemHandlerModifiable;
 import net.vit.jurassicreborn.common.blocks.entities.MachineBlockEntity;
 import net.vit.jurassicreborn.common.blocks.entities.MachineItemStackHandler;
 import net.vit.jurassicreborn.common.blocks.entities.ModBlockEntities;
@@ -28,6 +28,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.Random;
+import net.vit.jurassicreborn.common.util.ItemStackNbtUtil;
 
 public class FossilGrinderBlockEntity extends MachineBlockEntity implements MenuProvider,ItemHandlerBlockEntity {
     public static final int SLOTS = 12;
@@ -140,11 +141,11 @@ public class FossilGrinderBlockEntity extends MachineBlockEntity implements Menu
         return List.of(ItemStack.EMPTY);
     }
     public static void copyDNA(ItemStack from, ItemStack to) {
-        CompoundTag in = from.getTag();
+        CompoundTag in = ItemStackNbtUtil.getTag(from);
         if (in != null && in.contains("DNA")) {
-            CompoundTag out = to.getOrCreateTag();
+            CompoundTag out = ItemStackNbtUtil.getOrCreateTag(to);
             out.put("DNA", in.getCompound("DNA").copy());
-            to.setTag(out);
+            ItemStackNbtUtil.setTag(to, out);
             StorageDiscItem.applyCustomModelData(to);
         }
     }
@@ -227,7 +228,7 @@ public class FossilGrinderBlockEntity extends MachineBlockEntity implements Menu
         ItemStack previous = getItem(slot);
         if (previous.isEmpty()) {
             setItem(slot, stack);
-        } else if (ItemStack.isSameItemSameTags(previous, stack) && ItemStack.isSameItemSameTags(previous, stack)) {
+        } else if (ItemStack.isSameItemSameComponents(previous, stack) && ItemStack.isSameItemSameComponents(previous, stack)) {
             previous.setCount(previous.getCount() + stack.getCount());
         }
     }
@@ -244,7 +245,7 @@ public class FossilGrinderBlockEntity extends MachineBlockEntity implements Menu
     public int getOutputSlot(ItemStack output) {
         for (int slot : OUTPUTS) {
             ItemStack stack = getItem(slot);
-            if (stack.isEmpty() || ((ItemStack.isSameItemSameTags(stack, output) && stack.getCount() + output.getCount() <= stack.getMaxStackSize()) && stack.getItem() == output.getItem() && stack.getDamageValue() == output.getDamageValue())) {
+            if (stack.isEmpty() || ((ItemStack.isSameItemSameComponents(stack, output) && stack.getCount() + output.getCount() <= stack.getMaxStackSize()) && stack.getItem() == output.getItem() && stack.getDamageValue() == output.getDamageValue())) {
                 return slot;
             }
         }

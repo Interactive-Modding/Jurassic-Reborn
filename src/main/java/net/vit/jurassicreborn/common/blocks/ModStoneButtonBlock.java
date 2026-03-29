@@ -7,6 +7,6 @@ import net.minecraft.world.level.block.state.properties.BlockSetType;
 public class ModStoneButtonBlock extends ButtonBlock {
 
     public ModStoneButtonBlock(BlockBehaviour.Properties properties) {
-        super(properties, BlockSetType.STONE, 20, false);
+        super(BlockSetType.STONE, 20, properties);
     }
 }

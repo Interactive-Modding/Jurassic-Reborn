@@ -1,13 +1,14 @@
 package net.vit.jurassicreborn.common.blocks.inventory;
 
+import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraftforge.common.util.INBTSerializable;
-import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.capability.templates.FluidTank;
+import net.neoforged.neoforge.fluids.FluidStack;
+import net.neoforged.neoforge.fluids.capability.templates.FluidTank;
 
 import java.util.function.Predicate;
 
-public class SerializableSingleFluidTank extends FluidTank implements INBTSerializable<CompoundTag> {
+public class SerializableSingleFluidTank extends FluidTank {
+
     public SerializableSingleFluidTank(int capacity) {
         super(capacity);
     }
@@ -16,19 +17,17 @@ public class SerializableSingleFluidTank extends FluidTank implements INBTSerial
         super(capacity, validator);
     }
 
-    @Override
-    public CompoundTag serializeNBT() {
-        CompoundTag nbt = new CompoundTag();
-        nbt.put("Fluid", fluid.writeToNBT(new CompoundTag()));
-        return nbt;
+    /**
+     * Convenience wrapper (optional)
+     */
+    public CompoundTag save(HolderLookup.Provider provider) {
+        return this.writeToNBT(provider, new CompoundTag());
     }
 
-    @Override
-    public void deserializeNBT(CompoundTag nbt) {
-        fluid = FluidStack.loadFluidStackFromNBT(nbt.getCompound("Fluid"));
-        this.onLoad();
-    }
-
-    protected void onLoad() {
+    /**
+     * Convenience wrapper (optional)
+     */
+    public void load(HolderLookup.Provider provider, CompoundTag tag) {
+        this.readFromNBT(provider, tag);
     }
 }

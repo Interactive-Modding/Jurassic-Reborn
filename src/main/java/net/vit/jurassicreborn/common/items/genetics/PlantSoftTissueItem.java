@@ -14,6 +14,7 @@ import net.vit.jurassicreborn.common.plants.PlantHandler;
 import net.vit.jurassicreborn.common.util.api.SequencableItem;
 
 import java.util.List;
+import net.vit.jurassicreborn.common.util.ItemStackNbtUtil;
 
 public class PlantSoftTissueItem extends Item implements SequencableItem {
     private final PlantDNA defaultDNA;
@@ -38,7 +39,7 @@ public class PlantSoftTissueItem extends Item implements SequencableItem {
         dna.writeToNBT(nbt);
 
         ItemStack output = new ItemStack(ModItems.STORAGE_DISC.get(), 1);
-        output.setTag(nbt);
+        ItemStackNbtUtil.setTag(output, nbt);
         StorageDiscItem.applyCustomModelData(output);
 
         list.add(Pair.of(100F, output));
@@ -52,7 +53,7 @@ public class PlantSoftTissueItem extends Item implements SequencableItem {
 
     @Override
     public ItemStack getSequenceOutput(ItemStack stack, RandomSource random) {
-        CompoundTag nbt = stack.getTag();
+        CompoundTag nbt = ItemStackNbtUtil.getTag(stack);
 
         if (nbt == null || !nbt.contains("DNA") || !nbt.getCompound("DNA").contains("Plant")) {
             nbt = new CompoundTag();
@@ -60,7 +61,7 @@ public class PlantSoftTissueItem extends Item implements SequencableItem {
         }
 
         ItemStack output = new ItemStack(ModItems.STORAGE_DISC.get(), 1);
-        output.setTag(nbt);
+        ItemStackNbtUtil.setTag(output, nbt);
         StorageDiscItem.applyCustomModelData(output);
         return output;
     }

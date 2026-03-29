@@ -5,9 +5,9 @@ import com.github.alexthe666.citadel.client.model.AdvancedModelBox;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.fml.loading.FMLEnvironment;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
+import net.neoforged.fml.loading.FMLEnvironment;
 import net.vit.jurassicreborn.JurassicReborn;
 import net.vit.jurassicreborn.client.model.AnimatableModel;
 import net.vit.jurassicreborn.client.model.animation.dto.AnimatableRenderDefDTO;
@@ -145,36 +145,59 @@ public class PoseHandler<ENTITY extends LivingEntity & Animatable> {
         return new ModelData(animations);
     }
 
-            @OnlyIn(Dist.CLIENT)
-    private ModelData loadModelDataClient(List<String> posedModelResources, Map<Animation, float[][]> animations) {
+    @OnlyIn(Dist.CLIENT)
+    private ModelData loadModelDataClient(
+            List<String> posedModelResources,
+            Map<Animation, float[][]> animations
+    ) {
         PosedCuboid[][] posedCuboids = new PosedCuboid[posedModelResources.size()][];
-        AnimatableModel mainModel = JabelarAnimationHandler.loadModel(posedModelResources.get(0));
+
+        AnimatableModel mainModel = (AnimatableModel)
+                JabelarAnimationHandler.loadModel(posedModelResources.get(0));
+
         if (mainModel == null) {
-            throw new IllegalArgumentException("Couldn't load the model from " + posedModelResources.get(0));
+            throw new IllegalArgumentException(
+                    "Couldn't load the model from " + posedModelResources.get(0)
+            );
         }
+
+        // Use identifierMap directly
         String[] identifiers = mainModel.getCubeIdentifierArray();
         int partCount = identifiers.length;
+
         for (int i = 0; i < posedModelResources.size(); i++) {
             String resource = posedModelResources.get(i);
-            AnimatableModel model = JabelarAnimationHandler.loadModel(resource);
+            AnimatableModel model = (AnimatableModel)
+                    JabelarAnimationHandler.loadModel(resource);
+
             if (model == null) {
-                throw new IllegalArgumentException("Couldn't load the model from " + resource);
+                throw new IllegalArgumentException(
+                        "Couldn't load the model from " + resource
+                );
             }
+
             PosedCuboid[] pose = new PosedCuboid[partCount];
+
             for (int partIndex = 0; partIndex < partCount; partIndex++) {
                 String identifier = identifiers[partIndex];
-                AdvancedModelBox cube = model.getCubeByIdentifier(identifier);
-                if (cube == null) {
-                    AdvancedModelBox mainCube = mainModel.getCubeByIdentifier(identifier);
-                    pose[partIndex] = new PosedCuboid(mainCube);
-                } else {
-                    pose[partIndex] = new PosedCuboid(cube);
-                }
+
+                AdvancedModelBox cube =
+                        model.getIdentifierCubes().get(identifier);
+
+                AdvancedModelBox mainCube =
+                        mainModel.getIdentifierCubes().get(identifier);
+
+                pose[partIndex] = new PosedCuboid(
+                        cube != null ? cube : mainCube
+                );
             }
+
             posedCuboids[i] = pose;
         }
+
         return new ModelData(posedCuboids, animations);
     }
+
 
     private String resolve(URI dinoDirURI, String posePath) {
         URI uri = dinoDirURI.resolve(posePath);

@@ -1,0 +1,11 @@
+{
+  "type": "jurassicreborn:cleaning",
+  "id": "jurassicreborn:encased_ankylosaurus_fossil_cleaning",
+  "input": {
+    "item": "jurassicreborn:encased_ankylosaurus_fossil"
+  },
+  "output": {
+    "count": 1,
+    "id": "jurassicreborn:bones/ankylosaurus_skull"
+  }
+}

@@ -114,11 +114,11 @@ public class CalamitesTreeGenerator extends Feature<NoneFeatureConfiguration> {
 
         max.move(3, height, 3);
 
-
-
-
-
-
+//        for(int y = pContext.origin().getY(); y < branchHeight; y++){
+//            if(!TreePlaceUtil.validTreePos(pContext.level(), pContext.origin().above(y))){
+//                return false;
+//            }
+//        }
 
 
         for (int x = min.getX(); x < max.getX(); x++) {

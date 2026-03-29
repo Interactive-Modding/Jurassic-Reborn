@@ -1,0 +1,11 @@
+{
+  "type": "jurassicreborn:cleaning",
+  "id": "jurassicreborn:encased_mammoth_fossil_cleaning",
+  "input": {
+    "item": "jurassicreborn:encased_mammoth_fossil"
+  },
+  "output": {
+    "count": 1,
+    "id": "jurassicreborn:bones/mammoth_skull"
+  }
+}

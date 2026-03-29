@@ -1,6 +1,7 @@
 package net.vit.jurassicreborn.common.entities.Dinosaurs.DinosaurList;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import net.vit.jurassicreborn.common.entities.DinosaurEntities.*;
 import net.vit.jurassicreborn.common.entities.DinosaurEntities.MetriacanthosaurusEntity;
@@ -11,8 +12,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.biome.Biome;
-import net.minecraftforge.common.Tags;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.neoforge.common.Tags;
 
 public class MetriacanthosaurusDinosaur extends Dinosaur
 {
@@ -52,22 +52,8 @@ public class MetriacanthosaurusDinosaur extends Dinosaur
                 {"", "", "foot_bones", "", ""}};
         this.setRecipe(recipe);
         this.enableSkeleton();
-        ArrayList<ResourceKey<Biome>> biomeList = new ArrayList<>();
-        TagKey<Biome>[] tags = (new TagKey[]{Tags.Biomes.IS_PLAINS, BiomeTags.IS_FOREST, BiomeTags.IS_SAVANNA});
-        ArrayList<Biome> allBiomes = new ArrayList<>(ForgeRegistries.BIOMES.getValues());
-
-        biomeList = new ArrayList<>(allBiomes.stream().filter((biome ->{
-            boolean accept = false;
-            
-            for(var tag : tags){
-                if(ForgeRegistries.BIOMES.tags().getTag(tag).contains(biome)){
-                    accept = true;
-                }
-            }
-            return accept;
-            
-        })).map((biome) -> ForgeRegistries.BIOMES.getResourceKey(biome).get()).toList());
-        this.setSpawn(1, biomeList);
+//      List<ResourceKey<Biome>> biomeList = biomeKeysForTags(tags);
+//       this.setSpawn(1, biomeList);
 this.init();
     }
 }

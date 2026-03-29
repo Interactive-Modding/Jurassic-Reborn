@@ -1,86 +1,79 @@
 package net.vit.jurassicreborn.common.network;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraftforge.network.NetworkEvent;
+import net.neoforged.neoforge.network.handling.IPayloadContext;
+import net.vit.jurassicreborn.JurassicReborn;
 import net.vit.jurassicreborn.common.blocks.entities.HologramBlockEntity;
 
-import java.util.function.Supplier;
+public record SetHologramDinosaurPacket(BlockPos pos, int dinosaurId, int poseIndex, boolean rotating, int rotation)
+        implements CustomPacketPayload {
+    public static final Type<SetHologramDinosaurPacket> TYPE = new Type<>(JurassicReborn.resource("set_hologram_dinosaur"));
+    public static final StreamCodec<RegistryFriendlyByteBuf, SetHologramDinosaurPacket> STREAM_CODEC = new StreamCodec<>() {
+        @Override
+        public SetHologramDinosaurPacket decode(RegistryFriendlyByteBuf buf) {
+            BlockPos pos = buf.readBlockPos();
+            int id = buf.readInt();
+            int pose = buf.readInt();
+            boolean rotating = buf.readBoolean();
+            int rotation = buf.readInt();
+            return new SetHologramDinosaurPacket(pos, id, pose, rotating, rotation);
+        }
 
-public class SetHologramDinosaurPacket {
-    private final BlockPos pos;
-    private final int dinosaurId;
-    private final int poseIndex;
-    private final boolean rotating;
-    private final int rotation;
+        @Override
+        public void encode(RegistryFriendlyByteBuf buf, SetHologramDinosaurPacket msg) {
+            buf.writeBlockPos(msg.pos());
+            buf.writeInt(msg.dinosaurId());
+            buf.writeInt(msg.poseIndex());
+            buf.writeBoolean(msg.rotating());
+            buf.writeInt(msg.rotation());
+        }
+    };
 
-    public SetHologramDinosaurPacket(BlockPos pos, int dinosaurId, int poseIndex, boolean rotating, int rotation) {
-        this.pos = pos;
-        this.dinosaurId = dinosaurId;
-        this.poseIndex = poseIndex;
-        this.rotating = rotating;
-        this.rotation = rotation;
+    @Override
+    public Type<? extends CustomPacketPayload> type() {
+        return TYPE;
     }
 
-    public static void encode(SetHologramDinosaurPacket pkt, FriendlyByteBuf buf) {
-        buf.writeBlockPos(pkt.pos);
-        buf.writeInt(pkt.dinosaurId);
-        buf.writeInt(pkt.poseIndex);
-        buf.writeBoolean(pkt.rotating);
-        buf.writeInt(pkt.rotation);
-    }
-
-    public static SetHologramDinosaurPacket decode(FriendlyByteBuf buf) {
-        BlockPos pos = buf.readBlockPos();
-        int id = buf.readInt();
-        int pose = buf.readInt();
-        boolean rotating = buf.readBoolean();
-        int rotation = buf.readInt();
-        return new SetHologramDinosaurPacket(pos, id, pose, rotating, rotation);
-    }
-    public static void handle(SetHologramDinosaurPacket pkt, Supplier<NetworkEvent.Context> ctx) {
-        ctx.get().enqueueWork(() -> {
-            ServerPlayer player = ctx.get().getSender();
-            if (player == null) return;
+    public static void handle(SetHologramDinosaurPacket pkt, IPayloadContext ctx) {
+        ctx.enqueueWork(() -> {
+            if (!(ctx.player() instanceof ServerPlayer player)) {
+                return;
+            }
             Level level = player.level();
-            if (!(level instanceof ServerLevel serverLevel)) return;
-            BlockEntity be = level.getBlockEntity(pkt.pos);
-            if (!(be instanceof HologramBlockEntity hologram)) return;
+            if (!(level instanceof ServerLevel serverLevel)) {
+                return;
+            }
+            BlockEntity be = level.getBlockEntity(pkt.pos());
+            if (!(be instanceof HologramBlockEntity hologram)) {
+                return;
+            }
 
-            // ----------------------------
-            // Apply settings
-            // ----------------------------
-            hologram.applySettings(pkt.dinosaurId, pkt.poseIndex, pkt.rotating, pkt.rotation, true);
+            hologram.applySettings(pkt.dinosaurId(), pkt.poseIndex(), pkt.rotating(), pkt.rotation(), true);
 
-            // ----------------------------
-            // Force full save + sync
-            // ----------------------------
-            hologram.setChanged(); // Mark dirty
-            serverLevel.sendBlockUpdated(pkt.pos, hologram.getBlockState(), hologram.getBlockState(), 3);
-            serverLevel.getChunkSource().blockChanged(pkt.pos);
+            hologram.setChanged();
+            serverLevel.sendBlockUpdated(pkt.pos(), hologram.getBlockState(), hologram.getBlockState(), 3);
+            serverLevel.getChunkSource().blockChanged(pkt.pos());
 
             try {
-                var chunk = serverLevel.getChunkAt(pkt.pos);
+                var chunk = serverLevel.getChunkAt(pkt.pos());
                 chunk.setUnsaved(true);
 
-                CompoundTag tag = new CompoundTag();
-                hologram.saveAdditional(tag);
-                hologram.saveToItem(ItemStack.of(tag));
-                hologram.saveWithFullMetadata();
+                ItemStack stack = new ItemStack(hologram.getBlockState().getBlock());
+                hologram.saveToItem(stack, serverLevel.registryAccess());
 
                 chunk.isUnsaved();
                 serverLevel.getChunkSource().getDataStorage().save();
-
             } catch (Exception e) {
-                System.err.println("[JurassicReborn] Failed to save HologramBlockEntity at " + pkt.pos + ": " + e);
+                System.err.println("[JurassicReborn] Failed to save HologramBlockEntity at " + pkt.pos() + ": " + e);
             }
         });
-        ctx.get().setPacketHandled(true);
     }
 }

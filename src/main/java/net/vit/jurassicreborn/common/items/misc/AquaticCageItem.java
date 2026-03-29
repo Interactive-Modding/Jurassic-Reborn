@@ -17,8 +17,8 @@ import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.vit.jurassicreborn.common.entities.item.AquaticCageEntity;
 
-import javax.annotation.Nullable;
 import java.util.List;
+import net.vit.jurassicreborn.common.util.ItemStackNbtUtil;
 
 /**
  * Item that can capture and release aquatic entities.
@@ -33,13 +33,14 @@ public class AquaticCageItem extends Item {
     public InteractionResultHolder<ItemStack> use(Level world, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
         if (!world.isClientSide) {
-            if (stack.hasTag() && stack.getTag().contains("EntityTag")) {
-                CompoundTag entityTag = stack.getTag().getCompound("EntityTag");
+            CompoundTag tag = ItemStackNbtUtil.getTag(stack);
+            if (tag != null && tag.contains("EntityTag")) {
+                CompoundTag entityTag = tag.getCompound("EntityTag");
                 Entity released = net.minecraft.world.entity.EntityType.loadEntityRecursive(entityTag, world, e -> e);
                 if (released != null) {
                     released.moveTo(player.blockPosition().getX(), player.blockPosition().getY(), player.blockPosition().getZ(), released.getYRot(), released.getXRot());
                     world.addFreshEntity(released);
-                    stack.setTag(null);
+                    ItemStackNbtUtil.setTag(stack, null);
                     return InteractionResultHolder.success(stack);
                 }
             } else {
@@ -70,12 +71,13 @@ public class AquaticCageItem extends Item {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level world, List<Component> tooltip, TooltipFlag flag) {
-        if (stack.hasTag()) {
-            if (stack.getTag().contains("name")) {
-                tooltip.add(Component.translatable("tooltip.cage.stored").append(stack.getTag().getString("name")).withStyle(ChatFormatting.AQUA));
-            } else if (stack.getTag().contains("EntityTag") && stack.getTag().getCompound("EntityTag").contains("id")) {
-                tooltip.add(Component.translatable("tooltip.cage.stored").append(stack.getTag().getCompound("EntityTag").getString("id")).withStyle(ChatFormatting.YELLOW));
+    public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+        CompoundTag tag = ItemStackNbtUtil.getTag(stack);
+        if (tag != null) {
+            if (tag.contains("name")) {
+                tooltip.add(Component.translatable("tooltip.cage.stored").append(tag.getString("name")).withStyle(ChatFormatting.AQUA));
+            } else if (tag.contains("EntityTag") && tag.getCompound("EntityTag").contains("id")) {
+                tooltip.add(Component.translatable("tooltip.cage.stored").append(tag.getCompound("EntityTag").getString("id")).withStyle(ChatFormatting.YELLOW));
             }
         } else {
             tooltip.add(Component.translatable("tooltip.cage.stored").append(Component.translatable("cage.empty")).withStyle(ChatFormatting.YELLOW));

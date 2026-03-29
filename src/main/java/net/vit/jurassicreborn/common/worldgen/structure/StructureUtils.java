@@ -1,10 +1,11 @@
 package net.vit.jurassicreborn.common.worldgen.structure;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.saveddata.SavedData;
-import net.minecraftforge.server.ServerLifecycleHooks;
+import net.neoforged.neoforge.server.ServerLifecycleHooks;
 import net.vit.jurassicreborn.JurassicReborn;
 
 import javax.annotation.Nonnull;
@@ -18,7 +19,10 @@ public class StructureUtils {
     @Nonnull
     public static StructureData getStructureData() {
         ServerLevel level = ServerLifecycleHooks.getCurrentServer().overworld();
-        return level.getDataStorage().computeIfAbsent(StructureData::load, StructureData::new, DATA_ID);
+        return level.getDataStorage().computeIfAbsent(
+                new SavedData.Factory<StructureData>(StructureData::new, StructureData::load),
+                DATA_ID
+        );
     }
 
     public static class StructureData extends SavedData {
@@ -39,31 +43,32 @@ public class StructureUtils {
             super();
         }
 
+        @Override
+        public CompoundTag save(CompoundTag compoundTag, HolderLookup.Provider provider) {
+            compoundTag.putBoolean("VisitorCenter", visitorCenter);
+            compoundTag.putBoolean("IslaSornaLab", islaSornaLab);
+            compoundTag.putBoolean("JPSanDiego", jpSanDiego);
+            compoundTag.putBoolean("RaptorPaddock", raptorPaddock);
+            compoundTag.putBoolean("AbandonedPaddock", abandonedPaddock);
+            compoundTag.putBoolean("IceFossilDigsite", iceFossilDigsite);
+            compoundTag.putBoolean("DesertDigsite", desertDigsite);
+            compoundTag.putBoolean("AmberMine", amberMine);
+            compoundTag.putLong("VisitorCenterBlockPosition", visitorCenterPosition.asLong());
+            compoundTag.putLong("IslaSornaLabBlockPosition", islaSornaLabPosition.asLong());
+            compoundTag.putLong("SanDiegoBlockPosition", jpSanDiegoPosition.asLong());
+            return compoundTag;
+        }
+
         public StructureData(String id) {
             super();
         }
 
-        public static StructureData load(CompoundTag tag) {
+        public static StructureData load(CompoundTag tag, HolderLookup.Provider provider) {
             StructureData data = new StructureData();
             data.read(tag);
             return data;
         }
 
-        @Override
-        public CompoundTag save(CompoundTag tag) {
-            tag.putBoolean("VisitorCenter", visitorCenter);
-            tag.putBoolean("IslaSornaLab", islaSornaLab);
-            tag.putBoolean("JPSanDiego", jpSanDiego);
-            tag.putBoolean("RaptorPaddock", raptorPaddock);
-            tag.putBoolean("AbandonedPaddock", abandonedPaddock);
-            tag.putBoolean("IceFossilDigsite", iceFossilDigsite);
-            tag.putBoolean("DesertDigsite", desertDigsite);
-            tag.putBoolean("AmberMine", amberMine);
-            tag.putLong("VisitorCenterBlockPosition", visitorCenterPosition.asLong());
-            tag.putLong("IslaSornaLabBlockPosition", islaSornaLabPosition.asLong());
-            tag.putLong("SanDiegoBlockPosition", jpSanDiegoPosition.asLong());
-            return tag;
-        }
 
         public void read(CompoundTag tag) {
             visitorCenter = tag.getBoolean("VisitorCenter");

@@ -4,9 +4,7 @@ import com.github.alexthe666.citadel.client.model.AdvancedModelBox;
 import net.vit.jurassicreborn.client.model.AnimatableModel;
 import net.vit.jurassicreborn.client.render.entity.animation.EntityAnimator;
 import net.vit.jurassicreborn.common.entities.DinosaurEntities.AnkylodocusEntity;
-import net.minecraft.client.Minecraft;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraft.client.Minecraft;import net.neoforged.api.distmarker.Dist;import net.neoforged.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
 public class AnkylodocusAnimator extends EntityAnimator<AnkylodocusEntity> {
@@ -63,7 +61,11 @@ public class AnkylodocusAnimator extends EntityAnimator<AnkylodocusEntity> {
                 neck1, neck2, neck3, neck4, neck5, neck6, neck7, neck8, neck9, neck10
         };
 
-        float delta  = Minecraft.getInstance().getDeltaFrameTime();
+        Minecraft mc = Minecraft.getInstance();
+
+        float delta = mc.isPaused()
+                ? 0.0f
+                : mc.getTimer().getGameTimeDeltaPartialTick(false);
         float speed  = 0.40F;
         float degree = 0.80F;
 

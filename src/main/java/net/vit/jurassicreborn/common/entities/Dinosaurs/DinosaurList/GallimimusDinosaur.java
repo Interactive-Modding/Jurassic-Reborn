@@ -7,12 +7,12 @@ import net.vit.jurassicreborn.common.entities.EntityUtils.Diet;
 import net.vit.jurassicreborn.common.entities.EntityUtils.FoodType;
 import net.vit.jurassicreborn.common.util.TimePeriod;
 import java.util.ArrayList;
+import java.util.List;
 
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.biome.Biome;
-import net.minecraftforge.common.Tags;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.neoforge.common.Tags;
 
 public class GallimimusDinosaur extends Dinosaur {
     public static final double SPEED = 0.41F;
@@ -52,24 +52,9 @@ public class GallimimusDinosaur extends Dinosaur {
                         {"", "foot_bones", "foot_bones", "", ""}};
         this.setRecipe(recipe);
         
-        ArrayList<ResourceKey<Biome>> biomeList = new ArrayList<>();
-//        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.PLAINS));
-//        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.DRY));
         TagKey<Biome>[] tags = (new TagKey[]{Tags.Biomes.IS_PLAINS, Tags.Biomes.IS_DRY_OVERWORLD});
-        ArrayList<Biome> allBiomes = new ArrayList<>(ForgeRegistries.BIOMES.getValues());
-
-        biomeList = new ArrayList<>(allBiomes.stream().filter((biome ->{
-            boolean accept = false;
-            
-            for(var tag : tags){
-                if(ForgeRegistries.BIOMES.tags().getTag(tag).contains(biome)){
-                    accept = true;
-                }
-            }
-            return accept;
-            
-        })).map((biome) -> ForgeRegistries.BIOMES.getResourceKey(biome).get()).toList());
-        this.setSpawn(1, biomeList);
+//      List<ResourceKey<Biome>> biomeList = biomeKeysForTags(tags);
+//       this.setSpawn(1, biomeList);
 this.init();
         this.enableSkeleton();
     }

@@ -1,9 +1,11 @@
 package net.vit.jurassicreborn.common.blocks.entities.fence;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.world.entity.Mob;
-import net.minecraft.world.level.pathfinder.BlockPathTypes;
+import net.minecraft.world.level.pathfinder.PathType;
 import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.vit.jurassicreborn.client.sounds.SoundHandler;
+import net.vit.jurassicreborn.common.blocks.ModBlocks;
 import net.vit.jurassicreborn.common.entities.DinosaurEntity;
 
 import net.minecraft.core.BlockPos;
@@ -25,9 +27,9 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -38,6 +40,22 @@ import net.minecraft.world.level.material.Fluids;
 
 /** Forge 1.19.2 port of the old ElectricFenceWireBlock. */
 public class ElectricFenceWireBlock extends BaseEntityBlock implements SimpleWaterloggedBlock {
+
+    public static final MapCodec<ElectricFenceWireBlock> LOW_CODEC =
+            MapCodec.unit(() -> ModBlocks.LOW_SECURITY_FENCE_WIRE.get());
+    public static final MapCodec<ElectricFenceWireBlock> MED_CODEC =
+            MapCodec.unit(() -> ModBlocks.MED_SECURITY_FENCE_WIRE.get());
+    public static final MapCodec<ElectricFenceWireBlock> HIGH_CODEC =
+            MapCodec.unit(() -> ModBlocks.HIGH_SECURITY_FENCE_WIRE.get());
+
+    @Override
+    protected MapCodec<? extends BaseEntityBlock> codec() {
+        return switch (type) {
+            case LOW -> LOW_CODEC;
+            case MED -> MED_CODEC;
+            case HIGH -> HIGH_CODEC;
+        };
+    }
 
     /* ────── properties ────── */
     public static final BooleanProperty NORTH = BooleanProperty.create("north");
@@ -100,7 +118,6 @@ public class ElectricFenceWireBlock extends BaseEntityBlock implements SimpleWat
         }
         return super.getCollisionShape(state, level, pos, ctx);
     }
-    @Override
     public boolean isLadder(BlockState state, LevelReader level, BlockPos pos, LivingEntity entity) {
         return true;
     }
@@ -126,16 +143,14 @@ public class ElectricFenceWireBlock extends BaseEntityBlock implements SimpleWat
         return rebuildConnections(ctx.getLevel(), ctx.getClickedPos(),
                 defaultBlockState().setValue(WATERLOGGED, water));
     }
-    @Override
     public boolean isPathfindable(BlockState state, BlockGetter level, BlockPos pos,
                                   PathComputationType type) {
         return false;
     }
 
-    @Override
-    public BlockPathTypes getBlockPathType(BlockState state, BlockGetter level,
-                                           BlockPos pos, @Nullable Mob mob) {
-        return BlockPathTypes.DAMAGE_OTHER;
+    public PathType getBlockPathType(BlockState state, BlockGetter level,
+                                     BlockPos pos, @Nullable Mob mob) {
+        return PathType.DAMAGE_OTHER;
     }
 
     @Override

@@ -1,0 +1,11 @@
+{
+  "type": "jurassicreborn:cleaning",
+  "id": "jurassicreborn:encased_dunkleosteus_fossil_cleaning",
+  "input": {
+    "item": "jurassicreborn:encased_dunkleosteus_fossil"
+  },
+  "output": {
+    "count": 1,
+    "id": "jurassicreborn:bones/dunkleosteus_skull"
+  }
+}

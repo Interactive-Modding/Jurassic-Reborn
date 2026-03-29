@@ -59,10 +59,8 @@ public class TroodonRenderer extends DinosaurRenderer {
                     consumer,
                     LightTexture.FULL_BRIGHT,
                     LivingEntityRenderer.getOverlayCoords(entity, 0.0F),
-                    1.0F,
-                    1.0F,
-                    1.0F,
-                    1.0F);
+                    0xFFFFFFFF
+            );
         }
 
         private static ResourceLocation resolveEyesTexture(DinosaurEntity entity) {
@@ -77,19 +75,19 @@ public class TroodonRenderer extends DinosaurRenderer {
             String basePath = "textures/entities/" + formattedName + "/";
             String gender = entity.isMale() ? "male" : "female";
 
-            ResourceLocation gendered = new ResourceLocation(JurassicReborn.MODID,
+            ResourceLocation gendered = ResourceLocation.fromNamespaceAndPath(JurassicReborn.MODID,
                     basePath + formattedName + "_" + gender + "_" + stageName + "_eyes.png");
             if (textureExists(gendered)) {
                 return gendered;
             }
 
-            ResourceLocation stageOnly = new ResourceLocation(JurassicReborn.MODID,
+            ResourceLocation stageOnly = ResourceLocation.fromNamespaceAndPath(JurassicReborn.MODID,
                     basePath + formattedName + "_" + stageName + "_eyes.png");
             if (textureExists(stageOnly)) {
                 return stageOnly;
             }
 
-            ResourceLocation fallback = new ResourceLocation(JurassicReborn.MODID,
+            ResourceLocation fallback = ResourceLocation.fromNamespaceAndPath(JurassicReborn.MODID,
                     basePath + formattedName + "_eyes.png");
             if (textureExists(fallback)) {
                 return fallback;

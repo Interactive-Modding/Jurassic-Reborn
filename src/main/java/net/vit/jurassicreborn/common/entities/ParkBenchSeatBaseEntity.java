@@ -2,14 +2,12 @@ package net.vit.jurassicreborn.common.entities;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.network.NetworkHooks;
 import net.vit.jurassicreborn.common.blocks.ModBlocks;
+import net.minecraft.network.syncher.SynchedEntityData;
 
 public abstract class ParkBenchSeatBaseEntity extends Entity {
     protected BlockPos benchPos;
@@ -26,11 +24,13 @@ public abstract class ParkBenchSeatBaseEntity extends Entity {
         this(type, level);
         this.benchPos = benchPos.immutable();
         this.setPos(benchPos.getX() + 0.5 + xOffset,
-                benchPos.getY() + 0.30,
+                benchPos.getY() + 0.60,
                 benchPos.getZ() + 0.5 + zOffset);
     }
 
-    @Override protected void defineSynchedData() {}
+    @Override
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+    }
 
     @Override
     protected void readAdditionalSaveData(CompoundTag tag) {
@@ -85,8 +85,5 @@ public abstract class ParkBenchSeatBaseEntity extends Entity {
         if (!level().isClientSide) discard();
     }
 
-    @Override
-    public Packet<ClientGamePacketListener> getAddEntityPacket() {
-        return NetworkHooks.getEntitySpawningPacket(this);
-    }
+
 }

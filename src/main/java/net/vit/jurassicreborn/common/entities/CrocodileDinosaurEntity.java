@@ -68,7 +68,8 @@ public abstract class CrocodileDinosaurEntity extends AmphibianDinosaurEntity {
         // --- Maintain/exit basking state & immobilize ---
         if (this.getAnimation() == EntityAnimation.BASKING.get()) {
             // Abort basking if situation changes
-            if (this.getTarget() != null || this.isInWater() || !this.onGround() || this.hurtTime > 0) {
+            boolean isTryingToMove = this.getMoveControl().hasWanted() || !this.getNavigation().isDone();
+            if (this.getTarget() != null || this.isInWater() || !this.onGround() || this.hurtTime > 0 || isTryingToMove) {
                 this.setAnimation(EntityAnimation.IDLE.get());
             }
         }

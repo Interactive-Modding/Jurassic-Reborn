@@ -401,6 +401,7 @@ package net.vit.jurassicreborn.client.render.entity.animation;
 
 import com.github.alexthe666.citadel.animation.Animation;
 import com.github.alexthe666.citadel.client.model.AdvancedModelBox;
+
 import com.mojang.math.Vector3f;
 import net.vit.jurassicreborn.jurassicreborn;
 import EntityUtils.entities.common.net.vit.jurassicreborn.Animatable;

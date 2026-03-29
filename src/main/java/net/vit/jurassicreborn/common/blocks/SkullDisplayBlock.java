@@ -33,9 +33,7 @@ import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.DeferredItem;
 import net.vit.jurassicreborn.common.blocks.entities.SkullDisplayBlockEntity;
 import net.vit.jurassicreborn.common.entities.Dinosaurs.Dinosaur;
 import net.vit.jurassicreborn.common.items.Fossils.FossilItem;
@@ -173,7 +171,7 @@ public class SkullDisplayBlock extends Block implements EntityBlock, SimpleWater
     }
 
     @Override
-    public ItemStack getCloneItemStack(BlockState state, HitResult target, BlockGetter level, BlockPos pos, Player player) {
+    public ItemStack getCloneItemStack(BlockState state, HitResult target, LevelReader level, BlockPos pos, Player player) {
         BlockEntity be = level.getBlockEntity(pos);
         if (be instanceof SkullDisplayBlockEntity tile) {
             return getItemFromTile(tile);
@@ -185,12 +183,12 @@ public class SkullDisplayBlock extends Block implements EntityBlock, SimpleWater
         Dinosaur dino = tile.getDinosaur();
         if (dino == null) return ItemStack.EMPTY;
 
-        Map<String, RegistryObject<Item>> map = tile.isFossilized()
+        Map<String, DeferredItem<Item>> map = tile.isFossilized()
                 ? ModItems.BONES.get(dino)
                 : ModItems.FRESH_BONES.get(dino);
         if (map == null) return ItemStack.EMPTY;
 
-        RegistryObject<Item> entry = map.get("skull");
+        DeferredItem<Item> entry = map.get("skull");
         if (entry == null) return ItemStack.EMPTY;
 
         ItemStack stack = new ItemStack(entry.get());

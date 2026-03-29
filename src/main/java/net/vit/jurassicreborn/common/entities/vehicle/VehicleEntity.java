@@ -4,12 +4,17 @@ import com.google.common.collect.Lists;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Holder;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.game.ClientboundTeleportEntityPacket;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
@@ -20,9 +25,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MoverType;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.entity.Entity.MoveFunction;
 import net.minecraft.world.level.Level;
@@ -31,11 +34,10 @@ import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraft.world.phys.shapes.VoxelShape;import net.neoforged.api.distmarker.Dist;import net.neoforged.api.distmarker.OnlyIn;
 import net.vit.jurassicreborn.client.sounds.CarLoopSound;
 import net.vit.jurassicreborn.client.sounds.SoundHandler;
+import net.vit.jurassicreborn.common.items.ModItems;
 import net.vit.jurassicreborn.common.network.CarEntityPlayRecord;
 import net.vit.jurassicreborn.common.network.Network;
 import org.jetbrains.annotations.Nullable;
@@ -43,6 +45,7 @@ import net.minecraft.world.phys.Vec2;
 import org.joml.Vector4f;
 
 import java.util.List;
+import java.util.Optional;
 
 
 public abstract class VehicleEntity extends Entity {
@@ -52,7 +55,7 @@ public abstract class VehicleEntity extends Entity {
     public static final EntityDataAccessor<Integer> WATCHER_SPEED = SynchedEntityData.defineId(VehicleEntity.class, EntityDataSerializers.INT);
     public static final EntityDataAccessor<ItemStack> RECORD_ITEM = SynchedEntityData.defineId(VehicleEntity.class, EntityDataSerializers.ITEM_STACK);
     public static final EntityDataAccessor<CompoundTag> WATCHER_SEATS = SynchedEntityData.defineId(VehicleEntity.class, EntityDataSerializers.COMPOUND_TAG);
-
+    public static final EntityDataAccessor<ItemStack> STATION_ITEM = SynchedEntityData.defineId(VehicleEntity.class, EntityDataSerializers.ITEM_STACK);
     public static final float MAX_HEALTH = 40;
     private static final byte LEFT = 0b000001;
     private static final byte RIGHT = 0b000010;
@@ -98,12 +101,13 @@ public abstract class VehicleEntity extends Entity {
 
     @OnlyIn(Dist.CLIENT)
     public CarLoopSound engineSound;
+    @OnlyIn(Dist.CLIENT)
+    public CarLoopSound stationSound;
     private static final Item[] STATIONS = new Item[] {
             Items.MUSIC_DISC_13,
             Items.MUSIC_DISC_CAT,
             Items.MUSIC_DISC_5,
             Items.MUSIC_DISC_11,
-            Items.MUSIC_DISC_13,
             Items.MUSIC_DISC_BLOCKS,
             Items.MUSIC_DISC_CHIRP,
             Items.MUSIC_DISC_MALL,
@@ -114,7 +118,10 @@ public abstract class VehicleEntity extends Entity {
             Items.MUSIC_DISC_STRAD,
             Items.MUSIC_DISC_WAIT,
             Items.MUSIC_DISC_WARD,
-            Items.MUSIC_DISC_FAR
+            Items.MUSIC_DISC_FAR,
+            ModItems.DONT_MOVE_A_MUSCLE_DISC.get(),
+            ModItems.JURASSICREBORN_THEME_DISC.get(),
+            ModItems.TROODONS_AND_RAPTORS_DISC.get()
     };
     private float healAmount;
     private int healCooldown = 40;
@@ -128,7 +135,6 @@ public abstract class VehicleEntity extends Entity {
     public VehicleEntity(EntityType<? extends VehicleEntity> type, Level world) {
         super(type, world);
         this.setBoundingBox(new AABB(this.getX(), this.getY(), this.getZ(), this.getX() + 3.0F, this.getY() + 2.5F, this.getZ() + 3.0F));
-        this.setMaxUpStep(1.5F);
         if (world.isClientSide) {
             this.steerAmount = new InterpValue(this, 0.1D);
         }
@@ -157,17 +163,19 @@ public abstract class VehicleEntity extends Entity {
     }
 
     @Override
-    protected void defineSynchedData() {
-        this.entityData.define(WATCHER_STATE, (byte) 0);
-        this.entityData.define(WATCHER_HEALTH, MAX_HEALTH);
-        this.entityData.define(WATCHER_SPEED, 1);
-        this.entityData.define(RECORD_ITEM, ItemStack.EMPTY);
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        builder.define(WATCHER_STATE, (byte) 0);
+        builder.define(WATCHER_HEALTH, MAX_HEALTH);
+        builder.define(WATCHER_SPEED, 1);
+        builder.define(RECORD_ITEM, ItemStack.EMPTY);
+        builder.define(STATION_ITEM, ItemStack.EMPTY);
         CompoundTag s = new CompoundTag();
         for (int i = 0; i < createSeats().length; i++) {
             s.putString(str(i), "");
         }
-        this.entityData.define(WATCHER_SEATS, s);
+        builder.define(WATCHER_SEATS, s);
     }
+
 
     public boolean left() { return getStateBit(LEFT); }
     public boolean right() { return getStateBit(RIGHT); }
@@ -193,10 +201,15 @@ public abstract class VehicleEntity extends Entity {
     public void setHealth(float health) { this.entityData.set(WATCHER_HEALTH, health); }
     public float getHealth() { return this.entityData.get(WATCHER_HEALTH); }
     public ItemStack getItem() { return this.entityData.get(RECORD_ITEM); }
+    public ItemStack getStationItem() { return this.entityData.get(STATION_ITEM); }
 
     /** Stores a copy of the item stack that spawned this vehicle for later drops. */
     public void setItem(ItemStack stack) {
         this.entityData.set(RECORD_ITEM, stack.copy());
+    }
+
+    public void setStationItem(ItemStack stack) {
+        this.entityData.set(STATION_ITEM, stack.copy());
     }
 
     @Override
@@ -343,13 +356,19 @@ public abstract class VehicleEntity extends Entity {
     protected void handleControl() {
         // default implementation does nothing
     }
-    // Core tick
+    @Override
+    public float maxUpStep() {
+        return 1.0F;
+    }
     @Override
     public void tick() {
         super.tick();
         if (level().isClientSide && !noiseInstance) {
             noiseInstance = true;
             startSound();
+        }
+        if (level().isClientSide) {
+            startStationSound();
         }
         // Dead check
         this.checkAndHandleDeath();
@@ -517,16 +536,17 @@ public abstract class VehicleEntity extends Entity {
         int seatId = getSeatForEntity(passenger);
         Seat seat  = seatId >= 0 ? seats[seatId] : null;
 
-        double baseY = getY() + getPassengersRidingOffset()/5;
+        Vec3 attachment = passenger.getVehicleAttachmentPoint(this);
+        double baseY = getY() + attachment.y;
 
         double px = getX();
-        double py = baseY + passenger.getMyRidingOffset();     // always apply rider offset
+        double py = baseY;
         double pz = getZ();
 
         if (seat != null) {
             Vec3 seatPos = seat.getPos(this);
             px = seatPos.x;
-            py = baseY + seat.getOffsetY() + passenger.getMyRidingOffset();  // seat lift
+            py = seatPos.y + attachment.y;  // seat lift + passenger offset
             pz = seatPos.z;
         }
 
@@ -599,15 +619,17 @@ public abstract class VehicleEntity extends Entity {
     }
     @Override
     protected void readAdditionalSaveData(CompoundTag compound) {
+        HolderLookup.Provider provider = this.level().registryAccess();
         this.setHealth(compound.getFloat("Health"));
         this.healAmount = compound.getFloat("HealAmount");
         this.setSpeed(Speed.values()[compound.getInt("Speed")]);
         CompoundTag tag = compound.getCompound("InterpValues");
-        this.backValue.deserializeNBT(tag.getCompound("Back"));
-        this.frontValue.deserializeNBT(tag.getCompound("Front"));
-        this.leftValue.deserializeNBT(tag.getCompound("Left"));
-        this.rightValue.deserializeNBT(tag.getCompound("Right"));
-        this.entityData.set(RECORD_ITEM, ItemStack.of(compound.getCompound("RecordItem")));
+        this.backValue.readFromNBT(provider, tag.getCompound("Back"));
+        this.frontValue.readFromNBT(provider,tag.getCompound("Front"));
+        this.leftValue.readFromNBT(provider,tag.getCompound("Left"));
+        this.rightValue.readFromNBT(provider,tag.getCompound("Right"));
+        this.entityData.set(RECORD_ITEM, ItemStack.parseOptional(provider, compound.getCompound("RecordItem")));
+        this.entityData.set(STATION_ITEM, ItemStack.parseOptional(provider, compound.getCompound("StationItem")));
     }
     private void advanceInterpolations() {
         if (!level().isClientSide) return;
@@ -617,17 +639,25 @@ public abstract class VehicleEntity extends Entity {
     }
     @Override
     protected void addAdditionalSaveData(CompoundTag compound) {
+        HolderLookup.Provider provider = this.level().registryAccess();
         compound.putFloat("Health", this.getHealth());
         compound.putFloat("HealAmount", this.healAmount);
         compound.putInt("Speed", this.getSpeed().ordinal());
         CompoundTag tag = new CompoundTag();
-        tag.put("Back", this.backValue.serializeNBT());
-        tag.put("Front", this.frontValue.serializeNBT());
-        tag.put("Left", this.leftValue.serializeNBT());
-        tag.put("Right", this.rightValue.serializeNBT());
+        tag.put("Back", this.backValue.writeToNBT(provider, new CompoundTag()));
+        tag.put("Front", this.frontValue.writeToNBT(provider, new CompoundTag()));
+        tag.put("Left", this.leftValue.writeToNBT(provider, new CompoundTag()));
+        tag.put("Right", this.rightValue.writeToNBT(provider, new CompoundTag()));
         compound.put("InterpValues", tag);
-        compound.put("RecordItem", this.entityData.get(RECORD_ITEM).save(new CompoundTag()));
-    }
+        ItemStack recordItem = this.entityData.get(RECORD_ITEM);
+        if (!recordItem.isEmpty()) {
+            compound.put("RecordItem", recordItem.save(provider));
+        }
+
+        ItemStack stationItem = this.entityData.get(STATION_ITEM);
+        if (!stationItem.isEmpty()) {
+            compound.put("StationItem", stationItem.save(provider));
+        }    }
 
     // Utility methods
     private String str(int input) { return Integer.toString(input); }
@@ -682,20 +712,30 @@ public abstract class VehicleEntity extends Entity {
     }
 
 
+
     public void cycleStation() {
         if (level().isClientSide) return;
-        ItemStack current = getItem();
+
+        ItemStack current = getStationItem();
         int idx = -1;
         for (int i = 0; i < STATIONS.length; i++) {
-            if (current.is(STATIONS[i])) {
+            if (!current.isEmpty() && current.getItem() == STATIONS[i]) {
                 idx = i;
                 break;
             }
         }
-        int next = (idx + 1) % STATIONS.length;
-        ItemStack record = new ItemStack(STATIONS[next]);
-        this.entityData.set(RECORD_ITEM, record);
-        Network.sendToAllNear(level(), blockPosition(), new CarEntityPlayRecord(getId(), record));
+
+        ItemStack nextRecord;
+        if (idx == -1) {
+            nextRecord = new ItemStack(STATIONS[0]);
+        } else if (idx == STATIONS.length - 1) {
+            nextRecord = ItemStack.EMPTY; // OFF state
+        } else {
+            nextRecord = new ItemStack(STATIONS[idx + 1]);
+        }
+
+        this.entityData.set(STATION_ITEM, nextRecord);
+        Network.sendToAllNear(level(), blockPosition(), new CarEntityPlayRecord(getId(), nextRecord));
     }
     // --- WHEELS, PARTICLES ---
     /**
@@ -730,10 +770,7 @@ public abstract class VehicleEntity extends Entity {
             Vec3 groundPos = wheel.getCurrentWheelPos();
             BlockPos pos = BlockPos.containing(groundPos.x, groundPos.y, groundPos.z);
             BlockState ground = level().getBlockState(pos);
-            boolean allowed = (ground.is(net.minecraft.tags.BlockTags.DIRT)
-                    || ground.is(net.minecraft.tags.BlockTags.SAND))
-                    && ground.isFaceSturdy(level(), pos, Direction.UP)
-                    && !level().getBlockState(pos.above()).getFluidState().is(net.minecraft.tags.FluidTags.WATER);
+            boolean allowed = canLeaveTyreTrack(pos, ground);
             if (!allowed) continue;
 
             Vec3 opp = opposite.getCurrentWheelPos();
@@ -742,6 +779,10 @@ public abstract class VehicleEntity extends Entity {
             Vec3 oppGroundPos = new Vec3(opp.x, oppGroundY, opp.z);
             wheelDataList[wheel.getID()].add(new WheelParticleData(groundPos, oppGroundPos, level().getGameTime()));
         }
+    }
+    private boolean canLeaveTyreTrack(BlockPos pos, BlockState ground) {
+        return ground.isFaceSturdy(level(), pos, Direction.UP)
+                && level().getFluidState(pos.above()).isEmpty();
     }
     // --------- Inner classes ---------
     /* ------------------------------------------------------ */
@@ -843,18 +884,67 @@ public abstract class VehicleEntity extends Entity {
 
 
     @OnlyIn(Dist.CLIENT)
-    public float getSoundVolume() {
+    public float getEngineSoundVolume() {
         return (Math.abs(this.wheelRotateAmount) + 0.001F)
                 / (this.engineSound == null || this.engineSound.isStopped() ? 2f : 4f);
     }
 
     @OnlyIn(Dist.CLIENT)
+    public float getStationSoundVolume() {
+        return this.getStationItem().isEmpty() ? 0.0F : 1.0F;
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    public float getSoundVolume() {
+        return getEngineSoundVolume();
+    }
+
+    @OnlyIn(Dist.CLIENT)
     public void startSound() {
         if (this.engineSound == null) {
-            this.engineSound = new CarLoopSound(this, SoundHandler.CAR_MOVE, SoundSource.RECORDS,
-                    v -> !v.isRemoved());
+            this.engineSound = new CarLoopSound(
+                    this,
+                    SoundHandler.CAR_MOVE,
+                    SoundSource.RECORDS,
+                    v -> !v.isRemoved(),
+                    false
+            );
             Minecraft.getInstance().getSoundManager().play(this.engineSound);
         }
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    public void startStationSound() {
+        ItemStack stationStack = this.getStationItem();
+
+        if (stationStack.isEmpty() || this.getControllingPassenger() == null) {
+            if (this.stationSound != null) {
+                Minecraft.getInstance().getSoundManager().stop(this.stationSound);
+                this.stationSound = null;
+            }
+            return;
+        }
+
+        if (this.stationSound != null && !this.stationSound.isStopped()) {
+            return;
+        }
+
+        Optional<Holder<JukeboxSong>> songHolder = JukeboxSong.fromStack(
+                this.level().registryAccess(), stationStack
+        );
+        if (songHolder.isEmpty()) return;
+
+        JukeboxSong song = songHolder.get().value();
+
+        this.stationSound = new CarLoopSound(
+                this,
+                song.soundEvent().value(),
+                SoundSource.RECORDS,
+                v -> !v.isRemoved() && !v.getStationItem().isEmpty() && v.getControllingPassenger() != null,
+                true
+        );
+
+        Minecraft.getInstance().getSoundManager().play(this.stationSound);
     }
     // -------- Abstracts to implement --------
     protected abstract Seat[] createSeats();

@@ -61,7 +61,7 @@ public abstract class PenguinDinosaurEntity extends DinosaurEntity {
 
         this.blocked = false;
 
-
+        // Goals (kept from your last working version)
         this.goalSelector.addGoal(5,  new MoveUnderwaterGoal());
         this.goalSelector.addGoal(10, new FindWaterGoal());
         this.goalSelector.addGoal(10, new WanderGoal());
@@ -94,7 +94,7 @@ public abstract class PenguinDinosaurEntity extends DinosaurEntity {
                     this.setAirSupply(0);
                     this.hurt(this.damageSources().drown(), 2.0F);
                 }
-                getInWater = air < 40;
+                getInWater = air < 40; // if you want a behavior hook
                 getOut = false;
                 this.navigation = navigationLand;
             }
@@ -229,7 +229,7 @@ public abstract class PenguinDinosaurEntity extends DinosaurEntity {
         }
         @Override
         public boolean canUse() {
-
+            // Hook up later if you want active water seeking when getInWater is true
             return false;
         }
     }

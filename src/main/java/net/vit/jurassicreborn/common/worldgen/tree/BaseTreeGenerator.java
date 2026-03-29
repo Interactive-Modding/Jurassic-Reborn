@@ -118,14 +118,14 @@ public class BaseTreeGenerator extends Feature<NoneFeatureConfiguration> {
         WorldGenLevel level = pContext.level();
         BlockPos origin = pContext.origin();
 
-
+        // Ensure the entire trunk column is free before attempting to place the tree.
         for (int y = 0; y <= height + 1; y++) {
             if (!TreePlaceUtil.validTreePos(level, origin.above(y))) {
                 return false;
             }
         }
 
-
+        // Only check a limited canopy radius instead of a full cube to make bonemeal growth less picky.
         int canopyRadius = 6;
         int minY = origin.getY() + 2;
         int maxY = origin.getY() + height + 2;

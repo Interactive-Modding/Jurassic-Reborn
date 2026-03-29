@@ -26,13 +26,16 @@ public class PaleoPadViewDinosaurScreen extends Screen {
     private static final int SIZE_Y = 192;
     private static final int TOTAL_PAGES = 2;
 
-    private static final ResourceLocation BACKGROUND_TEXTURE = new ResourceLocation(JurassicReborn.MODID,"textures/gui/paleo_pad/paleo_pad.png");
-    private static final ResourceLocation WIDGETS_TEXTURE = new ResourceLocation(JurassicReborn.MODID, "textures/field_guide/widgets.png");
+    private static final ResourceLocation BACKGROUND_TEXTURE = ResourceLocation.fromNamespaceAndPath(JurassicReborn.MODID,"textures/gui/paleo_pad/paleo_pad.png");
+    private static final ResourceLocation WIDGETS_TEXTURE = ResourceLocation.fromNamespaceAndPath(JurassicReborn.MODID, "textures/field_guide/widgets.png");
     private static final Map<DinosaurStatus, ResourceLocation> STATUS_TEXTURES = new HashMap<>();
+    @Override
+    protected void renderBlurredBackground(float partialTick) {
+    }
 
     static {
         for (DinosaurStatus status : DinosaurStatus.values()) {
-            STATUS_TEXTURES.put(status, new ResourceLocation(JurassicReborn.MODID, "textures/field_guide/status/" + status.name().toLowerCase(Locale.ENGLISH) + ".png"));
+            STATUS_TEXTURES.put(status, ResourceLocation.fromNamespaceAndPath(JurassicReborn.MODID, "textures/field_guide/status/" + status.name().toLowerCase(Locale.ENGLISH) + ".png"));
         }
     }
 
@@ -71,7 +74,7 @@ public class PaleoPadViewDinosaurScreen extends Screen {
 
     @Override
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
-        renderBackground(guiGraphics);
+        renderBackground(guiGraphics,mouseX, mouseY, partialTicks);
 
         int x = (this.width - SIZE_X) / 2;
         int y = (this.height - SIZE_Y) / 2;
@@ -101,12 +104,9 @@ public class PaleoPadViewDinosaurScreen extends Screen {
             drawBar(guiGraphics, statisticsX, y + 75, this.guideInfo.hunger, this.entity.getMetabolism().getMaxEnergy(), 0x94745A);
             drawBar(guiGraphics, statisticsX, y + 105, this.guideInfo.thirst, this.entity.getMetabolism().getMaxWater(), 0x0000FF);
             drawBar(guiGraphics, statisticsX, y + 135, this.entity.getDinosaurAge(), entity.getDinosaur().getMaximumAge(), 0x00FF00);
-
             drawCenteredScaledString(guiGraphics, LangUtil.translate(LangUtil.GUI.get("days_old")).replace("{value}", String.valueOf(this.entity.getDaysExisted())), statisticTextX, y + 155, 1.0F, 0);
-
             // Dinosaur render
-            renderDinosaurEntity(guiGraphics.pose(), x + 65, y + 110, (int) (70 / (entity.getDinosaur().getAdultSizeY() + (2 * entity.getDinosaur().getScaleAdult() + entity.getDinosaur().getPaleoPadScale()))), this.entity);
-
+            renderDinosaurEntity(guiGraphics.pose(), x + 65, y + 110, (int) (70 / (entity.getDinosaur().getAdultSizeY() + (2 * entity.getDinosaur().getScaleAdult() + entity.getDinosaur().getPaleoPadScale()))), this.entity, partialTicks);
             // Status icons
             int statusX = 0;
             int statusY = 0;
@@ -201,8 +201,7 @@ public class PaleoPadViewDinosaurScreen extends Screen {
         poseStack.popPose();
     }
 
-    private void renderDinosaurEntity(PoseStack poseStack, int posX, int posY, float scale, DinosaurEntity entity) {
-
+    private void renderDinosaurEntity(PoseStack poseStack, int posX, int posY, float scale, DinosaurEntity entity, float partialTicks) {
         EntityRenderDispatcher renderDispatcher = Minecraft.getInstance().getEntityRenderDispatcher();
         poseStack.pushPose();
         poseStack.translate(posX, posY, 50.0F);
@@ -211,12 +210,11 @@ public class PaleoPadViewDinosaurScreen extends Screen {
         poseStack.mulPose(Axis.YP.rotationDegrees(180.0F));
         renderDispatcher.setRenderShadow(false);
         Minecraft mc = Minecraft.getInstance();
-        renderDispatcher.render(entity, 0.0D, 0.0D, 0.0D, 0.0F, mc.getFrameTime(), poseStack, mc.renderBuffers().bufferSource(), 15728880);
+        renderDispatcher.render(entity, 0.0D, 0.0D, 0.0D, 0.0F, partialTicks, poseStack, mc.renderBuffers().bufferSource(), 15728880);
         mc.renderBuffers().bufferSource().endBatch();
         renderDispatcher.setRenderShadow(true);
         poseStack.popPose();
     }
-
     @Override
     public boolean isPauseScreen() {
         return false;

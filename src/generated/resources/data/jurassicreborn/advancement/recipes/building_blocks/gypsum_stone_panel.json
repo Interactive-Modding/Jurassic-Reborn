@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_gypsum_stone": {
+      "conditions": {
+        "items": [
+          {
+            "items": "jurassicreborn:gypsum_stone"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "jurassicreborn:gypsum_stone_panel"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_gypsum_stone"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "jurassicreborn:gypsum_stone_panel"
+    ]
+  }
+}

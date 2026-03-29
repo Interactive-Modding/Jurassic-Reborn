@@ -1,23 +1,16 @@
 package net.vit.jurassicreborn.common.items.misc;
 
-import com.mojang.blaze3d.platform.InputConstants;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.fml.DistExecutor;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import net.vit.jurassicreborn.client.screens.SelectDinosaurScreen;
-import net.vit.jurassicreborn.common.entities.item.PaddockSignEntity;
 
 public class PaddockSignItem extends Item {
     public PaddockSignItem(Properties props) {
@@ -46,7 +39,7 @@ public class PaddockSignItem extends Item {
 
 
     private void openClientGui(BlockPos signPos, Direction face, net.minecraft.world.InteractionHand hand) {
-        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> doOpenScreen(signPos, face, hand));
+        doOpenScreen(signPos, face, hand);
     }
 
     @OnlyIn(Dist.CLIENT)

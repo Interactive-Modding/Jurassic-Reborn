@@ -6,6 +6,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.List;
+import net.vit.jurassicreborn.common.util.ItemStackNbtUtil;
 
 public class DinosaurDNAStorageType implements StorageType {
     private DinoDNA dna;
@@ -19,14 +20,14 @@ public class DinosaurDNAStorageType implements StorageType {
         CompoundTag compound = new CompoundTag();
         this.dna.writeToNBT(compound);
 
-        net.minecraftforge.registries.RegistryObject<? extends net.minecraft.world.item.Item> regObj =
+        net.neoforged.neoforge.registries.DeferredHolder<net.minecraft.world.item.Item, ? extends net.minecraft.world.item.Item> regObj =
                 ModItems.DINOSAUR_DNA.get(dna.getDinosaur());
         if (regObj == null) {
             return ItemStack.EMPTY;
         }
 
         ItemStack output = new ItemStack(regObj.get(), 1);
-        output.setTag(compound);
+        ItemStackNbtUtil.setTag(output, compound);
         return output;
     }
 

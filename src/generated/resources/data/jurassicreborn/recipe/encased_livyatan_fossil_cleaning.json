@@ -1,0 +1,11 @@
+{
+  "type": "jurassicreborn:cleaning",
+  "id": "jurassicreborn:encased_livyatan_fossil_cleaning",
+  "input": {
+    "item": "jurassicreborn:encased_livyatan_fossil"
+  },
+  "output": {
+    "count": 1,
+    "id": "jurassicreborn:bones/livyatan_skull"
+  }
+}

@@ -1,0 +1,11 @@
+{
+	"replace": false,
+	"values": [
+		"jurassicreborn:araucaria_fence_gate",
+		"jurassicreborn:magnolia_fence_gate",
+		"jurassicreborn:ginkgo_fence_gate",
+		"jurassicreborn:calamites_fence_gate",
+		"jurassicreborn:phoenix_fence_gate",
+		"jurassicreborn:psaronius_fence_gate"
+	]
+}

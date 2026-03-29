@@ -1,20 +1,20 @@
 package net.vit.jurassicreborn.common.entities.vehicle;
 
 import com.google.common.collect.Lists;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.Entity;
-import net.minecraftforge.common.util.INBTSerializable;
-import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.api.distmarker.Dist;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.neoforge.event.tick.LevelTickEvent;
 import net.vit.jurassicreborn.JurassicReborn;
 
 import java.util.List;
 import java.util.function.Supplier;
 
-@Mod.EventBusSubscriber(modid = JurassicReborn.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
-public class InterpValue implements INBTSerializable<CompoundTag> {
+@EventBusSubscriber(modid = JurassicReborn.MODID, bus = EventBusSubscriber.Bus.GAME)
+public class InterpValue {
     private static final List<InterpValue> VALUES = Lists.newArrayList();
     private static final List<InterpValue> TO_REMOVE = Lists.newArrayList();
 
@@ -71,9 +71,7 @@ public class InterpValue implements INBTSerializable<CompoundTag> {
         this.tick();
     }
     @SubscribeEvent
-    public static void onLevelTick(TickEvent.LevelTickEvent event) {
-        if (event.phase != TickEvent.Phase.END) return;   // run once each tick
-
+    public static void onLevelTick(LevelTickEvent.Post event) {
         synchronized (VALUES) {
             VALUES.forEach(InterpValue::tick);   // advance each value
             VALUES.removeAll(TO_REMOVE);         // purge those flagged for deletion
@@ -82,13 +80,12 @@ public class InterpValue implements INBTSerializable<CompoundTag> {
     }
 
     // ---- NBT ----
-    @Override public CompoundTag serializeNBT() {
-        CompoundTag tag = new CompoundTag();
+    public CompoundTag writeToNBT(HolderLookup.Provider provider, CompoundTag tag) {
         tag.putDouble("target", target);
         tag.putDouble("current", current);
         return tag;
     }
-    @Override public void deserializeNBT(CompoundTag nbt) {
+    public void readFromNBT(HolderLookup.Provider provider, CompoundTag nbt) {
         target = current = prev = nbt.getDouble("current");
     }
 }

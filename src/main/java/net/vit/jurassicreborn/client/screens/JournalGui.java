@@ -20,8 +20,8 @@ public class JournalGui extends Screen {
     private static final int SIZE_Y = 192;
     private static final float FONT_SCALE = 1.0F;
 
-    private static final ResourceLocation BACKGROUND = new ResourceLocation(JurassicReborn.MODID, "textures/journal/background.png");
-    private static final ResourceLocation WIDGETS = new ResourceLocation(JurassicReborn.MODID, "textures/journal/widgets.png");
+    private static final ResourceLocation BACKGROUND = ResourceLocation.fromNamespaceAndPath(JurassicReborn.MODID, "textures/journal/background.png");
+    private static final ResourceLocation WIDGETS = ResourceLocation.fromNamespaceAndPath(JurassicReborn.MODID, "textures/journal/widgets.png");
 
     private final JournalItem.JournalType type;
     private final JournalItem.Content content;
@@ -36,6 +36,9 @@ public class JournalGui extends Screen {
         super(Component.literal(""));
         this.type = type;
         this.content = type.getContent();
+    }
+    @Override
+    protected void renderBlurredBackground(float partialTick) {
     }
 
     @Override
@@ -110,7 +113,7 @@ public class JournalGui extends Screen {
 
     @Override
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
-        this.renderBackground(guiGraphics);
+        this.renderBackground(guiGraphics,mouseX, mouseY, partialTicks);
         int x = (this.width - SIZE_X) / 2;
         int y = (this.height - SIZE_Y) / 2;
 

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "jurassicreborn:tracking_dart",
+  "key": {
+    "F": {
+      "item": "minecraft:compass"
+    },
+    "N": {
+      "tag": "c:nuggets/iron"
+    }
+  },
+  "pattern": [
+    " F",
+    "N "
+  ],
+  "result": {
+    "count": 6,
+    "id": "jurassicreborn:tracker_dart"
+  }
+}

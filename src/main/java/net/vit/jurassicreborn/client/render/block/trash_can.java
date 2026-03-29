@@ -17,10 +17,9 @@ import net.minecraft.world.entity.Entity;
 // Made with Blockbench 4.12.6
 // Exported for Minecraft version 1.17 or later with Mojang mappings
 
-
 public class trash_can<T extends Entity> extends EntityModel<T> {
     // This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
-    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("jurassicreborn", "trash_can"), "main");
+    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath("jurassicreborn", "trash_can"), "main");
     private final ModelPart Trash_can;
     private final ModelPart Top;
     private final ModelPart Fill;
@@ -85,8 +84,8 @@ public class trash_can<T extends Entity> extends EntityModel<T> {
     }
 
     @Override
-    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
-        Trash_can.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int i, int i1, int i2) {
+        Trash_can.render(poseStack, vertexConsumer, i, i1, i2);
     }
 }
 

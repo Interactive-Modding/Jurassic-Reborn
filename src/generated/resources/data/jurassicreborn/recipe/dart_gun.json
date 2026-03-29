@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "jurassicreborn:dart_gun",
+  "key": {
+    "A": {
+      "item": "minecraft:string"
+    },
+    "C": {
+      "item": "minecraft:iron_ingot"
+    },
+    "E": {
+      "item": "minecraft:redstone"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "CCC",
+    " EC"
+  ],
+  "result": {
+    "count": 1,
+    "id": "jurassicreborn:dart_gun"
+  }
+}

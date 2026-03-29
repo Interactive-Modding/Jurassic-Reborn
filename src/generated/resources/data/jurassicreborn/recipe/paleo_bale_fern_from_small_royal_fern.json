@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "jurassicreborn:paleo_bale_fern",
+  "key": {
+    "A": {
+      "item": "jurassicreborn:small_royal_fern"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "AAA",
+    "AAA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "jurassicreborn:paleo_bale_fern"
+  }
+}

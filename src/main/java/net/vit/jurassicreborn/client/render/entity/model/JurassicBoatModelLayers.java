@@ -10,10 +10,10 @@ public final class JurassicBoatModelLayers {
     }
 
     public static ModelLayerLocation createBoatModelName(ModBoatType type) {
-        return new ModelLayerLocation(new ResourceLocation(JurassicReborn.MODID, "boat/" + type.getSerializedName()), "main");
+        return new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(JurassicReborn.MODID, "boat/" + type.getSerializedName()), "main");
     }
 
     public static ModelLayerLocation createChestBoatModelName(ModBoatType type) {
-        return new ModelLayerLocation(new ResourceLocation(JurassicReborn.MODID, "chest_boat/" + type.getSerializedName()), "main");
+        return new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(JurassicReborn.MODID, "chest_boat/" + type.getSerializedName()), "main");
     }
 }

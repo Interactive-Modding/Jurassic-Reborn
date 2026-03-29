@@ -12,7 +12,6 @@ import net.vit.jurassicreborn.common.entities.EntityUtils.ai.SmartBodyHelper;
 import net.vit.jurassicreborn.common.entities.ModEntities;
 import net.vit.jurassicreborn.common.items.ModItems;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -33,20 +32,20 @@ import net.minecraft.world.entity.animal.Wolf;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraftforge.entity.IEntityAdditionalSpawnData;
 
 import javax.annotation.Nullable;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
-import net.vit.jurassicreborn.common.RebornConfig;
+import net.vit.jurassicreborn.common.JurassicConfig;
 
-public class GoatEntity extends Animal implements Animatable, IEntityAdditionalSpawnData {
+public class GoatEntity extends Animal implements Animatable {
     public static final PoseHandler<GoatEntity> BILLY_POSE_HANDLER = new PoseHandler<>("goat_billy", Lists.newArrayList(GrowthStage.ADULT));
     public static final PoseHandler<GoatEntity> KID_POSE_HANDLER   = new PoseHandler<>("goat_kid",   Lists.newArrayList(GrowthStage.INFANT));
     public static final PoseHandler<GoatEntity> NANNY_POSE_HANDLER = new PoseHandler<>("goat_nanny", Lists.newArrayList(GrowthStage.ADULT));
@@ -65,7 +64,6 @@ public class GoatEntity extends Animal implements Animatable, IEntityAdditionalS
 
     public GoatEntity(EntityType<? extends GoatEntity> type, Level level) {
         super(type, level);
-        this.setMaxUpStep(1.0F);
         this.animationTick = 0;
         this.setAnimation(EntityAnimation.IDLE.get());
     }
@@ -97,18 +95,18 @@ public class GoatEntity extends Animal implements Animatable, IEntityAdditionalS
     }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(WATCHER_IS_RUNNING, false);
-        this.entityData.define(WATCHER_IS_BILLY, false);
-        this.entityData.define(WATCHER_VARIANT, Variant.JURASSIC_PARK.ordinal());
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(WATCHER_IS_RUNNING, false);
+        builder.define(WATCHER_IS_BILLY, false);
+        builder.define(WATCHER_VARIANT, Variant.JURASSIC_PARK.ordinal());
     }
 
     @Override
     public AgeableMob getBreedOffspring(ServerLevel level, AgeableMob mate) {
         GoatEntity baby = ModEntities.GOAT.get().create(level);
         if (baby != null) {
-            baby.finalizeSpawn(level, level.getCurrentDifficultyAt(this.blockPosition()), MobSpawnType.BREEDING, null, null);
+            baby.finalizeSpawn(level, level.getCurrentDifficultyAt(this.blockPosition()), MobSpawnType.BREEDING, null);
         }
         return baby;
     }
@@ -275,13 +273,18 @@ public class GoatEntity extends Animal implements Animatable, IEntityAdditionalS
     }
 
     @Override
+    public boolean isFood(ItemStack stack) {
+        return stack.is(Items.WHEAT);
+    }
+
+    @Override
     public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, MobSpawnType reason,
-                                        @Nullable SpawnGroupData spawnData, @Nullable CompoundTag tag) {
+                                        @Nullable SpawnGroupData spawnData) {
         this.billy = this.getRandom().nextBoolean();
         this.variant = Variant.values()[this.getRandom().nextInt(Variant.values().length)];
         this.entityData.set(WATCHER_IS_BILLY, this.billy);
         this.entityData.set(WATCHER_VARIANT, this.variant.ordinal());
-        return super.finalizeSpawn(level, difficulty, reason, spawnData, tag);
+        return super.finalizeSpawn(level, difficulty, reason, spawnData);
     }
 
     @Override
@@ -303,27 +306,37 @@ public class GoatEntity extends Animal implements Animatable, IEntityAdditionalS
     }
 
     @Override
-    public void writeSpawnData(FriendlyByteBuf buffer) {
-        buffer.writeBoolean(this.billy);
-        buffer.writeByte(this.variant.ordinal());
-    }
+    protected void dropAllDeathLoot(ServerLevel level, DamageSource source) {
+        super.dropAllDeathLoot(level, source);
 
-    @Override
-    public void readSpawnData(FriendlyByteBuf buf) {
-        this.billy = buf.readBoolean();
-        this.variant = Variant.values()[buf.readByte()];
-        this.entityData.set(WATCHER_IS_BILLY, this.billy);
-        this.entityData.set(WATCHER_VARIANT, this.variant.ordinal());
-    }
+        // Leather
+        this.spawnAtLocation(
+                new ItemStack(Items.LEATHER, this.random.nextInt(2) + 1)
+        );
 
-    @Override
-    protected void dropCustomDeathLoot(DamageSource src, int looting, boolean recentlyHit) {
-        this.spawnAtLocation(Items.LEATHER, this.random.nextInt(2) + 1);
+        // Wool (50% chance)
         if (this.random.nextBoolean()) {
-            this.spawnAtLocation(new ItemStack(this.random.nextBoolean() ? Blocks.WHITE_WOOL : Blocks.BROWN_WOOL, 1), 0.0F);
+            this.spawnAtLocation(
+                    new ItemStack(
+                            this.random.nextBoolean()
+                                    ? Blocks.WHITE_WOOL.asItem()
+                                    : Blocks.BROWN_WOOL.asItem(),
+                            1
+                    )
+            );
         }
-        this.spawnAtLocation(this.isOnFire() ? ModItems.GOAT_COOKED.get() : ModItems.GOAT_RAW.get(), this.random.nextInt(2) + 1);
+
+        // Meat (cooked if on fire)
+        this.spawnAtLocation(
+                new ItemStack(
+                        this.isOnFire()
+                                ? ModItems.GOAT_COOKED.get()
+                                : ModItems.GOAT_RAW.get(),
+                        this.random.nextInt(2) + 1
+                )
+        );
     }
+
 
     @Override protected float getSoundVolume() { return super.getSoundVolume() * 0.8F; }
 
@@ -342,7 +355,7 @@ public class GoatEntity extends Animal implements Animatable, IEntityAdditionalS
     }
 
     public static boolean checkGoatSpawnRules(EntityType<GoatEntity> type, LevelAccessor level, MobSpawnType reason, BlockPos pos, RandomSource random) {
-        return RebornConfig.spawnGoats && Animal.checkAnimalSpawnRules(type, level, reason, pos, random);
+        return JurassicConfig.spawnGoats && Animal.checkAnimalSpawnRules(type, level, reason, pos, random);
     }
 
     public enum Type { BILLY, NANNY, KID }

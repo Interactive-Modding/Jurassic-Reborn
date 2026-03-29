@@ -1,4 +1,6 @@
 {
+  "loader": "neoforge:item_layers",
+  "variant": "standalone",
   "parent": "item/generated",
   "textures": {
     "layer0": "jurassicreborn:item/storage_disc",

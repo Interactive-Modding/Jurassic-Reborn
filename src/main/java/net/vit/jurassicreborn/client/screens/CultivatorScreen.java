@@ -13,8 +13,8 @@ import net.vit.jurassicreborn.common.blocks.entities.cultivator.CultivatorMenu;
 import net.vit.jurassicreborn.common.network.Network;
 
 public class CultivatorScreen extends AbstractContainerScreen<CultivatorMenu> {
-    private static final ResourceLocation TEXTURE = new ResourceLocation(JurassicReborn.MODID, "textures/gui/cultivator.png");
-    private static final ResourceLocation NUTRIENTS_TEXTURE = new ResourceLocation(JurassicReborn.MODID, "textures/gui/cultivator_nutrients.png");
+    private static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(JurassicReborn.MODID, "textures/gui/cultivator.png");
+    private static final ResourceLocation NUTRIENTS_TEXTURE = ResourceLocation.fromNamespaceAndPath(JurassicReborn.MODID, "textures/gui/cultivator_nutrients.png");
 
     public CultivatorScreen(CultivatorMenu menu, Inventory inv, Component title) {
         super(menu, inv, title);
@@ -26,7 +26,7 @@ public class CultivatorScreen extends AbstractContainerScreen<CultivatorMenu> {
 
     @Override
     public void render(GuiGraphics graphics, int mouseX, int mouseY, float partial) {
-        this.renderBackground(graphics); // fixes JEI warning
+        this.renderBackground(graphics,mouseX, mouseY, partial); // fixes JEI warning
         super.render(graphics, mouseX, mouseY, partial);
         int time = this.menu.getField(6);
         if (time > 0) {
@@ -84,7 +84,7 @@ public class CultivatorScreen extends AbstractContainerScreen<CultivatorMenu> {
         graphics.blit(NUTRIENTS_TEXTURE, nx, this.topPos + 108,0, 184, getScaled(this.menu.getField(4), max, 150), 9);
         graphics.blit(NUTRIENTS_TEXTURE, nx, this.topPos + 134,0, 193, getScaled(this.menu.getField(1), max, 150), 9);
 
-
+        // Progress bar (adjust UVs to your PNG)
         int time = this.menu.getField(6);     // processTime
         int maxT = 2000;                       // STACK_PROCESS_TIME
         int w = (time > 0 ? (time * 24 / maxT) : 0);

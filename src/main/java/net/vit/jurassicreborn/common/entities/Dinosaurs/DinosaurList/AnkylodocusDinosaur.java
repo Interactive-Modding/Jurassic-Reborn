@@ -23,7 +23,7 @@ public class AnkylodocusDinosaur extends Dinosaur implements Hybrid
         this.setLocation("North America");
         this.setDinosaurType(DinosaurType.NEUTRAL);
         this.setDinosaurClass(AnkylodocusEntity.class);
-        this.setTimePeriod(TimePeriod.NONE);
+        this.setTimePeriod(TimePeriod.NONE); //TODO, it's a hybrid, what do you do here?
         this.setEggColorMale(0x9d5353, 0xe67a13);
         this.setEggColorFemale(0x9d5353, 0x727272);
         this.setHealth(10, 80);

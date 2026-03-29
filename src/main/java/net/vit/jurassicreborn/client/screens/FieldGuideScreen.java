@@ -13,7 +13,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.world.entity.EntityType;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.DeferredHolder;
 import net.vit.jurassicreborn.JurassicReborn;
 import net.vit.jurassicreborn.client.render.entity.animation.EntityAnimation;
 import net.vit.jurassicreborn.common.entities.Dinosaurs.Dinosaur;
@@ -26,15 +26,20 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static net.vit.jurassicreborn.common.entities.DinosaurEntity.CLASS_TYPE_LIST;
+
 public class FieldGuideScreen extends Screen {
     private final int imageWidth = 256;
     private final int imageHeight = 192;
     private int currentIndex = 0;
     private List<Dinosaur> dinosaurs;
 
-    private static final ResourceLocation BOOK_TEXTURE = new ResourceLocation("jurassicreborn", "textures/field_guide/background.png");
-    private static final ResourceLocation WIDGETS_TEXTURE = new ResourceLocation(JurassicReborn.MODID, "textures/journal/widgets.png");
+    private static final ResourceLocation BOOK_TEXTURE = ResourceLocation.fromNamespaceAndPath("jurassicreborn", "textures/field_guide/background.png");
+    private static final ResourceLocation WIDGETS_TEXTURE = ResourceLocation.fromNamespaceAndPath(JurassicReborn.MODID, "textures/journal/widgets.png");
     private final Map<Dinosaur, DinosaurEntity> skeletonCache = new HashMap<>();
+    @Override
+    protected void renderBlurredBackground(float partialTick) {
+    }
 
     public FieldGuideScreen() {
         super(Component.literal("InGen Field Guide"));
@@ -54,7 +59,7 @@ public class FieldGuideScreen extends Screen {
 
     @Override
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
-        this.renderBackground(guiGraphics);
+        this.renderBackground(guiGraphics,mouseX, mouseY, partialTicks);
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderTexture(0, BOOK_TEXTURE);
         guiGraphics.blit(BOOK_TEXTURE, leftPos(), topPos(), 0, 0, imageWidth, imageHeight);
@@ -187,8 +192,9 @@ public class FieldGuideScreen extends Screen {
         Minecraft mc = Minecraft.getInstance();
         EntityRenderDispatcher dispatcher = mc.getEntityRenderDispatcher();
 
-        RegistryObject<? extends EntityType<? extends DinosaurEntity>> reg =
-                DinosaurEntity.CLASS_TYPE_LIST.get(dino.getDinosaurClass());
+        Class<? extends DinosaurEntity> cls = dino.getDinosaurClass();
+        DeferredHolder<EntityType<?>, ? extends EntityType<? extends DinosaurEntity>> reg =
+                CLASS_TYPE_LIST.get(cls);
         if (reg == null) {
             return;
         }

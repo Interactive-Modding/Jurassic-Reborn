@@ -20,5 +20,29 @@ public class MegapiranhaEntity extends SwimmingDinosaurEntity
         super(world, type, DinosaurHandler.MEGAPIRANHA);
         this.target(AlligatorGarEntity.class, CoelacanthEntity.class, BeelzebufoEntity.class, CrassigyrinusEntity.class, DiplocaulusEntity.class, DodoEntity.class, GuanlongEntity.class, LeptictidiumEntity.class, LeaellynasauraEntity.class, HypsilophodonEntity.class, MicroceratusEntity.class, MicroraptorEntity.class, MussaurusEntity.class, OthnieliaEntity.class, OviraptorEntity.class, ProtoceratopsEntity.class, SegisaurusEntity.class, TroodonEntity.class, Player.class, Squid.class, Player.class, Cod.class, Dolphin.class, Salmon.class, TropicalFish.class, Turtle.class, Axolotl.class, GlowSquid.class, Frog.class, Tadpole.class,  Animal.class, Villager.class, Mob.class, Goat.class);
     }
+    @Override
+    public boolean canWaterBreachAttack() {
+        return true;
+    }
+
+    @Override
+    public double getWaterBreachForwardBoost() {
+        return 0.82D;
+    }
+
+    @Override
+    public double getWaterBreachVerticalBoost() {
+        return 0.38D;
+    }
+
+    @Override
+    public double getWaterBreachProbeDistance() {
+        return 1.45D;
+    }
+
+    @Override
+    public double getUnderwaterChaseRange() {
+        return 8.0D;
+    }
 }
 

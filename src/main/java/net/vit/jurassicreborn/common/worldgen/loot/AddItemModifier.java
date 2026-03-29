@@ -1,10 +1,13 @@
-
+// AddItemModifier.java
 package net.vit.jurassicreborn.common.worldgen.loot;
 
 import com.google.common.base.Suppliers;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import net.minecraft.core.Holder;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
@@ -12,9 +15,8 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraftforge.common.loot.IGlobalLootModifier;
-import net.minecraftforge.common.loot.LootModifier;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.neoforge.common.loot.IGlobalLootModifier;
+import net.neoforged.neoforge.common.loot.LootModifier;
 import org.jetbrains.annotations.NotNull;
 import java.util.Optional;
 import java.util.List;
@@ -25,10 +27,10 @@ public class AddItemModifier extends LootModifier {
     /* ---------- Codec ---------- */
 
 
-    public static final Supplier<Codec<AddItemModifier>> CODEC = Suppliers.memoize(() ->
-            RecordCodecBuilder.create(inst ->
+    public static final Supplier<MapCodec<AddItemModifier>> CODEC = Suppliers.memoize(() ->
+            RecordCodecBuilder.mapCodec(inst ->
                     codecStart(inst)
-                            .and(ForgeRegistries.ITEMS.getCodec()
+                            .and(BuiltInRegistries.ITEM.byNameCodec()
                                     .optionalFieldOf("item")
                                     .forGetter(m -> Optional.ofNullable(m.item)))
                             .and(ResourceLocation.CODEC
@@ -77,13 +79,16 @@ public class AddItemModifier extends LootModifier {
     protected @NotNull ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> generated,
                                                           LootContext ctx) {
 
-        if (ctx.getRandom().nextFloat() > chance)
+        if (ctx.getRandom().nextFloat() > chance)           // roll the dice
             return generated;
 
-
+        // Pick the actual item
         Item toAdd = this.item;
         if (toAdd == null && tag != null) {
-            List<Item> pool = ForgeRegistries.ITEMS.tags().getTag(tag).stream().toList();
+            var registry = ctx.getLevel().registryAccess().registryOrThrow(Registries.ITEM);
+            List<Item> pool = registry.getTag(tag)
+                    .map(set -> set.stream().map(Holder::value).toList())
+                    .orElse(List.of());
             if (!pool.isEmpty())
                 toAdd = pool.get(ctx.getRandom().nextInt(pool.size()));
         }
@@ -94,7 +99,7 @@ public class AddItemModifier extends LootModifier {
     }
 
     @Override
-    public Codec<? extends IGlobalLootModifier> codec() {
+    public MapCodec<? extends IGlobalLootModifier> codec() {
         return CODEC.get();
     }
 }

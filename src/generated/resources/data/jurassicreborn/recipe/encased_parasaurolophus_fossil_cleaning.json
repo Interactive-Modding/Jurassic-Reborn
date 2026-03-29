@@ -1,0 +1,11 @@
+{
+  "type": "jurassicreborn:cleaning",
+  "id": "jurassicreborn:encased_parasaurolophus_fossil_cleaning",
+  "input": {
+    "item": "jurassicreborn:encased_parasaurolophus_fossil"
+  },
+  "output": {
+    "count": 1,
+    "id": "jurassicreborn:bones/parasaurolophus_skull"
+  }
+}

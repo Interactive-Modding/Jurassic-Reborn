@@ -1,10 +1,12 @@
 package net.vit.jurassicreborn.common.blocks.entities.bugcrate;
 
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.Containers;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Player;
@@ -21,60 +23,105 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraftforge.network.NetworkHooks;
+
 import org.jetbrains.annotations.Nullable;
 
 public class BugCrate extends HorizontalDirectionalBlock implements EntityBlock {
 
-    public BugCrate(){
-        super(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).strength(2.5f));
-        this.registerDefaultState(this.getStateDefinition().any().setValue(FACING, Direction.NORTH));
+    /* ---------------------------------------------------------------------
+       CODEC (REQUIRED IN 1.21 — MUST MATCH CONSTRUCTOR)
+       --------------------------------------------------------------------- */
+    public static final MapCodec<BugCrate> CODEC =
+            RecordCodecBuilder.mapCodec(instance ->
+                    instance.group(
+                            BlockBehaviour.Properties.CODEC.fieldOf("properties")
+                                    .forGetter(b -> b.properties)
+                    ).apply(instance, BugCrate::new)
+            );
+
+    /* ---------------------------------------------------------------------
+       CONSTRUCTOR (MUST TAKE Properties)
+       --------------------------------------------------------------------- */
+    public BugCrate(BlockBehaviour.Properties properties) {
+        super(properties);
+        this.registerDefaultState(
+                this.getStateDefinition().any().setValue(FACING, Direction.NORTH)
+        );
+    }
+
+    /* ---------------------------------------------------------------------
+       PLACEMENT
+       --------------------------------------------------------------------- */
+    @Override
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
+        return this.defaultBlockState()
+                .setValue(FACING, context.getHorizontalDirection().getOpposite());
     }
 
     @Override
-    public BlockState getStateForPlacement(BlockPlaceContext pContext) {
-        return this.defaultBlockState().setValue(FACING, pContext.getHorizontalDirection().getOpposite());
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        builder.add(FACING);
     }
+
+    /* ---------------------------------------------------------------------
+       BLOCK ENTITY
+       --------------------------------------------------------------------- */
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
         return new BugCrateBlockEntity(pos, state);
     }
+
+    /* ---------------------------------------------------------------------
+       SERVER TICKER
+       --------------------------------------------------------------------- */
     @Override
-    public void onRemove(BlockState oldState, Level level, BlockPos pos, BlockState newState, boolean isMoving) {
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(
+            Level level, BlockState state, BlockEntityType<T> type) {
+
+        return level.isClientSide ? null :
+                (lvl, p, s, be) ->
+                        ((BugCrateBlockEntity) be).serverTick(
+                                lvl, p, s, (BugCrateBlockEntity) be
+                        );
+    }
+
+    /* ---------------------------------------------------------------------
+       REMOVAL
+       --------------------------------------------------------------------- */
+    @Override
+    public void onRemove(BlockState oldState, Level level, BlockPos pos,
+                         BlockState newState, boolean isMoving) {
+
         if (!oldState.is(newState.getBlock())) {
-            BlockEntity blockentity = level.getBlockEntity(pos);
-            if (blockentity instanceof BugCrateBlockEntity blockcrate) {
-                Containers.dropContents(level, pos, blockcrate);
-                level.updateNeighbourForOutputSignal(pos, this);
+            BlockEntity be = level.getBlockEntity(pos);
+            if (be instanceof BugCrateBlockEntity crate) {
+                Containers.dropContents(level, pos, crate);
             }
             super.onRemove(oldState, level, pos, newState, isMoving);
         }
     }
+
+    /* ---------------------------------------------------------------------
+       INTERACTION (NO NetworkHooks IN 1.21)
+       --------------------------------------------------------------------- */
     @Override
-    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
-        return level.isClientSide ? null : (BlockEntityTicker<T>) (lvl, pos, st, be) -> {
-            ((BugCrateBlockEntity) be).serverTick(lvl, pos, st, (BugCrateBlockEntity) be);
-        };
-    }
-
-
-    @Override
-    public InteractionResult use(BlockState state, Level level,
-                                 BlockPos pos, Player player,
-                                 InteractionHand hand, BlockHitResult hit) {
-
-        if (!level.isClientSide) {
+    public InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hit) {
+        if (!level.isClientSide && player instanceof ServerPlayer sp) {
             BlockEntity be = level.getBlockEntity(pos);
-            if (be instanceof MenuProvider provider && player instanceof ServerPlayer sp) {
-                NetworkHooks.openScreen(sp, provider, pos);
+            if (be instanceof MenuProvider provider) {
+                sp.openMenu(provider, pos);
             }
         }
         return InteractionResult.sidedSuccess(level.isClientSide);
     }
+
+
+    /* ---------------------------------------------------------------------
+       CODEC OVERRIDE
+       --------------------------------------------------------------------- */
     @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
-        pBuilder.add(HorizontalDirectionalBlock.FACING);
-        super.createBlockStateDefinition(pBuilder);
+    protected MapCodec<? extends HorizontalDirectionalBlock> codec() {
+        return CODEC;
     }
 }

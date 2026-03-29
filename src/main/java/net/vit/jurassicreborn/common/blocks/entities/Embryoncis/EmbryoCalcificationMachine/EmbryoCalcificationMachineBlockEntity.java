@@ -3,7 +3,7 @@ package net.vit.jurassicreborn.common.blocks.entities.Embryoncis.EmbryoCalcifica
 import com.google.common.primitives.Ints;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.items.IItemHandlerModifiable;
+import net.neoforged.neoforge.items.IItemHandlerModifiable;
 import net.vit.jurassicreborn.common.blocks.entities.MachineBlockEntity;
 import net.vit.jurassicreborn.common.blocks.entities.MachineItemStackHandler;
 import net.vit.jurassicreborn.common.blocks.entities.ModBlockEntities;
@@ -31,6 +31,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import net.vit.jurassicreborn.common.util.ItemStackNbtUtil;
 
 public class EmbryoCalcificationMachineBlockEntity extends MachineBlockEntity implements MenuProvider,ItemHandlerBlockEntity {
     public static final int SLOTS = 3;
@@ -150,7 +151,7 @@ public class EmbryoCalcificationMachineBlockEntity extends MachineBlockEntity im
         if (!input.isEmpty() && input.getItem() instanceof SyringeItem syringe) {
 //            ItemStack output = new ItemStack(ItemHandler.EGG, 1, this.slots.get(0).getItemDamage());
             ItemStack output = ModItems.dinoEggs.get(syringe.getDinosaur(input)).get().getDefaultInstance();
-            output.setTag(input.getTag());
+            ItemStackNbtUtil.setTag(output, ItemStackNbtUtil.getTag(input));
             return List.of(output);
 
         }

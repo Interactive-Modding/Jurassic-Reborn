@@ -1,52 +1,44 @@
 package net.vit.jurassicreborn.common.network;
 
-import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.fml.DistExecutor;
-import net.minecraftforge.network.NetworkEvent;
+import net.neoforged.neoforge.network.handling.IPayloadContext;
+import net.vit.jurassicreborn.JurassicReborn;
 import net.vit.jurassicreborn.common.entities.vehicle.MonorailEntity;
-import java.util.function.Supplier;
 
-public class MonorailChangeStateMessage {
-    private final int entityId;
-    private final boolean onRails;
+public record MonorailChangeStateMessage(int entityId, boolean onRails) implements CustomPacketPayload {
+    public static final Type<MonorailChangeStateMessage> TYPE = new Type<>(JurassicReborn.resource("monorail_change_state"));
+    public static final StreamCodec<RegistryFriendlyByteBuf, MonorailChangeStateMessage> STREAM_CODEC = new StreamCodec<>() {
+        @Override
+        public MonorailChangeStateMessage decode(RegistryFriendlyByteBuf buf) {
+            return new MonorailChangeStateMessage(buf.readInt(), buf.readBoolean());
+        }
 
-    public MonorailChangeStateMessage(int entityId, boolean onRails) {
-        this.entityId = entityId;
-        this.onRails = onRails;
+        @Override
+        public void encode(RegistryFriendlyByteBuf buf, MonorailChangeStateMessage msg) {
+            buf.writeInt(msg.entityId());
+            buf.writeBoolean(msg.onRails());
+        }
+    };
+
+    @Override
+    public Type<? extends CustomPacketPayload> type() {
+        return TYPE;
     }
 
-    public static void encode(MonorailChangeStateMessage msg, FriendlyByteBuf buf) {
-        buf.writeInt(msg.entityId);
-        buf.writeBoolean(msg.onRails);
-    }
-
-    public static MonorailChangeStateMessage decode(FriendlyByteBuf buf) {
-        return new MonorailChangeStateMessage(buf.readInt(), buf.readBoolean());
-    }
-
-    public static void handle(MonorailChangeStateMessage msg, Supplier<NetworkEvent.Context> ctx) {
-        ctx.get().enqueueWork(() -> {
-            Level level = ctx.get().getDirection().getReceptionSide().isClient()
-                    ? DistExecutor.unsafeCallWhenOn(Dist.CLIENT, () -> Client::getLevel)
-                    : ctx.get().getSender().level();
-            if (level == null) return;
-
-            Entity e = level.getEntity(msg.entityId);
-            if (e instanceof MonorailEntity car) {
-                car.setOnRails(msg.onRails); // add a setter or keep the field public
+    public static void handle(MonorailChangeStateMessage msg, IPayloadContext ctx) {
+        ctx.enqueueWork(() -> {
+            Level level = ctx.player().level();
+            if (level == null) {
+                return;
+            }
+            Entity entity = level.getEntity(msg.entityId());
+            if (entity instanceof MonorailEntity car) {
+                car.setOnRails(msg.onRails());
             }
         });
-        ctx.get().setPacketHandled(true);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private static class Client {
-        static Level getLevel() {
-            return net.minecraft.client.Minecraft.getInstance().level;
-        }
     }
 }

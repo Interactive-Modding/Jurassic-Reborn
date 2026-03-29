@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "jurassicreborn:fine_net",
+  "key": {
+    "A": {
+      "item": "minecraft:string"
+    },
+    "B": {
+      "item": "minecraft:stick"
+    },
+    "C": {
+      "item": "minecraft:white_wool"
+    }
+  },
+  "pattern": [
+    "ABC",
+    " BB",
+    "B A"
+  ],
+  "result": {
+    "count": 1,
+    "id": "jurassicreborn:fine_net"
+  }
+}

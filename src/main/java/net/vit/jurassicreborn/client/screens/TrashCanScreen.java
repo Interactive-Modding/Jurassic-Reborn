@@ -9,7 +9,7 @@ import net.vit.jurassicreborn.common.blocks.entities.trashcan.TrashCanMenu;
 import net.minecraft.client.gui.GuiGraphics;
 
 public class TrashCanScreen extends AbstractContainerScreen<TrashCanMenu> {
-    private static final ResourceLocation TEXTURE = new ResourceLocation("minecraft", "textures/gui/container/dispenser.png");
+    private static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath("minecraft", "textures/gui/container/dispenser.png");
 
     public TrashCanScreen(TrashCanMenu menu, Inventory inv, Component title) {
         super(menu, inv, title);
@@ -25,7 +25,7 @@ public class TrashCanScreen extends AbstractContainerScreen<TrashCanMenu> {
 
     @Override
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
-        renderBackground(guiGraphics);
+        renderBackground(guiGraphics,mouseX, mouseY, partialTicks);
         super.render(guiGraphics, mouseX, mouseY, partialTicks);
         renderTooltip(guiGraphics, mouseX, mouseY);
     }

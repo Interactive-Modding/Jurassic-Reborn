@@ -3,9 +3,7 @@ package net.vit.jurassicreborn.client.render.entity.animation.entity;
 import com.github.alexthe666.citadel.client.model.AdvancedModelBox;
 import net.vit.jurassicreborn.client.model.AnimatableModel;
 import net.vit.jurassicreborn.client.render.entity.animation.EntityAnimator;
-import net.vit.jurassicreborn.common.entities.DinosaurEntities.SpinosaurusEntity;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.vit.jurassicreborn.common.entities.DinosaurEntities.SpinosaurusEntity;import net.neoforged.api.distmarker.Dist;import net.neoforged.api.distmarker.OnlyIn;
 
 import java.util.ArrayList;
 import java.util.List;

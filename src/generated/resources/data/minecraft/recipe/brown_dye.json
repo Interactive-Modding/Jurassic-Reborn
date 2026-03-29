@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "minecraft:dye",
+  "ingredients": [
+    {
+      "item": "jurassicreborn:rhamnus_salicifolius_berries"
+    },
+    {
+      "item": "jurassicreborn:rhamnus_salicifolius_berries"
+    },
+    {
+      "item": "jurassicreborn:rhamnus_salicifolius_berries"
+    },
+    {
+      "item": "jurassicreborn:rhamnus_salicifolius_berries"
+    }
+  ],
+  "result": {
+    "count": 2,
+    "id": "minecraft:brown_dye"
+  }
+}

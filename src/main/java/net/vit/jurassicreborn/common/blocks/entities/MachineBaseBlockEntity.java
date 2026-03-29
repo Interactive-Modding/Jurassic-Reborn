@@ -4,6 +4,7 @@ import io.netty.buffer.ByteBuf;
 import net.vit.jurassicreborn.common.util.networking.Syncable;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.Connection;
@@ -20,11 +21,6 @@ import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
-import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.items.IItemHandler;
-import net.minecraftforge.items.wrapper.SidedInvWrapper;
 import org.jetbrains.annotations.Nullable;
 
 public abstract class MachineBaseBlockEntity<A extends MachineBaseBlockEntity> extends RandomizableContainerBlockEntity implements Syncable, BlockEntityTicker<A>, WorldlyContainer {
@@ -43,12 +39,13 @@ public abstract class MachineBaseBlockEntity<A extends MachineBaseBlockEntity> e
 //    }
 
     @Override
-    public void load(CompoundTag compound) {
-        super.load(compound);
+    protected void loadAdditional(CompoundTag compound, HolderLookup.Provider provider) {
+        super.loadAdditional(compound, provider);
 
         NonNullList<ItemStack> inventory = NonNullList.create();
-        if(compound.contains("Items"))
-            ContainerHelper.loadAllItems(compound.getCompound("Items"), inventory);
+        if (compound.contains("Items")) {
+            ContainerHelper.loadAllItems(compound.getCompound("Items"), inventory, provider);
+        }
 
         for (int i = 0; i < this.getProcessCount(); i++) {
             this.processTime[i] = compound.getShort("ProcessTime" + i);
@@ -61,8 +58,8 @@ public abstract class MachineBaseBlockEntity<A extends MachineBaseBlockEntity> e
     }
 
     @Override
-    public void saveAdditional(CompoundTag compound) {
-        super.saveAdditional(compound);
+    protected void saveAdditional(CompoundTag compound, HolderLookup.Provider provider) {
+        super.saveAdditional(compound, provider);
 
         for (int i = 0; i < this.getProcessCount(); i++) {
             compound.putInt("ProcessTime" + i, (short) this.processTime[i]);
@@ -71,7 +68,7 @@ public abstract class MachineBaseBlockEntity<A extends MachineBaseBlockEntity> e
 
         NonNullList<ItemStack> slots = this.getSlots();
         CompoundTag items = new CompoundTag();
-        ContainerHelper.saveAllItems(items, slots, true);
+        ContainerHelper.saveAllItems(items, slots, provider);
         compound.put("Items", items);
 
 //        NBTTagList itemList = new NBTTagList();
@@ -86,7 +83,7 @@ public abstract class MachineBaseBlockEntity<A extends MachineBaseBlockEntity> e
 //            }
 //        }
 //
-//        compound.setTag("Items", itemList);
+//        ItemStackNbtUtil.setTag(compound, "Items", itemList);
 
         if (this.hasCustomName()) {
             compound.putString("CustomName", this.customName);
@@ -135,7 +132,7 @@ public abstract class MachineBaseBlockEntity<A extends MachineBaseBlockEntity> e
     public void setItem(int index, ItemStack stack) {
         NonNullList<ItemStack> slots = this.getSlots();
 
-        boolean stacksEqual = !stack.isEmpty() && stack.is(slots.get(index).getItem()) && ItemStack.isSameItemSameTags(stack, slots.get(index));
+        boolean stacksEqual = !stack.isEmpty() && stack.is(slots.get(index).getItem()) && ItemStack.isSameItemSameComponents(stack, slots.get(index));
         slots.set(index, stack);
 
         if (!stack.isEmpty() && stack.getCount() > this.getInventoryStackLimit()) {
@@ -338,7 +335,7 @@ public abstract class MachineBaseBlockEntity<A extends MachineBaseBlockEntity> e
         int[] outputs = this.getOutputs();
         for (int slot : outputs) {
             ItemStack stack = slots.get(slot);
-            if (stack.isEmpty() || ((ItemStack.isSameItemSameTags(stack, output) && stack.getCount() + output.getCount() <= stack.getMaxStackSize()) && stack.getItem() == output.getItem() && stack.getDamageValue() == output.getDamageValue())) {
+            if (stack.isEmpty() || ((ItemStack.isSameItemSameComponents(stack, output) && stack.getCount() + output.getCount() <= stack.getMaxStackSize()) && stack.getItem() == output.getItem() && stack.getDamageValue() == output.getDamageValue())) {
                 return slot;
             }
         }
@@ -395,7 +392,7 @@ public abstract class MachineBaseBlockEntity<A extends MachineBaseBlockEntity> e
         ItemStack previous = slots.get(slot);
         if (previous.isEmpty()) {
             slots.set(slot, stack);
-        } else if (ItemStack.isSameItemSameTags(previous, stack) && ItemStack.isSameItemSameTags(previous, stack)) {
+        } else if (ItemStack.isSameItemSameComponents(previous, stack) && ItemStack.isSameItemSameComponents(previous, stack)) {
             previous.setCount(previous.getCount() + stack.getCount());
         }
     }
@@ -426,16 +423,14 @@ public abstract class MachineBaseBlockEntity<A extends MachineBaseBlockEntity> e
 //        return new SPacketUpdateTileEntity(this.pos, 0, this.getUpdateTag());
 //    }
 
-    @Override
     public Packet<ClientGamePacketListener> getUpdatePacket() {
         // Will get tag from #getUpdateTag
         return ClientboundBlockEntityDataPacket.create(this);
     }
 
 
-    @Override
-    public CompoundTag getUpdateTag() {
-        return this.saveWithoutMetadata();
+    public CompoundTag getUpdateTag(HolderLookup.Provider provider) {
+        return this.saveWithoutMetadata(provider);
     }
 
 
@@ -445,9 +440,10 @@ public abstract class MachineBaseBlockEntity<A extends MachineBaseBlockEntity> e
 //        this.readFromNBT(packet.getNbtCompound());
 //    }
 
-    @Override
     public void onDataPacket(Connection net, ClientboundBlockEntityDataPacket pkt) {
-        this.load(pkt.getTag());
+        if (pkt.getTag() != null && this.level != null) {
+            this.loadAdditional(pkt.getTag(), this.level.registryAccess());
+        }
     }
 
     protected boolean shouldResetProgress() {
@@ -466,7 +462,7 @@ public abstract class MachineBaseBlockEntity<A extends MachineBaseBlockEntity> e
     @Override
     public Component getDefaultName() {
 
-
+        //noinspection NoTranslation >:( being annoying; it exists you just don't FEEL like it does idiot inspection
         return Component.translatable("jurassicreborn:machine_base_block");
     }
 
@@ -488,22 +484,6 @@ public abstract class MachineBaseBlockEntity<A extends MachineBaseBlockEntity> e
 //        return null;
 //    }
 
-
-    IItemHandler handler = new SidedInvWrapper(this, Direction.UP);
-    IItemHandler handlerBottom = new SidedInvWrapper(this, Direction.DOWN);
-
-    @Override
-    public <T> LazyOptional<T> getCapability(Capability<T> capability, @Nullable Direction facing)
-    {
-        if (facing != null && capability == ForgeCapabilities.ITEM_HANDLER)
-            if (facing == Direction.DOWN) {
-                return LazyOptional.of(() -> (T) (handlerBottom == null ? handlerBottom = new SidedInvWrapper(this, Direction.DOWN) : handlerBottom));
-            }
-            else {
-                return LazyOptional.of(() -> (T) (handler == null ? handler = new SidedInvWrapper(this, Direction.UP) : handler));
-            }
-        return super.getCapability(capability, facing);
-    }
 
 //    @Override
 //    public void packetDataHandler(ByteBuf dataStream) {}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "jurassicreborn:green_jeep_wrangler"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_unfinished_car": {
+      "conditions": {
+        "items": [
+          {
+            "items": "jurassicreborn:unfinished_car"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_unfinished_car"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "jurassicreborn:green_jeep_wrangler"
+    ]
+  }
+}

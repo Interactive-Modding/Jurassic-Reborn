@@ -20,6 +20,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.DoublePlantBlock;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
+import net.vit.jurassicreborn.common.util.ItemStackNbtUtil;
 
 public class PlantCallusItem extends Item {
 
@@ -88,7 +89,7 @@ public class PlantCallusItem extends Item {
         CompoundTag plantData = new CompoundTag();
         PlantDNA plantDNA = new PlantDNA(PlantHandler.EMPTY.getId(), 0);
         plantDNA.writeToNBT(plantData);
-        callus.setTag(plantData);
+        ItemStackNbtUtil.setTag(callus, plantData);
 
         return callus;
     }
@@ -97,7 +98,7 @@ public class PlantCallusItem extends Item {
         ItemStack plant = ModItems.PLANT_CALLUS.get().getDefaultInstance();
         CompoundTag plantData = new CompoundTag();
         dna.writeToNBT(plantData);
-        plant.setTag(plantData);
+        ItemStackNbtUtil.setTag(plant, plantData);
         return plant;
     }
 

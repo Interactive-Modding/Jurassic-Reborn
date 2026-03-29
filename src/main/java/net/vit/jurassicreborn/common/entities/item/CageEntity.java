@@ -6,11 +6,13 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
 import net.minecraft.world.entity.boss.wither.WitherBoss;
 import net.minecraft.world.entity.monster.ElderGuardian;
+import net.minecraft.world.entity.monster.warden.Warden;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.vit.jurassicreborn.common.RebornConfig;
+import net.vit.jurassicreborn.common.JurassicConfig;
 import net.vit.jurassicreborn.common.entities.SwimmingDinosaurEntity;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.vit.jurassicreborn.common.util.ItemStackNbtUtil;
+import net.minecraft.core.registries.BuiltInRegistries;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -22,7 +24,7 @@ public class CageEntity {
     private static final Set<String> ID_BLACKLIST = new HashSet<>();
 
     static {
-        for (String id : RebornConfig.ENTITY_BLACKLIST.blacklist) {
+        for (String id : JurassicConfig.ENTITY_BLACKLIST.blacklist) {
             ID_BLACKLIST.add(id);
         }
     }
@@ -31,15 +33,17 @@ public class CageEntity {
      * Captures the provided entity inside the given ItemStack if it is allowed.
      */
     public static void captureEntity(LivingEntity entity, ItemStack stack) {
-        if (entity != null && !(entity instanceof Player || entity instanceof EnderDragon || entity instanceof WitherBoss || entity instanceof SwimmingDinosaurEntity || entity instanceof ElderGuardian)) {
-            if (!stack.hasTag()) {
-                ResourceLocation id = ForgeRegistries.ENTITY_TYPES.getKey(entity.getType());
+        if (entity != null && !(entity instanceof Player || entity instanceof Warden || entity instanceof EnderDragon || entity instanceof WitherBoss || entity instanceof SwimmingDinosaurEntity || entity instanceof ElderGuardian)) {
+            if (!ItemStackNbtUtil.hasTag(stack)) {
+                ResourceLocation id = BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType());
                 if (id != null && !ID_BLACKLIST.contains(id.toString())) {
                     CompoundTag entityTag = new CompoundTag();
                     entity.saveWithoutId(entityTag);
                     entityTag.putString("id", id.toString());
-                    stack.getOrCreateTag().put("EntityTag", entityTag);
-                    stack.getTag().putString("name", entity.getDisplayName().getString());
+                    CompoundTag tag = ItemStackNbtUtil.getOrCreateTag(stack);
+                    tag.put("EntityTag", entityTag);
+                    tag.putString("name", entity.getDisplayName().getString());
+                    ItemStackNbtUtil.setTag(stack, tag);
                     entity.discard();
                 }
             }

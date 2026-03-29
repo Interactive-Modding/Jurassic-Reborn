@@ -2,8 +2,7 @@ package net.vit.jurassicreborn.client.input;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.client.settings.IKeyConflictContext;
-import net.minecraftforge.client.settings.KeyConflictContext;
+import net.neoforged.neoforge.client.settings.IKeyConflictContext;
 import net.vit.jurassicreborn.common.entities.vehicle.HelicopterEntity;
 
 /**

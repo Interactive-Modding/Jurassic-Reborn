@@ -6,9 +6,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.LivingEntityRenderer;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraft.resources.ResourceLocation;import net.neoforged.api.distmarker.Dist;import net.neoforged.api.distmarker.OnlyIn;
 import net.vit.jurassicreborn.JurassicReborn;
 import net.vit.jurassicreborn.client.model.AnimatableModel;
 import net.vit.jurassicreborn.client.render.entity.animation.entity.CrabAnimator;
@@ -21,8 +19,8 @@ import java.io.IOException;
 @OnlyIn(Dist.CLIENT)
 public class CrabEntityRenderer extends LivingEntityRenderer<CrabEntity, BasicEntityModel<CrabEntity>> {
     private static final AnimatableModel CRAB_MODEL;
-    private static final ResourceLocation CRAB_TEXTURE = new ResourceLocation(JurassicReborn.MODID, "textures/entities/crab/crab.png");
-    private static final ResourceLocation ALT_TEXTURE = new ResourceLocation(JurassicReborn.MODID, "textures/entities/crab/male_crab.png");
+    private static final ResourceLocation CRAB_TEXTURE = ResourceLocation.fromNamespaceAndPath(JurassicReborn.MODID, "textures/entities/crab/crab.png");
+    private static final ResourceLocation ALT_TEXTURE = ResourceLocation.fromNamespaceAndPath(JurassicReborn.MODID, "textures/entities/crab/male_crab.png");
 
     static {
         TabulaModelContainer crab = null;
@@ -33,7 +31,10 @@ public class CrabEntityRenderer extends LivingEntityRenderer<CrabEntity, BasicEn
         }
         CRAB_MODEL = new AnimatableModel(crab, new CrabAnimator());
     }
-
+    @Override
+    protected boolean shouldShowName(CrabEntity entity) {
+        return entity.hasCustomName();
+    }
     public CrabEntityRenderer(EntityRendererProvider.Context context) {
         super(context, CRAB_MODEL, 0.2F);
     }

@@ -1,8 +1,8 @@
 package net.vit.jurassicreborn.common.blocks.entities.feeder;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -26,7 +26,7 @@ import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.network.NetworkHooks;
+import net.vit.jurassicreborn.common.blocks.ModBlocks;
 import net.vit.jurassicreborn.common.blocks.entities.ModBlockEntities;
 import net.vit.jurassicreborn.common.items.PaleoPadItem;
 import net.vit.jurassicreborn.common.paleopad.FeederTrackerApp;
@@ -37,6 +37,13 @@ import java.util.stream.Stream;
 import static net.minecraft.world.level.block.state.properties.BlockStateProperties.WATERLOGGED;
 
 public class FeederBlock extends BaseEntityBlock implements SimpleWaterloggedBlock {
+
+    public static final MapCodec<FeederBlock> CODEC = MapCodec.unit(() -> ModBlocks.FEEDER.get());
+
+    @Override
+    protected MapCodec<? extends BaseEntityBlock> codec() {
+        return CODEC;
+    }
 
     public static DirectionProperty FACING = DirectionalBlock.FACING;
 
@@ -115,17 +122,21 @@ public class FeederBlock extends BaseEntityBlock implements SimpleWaterloggedBlo
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        if (player.getItemInHand(hand).getItem() instanceof PaleoPadItem) return InteractionResult.PASS;
+    public InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hit
+    ) {
+        if (player.getMainHandItem().getItem() instanceof PaleoPadItem) {
+            return InteractionResult.PASS;
+        }
 
         if (!level.isClientSide) {
             BlockEntity be = level.getBlockEntity(pos);
-            if (be instanceof MenuProvider provider && player instanceof ServerPlayer sp) {
-                NetworkHooks.openScreen(sp, provider, pos);
+            if (be instanceof MenuProvider provider) {
+                player.openMenu(provider);
             }
         }
         return InteractionResult.sidedSuccess(level.isClientSide);
     }
+
 
     @Override public RenderShape getRenderShape(BlockState state) { return RenderShape.MODEL; }
 

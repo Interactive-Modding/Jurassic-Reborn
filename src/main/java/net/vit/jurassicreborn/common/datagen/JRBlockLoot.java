@@ -4,13 +4,16 @@ import net.minecraft.advancements.critereon.EnchantmentPredicate;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.advancements.critereon.MinMaxBounds;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
+import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.BlockFamily;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
@@ -28,8 +31,8 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCon
 import net.minecraft.world.level.storage.loot.predicates.MatchTool;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
-import net.minecraftforge.common.Tags;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.common.Tags;
+import net.neoforged.neoforge.registries.DeferredHolder;
 import net.vit.jurassicreborn.common.blocks.ModBlocks;
 import net.vit.jurassicreborn.common.blocks.wood.WoodBlocks;
 import net.vit.jurassicreborn.common.entities.Dinosaurs.Dinosaur;
@@ -44,11 +47,15 @@ public class JRBlockLoot extends BlockLootSubProvider {
     private static final float[] NORMAL_LEAVES_SAPLING_CHANCES = new float[]{0.05F, 0.0625F, 0.083333336F, 0.1F};
     private static final float[] JUNGLE_LEAVES_SAPLING_CHANGES = new float[]{0.025F, 0.027777778F, 0.03125F, 0.041666668F, 0.1F};
     private static final float[] NORMAL_LEAVES_STICK_CHANCES = new float[]{0.02F, 0.022222223F, 0.025F, 0.033333335F, 0.1F};
+    private final HolderLookup.Provider registries;
+    public JRBlockLoot(HolderLookup.Provider registries) {
+        super(Set.of(), FeatureFlags.REGISTRY.allFlags(), registries);
+        this.registries = registries;
+    }
 
     // 1.19.2: BlockLootSubProvider needs (Set<Item> explosionResistant, FeatureFlagSet)
-    public JRBlockLoot() {
-        super(Set.<Item>of(), FeatureFlags.VANILLA_SET);
-    }
+
+
 
     private static LootTable.Builder simpleSingleItem(ItemLike item) {
         return LootTable.lootTable().withPool(
@@ -56,6 +63,14 @@ public class JRBlockLoot extends BlockLootSubProvider {
                         .add(LootItem.lootTableItem(item))
                         .when(ExplosionCondition.survivesExplosion())
         );
+    }
+    private Holder<Enchantment> fortune() {
+        return registries.lookupOrThrow(Registries.ENCHANTMENT)
+                .getOrThrow(Enchantments.FORTUNE);
+    }
+    private Holder<Enchantment> silkTouch() {
+        return registries.lookupOrThrow(Registries.ENCHANTMENT)
+                .getOrThrow(Enchantments.SILK_TOUCH);
     }
 
     // 1.19.2: override generate(), not addTables()
@@ -157,11 +172,35 @@ public class JRBlockLoot extends BlockLootSubProvider {
         dropSelf(ModBlocks.EMBRYONIC_MACHINE.get());
 
         dropSelf(ModBlocks.ENCASED_FAUNA_FOSSIL.get());
-        add(ModBlocks.FLORA_FOSSIL.get(), createMultiItemTable(
+        add(ModBlocks.AMBER_ORE.get(), createMultiItemTableWithSilkTouch(
+                ModBlocks.AMBER_ORE.get(),
+                ModItems.MOSQUITO_AMBER.get(), ModItems.APHID_AMBER.get()));
+
+        add(ModBlocks.DEEPSLATE_AMBER_ORE.get(), createMultiItemTableWithSilkTouch(
+                ModBlocks.DEEPSLATE_AMBER_ORE.get(),
+                ModItems.MOSQUITO_AMBER.get(), ModItems.APHID_AMBER.get()));
+
+        add(ModBlocks.ICE_SHARD_ORE.get(), createMultiItemTableWithSilkTouch(
+                ModBlocks.ICE_SHARD_ORE.get(),
+                ModItems.SEA_LAMPREY.get(), ModItems.FROZEN_LEECH_ITEM.get()));
+
+        add(ModBlocks.DEEPSLATE_ICE_SHARD_ORE.get(), createMultiItemTableWithSilkTouch(
+                ModBlocks.DEEPSLATE_ICE_SHARD_ORE.get(),
+                ModItems.SEA_LAMPREY.get(), ModItems.FROZEN_LEECH_ITEM.get()));
+
+        add(ModBlocks.NEST_FOSSIL.get(), createMultiItemTableWithSilkTouch(
+                ModBlocks.NEST_FOSSIL.get(),
+                ModItems.FOSSILIZED_EGG_1.get(), ModItems.FOSSILIZED_EGG_2.get(),
+                ModItems.FOSSILIZED_EGG_3.get()));
+
+        add(ModBlocks.FLORA_FOSSIL.get(), createMultiItemTableWithSilkTouch(
+                ModBlocks.FLORA_FOSSIL.get(),
                 ModItems.PLANT_FOSSIL.get(), ModItems.PLANT_FOSSIL_0.get(),
                 ModItems.PLANT_FOSSIL_1.get(), ModItems.PLANT_FOSSIL_2.get(),
                 ModItems.PLANT_FOSSIL_3.get(), ModItems.TWIG_FOSSIL.get()));
-        add(ModBlocks.DEEPSLATE_FLORA_FOSSIL.get(), createMultiItemTable(
+
+        add(ModBlocks.DEEPSLATE_FLORA_FOSSIL.get(), createMultiItemTableWithSilkTouch(
+                ModBlocks.DEEPSLATE_FLORA_FOSSIL.get(),
                 ModItems.PLANT_FOSSIL.get(), ModItems.PLANT_FOSSIL_0.get(),
                 ModItems.PLANT_FOSSIL_1.get(), ModItems.PLANT_FOSSIL_2.get(),
                 ModItems.PLANT_FOSSIL_3.get()));
@@ -183,10 +222,10 @@ public class JRBlockLoot extends BlockLootSubProvider {
         this.add(ModBlocks.GYPSUM_STONE.get(), block -> LootTable.lootTable()
                 .withPool(LootPool.lootPool()
                         .setRolls(ConstantValue.exactly(1.0F))
-                        .add(applyExplosionDecay(block,
-                                LootItem.lootTableItem(ModItems.GYPSUM_POWDER.get())
-                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(4.0F, 8.0F)))
-                                        .apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE))))));
+                                        .add(applyExplosionDecay(block,
+                                                LootItem.lootTableItem(ModItems.GYPSUM_POWDER.get())
+                                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(4.0F, 8.0F)))
+                                                        .apply(ApplyBonusCount.addOreBonusCount(fortune()))))));
         dropSelf(ModBlocks.GYPSUM_STONE_PANEL.get());
         dropSelf(ModBlocks.GYPSUM_TILES.get());
 
@@ -316,33 +355,51 @@ public class JRBlockLoot extends BlockLootSubProvider {
                         .setRolls(ConstantValue.exactly(1.0F))
                         .when(InvertedLootItemCondition.invert(
                                 MatchTool.toolMatches(ItemPredicate.Builder.item()
-                                        .of(Tags.Items.SHEARS))))
-                        .when(InvertedLootItemCondition.invert(
-                                MatchTool.toolMatches(ItemPredicate.Builder.item()
-                                        .hasEnchantment(new EnchantmentPredicate(Enchantments.SILK_TOUCH, MinMaxBounds.Ints.atLeast(1))))))
+                                        .of(Tags.Items.TOOLS_SHEAR))))
                         .add(applyExplosionDecay(leavesBlock,
                                 LootItem.lootTableItem(ModItems.PHOENIX_FRUIT.get())
                                         .when(LootItemRandomChanceCondition.randomChance(0.10F)))));
     }
 
-    protected static LootTable.Builder createMultiItemTable(ItemLike... items) {
+    protected LootTable.Builder createMultiItemTable(ItemLike... items) {
         LootPool.Builder builder = LootPool.lootPool();
         for (ItemLike itemLike : items) {
-            builder.add(LootItem.lootTableItem(itemLike));
+            builder.add(LootItem.lootTableItem(itemLike)
+                    .apply(ApplyBonusCount.addUniformBonusCount(fortune(), 1))
+                    .apply(ApplyBonusCount.addUniformBonusCount(silkTouch(), 1)));
         }
         return LootTable.lootTable().withPool(builder.when(ExplosionCondition.survivesExplosion()));
     }
 
+    private LootTable.Builder createMultiItemTableWithSilkTouch(Block block, ItemLike... items) {
+        LootPool.Builder normalDrops = LootPool.lootPool()
+                .setRolls(ConstantValue.exactly(1.0F))
+                .when(this.doesNotHaveSilkTouch());
+
+        for (ItemLike itemLike : items) {
+            normalDrops.add(
+                    applyExplosionDecay(block,
+                            LootItem.lootTableItem(itemLike)
+                                    .apply(ApplyBonusCount.addOreBonusCount(fortune()))
+                    )
+            );
+        }
+
+        return LootTable.lootTable()
+                .withPool(LootPool.lootPool()
+                        .setRolls(ConstantValue.exactly(1.0F))
+                        .when(this.hasSilkTouch())
+                        .add(LootItem.lootTableItem(block)))
+                .withPool(normalDrops);
+    }
     @Override
     protected Iterable<Block> getKnownBlocks() {
-        Set<RegistryObject<? extends Block>> exclude = Set.of(
-                ModBlocks.AMBER_ORE, ModBlocks.DEEPSLATE_AMBER_ORE,
-                ModBlocks.DEEPSLATE_ICE_SHARD_ORE, ModBlocks.ICE_SHARD_ORE,
-                ModBlocks.NEST_FOSSIL
+        Set<Block> exclude = Set.of(
+
         );
         return ModBlocks.MOD_BLOCKS.getEntries().stream()
-                .filter(ro -> !exclude.contains(ro))
-                .map(RegistryObject::get)
-                .toList();
+                .map(DeferredHolder::get)
+                .filter(block -> !exclude.contains(block))
+                .collect(java.util.stream.Collectors.toSet());
     }
 }

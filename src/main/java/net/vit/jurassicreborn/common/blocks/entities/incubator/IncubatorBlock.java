@@ -1,14 +1,17 @@
 package net.vit.jurassicreborn.common.blocks.entities.incubator;
 
+import net.vit.jurassicreborn.common.util.InventoryUtil;
+import com.mojang.serialization.MapCodec;
+
 import net.minecraft.world.Containers;
-import net.minecraftforge.items.wrapper.RecipeWrapper;
+import net.neoforged.neoforge.items.wrapper.RecipeWrapper;
 import net.vit.jurassicreborn.common.blocks.base.BaseMachineBlock;
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.RenderShape;
@@ -30,6 +33,8 @@ import java.util.stream.Stream;
 
 public class IncubatorBlock extends BaseMachineBlock {
 
+    public static final MapCodec<IncubatorBlock> CODEC =
+            Block.simpleCodec(IncubatorBlock::new);
 
     public static DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
 
@@ -347,6 +352,11 @@ public class IncubatorBlock extends BaseMachineBlock {
     }
 
     @Override
+    protected MapCodec<? extends BaseEntityBlock> codec() {
+        return CODEC;
+    }
+
+    @Override
     public RenderShape getRenderShape(BlockState pState) {
         return RenderShape.ENTITYBLOCK_ANIMATED;
     }
@@ -375,18 +385,13 @@ public class IncubatorBlock extends BaseMachineBlock {
     }
 
     @Override
-    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
-
-        if (pLevel.isClientSide) {
-            return InteractionResult.SUCCESS;
-        } else {
-//                MenuProvider menuprovider = this.getMenuProvider(pState, pLevel, pPos);
-            if (pLevel.getBlockEntity(pPos) instanceof IncubatorBlockEntity e ) {
-                pPlayer.openMenu(e);
+    public InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hit) {
+        if (!level.isClientSide) {
+            if (level.getBlockEntity(pos) instanceof IncubatorBlockEntity e) {
+                player.openMenu(e);
             }
-
-            return InteractionResult.CONSUME;
         }
+        return InteractionResult.sidedSuccess(level.isClientSide);
     }
 
     @Override
@@ -404,7 +409,7 @@ public class IncubatorBlock extends BaseMachineBlock {
         if (!oldState.is(newState.getBlock())) {
             BlockEntity blockEntity = level.getBlockEntity(pos);
             if (blockEntity instanceof IncubatorBlockEntity incubatorBlock) {
-                Containers.dropContents(level, pos, new RecipeWrapper(incubatorBlock.getItemHandler()));
+                InventoryUtil.dropContents(level, pos, incubatorBlock.getItemHandler());
                 level.updateNeighbourForOutputSignal(pos, this);
             }
             super.onRemove(oldState, level, pos, newState, isMoving);

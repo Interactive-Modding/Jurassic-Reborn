@@ -20,10 +20,10 @@ public class DimorphodonEntity extends FlyingDinosaurEntity
 , Animal.class, Villager.class, CompsognathusEntity.class, DodoEntity.class, LeaellynasauraEntity.class, LeptictidiumEntity.class, MicroceratusEntity.class, MicroraptorEntity.class, OthnieliaEntity.class, SegisaurusEntity.class);
     }
 
-    @Override
-    protected void doTarget(){
-        this.target(LeptictidiumEntity.class, MicroraptorEntity.class, MicroceratusEntity.class, CompsognathusEntity.class);
-    }
+//    @Override
+//    protected void doTarget(){
+//        this.target(LeptictidiumEntity.class, MicroraptorEntity.class, MicroceratusEntity.class, CompsognathusEntity.class);
+//    }
     @Override
     public SoundEvent getSoundForAnimation(Animation animation)
     {

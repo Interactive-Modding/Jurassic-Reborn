@@ -1,0 +1,11 @@
+{
+  "type": "jurassicreborn:cleaning",
+  "id": "jurassicreborn:encased_baryonyx_fossil_cleaning",
+  "input": {
+    "item": "jurassicreborn:encased_baryonyx_fossil"
+  },
+  "output": {
+    "count": 1,
+    "id": "jurassicreborn:bones/baryonyx_skull"
+  }
+}

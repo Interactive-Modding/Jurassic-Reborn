@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
@@ -15,6 +16,8 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import net.vit.jurassicreborn.common.blocks.ModBlocks;
 import net.vit.jurassicreborn.common.blocks.entities.SkullDisplayBlockEntity;
 import net.vit.jurassicreborn.common.entities.Dinosaurs.Dinosaur;
@@ -22,6 +25,7 @@ import net.vit.jurassicreborn.common.entities.Dinosaurs.DinosaurHandler;
 import net.vit.jurassicreborn.common.entities.Dinosaurs.DinosaurList.TyrannosaurusDinosaur;
 import net.vit.jurassicreborn.common.entities.EntityUtils.Hybrid;
 import net.vit.jurassicreborn.common.items.ModItems;
+import net.vit.jurassicreborn.common.util.ItemStackNbtUtil;
 import net.vit.jurassicreborn.common.util.LangUtil;
 import net.vit.jurassicreborn.common.util.api.DinosaurItem;
 import net.vit.jurassicreborn.common.util.api.GrindableItem;
@@ -224,32 +228,60 @@ public class FossilItem extends Item implements GrindableItem {
 //    }
 
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable net.minecraft.world.level.Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
-        CompoundTag nbt = stack.getTag();
+    @OnlyIn(Dist.CLIENT)
+    public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+        var customData = stack.get(DataComponents.CUSTOM_DATA);
 
-        if (nbt != null && nbt.contains("Genetics") && nbt.contains("DNAQuality")) {
-            int quality = nbt.getInt("DNAQuality");
+        if (customData != null) {
+            CompoundTag nbt = customData.copyTag();
 
-            ChatFormatting colour;//BRIT(derogatory)
+            if (nbt.contains("Genetics") && nbt.contains("DNAQuality")) {
+                int quality = nbt.getInt("DNAQuality");
 
-            if (quality > 75) {
-                colour = ChatFormatting.GREEN;
-            } else if (quality > 50) {
-                colour = ChatFormatting.YELLOW;
-            } else if (quality > 25) {
-                colour = ChatFormatting.GOLD;
-            } else {
-                colour = ChatFormatting.RED;
+                ChatFormatting colour =
+                        quality > 75 ? ChatFormatting.GREEN :
+                                quality > 50 ? ChatFormatting.YELLOW :
+                                        quality > 25 ? ChatFormatting.GOLD :
+                                                ChatFormatting.RED;
+
+                tooltip.add(
+                        Component.literal(
+                                Component.translatable(
+                                        LangUtil.LORE.formatted("dna_quality")
+                                ).getString().replace(
+                                        "%1$s",
+                                        LangUtil.getFormattedQuality(quality).getString()
+                                )
+                        ).withStyle(colour)
+                );
+
+                tooltip.add(
+                        LangUtil.replaceInKey(
+                                () -> LangUtil.getFormattedGenetics(
+                                        nbt.getString("Genetics")
+                                ).getString(),
+                                "%1$s",
+                                Component.translatable(
+                                        LangUtil.LORE.formatted("genetic_code")
+                                ).getString()
+                        ).withStyle(ChatFormatting.BLUE)
+                );
             }
-
-            pTooltipComponents.add(Component.literal(Component.translatable(LangUtil.LORE.formatted("dna_quality")).getString().replace("%1$s", LangUtil.getFormattedQuality(quality).getString())).withStyle(colour));
-            pTooltipComponents.add(LangUtil.replaceInKey(() -> LangUtil.getFormattedGenetics(nbt.getString("Genetics")).getString(), "%1$s", Component.translatable(LangUtil.LORE.formatted("genetic_code")).getString()).withStyle(ChatFormatting.BLUE));
         }
         if (this.type.equals("skull") && SKULL_DISPLAY_DINOS.contains(this.dino)) {
-            pTooltipComponents.add(Component.literal(Component.translatable("pose.name").getString() + ": " + LangUtil.getStandType(getHasStand(stack))).withStyle(ChatFormatting.GOLD));
-            pTooltipComponents.add(Component.translatable("lore.change_variant.name").withStyle(ChatFormatting.WHITE));
+            tooltip.add(
+                    Component.literal(
+                            Component.translatable("pose.name").getString()
+                                    + ": "
+                                    + LangUtil.getStandType(getHasStand(stack))
+                    ).withStyle(ChatFormatting.GOLD)
+            );
+
+            tooltip.add(
+                    Component.translatable("lore.change_variant.name")
+                            .withStyle(ChatFormatting.WHITE)
+            );
         }
-        super.appendHoverText(stack, pLevel, pTooltipComponents, pIsAdvanced);
     }
 
     @Override
@@ -267,8 +299,6 @@ public class FossilItem extends Item implements GrindableItem {
 
     @Override
     public ItemStack getGroundItem(ItemStack stack, Random random) {
-        CompoundTag tag = stack.getTag();
-
         int outputType = random.nextInt(6);
 
         if (outputType == 5 || this.fresh) {
@@ -276,7 +306,7 @@ public class FossilItem extends Item implements GrindableItem {
             copyDNA(stack, output);
             return DinosaurItem.setDino(output, this.getDinosaur(stack));
         } else if (outputType < 3) {
-            return Items.WHITE_DYE.getDefaultInstance();
+            return Items.BONE_MEAL.getDefaultInstance();
 //            return new ItemStack(Items.DYE, 1, 15);
         }
 
@@ -294,8 +324,9 @@ public class FossilItem extends Item implements GrindableItem {
     @Override
     public List<Pair<Float, ItemStack>> getChancedOutputs(ItemStack inputItem) {
         float single = 100F/6F;
-        CompoundTag tag = inputItem.getTag();
-        ItemStack output = new ItemStack(ModItems.SOFT_TISSUE.get(this.getDinosaur(inputItem)).get(), 1, tag);
+        CompoundTag tag = ItemStackNbtUtil.getTag(inputItem);
+        ItemStack output = new ItemStack(ModItems.SOFT_TISSUE.get(this.getDinosaur(inputItem)).get(), 1);
+        ItemStackNbtUtil.setTag(output, tag);
         if(this.fresh) {
             return Lists.newArrayList(Pair.of(100F, output));
         }
@@ -312,13 +343,15 @@ public class FossilItem extends Item implements GrindableItem {
      * {@code true} when the tag is missing.
      */
     public static boolean getHasStand(ItemStack stack) {
-        CompoundTag tag = stack.getTag();
+        CompoundTag tag = ItemStackNbtUtil.getTag(stack);
         return tag == null || !tag.contains(TAG_STAND) || tag.getBoolean(TAG_STAND);
     }
 
     /** Write the stand flag to the stack */
     public static void setHasStand(ItemStack stack, boolean hasStand) {
-        stack.getOrCreateTag().putBoolean(TAG_STAND, hasStand);
+        CompoundTag tag = ItemStackNbtUtil.getOrCreateTag(stack);
+        tag.putBoolean(TAG_STAND, hasStand);
+        ItemStackNbtUtil.setTag(stack, tag);
     }
 
     /** Toggle the stand flag and return the new value */

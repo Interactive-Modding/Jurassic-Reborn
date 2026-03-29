@@ -1,14 +1,17 @@
 package net.vit.jurassicreborn.common.blocks.entities.grinder;
 
+import net.vit.jurassicreborn.common.util.InventoryUtil;
+import com.mojang.serialization.MapCodec;
+
 import net.minecraft.world.Containers;
-import net.minecraftforge.items.wrapper.RecipeWrapper;
+import net.neoforged.neoforge.items.wrapper.RecipeWrapper;
 import net.vit.jurassicreborn.common.blocks.base.BaseMachineBlock;
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -27,6 +30,9 @@ import java.util.Objects;
 public class FossilGrinderBlock extends BaseMachineBlock {
     //todo: block entities and recipies
 
+    public static final MapCodec<FossilGrinderBlock> CODEC =
+            Block.simpleCodec(FossilGrinderBlock::new);
+
     public static DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
 
     public FossilGrinderBlock(Properties p_49795_) {
@@ -34,6 +40,11 @@ public class FossilGrinderBlock extends BaseMachineBlock {
 //        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
 
 //        JurassicReborn.setRenderType(this, RenderType.cutoutMipped());
+    }
+
+    @Override
+    protected MapCodec<? extends BaseEntityBlock> codec() {
+        return CODEC;
     }
 
     @Override
@@ -47,18 +58,13 @@ public class FossilGrinderBlock extends BaseMachineBlock {
 //    }
 
     @Override
-    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
-
-        if (pLevel.isClientSide) {
-            return InteractionResult.SUCCESS;
-        } else {
-//            MenuProvider menuprovider = this.getMenuProvider(pState, pLevel, pPos);
-            if (pLevel.getBlockEntity(pPos) instanceof FossilGrinderBlockEntity e ) {
-                pPlayer.openMenu(e);
+    public InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hit) {
+        if (!level.isClientSide) {
+            if (level.getBlockEntity(pos) instanceof FossilGrinderBlockEntity e) {
+                player.openMenu(e);
             }
-
-            return InteractionResult.CONSUME;
         }
+        return InteractionResult.sidedSuccess(level.isClientSide);
     }
 
     @Nullable
@@ -82,7 +88,7 @@ public class FossilGrinderBlock extends BaseMachineBlock {
         if (!oldState.is(newState.getBlock())) {
             BlockEntity blockEntity = level.getBlockEntity(pos);
             if (blockEntity instanceof FossilGrinderBlockEntity fossilGrinderBlock) {
-                Containers.dropContents(level, pos, new RecipeWrapper(fossilGrinderBlock.getItemHandler()));
+                InventoryUtil.dropContents(level, pos, fossilGrinderBlock.getItemHandler());
                 level.updateNeighbourForOutputSignal(pos, this);
             }
             super.onRemove(oldState, level, pos, newState, isMoving);

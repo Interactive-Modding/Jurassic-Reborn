@@ -1,6 +1,6 @@
 package net.vit.jurassicreborn.common.blocks.entities.DNABlocks.DNASequencer;
 
-import net.minecraftforge.items.SlotItemHandler;
+import net.neoforged.neoforge.items.SlotItemHandler;
 import net.vit.jurassicreborn.common.blocks.entities.MachineItemStackHandler;
 import net.vit.jurassicreborn.common.blocks.entities.ModMenuTypes;
 import net.vit.jurassicreborn.common.blocks.inventory.DNASequencerItemHandler;
@@ -33,7 +33,7 @@ public class DNASequencerMenu extends AbstractContainerMenu {
         this.dnaSequencer = dnaSequencer;
         this.sequencerData = sequencerData;
 
-        this.addSlot(new SlotItemHandler(this.dnaSequencer, 0, 44, 16));
+        this.addSlot(new SlotItemHandler(this.dnaSequencer, 0, 44, 16));//im too tired to make a whole new class for this. this is not the code you need, it's the code you deserve.
         this.addSlot(new SlotItemHandler(this.dnaSequencer, 1, 66, 16));
         this.addSlot(new SlotItemHandler(this.dnaSequencer, 2, 44, 36));
         this.addSlot(new SlotItemHandler(this.dnaSequencer, 3, 66, 36));

@@ -1,11 +1,12 @@
 package net.vit.jurassicreborn.common.datagen;
 
+import net.minecraft.core.HolderLookup;
 import net.minecraft.data.loot.EntityLootSubProvider;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.DeferredHolder;
 import net.vit.jurassicreborn.common.entities.ModEntities;
 
 import java.util.stream.Stream;
@@ -13,8 +14,8 @@ import java.util.stream.Stream;
 public class JREntityLoot extends EntityLootSubProvider {
 
     // 1.19.2 requires a FeatureFlagSet; VANILLA_SET enables vanilla features
-    public JREntityLoot() {
-        super(FeatureFlags.VANILLA_SET);
+    public JREntityLoot(HolderLookup.Provider registries) {
+        super(FeatureFlags.REGISTRY.allFlags(), registries);
     }
 
     // In 1.19.2 this method is called 'generate', not 'addTables'
@@ -136,6 +137,8 @@ public class JREntityLoot extends EntityLootSubProvider {
 
     @Override
     protected Stream<EntityType<?>> getKnownEntityTypes() {
-        return ModEntities.MOD_ENTITY_TYPES.getEntries().stream().map(RegistryObject::get);
+        return ModEntities.MOD_ENTITY_TYPES.getEntries()
+                .stream()
+                .map(DeferredHolder::get);
     }
 }

@@ -1,0 +1,11 @@
+{
+  "type": "jurassicreborn:cleaning",
+  "id": "jurassicreborn:encased_triceratops_fossil_cleaning",
+  "input": {
+    "item": "jurassicreborn:encased_triceratops_fossil"
+  },
+  "output": {
+    "count": 1,
+    "id": "jurassicreborn:bones/triceratops_skull"
+  }
+}

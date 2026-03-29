@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "A": {
+      "tag": "c:nuggets/iron"
+    },
+    "B": {
+      "item": "minecraft:piston"
+    },
+    "C": {
+      "item": "minecraft:stone_button"
+    },
+    "D": {
+      "item": "minecraft:glowstone_dust"
+    },
+    "E": {
+      "tag": "c:ingots/iron"
+    }
+  },
+  "pattern": [
+    "ABC",
+    "ADC",
+    "EEC"
+  ],
+  "result": {
+    "count": 1,
+    "id": "jurassicreborn:embryonic_machine"
+  }
+}

@@ -3,7 +3,7 @@ package net.vit.jurassicreborn.common.worldgen;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
-import net.minecraftforge.common.data.DatapackBuiltinEntriesProvider;
+import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
 import net.vit.jurassicreborn.JurassicReborn;
 import net.vit.jurassicreborn.common.worldgen.ModConfiguredFeatures;
 import net.vit.jurassicreborn.common.worldgen.ModPlacedFeatures;

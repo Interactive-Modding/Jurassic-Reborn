@@ -7,6 +7,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
+import net.vit.jurassicreborn.common.util.ItemStackNbtUtil;
 
 public abstract class FossilBlockItem extends BlockItem {
     public FossilBlockItem(Block pBlock, Properties pProperties) {
@@ -26,16 +27,16 @@ public abstract class FossilBlockItem extends BlockItem {
     }
 
     public static Dinosaur getDino(ItemStack pStack){
-        Dinosaur dinosaur = Dinosaur.getDinosaurByName(pStack.getTag() != null ? pStack.getTag().getCompound("BlockEntityTag").getString("Dinosaur") : Dinosaur.EMPTY.getName());
+        Dinosaur dinosaur = Dinosaur.getDinosaurByName(ItemStackNbtUtil.getTag(pStack) != null ? ItemStackNbtUtil.getTag(pStack).getCompound("BlockEntityTag").getString("Dinosaur") : Dinosaur.EMPTY.getName());
         return dinosaur;
     }
 
     public static ItemStack setDino(ItemStack pStack, Dinosaur dino){
-        CompoundTag tag = pStack.getOrCreateTag();
+        CompoundTag tag = ItemStackNbtUtil.getOrCreateTag(pStack);
         CompoundTag blockEntityTag = tag.getCompound("BlockEntityTag");
         blockEntityTag.putString("Dinosaur", dino.getName());
         tag.put("BlockEntityTag", blockEntityTag);
-        pStack.setTag(tag);
+        ItemStackNbtUtil.setTag(pStack, tag);
         return pStack;
     }
 }

@@ -1,8 +1,6 @@
 package net.vit.jurassicreborn.client.render.block;
 
-import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.Tesselator;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
 import net.minecraft.client.Minecraft;
@@ -22,7 +20,7 @@ public class HologramBlockEntityRender implements BlockEntityRenderer<HologramBl
 
     public HologramBlockEntityRender(BlockEntityRendererProvider.Context ctx) {}
 
-    /** Wraps a VertexConsumer and multiplies incoming .color() by a tint without touching defaultColor on the shared delegate. */
+    /** Wraps a VertexConsumer and multiplies incoming color by a tint. */
     private static class TintingVertexConsumer implements VertexConsumer {
         private final VertexConsumer delegate;
         private final float tr, tg, tb, ta; // [0..1]
@@ -32,36 +30,61 @@ public class HologramBlockEntityRender implements BlockEntityRenderer<HologramBl
             this.tr = tr; this.tg = tg; this.tb = tb; this.ta = ta;
         }
 
-        @Override public VertexConsumer color(int r, int g, int b, int a) {
-            int nr = Math.min(255, Math.round(r * tr));
-            int ng = Math.min(255, Math.round(g * tg));
-            int nb = Math.min(255, Math.round(b * tb));
-            int na = Math.min(255, Math.round(a * ta));
-            return delegate.color(nr, ng, nb, na);
+        private static int clamp255(int value) {
+            return Math.min(255, Math.max(0, value));
         }
 
-        // Forward everything else unchanged
-        @Override public VertexConsumer vertex(double x, double y, double z){ return delegate.vertex(x,y,z); }
-        @Override public VertexConsumer uv(float u, float v){ return delegate.uv(u,v); }
-        @Override public VertexConsumer overlayCoords(int u, int v){ return delegate.overlayCoords(u,v); }
-        @Override public VertexConsumer uv2(int u, int v){ return delegate.uv2(u,v); }
-        @Override public VertexConsumer normal(float x, float y, float z){ return delegate.normal(x,y,z); }
-        @Override public void endVertex(){ delegate.endVertex(); }
+        private int tintR(int r) {
+            return clamp255(Math.round(r * tr));
+        }
 
-        // NO-OP these to avoid leaking default color onto the shared underlying buffer
-        @Override public void defaultColor(int r, int g, int b, int a){ /* swallow */ }
-        @Override public void unsetDefaultColor(){ /* swallow */ }
+        private int tintG(int g) {
+            return clamp255(Math.round(g * tg));
+        }
+
+        private int tintB(int b) {
+            return clamp255(Math.round(b * tb));
+        }
+
+        private int tintA(int a) {
+            return clamp255(Math.round(a * ta));
+        }
+
+        @Override public VertexConsumer setColor(int r, int g, int b, int a) {
+            delegate.setColor(tintR(r), tintG(g), tintB(b), tintA(a));
+            return this;
+        }
+
+        @Override public VertexConsumer addVertex(float x, float y, float z) { delegate.addVertex(x, y, z); return this; }
+        @Override public VertexConsumer setColor(float r, float g, float b, float a) { delegate.setColor(r * tr, g * tg, b * tb, a * ta); return this; }
+        @Override public VertexConsumer setColor(int packedColor) {
+            int a = (packedColor >>> 24) & 0xFF;
+            int r = (packedColor >>> 16) & 0xFF;
+            int g = (packedColor >>> 8) & 0xFF;
+            int b = packedColor & 0xFF;
+            delegate.setColor(tintR(r), tintG(g), tintB(b), tintA(a));
+            return this;
+        }
+        @Override public VertexConsumer setWhiteAlpha(int alpha) {
+            delegate.setColor(tintR(255), tintG(255), tintB(255), tintA(alpha));
+            return this;
+        }
+        @Override public VertexConsumer setUv(float u, float v) { delegate.setUv(u, v); return this; }
+        @Override public VertexConsumer setUv1(int u, int v) { delegate.setUv1(u, v); return this; }
+        @Override public VertexConsumer setOverlay(int overlay) { delegate.setOverlay(overlay); return this; }
+        @Override public VertexConsumer setUv2(int u, int v) { delegate.setUv2(u, v); return this; }
+        @Override public VertexConsumer setLight(int light) { delegate.setLight(light); return this; }
+        @Override public VertexConsumer setNormal(float x, float y, float z) { delegate.setNormal(x, y, z); return this; }
     }
 
     @Override
     public void render(HologramBlockEntity blockEntity, float partialTick, PoseStack poseStack,
-                       @NotNull MultiBufferSource _ignoredGlobalBuffers, int packedLight, int packedOverlay) {
+                       @NotNull MultiBufferSource bufferSource, int packedLight, int packedOverlay) {
         DinosaurEntity entity = blockEntity.getEntity();
         if (entity == null) return;
 
         poseStack.pushPose();
         poseStack.translate(0.5, 0, 0.5);
-        poseStack.scale(1.0f, 1.0f, 1.0f);
         poseStack.mulPose(Axis.YP.rotationDegrees(blockEntity.getRot()));
 
         EntityAnimation anim = blockEntity.getPoseAnimation();
@@ -78,37 +101,21 @@ public class HologramBlockEntityRender implements BlockEntityRenderer<HologramBl
         final float TINT_B = 255f / 255f;
         final float TINT_A = 0.50f;
 
-        final MultiBufferSource.BufferSource privateBuffers =
-                MultiBufferSource.immediate(Tesselator.getInstance().getBuilder());
-
-        MultiBufferSource hologramBuffer = new MultiBufferSource() {
-            @Override
-            public @NotNull VertexConsumer getBuffer(@NotNull RenderType requested) {
-                if (requested == RenderType.lines()) {
-                    return privateBuffers.getBuffer(RenderType.lines());
-                }
-                VertexConsumer base = privateBuffers.getBuffer(RenderType.entityTranslucent(tex));
-                return new TintingVertexConsumer(base, TINT_R, TINT_G, TINT_B, TINT_A);
-            }
-        };
-
-        RenderSystem.enableBlend();
-        RenderSystem.defaultBlendFunc();
-        RenderSystem.depthMask(false);
-        RenderSystem.setShaderColor(1f, 1f, 1f, 1f);
-
         final int FULL_BRIGHT = LightTexture.pack(15, 15);
 
-        try {
-            Minecraft.getInstance().getEntityRenderDispatcher()
-                    .render(entity, 0, 0, 0, 0, 0, poseStack, hologramBuffer, FULL_BRIGHT);
+        MultiBufferSource hologramBuffer = renderType -> {
+            // Pass lines through untinted so outlines don't break
+            if (renderType == RenderType.lines()) {
+                return bufferSource.getBuffer(RenderType.lines());
+            }
+            // All other geometry: redirect to entityTranslucent and tint it
+            VertexConsumer base = bufferSource.getBuffer(RenderType.entityTranslucent(tex));
+            return new TintingVertexConsumer(base, TINT_R, TINT_G, TINT_B, TINT_A);
+        };
 
-            privateBuffers.endBatch();
-        } finally {
-            RenderSystem.depthMask(true);
-            RenderSystem.disableBlend();
-            RenderSystem.setShaderColor(1f, 1f, 1f, 1f);
-        }
+        Minecraft.getInstance().getEntityRenderDispatcher()
+                .render(entity, 0, 0, 0, 0, 0, poseStack, hologramBuffer, FULL_BRIGHT);
+
         poseStack.popPose();
     }
 }

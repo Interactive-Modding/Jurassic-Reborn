@@ -1,14 +1,17 @@
 package net.vit.jurassicreborn.common.blocks.entities.DNABlocks.DNASynthesizer;
 
+import net.vit.jurassicreborn.common.util.InventoryUtil;
+import com.mojang.serialization.MapCodec;
+
 import net.minecraft.world.Containers;
-import net.minecraftforge.items.wrapper.RecipeWrapper;
+import net.neoforged.neoforge.items.wrapper.RecipeWrapper;
 import net.vit.jurassicreborn.common.blocks.base.BaseMachineBlock;
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
@@ -25,6 +28,9 @@ import org.jetbrains.annotations.Nullable;
 import java.util.stream.Stream;
 
 public class DNASynthesizerBlock extends BaseMachineBlock {
+
+    public static final MapCodec<DNASynthesizerBlock> CODEC =
+            Block.simpleCodec(DNASynthesizerBlock::new);
 
 //    public static DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
 
@@ -74,6 +80,11 @@ public class DNASynthesizerBlock extends BaseMachineBlock {
     }
 
     @Override
+    protected MapCodec<? extends BaseEntityBlock> codec() {
+        return CODEC;
+    }
+
+    @Override
     public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
         switch (pState.getValue(FACING)){
             case EAST:
@@ -95,18 +106,13 @@ public class DNASynthesizerBlock extends BaseMachineBlock {
 //        super.createBlockStateDefinition(pBuilder);
 //    }
     @Override
-    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
-
-        if (pLevel.isClientSide) {
-            return InteractionResult.SUCCESS;
-        } else {
-//                MenuProvider menuprovider = this.getMenuProvider(pState, pLevel, pPos);
-            if (pLevel.getBlockEntity(pPos) instanceof DNASynthesizerBlockEntity e ) {
-                pPlayer.openMenu(e);
+    public InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hit) {
+        if (!level.isClientSide) {
+            if (level.getBlockEntity(pos) instanceof DNASynthesizerBlockEntity e) {
+                player.openMenu(e);
             }
-
-            return InteractionResult.CONSUME;
         }
+        return InteractionResult.sidedSuccess(level.isClientSide);
     }
 
     @Override
@@ -129,7 +135,7 @@ public class DNASynthesizerBlock extends BaseMachineBlock {
         if (!oldState.is(newState.getBlock())) {
             BlockEntity blockEntity = level.getBlockEntity(pos);
             if (blockEntity instanceof DNASynthesizerBlockEntity dnaSynthesizerBlock) {
-                Containers.dropContents(level, pos, new RecipeWrapper(dnaSynthesizerBlock.getItemHandler()));
+                InventoryUtil.dropContents(level, pos, dnaSynthesizerBlock.getItemHandler());
                 level.updateNeighbourForOutputSignal(pos, this);
             }
             super.onRemove(oldState, level, pos, newState, isMoving);

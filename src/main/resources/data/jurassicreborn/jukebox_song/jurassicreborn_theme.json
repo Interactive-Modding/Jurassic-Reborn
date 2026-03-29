@@ -1,0 +1,8 @@
+{
+  "sound_event": "jurassicreborn:jurassicreborn_theme",
+  "description": {
+    "translate": "jukebox_song.jurassicreborn.jurassicreborn_theme"
+  },
+  "length_in_seconds": 237.0,
+  "comparator_output": 15
+}

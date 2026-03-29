@@ -14,8 +14,8 @@ import net.vit.jurassicreborn.common.items.misc.SkeletonPoseHelper;
 import net.vit.jurassicreborn.common.legacy.tabula.TabulaModelHelper;
 import net.minecraft.client.model.Model;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +29,7 @@ public class DinosaurRenderInfo{
     static {
         try {
             DEFAULT_EGG_MODEL = new TabulaModel(TabulaModelHelper.loadTabulaModel("/assets/jurassicreborn/models/entities/egg/tyrannosaurus"));
-            DEFAULT_EGG_TEXTURE = new ResourceLocation(JurassicReborn.MODID, "textures/entities/egg/tyrannosaurus.png");
+            DEFAULT_EGG_TEXTURE = ResourceLocation.fromNamespaceAndPath(JurassicReborn.MODID, "textures/entities/egg/tyrannosaurus.png");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -65,7 +65,7 @@ public class DinosaurRenderInfo{
             try {
                 String name = dinosaur.getName().toLowerCase(Locale.ENGLISH);
                 this.eggModel = new TabulaModel(TabulaModelHelper.loadTabulaModel("/assets/jurassicreborn/models/entities/egg/" + name));
-                this.eggTexture = new ResourceLocation(JurassicReborn.MODID, "textures/entities/egg/" + name + ".png");
+                this.eggTexture = ResourceLocation.fromNamespaceAndPath(JurassicReborn.MODID, "textures/entities/egg/" + name + ".png");
             } catch (Exception e) {
                 this.eggModel = DEFAULT_EGG_MODEL;
                 this.eggTexture = DEFAULT_EGG_TEXTURE;

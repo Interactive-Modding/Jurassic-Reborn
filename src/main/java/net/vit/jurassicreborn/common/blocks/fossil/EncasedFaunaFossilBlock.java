@@ -8,12 +8,13 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.HitResult;
+import net.neoforged.neoforge.registries.DeferredItem;
 import net.vit.jurassicreborn.common.blocks.entities.EncasedFaunaFossilBlockEntity;
 import net.vit.jurassicreborn.common.entities.Dinosaurs.Dinosaur;
 import net.vit.jurassicreborn.common.items.ModItems;
@@ -47,11 +48,11 @@ public class EncasedFaunaFossilBlock extends Block implements EncasedFossil, Ent
     }
 
     @Override
-    public ItemStack getCloneItemStack(BlockState state, HitResult target, BlockGetter level, BlockPos pos, Player player) {
+    public ItemStack getCloneItemStack(BlockState state, HitResult target, LevelReader level, BlockPos pos, Player player) {
         BlockEntity be = level.getBlockEntity(pos);
         if (be instanceof EncasedFaunaFossilBlockEntity fossilBe) {
             ItemStack stack = new ItemStack(this);
-            fossilBe.saveToItem(stack); // Save dino tag
+            fossilBe.saveToItem(stack, level.registryAccess()); // Save dino tag
             return stack;
         }
         return super.getCloneItemStack(state, target, level, pos, player);
@@ -71,7 +72,7 @@ public class EncasedFaunaFossilBlock extends Block implements EncasedFossil, Ent
         if (boneMap == null || bones == null || bones.length == 0)
             return ItemStack.EMPTY;
         String boneKey = bones.length > 1 ? bones[random.nextInt(bones.length)] : bones[0];
-        Item bone = ((net.minecraftforge.registries.RegistryObject<Item>) boneMap.get(boneKey)).get();
+        Item bone = ((DeferredItem<Item>) boneMap.get(boneKey)).get();
 
         return new ItemStack(bone);
     }

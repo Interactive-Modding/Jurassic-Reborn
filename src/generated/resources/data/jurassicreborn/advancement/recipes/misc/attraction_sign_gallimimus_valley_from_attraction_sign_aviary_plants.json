@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_attraction_sign_aviary_plants": {
+      "conditions": {
+        "items": [
+          {
+            "items": "jurassicreborn:attraction_sign_aviary_plants"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "jurassicreborn:attraction_sign_gallimimus_valley_from_attraction_sign_aviary_plants"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_attraction_sign_aviary_plants"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "jurassicreborn:attraction_sign_gallimimus_valley_from_attraction_sign_aviary_plants"
+    ]
+  }
+}

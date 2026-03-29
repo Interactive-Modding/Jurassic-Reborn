@@ -16,22 +16,22 @@ import java.util.Map;
 import java.util.Random;
 
 public class FlappyDinoGuiApp extends GuiApp {
-    private static final ResourceLocation TEXTURE = new ResourceLocation(JurassicReborn.MODID, "textures/gui/paleo_pad/apps/flappy_dino.png");
-    private static final ResourceLocation LOGO = new ResourceLocation(JurassicReborn.MODID, "textures/gui/paleo_pad/apps/background/flappy_dino.png");
-    private static final ResourceLocation PTERANODON = new ResourceLocation(JurassicReborn.MODID, "textures/gui/paleo_pad/apps/background/flappy_dino_pteranodon.png");
+    private static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(JurassicReborn.MODID, "textures/gui/paleo_pad/apps/flappy_dino.png");
+    private static final ResourceLocation LOGO = ResourceLocation.fromNamespaceAndPath(JurassicReborn.MODID, "textures/gui/paleo_pad/apps/background/flappy_dino.png");
+    private static final ResourceLocation PTERANODON = ResourceLocation.fromNamespaceAndPath(JurassicReborn.MODID, "textures/gui/paleo_pad/apps/background/flappy_dino_pteranodon.png");
     private static final ResourceLocation[] CHARACTERS = new ResourceLocation[]{
-            new ResourceLocation(JurassicReborn.MODID, "textures/gui/paleo_pad/apps/background/pteranodon_char.png"),
-            new ResourceLocation(JurassicReborn.MODID, "textures/gui/paleo_pad/apps/background/dimorphodon_char.png"),
-            new ResourceLocation(JurassicReborn.MODID, "textures/gui/paleo_pad/apps/background/cearadactylus_char.png"),
-            new ResourceLocation(JurassicReborn.MODID, "textures/gui/paleo_pad/apps/background/quetzalcoatlus_char.png"),
-            new ResourceLocation(JurassicReborn.MODID, "textures/gui/paleo_pad/apps/background/quetzalcoatlus_sad_char.png")
+            ResourceLocation.fromNamespaceAndPath(JurassicReborn.MODID, "textures/gui/paleo_pad/apps/background/pteranodon_char.png"),
+            ResourceLocation.fromNamespaceAndPath(JurassicReborn.MODID, "textures/gui/paleo_pad/apps/background/dimorphodon_char.png"),
+            ResourceLocation.fromNamespaceAndPath(JurassicReborn.MODID, "textures/gui/paleo_pad/apps/background/cearadactylus_char.png"),
+            ResourceLocation.fromNamespaceAndPath(JurassicReborn.MODID, "textures/gui/paleo_pad/apps/background/quetzalcoatlus_char.png"),
+            ResourceLocation.fromNamespaceAndPath(JurassicReborn.MODID, "textures/gui/paleo_pad/apps/background/quetzalcoatlus_sad_char.png")
     };
     private static final String[] CHAR_NAMES = new String[]{"Pteranodon", "Dimorphodon", "Cearadactylus", "Quetzalcoatlus","Colorful Quetzalcoatlus"};
     private ResourceLocation character;
     private int charIndex;
-    private static final ResourceLocation PILLAR_BOTTOM = new ResourceLocation(JurassicReborn.MODID, "textures/gui/paleo_pad/apps/background/pillar_bottom.png");
-    private static final ResourceLocation PILLAR_TOP = new ResourceLocation(JurassicReborn.MODID, "textures/gui/paleo_pad/apps/background/pillar_top.png");
-    private static final ResourceLocation BACKGROUND = new ResourceLocation(JurassicReborn.MODID, "textures/gui/paleo_pad/apps/background/flappy_dino_background.png");
+    private static final ResourceLocation PILLAR_BOTTOM = ResourceLocation.fromNamespaceAndPath(JurassicReborn.MODID, "textures/gui/paleo_pad/apps/background/pillar_bottom.png");
+    private static final ResourceLocation PILLAR_TOP = ResourceLocation.fromNamespaceAndPath(JurassicReborn.MODID, "textures/gui/paleo_pad/apps/background/pillar_top.png");
+    private static final ResourceLocation BACKGROUND = ResourceLocation.fromNamespaceAndPath(JurassicReborn.MODID, "textures/gui/paleo_pad/apps/background/flappy_dino_background.png");
 
     private boolean mainScreen;
     private int x;

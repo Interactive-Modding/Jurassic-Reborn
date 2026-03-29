@@ -52,12 +52,16 @@ public class AttractionSignItem extends Item {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level world, List<Component> tooltip, TooltipFlag flag) {
+    public void appendHoverText(
+            ItemStack stack,
+            Item.TooltipContext context,
+            List<Component> tooltip,
+            TooltipFlag flag
+    ) {
         tooltip.add(Component.literal("Note: Hitbox is 1x1 block!"));
-        // or for vanilla color:
-        // tooltip.add(Component.translatable("tooltip.jurassicreborn.sign_hitbox_small"));
-        super.appendHoverText(stack, world, tooltip, flag);
+        super.appendHoverText(stack, context, tooltip, flag);
     }
+
 
     @Override
     public Component getName(ItemStack stack) {

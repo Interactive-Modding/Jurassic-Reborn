@@ -8,7 +8,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.vit.jurassicreborn.common.plants.Plant;
 import net.vit.jurassicreborn.common.plants.PlantHandler;
 import net.vit.jurassicreborn.common.util.api.GrindableItem;
@@ -16,6 +16,7 @@ import net.vit.jurassicreborn.common.util.api.GrindableItem;
 import java.util.List;
 import java.util.Locale;
 import java.util.Random;
+import net.vit.jurassicreborn.common.util.ItemStackNbtUtil;
 
 public class PlantFossilItem extends Item implements GrindableItem {
 
@@ -30,7 +31,7 @@ public class PlantFossilItem extends Item implements GrindableItem {
 
     @Override
     public ItemStack getGroundItem(ItemStack stack, Random random) {
-        CompoundTag tag = stack.getTag();
+        CompoundTag tag = ItemStackNbtUtil.getTag(stack);
         int outputType = random.nextInt(4);
 
         if (outputType == 3) {
@@ -38,15 +39,15 @@ public class PlantFossilItem extends Item implements GrindableItem {
             Plant plant = prehistoricPlants.get(random.nextInt(prehistoricPlants.size()));
 
             String id = plant.getFormattedName().toLowerCase(Locale.ROOT).replaceAll(" ", "_");
-            ResourceLocation tissueId = new ResourceLocation("jurassicreborn", "soft_tissue/plants/soft_tissue_" + id);
+            ResourceLocation tissueId = ResourceLocation.parse("jurassicreborn" + ":" + "soft_tissue/plants/soft_tissue_" + id);
 
-            Item item = ForgeRegistries.ITEMS.getValue(tissueId);
+            Item item = BuiltInRegistries.ITEM.get(tissueId);
             if (item == null || item == Items.AIR) {
                 return new ItemStack(Items.FLINT);
             }
 
             ItemStack output = new ItemStack(item);
-            output.setTag(tag);
+            ItemStackNbtUtil.setTag(output, tag);
             return output;
         } else if (outputType < 2) {
             return new ItemStack(Items.BONE_MEAL);
@@ -60,19 +61,19 @@ public class PlantFossilItem extends Item implements GrindableItem {
     public List<Pair<Float, ItemStack>> getChancedOutputs(ItemStack inputItem) {
         List<Pair<Float, ItemStack>> list = Lists.newArrayList();
         List<Plant> prehistoricPlants = PlantHandler.getPrehistoricPlants();
-        CompoundTag tag = inputItem.getTag();
+        CompoundTag tag = ItemStackNbtUtil.getTag(inputItem);
         float single = 100F / 4F;
         float plantSingle = single / prehistoricPlants.size();
 
         for (Plant plant : prehistoricPlants) {
             String id = plant.getFormattedName().toLowerCase(Locale.ROOT).replaceAll(" ", "_");
-            ResourceLocation tissueId = new ResourceLocation("jurassicreborn", "soft_tissue/plants/soft_tissue_" + id);
-            Item item = ForgeRegistries.ITEMS.getValue(tissueId);
+            ResourceLocation tissueId = ResourceLocation.parse("jurassicreborn" + ":" + "soft_tissue/plants/soft_tissue_" + id);
+            Item item = BuiltInRegistries.ITEM.get(tissueId);
 
             if (item == null || item == Items.AIR) continue;
 
             ItemStack output = new ItemStack(item);
-            output.setTag(tag);
+            ItemStackNbtUtil.setTag(output, tag);
             list.add(Pair.of(plantSingle, output));
         }
 

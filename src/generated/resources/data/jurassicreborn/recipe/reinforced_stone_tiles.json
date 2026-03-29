@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "A": {
+      "item": "jurassicreborn:reinforced_stone_pathway"
+    }
+  },
+  "pattern": [
+    "   ",
+    " AA",
+    " AA"
+  ],
+  "result": {
+    "count": 4,
+    "id": "jurassicreborn:reinforced_stone_tiles"
+  }
+}

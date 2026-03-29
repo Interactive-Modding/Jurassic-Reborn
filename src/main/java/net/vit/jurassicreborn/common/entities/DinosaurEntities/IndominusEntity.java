@@ -17,9 +17,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.MapColor;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraft.world.level.material.MapColor;import net.neoforged.api.distmarker.Dist;import net.neoforged.api.distmarker.OnlyIn;
 
 public class IndominusEntity extends DinosaurEntity
 {
@@ -36,11 +34,10 @@ public class IndominusEntity extends DinosaurEntity
     }
 
     @Override
-    public void defineSynchedData()
+    public void defineSynchedData(SynchedEntityData.Builder builder)
     {
-        super.defineSynchedData();
-
-        this.entityData.define(DATA_WATCHER_IS_CAMOUFLAGING, false);
+        super.defineSynchedData(builder);
+        builder.define(DATA_WATCHER_IS_CAMOUFLAGING, false);
     }
 
     @Override

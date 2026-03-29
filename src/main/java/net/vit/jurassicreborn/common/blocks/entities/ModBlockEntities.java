@@ -1,5 +1,8 @@
 package net.vit.jurassicreborn.common.blocks.entities;
 
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.HangingSignBlockEntity;
+import net.minecraft.world.level.block.entity.SignBlockEntity;
 import net.vit.jurassicreborn.JurassicReborn;
 import net.vit.jurassicreborn.common.blocks.ModBlocks;
 import net.vit.jurassicreborn.common.blocks.entities.DNABlocks.DNACombinatorHybridizer.DNACombinatorHybridizerBlockEntity;
@@ -22,21 +25,23 @@ import net.vit.jurassicreborn.common.blocks.entities.incubator.IncubatorBlockEnt
 import net.vit.jurassicreborn.common.blocks.entities.skeletonassembly.SkeletonAssemblerBlockEntity;
 import net.vit.jurassicreborn.common.blocks.fossil.FaunaFossilBlockEntity;
 import net.vit.jurassicreborn.common.blocks.parkBlocks.TourRailBlockEntity;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
+import net.vit.jurassicreborn.common.blocks.wood.WoodBlocks;
 
 
 public class ModBlockEntities<T extends BlockEntity> {
 
-    public static DeferredRegister<BlockEntityType<?>> BLOCK_ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, JurassicReborn.MODID);
+    public static DeferredRegister<BlockEntityType<?>> BLOCK_ENTITY_TYPES = DeferredRegister.create(Registries.BLOCK_ENTITY_TYPE, JurassicReborn.MODID);
 
-    public static RegistryObject<BlockEntityType<CleanerBlockEntity>> CLEANING_STATION = BLOCK_ENTITY_TYPES.register("cleaning_station", () -> BlockEntityType.Builder.of(CleanerBlockEntity::new, ModBlocks.CLEANING_STATION.get()).build(null));
-    public static RegistryObject<BlockEntityType<EncasedFaunaFossilBlockEntity>> ENCASED_FAUNA_FOSSIL =
+    public static DeferredHolder<BlockEntityType<?>, BlockEntityType<CleanerBlockEntity>> CLEANING_STATION = BLOCK_ENTITY_TYPES.register("cleaning_station", () -> BlockEntityType.Builder.of(CleanerBlockEntity::new, ModBlocks.CLEANING_STATION.get()).build(null));
+    public static DeferredHolder<BlockEntityType<?>, BlockEntityType<EncasedFaunaFossilBlockEntity>> ENCASED_FAUNA_FOSSIL =
             BLOCK_ENTITY_TYPES.register("encased_fossil", () -> BlockEntityType.Builder.of(
                     EncasedFaunaFossilBlockEntity::new,
+                    ModBlocks.ENCASED_FAUNA_FOSSIL.get(),
                     ModBlocks.ENCASED_ACHILLOBATOR_FOSSIL.get(),
                     ModBlocks.ENCASED_ALLIGATOR_GAR_FOSSIL.get(),
                     ModBlocks.ENCASED_ALLOSAURUS_FOSSIL.get(),
@@ -49,6 +54,7 @@ public class ModBlockEntities<T extends BlockEntity> {
                     ModBlocks.ENCASED_BEELZEBUFO_FOSSIL.get(),
                     ModBlocks.ENCASED_BRACHIOSAURUS_FOSSIL.get(),
                     ModBlocks.ENCASED_CAMARASAURUS_FOSSIL.get(),
+                    ModBlocks.ENCASED_CALYMENE_FOSSIL.get(),
                     ModBlocks.ENCASED_CARCHARODONTOSAURUS_FOSSIL.get(),
                     ModBlocks.ENCASED_CARNOTAURUS_FOSSIL.get(),
                     ModBlocks.ENCASED_CEARADACTYLUS_FOSSIL.get(),
@@ -121,9 +127,11 @@ public class ModBlockEntities<T extends BlockEntity> {
                     ModBlocks.ENCASED_NIGERSAURUS_FOSSIL.get(),
                     ModBlocks.ENCASED_TROODON_FOSSIL.get(),
                     ModBlocks.ENCASED_TROPEOGNATHUS_FOSSIL.get(),
+                    ModBlocks.ENCASED_TYLOSAURUS_FOSSIL.get(),
                     ModBlocks.ENCASED_TYRANNOSAURUS_FOSSIL.get(),
                     ModBlocks.ENCASED_VECTIPELTA_FOSSIL.get(),
                     ModBlocks.ENCASED_VELOCIRAPTOR_FOSSIL.get(),
+                    ModBlocks.ENCASED_LIVYATAN_FOSSIL.get(),
                     ModBlocks.ENCASED_MEGALODON_FOSSIL.get(),
                     ModBlocks.ENCASED_ZHENYUANOPTERUS_FOSSIL.get(),
                     ModBlocks.ENCASED_CAMEROCERAS_FOSSIL.get(),
@@ -135,9 +143,44 @@ public class ModBlockEntities<T extends BlockEntity> {
                     ModBlocks.ENCASED_ENDOCERAS_FOSSIL.get()
             ).build(null));
 
-    public static RegistryObject<BlockEntityType<DNACombinatorHybridizerBlockEntity>> DNA_COMBINATOR_HYBRIDIZER = BLOCK_ENTITY_TYPES.register("dna_combinator_hybridizer", () -> BlockEntityType.Builder.of(DNACombinatorHybridizerBlockEntity::new, ModBlocks.DNA_COMBINER_HYBRIDIZER.get()).build(null));
+    public static DeferredHolder<BlockEntityType<?>, BlockEntityType<DNACombinatorHybridizerBlockEntity>> DNA_COMBINATOR_HYBRIDIZER = BLOCK_ENTITY_TYPES.register("dna_combinator_hybridizer", () -> BlockEntityType.Builder.of(DNACombinatorHybridizerBlockEntity::new, ModBlocks.DNA_COMBINER_HYBRIDIZER.get()).build(null));
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ModSignBlockEntity>> SIGN =
+            BLOCK_ENTITY_TYPES.register("sign",
+                    () -> BlockEntityType.Builder.of(
+                            ModSignBlockEntity::new,
+                            WoodBlocks.GINKGO_SIGN.get(),
+                            WoodBlocks.GINKGO_WALL_SIGN.get(),
+                            WoodBlocks.CALAMITES_SIGN.get(),
+                            WoodBlocks.CALAMITES_WALL_SIGN.get(),
+                            WoodBlocks.ARAUCARIA_SIGN.get(),
+                            WoodBlocks.ARAUCARIA_WALL_SIGN.get(),
+                            WoodBlocks.PHOENIX_SIGN.get(),
+                            WoodBlocks.PHOENIX_WALL_SIGN.get(),
+                            WoodBlocks.PSARONIUS_SIGN.get(),
+                            WoodBlocks.PSARONIUS_WALL_SIGN.get(),
+                            WoodBlocks.MAGNOLIA_SIGN.get(),
+                            WoodBlocks.MAGNOLIA_WALL_SIGN.get()
+                    ).build(null));
 
-    public static RegistryObject<BlockEntityType<TourRailBlockEntity>> TOUR_RAIL_BLOCK_ENTITY = BLOCK_ENTITY_TYPES.register("tour_rail_block_entity", () -> {
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ModHangingSignBlockEntity>> HANGING_SIGN =
+            BLOCK_ENTITY_TYPES.register("hanging_sign",
+                    () -> BlockEntityType.Builder.of(
+                            ModHangingSignBlockEntity::new,
+                            WoodBlocks.GINKGO_HANGING_SIGN.get(),
+                            WoodBlocks.GINKGO_WALL_HANGING_SIGN.get(),
+                            WoodBlocks.CALAMITES_HANGING_SIGN.get(),
+                            WoodBlocks.CALAMITES_WALL_HANGING_SIGN.get(),
+                            WoodBlocks.ARAUCARIA_HANGING_SIGN.get(),
+                            WoodBlocks.ARAUCARIA_WALL_HANGING_SIGN.get(),
+                            WoodBlocks.PHOENIX_HANGING_SIGN.get(),
+                            WoodBlocks.PHOENIX_WALL_HANGING_SIGN.get(),
+                            WoodBlocks.PSARONIUS_HANGING_SIGN.get(),
+                            WoodBlocks.PSARONIUS_WALL_HANGING_SIGN.get(),
+                            WoodBlocks.MAGNOLIA_HANGING_SIGN.get(),
+                            WoodBlocks.MAGNOLIA_WALL_HANGING_SIGN.get()
+                    ).build(null));
+
+    public static DeferredHolder<BlockEntityType<?>, BlockEntityType<TourRailBlockEntity>> TOUR_RAIL_BLOCK_ENTITY = BLOCK_ENTITY_TYPES.register("tour_rail_block_entity", () -> {
         return BlockEntityType.Builder.of(TourRailBlockEntity::new,
                 ModBlocks.TOUR_RAIL.get(),
                 ModBlocks.TOUR_RAIL_MEDIUM.get(),
@@ -145,42 +188,42 @@ public class ModBlockEntities<T extends BlockEntity> {
                 ModBlocks.TOUR_RAIL_FAST.get()).build(null);
     });
 
-    public static RegistryObject<BlockEntityType<FaunaFossilBlockEntity>> FAUNA_FOSSIL_BLOCK_ENTITY = BLOCK_ENTITY_TYPES.register("fauna_fossil_block_entity", () -> BlockEntityType.Builder.of(FaunaFossilBlockEntity::new, ModBlocks.FAUNA_FOSSIL.get()).build(null));
-    public static final RegistryObject<BlockEntityType<FeederBlockEntity>> FEEDER =
+    public static DeferredHolder<BlockEntityType<?>, BlockEntityType<FaunaFossilBlockEntity>> FAUNA_FOSSIL_BLOCK_ENTITY = BLOCK_ENTITY_TYPES.register("fauna_fossil_block_entity", () -> BlockEntityType.Builder.of(FaunaFossilBlockEntity::new, ModBlocks.FAUNA_FOSSIL.get()).build(null));
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<FeederBlockEntity>> FEEDER =
             BLOCK_ENTITY_TYPES.register("feeder",
                     () -> BlockEntityType.Builder
                             .of(FeederBlockEntity::new, ModBlocks.FEEDER.get())
                             .build(null));
-    public static final RegistryObject<BlockEntityType<BugCrateBlockEntity>> BUG_CRATE =
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<BugCrateBlockEntity>> BUG_CRATE =
             BLOCK_ENTITY_TYPES.register("bug_crate",
                     () -> BlockEntityType.Builder
                             .of(net.vit.jurassicreborn.common.blocks.entities.bugcrate.BugCrateBlockEntity::new, ModBlocks.BUG_CRATE.get())
                             .build(null));
-    public static RegistryObject<BlockEntityType<DNAExtractorBlockEntity>> DNA_EXTRACTOR_BLOCK_ENTITY = BLOCK_ENTITY_TYPES.register("dna_extractor_block_entity", () -> BlockEntityType.Builder.of(DNAExtractorBlockEntity::new, ModBlocks.DNA_EXTRACTOR.get()).build(null));
-    public static RegistryObject<BlockEntityType<ElectricFenceBaseBlockEntity>> BASE_FENCE_BLOCK_ENTITY = BLOCK_ENTITY_TYPES.register("base_fence_block_entity", () -> BlockEntityType.Builder.of(ElectricFenceBaseBlockEntity::new, ModBlocks.LOW_SECURITY_FENCE_BASE.get(), ModBlocks.HIGH_SECURITY_FENCE_BASE.get(), ModBlocks.MED_SECURITY_FENCE_BASE.get()).build(null));
+    public static DeferredHolder<BlockEntityType<?>, BlockEntityType<DNAExtractorBlockEntity>> DNA_EXTRACTOR_BLOCK_ENTITY = BLOCK_ENTITY_TYPES.register("dna_extractor_block_entity", () -> BlockEntityType.Builder.of(DNAExtractorBlockEntity::new, ModBlocks.DNA_EXTRACTOR.get()).build(null));
+    public static DeferredHolder<BlockEntityType<?>, BlockEntityType<ElectricFenceBaseBlockEntity>> BASE_FENCE_BLOCK_ENTITY = BLOCK_ENTITY_TYPES.register("base_fence_block_entity", () -> BlockEntityType.Builder.of(ElectricFenceBaseBlockEntity::new, ModBlocks.LOW_SECURITY_FENCE_BASE.get(), ModBlocks.HIGH_SECURITY_FENCE_BASE.get(), ModBlocks.MED_SECURITY_FENCE_BASE.get()).build(null));
 
-    public static RegistryObject<BlockEntityType<ElectricFenceWireBlockEntity>> WIRE_FENCE_BLOCK_ENTITY = BLOCK_ENTITY_TYPES.register("wire_fence_block_entity", () -> BlockEntityType.Builder.of(ElectricFenceWireBlockEntity::new, ModBlocks.LOW_SECURITY_FENCE_WIRE.get(), ModBlocks.HIGH_SECURITY_FENCE_WIRE.get(), ModBlocks.MED_SECURITY_FENCE_WIRE.get()).build(null));
+    public static DeferredHolder<BlockEntityType<?>, BlockEntityType<ElectricFenceWireBlockEntity>> WIRE_FENCE_BLOCK_ENTITY = BLOCK_ENTITY_TYPES.register("wire_fence_block_entity", () -> BlockEntityType.Builder.of(ElectricFenceWireBlockEntity::new, ModBlocks.LOW_SECURITY_FENCE_WIRE.get(), ModBlocks.HIGH_SECURITY_FENCE_WIRE.get(), ModBlocks.MED_SECURITY_FENCE_WIRE.get()).build(null));
 
-    public static RegistryObject<BlockEntityType<ElectricFencePoleBlockEntity>> POLE_FENCE_BLOCK_ENTITY = BLOCK_ENTITY_TYPES.register("pole_fence_block_entity", () -> BlockEntityType.Builder.of(ElectricFencePoleBlockEntity::new, ModBlocks.LOW_SECURITY_FENCE_POLE.get(), ModBlocks.MED_SECURITY_FENCE_POLE.get(), ModBlocks.HIGH_SECURITY_FENCE_POLE.get()).build(null));
+    public static DeferredHolder<BlockEntityType<?>, BlockEntityType<ElectricFencePoleBlockEntity>> POLE_FENCE_BLOCK_ENTITY = BLOCK_ENTITY_TYPES.register("pole_fence_block_entity", () -> BlockEntityType.Builder.of(ElectricFencePoleBlockEntity::new, ModBlocks.LOW_SECURITY_FENCE_POLE.get(), ModBlocks.MED_SECURITY_FENCE_POLE.get(), ModBlocks.HIGH_SECURITY_FENCE_POLE.get()).build(null));
 
-    public static RegistryObject<BlockEntityType<ActionFigureBlockEntity>> DISPLAY_BLOCK_ENTITY = BLOCK_ENTITY_TYPES.register("display_block_entity", () -> BlockEntityType.Builder.of(ActionFigureBlockEntity::new, ModBlocks.DISPLAY_BLOCK.get()).build(null));
-    public static RegistryObject<BlockEntityType<HologramBlockEntity>> HOLOGRAM_BLOCK_ENTITY = BLOCK_ENTITY_TYPES.register("hologram_block_entity", () -> BlockEntityType.Builder.of(HologramBlockEntity::new, ModBlocks.HOLOGRAM_BLOCK.get()).build(null));
+    public static DeferredHolder<BlockEntityType<?>, BlockEntityType<ActionFigureBlockEntity>> DISPLAY_BLOCK_ENTITY = BLOCK_ENTITY_TYPES.register("display_block_entity", () -> BlockEntityType.Builder.of(ActionFigureBlockEntity::new, ModBlocks.DISPLAY_BLOCK.get()).build(null));
+    public static DeferredHolder<BlockEntityType<?>, BlockEntityType<HologramBlockEntity>> HOLOGRAM_BLOCK_ENTITY = BLOCK_ENTITY_TYPES.register("hologram_block_entity", () -> BlockEntityType.Builder.of(HologramBlockEntity::new, ModBlocks.HOLOGRAM_BLOCK.get()).build(null));
 
-    public static RegistryObject<BlockEntityType<IncubatorBlockEntity>> INCUBATOR_BLOCK_ENTITY = BLOCK_ENTITY_TYPES.register("incubator_block_entity", () -> BlockEntityType.Builder.of(IncubatorBlockEntity::new, ModBlocks.INCUBATOR.get()).build(null));
-    public static RegistryObject<BlockEntityType<SkeletonAssemblerBlockEntity>> SKELETON_ASSEMBLY_ENTITY = BLOCK_ENTITY_TYPES.register("skeleton_assembly_block_entity", () -> BlockEntityType.Builder.of(SkeletonAssemblerBlockEntity::new, ModBlocks.SKELETON_ASSEMBLY.get()).build(null));
+    public static DeferredHolder<BlockEntityType<?>, BlockEntityType<IncubatorBlockEntity>> INCUBATOR_BLOCK_ENTITY = BLOCK_ENTITY_TYPES.register("incubator_block_entity", () -> BlockEntityType.Builder.of(IncubatorBlockEntity::new, ModBlocks.INCUBATOR.get()).build(null));
+    public static DeferredHolder<BlockEntityType<?>, BlockEntityType<SkeletonAssemblerBlockEntity>> SKELETON_ASSEMBLY_ENTITY = BLOCK_ENTITY_TYPES.register("skeleton_assembly_block_entity", () -> BlockEntityType.Builder.of(SkeletonAssemblerBlockEntity::new, ModBlocks.SKELETON_ASSEMBLY.get()).build(null));
 
-    public static RegistryObject<BlockEntityType<FossilGrinderBlockEntity>> FOSSIL_GRINDER_BLOCK_ENTITY = BLOCK_ENTITY_TYPES.register("fossil_grinder_block_entity", () -> BlockEntityType.Builder.of(FossilGrinderBlockEntity::new, ModBlocks.FOSSIL_GRINDER.get()).build(null));
+    public static DeferredHolder<BlockEntityType<?>, BlockEntityType<FossilGrinderBlockEntity>> FOSSIL_GRINDER_BLOCK_ENTITY = BLOCK_ENTITY_TYPES.register("fossil_grinder_block_entity", () -> BlockEntityType.Builder.of(FossilGrinderBlockEntity::new, ModBlocks.FOSSIL_GRINDER.get()).build(null));
 
-    public static RegistryObject<BlockEntityType<DNASequencerBlockEntity>> DNA_SEQUENCER_BLOCK_ENTITY = BLOCK_ENTITY_TYPES.register("dna_sequencer_block_entity", () -> BlockEntityType.Builder.of(DNASequencerBlockEntity::new, ModBlocks.DNA_SEQUENCER.get()).build(null));
+    public static DeferredHolder<BlockEntityType<?>, BlockEntityType<DNASequencerBlockEntity>> DNA_SEQUENCER_BLOCK_ENTITY = BLOCK_ENTITY_TYPES.register("dna_sequencer_block_entity", () -> BlockEntityType.Builder.of(DNASequencerBlockEntity::new, ModBlocks.DNA_SEQUENCER.get()).build(null));
 
-    public static RegistryObject<BlockEntityType<DNASynthesizerBlockEntity>> DNA_SYNTHESIZER_BLOCK_ENTITY = BLOCK_ENTITY_TYPES.register("dna_synthesizer_block_entity", () -> BlockEntityType.Builder.of(DNASynthesizerBlockEntity::new, ModBlocks.DNA_SYNTHESIZER.get()).build(null));
+    public static DeferredHolder<BlockEntityType<?>, BlockEntityType<DNASynthesizerBlockEntity>> DNA_SYNTHESIZER_BLOCK_ENTITY = BLOCK_ENTITY_TYPES.register("dna_synthesizer_block_entity", () -> BlockEntityType.Builder.of(DNASynthesizerBlockEntity::new, ModBlocks.DNA_SYNTHESIZER.get()).build(null));
 
-    public static RegistryObject<BlockEntityType<EmbryonicMachineBlockEntity>> EMBRYONIC_MACHINE_BLOCK_ENTITY = BLOCK_ENTITY_TYPES.register("embryonic_machine_block_entity", () -> BlockEntityType.Builder.of(EmbryonicMachineBlockEntity::new, ModBlocks.EMBRYONIC_MACHINE.get()).build(null));
-    public static RegistryObject<BlockEntityType<SkullDisplayBlockEntity>> SKULL_DISPLAY_BLOCK_ENTITY = BLOCK_ENTITY_TYPES.register("skull_display_block_entity", () -> BlockEntityType.Builder.of(SkullDisplayBlockEntity::new, ModBlocks.SKULL_DISPLAY.get()).build(null));
-    public static RegistryObject<BlockEntityType<EmbryoCalcificationMachineBlockEntity>> EMBRYO_CALCIFICATION_MACHINE_BLOCK_ENTITY_TYPE = BLOCK_ENTITY_TYPES.register("embryo_calcification_machine_block_entity", () -> BlockEntityType.Builder.of(EmbryoCalcificationMachineBlockEntity::new, ModBlocks.EMBRYO_CALCIFICATION_MACHINE.get()).build(null));
+    public static DeferredHolder<BlockEntityType<?>, BlockEntityType<EmbryonicMachineBlockEntity>> EMBRYONIC_MACHINE_BLOCK_ENTITY = BLOCK_ENTITY_TYPES.register("embryonic_machine_block_entity", () -> BlockEntityType.Builder.of(EmbryonicMachineBlockEntity::new, ModBlocks.EMBRYONIC_MACHINE.get()).build(null));
+    public static DeferredHolder<BlockEntityType<?>, BlockEntityType<SkullDisplayBlockEntity>> SKULL_DISPLAY_BLOCK_ENTITY = BLOCK_ENTITY_TYPES.register("skull_display_block_entity", () -> BlockEntityType.Builder.of(SkullDisplayBlockEntity::new, ModBlocks.SKULL_DISPLAY.get()).build(null));
+    public static DeferredHolder<BlockEntityType<?>, BlockEntityType<EmbryoCalcificationMachineBlockEntity>> EMBRYO_CALCIFICATION_MACHINE_BLOCK_ENTITY_TYPE = BLOCK_ENTITY_TYPES.register("embryo_calcification_machine_block_entity", () -> BlockEntityType.Builder.of(EmbryoCalcificationMachineBlockEntity::new, ModBlocks.EMBRYO_CALCIFICATION_MACHINE.get()).build(null));
 
-    public static RegistryObject<BlockEntityType<CultivatorTopBlockEntity>> CULTIVATOR_TOP_BLOCK_ENTITY_TYPE = BLOCK_ENTITY_TYPES.register("cultivator_top_block_entity_type", () -> BlockEntityType.Builder.of(CultivatorTopBlockEntity::new, ModBlocks.CULTIVATE_TOP.get()).build(null));
+    public static DeferredHolder<BlockEntityType<?>, BlockEntityType<CultivatorTopBlockEntity>> CULTIVATOR_TOP_BLOCK_ENTITY_TYPE = BLOCK_ENTITY_TYPES.register("cultivator_top_block_entity_type", () -> BlockEntityType.Builder.of(CultivatorTopBlockEntity::new, ModBlocks.CULTIVATE_TOP.get()).build(null));
 
-    public static RegistryObject<BlockEntityType<CultivatorBlockEntity>> CULTIVATOR_BLOCK_ENTITY_TYPE = BLOCK_ENTITY_TYPES.register("cultivator_block_entity_type", () -> BlockEntityType.Builder.of(CultivatorBlockEntity::new, ModBlocks.CULTIVATE_BOTTOM.get()).build(null));
+    public static DeferredHolder<BlockEntityType<?>, BlockEntityType<CultivatorBlockEntity>> CULTIVATOR_BLOCK_ENTITY_TYPE = BLOCK_ENTITY_TYPES.register("cultivator_block_entity_type", () -> BlockEntityType.Builder.of(CultivatorBlockEntity::new, ModBlocks.CULTIVATE_BOTTOM.get()).build(null));
 
 }

@@ -1,8 +1,9 @@
 package net.vit.jurassicreborn.common.util.slot;
 
-import net.vit.jurassicreborn.common.items.ModItems;
 import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
+import net.vit.jurassicreborn.common.items.ModItems;
+import net.vit.jurassicreborn.common.util.ItemStackNbtUtil;
 
 public class StorageSlot extends ToggleableSlot {
 
@@ -21,10 +22,11 @@ public class StorageSlot extends ToggleableSlot {
 
     @Override
     public boolean mayPlace(ItemStack stack) {
+        var tag = ItemStackNbtUtil.getTag(stack);
         if (this.stored) {
-            return stack.getItem() == ModItems.STORAGE_DISC.get() && (stack.getTag() != null && stack.getTag().contains("DNA"));
+            return stack.getItem() == ModItems.STORAGE_DISC.get() && (tag != null && tag.contains("DNA"));
         } else {
-            return stack.getItem() == ModItems.STORAGE_DISC.get() && (stack.getTag() == null || !stack.getTag().contains("DNA"));
+            return stack.getItem() == ModItems.STORAGE_DISC.get() && (tag == null || !tag.contains("DNA"));
         }
     }
 

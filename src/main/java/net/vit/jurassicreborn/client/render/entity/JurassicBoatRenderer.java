@@ -45,7 +45,7 @@ public class JurassicBoatRenderer<T extends net.minecraft.world.entity.vehicle.B
 
     private ResourceLocation createTexture(ModBoatType type) {
         String folder = hasChest ? "chest_boat" : "boat";
-        return new ResourceLocation(JurassicReborn.MODID, "textures/entity/" + folder + "/" + type.getSerializedName() + ".png");
+        return ResourceLocation.fromNamespaceAndPath(JurassicReborn.MODID, "textures/entity/" + folder + "/" + type.getSerializedName() + ".png");
     }
 
     private BoatModel createModel(EntityRendererProvider.Context context, ModBoatType type, boolean hasChest) {
@@ -95,8 +95,8 @@ public class JurassicBoatRenderer<T extends net.minecraft.world.entity.vehicle.B
 
         model.setupAnim(boat, partialTicks, 0.0F, -0.1F, 0.0F, 0.0F);
 
-        VertexConsumer vc = buffer.getBuffer(model.renderType(texture));
-        model.renderToBuffer(poseStack, vc, packedLight, OverlayTexture.NO_OVERLAY, 1, 1, 1, 1);
+        VertexConsumer vc = buffer.getBuffer(RenderType.entityCutout(texture));
+        model.renderToBuffer(poseStack, vc, packedLight, OverlayTexture.NO_OVERLAY, 0xFFFFFFFF);
 
         if (!boat.isUnderWater()) {
             VertexConsumer waterMask = buffer.getBuffer(RenderType.waterMask());

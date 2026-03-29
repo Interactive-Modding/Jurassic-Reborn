@@ -27,7 +27,8 @@ public class FenceBlockRenderer implements BlockEntityRenderer<ElectricFenceBase
                        int light,
                        int overlay) {
 
-        var st      = be.getBlockState();
+        var level = be.getLevel();
+        var st = level != null ? level.getBlockState(be.getBlockPos()) : be.getBlockState();
         var block   = (ElectricFenceBaseBlock) st.getBlock();
         var variant = ElectricFenceModels.resolve(st, block.getType());
 

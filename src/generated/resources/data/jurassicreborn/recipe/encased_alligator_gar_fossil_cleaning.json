@@ -1,0 +1,11 @@
+{
+  "type": "jurassicreborn:cleaning",
+  "id": "jurassicreborn:encased_alligator_gar_fossil_cleaning",
+  "input": {
+    "item": "jurassicreborn:encased_alligator_gar_fossil"
+  },
+  "output": {
+    "count": 1,
+    "id": "jurassicreborn:bones/alligator_gar_skull"
+  }
+}

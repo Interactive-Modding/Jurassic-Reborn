@@ -237,8 +237,8 @@ public class ModBlockFamilies {
             return family.get(variant);
         }
 
-        public boolean shouldGenerateRecipe(FeatureFlagSet featureFlagSet) {
-            return family.shouldGenerateRecipe(featureFlagSet);
+        public boolean shouldGenerateRecipe() {
+            return family.shouldGenerateRecipe();
         }
 
         public @Nullable Block getHangingSign() {

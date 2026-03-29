@@ -4,9 +4,7 @@ import com.github.alexthe666.citadel.client.model.AdvancedModelBox;
 import net.vit.jurassicreborn.client.model.AnimatableModel;
 import net.vit.jurassicreborn.client.render.entity.animation.EntityAnimator;
 import net.vit.jurassicreborn.common.entities.DinosaurEntities.BrachiosaurusEntity;
-import net.minecraft.client.Minecraft;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraft.client.Minecraft;import net.neoforged.api.distmarker.Dist;import net.neoforged.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
 public class BrachiosaurusAnimator extends EntityAnimator<BrachiosaurusEntity> {
@@ -33,7 +31,12 @@ public class BrachiosaurusAnimator extends EntityAnimator<BrachiosaurusEntity> {
         AdvancedModelBox[] neckParts = new AdvancedModelBox[] { head, neck8, neck7, neck6, neck5, neck4, neck3, neck2, neck1 };
         AdvancedModelBox[] tailParts = new AdvancedModelBox[] { tail5, tail4, tail3, tail2 };
 
-        float delta = Minecraft.getInstance().getDeltaFrameTime();
+Minecraft mc = Minecraft.getInstance();
+
+float delta = mc.isPaused()
+        ? 0.0f
+        : mc.getTimer().getGameTimeDeltaPartialTick(false);
+
         AdvancedModelBox root = model.getCube("hips");
         AdvancedModelBox backLeftThigh = model.getCube("top leg left");
         AdvancedModelBox backLeftCalf = model.getCube("bottom leg left");

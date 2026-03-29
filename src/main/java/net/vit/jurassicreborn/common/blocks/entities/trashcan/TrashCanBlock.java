@@ -7,8 +7,6 @@ import com.google.gson.JsonParser;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleMenuProvider;
@@ -29,7 +27,6 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.network.NetworkHooks;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -40,7 +37,7 @@ public class TrashCanBlock extends Block {
     private static final VoxelShape SHAPE = loadShape();
 
     public TrashCanBlock() {
-        super(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).strength(3.0F).noOcclusion().sound(net.minecraft.world.level.block.SoundType.METAL).requiresCorrectToolForDrops());
+        super(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK).strength(3.0F).noOcclusion().sound(net.minecraft.world.level.block.SoundType.METAL).requiresCorrectToolForDrops());
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
     }
 
@@ -93,13 +90,13 @@ public class TrashCanBlock extends Block {
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        if (!level.isClientSide && player instanceof ServerPlayer sp) {
+    public InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hit) {
+        if (!level.isClientSide) {
             MenuProvider provider = new SimpleMenuProvider(
                     (id, inv, p) -> new TrashCanMenu(id, inv),
                     Component.translatable("container.trash_can")
             );
-            NetworkHooks.openScreen(sp, provider, pos);
+            player.openMenu(provider);
         }
         return InteractionResult.sidedSuccess(level.isClientSide);
     }

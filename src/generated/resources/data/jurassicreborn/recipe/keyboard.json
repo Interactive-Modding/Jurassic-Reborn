@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:stone_button"
+    },
+    "B": {
+      "item": "minecraft:stone_pressure_plate"
+    },
+    "C": {
+      "item": "minecraft:stone_slab"
+    },
+    "D": {
+      "item": "jurassicreborn:basic_circuit"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "AAA",
+    "BCD"
+  ],
+  "result": {
+    "count": 1,
+    "id": "jurassicreborn:keyboard"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "jurassicreborn:ajuginucula_smithii_oil",
+  "ingredients": [
+    {
+      "item": "jurassicreborn:ajuginucula_smithii_leaves"
+    },
+    {
+      "item": "jurassicreborn:ajuginucula_smithii_leaves"
+    },
+    {
+      "item": "jurassicreborn:ajuginucula_smithii_leaves"
+    },
+    {
+      "item": "jurassicreborn:ajuginucula_smithii_leaves"
+    },
+    {
+      "item": "minecraft:glass_bottle"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "jurassicreborn:ajuginucula_smithii_oil"
+  }
+}

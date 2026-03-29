@@ -1,6 +1,6 @@
 package net.vit.jurassicreborn.common.blocks.entities.DNABlocks.DNACombinatorHybridizer;
 
-import net.minecraftforge.items.SlotItemHandler;
+import net.neoforged.neoforge.items.SlotItemHandler;
 import net.vit.jurassicreborn.common.blocks.entities.MachineItemStackHandler;
 import net.vit.jurassicreborn.common.blocks.entities.ModMenuTypes;
 import net.vit.jurassicreborn.common.blocks.inventory.DNACombinatorHybridizerItemHandler;
@@ -179,7 +179,7 @@ public class DNACombinatorHybridizerMenu extends AbstractContainerMenu {
                 Slot slot = this.slots.get(i);
                 if (slot.isActive()) {
                     ItemStack itemstack = slot.getItem();
-                    if (!itemstack.isEmpty() && ItemStack.isSameItemSameTags(pStack, itemstack)) {
+                    if (!itemstack.isEmpty() && ItemStack.isSameItemSameComponents(pStack, itemstack)) {
                         int j = itemstack.getCount() + pStack.getCount();
                         int maxSize = Math.min(slot.getMaxStackSize(), pStack.getMaxStackSize());
                         if (j <= maxSize) {

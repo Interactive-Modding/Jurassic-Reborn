@@ -1,8 +1,14 @@
 package net.vit.jurassicreborn.client.render;
 import net.minecraft.client.model.ChestBoatModel;
+import net.minecraft.client.renderer.entity.ArrowRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.entity.PaintingRenderer;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Mth;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.vit.jurassicreborn.JurassicReborn;
 import net.vit.jurassicreborn.client.render.block.*;
 import net.vit.jurassicreborn.client.render.entity.*;
@@ -19,12 +25,8 @@ import net.minecraft.client.model.BoatModel;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.client.event.EntityRenderersEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.minecraft.world.level.block.entity.BlockEntity;import net.neoforged.api.distmarker.Dist;import net.neoforged.api.distmarker.OnlyIn;
+import net.vit.jurassicreborn.common.entities.item.BulletEntity;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -38,7 +40,7 @@ import net.vit.jurassicreborn.common.entities.vehicle.boat.ModBoatType;
 
 
 @OnlyIn(Dist.CLIENT)
-@Mod.EventBusSubscriber(modid = JurassicReborn.MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value=Dist.CLIENT)
+@EventBusSubscriber(modid = JurassicReborn.MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class RenderingHandler{
     public static final RenderingHandler INSTANCE = new RenderingHandler();
     private float thirdPersonViewDistance = 4.0f;
@@ -48,7 +50,7 @@ public class RenderingHandler{
     }
 
     public void setThirdPersonViewDistance(float dist) {
-        this.thirdPersonViewDistance = dist;
+        this.thirdPersonViewDistance = Mth.clamp(dist, 2.0f, 40.0f);
     }
 
     public void resetThirdPersonViewDistance() {
@@ -62,28 +64,34 @@ public class RenderingHandler{
         DinosaurHandler.doDinosInit();
 
         helper.doEntityRegistration(event);
+        event.registerEntityRenderer(ModEntities.VENOM.get(), VenomRenderer::new);
+        event.registerEntityRenderer(ModEntities.BULLET_ENTITY.get(), ctx -> new ArrowRenderer<BulletEntity>(ctx) {
+            private static final ResourceLocation BULLET_TEXTURE = ResourceLocation.fromNamespaceAndPath(JurassicReborn.MODID, "textures/item/bullet.png");
+            @Override public ResourceLocation getTextureLocation(BulletEntity entity) {return BULLET_TEXTURE;}
+        });
         event.registerEntityRenderer(ModEntities.TRANQUILIZER_DART.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(ModEntities.TRACKING_DART.get(), ThrownItemRenderer::new);
         event.registerEntityRenderer(ModEntities.PARK_BENCH_SEAT_LEFT.get(),  BenchSeatRenderer::new);
         event.registerEntityRenderer(ModEntities.PARK_BENCH_SEAT_RIGHT.get(), BenchSeatRenderer::new);
-        EntityRenderers.register(ModEntities.BLUEPRINT_PAINTING.get(), BlueprintRenderer::new);
-        EntityRenderers.register(ModEntities.MURAL_PAINTING.get(), ctx -> new PaintingRenderer(ctx));
-        EntityRenderers.register(ModEntities.PADDOCK_SIGN.get(),  PaddockSignRenderer::new);
-        EntityRenderers.register(ModEntities.ATTRACTION_SIGN.get(), AttractionSignRenderer::new);
-        EntityRenderers.register(ModEntities.FORD_EXPLORER.get(), FordExplorerRenderer::new);
-        EntityRenderers.register(ModEntities.FORD_EXPLORER_SNOW.get(), FordExplorerSnowRenderer::new);
-        EntityRenderers.register(ModEntities.MONORAIL.get(), MonorailRenderer::new);
-        EntityRenderers.register(ModEntities.GYROSPHERE.get(), GyrosphereRenderer::new);
-        EntityRenderers.register(ModEntities.JEEP_WRANGLER.get(), JeepWranglerRenderer::new);
-        EntityRenderers.register(ModEntities.BLACK_JEEP_WRANGLER.get(), BlackJeepWranglerRenderer::new);
-        EntityRenderers.register(ModEntities.BLUE_JEEP_WRANGLER.get(), BlueJeepWranglerRenderer::new);
-        EntityRenderers.register(ModEntities.GREEN_JEEP_WRANGLER.get(), GreenJeepWranglerRenderer::new);
-        EntityRenderers.register(ModEntities.LIME_JEEP_WRANGLER.get(), LimeJeepWranglerRenderer::new);
-        EntityRenderers.register(ModEntities.PINK_JEEP_WRANGLER.get(), PinkJeepWranglerRenderer::new);
-        EntityRenderers.register(ModEntities.PURPLE_JEEP_WRANGLER.get(), PurpleJeepWranglerRenderer::new);
-        EntityRenderers.register(ModEntities.SORNA_JEEP_WRANGLER.get(), SornaJeepWranglerRenderer::new);
-        EntityRenderers.register(ModEntities.HELICOPTER.get(), HeliRenderer::new);
-        EntityRenderers.register(ModEntities.JURASSIC_BOAT.get(), ctx -> new JurassicBoatRenderer<>(ctx, false));
-        EntityRenderers.register(ModEntities.JURASSIC_CHEST_BOAT.get(), ctx -> new JurassicBoatRenderer<>(ctx, true));
+        event.registerEntityRenderer(ModEntities.BLUEPRINT_PAINTING.get(), BlueprintRenderer::new);
+        event.registerEntityRenderer(ModEntities.MURAL_PAINTING.get(), ctx -> new PaintingRenderer(ctx));
+        event.registerEntityRenderer(ModEntities.PADDOCK_SIGN.get(),  PaddockSignRenderer::new);
+        event.registerEntityRenderer(ModEntities.ATTRACTION_SIGN.get(), AttractionSignRenderer::new);
+        event.registerEntityRenderer(ModEntities.FORD_EXPLORER.get(), FordExplorerRenderer::new);
+        event.registerEntityRenderer(ModEntities.FORD_EXPLORER_SNOW.get(), FordExplorerSnowRenderer::new);
+        event.registerEntityRenderer(ModEntities.MONORAIL.get(), MonorailRenderer::new);
+        event.registerEntityRenderer(ModEntities.GYROSPHERE.get(), GyrosphereRenderer::new);
+        event.registerEntityRenderer(ModEntities.JEEP_WRANGLER.get(), JeepWranglerRenderer::new);
+        event.registerEntityRenderer(ModEntities.BLACK_JEEP_WRANGLER.get(), BlackJeepWranglerRenderer::new);
+        event.registerEntityRenderer(ModEntities.BLUE_JEEP_WRANGLER.get(), BlueJeepWranglerRenderer::new);
+        event.registerEntityRenderer(ModEntities.GREEN_JEEP_WRANGLER.get(), GreenJeepWranglerRenderer::new);
+        event.registerEntityRenderer(ModEntities.LIME_JEEP_WRANGLER.get(), LimeJeepWranglerRenderer::new);
+        event.registerEntityRenderer(ModEntities.PINK_JEEP_WRANGLER.get(), PinkJeepWranglerRenderer::new);
+        event.registerEntityRenderer(ModEntities.PURPLE_JEEP_WRANGLER.get(), PurpleJeepWranglerRenderer::new);
+        event.registerEntityRenderer(ModEntities.SORNA_JEEP_WRANGLER.get(), SornaJeepWranglerRenderer::new);
+        event.registerEntityRenderer(ModEntities.HELICOPTER.get(), HeliRenderer::new);
+        event.registerEntityRenderer(ModEntities.JURASSIC_BOAT.get(), ctx -> new JurassicBoatRenderer<>(ctx, false));
+        event.registerEntityRenderer(ModEntities.JURASSIC_CHEST_BOAT.get(), ctx -> new JurassicBoatRenderer<>(ctx, true));
 
 
         event.registerEntityRenderer(ModEntities.CRAB.get(), CrabEntityRenderer::new);

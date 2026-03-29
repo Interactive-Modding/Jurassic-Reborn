@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_gypsum_bricks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "jurassicreborn:gypsum_bricks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "jurassicreborn:gypsum_brick_slab"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_gypsum_bricks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "jurassicreborn:gypsum_brick_slab"
+    ]
+  }
+}

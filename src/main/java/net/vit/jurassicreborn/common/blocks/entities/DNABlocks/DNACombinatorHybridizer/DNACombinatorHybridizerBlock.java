@@ -1,18 +1,17 @@
 package net.vit.jurassicreborn.common.blocks.entities.DNABlocks.DNACombinatorHybridizer;
 
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.Containers;
-import net.minecraftforge.items.wrapper.RecipeWrapper;
-import net.minecraftforge.network.NetworkHooks;
+import com.mojang.serialization.MapCodec;
+
+import net.vit.jurassicreborn.common.util.InventoryUtil;
 import net.vit.jurassicreborn.common.blocks.base.BaseMachineBlock;
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -28,6 +27,9 @@ import org.jetbrains.annotations.Nullable;
 
 public class DNACombinatorHybridizerBlock extends BaseMachineBlock {
 
+    public static final MapCodec<DNACombinatorHybridizerBlock> CODEC =
+            Block.simpleCodec(DNACombinatorHybridizerBlock::new);
+
     public static final BooleanProperty MODE = BooleanProperty.create("is_hybridizer");
 
     private static final VoxelShape MODEL_SHAPE_NORTH = Block.box(1, 0, 1, 15, 14, 15);
@@ -36,6 +38,11 @@ public class DNACombinatorHybridizerBlock extends BaseMachineBlock {
         super(p_52591_);
         this.registerDefaultState(this.getSetDefaultValues().setValue(MODE, false));
 
+    }
+
+    @Override
+    protected MapCodec<? extends BaseEntityBlock> codec() {
+        return CODEC;
     }
 
     @Override
@@ -74,14 +81,14 @@ public class DNACombinatorHybridizerBlock extends BaseMachineBlock {
     }
 
     @Override
-    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
-        if (!pLevel.isClientSide) {
-            BlockEntity be = pLevel.getBlockEntity(pPos);
-            if (be instanceof MenuProvider provider && pPlayer instanceof ServerPlayer sp) {
-                NetworkHooks.openScreen(sp, provider, pPos);
+    public InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hit) {
+        if (!level.isClientSide) {
+            BlockEntity be = level.getBlockEntity(pos);
+            if (be instanceof MenuProvider provider) {
+                player.openMenu(provider);
             }
         }
-        return InteractionResult.sidedSuccess(pLevel.isClientSide);
+        return InteractionResult.sidedSuccess(level.isClientSide);
     }
 
     @Override
@@ -105,7 +112,7 @@ public class DNACombinatorHybridizerBlock extends BaseMachineBlock {
         if (!oldState.is(newState.getBlock())) {
             BlockEntity blockEntity = level.getBlockEntity(pos);
             if (blockEntity instanceof DNACombinatorHybridizerBlockEntity dna) {
-                Containers.dropContents(level, pos, new RecipeWrapper(dna.getItemHandler()));
+                InventoryUtil.dropContents(level, pos, dna.getItemHandler());
                 level.updateNeighbourForOutputSignal(pos, this);
             }
             super.onRemove(oldState, level, pos, newState, isMoving);

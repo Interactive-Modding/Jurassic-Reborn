@@ -5,7 +5,7 @@ import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.category.extensions.IRecipeCategoryExtension;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.vit.jurassicreborn.common.entities.EntityUtils.FoodType;
 import net.vit.jurassicreborn.common.items.Food.FoodHelper;
 
@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 
 /** JEI recipe extension for the Bug Crate. */
 public class BugCrateRecipeExtension implements IRecipeCategoryExtension {
-    private static final List<ItemStack> PLANTS = ForgeRegistries.ITEMS.getValues().stream()
+    private static final List<ItemStack> PLANTS = BuiltInRegistries.ITEM.stream()
             .filter(i -> FoodHelper.isFoodType(i, FoodType.PLANT))
             .map(ItemStack::new)
             .collect(Collectors.toList());

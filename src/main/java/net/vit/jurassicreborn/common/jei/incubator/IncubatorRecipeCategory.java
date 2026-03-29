@@ -35,6 +35,7 @@ public class IncubatorRecipeCategory implements IRecipeCategory<IncubatorRecipeE
 
     @Override public RecipeType<IncubatorRecipeExtension> getRecipeType() { return TYPE; }
     @Override public Component getTitle()              { return title; }
+
     @Override public IDrawable getBackground()          { return bg; }
     @Override public IDrawable getIcon()                { return icon; }
 

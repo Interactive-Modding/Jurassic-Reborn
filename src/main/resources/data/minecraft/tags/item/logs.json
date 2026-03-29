@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "jurassicreborn:araucaria_log",
+    "jurassicreborn:magnolia_log",
+    "jurassicreborn:ginkgo_log",
+    "jurassicreborn:calamites_log",
+    "jurassicreborn:phoenix_log",
+    "jurassicreborn:psaronius_log"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "parent": "jurassicreborn:jurassicreborn/plant_dna",
+  "criteria": {
+    "plant_callus": {
+      "conditions": {
+        "items": [
+          {
+            "items": "jurassicreborn:plant_callus"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.jurassicreborn.plant_callus.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "jurassicreborn:enallhelia"
+    },
+    "title": {
+      "translate": "advancements.jurassicreborn.plant_callus.title"
+    }
+  },
+  "requirements": [
+    [
+      "plant_callus"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

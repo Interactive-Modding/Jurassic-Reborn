@@ -4,9 +4,7 @@ import com.github.alexthe666.citadel.client.model.AdvancedModelBox;
 import net.vit.jurassicreborn.client.model.AnimatableModel;
 import net.vit.jurassicreborn.client.render.entity.animation.EntityAnimator;
 
-import net.minecraft.client.Minecraft;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraft.client.Minecraft;import net.neoforged.api.distmarker.Dist;import net.neoforged.api.distmarker.OnlyIn;
 import net.vit.jurassicreborn.common.entities.DinosaurEntities.GallimimusEntity;
 
 @OnlyIn(Dist.CLIENT)
@@ -54,7 +52,12 @@ public class GallimimusAnimator extends EntityAnimator<GallimimusEntity> {
         AdvancedModelBox[] armLeft = new AdvancedModelBox[] { handLeft, lowerArmLeft, upperArmLeft };
         AdvancedModelBox[] armRight = new AdvancedModelBox[] { handRight, lowerArmRight, upperArmRight };
 
-        float delta = Minecraft.getInstance().getDeltaFrameTime();
+Minecraft mc = Minecraft.getInstance();
+
+float delta = mc.isPaused()
+        ? 0.0f
+        : mc.getTimer().getGameTimeDeltaPartialTick(false);
+
         LegArticulator.articulateBiped(entity, entity.legSolver, body1, leftThigh, leftCalf, rightThigh, rightCalf, 1.0F, 1.4F, delta);
 
         float globalSpeed = 1.5F;

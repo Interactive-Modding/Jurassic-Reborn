@@ -1,41 +1,42 @@
 package net.vit.jurassicreborn.common.network;
 
-import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
-import net.minecraftforge.network.NetworkEvent;
+import net.neoforged.neoforge.network.handling.IPayloadContext;
+import net.vit.jurassicreborn.JurassicReborn;
 import net.vit.jurassicreborn.common.entities.vehicle.VehicleEntity;
 
-import java.util.function.Supplier;
+public record SwitchSeatMessage(int entityId) implements CustomPacketPayload {
+    public static final Type<SwitchSeatMessage> TYPE = new Type<>(JurassicReborn.resource("switch_seat"));
+    public static final StreamCodec<RegistryFriendlyByteBuf, SwitchSeatMessage> STREAM_CODEC = new StreamCodec<>() {
+        @Override
+        public SwitchSeatMessage decode(RegistryFriendlyByteBuf buf) {
+            return new SwitchSeatMessage(buf.readInt());
+        }
 
-public class SwitchSeatMessage {
-    private final int entityId;
+        @Override
+        public void encode(RegistryFriendlyByteBuf buf, SwitchSeatMessage msg) {
+            buf.writeInt(msg.entityId());
+        }
+    };
 
-    public SwitchSeatMessage(int entityId) {
-        this.entityId = entityId;
+    @Override
+    public Type<? extends CustomPacketPayload> type() {
+        return TYPE;
     }
 
-    public SwitchSeatMessage(FriendlyByteBuf buf) {
-        this.entityId = buf.readInt();
-    }
-
-    public static void encode(SwitchSeatMessage msg, FriendlyByteBuf buf) {
-        buf.writeInt(msg.entityId);
-    }
-
-    public static SwitchSeatMessage decode(FriendlyByteBuf buf) {
-        return new SwitchSeatMessage(buf);
-    }
-
-    public static void handle(SwitchSeatMessage msg, Supplier<NetworkEvent.Context> ctx) {
-        ctx.get().enqueueWork(() -> {
-            ServerPlayer player = ctx.get().getSender();
-            if (player == null) return;
-            Entity e = player.level().getEntity(msg.entityId);
-            if (e instanceof VehicleEntity car && player.getVehicle() == car) {
+    public static void handle(SwitchSeatMessage msg, IPayloadContext ctx) {
+        ctx.enqueueWork(() -> {
+            if (!(ctx.player() instanceof ServerPlayer player)) {
+                return;
+            }
+            Entity entity = player.level().getEntity(msg.entityId());
+            if (entity instanceof VehicleEntity car && player.getVehicle() == car) {
                 car.cycleSeat(player);
             }
         });
-        ctx.get().setPacketHandled(true);
     }
 }

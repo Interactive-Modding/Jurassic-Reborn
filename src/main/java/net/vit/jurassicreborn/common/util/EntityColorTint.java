@@ -30,6 +30,7 @@ public class EntityColorTint {
     }
 
     /**
+     * You want to set this color right before calling {@code super.render(...)} in a subclass of {@link LivingEntityRenderer}.
      * The color is reset right after my mixin renders the entity with the color.
      * @param color The desired tint color
      */

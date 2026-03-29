@@ -93,19 +93,19 @@ public class DilophosaurusEntity extends DinosaurEntity implements RangedAttackM
 
         this.level().addFreshEntity(venom);
 
-        if (this.level() instanceof ServerLevel sl) {
-            sl.sendParticles(
-                    ParticleTypes.ITEM_SLIME,
-                    spawnX, spawnY, spawnZ,
-                    10, 0.05D, 0.02D, 0.05D, 0.01D
-            );
-        }
+//        if (this.level() instanceof ServerLevel sl) {
+//            sl.sendParticles(
+//                    ParticleTypes.ITEM_SLIME,
+//                    spawnX, spawnY, spawnZ,
+//                    10, 0.05D, 0.02D, 0.05D, 0.01D
+//            );
+//        }
     }
 
     @Override
-    public void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(WATCHER_HAS_TARGET, false);
+    public void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(WATCHER_HAS_TARGET, false);
     }
 
     @Override

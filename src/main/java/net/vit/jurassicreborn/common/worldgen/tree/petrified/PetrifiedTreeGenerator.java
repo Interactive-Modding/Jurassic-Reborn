@@ -31,7 +31,7 @@ public class PetrifiedTreeGenerator extends Feature<PetrifiedTreeConfig> {
     public boolean place(FeaturePlaceContext<PetrifiedTreeConfig> context) {
         RandomSource random = context.random();
         float chance = random.nextFloat();
-
+        // Only attempt placement if the random roll is below the configured chance
         if (context.config().chance >= chance) {
             WorldGenLevel world = context.level();
 
@@ -48,7 +48,7 @@ public class PetrifiedTreeGenerator extends Feature<PetrifiedTreeConfig> {
             int oceanFloorY = world.getHeight(Heightmap.Types.OCEAN_FLOOR_WG, randPosX, randPosZ);
 
             int minY = 5;
-            int maxY = Math.max(minY, surfaceY - 5);
+            int maxY = Math.max(minY, surfaceY - 5); // Prevents going above surface
             int randPosY = random.nextInt(maxY - minY + 1) + minY;
 
             BlockPos targetPos = new BlockPos(randPosX, randPosY, randPosZ);

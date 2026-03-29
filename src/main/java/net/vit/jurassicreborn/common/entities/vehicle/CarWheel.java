@@ -27,7 +27,7 @@ public final class CarWheel {
     /*  Tick update                                                          */
     /* --------------------------------------------------------------------- */
 
-
+    /** Call once per tick after you have solved the new wheel position. */
     public void setCurrentWheelPos(Vec3 worldPos) {
         this.prev    = this.current;
         this.current = worldPos;

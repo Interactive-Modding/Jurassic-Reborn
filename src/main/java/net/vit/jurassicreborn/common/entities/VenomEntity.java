@@ -1,7 +1,5 @@
 package net.vit.jurassicreborn.common.entities;
 
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -16,11 +14,11 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.network.NetworkHooks;
 import net.vit.jurassicreborn.client.JurassicClient;
 import net.vit.jurassicreborn.common.entities.DinosaurEntities.DilophosaurusEntity;
 
 import java.util.UUID;
+import net.minecraft.network.syncher.SynchedEntityData;
 
 public class VenomEntity extends Projectile {
 
@@ -43,7 +41,8 @@ public class VenomEntity extends Projectile {
     }
 
     @Override
-    protected void defineSynchedData() {}
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+    }
 
     @Override
     public void tick() {
@@ -141,10 +140,7 @@ public class VenomEntity extends Projectile {
         if (!this.level().isClientSide) this.discard();
     }
 
-    @Override
-    public Packet<ClientGamePacketListener> getAddEntityPacket() {
-        return NetworkHooks.getEntitySpawningPacket(this);
-    }
+
 
     public void makeLaserStraight(boolean straight) {
         this.setNoGravity(straight);

@@ -2,7 +2,6 @@ package net.vit.jurassicreborn.client.render.entity.vehicle;
 
 import com.github.alexthe666.citadel.client.model.TabulaModel;
 import com.github.alexthe666.citadel.client.model.container.TabulaModelContainer;
-import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
@@ -13,173 +12,189 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
+import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
 import net.vit.jurassicreborn.JurassicReborn;
-import net.vit.jurassicreborn.common.RebornConfig;
+import net.vit.jurassicreborn.client.model.TabulaModelUV;
+import net.vit.jurassicreborn.common.JurassicConfig;
+import net.vit.jurassicreborn.common.entities.vehicle.HelicopterEntity;
 import net.vit.jurassicreborn.common.entities.vehicle.VehicleEntity;
 import net.vit.jurassicreborn.common.legacy.tabula.TabulaModelHelper;
 import net.vit.jurassicreborn.common.util.MathUtils;
 import org.jetbrains.annotations.Nullable;
-
-import net.minecraft.world.phys.Vec2;
 import org.joml.Vector4f;
 
 import java.util.stream.IntStream;
 
-/**
- * Generic renderer for every Tabula‑based car model.
- * Concrete subclasses only have to provide a {@link CarAnimator} via the constructor
- * or by overriding {@link #createCarAnimator()}.
- */
 public abstract class CarRenderer<E extends VehicleEntity> extends EntityRenderer<E> {
-
-    /* --------------------------------------------------------------------- */
-    /*  Destroy‑stage overlay                                               */
-    /* --------------------------------------------------------------------- */
 
     private static final ResourceLocation[] DESTROY_STAGES =
             IntStream.range(0, 10)
-                    .mapToObj(i -> new ResourceLocation("textures/block/destroy_stage_" + i + ".png"))
+                    .mapToObj(i -> ResourceLocation.withDefaultNamespace("textures/block/destroy_stage_" + i + ".png"))
                     .toArray(ResourceLocation[]::new);
 
-    /* --------------------------------------------------------------------- */
-    /*  Instance fields                                                     */
-    /* --------------------------------------------------------------------- */
+    protected final String carName;
+    protected final CarAnimator animator;
+    protected final ResourceLocation texture;
+    protected final TabulaModel baseModel;
+    protected final TabulaModel destroyModel;
 
-    private final CarAnimator    animator;
-    private final ResourceLocation texture;
-    private final TabulaModel    model;
+    protected CarRenderer(EntityRendererProvider.Context ctx, String carName) {
+        this(ctx, carName, null);
+    }
 
-    /* --------------------------------------------------------------------- */
-    /*  Ctor                                                                */
-    /* --------------------------------------------------------------------- */
-
-    protected CarRenderer(EntityRendererProvider.Context ctx,
-                          String carName,
-                          CarAnimator animator) {
+    protected CarRenderer(EntityRendererProvider.Context ctx, String carName, @Nullable CarAnimator animator) {
         super(ctx);
-        this.animator = animator;
-        this.texture  = new ResourceLocation(JurassicReborn.MODID,
-                "textures/entities/" + carName + "/" + carName + ".png");
+        this.carName = carName;
+        this.animator = animator != null ? animator : createCarAnimator();
+        this.texture = ResourceLocation.fromNamespaceAndPath(
+                JurassicReborn.MODID,
+                "textures/entities/" + carName + "/" + carName + ".png"
+        );
+
         try {
             String path = "/assets/jurassicreborn/models/entities/" + carName + "/" + carName + ".tbl";
             TabulaModelContainer container = TabulaModelHelper.loadTabulaModel(path);
             if (container == null) {
                 throw new IllegalArgumentException("Tabula model not found: " + path);
             }
-            this.model = new TabulaModel(container, animator);
+
+            this.baseModel = new TabulaModel(container, this.animator);
+            this.destroyModel = new TabulaModel(new TabulaModelUV(container, 16, 16), this.animator);
         } catch (Exception ex) {
             throw new RuntimeException("Unable to load Tabula model for " + carName, ex);
         }
     }
 
-    /* --------------------------------------------------------------------- */
-    /*  Render loop                                                         */
-    /* --------------------------------------------------------------------- */
-
     @Override
-    public void render(E car,
+    public void render(E entity,
                        float entityYaw,
                        float partialTicks,
                        PoseStack pose,
                        MultiBufferSource buffer,
                        int packedLight) {
-
         this.animator.partialTicks = partialTicks;
 
-        // ---------- root transform ----------
         pose.pushPose();
-        pose.translate(0, 1.25F, 0);
-        pose.mulPose(Axis.YP.rotationDegrees(180 - entityYaw));
+        pose.translate(0.0F, 1.25F, 0.0F);
+        pose.mulPose(Axis.YP.rotationDegrees(180.0F - entityYaw));
 
-        applySuspensionPitchRoll(car, partialTicks, pose);
+        this.doCarRotations(entity, partialTicks, pose);
 
-        // Tabula uses left‑handed system
-        pose.scale(-1, -1, 1);
-        animator.setRotationAngles(
-                model,
-                car,
-                0,
-                0,
-                car.tickCount + partialTicks,
-                car.getYRot(),
-                car.getXRot(),
-                0.0625F
+        // Tabula uses a left-handed setup
+        pose.scale(-1.0F, -1.0F, 1.0F);
+
+        // Keep the first file's main render behavior
+        this.renderPass(
+                this.baseModel,
+                entity,
+                partialTicks,
+                pose,
+                buffer.getBuffer(RenderType.entityCutout(this.getTextureLocation(entity))),
+                packedLight
         );
-        // ---------- main pass ----------------
-        VertexConsumer vc = buffer.getBuffer(RenderType.entityCutout(getTextureLocation(car)));
-        model.renderToBuffer(
-                pose, vc,
-                packedLight, OverlayTexture.NO_OVERLAY,
-                1.0F, 1.0F, 1.0F, 1.0F);
-        // ---------- damage overlay -----------
-        int stage = Math.min(9, 9 - (int) (car.getHealth() / VehicleEntity.MAX_HEALTH * 10));
-        if (stage >= 0) {
-            RenderSystem.enableBlend();
-            RenderSystem.defaultBlendFunc();
-            VertexConsumer damage = buffer.getBuffer(RenderType.entityTranslucent(DESTROY_STAGES[stage]));
-            model.renderToBuffer(pose, damage, packedLight, OverlayTexture.NO_OVERLAY, 1, 1, 1, 0.5F);
-            RenderSystem.disableBlend();
+
+        // Keep the second file's fixed destroy overlay behavior
+        int destroyStage = Math.min(10, (int) (10.0F - (entity.getHealth() / VehicleEntity.MAX_HEALTH) * 10.0F)) - 1;
+        if (destroyStage >= 0) {
+            this.renderPass(
+                    this.destroyModel,
+                    entity,
+                    partialTicks,
+                    pose,
+                    buffer.getBuffer(RenderType.crumbling(DESTROY_STAGES[destroyStage])),
+                    packedLight
+            );
         }
 
         pose.popPose();
-        super.render(car, entityYaw, partialTicks, pose, buffer, packedLight);
+        super.render(entity, entityYaw, partialTicks, pose, buffer, packedLight);
     }
 
-    /* --------------------------------------------------------------------- */
-    /*  Suspension helper                                                   */
-    /* --------------------------------------------------------------------- */
-
-    private static void applySuspensionPitchRoll(VehicleEntity car, float pt, PoseStack pose) {
-        double back  = car.backValue .getRenderValue(pt);
-        double front = car.frontValue.getRenderValue(pt);
-        double left  = car.leftValue .getRenderValue(pt);
-        double right = car.rightValue.getRenderValue(pt);
-
-        Vector4f d   = car.getCarDimensions();
-        Vec2 rot = car.getBackWheelRotationPoint();
-
-        pose.translate(0, rot.x, rot.y);
-
-        // pitch
-        float pitch = (float) MathUtils.cosineFromPoints(
-                new Vec3(front, 0, d.w()), new Vec3(back, 0, d.w()), new Vec3(back, 0, d.y()));
-        pitch = Mth.clamp(pitch, -45f, 45f);
-        if (RebornConfig.enableVehicleTilting)
-            pose.mulPose(Axis.XP.rotationDegrees(back > front ? -pitch : pitch));        // roll
-        float roll = (float) MathUtils.cosineFromPoints(
-                new Vec3(right, 0, d.z()), new Vec3(left, 0, d.z()), new Vec3(left, 0, d.x()));
-        roll = Mth.clamp(roll, -45f, 45f);
-        if (RebornConfig.enableVehicleTilting)
-            pose.mulPose(Axis.ZP.rotationDegrees(left > right ? -roll : roll));
-        pose.translate(0, -rot.x, -rot.y);
-
-        car.pitch = RebornConfig.enableVehicleTilting ? (back > front ? -pitch : pitch) : 0;
-        car.roll  = RebornConfig.enableVehicleTilting ? (left > right ? -roll  : roll) : 0;
+    protected void renderPass(TabulaModel model,
+                              E entity,
+                              float partialTicks,
+                              PoseStack pose,
+                              VertexConsumer consumer,
+                              int packedLight) {
+        this.animator.setRotationAngles(
+                model,
+                entity,
+                0.0F,
+                0.0F,
+                entity.tickCount + partialTicks,
+                entity.getYRot(),
+                entity.getXRot(),
+                0.0625F
+        );
+        model.renderToBuffer(pose, consumer, packedLight, OverlayTexture.NO_OVERLAY, 0xFFFFFFFF);
     }
-    /* --------------------------------------------------------------------- */
-    /*  Vanilla hooks                                                       */
-    /* --------------------------------------------------------------------- */
+
+    protected void doCarRotations(E entity, float partialTicks, PoseStack pose) {
+        if (entity instanceof HelicopterEntity) {
+            return;
+        }
+
+        double backValue = entity.backValue.getRenderValue(partialTicks);
+        double frontValue = entity.frontValue.getRenderValue(partialTicks);
+        double leftValue = entity.leftValue.getRenderValue(partialTicks);
+        double rightValue = entity.rightValue.getRenderValue(partialTicks);
+
+        Vector4f vec = entity.getCarDimensions();
+        Vec2 rot = entity.getBackWheelRotationPoint();
+
+        pose.translate(0.0F, rot.x, rot.y);
+
+        float localRotationPitch = (float) MathUtils.cosineFromPoints(
+                new Vec3(frontValue, 0.0D, vec.w()),
+                new Vec3(backValue, 0.0D, vec.w()),
+                new Vec3(backValue, 0.0D, vec.y())
+        );
+        localRotationPitch = Mth.clamp(localRotationPitch, -45.0F, 45.0F);
+        if (JurassicConfig.enableVehicleTilting) {
+            pose.mulPose(Axis.XP.rotationDegrees(frontValue < backValue ? -localRotationPitch : localRotationPitch));
+        }
+
+        float localRotationRoll = (float) MathUtils.cosineFromPoints(
+                new Vec3(rightValue, 0.0D, vec.z()),
+                new Vec3(leftValue, 0.0D, vec.z()),
+                new Vec3(leftValue, 0.0D, vec.x())
+        );
+        localRotationRoll = Mth.clamp(localRotationRoll, -45.0F, 45.0F);
+        if (JurassicConfig.enableVehicleTilting) {
+            pose.mulPose(Axis.ZP.rotationDegrees(leftValue < rightValue ? localRotationRoll : -localRotationRoll));
+        }
+
+        pose.translate(0.0F, -rot.x, -rot.y);
+
+        entity.pitch = JurassicConfig.enableVehicleTilting
+                ? (frontValue < backValue ? localRotationPitch : -localRotationPitch)
+                : 0.0F;
+        entity.roll = JurassicConfig.enableVehicleTilting
+                ? (leftValue < rightValue ? localRotationRoll : -localRotationRoll)
+                : 0.0F;
+    }
 
     @Nullable
     @Override
-    public ResourceLocation getTextureLocation(E entity) { return texture; }
-
-    /* --------------------------------------------------------------------- */
-    /*  Convenience factory                                                 */
-    /* --------------------------------------------------------------------- */
-
-    protected static <T extends VehicleEntity> EntityRendererProvider<T> factory(String carName,
-                                                                                 java.util.function.Supplier<CarAnimator> sup) {
-        return ctx -> new CarRenderer<T>(ctx, carName, sup.get()) {
-            @Override
-            protected CarAnimator createCarAnimator() { return sup.get(); }
-        };
+    public ResourceLocation getTextureLocation(E entity) {
+        return this.texture;
     }
 
-    /* --------------------------------------------------------------------- */
-    /*  Sub‑classes still may customise                                    */
-    /* --------------------------------------------------------------------- */
+    protected static <T extends VehicleEntity> EntityRendererProvider<T> factory(
+            String carName,
+            java.util.function.Supplier<CarAnimator> supplier
+    ) {
+        return ctx -> {
+            CarAnimator animator = supplier.get();
+            return new CarRenderer<T>(ctx, carName, animator) {
+                @Override
+                protected CarAnimator createCarAnimator() {
+                    return animator;
+                }
+            };
+        };
+    }
 
     protected abstract CarAnimator createCarAnimator();
 }

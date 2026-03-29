@@ -1,0 +1,11 @@
+{
+  "type": "jurassicreborn:cleaning",
+  "id": "jurassicreborn:encased_othnielia_fossil_cleaning",
+  "input": {
+    "item": "jurassicreborn:encased_othnielia_fossil"
+  },
+  "output": {
+    "count": 1,
+    "id": "jurassicreborn:bones/othnielia_skull"
+  }
+}

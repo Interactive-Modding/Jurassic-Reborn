@@ -1,0 +1,33 @@
+{
+  "parent": "jurassicreborn:jurassicreborn/plant_fossils",
+  "criteria": {
+    "plant_dna": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:air"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.jurassicreborn.plant_dna.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "jurassicreborn:mr_dna_keychain"
+    },
+    "title": {
+      "translate": "advancements.jurassicreborn.plant_dna.title"
+    }
+  },
+  "requirements": [
+    [
+      "plant_dna"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,11 @@
+{
+  "type": "jurassicreborn:cleaning",
+  "id": "jurassicreborn:encased_herrerasaurus_fossil_cleaning",
+  "input": {
+    "item": "jurassicreborn:encased_herrerasaurus_fossil"
+  },
+  "output": {
+    "count": 1,
+    "id": "jurassicreborn:bones/herrerasaurus_skull"
+  }
+}

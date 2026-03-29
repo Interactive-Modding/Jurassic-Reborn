@@ -7,18 +7,14 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
 import net.vit.jurassicreborn.JurassicReborn;
 
 import java.util.*;
 import java.util.function.Supplier;
 
-@Mod.EventBusSubscriber(modid = JurassicReborn.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class TabHandler {
 
     // ---- REGISTRY ----
@@ -35,26 +31,26 @@ public class TabHandler {
     private static final Map<ResourceLocation, Supplier<ItemStack>> TAB_ICON_SUPPLIERS = new LinkedHashMap<>();
 
     // --- define tabs ---
-    public static final RegistryObject<CreativeModeTab> ITEMS = registerTab("items", rotatingIcons(
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> ITEMS = registerTab("items", rotatingIcons(
             "amber_mosquito", "amber_aphid", "dna_base_material"
     ));
 
-    public static final RegistryObject<CreativeModeTab> BLOCKS = registerTab("blocks", stackSupplier("gypsum_bricks"));
-    public static final RegistryObject<CreativeModeTab> DECORATIONS = registerTab("decorations", stackSupplier("blueprint"));
-    public static final RegistryObject<CreativeModeTab> DNA = registerTab("dna", stackSupplier("dna_base_material"));
-    public static final RegistryObject<CreativeModeTab> SPAWN_EGGS = registerTab("spawn_eggs", () -> {
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> BLOCKS = registerTab("blocks", stackSupplier("gypsum_bricks"));
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> DECORATIONS = registerTab("decorations", stackSupplier("blueprint"));
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> DNA = registerTab("dna", stackSupplier("dna_base_material"));
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> SPAWN_EGGS = registerTab("spawn_eggs", () -> {
         ItemStack velociraptor = stackSupplier("spawn_egg/velociraptor_spawn_egg").get();
         return velociraptor.isEmpty() ? stackSupplier("goat_spawn_egg").get() : velociraptor;
     });
-    public static final RegistryObject<CreativeModeTab> FOSSILS = registerTab("fossils", stackSupplier("fauna_fossil_block_item"));
-    public static final RegistryObject<CreativeModeTab> FOODS = registerTab("foods", rotatingIcons(
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> FOSSILS = registerTab("fossils", stackSupplier("fauna_fossil_block_item"));
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> FOODS = registerTab("foods", rotatingIcons(
             "cooked_shark_meat", "raw_shark_meat", "fun_fries"
     ));
-    public static final RegistryObject<CreativeModeTab> PLANTS = registerTab("plants", stackSupplier("plant_callus"));
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> PLANTS = registerTab("plants", stackSupplier("plant_callus"));
 
     // --- registration helpers ---
-    private static RegistryObject<CreativeModeTab> registerTab(String name, Supplier<ItemStack> iconSupplier) {
-        ResourceLocation id = new ResourceLocation(JurassicReborn.MODID, name);
+    private static DeferredHolder<CreativeModeTab, CreativeModeTab> registerTab(String name, Supplier<ItemStack> iconSupplier) {
+        ResourceLocation id = ResourceLocation.parse(JurassicReborn.MODID + ":" + name);
         TAB_ICON_SUPPLIERS.put(id, iconSupplier);
 
         return TABS.register(name, () -> CreativeModeTab.builder()
@@ -66,7 +62,7 @@ public class TabHandler {
                 .build());
     }
 
-    private static RegistryObject<CreativeModeTab> registerTab(String name, List<Supplier<ItemStack>> iconSuppliers) {
+    private static DeferredHolder<CreativeModeTab, CreativeModeTab> registerTab(String name, List<Supplier<ItemStack>> iconSuppliers) {
         return registerTab(name, createIconSupplier(name, iconSuppliers));
     }
 
@@ -102,23 +98,14 @@ public class TabHandler {
     }
 
     // --- BuildCreativeModeTabContentsEvent for adding items to vanilla tabs ---
-    @SubscribeEvent
-    public static void onBuildContents(BuildCreativeModeTabContentsEvent event) {
-        // Vanilla and custom tab keys use BuiltInRegistries
-        ResourceLocation tabId = BuiltInRegistries.CREATIVE_MODE_TAB.getKey(event.getTab());
-        if (tabId != null && TAB_ITEM_SUPPLIERS.containsKey(tabId)) {
-            for (Supplier<ItemStack> stack : TAB_ITEM_SUPPLIERS.get(tabId)) {
-                event.accept(stack.get());
-            }
-        }
-    }
+
 
     // --- public add methods ---
     public static void addToTab(ResourceLocation tabId, Supplier<ItemStack> stackSupplier) {
         TAB_ITEM_SUPPLIERS.computeIfAbsent(tabId, k -> new ArrayList<>()).add(stackSupplier);
     }
 
-    public static void addToTab(ResourceLocation tabId, RegistryObject<? extends Item> itemSupplier) {
+    public static void addToTab(ResourceLocation tabId, DeferredHolder<Item, ? extends Item> itemSupplier) {
         addToTab(tabId, () -> itemSupplier.get().getDefaultInstance());
     }
 
@@ -144,10 +131,10 @@ public class TabHandler {
     private static ItemStack stackFromRegistry(String path) {
         if (path == null || path.isEmpty()) return ItemStack.EMPTY;
         ResourceLocation id = path.contains(":") ? ResourceLocation.tryParse(path)
-                : new ResourceLocation(JurassicReborn.MODID, path);
+                : ResourceLocation.parse(JurassicReborn.MODID + ":" + path);
         if (id == null) return ItemStack.EMPTY;
 
-        Item item = ForgeRegistries.ITEMS.getValue(id);
+        Item item = BuiltInRegistries.ITEM.get(id);
         if (item == null) return ItemStack.EMPTY;
 
         return item.getDefaultInstance();

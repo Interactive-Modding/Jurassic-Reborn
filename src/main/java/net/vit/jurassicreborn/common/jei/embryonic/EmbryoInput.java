@@ -34,11 +34,11 @@ public interface EmbryoInput {
             return tag;
         }
         @Override public Item getInputItem() {
-            net.minecraftforge.registries.RegistryObject<? extends Item> regObj = ModItems.DINOSAUR_DNA.get(this.dinosaur);
+            net.neoforged.neoforge.registries.DeferredHolder<Item, ? extends Item> regObj = ModItems.DINOSAUR_DNA.get(this.dinosaur);
             return regObj != null ? regObj.get() : net.minecraft.world.item.Items.AIR;
         }
         @Override public Item getOutputItem() {
-            net.minecraftforge.registries.RegistryObject<? extends Item> regObj = ModItems.SYRINGES.get(this.dinosaur);
+            net.neoforged.neoforge.registries.DeferredHolder<Item, ? extends Item> regObj = ModItems.SYRINGES.get(this.dinosaur);
             return regObj != null ? regObj.get() : net.minecraft.world.item.Items.AIR;
         }
         @Override public Item getPetriDishItem() { return ModItems.PETRI_DISH.get(); }
@@ -57,7 +57,7 @@ public interface EmbryoInput {
             return tag;
         }
         @Override public Item getInputItem() {
-            net.minecraftforge.registries.RegistryObject<? extends Item> regObj = ModItems.PLANT_DNAS.get(this.plant);
+            net.neoforged.neoforge.registries.DeferredHolder<Item, ? extends Item> regObj = ModItems.PLANT_DNAS.get(this.plant);
             return regObj != null ? regObj.get() : net.minecraft.world.item.Items.AIR;
         }
         @Override public Item getOutputItem() { return ModItems.PLANT_CALLUS.get(); }

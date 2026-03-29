@@ -13,8 +13,8 @@ import net.vit.jurassicreborn.JurassicReborn;
 import net.vit.jurassicreborn.common.entities.DinosaurEggEntity;
 import net.vit.jurassicreborn.common.entities.Dinosaurs.Dinosaur;
 import net.vit.jurassicreborn.common.legacy.tabula.TabulaModelHelper;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 
 import java.util.Locale;
 
@@ -28,7 +28,7 @@ public class DinosaurEggRenderer extends EntityRenderer<DinosaurEggEntity> {
     static {
         try {
             DEFAULT_MODEL = new TabulaModel(TabulaModelHelper.loadTabulaModel("/assets/jurassicreborn/models/entities/egg/tyrannosaurus"));
-            DEFAULT_TEXTURE = new ResourceLocation(JurassicReborn.MODID, "textures/entities/egg/tyrannosaurus.png");
+            DEFAULT_TEXTURE = ResourceLocation.fromNamespaceAndPath(JurassicReborn.MODID, "textures/entities/egg/tyrannosaurus.png");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -49,7 +49,7 @@ public class DinosaurEggRenderer extends EntityRenderer<DinosaurEggEntity> {
         TabulaModel model = getModel(egg);
         ResourceLocation texture = getTextureLocation(egg);
         var vertexConsumer = buffer.getBuffer(RenderType.entityCutoutNoCull(texture));
-        model.renderToBuffer(poseStack, vertexConsumer, light, OverlayTexture.NO_OVERLAY, 1, 1, 1, 1);
+        model.renderToBuffer(poseStack, vertexConsumer, light, OverlayTexture.NO_OVERLAY, 0xFFFFFFFF);
 
         poseStack.popPose();
         super.render(egg, yaw, partialTicks, poseStack, buffer, light);
@@ -59,7 +59,7 @@ public class DinosaurEggRenderer extends EntityRenderer<DinosaurEggEntity> {
     public ResourceLocation getTextureLocation(DinosaurEggEntity egg) {
         Dinosaur dino = egg.getDinosaur();
         if (dino != null) {
-            return new ResourceLocation(JurassicReborn.MODID, "textures/entities/egg/" + dino.getName().toLowerCase(Locale.ENGLISH) + ".png");
+            return ResourceLocation.fromNamespaceAndPath(JurassicReborn.MODID, "textures/entities/egg/" + dino.getName().toLowerCase(Locale.ENGLISH) + ".png");
         }
         return DEFAULT_TEXTURE;
     }

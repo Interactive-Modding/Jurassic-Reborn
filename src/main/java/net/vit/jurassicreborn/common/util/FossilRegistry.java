@@ -3,8 +3,8 @@
 //import net.minecraft.world.item.Item;
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.world.level.block.Block;
-//import net.minecraftforge.registries.DeferredRegister;
-//import net.minecraftforge.registries.RegistryObject;
+//import net.neoforged.neoforge.registries.DeferredRegister;
+//import net.neoforged.neoforge.registries.RegistryObject;
 //import net.vit.JurassicReborn.common.blocks.ModBlocks;
 //import net.vit.JurassicReborn.common.entities.Dinosaurs.Dinosaur;
 //import net.vit.JurassicReborn.common.items.Fossils.FaunaFossilBlockItem;

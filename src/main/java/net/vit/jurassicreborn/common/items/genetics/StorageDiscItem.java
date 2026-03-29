@@ -2,6 +2,8 @@ package net.vit.jurassicreborn.common.items.genetics;
 
 import com.google.common.collect.Lists;
 import com.mojang.datafixers.util.Pair;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.world.item.component.CustomModelData;
 import net.vit.jurassicreborn.common.entities.Dinosaurs.Dinosaur;
 import net.vit.jurassicreborn.common.genetics.*;
 import net.vit.jurassicreborn.common.plants.PlantHandler;
@@ -18,8 +20,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.ItemEntity;
 import org.jetbrains.annotations.Nullable;
-
 import java.util.List;
+import net.vit.jurassicreborn.common.util.ItemStackNbtUtil;
 
 public class StorageDiscItem extends Item implements SynthesizableItem {
     public StorageDiscItem(Properties pProperties) {
@@ -28,9 +30,9 @@ public class StorageDiscItem extends Item implements SynthesizableItem {
 
 
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level pLevel, List<Component> toolTip, TooltipFlag pIsAdvanced) {
+    public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> toolTip, TooltipFlag pIsAdvanced) {
 
-        CompoundTag tag = stack.getTag();
+        CompoundTag tag = ItemStackNbtUtil.getTag(stack);
         if(tag == null) {
             toolTip.add(Component.translatable("cage.empty").withStyle(ChatFormatting.DARK_RED));
             return;
@@ -49,18 +51,18 @@ public class StorageDiscItem extends Item implements SynthesizableItem {
             type.addInformation(stack, toolTip);
         }
 
-        super.appendHoverText(stack, pLevel, toolTip, pIsAdvanced);
+        super.appendHoverText(stack, context, toolTip, pIsAdvanced);
     }
 
     @Override
     public boolean isSynthesizable(ItemStack stack) {
-        CompoundTag tagCompound = stack.getTag();
+        CompoundTag tagCompound = ItemStackNbtUtil.getTag(stack);
         return tagCompound != null && tagCompound.contains("DNA") && tagCompound.getCompound("DNA").getInt("DNAQuality") == 100;
     }
 
     @Override
     public ItemStack getSynthesizedItem(ItemStack stack, RandomSource random) {
-        CompoundTag tag = stack.getTag();
+        CompoundTag tag = ItemStackNbtUtil.getTag(stack);
         StorageType type = StorageTypeRegistry.getStorageType(tag.getCompound("DNA").getString("StorageId"));
         DNA dna = type.load(tag);
 
@@ -70,7 +72,7 @@ public class StorageDiscItem extends Item implements SynthesizableItem {
 
     @Override
     public List<Pair<Float, ItemStack>> getChancedOutputs(ItemStack inputItem) {
-        CompoundTag tag = inputItem.getTag();
+        CompoundTag tag = ItemStackNbtUtil.getTag(inputItem);
         StorageType type = StorageTypeRegistry.getStorageType(tag.getCompound("DNA").getString("StorageId"));
         type.load(tag);
         ItemStack result = type.createItem();
@@ -89,7 +91,7 @@ public class StorageDiscItem extends Item implements SynthesizableItem {
             ItemStack stack = new ItemStack(this);
             CompoundTag nbt = new CompoundTag();
             dna.writeToNBT(nbt);
-            stack.setTag(nbt);
+            ItemStackNbtUtil.setTag(stack, nbt);
             applyCustomModelData(stack);
             list.add(stack);
         });
@@ -99,7 +101,7 @@ public class StorageDiscItem extends Item implements SynthesizableItem {
             ItemStack stack = new ItemStack(this);
             CompoundTag nbt = new CompoundTag();
             dna.writeToNBT(nbt);
-            stack.setTag(nbt);
+            ItemStackNbtUtil.setTag(stack, nbt);
             applyCustomModelData(stack);
             list.add(stack);
 
@@ -128,7 +130,7 @@ public class StorageDiscItem extends Item implements SynthesizableItem {
             return;
         }
 
-        CompoundTag tag = stack.getTag();
+        CompoundTag tag = ItemStackNbtUtil.getTag(stack);
         if (tag == null || !tag.contains("DNA")) {
             clearCustomModelData(stack, tag);
             return;
@@ -150,9 +152,13 @@ public class StorageDiscItem extends Item implements SynthesizableItem {
         }
 
         if (modelData > 0) {
+            CustomModelData currentData = stack.get(DataComponents.CUSTOM_MODEL_DATA);
+            if (currentData == null || currentData.value() != modelData) {
+                stack.set(DataComponents.CUSTOM_MODEL_DATA, new CustomModelData(modelData));
+            }
             if (!tag.contains("CustomModelData") || tag.getInt("CustomModelData") != modelData) {
                 tag.putInt("CustomModelData", modelData);
-                stack.setTag(tag);
+                ItemStackNbtUtil.setTag(stack, tag);
             }
         } else {
             clearCustomModelData(stack, tag);
@@ -160,15 +166,18 @@ public class StorageDiscItem extends Item implements SynthesizableItem {
     }
 
     private static void clearCustomModelData(ItemStack stack, @Nullable CompoundTag tag) {
+        if (stack.has(DataComponents.CUSTOM_MODEL_DATA)) {
+            stack.remove(DataComponents.CUSTOM_MODEL_DATA);
+        }
         if (tag == null) {
             return;
         }
         if (tag.contains("CustomModelData")) {
             tag.remove("CustomModelData");
             if (tag.isEmpty()) {
-                stack.setTag(null);
+                ItemStackNbtUtil.setTag(stack, null);
             } else {
-                stack.setTag(tag);
+                ItemStackNbtUtil.setTag(stack, tag);
             }
         }
     }

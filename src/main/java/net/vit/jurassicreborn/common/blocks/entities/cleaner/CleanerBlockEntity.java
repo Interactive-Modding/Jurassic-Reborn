@@ -1,7 +1,7 @@
 package net.vit.jurassicreborn.common.blocks.entities.cleaner;
 
 import net.minecraft.world.MenuProvider;
-import net.minecraftforge.items.IItemHandlerModifiable;
+import net.neoforged.neoforge.items.IItemHandlerModifiable;
 import net.vit.jurassicreborn.common.blocks.entities.MachineBlockEntity;
 import net.vit.jurassicreborn.common.blocks.entities.MachineItemStackHandler;
 import net.vit.jurassicreborn.common.blocks.entities.ModBlockEntities;
@@ -27,9 +27,10 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluids;
-import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.capability.IFluidHandler;
+import net.neoforged.neoforge.fluids.FluidStack;
+import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 import org.jetbrains.annotations.NotNull;
+import net.minecraft.core.HolderLookup;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -127,9 +128,20 @@ public class CleanerBlockEntity extends MachineBlockEntity implements MenuProvid
             instance.progress = 0;
         }
 
-        if(instance.currentRecipe == null && instance.usingCleaningRecipe) {
-            for (CleaningRecipe recipe : world.getRecipeManager().getAllRecipesFor(CleaningRecipe.CLEANING)) {
-                if (recipe.matches(new FluidAndItemRecipeWrapper(instance.machineItemStackHandler,instance.tank), world) && instance.hasSpace()) {
+        if (instance.currentRecipe == null && instance.usingCleaningRecipe) {
+            for (var holder : world.getRecipeManager()
+                    .getAllRecipesFor(CleaningRecipe.CLEANING)) {
+
+                CleaningRecipe recipe = holder.value();
+
+                if (recipe.matches(
+                        new FluidAndItemRecipeWrapper(
+                                instance.machineItemStackHandler,
+                                instance.tank
+                        ),
+                        world
+                ) && instance.hasSpace()) {
+
                     instance.currentRecipe = recipe;
                     instance.progress = 0;
                     break;
@@ -190,6 +202,19 @@ public class CleanerBlockEntity extends MachineBlockEntity implements MenuProvid
     protected Component getDefaultName() {
         return Component.translatable("block.JurassicReborn.cleaner_block_name");
     }
+
+    @Override
+    protected void writeFluids(CompoundTag tag, HolderLookup.Provider provider) {
+        tag.put("Tank", this.tank.writeToNBT(provider, new CompoundTag()));
+    }
+
+    @Override
+    protected void readFluids(CompoundTag tag, HolderLookup.Provider provider) {
+        if (tag.contains("Tank", Tag.TAG_COMPOUND)) {
+            this.tank.readFromNBT(provider, tag.getCompound("Tank"));
+        }
+    }
+
 
     @Override
     public Tag getMachineData() {

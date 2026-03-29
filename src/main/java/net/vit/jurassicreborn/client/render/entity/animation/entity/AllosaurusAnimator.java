@@ -4,9 +4,7 @@ import com.github.alexthe666.citadel.client.model.AdvancedModelBox;
 import net.vit.jurassicreborn.client.model.AnimatableModel;
 import net.vit.jurassicreborn.client.render.entity.animation.EntityAnimator;
 import net.vit.jurassicreborn.common.entities.DinosaurEntities.AllosaurusEntity;
-import net.minecraft.client.Minecraft;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraft.client.Minecraft;import net.neoforged.api.distmarker.Dist;import net.neoforged.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
 public class AllosaurusAnimator extends EntityAnimator<AllosaurusEntity> {
@@ -54,7 +52,12 @@ public class AllosaurusAnimator extends EntityAnimator<AllosaurusEntity> {
         AdvancedModelBox[] bodyChain = new AdvancedModelBox[]{ bodyhips, body, belly, chest, shoulder, neck, head };
         AdvancedModelBox[] neckChain = new AdvancedModelBox[]{ neck, neck2, neck3, neck4, neck5, neck6, neck7, neck8, neck9, head };
 
-        float delta = Minecraft.getInstance().getDeltaFrameTime();
+Minecraft mc = Minecraft.getInstance();
+
+float delta = mc.isPaused()
+        ? 0.0f
+        : mc.getTimer().getGameTimeDeltaPartialTick(false);
+
         // global motion
         float speed  = 0.40F;
         float degree = 0.80F;

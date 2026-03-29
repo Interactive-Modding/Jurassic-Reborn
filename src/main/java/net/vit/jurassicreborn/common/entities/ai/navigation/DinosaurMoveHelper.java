@@ -6,8 +6,8 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.control.JumpControl;
 import net.minecraft.world.entity.ai.control.MoveControl;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
-import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.level.pathfinder.NodeEvaluator;
+import net.minecraft.world.level.pathfinder.PathType;
 import net.vit.jurassicreborn.common.entities.DinosaurEntity;
 
 public class DinosaurMoveHelper extends MoveControl {
@@ -50,13 +50,13 @@ public class DinosaurMoveHelper extends MoveControl {
 
                 // if the next tile isn't walkable, bias to forward only
                 if (nodeEvaluator != null) {
-                    BlockPathTypes type = nodeEvaluator.getBlockPathType(
-                            this.mob.level(),
+                    BlockPos probe = new BlockPos(
                             Mth.floor(this.mob.getX() + (double) mx),
                             this.mob.getBlockY(),
                             Mth.floor(this.mob.getZ() + (double) mz)
                     );
-                    if (type != BlockPathTypes.WALKABLE) {
+                    PathType type = nodeEvaluator.getPathType(this.mob, probe);
+                    if (type != PathType.WALKABLE) {
                         this.strafeForwards = 0.9F;
                         this.strafeRight = 0.0F;
                         moveSpeed = baseSpeed; // fall back to base
@@ -85,7 +85,7 @@ public class DinosaurMoveHelper extends MoveControl {
                 float desiredYaw = (float)(Mth.atan2(dz, dx) * (180F / (float)Math.PI)) - 90.0F;
                 this.mob.setYRot(this.rotlerp(this.mob.getYRot(), desiredYaw, 60.0F));
                 this.mob.setSpeed((float) (this.speedModifier * baseSpeed));
-                float stepHeight = this.mob.getStepHeight();
+                float stepHeight = (float) this.mob.getAttributeValue(Attributes.STEP_HEIGHT);
                 if (dy > (double) stepHeight && (dx * dx + dz * dz) < (double) Math.max(1.0F, this.mob.getBbWidth() + (dy * dy))) {
                     JumpControl jumpHelper = this.mob.getJumpControl();
                     if (jumpHelper instanceof DinosaurJumpHelper && !this.mob.isInLava() && !this.mob.isInWater()) {
@@ -112,7 +112,7 @@ public class DinosaurMoveHelper extends MoveControl {
         }
     }
 
-
+    /* Optional: direct walkability probe, if you need it elsewhere */
     private boolean isWalkableRelative(float relX, float relZ) {
         PathNavigation nav = this.mob.getNavigation();
         if (nav == null) return true;
@@ -124,6 +124,6 @@ public class DinosaurMoveHelper extends MoveControl {
                 this.mob.getBlockY(),
                 Mth.floor(this.mob.getZ() + (double) relZ)
         );
-        return eval.getBlockPathType(this.mob.level(), probe.getX(), probe.getY(), probe.getZ()) == BlockPathTypes.WALKABLE;
+        return eval.getPathType(this.mob, probe) == PathType.WALKABLE;
     }
 }

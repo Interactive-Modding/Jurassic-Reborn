@@ -1,6 +1,7 @@
 package net.vit.jurassicreborn.client.render.entity.vehicle;
 
 import com.github.alexthe666.citadel.client.model.AdvancedModelBox;
+
 import com.github.alexthe666.citadel.client.model.ITabulaModelAnimator;
 import com.github.alexthe666.citadel.client.model.TabulaModel;
 import com.google.common.collect.Lists;

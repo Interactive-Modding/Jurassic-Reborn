@@ -1,78 +1,59 @@
 package net.vit.jurassicreborn.common.util.message;
 
-import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.world.entity.Entity;
-import net.minecraftforge.network.NetworkEvent;
-import net.vit.jurassicreborn.client.JurassicClient;
+import net.neoforged.neoforge.network.handling.IPayloadContext;
+import net.vit.jurassicreborn.JurassicReborn;
 import net.vit.jurassicreborn.common.entities.DinosaurEntity;
-import net.minecraft.client.player.LocalPlayer;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.fml.DistExecutor;
 
-import java.util.function.Supplier;
+public record OpenPaleoPadEntityMessage(int entityId, DinosaurEntity.FieldGuideInfo guideInfo)
+        implements CustomPacketPayload {
+    public static final Type<OpenPaleoPadEntityMessage> TYPE = new Type<>(JurassicReborn.resource("open_paleo_pad_entity"));
+    public static final StreamCodec<RegistryFriendlyByteBuf, OpenPaleoPadEntityMessage> STREAM_CODEC = new StreamCodec<>() {
+        @Override
+        public OpenPaleoPadEntityMessage decode(RegistryFriendlyByteBuf buf) {
+            int entityId = buf.readInt();
+            DinosaurEntity.FieldGuideInfo guideInfo = DinosaurEntity.FieldGuideInfo.read(buf);
+            return new OpenPaleoPadEntityMessage(entityId, guideInfo);
+        }
 
-public class OpenPaleoPadEntityMessage {
-    private final int entityId;
-    private final DinosaurEntity.FieldGuideInfo guideInfo;
+        @Override
+        public void encode(RegistryFriendlyByteBuf buf, OpenPaleoPadEntityMessage msg) {
+            buf.writeInt(msg.entityId());
+            DinosaurEntity.FieldGuideInfo.write(buf, msg.guideInfo());
+        }
+    };
 
-    // Sending (manual construction)
-    public OpenPaleoPadEntityMessage(int entityId, DinosaurEntity.FieldGuideInfo guideInfo) {
-        this.entityId = entityId;
-        this.guideInfo = guideInfo;
-    }
-
-    // Sending (from entity)
     public OpenPaleoPadEntityMessage(DinosaurEntity entity) {
         this(entity.getId(), entity.getFieldGuideInfo());
     }
-    public static void write(OpenPaleoPadEntityMessage message, FriendlyByteBuf buf) {
-        buf.writeInt(message.entityId);
-        DinosaurEntity.FieldGuideInfo.write(buf, message.guideInfo); // Now this works, because write is static
+
+    @Override
+    public Type<? extends CustomPacketPayload> type() {
+        return TYPE;
     }
 
-    public static OpenPaleoPadEntityMessage read(FriendlyByteBuf buf) {
-        int entityId = buf.readInt();
-        DinosaurEntity.FieldGuideInfo guideInfo = DinosaurEntity.FieldGuideInfo.read(buf);
-        return new OpenPaleoPadEntityMessage(entityId, guideInfo);
-    }
-
-    // Receiving/Decoding
-    public OpenPaleoPadEntityMessage(FriendlyByteBuf buf) {
-        this.entityId = buf.readInt();
-        this.guideInfo = DinosaurEntity.FieldGuideInfo.read(buf);
-    }
-
-    // --- Registration helpers ---
-
-    // Forge registration expects static decode/read and instance encode/write:
-    public static OpenPaleoPadEntityMessage decode(FriendlyByteBuf buf) {
-        return new OpenPaleoPadEntityMessage(buf);
-    }
-
-    public void encode(FriendlyByteBuf buf) {
-        buf.writeInt(this.entityId);
-        DinosaurEntity.FieldGuideInfo.write(buf, this.guideInfo);
-    }
-
-    // --- Handler ---
-
-    public static void handle(OpenPaleoPadEntityMessage message, Supplier<NetworkEvent.Context> ctx) {
-        ctx.get().enqueueWork(() ->
-                DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> Client.handle(message))
-        );
-        ctx.get().setPacketHandled(true);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private static class Client {
-        static void handle(OpenPaleoPadEntityMessage message) {
-            LocalPlayer player = net.minecraft.client.Minecraft.getInstance().player;
-            if (player == null) return;
-            Entity entity = player.level().getEntity(message.entityId);
-            if (entity instanceof DinosaurEntity dinosaur) {
-                JurassicClient.openPaleoDinosaurPad(dinosaur, message.guideInfo);
+    public static void handle(OpenPaleoPadEntityMessage message, IPayloadContext ctx) {
+        ctx.enqueueWork(() -> {
+            var player = ctx.player();
+            if (player == null) {
+                return;
             }
+            Entity entity = player.level().getEntity(message.entityId());
+            if (entity instanceof DinosaurEntity dinosaur) {
+                openPaleoPadClientOnly(dinosaur, message.guideInfo());
+            }
+        });
+    }
+    private static void openPaleoPadClientOnly(DinosaurEntity dinosaur, DinosaurEntity.FieldGuideInfo guideInfo) {
+        try {
+            Class<?> clientClass = Class.forName("net.vit.jurassicreborn.client.JurassicClient");
+            clientClass.getMethod("openPaleoDinosaurPad", DinosaurEntity.class, DinosaurEntity.FieldGuideInfo.class)
+                    .invoke(null, dinosaur, guideInfo);
+        } catch (ReflectiveOperationException ignored) {
         }
     }
+
 }

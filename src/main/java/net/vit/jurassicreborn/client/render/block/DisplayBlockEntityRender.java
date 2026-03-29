@@ -38,7 +38,7 @@ public class DisplayBlockEntityRender implements BlockEntityRenderer<ActionFigur
 
         float scale = entity.isSkeleton() ? SKELETON_SCALE : BASE_ACTION_FIGURE_SCALE;
         if (!entity.isSkeleton()) {
-            float baseHeight = entity.getDimensions(entity.getPose()).height;
+            float baseHeight = entity.getDimensions(entity.getPose()).height();
             float scaledHeight = baseHeight * scale;
             if (scaledHeight > 0.0f && scaledHeight < MINIMUM_ACTION_FIGURE_HEIGHT) {
                 scale *= MINIMUM_ACTION_FIGURE_HEIGHT / scaledHeight;

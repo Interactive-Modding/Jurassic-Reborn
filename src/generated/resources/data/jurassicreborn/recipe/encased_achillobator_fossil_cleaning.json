@@ -1,0 +1,11 @@
+{
+  "type": "jurassicreborn:cleaning",
+  "id": "jurassicreborn:encased_achillobator_fossil_cleaning",
+  "input": {
+    "item": "jurassicreborn:encased_achillobator_fossil"
+  },
+  "output": {
+    "count": 1,
+    "id": "jurassicreborn:bones/achillobator_skull"
+  }
+}

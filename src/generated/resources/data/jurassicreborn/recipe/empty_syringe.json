@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "tag": "c:nuggets/iron"
+    },
+    "B": {
+      "item": "jurassicreborn:empty_test_tube"
+    }
+  },
+  "pattern": [
+    " A ",
+    " B ",
+    "AAA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "jurassicreborn:empty_syringe"
+  }
+}

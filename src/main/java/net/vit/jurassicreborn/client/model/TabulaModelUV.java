@@ -1,5 +1,6 @@
 package net.vit.jurassicreborn.client.model;
 
+
 import com.github.alexthe666.citadel.client.model.container.TabulaModelContainer;
 
 public class TabulaModelUV extends TabulaModelContainer {

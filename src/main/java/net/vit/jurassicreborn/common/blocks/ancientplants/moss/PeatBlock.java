@@ -52,7 +52,7 @@ public class PeatBlock extends Block {
 
 
                 if (iblockstate1.getBlock() == Blocks.DIRT && (iblockstate1.is(Blocks.DIRT) || iblockstate1.is(Blocks.GRASS_BLOCK))) {
-                    if (iblockstate.getBlock() == Blocks.GRASS || iBlockState2.getBlock() == Blocks.GRASS || iBlockState3.getBlock() == Blocks.GRASS) {
+                    if (iblockstate.getBlock() == Blocks.GRASS_BLOCK || iBlockState2.getBlock() == Blocks.GRASS_BLOCK || iBlockState3.getBlock() == Blocks.GRASS_BLOCK) {
                         world.setBlock(blockpos, ModBlocks.PEAT.get().defaultBlockState(), 1);
                     }
                 }

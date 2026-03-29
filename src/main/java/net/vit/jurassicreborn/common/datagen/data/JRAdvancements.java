@@ -1,17 +1,17 @@
 package net.vit.jurassicreborn.common.datagen.data;
 
 import net.minecraft.advancements.*;
+import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.advancements.AdvancementSubProvider;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.vit.jurassicreborn.JurassicReborn;
-
 import java.util.function.Consumer;
 
 import static net.vit.jurassicreborn.JurassicReborn.MODID;
@@ -19,7 +19,7 @@ import static net.vit.jurassicreborn.JurassicReborn.MODID;
 public class JRAdvancements implements AdvancementSubProvider {
 
     private static ItemLike item(String id) {
-        Item it = ForgeRegistries.ITEMS.getValue(new ResourceLocation(id));
+        Item it = BuiltInRegistries.ITEM.get(ResourceLocation.parse(id));
         if (it == null) throw new IllegalStateException("Missing item: " + id);
         return it;
     }
@@ -33,30 +33,30 @@ public class JRAdvancements implements AdvancementSubProvider {
     }
 
     @Override
-    public void generate(HolderLookup.Provider registries, java.util.function.Consumer<net.minecraft.advancements.Advancement> consumer) {
+    public void generate(HolderLookup.Provider provider, Consumer<AdvancementHolder> consumer) {
 // root
-        Advancement root = Advancement.Builder.advancement()
+        AdvancementHolder root = Advancement.Builder.advancement()
                 .display(item("jurassicreborn:bones/mamenchisaurus_skull"),
                         title("root"), description("root"),
-                        JurassicReborn.location("textures/block/gypsum_bricks.png"), FrameType.TASK, true, true, false)
+                        JurassicReborn.location("textures/block/gypsum_bricks.png"), AdvancementType.TASK, true, true, false)
                 .addCriterion("requirement", InventoryChangeTrigger.TriggerInstance.hasItems(Blocks.CRAFTING_TABLE))
                 .save(consumer, MODID + ":jurassicreborn/root");
 
         // plaster
-        Advancement plaster = Advancement.Builder.advancement()
+        AdvancementHolder plaster = Advancement.Builder.advancement()
                 .display(item("jurassicreborn:plaster_and_bandage"),
                         title("plaster"), description("plaster"),
-                        null, FrameType.TASK, true, true, false)
+                        null, AdvancementType.TASK, true, true, false)
                 .parent(root)
                 .addCriterion("plaster_and_bandage",
                         InventoryChangeTrigger.TriggerInstance.hasItems(item("jurassicreborn:plaster_and_bandage")))
                 .save(consumer, MODID + ":jurassicreborn/plaster");
 
         // encased_fossil
-        Advancement encased_fossil = Advancement.Builder.advancement()
+        AdvancementHolder encased_fossil = Advancement.Builder.advancement()
                 .display(item("jurassicreborn:encased_fauna_fossil"),
                         title("encased_fossil"), description("encased_fossil"),
-                        null, FrameType.TASK, true, true, false)
+                        null, AdvancementType.TASK, true, true, false)
                 .parent(plaster)
                 .addCriterion("encased_achillobator_fossil", InventoryChangeTrigger.TriggerInstance.hasItems(item("jurassicreborn:encased_achillobator_fossil")))
                 .addCriterion("encased_alligator_gar_fossil", InventoryChangeTrigger.TriggerInstance.hasItems(item("jurassicreborn:encased_alligator_gar_fossil")))
@@ -164,94 +164,94 @@ public class JRAdvancements implements AdvancementSubProvider {
                 .addCriterion("encased_vectipelta_fossil", InventoryChangeTrigger.TriggerInstance.hasItems(item("jurassicreborn:encased_vectipelta_fossil")))
                 .addCriterion("encased_velociraptor_fossil", InventoryChangeTrigger.TriggerInstance.hasItems(item("jurassicreborn:encased_velociraptor_fossil")))
                 .addCriterion("encased_zhenyuanopterus_fossil", InventoryChangeTrigger.TriggerInstance.hasItems(item("jurassicreborn:encased_zhenyuanopterus_fossil")))
-                .requirements(RequirementsStrategy.OR)
+                .requirements(AdvancementRequirements.Strategy.OR)
                 .save(consumer, MODID + ":jurassicreborn/encased_fossil");
 
         // cleaning_station
-        Advancement cleaning_station = Advancement.Builder.advancement()
+        AdvancementHolder cleaning_station = Advancement.Builder.advancement()
                 .display(item("jurassicreborn:cleaning_station"),
                         title("cleaning_station"), description("cleaning_station"),
-                        null, FrameType.TASK, true, true, false)
+                        null, AdvancementType.TASK, true, true, false)
                 .parent(encased_fossil)
                 .addCriterion("cleaning_station",
                         InventoryChangeTrigger.TriggerInstance.hasItems(item("jurassicreborn:cleaning_station")))
                 .save(consumer, MODID + ":jurassicreborn/cleaning_station");
 
         // fossil_grinder
-        Advancement fossil_grinder = Advancement.Builder.advancement()
+        AdvancementHolder fossil_grinder = Advancement.Builder.advancement()
                 .display(item("jurassicreborn:fossil_grinder"),
                         title("fossil_grinder"), description("fossil_grinder"),
-                        null, FrameType.TASK, true, true, false)
+                        null, AdvancementType.TASK, true, true, false)
                 .parent(cleaning_station)
                 .addCriterion("fossil_grinder",
                         InventoryChangeTrigger.TriggerInstance.hasItems(item("jurassicreborn:fossil_grinder")))
                 .save(consumer, MODID + ":jurassicreborn/fossil_grinder");
 
         // skeleton_assembly
-        Advancement skeleton_assembly = Advancement.Builder.advancement()
+        AdvancementHolder skeleton_assembly = Advancement.Builder.advancement()
                 .display(item("jurassicreborn:skeleton_assembly"),
                         title("skeleton_assembly"), description("skeleton_assembly"),
-                        null, FrameType.TASK, true, true, false)
+                        null, AdvancementType.TASK, true, true, false)
                 .parent(fossil_grinder)
                 .addCriterion("skeleton_assembly",
                         InventoryChangeTrigger.TriggerInstance.hasItems(item("jurassicreborn:skeleton_assembly")))
                 .save(consumer, MODID + ":jurassicreborn/skeleton_assembly");
 
         // dna_sequencer
-        Advancement dna_sequencer = Advancement.Builder.advancement()
+        AdvancementHolder dna_sequencer = Advancement.Builder.advancement()
                 .display(item("jurassicreborn:dna_sequencer"),
                         title("dna_sequencer"), description("dna_sequencer"),
-                        null, FrameType.TASK, true, true, false)
+                        null, AdvancementType.TASK, true, true, false)
                 .parent(fossil_grinder)
                 .addCriterion("dna_sequencer",
                         InventoryChangeTrigger.TriggerInstance.hasItems(item("jurassicreborn:dna_sequencer")))
                 .save(consumer, MODID + ":jurassicreborn/dna_sequencer");
 
         // dna_combinator_hybridizer
-        Advancement dna_combinator_hybridizer = Advancement.Builder.advancement()
+        AdvancementHolder dna_combinator_hybridizer = Advancement.Builder.advancement()
                 .display(item("jurassicreborn:dna_combinator_hybridizer"),
                         title("dna_combinator_hybridizer"), description("dna_combinator_hybridizer"),
-                        null, FrameType.TASK, true, true, false)
+                        null, AdvancementType.TASK, true, true, false)
                 .parent(dna_sequencer)
                 .addCriterion("dna_combinator_hybridizer",
                         InventoryChangeTrigger.TriggerInstance.hasItems(item("jurassicreborn:dna_combinator_hybridizer")))
                 .save(consumer, MODID + ":jurassicreborn/dna_combinator_hybridizer");
 
         // dna_synthesizer
-        Advancement dna_synthesizer = Advancement.Builder.advancement()
+        AdvancementHolder dna_synthesizer = Advancement.Builder.advancement()
                 .display(item("jurassicreborn:dna_synthesizer"),
                         title("dna_synthesizer"), description("dna_synthesizer"),
-                        null, FrameType.TASK, true, true, false)
+                        null, AdvancementType.TASK, true, true, false)
                 .parent(dna_combinator_hybridizer)
                 .addCriterion("dna_synthesizer",
                         InventoryChangeTrigger.TriggerInstance.hasItems(item("jurassicreborn:dna_synthesizer")))
                 .save(consumer, MODID + ":jurassicreborn/dna_synthesizer");
 
         // embryonic_machine
-        Advancement embryonic_machine = Advancement.Builder.advancement()
+        AdvancementHolder embryonic_machine = Advancement.Builder.advancement()
                 .display(item("jurassicreborn:embryonic_machine"),
                         title("embryonic_machine"), description("embryonic_machine"),
-                        null, FrameType.TASK, true, true, false)
+                        null, AdvancementType.TASK, true, true, false)
                 .parent(dna_synthesizer)
                 .addCriterion("embryonic_machine",
                         InventoryChangeTrigger.TriggerInstance.hasItems(item("jurassicreborn:embryonic_machine")))
                 .save(consumer, MODID + ":jurassicreborn/embryonic_machine");
 
         // embryo_calcification_machine
-        Advancement embryo_calcification_machine = Advancement.Builder.advancement()
+        AdvancementHolder embryo_calcification_machine = Advancement.Builder.advancement()
                 .display(item("jurassicreborn:embryo_calcification_machine"),
                         title("embryo_calcification_machine"), description("embryo_calcification_machine"),
-                        null, FrameType.TASK, true, true, false)
+                        null, AdvancementType.TASK, true, true, false)
                 .parent(embryonic_machine)
                 .addCriterion("embryo_calcification_machine",
                         InventoryChangeTrigger.TriggerInstance.hasItems(item("jurassicreborn:embryo_calcification_machine")))
                 .save(consumer, MODID + ":jurassicreborn/embryo_calcification_machine");
 
         // dino_egg (challenge)
-        Advancement dino_egg = Advancement.Builder.advancement()
+        AdvancementHolder dino_egg = Advancement.Builder.advancement()
                 .display(item("jurassicreborn:egg/egg_mamenchisaurus"),
                         title("dino_egg"), description("dino_egg"),
-                        null, FrameType.CHALLENGE, true, true, false)
+                        null, AdvancementType.CHALLENGE, true, true, false)
                 .parent(embryo_calcification_machine)
                 .addCriterion("egg_achillobator", InventoryChangeTrigger.TriggerInstance.hasItems(item("jurassicreborn:egg/egg_achillobator")))
                 .addCriterion("egg_alligator_gar", InventoryChangeTrigger.TriggerInstance.hasItems(item("jurassicreborn:egg/egg_alligator_gar")))
@@ -357,182 +357,182 @@ public class JRAdvancements implements AdvancementSubProvider {
                 .addCriterion("egg_vectipelta", InventoryChangeTrigger.TriggerInstance.hasItems(item("jurassicreborn:egg/egg_vectipelta")))
                 .addCriterion("egg_velociraptor", InventoryChangeTrigger.TriggerInstance.hasItems(item("jurassicreborn:egg/egg_velociraptor")))
                 .addCriterion("egg_zhenyuanopterus", InventoryChangeTrigger.TriggerInstance.hasItems(item("jurassicreborn:egg/egg_zhenyuanopterus")))
-                .requirements(RequirementsStrategy.OR)
+                .requirements(AdvancementRequirements.Strategy.OR)
                 .save(consumer, MODID + ":jurassicreborn/dino_egg");
 
         // incubator
-        Advancement incubator = Advancement.Builder.advancement()
+        AdvancementHolder incubator = Advancement.Builder.advancement()
                 .display(item("jurassicreborn:incubator"),
                         title("incubator"), description("incubator"),
-                        null, FrameType.TASK, true, true, false)
+                        null, AdvancementType.TASK, true, true, false)
                 .parent(dino_egg)
                 .addCriterion("incubator",
                         InventoryChangeTrigger.TriggerInstance.hasItems(item("jurassicreborn:incubator")))
                 .save(consumer, MODID + ":jurassicreborn/incubator");
 
         // Hatched egg line (all parented to incubator)
-        Advancement tylosaurus_hatched_egg = Advancement.Builder.advancement()
+        AdvancementHolder tylosaurus_hatched_egg = Advancement.Builder.advancement()
                 .display(item("jurassicreborn:hatched_egg/egg_tylosaurus"),
                         title("tylosaurus_hatched_egg"), description("tylosaurus_hatched_egg"),
-                        null, FrameType.TASK, true, true, false)
+                        null, AdvancementType.TASK, true, true, false)
                 .parent(incubator)
                 .addCriterion("hatched_egg",
                         InventoryChangeTrigger.TriggerInstance.hasItems(item("jurassicreborn:hatched_egg/egg_tylosaurus")))
                 .save(consumer, MODID + ":jurassicreborn/tylosaurus_hatched_egg");
-        Advancement compsognathus_hatched_egg = Advancement.Builder.advancement()
+        AdvancementHolder compsognathus_hatched_egg = Advancement.Builder.advancement()
                 .display(item("jurassicreborn:hatched_egg/egg_compsognathus"),
                         title("compsognathus_hatched_egg"), description("compsognathus_hatched_egg"),
-                        null, FrameType.TASK, true, true, false)
+                        null, AdvancementType.TASK, true, true, false)
                 .parent(incubator)
                 .addCriterion("hatched_egg",
                         InventoryChangeTrigger.TriggerInstance.hasItems(item("jurassicreborn:hatched_egg/egg_compsognathus")))
                 .save(consumer, MODID + ":jurassicreborn/compsognathus_hatched_egg");
 
-        Advancement spinosaurus_hatched_egg = Advancement.Builder.advancement()
+        AdvancementHolder spinosaurus_hatched_egg = Advancement.Builder.advancement()
                 .display(item("jurassicreborn:hatched_egg/egg_spinosaurus"),
                         title("spinosaurus_hatched_egg"), description("spinosaurus_hatched_egg"),
-                        null, FrameType.TASK, true, true, false)
+                        null, AdvancementType.TASK, true, true, false)
                 .parent(incubator)
                 .addCriterion("hatched_egg",
                         InventoryChangeTrigger.TriggerInstance.hasItems(item("jurassicreborn:hatched_egg/egg_spinosaurus")))
                 .save(consumer, MODID + ":jurassicreborn/spinosaurus_hatched_egg");
 
-        Advancement mosasaurus_hatched_egg = Advancement.Builder.advancement()
+        AdvancementHolder mosasaurus_hatched_egg = Advancement.Builder.advancement()
                 .display(item("jurassicreborn:hatched_egg/egg_mosasaurus"),
                         title("mosasaurus_hatched_egg"), description("mosasaurus_hatched_egg"),
-                        null, FrameType.TASK, true, true, false)
+                        null, AdvancementType.TASK, true, true, false)
                 .parent(incubator)
                 .addCriterion("hatched_egg",
                         InventoryChangeTrigger.TriggerInstance.hasItems(item("jurassicreborn:hatched_egg/egg_mosasaurus")))
                 .save(consumer, MODID + ":jurassicreborn/mosasaurus_hatched_egg");
 
-        Advancement giganotosaurus_hatched_egg = Advancement.Builder.advancement()
+        AdvancementHolder giganotosaurus_hatched_egg = Advancement.Builder.advancement()
                 .display(item("jurassicreborn:hatched_egg/egg_giganotosaurus"),
                         title("giganotosaurus_hatched_egg"), description("giganotosaurus_hatched_egg"),
-                        null, FrameType.TASK, true, true, false)
+                        null, AdvancementType.TASK, true, true, false)
                 .parent(incubator)
                 .addCriterion("hatched_egg",
                         InventoryChangeTrigger.TriggerInstance.hasItems(item("jurassicreborn:hatched_egg/egg_giganotosaurus")))
                 .save(consumer, MODID + ":jurassicreborn/giganotosaurus_hatched_egg");
 
-        Advancement velociraptor_hatched_egg = Advancement.Builder.advancement()
+        AdvancementHolder velociraptor_hatched_egg = Advancement.Builder.advancement()
                 .display(item("jurassicreborn:hatched_egg/egg_velociraptor"),
                         title("velociraptor_hatched_egg"), description("velociraptor_hatched_egg"),
-                        null, FrameType.TASK, true, true, false)
+                        null, AdvancementType.TASK, true, true, false)
                 .parent(incubator)
                 .addCriterion("hatched_egg",
                         InventoryChangeTrigger.TriggerInstance.hasItems(item("jurassicreborn:hatched_egg/egg_velociraptor")))
                 .save(consumer, MODID + ":jurassicreborn/velociraptor_hatched_egg");
 
-        Advancement brachiosaurus_hatched_egg = Advancement.Builder.advancement()
+        AdvancementHolder brachiosaurus_hatched_egg = Advancement.Builder.advancement()
                 .display(item("jurassicreborn:hatched_egg/egg_brachiosaurus"),
                         title("brachiosaurus_hatched_egg"), description("brachiosaurus_hatched_egg"),
-                        null, FrameType.TASK, true, true, false)
+                        null, AdvancementType.TASK, true, true, false)
                 .parent(incubator)
                 .addCriterion("hatched_egg",
                         InventoryChangeTrigger.TriggerInstance.hasItems(item("jurassicreborn:hatched_egg/egg_brachiosaurus")))
                 .save(consumer, MODID + ":jurassicreborn/brachiosaurus_hatched_egg");
 
-        Advancement mamenchisaurus_hatched_egg = Advancement.Builder.advancement()
+        AdvancementHolder mamenchisaurus_hatched_egg = Advancement.Builder.advancement()
                 .display(item("jurassicreborn:hatched_egg/egg_mamenchisaurus"),
                         title("mamenchisaurus_hatched_egg"), description("mamenchisaurus_hatched_egg"),
-                        null, FrameType.TASK, true, true, false)
+                        null, AdvancementType.TASK, true, true, false)
                 .parent(incubator)
                 .addCriterion("hatched_egg",
                         InventoryChangeTrigger.TriggerInstance.hasItems(item("jurassicreborn:hatched_egg/egg_mamenchisaurus")))
                 .save(consumer, MODID + ":jurassicreborn/mamenchisaurus_hatched_egg");
 
-        Advancement dilophosaurus_hatched_egg = Advancement.Builder.advancement()
+        AdvancementHolder dilophosaurus_hatched_egg = Advancement.Builder.advancement()
                 .display(item("jurassicreborn:hatched_egg/egg_dilophosaurus"),
                         title("dilophosaurus_hatched_egg"), description("dilophosaurus_hatched_egg"),
-                        null, FrameType.TASK, true, true, false)
+                        null, AdvancementType.TASK, true, true, false)
                 .parent(incubator)
                 .addCriterion("hatched_egg",
                         InventoryChangeTrigger.TriggerInstance.hasItems(item("jurassicreborn:hatched_egg/egg_dilophosaurus")))
                 .save(consumer, MODID + ":jurassicreborn/dilophosaurus_hatched_egg");
 
-        Advancement arsinoitherium_hatched_egg = Advancement.Builder.advancement()
+        AdvancementHolder arsinoitherium_hatched_egg = Advancement.Builder.advancement()
                 .display(item("jurassicreborn:hatched_egg/egg_arsinoitherium"),
                         title("arsinoitherium_hatched_egg"), description("arsinoitherium_hatched_egg"),
-                        null, FrameType.TASK, true, true, false)
+                        null, AdvancementType.TASK, true, true, false)
                 .parent(incubator)
                 .addCriterion("hatched_egg",
                         InventoryChangeTrigger.TriggerInstance.hasItems(item("jurassicreborn:hatched_egg/egg_arsinoitherium")))
                 .save(consumer, MODID + ":jurassicreborn/arsinoitherium_hatched_egg");
 
-        Advancement troodon_hatched_egg = Advancement.Builder.advancement()
+        AdvancementHolder troodon_hatched_egg = Advancement.Builder.advancement()
                 .display(item("jurassicreborn:hatched_egg/egg_troodon"),
                         title("troodon_hatched_egg"), description("troodon_hatched_egg"),
-                        null, FrameType.TASK, true, true, false)
+                        null, AdvancementType.TASK, true, true, false)
                 .parent(incubator)
                 .addCriterion("hatched_egg",
                         InventoryChangeTrigger.TriggerInstance.hasItems(item("jurassicreborn:hatched_egg/egg_troodon")))
                 .save(consumer, MODID + ":jurassicreborn/troodon_hatched_egg");
 
-        Advancement parasaurolophus_hatched_egg = Advancement.Builder.advancement()
+        AdvancementHolder parasaurolophus_hatched_egg = Advancement.Builder.advancement()
                 .display(item("jurassicreborn:hatched_egg/egg_parasaurolophus"),
                         title("parasaurolophus_hatched_egg"), description("parasaurolophus_hatched_egg"),
-                        null, FrameType.TASK, true, true, false)
+                        null, AdvancementType.TASK, true, true, false)
                 .parent(incubator)
                 .addCriterion("hatched_egg",
                         InventoryChangeTrigger.TriggerInstance.hasItems(item("jurassicreborn:hatched_egg/egg_parasaurolophus")))
                 .save(consumer, MODID + ":jurassicreborn/parasaurolophus_hatched_egg");
 
-        Advancement tyrannosaurus_hatched_egg = Advancement.Builder.advancement()
+        AdvancementHolder tyrannosaurus_hatched_egg = Advancement.Builder.advancement()
                 .display(item("jurassicreborn:hatched_egg/egg_tyrannosaurus"),
                         title("tyrannosaurus_hatched_egg"), description("tyrannosaurus_hatched_egg"),
-                        null, FrameType.TASK, true, true, false)
+                        null, AdvancementType.TASK, true, true, false)
                 .parent(incubator)
                 .addCriterion("hatched_egg",
                         InventoryChangeTrigger.TriggerInstance.hasItems(item("jurassicreborn:hatched_egg/egg_tyrannosaurus")))
                 .save(consumer, MODID + ":jurassicreborn/tyrannosaurus_hatched_egg");
 
-        Advancement coelacanth_hatched_egg = Advancement.Builder.advancement()
+        AdvancementHolder coelacanth_hatched_egg = Advancement.Builder.advancement()
                 .display(item("jurassicreborn:hatched_egg/egg_coelacanth"),
                         title("coelacanth_hatched_egg"), description("coelacanth_hatched_egg"),
-                        null, FrameType.TASK, true, true, false)
+                        null, AdvancementType.TASK, true, true, false)
                 .parent(incubator)
                 .addCriterion("hatched_egg",
                         InventoryChangeTrigger.TriggerInstance.hasItems(item("jurassicreborn:hatched_egg/egg_coelacanth")))
                 .save(consumer, MODID + ":jurassicreborn/coelacanth_hatched_egg");
 
-        Advancement beelzebufo_hatched_egg = Advancement.Builder.advancement()
+        AdvancementHolder beelzebufo_hatched_egg = Advancement.Builder.advancement()
                 .display(item("jurassicreborn:hatched_egg/egg_beelzebufo"),
                         title("beelzebufo_hatched_egg"), description("beelzebufo_hatched_egg"),
-                        null, FrameType.TASK, true, true, false)
+                        null, AdvancementType.TASK, true, true, false)
                 .parent(incubator)
                 .addCriterion("hatched_egg",
                         InventoryChangeTrigger.TriggerInstance.hasItems(item("jurassicreborn:hatched_egg/egg_beelzebufo")))
                 .save(consumer, MODID + ":jurassicreborn/beelzebufo_hatched_egg");
 
         // dna_extractor
-        Advancement dna_extractor = Advancement.Builder.advancement()
+        AdvancementHolder dna_extractor = Advancement.Builder.advancement()
                 .display(item("jurassicreborn:dna_extractor"),
                         title("dna_extractor"), description("dna_extractor"),
-                        null, FrameType.TASK, true, true, false)
+                        null, AdvancementType.TASK, true, true, false)
                 .parent(dna_combinator_hybridizer)
                 .addCriterion("dna_extractor",
                         InventoryChangeTrigger.TriggerInstance.hasItems(item("jurassicreborn:dna_extractor")))
                 .save(consumer, MODID + ":jurassicreborn/dna_extractor");
 
         // amber (challenge)
-        Advancement amber = Advancement.Builder.advancement()
+        AdvancementHolder amber = Advancement.Builder.advancement()
                 .display(item("jurassicreborn:amber_mosquito"),
                         title("amber"), description("amber"),
-                        null, FrameType.CHALLENGE, true, true, false)
+                        null, AdvancementType.CHALLENGE, true, true, false)
                 .parent(dna_extractor)
                 .addCriterion("sea_lamprey",   InventoryChangeTrigger.TriggerInstance.hasItems(item("jurassicreborn:sea_lamprey")))
                 .addCriterion("amber",         InventoryChangeTrigger.TriggerInstance.hasItems(item("jurassicreborn:amber_mosquito")))
                 .addCriterion("frozen_leech",  InventoryChangeTrigger.TriggerInstance.hasItems(item("jurassicreborn:frozen_leech")))
                 .addCriterion("amber_1",       InventoryChangeTrigger.TriggerInstance.hasItems(item("jurassicreborn:amber_aphid")))
-                .requirements(RequirementsStrategy.OR)
+                .requirements(AdvancementRequirements.Strategy.OR)
                 .save(consumer, MODID + ":jurassicreborn/amber");
 
         // dna (challenge)
-        Advancement dna = Advancement.Builder.advancement()
+        AdvancementHolder dna = Advancement.Builder.advancement()
                 .display(item("jurassicreborn:mr_dna_keychain"),
                         title("dna"), description("dna"),
-                        null, FrameType.CHALLENGE, true, true, false)
+                        null, AdvancementType.CHALLENGE, true, true, false)
                 .parent(dna_synthesizer)
                 .addCriterion("dna_achillobator", InventoryChangeTrigger.TriggerInstance.hasItems(item("jurassicreborn:dna/dna_achillobator")))
                 .addCriterion("dna_alligator_gar", InventoryChangeTrigger.TriggerInstance.hasItems(item("jurassicreborn:dna/dna_alligator_gar")))
@@ -638,24 +638,24 @@ public class JRAdvancements implements AdvancementSubProvider {
                 .addCriterion("dna_vectipelta", InventoryChangeTrigger.TriggerInstance.hasItems(item("jurassicreborn:dna/dna_vectipelta")))
                 .addCriterion("dna_velociraptor", InventoryChangeTrigger.TriggerInstance.hasItems(item("jurassicreborn:dna/dna_velociraptor")))
                 .addCriterion("dna_zhenyuanopterus", InventoryChangeTrigger.TriggerInstance.hasItems(item("jurassicreborn:dna/dna_zhenyuanopterus")))
-                .requirements(RequirementsStrategy.OR)
+                .requirements(AdvancementRequirements.Strategy.OR)
                 .save(consumer, MODID + ":jurassicreborn/dna");
 
         // indominus_hatched_egg (challenge)
-        Advancement indominus_hatched_egg = Advancement.Builder.advancement()
+        AdvancementHolder indominus_hatched_egg = Advancement.Builder.advancement()
                 .display(item("jurassicreborn:hatched_egg/egg_indominus"),
                         title("indominus_hatched_egg"), description("indominus_hatched_egg"),
-                        null, FrameType.CHALLENGE, true, true, false)
+                        null, AdvancementType.CHALLENGE, true, true, false)
                 .parent(dna_combinator_hybridizer)
                 .addCriterion("hatched_egg",
                         InventoryChangeTrigger.TriggerInstance.hasItems(item("jurassicreborn:hatched_egg/egg_indominus")))
                 .save(consumer, MODID + ":jurassicreborn/indominus_hatched_egg");
 
         // hybrids_dino_egg (challenge, multiple)
-        Advancement hybrids_dino_egg = Advancement.Builder.advancement()
+        AdvancementHolder hybrids_dino_egg = Advancement.Builder.advancement()
                 .display(item("jurassicreborn:mr_dna_keychain"),
                         title("hybrids_dino_egg"), description("hybrids_dino_egg"),
-                        null, FrameType.CHALLENGE, true, true, false)
+                        null, AdvancementType.CHALLENGE, true, true, false)
                 .parent(dna_combinator_hybridizer)
                 .addCriterion("hatched_egg_0", InventoryChangeTrigger.TriggerInstance.hasItems(item("jurassicreborn:hatched_egg/egg_ankylodocus")))
                 .addCriterion("hatched_egg_1", InventoryChangeTrigger.TriggerInstance.hasItems(item("jurassicreborn:hatched_egg/egg_spinoraptor")))
@@ -666,14 +666,14 @@ public class JRAdvancements implements AdvancementSubProvider {
                 .addCriterion("hatched_egg_6", InventoryChangeTrigger.TriggerInstance.hasItems(item("jurassicreborn:hatched_egg/egg_delta")))
                 .addCriterion("hatched_egg_7", InventoryChangeTrigger.TriggerInstance.hasItems(item("jurassicreborn:hatched_egg/egg_indoraptor")))
                 .addCriterion("hatched_egg_8", InventoryChangeTrigger.TriggerInstance.hasItems(item("jurassicreborn:hatched_egg/egg_indoraptor")))
-                .requirements(RequirementsStrategy.OR)
+                .requirements(AdvancementRequirements.Strategy.OR)
                 .save(consumer, MODID + ":jurassicreborn/hybrids_dino_egg");
 
         // plant branch
-        Advancement plant_fossils = Advancement.Builder.advancement()
+        AdvancementHolder plant_fossils = Advancement.Builder.advancement()
                 .display(item("jurassicreborn:flora_fossil"),
                         title("plant_fossils"), description("plant_fossils"),
-                        null, FrameType.TASK, true, true, false)
+                        null, AdvancementType.TASK, true, true, false)
                 .parent(root)
                 .addCriterion("plant_fossil",       InventoryChangeTrigger.TriggerInstance.hasItems(item("jurassicreborn:plant_fossil")))
                 .addCriterion("plant_fossil_0",       InventoryChangeTrigger.TriggerInstance.hasItems(item("jurassicreborn:plant_fossil_0")))
@@ -687,12 +687,12 @@ public class JRAdvancements implements AdvancementSubProvider {
                 .addCriterion("petrified_araucaria_log",InventoryChangeTrigger.TriggerInstance.hasItems(item("jurassicreborn:petrified_araucaria_log")))
                 .addCriterion("petrified_magnolia_log",InventoryChangeTrigger.TriggerInstance.hasItems(item("jurassicreborn:petrified_magnolia_log")))
                 .addCriterion("petrified_phoenix_log",  InventoryChangeTrigger.TriggerInstance.hasItems(item("jurassicreborn:petrified_phoenix_log")))
-                .requirements(RequirementsStrategy.OR)
+                .requirements(AdvancementRequirements.Strategy.OR)
                 .save(consumer, MODID + ":jurassicreborn/plant_fossils");
-        Advancement vehicles = Advancement.Builder.advancement()
+        AdvancementHolder vehicles = Advancement.Builder.advancement()
                 .display(item("jurassicreborn:jeep_wrangler"),
                         title("jeep_wrangler"), description("jeep_wrangler"),
-                        null, FrameType.TASK, true, true, true)
+                        null, AdvancementType.TASK, true, true, true)
                 .parent(root)
                 .addCriterion("jeep_wrangler",       InventoryChangeTrigger.TriggerInstance.hasItems(item("jurassicreborn:jeep_wrangler")))
                 .addCriterion("black_jeep_wrangler",       InventoryChangeTrigger.TriggerInstance.hasItems(item("jurassicreborn:black_jeep_wrangler")))
@@ -707,21 +707,21 @@ public class JRAdvancements implements AdvancementSubProvider {
                 .addCriterion("helicopter",       InventoryChangeTrigger.TriggerInstance.hasItems(item("jurassicreborn:helicopter")))
                 .addCriterion("monorail",       InventoryChangeTrigger.TriggerInstance.hasItems(item("jurassicreborn:monorail")))
                 .addCriterion("gyrosphere",       InventoryChangeTrigger.TriggerInstance.hasItems(item("jurassicreborn:gyrosphere")))
-                .requirements(RequirementsStrategy.OR)
+                .requirements(AdvancementRequirements.Strategy.OR)
                 .save(consumer, MODID + ":jurassicreborn/vehicles");
 
-        Advancement plant_dna = Advancement.Builder.advancement()
+        AdvancementHolder plant_dna = Advancement.Builder.advancement()
                 .display(item("jurassicreborn:mr_dna_keychain"),
                         title("plant_dna"), description("plant_dna"),
-                        null, FrameType.TASK, true, true, false)
+                        null, AdvancementType.TASK, true, true, false)
                 .parent(plant_fossils)
                 .addCriterion("plant_dna", InventoryChangeTrigger.TriggerInstance.hasItems(item("jurassicreborn:plant_dna")))
                 .save(consumer, MODID + ":jurassicreborn/plant_dna");
 
-        Advancement plant_callus = Advancement.Builder.advancement()
+        AdvancementHolder plant_callus = Advancement.Builder.advancement()
                 .display(item("jurassicreborn:enallhelia"),
                         title("plant_callus"), description("plant_callus"),
-                        null, FrameType.TASK, true, true, false)
+                        null, AdvancementType.TASK, true, true, false)
                 .parent(plant_dna)
                 .addCriterion("plant_callus", InventoryChangeTrigger.TriggerInstance.hasItems(item("jurassicreborn:plant_callus")))
                 .save(consumer, MODID + ":jurassicreborn/plant_callus");

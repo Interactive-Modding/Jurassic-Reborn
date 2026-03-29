@@ -7,16 +7,16 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.world.level.block.*;
-import net.minecraftforge.client.model.generators.BlockStateProvider;
-import net.minecraftforge.client.model.generators.ConfiguredModel;
-import net.minecraftforge.client.model.generators.ModelFile;
-import net.minecraftforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
+import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.vit.jurassicreborn.JurassicReborn;
 import net.vit.jurassicreborn.common.blocks.ModBlocks;
 import net.vit.jurassicreborn.common.blocks.wood.WoodBlocks;
 import net.vit.jurassicreborn.common.entities.Dinosaurs.Dinosaur;
 
-import static net.minecraftforge.client.model.generators.ModelProvider.BLOCK_FOLDER;
+import static net.neoforged.neoforge.client.model.generators.ModelProvider.BLOCK_FOLDER;
 
 public class JRBlockstateProvider extends BlockStateProvider {
     public JRBlockstateProvider(PackOutput output, ExistingFileHelper exFileHelper) {
@@ -206,30 +206,31 @@ public class JRBlockstateProvider extends BlockStateProvider {
     protected String name(Block block) {
         return BuiltInRegistries.BLOCK.getKey(block).getPath();
     }
+    public void hangingSignBlock(
+            CeilingHangingSignBlock ceilingSign,
+            WallHangingSignBlock wallSign,
+            ResourceLocation texture
+    ) {
+        String name = name(ceilingSign);
 
-    private void hangingSignBlock(CeilingHangingSignBlock hangingSign, WallHangingSignBlock wallHangingSign, ResourceLocation texture) {
-        String ceilingName = name(hangingSign);
-        ModelFile ceiling = models().withExistingParent(ceilingName, mcLoc("block/hanging_sign"))
+        // ───────────── CEILING MODEL ─────────────
+        ModelFile ceilingModel = models().getBuilder(name)
                 .texture("texture", texture)
                 .renderType("minecraft:cutout");
-        ModelFile ceilingAttached = models().withExistingParent(ceilingName + "_attached", mcLoc("block/hanging_sign_attached"))
+
+        // Ceiling blockstates — NO ROTATION IN 1.21+
+        getVariantBuilder(ceilingSign).forAllStates(state ->
+                ConfiguredModel.builder()
+                        .modelFile(ceilingModel)
+                        .build()
+        );
+
+        // ───────────── WALL MODEL ─────────────
+        ModelFile wallModel = models().getBuilder(name + "_wall")
                 .texture("texture", texture)
                 .renderType("minecraft:cutout");
 
-        getVariantBuilder(hangingSign).forAllStates(state -> {
-            int rot = state.getValue(CeilingHangingSignBlock.ROTATION);
-            boolean attached = state.getValue(CeilingHangingSignBlock.ATTACHED);
-            int yRot = (int) (rot * 22.5F) % 360;
-
-            return ConfiguredModel.builder()
-                    .modelFile(attached ? ceilingAttached : ceiling)
-                    .rotationY(yRot)
-                    .build();
-        });
-
-        ModelFile wall = models().withExistingParent(name(wallHangingSign), mcLoc("block/wall_hanging_sign"))
-                .texture("texture", texture)
-                .renderType("minecraft:cutout");
-        horizontalBlock(wallHangingSign, wall, 90);
+        // Wall hanging signs rotate in 90° steps (this is valid)
+        horizontalBlock(wallSign, wallModel);
     }
 }

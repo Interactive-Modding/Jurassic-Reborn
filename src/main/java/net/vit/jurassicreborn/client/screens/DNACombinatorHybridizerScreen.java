@@ -15,8 +15,8 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
 
 @OnlyIn(Dist.CLIENT)
@@ -35,9 +35,9 @@ public class DNACombinatorHybridizerScreen extends AbstractContainerScreen<DNACo
     public DNACombinatorHybridizerScreen(DNACombinatorHybridizerMenu menu, Inventory playerInv, Component title) {
         super(menu, playerInv, title);
         this.playerInventory = playerInv;
-//        this.inventory = menu;
         this.menu = menu;
     }
+
 
     @Override
     public @NotNull Component getTitle() {
@@ -47,9 +47,7 @@ public class DNACombinatorHybridizerScreen extends AbstractContainerScreen<DNACo
         return this.title;
     }
 
-    public DNACombinatorHybridizerScreen(DNACombinatorHybridizerMenu dnaCombinatorHybridizerMenu, Inventory inventory, Component component, BlockEntity entity) {
-        this(dnaCombinatorHybridizerMenu, inventory, component);
-    }
+
 
 
 //    @Override
@@ -97,8 +95,8 @@ public class DNACombinatorHybridizerScreen extends AbstractContainerScreen<DNACo
     public void render(@NotNull GuiGraphics graphics, int mouseX, int mouseY, float partialTick) {
         boolean isHybridizer = this.menu.getMode();
         this.menu.updateSlots(!isHybridizer);
-        this.title = Component.translatable(isHybridizer ? "container.dna_hybridizer" : "container.dna_combinator");
-        this.renderBackground(graphics);
+//        this.title = Component.translatable(isHybridizer ? "container.dna_hybridizer" : "container.dna_combinator");
+        this.renderBackground(graphics,mouseX, mouseY, partialTick);
         super.render(graphics, mouseX, mouseY, partialTick);
 //        this.renderLabels(pPoseStack, mouseX, mouseY);
 

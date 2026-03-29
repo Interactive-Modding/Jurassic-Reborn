@@ -35,7 +35,7 @@ public class DimetrodonAnimator extends EntityAnimator<DimetrodonEntity> {
         // breathing: bob belly/hips, slight torso wave
         model.bob(belly, idleSpeed, 0.45F, false, ticks, 1.0F);
         model.bob(hips,  idleSpeed, 0.30F, false, ticks, 1.0F);
-        model.chainWave(new AdvancedModelBox[]{ hips, belly, body }, idleSpeed * 0.6F, idleDegree * 0.5F, 2, ticks, 1.0F);
+//        model.chainWave(new AdvancedModelBox[]{ hips, belly, body }, idleSpeed * 0.6F, idleDegree * 0.5F, 2, ticks, 1.0F);
 
         // tail idle sway; add locomotion layer when moving
         model.chainSwing(tail, idleSpeed, 0.18F, -2, ticks, 1.0F);
@@ -44,7 +44,7 @@ public class DimetrodonAnimator extends EntityAnimator<DimetrodonEntity> {
         }
 
 
-            model.faceTarget(rotationYaw, rotationPitch, 0.5F, head);
+//            model.faceTarget(rotationYaw, rotationPitch, 0.5F, head);
             model.bob(head, idleSpeed, 0.03F, false, ticks, 1.0F);
 
 

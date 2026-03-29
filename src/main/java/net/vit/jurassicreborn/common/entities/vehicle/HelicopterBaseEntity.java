@@ -1,8 +1,5 @@
 package net.vit.jurassicreborn.common.entities.vehicle;
 
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
-import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.Level;
 import net.vit.jurassicreborn.common.items.ModItems;
@@ -40,8 +37,5 @@ public class HelicopterBaseEntity extends HelicopterEntity {
     public void dropItems() {
     }
 
-    @Override
-    public Packet<ClientGamePacketListener> getAddEntityPacket() {
-        return new ClientboundAddEntityPacket(this);
-    }
+
 }

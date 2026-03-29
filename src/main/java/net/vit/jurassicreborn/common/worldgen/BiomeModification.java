@@ -1,6 +1,6 @@
 package net.vit.jurassicreborn.common.worldgen;
 
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
 import net.minecraft.tags.BiomeTags;
@@ -9,10 +9,10 @@ import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.minecraftforge.common.Tags;
-import net.minecraftforge.common.world.BiomeModifier;
-import net.minecraftforge.common.world.ModifiableBiomeInfo;
-import net.vit.jurassicreborn.common.RebornConfig;
+import net.neoforged.neoforge.common.Tags;
+import net.neoforged.neoforge.common.world.BiomeModifier;
+import net.neoforged.neoforge.common.world.ModifiableBiomeInfo;
+import net.vit.jurassicreborn.common.JurassicConfig;
 import net.vit.jurassicreborn.common.entities.ModEntities;
 
 import static net.vit.jurassicreborn.common.CommonRegistries.*;
@@ -23,7 +23,7 @@ public record BiomeModification(HolderSet<Biome> biomes, Holder<PlacedFeature> f
 
 
     @Override
-    public void modify(Holder<Biome> biome, Phase phase, ModifiableBiomeInfo.BiomeInfo.Builder builder) {
+    public void modify(Holder<Biome> biome, BiomeModifier.Phase phase, ModifiableBiomeInfo.BiomeInfo.Builder builder) {
 
         if(phase == Phase.ADD) {
             if (!biome.is(BiomeTags.IS_NETHER) && !biome.is(BiomeTags.IS_END)) {
@@ -39,7 +39,7 @@ public record BiomeModification(HolderSet<Biome> biomes, Holder<PlacedFeature> f
                     builder.getGenerationSettings().addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ModPlacements.PLACED_LARGE_PETRIFIED_TREE);
                     builder.getGenerationSettings().addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, PLACED_SMALL_PETRIFIED_TREE);
                 }
-                if (RebornConfig.spawnCrabs &&
+                if (JurassicConfig.spawnCrabs &&
                         (biome.is(Tags.Biomes.IS_WET) || biome.is(BiomeTags.IS_OCEAN))) {
                     builder.getMobSpawnSettings().addSpawn(
                             MobCategory.WATER_CREATURE,
@@ -48,7 +48,7 @@ public record BiomeModification(HolderSet<Biome> biomes, Holder<PlacedFeature> f
                     logSpawnAddition("Crab", biome, MobCategory.WATER_CREATURE, 8, 2, 4);
                 }
 
-                if (RebornConfig.spawnSharks && biome.is(BiomeTags.IS_OCEAN)) {
+                if (JurassicConfig.spawnSharks && biome.is(BiomeTags.IS_OCEAN)) {
                     builder.getMobSpawnSettings().addSpawn(
                             MobCategory.WATER_CREATURE,
                             new MobSpawnSettings.SpawnerData(ModEntities.SHARK.get(), 2, 1, 2)
@@ -56,7 +56,7 @@ public record BiomeModification(HolderSet<Biome> biomes, Holder<PlacedFeature> f
                     logSpawnAddition("Shark", biome, MobCategory.WATER_CREATURE, 2, 1, 2);
                 }
 
-                if (RebornConfig.spawnGoats &&
+                if (JurassicConfig.spawnGoats &&
                         (biome.is(BiomeTags.IS_MOUNTAIN) || biome.is(Tags.Biomes.IS_MOUNTAIN))) {
                     builder.getMobSpawnSettings().addSpawn(
                             MobCategory.CREATURE,
@@ -70,7 +70,7 @@ public record BiomeModification(HolderSet<Biome> biomes, Holder<PlacedFeature> f
         }
     }
 
-    public Codec<? extends BiomeModifier> codec()
+    public MapCodec<? extends BiomeModifier> codec()
     {
         return BIOME_MODIFIER_CODEC.get();
     }

@@ -8,11 +8,11 @@ public class SPAS12 extends Gun {
                 1,                       // shots per trigger pull
                 SoundHandler.FIRE,
                 SoundHandler.EMPTY,
-                SoundHandler.RELOAD,
+                SoundHandler.RELOAD,          // your mod’s RELOAD sound
                 6,                      // clipSize
                 60,                     // reloadCooldown
                 20,                     // shotCooldown
-                0.9F,                   // speed
+                7.5F,                   // speed
                 15.0F,                  // inaccuracy
                 0.0F,                   // pitchOffset
                 5                       // damage

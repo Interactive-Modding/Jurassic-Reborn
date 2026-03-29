@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    {
+      "item": "jurassicreborn:gypsum_cobblestone"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "jurassicreborn:gypsum_cobblestone_button"
+  }
+}

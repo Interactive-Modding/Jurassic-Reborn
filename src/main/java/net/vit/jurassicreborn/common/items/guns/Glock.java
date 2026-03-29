@@ -12,7 +12,7 @@ public class Glock extends Gun {
                 8,                         // clipSize
                 40,                        // reloadCooldown (in ticks)
                 5,                         // shotCooldown (in ticks)
-                0.5F,                      // speed
+                7.5F,                      // speed
                 0.0F,                      // inaccuracy
                 5.0F,                      // pitchOffset
                 2                          // damage per bullet

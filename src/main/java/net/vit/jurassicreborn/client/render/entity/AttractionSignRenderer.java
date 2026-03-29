@@ -11,6 +11,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.vit.jurassicreborn.common.entities.item.AttractionSignEntity;
 import org.joml.Matrix3f;
 import org.joml.Matrix4f;
+import org.joml.Vector3f;
 
 public class AttractionSignRenderer extends EntityRenderer<AttractionSignEntity> {
 
@@ -26,8 +27,8 @@ public class AttractionSignRenderer extends EntityRenderer<AttractionSignEntity>
     @Override
     public void render(AttractionSignEntity sign, float yaw, float pt,
                        PoseStack ms, MultiBufferSource buffers, int light) {
-        float w = sign.getWidth()  / 2f;
-        float h = sign.getHeight() / 2f;
+        float w = sign.getWidth()  / 15.25f;
+        float h = sign.getHeight() / 15.25f;
         float z = -0.04f;
         ms.pushPose();
         ms.mulPose(Axis.YP.rotationDegrees(180f - yaw));
@@ -127,38 +128,85 @@ public class AttractionSignRenderer extends EntityRenderer<AttractionSignEntity>
 
 
     // Draws a quad at z
-    private static void drawQuad(PoseStack ms, VertexConsumer vb,
-                                 float x, float y, float w, float h, float z, int light) {
-        float x1 = x + w, y1 = y + h;
-        PoseStack.Pose entry = ms.last();
-        Matrix4f m = entry.pose();
-        Matrix3f n = entry.normal();
+    private static void drawQuad(
+            PoseStack poseStack,
+            VertexConsumer vb,
+            float x, float y,
+            float w, float h,
+            float z,
+            int light
+    ) {
+        float x1 = x + w;
+        float y1 = y + h;
 
-        vb.vertex(m, x,  y1, z).color(255,255,255,255).uv(1, 0)
-                .overlayCoords(OverlayTexture.NO_OVERLAY).uv2(light)
-                .normal(n,0,0,-1).endVertex();
-        vb.vertex(m, x1, y1, z).color(255,255,255,255).uv(0, 0)
-                .overlayCoords(OverlayTexture.NO_OVERLAY).uv2(light)
-                .normal(n,0,0,-1).endVertex();
-        vb.vertex(m, x1, y,  z).color(255,255,255,255).uv(0, 1)
-                .overlayCoords(OverlayTexture.NO_OVERLAY).uv2(light)
-                .normal(n,0,0,-1).endVertex();
-        vb.vertex(m, x,  y,  z).color(255,255,255,255).uv(1, 1)
-                .overlayCoords(OverlayTexture.NO_OVERLAY).uv2(light)
-                .normal(n,0,0,-1).endVertex();
+        PoseStack.Pose pose = poseStack.last();
+
+        vb.addVertex(pose, x,  y1, z)
+                .setColor(255, 255, 255, 255)
+                .setUv(1, 0)
+                .setOverlay(OverlayTexture.NO_OVERLAY)
+                .setLight(light)
+                .setNormal(pose, 0, 0, -1);
+
+        vb.addVertex(pose, x1, y1, z)
+                .setColor(255, 255, 255, 255)
+                .setUv(0, 0)
+                .setOverlay(OverlayTexture.NO_OVERLAY)
+                .setLight(light)
+                .setNormal(pose, 0, 0, -1);
+
+        vb.addVertex(pose, x1, y,  z)
+                .setColor(255, 255, 255, 255)
+                .setUv(0, 1)
+                .setOverlay(OverlayTexture.NO_OVERLAY)
+                .setLight(light)
+                .setNormal(pose, 0, 0, -1);
+
+        vb.addVertex(pose, x,  y,  z)
+                .setColor(255, 255, 255, 255)
+                .setUv(1, 1)
+                .setOverlay(OverlayTexture.NO_OVERLAY)
+                .setLight(light)
+                .setNormal(pose, 0, 0, -1);
     }
 
-    // Draws a side quad (from (x, y) along (dx, dy)), between z0 and z1
-    private static void drawSide(PoseStack ms, VertexConsumer vb,
-                                 float x, float y, float dx, float dy, float z0, float z1, int light) {
-        PoseStack.Pose entry = ms.last();
-        Matrix4f m = entry.pose();
-        Matrix3f n = entry.normal();
+    private static void drawSide(
+            PoseStack poseStack,
+            VertexConsumer vb,
+            float x, float y,
+            float dx, float dy,
+            float z0, float z1,
+            int light
+    ) {
+        PoseStack.Pose pose = poseStack.last();
 
-        vb.vertex(m, x,     y,     z0).color(200,200,200,255).uv(0,0).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(light).normal(n, 0,0,1).endVertex();
-        vb.vertex(m, x+dx,  y+dy,  z0).color(200,200,200,255).uv(1,0).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(light).normal(n, 0,0,1).endVertex();
-        vb.vertex(m, x+dx,  y+dy,  z1).color(200,200,200,255).uv(1,1).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(light).normal(n, 0,0,1).endVertex();
-        vb.vertex(m, x,     y,     z1).color(200,200,200,255).uv(0,1).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(light).normal(n, 0,0,1).endVertex();
+        vb.addVertex(pose, x,     y,     z0)
+                .setColor(200, 200, 200, 255)
+                .setUv(0, 0)
+                .setOverlay(OverlayTexture.NO_OVERLAY)
+                .setLight(light)
+                .setNormal(pose, 0, 0, 1);
+
+        vb.addVertex(pose, x + dx, y + dy, z0)
+                .setColor(200, 200, 200, 255)
+                .setUv(1, 0)
+                .setOverlay(OverlayTexture.NO_OVERLAY)
+                .setLight(light)
+                .setNormal(pose, 0, 0, 1);
+
+        vb.addVertex(pose, x + dx, y + dy, z1)
+                .setColor(200, 200, 200, 255)
+                .setUv(1, 1)
+                .setOverlay(OverlayTexture.NO_OVERLAY)
+                .setLight(light)
+                .setNormal(pose, 0, 0, 1);
+
+        vb.addVertex(pose, x,     y,     z1)
+                .setColor(200, 200, 200, 255)
+                .setUv(0, 1)
+                .setOverlay(OverlayTexture.NO_OVERLAY)
+                .setLight(light)
+                .setNormal(pose, 0, 0, 1);
     }
 
 }

@@ -9,7 +9,7 @@ import net.minecraft.world.entity.player.Inventory;
 import net.vit.jurassicreborn.common.blocks.entities.bugcrate.BugCrateMenu;
 
 public class BugCrateScreen extends AbstractContainerScreen<BugCrateMenu> {
-    private static final ResourceLocation TEXTURE = new ResourceLocation("jurassicreborn", "textures/gui/bug_crate.png");
+    private static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath("jurassicreborn", "textures/gui/bug_crate.png");
 
     public BugCrateScreen(BugCrateMenu menu, Inventory playerInventory, Component title) {
         super(menu, playerInventory, title);
@@ -26,7 +26,7 @@ public class BugCrateScreen extends AbstractContainerScreen<BugCrateMenu> {
         int progress = this.menu.getProgress();
         int max = this.menu.getMaxProgress();
         if (max > 0 && progress > 0) {
-            int arrowPixels = (int)(24.0F * progress / max);
+            int arrowPixels = (int)(24.0F * progress / max); // adjust 24 to your arrow width in your PNG
             // (x, y, u, v, width, height)
             graphics.blit(TEXTURE, this.leftPos + 76, this.topPos + 36, 176, 0, arrowPixels, 17);
         }
@@ -42,7 +42,7 @@ public class BugCrateScreen extends AbstractContainerScreen<BugCrateMenu> {
 
     @Override
     public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTicks) {
-        this.renderBackground(graphics);
+        this.renderBackground(graphics,mouseX, mouseY, partialTicks);
         super.render(graphics, mouseX, mouseY, partialTicks);
         this.renderTooltip(graphics, mouseX, mouseY);
     }

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "jurassicreborn:plant_cells"
+    },
+    {
+      "item": "jurassicreborn:petri_dish_agar"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "jurassicreborn:plant_cells_petri_dish"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "type": "jurassicreborn:cleaning",
+  "id": "jurassicreborn:encased_diplocaulus_fossil_cleaning",
+  "input": {
+    "item": "jurassicreborn:encased_diplocaulus_fossil"
+  },
+  "output": {
+    "count": 1,
+    "id": "jurassicreborn:bones/diplocaulus_skull"
+  }
+}

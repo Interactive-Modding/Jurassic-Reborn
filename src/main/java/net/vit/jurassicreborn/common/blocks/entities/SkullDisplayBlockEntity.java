@@ -2,9 +2,8 @@ package net.vit.jurassicreborn.common.blocks.entities;
 
 import com.github.alexthe666.citadel.client.model.TabulaModel;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.Connection;
-import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.resources.ResourceLocation;
@@ -12,11 +11,12 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import net.vit.jurassicreborn.common.entities.Dinosaurs.Dinosaur;
 import net.vit.jurassicreborn.common.entities.Dinosaurs.DinosaurHandler;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public class SkullDisplayBlockEntity extends BlockEntity {
     private short angle = 0;
@@ -28,9 +28,7 @@ public class SkullDisplayBlockEntity extends BlockEntity {
     @OnlyIn(Dist.CLIENT)
     public TabulaModel model;
 
-    /**
-     * Texture used to render the skull. Only present on the client.
-     */
+    /** Texture used to render the skull (client only). */
     @OnlyIn(Dist.CLIENT)
     public ResourceLocation texture;
     public SkullDisplayBlockEntity(BlockPos pos, BlockState state) {
@@ -79,44 +77,38 @@ public class SkullDisplayBlockEntity extends BlockEntity {
     }
 
     @Override
-    protected void saveAdditional(@NotNull CompoundTag tag) {
-        super.saveAdditional(tag);
+    protected void saveAdditional(@NotNull CompoundTag tag, HolderLookup.Provider provider) {
+        super.saveAdditional(tag, provider);
         tag.putInt("dinosaur", this.dinosaur);
         tag.putBoolean("isFossilized", this.isFossilized);
         tag.putShort("angle", this.angle);
         tag.putBoolean("type", this.hasStand);
         if (!this.displayedStack.isEmpty()) {
-            tag.put("displayedStack", this.displayedStack.save(new CompoundTag()));
+            tag.put("displayedStack", this.displayedStack.save(provider));
         }
     }
 
     @Override
-    public void load(CompoundTag tag) {
-        super.load(tag);
+    protected void loadAdditional(CompoundTag tag, HolderLookup.Provider provider) {
+        super.loadAdditional(tag, provider);
         this.dinosaur = tag.getInt("dinosaur");
         this.isFossilized = tag.getBoolean("isFossilized");
         this.angle = tag.getShort("angle");
         this.hasStand = tag.getBoolean("type");
         if (tag.contains("displayedStack")) {
-            this.displayedStack = ItemStack.of(tag.getCompound("displayedStack"));
+            this.displayedStack = ItemStack.parseOptional(provider, tag.getCompound("displayedStack"));
         } else {
             this.displayedStack = ItemStack.EMPTY;
         }
     }
 
-    @Override
-    public Packet<ClientGamePacketListener> getUpdatePacket() {
-        return ClientboundBlockEntityDataPacket.create(this, BlockEntity::saveWithoutMetadata);
+    @Override @Nullable public ClientboundBlockEntityDataPacket getUpdatePacket() {
+        return ClientboundBlockEntityDataPacket.create(this);
     }
 
     @Override
-    public void onDataPacket(Connection net, ClientboundBlockEntityDataPacket pkt) {
-        load(pkt.getTag());
-    }
-
-    @Override
-    public @NotNull CompoundTag getUpdateTag() {
-        return this.saveWithoutMetadata();
+    public CompoundTag getUpdateTag(HolderLookup.Provider provider) {
+        return this.saveWithoutMetadata(provider);
     }
 
     private void markUpdated() {
@@ -127,8 +119,8 @@ public class SkullDisplayBlockEntity extends BlockEntity {
     }
 
     @OnlyIn(Dist.CLIENT)
-    @Override
     public @NotNull AABB getRenderBoundingBox() {
-        return super.getRenderBoundingBox().inflate(2);
+        BlockPos pos = this.worldPosition;
+        return new AABB(pos.getX(), pos.getY(), pos.getZ(), pos.getX() + 1, pos.getY() + 1, pos.getZ() + 1).inflate(2.0);
     }
 }

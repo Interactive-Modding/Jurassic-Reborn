@@ -11,15 +11,15 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.RenderHighlightEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.neoforge.client.event.RenderHighlightEvent;
 import net.vit.jurassicreborn.JurassicReborn;
 import net.vit.jurassicreborn.common.blocks.SkullDisplayBlock;
 import net.vit.jurassicreborn.common.blocks.entities.SkullDisplayBlockEntity;
 
-@Mod.EventBusSubscriber(modid = JurassicReborn.MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.FORGE)
+@EventBusSubscriber(modid = JurassicReborn.MODID, value = Dist.CLIENT, bus = EventBusSubscriber.Bus.GAME)
 public class SkullDisplayHighlight {
     @SubscribeEvent
     public static void onBlockHighlight(RenderHighlightEvent.Block event) {

@@ -8,7 +8,7 @@ import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.DeferredHolder;
 import net.vit.jurassicreborn.common.entities.vehicle.VehicleEntity;
 
 /**
@@ -17,9 +17,9 @@ import net.vit.jurassicreborn.common.entities.vehicle.VehicleEntity;
 public class VehicleSpawnItem extends Item {
 
     // Hold a lazy reference instead of a direct EntityType
-    private final RegistryObject<? extends EntityType<?>> vehicleType;
+    private final DeferredHolder<EntityType<?>, ? extends EntityType<?>> vehicleType;
 
-    public VehicleSpawnItem(RegistryObject<? extends EntityType<?>> type, Properties props) {
+    public VehicleSpawnItem(DeferredHolder<EntityType<?>, ? extends EntityType<?>> type, Properties props) {
         super(props.stacksTo(1)); // always 1 per stack
         this.vehicleType = type;
     }

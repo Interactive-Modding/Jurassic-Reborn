@@ -17,7 +17,7 @@ import java.util.List;
 /** GUI implementation for the feeder tracker app. */
 public class FeederTrackerGuiApp extends GuiApp {
 
-    private static final ResourceLocation TEXTURE = new ResourceLocation(JurassicReborn.MODID,
+    private static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(JurassicReborn.MODID,
             "textures/gui/paleo_pad/apps/feeder_tracker.png");
 
     private int scroll;

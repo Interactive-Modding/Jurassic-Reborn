@@ -1,0 +1,33 @@
+{
+  "parent": "jurassicreborn:jurassicreborn/dna_combinator_hybridizer",
+  "criteria": {
+    "dna_extractor": {
+      "conditions": {
+        "items": [
+          {
+            "items": "jurassicreborn:dna_extractor"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.jurassicreborn.dna_extractor.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "jurassicreborn:dna_extractor"
+    },
+    "title": {
+      "translate": "advancements.jurassicreborn.dna_extractor.title"
+    }
+  },
+  "requirements": [
+    [
+      "dna_extractor"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

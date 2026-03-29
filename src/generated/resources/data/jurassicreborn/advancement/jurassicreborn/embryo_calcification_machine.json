@@ -1,0 +1,33 @@
+{
+  "parent": "jurassicreborn:jurassicreborn/embryonic_machine",
+  "criteria": {
+    "embryo_calcification_machine": {
+      "conditions": {
+        "items": [
+          {
+            "items": "jurassicreborn:embryo_calcification_machine"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.jurassicreborn.embryo_calcification_machine.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "jurassicreborn:embryo_calcification_machine"
+    },
+    "title": {
+      "translate": "advancements.jurassicreborn.embryo_calcification_machine.title"
+    }
+  },
+  "requirements": [
+    [
+      "embryo_calcification_machine"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

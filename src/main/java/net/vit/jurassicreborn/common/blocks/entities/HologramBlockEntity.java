@@ -1,6 +1,7 @@
 package net.vit.jurassicreborn.common.blocks.entities;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.server.level.ServerLevel;
@@ -49,9 +50,9 @@ public class HologramBlockEntity extends ActionFigureBlockEntity {
     // -----------------------------------------------------
 
     @Override
-    public void load(CompoundTag tag) {
+    protected void loadAdditional(CompoundTag tag, HolderLookup.Provider provider) {
         // Load ActionFigure core data first
-        super.load(tag);
+        super.loadAdditional(tag, provider);
 
         DinosaurHandler.doDinosInit();
 
@@ -80,9 +81,9 @@ public class HologramBlockEntity extends ActionFigureBlockEntity {
     }
 
     @Override
-    public void saveAdditional(CompoundTag tag) {
+    protected void saveAdditional(CompoundTag tag, HolderLookup.Provider provider) {
         // Save ActionFigure base data first
-        super.saveAdditional(tag);
+        super.saveAdditional(tag, provider);
 
         // Then hologram-specific
         tag.putInt(TAG_DINO_INDEX, this.dinoIndex);

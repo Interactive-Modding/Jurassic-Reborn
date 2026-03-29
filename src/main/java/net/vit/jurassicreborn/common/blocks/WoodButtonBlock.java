@@ -7,6 +7,6 @@ import net.minecraft.world.level.block.state.properties.BlockSetType;
 public class WoodButtonBlock extends ButtonBlock {
 
     public WoodButtonBlock(BlockBehaviour.Properties properties) {
-        super(properties, BlockSetType.OAK, 30, true);
+        super(BlockSetType.OAK, 30, properties);
     }
 }

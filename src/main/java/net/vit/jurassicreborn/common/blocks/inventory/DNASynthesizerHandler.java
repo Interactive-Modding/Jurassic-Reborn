@@ -1,7 +1,7 @@
 package net.vit.jurassicreborn.common.blocks.inventory;
 
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.items.SlotItemHandler;
+import net.neoforged.neoforge.items.SlotItemHandler;
 import net.vit.jurassicreborn.common.blocks.entities.MachineItemStackHandler;
 import net.vit.jurassicreborn.common.items.ModItems;
 import net.vit.jurassicreborn.common.util.api.SynthesizableItem;

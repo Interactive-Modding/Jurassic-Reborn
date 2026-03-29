@@ -1,11 +1,12 @@
 package net.vit.jurassicreborn.client.render.entity.animation;
 
 import com.github.alexthe666.citadel.client.model.AdvancedModelBox;
+
 import com.github.alexthe666.citadel.client.model.ITabulaModelAnimator;
 import com.github.alexthe666.citadel.client.model.TabulaModel;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import net.vit.jurassicreborn.client.model.AnimatableModel;
 import net.vit.jurassicreborn.common.entities.EntityUtils.Animatable;
 import net.vit.jurassicreborn.common.entities.EntityUtils.GrowthStage;
@@ -49,8 +50,8 @@ public abstract class EntityAnimator<ENTITY extends LivingEntity & Animatable>
     /* ------------------------------------------------------------------ */
     /*  ITabulaModelAnimator                                              */
     /* ------------------------------------------------------------------ */
-
-    @Override
+ //** TODO **\\
+//    @Override
     public final void setRotationAngles(TabulaModel model,
                                         ENTITY entity,
                                         float limbSwing,
@@ -80,8 +81,8 @@ public abstract class EntityAnimator<ENTITY extends LivingEntity & Animatable>
             if (n != null) n.setScale(j, j, j);
             if (t != null) t.setScale(j, j, j);
 
-
-
+            // If you do ANY scaling on chain parents, make sure child scaling doesn't cascade:
+            // (requires your renderer/model to honor this flag)
             if (n != null) n.setShouldScaleChildren(false);
             if (t != null) t.setShouldScaleChildren(false);
         }

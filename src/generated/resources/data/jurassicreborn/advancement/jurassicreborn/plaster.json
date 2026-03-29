@@ -1,0 +1,33 @@
+{
+  "parent": "jurassicreborn:jurassicreborn/root",
+  "criteria": {
+    "plaster_and_bandage": {
+      "conditions": {
+        "items": [
+          {
+            "items": "jurassicreborn:plaster_and_bandage"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.jurassicreborn.plaster.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "jurassicreborn:plaster_and_bandage"
+    },
+    "title": {
+      "translate": "advancements.jurassicreborn.plaster.title"
+    }
+  },
+  "requirements": [
+    [
+      "plaster_and_bandage"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -7,16 +7,16 @@ import it.unimi.dsi.fastutil.objects.ObjectIterator;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.ModelEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.neoforge.client.event.ModelEvent;
 import net.vit.jurassicreborn.JurassicReborn;
 import net.vit.jurassicreborn.common.items.genetics.StorageDiscModelData;
 
 import java.util.Map;
 
-@Mod.EventBusSubscriber(modid = JurassicReborn.MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+@EventBusSubscriber(modid = JurassicReborn.MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public final class StorageDiscModelHandler {
     private StorageDiscModelHandler() {}
 
@@ -26,7 +26,7 @@ public final class StorageDiscModelHandler {
         ObjectIterator<Int2ObjectMap.Entry<ResourceLocation>> iterator = models.int2ObjectEntrySet().iterator();
         while (iterator.hasNext()) {
             Int2ObjectMap.Entry<ResourceLocation> entry = iterator.next();
-            event.register(new ModelResourceLocation(entry.getValue(), "inventory"));
+            event.register(new ModelResourceLocation(entry.getValue(), "standalone"));
         }
     }
 
@@ -35,14 +35,14 @@ public final class StorageDiscModelHandler {
         injectStorageDiscModel(event.getModels());
     }
 
-
+    // Use BakingCompleted when ModifyBakingResult isn't available in your Forge
     @SubscribeEvent
     public static void onBakingCompleted(ModelEvent.BakingCompleted event) {
         injectStorageDiscModel(event.getModels());
     }
 
     private static void injectStorageDiscModel(Map<?, BakedModel> models) {
-        ResourceLocation storageDiscLoc = new ResourceLocation(JurassicReborn.MODID, "storage_disc");
+        ResourceLocation storageDiscLoc = ResourceLocation.fromNamespaceAndPath(JurassicReborn.MODID, "storage_disc");
         ModelResourceLocation storageDiscModelLoc = new ModelResourceLocation(storageDiscLoc, "inventory");
 
         BakedModel baseModel = (BakedModel) models.get(storageDiscModelLoc);

@@ -28,7 +28,7 @@ import java.util.UUID;
 
 public class MinimapGuiApp extends GuiApp {
 
-    private static final ResourceLocation TEXTURE = new ResourceLocation(JurassicReborn.MODID, "textures/gui/paleo_pad/apps/minimap.png");
+    private static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(JurassicReborn.MODID, "textures/gui/paleo_pad/apps/minimap.png");
     private final Map<BlockPos, Integer> heights = new HashMap<>();
     private int scroll;
 

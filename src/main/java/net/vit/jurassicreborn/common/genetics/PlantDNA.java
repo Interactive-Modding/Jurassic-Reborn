@@ -8,6 +8,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
+import net.vit.jurassicreborn.common.util.ItemStackNbtUtil;
 
 import java.util.List;
 
@@ -20,7 +21,7 @@ public class PlantDNA extends DNA{
     }
 
     public static PlantDNA fromStack(ItemStack stack) {
-        return readFromNBT(stack.getTag());
+        return readFromNBT(ItemStackNbtUtil.getTag(stack));
     }
 
     public static PlantDNA readFromNBT(CompoundTag tag) {
@@ -30,7 +31,7 @@ public class PlantDNA extends DNA{
             return null;
         CompoundTag nbt = tag.getCompound("DNA");
 
-        return new PlantDNA(new ResourceLocation(nbt.getString("Plant")), nbt.getInt("DNAQuality"));
+        return new PlantDNA(ResourceLocation.parse(nbt.getString("Plant")), nbt.getInt("DNAQuality"));
     }
 
     public void writeToNBT(CompoundTag tag) {
@@ -66,9 +67,8 @@ public class PlantDNA extends DNA{
             formatting = ChatFormatting.RED;
         }
 
-        String qualityString = Component.translatable("lore.dna_quality").getString();
         Component quality = LangUtil.getFormattedQuality(this.quality);
-        tooltip.add(Component.literal(qualityString.formatted(quality.getString(), "%")).withStyle(formatting));
+        tooltip.add(Component.translatable("lore.dna_quality", quality, "%").withStyle(formatting));
     }
 
     public Plant getRealPlant(){

@@ -1,8 +1,22 @@
 package net.vit.jurassicreborn.common.entities;
+import net.minecraft.core.Holder;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.pathfinder.PathType;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
+import net.neoforged.neoforge.entity.IEntityWithComplexSpawn;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.vit.jurassicreborn.common.JurassicConfig;
+import net.vit.jurassicreborn.common.blocks.entities.feeder.FeederRegistry;
+import net.vit.jurassicreborn.common.util.ItemStackNbtUtil;
 import org.joml.Vector3f;
 import com.github.alexthe666.citadel.animation.Animation;
 import com.github.alexthe666.citadel.animation.AnimationHandler;
@@ -21,7 +35,7 @@ import net.vit.jurassicreborn.client.JurassicClient;
 import net.vit.jurassicreborn.client.render.entity.animation.EntityAnimation;
 import net.vit.jurassicreborn.client.render.entity.animation.FixedChainBuffer;
 import net.vit.jurassicreborn.client.render.entity.animation.PoseHandler;
-import net.vit.jurassicreborn.common.RebornConfig;
+import net.vit.jurassicreborn.common.JurassicConfig;
 import net.vit.jurassicreborn.common.blocks.entities.feeder.FeederBlockEntity;
 import net.vit.jurassicreborn.common.blocks.entities.grinder.FossilGrinderBlockEntity;
 import net.vit.jurassicreborn.common.entities.DinosaurEntities.*;
@@ -91,25 +105,20 @@ import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.entity.EntityTypeTest;
-import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.level.pathfinder.Path;
 import net.minecraft.world.phys.AABB;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.entity.IEntityAdditionalSpawnData;
-import net.minecraftforge.network.NetworkHooks;
-import net.minecraftforge.registries.RegistryObject;
 import net.vit.jurassicreborn.common.util.api.DinosaurItem;
 
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.*;
+import java.util.function.Supplier;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
-public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdditionalSpawnData, Animatable {
+public abstract class DinosaurEntity extends PathfinderMob implements IEntityWithComplexSpawn, Animatable {
     private static final Logger LOGGER = LogManager.getLogManager().getLogger(Logger.GLOBAL_LOGGER_NAME);
 
     private static final EntityDataAccessor<Boolean> WATCHER_IS_CARCASS = SynchedEntityData.defineId(DinosaurEntity.class, EntityDataSerializers.BOOLEAN);
@@ -122,7 +131,10 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
     private static final EntityDataAccessor<Boolean> WATCHER_WAS_FED = SynchedEntityData.defineId(DinosaurEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Boolean> WATCHER_WAS_MOVED = SynchedEntityData.defineId(DinosaurEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Integer> WATCHER_VARIANT = SynchedEntityData.defineId(DinosaurEntity.class, EntityDataSerializers.INT);
-
+    private static final EntityDataAccessor<Boolean> WATCHER_IS_MALE = SynchedEntityData.defineId(DinosaurEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Integer> WATCHER_GENETICS_QUALITY = SynchedEntityData.defineId(DinosaurEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Integer> WATCHER_GROWTH_SPEED_OFFSET = SynchedEntityData.defineId(DinosaurEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<CompoundTag> WATCHER_ATTRIBUTES = SynchedEntityData.defineId(DinosaurEntity.class, EntityDataSerializers.COMPOUND_TAG);
     public HashMap<Animation, Byte> variants = new HashMap<>();
     private InventoryDinosaur inventory;
     private MetabolismContainer metabolism;
@@ -133,6 +145,7 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
     private boolean wasMoved;
     private boolean blocked;
     private boolean isMale;
+    private boolean genderInitialized = false;
     //private boolean hasTracker;
     private boolean isSleeping;
     private boolean useInertialTweens;
@@ -149,7 +162,9 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
     private String genetics;
     public boolean tranqed;
     private boolean goalsRegistered;
-
+    private boolean bonesDropped;
+    private static final double NATURAL_SPAWN_SAFE_RADIUS = 64.0D;
+    private boolean naturalSpawnedDino = false;
 
 
     private boolean deserializing;
@@ -180,13 +195,14 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
 
     private BlockPos closestFeeder;
     private int feederSearchTick;
-
+    private GrowthStage lastGrowthStage = null;
     private boolean inLava;
-
+    private boolean postLoadFixPending;
     private DinosaurAttributes attributes;
-
+    private int nearbyFoodScanCooldown = 0;
     private int breedCooldown;
-
+    private int predatorCheckCooldown = 0;
+    private boolean cachedHasPredators = false;
     private DinosaurEntity breeding;
     private Set<DinosaurEntity> children = new HashSet<>();
     private int pregnantTime;
@@ -209,6 +225,10 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
     private int targetSearchCooldown;
     private final List<String> trackersUUID = new ArrayList<>();
 
+    @Nullable
+    private BlockPos rejectedFeeder;
+    private int rejectedFeederUntilTick;
+
     public List<UUID> getTrackers() {
         String data = this.entityData.get(TRACKER_UUIDS);
         if (data == null || data.isEmpty()) return new ArrayList<>();
@@ -218,18 +238,6 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
         }
         return out;
     }
-
-    public static boolean canSpawnNaturally(EntityType<? extends Mob> type,
-                                            LevelAccessor level,
-                                            MobSpawnType reason,
-                                            BlockPos pos,
-                                            RandomSource random) {
-        if (reason == MobSpawnType.NATURAL && !RebornConfig.spawnDinosaursNaturally) {
-            return false;
-        }
-        return Mob.checkMobSpawnRules(type, level, reason, pos, random);
-    }
-
     public void addTracker(UUID uuid) {
         List<UUID> uuids = getTrackers();
         if (!uuids.contains(uuid)) {
@@ -247,7 +255,10 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
         this.entityData.set(TRACKER_UUIDS, sb.toString());
     }
 
-    public static final HashMap<Class<? extends DinosaurEntity>, RegistryObject<? extends EntityType<? extends DinosaurEntity>>> CLASS_TYPE_LIST = new HashMap<>();
+    public static final Map<
+            Class<? extends DinosaurEntity>,
+            DeferredHolder<EntityType<?>, ? extends EntityType<? extends DinosaurEntity>>
+            > CLASS_TYPE_LIST = new HashMap<>();
 
     static{
         CLASS_TYPE_LIST.put(AchillobatorEntity.class, ModEntities.ACHILLOBATOR_ENTITY_TYPE);
@@ -372,10 +383,10 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
         this.metabolism = new MetabolismContainer(this);
         this.inventory  = new InventoryDinosaur(this);
 
-        this.setPathfindingMalus(BlockPathTypes.DOOR_WOOD_CLOSED, 0);
-        this.setPathfindingMalus(BlockPathTypes.DOOR_IRON_CLOSED, 0);
-        this.setPathfindingMalus(BlockPathTypes.POWDER_SNOW, 0.0F);
-        this.setPathfindingMalus(BlockPathTypes.DANGER_POWDER_SNOW, 0.0F);
+        this.setPathfindingMalus(PathType.DOOR_WOOD_CLOSED, 0);
+        this.setPathfindingMalus(PathType.DOOR_IRON_CLOSED, 0);
+        this.setPathfindingMalus(PathType.POWDER_SNOW, 0.0F);
+        this.setPathfindingMalus(PathType.DANGER_POWDER_SNOW, 0.0F);
 
         if (dino.isMarineCreature()) {
             this.navigation  = new WaterBoundPathNavigation(this, level);
@@ -409,6 +420,9 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
         this.setSkeleton(false);
         this.attributes = DinosaurAttributes.create(this);
         this.updateAttributes();
+        if (!this.level().isClientSide) {
+            syncDinosaurData();
+        }
 
         // We’ll own the goal setup in registerGoals() only, to avoid duplicates
         this.goalSelector.getAvailableGoals().clear();
@@ -425,22 +439,23 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
 
 
     private void eatEggs() {
-        if(!level().isClientSide) {
-            List<Entity> eggs = new ArrayList<>();
-            ((ServerLevel) level()).getEntities().get(
-                    EntityTypeTest.forClass(DinosaurEggEntity.class),
-                    entity -> {
-                        eggs.add(entity);
-                        return AbortableIterationConsumer.Continuation.CONTINUE;
-                    }
-            );
-            for (Entity egg : eggs)
-                if (egg instanceof DinosaurEggEntity) {
-                    if ((egg.getEyePosition().distanceTo(this.position())) < 0.5) {
-                        egg.kill();
-                        this.getMetabolism().setEnergy((int) (this.getMetabolism().getEnergy() + ((DinosaurEggEntity) egg).getDinosaur().getAdultHealth() * 0.4));
-                    }
-                }
+        if (this.level().isClientSide) {
+            return;
+        }
+
+        List<DinosaurEggEntity> eggs = this.level().getEntitiesOfClass(
+                DinosaurEggEntity.class,
+                this.getBoundingBox().inflate(1.0D)
+        );
+
+        for (DinosaurEggEntity egg : eggs) {
+            if (egg.getEyePosition().distanceTo(this.position()) < 0.5D) {
+                egg.kill();
+                this.getMetabolism().setEnergy(
+                        (int) (this.getMetabolism().getEnergy() + egg.getDinosaur().getAdultHealth() * 0.4D)
+                );
+                break;
+            }
         }
     }
 
@@ -470,35 +485,76 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
     private void initClient() {
         this.tailBuffer = new FixedChainBuffer();
     }
-
+    private boolean hasPredatorsCached() {
+        if (this.predatorCheckCooldown-- <= 0) {
+            this.predatorCheckCooldown = 20; // once per second
+            this.cachedHasPredators = this.hasPredators();
+        }
+        return this.cachedHasPredators;
+    }
     public boolean shouldSleep() {
         if (this.metabolism.isDehydrated() || this.metabolism.isStarving()) {
             return false;
         }
+
         SleepTime sleepTime = this.dinosaur.getSleepTime();
-        return sleepTime.shouldSleep() && this.getDinosaurTime() > sleepTime.getAwakeTime() && !this.hasPredators() && (this.herd == null || this.herd.enemies.isEmpty());
+        return sleepTime.shouldSleep()
+                && this.getDinosaurTime() > sleepTime.getAwakeTime()
+                && !this.hasPredatorsCached()
+                && (this.herd == null || this.herd.enemies.isEmpty());
     }
 
     private boolean hasPredators() {
-        for (LivingEntity predator : this.level().getEntitiesOfClass(LivingEntity.class, new AABB(this.getX() - 10F, this.getY() - 5F, this.getZ() - 10F, this.getX() + 10F, this.getY() + 5F, this.getZ() + 10F), e -> e != DinosaurEntity.this)) {
-            boolean hasDinosaurPredator = false;
+        AABB box = new AABB(
+                this.getX() - 10.0D, this.getY() - 5.0D, this.getZ() - 10.0D,
+                this.getX() + 10.0D, this.getY() + 5.0D, this.getZ() + 10.0D
+        );
 
-            if (predator instanceof DinosaurEntity) {
-                DinosaurEntity dinosaur = (DinosaurEntity) predator;
+        for (LivingEntity predator : this.level().getEntitiesOfClass(
+                LivingEntity.class,
+                box,
+                e -> e != this && e.isAlive()
+        )) {
+            boolean threat = false;
 
-                if (!dinosaur.isCarcass() || dinosaur.isSleeping) {
-                    for (Class<?> target : dinosaur.getAttackTargets()) {
-                        if (target.isAssignableFrom(this.getClass())) {
-                            hasDinosaurPredator = true;
-                            break;
-                        }
+            if (predator instanceof DinosaurEntity dinosaur) {
+                // carcasses and sleeping dinos are not active threats
+                if (dinosaur.isCarcass() || dinosaur.isSleeping()) {
+                    continue;
+                }
+
+                // herd mates should not keep each other awake
+                if (this.herd != null && dinosaur.herd == this.herd) {
+                    continue;
+                }
+
+                for (Class<? extends LivingEntity> target : dinosaur.getAttackTargets()) {
+                    if (target.isAssignableFrom(this.getClass())) {
+                        threat = true;
+                        break;
                     }
+                }
+
+                // recent attacker also counts
+                if (!threat && this.getLastHurtByMob() != predator) {
+                    continue;
+                }
+
+                // opaque wall / blocked vision = not an immediate sleep threat
+                if (!dinosaur.hasLineOfSight(this)) {
+                    continue;
+                }
+            } else {
+                if (this.getLastHurtByMob() != predator) {
+                    continue;
+                }
+
+                if (!predator.hasLineOfSight(this)) {
+                    continue;
                 }
             }
 
-            if (this.getLastHurtByMob() == predator || hasDinosaurPredator) {
-                return true;
-            }
+            return true;
         }
 
         return false;
@@ -521,7 +577,9 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
             return ItemStack.EMPTY;
         }
         ItemStack egg = new ItemStack(eggItem.get());
-        egg.getOrCreateTag().putInt("GenderMode", this.isMale() ? 1 : 2);
+        CompoundTag tag = ItemStackNbtUtil.getOrCreateTag(egg);
+        tag.putInt("GenderMode", this.isMale() ? 1 : 2);
+        ItemStackNbtUtil.setTag(egg, tag);
         return egg;
     }
 
@@ -565,6 +623,10 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
 
     @Override
     public boolean doHurtTarget(Entity entity) {
+        if (this.isNaturalSpawnProtected()) {
+            this.setTarget(null);
+            return false;
+        }
         if (entity instanceof DinosaurEntity && ((DinosaurEntity) entity).isCarcass() && this.canEatEntity(entity)) {
             this.setAnimation(EntityAnimation.EATING.get());
         } else {
@@ -616,6 +678,11 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
             }
         }
 
+        if (target != null && this.isNaturalSpawnProtected()) {
+            super.setTarget(null);
+            return;
+        }
+
         super.setTarget(target);
     }
 
@@ -642,7 +709,7 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
                 if (attacker instanceof DinosaurEntity) {
                     this.getRelationship(attacker, true).onAttacked(amount);
                 }
-                if (!this.level().isClientSide && !RebornConfig.allowCarcass && !canHarmInCreative) {
+                if (!this.level().isClientSide && !JurassicConfig.allowCarcass && !canHarmInCreative) {
                     this.setAnimation(EntityAnimation.DYING.get());
                 }
                 return super.hurt(damageSource, amount);
@@ -669,13 +736,17 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
             }
         } else if (!this.level().isClientSide) {
             if (!damageSource.is(DamageTypeTags.IS_DROWNING)) {
-                if (this.carcassHealth >= 0 && this.level().getGameRules().getBoolean(GameRules.RULE_DOMOBLOOT)) {
+                if (this.carcassHealth >= 0
+                        && this.level().getGameRules().getBoolean(GameRules.RULE_DOMOBLOOT)) {
                     this.dropMeat(attacker);
+
+                    if (!this.bonesDropped) {
+                        this.dropBones();
+                        this.bonesDropped = true; // ✅ ONLY ONCE
+                    }
                 }
                 this.carcassHealth--;
-                if (this.carcassHealth < 0 || !RebornConfig.allowCarcass) {
-                    int looting = attacker instanceof LivingEntity ? EnchantmentHelper.getMobLooting((LivingEntity) attacker) : 0;
-                    this.dropCustomDeathLoot(damageSource, looting, true);
+                if (this.carcassHealth < 0 || !JurassicConfig.allowCarcass) {
                     this.discard();
                     return true;
                 }
@@ -707,7 +778,9 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
     }
 
     private void dropMeat(Entity attacker) {
-        int fortune = (attacker instanceof LivingEntity le) ? EnchantmentHelper.getMobLooting(le) : 0;
+        int fortune = (attacker instanceof LivingEntity le)
+                ? EnchantmentHelper.getEnchantmentLevel(getEnchantmentHolder(le, Enchantments.LOOTING), le)
+                : 0;
         int count   = this.random.nextInt(2) + 1 + fortune;
 
         boolean burning = this.isOnFire();
@@ -734,6 +807,11 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
     public boolean isPushable() {
         return super.isPushable() && !this.isCarcass() && !this.isSleeping();
     }
+    private static Holder<Enchantment> getEnchantmentHolder(LivingEntity entity, ResourceKey<Enchantment> key) {
+        return entity.level().registryAccess()
+                .lookupOrThrow(Registries.ENCHANTMENT)
+                .getOrThrow(key);
+    }
     public boolean canStandOnPowderSnow() {return true;}
 
     @Override
@@ -759,8 +837,7 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
         }
     }
 
-    public AttributeInstance getAttribute(Attribute attr){
-
+    public AttributeInstance getAttribute(Holder<Attribute> attr) {
         return this.getAttributes().getInstance(attr);
     }
 
@@ -813,19 +890,22 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
     }
 
     @Override
-    public void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(TRACKER_UUIDS, "");
-        this.entityData.define(WATCHER_IS_CARCASS, this.isCarcass);
-        this.entityData.define(WATCHER_AGE, this.dinosaurAge);
-        this.entityData.define(WATCHER_IS_SLEEPING, this.isSleeping);
-        this.entityData.define(WATCHER_OWNER_IDENTIFIER, "");
-        this.entityData.define(WATCHER_CURRENT_ORDER, (byte) 0);
-        this.entityData.define(WATCHER_IS_RUNNING, false);
-        this.entityData.define(WATCHER_WAS_FED, false);
-        this.entityData.define(WATCHER_WAS_MOVED, this.wasMoved);
-        this.entityData.define(WATCHER_VARIANT, 0);
-
+    public void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(TRACKER_UUIDS, "");
+        builder.define(WATCHER_IS_CARCASS, this.isCarcass);
+        builder.define(WATCHER_AGE, this.dinosaurAge);
+        builder.define(WATCHER_IS_SLEEPING, this.isSleeping);
+        builder.define(WATCHER_OWNER_IDENTIFIER, "");
+        builder.define(WATCHER_CURRENT_ORDER, (byte) 0);
+        builder.define(WATCHER_IS_RUNNING, false);
+        builder.define(WATCHER_WAS_FED, false);
+        builder.define(WATCHER_WAS_MOVED, this.wasMoved);
+        builder.define(WATCHER_IS_MALE, false);
+        builder.define(WATCHER_GENETICS_QUALITY, 0);
+        builder.define(WATCHER_GROWTH_SPEED_OFFSET, 0);
+        builder.define(WATCHER_ATTRIBUTES, new CompoundTag());
+        builder.define(WATCHER_VARIANT, 0);
     }
     public int getVariant() {
         return this.entityData.get(WATCHER_VARIANT);
@@ -837,17 +917,10 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
     @Override
     public void onSyncedDataUpdated(EntityDataAccessor<?> key) {
         super.onSyncedDataUpdated(key);
-
-        if (!this.level().isClientSide) {
-            return;
-        }
-
-        if (WATCHER_WAS_MOVED.equals(key)) {
-            this.wasMoved = this.entityData.get(WATCHER_WAS_MOVED);
-        } else if (WATCHER_AGE.equals(key)) {
-            this.dinosaurAge = this.entityData.get(WATCHER_AGE);
-            this.updateAttributes();
-            this.refreshDimensions();
+        if (WATCHER_IS_MALE.equals(key)) {
+            this.isMale = this.entityData.get(WATCHER_IS_MALE);
+        } else if (WATCHER_IS_CARCASS.equals(key)) {
+            this.isCarcass = this.entityData.get(WATCHER_IS_CARCASS);
         } else if (WATCHER_IS_SLEEPING.equals(key)) {
             this.isSleeping = this.entityData.get(WATCHER_IS_SLEEPING);
         } else if (WATCHER_IS_CARCASS.equals(key)) {
@@ -877,7 +950,7 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
             }
         }
     }
-    
+
 //    @Override todo: modernize attributes
 //    protected void applyEntityAttributes() {
 //        super.applyEntityAttributes();
@@ -891,16 +964,15 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
     public void updateAttributes() {
         double prevHealth = this.getMaxHealth();
         double newHealth = Math.max(1.0F, this.interpolate(dinosaur.getBabyHealth(), dinosaur.getAdultHealth()) * this.attributes.getHealthModifier());
+
         double speed = this.interpolate(dinosaur.getBabySpeed(), dinosaur.getAdultSpeed()) * this.attributes.getSpeedModifier();
         double strength = this.getAttackDamage() * this.attributes.getDamageModifier();
 
         this.getAttributes().getInstance(Attributes.MAX_HEALTH).setBaseValue(newHealth);
         this.getAttributes().getInstance(Attributes.MOVEMENT_SPEED).setBaseValue(speed);
-
         this.getAttributes().getInstance(Attributes.ATTACK_DAMAGE).setBaseValue(strength);
 
         this.getAttributes().getInstance(Attributes.FOLLOW_RANGE).setBaseValue(64.0D);
-
 
         if (prevHealth != newHealth) {
             this.heal((float) (newHealth - prevHealth));
@@ -911,56 +983,6 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
         return LivingEntity.createLivingAttributes().add(Attributes.MAX_HEALTH).add(Attributes.MOVEMENT_SPEED).add(Attributes.ATTACK_KNOCKBACK).add(Attributes.FOLLOW_RANGE).add(Attributes.ATTACK_DAMAGE);
     }
 
-    @Override
-    public EntityDimensions getDimensions(Pose pose) {
-        if (this.attributes == null) {
-            return super.getDimensions(pose);
-        }
-
-        float scale  = this.attributes.getScaleModifier();
-        float baseW  = (float) this.interpolate(dinosaur.getBabySizeX(), dinosaur.getAdultSizeX());
-        float baseH  = (float) this.interpolate(dinosaur.getBabySizeY(), dinosaur.getAdultSizeY());
-        float width  = Mth.clamp(baseW * scale, 0.1F, 4.0F);
-        float height = Mth.clamp(baseH * scale, 0.1F, 4.0F);
-
-        if (this.isCarcass) {
-            float slab = Mth.clamp(width * 0.35F, 0.2F, 1.0F);
-            return EntityDimensions.fixed(width, slab);
-        }
-        return EntityDimensions.fixed(width, height);
-    }
-
-    @Override
-    protected float getStandingEyeHeight(Pose pose, EntityDimensions dims) {
-        if (this.attributes == null) {
-            return super.getStandingEyeHeight(pose, dims);
-        }
-        float scale = this.attributes.getScaleModifier();
-        float eye = (float) this.interpolate(dinosaur.getBabyEyeHeight(), dinosaur.getAdultEyeHeight()) * scale;
-
-        if (this.isCarcass) {eye = Math.min(eye, 0.3F);} else if (this.isSleeping) {eye = Math.max(0.3F, eye * 0.6F);}
-        float hitboxHeight = dims.height;
-        float maxEye = Math.max(0.1F, hitboxHeight - 0.05F);
-        return Mth.clamp(eye, 0.1F, maxEye);
-    }
-
-    @Override
-    public void refreshDimensions() {
-        super.refreshDimensions();
-        EntityDimensions d = this.getDimensions(this.getPose());
-        float base = Mth.clamp(d.height * 0.5F, 0.9F, 1.0F);
-
-        // While in water/lava/bubble, allow a little extra to help them exit fluids,
-        // but keep it below fence height.
-        if (this.isInWaterOrBubble() || this.isInLava()) {
-            base = Math.min(1.2F, Math.max(base, 1.0F)); // 1.0–1.2 feels good
-        }
-
-        this.setMaxUpStep(base);
-    }
-
-
-
     public double interpolate(double baby, double adult) {
         int dinosaurAge = this.dinosaurAge;
         int maxAge = this.dinosaur.getMaximumAge();
@@ -968,6 +990,13 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
             dinosaurAge = maxAge;
         }
         return (adult - baby) / maxAge * dinosaurAge + baby;
+    }
+    @Override
+    protected EntityDimensions getDefaultDimensions(Pose pose) {
+        float width = (float) this.interpolate(this.dinosaur.getBabySizeX(), this.dinosaur.getAdultSizeX());
+        float height = (float) this.interpolate(this.dinosaur.getBabySizeY(), this.dinosaur.getAdultSizeY());
+        float scale = this.attributes.getScaleModifier();
+        return EntityDimensions.fixed(width * scale, height * scale);
     }
 
     @Override
@@ -989,7 +1018,8 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
     public int getAmbientSoundInterval() {
         return 200;
     }
-
+    protected void onPostLoadFixup() {
+    }
     @Override
     public float getVoicePitch() {
         return (float) this.interpolate(2.5F, 1.0F) + ((this.random.nextFloat() - 0.5F) * 0.125F);
@@ -1059,15 +1089,33 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
         // Apply movement → animation
         this.walkAnimation.update(amount, 0.4F);
     }
+    private boolean isNaturalSpawnProtected() {
+        if (this.level() == null || this.level().isClientSide) {
+            return false;
+        }
 
+        if (!JurassicConfig.naturalspawningaddon) {
+            return false;
+        }
+
+        if (!this.naturalSpawnedDino) {
+            return false;
+        }
+
+        BlockPos spawn = this.level().getSharedSpawnPos();
+        double dx = this.getX() - (spawn.getX() + 0.5D);
+        double dz = this.getZ() - (spawn.getZ() + 0.5D);
+
+        return (dx * dx + dz * dz) <= (NATURAL_SPAWN_SAFE_RADIUS * NATURAL_SPAWN_SAFE_RADIUS);
+    }
     @Override
     public void aiStep() {
         super.aiStep();
 
-
-        if(!RebornConfig.allowCarcass && this.isCarcass) {
+        if (!JurassicConfig.allowCarcass && this.isCarcass) {
             this.remove(RemovalReason.DISCARDED);
         }
+
         if (this.getAttackTarget() instanceof DinosaurEntity entity && entity.isCarcass()) {
             var diet = this.getDinosaur().getDiet();
             boolean carnivore = diet.canEat(this, FoodType.MEAT) || diet.canEat(this, FoodType.FISH);
@@ -1076,29 +1124,24 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
             }
         }
 
-        if(!this.level().getGameRules().getBoolean(net.vit.jurassicreborn.common.util.GameRuleHandler.DINO_METABOLISM)) {
-            if(this.getMetabolism().getEnergy() < this.getMetabolism().getMaxEnergy()) {
+        if (!this.level().getGameRules().getBoolean(net.vit.jurassicreborn.common.util.GameRuleHandler.DINO_METABOLISM)) {
+            if (this.getMetabolism().getEnergy() < this.getMetabolism().getMaxEnergy()) {
                 this.getMetabolism().setEnergy(this.getMetabolism().getMaxEnergy());
             }
 
-            if(this.getMetabolism().getWater() < this.getMetabolism().getMaxWater()) {
+            if (this.getMetabolism().getWater() < this.getMetabolism().getMaxWater()) {
                 this.getMetabolism().setWater(this.getMetabolism().getMaxWater());
             }
         }
 
+        this.blocked = this.animation != null && EntityAnimation.getAnimation(this.animation).doesBlockMovement();
 
-        if(this.animation != null && EntityAnimation.getAnimation(this.animation).doesBlockMovement()) {
-            this.blocked = true;
-        } else {
-            this.blocked = false;
-        }
-        if (!this.level().isClientSide && this instanceof TyrannosaurusEntity) {  //TODO : ADD OTHER LARGE CARNIVORES
+        if (!this.level().isClientSide && this instanceof TyrannosaurusEntity) { // TODO : ADD OTHER LARGE CARNIVORES
             if (this.moveTicks > 0) {
                 this.moveTicks--;
                 double yaw = Math.toRadians(this.getYRot() - 90);
                 double motionX = Math.sin(-yaw) * 0.03 * 6.3;
                 double motionZ = Math.cos(yaw) * 0.03 * 6.3;
-                // Optionally zero out old movement:
                 this.setDeltaMovement(motionX, this.getDeltaMovement().y, motionZ);
             }
             if (this.moveTicks > -5) {
@@ -1108,7 +1151,8 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
                 }
             }
         }
-        if(this.isCarcass() /*&& (!(this instanceof TyrannosaurusEntity) || this.wasMoved) && !(this instanceof MicroraptorEntity)todo: other entity classes*/){
+
+        if (this.isCarcass()) {
             this.setDeltaMovement(0, this.getDeltaMovement().y, 0);
         }
 
@@ -1117,21 +1161,27 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
         }
 
         if (!this.level().isClientSide
+                && !this.isNaturalSpawnProtected()
                 && (dinosaur.getDiet().canEat(this, FoodType.MEAT) || dinosaur.getDiet().canEat(this, FoodType.FISH))
-                && (!RebornConfig.attackOnlyWhenHungry || this.getMetabolism().isHungry())
+                && (!JurassicConfig.attackOnlyWhenHungry || this.getMetabolism().isHungry())
                 && (this.getTarget() == null || !this.getTarget().isAlive())) {
 
             if (this.targetSearchCooldown-- <= 0) {
                 this.targetSearchCooldown = 30 + this.random.nextInt(20);
-                boolean requirePath = !(this.getNavigation() instanceof WaterBoundPathNavigation);
 
                 LivingEntity best = null;
                 double bestDist2 = Double.MAX_VALUE;
 
-                List<LivingEntity> nearby = this.level().getEntitiesOfClass(LivingEntity.class, this.getBoundingBox().inflate(12.0D), this::canEatEntity);
+                List<LivingEntity> nearby = this.level().getEntitiesOfClass(
+                        LivingEntity.class,
+                        this.getBoundingBox().inflate(12.0D),
+                        this::canEatEntity
+                );
+
                 for (LivingEntity cand : nearby) {
                     if (!this.attackTargets.stream().anyMatch(clazz -> clazz.isAssignableFrom(cand.getClass()))) continue;
                     if (!this.hasLineOfSight(cand)) continue;
+
                     double d2 = this.distanceToSqr(cand);
                     if (d2 < bestDist2) {
                         bestDist2 = d2;
@@ -1140,12 +1190,9 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
                 }
 
                 if (best != null) {
-                    if (!requirePath) {
+                    Path chasePath = this.getNavigation().createPath(best, 0);
+                    if (chasePath != null || this.distanceToSqr(best) <= 4.0D) {
                         this.setTarget(best);
-                    } else {
-                        if (this.getNavigation().createPath(best, 0) != null) {
-                            this.setTarget(best);
-                        }
                     }
                 }
             }
@@ -1161,30 +1208,32 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
                     }
                 }
             }
+
             if ((this.getAnimation() == EntityAnimation.LAYING_EGG.get() || this.getAnimation() == EntityAnimation.GIVING_BIRTH.get())
                     && this.animationTick == this.getAnimationLength() / 2) {
                 for (DinosaurEntity child : this.children) {
-                    Entity entity;
-                    // Set child variant from parent if applicable
+                    Entity spawned;
                     setVariantFromParent(child, this);
 
                     if (dinosaur.givesDirectBirth()) {
-                        entity = child;
+                        spawned = child;
                         child.setAge(0);
                         if (this.family != null) {
-                            this.family.addChild(entity.getUUID());
+                            this.family.addChild(spawned.getUUID());
                         }
                     } else {
-                        entity = new DinosaurEggEntity(ModEntities.DINOSAUR_EGG.get(), this.level(), child, this);
+                        spawned = new DinosaurEggEntity(ModEntities.DINOSAUR_EGG.get(), this.level(), child, this);
                     }
-                    entity.setPos(this.getX() + (this.random.nextFloat() - 0.5F), this.getY(), this.getZ() + (this.random.nextFloat() - 0.5F));
-                    this.level().addFreshEntity(entity);
+
+                    spawned.setPos(
+                            this.getX() + (this.random.nextFloat() - 0.5F),
+                            this.getY(),
+                            this.getZ() + (this.random.nextFloat() - 0.5F)
+                    );
+                    this.level().addFreshEntity(spawned);
                 }
             }
         }
-
-
-
 
         if (this.breeding != null) {
             if (this.tickCount % 10 == 0) {
@@ -1200,7 +1249,7 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
                         int clutchSize = this.random.nextInt(maxClutch - minClutch + 1) + minClutch;
                         for (int i = 0; i < clutchSize; i++) {
                             try {
-                                RegistryObject<? extends EntityType<? extends DinosaurEntity>> reg = CLASS_TYPE_LIST.get(this.getClass());
+                                Supplier<? extends EntityType<? extends DinosaurEntity>> reg = CLASS_TYPE_LIST.get(this.getClass());
                                 if (reg == null) {
                                     continue;
                                 }
@@ -1246,8 +1295,14 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
             this.updateGrowth();
 
             if (!this.level().isClientSide) {
-                if (this.metabolism.isHungry()) {
-                    List<ItemEntity> entitiesWithinAABB = this.level().getEntitiesOfClass(ItemEntity.class, this.getBoundingBox().inflate(1.0));
+                if (this.metabolism.isHungry() && this.nearbyFoodScanCooldown-- <= 0) {
+                    this.nearbyFoodScanCooldown = 10; // scan every 10 ticks
+
+                    List<ItemEntity> entitiesWithinAABB = this.level().getEntitiesOfClass(
+                            ItemEntity.class,
+                            this.getBoundingBox().inflate(1.0D)
+                    );
+
                     for (ItemEntity itemEntity : entitiesWithinAABB) {
                         Item item = itemEntity.getItem().getItem();
                         if (FoodHelper.isEdible(this, dinosaur.getDiet(), item)) {
@@ -1262,7 +1317,6 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
                             this.getMetabolism().eat(FoodHelper.getHealAmount(item));
                             FoodHelper.applyEatEffects(this, item);
                             this.heal(10.0F);
-
                             break;
                         }
                     }
@@ -1278,10 +1332,11 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
                 }
             }
 
-            if (!dinosaur.isMarineCreature() && !(this instanceof AmphibianDinosaurEntity) && !(this instanceof PenguinDinosaurEntity)) {
+            if (!dinosaur.isMarineCreature()
+                    && !(this instanceof AmphibianDinosaurEntity)
+                    && !(this instanceof PenguinDinosaurEntity)) {
                 this.handleLandDinosaurInFluid();
             }
-
 
             if (this.herd == null) {
                 this.herd = new Herd(this);
@@ -1289,9 +1344,17 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
 
             if (!this.level().isClientSide) {
                 if (this.order == Order.WANDER) {
-                    if (this.herd.state == Herd.State.IDLE && this.getAttackTarget() == null && !this.metabolism.isThirsty() && !this.metabolism.isHungry() && this.getNavigation().isDone()) {
-                        if (!this.isSleeping && !this.shouldSleep() && this.onGround() && !this.isInWater()
-                                && this.getAnimation() == EntityAnimation.IDLE.get() && this.random.nextInt(800) == 0) {
+                    if (this.herd.state == Herd.State.IDLE
+                            && this.getAttackTarget() == null
+                            && !this.metabolism.isThirsty()
+                            && !this.metabolism.isHungry()
+                            && this.getNavigation().isDone()) {
+                        if (!this.isSleeping
+                                && !this.shouldSleep()
+                                && this.onGround()
+                                && !this.isInWater()
+                                && this.getAnimation() == EntityAnimation.IDLE.get()
+                                && this.random.nextInt(800) == 0) {
                             this.setAnimation(EntityAnimation.RESTING.get());
                             this.isSittingNaturally = true;
                         }
@@ -1303,10 +1366,6 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
 
                 if (this == this.herd.leader && !this.dinosaur.isMarineCreature()) {
                     this.herd.update();
-                    //this.addTask(0, new DinosaurHerdWanderEntityAI(this.herd, 0.8D, 2, 25));
-                } else {
-                    //this.tasks.removeTask(new DinosaurWanderEntityAI(this, 0.8D, 2, 10));
-                    //this.tasks.removeTask(new DinosaurHerdWanderEntityAI(this.herd, 0.8D, 2, 25));
                 }
 
                 if (this.tickCount % 10 == 0) {
@@ -1320,9 +1379,9 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
                             Relationship chosenRelationship = null;
                             for (Relationship relationship : this.relationships) {
                                 if (relationship.getScore() > Relationship.MAX_SCORE * 0.9) {
-                                    DinosaurEntity entity = relationship.get(this);
-                                    if (entity != null && this.isMale != entity.isMale) {
-                                        chosen = entity;
+                                    DinosaurEntity related = relationship.get(this);
+                                    if (related != null && this.isMale != related.isMale) {
+                                        chosen = related;
                                         chosenRelationship = relationship;
                                         break;
                                     }
@@ -1372,16 +1431,13 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
             }
         }
 
-        if (!this.level().isClientSide) {
-//            this.lookHelper.onUpdateLook();
-        }
-
-        if(this.getDoesEatEggs()){
+        if (this.getDoesEatEggs()) {
             eatEggs();
         }
 
-        if(!this.level().isClientSide && this.tickCount % 20 == 0)
+        if (!this.level().isClientSide && this.tickCount % 20 == 0) {
             this.entityData.set(WATCHER_WAS_FED, false);
+        }
     }
 
     private void updateGrowth() {
@@ -1404,7 +1460,13 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
     @Override
     public void tick() {
         super.tick();
-
+        if (!this.level().isClientSide && this.isNaturalSpawnProtected() && this.getTarget() != null) {
+            super.setTarget(null);
+        }
+        if (!this.level().isClientSide && this.postLoadFixPending) {
+            this.postLoadFixPending = false;
+            this.onPostLoadFixup();
+        }
         // --- client anim system step (Citadel) ---
         if (level().isClientSide) {
             AnimationHandler.INSTANCE.updateAnimations(this);
@@ -1465,19 +1527,40 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
 
         // --- sync watchers (server) / pull watchers (client) ---
         if (!this.level().isClientSide) {
-            this.entityData.set(WATCHER_WAS_MOVED, this.wasMoved);
-            this.entityData.set(WATCHER_AGE, this.dinosaurAge);
-            this.entityData.set(WATCHER_IS_SLEEPING, this.isSleeping);
-            this.entityData.set(WATCHER_IS_CARCASS, this.isCarcass);
-            this.entityData.set(WATCHER_CURRENT_ORDER, (byte) this.order.ordinal());
-            this.entityData.set(WATCHER_OWNER_IDENTIFIER, this.owner != null ? this.owner.toString() : "");
-            this.entityData.set(WATCHER_IS_RUNNING, this.getSpeed() > this.getAttributeBaseValue(Attributes.MOVEMENT_SPEED));
+            boolean running = this.getSpeed() > this.getAttributeBaseValue(Attributes.MOVEMENT_SPEED);
+            String ownerId = this.owner != null ? this.owner.toString() : "";
+            byte orderByte = (byte) this.order.ordinal();
+
+            if (this.entityData.get(WATCHER_WAS_MOVED) != this.wasMoved) {
+                this.entityData.set(WATCHER_WAS_MOVED, this.wasMoved);
+            }
+            if (this.entityData.get(WATCHER_AGE) != this.dinosaurAge) {
+                this.entityData.set(WATCHER_AGE, this.dinosaurAge);
+            }
+            if (this.entityData.get(WATCHER_IS_SLEEPING) != this.isSleeping) {
+                this.entityData.set(WATCHER_IS_SLEEPING, this.isSleeping);
+            }
+            if (this.entityData.get(WATCHER_IS_CARCASS) != this.isCarcass) {
+                this.entityData.set(WATCHER_IS_CARCASS, this.isCarcass);
+            }
+            if (this.entityData.get(WATCHER_CURRENT_ORDER) != orderByte) {
+                this.entityData.set(WATCHER_CURRENT_ORDER, orderByte);
+            }
+            if (!Objects.equals(this.entityData.get(WATCHER_OWNER_IDENTIFIER), ownerId)) {
+                this.entityData.set(WATCHER_OWNER_IDENTIFIER, ownerId);
+            }
+            if (this.entityData.get(WATCHER_IS_RUNNING) != running) {
+                this.entityData.set(WATCHER_IS_RUNNING, running);
+            }
         } else {
             this.updateTailBuffer();
             this.wasMoved     = this.entityData.get(WATCHER_WAS_MOVED);
             this.dinosaurAge  = this.entityData.get(WATCHER_AGE);
             this.isSleeping   = this.entityData.get(WATCHER_IS_SLEEPING);
             this.isCarcass    = this.entityData.get(WATCHER_IS_CARCASS);
+            if (this.isCarcass && this.getAnimation() != EntityAnimation.DYING.get()) {
+                this.setAnimationSilently(EntityAnimation.DYING.get());
+            }
             String ownerStr   = this.entityData.get(WATCHER_OWNER_IDENTIFIER);
             this.order        = Order.values()[this.entityData.get(WATCHER_CURRENT_ORDER)];
             if (this.order == Order.SIT) {
@@ -1498,10 +1581,23 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
         }
 
         // --- periodic attribute/size refresh ---
-        if (this.tickCount % 20 == 0) {
+        GrowthStage currentStage = this.getGrowthStage();
+        boolean stageChanged = currentStage != this.lastGrowthStage;
+
+        if (this instanceof FlyingDinosaurEntity) {
+            boolean growthChanged = this.dinosaurAge != this.prevAge;
+            if (this.tickCount <= 1 || growthChanged) {
+                this.updateAttributes();
+                this.refreshDimensions();
+            }
+        } else if (this.tickCount <= 1 || stageChanged) {
             this.updateAttributes();
             this.refreshDimensions();
+            this.lastGrowthStage = currentStage;
+        } else if (!this.level().isClientSide && this.tickCount % 40 == 0) {
+            this.updateAttributes();
         }
+
 
         // --- orientation lock for carcass ---
         if (this.isCarcass) {
@@ -1590,11 +1686,11 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
 
     @Override
     public boolean isImmobile() {
-        return isMovementBlocked();
+        return this.isCarcass() || this.isSleeping() || this.order == Order.SIT;
     }
 
     public boolean isMovementBlocked() {
-        return this.isCarcass() || this.isSleeping() || blocked;
+        return this.isCarcass() || this.isSleeping() || this.order == Order.SIT;
     }
     @Override
     protected float tickHeadTurn(float angle, float distance) {
@@ -1621,10 +1717,7 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
         return false;
     }
 
-    @Override
-    public boolean canChangeDimensions() {
-        return true;
-    }
+
 
     public int getDinosaurAge() {
         return this.dinosaurAge;
@@ -1638,26 +1731,32 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
     }
 
 
-
-
-
-    @Override
-    protected void dropCustomDeathLoot(DamageSource pSource, int pLooting, boolean pRecentlyHit) {
-
-        if (pSource.is(DamageTypeTags.BYPASSES_INVULNERABILITY) && pSource.is(DamageTypeTags.BYPASSES_ARMOR)) {
-            return;
-        }
-        this.dropMeat(pSource.getEntity());
-
+    private void dropBones() {
         for (String bone : this.dinosaur.getBones()) {
-            this.dropStackWithGenetics(new ItemStack(ItemsUtil.getFreshDinosaurBone(this.dinosaur, bone)));
+            Item boneItem = ItemsUtil.getFreshDinosaurBone(this.dinosaur, bone);
+
+            if (boneItem == null) {
+                continue;
+            }
+
+            // EXACT same drop path as meat
+            this.dropStackWithGenetics(new ItemStack(boneItem, 1));
         }
     }
+
+    @Override
+    protected void dropAllDeathLoot(ServerLevel level, DamageSource source) {
+        // Intentionally empty.
+        // Carcass system handles all drops in hurt()
+    }
+
     private void dropStackWithGenetics(ItemStack stack) {
         // 1) Build a temporary source item carrying this entity's DNA (same fields/format as soft tissue)
         ItemStack src = ModItems.STORAGE_DISC.get().getDefaultInstance();
+        CompoundTag dnaTag = ItemStackNbtUtil.getOrCreateTag(src);
         new DinoDNA(this.dinosaur, this.geneticsQuality, this.genetics)
-                .writeToNBT(src.getOrCreateTag());
+                .writeToNBT(dnaTag);
+        ItemStackNbtUtil.setTag(src, dnaTag);
         StorageDiscItem.applyCustomModelData(src);
 
         // 2) Copy DNA to the real drop using the shared helper so NBT matches grinder output exactly
@@ -1692,7 +1791,7 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
         if (!this.level().isClientSide) {
             this.entityData.set(WATCHER_IS_CARCASS, this.isCarcass);
         }
-        if (carcass && RebornConfig.allowCarcass) {
+        if (carcass && JurassicConfig.allowCarcass) {
             this.setAnimation(EntityAnimation.DYING.get());
             this.carcassHealth = Mth.clamp(Math.max(1, (int) Math.sqrt(this.getBbWidth() * this.getBbHeight())), 0, 8);
             this.tickCount = 0;
@@ -1783,11 +1882,6 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
 
     public boolean isOwner(Player player) {
         return player.getUUID().equals(this.getOwner());
-    }
-
-    @Override
-    public boolean canBeLeashed(Player pPlayer) {
-        return !this.isLeashed() && (this.getBbWidth() < 1.5) && super.canBeLeashed(pPlayer);
     }
 
     public int getDNAQuality() {
@@ -1902,7 +1996,13 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
 
     public void setMale(boolean male) {
         this.isMale = male;
+        this.genderInitialized = true;
+
+        if (!this.level().isClientSide) {
+            this.entityData.set(WATCHER_IS_MALE, male);
+        }
     }
+
 
     public int getAgePercentage() {
         int age = this.getDinosaurAge();
@@ -1958,6 +2058,7 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
         nbt.putInt("BreedCooldown", this.breedCooldown);
         nbt.putInt("PregnantTime", this.pregnantTime);
         nbt.putBoolean("WasMoved", this.wasMoved);
+        nbt.putBoolean("NaturalSpawnedDino", this.naturalSpawnedDino);
         nbt.putInt("Variant", this.getVariant());
         this.metabolism.writeToNBT(nbt);
 
@@ -1965,7 +2066,7 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
             nbt.putString("OwnerUUID", this.owner.toString());
         }
 
-        this.inventory.writeToNBT(nbt);
+        this.inventory.writeToNBT(nbt, this.level().registryAccess());
 
         if (this.family != null && (this.family.getHead() == null || this.family.getHead().equals(this.getUUID()))) {
             CompoundTag familyTag = new CompoundTag();
@@ -2018,7 +2119,7 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
         this.setCarcass(nbt.getBoolean("IsCarcass"));
         this.geneticsQuality = nbt.getInt("DNAQuality");
         this.genetics = nbt.getString("Genetics");
-        this.isMale = nbt.getBoolean("IsMale");
+        this.setMale(nbt.getBoolean("IsMale"));
         this.growthSpeedOffset = nbt.getInt("GrowthSpeedOffset");
         this.stayAwakeTime = nbt.getInt("StayAwakeTime");
         this.setSleeping(nbt.getBoolean("IsSleeping"));
@@ -2037,6 +2138,7 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
         }
         this.breedCooldown = nbt.getInt("BreedCooldown");
         this.pregnantTime = nbt.getInt("PregnantTime");
+        this.naturalSpawnedDino = nbt.getBoolean("NaturalSpawnedDino");
         this.metabolism.readFromNBT(nbt);
 
         String ownerUUID = nbt.getString("OwnerUUID");
@@ -2050,7 +2152,7 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
             this.family = Family.readFromNBT(familyTag);
         }
 
-        this.inventory.readFromNBT(nbt);
+        this.inventory.readFromNBT(nbt, this.level().registryAccess());
 
         ListTag relationships = nbt.getList("Relationships", Tag.TAG_COMPOUND);
 
@@ -2082,56 +2184,68 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
 
         this.updateAttributes();
         this.refreshDimensions();
+        if (!this.level().isClientSide) {
+            syncDinosaurData();
+        }
 
-
+        if (this.isCarcass) {
+            this.setSleeping(false);
+            this.setAnimation(EntityAnimation.DYING.get());
+        }
         this.deserializing = false;
+        this.postLoadFixPending = true;
     }
 
     // Have to override this so that the IEntityAdditionalSpawnData methods work
     @Override
-    public Packet<ClientGamePacketListener> getAddEntityPacket() {
-        return NetworkHooks.getEntitySpawningPacket(this);
-    }
-
-    @Override
-    public void writeSpawnData(FriendlyByteBuf buffer) {
+    public void writeSpawnData(RegistryFriendlyByteBuf buffer) {
         buffer.writeInt(this.dinosaurAge);
         buffer.writeBoolean(this.isCarcass);
         buffer.writeInt(this.geneticsQuality);
         buffer.writeBoolean(this.isMale);
         buffer.writeInt(this.growthSpeedOffset);
         this.attributes.write(buffer);
-        if (this instanceof IHasVariants variantHolder) {
-            buffer.writeBoolean(true);
-            buffer.writeInt(variantHolder.getVariant());
-        } else {
-            buffer.writeBoolean(false);
-        }
+
+        // Always sync base variant
+        buffer.writeInt(this.getVariant());
     }
 
     @Override
-    public void readSpawnData(FriendlyByteBuf additionalData) {
-        this.dinosaurAge = additionalData.readInt();
-        this.isCarcass = additionalData.readBoolean();
-        this.geneticsQuality = additionalData.readInt();
-        this.isMale = additionalData.readBoolean();
-        this.growthSpeedOffset = additionalData.readInt();
-        this.attributes = DinosaurAttributes.from(additionalData);
-        boolean hasVariant = additionalData.readBoolean();
-        if (hasVariant && this instanceof IHasVariants variantHolder) {
-            variantHolder.setVariant(additionalData.readInt());
-        } else if (hasVariant) {
-            additionalData.readInt();
-        }
+    public void readSpawnData(RegistryFriendlyByteBuf buffer) {
+        this.dinosaurAge = buffer.readInt();
+        this.isCarcass = buffer.readBoolean();
+        this.geneticsQuality = buffer.readInt();
+        this.isMale = buffer.readBoolean();
+        this.growthSpeedOffset = buffer.readInt();
+        this.attributes = DinosaurAttributes.from(buffer);
+
+        // Always read base variant
+        this.setVariant(buffer.readInt());
+
         if (this.isCarcass) {
             this.setAnimation(EntityAnimation.DYING.get());
         } else {
             this.setAnimation(EntityAnimation.IDLE.get());
         }
 
-
         this.updateAttributes();
         this.refreshDimensions();
+    }
+
+
+    private CompoundTag getAttributesTag() {
+        CompoundTag tag = new CompoundTag();
+        if (this.attributes != null) {
+            this.attributes.writeToNBT(tag);
+        }
+        return tag;
+    }
+
+    private void syncDinosaurData() {
+        this.entityData.set(WATCHER_IS_MALE, this.isMale);
+        this.entityData.set(WATCHER_GENETICS_QUALITY, this.geneticsQuality);
+        this.entityData.set(WATCHER_GROWTH_SPEED_OFFSET, this.growthSpeedOffset);
+        this.entityData.set(WATCHER_ATTRIBUTES, getAttributesTag());
     }
 
 
@@ -2347,12 +2461,14 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
         return this.attackTargets;
     }
 
-    @org.jetbrains.annotations.Nullable
     @Override
-    public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance diff,
-                                        MobSpawnType reason, @Nullable SpawnGroupData spawnData,
-                                        @Nullable CompoundTag dataTag) {
-        SpawnGroupData out = super.finalizeSpawn(level, diff, reason, spawnData, dataTag);
+    public SpawnGroupData finalizeSpawn(
+            ServerLevelAccessor level,
+            DifficultyInstance diff,
+            MobSpawnType reason,
+            @Nullable SpawnGroupData spawnData
+    ) {
+        SpawnGroupData out = super.finalizeSpawn(level, diff, reason, spawnData);
 
         this.metabolism.setEnergy(this.metabolism.getMaxEnergy());
         this.metabolism.setWater(this.metabolism.getMaxWater());
@@ -2366,10 +2482,11 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
 
         this.setMale(this.random.nextBoolean());
 
-        this.refreshDimensions();
+        if (reason != MobSpawnType.CHUNK_GENERATION) {
+            this.refreshDimensions();
+        }
         return out;
     }
-
 
     public int getAttackCooldown() {
         return this.attackCooldown;
@@ -2426,13 +2543,12 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
         return this.entityData.get(WATCHER_IS_RUNNING);
     }
 
-    @Override
-    public boolean checkSpawnObstruction(LevelReader pLevel) {
-        if(!level().isClientSide())
-            return super.checkSpawnObstruction(pLevel) && this.level().dimensionType().equals(getServer().overworld().dimensionType());
-        return false;
-    }
-
+    //    @Override
+//    public boolean checkSpawnObstruction(LevelReader pLevel) {
+//        if(!level().isClientSide())
+//            return super.checkSpawnObstruction(pLevel) && this.level().dimensionType().equals(getServer().overworld().dimensionType());
+//        return false;
+//    }
     public boolean shouldEscapeWaterFast() {
         return true;
     }//so many things in this mod just make me go ***why*** - gamma_02
@@ -2549,6 +2665,7 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
         this.goalSelector.addGoal(0, new EscapeWireEntityAI(this));
         this.goalSelector.addGoal(0, new FeederEntityAI(this));
         this.goalSelector.addGoal(1, new PanicGoal(this, 1.25D));
+
         this.goalSelector.addGoal(1, new RespondToAttackEntityAI(this));
         this.goalSelector.addGoal(1, new TemptNonAdultEntityAI(this, 0.6D));
 
@@ -2578,7 +2695,6 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
         this.goalSelector.addGoal(2, new DrinkEntityAI(this));
         this.goalSelector.addGoal(1, new MateEntityAI(this));
         this.goalSelector.addGoal(3, new EatFoodItemEntityAI(this));
-        this.goalSelector.addGoal(2, new FeederEntityAI(this));
         this.goalSelector.addGoal(3, new CallAnimationAI(this));
         this.goalSelector.addGoal(3, new RoarAnimationAI(this));
         this.goalSelector.addGoal(3, new LookAnimationAI(this));
@@ -2598,79 +2714,110 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
 
     private static final int FEEDER_RANGE = 16;
     private static final int FEEDER_VERTICAL = 8;
+    public void rejectFeeder(@Nullable BlockPos pos, int cooldownTicks) {
+        if (pos != null) {
+            this.rejectedFeeder = pos.immutable();
+            this.rejectedFeederUntilTick = this.tickCount + cooldownTicks;
+        }
+        this.invalidateClosestFeeder();
+    }
 
-    public BlockPos getClosestFeeder() {
-        Level lvl = this.level();
-        if (lvl == null || lvl.isClientSide) {
-            return this.closestFeeder;
+    private boolean isRejectedFeeder(@Nullable BlockPos pos) {
+        if (pos == null || this.rejectedFeeder == null) {
+            return false;
         }
 
-        if (this.closestFeeder != null && this.isFeederUsable(this.closestFeeder)) {
-            BlockPos here = this.blockPosition();
-            if (this.closestFeeder.distSqr(here) <= (FEEDER_RANGE * FEEDER_RANGE)) {
-                return this.closestFeeder;
+        if (this.tickCount >= this.rejectedFeederUntilTick) {
+            this.rejectedFeeder = null;
+            this.rejectedFeederUntilTick = 0;
+            return false;
+        }
+
+        return this.rejectedFeeder.equals(pos);
+    }
+
+    private boolean isFeederInSearchWindow(BlockPos pos) {
+        BlockPos here = this.blockPosition();
+        return Math.abs(pos.getX() - here.getX()) <= this.getFeederSearchRadiusXZ()
+                && Math.abs(pos.getZ() - here.getZ()) <= this.getFeederSearchRadiusXZ()
+                && Math.abs(pos.getY() - here.getY()) <= this.getFeederSearchRadiusY();
+    }
+
+    public boolean canReachFeeder(BlockPos pos) {
+        Level lvl = this.level();
+        if (lvl == null || pos == null || !lvl.hasChunkAt(pos)) {
+            return false;
+        }
+
+        if (!this.isFeederInSearchWindow(pos) || this.isRejectedFeeder(pos)) {
+            return false;
+        }
+
+        BlockEntity be = lvl.getBlockEntity(pos);
+        if (!(be instanceof FeederBlockEntity feeder) || !feeder.canServe(this)) {
+            return false;
+        }
+
+        Vec3 target = feeder.getFeedingPos(this);
+        if (target == null) {
+            return false;
+        }
+
+        if (this instanceof FlyingDinosaurEntity) {
+            BlockPos.MutableBlockPos probe = BlockPos.containing(target.x, target.y, target.z).mutable();
+            while (probe.getY() > lvl.getMinBuildHeight() && lvl.getBlockState(probe).isAir()) {
+                probe.move(0, -1, 0);
             }
-            this.closestFeeder = null;
-        } else {
-            this.closestFeeder = null;
+            return !lvl.getBlockState(probe).isAir();
+        }
+
+        if (this.usesAquaticFeederLogic()) {
+            return true;
+        }
+
+        Path path = this.getNavigation().createPath(
+                BlockPos.containing(target.x, target.y, target.z),
+                0
+        );
+
+        return path != null;
+    }
+    public BlockPos getClosestFeeder() {
+        Level lvl = this.level();
+        if (lvl == null || lvl.isClientSide || !this.getMetabolism().isHungry()) {
+            return null;
+        }
+
+        if (this.closestFeeder != null && this.canReachFeeder(this.closestFeeder)) {
+            return this.closestFeeder;
         }
 
         if (this.tickCount < this.feederSearchTick) {
             return null;
         }
-        this.feederSearchTick = this.tickCount + 20 + this.getRandom().nextInt(20);
 
-        final int px = Mth.floor(this.getX());
-        final int py = Mth.floor(this.getY());
-        final int pz = Mth.floor(this.getZ());
-
-        final int minY = Math.max(lvl.getMinBuildHeight(), py - FEEDER_VERTICAL);
-        final int maxY = Math.min(lvl.getMaxBuildHeight() - 1, py + FEEDER_VERTICAL);
-
-        BlockPos.MutableBlockPos cursor = new BlockPos.MutableBlockPos();
-        BlockPos bestPos = null;
-        int bestDist = Integer.MAX_VALUE;
-        BlockPos bestWaitingPos = null;
-        int bestWaitingDist = Integer.MAX_VALUE;
-
-        for (int x = px - FEEDER_RANGE; x <= px + FEEDER_RANGE; x++) {
-            for (int y = minY; y <= maxY; y++) {
-                for (int z = pz - FEEDER_RANGE; z <= pz + FEEDER_RANGE; z++) {
-                    cursor.set(x, y, z);
-
-                    if (!lvl.hasChunkAt(cursor)) continue;
-
-                    BlockEntity be = lvl.getBlockEntity(cursor);
-                    if (!(be instanceof FeederBlockEntity feeder)) continue;
-
-                    if (!feeder.canFeedDinosaur(this) || !feeder.isStockedFor(this)) {
-                        continue;
-                    }
-
-                    boolean reservedForSelf = feeder.getFeeding() == this;
-                    boolean busy = !reservedForSelf && feeder.getFeeding() != null;
-                    boolean opening = feeder.openAnimation != 0 && !reservedForSelf;
-
-                    int dx = x - px, dy = y - py, dz = z - pz;
-                    int distance = dx * dx + dy * dy + dz * dz;
-
-                    if (!busy && !opening) {
-                        if (distance < bestDist) {
-                            bestDist = distance;
-                            bestPos = cursor.immutable();
-                        }
-                    } else if (distance < bestWaitingDist) {
-                        bestWaitingDist = distance;
-                        bestWaitingPos = cursor.immutable();
-                    }
-                }
-            }
+        int delay;
+        if (this instanceof FlyingDinosaurEntity) {
+            delay = 20;
+        } else if (this.usesAquaticFeederLogic()) {
+            delay = 24;
+        } else {
+            delay = 40;
         }
 
-        this.closestFeeder = bestPos != null ? bestPos : bestWaitingPos;
+        this.feederSearchTick = this.tickCount + delay + this.getRandom().nextInt(Math.max(1, delay / 2));
+
+        BlockPos found = FeederRegistry.findNearest(
+                lvl,
+                this.blockPosition(),
+                this,
+                this.getFeederSearchRadiusXZ(),
+                this.getFeederSearchRadiusY()
+        );
+
+        this.closestFeeder = (found != null && this.canReachFeeder(found)) ? found.immutable() : null;
         return this.closestFeeder;
     }
-
 
     private boolean isFeederUsable(BlockPos pos) {
         Level lvl = this.level();
@@ -2683,13 +2830,8 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
             return false;
         }
 
-        if (!feeder.canFeedDinosaur(this) || !feeder.isStockedFor(this)) {
-            return false;
-        }
-
-        return feeder.getFeeding() == null || feeder.getFeeding() == this;
+        return feeder.canServe(this);
     }
-
 
 
     @Override
@@ -2783,9 +2925,40 @@ public abstract class DinosaurEntity extends PathfinderMob implements IEntityAdd
         return new Vector3f();
     }
 
+    public void invalidateClosestFeeder() {
+        this.closestFeeder = null;
+        this.feederSearchTick = 0;
+    }
+    public void feedFromFeeder(ItemStack stack) {
+        if (stack == null || stack.isEmpty()) return;
 
+        Item item = stack.getItem();
+        this.getMetabolism().eat(FoodHelper.getHealAmount(item));
+        FoodHelper.applyEatEffects(this, item);
+        this.setAnimation(EntityAnimation.EATING.get());
 
-
+        if (!this.level().isClientSide) {
+            this.entityData.set(WATCHER_WAS_FED, true);
+        }
+    }
+    protected int getFeederSearchRadiusXZ() {
+        if (this instanceof FlyingDinosaurEntity) return 24;
+        if (this.usesAquaticFeederLogic()) return 20;
+        return 16;
+    }
+    public boolean usesAquaticFeederLogic() {
+        return !(this instanceof FlyingDinosaurEntity)
+                && this.canDinoSwim()
+                && (this.isInWaterOrBubble()
+                || this.isMarineCreature()
+                || this instanceof SwimmingDinosaurEntity
+                || this instanceof AmphibianDinosaurEntity);
+    }
+    protected int getFeederSearchRadiusY() {
+        if (this instanceof FlyingDinosaurEntity) return 12;
+        if (this.usesAquaticFeederLogic()) return 10;
+        return 6;
+    }
     public FieldGuideInfo getFieldGuideInfo() {
         return FieldGuideInfo.fromEntity(this);
     }

@@ -20,9 +20,7 @@ import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.client.renderer.texture.AbstractTexture;
 import net.minecraft.client.renderer.texture.MissingTextureAtlasSprite;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraft.resources.ResourceLocation;import net.neoforged.api.distmarker.Dist;import net.neoforged.api.distmarker.OnlyIn;
 
 import java.awt.*;
 import java.util.Random;
@@ -40,7 +38,10 @@ public class DinosaurRenderer extends LivingEntityRenderer<DinosaurEntity, Basic
 
     Color tint = new Color(0, 0, 0, 255);
 
-
+    @Override
+    protected boolean shouldShowName(DinosaurEntity entity) {
+        return entity.hasCustomName();
+    }
 
 
     public DinosaurRenderer(EntityRendererProvider.Context renderInfo, BasicEntityModel<DinosaurEntity> model, float shadowSize) {
@@ -169,7 +170,7 @@ public class DinosaurRenderer extends LivingEntityRenderer<DinosaurEntity, Basic
                 texPath.append("_female_skeleton");
             }
             texPath.append(".png");
-            return new ResourceLocation(JurassicReborn.MODID, texPath.toString());
+            return ResourceLocation.fromNamespaceAndPath(JurassicReborn.MODID, texPath.toString());
         }
 
         // Special-case textures for certain living dinosaurs
@@ -352,7 +353,7 @@ public class DinosaurRenderer extends LivingEntityRenderer<DinosaurEntity, Basic
                                             vc,
                                             packedLight,
                                             LivingEntityRenderer.getOverlayCoords(entity, 0.0F),
-                                            1.0F, 1.0F, 1.0F, 1.0F);
+                                            0xFFFFFFFF);
                                 }
     }
 }

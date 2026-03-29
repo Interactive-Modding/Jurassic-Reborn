@@ -37,7 +37,7 @@ public class IncubatorRenderer implements BlockEntityRenderer<IncubatorBlockEnti
         ResourceLocation texture;
         try {
             model = new TabulaModel(TabulaModelHelper.loadTabulaModel("/assets/jurassicreborn/models/entities/egg/tyrannosaurus"));
-            texture = new ResourceLocation(JurassicReborn.MODID, "textures/entities/egg/tyrannosaurus.png");
+            texture = ResourceLocation.fromNamespaceAndPath(JurassicReborn.MODID, "textures/entities/egg/tyrannosaurus.png");
         } catch (Exception e) {
             model = null;
             texture = null;
@@ -91,7 +91,7 @@ public class IncubatorRenderer implements BlockEntityRenderer<IncubatorBlockEnti
 
     private static ResourceLocation getEggTexture(Dinosaur dino) {
         if (dino != null) {
-            ResourceLocation texture = new ResourceLocation(JurassicReborn.MODID, "textures/entities/egg/" + dino.getName().toLowerCase(Locale.ENGLISH) + ".png");
+            ResourceLocation texture = ResourceLocation.fromNamespaceAndPath(JurassicReborn.MODID, "textures/entities/egg/" + dino.getName().toLowerCase(Locale.ENGLISH) + ".png");
             if (Minecraft.getInstance().getResourceManager().getResource(texture).isPresent()) {
                 return texture;
             }
@@ -120,7 +120,7 @@ public class IncubatorRenderer implements BlockEntityRenderer<IncubatorBlockEnti
             TabulaModel model = getEggModel(dino);
             ResourceLocation texture = getEggTexture(dino);
             var vertexConsumer = bufferSource.getBuffer(RenderType.entityCutoutNoCull(texture));
-            model.renderToBuffer(poseStack, vertexConsumer, packedLight, OverlayTexture.NO_OVERLAY, 1, 1, 1, 1);
+            model.renderToBuffer(poseStack, vertexConsumer, packedLight, OverlayTexture.NO_OVERLAY, 0xFFFFFFFF);
         }
 
         poseStack.popPose();

@@ -1,33 +1,23 @@
 package net.vit.jurassicreborn.common.util.networking;
 
-import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.Level;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.CapabilityManager;
-import net.minecraftforge.common.capabilities.CapabilityToken;
-import net.minecraftforge.common.capabilities.ICapabilitySerializable;
-import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.vit.jurassicreborn.common.paleopad.App;
 import net.vit.jurassicreborn.common.paleopad.AppHandler;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import javax.swing.text.html.parser.Entity;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 public class PlayerData {
     public static final String IDENTIFIER = "jurassicreborn:playerdata";
+    private static final Map<UUID, PlayerData> PLAYER_DATA = new HashMap<>();
 
     private final Map<String, CompoundTag> appdata = new HashMap<>();
     private final List<App> openApps = new ArrayList<>();
-
-    // --- Capability Hooks ---
 
     public void saveNBTData(CompoundTag nbt) {
         ListTag appDataList = new ListTag();
@@ -84,44 +74,59 @@ public class PlayerData {
         openApps.remove(app);
     }
 
-    // --- Capability getter ---
+    public CompoundTag toTag() {
+        CompoundTag tag = new CompoundTag();
+        saveNBTData(tag);
+        return tag;
+    }
 
-    /**
-     * Retrieve PlayerData from a player.
-     */
-    public static final Capability<PlayerData> CAPABILITY = CapabilityManager.get(new CapabilityToken<>(){});
+    public void loadFromTag(CompoundTag tag) {
+        loadNBTData(tag);
+    }
 
-    public static void attach(Player player, AttachCapabilitiesEvent<Entity> event) {
-        if (player instanceof Player) {
-            event.addCapability(new ResourceLocation("jurassicreborn", "playerdata"), new PlayerDataProvider());
+    private void loadFromPlayer(Player player) {
+        CompoundTag tag = player.getPersistentData().getCompound(IDENTIFIER);
+        if (!tag.isEmpty()) {
+            loadNBTData(tag);
         }
     }
 
-    // Get instance for this player
+    private void saveToPlayer(Player player) {
+        player.getPersistentData().put(IDENTIFIER, toTag());
+    }
+
     public static PlayerData get(Player player) {
-        return player.getCapability(CAPABILITY).orElseThrow(() -> new IllegalStateException("No PlayerData capability attached!"));
+        return PLAYER_DATA.computeIfAbsent(player.getUUID(), uuid -> {
+            PlayerData data = new PlayerData();
+            if (!player.level().isClientSide) {
+                data.loadFromPlayer(player);
+            }
+            return data;
+        });
     }
-    public static class PlayerDataProvider implements ICapabilitySerializable<CompoundTag> {
-        private final PlayerData instance = new PlayerData();
-        private final LazyOptional<PlayerData> optional = LazyOptional.of(() -> instance);
 
-        @Nonnull
-        @Override
-        public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> cap, @Nullable Direction side) {
-            return cap == CAPABILITY ? optional.cast() : LazyOptional.empty();
-        }
-
-        @Override
-        public CompoundTag serializeNBT() {
-            CompoundTag tag = new CompoundTag();
-            instance.saveNBTData(tag);
-            return tag;
-        }
-
-        @Override
-        public void deserializeNBT(CompoundTag nbt) {
-            instance.loadNBTData(nbt);
+    public static void save(Player player) {
+        PlayerData data = PLAYER_DATA.get(player.getUUID());
+        if (data != null) {
+            data.saveToPlayer(player);
         }
     }
 
+    public static void remove(Player player) {
+        PLAYER_DATA.remove(player.getUUID());
+    }
+
+    public static void copy(Player original, Player player) {
+        PlayerData originalData = PLAYER_DATA.get(original.getUUID());
+        if (originalData == null) {
+            originalData = new PlayerData();
+            originalData.loadFromPlayer(original);
+        }
+        PlayerData clone = new PlayerData();
+        clone.loadFromTag(originalData.toTag());
+        PLAYER_DATA.put(player.getUUID(), clone);
+        if (!player.level().isClientSide) {
+            clone.saveToPlayer(player);
+        }
+    }
 }

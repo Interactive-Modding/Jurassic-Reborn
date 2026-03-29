@@ -4,9 +4,7 @@ import com.github.alexthe666.citadel.client.model.AdvancedModelBox;
 import net.vit.jurassicreborn.client.model.AnimatableModel;
 import net.vit.jurassicreborn.client.render.entity.animation.EntityAnimator;
 
-import net.minecraft.client.Minecraft;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraft.client.Minecraft;import net.neoforged.api.distmarker.Dist;import net.neoforged.api.distmarker.OnlyIn;
 import net.vit.jurassicreborn.common.entities.DinosaurEntities.MamenchisaurusEntity;
 
 @OnlyIn(Dist.CLIENT)
@@ -69,7 +67,12 @@ public class MamenchisaurusAnimator extends EntityAnimator<MamenchisaurusEntity>
 
         AdvancedModelBox[] neckParts = new AdvancedModelBox[] { head,  neck11, neck10, neck9, neck8, neck7,neck6, neck5, neck4, neck3, neck2, neck1, body };
         AdvancedModelBox[] tailParts = new AdvancedModelBox[] { tail10, tail9, tail8, tail7, tail6,tail5, tail4, tail3, tail2, tail1 };
-        float delta = Minecraft.getInstance().getDeltaFrameTime();
+Minecraft mc = Minecraft.getInstance();
+
+float delta = mc.isPaused()
+        ? 0.0f
+        : mc.getTimer().getGameTimeDeltaPartialTick(false);
+
 
         LegArticulator.articulateQuadruped(entity, entity.legSolver, waist, neck1,
                 backLeftThigh, backLeftCalf, backRightThigh, backRightCalf, armLeft, lowerArmLeft, armRight, lowerArmRight,

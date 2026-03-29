@@ -1,6 +1,8 @@
 package net.vit.jurassicreborn.common.worldgen.structure;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.block.Blocks;
@@ -11,6 +13,7 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemp
 import net.minecraft.world.level.StructureManager;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
+import net.minecraft.world.level.storage.loot.LootTable;
 import net.vit.jurassicreborn.JurassicReborn;
 
 import java.util.HashMap;
@@ -22,18 +25,18 @@ import java.util.Map;
  */
 public class VisitorCentreGenerator extends StructureGenerator {
     private static final ResourceLocation STRUCTURE = JurassicReborn.resource("visitor_centre");
-    private static final Map<String, ResourceLocation> LOOT_TABLES = new HashMap<>();
+    private static final Map<String, ResourceKey<LootTable>> LOOT_TABLES = new HashMap<>();
     static {
-        LOOT_TABLES.put("GroundStorage", new ResourceLocation(JurassicReborn.MODID, "structure/visitor_centre/ground_storage"));
-        LOOT_TABLES.put("ControlRoom", new ResourceLocation(JurassicReborn.MODID, "structure/visitor_centre/control_room"));
-        LOOT_TABLES.put("Laboratory", new ResourceLocation(JurassicReborn.MODID, "structure/visitor_centre/laboratory"));
-        LOOT_TABLES.put("Cryonics", new ResourceLocation(JurassicReborn.MODID, "structure/visitor_centre/cryonics"));
-        LOOT_TABLES.put("Infirmary", new ResourceLocation(JurassicReborn.MODID, "structure/visitor_centre/infirmary"));
-        LOOT_TABLES.put("Garage", new ResourceLocation(JurassicReborn.MODID, "structure/visitor_centre/garage"));
-        LOOT_TABLES.put("StaffDorms", new ResourceLocation(JurassicReborn.MODID, "structure/visitor_centre/staff_dorms"));
-        LOOT_TABLES.put("Kitchen", new ResourceLocation(JurassicReborn.MODID, "structure/visitor_centre/kitchen"));
-        LOOT_TABLES.put("DormTower", new ResourceLocation(JurassicReborn.MODID, "structure/visitor_centre/dorm_tower"));
-        LOOT_TABLES.put("DiningHall", new ResourceLocation(JurassicReborn.MODID, "structure/visitor_centre/dining_hall"));
+        LOOT_TABLES.put("GroundStorage", ResourceKey.create(Registries.LOOT_TABLE, ResourceLocation.parse(JurassicReborn.MODID + ":" + "structure/visitor_centre/ground_storage")));
+        LOOT_TABLES.put("ControlRoom", ResourceKey.create(Registries.LOOT_TABLE, ResourceLocation.parse(JurassicReborn.MODID + ":" + "structure/visitor_centre/control_room")));
+        LOOT_TABLES.put("Laboratory", ResourceKey.create(Registries.LOOT_TABLE, ResourceLocation.parse(JurassicReborn.MODID + ":" + "structure/visitor_centre/laboratory")));
+        LOOT_TABLES.put("Cryonics", ResourceKey.create(Registries.LOOT_TABLE, ResourceLocation.parse(JurassicReborn.MODID + ":" + "structure/visitor_centre/cryonics")));
+        LOOT_TABLES.put("Infirmary", ResourceKey.create(Registries.LOOT_TABLE, ResourceLocation.parse(JurassicReborn.MODID + ":" + "structure/visitor_centre/infirmary")));
+        LOOT_TABLES.put("Garage", ResourceKey.create(Registries.LOOT_TABLE, ResourceLocation.parse(JurassicReborn.MODID + ":" + "structure/visitor_centre/garage")));
+        LOOT_TABLES.put("StaffDorms", ResourceKey.create(Registries.LOOT_TABLE, ResourceLocation.parse(JurassicReborn.MODID + ":" + "structure/visitor_centre/staff_dorms")));
+        LOOT_TABLES.put("Kitchen", ResourceKey.create(Registries.LOOT_TABLE, ResourceLocation.parse(JurassicReborn.MODID + ":" + "structure/visitor_centre/kitchen")));
+        LOOT_TABLES.put("DormTower", ResourceKey.create(Registries.LOOT_TABLE, ResourceLocation.parse(JurassicReborn.MODID + ":" + "structure/visitor_centre/dorm_tower")));
+        LOOT_TABLES.put("DiningHall", ResourceKey.create(Registries.LOOT_TABLE, ResourceLocation.parse(JurassicReborn.MODID + ":" + "structure/visitor_centre/dining_hall")));
     }
 
     public VisitorCentreGenerator(RandomSource rand) {
@@ -53,7 +56,7 @@ public class VisitorCentreGenerator extends StructureGenerator {
         for (StructureTemplate.StructureBlockInfo info : dataBlocks) {
             if (info.nbt() == null) continue;
             String type = info.nbt().getString("metadata");
-            ResourceLocation loot = LOOT_TABLES.get(type);
+            ResourceKey<LootTable> loot = LOOT_TABLES.get(type);
             if (loot != null) {
                 BlockPos infoPos = info.pos();
                 level.setBlock(infoPos, Blocks.AIR.defaultBlockState(), 3);

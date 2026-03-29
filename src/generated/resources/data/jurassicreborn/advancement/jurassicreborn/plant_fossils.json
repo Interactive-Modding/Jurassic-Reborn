@@ -1,0 +1,154 @@
+{
+  "parent": "jurassicreborn:jurassicreborn/root",
+  "criteria": {
+    "petrified_araucaria_log": {
+      "conditions": {
+        "items": [
+          {
+            "items": "jurassicreborn:petrified_araucaria_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "petrified_calamites_log": {
+      "conditions": {
+        "items": [
+          {
+            "items": "jurassicreborn:petrified_calamites_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "petrified_ginkgo_log": {
+      "conditions": {
+        "items": [
+          {
+            "items": "jurassicreborn:petrified_ginkgo_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "petrified_magnolia_log": {
+      "conditions": {
+        "items": [
+          {
+            "items": "jurassicreborn:petrified_magnolia_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "petrified_phoenix_log": {
+      "conditions": {
+        "items": [
+          {
+            "items": "jurassicreborn:petrified_phoenix_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "petrified_psaronius_log": {
+      "conditions": {
+        "items": [
+          {
+            "items": "jurassicreborn:petrified_psaronius_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "plant_fossil": {
+      "conditions": {
+        "items": [
+          {
+            "items": "jurassicreborn:plant_fossil"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "plant_fossil_0": {
+      "conditions": {
+        "items": [
+          {
+            "items": "jurassicreborn:plant_fossil_0"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "plant_fossil_1": {
+      "conditions": {
+        "items": [
+          {
+            "items": "jurassicreborn:plant_fossil_1"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "plant_fossil_2": {
+      "conditions": {
+        "items": [
+          {
+            "items": "jurassicreborn:plant_fossil_2"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "plant_fossil_3": {
+      "conditions": {
+        "items": [
+          {
+            "items": "jurassicreborn:plant_fossil_3"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "twig_fossil": {
+      "conditions": {
+        "items": [
+          {
+            "items": "jurassicreborn:twig_fossil"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.jurassicreborn.plant_fossils.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "jurassicreborn:flora_fossil"
+    },
+    "title": {
+      "translate": "advancements.jurassicreborn.plant_fossils.title"
+    }
+  },
+  "requirements": [
+    [
+      "plant_fossil",
+      "plant_fossil_0",
+      "plant_fossil_1",
+      "plant_fossil_2",
+      "plant_fossil_3",
+      "twig_fossil",
+      "petrified_ginkgo_log",
+      "petrified_psaronius_log",
+      "petrified_calamites_log",
+      "petrified_araucaria_log",
+      "petrified_magnolia_log",
+      "petrified_phoenix_log"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

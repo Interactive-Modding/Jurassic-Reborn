@@ -1,64 +1,108 @@
 package net.vit.jurassicreborn.common.network;
 
-import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.client.Minecraft;
+import net.minecraft.core.Holder;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.RecordItem;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.fml.DistExecutor;
-import net.minecraftforge.network.NetworkEvent;
+import net.minecraft.world.item.JukeboxSong;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
+import net.neoforged.neoforge.network.handling.IPayloadContext;
+import net.vit.jurassicreborn.JurassicReborn;
+import net.vit.jurassicreborn.client.sounds.CarLoopSound;
 import net.vit.jurassicreborn.common.entities.vehicle.VehicleEntity;
-import java.util.function.Supplier;
 
-public class CarEntityPlayRecord {
-    private final int entityId;
-    private final ItemStack record;
+import java.util.Optional;
 
-    public CarEntityPlayRecord(int entityId, ItemStack record) {
-        this.entityId = entityId;
-        this.record = record.copy();
+public record CarEntityPlayRecord(int entityId, ItemStack record) implements CustomPacketPayload {
+
+    public static final CustomPacketPayload.Type<CarEntityPlayRecord> TYPE =
+            new CustomPacketPayload.Type<>(ResourceLocation.fromNamespaceAndPath(JurassicReborn.MODID, "car_play_record"));
+
+    public static final StreamCodec<RegistryFriendlyByteBuf, CarEntityPlayRecord> STREAM_CODEC = new StreamCodec<>() {
+        @Override
+        public CarEntityPlayRecord decode(RegistryFriendlyByteBuf buf) {
+            int entityId = buf.readInt();
+            boolean hasRecord = buf.readBoolean();
+            ItemStack record = hasRecord ? ItemStack.STREAM_CODEC.decode(buf) : ItemStack.EMPTY;
+            return new CarEntityPlayRecord(entityId, record);
+        }
+
+        @Override
+        public void encode(RegistryFriendlyByteBuf buf, CarEntityPlayRecord msg) {
+            buf.writeInt(msg.entityId());
+            boolean hasRecord = !msg.record().isEmpty();
+            buf.writeBoolean(hasRecord);
+            if (hasRecord) {
+                ItemStack.STREAM_CODEC.encode(buf, msg.record());
+            }
+        }
+    };
+
+    @Override
+    public CustomPacketPayload.Type<CarEntityPlayRecord> type() {
+        return TYPE;
     }
 
-    public static void encode(CarEntityPlayRecord msg, FriendlyByteBuf buf) {
-        buf.writeInt(msg.entityId);
-        buf.writeItem(msg.record);
-    }
-
-    public static CarEntityPlayRecord decode(FriendlyByteBuf buf) {
-        return new CarEntityPlayRecord(buf.readInt(), buf.readItem());
-    }
-
-
-    public static void handle(CarEntityPlayRecord msg, Supplier<NetworkEvent.Context> ctx) {
-        ctx.get().enqueueWork(() ->
-                DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> Client.handle(msg))
-        );
-        ctx.get().setPacketHandled(true);
+    public static void handle(CarEntityPlayRecord msg, IPayloadContext ctx) {
+        ctx.enqueueWork(() -> Client.handle(msg));
     }
 
     @OnlyIn(Dist.CLIENT)
     private static class Client {
         static void handle(CarEntityPlayRecord msg) {
-            var mc = net.minecraft.client.Minecraft.getInstance();
+            Minecraft mc = Minecraft.getInstance();
             if (mc.level == null) return;
 
-            Entity e = mc.level.getEntity(msg.entityId);
+            Entity e = mc.level.getEntity(msg.entityId());
             if (!(e instanceof VehicleEntity car)) return;
 
-            if (!(msg.record.getItem() instanceof RecordItem rec)) return;
+            car.setStationItem(msg.record());
 
-//            // stop previous loop
-//            if (car.sound != null) car.sound.stop();
-//
-//            car.sound = new CarLoopSound(
-//                    car,
-//                    rec.getSound(),
-//                    SoundSource.RECORDS,
-//                    v -> v.getItem().is(rec)   // play only while the same disc is still inside
-//            );
-//            mc.getSoundManager().play(car.sound);
+            if (msg.record().isEmpty() || car.getControllingPassenger() == null) {
+                if (car.stationSound != null) {
+                    mc.getSoundManager().stop(car.stationSound);
+                    car.stationSound = null;
+                }
+                return;
+            }
+
+            Optional<Holder<JukeboxSong>> songHolder = JukeboxSong.fromStack(
+                    mc.level.registryAccess(), msg.record()
+            );
+            if (songHolder.isEmpty()) return;
+
+            JukeboxSong song = songHolder.get().value();
+
+            if (car.stationSound != null) {
+                mc.getSoundManager().stop(car.stationSound);
+                car.stationSound = null;
+            }
+
+            car.stationSound = new CarLoopSound(
+                    car,
+                    song.soundEvent().value(),
+                    SoundSource.RECORDS,
+                    v -> !v.isRemoved() && !v.getStationItem().isEmpty() && v.getControllingPassenger() != null,
+                    true
+            );
+            mc.getSoundManager().play(car.stationSound);
+
+            if (mc.player != null && mc.player.getVehicle() == car) {
+                mc.player.displayClientMessage(
+                        Component.translatable(
+                                "message.jurassicreborn.vehicle.station",
+                                song.description()
+                        ),
+                        true
+                );
+            }
         }
     }
 }

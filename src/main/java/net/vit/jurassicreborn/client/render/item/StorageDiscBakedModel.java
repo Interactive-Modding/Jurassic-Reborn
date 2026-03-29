@@ -4,9 +4,11 @@ import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.minecraft.client.multiplayer.ClientLevel; // <-- use ClientLevel
 import net.minecraft.client.renderer.block.model.ItemOverrides;
 import net.minecraft.client.resources.model.BakedModel;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.client.model.BakedModelWrapper;
+import net.minecraft.world.item.component.CustomModelData;
+import net.neoforged.neoforge.client.model.BakedModelWrapper;
 import org.jetbrains.annotations.Nullable;
 
 /**
@@ -29,7 +31,10 @@ public final class StorageDiscBakedModel extends BakedModelWrapper<BakedModel> {
 
     private BakedModel resolveModel(ItemStack stack, @Nullable ClientLevel level,
                                     @Nullable LivingEntity entity, int seed) {
-        int modelId = stack.hasTag() ? stack.getTag().getInt("CustomModelData") : 0;
+
+        CustomModelData cmd = stack.get(DataComponents.CUSTOM_MODEL_DATA);
+        int modelId = cmd != null ? cmd.value() : 0;
+
         if (modelId > 0) {
             BakedModel model = variantModels.get(modelId);
             if (model != null) {
@@ -38,6 +43,7 @@ public final class StorageDiscBakedModel extends BakedModelWrapper<BakedModel> {
         }
         return originalModel;
     }
+
 
     private final class Overrides extends ItemOverrides {
         private final ItemOverrides parent;

@@ -1,5 +1,6 @@
 package net.vit.jurassicreborn.common.blocks.entities.fence;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -14,19 +15,36 @@ import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.vit.jurassicreborn.common.blocks.ModBlocks;
 import org.jetbrains.annotations.Nullable;
 
 /** Modern 1.19.2 rewrite of the electric fence base with fully reactive neighbour logic. */
 public class ElectricFenceBaseBlock extends BaseEntityBlock implements SimpleWaterloggedBlock {
+
+    public static final MapCodec<ElectricFenceBaseBlock> LOW_CODEC =
+            MapCodec.unit(() -> ModBlocks.LOW_SECURITY_FENCE_BASE.get());
+    public static final MapCodec<ElectricFenceBaseBlock> MED_CODEC =
+            MapCodec.unit(() -> ModBlocks.MED_SECURITY_FENCE_BASE.get());
+    public static final MapCodec<ElectricFenceBaseBlock> HIGH_CODEC =
+            MapCodec.unit(() -> ModBlocks.HIGH_SECURITY_FENCE_BASE.get());
+
+    @Override
+    protected MapCodec<? extends BaseEntityBlock> codec() {
+        return switch (type) {
+            case LOW -> LOW_CODEC;
+            case MED -> MED_CODEC;
+            case HIGH -> HIGH_CODEC;
+        };
+    }
 
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
     public static final BooleanProperty POLE = BooleanProperty.create("pole");
@@ -42,7 +60,7 @@ public class ElectricFenceBaseBlock extends BaseEntityBlock implements SimpleWat
     private final FenceType type;
 
     public ElectricFenceBaseBlock(FenceType type) {
-        super(Properties.copy(Blocks.IRON_BLOCK).sound(SoundType.METAL).strength(3.5F).noOcclusion());
+        super(Properties.ofFullCopy(Blocks.IRON_BLOCK).sound(SoundType.METAL).strength(3.5F).noOcclusion());
         this.type = type;
         registerDefaultState(stateDefinition.any()
                 .setValue(FACING, Direction.NORTH)

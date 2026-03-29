@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    "jurassicreborn:araucaria_log",
+    "jurassicreborn:stripped_araucaria_log",
+    "jurassicreborn:magnolia_log",
+    "jurassicreborn:stripped_magnolia_log",
+    "jurassicreborn:ginkgo_log",
+    "jurassicreborn:stripped_ginkgo_log",
+    "jurassicreborn:calamites_log",
+    "jurassicreborn:stripped_calamites_log",
+    "jurassicreborn:phoenix_log",
+    "jurassicreborn:stripped_phoenix_log",
+    "jurassicreborn:psaronius_log",
+    "jurassicreborn:stripped_psaronius_log"
+  ]
+}

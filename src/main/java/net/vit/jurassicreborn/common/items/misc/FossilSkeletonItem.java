@@ -1,13 +1,11 @@
 package net.vit.jurassicreborn.common.items.misc;
 
-import net.vit.jurassicreborn.client.JurassicClient;
 import net.vit.jurassicreborn.common.blocks.ModBlocks;
 import net.vit.jurassicreborn.common.blocks.entities.ActionFigureBlockEntity;
 import net.vit.jurassicreborn.common.entities.Dinosaurs.Dinosaur;
 import net.vit.jurassicreborn.common.util.LangUtil;
 import net.vit.jurassicreborn.common.items.misc.SkeletonPoseHelper;
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -29,16 +27,13 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.LevelChunk;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.client.extensions.common.IClientItemExtensions;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.Objects;
 import java.util.Properties;
-import java.util.function.Consumer;
+import net.vit.jurassicreborn.common.util.ItemStackNbtUtil;
 
 /**
  * Item representing a fossilized dinosaur skeleton display figure.
@@ -61,24 +56,11 @@ public class FossilSkeletonItem extends Item {
     @Override
     public ItemStack getDefaultInstance() {
         ItemStack stack = super.getDefaultInstance();
-        CompoundTag tag = stack.getOrCreateTag();
+        CompoundTag tag = ItemStackNbtUtil.getOrCreateTag(stack);
         tag.putBoolean(TAG_FOSSILE, true);
         tag.putByte(TAG_VARIANT, (byte)0);
-        stack.setTag(tag);
+        ItemStackNbtUtil.setTag(stack, tag);
         return stack;
-    }
-
-    @Override
-    @OnlyIn(Dist.CLIENT)
-    public void initializeClient(@NotNull Consumer<IClientItemExtensions> consumer) {
-        super.initializeClient(consumer);
-        IClientItemExtensions prop = new IClientItemExtensions() {
-            @Override
-            public BlockEntityWithoutLevelRenderer getCustomRenderer() {
-                return JurassicClient.displayBlockRendererWithoutLevel;
-            }
-        };
-        consumer.accept(prop);
     }
 
     public boolean isSkeleton() {
@@ -116,12 +98,12 @@ public class FossilSkeletonItem extends Item {
     }
 
     public int getGender(ItemStack stack) {
-        CompoundTag tag = stack.getOrCreateTag();
+        CompoundTag tag = ItemStackNbtUtil.getOrCreateTag(stack);
         if (tag.contains("Gender")) {
             return getGender(tag.getString("Gender"));
         }
         tag.putString("Gender", "random");
-        stack.setTag(tag);
+        ItemStackNbtUtil.setTag(stack, tag);
         return 0;
     }
 
@@ -148,9 +130,9 @@ public class FossilSkeletonItem extends Item {
     public int changeGender(ItemStack stack) {
         int gender = getGender(stack);
         int newGender = (gender + 1) % 3;
-        CompoundTag stackTag = stack.getOrCreateTag();
+        CompoundTag stackTag = ItemStackNbtUtil.getOrCreateTag(stack);
         stackTag.putString("Gender", getGender(newGender));
-        stack.setTag(stackTag);
+        ItemStackNbtUtil.setTag(stack, stackTag);
         return newGender;
     }
 
@@ -163,10 +145,10 @@ public class FossilSkeletonItem extends Item {
     }
 
     public boolean isFossile(ItemStack stack) {
-        CompoundTag tag = stack.getOrCreateTag();
+        CompoundTag tag = ItemStackNbtUtil.getOrCreateTag(stack);
         if (!tag.contains(TAG_FOSSILE)) {
             tag.putBoolean(TAG_FOSSILE, true);
-            stack.setTag(tag);
+            ItemStackNbtUtil.setTag(stack, tag);
         }
         return tag.getBoolean(TAG_FOSSILE);
     }
@@ -186,7 +168,7 @@ public class FossilSkeletonItem extends Item {
     }
 
     @Override
-    public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag) {
+    public void appendHoverText(@NotNull ItemStack stack, Item.TooltipContext context, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag) {
         tooltip.add(Component.translatable("lore.change_pose").withStyle(ChatFormatting.BLUE));
     }
 
@@ -209,10 +191,10 @@ public class FossilSkeletonItem extends Item {
     }
 
     public int getPose(ItemStack stack) {
-        CompoundTag tag = stack.getOrCreateTag();
+        CompoundTag tag = ItemStackNbtUtil.getOrCreateTag(stack);
         if (!tag.contains(TAG_VARIANT)) {
             tag.putByte(TAG_VARIANT, (byte)0);
-            stack.setTag(tag);
+            ItemStackNbtUtil.setTag(stack, tag);
         }
         return tag.getByte(TAG_VARIANT);
     }
@@ -221,9 +203,9 @@ public class FossilSkeletonItem extends Item {
         List<String> poses = SkeletonPoseHelper.getPoseNames(this.getDinosaur(stack));
         int pose = getPose(stack);
         int newPose = (pose + 1) % poses.size();
-        CompoundTag tag = stack.getOrCreateTag();
+        CompoundTag tag = ItemStackNbtUtil.getOrCreateTag(stack);
         tag.putByte(TAG_VARIANT, (byte)newPose);
-        stack.setTag(tag);
+        ItemStackNbtUtil.setTag(stack, tag);
         return newPose;
     }
 

@@ -2,73 +2,71 @@ package net.vit.jurassicreborn.common.network;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraftforge.network.NetworkEvent;
-import net.minecraftforge.network.NetworkDirection;
-import net.minecraftforge.network.PacketDistributor;
-import net.minecraftforge.network.simple.SimpleChannel;
+import net.neoforged.neoforge.network.handling.IPayloadContext;
+import net.vit.jurassicreborn.JurassicReborn;
 import net.vit.jurassicreborn.common.entities.item.PaddockSignEntity;
 
-import java.util.function.Supplier;
+public record PaddockSignPlacePacket(BlockPos pos, Direction face, InteractionHand hand, int dinosaurId)
+        implements CustomPacketPayload {
+    public static final Type<PaddockSignPlacePacket> TYPE = new Type<>(JurassicReborn.resource("paddock_sign_place"));
+    public static final StreamCodec<RegistryFriendlyByteBuf, PaddockSignPlacePacket> STREAM_CODEC = new StreamCodec<>() {
+        @Override
+        public PaddockSignPlacePacket decode(RegistryFriendlyByteBuf buf) {
+            BlockPos pos = buf.readBlockPos();
+            Direction face = buf.readEnum(Direction.class);
+            InteractionHand hand = buf.readEnum(InteractionHand.class);
+            int id = buf.readInt();
+            return new PaddockSignPlacePacket(pos, face, hand, id);
+        }
 
-public class PaddockSignPlacePacket {
-    private final BlockPos pos;
-    private final Direction face;
-    private final InteractionHand hand;
-    private final int dinosaurId;
+        @Override
+        public void encode(RegistryFriendlyByteBuf buf, PaddockSignPlacePacket msg) {
+            buf.writeBlockPos(msg.pos());
+            buf.writeEnum(msg.face());
+            buf.writeEnum(msg.hand());
+            buf.writeInt(msg.dinosaurId());
+        }
+    };
 
-    public PaddockSignPlacePacket(BlockPos pos, Direction face, InteractionHand hand, int dinosaurId) {
-        this.pos = pos;
-        this.face = face;
-        this.hand = hand;
-        this.dinosaurId = dinosaurId;
+    @Override
+    public Type<? extends CustomPacketPayload> type() {
+        return TYPE;
     }
 
-    public static void encode(PaddockSignPlacePacket pkt, FriendlyByteBuf buf) {
-        buf.writeBlockPos(pkt.pos);
-        buf.writeEnum(pkt.face);
-        buf.writeEnum(pkt.hand);
-        buf.writeInt(pkt.dinosaurId);
-    }
-
-    public static PaddockSignPlacePacket decode(FriendlyByteBuf buf) {
-        BlockPos pos = buf.readBlockPos();
-        Direction face = buf.readEnum(Direction.class);
-        InteractionHand hand = buf.readEnum(InteractionHand.class);
-        int id = buf.readInt();
-        return new PaddockSignPlacePacket(pos, face, hand, id);
-    }
-
-    public static void handle(PaddockSignPlacePacket pkt, Supplier<NetworkEvent.Context> ctx) {
-        ctx.get().enqueueWork(() -> {
-            ServerPlayer sender = ctx.get().getSender();
-            if (sender == null) return;
+    public static void handle(PaddockSignPlacePacket pkt, IPayloadContext ctx) {
+        ctx.enqueueWork(() -> {
+            if (!(ctx.player() instanceof ServerPlayer sender)) {
+                return;
+            }
             Level world = sender.level();
-            BlockPos spawnPos = pkt.pos.relative(pkt.face);
+            BlockPos spawnPos = pkt.pos().relative(pkt.face());
 
-            if (world.isClientSide) return;
-            if (!world.getBlockState(spawnPos).isAir()) return;
+            if (world.isClientSide) {
+                return;
+            }
+            if (!world.getBlockState(spawnPos).isAir()) {
+                return;
+            }
 
-            // spawn the hanging sign
             PaddockSignEntity sign = new PaddockSignEntity(
-                    (net.minecraft.world.level.Level)world,
-                    pkt.pos,
-                    pkt.face,
-                    pkt.dinosaurId
+                    world,
+                    pkt.pos(),
+                    pkt.face(),
+                    pkt.dinosaurId()
             );
             world.addFreshEntity(sign);
 
-            // consume one item
-            ItemStack held = sender.getItemInHand(pkt.hand);
+            ItemStack held = sender.getItemInHand(pkt.hand());
             if (!sender.getAbilities().instabuild) {
                 held.shrink(1);
             }
         });
-        ctx.get().setPacketHandled(true);
     }
 }

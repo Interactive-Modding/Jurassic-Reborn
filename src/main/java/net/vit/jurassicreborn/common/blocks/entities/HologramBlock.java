@@ -1,13 +1,16 @@
 package net.vit.jurassicreborn.common.blocks.entities;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.RenderShape;
@@ -23,9 +26,8 @@ import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.fml.DistExecutor;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import net.vit.jurassicreborn.client.screens.HologramSelectScreen;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -51,22 +53,23 @@ public class HologramBlock extends Block implements EntityBlock {
         return RenderShape.ENTITYBLOCK_ANIMATED;
     }
 
-    @Override
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         return SHAPE;
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+    public InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hit
+    ) {
         if (level.isClientSide) {
             openClientGui(pos);
             return InteractionResult.SUCCESS;
         }
+
         return InteractionResult.CONSUME;
     }
 
     private void openClientGui(BlockPos pos) {
-        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> doOpenScreen(pos));
+        doOpenScreen(pos);
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -101,10 +104,8 @@ public class HologramBlock extends Block implements EntityBlock {
             return;
         }
 
-        CompoundTag tag = stack.getTagElement("BlockEntityTag");
-        if (tag != null) {
-            hologram.applySettingsFromTag(tag, true);
-        }
+        CustomData data = stack.get(DataComponents.BLOCK_ENTITY_DATA);
+        if (data != null) {CompoundTag tag = data.copyTag();hologram.applySettingsFromTag(tag, true);}
     }
 
     private ItemStack createItemStack(HologramBlockEntity hologram) {
@@ -114,12 +115,11 @@ public class HologramBlock extends Block implements EntityBlock {
         blockEntityTag.putInt(HologramBlockEntity.TAG_POSE_INDEX, hologram.getPoseIndex());
         blockEntityTag.putBoolean(HologramBlockEntity.TAG_ROTATING, hologram.isRotating());
         blockEntityTag.putInt(HologramBlockEntity.TAG_ROTATION, hologram.getRot());
-        stack.addTagElement("BlockEntityTag", blockEntityTag);
+        stack.set(DataComponents.BLOCK_ENTITY_DATA, CustomData.of(blockEntityTag));
         return stack;
     }
 
-    @Override
-    public ItemStack getCloneItemStack(BlockState state, HitResult target, BlockGetter level, BlockPos pos, Player player) {
+    public ItemStack getCloneItemStack(BlockState state, HitResult target, LevelReader level, BlockPos pos, Player player) {
         BlockEntity be = level.getBlockEntity(pos);
         if (be instanceof HologramBlockEntity hologram) {
             return createItemStack(hologram);
@@ -127,7 +127,6 @@ public class HologramBlock extends Block implements EntityBlock {
         return super.getCloneItemStack(state, target, level, pos, player);
     }
 
-    @Override
     public List<ItemStack> getDrops(BlockState state, LootParams.Builder builder) {
         List<ItemStack> drops = new ArrayList<>();
         BlockEntity be = builder.getOptionalParameter(LootContextParams.BLOCK_ENTITY);

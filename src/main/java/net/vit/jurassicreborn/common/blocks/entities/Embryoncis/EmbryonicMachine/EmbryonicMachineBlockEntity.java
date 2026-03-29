@@ -2,7 +2,7 @@ package net.vit.jurassicreborn.common.blocks.entities.Embryoncis.EmbryonicMachin
 
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.items.IItemHandlerModifiable;
+import net.neoforged.neoforge.items.IItemHandlerModifiable;
 import net.vit.jurassicreborn.common.blocks.entities.MachineBlockEntity;
 import net.vit.jurassicreborn.common.blocks.entities.MachineItemStackHandler;
 import net.vit.jurassicreborn.common.blocks.entities.ModBlockEntities;
@@ -28,6 +28,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Arrays;
 import java.util.List;
+import net.vit.jurassicreborn.common.util.ItemStackNbtUtil;
 
 public class EmbryonicMachineBlockEntity extends MachineBlockEntity implements ItemHandlerBlockEntity, MenuProvider {
 
@@ -117,10 +118,10 @@ public class EmbryonicMachineBlockEntity extends MachineBlockEntity implements I
             if (petridish.getItem() == ModItems.PETRI_DISH.get() && dna.getItem() instanceof DNAItem dnaItem) {
                 output = new ItemStack(ModItems.SYRINGES.get(dnaItem.dinosaur).get(), 1);
 
-                output.setTag(dna.getTag());
+                ItemStackNbtUtil.setTag(output, ItemStackNbtUtil.getTag(dna));
             } else if (petridish.getItem() == ModItems.PLANT_CELLS_PETRI_DISH.get() && dna.getItem() instanceof PlantDNAItem) {
                 output = new ItemStack(ModItems.PLANT_CALLUS.get());
-                output.setTag(dna.getTag());
+                ItemStackNbtUtil.setTag(output, ItemStackNbtUtil.getTag(dna));
             }
 
             return output != null && this.hasOutputSlot(output);
@@ -137,7 +138,7 @@ public class EmbryonicMachineBlockEntity extends MachineBlockEntity implements I
     public int getOutputSlot(ItemStack output) {
         for (int slot : OUTPUTS) {
             ItemStack stack = machineItemStackHandler.getStackInSlot(slot);
-            if (stack.isEmpty() || ((ItemStack.isSameItemSameTags(stack, output) && stack.getCount() + output.getCount() <= stack.getMaxStackSize()) && stack.getItem() == output.getItem())) {
+            if (stack.isEmpty() || ((ItemStack.isSameItemSameComponents(stack, output) && stack.getCount() + output.getCount() <= stack.getMaxStackSize()) && stack.getItem() == output.getItem())) {
                 return slot;
             }
         }
@@ -160,7 +161,7 @@ public class EmbryonicMachineBlockEntity extends MachineBlockEntity implements I
             }
 
 
-            output.setTag(dna.getTag());
+            ItemStackNbtUtil.setTag(output, ItemStackNbtUtil.getTag(dna));
 
             int emptySlot = this.getOutputSlot(output);
 
@@ -180,7 +181,7 @@ public class EmbryonicMachineBlockEntity extends MachineBlockEntity implements I
         ItemStack previous = machineItemStackHandler.getStackInSlot(slot);
         if (previous.isEmpty()) {
             machineItemStackHandler.setStackInSlot(slot, stack);
-        } else if ( ItemStack.isSameItemSameTags(previous, stack)) {
+        } else if ( ItemStack.isSameItemSameComponents(previous, stack)) {
             previous.setCount(previous.getCount() + stack.getCount());
         }
     }

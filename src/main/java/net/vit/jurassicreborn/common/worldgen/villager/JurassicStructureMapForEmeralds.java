@@ -3,8 +3,10 @@ package net.vit.jurassicreborn.common.worldgen.villager;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
@@ -12,11 +14,13 @@ import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.MapItem;
+import net.minecraft.world.item.trading.ItemCost;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.structure.Structure;
-import net.minecraft.world.level.saveddata.maps.MapDecoration;
 import net.minecraft.world.level.saveddata.maps.MapItemSavedData;
+import net.minecraft.world.level.saveddata.maps.MapDecorationType;
+import net.minecraft.world.level.saveddata.maps.MapDecorationTypes;
 
 import java.util.Optional;
 
@@ -27,21 +31,21 @@ public class JurassicStructureMapForEmeralds implements VillagerTrades.ItemListi
     private static final float PRICE_MULTIPLIER = 0.2F;
 
     private final int emeraldCost;
-    private final net.minecraft.resources.ResourceKey<Structure> structureKey;
-    private final MapDecoration.Type markerType;
+    private final ResourceKey<Structure> structureKey;
+    private final Holder<MapDecorationType> markerType;
     private final int maxUses;
     private final int villagerXp;
     private final String translationKey;
 
     public JurassicStructureMapForEmeralds(int emeraldCost,
-                                           net.minecraft.resources.ResourceKey<Structure> structureKey,
+                                           ResourceKey<Structure> structureKey,
                                            String translationKey) {
-        this(emeraldCost, structureKey, MapDecoration.Type.RED_X, 12, 5, translationKey);
+        this(emeraldCost, structureKey, MapDecorationTypes.TARGET_X, 12, 5, translationKey);
     }
 
     public JurassicStructureMapForEmeralds(int emeraldCost,
-                                           net.minecraft.resources.ResourceKey<Structure> structureKey,
-                                           MapDecoration.Type markerType,
+                                           ResourceKey<Structure> structureKey,
+                                           Holder<MapDecorationType> markerType,
                                            int maxUses,
                                            int villagerXp,
                                            String translationKey) {
@@ -60,31 +64,37 @@ public class JurassicStructureMapForEmeralds implements VillagerTrades.ItemListi
         }
 
         var registry = serverLevel.registryAccess().registryOrThrow(Registries.STRUCTURE);
-
-        Optional<Holder.Reference<Structure>> structureHolder = registry.getHolder(this.structureKey);
-        if (structureHolder.isEmpty()) {
-            return null;
-        }
+        var structureHolder = registry.getHolder(this.structureKey);
+        if (structureHolder.isEmpty()) return null;
 
         HolderSet<Structure> structures = HolderSet.direct(structureHolder.get());
         ChunkGenerator generator = serverLevel.getChunkSource().getGenerator();
 
-        Optional<com.mojang.datafixers.util.Pair<BlockPos, Holder<Structure>>> result = Optional.ofNullable(generator.findNearestMapStructure(serverLevel, structures, trader.blockPosition(), 100, true));
-
-        if (result.isEmpty()) {
-            return null;
-        }
+        var result = Optional.ofNullable(
+                generator.findNearestMapStructure(
+                        serverLevel,
+                        structures,
+                        trader.blockPosition(),
+                        100,
+                        true
+                )
+        );
+        if (result.isEmpty()) return null;
 
         BlockPos structurePos = result.get().getFirst();
 
         ItemStack map = MapItem.create(serverLevel, structurePos.getX(), structurePos.getZ(), (byte) 2, true, true);
+        MapItemSavedData mapData = MapItem.getSavedData(map, serverLevel);
+        if (mapData == null) return null;
+
         MapItem.renderBiomePreviewMap(serverLevel, map);
         MapItemSavedData.addTargetDecoration(map, structurePos, "+", this.markerType);
-        map.setHoverName(Component.translatable(this.translationKey));
+        mapData.setDirty();
+        map.set(DataComponents.CUSTOM_NAME, Component.translatable(this.translationKey));
 
         return new MerchantOffer(
-                new ItemStack(Items.EMERALD, this.emeraldCost),
-                new ItemStack(Items.COMPASS),
+                new ItemCost(Items.EMERALD, this.emeraldCost),
+                Optional.of(new ItemCost(Items.COMPASS, 1)),
                 map,
                 this.maxUses,
                 this.villagerXp,
@@ -92,4 +102,3 @@ public class JurassicStructureMapForEmeralds implements VillagerTrades.ItemListi
         );
     }
 }
-

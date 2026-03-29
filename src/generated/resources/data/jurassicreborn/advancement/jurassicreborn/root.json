@@ -1,0 +1,33 @@
+{
+  "criteria": {
+    "requirement": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:crafting_table"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "background": "jurassicreborn:textures/block/gypsum_bricks.png",
+    "description": {
+      "translate": "advancements.jurassicreborn.root.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "jurassicreborn:bones/mamenchisaurus_skull"
+    },
+    "title": {
+      "translate": "advancements.jurassicreborn.root.title"
+    }
+  },
+  "requirements": [
+    [
+      "requirement"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

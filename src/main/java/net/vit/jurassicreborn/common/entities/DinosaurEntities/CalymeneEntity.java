@@ -60,17 +60,38 @@ public class CalymeneEntity extends SwimmingDinosaurEntity implements IHasVarian
                 Tadpole.class, CompsognathusEntity.class, LeptictidiumEntity.class);
 
         this.setVariant(this.getRandom().nextInt(4));
-        this.setMaxUpStep(MAX_STEP_UP);
+        this.maxUpStep();
         this.goalSelector.addGoal(0, new BottomCrawlGoal(this, 1.05D, 8, 6));
     }
 
-
     @Override
-    public void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(VARIANT, 0);
-        this.entityData.define(ROLLED, Boolean.FALSE);
-        this.entityData.define(ON_BOTTOM, Boolean.FALSE);
+    public boolean shouldUseGenericUnderwaterAI() {
+        if (!this.isInWater()) {
+            return false;
+        }
+
+        if (this.swimBurstTicks > 0) {
+            return true;
+        }
+
+        if (this.isPanicking()) {
+            return true;
+        }
+
+        if (this.getAttackTarget() != null) {
+            return true;
+        }
+
+        // While calmly settled on the bottom, disable the generic underwater
+        // patrol/idle AI so it stops bobbing and lets feeder/bottom crawl logic win.
+        return !this.isOnBottom();
+    }
+    @Override
+    public void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(VARIANT, 0);
+        builder.define(ROLLED, Boolean.FALSE);
+        builder.define(ON_BOTTOM, Boolean.FALSE);
     }
 
     @Override
@@ -130,7 +151,9 @@ public class CalymeneEntity extends SwimmingDinosaurEntity implements IHasVarian
     @Override
     public void tick() {
         super.tick();
-
+        if (!this.isInWater()) {
+            this.setOnBottom(false);
+        }
         if (this.rollTicks > 0) {
             if (--this.rollTicks <= 0) this.setRolled(false);
         }
@@ -252,8 +275,8 @@ public class CalymeneEntity extends SwimmingDinosaurEntity implements IHasVarian
         String baseTextures = "textures/entities/" + formattedName + "/";
         String texture = baseTextures + formattedName;
         return isMale()
-                ? new ResourceLocation(JurassicReborn.MODID, texture + "_male_"   + "adult" + "_" + variant + ".png")
-                : new ResourceLocation(JurassicReborn.MODID, texture + "_female_" + "adult" + "_" + variant + ".png");
+                ? ResourceLocation.parse(JurassicReborn.MODID + ":" + texture + "_male_"   + "adult" + "_" + variant + ".png")
+                : ResourceLocation.parse(JurassicReborn.MODID + ":" + texture + "_female_" + "adult" + "_" + variant + ".png");
     }
 
     /**

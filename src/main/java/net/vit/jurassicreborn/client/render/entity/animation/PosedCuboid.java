@@ -1,5 +1,6 @@
 package net.vit.jurassicreborn.client.render.entity.animation;
 
+
 import com.github.alexthe666.citadel.client.model.AdvancedModelBox;
 
 public class PosedCuboid {

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smelting",
+  "category": "food",
+  "cookingtime": 200,
+  "experience": 0.35,
+  "ingredient": {
+    "item": "jurassicreborn:meat/meat_mawsonia"
+  },
+  "result": {
+    "count": 1,
+    "id": "jurassicreborn:meat/steak_mawsonia"
+  }
+}

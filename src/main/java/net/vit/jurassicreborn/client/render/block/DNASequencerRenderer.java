@@ -2,97 +2,87 @@ package net.vit.jurassicreborn.client.render.block;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
-import net.vit.jurassicreborn.common.blocks.ModBlocks;
-import net.vit.jurassicreborn.common.blocks.entities.DNABlocks.DNASequencer.DNASequencerBlock;
-import net.vit.jurassicreborn.common.blocks.entities.DNABlocks.DNASequencer.DNASequencerBlockEntity;
-import net.vit.jurassicreborn.common.network.Network;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.core.Direction;
 import net.minecraft.util.Mth;
+import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
+import net.vit.jurassicreborn.common.blocks.ModBlocks;
+import net.vit.jurassicreborn.common.blocks.entities.DNABlocks.DNASequencer.DNASequencerBlock;
+import net.vit.jurassicreborn.common.blocks.entities.DNABlocks.DNASequencer.DNASequencerBlockEntity;
 
 import java.util.ArrayDeque;
 
 public class DNASequencerRenderer implements BlockEntityRenderer<DNASequencerBlockEntity> {
 
-    public DNASequencerRenderer() {
-        super();
-    }
-
-
     @Override
-    public void render(DNASequencerBlockEntity blockEntity, float pPartialTick, PoseStack pPoseStack, MultiBufferSource pBufferSource, int pPackedLight, int pPackedOverlay) {
+    public void render(DNASequencerBlockEntity blockEntity,
+                       float partialTick,
+                       PoseStack poseStack,
+                       MultiBufferSource bufferSource,
+                       int packedLight,
+                       int packedOverlay) {
 
         Level level = blockEntity.getLevel();
-
-        if (level == null) {
-            return;
-        }
+        if (level == null) return;
 
         BlockState state = level.getBlockState(blockEntity.getBlockPos());
-
-        if (state.getBlock() != ModBlocks.DNA_SEQUENCER.get())
-            return;
-
-        ArrayDeque<ItemStack> slots = new ArrayDeque<>();
+        if (state.getBlock() != ModBlocks.DNA_SEQUENCER.get()) return;
 
         Direction facing = state.getValue(DNASequencerBlock.FACING);
-
         if (facing == Direction.NORTH || facing == Direction.SOUTH) {
             facing = facing.getOpposite();
         }
+
         float rotation = facing.toYRot();
         float scale = 0.375F;
 
-//        slots.push(Network.getSlotContents(blockEntity.getBlockPos(), 0));
-//        slots.push(Network.getSlotContents(blockEntity.getBlockPos(), 2));
-//        slots.push(Network.getSlotContents(blockEntity.getBlockPos(), 4));
-
-        for (int i : DNASequencerBlockEntity.DNA_INPUT) {
-            ItemStack stack = ItemStack.EMPTY;
-            var st = blockEntity.getItem(i);
-            if(st != null){
-                stack = st;
+        ArrayDeque<ItemStack> stacks = new ArrayDeque<>();
+        for (int slot : DNASequencerBlockEntity.DNA_INPUT) {
+            ItemStack stack = blockEntity.getItem(slot);
+            if (!stack.isEmpty()) {
+                stacks.add(stack);
             }
-            slots.push(stack);
         }
 
+        ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
+        int index = 0;
 
-        double index = 0;
+        while (!stacks.isEmpty()) {
+            ItemStack stack = stacks.removeLast();
 
-        while (!slots.isEmpty()) {
+            poseStack.pushPose();
 
-            pPoseStack.pushPose();
+            Vec3 offset = new Vec3(
+                    0.2,
+                    index * -0.25F + 0.66F,
+                    0.2
+            ).yRot(rotation * Mth.DEG_TO_RAD).add(0.5, 0.0, 0.5);
 
-            Vec3 vector = new Vec3(0.2, ((float) index) * (-0.25f) + 0.66f, 0.2 ).yRot(rotation * Mth.DEG_TO_RAD);//rotate where the items should appear to the right quadrant
+            poseStack.translate(offset.x, offset.y, offset.z);
+            poseStack.mulPose(Axis.YP.rotationDegrees(rotation));
+            poseStack.mulPose(Axis.XP.rotation(Mth.HALF_PI));
+            poseStack.scale(scale, scale, scale);
 
-            vector = vector.add(0.5, 0, 0.5);//center the model in the block
+            itemRenderer.renderStatic(
+                    stack,
+                    ItemDisplayContext.FIXED,
+                    packedLight,
+                    packedOverlay,
+                    poseStack,
+                    bufferSource,
+                    level,
+                    0
+            );
 
-            pPoseStack.translate(vector.x(), vector.y(), vector.z());//apply offsets to poseStack
-
-            pPoseStack.scale(scale, scale, scale);//scale pose stack
-
-            pPoseStack.mulPose(Axis.XP.rotation(Mth.PI / 2));//make the item model face up
-
-
-            ItemStack currentInput = slots.removeLast();//get the right item from the deque
-
-            ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();//get the item renderer
-
-
-            itemRenderer.renderStatic(currentInput, ItemDisplayContext.NONE, pPackedLight, pPackedOverlay, pPoseStack, pBufferSource, blockEntity.getLevel(), 0);//render the item
-
-
-            pPoseStack.popPose();//render? something? the item
-
-            index++;//get ready for next item
+            poseStack.popPose();
+            index++;
         }
     }
 }

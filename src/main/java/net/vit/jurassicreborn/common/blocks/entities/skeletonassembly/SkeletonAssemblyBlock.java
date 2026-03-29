@@ -1,9 +1,9 @@
 package net.vit.jurassicreborn.common.blocks.entities.skeletonassembly;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.*;
 import net.minecraft.world.entity.player.Player;
@@ -24,8 +24,8 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraftforge.items.IItemHandlerModifiable;
-import net.minecraftforge.network.NetworkHooks;
+import net.neoforged.neoforge.items.IItemHandlerModifiable;
+import net.vit.jurassicreborn.common.blocks.ModBlocks;
 import net.vit.jurassicreborn.common.blocks.entities.ModBlockEntities;
 
 import javax.annotation.Nullable;
@@ -35,12 +35,20 @@ import javax.annotation.Nullable;
  */
 public class SkeletonAssemblyBlock extends BaseEntityBlock {
 
+    public static final MapCodec<SkeletonAssemblyBlock> CODEC =
+            MapCodec.unit(() -> ModBlocks.SKELETON_ASSEMBLY.get());
+
+    @Override
+    protected MapCodec<? extends BaseEntityBlock> codec() {
+        return CODEC;
+    }
+
     public static final DirectionProperty     FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final EnumProperty<BlockHalf> HALF  = EnumProperty.create("half", BlockHalf.class);
 
     public SkeletonAssemblyBlock() {
         super(BlockBehaviour.Properties
-                .copy(Blocks.OAK_PLANKS)
+                .ofFullCopy(Blocks.OAK_PLANKS)
                 .strength(2.0F)
                 .sound(SoundType.METAL)
                 .noOcclusion());                       // not full cube
@@ -55,9 +63,9 @@ public class SkeletonAssemblyBlock extends BaseEntityBlock {
     /* ------------------------------------------------------------------ */
 
     @Override
-    public InteractionResult use(BlockState state, Level level,
-                                 BlockPos pos, Player player,
-                                 InteractionHand hand, BlockHitResult hit) {
+    public InteractionResult useWithoutItem(BlockState state, Level level,
+                                            BlockPos pos, Player player,
+                                            BlockHitResult hit) {
 
         // Resolve main-half position once, store in a final variable
         final BlockPos menuPos = (state.getValue(HALF) == BlockHalf.DUMMY)
@@ -66,8 +74,8 @@ public class SkeletonAssemblyBlock extends BaseEntityBlock {
 
         if (!level.isClientSide) {
             BlockEntity be = level.getBlockEntity(menuPos);
-            if (be instanceof MenuProvider provider && player instanceof ServerPlayer sp) {
-                NetworkHooks.openScreen(sp, provider, menuPos);
+            if (be instanceof MenuProvider provider) {
+                player.openMenu(provider);
             }
         }
         return InteractionResult.sidedSuccess(level.isClientSide);

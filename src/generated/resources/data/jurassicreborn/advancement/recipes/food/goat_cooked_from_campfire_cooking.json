@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_goat_raw": {
+      "conditions": {
+        "items": [
+          {
+            "items": "jurassicreborn:goat_raw"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "jurassicreborn:goat_cooked_from_campfire_cooking"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_goat_raw"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "jurassicreborn:goat_cooked_from_campfire_cooking"
+    ]
+  }
+}

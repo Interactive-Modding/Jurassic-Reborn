@@ -1,0 +1,11 @@
+{
+	"replace": false,
+	"values": [
+		"jurassicreborn:araucaria_button",
+		"jurassicreborn:magnolia_button",
+		"jurassicreborn:ginkgo_button",
+		"jurassicreborn:calamites_button",
+		"jurassicreborn:phoenix_button",
+		"jurassicreborn:psaronius_button"
+	]
+}

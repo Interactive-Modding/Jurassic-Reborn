@@ -5,25 +5,23 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.AbstractGlassBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
+import net.minecraft.world.level.block.TransparentBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.Fluids;
 
-public class ClearGlassBlock extends AbstractGlassBlock implements SimpleWaterloggedBlock {
+
+public class ClearGlassBlock extends TransparentBlock {
     public static final BooleanProperty NORTH = BlockStateProperties.NORTH;
     public static final BooleanProperty EAST  = BlockStateProperties.EAST;
     public static final BooleanProperty SOUTH = BlockStateProperties.SOUTH;
     public static final BooleanProperty WEST  = BlockStateProperties.WEST;
     public static final BooleanProperty UP    = BlockStateProperties.UP;
     public static final BooleanProperty DOWN  = BlockStateProperties.DOWN;
-    public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
     public ClearGlassBlock(BlockBehaviour.Properties props) {
         super(props);
@@ -33,8 +31,7 @@ public class ClearGlassBlock extends AbstractGlassBlock implements SimpleWaterlo
                 .setValue(SOUTH, false)
                 .setValue(WEST,  false)
                 .setValue(UP,    false)
-                .setValue(DOWN,  false)
-                .setValue(WATERLOGGED, false));
+                .setValue(DOWN,  false));
     }
 
     private static boolean connectsTo(BlockState state) {
@@ -45,23 +42,18 @@ public class ClearGlassBlock extends AbstractGlassBlock implements SimpleWaterlo
     public BlockState getStateForPlacement(BlockPlaceContext ctx) {
         BlockPos pos = ctx.getClickedPos();
         BlockGetter level = ctx.getLevel();
-        FluidState fluid = level.getFluidState(pos);
         return this.defaultBlockState()
                 .setValue(NORTH, connectsTo(level.getBlockState(pos.north())))
                 .setValue(EAST,  connectsTo(level.getBlockState(pos.east())))
                 .setValue(SOUTH, connectsTo(level.getBlockState(pos.south())))
                 .setValue(WEST,  connectsTo(level.getBlockState(pos.west())))
                 .setValue(UP,    connectsTo(level.getBlockState(pos.above())))
-                .setValue(DOWN,  connectsTo(level.getBlockState(pos.below())))
-                .setValue(WATERLOGGED, fluid.getType() == Fluids.WATER);
+                .setValue(DOWN,  connectsTo(level.getBlockState(pos.below())));
     }
 
     @Override
     public BlockState updateShape(BlockState state, Direction dir, BlockState neighborState,
                                   LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
-        if (state.getValue(WATERLOGGED)) {
-            level.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
-        }
         BooleanProperty prop = propertyFor(dir);
         return state.setValue(prop, connectsTo(neighborState));
     }
@@ -91,13 +83,8 @@ public class ClearGlassBlock extends AbstractGlassBlock implements SimpleWaterlo
     }
 
     @Override
-    public FluidState getFluidState(BlockState state) {
-        return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
-    }
-
-    @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(UP, DOWN, NORTH, SOUTH, EAST, WEST, WATERLOGGED);
+        builder.add(UP, DOWN, NORTH, SOUTH, EAST, WEST);
     }
 }
 

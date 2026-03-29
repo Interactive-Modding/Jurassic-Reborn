@@ -1,0 +1,11 @@
+{
+  "type": "jurassicreborn:cleaning",
+  "id": "jurassicreborn:encased_ornithomimus_fossil_cleaning",
+  "input": {
+    "item": "jurassicreborn:encased_ornithomimus_fossil"
+  },
+  "output": {
+    "count": 1,
+    "id": "jurassicreborn:bones/ornithomimus_skull"
+  }
+}

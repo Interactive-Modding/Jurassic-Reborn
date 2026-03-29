@@ -14,11 +14,14 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.FoliageColor;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.neoforge.client.event.ClientTickEvent;
+import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.registries.DeferredHolder;
 import net.vit.jurassicreborn.JurassicReborn;
 import net.vit.jurassicreborn.client.input.VehicleKeyHandler;
+import net.vit.jurassicreborn.client.input.DinosaurKeyHandler;
 import net.vit.jurassicreborn.client.render.block.CultivatorRenderer;
 import net.vit.jurassicreborn.client.render.entity.animation.EntityAnimator;
 import net.vit.jurassicreborn.client.render.entity.animation.PoseHandler;
@@ -50,6 +53,7 @@ import net.vit.jurassicreborn.common.entities.vehicle.VehicleEntity;
 import net.vit.jurassicreborn.common.entities.vehicle.WashingParticle;
 import net.vit.jurassicreborn.common.items.ModItems;
 import net.vit.jurassicreborn.common.network.ChangeStationMessage;
+import net.vit.jurassicreborn.common.network.MicroraptorDismountMessage;
 import net.vit.jurassicreborn.common.network.Network;
 import net.vit.jurassicreborn.common.paleopad.App;
 import net.minecraft.client.Minecraft;
@@ -60,10 +64,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import com.github.alexthe666.citadel.animation.AnimationHandler;
 import net.vit.jurassicreborn.common.network.SwitchSeatMessage;
 import net.vit.jurassicreborn.common.network.UpdateVehicleControlMessage;
 import net.vit.jurassicreborn.common.util.particles.ModParticles;
@@ -84,7 +84,7 @@ public class JurassicClient {
         bus.addListener(JurassicClient::clientSetup);
         bus.addListener(net.vit.jurassicreborn.client.input.VehicleKeyHandler::register);
         bus.addListener(net.vit.jurassicreborn.client.input.DinosaurKeyHandler::register);
-        MinecraftForge.EVENT_BUS.addListener(JurassicClient::clientTickEvent);
+        NeoForge.EVENT_BUS.addListener(JurassicClient::clientTickEvent);
 
         //        Minecraft.getInstance().getSearchTreeManager().register(SearchRegistry.CREATIVE_NAMES, (itemStacks) -> {
 //            return new FullTextSearchTree<>((itemStack) -> {
@@ -103,9 +103,18 @@ public class JurassicClient {
 
 
 
-    public static void clientTickEvent(TickEvent.ClientTickEvent evt){
+    public static void clientTickEvent(ClientTickEvent.Post evt){
         Level level = Minecraft.getInstance().level;
         Player player = Minecraft.getInstance().player;
+
+        if (DinosaurKeyHandler.MICRORAPTOR_DISMOUNT.consumeClick()) {
+            boolean hasLeftMicroraptor = player.getShoulderEntityLeft().getString("id").contains("microraptor");
+            boolean hasRightMicroraptor = player.getShoulderEntityRight().getString("id").contains("microraptor");
+
+            if (hasLeftMicroraptor || hasRightMicroraptor) {
+                Network.sendToServer(new MicroraptorDismountMessage(-1));
+            }
+        }
 
         if (player != null && player.getVehicle() instanceof VehicleEntity) {
             VehicleEntity car = (VehicleEntity) player.getVehicle();
@@ -160,7 +169,7 @@ public class JurassicClient {
             double oz = (rand.nextDouble() - 0.5D) * size;
 
             level.addParticle(
-                    ModParticles.VENOM.get(),
+                    ModParticles.VENOM.value(),
                     entity.getX() + ox,
                     entity.getEyeY() + oy,
                     entity.getZ() + oz,
@@ -209,25 +218,40 @@ public class JurassicClient {
 
         SoundHandler.init();
         //wood type rendering
-            evt.enqueueWork(() -> {
-                List<Block> ancientLeavesBlocks = ModBlocks.MOD_BLOCKS.getEntries().stream().map(RegistryObject::get).filter(AncientLeavesBlock.class::isInstance).toList();
-                Minecraft mc = Minecraft.getInstance();
-                BlockColors blockColors = mc.getBlockColors();
-                ItemColors itemColors = mc.getItemColors();
+        evt.enqueueWork(() -> {
+            List<? extends Block> ancientLeavesBlocks =
+                    ModBlocks.MOD_BLOCKS.getEntries()
+                            .stream()
+                            .map(DeferredHolder::value)
+                            .filter(AncientLeavesBlock.class::isInstance)
+                            .toList();
 
-                Block magnoliaLeaves = WoodBlocks.MAGNOLIA_LEAVES.isPresent() ? WoodBlocks.MAGNOLIA_LEAVES.get() : null;
+            Minecraft mc = Minecraft.getInstance();
+            BlockColors blockColors = mc.getBlockColors();
+            ItemColors itemColors = mc.getItemColors();
 
-                for (Block block : ancientLeavesBlocks) {
-                    if (block == magnoliaLeaves) {
-                        blockColors.register((state, access, pos, tintIndex) -> 0xFFFFFF, block);
-                        itemColors.register((stack, tintIndex) -> 0xFFC0CB, block);
-                    } else {
-                        blockColors.register((state, access, pos, tintIndex) ->
-                                        pos == null ? FoliageColor.getDefaultColor() : BiomeColors.getAverageFoliageColor(access, pos),
-                                block);
-                        itemColors.register((stack, tintIndex) -> FoliageColor.getDefaultColor(), block);
-                    }
+            Block magnoliaLeaves = WoodBlocks.MAGNOLIA_LEAVES.isBound()
+                    ? WoodBlocks.MAGNOLIA_LEAVES.value()
+                    : null;
+
+            for (Block block : ancientLeavesBlocks) {
+                if (block == magnoliaLeaves) {
+                    blockColors.register((state, access, pos, tintIndex) -> 0xFFFFFF, block);
+                    itemColors.register((stack, tintIndex) -> 0xFFC0CB, block);
+                } else {
+                    blockColors.register(
+                            (state, access, pos, tintIndex) ->
+                                    pos == null
+                                            ? FoliageColor.getDefaultColor()
+                                            : BiomeColors.getAverageFoliageColor(access, pos),
+                            block
+                    );
+                    itemColors.register(
+                            (stack, tintIndex) -> FoliageColor.getDefaultColor(),
+                            block
+                    );
                 }
+            }
 
                 // TOUR_RAIL color handlers (if config enabled)
 
@@ -240,41 +264,24 @@ public class JurassicClient {
 
         });
 
-        SoundHandler.registrer.register(FMLJavaModLoadingContext.get().getModEventBus());
 
         Minecraft.getInstance().particleEngine.register(
-                ModParticles.VENOM.get(),
+                ModParticles.VENOM.value(),
                 VenomParticle.Provider::new
         );
         Minecraft.getInstance().particleEngine.register(
-                ModParticles.WASHING_DROPLET.get(),
+                ModParticles.WASHING_DROPLET.value(),
                 WashingParticle.Provider::new
         );
         Minecraft.getInstance().particleEngine.register(
-                ModParticles.HELICOPTER_ENGINE.get(),
+                ModParticles.HELICOPTER_ENGINE.value(),
                 HelicopterEngineParticle.Provider::new
         );
         Minecraft.getInstance().particleEngine.register(
-                ModParticles.HELICOPTER_GROUND.get(),
+                ModParticles.HELICOPTER_GROUND.value(),
                 HelicopterGroundParticle.Provider::new
         );
         //Binding screens to types
-        MenuScreens.<CleanerMenu, CleanerScreen>register(ModMenuTypes.CLEANER.get(), CleanerScreen::new);
-        MenuScreens.<DNACombinatorHybridizerMenu, DNACombinatorHybridizerScreen>register(ModMenuTypes.COMBINATOR.get(), DNACombinatorHybridizerScreen::new);
-        MenuScreens.register(ModMenuTypes.FOSSIL_GRINDER.get(), FossilGrinderScreen::new);
-        MenuScreens.register(ModMenuTypes.DNA_SEQUENCER.get(), DNASequencerScreen::new);
-        MenuScreens.register(ModMenuTypes.DNA_EXTRACTOR.get(), DNAExtractorScreen::new);
-        MenuScreens.register(ModMenuTypes.DNA_SYNTHESIZER.get(), DNASynthesizerScreen::new);
-        MenuScreens.register(ModMenuTypes.INCUBATOR.get(), IncubatorScreen::new);
-        MenuScreens.register(ModMenuTypes.EMBRYONIC_MACHINE.get(), EmbryronicMachineScreen::new);
-        MenuScreens.register(ModMenuTypes.EMBRYO_CALCIFICATION_MACHINE.get(), EmbryoCalcificationMachineScreen::new);
-        MenuScreens.register(ModMenuTypes.CULTIVATOR.get(), CultivatorScreen::new);
-        MenuScreens.<FeederMenu, FeederScreen>register(ModMenuTypes.FEEDER.get(), FeederScreen::new);
-        MenuScreens.<BugCrateMenu, BugCrateScreen>register(ModMenuTypes.BUG_CRATE.get(), BugCrateScreen::new);
-        MenuScreens.register(ModMenuTypes.TRASH_CAN.get(), TrashCanScreen::new);
-        MenuScreens.<SkeletonAssemblerMenu, SkeletonAssemblerScreen>register(ModMenuTypes.SKELETON_ASSEMBLER.get(), SkeletonAssemblerScreen::new);
-        ModScreens.<CleanerBlockEntity, CleanerMenu, CleanerScreen>register(ModBlockEntities.CLEANING_STATION.get(), CleanerScreen::new);
-        ModScreens.<DNACombinatorHybridizerBlockEntity, DNACombinatorHybridizerMenu, DNACombinatorHybridizerScreen>register(ModBlockEntities.DNA_COMBINATOR_HYBRIDIZER.get(), DNACombinatorHybridizerScreen::new);
 
 //        ModScreens.<FossilGrinderBlockEntity, FossilGrinderMenu, FossilGrinderScreen>register(ModBlockEntities.FOSSIL_GRINDER_BLOCK_ENTITY.get(), FossilGrinderScreen::new);
 
@@ -359,7 +366,6 @@ public class JurassicClient {
         ItemBlockRenderTypes.setRenderLayer(WoodBlocks.PSARONIUS_LEAVES.get(),RenderType.cutoutMipped());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.LOW_SECURITY_FENCE_POLE.get(), RenderType.cutout());
 
-        FMLJavaModLoadingContext.get().getModEventBus().register(RenderingHandler.class);
 
 
         //        NonNullList<Supplier<ItemStack>> FOSSILS = NonNullList.create();

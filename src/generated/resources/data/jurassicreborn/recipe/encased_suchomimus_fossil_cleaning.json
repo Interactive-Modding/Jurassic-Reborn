@@ -1,0 +1,11 @@
+{
+  "type": "jurassicreborn:cleaning",
+  "id": "jurassicreborn:encased_suchomimus_fossil_cleaning",
+  "input": {
+    "item": "jurassicreborn:encased_suchomimus_fossil"
+  },
+  "output": {
+    "count": 1,
+    "id": "jurassicreborn:bones/suchomimus_skull"
+  }
+}

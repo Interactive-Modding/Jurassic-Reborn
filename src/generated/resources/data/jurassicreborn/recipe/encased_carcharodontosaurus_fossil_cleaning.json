@@ -1,0 +1,11 @@
+{
+  "type": "jurassicreborn:cleaning",
+  "id": "jurassicreborn:encased_carcharodontosaurus_fossil_cleaning",
+  "input": {
+    "item": "jurassicreborn:encased_carcharodontosaurus_fossil"
+  },
+  "output": {
+    "count": 1,
+    "id": "jurassicreborn:bones/carcharodontosaurus_skull"
+  }
+}

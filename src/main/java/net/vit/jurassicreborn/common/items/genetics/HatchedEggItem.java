@@ -12,13 +12,15 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import net.vit.jurassicreborn.common.util.ItemStackNbtUtil;
+import org.jetbrains.annotations.Nullable;
 
 public class HatchedEggItem extends DNAContainerItem {
 
@@ -40,14 +42,14 @@ public class HatchedEggItem extends DNAContainerItem {
 
     /** Returns male=true / female=false. Persists to stack NBT "Gender". */
     public boolean getGender(@Nullable Player player, ItemStack stack) {
-        CompoundTag nbt = stack.getOrCreateTag();
+        CompoundTag nbt = ItemStackNbtUtil.getOrCreateTag(stack);
         if (nbt.contains("Gender")) {
             return nbt.getBoolean("Gender");
         }
         boolean gender = (player != null ? player.level().random.nextBoolean()
                 : ((stack.hashCode() & 1) == 0));
         nbt.putBoolean("Gender", gender);
-        stack.setTag(nbt);
+        ItemStackNbtUtil.setTag(stack, nbt);
         return gender;
     }
 
@@ -86,7 +88,7 @@ public class HatchedEggItem extends DNAContainerItem {
             // ✅ Finalize first so vanilla/AI setup runs BEFORE we apply DNA.
             if (level instanceof ServerLevel sl) {
                 entity.finalizeSpawn(sl, sl.getCurrentDifficultyAt(entity.blockPosition()),
-                        MobSpawnType.SPAWN_EGG, null, null);
+                        MobSpawnType.SPAWN_EGG, null);
             }
 
             // Now apply DNA/quality/gender from the egg so nothing overwrites it afterward.
@@ -109,9 +111,9 @@ public class HatchedEggItem extends DNAContainerItem {
     }
 
     @Override
-    public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> lore, TooltipFlag pIsAdvanced) {
-        super.appendHoverText(pStack, pLevel, lore, pIsAdvanced);
-        CompoundTag tag = pStack.getTag();
+    public void appendHoverText(ItemStack pStack, Item.TooltipContext context, List<Component> lore, TooltipFlag pIsAdvanced) {
+        super.appendHoverText(pStack, context, lore, pIsAdvanced);
+        CompoundTag tag = ItemStackNbtUtil.getTag(pStack);
         if (tag != null && tag.contains("Gender")) {
             lore.add(Component.translatable("tooltip.jurassicreborn.gender." +
                     (tag.getBoolean("Gender") ? "male" : "female")));

@@ -13,9 +13,7 @@
 //
 //    AttractionSignType(int sx, int sy) {
 //        sizeX = sx; sizeY = sy;
-//        texture = new ResourceLocation(MODID,
-//                "textures/attraction_sign/" + name().toLowerCase(Locale.ROOT) + ".png");
-//        texturePopout = new ResourceLocation(MODID,
-//                "textures/attraction_sign/" + name().toLowerCase(Locale.ROOT) + "_popout.png");
+//        texture = ResourceLocation.parse(MODID + ":" + //                "textures/attraction_sign/" + name().toLowerCase(Locale.ROOT) + ".png");
+//        texturePopout = ResourceLocation.parse(MODID + ":" + //                "textures/attraction_sign/" + name().toLowerCase(Locale.ROOT) + "_popout.png");
 //    }
 //}

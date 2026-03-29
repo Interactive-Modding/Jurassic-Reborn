@@ -16,6 +16,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.List;
+import net.vit.jurassicreborn.common.util.ItemStackNbtUtil;
 
 public class SoftTissueItem extends Item implements SequencableItem, DinosaurItem {
     protected final Dinosaur dino;
@@ -56,7 +57,7 @@ public class SoftTissueItem extends Item implements SequencableItem, DinosaurIte
         dna.writeToNBT(nbt);
 
         ItemStack output = new ItemStack(ModItems.STORAGE_DISC.get());
-        output.setTag(nbt);
+        ItemStackNbtUtil.setTag(output, nbt);
         StorageDiscItem.applyCustomModelData(output);
         list.add(Pair.of(100F, output));
         return list;
@@ -69,14 +70,16 @@ public class SoftTissueItem extends Item implements SequencableItem, DinosaurIte
 
     @Override
     public ItemStack getSequenceOutput(ItemStack stack, RandomSource random) {
-        CompoundTag tag = stack.getTag();
+        CompoundTag tag = ItemStackNbtUtil.getTag(stack);
         DinoDNA dna = tag != null ? DinoDNA.readFromNBT(tag) : null;
 
         int quality   = (dna != null) ? dna.getDNAQuality() : Math.abs(SequencableItem.randomQuality(random) / 2);
         String genes  = (dna != null) ? dna.getGenetics()    : GeneticsHelper.randomGenetics(random);
 
-        ItemStack out = ModItems.STORAGE_DISC.get().getDefaultInstance();
-        new DinoDNA(getDinosaur(stack), quality, genes).writeToNBT(out.getOrCreateTag());
+        ItemStack out = ModItems.STORAGE_DISC.get().getDefaultInstance(); // or whatever your storage disc item is
+        CompoundTag outTag = ItemStackNbtUtil.getOrCreateTag(out);
+        new DinoDNA(getDinosaur(stack), quality, genes).writeToNBT(outTag);
+        ItemStackNbtUtil.setTag(out, outTag);
         StorageDiscItem.applyCustomModelData(out);
         return out;
     }

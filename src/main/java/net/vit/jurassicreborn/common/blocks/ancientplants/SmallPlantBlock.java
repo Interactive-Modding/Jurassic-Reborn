@@ -6,7 +6,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 public class SmallPlantBlock extends ImplimentedAncientPlant {
 
     public SmallPlantBlock() {
-        super(BlockBehaviour.Properties.copy(Blocks.FERN));
+        super(BlockBehaviour.Properties.ofFullCopy(Blocks.FERN));
     }
 
     public SmallPlantBlock(BlockBehaviour.Properties properties) {

@@ -33,7 +33,7 @@ public class SkeletonAssemblerScreen
 
     @Override
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partial) {
-        this.renderBackground(guiGraphics);              // dark vignette
+        this.renderBackground(guiGraphics,mouseX, mouseY, partial);              // dark vignette
         super.render(guiGraphics, mouseX, mouseY, partial);
         this.renderTooltip(guiGraphics, mouseX, mouseY); // item tooltips
     }

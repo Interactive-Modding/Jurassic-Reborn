@@ -8,10 +8,10 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.biome.Biome;
-import net.minecraftforge.common.Tags;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.neoforge.common.Tags;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class HypsilophodonDinosaur extends Dinosaur
 {
@@ -50,28 +50,9 @@ public class HypsilophodonDinosaur extends Dinosaur
                 {"leg_bones", "", "", "arm_bones", "tooth"}};
         this.setRecipe(recipe);
         this.enableSkeleton();
-        ArrayList<ResourceKey<Biome>> biomeList = new ArrayList<>();
-//        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.SAVANNA));
-//        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.SANDY));
-//        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.PLAINS));
-//        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.FOREST));
-//        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.MESA));
-//        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.CONIFEROUS));
-        TagKey<Biome>[] tags = (new TagKey[]{Tags.Biomes.IS_PLAINS, BiomeTags.IS_FOREST, BiomeTags.IS_SAVANNA, Tags.Biomes.IS_CONIFEROUS, BiomeTags.IS_BADLANDS, Tags.Biomes.IS_SANDY});
-        ArrayList<Biome> allBiomes = new ArrayList<>(ForgeRegistries.BIOMES.getValues());
-
-        biomeList = new ArrayList<>(allBiomes.stream().filter((biome ->{
-            boolean accept = false;
-            
-            for(var tag : tags){
-                if(ForgeRegistries.BIOMES.tags().getTag(tag).contains(biome)){
-                    accept = true;
-                }
-            }
-            return accept;
-            
-        })).map((biome) -> ForgeRegistries.BIOMES.getResourceKey(biome).get()).toList());
-        this.setSpawn(1, biomeList);
+        TagKey<Biome>[] tags = (new TagKey[]{Tags.Biomes.IS_PLAINS, BiomeTags.IS_FOREST, BiomeTags.IS_SAVANNA, BiomeTags.IS_BADLANDS, Tags.Biomes.IS_SANDY});
+//      List<ResourceKey<Biome>> biomeList = biomeKeysForTags(tags);
+//       this.setSpawn(1, biomeList);
 this.init();
     }
 }

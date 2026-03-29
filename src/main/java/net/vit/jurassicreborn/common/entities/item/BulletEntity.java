@@ -1,9 +1,9 @@
 package net.vit.jurassicreborn.common.entities.item;
 
-import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -13,36 +13,42 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraftforge.entity.IEntityAdditionalSpawnData;
-import net.minecraftforge.network.NetworkHooks;
 import net.vit.jurassicreborn.common.entities.ModEntities;
 import net.vit.jurassicreborn.common.items.ModItems;
 import net.vit.jurassicreborn.common.items.guns.Bullet;
 
-public class BulletEntity extends AbstractArrow implements IEntityAdditionalSpawnData {
-    private ItemStack ammoStack = ItemStack.EMPTY;
-    private int damage = 5;
+public class BulletEntity extends AbstractArrow {
+    private static final EntityDataAccessor<ItemStack> AMMO_STACK =
+            SynchedEntityData.defineId(BulletEntity.class, EntityDataSerializers.ITEM_STACK);
+    private static final EntityDataAccessor<Integer> BULLET_DAMAGE =
+            SynchedEntityData.defineId(BulletEntity.class, EntityDataSerializers.INT);
 
     /**
      * Called by Forge/Minecraft when spawning from packets, etc.
      */
     public BulletEntity(EntityType<? extends BulletEntity> type, Level world) {
         super(type, world);
-        // Optional: keep the old 0.2×0.2 size
         this.setBoundingBox(this.getBoundingBox().inflate(0.1D));
     }
 
     public BulletEntity(Level world, LivingEntity shooter, ItemStack ammo) {
-        super((EntityType<? extends AbstractArrow>) ModEntities.BULLET_ENTITY.get(), shooter, world);
-        this.ammoStack = ammo.copy();
-        // We no longer call setItem(...). Instead, override getItem() below.
+        super(ModEntities.BULLET_ENTITY.get(), world);
+        this.setOwner(shooter);
+        this.setAmmoStack(ammo.copy());
     }
 
 
+    /** If your Gun wants to change the damage: */
     public void setDamage(int dmg) {
-        this.damage = dmg;
+        this.entityData.set(BULLET_DAMAGE, dmg);
     }
 
+    @Override
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(AMMO_STACK, ItemStack.EMPTY);
+        builder.define(BULLET_DAMAGE, 5);
+    }
 
 
     @Override
@@ -51,14 +57,19 @@ public class BulletEntity extends AbstractArrow implements IEntityAdditionalSpaw
     }
 
     @Override
+    protected ItemStack getDefaultPickupItem() {
+        return ItemStack.EMPTY;
+    }
+
+    @Override
     protected void onHitEntity(EntityHitResult result) {
         super.onHitEntity(result);
         if (!this.level().isClientSide) {
             if (result.getEntity() instanceof LivingEntity target &&
-                    this.ammoStack.getItem() instanceof Bullet) {
+                    this.getAmmoStack().getItem() instanceof Bullet) {
 
                 DamageSource src = this.damageSources().arrow(this, this.getOwner());
-                target.hurt(src, this.damage);
+                target.hurt(src, this.entityData.get(BULLET_DAMAGE));
             }
             this.discard(); // remove from world
         }
@@ -92,22 +103,13 @@ public class BulletEntity extends AbstractArrow implements IEntityAdditionalSpaw
         }
     }
 
-    @Override
-    public void writeSpawnData(FriendlyByteBuf buffer) {
-        buffer.writeItem(ammoStack);
-        buffer.writeInt(damage);
+
+
+    private ItemStack getAmmoStack() {
+        return this.entityData.get(AMMO_STACK);
     }
 
-    @Override
-    public void readSpawnData(FriendlyByteBuf additionalData) {
-        this.ammoStack = additionalData.readItem();
-        this.damage = additionalData.readInt();
-        // No more setItem(...) here; getItem() will return ammoStack automatically.
+    private void setAmmoStack(ItemStack stack) {
+        this.entityData.set(AMMO_STACK, stack);
     }
-
-    @Override
-    public Packet<ClientGamePacketListener> getAddEntityPacket() {
-        return NetworkHooks.getEntitySpawningPacket(this);
-    }
-
 }

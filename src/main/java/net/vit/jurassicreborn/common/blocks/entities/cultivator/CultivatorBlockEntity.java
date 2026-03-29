@@ -1,6 +1,7 @@
 package net.vit.jurassicreborn.common.blocks.entities.cultivator;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.Connection;
@@ -19,10 +20,10 @@ import net.minecraft.world.item.MilkBucketItem;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluids;
-import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.FluidType;
-import net.minecraftforge.fluids.capability.IFluidHandler;
-import net.minecraftforge.items.IItemHandlerModifiable;
+import net.neoforged.neoforge.fluids.FluidStack;
+import net.neoforged.neoforge.fluids.FluidType;
+import net.neoforged.neoforge.fluids.capability.IFluidHandler;
+import net.neoforged.neoforge.items.IItemHandlerModifiable;
 import net.vit.jurassicreborn.common.blocks.entities.MachineBlockEntity;
 import net.vit.jurassicreborn.common.blocks.entities.ModBlockEntities;
 import net.vit.jurassicreborn.common.blocks.inventory.CultivatorItemHandler;
@@ -42,6 +43,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import net.vit.jurassicreborn.common.util.ItemStackNbtUtil;
 
 public class CultivatorBlockEntity extends MachineBlockEntity implements MenuProvider, TemperatureControl,
         ItemHandlerBlockEntity, FluidHandlerBlockEntity {
@@ -114,19 +116,12 @@ public class CultivatorBlockEntity extends MachineBlockEntity implements MenuPro
         }
     }
 
-    @Override public CompoundTag getUpdateTag() { return this.saveWithoutMetadata(); }
-    @Override public void handleUpdateTag(CompoundTag tag){
-        super.handleUpdateTag(tag);
-        if(tag.contains("MachineData", Tag.TAG_COMPOUND)){
-            CompoundTag machineData = tag.getCompound("MachineData");
-            if(machineData.contains("Data", Tag.TAG_COMPOUND)) readMachineData(machineData.getCompound("Data"));
-        }        if(this.level != null && this.level.isClientSide){
-            if(this.processTime > 0) this.getRenderEntity();
-            else this.dinosaurEntity = null;
-        }
+
+    @Override
+    public @Nullable ClientboundBlockEntityDataPacket getUpdatePacket() {
+        return ClientboundBlockEntityDataPacket.create(this);
     }
-    @Override public ClientboundBlockEntityDataPacket getUpdatePacket(){ return ClientboundBlockEntityDataPacket.create(this); }
-    @Override public void onDataPacket(Connection net, ClientboundBlockEntityDataPacket pkt){ handleUpdateTag(pkt.getTag()); }
+
     // ----------------------------
 
     @Override
@@ -172,13 +167,24 @@ public class CultivatorBlockEntity extends MachineBlockEntity implements MenuPro
             return false;
         }
 
-
+        // check nutrients (works for all birth types if that's what you want)
         return this.lipids     >= dino.getLipids()
                 && this.minerals   >= dino.getMinerals()
                 && this.proximates >= dino.getProximates()
                 && this.vitamins   >= dino.getVitamins();
     }
 
+    @Override
+    protected void writeInventory(CompoundTag tag, HolderLookup.Provider provider) {
+        tag.put("Items", this.machineItemStackHandler.serializeNBT(provider));
+    }
+
+    @Override
+    protected void readInventory(CompoundTag tag, HolderLookup.Provider provider) {
+        if (tag.contains("Items", Tag.TAG_COMPOUND)) {
+            this.machineItemStackHandler.deserializeNBT(provider, tag.getCompound("Items"));
+        }
+    }
     @Override
     public @NotNull List<ItemStack> processItem(ItemStack... inputs) {
         ItemStack syringe = inputs[0];
@@ -195,7 +201,7 @@ public class CultivatorBlockEntity extends MachineBlockEntity implements MenuPro
         if (dna == null) dna = new DinoDNA(dino, 100, GeneticsHelper.randomGenetics(this.level.getRandom()));
         dna.writeToNBT(nbt);
 
-        hatchedEgg.setTag(nbt);
+        ItemStackNbtUtil.setTag(hatchedEgg, nbt);
         decrementResources(dino);
 
         return List.of(hatchedEgg);
@@ -322,6 +328,18 @@ public class CultivatorBlockEntity extends MachineBlockEntity implements MenuPro
     public int getMinerals(){ return this.minerals; }
     public int getVitamins(){ return this.vitamins; }
     public int getLipids(){ return this.lipids; }
+
+    @Override
+    protected void writeFluids(CompoundTag tag, HolderLookup.Provider provider) {
+        tag.put("Tank", this.tank.writeToNBT(provider, new CompoundTag()));
+    }
+
+    @Override
+    protected void readFluids(CompoundTag tag, HolderLookup.Provider provider) {
+        if (tag.contains("Tank", Tag.TAG_COMPOUND)) {
+            this.tank.readFromNBT(provider, tag.getCompound("Tank"));
+        }
+    }
 
     // TemperatureControl
     @Override public void setTemperature(int index, int value){ if(index==0){ this.temperature = value; pushSync(); } }

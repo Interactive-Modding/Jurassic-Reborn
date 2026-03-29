@@ -1,7 +1,6 @@
 package net.vit.jurassicreborn.common.items.misc;
 
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -23,20 +22,16 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.LevelChunk;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
-import net.vit.jurassicreborn.client.JurassicClient;
 import net.vit.jurassicreborn.common.blocks.ModBlocks;
 import net.vit.jurassicreborn.common.blocks.entities.ActionFigureBlockEntity;
 import net.vit.jurassicreborn.common.entities.Dinosaurs.Dinosaur;
 import net.vit.jurassicreborn.common.util.LangUtil;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.client.extensions.common.IClientItemExtensions;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.Objects;
-import java.util.function.Consumer;
+import net.vit.jurassicreborn.common.util.ItemStackNbtUtil;
 
 public class ActionFigureItem extends Item {
 
@@ -60,9 +55,9 @@ public class ActionFigureItem extends Item {
     @Override
     public ItemStack getDefaultInstance() {
         ItemStack stack = super.getDefaultInstance();
-        CompoundTag tag = stack.getOrCreateTag();
+        CompoundTag tag = ItemStackNbtUtil.getOrCreateTag(stack);
         tag.putBoolean(TAG_FOSSILE, !this.fresh);
-        stack.setTag(tag);
+        ItemStackNbtUtil.setTag(stack, tag);
         return stack;
     }
     @Override
@@ -71,19 +66,6 @@ public class ActionFigureItem extends Item {
     }
 
 
-
-    @Override
-    @OnlyIn(Dist.CLIENT)
-    public void initializeClient(@NotNull Consumer<IClientItemExtensions> consumer) {
-        super.initializeClient(consumer);
-        IClientItemExtensions prop = new IClientItemExtensions() {
-            @Override
-            public BlockEntityWithoutLevelRenderer getCustomRenderer() {
-                return JurassicClient.displayBlockRendererWithoutLevel;
-            }
-        };
-        consumer.accept(prop);//jankiest shit ive seen please work - gamma
-    }
 
     public boolean isSkeleton(){
         return this.isSkeleton;
@@ -112,14 +94,14 @@ public class ActionFigureItem extends Item {
     }
 
     public int getGender(ItemStack stack){
-        CompoundTag tag = stack.getOrCreateTag();
+        CompoundTag tag = ItemStackNbtUtil.getOrCreateTag(stack);
 
         if(tag.contains("Gender")){
             return getGender(tag.getString("Gender"));
         }
         //init gender if the stack doesn't have one
         tag.putString("Gender", "random");
-        stack.setTag(tag);
+        ItemStackNbtUtil.setTag(stack, tag);
         return 0;
     }
 
@@ -147,9 +129,9 @@ public class ActionFigureItem extends Item {
 
         int newGender = (gender + 1) % 3;
 
-        CompoundTag stackTag = stack.getOrCreateTag();
+        CompoundTag stackTag = ItemStackNbtUtil.getOrCreateTag(stack);
         stackTag.putString("Gender", getGender(newGender));
-        stack.setTag(stackTag);
+        ItemStackNbtUtil.setTag(stack, stackTag);
 
         return newGender;
 
@@ -164,10 +146,10 @@ public class ActionFigureItem extends Item {
     }
 
     public boolean isFossile(ItemStack stack){
-        CompoundTag tag = stack.getOrCreateTag();
+        CompoundTag tag = ItemStackNbtUtil.getOrCreateTag(stack);
         if(!tag.contains(TAG_FOSSILE)){
             tag.putBoolean(TAG_FOSSILE, !this.fresh);
-            stack.setTag(tag);
+            ItemStackNbtUtil.setTag(stack, tag);
         }
         return tag.getBoolean(TAG_FOSSILE);
     }
@@ -186,7 +168,7 @@ public class ActionFigureItem extends Item {
         );
     }
     @Override
-    public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
+    public void appendHoverText(@NotNull ItemStack pStack, Item.TooltipContext context, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
         if(this.isSkeleton)
             return;
 

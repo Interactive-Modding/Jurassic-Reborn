@@ -2,8 +2,10 @@ package net.vit.jurassicreborn.common.entities.ai;
 
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.util.Mth;
+import net.minecraft.world.entity.player.Player;
 import net.vit.jurassicreborn.client.render.entity.animation.EntityAnimation;
 import net.vit.jurassicreborn.client.sounds.SoundHandler;
 import net.vit.jurassicreborn.common.entities.DinosaurEntities.DilophosaurusEntity;
@@ -49,6 +51,7 @@ public class DilophosaurusSpitGoal extends Goal {
         LivingEntity candidate = this.dilo.getTarget();
         if (candidate == null) return false;
         if (!candidate.isAlive()) return false;
+        if (candidate instanceof Player player && (player.isCreative() || player.isSpectator())) return false;
         if (candidate instanceof DinosaurEntity dino && dino.isCarcass()) return false;
         if (candidate.getHealth() < candidate.getMaxHealth() * 0.9F && candidate.hasEffect(MobEffects.BLINDNESS)) return false;
         if (this.dilo.isInWater()) return false;
@@ -59,6 +62,7 @@ public class DilophosaurusSpitGoal extends Goal {
     @Override
     public boolean canContinueToUse() {
         if (this.target == null || !this.target.isAlive()) return false;
+        if (this.target instanceof Player player && (player.isCreative() || player.isSpectator())) return false;
         return !this.dilo.getNavigation().isDone()
                 || this.dilo.distanceToSqr(this.target) <= (double) this.maxAttackDistanceSq
                 || this.animationTimer > 0;
@@ -97,10 +101,11 @@ public class DilophosaurusSpitGoal extends Goal {
         double horizDistSq = dx * dx + dz * dz;
         double verticalGap = Math.abs(this.target.getY() - this.dilo.getY());
 
+        double stepHeight = this.dilo.getAttributeValue(Attributes.STEP_HEIGHT);
         boolean shouldHoldPosition = distSq <= this.maxAttackDistanceSq
                 && this.seeTime >= 10
                 && horizDistSq <= (double) (this.attackRadius * this.attackRadius * 0.75F)
-                && verticalGap <= (double) (this.dilo.getStepHeight() + 0.75F);
+                && verticalGap <= (stepHeight + 0.75F);
 
         if (shouldHoldPosition) {
             this.dilo.getNavigation().stop();

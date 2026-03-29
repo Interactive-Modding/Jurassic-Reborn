@@ -1,12 +1,14 @@
 package net.vit.jurassicreborn.common.blocks.entities;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.vit.jurassicreborn.common.util.ItemStackNbtUtil;
 
 import javax.annotation.Nullable;
 
@@ -41,11 +43,12 @@ public class EncasedFossilBlockEntity extends BlockEntity {
     }
 
     @Override
-    public void saveToItem(ItemStack stack) {
-        CompoundTag tag = stack.getOrCreateTag();
+    public void saveToItem(ItemStack stack, HolderLookup.Provider provider) {
+        CompoundTag tag = ItemStackNbtUtil.getOrCreateTag(stack);
         tag.putInt(LEVEL_NBT, YLevel);
         tag.putString(VARIANT_KEY, dino != null ? dino.toString() : "minecraft:air");
-        super.saveToItem(stack);
+        ItemStackNbtUtil.setTag(stack, tag);
+        super.saveToItem(stack, provider);
     }
 
 }

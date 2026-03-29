@@ -35,9 +35,9 @@ public class JurassicChestBoat extends ChestBoat {
     }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(DATA_TYPE, ModBoatType.ARAUCARIA.ordinal());
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(DATA_TYPE, ModBoatType.ARAUCARIA.ordinal());
     }
 
     public void setVariant(ModBoatType type) {

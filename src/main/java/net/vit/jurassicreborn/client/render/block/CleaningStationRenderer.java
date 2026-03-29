@@ -2,6 +2,8 @@ package net.vit.jurassicreborn.client.render.block;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import net.vit.jurassicreborn.common.blocks.ModBlocks;
 import net.vit.jurassicreborn.common.blocks.entities.cleaner.CleanerBlock;
 import net.vit.jurassicreborn.common.blocks.entities.cleaner.CleanerBlockEntity;
@@ -13,8 +15,6 @@ import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
 public class CleaningStationRenderer implements BlockEntityRenderer<CleanerBlockEntity> {
@@ -39,7 +39,7 @@ public class CleaningStationRenderer implements BlockEntityRenderer<CleanerBlock
 //        }
 ////        SHARK = new AnimatableModel(shark, new SharkAnimator());
 //        CLEANER_MODEL = new TabulaModel(cleaner);
-//        CLEANER_TEXTURE = new ResourceLocation(JurassicReborn.MODID, "textures/block/cleaning_station.png");
+//        CLEANER_TEXTURE = ResourceLocation.parse(JurassicReborn.MODID + ":" + "textures/block/cleaning_station.png");
 //    }
 //    private Minecraft
 

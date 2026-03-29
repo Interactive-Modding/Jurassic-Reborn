@@ -6,6 +6,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
+import net.vit.jurassicreborn.common.util.ItemStackNbtUtil;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -21,7 +22,7 @@ public class/* Bingo! */ DinoDNA extends DNA{
     }
 
     public static DinoDNA fromStack(ItemStack stack) {
-        return readFromNBT(stack.getTag());
+        return readFromNBT(ItemStackNbtUtil.getTag(stack));
     }
 
     public static @Nullable DinoDNA readFromNBT(@Nullable CompoundTag tag) {
@@ -66,25 +67,10 @@ public class/* Bingo! */ DinoDNA extends DNA{
         } else {
             colour = ChatFormatting.RED;
         }
-//        tooltip.add(colour + Component.translatable("lore.dna_quality.name").getString().replace("%1$s", LangUtils.getFormattedQuality(this.quality)));
-        String qualityString = Component.translatable("lore.dna_quality").getString();
-//        String[] splitQuality = qualityString.split("\\{[a-z]*\\}");//regex go bRRRRRRRRRRRRRR
         Component quality = LangUtil.getFormattedQuality(this.quality);
-        qualityString = qualityString.formatted(quality.getString(), "%");
-        tooltip.add(Component.literal(qualityString).withStyle(colour));
-
-//        tooltip.add(ChatFormatting.BLUE + LangUtils.translate(LangUtils.LORE.get("genetic_code")).replace("%1$s", LangUtils.getFormattedGenetics(this.genetics)));
-
-        String geneticString = Component.translatable("lore.genetic_code").getString();
-//        String[] splitGenetics = geneticString.split("\\{[a-z]*\\}");
+        tooltip.add(Component.translatable("lore.dna_quality", quality, "%").withStyle(colour));
         Component genetics = LangUtil.getFormattedGenetics(this.genetics);
-        geneticString = geneticString.formatted(genetics.getString());
-        Component formattedQuality = Component.literal(geneticString).withStyle(ChatFormatting.BLUE);
-//        if(splitGenetics.length > 1){
-//            formattedQuality = Component.literal(splitQuality[0]).append(genetics).append(splitGenetics[1]).withStyle(ChatFormatting.BLUE);
-//        }else{
-//            formattedQuality = Component.literal(splitQuality[0]).append(genetics).withStyle(ChatFormatting.BLUE);
-        //}
+        Component formattedQuality = Component.translatable("lore.genetic_code", genetics).withStyle(ChatFormatting.BLUE);
         tooltip.add(formattedQuality);
 
 

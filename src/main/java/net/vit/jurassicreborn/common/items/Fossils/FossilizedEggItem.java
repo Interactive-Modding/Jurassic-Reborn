@@ -10,6 +10,7 @@ import com.mojang.datafixers.util.Pair;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.vit.jurassicreborn.common.util.ItemStackNbtUtil;
 import net.vit.jurassicreborn.common.util.api.GrindableItem;
 
 import java.util.List;
@@ -19,8 +20,8 @@ import net.vit.jurassicreborn.common.items.ModItems;
 
 public class FossilizedEggItem extends Item implements GrindableItem {
 
-    public FossilizedEggItem() {
-        super(new Item.Properties());
+    public FossilizedEggItem(Item.Properties properties) {
+        super(properties);
     }
 
 
@@ -31,7 +32,7 @@ public class FossilizedEggItem extends Item implements GrindableItem {
 
     @Override
     public ItemStack getGroundItem(ItemStack stack, Random random) {
-        CompoundTag tag = stack.getTag();
+        CompoundTag tag = ItemStackNbtUtil.getTag(stack);
 
         int outputType = random.nextInt(3);
 
@@ -41,7 +42,7 @@ public class FossilizedEggItem extends Item implements GrindableItem {
 
             Dinosaur selected = dinosaurs.get(random.nextInt(dinosaurs.size()));
             ItemStack tissue = new ItemStack(ModItems.SOFT_TISSUE.get(selected).get());
-            tissue.setTag(tag);
+            ItemStackNbtUtil.setTag(tissue, tag);
             return tissue;
         } else if (outputType == 1) {
             return new ItemStack(Items.BONE_MEAL);
@@ -53,16 +54,16 @@ public class FossilizedEggItem extends Item implements GrindableItem {
     @Override
     public List<Pair<Float, ItemStack>> getChancedOutputs(ItemStack inputItem) {
         List<Pair<Float, ItemStack>> list = Lists.newArrayList();
-        CompoundTag tag = inputItem.getTag();
+        CompoundTag tag = ItemStackNbtUtil.getTag(inputItem);
         List<Dinosaur> dinosaurs = DinosaurHandler.getDinosaursFromAmber();
         float single = 100F / 3F;
         float dinoSingle = single / dinosaurs.size();
 
         for (Dinosaur dino : dinosaurs) {
-            net.minecraftforge.registries.RegistryObject<? extends Item> regObj = ModItems.SOFT_TISSUE.get(dino);
+            net.neoforged.neoforge.registries.DeferredHolder<Item, ? extends Item> regObj = ModItems.SOFT_TISSUE.get(dino);
             if (regObj != null) {
                 ItemStack output = new ItemStack(regObj.get());
-                output.setTag(tag);
+                ItemStackNbtUtil.setTag(output, tag);
                 list.add(Pair.of(dinoSingle, output));
             }
         }

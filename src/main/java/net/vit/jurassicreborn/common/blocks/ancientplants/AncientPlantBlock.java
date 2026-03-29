@@ -1,5 +1,6 @@
 package net.vit.jurassicreborn.common.blocks.ancientplants;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -19,9 +20,16 @@ public class AncientPlantBlock extends BushBlock {
 
     private static final int DENSITY_PER_AREA = 4;
     private static final int SPREAD_RADIUS = 6;
+    public static final MapCodec<AncientPlantBlock> CODEC =
+            simpleCodec(AncientPlantBlock::new);
 
     public AncientPlantBlock(BlockBehaviour.Properties properties) {
         super(properties.randomTicks());
+    }
+
+    @Override
+    protected MapCodec<? extends BushBlock> codec() {
+        return CODEC;
     }
 
     public AncientPlantBlock() {

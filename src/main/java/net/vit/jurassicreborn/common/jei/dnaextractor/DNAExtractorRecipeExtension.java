@@ -20,6 +20,7 @@ import net.vit.jurassicreborn.common.plants.PlantHandler;
 
 import java.util.ArrayList;
 import java.util.List;
+import net.vit.jurassicreborn.common.util.ItemStackNbtUtil;
 
 /** JEI recipe extension for the DNA Extractor. */
 public class DNAExtractorRecipeExtension implements IRecipeCategoryExtension {
@@ -58,7 +59,7 @@ public class DNAExtractorRecipeExtension implements IRecipeCategoryExtension {
                     DinoDNA dna = new DinoDNA(dino, quality, GeneticsHelper.randomGenetics(rand));
                     CompoundTag nbt = new CompoundTag();
                     dna.writeToNBT(nbt);
-                    disc.setTag(nbt);
+                    ItemStackNbtUtil.setTag(disc, nbt);
                     StorageDiscItem.applyCustomModelData(disc);
                     outputs.add(disc);
                 }
@@ -70,7 +71,7 @@ public class DNAExtractorRecipeExtension implements IRecipeCategoryExtension {
                     PlantDNA dna = new PlantDNA(PlantHandler.getPlantId(plant), quality);
                     CompoundTag tag = new CompoundTag();
                     dna.writeToNBT(tag);
-                    disc.setTag(tag);
+                    ItemStackNbtUtil.setTag(disc, tag);
                     StorageDiscItem.applyCustomModelData(disc);
                     outputs.add(disc);
                 }
@@ -86,7 +87,7 @@ public class DNAExtractorRecipeExtension implements IRecipeCategoryExtension {
                     DinoDNA dna = new DinoDNA(dino, quality, GeneticsHelper.randomGenetics(rand));
                     CompoundTag tag = new CompoundTag();
                     dna.writeToNBT(tag);
-                    disc.setTag(tag);
+                    ItemStackNbtUtil.setTag(disc, tag);
                     StorageDiscItem.applyCustomModelData(disc);
                     outputs.add(disc);
                 }
@@ -97,7 +98,7 @@ public class DNAExtractorRecipeExtension implements IRecipeCategoryExtension {
             DinoDNA dna = new DinoDNA(dino, 100, GeneticsHelper.randomGenetics(rand));
             CompoundTag tag = new CompoundTag();
             dna.writeToNBT(tag);
-            disc.setTag(tag);
+            ItemStackNbtUtil.setTag(disc, tag);
             StorageDiscItem.applyCustomModelData(disc);
             outputs.add(disc);
         }

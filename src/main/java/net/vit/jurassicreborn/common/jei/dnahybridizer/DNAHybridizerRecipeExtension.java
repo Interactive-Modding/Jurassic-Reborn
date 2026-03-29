@@ -14,6 +14,7 @@ import net.vit.jurassicreborn.common.items.genetics.StorageDiscItem;
 
 import java.util.ArrayList;
 import java.util.List;
+import net.vit.jurassicreborn.common.util.ItemStackNbtUtil;
 
 /** JEI recipe extension for the DNA Hybridizer. */
 public class DNAHybridizerRecipeExtension implements IRecipeCategoryExtension {
@@ -41,7 +42,7 @@ public class DNAHybridizerRecipeExtension implements IRecipeCategoryExtension {
         ItemStack stack = new ItemStack(ModItems.STORAGE_DISC.get());
         CompoundTag tag = new CompoundTag();
         new DinoDNA(dino, 100, "").writeToNBT(tag);
-        stack.setTag(tag);
+        ItemStackNbtUtil.setTag(stack, tag);
         StorageDiscItem.applyCustomModelData(stack);
         return stack;
     }

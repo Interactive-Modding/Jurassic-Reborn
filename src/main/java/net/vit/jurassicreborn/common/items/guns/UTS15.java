@@ -13,7 +13,7 @@ public class UTS15 extends Gun {
                 24,                     // clipSize
                 80,                     // reloadCooldown
                 5,                      // shotCooldown
-                1.3F,                   // speed
+                7.5F,                   // speed
                 8.0F,                   // inaccuracy
                 0.0F,                   // pitchOffset
                 6                       // damage

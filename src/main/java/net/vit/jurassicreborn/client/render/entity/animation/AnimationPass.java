@@ -2,8 +2,8 @@ package net.vit.jurassicreborn.client.render.entity.animation;
 
 import com.github.alexthe666.citadel.animation.Animation;
 import com.github.alexthe666.citadel.client.model.AdvancedModelBox;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import net.vit.jurassicreborn.JurassicReborn;
 import net.vit.jurassicreborn.common.entities.EntityUtils.Animatable;
 
@@ -11,6 +11,7 @@ import java.util.Map;
 
 /**
  * Animation pass helper – Citadel 1.19.2 version.
+ * Drive this from your model's setupAnim:
  *
  *   resetToDefaultPose();
  *   animationPass.performAnimations(entity, limbSwing, limbSwingAmount, ageInTicks);

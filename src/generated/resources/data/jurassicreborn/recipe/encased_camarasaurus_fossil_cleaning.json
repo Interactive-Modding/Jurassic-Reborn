@@ -1,0 +1,11 @@
+{
+  "type": "jurassicreborn:cleaning",
+  "id": "jurassicreborn:encased_camarasaurus_fossil_cleaning",
+  "input": {
+    "item": "jurassicreborn:encased_camarasaurus_fossil"
+  },
+  "output": {
+    "count": 1,
+    "id": "jurassicreborn:bones/camarasaurus_skull"
+  }
+}

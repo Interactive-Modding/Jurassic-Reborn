@@ -5,8 +5,8 @@ import com.github.alexthe666.citadel.client.model.ITabulaModelAnimator;
 import com.github.alexthe666.citadel.client.model.container.TabulaModelContainer;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import net.vit.jurassicreborn.common.entities.EntityUtils.Animatable;
 
 import java.util.Map;
@@ -63,11 +63,16 @@ public class AnimatableModel extends FixedTabulaModel {
     @Override
     public void faceTarget(float yaw, float pitch, float rotationDivisor, AdvancedModelBox... boxes) {
         float actualRotationDivisor = rotationDivisor * boxes.length;
-        float yawAmount = Mth.clamp(Mth.wrapDegrees(yaw), -45.0F, 45.0F) / (180.0F / (float) Math.PI) / actualRotationDivisor;
-        float pitchAmount = Mth.wrapDegrees(pitch) / (180.0F / (float) Math.PI) / actualRotationDivisor;
+
+        float clampedYaw   = Mth.clamp(Mth.wrapDegrees(yaw),   -45.0F, 45.0F);
+        float clampedPitch = Mth.clamp(Mth.wrapDegrees(pitch), -20.0F, 5.0F);
+        float yawAmount = clampedYaw / (180.0F / (float) Math.PI) / actualRotationDivisor;
+        float pitchAmount = clampedPitch / (180.0F / (float) Math.PI) / actualRotationDivisor;
+
         for (AdvancedModelBox box : boxes) {
             box.rotateAngleY += yawAmount;
             box.rotateAngleX += pitchAmount;
         }
     }
+
 }

@@ -11,8 +11,6 @@ import net.minecraft.world.level.biome.Biome;
 
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.tags.TagKey;
-import net.minecraftforge.common.Tags;
-import net.minecraftforge.registries.ForgeRegistries;
 
 public class DiplocaulusDinosaur extends Dinosaur {
     public static final double SPEED = 0.3F;
@@ -33,8 +31,8 @@ public class DiplocaulusDinosaur extends Dinosaur {
         this.setStrength(1, 4);
         this.setMaximumAge(fromDays(45));
         this.setEyeHeight(0.25F, 0.55F);
-        this.setSizeX(0.1F, 1.0F);
-        this.setSizeY(0.3F, 0.6F);
+        this.setSizeX(0.1F, 0.4F);
+        this.setSizeY(0.1F, 0.2F);
         this.setDiet(Diet.PISCIVORE.get());
         this.setBones("skull", "teeth", "foot_bone","leg_bones", "ribcage", "tail_vertebrae");
         this.setHeadCubeName("Head");
@@ -51,22 +49,8 @@ public class DiplocaulusDinosaur extends Dinosaur {
                 { "", "", "foot_bone"}};
         this.setRecipe(recipe);
         this.enableSkeleton();
-        ArrayList<ResourceKey<Biome>> biomeList = new ArrayList<>();
-        TagKey<Biome>[] tags = (new TagKey[]{Tags.Biomes.IS_WATER, BiomeTags.IS_OCEAN, BiomeTags.IS_RIVER});
-        ArrayList<Biome> allBiomes = new ArrayList<>(ForgeRegistries.BIOMES.getValues());
-
-        biomeList = new ArrayList<>(allBiomes.stream().filter((biome ->{
-            boolean accept = false;
-            
-            for(var tag : tags){
-                if(ForgeRegistries.BIOMES.tags().getTag(tag).contains(biome)){
-                    accept = true;
-                }
-            }
-            return accept;
-            
-        })).map((biome) -> ForgeRegistries.BIOMES.getResourceKey(biome).get()).toList());
-        this.setSpawn(1, biomeList);
+//      List<ResourceKey<Biome>> biomeList = biomeKeysForTags(tags);
+//       this.setSpawn(1, biomeList);
 this.init();
     }
 }

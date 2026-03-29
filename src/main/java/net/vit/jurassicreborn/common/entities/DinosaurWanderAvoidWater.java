@@ -7,6 +7,7 @@ import net.vit.jurassicreborn.common.entities.ai.DinosaurWanderEntityAI;
 
 /**
  * Land wandering that avoids deep water.
+ * Extends your already-ported DinosaurWanderEntityAI (speed / interval logic).
  */
 public class DinosaurWanderAvoidWater extends DinosaurWanderEntityAI {
 

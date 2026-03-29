@@ -4,54 +4,84 @@ import com.mojang.logging.LogUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.decoration.HangingEntity;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.HitResult;
-import net.minecraftforge.entity.IEntityAdditionalSpawnData;
-import net.minecraftforge.network.NetworkHooks;
-import org.slf4j.Logger;
-import org.jetbrains.annotations.Nullable;
-import java.util.Locale;
-import java.util.function.Predicate;
-
+import net.minecraft.world.phys.Vec3;
 import net.vit.jurassicreborn.JurassicReborn;
 import net.vit.jurassicreborn.common.entities.ModEntities;
 import net.vit.jurassicreborn.common.items.ModItems;
-import net.minecraft.util.Mth;
+import org.jetbrains.annotations.Nullable;
+import org.slf4j.Logger;
 
-public class AttractionSignEntity extends HangingEntity implements IEntityAdditionalSpawnData {
-    private static final Logger LOGGER = LogUtils.getLogger();
+import java.util.Locale;
+import java.util.function.Predicate;
+
+public class AttractionSignEntity extends HangingEntity {
     private static final Predicate<Entity> IS_OTHER_SIGN = e -> e instanceof AttractionSignEntity;
+    private static final EntityDataAccessor<Integer> SIGN_TYPE =
+            SynchedEntityData.defineId(AttractionSignEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Byte> SIGN_FACING =
+            SynchedEntityData.defineId(AttractionSignEntity.class, EntityDataSerializers.BYTE);
+
+    private static final int SIGN_WIDTH  = 16;
+    private static final int SIGN_HEIGHT = 16;
+    private static final Logger LOGGER = LogUtils.getLogger();
     private AttractionSignType type;
 
-    public AttractionSignEntity(EntityType<? extends AttractionSignEntity> entityType, Level world) {
-        super(entityType, world);
+    public AttractionSignEntity(EntityType<? extends AttractionSignEntity> type, Level level) {
+        super(type, level);
+        this.noCulling = true;
         this.type = AttractionSignType.AQUARIUM;
-        this.noCulling = true; // ensure sign renders even when off screen
     }
 
-    // Proper HangingEntity constructor: sets blockPos and facing
-    public AttractionSignEntity(Level world, BlockPos pos, Direction facing, AttractionSignType type) {
-        super(ModEntities.ATTRACTION_SIGN.get(), world, pos);
+    public AttractionSignEntity(Level level, BlockPos pos, Direction facing, AttractionSignType type) {
+        super(ModEntities.ATTRACTION_SIGN.get(), level, pos);
+        this.noCulling = true;
         this.type = type;
         this.setDirection(facing);
-        this.noCulling = true; // prevent frustum culling so sign stays visible
+        this.entityData.set(SIGN_TYPE, type.ordinal());
+        this.entityData.set(SIGN_FACING, (byte) facing.get2DDataValue());
+    }
+
+    @Override
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        builder.define(SIGN_TYPE, AttractionSignType.AQUARIUM.ordinal());
+        builder.define(SIGN_FACING, (byte) 0);
+    }
+
+    @Override
+    public void onSyncedDataUpdated(EntityDataAccessor<?> key) {
+        super.onSyncedDataUpdated(key);
+        if (SIGN_TYPE.equals(key)) {
+            int idx = Mth.clamp(this.entityData.get(SIGN_TYPE), 0, AttractionSignType.values().length - 1);
+            this.type = AttractionSignType.values()[idx];
+        }
+
+        if (SIGN_FACING.equals(key)) {
+            Direction newDir = Direction.from2DDataValue(this.entityData.get(SIGN_FACING));
+            if (newDir != this.direction) {
+                this.setDirection(newDir);
+            }
+        }
     }
 
     @Override
     public void addAdditionalSaveData(CompoundTag tag) {
         super.addAdditionalSaveData(tag);
-        tag.putInt("SignType", type.ordinal());
+        tag.putInt("SignType", this.type.ordinal());
         tag.putByte("Facing", (byte) this.direction.get2DDataValue());
     }
 
@@ -60,53 +90,49 @@ public class AttractionSignEntity extends HangingEntity implements IEntityAdditi
         super.readAdditionalSaveData(tag);
         int idx = Mth.clamp(tag.getInt("SignType"), 0, AttractionSignType.values().length - 1);
         this.type = AttractionSignType.values()[idx];
+        this.entityData.set(SIGN_TYPE, idx);
         if (tag.contains("Facing")) {
-            setDirection(Direction.from2DDataValue(tag.getByte("Facing")));
+            Direction facing = Direction.from2DDataValue(tag.getByte("Facing"));
+            this.setDirection(facing);
+            this.entityData.set(SIGN_FACING, (byte) facing.get2DDataValue());
         }
     }
 
-    @Override
-    public void writeSpawnData(FriendlyByteBuf buf) {
-        buf.writeInt(type.ordinal());
-        buf.writeLong(this.getPos().asLong());
-        buf.writeByte(this.direction.get2DDataValue());
-    }
 
     @Override
-    public void readSpawnData(FriendlyByteBuf buf) {
-        int idx = Mth.clamp(buf.readInt(), 0, AttractionSignType.values().length - 1);
-        this.type = AttractionSignType.values()[idx];
-        BlockPos p = BlockPos.of(buf.readLong());
-        this.pos = p; // restore hanging block position before facing
-        this.setDirection(Direction.from2DDataValue(buf.readUnsignedByte()));
-    }
+    protected AABB calculateBoundingBox(BlockPos pos, Direction dir) {
+        double cx = pos.getX() + 0.5D;
+        double cy = pos.getY() + 0.5D;
+        double cz = pos.getZ() + 0.5D;
 
-    @Override
-    public Packet<ClientGamePacketListener> getAddEntityPacket() {
-        return NetworkHooks.getEntitySpawningPacket(this);
-    }
 
-    @Override public int getWidth()  { return 16; }
-    @Override public int getHeight() { return 16; }
+        double inset = 0.43D;
 
-    @Override
-    public void dropItem(@Nullable Entity broke) {
-        if (!level().isClientSide()
-                && level().getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)
-                && !(broke instanceof Player p && p.getAbilities().instabuild)) {
-            ItemStack stack = new ItemStack(ModItems.ATTRACTION_SIGNS.get(this.type).get());
-            spawnAtLocation(stack, 0f);
+        cx -= dir.getStepX() * inset;
+        cz -= dir.getStepZ() * inset;
+
+        double halfWidth  = SIGN_WIDTH  / 32.0D;
+        double halfHeight = SIGN_HEIGHT / 32.0D;
+        double halfDepth  = 0.0625D;
+
+        if (dir.getAxis() == Direction.Axis.Z) {
+            return new AABB(
+                    cx - halfWidth,  cy - halfHeight, cz - halfDepth,
+                    cx + halfWidth,  cy + halfHeight, cz + halfDepth
+            );
         }
-    }
-
-    @Override public void playPlacementSound() {}
-    @Override public ItemStack getPickedResult(HitResult target) {
-        return new ItemStack(ModItems.ATTRACTION_SIGNS.get(this.type).get());
+        else {
+            return new AABB(
+                    cx - halfDepth,  cy - halfHeight, cz - halfWidth,
+                    cx + halfDepth,  cy + halfHeight, cz + halfWidth
+            );
+        }
     }
 
     @Override
     public boolean survives() {
         if (!level().noCollision(this)) return false;
+
         return level().getEntitiesOfClass(
                 AttractionSignEntity.class,
                 getBoundingBox(),
@@ -114,15 +140,48 @@ public class AttractionSignEntity extends HangingEntity implements IEntityAdditi
         ).isEmpty();
     }
 
-    @Override protected void recalculateBoundingBox() {
-        super.recalculateBoundingBox();
+    @Override
+    public void playPlacementSound() {}
+
+    @Override
+    public void dropItem(@Nullable Entity breaker) {
+        if (!level().isClientSide()
+                && level().getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)
+                && !(breaker instanceof Player p && p.getAbilities().instabuild)) {
+
+            spawnAtLocation(
+                    new ItemStack(ModItems.ATTRACTION_SIGNS.get(this.type).get()),
+                    0.0F
+            );
+        }
     }
 
-    public ResourceLocation getFaceTexture()   { return type.textureFace; }
-    public ResourceLocation getPopoutTexture(){ return type.texturePopout; }
+    @Override
+    public ItemStack getPickedResult(HitResult hit) {
+        return new ItemStack(ModItems.ATTRACTION_SIGNS.get(this.type).get());
+    }
 
+    /* ------------------------------------------------------------ */
+    /*  Renderer hooks                                               */
+    /* ------------------------------------------------------------ */
+
+    public int getWidth()  { return this.type.sizeX; }
+    public int getHeight() { return this.type.sizeY; }
+
+    public ResourceLocation getFaceTexture() {
+        return this.type.textureFace;
+    }
+
+    public ResourceLocation getPopoutTexture() {
+        return this.type.texturePopout;
+    }
+
+    /* ------------------------------------------------------------ */
+    /*  Enum                                                         */
+    /* ------------------------------------------------------------ */
 
     public enum AttractionSignType {
+
         AQUARIUM, AQUARIUM_CORAL, AVIARY, AVIARY_PLANTS,
         GALLIMIMUS_VALLEY, GALLIMIMUS_VALLEY_PLANTS,
         GENTLE_GIANTS, GENTLE_GIANTS_PLANTS,
@@ -159,17 +218,27 @@ public class AttractionSignEntity extends HangingEntity implements IEntityAdditi
         GARDEN_ALT, GARDEN_ALT_PLANTS;
 
         public final int sizeX, sizeY;
-        public final ResourceLocation textureFace, texturePopout;
+        public final ResourceLocation textureFace;
+        public final ResourceLocation texturePopout;
 
-        AttractionSignType() { this(128,128); }
-        AttractionSignType(int sx,int sy) {
-            this.sizeX = sx; this.sizeY = sy;
-            String base = name().toLowerCase(Locale.ROOT);
-            this.textureFace   = new ResourceLocation(JurassicReborn.MODID,
-                    "textures/attraction_sign/" + base + ".png");
-            this.texturePopout = new ResourceLocation(JurassicReborn.MODID,
-                    "textures/attraction_sign/" + base + "_popout.png");
+        AttractionSignType() {
+            this(128, 128);
         }
 
+        AttractionSignType(int sx, int sy) {
+            this.sizeX = sx;
+            this.sizeY = sy;
+
+            String base = name().toLowerCase(Locale.ROOT);
+
+            this.textureFace = ResourceLocation.fromNamespaceAndPath(
+                    JurassicReborn.MODID,
+                    "textures/attraction_sign/" + base + ".png"
+            );
+            this.texturePopout = ResourceLocation.fromNamespaceAndPath(
+                    JurassicReborn.MODID,
+                    "textures/attraction_sign/" + base + "_popout.png"
+            );
+        }
     }
 }

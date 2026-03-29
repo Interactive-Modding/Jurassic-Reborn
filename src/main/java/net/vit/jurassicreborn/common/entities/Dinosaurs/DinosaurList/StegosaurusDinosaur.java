@@ -1,5 +1,6 @@
 package net.vit.jurassicreborn.common.entities.Dinosaurs.DinosaurList;
 
+import net.neoforged.neoforge.common.Tags;
 import net.vit.jurassicreborn.common.entities.DinosaurEntities.*;
 import net.vit.jurassicreborn.common.entities.DinosaurEntities.StegosaurusEntity;
 import net.vit.jurassicreborn.common.entities.Dinosaurs.Dinosaur;
@@ -11,8 +12,6 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.biome.Biome;
-import net.minecraftforge.common.Tags;
-import net.minecraftforge.registries.ForgeRegistries;
 
 public class StegosaurusDinosaur extends Dinosaur{
     public static final double SPEED = 0.35F;
@@ -23,7 +22,7 @@ public class StegosaurusDinosaur extends Dinosaur{
         this.setScientificName("Stegosaurus armatus");
         this.setFamily("Stegosauridae");
         this.setLocation("United States");
-        this.setDinosaurType(DinosaurType.AGGRESSIVE);
+        this.setDinosaurType(DinosaurType.PASSIVE);
         this.setDinosaurClass(StegosaurusEntity.class);
         this.setTimePeriod(TimePeriod.JURASSIC);
         this.setEggColorMale(0xBABF83, 0x75964E);
@@ -51,27 +50,9 @@ public class StegosaurusDinosaur extends Dinosaur{
                 {"", "", "", "front_leg_bones", "front_leg_bones"}};
         this.setRecipe(recipe);
         this.enableSkeleton();
-        ArrayList<ResourceKey<Biome>> biomeList = new ArrayList<>();
-//        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.SAVANNA));
-//        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.PLAINS));
-//        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.FOREST));
-//        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.MESA));
-//        biomeList.addAll(BiomeDictionary.getBiomes(BiomeDictionary.Type.CONIFEROUS));
-        TagKey<Biome>[] tags = (new TagKey[]{BiomeTags.IS_SAVANNA, Tags.Biomes.IS_CONIFEROUS, BiomeTags.IS_MOUNTAIN, Tags.Biomes.IS_PLAINS, BiomeTags.IS_FOREST, BiomeTags.IS_BADLANDS});
-        ArrayList<Biome> allBiomes = new ArrayList<>(ForgeRegistries.BIOMES.getValues());
-
-        biomeList = new ArrayList<>(allBiomes.stream().filter((biome ->{
-            boolean accept = false;
-            
-            for(var tag : tags){
-                if(ForgeRegistries.BIOMES.tags().getTag(tag).contains(biome)){
-                    accept = true;
-                }
-            }
-            return accept;
-            
-        })).map((biome) -> ForgeRegistries.BIOMES.getResourceKey(biome).get()).toList());
-        this.setSpawn(1, biomeList);
+        TagKey<Biome>[] tags = (new TagKey[]{BiomeTags.IS_SAVANNA, Tags.Biomes.IS_CONIFEROUS_TREE, BiomeTags.IS_MOUNTAIN, Tags.Biomes.IS_PLAINS, BiomeTags.IS_FOREST, BiomeTags.IS_BADLANDS});
+//      List<ResourceKey<Biome>> biomeList = biomeKeysForTags(tags);
+//       this.setSpawn(1, biomeList);
 this.init();
     }
 }

@@ -4,8 +4,8 @@ import com.github.alexthe666.citadel.client.model.AdvancedModelBox;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
 public class FixedChainBuffer {
@@ -68,7 +68,7 @@ public class FixedChainBuffer {
         }
     }
 
-
+    /** Overload keeping your old signature. */
     public void calculateChainSwingBuffer(float maxAngle, int bufferTime, float angleDec, LivingEntity entity) {
         calculateChainSwingBuffer(maxAngle, bufferTime, angleDec, 1.0F, entity);
     }
@@ -78,8 +78,11 @@ public class FixedChainBuffer {
         if (boxes == null || boxes.length == 0) return;
 
         Minecraft mc = Minecraft.getInstance();
-        float partial = mc.isPaused() ? this.prevPartialTicks : mc.getFrameTime();
-        if (!mc.isPaused()) this.prevPartialTicks = partial;
+        float partial = mc.isPaused()
+                ? this.prevPartialTicks
+                : mc.getTimer().getGameTimeDeltaPartialTick(false);
+
+        this.prevPartialTicks = partial;
 
         float rotateAmount = (float) Math.toRadians(Mth.lerp(partial, this.prevYawVariation, this.yawVariation)) / boxes.length;
         for (AdvancedModelBox box : boxes) {
@@ -87,14 +90,27 @@ public class FixedChainBuffer {
         }
     }
 
-    /** Apply on X (wave) — mirrors the 1.12.2 pattern. */
+    /** Apply on X (wave) — mirrors the 1.12.2 / 1.20.1 pattern. */
     public void applyChainWaveBuffer(AdvancedModelBox... boxes) {
         if (boxes == null || boxes.length == 0) return;
 
-        float partial = Minecraft.getInstance().getFrameTime();
-        float rotateAmount = (float) Math.toRadians(Mth.lerp(partial, this.prevPitchVariation, this.pitchVariation)) / boxes.length;
+        Minecraft mc = Minecraft.getInstance();
+
+        float partial = mc.isPaused()
+                ? this.prevPartialTicks
+                : mc.getTimer().getGameTimeDeltaPartialTick(false);
+
+        this.prevPartialTicks = partial;
+
+        float rotateAmount =
+                (float) Math.toRadians(
+                        Mth.lerp(partial, this.prevPitchVariation, this.pitchVariation)
+                ) / boxes.length;
+
         for (AdvancedModelBox box : boxes) {
             box.rotateAngleX += rotateAmount;
         }
     }
+
+
 }

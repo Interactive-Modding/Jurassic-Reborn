@@ -131,7 +131,7 @@ public class PlantHandler {
     }
 
     public static ResourceLocation getPlantId(Plant plant) {
-        return new ResourceLocation(JurassicReborn.MODID, plant.getName().toLowerCase(Locale.ROOT).replace(' ', '_'));
+        return ResourceLocation.parse(JurassicReborn.MODID + ":" + plant.getName().toLowerCase(Locale.ROOT).replace(' ', '_'));
     }
 
     public static List<Plant> getPlants() {
@@ -142,7 +142,7 @@ public class PlantHandler {
         if (!PLANTS.contains(plant)) {
             PLANTS.add(plant);
             int id = PLANTS.indexOf(plant);
-            RESOURCE_LOCATION_MAP.put(new ResourceLocation(JurassicReborn.MODID, plant.getName().toLowerCase(Locale.ROOT).replace(' ', '_')), id);
+            RESOURCE_LOCATION_MAP.put(ResourceLocation.parse(JurassicReborn.MODID + ":" + plant.getName().toLowerCase(Locale.ROOT).replace(' ', '_')), id);
         }
 
     }

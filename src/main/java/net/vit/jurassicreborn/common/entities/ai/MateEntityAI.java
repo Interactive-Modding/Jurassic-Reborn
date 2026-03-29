@@ -111,7 +111,7 @@ public class MateEntityAI extends Goal {
             self.getMetabolism().decreaseEnergy(1000);
             self.getNavigation().stop();
 
-
+            // cooldown setting is handled in your entity’s mating/pregnancy logic
             stop();
         }
     }

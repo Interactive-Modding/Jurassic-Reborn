@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "jurassicreborn:oiled_potato_strips",
+  "ingredients": [
+    {
+      "item": "jurassicreborn:wild_potato"
+    },
+    {
+      "item": "jurassicreborn:wild_potato"
+    },
+    {
+      "item": "jurassicreborn:wild_potato"
+    },
+    {
+      "item": "jurassicreborn:wild_potato"
+    },
+    {
+      "item": "jurassicreborn:ajuginucula_smithii_oil"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "jurassicreborn:oiled_potato_strips"
+  }
+}

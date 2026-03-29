@@ -1,5 +1,6 @@
 package net.vit.jurassicreborn.common.items.guns;
 
+import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
@@ -13,6 +14,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import net.vit.jurassicreborn.common.entities.item.BulletEntity;
 import net.vit.jurassicreborn.common.items.ModItems;
+import net.vit.jurassicreborn.common.util.ItemStackNbtUtil;
 
 public class Gun extends Item {
     private final int amountPerShot;
@@ -70,7 +72,7 @@ public class Gun extends Item {
             return InteractionResultHolder.success(gunStack);
         }
 
-        ItemStack clip = getLoadedBullet(gunStack);
+        ItemStack clip = getLoadedBullet(player.level().registryAccess(), gunStack);
 
         // Reload if empty
         if (clip.isEmpty()) {
@@ -91,7 +93,7 @@ public class Gun extends Item {
                     ? new ItemStack(ModItems.BULLET.get(), clipSize)
                     : copyWithCount(invAmmo, toLoad);
 
-            setLoadedBullet(gunStack, newClip);
+            setLoadedBullet(player.level().registryAccess(), gunStack, newClip);
 
             if (!player.getAbilities().instabuild) invAmmo.shrink(toLoad);
 
@@ -111,7 +113,7 @@ public class Gun extends Item {
             }
         }
 
-        setLoadedBullet(gunStack, clip.isEmpty() ? ItemStack.EMPTY : clip);
+        setLoadedBullet(player.level().registryAccess(), gunStack, clip.isEmpty() ? ItemStack.EMPTY : clip);
 
         // 🔊 FIRE sound
         play(level, player, fireSound, 1f, 1f);
@@ -154,25 +156,26 @@ public class Gun extends Item {
         return ItemStack.EMPTY;
     }
 
-    private ItemStack getLoadedBullet(ItemStack gun) {
-        CompoundTag tag = gun.getTag();
+    private ItemStack getLoadedBullet(HolderLookup.Provider provider, ItemStack gun) {
+        CompoundTag tag = ItemStackNbtUtil.getTag(gun);
         if (tag != null && tag.contains(NBT_BULLET_KEY)) {
-            ItemStack stack = ItemStack.of(tag.getCompound(NBT_BULLET_KEY));
+            ItemStack stack = ItemStack.parseOptional(provider, tag.getCompound(NBT_BULLET_KEY));
             if (!stack.isEmpty() && stack.is(ModItems.BULLET.get())) return stack;
         }
         return ItemStack.EMPTY;
     }
 
-    private void setLoadedBullet(ItemStack gun, ItemStack bulletStack) {
+    private void setLoadedBullet(HolderLookup.Provider provider, ItemStack gun, ItemStack bulletStack) {
         if (bulletStack.isEmpty()) {
-            if (gun.hasTag()) {
-                CompoundTag t = gun.getTag();
+            if (ItemStackNbtUtil.hasTag(gun)) {
+                CompoundTag t = ItemStackNbtUtil.getTag(gun);
                 t.remove(NBT_BULLET_KEY);
-                if (t.isEmpty()) gun.setTag(null);
+                ItemStackNbtUtil.setTag(gun, t.isEmpty() ? null : t);
             }
         } else {
-            CompoundTag tag = gun.getOrCreateTag();
-            tag.put(NBT_BULLET_KEY, bulletStack.save(new CompoundTag()));
+            CompoundTag tag = ItemStackNbtUtil.getOrCreateTag(gun);
+            tag.put(NBT_BULLET_KEY, bulletStack.save(provider));
+            ItemStackNbtUtil.setTag(gun, tag);
         }
     }
 

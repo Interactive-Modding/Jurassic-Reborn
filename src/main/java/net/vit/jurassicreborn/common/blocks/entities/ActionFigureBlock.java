@@ -45,6 +45,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
+import net.vit.jurassicreborn.common.util.ItemStackNbtUtil;
 
 public class ActionFigureBlock extends Block implements EntityBlock, SimpleWaterloggedBlock {
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
@@ -154,7 +155,7 @@ public class ActionFigureBlock extends Block implements EntityBlock, SimpleWater
     }
 
     @Override
-    public ItemStack getCloneItemStack(BlockState state, HitResult target, BlockGetter level, BlockPos pos, Player player) {
+    public ItemStack getCloneItemStack(BlockState state, HitResult target, LevelReader level, BlockPos pos, Player player) {
         return getItemFromTile(getTile((Level) level, pos));
     }
 
@@ -168,7 +169,7 @@ public class ActionFigureBlock extends Block implements EntityBlock, SimpleWater
             variant = tile.isMale() ? (byte) 1 : (byte) 2;
         }
 
-        Dinosaur dino = tile.getEntity().getDinosaur();
+        Dinosaur dino = tile.getDinosaur();
         boolean skeleton = tile.isSkeleton();
 
         if (skeleton && tile.isFossile() && dino.isHybrid()) {
@@ -195,9 +196,9 @@ public class ActionFigureBlock extends Block implements EntityBlock, SimpleWater
         nbt.putBoolean("IsSkeleton", tile.isSkeleton());
         nbt.putString("Dinosaur", dino.getName());
         nbt.putByte("Variant", tile.getVariant());
+        // (Optional: add any other tags you use for creative tab variants)
 
-
-        stack.setTag(nbt);
+        ItemStackNbtUtil.setTag(stack, nbt);
         return stack;
     }
 
@@ -207,7 +208,7 @@ public class ActionFigureBlock extends Block implements EntityBlock, SimpleWater
         BlockEntity blockEntity = builder.getOptionalParameter(LootContextParams.BLOCK_ENTITY);
 
         if (blockEntity instanceof ActionFigureBlockEntity tile) {
-            Dinosaur dino = tile.getEntity().getDinosaur();
+            Dinosaur dino = tile.getDinosaur();
             if (tile.isFossile() && tile.isSkeleton() && dino.isHybrid()) {
                 return drops; // empty, nothing dropped
             }

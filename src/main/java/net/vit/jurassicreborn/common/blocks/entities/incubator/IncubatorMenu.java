@@ -1,6 +1,6 @@
 package net.vit.jurassicreborn.common.blocks.entities.incubator;
 
-import net.minecraftforge.items.SlotItemHandler;
+import net.neoforged.neoforge.items.SlotItemHandler;
 import net.vit.jurassicreborn.common.blocks.entities.DNABlocks.DNASequencer.DNASequencerMenu;
 import net.vit.jurassicreborn.common.blocks.entities.ModMenuTypes;
 import net.vit.jurassicreborn.common.blocks.inventory.IncubatorItemHandler;

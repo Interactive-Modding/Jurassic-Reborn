@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "jurassicreborn:trash_can",
+  "key": {
+    "D": {
+      "item": "minecraft:green_concrete"
+    },
+    "P": {
+      "item": "minecraft:yellow_concrete"
+    }
+  },
+  "pattern": [
+    "PPP",
+    "DDD",
+    "DDD"
+  ],
+  "result": {
+    "count": 1,
+    "id": "jurassicreborn:trash_can"
+  }
+}

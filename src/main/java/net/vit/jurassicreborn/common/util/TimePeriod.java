@@ -61,7 +61,7 @@ public enum TimePeriod {
                 return p;
 
         }
-        return NONE;
+        return NONE;//idk how this would work but there you go
 
     }
 

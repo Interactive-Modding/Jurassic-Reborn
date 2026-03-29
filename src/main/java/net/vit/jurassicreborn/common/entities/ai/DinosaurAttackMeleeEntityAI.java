@@ -75,7 +75,7 @@ public class DinosaurAttackMeleeEntityAI extends MeleeAttackGoal {
         boolean waterNav = this.dinosaur.getNavigation() instanceof WaterBoundPathNavigation;
         this.dinosaur.getLookControl().setLookAt(target, 30.0F, this.dinosaur.getMaxHeadXRot());
 
-        double reach = getAttackReachSqr(target);
+        double reach = getCustomAttackReachSqr(target);
         double distSqr = this.dinosaur.distanceToSqr(target);
         if (distSqr <= reach) {
             this.dinosaur.getNavigation().stop();
@@ -102,8 +102,7 @@ public class DinosaurAttackMeleeEntityAI extends MeleeAttackGoal {
         super.tick();
     }
 
-    @Override
-    protected double getAttackReachSqr(LivingEntity target) {
+    protected double getCustomAttackReachSqr(LivingEntity target) {
         AABB myBox = this.dinosaur.getBoundingBox().inflate(0.25, 0.25, 0.25);
         if (myBox.intersects(target.getBoundingBox())) {
             return 0.25;

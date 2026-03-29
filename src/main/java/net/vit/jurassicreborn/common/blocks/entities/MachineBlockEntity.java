@@ -1,278 +1,235 @@
 package net.vit.jurassicreborn.common.blocks.entities;
 
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.Nameable;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.NonNullList;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.Tag;
-import net.minecraft.network.Connection;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
-import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.fluids.capability.IFluidHandler;
-import net.minecraftforge.items.IItemHandler;
-import net.minecraftforge.items.IItemHandlerModifiable;
-import net.minecraftforge.items.ItemStackHandler;
-import net.vit.jurassicreborn.common.blocks.inventory.FluidHandlerBlockEntity;
+
 import net.vit.jurassicreborn.common.blocks.inventory.ItemHandlerBlockEntity;
-import net.vit.jurassicreborn.common.blocks.inventory.SerializableSingleFluidTank;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.EnumMap;
+import java.util.Collections;
 import java.util.List;
 
-
 /**
- * Base class for all(read: most) of our block entities.
+ * Base machine BlockEntity for Jurassic Reborn (NeoForge 1.21+)
+ *
+ * FEATURES:
+ * - Packet-based syncing (no caps, no LazyOptional)
+ * - Shared processing lifecycle
+ * - Name / menu compatibility
+ * - Inventory & fluid hooks (implemented by subclasses)
  */
-public abstract class MachineBlockEntity extends BlockEntity implements Nameable {
-    private LazyOptional<IItemHandlerModifiable> itemHandlerCapability = LazyOptional.empty();
-    private LazyOptional<IFluidHandler> fluidHandlerCapability = LazyOptional.empty();
-    private final EnumMap<Direction, LazyOptional<IItemHandler>> sidedItemHandlerCapabilities = new EnumMap<>(Direction.class);
+public abstract class MachineBlockEntity extends BlockEntity {
 
-    protected MachineBlockEntity(BlockEntityType<?> pType, BlockPos pPos, BlockState pBlockState) {
-        super(pType, pPos, pBlockState);
+    /* --------------------------------------------------------------------- */
+    /* PROCESS STATE */
+    /* --------------------------------------------------------------------- */
+
+    protected int processTime;
+    protected int processTimeTotal;
+
+    protected MachineBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
+        super(type, pos, state);
     }
 
-    private void updateCapabilities() {
-        if (this instanceof ItemHandlerBlockEntity itemHandlerBlockEntity) {
-            IItemHandlerModifiable handler = itemHandlerBlockEntity.getItemHandler();
-            itemHandlerCapability = LazyOptional.of(() -> handler);
+    /* --------------------------------------------------------------------- */
+    /* NETWORK SYNC */
+    /* --------------------------------------------------------------------- */
 
-            sidedItemHandlerCapabilities.values().forEach(LazyOptional::invalidate);
-            sidedItemHandlerCapabilities.clear();
-
-            if (handler instanceof MachineItemStackHandler machineHandler) {
-                for (Direction direction : Direction.values()) {
-                    sidedItemHandlerCapabilities.put(direction, LazyOptional.of(() -> new MachineItemHandlerSideWrapper(machineHandler, direction)));
-                }
-            }
-        } else {
-            itemHandlerCapability = LazyOptional.empty();
-            sidedItemHandlerCapabilities.values().forEach(LazyOptional::invalidate);
-            sidedItemHandlerCapabilities.clear();
-        }
-
-        if (this instanceof FluidHandlerBlockEntity fluidHandlerBlockEntity) {
-            fluidHandlerCapability = LazyOptional.of(fluidHandlerBlockEntity::getFluidHandler);
-        } else {
-            fluidHandlerCapability = LazyOptional.empty();
-        }
+    @Override
+    public @Nullable ClientboundBlockEntityDataPacket getUpdatePacket() {
+        return ClientboundBlockEntityDataPacket.create(this);
     }
 
     @Override
-    public void onLoad() {
-        super.onLoad();
-        updateCapabilities();
+    public CompoundTag getUpdateTag(HolderLookup.Provider provider) {
+        return this.saveWithoutMetadata(provider);
     }
 
-    @Override
-    public void setRemoved() {
-        super.setRemoved();
-        invalidateCaps();
-    }
+    /* --------------------------------------------------------------------- */
+    /* SAVE / LOAD */
+    /* --------------------------------------------------------------------- */
 
     @Override
-    public void reviveCaps() {
-        super.reviveCaps();
-        updateCapabilities();
-    }
+    protected void saveAdditional(CompoundTag tag, HolderLookup.Provider provider) {
+        super.saveAdditional(tag, provider);
 
-    @Override
-    public void invalidateCaps() {
-        super.invalidateCaps();
-        itemHandlerCapability.invalidate();
-        fluidHandlerCapability.invalidate();
-        sidedItemHandlerCapabilities.values().forEach(LazyOptional::invalidate);
-        sidedItemHandlerCapabilities.clear();
-    }
+        CompoundTag machine = new CompoundTag();
+        machine.putInt("ProcessTime", processTime);
+        machine.putInt("ProcessTimeTotal", processTimeTotal);
 
-    @Override
-    public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
-        if (cap == ForgeCapabilities.ITEM_HANDLER && this instanceof ItemHandlerBlockEntity) {
-            if (side != null) {
-                LazyOptional<IItemHandler> sidedHandler = sidedItemHandlerCapabilities.get(side);
-                if (sidedHandler != null) {
-                    if (!sidedHandler.isPresent()) {
-                        updateCapabilities();
-                        sidedHandler = sidedItemHandlerCapabilities.get(side);
-                    }
-                    if (sidedHandler != null) {
-                        return sidedHandler.cast();
-                    }
-                }
-            }
-            if (!itemHandlerCapability.isPresent()) {
-                updateCapabilities();
-            }
-            return itemHandlerCapability.cast();
+        Tag extra = getMachineData();
+        if (extra != null) {
+            machine.put("Data", extra);
         }
 
-        if (cap == ForgeCapabilities.FLUID_HANDLER && this instanceof FluidHandlerBlockEntity) {
-            if (!fluidHandlerCapability.isPresent()) {
-                updateCapabilities();
-            }
-            return fluidHandlerCapability.cast();
-        }
+        writeInventory(machine, provider);
+        writeFluids(machine, provider);
 
-        return super.getCapability(cap, side);
+        tag.put("MachineData", machine);
     }
-
-    /**
-     * This gets saved data OTHER than the machine's inventory, I.E. process time or a list of other data relating to each slot
-     * @see MachineBlockEntity#readMachineData(Tag)
-     */
-    public abstract Tag getMachineData();
-
-    /**
-     * This is the method that handles loading in saved data.
-     * @param machineData Saved NBT data OTHER than the machine's inventory.
-     * @see MachineBlockEntity#getMachineData()
-     */
-    public abstract void readMachineData(Tag machineData);
-
 
     @Override
-    public @NotNull Component getName() {
-        if (hasCustomName()) return getCustomName();
-        return getDefaultName();
+    protected void loadAdditional(CompoundTag tag, HolderLookup.Provider provider) {
+        super.loadAdditional(tag, provider);
+
+        if (!tag.contains("MachineData", Tag.TAG_COMPOUND)) return;
+
+        CompoundTag machine = tag.getCompound("MachineData");
+        this.processTime = machine.getInt("ProcessTime");
+        this.processTimeTotal = machine.getInt("ProcessTimeTotal");
+
+        if (machine.contains("Data")) {
+            readMachineData(machine.get("Data"));
+        }
+
+        readInventory(machine, provider);
+        readFluids(machine, provider);
     }
 
-    protected abstract Component getDefaultName();
-
-    /**
-     * This handles saving machine data.
-     * @param pTag Input tag provided by Minecraft
-     */
-    @Override
-    public void saveAdditional(CompoundTag pTag) {
-        super.saveAdditional(pTag);
-
-
-        CompoundTag machineData = new CompoundTag();
-        Tag tag = this.getMachineData();
-        if(tag != null)
-            machineData.put("Data", tag);
-
-        if (this instanceof ItemHandlerBlockEntity itemHandlerBlockEntity) {
-            if (itemHandlerBlockEntity.getItemHandler() instanceof ItemStackHandler handler) {
-                machineData.put("item_inventory",handler.serializeNBT());
-            }
-        }
-
-        if (this instanceof FluidHandlerBlockEntity fluidHandlerBlockEntity) {
-            if (fluidHandlerBlockEntity.getFluidHandler() instanceof SerializableSingleFluidTank tank) {
-                machineData.put("fluid_inventory", tank.serializeNBT());
-            }
-        }
-
-        pTag.put("MachineData", machineData);
-
-    }
-
-    /**
-     * This handles loading machine data.
-     * @param pTag Input tag provided by Minecraft.
-     */
-
-    @Override
-    public void load(CompoundTag pTag) {
-        super.load(pTag);
-
-        CompoundTag data = pTag.getCompound("MachineData");
-
-        if (this instanceof ItemHandlerBlockEntity itemHandlerBlockEntity) {
-            if (itemHandlerBlockEntity.getItemHandler() instanceof ItemStackHandler handler) {
-                CompoundTag itemInventoryTag = data.getCompound("item_inventory");
-                handler.deserializeNBT(itemInventoryTag);
-            }
-        }
-
-        if (this instanceof FluidHandlerBlockEntity fluidHandlerBlockEntity) {
-            if (fluidHandlerBlockEntity.getFluidHandler() instanceof SerializableSingleFluidTank tank) {
-                CompoundTag fluidInventoryTag = data.getCompound("fluid_inventory");
-                tank.deserializeNBT(fluidInventoryTag);
-            }
-        }
-
-        if(data.contains("Data"))
-            this.readMachineData(data.get("Data"));
-
-
-
-
-    }
-
-
-
-    /**
-     * This method should return weather or not the machine block entity should process the inputs given in the {@code ItemStack... inputs} param.
-     * The way I've thought about this is that this method should be given an ordered list of item stacks with all inputs in an order
-     * the coder devises. <br><br>
-     * For example input #1 is a DNA syringe, input #2 is an egg, this method should return {@code true} if the machine is
-     * an embryo calcification machine, the dino referenced from the DNA syringe lays an egg, AND input #2 is an egg.
-     * @param inputs A given list of inputs from a machine. This should be for an individual input/alt. input set in a multi-processed machine.
-     * @return true IF AND ONLY IF the machine is supposed to produce an output for the given list of inputs.
-     */
-    public abstract boolean canProcess(ItemStack... inputs);
-
-
-    /**
-     * This method should return the result of processing the given inputs, in itemstack form. However, handling placing these
-     * items should be handled by the tick function. I also suggest handing off decreasing the item counts in the container
-     * to the tick function, but that's less important: Do What Works.
-     * @param inputs A given list of inputs from a machine. This should be for an individual input/alt. input set in a multi-processed machine.
-     * @return Unordered list of output items to be handled by the tick function.
-     */
-    @NotNull
-    public abstract List<ItemStack> processItem(ItemStack... inputs);
-
+    /* --------------------------------------------------------------------- */
+    /* MACHINE CONTRACT (CRITICAL — USED BY ALL MACHINES) */
+    /* --------------------------------------------------------------------- */
     protected void mergeStack(int slot, ItemStack stack) {
-        if (this instanceof ItemHandlerBlockEntity itemHandlerBlockEntity) {
-            IItemHandlerModifiable handlerModifiable = itemHandlerBlockEntity.getItemHandler();
-            ItemStack previous = handlerModifiable.getStackInSlot(slot);
-            if (previous.isEmpty()) {
-                handlerModifiable.setStackInSlot(slot, stack);
-            } else if (ItemStack.isSameItemSameTags(previous, stack)) {
-                previous.setCount(previous.getCount() + stack.getCount());
+        if (!(this instanceof ItemHandlerBlockEntity handler)) {
+            return;
+        }
+
+        ItemStack previous = handler.getItem(slot);
+        if (previous.isEmpty()) {
+            handler.setItem(slot, stack);
+        } else if (ItemStack.isSameItemSameComponents(previous, stack) && ItemStack.isSameItemSameComponents(previous, stack)) {
+            previous.setCount(previous.getCount() + stack.getCount());
+        }
+    }
+    /**
+     * Can the machine process the given inputs?
+     * Subclasses MUST override.
+     */
+    public boolean canProcess(ItemStack... inputs) {
+        return false;
+    }
+
+    /**
+     * Perform processing and return produced outputs.
+     * Subclasses MUST override.
+     */
+    public @NotNull List<ItemStack> processItem(ItemStack... inputs) {
+        return Collections.emptyList();
+    }
+
+    /**
+     * Called every server tick while processing.
+     * Subclasses may override.
+     */
+    protected void tickProcessing(Level level) {
+    }
+
+    /* --------------------------------------------------------------------- */
+    /* NAME / UI */
+    /* --------------------------------------------------------------------- */
+
+    /**
+     * Default container name (used if no custom name is set).
+     */
+    protected @NotNull Component getDefaultName() {
+        return Component.literal("Machine");
+    }
+    @Nullable
+    protected Component customName;
+
+    public boolean hasCustomName() {
+        return this.customName != null;
+    }
+
+    @Nullable
+    public Component getCustomName() {
+        return this.customName;
+    }
+
+    public @NotNull Component getDisplayName() {
+        return this.hasCustomName()
+                ? this.getCustomName()
+                : this.getDefaultName();
+    }
+
+
+    /* --------------------------------------------------------------------- */
+    /* SUBCLASS HOOKS */
+    /* --------------------------------------------------------------------- */
+
+    protected @Nullable Tag getMachineData() {
+        return null;
+    }
+
+    protected void readMachineData(Tag tag) {
+    }
+
+    protected void writeInventory(CompoundTag tag, HolderLookup.Provider provider) {
+        if (!(this instanceof ItemHandlerBlockEntity handler)) {
+            return;
+        }
+
+        ListTag items = new ListTag();
+        var itemHandler = handler.getItemHandler();
+        for (int slot = 0; slot < itemHandler.getSlots(); slot++) {
+            ItemStack stack = itemHandler.getStackInSlot(slot);
+            if (!stack.isEmpty()) {
+                CompoundTag itemTag = (CompoundTag) stack.save(provider);
+                itemTag.putInt("Slot", slot);
+                items.add(itemTag);
+            }
+        }
+        tag.put("Items", items);
+    }
+
+    protected void readInventory(CompoundTag tag, HolderLookup.Provider provider) {
+        if (!(this instanceof ItemHandlerBlockEntity handler)) {
+            return;
+        }
+
+        var itemHandler = handler.getItemHandler();
+        for (int slot = 0; slot < itemHandler.getSlots(); slot++) {
+            itemHandler.setStackInSlot(slot, ItemStack.EMPTY);
+        }
+
+        ListTag items = tag.getList("Items", Tag.TAG_COMPOUND);
+        for (int i = 0; i < items.size(); i++) {
+            CompoundTag itemTag = items.getCompound(i);
+            int slot = itemTag.getInt("Slot");
+            if (slot >= 0 && slot < itemHandler.getSlots()) {
+                itemHandler.setStackInSlot(slot, ItemStack.parseOptional(provider, itemTag));
             }
         }
     }
-
-//    @Override
-//    public CompoundTag getUpdateTag() {
-//        return super.getUpdateTag();
-//    }
-
-
-    /**
-     * This method impliments a Packet to sync our BlockEntity's inventory with the client! this replaces the system I have in Network
-     *
-     * @return The packet that syncs our inevntory with the client's
-     */
-    @Nullable
-    @Override
-    public Packet<ClientGamePacketListener> getUpdatePacket() {
-
-        return ClientboundBlockEntityDataPacket.create(this, BlockEntity::saveWithoutMetadata);
+    protected void writeFluids(CompoundTag tag, HolderLookup.Provider provider) {
     }
 
-    @Override
-    public void onDataPacket(Connection net, ClientboundBlockEntityDataPacket pkt) {
-        CompoundTag data = pkt.getTag();
-
-        this.load(data);
+    protected void readFluids(CompoundTag tag, HolderLookup.Provider provider) {
     }
 
+    /* --------------------------------------------------------------------- */
+    /* UTIL */
+    /* --------------------------------------------------------------------- */
+
+    public boolean isProcessing() {
+        return processTime > 0;
+    }
+
+    protected void markDirtyAndSync() {
+        setChanged();
+        if (level != null && !level.isClientSide) {
+            level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), 3);
+        }
+    }
 }

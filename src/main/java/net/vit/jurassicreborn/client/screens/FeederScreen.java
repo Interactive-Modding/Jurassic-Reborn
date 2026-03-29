@@ -29,16 +29,11 @@ public class FeederScreen extends AbstractContainerScreen<FeederMenu> {
         this.imageHeight = 166;
     }
 
-    /** bridge ctor to mirror CleanerScreen’s convenience pattern */
-    public FeederScreen(FeederMenu menu, Inventory inv, Component title,
-                        BlockEntity be) {
-        this(menu, inv, title);   // nothing special to store yet
-    }
 
     /* ── draw loop ─────────────────────────────────────────────────────── */
     @Override
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partial) {
-        this.renderBackground(guiGraphics);
+        this.renderBackground(guiGraphics,mouseX, mouseY, partial);
         super.render(guiGraphics, mouseX, mouseY, partial);
         this.renderTooltip(guiGraphics, mouseX, mouseY);
     }

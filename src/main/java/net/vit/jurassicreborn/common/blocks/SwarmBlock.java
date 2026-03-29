@@ -20,7 +20,7 @@ import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 import java.util.List;
 
@@ -28,9 +28,9 @@ public class SwarmBlock extends Block {
 
     public static final VoxelShape SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 0.5D, 16.0D);
 
-    private RegistryObject<SwarmItem> item;
+    private final DeferredHolder<Item, SwarmItem> item;
 
-    public SwarmBlock(RegistryObject<SwarmItem> item, Properties properties) {
+    public SwarmBlock(DeferredHolder<Item, SwarmItem> item, Properties properties) {
         super(properties);
         this.item = item;
     }
@@ -110,7 +110,7 @@ public class SwarmBlock extends Block {
     }
 
     @Override
-    public ItemStack getCloneItemStack(BlockState state, HitResult target, BlockGetter level, BlockPos pos, Player player) {
+    public ItemStack getCloneItemStack(BlockState state, HitResult target, LevelReader level, BlockPos pos, Player player) {
         return new ItemStack(this.item.get());
     }
 }

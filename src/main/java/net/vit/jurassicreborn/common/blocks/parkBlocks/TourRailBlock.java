@@ -97,7 +97,7 @@ public class TourRailBlock extends Block implements EntityBlock {
         updating.add(pPos);
         try {
             this.updateDir(pLevel, pPos, pState, true);
-            pState.neighborChanged(pLevel, pPos, this, pPos, pIsMoving);
+            pLevel.neighborChanged(pPos, this, pPos);
         } finally {
             updating.remove(pPos);
         }

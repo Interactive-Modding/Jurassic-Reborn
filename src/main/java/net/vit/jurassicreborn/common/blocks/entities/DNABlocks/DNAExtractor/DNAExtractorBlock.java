@@ -1,14 +1,17 @@
 package net.vit.jurassicreborn.common.blocks.entities.DNABlocks.DNAExtractor;
 
+import net.vit.jurassicreborn.common.util.InventoryUtil;
+import com.mojang.serialization.MapCodec;
+
 import net.minecraft.world.Containers;
-import net.minecraftforge.items.wrapper.RecipeWrapper;
+import net.neoforged.neoforge.items.wrapper.RecipeWrapper;
 import net.vit.jurassicreborn.common.blocks.base.BaseMachineBlock;
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.RenderShape;
@@ -26,6 +29,9 @@ import org.jetbrains.annotations.Nullable;
 
 public class DNAExtractorBlock extends BaseMachineBlock {
 
+    public static final MapCodec<DNAExtractorBlock> CODEC =
+            Block.simpleCodec(DNAExtractorBlock::new);
+
     public static DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
 
     public static final VoxelShape MODEL_SHAPE_NORTH = Block.box(0, 0, 1.5, 16, 13, 14);
@@ -37,6 +43,11 @@ public class DNAExtractorBlock extends BaseMachineBlock {
     public DNAExtractorBlock(Properties p_52591_) {
         super(p_52591_);
         this.registerDefaultState(this.getSetDefaultValues());
+    }
+
+    @Override
+    protected MapCodec<? extends BaseEntityBlock> codec() {
+        return CODEC;
     }
 
     @Override
@@ -85,25 +96,20 @@ public class DNAExtractorBlock extends BaseMachineBlock {
 //    }
 
     @Override
-    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
-
-        if (pLevel.isClientSide) {
-            return InteractionResult.SUCCESS;
-        } else {
-//            MenuProvider menuprovider = this.getMenuProvider(pState, pLevel, pPos);
-            if (pLevel.getBlockEntity(pPos) instanceof DNAExtractorBlockEntity e ) {
-                pPlayer.openMenu(e);
+    public InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hit) {
+        if (!level.isClientSide) {
+            if (level.getBlockEntity(pos) instanceof DNAExtractorBlockEntity e) {
+                player.openMenu(e);
             }
-
-            return InteractionResult.CONSUME;
         }
+        return InteractionResult.sidedSuccess(level.isClientSide);
     }
     @Override
     public void onRemove(BlockState oldState, Level level, BlockPos pos, BlockState newState, boolean isMoving) {
         if (!oldState.is(newState.getBlock())) {
             BlockEntity blockEntity = level.getBlockEntity(pos);
             if (blockEntity instanceof DNAExtractorBlockEntity dnaExtractorBlock) {
-                Containers.dropContents(level, pos, new RecipeWrapper(dnaExtractorBlock.getItemHandler()));
+                InventoryUtil.dropContents(level, pos, dnaExtractorBlock.getItemHandler());
                 level.updateNeighbourForOutputSignal(pos, this);
             }
             super.onRemove(oldState, level, pos, newState, isMoving);

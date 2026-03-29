@@ -19,7 +19,7 @@ public class SkeletonAssemblyCategory implements IRecipeCategory<SkeletonAssembl
                     SkeletonAssemblyRecipeExtension.class);
 
     private static final ResourceLocation TEX =
-            new ResourceLocation(JurassicReborn.MODID,
+            ResourceLocation.fromNamespaceAndPath(JurassicReborn.MODID,
                     "textures/gui/skeleton_assembler.png");
 
     private final IDrawable bg;

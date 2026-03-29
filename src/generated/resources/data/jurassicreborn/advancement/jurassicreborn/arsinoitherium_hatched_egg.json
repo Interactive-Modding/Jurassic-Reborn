@@ -1,0 +1,33 @@
+{
+  "parent": "jurassicreborn:jurassicreborn/incubator",
+  "criteria": {
+    "hatched_egg": {
+      "conditions": {
+        "items": [
+          {
+            "items": "jurassicreborn:hatched_egg/egg_arsinoitherium"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.jurassicreborn.arsinoitherium_hatched_egg.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "jurassicreborn:hatched_egg/egg_arsinoitherium"
+    },
+    "title": {
+      "translate": "advancements.jurassicreborn.arsinoitherium_hatched_egg.title"
+    }
+  },
+  "requirements": [
+    [
+      "hatched_egg"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

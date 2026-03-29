@@ -1,7 +1,34 @@
 {
   "variants": {
-    "": {
-      "model": "jurassicreborn:block/magnolia_hanging_sign"
+    "facing=east,waterlogged=false": {
+      "model": "jurassicreborn:block/magnolia_hanging_sign_wall",
+      "y": 90
+    },
+    "facing=east,waterlogged=true": {
+      "model": "jurassicreborn:block/magnolia_hanging_sign_wall",
+      "y": 90
+    },
+    "facing=north,waterlogged=false": {
+      "model": "jurassicreborn:block/magnolia_hanging_sign_wall"
+    },
+    "facing=north,waterlogged=true": {
+      "model": "jurassicreborn:block/magnolia_hanging_sign_wall"
+    },
+    "facing=south,waterlogged=false": {
+      "model": "jurassicreborn:block/magnolia_hanging_sign_wall",
+      "y": 180
+    },
+    "facing=south,waterlogged=true": {
+      "model": "jurassicreborn:block/magnolia_hanging_sign_wall",
+      "y": 180
+    },
+    "facing=west,waterlogged=false": {
+      "model": "jurassicreborn:block/magnolia_hanging_sign_wall",
+      "y": 270
+    },
+    "facing=west,waterlogged=true": {
+      "model": "jurassicreborn:block/magnolia_hanging_sign_wall",
+      "y": 270
     }
   }
 }

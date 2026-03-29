@@ -1,0 +1,8 @@
+{
+  "sound_event": "jurassicreborn:dont_move_a_muscle",
+  "description": {
+    "translate": "jukebox_song.jurassicreborn.dont_move_a_muscle"
+  },
+  "length_in_seconds": 102.0,
+  "comparator_output": 15
+}

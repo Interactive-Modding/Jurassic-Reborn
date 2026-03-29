@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+	  "jurassicreborn:araucaria_leaves",
+	  "jurassicreborn:magnolia_leaves",
+	  "jurassicreborn:ginkgo_leaves",
+	  "jurassicreborn:calamites_leaves",
+	  "jurassicreborn:phoenix_leaves",
+	  "jurassicreborn:psaronius_leaves"
+  ]
+}

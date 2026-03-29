@@ -1,47 +1,48 @@
 package net.vit.jurassicreborn.common.network;
 
-import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.network.NetworkEvent;
+import net.neoforged.neoforge.network.handling.IPayloadContext;
+import net.vit.jurassicreborn.JurassicReborn;
 import net.vit.jurassicreborn.common.entities.DinosaurEntity;
 
-import java.util.function.Supplier;
+public record SetOrderPacket(int entityId, int orderOrdinal) implements CustomPacketPayload {
+    public static final Type<SetOrderPacket> TYPE = new Type<>(JurassicReborn.resource("set_order"));
+    public static final StreamCodec<RegistryFriendlyByteBuf, SetOrderPacket> STREAM_CODEC = new StreamCodec<>() {
+        @Override
+        public SetOrderPacket decode(RegistryFriendlyByteBuf buf) {
+            return new SetOrderPacket(buf.readInt(), buf.readInt());
+        }
 
-public class SetOrderPacket {
-    private final int entityId;
-    private final int orderOrdinal;
+        @Override
+        public void encode(RegistryFriendlyByteBuf buf, SetOrderPacket msg) {
+            buf.writeInt(msg.entityId());
+            buf.writeInt(msg.orderOrdinal());
+        }
+    };
 
-    public SetOrderPacket(int entityId, int orderOrdinal) {
-        this.entityId = entityId;
-        this.orderOrdinal = orderOrdinal;
+    @Override
+    public Type<? extends CustomPacketPayload> type() {
+        return TYPE;
     }
 
-    public SetOrderPacket(FriendlyByteBuf buf) {
-        this.entityId = buf.readInt();
-        this.orderOrdinal = buf.readInt();
-    }
-
-    public static void toBytes(SetOrderPacket pkt, FriendlyByteBuf buf) {
-        buf.writeInt(pkt.entityId);
-        buf.writeInt(pkt.orderOrdinal);
-    }
-
-    public static void handle(SetOrderPacket pkt, Supplier<NetworkEvent.Context> ctx) {
-        NetworkEvent.Context context = ctx.get();
-        context.enqueueWork(() -> {
-            ServerPlayer player = context.getSender();
-            if (player == null) return;
+    public static void handle(SetOrderPacket pkt, IPayloadContext ctx) {
+        ctx.enqueueWork(() -> {
+            if (!(ctx.player() instanceof ServerPlayer player)) {
+                return;
+            }
             Level world = player.level();
-            Entity e = world.getEntity(pkt.entityId);
+            Entity e = world.getEntity(pkt.entityId());
             if (e instanceof DinosaurEntity dinosaur) {
                 DinosaurEntity.Order[] orders = DinosaurEntity.Order.values();
-                if (pkt.orderOrdinal >= 0 && pkt.orderOrdinal < orders.length) {
-                    dinosaur.setFieldOrder(orders[pkt.orderOrdinal]);
+                if (pkt.orderOrdinal() >= 0 && pkt.orderOrdinal() < orders.length) {
+                    dinosaur.setFieldOrder(orders[pkt.orderOrdinal()]);
                 }
             }
         });
-        context.setPacketHandled(true);
     }
 }

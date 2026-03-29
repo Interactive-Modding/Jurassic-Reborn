@@ -6,9 +6,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.LivingEntityRenderer;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraft.resources.ResourceLocation;import net.neoforged.api.distmarker.Dist;import net.neoforged.api.distmarker.OnlyIn;
 import net.vit.jurassicreborn.JurassicReborn;
 import net.vit.jurassicreborn.client.model.AnimatableModel;
 import net.vit.jurassicreborn.client.render.entity.animation.entity.GoatAnimator;
@@ -25,15 +23,15 @@ public class GoatEntityRenderer extends LivingEntityRenderer<GoatEntity, BasicEn
     private static final AnimatableModel NANNY_MODEL;
     private static final AnimatableModel KID_MODEL;
 
-    private static final ResourceLocation BILLY_JW = new ResourceLocation(JurassicReborn.MODID, "textures/entities/goat/billy_jurassic_world.png");
-    private static final ResourceLocation BILLY_JP = new ResourceLocation(JurassicReborn.MODID, "textures/entities/goat/billy_jurassic_park.png");
-    private static final ResourceLocation BILLY_JPOG = new ResourceLocation(JurassicReborn.MODID, "textures/entities/goat/billy_jpog.png");
-    private static final ResourceLocation NANNY_JW = new ResourceLocation(JurassicReborn.MODID, "textures/entities/goat/nanny_jurassic_world.png");
-    private static final ResourceLocation NANNY_JP = new ResourceLocation(JurassicReborn.MODID, "textures/entities/goat/nanny_jurassic_park.png");
-    private static final ResourceLocation NANNY_JPOG = new ResourceLocation(JurassicReborn.MODID, "textures/entities/goat/nanny_jpog.png");
-    private static final ResourceLocation KID_JW = new ResourceLocation(JurassicReborn.MODID, "textures/entities/goat/kid_jurassic_world.png");
-    private static final ResourceLocation KID_JP = new ResourceLocation(JurassicReborn.MODID, "textures/entities/goat/kid_jurassic_park.png");
-    private static final ResourceLocation KID_JPOG = new ResourceLocation(JurassicReborn.MODID, "textures/entities/goat/kid_jpog.png");
+    private static final ResourceLocation BILLY_JW = ResourceLocation.fromNamespaceAndPath(JurassicReborn.MODID, "textures/entities/goat/billy_jurassic_world.png");
+    private static final ResourceLocation BILLY_JP = ResourceLocation.fromNamespaceAndPath(JurassicReborn.MODID, "textures/entities/goat/billy_jurassic_park.png");
+    private static final ResourceLocation BILLY_JPOG = ResourceLocation.fromNamespaceAndPath(JurassicReborn.MODID, "textures/entities/goat/billy_jpog.png");
+    private static final ResourceLocation NANNY_JW = ResourceLocation.fromNamespaceAndPath(JurassicReborn.MODID, "textures/entities/goat/nanny_jurassic_world.png");
+    private static final ResourceLocation NANNY_JP = ResourceLocation.fromNamespaceAndPath(JurassicReborn.MODID, "textures/entities/goat/nanny_jurassic_park.png");
+    private static final ResourceLocation NANNY_JPOG = ResourceLocation.fromNamespaceAndPath(JurassicReborn.MODID, "textures/entities/goat/nanny_jpog.png");
+    private static final ResourceLocation KID_JW = ResourceLocation.fromNamespaceAndPath(JurassicReborn.MODID, "textures/entities/goat/kid_jurassic_world.png");
+    private static final ResourceLocation KID_JP = ResourceLocation.fromNamespaceAndPath(JurassicReborn.MODID, "textures/entities/goat/kid_jurassic_park.png");
+    private static final ResourceLocation KID_JPOG = ResourceLocation.fromNamespaceAndPath(JurassicReborn.MODID, "textures/entities/goat/kid_jpog.png");
 
     static {
         TabulaModelContainer billy = null;
@@ -54,7 +52,10 @@ public class GoatEntityRenderer extends LivingEntityRenderer<GoatEntity, BasicEn
     public GoatEntityRenderer(EntityRendererProvider.Context context) {
         super(context, NANNY_MODEL, 0.4F);
     }
-
+    @Override
+    protected boolean shouldShowName(GoatEntity entity) {
+        return entity.hasCustomName();
+    }
     private AnimatableModel modelFor(GoatEntity entity) {
         Type type = entity.getGoatType();
         return switch (type) {

@@ -2,7 +2,7 @@ package net.vit.jurassicreborn.common.blocks.entities.DNABlocks.DNAExtractor;
 
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.items.IItemHandlerModifiable;
+import net.neoforged.neoforge.items.IItemHandlerModifiable;
 import net.vit.jurassicreborn.JurassicReborn;
 import net.vit.jurassicreborn.common.blocks.entities.MachineItemStackHandler;
 import net.vit.jurassicreborn.common.blocks.entities.grinder.FossilGrinderBlockEntity;
@@ -20,6 +20,7 @@ import net.vit.jurassicreborn.common.items.genetics.StorageDiscItem;
 import net.vit.jurassicreborn.common.network.Network;
 import net.vit.jurassicreborn.common.plants.Plant;
 import net.vit.jurassicreborn.common.plants.PlantHandler;
+import net.vit.jurassicreborn.common.util.ItemStackNbtUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
@@ -35,12 +36,12 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.vit.jurassicreborn.common.util.api.DinosaurItem;
 import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.animatable.GeoBlockEntity;
-import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
-import software.bernie.geckolib.core.animation.AnimatableManager;
-import software.bernie.geckolib.core.animation.AnimationController;
-import software.bernie.geckolib.core.animation.AnimationState;
-import software.bernie.geckolib.core.animation.RawAnimation;
-import software.bernie.geckolib.core.object.PlayState;
+import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.animation.AnimatableManager;
+import software.bernie.geckolib.animation.AnimationController;
+import software.bernie.geckolib.animation.AnimationState;
+import software.bernie.geckolib.animation.RawAnimation;
+import software.bernie.geckolib.animation.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.List;
@@ -147,7 +148,7 @@ public class DNAExtractorBlockEntity extends MachineBlockEntity implements MenuP
         }
     }
     private static DinoDNA readDNAFromItem(ItemStack src, Dinosaur fallbackDino, RandomSource rand) {
-        CompoundTag in = src.getTag();
+        CompoundTag in = ItemStackNbtUtil.getTag(src);
         if (in != null) {
             DinoDNA existing = DinoDNA.readFromNBT(in); // reads canonical "DNA" subtag if present
             if (existing != null) return existing;
@@ -174,8 +175,10 @@ public class DNAExtractorBlockEntity extends MachineBlockEntity implements MenuP
             List<Dinosaur> possible = DinosaurHandler.getDinosaursFromAmber();
             Dinosaur dino = possible.get(rand.nextInt(possible.size()));
             disc = ModItems.STORAGE_DISC.get().getDefaultInstance();
+            CompoundTag discTag = ItemStackNbtUtil.getOrCreateTag(disc);
             new DinoDNA(dino, 50 + rand.nextInt(50), GeneticsHelper.randomGenetics(rand))
-                    .writeToNBT(disc.getOrCreateTag());
+                    .writeToNBT(discTag);
+            ItemStackNbtUtil.setTag(disc, discTag);
             StorageDiscItem.applyCustomModelData(disc);
 
         } else if (item == ModItems.SEA_LAMPREY.get()) {
@@ -183,8 +186,10 @@ public class DNAExtractorBlockEntity extends MachineBlockEntity implements MenuP
             List<Dinosaur> possible = DinosaurHandler.getMarineCreatures();
             Dinosaur dino = possible.get(rand.nextInt(possible.size()));
             disc = ModItems.STORAGE_DISC.get().getDefaultInstance();
+            CompoundTag discTag = ItemStackNbtUtil.getOrCreateTag(disc);
             new DinoDNA(dino, 50 + rand.nextInt(50), GeneticsHelper.randomGenetics(rand))
-                    .writeToNBT(disc.getOrCreateTag());
+                    .writeToNBT(discTag);
+            ItemStackNbtUtil.setTag(disc, discTag);
             StorageDiscItem.applyCustomModelData(disc);
 
         } else if (item == ModItems.FROZEN_LEECH_ITEM.get()) {
@@ -192,8 +197,10 @@ public class DNAExtractorBlockEntity extends MachineBlockEntity implements MenuP
             List<Dinosaur> possible = DinosaurHandler.getMammalCreatures();
             Dinosaur dino = possible.get(rand.nextInt(possible.size()));
             disc = ModItems.STORAGE_DISC.get().getDefaultInstance();
+            CompoundTag discTag = ItemStackNbtUtil.getOrCreateTag(disc);
             new DinoDNA(dino, 50 + rand.nextInt(50), GeneticsHelper.randomGenetics(rand))
-                    .writeToNBT(disc.getOrCreateTag());
+                    .writeToNBT(discTag);
+            ItemStackNbtUtil.setTag(disc, discTag);
             StorageDiscItem.applyCustomModelData(disc);
 
         } else if (item == ModItems.APHID_AMBER.get()) {
@@ -201,14 +208,19 @@ public class DNAExtractorBlockEntity extends MachineBlockEntity implements MenuP
             List<Plant> possiblePlants = PlantHandler.getPrehistoricPlantsAndTrees();
             Plant plant = possiblePlants.get(rand.nextInt(possiblePlants.size()));
             disc = ModItems.STORAGE_DISC.get().getDefaultInstance();
+            CompoundTag discTag = ItemStackNbtUtil.getOrCreateTag(disc);
             new PlantDNA(JurassicReborn.resource(plant.getName().toLowerCase(Locale.ROOT).replace(" ", "_")),
                     50 + rand.nextInt(50))
-                    .writeToNBT(disc.getOrCreateTag());
+                    .writeToNBT(discTag);
+            ItemStackNbtUtil.setTag(disc, discTag);
             StorageDiscItem.applyCustomModelData(disc);
 
         } else if (item instanceof DinosaurMeatItem meat) {
+            DinoDNA dna = readDNAFromItem(src, meat.getDinosaur(), rand);
             ItemStack discOut = ModItems.STORAGE_DISC.get().getDefaultInstance();
-            FossilGrinderBlockEntity.copyDNA(input[0], discOut);
+            CompoundTag discTag = ItemStackNbtUtil.getOrCreateTag(discOut);
+            dna.writeToNBT(discTag);
+            ItemStackNbtUtil.setTag(discOut, discTag);
             disc = discOut;
             StorageDiscItem.applyCustomModelData(disc);
         }

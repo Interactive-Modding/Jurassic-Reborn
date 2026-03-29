@@ -1,0 +1,11 @@
+{
+  "type": "jurassicreborn:cleaning",
+  "id": "jurassicreborn:encased_majungasaurus_fossil_cleaning",
+  "input": {
+    "item": "jurassicreborn:encased_majungasaurus_fossil"
+  },
+  "output": {
+    "count": 1,
+    "id": "jurassicreborn:bones/majungasaurus_skull"
+  }
+}

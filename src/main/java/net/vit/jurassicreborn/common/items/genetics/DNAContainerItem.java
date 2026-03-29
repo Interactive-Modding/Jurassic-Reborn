@@ -1,5 +1,6 @@
 package net.vit.jurassicreborn.common.items.genetics;
 
+import net.minecraft.core.component.DataComponents;
 import net.vit.jurassicreborn.common.genetics.DinoDNA;
 import net.vit.jurassicreborn.common.genetics.GeneticsHelper;
 import net.vit.jurassicreborn.common.genetics.PlantDNA;
@@ -15,6 +16,7 @@ import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import net.vit.jurassicreborn.common.util.ItemStackNbtUtil;
 
 public class DNAContainerItem extends Item {
 
@@ -32,7 +34,7 @@ public class DNAContainerItem extends Item {
     public static int getDNAQuality(boolean creative, ItemStack stack) {
         int quality = creative ? 100 : 0;
 
-        CompoundTag nbt = stack.getOrCreateTag();
+        CompoundTag nbt = ItemStackNbtUtil.getOrCreateTag(stack);
 
 
         if (nbt.contains("DNA")) {
@@ -56,13 +58,13 @@ public class DNAContainerItem extends Item {
         }
 
 
-        stack.setTag(nbt);//why- OH right
+        ItemStackNbtUtil.setTag(stack, nbt);//why- OH right
 
         return quality;
     }
 
     public static String getGeneticCode(RandomSource player, ItemStack stack) {
-        CompoundTag nbt = stack.getOrCreateTag();
+        CompoundTag nbt = ItemStackNbtUtil.getOrCreateTag(stack);
 
         String genetics = GeneticsHelper.randomGenetics(player);
 
@@ -80,52 +82,71 @@ public class DNAContainerItem extends Item {
             return genetics;
         }
 
-        stack.setTag(nbt);
+        ItemStackNbtUtil.setTag(stack, nbt);
 
         return genetics;
     }
 
     public static boolean hasGeneticCode(ItemStack stack){
-        return stack.getOrCreateTag().contains("Genetics");
+        return ItemStackNbtUtil.getOrCreateTag(stack).contains("Genetics");
     }
 
     @Override
-    public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> lore, TooltipFlag pIsAdvanced) {
-        if(!appendTooltip)
+    public void appendHoverText(
+            ItemStack stack,
+            Item.TooltipContext context,
+            List<Component> lore,
+            TooltipFlag flag
+    ) {
+        if (!appendTooltip) return;
+
+        var customData = stack.get(DataComponents.CUSTOM_DATA);
+        if (customData == null) {
+            lore.add(Component.translatable("cage.empty")
+                    .withStyle(ChatFormatting.DARK_RED));
             return;
-        var tag = pStack.getOrCreateTag();
-        if(!tag.contains("isCreative")) {
-            if (tag.contains("DNA"))
-                StorageTypeRegistry.getStorageType(tag.getCompound("DNA").getString("StorageId")).load(tag).addInformation(pStack, lore);
-            else {
-                lore.add(Component.translatable("cage.empty").withStyle(ChatFormatting.DARK_RED));
-            }
-        }else {
-            ChatFormatting colour;
+        }
 
-            boolean fromCreativeMenu = false;
+        CompoundTag tag = customData.copyTag();
 
-            if (pStack.getOrCreateTag().contains("isCreative"))
-                fromCreativeMenu = pStack.getOrCreateTag().getBoolean("isCreative");
-
-            int quality = getDNAQuality(fromCreativeMenu, pStack);
-
-            RandomSource rand = RandomSource.create();
-            if (pLevel != null)
-                rand = pLevel.getRandom();
-
-            if (quality > 75) {
-                colour = ChatFormatting.GREEN;
-            } else if (quality > 50) {
-                colour = ChatFormatting.YELLOW;
-            } else if (quality > 25) {
-                colour = ChatFormatting.GOLD;
+        if (!tag.getBoolean("isCreative")) {
+            if (tag.contains("DNA")) {
+                StorageTypeRegistry
+                        .getStorageType(tag.getCompound("DNA").getString("StorageId"))
+                        .load(tag)
+                        .addInformation(stack, lore);
             } else {
-                colour = ChatFormatting.RED;
+                lore.add(Component.translatable("cage.empty")
+                        .withStyle(ChatFormatting.DARK_RED));
             }
-            lore.add(Component.literal(Component.translatable("lore.dna_quality").getString().formatted(Integer.toString(quality), "%")).withStyle(colour));
-            if (hasGeneticCode(pStack))
-                lore.add(Component.literal(Component.translatable("lore.genetic_code").getString().formatted(getGeneticCode(rand, pStack))).withStyle(ChatFormatting.BLUE));
+            return;
+        }
+
+        boolean fromCreativeMenu = tag.getBoolean("isCreative");
+        int quality = getDNAQuality(fromCreativeMenu, stack);
+
+        RandomSource rand = context.level() != null
+                ? context.level().getRandom()
+                : RandomSource.create();
+
+        ChatFormatting colour =
+                quality > 75 ? ChatFormatting.GREEN :
+                        quality > 50 ? ChatFormatting.YELLOW :
+                                quality > 25 ? ChatFormatting.GOLD :
+                                        ChatFormatting.RED;
+
+        lore.add(
+                Component.translatable("lore.dna_quality", quality, "%")
+                        .withStyle(colour)
+        );
+
+        if (hasGeneticCode(stack)) {
+            lore.add(
+                    Component.translatable(
+                            "lore.genetic_code",
+                            getGeneticCode(rand, stack)
+                    ).withStyle(ChatFormatting.BLUE)
+            );
         }
     }
 

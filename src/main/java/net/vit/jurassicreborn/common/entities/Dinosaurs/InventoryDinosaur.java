@@ -1,5 +1,6 @@
 package net.vit.jurassicreborn.common.entities.Dinosaurs;
 
+import net.minecraft.core.HolderLookup;
 import net.vit.jurassicreborn.common.entities.DinosaurEntity;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
@@ -13,7 +14,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -29,31 +29,40 @@ public class InventoryDinosaur implements Container {
         this.inventory = NonNullList.withSize(entity.getDinosaur().getStorage(), ItemStack.EMPTY);
     }
 
-    public void writeToNBT(CompoundTag nbt) {
-         ListTag nbttaglist = new ListTag();
+    public void writeToNBT(CompoundTag nbt, HolderLookup.Provider provider) {
+        ListTag list = new ListTag();
 
-        for (int i = 0; i < this.inventory.size(); ++i) {
-            CompoundTag slotTag = new CompoundTag();
-            slotTag.putByte("Slot", (byte) i);
-            this.inventory.get(i).save(slotTag);
-            nbttaglist.add(slotTag);
+        for (int i = 0; i < this.inventory.size(); i++) {
+            ItemStack stack = this.inventory.get(i);
+            if (!stack.isEmpty()) {
+                CompoundTag slotTag = new CompoundTag();
+                slotTag.putByte("Slot", (byte) i);
+                slotTag.put("Item", stack.save(provider));
+                list.add(slotTag);
+            }
         }
 
-        nbt.put("Items", nbttaglist);
+        nbt.put("Items", list);
     }
 
-    public void readFromNBT(CompoundTag nbt) {
-        ListTag nbttaglist = nbt.getList("Items", 10);
-        for (int i = 0; i < nbttaglist.size(); ++i) {
-            CompoundTag slotTag = nbttaglist.getCompound(i);
-            ItemStack stack = new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation(slotTag.getString("id"))), (int)slotTag.getByte("Count"), slotTag.contains("tag") ? slotTag.getCompound("tag") : new CompoundTag());
-            int j = slotTag.getByte("Slot") & 255;
 
-            if (j >= 0 && j < this.inventory.size()) {
-                this.setItem(j, stack);
+    public void readFromNBT(CompoundTag nbt, HolderLookup.Provider provider) {
+        ListTag list = nbt.getList("Items", CompoundTag.TAG_COMPOUND);
+
+        for (int i = 0; i < list.size(); i++) {
+            CompoundTag slotTag = list.getCompound(i);
+            int slot = slotTag.getByte("Slot") & 255;
+
+            if (slot >= 0 && slot < this.inventory.size()) {
+                ItemStack stack = ItemStack.parseOptional(
+                        provider,
+                        slotTag.getCompound("Item")
+                );
+                this.setItem(slot, stack);
             }
         }
     }
+
 
     @Override
     public int getContainerSize() {
@@ -178,7 +187,7 @@ public class InventoryDinosaur implements Container {
                 float offsetX = rand.nextFloat() * 0.8F + 0.1F;
                 float offsetY = rand.nextFloat() * 0.8F + 0.1F;
                 float offsetZ = rand.nextFloat() * 0.8F + 0.1F;
-                ItemEntity itemEntity = new ItemEntity(world, this.entity.getX() + offsetX, this.entity.getY() + offsetY, this.entity.getZ() + offsetZ, new ItemStack(itemstack.getItem(), itemstack.getCount(), itemstack.getTag()));
+                ItemEntity itemEntity = new ItemEntity(world, this.entity.getX() + offsetX, this.entity.getY() + offsetY, this.entity.getZ() + offsetZ, itemstack.copy());
                 float multiplier = 0.05F;
                 itemEntity.setDeltaMovement((float) rand.nextGaussian() * multiplier, (float) rand.nextGaussian() * multiplier + 0.2F,(float) rand.nextGaussian() * multiplier );
                 world.addFreshEntity(itemEntity);
@@ -196,7 +205,7 @@ public class InventoryDinosaur implements Container {
                 float offsetX = rand.nextFloat() * 0.8F + 0.1F;
                 float offsetY = rand.nextFloat() * 0.8F + 0.1F;
                 float offsetZ = rand.nextFloat() * 0.8F + 0.1F;
-                ItemEntity itemEntity = new ItemEntity(world, this.entity.getX() + offsetX, this.entity.getY() + offsetY, this.entity.getZ() + offsetZ, new ItemStack(itemstack.getItem(), itemstack.getCount(), itemstack.getTag()));
+                ItemEntity itemEntity = new ItemEntity(world, this.entity.getX() + offsetX, this.entity.getY() + offsetY, this.entity.getZ() + offsetZ, itemstack.copy());
                 float multiplier = 0.05F;
                 itemEntity.setDeltaMovement((float) rand.nextGaussian() * multiplier, (float) rand.nextGaussian() * multiplier + 0.2F,(float) rand.nextGaussian() * multiplier );
                 world.addFreshEntity(itemEntity);

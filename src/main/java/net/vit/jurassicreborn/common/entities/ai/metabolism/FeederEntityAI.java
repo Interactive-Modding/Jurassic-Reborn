@@ -1,307 +1,385 @@
 package net.vit.jurassicreborn.common.entities.ai.metabolism;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.world.entity.ai.goal.Goal;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.pathfinder.Path;
-import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import net.vit.jurassicreborn.common.blocks.ModBlocks;
-import net.vit.jurassicreborn.common.blocks.entities.feeder.FeederBlock;
 import net.vit.jurassicreborn.common.blocks.entities.feeder.FeederBlockEntity;
 import net.vit.jurassicreborn.common.entities.DinosaurEntity;
 import net.vit.jurassicreborn.common.entities.FlyingDinosaurEntity;
 import net.vit.jurassicreborn.common.util.GameRuleHandler;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.EnumSet;
-import java.util.List;
 
 public class FeederEntityAI extends Goal {
+    private static final int MAX_TRY_TICKS = 240;
+    private static final int FAILED_FEEDER_COOLDOWN = 200;
+    private static final int MAX_NO_PROGRESS_TICKS = 60;
+
     private final DinosaurEntity dino;
-    private Path path;
+
+    @Nullable
     private BlockPos feederPos;
+    @Nullable
     private Vec3 feederTarget;
-    private int ticksTrying;
-    private boolean waitingForFood;
-    private int foodWaitTicks;
-    private ItemEntity targetFoodItem;
+    @Nullable
+    private Vec3 landingTarget;
+
+    private int repathCooldown;
+    private int tryTicks;
+
+    private int noProgressTicks;
+    private double lastDistSq = Double.MAX_VALUE;
+
+    @Nullable
+    private BlockPos rejectedFeeder;
+    private int rejectedFeederUntilTick;
 
     public FeederEntityAI(DinosaurEntity dino) {
         this.dino = dino;
-        this.setFlags(EnumSet.of(Flag.MOVE, Flag.JUMP, Flag.LOOK));
+        this.setFlags(EnumSet.of(Flag.MOVE, Flag.LOOK, Flag.JUMP));
     }
 
     @Override
     public boolean canUse() {
-        if (dino == null || dino.isRemoved() || dino.isCarcass() || dino.isMovementBlocked()) return false;
-        if (!dino.level().getGameRules().getBoolean(GameRuleHandler.DINO_METABOLISM)) return false;
-        int intervalMask = dino.isMarineCreature() ? 7 : 15;
-        if ((dino.tickCount & intervalMask) != 0) return false;
-        if (!dino.getMetabolism().isHungry()) return false;
-
-        BlockPos found = dino.getClosestFeeder();
-        if (found == null) return false;
-
-        Level level = dino.level();
-        if (level == null || !level.hasChunkAt(found)) return false;
-
-        BlockState state = level.getBlockState(found);
-        if (state.getBlock() != ModBlocks.FEEDER.get()) return false;
-
-        BlockEntity be = level.getBlockEntity(found);
-        if (!(be instanceof FeederBlockEntity feeder) || !feeder.isStockedFor(dino)) {
+        if (this.dino == null || this.dino.isRemoved() || this.dino.isCarcass() || this.dino.isMovementBlocked()) {
             return false;
         }
 
-        Vec3 target = computeTarget(found, state);
-        Path p;
-        try {
-            p = dino.getNavigation().createPath(new BlockPos((int)target.x, (int)target.y, (int)target.z), 0);
-        } catch (Throwable t) {
-            p = null;
+        boolean metabolismEnabled = this.dino.level().getGameRules().getBoolean(GameRuleHandler.DINO_METABOLISM);
+        if (!metabolismEnabled) {
+            return false;
         }
-        boolean canDirectMove = dino.isMarineCreature() || dino instanceof FlyingDinosaurEntity;
-        if (p == null && !canDirectMove) return false;
+
+        if (!this.dino.getMetabolism().isHungry()) {
+            return false;
+        }
+
+        this.clearExpiredRejectedFeeder();
+
+        BlockPos found = this.dino.getClosestFeeder();
+        if (found == null) {
+            return false;
+        }
+
+        if (this.isRejectedFeeder(found)) {
+            this.dino.invalidateClosestFeeder();
+            return false;
+        }
+
+        FeederBlockEntity feeder = this.getFeeder(found);
+        if (feeder == null || !feeder.tryClaim(this.dino)) {
+            this.rejectFeeder(found);
+            return false;
+        }
 
         this.feederPos = found.immutable();
-        this.path = p;
-        this.feederTarget = target;
-        this.ticksTrying = 0;
-        this.waitingForFood = false;
-        this.foodWaitTicks = 0;
-        this.targetFoodItem = null;
+        this.feederTarget = feeder.getFeedingPos(this.dino);
+        this.landingTarget = this.dino instanceof FlyingDinosaurEntity ? this.getLandingTarget() : null;
+
+        if (!this.canApproach(feeder)) {
+            feeder.releaseClaim(this.dino);
+            this.rejectFeeder(found);
+            this.feederPos = null;
+            this.feederTarget = null;
+            this.landingTarget = null;
+            return false;
+        }
+
         return true;
     }
 
     @Override
     public void start() {
-        if (this.path != null) {
-            dino.getNavigation().moveTo(this.path, 1.0D);
-        } else if (this.feederTarget != null) {
-            if (shouldTakeOffForTarget()) {
-                ((FlyingDinosaurEntity) dino).startTakeOff();
-            }
-            dino.getNavigation().moveTo(feederTarget.x, feederTarget.y, feederTarget.z, 1.0D);
-        }
+        this.repathCooldown = 0;
+        this.tryTicks = 0;
+        this.noProgressTicks = 0;
+        this.lastDistSq = Double.MAX_VALUE;
+        this.moveToFeeder();
     }
 
     @Override
     public boolean canContinueToUse() {
-        if (dino == null || feederPos == null) return false;
-        if (dino.isCarcass() || dino.isMovementBlocked()) return false;
-        if (!dino.getMetabolism().isHungry()) return false;
+        if (this.dino == null || this.feederPos == null) return false;
+        if (this.dino.isRemoved() || this.dino.isCarcass() || this.dino.isMovementBlocked()) return false;
+        if (!this.dino.getMetabolism().isHungry()) return false;
+        if (this.tryTicks >= MAX_TRY_TICKS) return false;
+        if (this.isRejectedFeeder(this.feederPos)) return false;
 
-        // Continue if waiting for food or chasing food item
-        if (waitingForFood && foodWaitTicks < 120) return true;
-        if (targetFoodItem != null && !targetFoodItem.isRemoved()) return true;
+        FeederBlockEntity feeder = this.getFeeder(this.feederPos);
+        if (feeder == null) return false;
+        if (!this.refreshTargets(feeder)) return false;
+        if (!this.canApproach(feeder)) return false;
 
-        BlockState state = dino.level().getBlockState(feederPos);
-        if (state.getBlock() != ModBlocks.FEEDER.get()) return false;
+        return feeder.isClaimedBy(this.dino) || feeder.canServe(this.dino);
+    }
 
-        this.feederTarget = computeTarget(feederPos, state);
-        boolean directMove = (this.path == null) && (dino.isMarineCreature() || dino instanceof FlyingDinosaurEntity);
-        if (directMove && this.feederTarget != null) {
-            double dist = dino.position().distanceTo(feederTarget);
-            double reach = Math.max(2.0D, dino.getBbWidth() * 3.0D);
-            return dist > reach && ticksTrying < 300;
+    private Vec3 getApproachReferencePos() {
+        if (this.dino.usesAquaticFeederLogic()) {
+            return this.dino.getEyePosition();
         }
-        return !dino.getNavigation().isDone() && ticksTrying < 300;
+        return this.dino.position();
     }
 
     @Override
     public void tick() {
-        if (feederPos == null) return;
+        this.tryTicks++;
+        this.clearExpiredRejectedFeeder();
 
-        // Priority 1: If we have a target food item, go eat it
-        if (targetFoodItem != null && !targetFoodItem.isRemoved()) {
-            if (tryEatSpecificItem(targetFoodItem)) {
-                stop();
-                return;
+        FeederBlockEntity feeder = this.getFeeder(this.feederPos);
+        if (feeder == null) {
+            this.rejectCurrentFeederAndStop();
+            return;
+        }
+
+        if (!feeder.isClaimedBy(this.dino) && !feeder.tryClaim(this.dino)) {
+            this.rejectCurrentFeederAndStop();
+            return;
+        }
+
+        feeder.keepClaimAlive(this.dino);
+
+        if (!this.refreshTargets(feeder)) {
+            this.rejectCurrentFeederAndStop();
+            return;
+        }
+
+        if (!this.canApproach(feeder)) {
+            this.rejectCurrentFeederAndStop();
+            return;
+        }
+
+        double reach = feeder.getFeedReach(this.dino);
+        double distSq = this.getApproachReferencePos().distanceToSqr(this.feederTarget);
+
+        if (distSq + 0.25D < this.lastDistSq) {
+            this.noProgressTicks = 0;
+        } else {
+            this.noProgressTicks++;
+        }
+        this.lastDistSq = distSq;
+
+        if (this.noProgressTicks > MAX_NO_PROGRESS_TICKS) {
+            this.rejectCurrentFeederAndStop();
+            return;
+        }
+
+        if (this.dino instanceof FlyingDinosaurEntity flyer) {
+            flyer.shouldLand = true;
+
+            Vec3 approach = this.landingTarget != null ? this.landingTarget : this.feederTarget;
+            if (!flyer.isTouchingGround() || flyer.position().distanceToSqr(approach) > 1.25D) {
+                flyer.getMoveControl().setWantedPosition(
+                        approach.x,
+                        approach.y,
+                        approach.z,
+                        1.1D
+                );
             }
-            // Navigate to the food item
-            dino.getNavigation().moveTo(targetFoodItem.getX(), targetFoodItem.getY(), targetFoodItem.getZ(), 1.2D);
-            ticksTrying++;
-            if (ticksTrying > 300) {
-                stop();
+        }
+
+        if (distSq <= reach * reach
+                && (!(this.dino instanceof FlyingDinosaurEntity flyer) || flyer.isTouchingGround())) {
+            if (!this.dino.usesAquaticFeederLogic()) {
+                this.dino.getNavigation().stop();
+            }
+
+            this.dino.getLookControl().setLookAt(
+                    this.feederTarget.x,
+                    this.feederTarget.y,
+                    this.feederTarget.z,
+                    30.0F,
+                    30.0F
+            );
+
+            if (this.dino instanceof FlyingDinosaurEntity flyer) {
+                flyer.setDeltaMovement(
+                        flyer.getDeltaMovement().x * 0.2D,
+                        0.0D,
+                        flyer.getDeltaMovement().z * 0.2D
+                );
+                flyer.hasImpulse = true;
+            }
+
+            if (!this.dino.getMetabolism().isHungry() || !feeder.isClaimedBy(this.dino)) {
+                this.stop();
             }
             return;
         }
 
-        // Priority 2: If waiting for food, scan for it
-        if (waitingForFood) {
-            foodWaitTicks++;
-            ItemEntity foundFood = scanForNearbyFood();
-            if (foundFood != null) {
-                this.targetFoodItem = foundFood;
-                this.waitingForFood = false;
+        if (!(this.dino instanceof FlyingDinosaurEntity)) {
+            if (this.dino.getNavigation().isDone() && distSq > reach * reach) {
+                this.rejectCurrentFeederAndStop();
                 return;
             }
-            if (foodWaitTicks >= 120) {
-                stop();
-                return;
-            }
-            return;
-        }
 
-        // Priority 3: Navigate to feeder
-        BlockState state = dino.level().getBlockState(feederPos);
-        if (state.getBlock() != ModBlocks.FEEDER.get()) {
-            stop();
-            return;
-        }
-
-        this.feederTarget = computeTarget(feederPos, state);
-
-        // Retry pathfinding periodically
-        if ((++ticksTrying % 40) == 0 && (this.path == null || dino.getNavigation().isDone())) {
-            BlockPos targetPos = new BlockPos((int)feederTarget.x, (int)feederTarget.y, (int)feederTarget.z);
-            Path retry = dino.getNavigation().createPath(targetPos, 0);
-            if (retry != null) {
-                this.path = retry;
-                dino.getNavigation().moveTo(retry, 1.0D);
-            } else if (dino.isMarineCreature() || dino instanceof FlyingDinosaurEntity) {
-                // Direct movement for creatures that can fly/swim
-                if (shouldTakeOffForTarget()) {
-                    ((FlyingDinosaurEntity) dino).startTakeOff();
-                }
-                dino.getNavigation().moveTo(feederTarget.x, feederTarget.y, feederTarget.z, 1.0D);
-            }
-        }
-
-        // Check if we reached the feeder
-        if (!dino.level().isClientSide) {
-            Vec3 target = (this.feederTarget != null) ? this.feederTarget : Vec3.atCenterOf(feederPos);
-            double dist = dino.position().distanceTo(target);
-            double reach = Math.max(2.0D, dino.getBbWidth() * 3.0D);
-
-            if (dist <= reach) {
-                BlockEntity be = dino.level().getBlockEntity(feederPos);
-                if (be instanceof FeederBlockEntity feeder) {
-                    // Check if feeder is already feeding this dino
-                    DinosaurEntity currentFeeding = feeder.getFeeding();
-                    if (currentFeeding == null || currentFeeding == dino) {
-                        feeder.setOpen(true);
-                        feeder.setFeeding(dino);
-                        waitingForFood = true;
-                        foodWaitTicks = 0;
-                        dino.getNavigation().stop();
-                    } else {
-                        // Feeder is busy with another dino, wait a bit
-                        if (ticksTrying > 200) {
-                            stop();
-                        }
-                    }
-                }
+            if (this.repathCooldown-- <= 0 || this.dino.getNavigation().isDone()) {
+                this.moveToFeeder();
+                this.repathCooldown = this.dino.usesAquaticFeederLogic() ? 10 : 15;
             }
         }
     }
 
     @Override
     public void stop() {
-        if (dino != null) {
-            dino.getNavigation().stop();
+        FeederBlockEntity feeder = this.getFeeder(this.feederPos);
+        if (feeder != null) {
+            feeder.releaseClaim(this.dino);
         }
-        this.path = null;
+
+        if (this.dino != null) {
+            this.dino.getNavigation().stop();
+            this.dino.invalidateClosestFeeder();
+
+            if (this.dino instanceof FlyingDinosaurEntity flyer) {
+                flyer.shouldLand = false;
+            }
+        }
+
         this.feederPos = null;
         this.feederTarget = null;
-        this.ticksTrying = 0;
-        this.waitingForFood = false;
-        this.foodWaitTicks = 0;
-        this.targetFoodItem = null;
+        this.landingTarget = null;
+        this.repathCooldown = 0;
+        this.tryTicks = 0;
+        this.noProgressTicks = 0;
+        this.lastDistSq = Double.MAX_VALUE;
     }
 
-    private ItemEntity scanForNearbyFood() {
-        if (dino.level().isClientSide || feederPos == null) return null;
+    private boolean refreshTargets(FeederBlockEntity feeder) {
+        this.feederTarget = feeder.getFeedingPos(this.dino);
+        if (this.feederTarget == null) {
+            return false;
+        }
 
-        // Larger search area for marine creatures
-        double searchRadius = dino.isMarineCreature() ? 8.0D : 5.0D;
-        AABB searchBox = new AABB(feederPos).inflate(searchRadius);
-        List<ItemEntity> items = dino.level().getEntitiesOfClass(ItemEntity.class, searchBox);
+        if (this.dino instanceof FlyingDinosaurEntity) {
+            this.landingTarget = this.getLandingTarget();
+            return this.landingTarget != null;
+        }
 
-        ItemEntity closest = null;
-        double closestDist = Double.MAX_VALUE;
+        return true;
+    }
 
-        for (ItemEntity itemEntity : items) {
-            if (itemEntity.isRemoved() || itemEntity.getItem().isEmpty()) continue;
+    private boolean canApproach(FeederBlockEntity feeder) {
+        if (this.feederTarget == null) {
+            return false;
+        }
 
-            // Check if dino can eat this item
-            if (net.vit.jurassicreborn.common.items.Food.FoodHelper.isEdible(
-                    dino, dino.getDinosaur().getDiet(), itemEntity.getItem().getItem())) {
+        if (this.dino instanceof FlyingDinosaurEntity) {
+            return this.landingTarget != null;
+        }
 
-                double dist = dino.position().distanceTo(itemEntity.position());
-                if (dist < closestDist) {
-                    closestDist = dist;
-                    closest = itemEntity;
+        if (this.dino.usesAquaticFeederLogic()) {
+            return true;
+        }
+
+        return this.dino.getNavigation().createPath(
+                BlockPos.containing(this.feederTarget.x, this.feederTarget.y, this.feederTarget.z),
+                0
+        ) != null;
+    }
+
+    private void moveToFeeder() {
+        if (this.feederTarget == null) {
+            return;
+        }
+
+        if (this.dino instanceof FlyingDinosaurEntity flyer) {
+            if (this.landingTarget == null) {
+                this.landingTarget = this.getLandingTarget();
+                if (this.landingTarget == null) {
+                    return;
                 }
             }
+
+            flyer.shouldLand = true;
+            flyer.getMoveControl().setWantedPosition(
+                    this.landingTarget.x,
+                    this.landingTarget.y,
+                    this.landingTarget.z,
+                    1.1D
+            );
+            return;
         }
 
-        return closest;
-    }
-
-    private boolean tryEatSpecificItem(ItemEntity itemEntity) {
-        if (dino.level().isClientSide || itemEntity == null || itemEntity.isRemoved()) return false;
-
-        double distToItem = dino.position().distanceTo(itemEntity.position());
-        double eatReach = Math.max(2.0D, dino.getBbWidth() * 2.0D);
-
-        if (distToItem <= eatReach) {
-            // Check one more time that it's edible
-            if (net.vit.jurassicreborn.common.items.Food.FoodHelper.isEdible(
-                    dino, dino.getDinosaur().getDiet(), itemEntity.getItem().getItem())) {
-
-                // Eat the item
-                int foodValue = net.vit.jurassicreborn.common.items.Food.FoodHelper.getHealAmount(
-                        itemEntity.getItem().getItem());
-                dino.getMetabolism().eat(foodValue);
-                net.vit.jurassicreborn.common.items.Food.FoodHelper.applyEatEffects(
-                        dino, itemEntity.getItem().getItem());
-
-                itemEntity.getItem().shrink(1);
-                if (itemEntity.getItem().isEmpty()) {
-                    itemEntity.discard();
-                }
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private Vec3 computeTarget(BlockPos pos, BlockState state) {
-        Vec3 center = Vec3.atCenterOf(pos);
-        if (!state.hasProperty(FeederBlock.FACING)) {
-            return center;
-        }
-        Direction facing = state.getValue(FeederBlock.FACING);
-        double forward = 1.2D; // Increased from 0.6D
-        double vertical = 0.0D;
-
-        if (facing.getAxis().isHorizontal()) {
-            if (dino.isMarineCreature()) {
-                vertical = 0.1D;
-                forward = 1.5D; // More distance for marine creatures
-            } else {
-                vertical = 0.3D;
-            }
-        } else if (facing == Direction.UP) {
-            vertical = 1.0D; // Increased from 0.6D
-        } else if (facing == Direction.DOWN) {
-            vertical = -0.5D;
-        }
-        return center.add(
-                facing.getStepX() * forward,
-                facing.getStepY() * forward + vertical,
-                facing.getStepZ() * forward
+        this.dino.getNavigation().moveTo(
+                this.feederTarget.x,
+                this.feederTarget.y,
+                this.feederTarget.z,
+                1.0D
         );
     }
 
-    private boolean shouldTakeOffForTarget() {
-        if (!(dino instanceof FlyingDinosaurEntity) || this.feederTarget == null) return false;
-        boolean needsAltitude = feederTarget.y - dino.getY() > 0.75D;
-        return needsAltitude || this.path == null;
+    @Nullable
+    private FeederBlockEntity getFeeder(@Nullable BlockPos pos) {
+        if (pos == null || this.dino == null || this.dino.level() == null || !this.dino.level().hasChunkAt(pos)) {
+            return null;
+        }
+
+        BlockEntity be = this.dino.level().getBlockEntity(pos);
+        return be instanceof FeederBlockEntity feeder ? feeder : null;
+    }
+
+    @Nullable
+    private Vec3 getLandingTarget() {
+        if (this.feederTarget == null || this.dino == null) {
+            return null;
+        }
+
+        Level level = this.dino.level();
+        BlockPos.MutableBlockPos probe = BlockPos.containing(
+                this.feederTarget.x,
+                this.feederTarget.y,
+                this.feederTarget.z
+        ).mutable();
+
+        while (probe.getY() > level.getMinBuildHeight() && level.getBlockState(probe).isAir()) {
+            probe.move(0, -1, 0);
+        }
+
+        if (level.getBlockState(probe).isAir()) {
+            return null;
+        }
+
+        return new Vec3(
+                this.feederTarget.x,
+                probe.getY() + 0.2D,
+                this.feederTarget.z
+        );
+    }
+
+    private void rejectCurrentFeederAndStop() {
+        this.rejectFeeder(this.feederPos);
+        this.stop();
+    }
+
+    private void rejectFeeder(@Nullable BlockPos pos) {
+        if (pos != null) {
+            this.rejectedFeeder = pos.immutable();
+            this.rejectedFeederUntilTick = this.dino.tickCount + FAILED_FEEDER_COOLDOWN;
+        }
+        this.dino.invalidateClosestFeeder();
+    }
+
+    private boolean isRejectedFeeder(@Nullable BlockPos pos) {
+        if (pos == null || this.rejectedFeeder == null) {
+            return false;
+        }
+
+        if (this.dino.tickCount >= this.rejectedFeederUntilTick) {
+            this.rejectedFeeder = null;
+            this.rejectedFeederUntilTick = 0;
+            return false;
+        }
+
+        return this.rejectedFeeder.equals(pos);
+    }
+
+    private void clearExpiredRejectedFeeder() {
+        if (this.rejectedFeeder != null && this.dino.tickCount >= this.rejectedFeederUntilTick) {
+            this.rejectedFeeder = null;
+            this.rejectedFeederUntilTick = 0;
+        }
     }
 }

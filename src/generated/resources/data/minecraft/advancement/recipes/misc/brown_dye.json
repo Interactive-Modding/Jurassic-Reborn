@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_rhamnus_salicifolius_berries": {
+      "conditions": {
+        "items": [
+          {
+            "items": "jurassicreborn:rhamnus_salicifolius_berries"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:brown_dye"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_rhamnus_salicifolius_berries"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:brown_dye"
+    ]
+  }
+}

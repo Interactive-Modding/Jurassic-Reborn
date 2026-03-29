@@ -2,10 +2,12 @@ package net.vit.jurassicreborn.common.blocks.entities;
 
 import net.vit.jurassicreborn.common.entities.Dinosaurs.Dinosaur;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.vit.jurassicreborn.common.util.ItemStackNbtUtil;
 
 import javax.annotation.Nullable;
 
@@ -30,23 +32,24 @@ public class EncasedFaunaFossilBlockEntity extends BlockEntity {
     }
 
     @Override
-    public void saveAdditional(CompoundTag tag) {
-        super.saveAdditional(tag);
+    protected void saveAdditional(CompoundTag tag, HolderLookup.Provider provider) {
+        super.saveAdditional(tag, provider);
         tag.putString(DINO_KEY, dino != null ? dino.getName() : Dinosaur.EMPTY.getName());
     }
 
     @Override
-    public void load(CompoundTag tag) {
-        super.load(tag);
+    protected void loadAdditional(CompoundTag tag, HolderLookup.Provider provider) {
+        super.loadAdditional(tag, provider);
         if (tag.contains(DINO_KEY)) {
             this.dino = Dinosaur.getDinosaurByName(tag.getString(DINO_KEY));
         }
     }
 
     @Override
-    public void saveToItem(ItemStack stack) {
-        CompoundTag tag = stack.getOrCreateTag();
+    public void saveToItem(ItemStack stack, HolderLookup.Provider provider) {
+        CompoundTag tag = ItemStackNbtUtil.getOrCreateTag(stack);
         tag.putString(DINO_KEY, dino != null ? dino.getName() : Dinosaur.EMPTY.getName());
-        super.saveToItem(stack);
+        ItemStackNbtUtil.setTag(stack, tag);
+        super.saveToItem(stack, provider);
     }
 }

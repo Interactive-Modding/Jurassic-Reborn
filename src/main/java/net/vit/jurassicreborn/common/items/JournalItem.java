@@ -11,8 +11,8 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import net.vit.jurassicreborn.JurassicReborn;
 import net.vit.jurassicreborn.client.screens.JournalGui;
 
@@ -45,20 +45,19 @@ public class JournalItem extends Item {
 
     @Override
     @OnlyIn(Dist.CLIENT)
-    public void appendHoverText(ItemStack stack, @Nullable Level world, List<Component> tooltip, TooltipFlag flag) {
-        tooltip.add(Component.translatable("journal." + type.getIdentifier().getPath() + ".name"));
+    public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag flag) {tooltip.add(Component.translatable("journal." + type.getIdentifier().getPath() + ".name"));
     }
 
     public enum JournalType {
-        CHEF_ALEJANDRO(0, new ResourceLocation(JurassicReborn.MODID, "chef_alejandro")),
-        DENNIS_NEDRY   (1, new ResourceLocation(JurassicReborn.MODID, "dennis_nedry")),
-        DR_GERRY_HARDING(2, new ResourceLocation(JurassicReborn.MODID, "dr_gerry_harding")),
-        DR_HENRY_WU    (3, new ResourceLocation(JurassicReborn.MODID, "dr_henry_wu")),
-        DR_LAURA_SORKIN(4, new ResourceLocation(JurassicReborn.MODID, "dr_laura_sorkin")),
-        ED_REGIS       (5, new ResourceLocation(JurassicReborn.MODID, "ed_regis")),
-        JOHN_HAMMOND   (6, new ResourceLocation(JurassicReborn.MODID, "john_hammond")),
-        RAY_ARNOLD     (7, new ResourceLocation(JurassicReborn.MODID, "ray_arnold")),
-        ROBERT_MULDOON (8, new ResourceLocation(JurassicReborn.MODID, "robert_muldoon"));
+        CHEF_ALEJANDRO(0, ResourceLocation.parse(JurassicReborn.MODID + ":" + "chef_alejandro")),
+        DENNIS_NEDRY   (1, ResourceLocation.parse(JurassicReborn.MODID + ":" + "dennis_nedry")),
+        DR_GERRY_HARDING(2, ResourceLocation.parse(JurassicReborn.MODID + ":" + "dr_gerry_harding")),
+        DR_HENRY_WU    (3, ResourceLocation.parse(JurassicReborn.MODID + ":" + "dr_henry_wu")),
+        DR_LAURA_SORKIN(4, ResourceLocation.parse(JurassicReborn.MODID + ":" + "dr_laura_sorkin")),
+        ED_REGIS       (5, ResourceLocation.parse(JurassicReborn.MODID + ":" + "ed_regis")),
+        JOHN_HAMMOND   (6, ResourceLocation.parse(JurassicReborn.MODID + ":" + "john_hammond")),
+        RAY_ARNOLD     (7, ResourceLocation.parse(JurassicReborn.MODID + ":" + "ray_arnold")),
+        ROBERT_MULDOON (8, ResourceLocation.parse(JurassicReborn.MODID + ":" + "robert_muldoon"));
 
         public static final JournalType[] VALUES = values();
 
@@ -71,10 +70,7 @@ public class JournalItem extends Item {
         JournalType(int metadata, ResourceLocation identifier) {
             this.metadata   = metadata;
             this.identifier = identifier;
-            this.location   = new ResourceLocation(
-                    identifier.getNamespace(),
-                    "journal_entries/" + identifier.getPath() + ".json"
-            );
+            this.location   = ResourceLocation.parse(identifier.getNamespace() + ":" + "journal_entries/" + identifier.getPath() + ".json");
         }
 
         public int getMetadata() {

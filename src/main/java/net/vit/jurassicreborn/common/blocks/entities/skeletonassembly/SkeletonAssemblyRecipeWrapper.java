@@ -62,7 +62,7 @@
 //                        true));
 //    }
 //
-
+//    /* Optional overrides you probably don’t need. JEI falls back to defaults. */
 //    // public List<Component> getTooltipStrings(double mouseX, double mouseY) { … }
 //    // public void drawInfo(GuiGraphics gfx, int width, int height, int mouseX, int mouseY) { … }
 //}

@@ -4,7 +4,7 @@ package net.vit.jurassicreborn.common.worldgen;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstapContext;
+import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
@@ -25,7 +25,7 @@ public final class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> PETRIFIED_SMALL  = key("placed_small_petrified_tree");
     public static final ResourceKey<PlacedFeature> NEST_FOSSIL      = key("placed_nest_fossil");
 
-    public static void bootstrap(BootstapContext<PlacedFeature> ctx) {
+    public static void bootstrap(BootstrapContext<PlacedFeature> ctx) {
         HolderGetter<ConfiguredFeature<?, ?>> cf = ctx.lookup(Registries.CONFIGURED_FEATURE);
 
         Holder<ConfiguredFeature<?, ?>> flora = cf.getOrThrow(ModConfiguredFeatures.FLORA_FOSSIL_ORE);
@@ -66,10 +66,10 @@ public final class ModPlacedFeatures {
     }
 
     private static ResourceKey<PlacedFeature> key(String name) {
-        return ResourceKey.create(Registries.PLACED_FEATURE, new ResourceLocation(JurassicReborn.MODID, name));
+        return ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.parse(JurassicReborn.MODID + ":" + name));
     }
 
-    private static void register(BootstapContext<PlacedFeature> ctx,
+    private static void register(BootstrapContext<PlacedFeature> ctx,
                                  ResourceKey<PlacedFeature> key,
                                  Holder<ConfiguredFeature<?, ?>> configured,
                                  List<PlacementModifier> modifiers) {

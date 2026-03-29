@@ -1,5 +1,6 @@
 package net.vit.jurassicreborn.common.blocks.parkBlocks;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;
@@ -31,6 +32,7 @@ import net.vit.jurassicreborn.common.entities.ParkBenchSeatRightEntity;
 import javax.annotation.Nullable;
 
 public class ParkBenchBlock extends HorizontalDirectionalBlock {
+    public static final MapCodec<ParkBenchBlock> CODEC = simpleCodec(ParkBenchBlock::new);
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final net.minecraft.world.level.block.state.properties.EnumProperty<BenchPart> PART =
             net.minecraft.world.level.block.state.properties.EnumProperty.create("part", BenchPart.class);
@@ -47,6 +49,11 @@ public class ParkBenchBlock extends HorizontalDirectionalBlock {
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> b) {
         b.add(FACING, PART);
+    }
+
+    @Override
+    protected MapCodec<? extends HorizontalDirectionalBlock> codec() {
+        return CODEC;
     }
 
     @Override
@@ -85,8 +92,7 @@ public class ParkBenchBlock extends HorizontalDirectionalBlock {
         level.setBlock(other, rightHalf, Block.UPDATE_ALL);
     }
 
-    @Override
-    public void playerWillDestroy(Level level, BlockPos pos, BlockState state, Player player) {
+    public BlockState playerWillDestroy(Level level, BlockPos pos, BlockState state, Player player) {
         BenchPart part = state.getValue(PART);
         Direction facing = state.getValue(FACING);
         Direction perp = facing.getClockWise();
@@ -100,9 +106,9 @@ public class ParkBenchBlock extends HorizontalDirectionalBlock {
             if (!level.isClientSide) level.destroyBlock(otherPos, false, player);
         }
         super.playerWillDestroy(level, pos, state, player);
+        return other;
     }
 
-    @Override
     public void playerDestroy(Level level, Player player, BlockPos pos, BlockState state,
                               @Nullable net.minecraft.world.level.block.entity.BlockEntity be, ItemStack tool) {
         // Intentionally empty — handled in playerWillDestroy
@@ -129,13 +135,18 @@ public class ParkBenchBlock extends HorizontalDirectionalBlock {
         return SHAPE;
     }
 
-    @Override
     public VoxelShape getCollisionShape(BlockState state, BlockGetter g, BlockPos pos, CollisionContext c) {
         return SHAPE;
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+    public InteractionResult useWithoutItem(
+            BlockState state,
+            Level level,
+            BlockPos pos,
+            Player player,
+            BlockHitResult hit
+    ) {
         if (level.isClientSide) return InteractionResult.SUCCESS;
         if (player.isPassenger()) return InteractionResult.PASS;
 
@@ -151,12 +162,19 @@ public class ParkBenchBlock extends HorizontalDirectionalBlock {
         double rightZ = perp.getStepZ() * ( side) + facing.getStepZ() * depth;
 
         if (part == BenchPart.LEFT) {
-            if (tryMountLeft(level, pos, facing, leftX, leftZ, player))  return InteractionResult.sidedSuccess(false);
-            if (tryMountRight(level, pos, facing, rightX, rightZ, player)) return InteractionResult.sidedSuccess(false);
+            if (tryMountLeft(level, pos, facing, leftX, leftZ, player))
+                return InteractionResult.sidedSuccess(level.isClientSide);
+
+            if (tryMountRight(level, pos, facing, rightX, rightZ, player))
+                return InteractionResult.sidedSuccess(level.isClientSide);
         } else {
-            if (tryMountRight(level, pos, facing, rightX, rightZ, player)) return InteractionResult.sidedSuccess(false);
-            if (tryMountLeft(level, pos, facing, leftX, leftZ, player))  return InteractionResult.sidedSuccess(false);
+            if (tryMountRight(level, pos, facing, rightX, rightZ, player))
+                return InteractionResult.sidedSuccess(level.isClientSide);
+
+            if (tryMountLeft(level, pos, facing, leftX, leftZ, player))
+                return InteractionResult.sidedSuccess(level.isClientSide);
         }
+
         return InteractionResult.PASS;
     }
 

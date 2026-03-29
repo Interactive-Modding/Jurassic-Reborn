@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "jurassicreborn:paleo_bale_other",
+  "key": {
+    "A": {
+      "item": "jurassicreborn:rhamnus_salicifolius"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "AAA",
+    "AAA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "jurassicreborn:paleo_bale_other"
+  }
+}

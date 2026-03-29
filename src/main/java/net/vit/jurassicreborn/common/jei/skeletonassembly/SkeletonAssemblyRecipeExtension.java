@@ -9,7 +9,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Item;
 import net.vit.jurassicreborn.common.items.ModItems;
 import net.vit.jurassicreborn.common.blocks.entities.skeletonassembly.SkeletonInput;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.DeferredItem;
 
 import java.util.Map;
 
@@ -31,7 +31,7 @@ public class SkeletonAssemblyRecipeExtension implements IRecipeCategoryExtension
 
     public void setRecipe(IRecipeLayoutBuilder builder, IFocusGroup focuses) {
         String[][] pattern = input.dinosaur.getRecipe();
-        Map<String, RegistryObject<Item>> fossils = input.fresh
+        Map<String, DeferredItem<Item>> fossils = input.fresh
                 ? ModItems.FRESH_BONES.get(input.dinosaur)
                 : ModItems.BONES.get(input.dinosaur);
 

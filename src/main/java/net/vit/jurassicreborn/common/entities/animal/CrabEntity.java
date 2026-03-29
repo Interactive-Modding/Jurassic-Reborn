@@ -1,10 +1,9 @@
 package net.vit.jurassicreborn.common.entities.animal;
 
 import com.github.alexthe666.citadel.animation.Animation;
-import com.github.alexthe666.citadel.animation.AnimationHandler;
 import com.google.common.collect.Lists;
+import com.github.alexthe666.citadel.animation.AnimationHandler;
 import com.mojang.math.Constants;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.animal.Turtle;
@@ -18,7 +17,6 @@ import net.vit.jurassicreborn.common.entities.EntityUtils.ai.SmartBodyHelper;
 import net.vit.jurassicreborn.common.entities.ModEntities;
 import net.vit.jurassicreborn.common.entities.ai.WanderAroundWaterAI;
 import net.vit.jurassicreborn.common.items.ModItems;
-import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -33,20 +31,20 @@ import net.minecraft.world.entity.ai.goal.BreedGoal;
 import net.minecraft.world.entity.ai.goal.TryFindWaterGoal;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.entity.IEntityAdditionalSpawnData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.RandomSource;
-import net.vit.jurassicreborn.common.RebornConfig;
+import net.vit.jurassicreborn.common.JurassicConfig;
 import net.minecraft.world.level.block.Blocks;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 
-public class CrabEntity extends Animal implements Animatable, IEntityAdditionalSpawnData {
+public class CrabEntity extends Animal implements Animatable {
 
     private static final PoseHandler<CrabEntity> CRAB_POSE_HANDLER = new PoseHandler<>("crab", Lists.newArrayList(GrowthStage.ADULT));
 
@@ -59,7 +57,6 @@ public class CrabEntity extends Animal implements Animatable, IEntityAdditionalS
 
     public CrabEntity(EntityType<? extends Animal> p_27557_, Level p_27558_) {
         super(p_27557_, p_27558_);
-        this.setMaxUpStep(1.0f);
         this.animationTick = 0;
         this.setAnimation(EntityAnimation.IDLE.get());
     }
@@ -75,25 +72,30 @@ public class CrabEntity extends Animal implements Animatable, IEntityAdditionalS
     }
 
 
-
     @Override
-    protected void dropCustomDeathLoot(DamageSource pSource, int pLooting, boolean pRecentlyHit) {
-        ArrayList<ItemStack> itemsToDrop = new ArrayList<>();
-        if(this.isOnFire()){
-            itemsToDrop.add(new ItemStack(ModItems.CRAB_MEAT_COOKED.get(), this.getRandom().nextInt(2)+1));
-        }else {
-            itemsToDrop.add(new ItemStack(ModItems.CRAB_MEAT_RAW.get(), this.getRandom().nextInt(2)+1));
-        }
-        super.dropCustomDeathLoot(pSource, pLooting, pRecentlyHit);
-        for(ItemStack stack : itemsToDrop){
-            this.spawnAtLocation(stack);
-        }
+    protected void dropAllDeathLoot(ServerLevel level, DamageSource source) {
+        super.dropAllDeathLoot(level, source);
 
+        int count = this.getRandom().nextInt(2) + 1;
+
+        ItemStack drop = this.isOnFire()
+                ? new ItemStack(ModItems.CRAB_MEAT_COOKED.get(), count)
+                : new ItemStack(ModItems.CRAB_MEAT_RAW.get(), count);
+
+        this.spawnAtLocation(drop);
     }
+
+
+
 
     @Override
     public boolean isCarcass() {
         return false;
+    }
+
+    @Override
+    public boolean isFood(ItemStack stack) {
+        return stack.is(Items.KELP) || stack.is(Items.SEAGRASS);
     }
 
     @Override
@@ -128,9 +130,9 @@ public class CrabEntity extends Animal implements Animatable, IEntityAdditionalS
     }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.getEntityData().define(CRAB_IS_RUNNING, false);
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(CRAB_IS_RUNNING, false);
     }
 
     @Override
@@ -189,7 +191,7 @@ public class CrabEntity extends Animal implements Animatable, IEntityAdditionalS
     }
 
     @Override
-    public PoseHandler<CrabEntity> getPoseHandler() {
+    public PoseHandler<CrabEntity> getPoseHandler() {//if this errors, run for your goddamn life. - gamma
         return CRAB_POSE_HANDLER;
     }
 
@@ -228,16 +230,6 @@ public class CrabEntity extends Animal implements Animatable, IEntityAdditionalS
     @Override
     public AgeableMob getBreedOffspring(ServerLevel p_146743_, AgeableMob p_146744_) {
         return new CrabEntity(ModEntities.CRAB.get(), p_146743_);
-    }
-
-    @Override
-    public void writeSpawnData(FriendlyByteBuf buffer) {
-
-    }
-
-    @Override
-    public void readSpawnData(FriendlyByteBuf additionalData) {
-
     }
 
     @Override
@@ -288,11 +280,12 @@ public class CrabEntity extends Animal implements Animatable, IEntityAdditionalS
         return this.alternative ? Type.ALTERNATIVE : Type.CRAB;
     }
     @javax.annotation.Nullable
-    public SpawnGroupData finalizeSpawn(ServerLevelAccessor pLevel, DifficultyInstance pDifficulty, MobSpawnType pReason, @javax.annotation.Nullable SpawnGroupData pSpawnData, @javax.annotation.Nullable CompoundTag pDataTag) {
-        return super.finalizeSpawn(pLevel, pDifficulty, pReason, pSpawnData, pDataTag);
+    public SpawnGroupData finalizeSpawn(ServerLevelAccessor pLevel, DifficultyInstance pDifficulty, MobSpawnType pReason,
+                                        @javax.annotation.Nullable SpawnGroupData pSpawnData) {
+        return super.finalizeSpawn(pLevel, pDifficulty, pReason, pSpawnData);
     }
     public static boolean checkCrabSpawnRules(EntityType<CrabEntity> type, LevelAccessor pLevel, MobSpawnType reason, BlockPos pPos, RandomSource random) {
-        return RebornConfig.spawnCrabs && pPos.getY() < pLevel.getSeaLevel() + 4 && isBrightEnoughToSpawn(pLevel, pPos);
+        return JurassicConfig.spawnCrabs && pPos.getY() < pLevel.getSeaLevel() + 4 && isBrightEnoughToSpawn(pLevel, pPos);
     }
 
 

@@ -11,7 +11,7 @@ import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 
 public class HeliconiaBlock extends DoublePlantBlock {
     public HeliconiaBlock() {
-        super(Properties.copy(net.minecraft.world.level.block.Blocks.FERN)
+        super(Properties.ofFullCopy(net.minecraft.world.level.block.Blocks.FERN)
                 .noCollission()
                 .sound(SoundType.GRASS));
         this.registerDefaultState(this.defaultBlockState()

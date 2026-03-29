@@ -23,7 +23,7 @@ public class SpinoraptorDinosaur extends Dinosaur implements Hybrid
         this.setLocation("N/A");
         this.setDinosaurType(DinosaurType.AGGRESSIVE);
         this.setDinosaurClass(SpinoraptorEntity.class);
-        this.setTimePeriod(TimePeriod.NONE);
+        this.setTimePeriod(TimePeriod.NONE); //TODO, it's a hybrid, what do you do here?
         this.setEggColorMale(0xa98b2b, 0x191919);
         this.setEggColorFemale(0xbc972e, 0x6f5b25);
         this.setHealth(8, 60);

@@ -2,8 +2,6 @@ package net.vit.jurassicreborn.common.worldgen;
 
 import net.minecraft.core.Holder;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.RegistryObject;
 
 public class ModPlacements {
     public static Holder<PlacedFeature> FLORA_FOSSIL_PLACEMENT;

@@ -1,10 +1,9 @@
 package net.vit.jurassicreborn.client.model;
 
+
 import com.github.alexthe666.citadel.client.model.AdvancedModelBox;
 import com.github.alexthe666.citadel.client.model.basic.BasicModelPart;
 import it.unimi.dsi.fastutil.objects.ObjectList;
-
-import java.util.List;
 
 public class TabulaModelFixer {
 

@@ -15,7 +15,7 @@ import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.ai.navigation.WaterBoundPathNavigation;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.pathfinder.BlockPathTypes;
+import net.minecraft.world.level.pathfinder.PathType;
 import net.minecraft.world.phys.Vec3;
 import net.vit.jurassicreborn.common.entities.Dinosaurs.Dinosaur;
 import net.vit.jurassicreborn.common.entities.ai.navigation.DinosaurMoveHelper;
@@ -59,7 +59,7 @@ public abstract class AmphibianDinosaurEntity extends DinosaurEntity {
         this.waterLookControl = new SmoothSwimmingLookControl(this, 10);
         this.navigationSwimmer = new WaterBoundPathNavigation(this, world);
 
-
+        // LAND: walking controls + your path navigator
         this.landMoveControl = new DinosaurMoveHelper(this);
         this.landLookControl = new LookControl(this);
         this.navigationLand  = new DinosaurPathNavigate(this, world);
@@ -73,11 +73,8 @@ public abstract class AmphibianDinosaurEntity extends DinosaurEntity {
         this.blocked = false;
 
         // Prefer both media
-        this.setPathfindingMalus(BlockPathTypes.WATER, 0.0F);
-        this.setPathfindingMalus(BlockPathTypes.WATER_BORDER, 0.0F);
-
-        // Help clambering out of banks
-        this.setMaxUpStep(1.5F);
+        this.setPathfindingMalus(PathType.WATER, 0.0F);
+        this.setPathfindingMalus(PathType.WATER_BORDER, 0.0F);
 
         // Goals
         this.goalSelector.addGoal(5,  new MoveUnderwaterGoal());

@@ -273,7 +273,7 @@ public class DinosaurHandler {
     }
     public static List<Dinosaur> getDinosaursFromAmber() {
 
-        return DINOS.stream().filter((dino) -> dino != EMPTY).filter(Dinosaur::shouldRegister).filter((dino) -> !dino.isMarineCreature() && !dino.isHybrid).collect(Collectors.toList());
+        return DINOS.stream().filter((dino) -> dino != EMPTY).filter(Dinosaur::shouldRegister).filter((dino) -> !dino.isMarineCreature() && !dino.isMammal() && !dino.isHybrid).collect(Collectors.toList());
     }
     public static List<Dinosaur> getMarineCreatures() {
 

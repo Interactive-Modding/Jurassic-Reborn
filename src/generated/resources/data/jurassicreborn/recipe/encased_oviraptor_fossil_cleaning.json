@@ -1,0 +1,11 @@
+{
+  "type": "jurassicreborn:cleaning",
+  "id": "jurassicreborn:encased_oviraptor_fossil_cleaning",
+  "input": {
+    "item": "jurassicreborn:encased_oviraptor_fossil"
+  },
+  "output": {
+    "count": 1,
+    "id": "jurassicreborn:bones/oviraptor_skull"
+  }
+}

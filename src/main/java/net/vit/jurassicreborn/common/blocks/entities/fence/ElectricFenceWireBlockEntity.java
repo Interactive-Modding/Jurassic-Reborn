@@ -2,6 +2,7 @@ package net.vit.jurassicreborn.common.blocks.entities.fence;
 
 import net.vit.jurassicreborn.common.blocks.entities.ModBlockEntities;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.LongTag;
@@ -107,19 +108,18 @@ public class ElectricFenceWireBlockEntity extends BlockEntity implements BlockEn
     }
 
     @Override
-    public CompoundTag serializeNBT() {
-        CompoundTag compound = super.serializeNBT();
+    protected void saveAdditional(CompoundTag compound, HolderLookup.Provider provider) {
+        super.saveAdditional(compound, provider);
         ListTag poweringList = new ListTag();
         for (BlockPos pole : this.poweringPoles) {
             poweringList.add(LongTag.valueOf(pole.asLong()));
         }
         compound.put("Powering", poweringList);
-        return compound;
     }
 
     @Override
-    public void load(CompoundTag compound) {
-        super.load(compound);
+    protected void loadAdditional(CompoundTag compound, HolderLookup.Provider provider) {
+        super.loadAdditional(compound, provider);
         this.poweringPoles.clear();
         ListTag poweringList = compound.getList("Powering", CompoundTag.TAG_LONG);
         for (int i = 0; i < poweringList.size(); i++) {

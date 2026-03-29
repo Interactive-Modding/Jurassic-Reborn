@@ -20,7 +20,7 @@ public class BeelzebufoEntity extends AmphibianDinosaurEntity {
         super(world, type, DinosaurHandler.BEELZEBUFO);
         this.target(AlvarezsaurusEntity.class, CompsognathusEntity.class, LeptictidiumEntity.class, OthnieliaEntity.class, MicroraptorEntity.class, MussaurusEntity.class, GuanlongEntity.class, GallimimusEntity.class);
         this.addTask(0, new LeapingMeleeEntityAI(this, this.getSpeed()));
-        this.addTask(0, new DinosaurWanderEntityAI(this, getSpeed(), 10, /*RebornConfig.ENTITIES.dinosaurWalkingRadius todo: config*/16));
+        this.addTask(0, new DinosaurWanderEntityAI(this, getSpeed(), 10, /*JurassicConfig.ENTITIES.dinosaurWalkingRadius todo: config*/16));
     }
 
     @Override

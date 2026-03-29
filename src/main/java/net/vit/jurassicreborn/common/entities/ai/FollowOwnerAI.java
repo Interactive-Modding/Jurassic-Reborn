@@ -4,7 +4,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.pathfinder.BlockPathTypes;
+import net.minecraft.world.level.pathfinder.PathType;
 import net.minecraft.world.phys.AABB;
 import net.vit.jurassicreborn.common.entities.DinosaurEntity;
 
@@ -57,15 +57,15 @@ public class FollowOwnerAI extends Goal {
     @Override
     public void start() {
         recalcCooldown = 0;
-        oldWaterMalus = dino.getPathfindingMalus(BlockPathTypes.WATER);
+        oldWaterMalus = dino.getPathfindingMalus(PathType.WATER);
         // Don’t fear water while following
-        dino.setPathfindingMalus(BlockPathTypes.WATER, 0.0F);
+        dino.setPathfindingMalus(PathType.WATER, 0.0F);
     }
 
     @Override
     public void stop() {
         dino.getNavigation().stop();
-        dino.setPathfindingMalus(BlockPathTypes.WATER, oldWaterMalus);
+        dino.setPathfindingMalus(PathType.WATER, oldWaterMalus);
         owner = null;
     }
 

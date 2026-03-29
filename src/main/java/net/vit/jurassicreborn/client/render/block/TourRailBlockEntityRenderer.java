@@ -51,14 +51,11 @@ public class TourRailBlockEntityRenderer extends GeoBlockRenderer<TourRailBlockE
                           float partialTick,
                           int packedLight,
                           int packedOverlay,
-                          float red,
-                          float green,
-                          float blue,
-                          float alpha) {
+                          int packedColor) {
 
         // Let GeckoLib do its usual bookkeeping
         super.preRender(poseStack, animatable, model, bufferSource, buffer,
-                isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
+                isReRender, partialTick, packedLight, packedOverlay, packedColor);
 
         var railDir = animatable.getDirection();
 
@@ -136,6 +133,10 @@ public class TourRailBlockEntityRenderer extends GeoBlockRenderer<TourRailBlockE
             float r = (rgb >> 16 & 0xFF) / 255.0F;
             float g = (rgb >> 8  & 0xFF) / 255.0F;
             float b = (rgb       & 0xFF) / 255.0F;
+            int packedColor = (0xFF << 24)
+                    | (Math.round(r * 255) << 16)
+                    | (Math.round(g * 255) << 8)
+                    | Math.round(b * 255);
 
             ResourceLocation stripeTex =
                     JurassicReborn.resource("textures/block/" + animatable.getDirection().modelName + "_stripe.png");
@@ -153,7 +154,7 @@ public class TourRailBlockEntityRenderer extends GeoBlockRenderer<TourRailBlockE
                     partialTick,
                     packedLight,
                     OverlayTexture.NO_OVERLAY,
-                    r, g, b, 1.0F
+                    packedColor
             );
         }
     }

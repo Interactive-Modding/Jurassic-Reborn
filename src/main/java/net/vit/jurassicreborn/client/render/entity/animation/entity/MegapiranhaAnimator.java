@@ -14,23 +14,17 @@ public class MegapiranhaAnimator extends EntityAnimator<MegapiranhaEntity>
         AdvancedModelBox head = model.getCube("Neck ");
         AdvancedModelBox body1 = model.getCube("Body Section 1");
         AdvancedModelBox body2 = model.getCube("Body Section 2");
+        AdvancedModelBox leftFlipper = model.getCube("Left Front Flipper");
+        AdvancedModelBox rightFlipper = model.getCube("Right Front Flipper");
         AdvancedModelBox body3 = model.getCube("Body Section 3");
-
         AdvancedModelBox tail1 = model.getCube("Tail Section 1");
         AdvancedModelBox tail2 = model.getCube("Tail Section 2");
         AdvancedModelBox tail3 = model.getCube("Tail Section 3");
-
-        AdvancedModelBox leftFlipper = model.getCube("Left Front Flipper");
-        AdvancedModelBox rightFlipper = model.getCube("Right Front Flipper");
-
         AdvancedModelBox[] tail = new AdvancedModelBox[] { tail3, tail2, tail1, body3, body2, body1, head };
-
         head.rotationPointX -= -4 * f1 * Math.sin((f + 1) * 0.6); // Head moves side to side
         model.chainSwing(tail, 0.6F, 0.4F, 3.0D, f, f1); // and the tail follows with a delay.
-
         model.walk(leftFlipper, 0.6F, 0.6F, false, 0.0F, 0.8F, f, f1);
         model.walk(rightFlipper, 0.6F, 0.6F, false, 0.0F, 0.8F, f, f1);
-
         model.flap(leftFlipper, 0.6F, 0.6F, false, 0.0F, 0.8F, f, f1);
         model.flap(rightFlipper, 0.6F, 0.6F, true, 0.0F, -0.8F, f, f1);
 

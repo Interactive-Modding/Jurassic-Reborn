@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "I": {
+      "tag": "c:ingots/iron"
+    },
+    "S": {
+      "tag": "c:rods/wooden"
+    }
+  },
+  "pattern": [
+    "I I",
+    " S ",
+    "I I"
+  ],
+  "result": {
+    "count": 1,
+    "id": "jurassicreborn:iron_blades"
+  }
+}

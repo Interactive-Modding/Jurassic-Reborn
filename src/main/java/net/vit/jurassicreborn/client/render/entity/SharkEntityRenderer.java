@@ -11,9 +11,7 @@ import net.vit.jurassicreborn.common.legacy.tabula.TabulaModelHelper;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.LivingEntityRenderer;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraft.resources.ResourceLocation;import net.neoforged.api.distmarker.Dist;import net.neoforged.api.distmarker.OnlyIn;
 
 import java.io.IOException;
 
@@ -31,9 +29,12 @@ public class SharkEntityRenderer extends LivingEntityRenderer<SharkEntity, Basic
             e.printStackTrace();
         }
         SHARK = new AnimatableModel(shark, new SharkAnimator());
-        SHARK_TEXTURE = new ResourceLocation(JurassicReborn.MODID, "textures/entities/shark/shark.png");
+        SHARK_TEXTURE = ResourceLocation.fromNamespaceAndPath(JurassicReborn.MODID, "textures/entities/shark/shark.png");
     }
-
+    @Override
+    protected boolean shouldShowName(SharkEntity entity) {
+        return entity.hasCustomName();
+    }
     public SharkEntityRenderer(EntityRendererProvider.Context pContext, float pShadowRadius) {
         super(pContext, SHARK, pShadowRadius);
         if(SHARK != null)

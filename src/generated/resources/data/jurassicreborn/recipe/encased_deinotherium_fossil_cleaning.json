@@ -1,0 +1,11 @@
+{
+  "type": "jurassicreborn:cleaning",
+  "id": "jurassicreborn:encased_deinotherium_fossil_cleaning",
+  "input": {
+    "item": "jurassicreborn:encased_deinotherium_fossil"
+  },
+  "output": {
+    "count": 1,
+    "id": "jurassicreborn:bones/deinotherium_skull"
+  }
+}

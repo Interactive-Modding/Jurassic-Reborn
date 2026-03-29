@@ -24,7 +24,7 @@ public class IndominusDinosaur extends Dinosaur implements Hybrid
         this.setLocation("N/A");
         this.setDinosaurType(DinosaurType.AGGRESSIVE);
         this.setDinosaurClass(IndominusEntity.class);
-        this.setTimePeriod(TimePeriod.NONE);
+        this.setTimePeriod(TimePeriod.NONE); //TODO, it's a hybrid, what do you do here?
         this.setEggColorMale(0x252627, 0x293336);
         this.setEggColorFemale(0xBEBABB, 0x95949A);
         this.setHealth(16, 95);
@@ -51,7 +51,7 @@ public class IndominusDinosaur extends Dinosaur implements Hybrid
         this.setRecipe(recipe);
         this.enableSkeleton();
 
-        this.overlayTexture = new ResourceLocation(getDinosaurTexture(""));
+//        this.overlayTexture = new ResourceLocation(getDinosaurTexture(""));
 
     }
 

@@ -40,9 +40,12 @@ public class SleepEntityAI extends Goal {
         if (!dino.isAlive() || dino.isSleeping() || !dino.shouldSleep() || dino.getStayAwakeTime() > 0) {
             return false;
         }
-        if (dino instanceof FlyingDinosaurEntity flying && !flying.onGround()) {
-            flying.shouldLand = true;
-            return false;
+        if (dino instanceof FlyingDinosaurEntity flyer) {
+
+            if (!flyer.onGround()) {
+                flyer.shouldLand = true;
+                return false;
+            }
         }
         // Marine creatures: allow immediately (we’ll just stop moving and sleep)
         if (marine) return true;

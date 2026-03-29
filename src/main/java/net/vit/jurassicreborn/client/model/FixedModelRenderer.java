@@ -11,13 +11,12 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
  */
 public class FixedModelRenderer extends AdvancedModelBox {
 
-    public FixedModelRenderer(AdvancedEntityModel model, String name) {
+    public FixedModelRenderer(AdvancedEntityModel<?> model, String name) {
         super(model, name);
     }
 
     @Override
-    public void render(PoseStack poseStack, VertexConsumer buffer, int packedLight, int packedOverlay,
-                       float red, float green, float blue, float alpha) {
-        super.render(poseStack, buffer, packedLight, packedOverlay, red, green, blue, alpha);
+    public void render(PoseStack poseStack, VertexConsumer buffer, int packedLight, int packedOverlay) {
+        super.render(poseStack, buffer, packedLight, packedOverlay);
     }
 }

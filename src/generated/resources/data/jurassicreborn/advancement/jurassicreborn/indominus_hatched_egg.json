@@ -1,0 +1,34 @@
+{
+  "parent": "jurassicreborn:jurassicreborn/dna_combinator_hybridizer",
+  "criteria": {
+    "hatched_egg": {
+      "conditions": {
+        "items": [
+          {
+            "items": "jurassicreborn:hatched_egg/egg_indominus"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.jurassicreborn.indominus_hatched_egg.description"
+    },
+    "frame": "challenge",
+    "icon": {
+      "count": 1,
+      "id": "jurassicreborn:hatched_egg/egg_indominus"
+    },
+    "title": {
+      "translate": "advancements.jurassicreborn.indominus_hatched_egg.title"
+    }
+  },
+  "requirements": [
+    [
+      "hatched_egg"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

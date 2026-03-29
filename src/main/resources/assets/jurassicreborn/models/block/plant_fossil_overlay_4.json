@@ -46,43 +46,17 @@
         }
       }
     },
-    {
-      "from": [
-        -0.011,
-        -0.011,
-        -0.011
-      ],
-      "to": [
-        16.011,
-        16.011,
-        16.011
-      ],
-      "faces": {
-        "north": {
-          "texture": "#layer1",
-          "tintindex": 0
-        },
-        "east": {
-          "texture": "#layer1",
-          "tintindex": 0
-        },
-        "south": {
-          "texture": "#layer1",
-          "tintindex": 0
-        },
-        "west": {
-          "texture": "#layer1",
-          "tintindex": 0
-        },
-        "up": {
-          "texture": "#layer1",
-          "tintindex": 0
-        },
-        "down": {
-          "texture": "#layer1",
-          "tintindex": 0
-        }
-      }
-    }
+{
+  "from": [-0.011,-0.011,-0.011],
+  "to": [16.011,16.011,16.011],
+  "faces": {
+    "north": { "texture": "#layer1", "tintindex": 0, "cullface": "north" },
+    "east":  { "texture": "#layer1", "tintindex": 0, "cullface": "east" },
+    "south": { "texture": "#layer1", "tintindex": 0, "cullface": "south" },
+    "west":  { "texture": "#layer1", "tintindex": 0, "cullface": "west" },
+    "up":    { "texture": "#layer1", "tintindex": 0, "cullface": "up" },
+    "down":  { "texture": "#layer1", "tintindex": 0, "cullface": "down" }
+  }
+}
   ]
 }

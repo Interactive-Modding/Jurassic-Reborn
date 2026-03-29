@@ -1,13 +1,13 @@
 package net.vit.jurassicreborn.client.render.entity.animation.entity;
 
 import com.github.alexthe666.citadel.client.model.AdvancedModelBox;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import net.vit.jurassicreborn.client.model.AnimatableModel;
 //import mod.reborn.client.model.animation.EntityAnimation;
 import net.vit.jurassicreborn.client.render.entity.animation.EntityAnimator;
 
-//import net.minecraft.client.renderer.GlStateManager;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+//import net.minecraft.client.renderer.GlStateManager;import net.neoforged.api.distmarker.Dist;import net.neoforged.api.distmarker.OnlyIn;
 import net.vit.jurassicreborn.common.entities.DinosaurEntities.MicroraptorEntity;
 
 @OnlyIn(Dist.CLIENT)

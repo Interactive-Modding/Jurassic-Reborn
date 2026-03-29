@@ -1,0 +1,11 @@
+{
+	"replace": false,
+	"values": [
+		"jurassicreborn:araucaria_pressure_plate",
+		"jurassicreborn:magnolia_pressure_plate",
+		"jurassicreborn:ginkgo_pressure_plate",
+		"jurassicreborn:calamites_pressure_plate",
+		"jurassicreborn:phoenix_pressure_plate",
+		"jurassicreborn:psaronius_pressure_plate"
+	]
+}

@@ -22,7 +22,7 @@ public class LangUtil {
     public static final String LORE = "lore.%s";
     public static final String GENDER_CHANGE = "%s.genderchange";
 
-
+    // 🔷 These are what you are missing:
     public static final TranslateKey GUI = new TranslateKey("gui.%s.name");
     public static final TranslateKey STATUS = new TranslateKey("status.%s.name");
     public static final TranslateKey STAND_CHANGE = new TranslateKey("%s.standchange.name");
@@ -70,7 +70,7 @@ public class LangUtil {
         return getGender(gender).getString();
     }
 
-
+    // 3. (Optional) Helper for GUI/status keys, if you want
     public static String getGUIKey(String key) {
         return "gui." + JurassicReborn.MODID + "." + key;
     }

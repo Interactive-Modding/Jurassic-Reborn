@@ -1,0 +1,11 @@
+{
+  "type": "jurassicreborn:cleaning",
+  "id": "jurassicreborn:encased_tropeognathus_fossil_cleaning",
+  "input": {
+    "item": "jurassicreborn:encased_tropeognathus_fossil"
+  },
+  "output": {
+    "count": 1,
+    "id": "jurassicreborn:bones/tropeognathus_skull"
+  }
+}

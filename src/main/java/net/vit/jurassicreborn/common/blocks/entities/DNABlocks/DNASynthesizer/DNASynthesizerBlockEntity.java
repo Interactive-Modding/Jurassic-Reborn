@@ -2,7 +2,7 @@ package net.vit.jurassicreborn.common.blocks.entities.DNABlocks.DNASynthesizer;
 
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.items.IItemHandlerModifiable;
+import net.neoforged.neoforge.items.IItemHandlerModifiable;
 import net.vit.jurassicreborn.common.blocks.entities.MachineBlockEntity;
 import net.vit.jurassicreborn.common.blocks.entities.MachineItemStackHandler;
 import net.vit.jurassicreborn.common.blocks.entities.ModBlockEntities;
@@ -99,7 +99,7 @@ public class DNASynthesizerBlockEntity extends MachineBlockEntity implements Ite
 
     public int getOpenOutput(ItemStack output){
         for(int i : OUTPUTS){
-            if(this.getItem(i).isEmpty() || (ItemStack.isSameItemSameTags(output, this.getItem(i)) && ItemStack.isSameItemSameTags(this.getItem(i), output))){
+            if(this.getItem(i).isEmpty() || (ItemStack.isSameItemSameComponents(output, this.getItem(i)) && ItemStack.isSameItemSameComponents(this.getItem(i), output))){
                 return i;
             }
         }

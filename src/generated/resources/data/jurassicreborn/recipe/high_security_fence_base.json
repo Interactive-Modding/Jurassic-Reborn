@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "B": {
+      "item": "minecraft:iron_ingot"
+    },
+    "C": {
+      "item": "jurassicreborn:med_security_fence_base"
+    }
+  },
+  "pattern": [
+    "BBB",
+    "CCC",
+    "BBB"
+  ],
+  "result": {
+    "count": 6,
+    "id": "jurassicreborn:high_security_fence_base"
+  }
+}

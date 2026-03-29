@@ -1,0 +1,11 @@
+{
+  "type": "jurassicreborn:cleaning",
+  "id": "jurassicreborn:encased_hypsilophodon_fossil_cleaning",
+  "input": {
+    "item": "jurassicreborn:encased_hypsilophodon_fossil"
+  },
+  "output": {
+    "count": 1,
+    "id": "jurassicreborn:bones/hypsilophodon_skull"
+  }
+}

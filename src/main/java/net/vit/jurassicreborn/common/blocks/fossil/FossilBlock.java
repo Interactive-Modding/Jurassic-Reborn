@@ -9,7 +9,7 @@ public interface FossilBlock {
 
     boolean mustBandage();
 
-
+    //override this if you want to make a bandageable fossil block
     default BlockState getEncasedFossil(){
         return null;
     }

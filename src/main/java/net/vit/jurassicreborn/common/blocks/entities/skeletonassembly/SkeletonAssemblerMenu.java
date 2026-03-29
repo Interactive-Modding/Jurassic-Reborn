@@ -3,13 +3,14 @@ package net.vit.jurassicreborn.common.blocks.entities.skeletonassembly;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.Container;
+import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.items.IItemHandlerModifiable;
-import net.minecraftforge.items.wrapper.InvWrapper;
+import net.neoforged.neoforge.items.IItemHandlerModifiable;
+import net.neoforged.neoforge.items.wrapper.InvWrapper;
 import net.vit.jurassicreborn.common.blocks.entities.skeletonassembly.SkeletonAssemblerBlockEntity;
 import net.vit.jurassicreborn.common.blocks.ModBlocks;
 import net.vit.jurassicreborn.common.blocks.entities.ModMenuTypes;
@@ -45,6 +46,17 @@ public class SkeletonAssemblerMenu extends AbstractContainerMenu {
     /* ================================================================== */
     /*  CONSTRUCTORS                                                      */
     /* ================================================================== */
+// REQUIRED NeoForge 1.21 client-side constructor
+    public SkeletonAssemblerMenu(int id, Inventory playerInv) {
+        super(ModMenuTypes.SKELETON_ASSEMBLER.value(), id);
+        this.access = ContainerLevelAccess.NULL;
+
+        this.grid = new SimpleContainer(
+                SkeletonAssemblerBlockEntity.GRID_W * SkeletonAssemblerBlockEntity.GRID_H + 1
+        );
+        this.result = this.grid;
+        initSlots(playerInv, new SimpleContainerData(2));
+    }
 
     /** Server-side constructor */
     public SkeletonAssemblerMenu(int id,
@@ -53,7 +65,7 @@ public class SkeletonAssemblerMenu extends AbstractContainerMenu {
                                  ContainerData syncData,
                                  BlockPos pos) {
 
-        super(ModMenuTypes.SKELETON_ASSEMBLER.get(), id);
+        super(ModMenuTypes.SKELETON_ASSEMBLER.value(), id);
         this.access = ContainerLevelAccess.create(playerInv.player.level(), pos);
 
         /* handler provides both grid and result slot */
@@ -62,6 +74,26 @@ public class SkeletonAssemblerMenu extends AbstractContainerMenu {
         if (handler instanceof SkeletonAssemblerItemHandler sa)
             sa.setChangeListener(() -> this.slotsChanged(sa));
 
+        initSlots(playerInv, syncData);
+
+        /* prime result slot */
+        if (grid.getItem(RESULT_SLOT).isEmpty()) {
+            ItemStack result = computeResult();
+            if (!result.isEmpty()) grid.setItem(RESULT_SLOT, result);
+        }
+    }
+
+    /** Client-side constructor – receives BlockPos via buffer */
+    public SkeletonAssemblerMenu(int id, Inventory inv, FriendlyByteBuf buf) {
+        /* create dummy handler/data for client; real inventory syncs via net */
+        this(id,
+                inv,
+                new SkeletonAssemblerItemHandler(),
+                new SimpleContainerData(2),
+                buf.readBlockPos());
+    }
+
+    private void initSlots(Inventory playerInv, ContainerData syncData) {
         this.addDataSlots(syncData);
 
         /* result slot (index 0) */
@@ -80,33 +112,20 @@ public class SkeletonAssemblerMenu extends AbstractContainerMenu {
         }
 
         /* player inventory (26-52) */
-        for (int row = 0; row < 3; row++)
-            for (int col = 0; col < 9; col++)
+        for (int row = 0; row < 3; row++) {
+            for (int col = 0; col < 9; col++) {
                 this.addSlot(new Slot(playerInv,
                         col + row * 9 + 9,
                         8 + col * 18,
                         119 + row * 18));
+            }
+        }
 
         /* hot-bar (53-61) */
-        for (int col = 0; col < 9; col++)
+        for (int col = 0; col < 9; col++) {
             this.addSlot(new Slot(playerInv, col,
                     8 + col * 18, 177));
-
-        /* prime result slot */
-        if (grid.getItem(RESULT_SLOT).isEmpty()) {
-            ItemStack result = computeResult();
-            if (!result.isEmpty()) grid.setItem(RESULT_SLOT, result);
         }
-    }
-
-    /** Client-side constructor – receives BlockPos via buffer */
-    public SkeletonAssemblerMenu(int id, Inventory inv, FriendlyByteBuf buf) {
-        /* create dummy handler/data for client; real inventory syncs via net */
-        this(id,
-                inv,
-                new SkeletonAssemblerItemHandler(),
-                new SimpleContainerData(2),
-                buf.readBlockPos());
     }
 
     /* ================================================================== */

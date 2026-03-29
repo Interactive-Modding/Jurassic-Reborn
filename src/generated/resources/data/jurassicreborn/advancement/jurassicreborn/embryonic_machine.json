@@ -1,0 +1,33 @@
+{
+  "parent": "jurassicreborn:jurassicreborn/dna_synthesizer",
+  "criteria": {
+    "embryonic_machine": {
+      "conditions": {
+        "items": [
+          {
+            "items": "jurassicreborn:embryonic_machine"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.jurassicreborn.embryonic_machine.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "jurassicreborn:embryonic_machine"
+    },
+    "title": {
+      "translate": "advancements.jurassicreborn.embryonic_machine.title"
+    }
+  },
+  "requirements": [
+    [
+      "embryonic_machine"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

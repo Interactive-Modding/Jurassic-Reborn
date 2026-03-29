@@ -1,15 +1,18 @@
 package net.vit.jurassicreborn.common.blocks.entities.Embryoncis.EmbryoCalcificationMachine;
 
+import net.vit.jurassicreborn.common.util.InventoryUtil;
+import com.mojang.serialization.MapCodec;
+
 import net.minecraft.world.Containers;
-import net.minecraftforge.items.wrapper.RecipeWrapper;
+import net.neoforged.neoforge.items.wrapper.RecipeWrapper;
 import net.vit.jurassicreborn.common.blocks.base.BaseMachineBlock;
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
@@ -29,6 +32,9 @@ import org.jetbrains.annotations.Nullable;
 
 public class EmbryoCalcificationMachineBlock extends BaseMachineBlock {
 
+    public static final MapCodec<EmbryoCalcificationMachineBlock> CODEC =
+            Block.simpleCodec(EmbryoCalcificationMachineBlock::new);
+
 //    public static DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static BooleanProperty EGG = BooleanProperty.create("egg");
 
@@ -44,6 +50,11 @@ public class EmbryoCalcificationMachineBlock extends BaseMachineBlock {
 //        JurassicReborn.setRenderType(this, RenderType.cutoutMipped());
     }
 
+    @Override
+    protected MapCodec<? extends BaseEntityBlock> codec() {
+        return CODEC;
+    }
+
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
@@ -57,18 +68,13 @@ public class EmbryoCalcificationMachineBlock extends BaseMachineBlock {
     }
 
     @Override
-    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
-
-        if (pLevel.isClientSide) {
-            return InteractionResult.SUCCESS;
-        } else {
-//                MenuProvider menuprovider = this.getMenuProvider(pState, pLevel, pPos);
-            if (pLevel.getBlockEntity(pPos) instanceof EmbryoCalcificationMachineBlockEntity e ) {
-                pPlayer.openMenu(e);
+    public InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hit) {
+        if (!level.isClientSide) {
+            if (level.getBlockEntity(pos) instanceof EmbryoCalcificationMachineBlockEntity e) {
+                player.openMenu(e);
             }
-
-            return InteractionResult.CONSUME;
         }
+        return InteractionResult.sidedSuccess(level.isClientSide);
     }
 
     @Override
@@ -104,7 +110,7 @@ public class EmbryoCalcificationMachineBlock extends BaseMachineBlock {
         if (!oldState.is(newState.getBlock())) {
             BlockEntity blockEntity = level.getBlockEntity(pos);
             if (blockEntity instanceof EmbryoCalcificationMachineBlockEntity calcificationMachineBlock) {
-                Containers.dropContents(level, pos, new RecipeWrapper(calcificationMachineBlock.getItemHandler()));
+                InventoryUtil.dropContents(level, pos, calcificationMachineBlock.getItemHandler());
                 level.updateNeighbourForOutputSignal(pos, this);
             }
             super.onRemove(oldState, level, pos, newState, isMoving);

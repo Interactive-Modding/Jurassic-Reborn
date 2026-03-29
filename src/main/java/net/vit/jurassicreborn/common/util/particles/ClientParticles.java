@@ -1,15 +1,15 @@
 package net.vit.jurassicreborn.common.util.particles;
 
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 import net.vit.jurassicreborn.JurassicReborn;
 import net.vit.jurassicreborn.client.render.entity.vehicle.HelicopterEngineParticle;
 import net.vit.jurassicreborn.client.render.entity.vehicle.HelicopterGroundParticle;
 import net.vit.jurassicreborn.common.entities.vehicle.WashingParticle;
 
-@Mod.EventBusSubscriber(modid = JurassicReborn.MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+@EventBusSubscriber(modid = JurassicReborn.MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ClientParticles {
     @SubscribeEvent
     public static void onRegisterParticles(RegisterParticleProvidersEvent event) {

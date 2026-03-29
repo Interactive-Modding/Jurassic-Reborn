@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "jurassicreborn:attraction_sign",
+  "ingredients": [
+    {
+      "item": "jurassicreborn:attraction_sign_prehistoric_lake_plants"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "jurassicreborn:attraction_sign_mosa_feeding"
+  }
+}

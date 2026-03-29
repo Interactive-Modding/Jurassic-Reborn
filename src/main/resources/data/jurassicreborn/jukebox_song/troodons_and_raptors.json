@@ -1,0 +1,8 @@
+{
+  "sound_event": "jurassicreborn:troodons_and_raptors",
+  "description": {
+    "translate": "jukebox_song.jurassicreborn.troodons_and_raptors"
+  },
+  "length_in_seconds": 88.0,
+  "comparator_output": 15
+}

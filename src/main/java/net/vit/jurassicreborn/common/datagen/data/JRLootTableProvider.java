@@ -1,5 +1,6 @@
 package net.vit.jurassicreborn.common.datagen.data;
 
+import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.data.loot.LootTableProvider.SubProviderEntry;
@@ -14,16 +15,20 @@ import net.vit.jurassicreborn.common.datagen.JREntityLoot;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.CompletableFuture;
 
 public class JRLootTableProvider extends LootTableProvider {
-    public JRLootTableProvider(PackOutput output) {
-        super(output, Set.of(), List.of(
-                new SubProviderEntry(JREntityLoot::new, LootContextParamSets.ENTITY),
-                new SubProviderEntry(JRBlockLoot::new, LootContextParamSets.BLOCK)
-        ));
+    public JRLootTableProvider(PackOutput output,
+                               CompletableFuture<HolderLookup.Provider> registries) {
+        super(
+                output,
+                Set.of(),
+                List.of(
+                        new SubProviderEntry(JREntityLoot::new, LootContextParamSets.ENTITY),
+                        new SubProviderEntry(JRBlockLoot::new, LootContextParamSets.BLOCK)
+                ),
+                registries
+        );
     }
 
-    @Override
-    protected void validate(Map<ResourceLocation, LootTable> map, ValidationContext validationtracker) {
-    }
 }

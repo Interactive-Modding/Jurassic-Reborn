@@ -8,11 +8,11 @@ import net.vit.jurassicreborn.common.util.TimePeriod;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.biome.Biome;
 import java.util.ArrayList;
+import java.util.List;
 
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.tags.TagKey;
-import net.minecraftforge.common.Tags;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.neoforge.common.Tags;
 
 public class PerisphinctesDinosaur extends Dinosaur {
     public static final double SPEED = 0.3F;
@@ -52,22 +52,9 @@ public class PerisphinctesDinosaur extends Dinosaur {
                 { "shell_cover", "beak" }};
         this.setRecipe(recipe);
         this.enableSkeleton();
-        ArrayList<ResourceKey<Biome>> biomeList = new ArrayList<ResourceKey<Biome>>();
-        TagKey<Biome>[] tags = (new TagKey[]{ Tags.Biomes.IS_WATER, BiomeTags.IS_OCEAN});
-        ArrayList<Biome> allBiomes = new ArrayList<>(ForgeRegistries.BIOMES.getValues());
-
-        biomeList = new ArrayList<>(allBiomes.stream().filter((biome ->{
-            boolean accept = false;
-            
-            for(var tag : tags){
-                if(ForgeRegistries.BIOMES.tags().getTag(tag).contains(biome)){
-                    accept = true;
-                }
-            }
-            return accept;
-            
-        })).map((biome) -> ForgeRegistries.BIOMES.getResourceKey(biome).get()).toList());
-        this.setSpawn(1, biomeList);
+        TagKey<Biome>[] tags = (new TagKey[]{ Tags.Biomes.IS_DEEP_OCEAN, BiomeTags.IS_OCEAN});
+//      List<ResourceKey<Biome>> biomeList = biomeKeysForTags(tags);
+//       this.setSpawn(1, biomeList);
 this.init();
     }
 }

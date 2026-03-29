@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "jurassicreborn:tour_rail",
+  "key": {
+    "B": {
+      "item": "minecraft:iron_bars"
+    },
+    "R": {
+      "item": "minecraft:rail"
+    },
+    "T": {
+      "tag": "c:dusts/redstone"
+    }
+  },
+  "pattern": [
+    "BRB",
+    "TRT",
+    "BRB"
+  ],
+  "result": {
+    "count": 16,
+    "id": "jurassicreborn:tour_rail"
+  }
+}

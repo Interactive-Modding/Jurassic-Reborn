@@ -1,0 +1,29 @@
+{
+  "replace": false,
+  "values": [
+    "jurassicreborn:araucaria_log",
+    "jurassicreborn:stripped_araucaria_log",
+    "jurassicreborn:araucaria_wood",
+    "jurassicreborn:stripped_araucaria_wood",
+    "jurassicreborn:magnolia_log",
+    "jurassicreborn:stripped_magnolia_log",
+    "jurassicreborn:magnolia_wood",
+    "jurassicreborn:stripped_magnolia_wood",
+    "jurassicreborn:ginkgo_log",
+    "jurassicreborn:stripped_ginkgo_log",
+    "jurassicreborn:ginkgo_wood",
+    "jurassicreborn:stripped_ginkgo_wood",
+    "jurassicreborn:calamites_log",
+    "jurassicreborn:stripped_calamites_log",
+    "jurassicreborn:calamites_wood",
+    "jurassicreborn:stripped_calamites_wood",
+    "jurassicreborn:phoenix_log",
+    "jurassicreborn:stripped_phoenix_log",
+    "jurassicreborn:phoenix_wood",
+    "jurassicreborn:stripped_phoenix_wood",
+    "jurassicreborn:psaronius_log",
+    "jurassicreborn:stripped_psaronius_log",
+    "jurassicreborn:psaronius_wood",
+    "jurassicreborn:stripped_psaronius_wood"
+  ]
+}

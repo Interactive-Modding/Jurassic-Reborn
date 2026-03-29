@@ -2,7 +2,7 @@ package net.vit.jurassicreborn.common.blocks.entities.DNABlocks.DNACombinatorHyb
 
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.items.IItemHandlerModifiable;
+import net.neoforged.neoforge.items.IItemHandlerModifiable;
 import net.vit.jurassicreborn.common.blocks.entities.MachineBlockEntity;
 import net.vit.jurassicreborn.common.blocks.entities.MachineItemStackHandler;
 import net.vit.jurassicreborn.common.blocks.entities.ModBlockEntities;
@@ -31,6 +31,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
+import net.vit.jurassicreborn.common.util.ItemStackNbtUtil;
 
 public class DNACombinatorHybridizerBlockEntity extends MachineBlockEntity implements MenuProvider,ItemHandlerBlockEntity {
     public static final int SLOTS = 12;
@@ -152,8 +153,8 @@ public class DNACombinatorHybridizerBlockEntity extends MachineBlockEntity imple
     }
 
     private Dinosaur getDino(ItemStack disc) {
-        if (!disc.isEmpty() && disc.hasTag()) {
-            DinoDNA data = DinoDNA.readFromNBT(disc.getTag());
+        if (!disc.isEmpty() && ItemStackNbtUtil.hasTag(disc)) {
+            DinoDNA data = DinoDNA.readFromNBT(ItemStackNbtUtil.getTag(disc));
 
             if (data == null) {
                 return Dinosaur.EMPTY;
@@ -175,16 +176,16 @@ public class DNACombinatorHybridizerBlockEntity extends MachineBlockEntity imple
             final ItemStack right = this.getItem(9);
 
             if (!left.isEmpty() && left.getItem() == ModItems.STORAGE_DISC.get() && !right.isEmpty() && right.getItem() == ModItems.STORAGE_DISC.get()) {
-                if (left.getTag() != null && right.getTag() != null && this.getItem(11).isEmpty()) {
+                if (ItemStackNbtUtil.getTag(left) != null && ItemStackNbtUtil.getTag(right) != null && this.getItem(11).isEmpty()) {
                     //this is causing issues! I changed how DNA storage works so that it's in it's own DNA tag!
-                    final String leftID = left.getTag().getCompound("DNA").getString("StorageId");
-                    final String rightID = right.getTag().getCompound("DNA").getString("StorageId");
+                    final String leftID = ItemStackNbtUtil.getTag(left).getCompound("DNA").getString("StorageId");
+                    final String rightID = ItemStackNbtUtil.getTag(right).getCompound("DNA").getString("StorageId");
                     if(!leftID.equals(rightID))
                         return false;
 
                     if (leftID.equals("DinoDNA")) {
-                        DinoDNA dna1 = DinoDNA.readFromNBT(left.getTag());
-                        DinoDNA dna2 = DinoDNA.readFromNBT(right.getTag());
+                        DinoDNA dna1 = DinoDNA.readFromNBT(ItemStackNbtUtil.getTag(left));
+                        DinoDNA dna2 = DinoDNA.readFromNBT(ItemStackNbtUtil.getTag(right));
                         if (dna1 == null || dna2 == null) {
                             return false;
                         }
@@ -192,8 +193,8 @@ public class DNACombinatorHybridizerBlockEntity extends MachineBlockEntity imple
                         return dna1.getDinosaur() == dna2.getDinosaur();
 
                     } else if (leftID.equals("PlantDNA")) {
-                        PlantDNA dna1 = PlantDNA.readFromNBT(left.getTag());
-                        PlantDNA dna2 = PlantDNA.readFromNBT(right.getTag());
+                        PlantDNA dna1 = PlantDNA.readFromNBT(ItemStackNbtUtil.getTag(left));
+                        PlantDNA dna2 = PlantDNA.readFromNBT(ItemStackNbtUtil.getTag(right));
                         return dna1.getPlant().equals(dna2.getPlant());
                     }
                     return false;
@@ -215,7 +216,7 @@ public class DNACombinatorHybridizerBlockEntity extends MachineBlockEntity imple
                 CompoundTag nbt = new CompoundTag();
                 DinoDNA dna = new DinoDNA(getHybrid(), 100, GeneticsHelper.randomGenetics(level.random));
 
-                DinoDNA firstDNA = DinoDNA.readFromNBT(this.getItem(0).getTag());
+                DinoDNA firstDNA = DinoDNA.readFromNBT(ItemStackNbtUtil.getTag(this.getItem(0)));
 
                 if(firstDNA != null)
                     dna = new DinoDNA(hybrid, 100, firstDNA.getGenetics());
@@ -223,18 +224,18 @@ public class DNACombinatorHybridizerBlockEntity extends MachineBlockEntity imple
                 dna.writeToNBT(nbt);
 
                 ItemStack output = new ItemStack(ModItems.STORAGE_DISC.get());
-                output.setTag(nbt);
+                ItemStackNbtUtil.setTag(output, nbt);
                 StorageDiscItem.applyCustomModelData(output);
 
                 this.mergeStack(this.getOutputSlot(output), output);
             } else {
                 ItemStack output = new ItemStack(ModItems.STORAGE_DISC.get());
 
-                String storageId = this.getItem(8).getOrCreateTag().getCompound("DNA").getString("StorageId");
+                String storageId = ItemStackNbtUtil.getOrCreateTag(this.getItem(8)).getCompound("DNA").getString("StorageId");
 
                 if (storageId.equals("DinoDNA")) {
-                    DinoDNA dna1 = DinoDNA.readFromNBT(this.getItem(8).getTag());
-                    DinoDNA dna2 = DinoDNA.readFromNBT(this.getItem(9).getTag());
+                    DinoDNA dna1 = DinoDNA.readFromNBT(ItemStackNbtUtil.getTag(this.getItem(8)));
+                    DinoDNA dna2 = DinoDNA.readFromNBT(ItemStackNbtUtil.getTag(this.getItem(9)));
 
                     if(dna1 == null || dna2 == null)//this shouldn't happen but the game shouldn't crash if it does
                         return List.of(ItemStack.EMPTY);
@@ -249,12 +250,12 @@ public class DNACombinatorHybridizerBlockEntity extends MachineBlockEntity imple
 
                     CompoundTag outputTag = new CompoundTag();
                     newDNA.writeToNBT(outputTag);
-                    output.setTag(outputTag);
+                    ItemStackNbtUtil.setTag(output, outputTag);
                     StorageDiscItem.applyCustomModelData(output);
 
                 } else if (storageId.equals("PlantDNA")) {
-                    PlantDNA dna1 = PlantDNA.readFromNBT(this.getItem(8).getTag());
-                    PlantDNA dna2 = PlantDNA.readFromNBT(this.getItem(9).getTag());
+                    PlantDNA dna1 = PlantDNA.readFromNBT(ItemStackNbtUtil.getTag(this.getItem(8)));
+                    PlantDNA dna2 = PlantDNA.readFromNBT(ItemStackNbtUtil.getTag(this.getItem(9)));
 
                     if(dna1 == null || dna2 == null)//this shouldn't happen but the game shouldn't crash if it does
                         return List.of(ItemStack.EMPTY);
@@ -269,7 +270,7 @@ public class DNACombinatorHybridizerBlockEntity extends MachineBlockEntity imple
 
                     CompoundTag outputTag = new CompoundTag();
                     newDNA.writeToNBT(outputTag);
-                    output.setTag(outputTag);
+                    ItemStackNbtUtil.setTag(output, outputTag);
                     StorageDiscItem.applyCustomModelData(output);
                 }
 
@@ -287,7 +288,7 @@ public class DNACombinatorHybridizerBlockEntity extends MachineBlockEntity imple
         ItemStack previous = getItem(slot);
         if (previous.isEmpty()) {
             setItem(slot, stack);
-        } else if (ItemStack.isSameItemSameTags(previous, stack) && ItemStack.isSameItemSameTags(previous, stack)) {
+        } else if (ItemStack.isSameItemSameComponents(previous, stack) && ItemStack.isSameItemSameComponents(previous, stack)) {
             previous.setCount(previous.getCount() + stack.getCount());
         }
     }
@@ -367,10 +368,6 @@ public class DNACombinatorHybridizerBlockEntity extends MachineBlockEntity imple
         this.getLevel().sendBlockUpdated(this.getBlockPos(), this.getBlockState(), this.getBlockState().setValue(DNACombinatorHybridizerBlock.MODE, mode), 0);
     }
 
-    @Override
-    public @NotNull Component getDisplayName() {
-        return this.hasCustomName() ? this.getName() : Component.translatable(this.getMode() ? "container.dna_hybridizer" : "container.dna_combinator");
-    }
 
     @Override
     protected @NotNull Component getDefaultName() {
@@ -387,7 +384,7 @@ public class DNACombinatorHybridizerBlockEntity extends MachineBlockEntity imple
         for (int slot : outputs) {
             ItemStack stack = getItem(slot);
             //if the slot is empty or contains a stack that can combine with ours, return the slot
-            if (stack.isEmpty() || ((ItemStack.isSameItemSameTags(stack, output) && stack.getCount() + output.getCount() <= stack.getMaxStackSize()))) {
+            if (stack.isEmpty() || ((ItemStack.isSameItemSameComponents(stack, output) && stack.getCount() + output.getCount() <= stack.getMaxStackSize()))) {
                 return slot;
             }
         }

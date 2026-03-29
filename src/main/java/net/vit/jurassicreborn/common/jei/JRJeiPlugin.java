@@ -9,7 +9,7 @@ import mezz.jei.api.registration.IRecipeRegistration;
 import mezz.jei.api.registration.IRecipeTransferRegistration;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.vit.jurassicreborn.JurassicReborn;
 import net.vit.jurassicreborn.common.blocks.ModBlocks;
 import net.vit.jurassicreborn.common.blocks.entities.DNABlocks.DNASequencer.DNASequencerMenu;
@@ -74,7 +74,7 @@ import java.util.List;
 
 @JeiPlugin
 public class JRJeiPlugin implements IModPlugin {
-    private static final ResourceLocation UID = new ResourceLocation(JurassicReborn.MODID, "jei_plugin");
+    private static final ResourceLocation UID = ResourceLocation.parse(JurassicReborn.MODID + ":" + "jei_plugin");
 
     @Override
     public ResourceLocation getPluginUid() {
@@ -131,7 +131,7 @@ public class JRJeiPlugin implements IModPlugin {
         registration.addRecipes(SkeletonAssemblyCategory.TYPE, recipes);
 
         List<CleaningStationRecipeExtension> cleaning = new ArrayList<>();
-        ForgeRegistries.ITEMS.getValues().forEach(item -> {
+        BuiltInRegistries.ITEM.stream().forEach(item -> {
             ItemStack stack = new ItemStack(item);
             CleanableItem clean = CleanableItem.getCleanableItem(stack);
             if (clean != null && clean.isCleanable(stack)) {
@@ -141,7 +141,7 @@ public class JRJeiPlugin implements IModPlugin {
         registration.addRecipes(CleaningStationCategory.TYPE, cleaning);
 
         List<FossilGrinderRecipeExtension> grinding = new ArrayList<>();
-        ForgeRegistries.ITEMS.getValues().forEach(item -> {
+        BuiltInRegistries.ITEM.stream().forEach(item -> {
             ItemStack stack = new ItemStack(item);
             GrindableItem grind = GrindableItem.getGrindableItem(stack);
             if (grind != null && grind.isGrindable(stack)) {
@@ -150,7 +150,7 @@ public class JRJeiPlugin implements IModPlugin {
         });
         registration.addRecipes(FossilGrinderCategory.TYPE, grinding);
         List<DNASequencerRecipeExtension> sequencing = new ArrayList<>();
-        ForgeRegistries.ITEMS.getValues().forEach(item -> {
+        BuiltInRegistries.ITEM.stream().forEach(item -> {
             ItemStack stack = new ItemStack(item);
             var seq = SequencableItem.getSequencableItem(stack);
             if (seq != null && seq.isSequencable(stack)) {
@@ -220,7 +220,7 @@ public class JRJeiPlugin implements IModPlugin {
         registration.addRecipes(DNAHybridizerCategory.TYPE, hybrid);
 
         List<BugCrateRecipeExtension> bugs = new ArrayList<>();
-        ForgeRegistries.ITEMS.getValues().forEach(item -> {
+        BuiltInRegistries.ITEM.stream().forEach(item -> {
             ItemStack stack = new ItemStack(item);
             if (BreedableBug.isBug(stack)) {
                 bugs.add(new BugCrateRecipeExtension(stack));

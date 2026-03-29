@@ -12,6 +12,7 @@ import net.vit.jurassicreborn.common.entities.DinosaurEntity;
 import net.vit.jurassicreborn.common.entities.EntityUtils.Diet;
 import net.vit.jurassicreborn.common.entities.EntityUtils.FoodType;
 import net.vit.jurassicreborn.common.items.ModItems;
+import net.minecraft.core.Holder;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -159,7 +160,7 @@ public class FoodHelper {
     public static void registerFoodAuto(Item food, FoodType foodType, FoodEffect... effects) {
         ItemStack testStack = new ItemStack(food);
         if (food.getFoodProperties(testStack, null) != null) {
-            int nutrition = food.getFoodProperties(testStack, null).getNutrition();
+            int nutrition = food.getFoodProperties(testStack, null).nutrition();
             registerFood(new FoodKey(food), foodType, nutrition * 650, effects);
         } else {
             registerFood(new FoodKey(food), foodType, 1300, effects);
@@ -294,9 +295,9 @@ public class FoodHelper {
     public static boolean isFood(ItemEntity ent) { return isFood(ent.getItem().getItem()); }
 
     public static class FoodEffect {
-        public MobEffect effect;
+        public Holder<MobEffect> effect;
         public int chance;
-        public FoodEffect(MobEffect effect, int chance) { this.effect = effect; this.chance = chance; }
+        public FoodEffect(Holder<MobEffect> effect, int chance) { this.effect = effect; this.chance = chance; }
     }
 
     /* unchanged inner FoodKey class */

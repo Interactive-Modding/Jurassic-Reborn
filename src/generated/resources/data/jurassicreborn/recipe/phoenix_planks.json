@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    [
+      {
+        "item": "jurassicreborn:phoenix_log"
+      },
+      {
+        "item": "jurassicreborn:stripped_phoenix_log"
+      },
+      {
+        "item": "jurassicreborn:phoenix_wood"
+      },
+      {
+        "item": "jurassicreborn:stripped_phoenix_wood"
+      }
+    ]
+  ],
+  "result": {
+    "count": 4,
+    "id": "jurassicreborn:phoenix_planks"
+  }
+}

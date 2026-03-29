@@ -8,6 +8,7 @@ import net.vit.jurassicreborn.common.plants.Plant;
 import net.vit.jurassicreborn.common.plants.PlantHandler;
 
 import java.util.List;
+import net.vit.jurassicreborn.common.util.ItemStackNbtUtil;
 
 public class PlantDNAStorageType implements StorageType {
     private PlantDNA dna;
@@ -20,7 +21,7 @@ public class PlantDNAStorageType implements StorageType {
 
         // Retrieve the actual Plant instance using the plant ID stored in the DNA.
         Plant plant = PlantHandler.getPlantById(dna.getPlant());
-        net.minecraftforge.registries.RegistryObject<? extends net.minecraft.world.item.Item> regObj =
+        net.neoforged.neoforge.registries.DeferredHolder<net.minecraft.world.item.Item, ? extends net.minecraft.world.item.Item> regObj =
                 ModItems.PLANT_DNAS.get(plant);
         if (regObj == null) {
             return ItemStack.EMPTY;
@@ -29,7 +30,7 @@ public class PlantDNAStorageType implements StorageType {
         ItemStack output = new ItemStack(regObj.get(), 1);
         CompoundTag compound = new CompoundTag();
         this.dna.writeToNBT(compound);
-        output.setTag(compound);
+        ItemStackNbtUtil.setTag(output, compound);
         return output;
     }
 

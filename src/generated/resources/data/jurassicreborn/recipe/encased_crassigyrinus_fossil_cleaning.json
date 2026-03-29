@@ -1,0 +1,11 @@
+{
+  "type": "jurassicreborn:cleaning",
+  "id": "jurassicreborn:encased_crassigyrinus_fossil_cleaning",
+  "input": {
+    "item": "jurassicreborn:encased_crassigyrinus_fossil"
+  },
+  "output": {
+    "count": 1,
+    "id": "jurassicreborn:bones/crassigyrinus_skull"
+  }
+}

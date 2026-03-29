@@ -10,11 +10,19 @@ import software.bernie.geckolib.model.GeoModel;
 
 public class ElectricFenceBaseModel extends GeoModel<ElectricFenceBaseBlockEntity> {
 
+    private static ElectricFenceBaseBlock resolveBlock(ElectricFenceBaseBlockEntity be) {
+        return (ElectricFenceBaseBlock) resolveState(be).getBlock();
+    }
+
+    private static net.minecraft.world.level.block.state.BlockState resolveState(ElectricFenceBaseBlockEntity be) {
+        var level = be.getLevel();
+        return level != null ? level.getBlockState(be.getBlockPos()) : be.getBlockState();
+    }
 
     @Override
     public ResourceLocation getModelResource(ElectricFenceBaseBlockEntity be) {
-        var st      = be.getBlockState();
-        var block   = (ElectricFenceBaseBlock) st.getBlock();
+        var st      = resolveState(be);
+        var block   = resolveBlock(be);
         var variant = ElectricFenceModels.resolve(st, block.getType());
 
         return JurassicReborn.resource("geo/" + variant.modelPath() + ".geo.json");
@@ -23,22 +31,29 @@ public class ElectricFenceBaseModel extends GeoModel<ElectricFenceBaseBlockEntit
 
     @Override
     public ResourceLocation getTextureResource(ElectricFenceBaseBlockEntity be) {
-        var st      = be.getBlockState();
-        var block   = (ElectricFenceBaseBlock) st.getBlock();
+        var st      = resolveState(be);
+        var block   = resolveBlock(be);
         var variant = ElectricFenceModels.resolve(st, block.getType());
+        String modelPath = variant.modelPath();
 
         ResourceLocation tex = JurassicReborn.resource("textures/block/"
-                + variant.modelPath() + ".png");
+                + modelPath + ".png");
 
         var rm   = Minecraft.getInstance().getResourceManager();
         boolean exists = rm.getResource(tex).isPresent();
 
+        if (!exists && modelPath.endsWith("_corner_lower")) {
+            tex = JurassicReborn.resource("textures/block/"
+                    + modelPath.replace("_corner_lower", "_corner") + ".png");
+            exists = rm.getResource(tex).isPresent();
+        }
         if (!exists) {
             tex = JurassicReborn.resource("textures/block/" +
                     block.getType().getPath() + ".png");
         }
         return tex;
     }
+
 
     @Override
     public ResourceLocation getAnimationResource(ElectricFenceBaseBlockEntity be) {

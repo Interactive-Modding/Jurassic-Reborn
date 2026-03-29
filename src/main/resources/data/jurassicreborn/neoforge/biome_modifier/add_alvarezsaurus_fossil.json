@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#minecraft:is_overworld",
+  "features": "jurassicreborn:alvarezsaurus_fossil_placed",
+  "step": "underground_ores"
+}

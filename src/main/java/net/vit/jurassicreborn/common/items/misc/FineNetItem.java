@@ -3,6 +3,7 @@ package net.vit.jurassicreborn.common.items.misc;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -23,8 +24,11 @@ public class FineNetItem extends Item {
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
 
-        BlockHitResult hit = Item.getPlayerPOVHitResult(level, player,
-                ClipContext.Fluid.SOURCE_ONLY);
+        BlockHitResult hit = Item.getPlayerPOVHitResult(
+                level,
+                player,
+                ClipContext.Fluid.SOURCE_ONLY
+        );
 
         if (hit.getType() == HitResult.Type.BLOCK &&
                 level.getFluidState(hit.getBlockPos()).is(FluidTags.WATER)) {
@@ -36,15 +40,24 @@ public class FineNetItem extends Item {
                                     ? ModItems.KRILL.get()
                                     : ModItems.PLANKTON.get()
                     );
+
                     if (!player.addItem(reward)) {
                         player.drop(reward, false);
                     }
                 }
-                stack.hurtAndBreak(1, player,
-                        p -> p.broadcastBreakEvent(hand));
+
+                // ✅ 1.21-compliant durability damage
+                stack.hurtAndBreak(
+                        1,
+                        player,
+                        LivingEntity.getSlotForHand(hand)
+                );
             }
+
             return InteractionResultHolder.success(stack);
         }
+
         return InteractionResultHolder.pass(stack);
     }
+
 }

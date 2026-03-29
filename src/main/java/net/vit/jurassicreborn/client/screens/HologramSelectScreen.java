@@ -39,7 +39,9 @@ public class HologramSelectScreen extends Screen {
             this.rotation = HologramBlockEntity.snapRotation(this.rotation);
         }
     }
-
+    @Override
+    protected void renderBlurredBackground(float partialTick) {
+    }
     @Override
     protected void init() {
         int total = DinosaurHandler.count();
@@ -95,7 +97,7 @@ public class HologramSelectScreen extends Screen {
 
     @Override
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
-        this.renderBackground(guiGraphics);
+        this.renderBackground(guiGraphics,mouseX, mouseY, partialTicks);
         guiGraphics.drawCenteredString(this.font, this.title, width / 2, height / 2 - 50, 0xFFFFFF);
 
         int id = dinoIds.get(currentIndex);

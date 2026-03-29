@@ -1,8 +1,8 @@
-// 1.20.1	2025-10-18T20:37:21.2267726	Jurassic Reborn Item Tags
-9aa0b591913b97628ccaedb3fdd29d3c2d6af676 data/minecraft/tags/items/buttons.json
-2b2f4abdf477dd3f2a2e8cbdb493dbc9450586ed data/minecraft/tags/items/doors.json
-7cdd53ba91a4dbb16e79a9efccaf1de537046417 data/minecraft/tags/items/slabs.json
-d9bc1968845c3a7c3cd4c4094fab3bac874e6c29 data/minecraft/tags/items/stairs.json
-455a6ca9b4d5001c30cbcfb046ae9b013de921c9 data/minecraft/tags/items/walls.json
-48a2009b902af9e9de89e6d5800737c9121bf5d8 data/minecraft/tags/items/wooden_pressure_plates.json
-b42fde029a7e909889f2a891d309a802341d8ad6 data/minecraft/tags/items/wooden_trapdoors.json
+// 1.21.1	2026-03-25T10:50:35.3428618	Jurassic Reborn Item Tags
+b3639a734979d06af71e09586da3971304ee1460 data/minecraft/tags/item/buttons.json
+639b6c9633ba2ddde9321f9507f4e426ddc6401e data/minecraft/tags/item/doors.json
+02b490348538699fdf6e9a62315b6ffaeda81b67 data/minecraft/tags/item/slabs.json
+b0128469273e87c5cc37a4e6baa3ba1af77c4c37 data/minecraft/tags/item/stairs.json
+718e9c29abae8bad2b36061965f11d2a0af15ce0 data/minecraft/tags/item/walls.json
+f8e3db7e89cb758845c4c6774e7b14326ed1ed67 data/minecraft/tags/item/wooden_pressure_plates.json
+d7e3e970c06bd318651532551f4f029358a9f5ef data/minecraft/tags/item/wooden_trapdoors.json

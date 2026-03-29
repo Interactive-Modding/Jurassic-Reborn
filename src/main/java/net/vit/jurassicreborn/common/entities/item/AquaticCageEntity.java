@@ -10,7 +10,8 @@ import net.minecraft.world.entity.animal.frog.Tadpole;
 import net.minecraft.world.item.ItemStack;
 import net.vit.jurassicreborn.common.entities.SwimmingDinosaurEntity;
 import net.vit.jurassicreborn.common.entities.animal.SharkEntity;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.vit.jurassicreborn.common.util.ItemStackNbtUtil;
+import net.minecraft.core.registries.BuiltInRegistries;
 
 /**
  * Utility for capturing aquatic entities inside an ItemStack.
@@ -24,15 +25,17 @@ public class AquaticCageEntity {
      */
     public static void captureEntity(LivingEntity entity, ItemStack stack) {
         if (entity != null && (entity instanceof SwimmingDinosaurEntity || entity instanceof Squid ||entity instanceof TropicalFish||entity instanceof Pufferfish||entity instanceof Cod ||entity instanceof Salmon||entity instanceof Dolphin ||entity instanceof Turtle||entity instanceof Axolotl ||entity instanceof GlowSquid ||entity instanceof Tadpole || entity instanceof SharkEntity)) {
-            if (!stack.hasTag()) {
+            if (!ItemStackNbtUtil.hasTag(stack)) {
                 CompoundTag entityTag = new CompoundTag();
                 entity.saveWithoutId(entityTag);
-                ResourceLocation id = ForgeRegistries.ENTITY_TYPES.getKey(entity.getType());
+                ResourceLocation id = BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType());
                 if (id != null) {
                     entityTag.putString("id", id.toString());
                 }
-                stack.getOrCreateTag().put("EntityTag", entityTag);
-                stack.getTag().putString("name", entity.getDisplayName().getString());
+                CompoundTag tag = ItemStackNbtUtil.getOrCreateTag(stack);
+                tag.put("EntityTag", entityTag);
+                tag.putString("name", entity.getDisplayName().getString());
+                ItemStackNbtUtil.setTag(stack, tag);
                 entity.discard();
             }
         }

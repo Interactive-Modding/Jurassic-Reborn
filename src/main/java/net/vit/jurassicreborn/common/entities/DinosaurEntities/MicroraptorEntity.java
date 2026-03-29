@@ -1,17 +1,22 @@
 package net.vit.jurassicreborn.common.entities.DinosaurEntities;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.damagesource.DamageTypes;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.*;
-import net.minecraft.world.entity.Entity.MoveFunction;
+import net.minecraft.world.damagesource.DamageTypes;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.Goal;
+import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.ai.navigation.WallClimberNavigation;
 import net.minecraft.world.entity.animal.Chicken;
 import net.minecraft.world.entity.animal.Rabbit;
@@ -19,38 +24,38 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
-
-import net.vit.jurassicreborn.client.sounds.SoundHandler;
-import net.vit.jurassicreborn.common.entities.DinosaurEntities.*;
-import net.vit.jurassicreborn.common.entities.DinosaurEntity;
-import net.vit.jurassicreborn.client.render.entity.animation.EntityAnimation;
+import net.minecraft.world.phys.Vec3;import net.neoforged.api.distmarker.Dist;import net.neoforged.api.distmarker.OnlyIn;
 import net.vit.jurassicreborn.client.input.DinosaurKeyHandler;
-import net.vit.jurassicreborn.common.network.MicroraptorDismountMessage;
-import net.vit.jurassicreborn.common.network.Network;
+import net.vit.jurassicreborn.client.render.entity.animation.EntityAnimation;
+import net.vit.jurassicreborn.client.sounds.SoundHandler;
+import net.vit.jurassicreborn.common.entities.DinosaurEntity;
 import net.vit.jurassicreborn.common.entities.Dinosaurs.DinosaurHandler;
 import net.vit.jurassicreborn.common.entities.ai.LeapingMeleeEntityAI;
 import net.vit.jurassicreborn.common.entities.ai.RaptorClimbTreeAI;
 import net.vit.jurassicreborn.common.entities.ai.RaptorLeapEntityAI;
-import net.vit.jurassicreborn.common.RebornConfig;
-
-// import net.vit.jurassicreborn.network.MicroraptorDismountMessage;
-import com.github.alexthe666.citadel.animation.Animation;
-import net.minecraft.client.Minecraft;
 import net.vit.jurassicreborn.common.entities.ai.animations.BirdPreenAnimationAI;
 import net.vit.jurassicreborn.common.entities.ai.animations.TailDisplayAnimationAI;
+import net.vit.jurassicreborn.common.network.MicroraptorDismountMessage;
+import net.vit.jurassicreborn.common.network.Network;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
+
+import com.github.alexthe666.citadel.animation.Animation;
 
 public class MicroraptorEntity extends DinosaurEntity {
+
     private int flyTime;
     private int groundHeight;
     private Vec3 glidingPos;
+    public static final EntityDataAccessor<Boolean> ON_SHOULDER =
+            SynchedEntityData.defineId(MicroraptorEntity.class, EntityDataSerializers.BOOLEAN);
 
     public MicroraptorEntity(EntityType<MicroraptorEntity> type, Level world) {
         super(world, type, DinosaurHandler.MICRORAPTOR);
-        this.target(Chicken.class, Rabbit.class, CompsognathusEntity.class, HypsilophodonEntity.class, LeptictidiumEntity.class, MicroceratusEntity.class, OthnieliaEntity.class);
+        this.target(Chicken.class, Rabbit.class, CompsognathusEntity.class,
+                HypsilophodonEntity.class, LeptictidiumEntity.class,
+                MicroceratusEntity.class, OthnieliaEntity.class);
         this.addTask(1, new LeapingMeleeEntityAI(this, this.dinosaur.getAttackSpeed()));
         this.addTask(2, new RaptorClimbTreeAI(this, 1.0f));
         this.addTask(3, new BirdPreenAnimationAI(this));
@@ -58,9 +63,9 @@ public class MicroraptorEntity extends DinosaurEntity {
     }
 
     @Override
-    public void defineSynchedData() {
-        super.defineSynchedData();
-        // add any extra data parameters here if needed
+    public void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(ON_SHOULDER, false);
     }
 
     public static AttributeSupplier.Builder createAttributes() {
@@ -77,12 +82,17 @@ public class MicroraptorEntity extends DinosaurEntity {
         super.tick();
 
         Animation curAni = this.getAnimation();
-        boolean climbing = curAni == EntityAnimation.CLIMBING.get() || curAni == EntityAnimation.START_CLIMBING.get();
+        boolean climbing = curAni == EntityAnimation.CLIMBING.get()
+                || curAni == EntityAnimation.START_CLIMBING.get();
 
         if (climbing) {
-            BlockPos trunk = BlockPos.containing(this.getX(), this.getBoundingBox().minY, this.getZ());
+            BlockPos trunk = BlockPos.containing(
+                    this.getX(), this.getBoundingBox().minY, this.getZ());
             for (net.minecraft.core.Direction dir : net.minecraft.core.Direction.Plane.HORIZONTAL) {
-                if (!level().isEmptyBlock(trunk.relative(dir)) && this.level().getBlockState(trunk.relative(dir)).isRedstoneConductor(level(), trunk.relative(dir))) {
+                BlockPos neighbour = trunk.relative(dir);
+                if (!level().isEmptyBlock(neighbour)
+                        && this.level().getBlockState(neighbour)
+                        .isRedstoneConductor(level(), neighbour)) {
                     float yaw = dir.toYRot();
                     this.setYHeadRot(yaw);
                     this.setYRot(yaw);
@@ -98,13 +108,26 @@ public class MicroraptorEntity extends DinosaurEntity {
     }
 
     @Override
+    public boolean causeFallDamage(float distance, float damageMultiplier, DamageSource source) {
+        if (this.getAnimation() != EntityAnimation.LEAP_LAND.get()) {
+            return super.causeFallDamage(distance / 2.0f, damageMultiplier, source);
+        }
+        return false;
+    }
+
+    @Override
+    public int getMaxFallDistance() {
+        return 100;
+    }
+
+    @Override
     public void travel(Vec3 travelVector) {
         float prevPitch = this.getXRot();
         if (this.getAnimation() == EntityAnimation.GLIDING.get() && glidingPos != null) {
             double dist = glidingPos.distanceTo(this.position());
             if (dist > 0.0001) {
                 double dy = (this.glidingPos.y - this.getY()) / dist;
-                this.setXRot((float)-Math.toDegrees(Math.asin(Mth.clamp(dy, -1.0, 1.0))));
+                this.setXRot((float) -Math.toDegrees(Math.asin(Mth.clamp(dy, -1.0, 1.0))));
             }
         }
         super.travel(travelVector);
@@ -122,14 +145,15 @@ public class MicroraptorEntity extends DinosaurEntity {
         Animation curAni = this.getAnimation();
         boolean landing = curAni == EntityAnimation.LEAP_LAND.get();
         boolean gliding = curAni == EntityAnimation.GLIDING.get();
-        boolean climbing = curAni == EntityAnimation.CLIMBING.get() || curAni == EntityAnimation.START_CLIMBING.get();
-        boolean leaping  = curAni == EntityAnimation.LEAP.get();
+        boolean climbing = curAni == EntityAnimation.CLIMBING.get()
+                || curAni == EntityAnimation.START_CLIMBING.get();
+        boolean leaping = curAni == EntityAnimation.LEAP.get();
 
         if (this.onGround() || this.isInWater() || this.isInLava() || this.isSwimming()) {
             this.flyTime = 0;
             if (gliding || landing) {
                 this.setAnimation(EntityAnimation.IDLE.get());
-                this.setSharedFlag(7, false); // fall-flying off
+                this.setSharedFlag(7, false);
             }
         } else {
             this.flyTime++;
@@ -144,7 +168,7 @@ public class MicroraptorEntity extends DinosaurEntity {
                     }
                 }
                 if (gliding) {
-                    this.setSharedFlag(7, true); // fall-flying on
+                    this.setSharedFlag(7, true);
                 }
             }
         }
@@ -153,7 +177,8 @@ public class MicroraptorEntity extends DinosaurEntity {
             this.groundHeight = 0;
             BlockPos pos = this.blockPosition();
             while (this.groundHeight <= 10) {
-                if (this.level().getBlockState(pos).isFaceSturdy(this.level(), pos, net.minecraft.core.Direction.UP)) {
+                if (this.level().getBlockState(pos).isFaceSturdy(
+                        this.level(), pos, net.minecraft.core.Direction.UP)) {
                     break;
                 }
                 pos = pos.below();
@@ -166,6 +191,38 @@ public class MicroraptorEntity extends DinosaurEntity {
         }
     }
 
+    private boolean setEntityOnShoulder(ServerPlayer player) {
+        if (!this.isAlive()) return false;
+
+        CompoundTag tag = new CompoundTag();
+        tag.putString("id", this.getEncodeId());
+        this.saveWithoutId(tag);
+
+        if (!player.setEntityOnShoulder(tag)) {
+            return false;
+        }
+
+        this.entityData.set(ON_SHOULDER, true);
+        this.setInvisible(true);
+
+        this.discard();
+        return true;
+    }
+    @Override
+    public InteractionResult mobInteract(Player player, InteractionHand hand) {
+        if (hand != InteractionHand.MAIN_HAND) return super.mobInteract(player, hand);
+
+        if (player.isShiftKeyDown() && this.isOwner(player) && this.order == Order.SIT) {
+            if (!level().isClientSide && player instanceof ServerPlayer sp) {
+                if (this.setEntityOnShoulder(sp)) {
+                    return InteractionResult.CONSUME;
+                }
+            }
+            return InteractionResult.sidedSuccess(level().isClientSide);
+        }
+
+        return super.mobInteract(player, hand);
+    }
     @Override
     public Vec3 getLookAngle() {
         if (this.getAnimation() == EntityAnimation.GLIDING.get() && glidingPos != null) {
@@ -181,38 +238,19 @@ public class MicroraptorEntity extends DinosaurEntity {
     }
 
     @Override
-    public InteractionResult mobInteract(Player player, InteractionHand hand) {
-        if (player.isShiftKeyDown() && hand == InteractionHand.MAIN_HAND) {
-            if (this.isOwner(player) && this.order == Order.SIT && player.getPassengers().size() < 2) {
-                return this.startRiding(player, true) ? InteractionResult.sidedSuccess(this.level().isClientSide) : InteractionResult.PASS;
-            }
-        }
-        return super.mobInteract(player, hand);
-    }
-
-    @Override
     public ItemStack getItemBySlot(EquipmentSlot slot) {
-        if (this.getAnimation() == EntityAnimation.GLIDING.get() && slot == EquipmentSlot.CHEST) {
+        if (this.getAnimation() == EntityAnimation.GLIDING.get()
+                && slot == EquipmentSlot.CHEST) {
             return new ItemStack(Items.ELYTRA);
         }
         return super.getItemBySlot(slot);
     }
 
-
     public Goal getAttackAI() {
         return new RaptorLeapEntityAI(this);
     }
 
-    @Override
-    public boolean causeFallDamage(float distance, float damageMultiplier, DamageSource source) {
-        if (this.getAnimation() != EntityAnimation.LEAP_LAND.get()) {
-            return false;
-        }
-        return false;
-    }
-
-    @Override
-    protected WallClimberNavigation createNavigation(Level level) {
+    protected PathNavigation createNavigation(Level level) {
         return new WallClimberNavigation(this, level);
     }
 
@@ -227,48 +265,6 @@ public class MicroraptorEntity extends DinosaurEntity {
             default:        return null;
         }
     }
-
-    @Override
-    public int getMaxFallDistance() {
-        return 100;
-    }
-
-    @Override
-    protected void positionRider(Entity passenger, MoveFunction moveFunction) {
-        super.positionRider(passenger, moveFunction);
-        Entity riding = this.getVehicle();
-        if (!this.isPassenger() || !(riding instanceof Player player)) return;
-
-        int idx = riding.getPassengers().indexOf(this); // 0/1 shoulders, 2 head
-
-        if (player.isFallFlying()) {
-            this.stopRiding();
-            return;
-        }
-
-        float radius = (idx == 2 ? 0.0F : 0.35F) + (player.isFallFlying() ? 2.0F : 0.0F);
-        float renderYawOffset = player.yBodyRot; // == renderYawOffset
-        float add = (idx == 1 ? -90f : (idx == 0 ? 90f : 0f));
-        float angle = (float) Math.toRadians(renderYawOffset + add);
-
-        double offsetX = radius * Mth.sin((float) (Math.PI + angle));
-        double offsetZ = radius * Mth.cos(angle);
-
-        double offsetY = (player.isShiftKeyDown() ? 1.2 : 1.38) + (idx == 2 ? 0.4 : 0.0);
-
-        this.setPos(riding.getX() + offsetX, riding.getY() + offsetY, riding.getZ() + offsetZ);
-
-        float headYaw = player.getYHeadRot();
-        this.setYRot(headYaw);
-        this.setYHeadRot(headYaw);
-        this.yRotO = headYaw;
-
-        // Idle while perched
-        this.setAnimation(EntityAnimation.IDLE.get());
-    }
-
-
-
 
     @OnlyIn(Dist.CLIENT)
     protected void updateClientControls() {
@@ -287,8 +283,14 @@ public class MicroraptorEntity extends DinosaurEntity {
     @Override
     public boolean shouldEscapeWaterFast() {
         int radiusXZ = 4;
-        BlockPos min = new BlockPos(Mth.floor(this.getX() - radiusXZ), Mth.floor(this.getY()), Mth.floor(this.getZ() - radiusXZ));
-        BlockPos max = new BlockPos(Mth.ceil(this.getX() + radiusXZ),  Mth.ceil(this.getY()),  Mth.ceil(this.getZ() + radiusXZ));
+        BlockPos min = new BlockPos(
+                Mth.floor(this.getX() - radiusXZ),
+                Mth.floor(this.getY()),
+                Mth.floor(this.getZ() - radiusXZ));
+        BlockPos max = new BlockPos(
+                Mth.ceil(this.getX() + radiusXZ),
+                Mth.ceil(this.getY()),
+                Mth.ceil(this.getZ() + radiusXZ));
         for (BlockPos pos : BlockPos.betweenClosed(min, max)) {
             if (level().getBlockState(pos).getFluidState().isEmpty()) {
                 return false;

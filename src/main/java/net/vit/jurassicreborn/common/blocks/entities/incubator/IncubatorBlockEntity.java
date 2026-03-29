@@ -2,7 +2,7 @@ package net.vit.jurassicreborn.common.blocks.entities.incubator;
 
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.items.IItemHandlerModifiable;
+import net.neoforged.neoforge.items.IItemHandlerModifiable;
 import net.vit.jurassicreborn.common.blocks.inventory.ItemHandlerBlockEntity;
 import net.vit.jurassicreborn.common.blocks.entities.MachineBlockEntity;
 import net.vit.jurassicreborn.common.blocks.entities.ModBlockEntities;
@@ -24,17 +24,18 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.animatable.GeoBlockEntity;
-import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
-import software.bernie.geckolib.core.animation.AnimatableManager;
-import software.bernie.geckolib.core.animation.AnimationController;
-import software.bernie.geckolib.core.animation.AnimationState;
-import software.bernie.geckolib.core.animation.RawAnimation;
-import software.bernie.geckolib.core.object.PlayState;
+import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.animation.AnimatableManager;
+import software.bernie.geckolib.animation.AnimationController;
+import software.bernie.geckolib.animation.AnimationState;
+import software.bernie.geckolib.animation.PlayState;
+import software.bernie.geckolib.animation.RawAnimation;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
+import net.vit.jurassicreborn.common.util.ItemStackNbtUtil;
 
 public class IncubatorBlockEntity extends MachineBlockEntity implements TemperatureControl, GeoBlockEntity, MenuProvider, ItemHandlerBlockEntity {
 
@@ -191,14 +192,14 @@ public class IncubatorBlockEntity extends MachineBlockEntity implements Temperat
             CompoundTag compound = new CompoundTag();
             compound.putBoolean("Gender", this.temperature[this.currentProcess] > 50);
 
-            if (egg.getTag() != null) {
-                var dna = net.vit.jurassicreborn.common.genetics.DinoDNA.readFromNBT(egg.getTag());
+            if (ItemStackNbtUtil.getTag(egg) != null) {
+                var dna = net.vit.jurassicreborn.common.genetics.DinoDNA.readFromNBT(ItemStackNbtUtil.getTag(egg));
                 if (dna != null) {
                     dna.writeToNBT(compound); // writes into "DNA" subtag (DNAQuality, Genetics, Dinosaur, StorageId)
                 }
             }
 
-            incubatedEgg.setTag(compound);
+            ItemStackNbtUtil.setTag(incubatedEgg, compound);
             this.decreaseStackSize(ENVIRONMENT[0]);
 //            this.setItem(this.currentProcess, incubatedEgg);
             return List.of(incubatedEgg);

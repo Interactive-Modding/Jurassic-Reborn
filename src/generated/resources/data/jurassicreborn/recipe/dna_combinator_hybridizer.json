@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "A": {
+      "item": "jurassicreborn:computer_screen"
+    },
+    "B": {
+      "item": "jurassicreborn:basic_circuit"
+    },
+    "C": {
+      "item": "minecraft:iron_ingot"
+    },
+    "D": {
+      "item": "jurassicreborn:disc_reader"
+    }
+  },
+  "pattern": [
+    "ABA",
+    "CDC"
+  ],
+  "result": {
+    "count": 1,
+    "id": "jurassicreborn:dna_combinator_hybridizer"
+  }
+}

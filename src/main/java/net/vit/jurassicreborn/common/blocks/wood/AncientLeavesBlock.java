@@ -23,7 +23,7 @@ import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class AncientLeavesBlock extends Block implements SimpleWaterloggedBlock, net.minecraftforge.common.IForgeShearable {
+public class AncientLeavesBlock extends Block implements SimpleWaterloggedBlock {
 
     public static final IntegerProperty DISTANCE = IntegerProperty.create("distance", 1, 14);
 

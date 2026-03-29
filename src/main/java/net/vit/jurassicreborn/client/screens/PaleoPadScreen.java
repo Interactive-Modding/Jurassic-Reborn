@@ -19,7 +19,7 @@ import net.vit.jurassicreborn.common.util.networking.PlayerData;
 import java.util.List;
 
 public class PaleoPadScreen extends Screen {
-    private static final ResourceLocation TEXTURE = new ResourceLocation(JurassicReborn.MODID, "textures/gui/paleo_pad/paleo_pad.png");
+    private static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(JurassicReborn.MODID, "textures/gui/paleo_pad/paleo_pad.png");
     private final App initialApp;
     private GuiApp focus;
 
@@ -103,10 +103,13 @@ public class PaleoPadScreen extends Screen {
         }
         return super.mouseReleased(mouseX, mouseY, button);
     }
+    @Override
+    protected void renderBlurredBackground(float partialTick) {
+    }
 
     @Override
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
-        renderBackground(guiGraphics);
+        renderBackground(guiGraphics, mouseX, mouseY, partialTicks);
 
         Minecraft mc = Minecraft.getInstance();
         Font font = mc.font;

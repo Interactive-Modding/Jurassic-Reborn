@@ -33,8 +33,8 @@ public class RaptorLeapEntityAI extends Goal {
             return false;
         }
 
-
-        LivingEntity tgt = this.entity.getTarget();
+        // Use your 1.19 target accessor
+        LivingEntity tgt = this.entity.getTarget(); // if you expose getAttackTarget(), swap here
         if (tgt == null || !tgt.isAlive()) return false;
         if (tgt instanceof DinosaurEntity d && d.isCarcass()) return false;
 
@@ -78,7 +78,7 @@ public class RaptorLeapEntityAI extends Goal {
         if (this.animation == EntityAnimation.PREPARE_LEAP && tick < this.prevTick) {
             this.animation = EntityAnimation.LEAP;
 
-
+            // Keep your sound accessors as defined on your entity
             this.entity.playSound(this.entity.getSoundForAnimation(EntityAnimation.ATTACKING.get()),
                     this.entity.getSoundVolume(), this.entity.getVoicePitch());
 

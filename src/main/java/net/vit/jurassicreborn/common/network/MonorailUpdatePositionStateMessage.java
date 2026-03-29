@@ -1,74 +1,56 @@
 package net.vit.jurassicreborn.common.network;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.fml.DistExecutor;
-import net.minecraftforge.network.NetworkEvent;
+import net.neoforged.neoforge.network.handling.IPayloadContext;
+import net.vit.jurassicreborn.JurassicReborn;
 import net.vit.jurassicreborn.common.entities.vehicle.MonorailEntity;
 
 import javax.annotation.Nullable;
-import java.util.function.Supplier;
 
-/** Server → Client: tell the client which rail-block the Explorer is now on. */
-public class MonorailUpdatePositionStateMessage {
+public record MonorailUpdatePositionStateMessage(int entityId, long railPos) implements CustomPacketPayload {
+    public static final Type<MonorailUpdatePositionStateMessage> TYPE = new Type<>(JurassicReborn.resource("monorail_update_position_state"));
+    public static final StreamCodec<RegistryFriendlyByteBuf, MonorailUpdatePositionStateMessage> STREAM_CODEC = new StreamCodec<>() {
+        @Override
+        public MonorailUpdatePositionStateMessage decode(RegistryFriendlyByteBuf buf) {
+            return new MonorailUpdatePositionStateMessage(buf.readInt(), buf.readLong());
+        }
 
-    private final int   entityId;
-    private final long  railPos;   // BlockPos serialised as long (-1 == INACTIVE)
+        @Override
+        public void encode(RegistryFriendlyByteBuf buf, MonorailUpdatePositionStateMessage msg) {
+            buf.writeInt(msg.entityId());
+            buf.writeLong(msg.railPos());
+        }
+    };
 
-    /* ------------------------------------------------------------------ */
-    /*  Constructors                                                      */
-    /* ------------------------------------------------------------------ */
-
-    /** Decoder-side ctor */
-    public MonorailUpdatePositionStateMessage(FriendlyByteBuf buf) {
-        this.entityId = buf.readInt();
-        this.railPos  = buf.readLong();
-    }
-
-    /** Server-side send helper                          (may pass null) */
     public MonorailUpdatePositionStateMessage(int entityId, @Nullable BlockPos pos) {
-        this.entityId = entityId;
-        this.railPos  = (pos == null ? MonorailEntity.INACTIVE : pos).asLong();
+        this(entityId, (pos == null ? MonorailEntity.INACTIVE : pos).asLong());
     }
 
-    /* ------------------------------------------------------------------ */
-    /*  Encoder                                                           */
-    /* ------------------------------------------------------------------ */
-    public void encode(FriendlyByteBuf buf) {
-        buf.writeInt(entityId);
-        buf.writeLong(railPos);
+    @Override
+    public Type<? extends CustomPacketPayload> type() {
+        return TYPE;
     }
 
-    /* ------------------------------------------------------------------ */
-    /*  Handler (runs on client thread)                                   */
-    /* ------------------------------------------------------------------ */
-    public void handle(Supplier<NetworkEvent.Context> ctxSup) {
-        NetworkEvent.Context ctx = ctxSup.get();
-        ctx.enqueueWork(() ->
-                DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> Client.handle(this))
-        );
-        ctx.setPacketHandled(true);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    private static class Client {
-        static void handle(MonorailUpdatePositionStateMessage msg) {
-            Level level = net.minecraft.client.Minecraft.getInstance().level;
-            if (level == null) return;
-
-            Entity e = level.getEntity(msg.entityId);
-            if (e instanceof MonorailEntity car) {
-                BlockPos newPos = BlockPos.of(msg.railPos);
-                if (msg.railPos == MonorailEntity.INACTIVE.asLong()) {
+    public static void handle(MonorailUpdatePositionStateMessage msg, IPayloadContext ctx) {
+        ctx.enqueueWork(() -> {
+            Level level = ctx.player().level();
+            if (level == null) {
+                return;
+            }
+            Entity entity = level.getEntity(msg.entityId());
+            if (entity instanceof MonorailEntity car) {
+                BlockPos newPos = BlockPos.of(msg.railPos());
+                if (msg.railPos() == MonorailEntity.INACTIVE.asLong()) {
                     newPos = MonorailEntity.INACTIVE;
                 }
                 car.prevRailTracks = car.railTracks;
-                car.railTracks     = newPos;
+                car.railTracks = newPos;
             }
-        }
+        });
     }
 }

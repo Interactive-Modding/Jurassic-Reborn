@@ -1,6 +1,8 @@
 package net.vit.jurassicreborn.common.worldgen.structure;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
@@ -11,6 +13,7 @@ import net.minecraft.world.level.StructureManager;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
+import net.minecraft.world.level.storage.loot.LootTable;
 import net.vit.jurassicreborn.JurassicReborn;
 
 import java.util.HashMap;
@@ -19,9 +22,9 @@ import java.util.Map;
 
 public class AmberMineGenerator extends StructureGenerator {
     private static final ResourceLocation STRUCTURE = JurassicReborn.resource("amber_mine");
-    private static final Map<String, ResourceLocation> LOOT_TABLES = new HashMap<>();
+    private static final Map<String, ResourceKey<LootTable>> LOOT_TABLES = new HashMap<>();
     static {
-        LOOT_TABLES.put("GroundStorage", new ResourceLocation(JurassicReborn.MODID, "structure/visitor_centre/ground_storage"));
+        LOOT_TABLES.put("GroundStorage", ResourceKey.create(Registries.LOOT_TABLE, ResourceLocation.parse(JurassicReborn.MODID + ":" + "structure/visitor_centre/ground_storage")));
     }
 
     public AmberMineGenerator(RandomSource rand) {
@@ -41,7 +44,7 @@ public class AmberMineGenerator extends StructureGenerator {
         for (StructureTemplate.StructureBlockInfo info : dataBlocks) {
             if (info.nbt() == null) continue;
             String type = info.nbt().getString("metadata");
-            ResourceLocation lootTable = LOOT_TABLES.get(type);
+            ResourceKey<LootTable> lootTable = LOOT_TABLES.get(type);
             if (lootTable != null) {
                 BlockPos infoPos = info.pos();
                 level.setBlock(infoPos, Blocks.AIR.defaultBlockState(), 3);

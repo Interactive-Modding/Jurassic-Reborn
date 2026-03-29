@@ -7,14 +7,12 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.decoration.Painting;
 import net.minecraft.world.entity.decoration.PaintingVariant;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.tags.ITagManager;
+import net.minecraft.core.registries.Registries;
 import net.vit.jurassicreborn.common.entities.item.MuralPaintingEntity;
 
 import java.util.List;
@@ -23,8 +21,8 @@ public class MuralItem extends Item {
 
     /**  #jurassicreborn:mural_variants  */
     public static final TagKey<PaintingVariant> MURAL_VARIANTS_TAG =
-            TagKey.create(ForgeRegistries.Keys.PAINTING_VARIANTS,
-                    new ResourceLocation("jurassicreborn", "mural_variants"));
+            TagKey.create(Registries.PAINTING_VARIANT,
+                    ResourceLocation.parse("jurassicreborn" + ":" + "mural_variants"));
 
     public MuralItem(Properties props) { super(props); }
 
@@ -36,7 +34,7 @@ public class MuralItem extends Item {
         Direction face = ctx.getClickedFace();
         if (!face.getAxis().isHorizontal()) return InteractionResult.PASS;
 
-        Holder<PaintingVariant> variant = pickVariant();   // now a Holder, not List
+        Holder<PaintingVariant> variant = pickVariant(ctx.getLevel());   // now a Holder, not List
         if (variant == null) return InteractionResult.PASS;
 
         Level     level = ctx.getLevel();
@@ -58,17 +56,13 @@ public class MuralItem extends Item {
     }
 
     /** Pick a random Holder<PaintingVariant> from #jurassicreborn:mural_variants */
-    private Holder<PaintingVariant> pickVariant() {
-        ITagManager<PaintingVariant> tagManager = ForgeRegistries.PAINTING_VARIANTS.tags();
-        var tag = tagManager.getTag(MURAL_VARIANTS_TAG);      // ITag<PaintingVariant>
+    private Holder<PaintingVariant> pickVariant(Level level) {
+        var registry = level.registryAccess().registryOrThrow(Registries.PAINTING_VARIANT);
+        var tag = registry.getTag(MURAL_VARIANTS_TAG).orElse(null);
 
-        if (tag == null || tag.isEmpty()) return null;
+        if (tag == null || tag.size() == 0) return null;
 
-        // choose a random *PaintingVariant*
-        List<PaintingVariant> list = tag.stream().toList();
-        PaintingVariant chosen     = list.get(RandomSource.create().nextInt(list.size()));
-
-        // convert it to a Holder the constructor wants
-        return ForgeRegistries.PAINTING_VARIANTS.getHolder(chosen).orElse(null);
+        List<Holder<PaintingVariant>> list = tag.stream().toList();
+        return list.get(RandomSource.create().nextInt(list.size()));
     }
 }

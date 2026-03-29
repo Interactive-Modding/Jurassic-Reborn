@@ -9,6 +9,7 @@ import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Locale;
+import net.vit.jurassicreborn.common.util.ItemStackNbtUtil;
 
 public class PlantDNAItem extends DNAContainerItem {
     public final Plant plant;
@@ -32,7 +33,7 @@ public class PlantDNAItem extends DNAContainerItem {
         // Create a default PlantDNA with a valid plant identifier and a default quality (e.g., 100)
         PlantDNA dna = new PlantDNA(plant.getId(), 100);
         dna.writeToNBT(tag);
-        stack.setTag(tag);
+        ItemStackNbtUtil.setTag(stack, tag);
         return stack;
     }
 

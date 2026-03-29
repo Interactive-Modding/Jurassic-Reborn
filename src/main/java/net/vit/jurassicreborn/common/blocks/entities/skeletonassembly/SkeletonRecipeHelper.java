@@ -1,7 +1,7 @@
 package net.vit.jurassicreborn.common.blocks.entities.skeletonassembly;
 
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.items.IItemHandler;
+import net.neoforged.neoforge.items.IItemHandler;
 import net.vit.jurassicreborn.common.entities.Dinosaurs.Dinosaur;
 import net.vit.jurassicreborn.common.items.Fossils.FossilItem;
 import net.vit.jurassicreborn.common.items.ModItems;

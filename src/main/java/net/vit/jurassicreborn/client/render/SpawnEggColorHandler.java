@@ -3,21 +3,21 @@ package net.vit.jurassicreborn.client.render;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.color.item.ItemColors;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.RegisterColorHandlersEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
+import net.neoforged.neoforge.registries.DeferredItem;
 import net.vit.jurassicreborn.JurassicReborn;
-import net.minecraft.nbt.CompoundTag;
+import net.vit.jurassicreborn.common.datagen.data.ModDataComponent;
 import net.vit.jurassicreborn.common.items.misc.DinosaurSpawnEggItem;
 import net.vit.jurassicreborn.common.items.ModItems;
-import net.minecraftforge.registries.RegistryObject;
 
 import java.util.Collection;
 
-@Mod.EventBusSubscriber(
+@EventBusSubscriber(
         modid = JurassicReborn.MODID,
-        bus   = Mod.EventBusSubscriber.Bus.MOD,
+        bus   = EventBusSubscriber.Bus.MOD,
         value = Dist.CLIENT
 )
 public class SpawnEggColorHandler {
@@ -25,31 +25,48 @@ public class SpawnEggColorHandler {
     @SubscribeEvent
     public static void onItemColors(RegisterColorHandlersEvent.Item event) {
         ItemColors colors = event.getItemColors();
-        Collection<RegistryObject<DinosaurSpawnEggItem>> eggs = ModItems.DINO_SPAWN_EGGS.values();
-        for (RegistryObject<DinosaurSpawnEggItem> egg : eggs) {
+        Collection<DeferredItem<DinosaurSpawnEggItem>> eggs = ModItems.DINO_SPAWN_EGGS.values();
+
+        for (DeferredItem<DinosaurSpawnEggItem> egg : eggs) {
             DinosaurSpawnEggItem item = egg.get();
-            colors.register(
-                    (ItemStack stack, int tintIndex) -> {
-                        CompoundTag tag = stack.getOrCreateTag();
-                        int gender = tag.contains("GenderMode") ? tag.getInt("GenderMode") : 0;
-                        if (gender == 0) {
-                            var level = Minecraft.getInstance().level;
-                            long time = level == null ? System.currentTimeMillis() / 50 : level.getGameTime();
-                            gender = (int) ((time / 20) % 2) + 1;
-                        }
-                        if (tintIndex == 0) {
-                            return (gender == 2)
-                                    ? item.getDinosaur().getEggPrimaryColorFemale()
-                                    : item.getDinosaur().getEggPrimaryColorMale();
-                        } else if (tintIndex == 1) {
-                            return (gender == 2)
-                                    ? item.getDinosaur().getEggSecondaryColorFemale()
-                                    : item.getDinosaur().getEggSecondaryColorMale();
-                        }
-                        return 0xFFFFFF;
-                    },
-                    item
-            );
+
+            colors.register((ItemStack stack, int tintIndex) -> {
+
+                // 0 = animated fallback, 1 = male, 2 = female
+                int gender = stack.getOrDefault(
+                        ModDataComponent.GENDER_MODE.get(), 0
+                );
+
+                // Animated fallback (creative / unset stacks)
+                if (gender == 0) {
+                    var level = Minecraft.getInstance().level;
+                    long time = level == null
+                            ? System.currentTimeMillis() / 50
+                            : level.getGameTime();
+                    gender = (int) ((time / 20) % 2) + 1;
+                }
+
+                // PRIMARY LAYER
+                if (tintIndex == 0) {
+                    int rgb = (gender == 2)
+                            ? item.getDinosaur().getEggPrimaryColorFemale()
+                            : item.getDinosaur().getEggPrimaryColorMale();
+
+                    return 0xFF000000 | rgb; // FORCE OPAQUE
+                }
+
+                // SECONDARY LAYER
+                if (tintIndex == 1) {
+                    int rgb = (gender == 2)
+                            ? item.getDinosaur().getEggSecondaryColorFemale()
+                            : item.getDinosaur().getEggSecondaryColorMale();
+
+                    return 0xFF000000 | rgb; // FORCE OPAQUE
+                }
+
+                // IMPORTANT: let vanilla render untouched layers
+                return -1;
+            }, item);
         }
     }
 }

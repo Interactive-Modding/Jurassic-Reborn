@@ -1,0 +1,33 @@
+{
+  "parent": "jurassicreborn:jurassicreborn/fossil_grinder",
+  "criteria": {
+    "skeleton_assembly": {
+      "conditions": {
+        "items": [
+          {
+            "items": "jurassicreborn:skeleton_assembly"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.jurassicreborn.skeleton_assembly.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "jurassicreborn:skeleton_assembly"
+    },
+    "title": {
+      "translate": "advancements.jurassicreborn.skeleton_assembly.title"
+    }
+  },
+  "requirements": [
+    [
+      "skeleton_assembly"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

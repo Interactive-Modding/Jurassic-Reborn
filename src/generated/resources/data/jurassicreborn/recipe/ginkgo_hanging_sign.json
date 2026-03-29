@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "jurassicreborn:hanging_sign",
+  "key": {
+    "C": {
+      "item": "minecraft:chain"
+    },
+    "S": [
+      {
+        "item": "jurassicreborn:stripped_ginkgo_log"
+      },
+      {
+        "item": "jurassicreborn:stripped_ginkgo_wood"
+      }
+    ]
+  },
+  "pattern": [
+    "SSS",
+    "C C",
+    "SSS"
+  ],
+  "result": {
+    "count": 6,
+    "id": "jurassicreborn:ginkgo_hanging_sign"
+  }
+}

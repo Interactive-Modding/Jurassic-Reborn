@@ -17,8 +17,8 @@ import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.Resource;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import net.vit.jurassicreborn.JurassicReborn;
 import net.vit.jurassicreborn.common.blocks.ModBlocks;
 import net.vit.jurassicreborn.common.blocks.SkullDisplayBlock;
@@ -61,7 +61,7 @@ public class SkullDisplayRenderer implements BlockEntityRenderer<SkullDisplayBlo
                 String textureOrient = horizontal ? "vertical"   : "horizontal";
 
                 TabulaModelContainer container = TabulaModelHelper.loadTabulaModel(
-                        new ResourceLocation(JurassicReborn.MODID,
+                        ResourceLocation.fromNamespaceAndPath(JurassicReborn.MODID,
                                 "models/block/skull_display/" + dino + '_' + modelOrient));
                 tile.model = new TabulaModel(container);
                 if (container != null && container.getScale() != null && container.getScale().length >= 3) {
@@ -73,7 +73,7 @@ public class SkullDisplayRenderer implements BlockEntityRenderer<SkullDisplayBlo
                 }
 
                 // NOTE: textures/**block**/ (singular) is correct for 1.19+
-                ResourceLocation textureLocation = new ResourceLocation(JurassicReborn.MODID,
+                ResourceLocation textureLocation = ResourceLocation.fromNamespaceAndPath(JurassicReborn.MODID,
                         "textures/block/skull_display/" + dino + '_' +
                                 (tile.isFossilized() ? "fossilized" : "fresh") + '_' +
                                 textureOrient + ".png");
@@ -100,8 +100,8 @@ public class SkullDisplayRenderer implements BlockEntityRenderer<SkullDisplayBlo
         if (tile.model != null) {
             VertexConsumer vc = buffer.getBuffer(RenderType.entityCutoutNoCull(tile.texture));
             tile.model.renderToBuffer(poseStack, vc,
-                    packedLight, packedOverlay,
-                    1.0F, 1.0F, 1.0F, 1.0F);
+                    packedLight, packedOverlay, 0xFFFFFFFF
+            );
         }
         poseStack.popPose();
     }
@@ -122,7 +122,7 @@ public class SkullDisplayRenderer implements BlockEntityRenderer<SkullDisplayBlo
         String path = requested.getPath();
         if (path.startsWith("textures/block/")) {
             String fallbackPath = path.replace("textures/block/", "textures/");
-            ResourceLocation fallback = new ResourceLocation(requested.getNamespace(), fallbackPath);
+            ResourceLocation fallback = ResourceLocation.fromNamespaceAndPath(requested.getNamespace(), fallbackPath);
             if (minecraft.getResourceManager().getResource(fallback).isPresent()) {
                 return fallback;
             }
@@ -182,7 +182,7 @@ public class SkullDisplayRenderer implements BlockEntityRenderer<SkullDisplayBlo
             String ext = dot >= 0 ? path.substring(dot) : "";
 
             ResourceLocation scaledLocation =
-                    new ResourceLocation(original.getNamespace(), base + "_scaled" + ext);
+                    ResourceLocation.fromNamespaceAndPath(original.getNamespace(), base + "_scaled" + ext);
 
             textureManager.register(scaledLocation, dynamicTexture);
 

@@ -6,6 +6,9 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -26,8 +29,8 @@ import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import net.vit.jurassicreborn.JurassicReborn;
 import net.vit.jurassicreborn.client.input.VehicleKeyHandler;
 import net.vit.jurassicreborn.client.render.RenderingHandler;
@@ -40,6 +43,9 @@ import javax.annotation.Nonnull;
 import java.util.List;
 
 public abstract class HelicopterEntity extends VehicleEntity {
+
+    private static final EntityDataAccessor<Float> WATCHER_ENGINE_SPEED = SynchedEntityData.defineId(HelicopterEntity.class, EntityDataSerializers.FLOAT);
+    private static final EntityDataAccessor<Boolean> WATCHER_FLYING = SynchedEntityData.defineId(HelicopterEntity.class, EntityDataSerializers.BOOLEAN);
 
     private static final byte UPWARD = 0b010000;
     private static final byte DOWNWARD = 0b100000;
@@ -65,6 +71,7 @@ public abstract class HelicopterEntity extends VehicleEntity {
 
     private static final float TAKEOFF_THRESHOLD_RATIO = 0.15f;
     private float currentEngineSpeed = 0;
+    private float rotorRenderSpeed = 0;
     protected float torque;
 
     // Renamed to fix the typo
@@ -73,6 +80,7 @@ public abstract class HelicopterEntity extends VehicleEntity {
     private float shakingDirection = 0;
     protected ResourceLocation warningSoundResource;
     private int warningDelay = 0;
+    private boolean startupSoundPlayed = false;
 
     // Technical specifications
     protected final int enginePower;  // W (converted from PS)
@@ -108,7 +116,15 @@ public abstract class HelicopterEntity extends VehicleEntity {
         this.direction = new MutableVec3(0, 1, 0);
         this.simpleControle = true;
         this.lockOn = true;
-        this.warningSoundResource = new ResourceLocation(JurassicReborn.MODID, "helicopter_warning");
+        this.warningSoundResource = ResourceLocation.parse(JurassicReborn.MODID + ":" + "helicopter_warning");
+    }
+
+
+    @Override
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(WATCHER_ENGINE_SPEED, 0F);
+        builder.define(WATCHER_FLYING, false);
     }
 
     public boolean upward() { return this.getStateBit(UPWARD); }
@@ -117,7 +133,19 @@ public abstract class HelicopterEntity extends VehicleEntity {
     public void downward(boolean downward) { this.setStateBit(DOWNWARD, downward); }
 
     @Override
-    public void startSound() { super.startSound(); }
+    @OnlyIn(Dist.CLIENT)
+    public void startSound() {
+        if (this.engineSound == null) {
+            this.engineSound = new net.vit.jurassicreborn.client.sounds.CarLoopSound(
+                    this,
+                    net.vit.jurassicreborn.client.sounds.SoundHandler.CAR_MOVE,
+                    SoundSource.RECORDS,
+                    c -> c == this && c.isAlive() && !c.isRemoved() && this.getCurrentEngineSpeed() > 0.5F,
+                    false
+            );
+            Minecraft.getInstance().getSoundManager().play(this.engineSound);
+        }
+    }
 
     protected boolean shouldStopUpdates() { return false; }
 
@@ -198,7 +226,11 @@ public abstract class HelicopterEntity extends VehicleEntity {
 
     @Override
     public void tick() {
-        if (this.level().isClientSide) this.isFlying = this.isNoGravity();
+        if (this.level().isClientSide && !this.isControlledByLocalInstance()) {
+            this.currentEngineSpeed = this.entityData.get(WATCHER_ENGINE_SPEED);
+            this.isFlying = this.entityData.get(WATCHER_FLYING);
+        }
+        if (this.level().isClientSide && this.isControlledByLocalInstance()) this.isFlying = this.isNoGravity();
         super.tick();
 
         if (!this.isInWater()) {
@@ -211,19 +243,21 @@ public abstract class HelicopterEntity extends VehicleEntity {
                 }
             }
 
-            // Manual pitch
-            if (forward() && this.isFlying) this.pitch -= this.computeThrottleUpDown() / 2;
-            else if (this.backward() && this.isFlying) this.pitch += this.computeThrottleUpDown() / 2;
+            // Manual pitch and roll - eased for fluid control
+            final float controlStep = this.computeThrottleUpDown();
+            if (forward() && this.isFlying) this.pitch -= controlStep * 0.7F;
+            else if (this.backward() && this.isFlying) this.pitch += controlStep * 0.7F;
+            else if (this.isFlying && this.lockOn) this.pitch *= 0.94F;
 
-            // Manual roll
-            if (this.left() && !this.right() && this.isFlying) this.roll -= this.computeThrottleUpDown();
-            else if (this.right() && !this.left() && this.isFlying) this.roll += this.computeThrottleUpDown();
+            if (this.left() && !this.right() && this.isFlying) this.roll -= controlStep;
+            else if (this.right() && !this.left() && this.isFlying) this.roll += controlStep;
+            else if (this.isFlying && this.lockOn) this.roll *= 0.94F;
 
             // Manual yaw
-            if (this.rotateLeft() && !this.left() && !this.right() && this.isFlying && dist > 0.1f && this.getCurrentEngineSpeed() > 10) {
-                this.yawRotationAcceleration += 0.08f;
-            } else if (this.rotateRight() && !this.left() && !this.right() && this.isFlying && dist > 0.1f && this.getCurrentEngineSpeed() > 10) {
-                this.yawRotationAcceleration -= 0.08f;
+            if (this.rotateLeft() && this.isFlying && dist > 0.1f && this.getCurrentEngineSpeed() > 10) {
+                this.yawRotationAcceleration += 0.07f;
+            } else if (this.rotateRight() && this.isFlying && dist > 0.1f && this.getCurrentEngineSpeed() > 10) {
+                this.yawRotationAcceleration -= 0.07f;
             }
 
             // Clamp pitch wraparound
@@ -258,6 +292,11 @@ public abstract class HelicopterEntity extends VehicleEntity {
             // Engine speed control
             if ((this.getControllingPassenger() != null) && !this.isLowHealth()) {
                 if (this.upward()) {
+                    if (!this.startupSoundPlayed && this.getCurrentEngineSpeed() <= 0.05F) {
+                        //TODO Starting helicopter sound
+//                        this.level().playSound(null, this.blockPosition(), SoundEvents.FIREWORK_ROCKET_LAUNCH, SoundSource.BLOCKS, 0.8F, 0.65F + this.random.nextFloat() * 0.2F);
+                        this.startupSoundPlayed = true;
+                    }
                     this.changeCurrentEngineSpeed(this.computeThrottleUpDown());
                     if (!this.isFlying && this.getCurrentEngineSpeed() >= this.engineSpeed * TAKEOFF_THRESHOLD_RATIO) {
                         this.setFlying();
@@ -281,12 +320,15 @@ public abstract class HelicopterEntity extends VehicleEntity {
                 this.updateHelicopterTakeoffShaking(dist);
             } else if (this.getCurrentEngineSpeed() > 0) {
                 this.changeCurrentEngineSpeed(-1);
+            } else {
+                this.startupSoundPlayed = false;
             }
 
             // Landing logic
             if (this.onGround()) {
                 boolean wasFlying = this.isFlying;
                 this.isFlying = false;
+                if (!this.level().isClientSide) this.entityData.set(WATCHER_FLYING, false);
                 if (wasFlying && this.shouldCrashOnLanding()) {
                     if (!this.level().isClientSide) {
                         this.setHealth(0);
@@ -301,13 +343,11 @@ public abstract class HelicopterEntity extends VehicleEntity {
                 this.yawRotationAcceleration = 0;
             }
 
-            // Landing gear animation
-            if (this.level().isClientSide) {
-                if (!this.shouldGearLift) this.gearLift += 0.02f; else this.gearLift -= 0.02f;
-                this.shouldGearLift = !(dist < 10);
-                if (this.gearLift < -0.5f) this.gearLift = -0.5f;
-                if (this.gearLift > 0f)    this.gearLift = 0f;
-            }
+            // Landing gear animation (both sides so multiplayer stays consistent)
+            float flightRatio = this.engineSpeed <= 0 ? 0F : (this.getCurrentEngineSpeed() / (float) this.engineSpeed);
+            this.shouldGearLift = !(this.isFlying && (dist > 2.0F || flightRatio > 0.22F));
+            this.gearLift += this.shouldGearLift ? 0.025f : -0.025f;
+            this.gearLift = Mth.clamp(this.gearLift, -0.65f, 0f);
 
             if (this.getControllingPassenger() == null) this.setNoGravity(false);
 
@@ -319,8 +359,12 @@ public abstract class HelicopterEntity extends VehicleEntity {
                 this.checkAndHandleDeath();
             }
 
-            // Rotor animation
-            this.rotAmount += this.getCurrentEngineSpeed() * (Math.PI / 250d);
+            // Rotor animation with smooth spool-up visual speed
+            float normalized = this.engineSpeed <= 0 ? 0F : this.getCurrentEngineSpeed() / (float) this.engineSpeed;
+            float targetRotorSpeed = 0.35F + normalized * normalized * 11.5F;
+            if (this.getCurrentEngineSpeed() <= 0.05F) targetRotorSpeed = 0F;
+            this.rotorRenderSpeed = Mth.lerp(0.17F, this.rotorRenderSpeed, targetRotorSpeed);
+            this.rotAmount += this.rotorRenderSpeed;
 
             // Rotor collision damage
             if (this.getCurrentEngineSpeed() >= 1 && !this.isRotorAreaFree()) {
@@ -346,6 +390,11 @@ public abstract class HelicopterEntity extends VehicleEntity {
             this.spawnEngineRunningParticle();
             this.spawnCrashingParticle();
             this.playWarningSound();
+        }
+
+        if (!this.level().isClientSide) {
+            this.entityData.set(WATCHER_ENGINE_SPEED, this.currentEngineSpeed);
+            this.entityData.set(WATCHER_FLYING, this.isFlying);
         }
 
         this.blastItems();
@@ -393,11 +442,11 @@ public abstract class HelicopterEntity extends VehicleEntity {
 
         double newZ = vz
                 - Math.cos(yawRad) * horizontalThrust
-                + Math.cos((this.getYRot() - 90) * 0.017453292F) * (this.computeHorizontalForceLeftRight()) / this.weight / 20;
+                - Math.cos((this.getYRot() - 90) * 0.017453292F) * (this.computeHorizontalForceLeftRight()) / this.weight / 20;
 
         double newX = vx
                 - Math.sin(-yawRad) * horizontalThrust
-                + Math.sin(-(this.getYRot() - 90) * 0.017453292F) * (this.computeHorizontalForceLeftRight()) / this.weight / 20;
+                - Math.sin(-(this.getYRot() - 90) * 0.017453292F) * (this.computeHorizontalForceLeftRight()) / this.weight / 20;
 
         // Velocity-proportional drag
         final double drag = 0.04;
@@ -642,6 +691,7 @@ public abstract class HelicopterEntity extends VehicleEntity {
 
     protected void setFlying() {
         this.isFlying = true;
+        if (!this.level().isClientSide) this.entityData.set(WATCHER_FLYING, true);
         this.shouldFallDamage = true;
         this.prevInAirPos = this.getPositionVector();
         this.setNoGravity(true);
@@ -908,6 +958,7 @@ public abstract class HelicopterEntity extends VehicleEntity {
         this.currentEngineSpeed = speed;
         if (this.currentEngineSpeed > this.engineSpeed) this.currentEngineSpeed = this.engineSpeed;
         else if (this.currentEngineSpeed < 0) this.currentEngineSpeed = 0;
+        if (!this.level().isClientSide) this.entityData.set(WATCHER_ENGINE_SPEED, this.currentEngineSpeed);
     }
 
     protected float computeRotorSweptArea() { return (float) (Math.PI * Math.pow(this.rotorLength, 2)); }
@@ -937,7 +988,11 @@ public abstract class HelicopterEntity extends VehicleEntity {
         return ((this.roll / 90.0f) * (1.0f - this.pitch / 90.0f)) * this.computeRotorForce();
     }
 
-    public float getCurrentEngineSpeed() { return this.currentEngineSpeed; }
+    public float getCurrentEngineSpeed() {
+        return this.level().isClientSide && !this.isControlledByLocalInstance()
+                ? this.entityData.get(WATCHER_ENGINE_SPEED)
+                : this.currentEngineSpeed;
+    }
 
     protected float computeRequiredEngineSpeedForHover() {
         float S = (9.81f * this.weight) / ((1 - Math.abs(this.pitch) / 90.0f) * (1.0f - Math.abs(this.roll) / 90.0f));

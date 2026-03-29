@@ -31,7 +31,7 @@ public class DoublePlantBlock extends AncientPlantBlock {
         this.registerDefaultState(this.stateDefinition.any().setValue(HALF, DoubleBlockHalf.LOWER));
     }
     public DoublePlantBlock(){
-        super(BlockBehaviour.Properties.copy(Blocks.TALL_GRASS));
+        super(BlockBehaviour.Properties.ofFullCopy(Blocks.TALL_GRASS));
         this.registerDefaultState(this.stateDefinition.any().setValue(HALF, DoubleBlockHalf.LOWER));
     }
 
@@ -111,18 +111,29 @@ public class DoublePlantBlock extends AncientPlantBlock {
     /**
      * Called before the Block is set to air in the world. Called regardless of if the player's tool can actually collect
      * this block
+     *
+     * @return
      */
-    public void playerWillDestroy(Level pLevel, BlockPos pPos, BlockState pState, Player pPlayer) {
-        if (!pLevel.isClientSide) {
-            if (pPlayer.isCreative()) {
-                preventCreativeDropFromBottomPart(pLevel, pPos, pState, pPlayer);
+    @Override
+    public BlockState playerWillDestroy(Level level, BlockPos pos, BlockState state, Player player) {
+        if (!level.isClientSide()) {
+            if (player.isCreative()) {
+                this.preventCreativeDropFromBottomPart(level, pos, state, player);
             } else {
-                dropResources(pState, pLevel, pPos, (BlockEntity)null, pPlayer, pPlayer.getMainHandItem());
+                Block.dropResources(
+                        state,
+                        level,
+                        pos,
+                        null,
+                        player,
+                        player.getMainHandItem()
+                );
             }
         }
 
-        super.playerWillDestroy(pLevel, pPos, pState, pPlayer);
+        return super.playerWillDestroy(level, pos, state, player);
     }
+
 
     /**
      * Called after a player has successfully harvested this block. This method will only be called if the player has
